@@ -1,0 +1,42 @@
+name: cygnus_core
+description: Cygnus 框架的 Flutter WebView 核心套件：inline WebView、headless WebView 與 in-app browser（源自 flutter_inappwebview）。
+version: 0.0.0
+homepage: https://github.com/KNightING/cygnus_core
+repository: https://github.com/KNightING/cygnus_core
+issue_tracker: https://github.com/KNightING/cygnus_core/issues
+
+environment:
+  sdk: ^3.8.0
+  flutter: ">=3.32.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_inappwebview_internal_annotations:
+    path: dev_packages/flutter_inappwebview_internal_annotations
+  plugin_platform_interface: ^2.1.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_driver:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  build_runner: ^2.4.12
+  generators:
+    path: dev_packages/generators
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.pichillilorenzo.flutter_inappwebview_android
+        pluginClass: InAppWebViewFlutterPlugin
+        dartPluginClass: AndroidInAppWebViewPlatform
+  assets:
+    - packages/cygnus_core/assets/t_rex_runner/t-rex.html
+    - packages/cygnus_core/assets/t_rex_runner/t-rex.css
+
+false_secrets:
+  - /test_node_server/*.pem
+  - /test_node_server/*.pfx
