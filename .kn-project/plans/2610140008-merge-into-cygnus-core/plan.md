@@ -84,6 +84,9 @@ cygnus_core/                          ← repo 根目錄 = 套件根目錄
 **產生器與工具**
 - `dev_packages/generators/build.yaml`（`builder_factories`、`generate_for`）— 範圍改涵蓋 `lib/src/**`
 - `package.json:6-9`（build_runner／watch 的 `cd flutter_inappwebview_platform_interface`）、`:13-14`（`format` 列出 7 個目錄）、`:16-17`（`docs:gen`）— 改為根目錄的新路徑
+- `web_support/package.json:7`（`build` 的 esbuild `--outfile=../flutter_inappwebview_web/lib/assets/web/web_support.js`）— 輸出路徑改為 `../lib/assets/web/web_support.js`（原目錄已搬走，不改則建置寫到不存在的路徑）。`web_support/src/index.ts` 的 JS 全域名稱屬階段 ③，不動
+- `.github/FUNDING.yml:12`（`custom: ['https://inappwebview.dev/donate/']`）— 移除（Q9）；上游贊助連結會顯示在公開 repo 頁面。其餘 `.github/**`（`autolabeler.yml`、`instructions/`、`agents/`、`ISSUE_TEMPLATE/`、`PULL_REQUEST_TEMPLATE.md`）本計畫不動
+- `doc/upstream-changelogs/<原套件名>.md`（new，自各舊套件 `CHANGELOG.md` 搬移）、`doc/linux-wpe-backend.md`（new，自 `flutter_inappwebview_linux/WPE_BACKEND.md` 搬移並更新路徑）、根 `analysis_options.yaml`（new）、`lib/src/platform_interface/analysis_options.yaml`（new）、根 `build.yaml`（new）— Q8 決議的落點
 - `package.json:21-23` 起的 `publish:*`（8 個套件各一組，含 `:windows` 變體）— 依 Q7 保留並**合併為單一 `publish`（與 `publish:windows`）發佈 `cygnus_core`**；只改腳本，本計畫不實際發佈
 - `scripts/publish.sh`、`scripts/test.sh`、`scripts/test.ps1`、`tool/env.dart` — 改為新路徑（`publish.sh` 改為單一套件）
 - `.vscode/launch.json`（71 處 `flutter_inappwebview`）— 工作目錄改為 `example`
@@ -99,13 +102,13 @@ cygnus_core/                          ← repo 根目錄 = 套件根目錄
 - `NOTICE`（new）— 註明源自 `pichillilorenzo/flutter_inappwebview`（Apache-2.0），原 `LICENSE` 與各檔版權宣告原樣保留
 - `.kn-project/project.md:11-50`（保留鐵則）、`:15-21`（零分歧與不改名）、`:48-50`（PR 目標）、`:52-69`（每台開發機首次 clone 必做）— 改寫為 `cygnus_core` 定位：非 fork、無 `upstream` remote、無 `gh repo set-default` 需求、不再同步上游
 - `AGENTS.md:31`（零分歧）、`:35-36`（不改套件名）及「本 repo 特有的三條紅線」整段 — 改寫
-- `.kn-project/wiki/features/{android-platform-view-composition,windows-scroll-input,android-back-gesture,keyboard-avoidance}.md` — 更新原生檔案路徑
+- `.kn-project/wiki/features/android-platform-view-composition.md:113,115`、`android-back-gesture.md:78` — 更新 Dart／原生檔案路徑（`windows-scroll-input.md`、`keyboard-avoidance.md` 只含指向上游 issue 的網址，不需更動）
 
 ## App-Flow Screens
 （本 repo 無 `app-flow.json`，不適用。）
 
 ## Open Questions / 待確認事項
-> Q1–Q7 已確認（2026-10-14）；Q8 為 Phase 3 執行中新發現，**確認前不得進入 Phase 4 的清理工作**。決議同步記於 `## Key Decisions`。
+> Q1–Q9 皆已確認（Q8、Q9 為執行中新發現，2026-10-14 確認）。決議同步記於 `## Key Decisions`。
 
 ### Q1. 套件根目錄放哪裡？ — 影響範圍：整個 repo 佈局
 - [x] 選項 A：repo 根目錄就是套件根目錄（根 `pubspec.yaml`）
@@ -143,18 +146,25 @@ cygnus_core/                          ← repo 根目錄 = 套件根目錄
 - **決議**：B（使用者選擇，與建議不同；只改腳本，本計畫不實際發佈）　狀態：✅ 已確認
 
 ### Q8. 舊套件資料夾裡剩下的非程式碼檔怎麼處理？ — 影響範圍：8 個舊套件資料夾（`flutter_inappwebview*/`）的 `CHANGELOG.md`、`LICENSE`、`README.md`、`analysis_options.yaml`、`build.yaml`、`.metadata`、`.gitignore`；`flutter_inappwebview_linux/WPE_BACKEND.md`；`flutter_inappwebview/.vscode`、`.fvmrc`
-- [ ] 選項 A：保留有價值的、合併重複的後刪除舊資料夾　(建議，理由：上游歷史與設定不遺失，又不留 8 份重複檔)
+- [x] 選項 A：保留有價值的、合併重複的後刪除舊資料夾
   - 8 份 `CHANGELOG.md` → 搬到 `doc/upstream-changelogs/<原套件名>.md`，保留上游出處
   - 8 份 `LICENSE` → 先以 md5 確認內容相同，只保留根目錄一份
   - 8 份 `README.md` → 有用的說明併入新的根 `README.md`，其餘刪除
   - 3 份不同的 `analysis_options.yaml` 與 `build.yaml` → 逐份比對後合併為根目錄各一份，避免 lint／產生器設定悄悄放寬
   - `WPE_BACKEND.md` → 搬到 `doc/linux-wpe-backend.md`；`.metadata`、`.gitignore`、`.vscode`、`.fvmrc` 依需要併入根目錄
 - [ ] 選項 B：全部直接刪除（歷史仍可從初始 commit 與上游 repo 查到）
-- **決議**：_(待使用者勾選)_　狀態：⏳ 待確認
+- **決議**：A　狀態：✅ 已確認
+
+### Q9. `.github/` 的上游社群文件與 Copilot 路徑指令怎麼處理？ — 影響範圍：`.github/**`
+- [x] 選項 A：只移除 `FUNDING.yml`，其餘 `.github` 另案處理
+- [ ] 選項 B：`.github` 全部另案
+- [ ] 選項 C：本計畫一併處理
+- **決議**：A（使用者選擇）；執行中發現，計畫範圍因此修訂並經使用者核准　狀態：✅ 已確認
 
 ## Manual Follow-ups / 人工收尾事項
 - **[合併後]** 在 Windows 機器驗證 `example` 的 `flutter build windows` 與 `flutter run -d windows` 可啟動並載入網頁 — 於 `cygnus_core/example` 執行上述指令 — agent 在 macOS 上無法建置 Windows，且 Flutter 不支援跨平台建置
 - **[合併後]** 在 Linux 機器驗證 `example` 的 `flutter build linux` — 於 `cygnus_core/example` 執行，需 WPE WebKit 與 nlohmann_json 依賴 — 同上，本機無 Linux 環境
+- **[合併後]** 確認 Apache-2.0 §4(b)「修改過的檔案須有顯著標示」的處理是否足夠 — 目前以 `NOTICE` 與 git 歷史涵蓋，各檔原有的版權標頭未動；若要逐檔標示需另立計畫 — 屬授權／法務判斷，agent 不代為決定
 
 ## Key Decisions
 - **[Phase 0]** Milestone `0.0.0`（起始版本）— 理由：使用者選擇；舊的 `6.2.0-beta.3.x` 屬原 inappwebview 系列，對新套件不適用。milestone 已於 2026-10-14 在 `KNightING/cygnus_core` 建立（#1）。
@@ -183,6 +193,13 @@ cygnus_core/                          ← repo 根目錄 = 套件根目錄
 - **[執行中]** Linux `utils/log.h` 以 `"/flutter_inappwebview_linux/"` 切割來源路徑（只影響日誌顯示），改為 `"/cygnus_core/"` — 理由：插件符號連結目錄隨套件名改變，不改則日誌路徑不再被縮短。
 - **[執行中]** iOS／macOS：SPM library 名稱改為 `cygnus-core`（套件名的連字號形式）、target 與 podspec 為 `cygnus_core`；iOS 的 `WebView.storyboard` 的 `customModule` 同步改為 `cygnus_core` — 理由：Swift 模組名由 target／podspec 名決定，storyboard 以它解析自訂類別，不改會在執行期找不到 `InAppBrowserWebViewController`。
 - **[驗證]** 4 個原生平台＋Android 的對外名稱未被更動 — 依據：與初始 commit 比對 channel 前綴與 JS 全域名稱的逐檔出現次數完全相同，Java `namespace`／`group` 與 plugin 類別名亦未變。
+- **[Q8]** 舊套件資料夾的非程式碼檔採「保留有價值、合併重複、再刪除舊資料夾」：CHANGELOG 搬到 `doc/upstream-changelogs/`、LICENSE 確認相同後只留根目錄一份、README 有用內容併入新根 README、三份 `analysis_options.yaml` 與各 `build.yaml` 逐份比對後合併、`WPE_BACKEND.md` 搬到 `doc/linux-wpe-backend.md` — 理由：使用者選擇 A；上游歷史與設定不遺失，也不留重複檔。
+- **[Q9]** 只移除 `.github/FUNDING.yml`，其餘 `.github/**`（autolabeler、Copilot instructions／agents、ISSUE_TEMPLATE、PULL_REQUEST_TEMPLATE）留待另案 — 理由：使用者選擇；它們是上游專案的社群文件與路徑指令，非合併所必需，混入本計畫會讓變更失焦；FUNDING.yml 會在公開 repo 頁面顯示上游贊助連結，故先移除。計畫範圍修訂（新增 `web_support/package.json`、`.github/FUNDING.yml`）已於 2026-10-14 經使用者核准（Rule 2）。
+- **[執行中]** 合併 `analysis_options.yaml` 的方式為「根目錄一份通用設定＋`lib/src/platform_interface/` 一份子設定（多忽略 4 項）」，而非單一檔案 — 理由：3 份原檔只有 platform_interface 多忽略 `unnecessary_non_null_assertion`、`unused_element`、`unused_element_parameter`、`dead_null_aware_expression`（為產生檔而設）；放到根目錄會放寬全部程式碼的 lint，與 Q8「避免規則悄悄放寬」的目的相反。8 個 `LICENSE` 經 md5 確認完全相同，只留根目錄一份；6 份 `build.yaml` 內容相同，合為根目錄一份。
+- **[執行中]** 範例 `example/test/test_helpers/mock_inappwebview_platform.dart:3` 的 `package:flutter_inappwebview_platform_interface/...` 改為 `package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart` — 理由：該檔需要未經 `hide` 的完整 platform_interface barrel（主入口 `cygnus_core.dart` 會隱藏部分內部符號）；它是 example 的測試，落在已核准的 `example/**` 範圍內。
+- **[執行中]** `scripts/publish.sh` 本來就以根目錄為基準，不需更動；`package.json` 的 `publish` 腳本依 Q7 B 保留，但根 `pubspec.yaml` 因 Q4 B 使用 `path:` 依賴，`flutter pub publish` 會被拒絕（analyzer 回報 `invalid_dependency`）— 理由：Q4 B 與 Q7 B 兩項使用者決定彼此有張力，已寫入 `project.md` 的保留鐵則並於回報中向使用者說明，未自行替使用者取捨。
+- **[執行中]** `NOTICE` 以「來源、授權、主要變更、未更動項目」四段撰寫，不另行主張版權；Apache-2.0 §4(b) 對「修改過的檔案」的逐檔標示，本階段僅以 `NOTICE` 與 git 歷史涵蓋（多數檔案的修改只是 `package:` 匯入與 dartdoc 前綴）— 理由：逐檔加註對數百個產生檔與搬移檔不切實際，且 `LICENSE`、各檔原版權標頭皆原樣保留；是否需要更嚴格的逐檔標示留給使用者判斷，列入人工收尾事項。
+- **[驗證]** `example/test/` 的單元測試有 4 個失敗（`responsive_phase7_screens_test` 的 `test_all_screens_mobile_no_overflow`、`event_console_widget_test` 的 2 個、`method_tester_widget_test` 的 1 個），**初始 commit 上同樣 4 個失敗**（`+10 -4`，名稱一致，皆為 UI 斷言），非本計畫造成，本計畫不處理 — 理由：與套件合併無關；已列為既有問題。
 
 ## Git Completion Policy
 - **完成後（使用者自訂，Rule 17 三選項之外）**：commit 一律自動；任務完成時 `git fetch` 後 `git rebase origin/main` 工作分支，再於本機 **fast-forward 合併進 `main`** 並 `git push origin main`，**不開 PR**。工作分支另以 `git push --force-with-lease --force-if-includes` 備份到遠端（此動作會重寫遠端工作分支歷史；`main` 的推送是 fast-forward，不改寫）。

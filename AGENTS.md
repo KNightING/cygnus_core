@@ -24,13 +24,15 @@
 
 ## ⚠️ 本 repo 特有的三條紅線
 
-1. **這是 `pichillilorenzo/flutter_inappwebview` 的 GitHub fork，且不回貢上游。**
-   所有 PR 一律指向 `KNightING/flutter_inappwebview`。但 `gh pr create` 預設會指向 parent repo，
-   已設定 `gh repo set-default KNightING/flutter_inappwebview` 收斂，**每次開 PR 前仍須確認目標
-   repo**——誤射會把變更送進他人的公開 repo。
-2. **與上游零分歧是刻意維持的資產。** delta 要保持極小，任何超出計畫範圍的「順手改一下」
-   都在花掉它。**動機是讓「拉取上游更新」保持 fast-forward，與回貢無關**（見第 1 點）。
-3. **不改套件名、命名空間、JS 橋接名。** 改了就等於放棄第 2 點，且使用端要付出遷移成本。
+1. **這是獨立 repo（非 GitHub fork），源自 `pichillilorenzo/flutter_inappwebview`，且不回貢上游。**
+   所有推送與 PR 一律針對 `KNightING/cygnus_core`；不要接 `upstream` remote、不要對上游 repo 發 PR。
+   出處與授權見 `NOTICE`，`LICENSE` 與各檔的版權宣告必須原樣保留。
+2. **對外名稱分階段調整，未經該階段的計畫核准不得更動。** 階段 ① 不得改 Dart 類別名、Android Java
+   namespace、channel 前綴（`com.pichillilorenzo/`）、JS 全域名稱（`window.flutter_inappwebview`）——
+   它們由 Dart 與五個原生端共用同一個字串，只改一邊會讓橋接靜默失效。改名須另立計畫並逐端同步。
+3. **原生建置識別字必須與套件名 `cygnus_core` 一致，`pluginClass` 不得更動。** podspec、Swift Package、
+   CMake 的 `PROJECT_NAME`／`PLUGIN_NAME`／`cygnus_core_bundled_libraries` 與 `include/cygnus_core/`
+   是 Flutter 產生 registrant 時依套件名解析的；標頭與函式名則由 `pluginClass` 決定。
 
 ## 📂 目錄結構
 

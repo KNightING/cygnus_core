@@ -110,9 +110,9 @@ HCPP 在真實階層，與 HC 同側，因此 Dart 在 HCPP 模式下對 native 
 deprecated 的 `useHybridComposition` 有三個字面預設值，改動時必須同步，否則「不傳設定」與
 「傳了部分設定」會走到不同分支：
 
-- `flutter_inappwebview_platform_interface/lib/src/in_app_webview/in_app_webview_settings.dart`
+- `lib/src/platform_interface/src/in_app_webview/in_app_webview_settings.dart`
   ——建構子預設值（另有同步的 `.g.dart`）
-- `flutter_inappwebview_android/lib/src/in_app_webview/in_app_webview.dart` ——widget 端的 `?? false`
+- `lib/src/platforms/android/src/in_app_webview/in_app_webview.dart` ——widget 端的 `?? false`
 - `.../webview/in_app_webview/InAppWebViewSettings.java` ——native 欄位預設
 
 ## 已知限制

@@ -1,90 +1,66 @@
 <!-- REMINDER: Relative Paths Only! No file:///c:/... -->
-# flutter_inappwebview
+# cygnus_core
 
-`pichillilorenzo/flutter_inappwebview` 的 fork，供 KNightING 自有專案以 **git 依賴**方式使用，
-**不發佈至 pub.dev**。
+Cygnus 框架（Nuxt 網頁 + Flutter 殼）的 WebView 核心套件，供 KNightING 自有專案以 **git 依賴**方式使用。
+原本是 8 個聯邦式套件，自階段 ①（2026-10）起合併為單一 Flutter plugin 套件 `cygnus_core`。
 
-fork 的目的不是追隨或改造上游，而是**把使用端反覆重造的原生行為收進套件**——最先處理的是
-軟鍵盤避讓：那件事需要同時掌握「鍵盤高度」與「WebView 的原生視圖」，兩者都只有套件層拿得到，
+源自 `pichillilorenzo/flutter_inappwebview`（Apache-2.0，出處與變更見 `NOTICE`），直接來源為
+`KNightING/flutter_inappwebview`（tag `6.2.0-beta.3.6`，commit `1883884f5`）。本 repo 是獨立 repo
+（**不是 GitHub fork**），初始只有一個匯入 commit，不帶上游 git 歷史。
+
+存在目的不是追隨上游，而是**把使用端反覆重造的原生行為收進套件**——最先處理的是軟鍵盤避讓：
+那件事需要同時掌握「鍵盤高度」與「WebView 的原生視圖」，兩者都只有套件層拿得到，
 放在模板或 App 層必然重複實作且互相打架。
 
 ## 保留鐵則
 
-- **本 fork 不回貢上游，純為自用。** 不對 `pichillilorenzo/flutter_inappwebview` 發 PR、
-  不以「上游會不會接受」作為設計考量。所有變更只服務 KNightING 自有專案的需求。
-- **delta 要保持極小**：本 fork 於 2026-08-11 與上游 master 零分歧（同為 `17527cae5`）。
-  這個狀態是刻意維持的資產——上游前進時**拉取**是 fast-forward，不是衝突解決。
-  **注意此鐵則的動機是「讓拉取上游更新保持廉價」，與回貢無關**（見上一條）。
-  任何「順手改一下」都在花掉這筆資產，需個別評估而非順手為之。
-- **不改套件名、不改命名空間、不改 JS 橋接名**。維持 `flutter_inappwebview_*` 讓使用端的
-  `import` 與網頁的 `window.flutter_inappwebview` 零遷移；改名會立刻讓上述零分歧優勢失效。
-  此決定的完整比對見本檔末的「為何不是 zikzak fork」。
-- **不發佈 pub.dev**：使用端一律以 `git:` + `path:` 依賴引用。若有 transitive 依賴從 pub.dev
-  拉 `flutter_inappwebview`，使用端需以 `dependency_overrides` 收斂。
-- **使用端只寫一個依賴，不需要 `dependency_overrides`**（自 `6.2.0-beta.3.6` 起）：
-  主套件與各平台實作的 `pubspec.yaml` 對同 repo 套件一律用相對 `path:`，pub 因此不會
-  從 pub.dev 解析它們。
+- **永久分岔，不再同步上游。** 合併後的目錄結構與上游不同，無法再 merge；上游日後的修正需手動評估
+  移植。本專案不對上游發 PR，所有變更只服務 KNightING 自有專案的需求。
+- **對外名稱分階段調整，每階段各自一份計畫、可獨立建置驗證**：
+  - 階段 ①（進行中）：合併為單一套件、套件名改為 `cygnus_core`。**不改** Dart 類別名、Android Java
+    namespace、channel 前綴 `com.pichillilorenzo/`、JS 全域名稱 `window.flutter_inappwebview`——
+    先只做結構合併，行為不變，把變更面壓到最小。
+  - 階段 ②：Dart 公開 API 命名改為 Cygnus 風格（命名規則由使用者定義）。
+  - 階段 ③：原生端、channel 前綴、JS 全域名稱是否更動與改成什麼，屆時再決定。
+  - 階段 ④：`nuxt-flutter-app` 的 `flutter-host` 改依賴本套件。
+- **目前以 git 依賴使用，不發佈 pub.dev。** 根 `pubspec.yaml` 對 `dev_packages/*` 使用 `path:` 依賴，
+  `flutter pub publish` 會因此被拒絕（`invalid_dependency`）；`package.json` 的 `publish` 腳本是保留
+  的意圖，並不能直接成功執行。要發佈須先處理 `flutter_inappwebview_internal_annotations`。
+- **對同 repo 的 `dev_packages` 一律用相對 `path:`**，不帶版本約束（`path` 依賴不得同時帶版本）。
+- **版本號即 milestone 標題**，起始為 `0.0.0`；根 `pubspec.yaml` 的 `version` 是唯一來源。
 
-  ```yaml
-  flutter_inappwebview:
-    git:
-      url: https://github.com/KNightING/flutter_inappwebview.git
-      ref: 6.2.0-beta.3.6
-      path: flutter_inappwebview
-  ```
+## 開發機設定
 
-  **這 7 個 `pubspec.yaml` 是與上游的固定 delta**：`flutter_inappwebview`（對
-  platform_interface 與 6 個平台實作）、`flutter_inappwebview_{android,ios,macos,windows,web,linux}`
-  （對 platform_interface）。缺任何一個，使用端解析時會報「平台實作依賴 hosted 的
-  platform_interface、主套件依賴 git 的 platform_interface」而失敗。
-  `flutter_inappwebview_platform_interface` 本身不用改（它只依賴 hosted 的
-  `internal_annotations`，與 WebView 無關）。
+本 repo 不是 fork，`gh pr create` 不會誤指向他人的 repo。若想省略 `gh` 指令的 `--repo` 旗標，可在
+**各 clone**（設定存於 `.git/config`，不隨 repo 傳遞）執行：
 
-  **同步上游時**：拉取後若這 7 個檔案出現衝突（或上游升級了依賴版本），一律接受上游的內容，
-  再把每一組 `flutter_inappwebview_xxx: ^<版本>` 加其下一行 `# path: ../flutter_inappwebview_xxx`
-  （共兩行）改成 `flutter_inappwebview_xxx:` 加 `path: ../flutter_inappwebview_xxx`（兩行），
-  版本號隨之拿掉（`path` 依賴不得同時帶版本約束）。漏做的症狀是使用端 `flutter pub get`
-  立刻失敗，不會悄悄潛伏。
-- **PR 一律指向 `KNightING/flutter_inappwebview`**：本 repo 是 GitHub 上 `pichillilorenzo` 的
-  正式 fork，`gh pr create` **預設會指向 parent**——誤射會把變更送進他人的公開 repo。
-  每次開 PR 前仍應確認目標 repo。
-
-## 每台開發機首次 clone 後必做
-
-下列設定都存於**該 clone 的 `.git/config`**，不隨 GitHub 帳號、也不隨 repo 傳遞。
-在別台機器設過**不算數**，新機器一律要重做一次；兩項皆曾因此在實際作業中失效。
-
-- [ ] **收斂 `gh` 的 PR 目標**，否則 `gh pr create` 會指向上游 parent：
-
-  ```bash
-  gh repo set-default KNightING/flutter_inappwebview
-  ```
-
-  驗證：`gh repo set-default --view` 應回報 `KNightING/flutter_inappwebview`。
-
-- [ ] **接上 `upstream` remote**，否則任何 `git diff upstream/master` 的 delta 檢查會直接失敗：
-
-  ```bash
-  git remote add upstream https://github.com/pichillilorenzo/flutter_inappwebview.git && git fetch upstream
-  ```
-
-  注意 **上游主幹為 `master`，本 fork 為 `main`**，同步時分支名不同。
+```bash
+gh repo set-default KNightING/cygnus_core
+```
 
 ## Architecture
 
-Federated plugin，一份 app-facing 套件 + 各平台實作 + 共用介面：
+單一 Flutter plugin 套件，repo 根目錄即套件根目錄（根 `pubspec.yaml`）：
 
-| 套件 | 職責 |
+| 位置 | 職責 |
 | :--- | :--- |
-| `flutter_inappwebview` | app-facing 入口，使用端只依賴這一個 |
-| `flutter_inappwebview_platform_interface` | 平台無關的介面與設定物件（`InAppWebViewSettings` 等） |
-| `flutter_inappwebview_android` | Android 實作（Java，命名空間 `com.pichillilorenzo.flutter_inappwebview_android`） |
-| `flutter_inappwebview_ios` / `_macos` / `_windows` / `_linux` / `_web` | 其餘平台實作 |
-| `dev_packages/flutter_inappwebview_internal_annotations` | 程式碼產生用註記 |
+| `lib/cygnus_core.dart` | 唯一對外入口（沿用原 app-facing 套件的匯出與 `hide` 清單） |
+| `lib/src/platform_interface/` | 平台無關的介面與設定物件（`InAppWebViewSettings` 等），含 build_runner 產生的 `*.g.dart` |
+| `lib/src/*`（`platform_interface`、`platforms` 以外） | 原 app-facing 套件的類別（`InAppWebView`、`InAppBrowser`、`ChromeSafariBrowser` 等） |
+| `lib/src/platforms/<平台>/` | 各平台的 Dart 實作（android、ios、macos、windows、linux、web） |
+| `lib/src/platforms/platforms.dart` | 以 `dart.library.js_interop` 條件匯出：原生建置只公開 5 個平台的註冊類別，Web 改由 pubspec 的 `fileName` 註冊 |
+| `android/` `ios/` `macos/` `windows/` `linux/` | 各平台原生程式碼（Android 為 Java，命名空間 `com.pichillilorenzo.flutter_inappwebview_android`） |
+| `dev_packages/flutter_inappwebview_internal_annotations` | 程式碼產生用註記（套件名階段 ① 不改） |
 | `dev_packages/generators` | 程式碼產生器 |
+| `example/` | 範例與整合測試（唯一保留的 example） |
+| `web_support/` | Web 端 JS 橋接（TypeScript），建置為 `lib/assets/web/web_support.js` |
 
-新增一個跨平台設定的路徑固定為：`platform_interface` 宣告 → 各平台實作解析 → app-facing 套件透傳
-（`platform_interface` 另有 `.g.dart` 產生檔需一併更新）。
+新增一個跨平台設定的路徑固定為：`lib/src/platform_interface` 宣告 → `lib/src/platforms/<平台>/`
+各平台實作解析 → `lib/src/` 下的 app-facing 類別透傳（`*.g.dart` 以 `npm run build` 重新產生）。
+
+原生建置識別字（podspec、Swift Package、CMake 目標與 `include/` 目錄）一律與套件名 `cygnus_core`
+一致——Flutter 產生的 registrant 與 `generated_plugins.cmake` 以套件名解析它們；
+`pluginClass`（`InAppWebViewFlutterPlugin` 等）決定標頭與函式名，階段 ① 不改。
 
 ### Android 的 WebView 層次
 
@@ -114,7 +90,7 @@ Federated plugin，一份 app-facing 套件 + 各平台實作 + 共用介面：
 - **macOS 部署目標勿降回 10.14**：新版 Xcode 對 `ASWebAuthentication` 的可用性檢查會令 10.14
   直接建置失敗（詳見 `archive/2608140054-macos-spm-deployment-target.md`）。10.15 已於
   2026-08-15 進一步升至 12.0。
-- 兩個 iOS example 已採用 **UIScene 生命週期**（`UISceneDelegateClassName` 用 engine 內建的
+- iOS example 已採用 **UIScene 生命週期**（`UISceneDelegateClassName` 用 engine 內建的
   `FlutterSceneDelegate`，未新增 Swift 檔案、未改 `project.pbxproj` 結構）。
 - **已知未驗證**：實體 iOS 裝置、Linux。
   （Windows example 已多次以真實操作驗證：觸控板捲動見
@@ -135,8 +111,8 @@ Android / iOS / macOS 三平台的宣告皆位於各自的 `plugin_scripts_js` /
 該 fork（`arrrrny/zikzak_inappwebview` 的下游）已停止作為開發基底，但有三項上游沒有、
 本專案需要的東西待移植：
 
-- **Windows virtual host mappings** — 繞過本地 CORS，約 414 行，跨 `platform_interface`
-  與 `_windows` 兩個套件。
+- **Windows virtual host mappings** — 繞過本地 CORS，約 414 行，跨 `lib/src/platform_interface`
+  與 Windows 實作（`lib/src/platforms/windows`、`windows/`）。
 - **`ZikZakSecurityManager`** — 憑證釘選、HTTPS-only、fetch/XHR 請求攔截，661 行（Android）。
   移植時需重新命名（不沿用 ZikZak 字樣）。
 - **macOS popup window 修正** — `window.open` 的 popup 視窗與事件遞送。移植前需先確認上游是否已修。

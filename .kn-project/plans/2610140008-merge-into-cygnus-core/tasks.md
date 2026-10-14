@@ -27,14 +27,17 @@
 - [x] 確認各平台 plugin 類別名、Java namespace、channel 前綴、JS 全域名稱**皆未被更動**（以 grep 比對初始 commit：逐檔出現次數相同，唯一差異是本計畫文件自己的文字）
 
 ## Phase 4 — 產生器、工具、範例與文件
-- [ ] `dev_packages/generators/build.yaml` 的 `generate_for` 涵蓋新位置
-- [ ] 根 `package.json`、`scripts/*`、`tool/env.dart`、`.vscode/launch.json` 改為新路徑
-- [ ] `publish:*` 與 `scripts/publish.sh` 合併為單一 `cygnus_core` 的發佈腳本（Q7 B；只改腳本、不發佈）
-- [ ] `example/`（含 `integration_test`、`test_driver`）搬移並改依賴為 `cygnus_core: path: ../`
-- [ ] 移除 6 個實作各自的 `example/` 與 4 個 `test/` 樁檔（Q5 A）
-- [ ] 新增 `NOTICE`；改寫 `README.md`
-- [ ] 改寫 `.kn-project/project.md` 與 `AGENTS.md` 的保留鐵則與三條紅線
-- [ ] 更新 4 個 wiki 頁的原生檔案路徑
+- [x] `dev_packages/generators/build.yaml` 的 `generate_for` 涵蓋新位置
+- [x] 根 `package.json`、`scripts/*`、`tool/env.dart`、`.vscode/launch.json` 改為新路徑
+- [x] `publish:*` 與 `scripts/publish.sh` 合併為單一 `cygnus_core` 的發佈腳本（Q7 B；只改腳本、不發佈）
+- [x] `example/`（含 `integration_test`、`test_driver`）搬移並改依賴為 `cygnus_core: path: ../`
+- [x] 移除 6 個實作各自的 `example/` 與 4 個 `test/` 樁檔（Q5 A）
+- [x] Q8：CHANGELOG 搬到 `doc/upstream-changelogs/`、`WPE_BACKEND.md` 搬到 `doc/linux-wpe-backend.md`、合併 `analysis_options.yaml` 與 `build.yaml`，確認 LICENSE 相同後刪除 8 個舊套件資料夾
+- [x] `web_support/package.json` 的輸出路徑改為 `../lib/assets/web/web_support.js`；重建後與現有 `web_support.js` 比對（程式碼相同，僅內嵌 sourcemap 的來源相對路徑隨輸出目錄深度改變）
+- [x] 移除 `.github/FUNDING.yml`（Q9）
+- [x] 新增 `NOTICE`；改寫 `README.md`
+- [x] 改寫 `.kn-project/project.md` 與 `AGENTS.md` 的保留鐵則與三條紅線
+- [x] 更新 wiki 頁的檔案路徑（實際需改 2 頁共 3 行）
 
 ## Phase 5 — 驗證
 - [ ] `flutter analyze` 全數通過
