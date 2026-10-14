@@ -142,3 +142,4 @@ Android / iOS / macOS 三平台的宣告皆位於各自的 `plugin_scripts_js` /
 只記併回主幹，發佈狀態以 GitHub Release 為準。
 
 - 6.2.0-beta.3.6 — 併回主幹 2026-10-13（主套件與平台實作的 pubspec 改用 `path:` 依賴，使用端免 `dependency_overrides`）
+- 0.0.0 — 併回主幹 2026-10-14（8 個 inappwebview 套件合併為單一 Flutter plugin 套件 `cygnus_core`；對外名稱未更動）
