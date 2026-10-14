@@ -55,8 +55,8 @@ Dart 公開 API 改為 Cygnus 風格命名：526 個型別加 `Cygnus` 前綴並
 
 | 頁面 | 日期 | 版本 | 變動 | Issue | PR |
 |---|---|---|---|---|---|
-| `features/android-high-frequency-events.md` | 2026-10-15 | — | Dart 公開 API 改為 Cygnus 風格命名 | [#4](https://github.com/KNightING/cygnus_core/issues/4) | — |
-| `features/android-platform-view-composition.md` | 2026-10-15 | — | Dart 公開 API 改為 Cygnus 風格命名 | [#4](https://github.com/KNightING/cygnus_core/issues/4) | — |
-| `features/keyboard-avoidance.md` | 2026-10-15 | — | Dart 公開 API 改為 Cygnus 風格命名 | [#4](https://github.com/KNightING/cygnus_core/issues/4) | — |
-| `features/windows-scroll-input.md` | 2026-10-15 | — | Dart 公開 API 改為 Cygnus 風格命名 | [#4](https://github.com/KNightING/cygnus_core/issues/4) | — |
-| `features/windows-webview-focus.md` | 2026-10-15 | — | Dart 公開 API 改為 Cygnus 風格命名 | [#4](https://github.com/KNightING/cygnus_core/issues/4) | — |
+| `features/android-high-frequency-events.md` | 2026-10-15 | — | Dart 公開 API 改為 Cygnus 風格命名 | [#4](https://github.com/KNightING/cygnus_core/issues/4) | [#5](https://github.com/KNightING/cygnus_core/pull/5) |
+| `features/android-platform-view-composition.md` | 2026-10-15 | — | Dart 公開 API 改為 Cygnus 風格命名 | [#4](https://github.com/KNightING/cygnus_core/issues/4) | [#5](https://github.com/KNightING/cygnus_core/pull/5) |
+| `features/keyboard-avoidance.md` | 2026-10-15 | — | Dart 公開 API 改為 Cygnus 風格命名 | [#4](https://github.com/KNightING/cygnus_core/issues/4) | [#5](https://github.com/KNightING/cygnus_core/pull/5) |
+| `features/windows-scroll-input.md` | 2026-10-15 | — | Dart 公開 API 改為 Cygnus 風格命名 | [#4](https://github.com/KNightING/cygnus_core/issues/4) | [#5](https://github.com/KNightING/cygnus_core/pull/5) |
+| `features/windows-webview-focus.md` | 2026-10-15 | — | Dart 公開 API 改為 Cygnus 風格命名 | [#4](https://github.com/KNightING/cygnus_core/issues/4) | [#5](https://github.com/KNightING/cygnus_core/pull/5) |
