@@ -87,7 +87,7 @@ flowchart TD
 ## Android 實作
 
 > [!IMPORTANT]
-> **本機制在 TLHC / HC / HCPP 三種合成模式下皆須成立。** 本 fork 的
+> **本機制在 TLHC / HC / HCPP 三種合成模式下皆須成立。** 本套件的
 > [平台視圖合成模式](android-platform-view-composition.md) 預設為**自動選擇**（HCPP 可用時
 > 用 HCPP，否則 TLHC），因此實際跑到哪一條 IME 路徑取決於裝置與 app 是否 opt-in：
 > TLHC 會啟用 `InputAwareWebView` 的 IME 代理，HC 與 HCPP 下那**四處**守衛直接交給 `super`。
