@@ -4,7 +4,7 @@
 
 ## Summary
 
-Android 的 WebView 以何種方式與 Flutter 畫面合成，由 `InAppWebViewSettings.androidCompositionMode`
+Android 的 WebView 以何種方式與 Flutter 畫面合成，由 `CygnusWebViewSettings.androidCompositionMode`
 決定，三種模式為 TLHC、HC、HCPP。**不設此欄位時自動選擇**：HCPP 可用就用 HCPP，否則 TLHC。
 舊的布林 `useHybridComposition` 仍可用但已 deprecated。此設定只能於 `initialSettings` 指定，
 且會決定 `InputAwareWebView` 的 IME 代理路徑是否啟用。
@@ -33,16 +33,16 @@ TLHC 在不支援的裝置上由 Flutter 引擎自動退回 HC。HCPP 在條件�
 **什麼都不設就是自動選擇**——HCPP 可用時用 HCPP，否則 TLHC：
 
 ```dart
-InAppWebView(
-  initialSettings: InAppWebViewSettings(),
+CygnusWebView(
+  initialSettings: CygnusWebViewSettings(),
 )
 ```
 
 要固定某一種模式才需要指定。想明確排除 HCPP 就 pin TLHC：
 
 ```dart
-InAppWebViewSettings(
-  androidCompositionMode: AndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION,
+CygnusWebViewSettings(
+  androidCompositionMode: CygnusAndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION,
 )
 ```
 
@@ -55,7 +55,7 @@ InAppWebViewSettings(
 > WebView 延後一個 platform channel 往返；之後的用快取答案、不延遲。明確指定模式則完全
 > 不等待。
 
-合成模式對 `InAppBrowser` 與 `HeadlessInAppWebView` **不適用**——它們不經過 platform view。
+合成模式對 `CygnusBrowser` 與 `CygnusHeadlessWebView` **不適用**——它們不經過 platform view。
 
 ## HCPP 的啟用與退回
 
@@ -110,9 +110,9 @@ HCPP 在真實階層，與 HC 同側，因此 Dart 在 HCPP 模式下對 native 
 deprecated 的 `useHybridComposition` 有三個字面預設值，改動時必須同步，否則「不傳設定」與
 「傳了部分設定」會走到不同分支：
 
-- `lib/src/platform_interface/src/in_app_webview/in_app_webview_settings.dart`
+- `lib/src/platform_interface/src/webview/webview_settings.dart`
   ——建構子預設值（另有同步的 `.g.dart`）
-- `lib/src/platforms/android/src/in_app_webview/in_app_webview.dart` ——widget 端的 `?? false`
+- `lib/src/platforms/android/src/webview/webview.dart` ——widget 端的 `?? false`
 - `.../webview/in_app_webview/InAppWebViewSettings.java` ——native 欄位預設
 
 ## 已知限制
@@ -120,7 +120,7 @@ deprecated 的 `useHybridComposition` 有三個字面預設值，改動時必須
 - **僅能於 `initialSettings` 指定**。合成模式在 platform view 建立當下就決定，之後
   `setSettings` 改不動。
 - **與上游行為分歧**。上游預設 HC；從上游遷移且依賴 HC 行為的使用端，需自行指定
-  `AndroidCompositionMode.HYBRID_COMPOSITION` 還原。
+  `CygnusAndroidCompositionMode.HYBRID_COMPOSITION` 還原。
 - **未 opt-in 的 app 不受自動選擇影響**。沒有宣告 `EnableHcpp`（或未以 `--enable-hcpp`
   執行）時支援度為 `false`，自動選擇一律得到 TLHC。
 - **HCPP 的驗證涵蓋兩台裝置**（一台 Android 16 實機、一台 API 36 模擬器），非裝置矩陣。

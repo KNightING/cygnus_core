@@ -40,13 +40,13 @@ native 端以 `enabledHighFrequencyEvents == null` 表示「Dart 沒回報」，
 
 | 建立路徑 | 是否帶欄位 | 結果 |
 | :--- | :--- | :--- |
-| `InAppWebView` widget | 是 | 依註冊情形 gate |
+| `CygnusWebView` widget | 是 | 依註冊情形 gate |
 | `windowId` 新視窗 | 是 | 依註冊情形 gate |
-| `HeadlessInAppWebView` | 否 | 全開 |
-| `InAppBrowser` | 否 | 全開 |
+| `CygnusHeadlessWebView` | 否 | 全開 |
+| `CygnusBrowser` | 否 | 全開 |
 
-Dart 端的 helper 在 `webviewParams == null` 或有 InAppBrowser handler 時同樣回傳全部事件
-——InAppBrowser 的 controller 於建構期才綁定 handler，以「參數為 null 就全開」比依賴綁定
+Dart 端的 helper 在 `webviewParams == null` 或有 CygnusBrowser handler 時同樣回傳全部事件
+——CygnusBrowser 的 controller 於建構期才綁定 handler，以「參數為 null 就全開」比依賴綁定
 順序穩固。
 
 > [!IMPORTANT]

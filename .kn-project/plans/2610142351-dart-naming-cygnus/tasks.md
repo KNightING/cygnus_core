@@ -19,8 +19,8 @@
 - [x] （Q6）`lib/**` 內 19 個含 `inappwebview` 的檔名改為 `webview`（`flutter_inappwebview_<平台>.dart` → `flutter_webview_<平台>.dart` 等），並更新 7 個 `library` 指令與 `lib/cygnus_core.dart`、`platforms_native.dart` 的匯出路徑；先確認與 `in_app_` 規則合併後零撞名
 
 ## Phase 4 — 文件
-- [ ] 新增 `doc/dart-rename-map.md`（依 Q4）
-- [ ] 更新 wiki 7 頁、`project.md`（階段 ② 標記完成）、`doc/linux-wpe-backend.md` 中的類別名稱
+- [x] 新增 `doc/dart-rename-map.md`（依 Q4）
+- [x] 更新 wiki 7 頁、`project.md`（階段 ② 標記完成）、`doc/linux-wpe-backend.md` 中的類別名稱
 
 ## Phase 5 — 驗證
 - [ ] `flutter pub get`；整包 `flutter analyze` error 為 0，並與階段 ① 結束時的 4062 項 warning／info 比較

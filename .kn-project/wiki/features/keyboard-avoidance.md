@@ -5,7 +5,7 @@
 ## Summary
 
 軟鍵盤彈出時讓焦點輸入框保持可見，由套件內部完成，使用端零程式碼。設定項為
-`InAppWebViewSettings.keyboardAvoidance`，**預設開啟**，支援 Android 與 iOS。
+`CygnusWebViewSettings.keyboardAvoidance`，**預設開啟**，支援 Android 與 iOS。
 **兩平台是兩套不同機制**：Android 平移整個 WebView，iOS 不壓制 WebKit、
 只補它缺的捲動餘裕與收鍵盤後的位置還原。使用端唯一要做的事是宣告
 `Scaffold.resizeToAvoidBottomInset: false`——**Android 全版本適用**；iOS 僅限 17.2 以上，
@@ -18,7 +18,7 @@
 ```dart
 Scaffold(
   resizeToAvoidBottomInset: false,
-  body: InAppWebView(...),
+  body: CygnusWebView(...),
 )
 ```
 

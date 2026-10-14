@@ -4,7 +4,7 @@ Cygnus 框架（Nuxt 網頁 + Flutter 殼）的 WebView 核心套件：提供 in
 
 本套件源自 [flutter_inappwebview](https://github.com/pichillilorenzo/flutter_inappwebview)（Apache-2.0），出處與變更見 [NOTICE](NOTICE)。
 
-> **現況（版本 0.0.0）**：原本分散在 8 個套件的程式碼已合併為這一個套件。**對外名稱尚未更動**——Dart 類別、Android Java namespace、channel 前綴與 JS 全域名稱（`window.flutter_inappwebview`）都與來源相同，API 用法可直接參考 [inappwebview.dev](https://inappwebview.dev/docs/intro/)。名稱的調整另行規劃。
+> **現況（版本 0.0.0）**：原本分散在 8 個套件的程式碼已合併為這一個套件。**Dart 公開 API 已改為 `Cygnus` 風格命名**（例如 `InAppWebView` → `CygnusWebView`，對照見 [doc/dart-rename-map.md](doc/dart-rename-map.md)）；Android Java namespace、channel 前綴與 JS 全域名稱（`window.flutter_inappwebview`）仍與來源相同。各 API 的用法可參考 [inappwebview.dev](https://inappwebview.dev/docs/intro/)，類別名請依對照表換算。
 
 ## 平台需求
 
