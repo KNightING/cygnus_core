@@ -108,7 +108,7 @@ open class ChromeCustomTabsSettings : ISettings<ChromeCustomTabsActivity> {
         "screenOrientation" ->
           screenOrientation = value as Int
         "startAnimations" -> {
-          val startAnimationsList = value as List<Map<String, Any?>>
+          val startAnimationsList = value as List<MutableMap<String, Any?>>
           for (startAnimation in startAnimationsList) {
             val androidResource = AndroidResource.fromMap(startAnimation)
             if (androidResource != null) {
@@ -117,7 +117,7 @@ open class ChromeCustomTabsSettings : ISettings<ChromeCustomTabsActivity> {
           }
         }
         "exitAnimations" -> {
-          val exitAnimationsList = value as List<Map<String, Any?>>
+          val exitAnimationsList = value as List<MutableMap<String, Any?>>
           for (exitAnimation in exitAnimationsList) {
             val androidResource = AndroidResource.fromMap(exitAnimation)
             if (androidResource != null) {

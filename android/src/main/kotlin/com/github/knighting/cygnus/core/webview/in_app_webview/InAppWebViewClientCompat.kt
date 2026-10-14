@@ -729,7 +729,7 @@ open class InAppWebViewClientCompat(
     }
 
     var response: WebResourceResponse? = null
-    if (!webView.contentBlockerHandler.ruleList.isEmpty()) {
+    if (!webView.contentBlockerHandler.getRuleList().isEmpty()) {
       try {
         response = webView.contentBlockerHandler.checkUrl(webView, request)
       } catch (e: Exception) {

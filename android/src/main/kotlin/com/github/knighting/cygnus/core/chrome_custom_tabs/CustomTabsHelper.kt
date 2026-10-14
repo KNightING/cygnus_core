@@ -20,7 +20,7 @@ open class CustomTabsHelper private constructor() {
     const val BETA_PACKAGE = "com.chrome.beta" // package-private in Java
     const val DEV_PACKAGE = "com.chrome.dev" // package-private in Java
     const val LOCAL_PACKAGE = "com.google.android.apps.chrome" // package-private in Java
-    protected const val EXTRA_CUSTOM_TABS_KEEP_ALIVE = "android.support.customtabs.extra.KEEP_ALIVE"
+    const val EXTRA_CUSTOM_TABS_KEEP_ALIVE = "android.support.customtabs.extra.KEEP_ALIVE"
 
     private var sPackageNameToUse: String? = null
 

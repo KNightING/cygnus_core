@@ -48,7 +48,7 @@ class SslCertificateExt private constructor(certificate: X509Certificate) : SslC
         }
       } else {
         try {
-          x509CertificateData = Util.getX509CertFromSslCertHack(sslCertificate).encoded
+          x509CertificateData = Util.getX509CertFromSslCertHack(sslCertificate)!!.encoded
         } catch (e: CertificateEncodingException) {
           e.printStackTrace()
         }

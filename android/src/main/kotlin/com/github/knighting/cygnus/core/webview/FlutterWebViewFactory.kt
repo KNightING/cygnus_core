@@ -52,7 +52,7 @@ class FlutterWebViewFactory(private val plugin: InAppWebViewFlutterPlugin) : Pla
       if (keepAliveId != null) {
         viewId = keepAliveId
       }
-      flutterWebView = FlutterWebView(plugin, context, viewId, params)
+      flutterWebView = FlutterWebView(plugin, context!!, viewId, params)
     }
 
     if (keepAliveId != null && inAppWebViewManager != null) {

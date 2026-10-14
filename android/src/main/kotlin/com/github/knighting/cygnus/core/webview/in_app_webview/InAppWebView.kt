@@ -380,16 +380,16 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
     settings.setBlockNetworkImage(customSettings.blockNetworkImage)
     settings.setBlockNetworkLoads(customSettings.blockNetworkLoads)
     if (customSettings.cacheMode != null)
-      settings.setCacheMode(customSettings.cacheMode)
+      settings.setCacheMode(customSettings.cacheMode!!)
     settings.setCursiveFontFamily(customSettings.cursiveFontFamily)
-    settings.setDefaultFixedFontSize(customSettings.defaultFixedFontSize)
-    settings.setDefaultFontSize(customSettings.defaultFontSize)
+    settings.setDefaultFixedFontSize(customSettings.defaultFixedFontSize!!)
+    settings.setDefaultFontSize(customSettings.defaultFontSize!!)
     settings.setDefaultTextEncodingName(customSettings.defaultTextEncodingName)
     if (customSettings.disabledActionModeMenuItems != null) {
       if (WebViewFeature.isFeatureSupported(WebViewFeature.DISABLED_ACTION_MODE_MENU_ITEMS))
-        WebSettingsCompat.setDisabledActionModeMenuItems(settings, customSettings.disabledActionModeMenuItems)
+        WebSettingsCompat.setDisabledActionModeMenuItems(settings, customSettings.disabledActionModeMenuItems!!)
       else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-        settings.setDisabledActionModeMenuItems(customSettings.disabledActionModeMenuItems)
+        settings.setDisabledActionModeMenuItems(customSettings.disabledActionModeMenuItems!!)
     }
     settings.setFantasyFontFamily(customSettings.fantasyFontFamily)
     settings.setFixedFontFamily(customSettings.fixedFontFamily)
@@ -410,16 +410,16 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
     }
     settings.setGeolocationEnabled(customSettings.geolocationEnabled)
     if (customSettings.layoutAlgorithm != null) {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && customSettings.layoutAlgorithm.equals(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING)) {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && customSettings.layoutAlgorithm!!.equals(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING)) {
         settings.setLayoutAlgorithm(customSettings.layoutAlgorithm)
       } else {
         settings.setLayoutAlgorithm(customSettings.layoutAlgorithm)
       }
     }
     settings.setLoadsImagesAutomatically(customSettings.loadsImagesAutomatically)
-    settings.setMinimumFontSize(customSettings.minimumFontSize)
-    settings.setMinimumLogicalFontSize(customSettings.minimumLogicalFontSize)
-    setInitialScale(customSettings.initialScale)
+    settings.setMinimumFontSize(customSettings.minimumFontSize!!)
+    settings.setMinimumLogicalFontSize(customSettings.minimumLogicalFontSize!!)
+    setInitialScale(customSettings.initialScale!!)
     settings.setNeedInitialFocus(customSettings.needInitialFocus)
     if (WebViewFeature.isFeatureSupported(WebViewFeature.OFF_SCREEN_PRERASTER))
       WebSettingsCompat.setOffscreenPreRaster(settings, customSettings.offscreenPreRaster)
@@ -441,19 +441,19 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
       else
         setLayerType(View.LAYER_TYPE_NONE, null)
     }
-    setScrollBarStyle(customSettings.scrollBarStyle)
+    setScrollBarStyle(customSettings.scrollBarStyle!!)
     if (customSettings.scrollBarDefaultDelayBeforeFade != null) {
       setScrollBarDefaultDelayBeforeFade(customSettings.scrollBarDefaultDelayBeforeFade!!)
     } else {
       customSettings.scrollBarDefaultDelayBeforeFade = getScrollBarDefaultDelayBeforeFade()
     }
-    setScrollbarFadingEnabled(customSettings.scrollbarFadingEnabled)
+    setScrollbarFadingEnabled(customSettings.scrollbarFadingEnabled!!)
     if (customSettings.scrollBarFadeDuration != null) {
       setScrollBarFadeDuration(customSettings.scrollBarFadeDuration!!)
     } else {
       customSettings.scrollBarFadeDuration = getScrollBarFadeDuration()
     }
-    setVerticalScrollbarPosition(customSettings.verticalScrollbarPosition)
+    setVerticalScrollbarPosition(customSettings.verticalScrollbarPosition!!)
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
       if (customSettings.verticalScrollbarThumbColor != null)
@@ -466,7 +466,7 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
         setHorizontalScrollbarTrackDrawable(ColorDrawable(Color.parseColor(customSettings.horizontalScrollbarTrackColor)))
     }
 
-    setOverScrollMode(customSettings.overScrollMode)
+    setOverScrollMode(customSettings.overScrollMode!!)
     if (customSettings.networkAvailable != null) {
       setNetworkAvailable(customSettings.networkAvailable!!)
     }
@@ -487,12 +487,12 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
       WebSettingsCompat.setRequestedWithHeaderOriginAllowList(settings, customSettings.requestedWithHeaderOriginAllowList!!)
     }
 
-    contentBlockerHandler.ruleList.clear()
+    contentBlockerHandler.getRuleList().clear()
     for (contentBlocker in customSettings.contentBlockers) {
       // compile ContentBlockerTrigger urlFilter
-      val trigger = ContentBlockerTrigger.fromMap(contentBlocker["trigger"])
-      val action = ContentBlockerAction.fromMap(contentBlocker["action"])
-      contentBlockerHandler.ruleList.add(ContentBlocker(trigger, action))
+      val trigger = ContentBlockerTrigger.fromMap(contentBlocker["trigger"]!!)
+      val action = ContentBlockerAction.fromMap(contentBlocker["action"]!!)
+      contentBlockerHandler.getRuleList().add(ContentBlocker(trigger, action))
     }
 
     setFindListener(object : WebView.FindListener {
@@ -721,7 +721,7 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
       return
     }
 
-    loadUrl(Util.getUrlAsset(plugin, assetFilePath))
+    loadUrl(Util.getUrlAsset(plugin!!, assetFilePath))
   }
 
   override fun isLoading(): Boolean {
@@ -987,28 +987,28 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
     if (newSettingsMap["blockNetworkLoads"] != null && customSettings.blockNetworkLoads != newCustomSettings.blockNetworkLoads)
       settings.setBlockNetworkLoads(newCustomSettings.blockNetworkLoads)
 
-    if (newSettingsMap["cacheMode"] != null && !customSettings.cacheMode.equals(newCustomSettings.cacheMode))
-      settings.setCacheMode(newCustomSettings.cacheMode)
+    if (newSettingsMap["cacheMode"] != null && !customSettings.cacheMode!!.equals(newCustomSettings.cacheMode))
+      settings.setCacheMode(newCustomSettings.cacheMode!!)
 
     if (newSettingsMap["cursiveFontFamily"] != null && !customSettings.cursiveFontFamily.equals(newCustomSettings.cursiveFontFamily))
       settings.setCursiveFontFamily(newCustomSettings.cursiveFontFamily)
 
-    if (newSettingsMap["defaultFixedFontSize"] != null && !customSettings.defaultFixedFontSize.equals(newCustomSettings.defaultFixedFontSize))
-      settings.setDefaultFixedFontSize(newCustomSettings.defaultFixedFontSize)
+    if (newSettingsMap["defaultFixedFontSize"] != null && !customSettings.defaultFixedFontSize!!.equals(newCustomSettings.defaultFixedFontSize))
+      settings.setDefaultFixedFontSize(newCustomSettings.defaultFixedFontSize!!)
 
-    if (newSettingsMap["defaultFontSize"] != null && !customSettings.defaultFontSize.equals(newCustomSettings.defaultFontSize))
-      settings.setDefaultFontSize(newCustomSettings.defaultFontSize)
+    if (newSettingsMap["defaultFontSize"] != null && !customSettings.defaultFontSize!!.equals(newCustomSettings.defaultFontSize))
+      settings.setDefaultFontSize(newCustomSettings.defaultFontSize!!)
 
     if (newSettingsMap["defaultTextEncodingName"] != null && !customSettings.defaultTextEncodingName.equals(newCustomSettings.defaultTextEncodingName))
       settings.setDefaultTextEncodingName(newCustomSettings.defaultTextEncodingName)
 
     if (newSettingsMap["disabledActionModeMenuItems"] != null &&
       (customSettings.disabledActionModeMenuItems == null ||
-        !customSettings.disabledActionModeMenuItems.equals(newCustomSettings.disabledActionModeMenuItems))) {
+        !customSettings.disabledActionModeMenuItems!!.equals(newCustomSettings.disabledActionModeMenuItems))) {
       if (WebViewFeature.isFeatureSupported(WebViewFeature.DISABLED_ACTION_MODE_MENU_ITEMS))
-        WebSettingsCompat.setDisabledActionModeMenuItems(settings, newCustomSettings.disabledActionModeMenuItems)
+        WebSettingsCompat.setDisabledActionModeMenuItems(settings, newCustomSettings.disabledActionModeMenuItems!!)
       else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-        settings.setDisabledActionModeMenuItems(newCustomSettings.disabledActionModeMenuItems)
+        settings.setDisabledActionModeMenuItems(newCustomSettings.disabledActionModeMenuItems!!)
     }
 
     if (newSettingsMap["fantasyFontFamily"] != null && !customSettings.fantasyFontFamily.equals(newCustomSettings.fantasyFontFamily))
@@ -1040,7 +1040,7 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
       settings.setGeolocationEnabled(newCustomSettings.geolocationEnabled)
 
     if (newSettingsMap["layoutAlgorithm"] != null && customSettings.layoutAlgorithm != newCustomSettings.layoutAlgorithm) {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && newCustomSettings.layoutAlgorithm.equals(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING)) {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && newCustomSettings.layoutAlgorithm!!.equals(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING)) {
         settings.setLayoutAlgorithm(newCustomSettings.layoutAlgorithm)
       } else {
         settings.setLayoutAlgorithm(newCustomSettings.layoutAlgorithm)
@@ -1053,14 +1053,14 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
     if (newSettingsMap["loadsImagesAutomatically"] != null && customSettings.loadsImagesAutomatically != newCustomSettings.loadsImagesAutomatically)
       settings.setLoadsImagesAutomatically(newCustomSettings.loadsImagesAutomatically)
 
-    if (newSettingsMap["minimumFontSize"] != null && !customSettings.minimumFontSize.equals(newCustomSettings.minimumFontSize))
-      settings.setMinimumFontSize(newCustomSettings.minimumFontSize)
+    if (newSettingsMap["minimumFontSize"] != null && !customSettings.minimumFontSize!!.equals(newCustomSettings.minimumFontSize))
+      settings.setMinimumFontSize(newCustomSettings.minimumFontSize!!)
 
-    if (newSettingsMap["minimumLogicalFontSize"] != null && !customSettings.minimumLogicalFontSize.equals(newCustomSettings.minimumLogicalFontSize))
-      settings.setMinimumLogicalFontSize(newCustomSettings.minimumLogicalFontSize)
+    if (newSettingsMap["minimumLogicalFontSize"] != null && !customSettings.minimumLogicalFontSize!!.equals(newCustomSettings.minimumLogicalFontSize))
+      settings.setMinimumLogicalFontSize(newCustomSettings.minimumLogicalFontSize!!)
 
-    if (newSettingsMap["initialScale"] != null && !customSettings.initialScale.equals(newCustomSettings.initialScale))
-      setInitialScale(newCustomSettings.initialScale)
+    if (newSettingsMap["initialScale"] != null && !customSettings.initialScale!!.equals(newCustomSettings.initialScale))
+      setInitialScale(newCustomSettings.initialScale!!)
 
     if (newSettingsMap["needInitialFocus"] != null && customSettings.needInitialFocus != newCustomSettings.needInitialFocus)
       settings.setNeedInitialFocus(newCustomSettings.needInitialFocus)
@@ -1081,8 +1081,8 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
     if (newSettingsMap["standardFontFamily"] != null && !customSettings.standardFontFamily.equals(newCustomSettings.standardFontFamily))
       settings.setStandardFontFamily(newCustomSettings.standardFontFamily)
 
-    if (newSettingsMap["preferredContentMode"] != null && !customSettings.preferredContentMode.equals(newCustomSettings.preferredContentMode)) {
-      when (PreferredContentModeOptionType.fromValue(newCustomSettings.preferredContentMode)) {
+    if (newSettingsMap["preferredContentMode"] != null && !customSettings.preferredContentMode!!.equals(newCustomSettings.preferredContentMode)) {
+      when (PreferredContentModeOptionType.fromValue(newCustomSettings.preferredContentMode!!)) {
         PreferredContentModeOptionType.DESKTOP ->
           setDesktopMode(true)
         PreferredContentModeOptionType.MOBILE,
@@ -1107,31 +1107,31 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
     }
 
     if (newCustomSettings.contentBlockers != null) {
-      contentBlockerHandler.ruleList.clear()
+      contentBlockerHandler.getRuleList().clear()
       for (contentBlocker in newCustomSettings.contentBlockers) {
         // compile ContentBlockerTrigger urlFilter
-        val trigger = ContentBlockerTrigger.fromMap(contentBlocker["trigger"])
-        val action = ContentBlockerAction.fromMap(contentBlocker["action"])
-        contentBlockerHandler.ruleList.add(ContentBlocker(trigger, action))
+        val trigger = ContentBlockerTrigger.fromMap(contentBlocker["trigger"]!!)
+        val action = ContentBlockerAction.fromMap(contentBlocker["action"]!!)
+        contentBlockerHandler.getRuleList().add(ContentBlocker(trigger, action))
       }
     }
 
-    if (newSettingsMap["scrollBarStyle"] != null && !customSettings.scrollBarStyle.equals(newCustomSettings.scrollBarStyle))
-      setScrollBarStyle(newCustomSettings.scrollBarStyle)
+    if (newSettingsMap["scrollBarStyle"] != null && !customSettings.scrollBarStyle!!.equals(newCustomSettings.scrollBarStyle))
+      setScrollBarStyle(newCustomSettings.scrollBarStyle!!)
 
     if (newSettingsMap["scrollBarDefaultDelayBeforeFade"] != null && (customSettings.scrollBarDefaultDelayBeforeFade == null ||
         !customSettings.scrollBarDefaultDelayBeforeFade!!.equals(newCustomSettings.scrollBarDefaultDelayBeforeFade)))
       setScrollBarDefaultDelayBeforeFade(newCustomSettings.scrollBarDefaultDelayBeforeFade!!)
 
-    if (newSettingsMap["scrollbarFadingEnabled"] != null && !customSettings.scrollbarFadingEnabled.equals(newCustomSettings.scrollbarFadingEnabled))
-      setScrollbarFadingEnabled(newCustomSettings.scrollbarFadingEnabled)
+    if (newSettingsMap["scrollbarFadingEnabled"] != null && !customSettings.scrollbarFadingEnabled!!.equals(newCustomSettings.scrollbarFadingEnabled))
+      setScrollbarFadingEnabled(newCustomSettings.scrollbarFadingEnabled!!)
 
     if (newSettingsMap["scrollBarFadeDuration"] != null && (customSettings.scrollBarFadeDuration == null ||
         !customSettings.scrollBarFadeDuration!!.equals(newCustomSettings.scrollBarFadeDuration)))
       setScrollBarFadeDuration(newCustomSettings.scrollBarFadeDuration!!)
 
-    if (newSettingsMap["verticalScrollbarPosition"] != null && !customSettings.verticalScrollbarPosition.equals(newCustomSettings.verticalScrollbarPosition))
-      setVerticalScrollbarPosition(newCustomSettings.verticalScrollbarPosition)
+    if (newSettingsMap["verticalScrollbarPosition"] != null && !customSettings.verticalScrollbarPosition!!.equals(newCustomSettings.verticalScrollbarPosition))
+      setVerticalScrollbarPosition(newCustomSettings.verticalScrollbarPosition!!)
 
     if (newSettingsMap["disableVerticalScroll"] != null && customSettings.disableVerticalScroll != newCustomSettings.disableVerticalScroll)
       setVerticalScrollBarEnabled(!newCustomSettings.disableVerticalScroll && newCustomSettings.verticalScrollBarEnabled)
@@ -1154,8 +1154,8 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
       }
     }
 
-    if (newSettingsMap["overScrollMode"] != null && !customSettings.overScrollMode.equals(newCustomSettings.overScrollMode))
-      setOverScrollMode(newCustomSettings.overScrollMode)
+    if (newSettingsMap["overScrollMode"] != null && !customSettings.overScrollMode!!.equals(newCustomSettings.overScrollMode))
+      setOverScrollMode(newCustomSettings.overScrollMode!!)
 
     if (newSettingsMap["networkAvailable"] != null && customSettings.networkAvailable != newCustomSettings.networkAvailable)
       setNetworkAvailable(newCustomSettings.networkAvailable!!)
@@ -1661,7 +1661,7 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
       setOverScrollMode(View.OVER_SCROLL_NEVER)
       pullToRefreshLayout.setEnabled(pullToRefreshLayout.settings.enabled!!)
       // reset over scroll mode
-      setOverScrollMode(customSettings.overScrollMode)
+      setOverScrollMode(customSettings.overScrollMode!!)
     }
 
     if (overScrolledHorizontally || overScrolledVertically) {
@@ -1771,7 +1771,7 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
     }
     customMenuItems = if (customMenuItems == null) ArrayList<Map<String, Any?>>() else customMenuItems
 
-    if (contextMenuSettings.hideDefaultSystemContextMenuItems == null || !contextMenuSettings.hideDefaultSystemContextMenuItems) {
+    if (contextMenuSettings.hideDefaultSystemContextMenuItems == null || !contextMenuSettings.hideDefaultSystemContextMenuItems!!) {
       for (menuItem in defaultMenuItems) {
         val itemId = menuItem.getItemId()
         val itemTitle = menuItem.getTitle()!!.toString()
@@ -2028,7 +2028,7 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
   @Throws(Exception::class)
   override fun addWebMessageListener(webMessageListener: WebMessageListener) {
     if (WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) {
-      WebViewCompat.addWebMessageListener(this, webMessageListener.jsObjectName, webMessageListener.allowedOriginRules, webMessageListener.listener)
+      WebViewCompat.addWebMessageListener(this, webMessageListener.jsObjectName, webMessageListener.allowedOriginRules, webMessageListener.listener!!)
       webMessageListeners.add(webMessageListener)
     }
   }

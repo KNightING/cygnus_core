@@ -634,7 +634,7 @@ class InAppWebViewClient(private var inAppBrowserDelegate: InAppBrowserDelegate?
       scheme = Uri.parse(request.url).scheme
     } catch (ignored: Exception) {}
 
-    if (webView.customSettings.resourceCustomSchemes != null && webView.customSettings.resourceCustomSchemes.contains(scheme)) {
+    if (webView.customSettings.resourceCustomSchemes != null && (webView.customSettings.resourceCustomSchemes!! as List<String?>).contains(scheme)) {
       var customSchemeResponse: CustomSchemeResponse? = null
       if (webView.channelDelegate != null) {
         try {
@@ -662,7 +662,7 @@ class InAppWebViewClient(private var inAppBrowserDelegate: InAppBrowserDelegate?
     }
 
     var response: WebResourceResponse? = null
-    if (!webView.contentBlockerHandler.ruleList.isEmpty()) {
+    if (!webView.contentBlockerHandler.getRuleList().isEmpty()) {
       try {
         response = webView.contentBlockerHandler.checkUrl(webView, request)
       } catch (e: Exception) {

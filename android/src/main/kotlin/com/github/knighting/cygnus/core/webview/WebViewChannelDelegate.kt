@@ -146,7 +146,7 @@ open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel)
           val source = call.argument<String>("source")
           val contentWorldMap = call.argument<MutableMap<String, Any?>>("contentWorld")
           val contentWorld = ContentWorld.fromMap(contentWorldMap)
-          webView.evaluateJavascript(source, contentWorld, ValueCallback<String> { value ->
+          webView.evaluateJavascript(source!!, contentWorld, ValueCallback<String> { value ->
             result.success(value)
           })
         } else {
@@ -157,14 +157,14 @@ open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel)
         if (webView != null) {
           val urlFile = call.argument<String>("urlFile")
           val scriptHtmlTagAttributes = call.argument<MutableMap<String, Any?>>("scriptHtmlTagAttributes")
-          webView.injectJavascriptFileFromUrl(urlFile, scriptHtmlTagAttributes)
+          webView.injectJavascriptFileFromUrl(urlFile!!, scriptHtmlTagAttributes)
         }
         result.success(true)
       }
       WebViewChannelDelegateMethods.injectCSSCode -> {
         if (webView != null) {
           val source = call.argument<String>("source")
-          webView.injectCSSCode(source)
+          webView.injectCSSCode(source!!)
         }
         result.success(true)
       }
@@ -172,7 +172,7 @@ open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel)
         if (webView != null) {
           val urlFile = call.argument<String>("urlFile")
           val cssLinkHtmlTagAttributes = call.argument<MutableMap<String, Any?>>("cssLinkHtmlTagAttributes")
-          webView.injectCSSFileFromUrl(urlFile, cssLinkHtmlTagAttributes)
+          webView.injectCSSFileFromUrl(urlFile!!, cssLinkHtmlTagAttributes)
         }
         result.success(true)
       }
@@ -572,7 +572,7 @@ open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel)
           val functionArguments = call.argument<MutableMap<String, Any?>>("arguments")
           val contentWorldMap = call.argument<MutableMap<String, Any?>>("contentWorld")
           val contentWorld = ContentWorld.fromMap(contentWorldMap)
-          webView.callAsyncJavaScript(functionBody, functionArguments, contentWorld, ValueCallback<String> { value ->
+          webView.callAsyncJavaScript(functionBody!!, functionArguments!!, contentWorld, ValueCallback<String> { value ->
             result.success(value)
           })
         } else {

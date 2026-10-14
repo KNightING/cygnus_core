@@ -42,12 +42,12 @@ open class HeadlessInAppWebView(
     }
   }
 
-  fun prepare(params: Map<String, Any?>) {
+  fun prepare(params: Map<String, Any?>?) {
     val flutterWebView = this.flutterWebView
     if (flutterWebView != null) {
       val view = flutterWebView.view
       if (view != null) {
-        val initialSize = params.get("initialSize") as Map<String, Any?>?
+        val initialSize = params!!.get("initialSize") as Map<String, Any?>?
         var size = Size2D.fromMap(initialSize)
         if (size == null) {
           size = Size2D(-1.0, -1.0)

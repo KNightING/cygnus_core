@@ -21,20 +21,20 @@ import io.flutter.plugin.common.MethodChannel
 import java.io.IOException
 
 interface InAppWebViewInterface {
-  fun getContext(): Context?
+  fun getContext(): Context
   fun getUrl(): String?
   fun getTitle(): String?
   fun getProgress(): Int
-  fun loadUrl(urlRequest: URLRequest?)
-  fun postUrl(url: String?, postData: ByteArray?)
-  fun loadDataWithBaseURL(baseUrl: String?, data: String?,
+  fun loadUrl(urlRequest: URLRequest)
+  fun postUrl(url: String, postData: ByteArray)
+  fun loadDataWithBaseURL(baseUrl: String?, data: String,
                           mimeType: String?, encoding: String?, historyUrl: String?)
   @Throws(IOException::class)
-  fun loadFile(assetFilePath: String?)
+  fun loadFile(assetFilePath: String)
   fun evaluateJavascript(source: String, contentWorld: ContentWorld?, resultCallback: ValueCallback<String>?)
-  fun injectJavascriptFileFromUrl(urlFile: String?, scriptHtmlTagAttributes: MutableMap<String, Any?>?)
-  fun injectCSSCode(source: String?)
-  fun injectCSSFileFromUrl(urlFile: String?, cssLinkHtmlTagAttributes: MutableMap<String, Any?>?)
+  fun injectJavascriptFileFromUrl(urlFile: String, scriptHtmlTagAttributes: MutableMap<String, Any?>?)
+  fun injectCSSCode(source: String)
+  fun injectCSSFileFromUrl(urlFile: String, cssLinkHtmlTagAttributes: MutableMap<String, Any?>?)
   fun reload()
   fun goBack()
   fun canGoBack(): Boolean
@@ -47,11 +47,11 @@ interface InAppWebViewInterface {
   fun takeScreenshot(screenshotConfiguration: MutableMap<String, Any?>?, result: MethodChannel.Result)
   fun setSettings(newSettings: InAppWebViewSettings, newSettingsMap: HashMap<String, Any?>)
   fun getCustomSettings(): InAppWebViewSettings?
-  val customSettingsMap: MutableMap<String, Any?>?
+  fun getCustomSettingsMap(): MutableMap<String, Any?>?
   fun getCopyBackForwardList(): HashMap<String, Any?>
   fun clearAllCache()
   fun clearSslPreferences()
-  fun findAllAsync(find: String?)
+  fun findAllAsync(find: String)
   fun findNext(forward: Boolean)
   fun clearMatches()
   fun scrollTo(x: Int?, y: Int?, animated: Boolean?)
@@ -62,16 +62,16 @@ interface InAppWebViewInterface {
   fun resumeTimers()
   fun printCurrentPage(settings: PrintJobSettings?): String?
   fun getContentHeight(): Int
-  fun getContentHeight(callback: ValueCallback<Int>?)
-  fun getContentWidth(callback: ValueCallback<Int>?)
+  fun getContentHeight(callback: ValueCallback<Int>)
+  fun getContentWidth(callback: ValueCallback<Int>)
   fun zoomBy(zoomFactor: Float)
   fun getOriginalUrl(): String?
-  fun getSelectedText(callback: ValueCallback<String>?)
+  fun getSelectedText(callback: ValueCallback<String>)
   fun getHitTestResult(): WebView.HitTestResult?
-  fun getHitTestResult(callback: ValueCallback<HitTestResult>?)
+  fun getHitTestResult(callback: ValueCallback<HitTestResult>)
   fun pageDown(bottom: Boolean): Boolean
   fun pageUp(top: Boolean): Boolean
-  fun saveWebArchive(basename: String?, autoname: Boolean, callback: ValueCallback<String>?)
+  fun saveWebArchive(basename: String, autoname: Boolean, callback: ValueCallback<String>?)
   fun zoomIn(): Boolean
   fun zoomOut(): Boolean
   fun clearFocus()
@@ -81,19 +81,19 @@ interface InAppWebViewInterface {
   fun getScrollY(): Int
   fun getCertificate(): SslCertificate?
   fun clearHistory()
-  fun callAsyncJavaScript(functionBody: String?, arguments: MutableMap<String, Any?>?, contentWorld: ContentWorld?, resultCallback: ValueCallback<String>?)
-  fun isSecureContext(resultCallback: ValueCallback<Boolean>?)
+  fun callAsyncJavaScript(functionBody: String, arguments: MutableMap<String, Any?>, contentWorld: ContentWorld?, resultCallback: ValueCallback<String>?)
+  fun isSecureContext(resultCallback: ValueCallback<Boolean>)
   fun createCompatWebMessageChannel(): WebMessageChannel?
-  fun createWebMessageChannel(callback: ValueCallback<WebMessageChannel>?): WebMessageChannel?
-  fun postWebMessage(message: WebMessage?, targetOrigin: Uri?)
+  fun createWebMessageChannel(callback: ValueCallback<WebMessageChannel>): WebMessageChannel
+  fun postWebMessage(message: WebMessage, targetOrigin: Uri)
   @Throws(Exception::class)
-  fun postWebMessage(message: com.github.knighting.cygnus.core.types.WebMessage?, targetOrigin: Uri?, callback: ValueCallback<String>?)
+  fun postWebMessage(message: com.github.knighting.cygnus.core.types.WebMessage, targetOrigin: Uri, callback: ValueCallback<String>)
   @Throws(Exception::class)
   fun addWebMessageListener(webMessageListener: WebMessageListener)
   fun canScrollVertically(): Boolean
   fun canScrollHorizontally(): Boolean
   fun getZoomScale(): Float
-  fun getZoomScale(callback: ValueCallback<Float>?)
+  fun getZoomScale(callback: ValueCallback<Float>)
   fun getContextMenu(): MutableMap<String, Any?>?
   fun setContextMenu(contextMenu: MutableMap<String, Any?>?)
   fun getPlugin(): InAppWebViewFlutterPlugin?
@@ -101,9 +101,9 @@ interface InAppWebViewInterface {
   fun getInAppBrowserDelegate(): InAppBrowserDelegate?
   fun setInAppBrowserDelegate(inAppBrowserDelegate: InAppBrowserDelegate?)
   fun getUserContentController(): UserContentController?
-  fun setUserContentController(userContentController: UserContentController?)
+  fun setUserContentController(userContentController: UserContentController)
   fun getWebMessageChannels(): MutableMap<String, WebMessageChannel>?
-  fun setWebMessageChannels(webMessageChannels: MutableMap<String, WebMessageChannel>?)
+  fun setWebMessageChannels(webMessageChannels: MutableMap<String, WebMessageChannel>)
   fun disposeWebMessageChannels()
   fun disposeWebMessageListeners()
   fun getWebViewLooper(): Looper?

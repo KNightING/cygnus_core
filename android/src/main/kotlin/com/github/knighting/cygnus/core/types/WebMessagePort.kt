@@ -81,7 +81,7 @@ class WebMessagePort(
         }
         portsString = "[" + TextUtils.join(", ", portArrayString) + "]"
       }
-      val data = if (message.data != null) Util.replaceAll(message.data, "\'", "\\'") else "null"
+      val data = if (message.data != null) Util.replaceAll(message.data!!, "\'", "\\'") else "null"
       val source = "(function() {" +
         "  var webMessageChannel = " + JavaScriptBridgeJS.WEB_MESSAGE_CHANNELS_VARIABLE_NAME() + "['" + webMessageChannel!!.id + "'];" +
         "  if (webMessageChannel != null) {" +

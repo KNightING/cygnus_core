@@ -23,7 +23,7 @@ open class ChromeSafariBrowserManager(plugin: InAppWebViewFlutterPlugin) :
   var id: String
 
   @JvmField
-  val browsers: MutableMap<String, ChromeCustomTabsActivity> = HashMap()
+  val browsers: MutableMap<String?, ChromeCustomTabsActivity?> = HashMap()
 
   init {
     this.id = UUID.randomUUID().toString()
@@ -94,8 +94,8 @@ open class ChromeSafariBrowserManager(plugin: InAppWebViewFlutterPlugin) :
     extras.putSerializable("secondaryToolbar", secondaryToolbar)
     extras.putSerializable("menuItemList", menuItemList as Serializable?)
 
-    val isSingleInstance = Util.getOrDefault<Boolean>(settings, "isSingleInstance", false)
-    val isTrustedWebActivity = Util.getOrDefault<Boolean>(settings, "isTrustedWebActivity", false)
+    val isSingleInstance = Util.getOrDefault<Boolean>(settings!!, "isSingleInstance", false)
+    val isTrustedWebActivity = Util.getOrDefault<Boolean>(settings!!, "isTrustedWebActivity", false)
     if (CustomTabActivityHelper.isAvailable(activity)) {
       val intent = Intent(
         activity,
@@ -106,7 +106,7 @@ open class ChromeSafariBrowserManager(plugin: InAppWebViewFlutterPlugin) :
         }
       )
       intent.putExtras(extras)
-      val noHistory = Util.getOrDefault<Boolean>(settings, "noHistory", false)
+      val noHistory = Util.getOrDefault<Boolean>(settings!!, "noHistory", false)
       if (noHistory) {
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
       }

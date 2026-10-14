@@ -79,7 +79,7 @@ open class ChromeCustomTabsActivity : Activity(), Disposable {
     id = b.getString("id")
 
     val managerId = b.getString("managerId")
-    manager = ChromeSafariBrowserManager.shared.get(managerId)
+    manager = if (managerId != null) ChromeSafariBrowserManager.shared.get(managerId) else null
     val manager = this.manager
     if (manager == null || manager.plugin == null || manager.plugin!!.messenger == null) {
       if (savedInstanceState != null) {
@@ -99,10 +99,10 @@ open class ChromeCustomTabsActivity : Activity(), Disposable {
     initialOtherLikelyURLs = b.getStringArrayList("otherLikelyURLs")
 
     customSettings = ChromeCustomTabsSettings()
-    customSettings.parse(b.getSerializable("settings") as HashMap<String, Any?>)
-    actionButton = CustomTabsActionButton.fromMap(b.getSerializable("actionButton") as Map<String, Any?>?)
-    secondaryToolbar = CustomTabsSecondaryToolbar.fromMap(b.getSerializable("secondaryToolbar") as Map<String, Any?>?)
-    val menuItemList = b.getSerializable("menuItemList") as List<Map<String, Any?>>
+    customSettings.parse(b.getSerializable("settings") as MutableMap<String, Any?>)
+    actionButton = CustomTabsActionButton.fromMap(b.getSerializable("actionButton") as MutableMap<String, Any?>?)
+    secondaryToolbar = CustomTabsSecondaryToolbar.fromMap(b.getSerializable("secondaryToolbar") as MutableMap<String, Any?>?)
+    val menuItemList = b.getSerializable("menuItemList") as List<MutableMap<String, Any?>>
     for (menuItem in menuItemList) {
       menuItems.add(CustomTabsMenuItem.fromMap(menuItem)!!)
     }
@@ -208,12 +208,12 @@ open class ChromeCustomTabsActivity : Activity(), Disposable {
         bundleOtherLikelyURL.putString(CustomTabsService.KEY_URL, otherLikelyURL)
       }
     }
-    return customTabActivityHelper.mayLaunchUrl(uri, null, bundleOtherLikelyURLs)
+    return customTabActivityHelper.mayLaunchUrl(uri!!, null, bundleOtherLikelyURLs)
   }
 
   @CallSuper
   open fun customTabsConnected() {
-    customTabsSession = customTabActivityHelper.session
+    customTabsSession = customTabActivityHelper.getSession()
 
     if (customTabsSession != null) {
       try {

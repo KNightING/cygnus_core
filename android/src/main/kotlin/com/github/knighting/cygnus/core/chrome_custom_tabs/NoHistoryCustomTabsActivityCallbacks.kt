@@ -12,7 +12,7 @@ open class NoHistoryCustomTabsActivityCallbacks(plugin: InAppWebViewFlutterPlugi
   var plugin: InAppWebViewFlutterPlugin? = plugin
 
   @JvmField
-  val noHistoryBrowserIDs: MutableMap<String, String?> = HashMap()
+  val noHistoryBrowserIDs: MutableMap<String?, String?> = HashMap()
 
   @JvmField
   var activityLifecycleCallbacks: Application.ActivityLifecycleCallbacks = object : Application.ActivityLifecycleCallbacks {

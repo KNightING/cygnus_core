@@ -10,7 +10,7 @@ import androidx.browser.trusted.TrustedWebActivityIntentBuilder
 
 open class TrustedWebActivity : ChromeCustomTabsActivity() {
 
-  lateinit var builder: TrustedWebActivityIntentBuilder
+  lateinit var twaBuilder: TrustedWebActivityIntentBuilder
 
   override fun launchUrl(
     url: String,
@@ -25,10 +25,10 @@ open class TrustedWebActivity : ChromeCustomTabsActivity() {
     val uri = Uri.parse(url)
 
     mayLaunchUrl(url, otherLikelyURLs)
-    builder = TrustedWebActivityIntentBuilder(uri)
+    twaBuilder = TrustedWebActivityIntentBuilder(uri)
     prepareCustomTabs()
 
-    val trustedWebActivityIntent = builder.build(customTabsSession)
+    val trustedWebActivityIntent = twaBuilder.build(customTabsSession)
     prepareCustomTabsIntent(trustedWebActivityIntent)
 
     CustomTabActivityHelper.openTrustedWebActivity(
@@ -55,17 +55,18 @@ open class TrustedWebActivity : ChromeCustomTabsActivity() {
     if (secondaryToolbarColor != null && !secondaryToolbarColor.isEmpty()) {
       defaultColorSchemeBuilder.setSecondaryToolbarColor(Color.parseColor(secondaryToolbarColor))
     }
-    builder.setDefaultColorSchemeParams(defaultColorSchemeBuilder.build())
+    twaBuilder.setDefaultColorSchemeParams(defaultColorSchemeBuilder.build())
 
     if (customSettings.additionalTrustedOrigins != null && !customSettings.additionalTrustedOrigins.isEmpty()) {
-      builder.setAdditionalTrustedOrigins(customSettings.additionalTrustedOrigins)
+      twaBuilder.setAdditionalTrustedOrigins(customSettings.additionalTrustedOrigins)
     }
 
-    if (customSettings.displayMode != null) {
-      builder.setDisplayMode(customSettings.displayMode)
+    val displayMode = customSettings.displayMode
+    if (displayMode != null) {
+      twaBuilder.setDisplayMode(displayMode)
     }
 
-    builder.setScreenOrientation(customSettings.screenOrientation)
+    twaBuilder.setScreenOrientation(customSettings.screenOrientation)
   }
 
   private fun prepareCustomTabsIntent(trustedWebActivityIntent: TrustedWebActivityIntent) {

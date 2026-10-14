@@ -105,7 +105,7 @@ class WebMessageListener(
           allowedOriginRulesStringList.add("'*'")
         } else {
           val rule = Uri.parse(allowedOriginRule)
-          val host = if (rule.host != null) "'" + Util.replaceAll(rule.host, "\'", "\\'") + "'" else "null"
+          val host = if (rule.host != null) "'" + Util.replaceAll(rule.host!!, "\'", "\\'") + "'" else "null"
           allowedOriginRulesStringList.add("{scheme: '" + rule.scheme + "', host: " + host + ", port: " + (if (rule.port != -1) rule.port else "null") + "}")
         }
       }
@@ -121,14 +121,14 @@ class WebMessageListener(
         "      window['" + jsObjectNameEscaped + "'] = new FlutterInAppWebViewWebMessageListener('" + jsObjectNameEscaped + "');" +
         "  }" +
         "})();"
-      webView.userContentController.addPluginScript(PluginScript(
+      webView.getUserContentController()!!.addPluginScript(PluginScript(
         "WebMessageListener-" + jsObjectName,
         source,
         UserScriptInjectionTime.AT_DOCUMENT_START,
         null,
         false,
-        webView.customSettings.pluginScriptsOriginAllowList,
-        webView.customSettings.pluginScriptsForMainFrameOnly
+        webView.getCustomSettings()!!.pluginScriptsOriginAllowList,
+        webView.getCustomSettings()!!.pluginScriptsForMainFrameOnly
       ))
     }
   }
@@ -224,7 +224,7 @@ class WebMessageListener(
       }
       var hostIPv6: String? = null
       try {
-        hostIPv6 = Util.normalizeIPv6(host)
+        hostIPv6 = Util.normalizeIPv6(host!!)
       } catch (ignored: Exception) {
       }
 

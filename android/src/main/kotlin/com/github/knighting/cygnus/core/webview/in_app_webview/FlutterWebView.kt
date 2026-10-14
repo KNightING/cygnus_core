@@ -60,7 +60,8 @@ class FlutterWebView(plugin: InAppWebViewFlutterPlugin, context: Context, id: An
     }
 
     val webView = InAppWebView(context, plugin, id, windowId, customSettings, contextMenu,
-      if (customSettings.useHybridComposition) null else plugin.flutterView, userScripts)
+      if (customSettings.useHybridComposition) null else plugin.flutterView,
+      @Suppress("UNCHECKED_CAST") (userScripts as List<UserScript>))
     this.webView = webView
     displayListenerProxy.onPostWebViewInitialization(displayManager)
 

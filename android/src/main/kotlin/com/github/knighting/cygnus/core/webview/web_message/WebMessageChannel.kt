@@ -41,7 +41,7 @@ class WebMessageChannel(id: String, webView: InAppWebViewInterface) : Disposable
 
   init {
     this.id = id
-    val channel = MethodChannel(webView.plugin.messenger, METHOD_CHANNEL_NAME_PREFIX + id)
+    val channel = MethodChannel(webView.getPlugin()!!.messenger, METHOD_CHANNEL_NAME_PREFIX + id)
     this.channelDelegate = WebMessageChannelChannelDelegate(this, channel)
     if (webView is InAppWebView) {
       this.compatPorts = ArrayList(Arrays.asList(*WebViewCompat.createWebMessageChannel(webView)))
@@ -98,7 +98,7 @@ class WebMessageChannel(id: String, webView: InAppWebViewInterface) : Disposable
       val portsExt: List<WebMessagePortCompatExt>? = message!!.ports
       if (portsExt != null) {
         for (portExt in portsExt) {
-          val webMessageChannel = webView.webMessageChannels[portExt.webMessageChannelId]
+          val webMessageChannel = webView.getWebMessageChannels()!![portExt.webMessageChannelId]
           if (webMessageChannel != null) {
             webMessagePorts.add(webMessageChannel.compatPorts[portExt.index])
           }

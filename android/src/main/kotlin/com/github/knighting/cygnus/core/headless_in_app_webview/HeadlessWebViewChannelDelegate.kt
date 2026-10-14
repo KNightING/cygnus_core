@@ -38,7 +38,7 @@ class HeadlessWebViewChannelDelegate(
       "getSize" -> {
         val webView = headlessWebView
         if (webView != null) {
-          val size = webView.size
+          val size = webView.getSize()
           result.success(if (size != null) size.toMap() else null)
         } else {
           result.success(null)

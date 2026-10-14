@@ -35,7 +35,7 @@ class HeadlessInAppWebViewManager(plugin: InAppWebViewFlutterPlugin) :
   ChannelDelegateImpl(MethodChannel(plugin.messenger, METHOD_CHANNEL_NAME)) {
 
   @JvmField
-  val webViews: MutableMap<String, HeadlessInAppWebView> = HashMap()
+  val webViews: MutableMap<String, HeadlessInAppWebView?> = HashMap()
 
   @JvmField
   var plugin: InAppWebViewFlutterPlugin? = plugin
@@ -73,7 +73,7 @@ class HeadlessInAppWebViewManager(plugin: InAppWebViewFlutterPlugin) :
     super.dispose()
     val headlessInAppWebViews = webViews.values
     for (headlessInAppWebView in headlessInAppWebViews) {
-      headlessInAppWebView.dispose()
+      headlessInAppWebView!!.dispose()
     }
     webViews.clear()
     plugin = null

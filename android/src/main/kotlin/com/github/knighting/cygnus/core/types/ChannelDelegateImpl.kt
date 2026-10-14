@@ -5,7 +5,8 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
 open class ChannelDelegateImpl(channel: MethodChannel) : IChannelDelegate {
-  private var channel: MethodChannel? = channel
+  @JvmField
+  protected var channel: MethodChannel? = channel
 
   init {
     channel.setMethodCallHandler(this)

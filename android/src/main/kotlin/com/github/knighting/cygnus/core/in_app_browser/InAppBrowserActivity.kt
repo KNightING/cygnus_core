@@ -565,7 +565,7 @@ class InAppBrowserActivity : AppCompatActivity(), InAppBrowserDelegate, Disposab
 
   fun getCustomSettingsMap(): MutableMap<String, Any?>? {
     val webView = this.webView
-    val webViewSettingsMap: Map<String, Any?>? = if (webView != null) webView.customSettingsMap else null
+    val webViewSettingsMap: Map<String, Any?>? = if (webView != null) webView.getCustomSettingsMap() else null
     if (webViewSettingsMap == null)
       return null
 
