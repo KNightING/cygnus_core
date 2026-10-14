@@ -367,32 +367,32 @@ class CygnusBrowserClassOptions {
   late CygnusIOSBrowserOptions ios;
 
   ///WebView options.
-  late CygnusWebViewGroupOptions inAppWebViewGroupOptions;
+  late CygnusWebViewGroupOptions webViewGroupOptions;
 
   CygnusBrowserClassOptions({
     CygnusInAppBrowserOptions? crossPlatform,
     CygnusAndroidBrowserOptions? android,
     CygnusIOSBrowserOptions? ios,
-    CygnusWebViewGroupOptions? inAppWebViewGroupOptions,
+    CygnusWebViewGroupOptions? webViewGroupOptions,
   }) {
     this.crossPlatform = crossPlatform ?? CygnusInAppBrowserOptions();
     this.android = android ?? CygnusAndroidBrowserOptions();
     this.ios = ios ?? CygnusIOSBrowserOptions();
-    this.inAppWebViewGroupOptions =
-        inAppWebViewGroupOptions ?? CygnusWebViewGroupOptions();
+    this.webViewGroupOptions =
+        webViewGroupOptions ?? CygnusWebViewGroupOptions();
   }
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> options = {};
 
     options.addAll(this.crossPlatform.toMap());
-    options.addAll(this.inAppWebViewGroupOptions.crossPlatform.toMap());
+    options.addAll(this.webViewGroupOptions.crossPlatform.toMap());
     if (Util.isAndroid) {
       options.addAll(this.android.toMap());
-      options.addAll(this.inAppWebViewGroupOptions.android.toMap());
+      options.addAll(this.webViewGroupOptions.android.toMap());
     } else if (Util.isIOS) {
       options.addAll(this.ios.toMap());
-      options.addAll(this.inAppWebViewGroupOptions.ios.toMap());
+      options.addAll(this.webViewGroupOptions.ios.toMap());
     }
 
     return options;
@@ -411,29 +411,29 @@ class CygnusBrowserClassOptions {
     Map<String, dynamic> options, {
     CygnusEnumMethod? enumMethod,
   }) {
-    CygnusBrowserClassOptions inAppBrowserClassOptions =
+    CygnusBrowserClassOptions browserClassOptions =
         CygnusBrowserClassOptions();
 
-    inAppBrowserClassOptions.crossPlatform = CygnusInAppBrowserOptions.fromMap(
+    browserClassOptions.crossPlatform = CygnusInAppBrowserOptions.fromMap(
       options,
     );
-    inAppBrowserClassOptions.inAppWebViewGroupOptions =
+    browserClassOptions.webViewGroupOptions =
         CygnusWebViewGroupOptions();
-    inAppBrowserClassOptions.inAppWebViewGroupOptions.crossPlatform =
+    browserClassOptions.webViewGroupOptions.crossPlatform =
         CygnusInAppWebViewOptions.fromMap(options);
     if (Util.isAndroid) {
-      inAppBrowserClassOptions.android = CygnusAndroidBrowserOptions.fromMap(
+      browserClassOptions.android = CygnusAndroidBrowserOptions.fromMap(
         options,
       );
-      inAppBrowserClassOptions.inAppWebViewGroupOptions.android =
+      browserClassOptions.webViewGroupOptions.android =
           CygnusAndroidWebViewOptions.fromMap(options);
     } else if (Util.isIOS) {
-      inAppBrowserClassOptions.ios = CygnusIOSBrowserOptions.fromMap(options);
-      inAppBrowserClassOptions.inAppWebViewGroupOptions.ios =
+      browserClassOptions.ios = CygnusIOSBrowserOptions.fromMap(options);
+      browserClassOptions.webViewGroupOptions.ios =
           CygnusIOSWebViewOptions.fromMap(options);
     }
 
-    return inAppBrowserClassOptions;
+    return browserClassOptions;
   }
 
   CygnusBrowserClassOptions copy() {

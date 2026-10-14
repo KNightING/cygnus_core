@@ -54,10 +54,11 @@ class CygnusWebAuthenticationSessionSettings {
   static bool isPropertySupported(
     CygnusWebAuthenticationSessionSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _CygnusWebAuthenticationSessionSettingsPropertySupported.isPropertySupported(
-    property,
-    platform: platform,
-  );
+  }) =>
+      _CygnusWebAuthenticationSessionSettingsPropertySupported.isPropertySupported(
+        property,
+        platform: platform,
+      );
 
   ///Converts instance to a map.
   Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {

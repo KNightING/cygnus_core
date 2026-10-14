@@ -107,12 +107,12 @@ abstract class CygnusPlatformWebViewController extends PlatformInterface
       '`CygnusWebViewPlatform.instance` before use. For unit testing, '
       '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final CygnusPlatformWebViewController inAppWebViewController =
-        CygnusWebViewPlatform.instance!.createPlatformInAppWebViewController(
+    final CygnusPlatformWebViewController webViewController =
+        CygnusWebViewPlatform.instance!.createPlatformWebViewController(
           params,
         );
-    PlatformInterface.verify(inAppWebViewController, _token);
-    return inAppWebViewController;
+    PlatformInterface.verify(webViewController, _token);
+    return webViewController;
   }
 
   /// Creates a new [CygnusPlatformWebViewController] to access static methods.
@@ -124,11 +124,11 @@ abstract class CygnusPlatformWebViewController extends PlatformInterface
       '`CygnusWebViewPlatform.instance` before use. For unit testing, '
       '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final CygnusPlatformWebViewController inAppWebViewControllerStatic =
+    final CygnusPlatformWebViewController webViewControllerStatic =
         CygnusWebViewPlatform.instance!
-            .createPlatformInAppWebViewControllerStatic();
-    PlatformInterface.verify(inAppWebViewControllerStatic, _token);
-    return inAppWebViewControllerStatic;
+            .createPlatformWebViewControllerStatic();
+    PlatformInterface.verify(webViewControllerStatic, _token);
+    return webViewControllerStatic;
   }
 
   /// Used by the platform implementation to create a new [CygnusPlatformWebViewController].
@@ -1285,7 +1285,7 @@ abstract class CygnusPlatformWebViewController extends PlatformInterface
   ///Instead, on the `onLoadStop` WebView event, you can use `callHandler` directly:
   ///```dart
   ///  // Inject JavaScript that will receive data back from Flutter
-  ///  inAppWebViewController.evaluateJavascript(source: """
+  ///  webViewController.evaluateJavascript(source: """
   ///    window.flutter_inappwebview.callHandler('test', 'Text from Javascript').then(function(result) {
   ///      console.log(result);
   ///    });

@@ -23,6 +23,6 @@ void main() {
     takeScreenshot();
     customSize();
     setGetSettings();
-    convertToInAppWebView();
+    convertToWebView();
   }, skip: shouldSkip);
 }

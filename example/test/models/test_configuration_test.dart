@@ -430,7 +430,7 @@ void main() {
       final config = TestConfiguration.empty(name: 'My Config');
       expect(config.name, 'My Config');
       expect(config.customSteps, isEmpty);
-      expect(config.webViewType, TestWebViewType.inAppWebView);
+      expect(config.webViewType, TestWebViewType.webView);
     });
 
     test('creates default configuration', () {

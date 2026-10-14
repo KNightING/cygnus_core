@@ -88,12 +88,12 @@ abstract class CygnusPlatformLocalhostServer extends PlatformInterface {
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final CygnusPlatformLocalhostServer inAppLocalhostServer =
-        CygnusWebViewPlatform.instance!.createPlatformInAppLocalhostServer(
+    final CygnusPlatformLocalhostServer localhostServer =
+        CygnusWebViewPlatform.instance!.createPlatformLocalhostServer(
           params,
         );
-    PlatformInterface.verify(inAppLocalhostServer, _token);
-    return inAppLocalhostServer;
+    PlatformInterface.verify(localhostServer, _token);
+    return localhostServer;
   }
 
   /// Creates a new empty [CygnusPlatformLocalhostServer] to access static methods.
@@ -105,11 +105,11 @@ abstract class CygnusPlatformLocalhostServer extends PlatformInterface {
       '`CygnusWebViewPlatform.instance` before use. For unit testing, '
       '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final CygnusPlatformLocalhostServer inAppLocalhostServerStatic =
+    final CygnusPlatformLocalhostServer localhostServerStatic =
         CygnusWebViewPlatform.instance!
-            .createPlatformInAppLocalhostServerStatic();
-    PlatformInterface.verify(inAppLocalhostServerStatic, _token);
-    return inAppLocalhostServerStatic;
+            .createPlatformLocalhostServerStatic();
+    PlatformInterface.verify(localhostServerStatic, _token);
+    return localhostServerStatic;
   }
 
   /// Used by the platform implementation to create a new

@@ -532,7 +532,7 @@ class SettingsManager extends ChangeNotifier {
 
   /// Get default settings map
   Map<String, dynamic> _getDefaultSettings() {
-    return settings_defaults.defaultInAppWebViewSettings().toMap(
+    return settings_defaults.defaultWebViewSettings().toMap(
       enumMethod: CygnusEnumMethod.nativeValue,
     );
   }

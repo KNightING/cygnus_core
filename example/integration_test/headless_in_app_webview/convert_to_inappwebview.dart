@@ -1,6 +1,6 @@
 part of 'main.dart';
 
-void convertToInAppWebView() {
+void convertToWebView() {
   final shouldSkip = !CygnusWebView.isPropertySupported(
     CygnusPlatformWebViewWidgetCreationParamsProperty.headlessWebView,
   );

@@ -341,7 +341,7 @@ class _TestConfigurationScreenState extends State<TestConfigurationScreen>
                     subtitle: const Text(
                       'Display WebView in real-time during test execution',
                     ),
-                    value: TestWebViewType.inAppWebView,
+                    value: TestWebViewType.webView,
                     groupValue: config.webViewType,
                     onChanged: (value) {
                       if (value != null) {

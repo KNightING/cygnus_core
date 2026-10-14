@@ -25,7 +25,7 @@ class IOSInAppBrowserCreationParams extends CygnusPlatformBrowserCreationParams 
   });
 
   /// Creates a [IOSInAppBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
-  factory IOSInAppBrowserCreationParams.fromPlatformInAppBrowserCreationParams(
+  factory IOSInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformBrowserCreationParams params,
@@ -58,7 +58,7 @@ class IOSInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     : super.implementation(
         params is IOSInAppBrowserCreationParams
             ? params
-            : IOSInAppBrowserCreationParams.fromPlatformInAppBrowserCreationParams(
+            : IOSInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
                 params,
               ),
       ) {
@@ -100,7 +100,7 @@ class IOSInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     handler = _handleMethod;
     initMethodCallHandler();
 
-    _webViewController = IOSInAppWebViewController.fromInAppBrowser(
+    _webViewController = IOSInAppWebViewController.fromBrowser(
       IOSInAppWebViewControllerCreationParams(id: id),
       channel!,
       this,

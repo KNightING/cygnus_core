@@ -146,7 +146,7 @@ class WindowsInAppWebViewWidgetCreationParams
 
   /// Constructs a [WindowsInAppWebViewWidgetCreationParams] using a
   /// [CygnusPlatformWebViewWidgetCreationParams].
-  WindowsInAppWebViewWidgetCreationParams.fromPlatformInAppWebViewWidgetCreationParams(
+  WindowsInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -288,7 +288,7 @@ class WindowsInAppWebViewWidget extends CygnusPlatformWebViewWidget {
     : super.implementation(
         params is WindowsInAppWebViewWidgetCreationParams
             ? params
-            : WindowsInAppWebViewWidgetCreationParams.fromPlatformInAppWebViewWidgetCreationParams(
+            : WindowsInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
                 params,
               ),
       );
@@ -298,7 +298,7 @@ class WindowsInAppWebViewWidget extends CygnusPlatformWebViewWidget {
 
   WindowsInAppWebViewController? _controller;
 
-  WindowsHeadlessInAppWebView? get _windowsHeadlessInAppWebView =>
+  WindowsHeadlessInAppWebView? get _windowsHeadlessWebView =>
       params.headlessWebView as WindowsHeadlessInAppWebView?;
 
   static final WindowsInAppWebViewWidget _staticValue =
@@ -354,7 +354,7 @@ class WindowsInAppWebViewWidget extends CygnusPlatformWebViewWidget {
       viewId = params.headlessWebView?.id;
     }
     viewId = params.keepAlive?.id ?? viewId ?? id;
-    _windowsHeadlessInAppWebView?.internalDispose();
+    _windowsHeadlessWebView?.internalDispose();
     _controller = WindowsInAppWebViewController(
       CygnusPlatformWebViewControllerCreationParams(
         id: viewId,

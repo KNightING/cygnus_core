@@ -27,7 +27,7 @@ class LinuxInAppBrowserCreationParams
   });
 
   /// Creates a [LinuxInAppBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
-  factory LinuxInAppBrowserCreationParams.fromPlatformInAppBrowserCreationParams(
+  factory LinuxInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformBrowserCreationParams params,
@@ -61,7 +61,7 @@ class LinuxInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     : super.implementation(
         params is LinuxInAppBrowserCreationParams
             ? params
-            : LinuxInAppBrowserCreationParams.fromPlatformInAppBrowserCreationParams(
+            : LinuxInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
                 params,
               ),
       ) {
@@ -103,7 +103,7 @@ class LinuxInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     handler = _handleMethod;
     initMethodCallHandler();
 
-    _webViewController = LinuxInAppWebViewController.fromInAppBrowser(
+    _webViewController = LinuxInAppWebViewController.fromBrowser(
       LinuxInAppWebViewControllerCreationParams(id: id),
       channel!,
       this,

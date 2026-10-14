@@ -135,7 +135,7 @@ class MacOSInAppWebViewWidgetCreationParams
 
   /// Constructs a [MacOSInAppWebViewWidgetCreationParams] using a
   /// [CygnusPlatformWebViewWidgetCreationParams].
-  MacOSInAppWebViewWidgetCreationParams.fromPlatformInAppWebViewWidgetCreationParams(
+  MacOSInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -263,7 +263,7 @@ class MacOSInAppWebViewWidget extends CygnusPlatformWebViewWidget {
     : super.implementation(
         params is MacOSInAppWebViewWidgetCreationParams
             ? params
-            : MacOSInAppWebViewWidgetCreationParams.fromPlatformInAppWebViewWidgetCreationParams(
+            : MacOSInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
                 params,
               ),
       );
@@ -273,7 +273,7 @@ class MacOSInAppWebViewWidget extends CygnusPlatformWebViewWidget {
 
   MacOSInAppWebViewController? _controller;
 
-  MacOSHeadlessInAppWebView? get _macosHeadlessInAppWebView =>
+  MacOSHeadlessInAppWebView? get _macosHeadlessWebView =>
       params.headlessWebView as MacOSHeadlessInAppWebView?;
 
   static final MacOSInAppWebViewWidget _staticValue = MacOSInAppWebViewWidget(
@@ -340,7 +340,7 @@ class MacOSInAppWebViewWidget extends CygnusPlatformWebViewWidget {
       viewId = params.headlessWebView?.id;
     }
     viewId = params.keepAlive?.id ?? viewId ?? id;
-    _macosHeadlessInAppWebView?.internalDispose();
+    _macosHeadlessWebView?.internalDispose();
     _controller = MacOSInAppWebViewController(
       CygnusPlatformWebViewControllerCreationParams(
         id: viewId,

@@ -40,7 +40,7 @@ class InAppWebViewFlutterPlugin {
     // ignore: unused_local_variable
     final platformUtil = PlatformUtil(messenger: registrar);
     // ignore: unused_local_variable
-    final inAppWebViewManager = InAppWebViewManager(messenger: registrar);
+    final webViewManager = InAppWebViewManager(messenger: registrar);
     // ignore: unused_local_variable
     final headlessManager = HeadlessInAppWebViewManager(messenger: registrar);
     if (flutterInAppWebView != null) {

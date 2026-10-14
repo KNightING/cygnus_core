@@ -25,7 +25,7 @@ class MacOSInAppBrowserCreationParams
   });
 
   /// Creates a [MacOSInAppBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
-  factory MacOSInAppBrowserCreationParams.fromPlatformInAppBrowserCreationParams(
+  factory MacOSInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformBrowserCreationParams params,
@@ -54,7 +54,7 @@ class MacOSInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     : super.implementation(
         params is MacOSInAppBrowserCreationParams
             ? params
-            : MacOSInAppBrowserCreationParams.fromPlatformInAppBrowserCreationParams(
+            : MacOSInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
                 params,
               ),
       ) {
@@ -96,7 +96,7 @@ class MacOSInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     handler = _handleMethod;
     initMethodCallHandler();
 
-    _webViewController = MacOSInAppWebViewController.fromInAppBrowser(
+    _webViewController = MacOSInAppWebViewController.fromBrowser(
       MacOSInAppWebViewControllerCreationParams(id: id),
       channel!,
       this,

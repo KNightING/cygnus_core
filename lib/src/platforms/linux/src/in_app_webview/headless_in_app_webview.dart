@@ -133,7 +133,7 @@ class LinuxHeadlessInAppWebViewCreationParams
   });
 
   /// Creates a [LinuxHeadlessInAppWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
-  LinuxHeadlessInAppWebViewCreationParams.fromPlatformHeadlessInAppWebViewCreationParams(
+  LinuxHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -272,7 +272,7 @@ class LinuxHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     : super.implementation(
         params is LinuxHeadlessInAppWebViewCreationParams
             ? params
-            : LinuxHeadlessInAppWebViewCreationParams.fromPlatformHeadlessInAppWebViewCreationParams(
+            : LinuxHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
                 params,
               ),
       ) {

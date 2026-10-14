@@ -26,7 +26,7 @@ class AndroidInAppBrowserCreationParams
   });
 
   /// Creates a [AndroidInAppBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
-  factory AndroidInAppBrowserCreationParams.fromPlatformInAppBrowserCreationParams(
+  factory AndroidInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformBrowserCreationParams params,
@@ -59,7 +59,7 @@ class AndroidInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     : super.implementation(
         params is AndroidInAppBrowserCreationParams
             ? params
-            : AndroidInAppBrowserCreationParams.fromPlatformInAppBrowserCreationParams(
+            : AndroidInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
                 params,
               ),
       ) {
@@ -101,7 +101,7 @@ class AndroidInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     handler = _handleMethod;
     initMethodCallHandler();
 
-    _webViewController = AndroidInAppWebViewController.fromInAppBrowser(
+    _webViewController = AndroidInAppWebViewController.fromBrowser(
       AndroidInAppWebViewControllerCreationParams(id: id),
       channel!,
       this,

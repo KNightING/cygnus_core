@@ -26,7 +26,7 @@ class MockInAppWebViewPlatform extends CygnusWebViewPlatform
   }
 
   @override
-  CygnusPlatformWebViewController createPlatformInAppWebViewControllerStatic() {
+  CygnusPlatformWebViewController createPlatformWebViewControllerStatic() {
     return MockPlatformInAppWebViewControllerStatic(
       const CygnusPlatformWebViewControllerCreationParams(id: 'mock_controller'),
     );
@@ -47,21 +47,21 @@ class MockInAppWebViewPlatform extends CygnusWebViewPlatform
   }
 
   @override
-  CygnusPlatformWebViewWidget createPlatformInAppWebViewWidget(
+  CygnusPlatformWebViewWidget createPlatformWebViewWidget(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) {
     return MockPlatformInAppWebViewWidget(params);
   }
 
   @override
-  CygnusPlatformWebViewWidget createPlatformInAppWebViewWidgetStatic() {
+  CygnusPlatformWebViewWidget createPlatformWebViewWidgetStatic() {
     return MockPlatformInAppWebViewWidget(
       CygnusPlatformWebViewWidgetCreationParams(),
     );
   }
 
   @override
-  CygnusPlatformWebViewController createPlatformInAppWebViewController(
+  CygnusPlatformWebViewController createPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
     return MockPlatformInAppWebViewController(params);
@@ -193,28 +193,28 @@ class MockInAppWebViewPlatform extends CygnusWebViewPlatform
   }
 
   @override
-  CygnusPlatformHeadlessWebView createPlatformHeadlessInAppWebView(
+  CygnusPlatformHeadlessWebView createPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
     return MockPlatformHeadlessInAppWebView(params);
   }
 
   @override
-  CygnusPlatformHeadlessWebView createPlatformHeadlessInAppWebViewStatic() {
+  CygnusPlatformHeadlessWebView createPlatformHeadlessWebViewStatic() {
     return MockPlatformHeadlessInAppWebView(
       const CygnusPlatformHeadlessWebViewCreationParams(),
     );
   }
 
   @override
-  CygnusPlatformBrowser createPlatformInAppBrowser(
+  CygnusPlatformBrowser createPlatformBrowser(
     CygnusPlatformBrowserCreationParams params,
   ) {
     return MockPlatformInAppBrowser(params);
   }
 
   @override
-  CygnusPlatformBrowser createPlatformInAppBrowserStatic() {
+  CygnusPlatformBrowser createPlatformBrowserStatic() {
     return MockPlatformInAppBrowser(const CygnusPlatformBrowserCreationParams());
   }
 

@@ -13,7 +13,7 @@ void main() {
   });
 
   test('default settings map matches constructor defaults', () {
-    final defaults = defaultInAppWebViewSettings().toMap(
+    final defaults = defaultWebViewSettings().toMap(
       enumMethod: CygnusEnumMethod.nativeValue,
     );
     final expected = CygnusWebViewSettings().toMap(

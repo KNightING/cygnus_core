@@ -131,7 +131,7 @@ class AndroidHeadlessInAppWebViewCreationParams
   });
 
   /// Creates a [AndroidHeadlessInAppWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
-  AndroidHeadlessInAppWebViewCreationParams.fromPlatformHeadlessInAppWebViewCreationParams(
+  AndroidHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -270,7 +270,7 @@ class AndroidHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     : super.implementation(
         params is AndroidHeadlessInAppWebViewCreationParams
             ? params
-            : AndroidHeadlessInAppWebViewCreationParams.fromPlatformHeadlessInAppWebViewCreationParams(
+            : AndroidHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
                 params,
               ),
       ) {

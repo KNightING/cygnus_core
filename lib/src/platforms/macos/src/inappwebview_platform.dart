@@ -43,7 +43,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
   @override
-  MacOSInAppWebViewController createPlatformInAppWebViewController(
+  MacOSInAppWebViewController createPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
     return MacOSInAppWebViewController(params);
@@ -54,7 +54,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
   @override
-  MacOSInAppWebViewController createPlatformInAppWebViewControllerStatic() {
+  MacOSInAppWebViewController createPlatformWebViewControllerStatic() {
     return MacOSInAppWebViewController.static();
   }
 
@@ -63,7 +63,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
   @override
-  MacOSInAppWebViewWidget createPlatformInAppWebViewWidget(
+  MacOSInAppWebViewWidget createPlatformWebViewWidget(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) {
     return MacOSInAppWebViewWidget(params);
@@ -74,7 +74,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
   @override
-  MacOSInAppWebViewWidget createPlatformInAppWebViewWidgetStatic() {
+  MacOSInAppWebViewWidget createPlatformWebViewWidgetStatic() {
     return MacOSInAppWebViewWidget.static();
   }
 
@@ -261,7 +261,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `flutter_inappwebview` instead.
   @override
-  MacOSHeadlessInAppWebView createPlatformHeadlessInAppWebView(
+  MacOSHeadlessInAppWebView createPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
     return MacOSHeadlessInAppWebView(params);
@@ -272,7 +272,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `flutter_inappwebview` instead.
   @override
-  MacOSHeadlessInAppWebView createPlatformHeadlessInAppWebViewStatic() {
+  MacOSHeadlessInAppWebView createPlatformHeadlessWebViewStatic() {
     return MacOSHeadlessInAppWebView.static();
   }
 
@@ -302,7 +302,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusBrowser] in `flutter_inappwebview` instead.
   @override
-  MacOSInAppBrowser createPlatformInAppBrowser(
+  MacOSInAppBrowser createPlatformBrowser(
     CygnusPlatformBrowserCreationParams params,
   ) {
     return MacOSInAppBrowser(params);
@@ -313,7 +313,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusBrowser] in `flutter_inappwebview` instead.
   @override
-  MacOSInAppBrowser createPlatformInAppBrowserStatic() {
+  MacOSInAppBrowser createPlatformBrowserStatic() {
     return MacOSInAppBrowser.static();
   }
 
@@ -481,7 +481,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusLocalhostServer] in `flutter_inappwebview` instead.
   @override
-  CygnusDefaultLocalhostServer createPlatformInAppLocalhostServer(
+  CygnusDefaultLocalhostServer createPlatformLocalhostServer(
     CygnusPlatformLocalhostServerCreationParams params,
   ) {
     return CygnusDefaultLocalhostServer(params);
@@ -492,7 +492,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusLocalhostServer] in `flutter_inappwebview` instead.
   @override
-  CygnusDefaultLocalhostServer createPlatformInAppLocalhostServerStatic() {
+  CygnusDefaultLocalhostServer createPlatformLocalhostServerStatic() {
     return CygnusDefaultLocalhostServer.static();
   }
 

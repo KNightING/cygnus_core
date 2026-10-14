@@ -3693,20 +3693,20 @@ class CygnusWebViewGroupOptions {
   }
 
   static CygnusWebViewGroupOptions fromMap(Map<String, dynamic> options) {
-    CygnusWebViewGroupOptions inAppWebViewGroupOptions =
+    CygnusWebViewGroupOptions webViewGroupOptions =
         CygnusWebViewGroupOptions();
 
-    inAppWebViewGroupOptions.crossPlatform = CygnusInAppWebViewOptions.fromMap(
+    webViewGroupOptions.crossPlatform = CygnusInAppWebViewOptions.fromMap(
       options,
     );
     if (Util.isAndroid)
-      inAppWebViewGroupOptions.android = CygnusAndroidWebViewOptions.fromMap(
+      webViewGroupOptions.android = CygnusAndroidWebViewOptions.fromMap(
         options,
       );
     else if (Util.isIOS)
-      inAppWebViewGroupOptions.ios = CygnusIOSWebViewOptions.fromMap(options);
+      webViewGroupOptions.ios = CygnusIOSWebViewOptions.fromMap(options);
 
-    return inAppWebViewGroupOptions;
+    return webViewGroupOptions;
   }
 
   Map<String, dynamic> toJson() {

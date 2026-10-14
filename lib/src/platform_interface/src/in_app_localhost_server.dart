@@ -24,7 +24,7 @@ class CygnusDefaultLocalhostServerCreationParams
   ) : super();
 
   /// Creates a [CygnusDefaultLocalhostServerCreationParams] instance based on [CygnusPlatformLocalhostServerCreationParams].
-  factory CygnusDefaultLocalhostServerCreationParams.fromPlatformInAppLocalhostServerCreationParams(
+  factory CygnusDefaultLocalhostServerCreationParams.fromPlatformLocalhostServerCreationParams(
     CygnusPlatformLocalhostServerCreationParams params,
   ) {
     return CygnusDefaultLocalhostServerCreationParams(params);
@@ -54,7 +54,7 @@ class CygnusDefaultLocalhostServer extends CygnusPlatformLocalhostServer {
     : super.implementation(
         params is CygnusDefaultLocalhostServerCreationParams
             ? params
-            : CygnusDefaultLocalhostServerCreationParams.fromPlatformInAppLocalhostServerCreationParams(
+            : CygnusDefaultLocalhostServerCreationParams.fromPlatformLocalhostServerCreationParams(
                 params,
               ),
       ) {

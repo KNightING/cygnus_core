@@ -26,7 +26,7 @@ class TestRunner extends ChangeNotifier {
   TestConfiguration? _currentConfiguration;
 
   /// The type of WebView being used
-  TestWebViewType _webViewType = TestWebViewType.inAppWebView;
+  TestWebViewType _webViewType = TestWebViewType.webView;
 
   /// Headless WebView instance (when using headless mode)
   CygnusHeadlessWebView? _headlessWebView;
@@ -127,7 +127,7 @@ class TestRunner extends ChangeNotifier {
 
   /// Build the CygnusWebView widget for visible mode
   /// This should be used by the UI to display the WebView
-  Widget buildInAppWebView({double? width, double? height}) {
+  Widget buildWebView({double? width, double? height}) {
     return CygnusWebView(
       key: _webViewKey,
       initialUrlRequest: CygnusURLRequest(

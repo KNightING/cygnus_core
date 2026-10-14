@@ -26,7 +26,7 @@ class WebPlatformInAppWebViewControllerCreationParams
   });
 
   /// Creates a [WebPlatformInAppWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
-  factory WebPlatformInAppWebViewControllerCreationParams.fromPlatformInAppWebViewControllerCreationParams(
+  factory WebPlatformInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformWebViewControllerCreationParams params,
@@ -64,7 +64,7 @@ class WebPlatformInAppWebViewController extends CygnusPlatformWebViewController
   ) : super.implementation(
         params is WebPlatformInAppWebViewControllerCreationParams
             ? params
-            : WebPlatformInAppWebViewControllerCreationParams.fromPlatformInAppWebViewControllerCreationParams(
+            : WebPlatformInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {

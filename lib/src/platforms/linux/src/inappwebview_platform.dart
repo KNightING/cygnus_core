@@ -27,7 +27,7 @@ class LinuxInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
   @override
-  LinuxInAppWebViewController createPlatformInAppWebViewController(
+  LinuxInAppWebViewController createPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
     return LinuxInAppWebViewController(params);
@@ -38,7 +38,7 @@ class LinuxInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
   @override
-  LinuxInAppWebViewController createPlatformInAppWebViewControllerStatic() {
+  LinuxInAppWebViewController createPlatformWebViewControllerStatic() {
     return LinuxInAppWebViewController.static();
   }
 
@@ -47,7 +47,7 @@ class LinuxInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
   @override
-  LinuxInAppWebViewWidget createPlatformInAppWebViewWidget(
+  LinuxInAppWebViewWidget createPlatformWebViewWidget(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) {
     return LinuxInAppWebViewWidget(params);
@@ -58,7 +58,7 @@ class LinuxInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
   @override
-  LinuxInAppWebViewWidget createPlatformInAppWebViewWidgetStatic() {
+  LinuxInAppWebViewWidget createPlatformWebViewWidgetStatic() {
     return LinuxInAppWebViewWidget.static();
   }
 
@@ -120,13 +120,13 @@ class LinuxInAppWebViewPlatform extends CygnusWebViewPlatform {
 
   /// Creates a new empty [LinuxInAppBrowser] to access static methods.
   @override
-  LinuxInAppBrowser createPlatformInAppBrowserStatic() {
+  LinuxInAppBrowser createPlatformBrowserStatic() {
     return LinuxInAppBrowser.static();
   }
 
   /// Creates a new [LinuxInAppBrowser].
   @override
-  LinuxInAppBrowser createPlatformInAppBrowser(
+  LinuxInAppBrowser createPlatformBrowser(
     CygnusPlatformBrowserCreationParams params,
   ) {
     return LinuxInAppBrowser(params);
@@ -134,13 +134,13 @@ class LinuxInAppWebViewPlatform extends CygnusWebViewPlatform {
 
   /// Creates a new empty [CygnusPlatformHeadlessWebView] to access static methods.
   @override
-  CygnusPlatformHeadlessWebView createPlatformHeadlessInAppWebViewStatic() {
+  CygnusPlatformHeadlessWebView createPlatformHeadlessWebViewStatic() {
     return LinuxHeadlessInAppWebView.static();
   }
 
   /// Creates a new [LinuxHeadlessInAppWebView].
   @override
-  LinuxHeadlessInAppWebView createPlatformHeadlessInAppWebView(
+  LinuxHeadlessInAppWebView createPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
     return LinuxHeadlessInAppWebView(params);
@@ -366,7 +366,7 @@ class LinuxInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusLocalhostServer] in `flutter_inappwebview` instead.
   @override
-  CygnusDefaultLocalhostServer createPlatformInAppLocalhostServer(
+  CygnusDefaultLocalhostServer createPlatformLocalhostServer(
     CygnusPlatformLocalhostServerCreationParams params,
   ) {
     return CygnusDefaultLocalhostServer(params);
@@ -377,7 +377,7 @@ class LinuxInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusLocalhostServer] in `flutter_inappwebview` instead.
   @override
-  CygnusDefaultLocalhostServer createPlatformInAppLocalhostServerStatic() {
+  CygnusDefaultLocalhostServer createPlatformLocalhostServerStatic() {
     return CygnusDefaultLocalhostServer.static();
   }
 

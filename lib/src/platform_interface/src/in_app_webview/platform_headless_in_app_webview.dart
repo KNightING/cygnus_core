@@ -256,7 +256,7 @@ abstract class CygnusPlatformHeadlessWebView extends PlatformInterface
       '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
     final CygnusPlatformHeadlessWebView webViewControllerDelegate =
-        CygnusWebViewPlatform.instance!.createPlatformHeadlessInAppWebView(
+        CygnusWebViewPlatform.instance!.createPlatformHeadlessWebView(
           params,
         );
     PlatformInterface.verify(webViewControllerDelegate, _token);
@@ -272,11 +272,11 @@ abstract class CygnusPlatformHeadlessWebView extends PlatformInterface
       '`CygnusWebViewPlatform.instance` before use. For unit testing, '
       '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final CygnusPlatformHeadlessWebView headlessInAppWebViewStatic =
+    final CygnusPlatformHeadlessWebView headlessWebViewStatic =
         CygnusWebViewPlatform.instance!
-            .createPlatformHeadlessInAppWebViewStatic();
-    PlatformInterface.verify(headlessInAppWebViewStatic, _token);
-    return headlessInAppWebViewStatic;
+            .createPlatformHeadlessWebViewStatic();
+    PlatformInterface.verify(headlessWebViewStatic, _token);
+    return headlessWebViewStatic;
   }
 
   /// Used by the platform implementation to create a new [CygnusPlatformHeadlessWebView].

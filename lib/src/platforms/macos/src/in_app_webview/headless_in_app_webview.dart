@@ -131,7 +131,7 @@ class MacOSHeadlessInAppWebViewCreationParams
   });
 
   /// Creates a [MacOSHeadlessInAppWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
-  MacOSHeadlessInAppWebViewCreationParams.fromPlatformHeadlessInAppWebViewCreationParams(
+  MacOSHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -265,7 +265,7 @@ class MacOSHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     : super.implementation(
         params is MacOSHeadlessInAppWebViewCreationParams
             ? params
-            : MacOSHeadlessInAppWebViewCreationParams.fromPlatformHeadlessInAppWebViewCreationParams(
+            : MacOSHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
                 params,
               ),
       ) {

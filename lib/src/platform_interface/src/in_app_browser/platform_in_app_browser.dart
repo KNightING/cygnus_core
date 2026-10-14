@@ -209,10 +209,10 @@ This is a limitation of the native WebKit APIs.""",
       '`CygnusWebViewPlatform.instance` before use. For unit testing, '
       '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final CygnusPlatformBrowser inAppBrowser = CygnusWebViewPlatform.instance!
-        .createPlatformInAppBrowser(params);
-    PlatformInterface.verify(inAppBrowser, _token);
-    return inAppBrowser;
+    final CygnusPlatformBrowser browser = CygnusWebViewPlatform.instance!
+        .createPlatformBrowser(params);
+    PlatformInterface.verify(browser, _token);
+    return browser;
   }
 
   /// Creates a new [CygnusPlatformBrowser] to access static methods.
@@ -224,11 +224,11 @@ This is a limitation of the native WebKit APIs.""",
       '`CygnusWebViewPlatform.instance` before use. For unit testing, '
       '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final CygnusPlatformBrowser inAppBrowserStatic = CygnusWebViewPlatform
+    final CygnusPlatformBrowser browserStatic = CygnusWebViewPlatform
         .instance!
-        .createPlatformInAppBrowserStatic();
-    PlatformInterface.verify(inAppBrowserStatic, _token);
-    return inAppBrowserStatic;
+        .createPlatformBrowserStatic();
+    PlatformInterface.verify(browserStatic, _token);
+    return browserStatic;
   }
 
   /// Used by the platform implementation to create a new [CygnusPlatformBrowser].
@@ -303,7 +303,7 @@ This is a limitation of the native WebKit APIs.""",
   ///Example of a `main.dart` file:
   ///```dart
   ///...
-  ///inAppBrowser.openFile(assetFilePath: "assets/index.html");
+  ///browser.openFile(assetFilePath: "assets/index.html");
   ///...
   ///```
   ///

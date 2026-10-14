@@ -4,22 +4,22 @@ void hideAndShow() {
   final shouldSkip = !CygnusBrowser.isClassSupported();
 
   skippableTest('hide and show', () async {
-    var inAppBrowser = new MyInAppBrowser();
-    await inAppBrowser.openUrlRequest(
+    var browser = new MyInAppBrowser();
+    await browser.openUrlRequest(
       urlRequest: CygnusURLRequest(url: TEST_URL_1),
       settings: CygnusBrowserClassSettings(
         browserSettings: CygnusBrowserSettings(hidden: true),
       ),
     );
-    await inAppBrowser.browserCreated.future;
-    await inAppBrowser.firstPageLoaded.future;
+    await browser.browserCreated.future;
+    await browser.firstPageLoaded.future;
 
-    expect(await inAppBrowser.isHidden(), true);
-    await expectLater(inAppBrowser.show(), completes);
-    expect(await inAppBrowser.isHidden(), false);
-    await expectLater(inAppBrowser.hide(), completes);
-    expect(await inAppBrowser.isHidden(), true);
+    expect(await browser.isHidden(), true);
+    await expectLater(browser.show(), completes);
+    expect(await browser.isHidden(), false);
+    await expectLater(browser.hide(), completes);
+    expect(await browser.isHidden(), true);
 
-    await expectLater(inAppBrowser.close(), completes);
+    await expectLater(browser.close(), completes);
   }, skip: shouldSkip);
 }

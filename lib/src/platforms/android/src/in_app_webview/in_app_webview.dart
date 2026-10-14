@@ -195,7 +195,7 @@ class AndroidInAppWebViewWidgetCreationParams
 
   /// Constructs a [AndroidInAppWebViewWidgetCreationParams] using a
   /// [CygnusPlatformWebViewWidgetCreationParams].
-  AndroidInAppWebViewWidgetCreationParams.fromPlatformInAppWebViewWidgetCreationParams(
+  AndroidInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -329,7 +329,7 @@ class AndroidInAppWebViewWidget extends CygnusPlatformWebViewWidget {
     : super.implementation(
         params is AndroidInAppWebViewWidgetCreationParams
             ? params
-            : AndroidInAppWebViewWidgetCreationParams.fromPlatformInAppWebViewWidgetCreationParams(
+            : AndroidInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
                 params,
               ),
       );
@@ -339,7 +339,7 @@ class AndroidInAppWebViewWidget extends CygnusPlatformWebViewWidget {
 
   AndroidInAppWebViewController? _controller;
 
-  AndroidHeadlessInAppWebView? get _androidHeadlessInAppWebView =>
+  AndroidHeadlessInAppWebView? get _androidHeadlessWebView =>
       params.headlessWebView as AndroidHeadlessInAppWebView?;
 
   static final AndroidInAppWebViewWidget _staticValue =
@@ -493,7 +493,7 @@ class AndroidInAppWebViewWidget extends CygnusPlatformWebViewWidget {
               'keepAliveId': this.params.keepAlive?.id,
               'enabledHighFrequencyEvents': enabledHighFrequencyEvents(
                 webviewParams: this.params,
-                hasInAppBrowserEventHandler: false,
+                hasBrowserEventHandler: false,
               ),
             },
           )
@@ -581,7 +581,7 @@ class AndroidInAppWebViewWidget extends CygnusPlatformWebViewWidget {
       viewId = params.headlessWebView?.id;
     }
     viewId = params.keepAlive?.id ?? viewId ?? id;
-    _androidHeadlessInAppWebView?.internalDispose();
+    _androidHeadlessWebView?.internalDispose();
     _controller = AndroidInAppWebViewController(
       CygnusPlatformWebViewControllerCreationParams(
         id: viewId,

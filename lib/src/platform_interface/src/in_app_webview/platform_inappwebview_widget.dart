@@ -295,7 +295,7 @@ abstract class CygnusPlatformWebViewWidget extends PlatformInterface
       '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
     final CygnusPlatformWebViewWidget webViewWidgetDelegate =
-        CygnusWebViewPlatform.instance!.createPlatformInAppWebViewWidget(params);
+        CygnusWebViewPlatform.instance!.createPlatformWebViewWidget(params);
     PlatformInterface.verify(webViewWidgetDelegate, _token);
     return webViewWidgetDelegate;
   }
@@ -309,10 +309,10 @@ abstract class CygnusPlatformWebViewWidget extends PlatformInterface
       '`CygnusWebViewPlatform.instance` before use. For unit testing, '
       '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final CygnusPlatformWebViewWidget inAppWebViewWidgetStatic =
-        CygnusWebViewPlatform.instance!.createPlatformInAppWebViewWidgetStatic();
-    PlatformInterface.verify(inAppWebViewWidgetStatic, _token);
-    return inAppWebViewWidgetStatic;
+    final CygnusPlatformWebViewWidget webViewWidgetStatic =
+        CygnusWebViewPlatform.instance!.createPlatformWebViewWidgetStatic();
+    PlatformInterface.verify(webViewWidgetStatic, _token);
+    return webViewWidgetStatic;
   }
 
   /// Used by the platform implementation to create a new

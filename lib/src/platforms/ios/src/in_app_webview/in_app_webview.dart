@@ -136,7 +136,7 @@ class IOSInAppWebViewWidgetCreationParams
 
   /// Constructs a [IOSInAppWebViewWidgetCreationParams] using a
   /// [CygnusPlatformWebViewWidgetCreationParams].
-  IOSInAppWebViewWidgetCreationParams.fromPlatformInAppWebViewWidgetCreationParams(
+  IOSInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -268,7 +268,7 @@ class IOSInAppWebViewWidget extends CygnusPlatformWebViewWidget {
     : super.implementation(
         params is IOSInAppWebViewWidgetCreationParams
             ? params
-            : IOSInAppWebViewWidgetCreationParams.fromPlatformInAppWebViewWidgetCreationParams(
+            : IOSInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
                 params,
               ),
       );
@@ -278,7 +278,7 @@ class IOSInAppWebViewWidget extends CygnusPlatformWebViewWidget {
 
   IOSInAppWebViewController? _controller;
 
-  IOSHeadlessInAppWebView? get _iosHeadlessInAppWebView =>
+  IOSHeadlessInAppWebView? get _iosHeadlessWebView =>
       params.headlessWebView as IOSHeadlessInAppWebView?;
 
   static final IOSInAppWebViewWidget _staticValue = IOSInAppWebViewWidget(
@@ -345,7 +345,7 @@ class IOSInAppWebViewWidget extends CygnusPlatformWebViewWidget {
       viewId = params.headlessWebView?.id;
     }
     viewId = params.keepAlive?.id ?? viewId ?? id;
-    _iosHeadlessInAppWebView?.internalDispose();
+    _iosHeadlessWebView?.internalDispose();
     _controller = IOSInAppWebViewController(
       CygnusPlatformWebViewControllerCreationParams(
         id: viewId,

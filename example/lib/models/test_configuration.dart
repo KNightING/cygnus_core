@@ -8,7 +8,7 @@ import 'package:flutter_inappwebview_example/utils/constants.dart';
 /// Specifies which type of WebView to use for test execution
 enum TestWebViewType {
   /// Use a visible CygnusWebView widget for real-time rendering
-  inAppWebView,
+  webView,
 
   /// Use a headless WebView for background execution
   headless,
@@ -634,7 +634,7 @@ class TestConfiguration {
     this.testOrdering = const {},
     this.enabledBuiltInTests = const {},
     this.metadata = const {},
-    this.webViewType = TestWebViewType.inAppWebView,
+    this.webViewType = TestWebViewType.webView,
     this.initialUrl,
     this.headlessWidth = 1920,
     this.headlessHeight = 1080,
@@ -715,7 +715,7 @@ class TestConfiguration {
       metadata: (json['metadata'] as Map<String, dynamic>?) ?? {},
       webViewType: TestWebViewType.values.firstWhere(
         (e) => e.name == json['webViewType'],
-        orElse: () => TestWebViewType.inAppWebView,
+        orElse: () => TestWebViewType.webView,
       ),
       initialUrl: json['initialUrl'] as String?,
       headlessWidth: (json['headlessWidth'] as num?)?.toDouble() ?? 1920,
@@ -744,7 +744,7 @@ class TestConfiguration {
       createdAt: now,
       modifiedAt: now,
       customSteps: _buildDefaultTestSteps(),
-      webViewType: TestWebViewType.inAppWebView,
+      webViewType: TestWebViewType.webView,
       initialUrl: 'https://example.com',
     );
   }

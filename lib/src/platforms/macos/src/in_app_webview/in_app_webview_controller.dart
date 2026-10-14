@@ -31,7 +31,7 @@ class MacOSInAppWebViewControllerCreationParams
   });
 
   /// Creates a [MacOSInAppWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
-  factory MacOSInAppWebViewControllerCreationParams.fromPlatformInAppWebViewControllerCreationParams(
+  factory MacOSInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformWebViewControllerCreationParams params,
@@ -66,10 +66,10 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
   static final Map<CygnusWebViewKeepAlive, CygnusWebViewControllerKeepAliveProps?>
   _keepAliveMap = {};
 
-  MacOSInAppBrowser? _inAppBrowser;
+  MacOSInAppBrowser? _browser;
 
-  CygnusPlatformBrowserEvents? get _inAppBrowserEventHandler =>
-      _inAppBrowser?.eventHandler;
+  CygnusPlatformBrowserEvents? get _browserEventHandler =>
+      _browser?.eventHandler;
 
   dynamic _controllerFromPlatform;
 
@@ -81,7 +81,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
   ) : super.implementation(
         params is MacOSInAppWebViewControllerCreationParams
             ? params
-            : MacOSInAppWebViewControllerCreationParams.fromPlatformInAppWebViewControllerCreationParams(
+            : MacOSInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
@@ -117,20 +117,20 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
     return _staticValue;
   }
 
-  MacOSInAppWebViewController.fromInAppBrowser(
+  MacOSInAppWebViewController.fromBrowser(
     CygnusPlatformWebViewControllerCreationParams params,
     MethodChannel channel,
-    MacOSInAppBrowser inAppBrowser,
+    MacOSInAppBrowser browser,
     UnmodifiableListView<CygnusUserScript>? initialUserScripts,
   ) : super.implementation(
         params is MacOSInAppWebViewControllerCreationParams
             ? params
-            : MacOSInAppWebViewControllerCreationParams.fromPlatformInAppWebViewControllerCreationParams(
+            : MacOSInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
     this.channel = channel;
-    this._inAppBrowser = inAppBrowser;
+    this._browser = browser;
 
     if (initialUserScripts != null) {
       for (final userScript in initialUserScripts) {
@@ -194,10 +194,10 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
   _debugLog(String method, dynamic args) {
     debugLog(
       className: this.runtimeType.toString(),
-      name: _inAppBrowser == null
+      name: _browser == null
           ? "WebView"
-          : _inAppBrowser.runtimeType.toString(),
-      id: (getViewId() ?? _inAppBrowser?.id).toString(),
+          : _browser.runtimeType.toString(),
+      id: (getViewId() ?? _browser?.id).toString(),
       debugLoggingSettings: CygnusPlatformWebViewController.debugLoggingSettings,
       method: method,
       args: args,
@@ -221,24 +221,24 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onLoadStart":
         _injectedScriptsFromURL.clear();
         if ((webviewParams != null && webviewParams!.onLoadStart != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? url = call.arguments["url"];
           CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           if (webviewParams != null && webviewParams!.onLoadStart != null)
             webviewParams!.onLoadStart!(_controllerFromPlatform, uri);
           else
-            _inAppBrowserEventHandler!.onLoadStart(uri);
+            _browserEventHandler!.onLoadStart(uri);
         }
         break;
       case "onLoadStop":
         if ((webviewParams != null && webviewParams!.onLoadStop != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? url = call.arguments["url"];
           CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           if (webviewParams != null && webviewParams!.onLoadStop != null)
             webviewParams!.onLoadStop!(_controllerFromPlatform, uri);
           else
-            _inAppBrowserEventHandler!.onLoadStop(uri);
+            _browserEventHandler!.onLoadStop(uri);
         }
         break;
       case "onReceivedError":
@@ -246,7 +246,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onReceivedError != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.onLoadError != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(
             call.arguments["request"].cast<String, dynamic>(),
           )!;
@@ -273,13 +273,13 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
             }
           } else {
             if (isForMainFrame) {
-              _inAppBrowserEventHandler!.onLoadError(
+              _browserEventHandler!.onLoadError(
                 request.url,
                 error.type.toNativeValue() ?? -1,
                 error.description,
               );
             }
-            _inAppBrowserEventHandler!.onReceivedError(request, error);
+            _browserEventHandler!.onReceivedError(request, error);
           }
         }
         break;
@@ -288,7 +288,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onReceivedHttpError != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.onLoadHttpError != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(
             call.arguments["request"].cast<String, dynamic>(),
           )!;
@@ -315,13 +315,13 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
             }
           } else {
             if (isForMainFrame) {
-              _inAppBrowserEventHandler!.onLoadHttpError(
+              _browserEventHandler!.onLoadHttpError(
                 request.url,
                 errorResponse.statusCode ?? -1,
                 errorResponse.reasonPhrase ?? '',
               );
             }
-            _inAppBrowserEventHandler!.onReceivedHttpError(
+            _browserEventHandler!.onReceivedHttpError(
               request,
               errorResponse,
             );
@@ -331,7 +331,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onProgressChanged":
         if ((webviewParams != null &&
                 webviewParams!.onProgressChanged != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           int progress = call.arguments["progress"];
           if (webviewParams != null && webviewParams!.onProgressChanged != null)
             webviewParams!.onProgressChanged!(
@@ -339,13 +339,13 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               progress,
             );
           else
-            _inAppBrowserEventHandler!.onProgressChanged(progress);
+            _browserEventHandler!.onProgressChanged(progress);
         }
         break;
       case "shouldOverrideUrlLoading":
         if ((webviewParams != null &&
                 webviewParams!.shouldOverrideUrlLoading != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusNavigationAction navigationAction = CygnusNavigationAction.fromMap(
@@ -358,7 +358,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               _controllerFromPlatform,
               navigationAction,
             ))?.toNativeValue();
-          return (await _inAppBrowserEventHandler!.shouldOverrideUrlLoading(
+          return (await _browserEventHandler!.shouldOverrideUrlLoading(
             navigationAction,
           ))?.toNativeValue();
         }
@@ -366,7 +366,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onConsoleMessage":
         if ((webviewParams != null &&
                 webviewParams!.onConsoleMessage != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusConsoleMessage consoleMessage = CygnusConsoleMessage.fromMap(arguments)!;
@@ -376,18 +376,18 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               consoleMessage,
             );
           else
-            _inAppBrowserEventHandler!.onConsoleMessage(consoleMessage);
+            _browserEventHandler!.onConsoleMessage(consoleMessage);
         }
         break;
       case "onScrollChanged":
         if ((webviewParams != null && webviewParams!.onScrollChanged != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           int x = call.arguments["x"];
           int y = call.arguments["y"];
           if (webviewParams != null && webviewParams!.onScrollChanged != null)
             webviewParams!.onScrollChanged!(_controllerFromPlatform, x, y);
           else
-            _inAppBrowserEventHandler!.onScrollChanged(x, y);
+            _browserEventHandler!.onScrollChanged(x, y);
         }
         break;
       case "onDownloadStarting":
@@ -395,7 +395,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onDownloadStart != null ||
                     webviewParams!.onDownloadStartRequest != null ||
                     webviewParams!.onDownloadStarting != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusDownloadStartRequest downloadStartRequest =
@@ -419,13 +419,13 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               );
             }
           } else {
-            _inAppBrowserEventHandler!.onDownloadStart(
+            _browserEventHandler!.onDownloadStart(
               downloadStartRequest.url,
             );
-            _inAppBrowserEventHandler!.onDownloadStartRequest(
+            _browserEventHandler!.onDownloadStartRequest(
               downloadStartRequest,
             );
-            return (await _inAppBrowserEventHandler!.onDownloadStarting(
+            return (await _browserEventHandler!.onDownloadStarting(
               downloadStartRequest,
             ))?.toMap();
           }
@@ -436,7 +436,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onLoadResourceWithCustomScheme != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.onLoadResourceCustomScheme != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> requestMap = call.arguments["request"]
               .cast<String, dynamic>();
           CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(requestMap)!;
@@ -458,9 +458,9 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                   ?.toMap();
             }
           } else {
-            return ((await _inAppBrowserEventHandler!
+            return ((await _browserEventHandler!
                         .onLoadResourceWithCustomScheme(request)) ??
-                    (await _inAppBrowserEventHandler!
+                    (await _browserEventHandler!
                         .onLoadResourceCustomScheme(request.url)))
                 ?.toMap();
           }
@@ -468,7 +468,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
         break;
       case "onCreateWindow":
         if ((webviewParams != null && webviewParams!.onCreateWindow != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusCreateWindowAction createWindowAction = CygnusCreateWindowAction.fromMap(
@@ -481,7 +481,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               createWindowAction,
             );
           else
-            return await _inAppBrowserEventHandler!.onCreateWindow(
+            return await _browserEventHandler!.onCreateWindow(
               createWindowAction,
             );
         }
@@ -489,17 +489,17 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onCloseWindow":
         if (webviewParams != null && webviewParams!.onCloseWindow != null)
           webviewParams!.onCloseWindow!(_controllerFromPlatform);
-        else if (_inAppBrowserEventHandler != null)
-          _inAppBrowserEventHandler!.onCloseWindow();
+        else if (_browserEventHandler != null)
+          _browserEventHandler!.onCloseWindow();
         break;
       case "onTitleChanged":
         if ((webviewParams != null && webviewParams!.onTitleChanged != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? title = call.arguments["title"];
           if (webviewParams != null && webviewParams!.onTitleChanged != null)
             webviewParams!.onTitleChanged!(_controllerFromPlatform, title);
           else
-            _inAppBrowserEventHandler!.onTitleChanged(title);
+            _browserEventHandler!.onTitleChanged(title);
         }
         break;
       case "onGeolocationPermissionsShowPrompt":
@@ -508,7 +508,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.androidOnGeolocationPermissionsShowPrompt !=
                         null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String origin = call.arguments["origin"];
 
           if (webviewParams != null) {
@@ -528,9 +528,9 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                   ?.toMap();
             }
           } else {
-            return ((await _inAppBrowserEventHandler!
+            return ((await _browserEventHandler!
                         .onGeolocationPermissionsShowPrompt(origin)) ??
-                    (await _inAppBrowserEventHandler!
+                    (await _browserEventHandler!
                         .androidOnGeolocationPermissionsShowPrompt(origin)))
                 ?.toMap();
           }
@@ -552,10 +552,10 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               _controllerFromPlatform,
             );
           }
-        } else if (_inAppBrowserEventHandler != null) {
-          _inAppBrowserEventHandler!.onGeolocationPermissionsHidePrompt();
+        } else if (_browserEventHandler != null) {
+          _browserEventHandler!.onGeolocationPermissionsHidePrompt();
           // ignore: deprecated_member_use_from_same_package
-          _inAppBrowserEventHandler!
+          _browserEventHandler!
               .androidOnGeolocationPermissionsHidePrompt();
         }
         break;
@@ -564,7 +564,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.shouldInterceptRequest != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.androidShouldInterceptRequest != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(arguments)!;
@@ -583,10 +583,10 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               ))?.toMap();
             }
           } else {
-            return ((await _inAppBrowserEventHandler!.shouldInterceptRequest(
+            return ((await _browserEventHandler!.shouldInterceptRequest(
                       request,
                     )) ??
-                    (await _inAppBrowserEventHandler!
+                    (await _browserEventHandler!
                         .androidShouldInterceptRequest(request)))
                 ?.toMap();
           }
@@ -598,7 +598,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.androidOnRenderProcessUnresponsive !=
                         null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? url = call.arguments["url"];
           CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
 
@@ -616,9 +616,9 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               ))?.toNativeValue();
             }
           } else {
-            return ((await _inAppBrowserEventHandler!
+            return ((await _browserEventHandler!
                         .onRenderProcessUnresponsive(uri)) ??
-                    (await _inAppBrowserEventHandler!
+                    (await _browserEventHandler!
                         .androidOnRenderProcessUnresponsive(uri)))
                 ?.toNativeValue();
           }
@@ -629,7 +629,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onRenderProcessResponsive != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.androidOnRenderProcessResponsive != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? url = call.arguments["url"];
           CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
 
@@ -647,10 +647,10 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               ))?.toNativeValue();
             }
           } else {
-            return ((await _inAppBrowserEventHandler!.onRenderProcessResponsive(
+            return ((await _browserEventHandler!.onRenderProcessResponsive(
                       uri,
                     )) ??
-                    (await _inAppBrowserEventHandler!
+                    (await _browserEventHandler!
                         .androidOnRenderProcessResponsive(uri)))
                 ?.toNativeValue();
           }
@@ -661,7 +661,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onRenderProcessGone != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.androidOnRenderProcessGone != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusRenderProcessGoneDetail detail = CygnusRenderProcessGoneDetail.fromMap(
@@ -681,10 +681,10 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 detail,
               );
             }
-          } else if (_inAppBrowserEventHandler != null) {
-            _inAppBrowserEventHandler!.onRenderProcessGone(detail);
+          } else if (_browserEventHandler != null) {
+            _browserEventHandler!.onRenderProcessGone(detail);
             // ignore: deprecated_member_use_from_same_package
-            _inAppBrowserEventHandler!.androidOnRenderProcessGone(detail);
+            _browserEventHandler!.androidOnRenderProcessGone(detail);
           }
         }
         break;
@@ -693,7 +693,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onFormResubmission != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.androidOnFormResubmission != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? url = call.arguments["url"];
           CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
 
@@ -711,11 +711,11 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               ))?.toNativeValue();
             }
           } else {
-            return ((await _inAppBrowserEventHandler!.onFormResubmission(
+            return ((await _browserEventHandler!.onFormResubmission(
                       uri,
                     )) ??
                     // ignore: deprecated_member_use_from_same_package
-                    (await _inAppBrowserEventHandler!.androidOnFormResubmission(
+                    (await _browserEventHandler!.androidOnFormResubmission(
                       uri,
                     )))
                 ?.toNativeValue();
@@ -727,7 +727,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 // ignore: deprecated_member_use_from_same_package
                 (webviewParams!.androidOnScaleChanged != null ||
                     webviewParams!.onZoomScaleChanged != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           double oldScale = call.arguments["oldScale"];
           double newScale = call.arguments["newScale"];
 
@@ -747,9 +747,9 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               );
             }
           } else {
-            _inAppBrowserEventHandler!.onZoomScaleChanged(oldScale, newScale);
+            _browserEventHandler!.onZoomScaleChanged(oldScale, newScale);
             // ignore: deprecated_member_use_from_same_package
-            _inAppBrowserEventHandler!.androidOnScaleChanged(
+            _browserEventHandler!.androidOnScaleChanged(
               oldScale,
               newScale,
             );
@@ -761,7 +761,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onReceivedIcon != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.androidOnReceivedIcon != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Uint8List icon = Uint8List.fromList(
             call.arguments["icon"].cast<int>(),
           );
@@ -777,9 +777,9 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               );
             }
           } else {
-            _inAppBrowserEventHandler!.onReceivedIcon(icon);
+            _browserEventHandler!.onReceivedIcon(icon);
             // ignore: deprecated_member_use_from_same_package
-            _inAppBrowserEventHandler!.androidOnReceivedIcon(icon);
+            _browserEventHandler!.androidOnReceivedIcon(icon);
           }
         }
         break;
@@ -788,7 +788,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onReceivedTouchIconUrl != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.androidOnReceivedTouchIconUrl != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String url = call.arguments["url"];
           bool precomposed = call.arguments["precomposed"];
           CygnusWebUri uri = CygnusWebUri(url);
@@ -809,9 +809,9 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               );
             }
           } else {
-            _inAppBrowserEventHandler!.onReceivedTouchIconUrl(uri, precomposed);
+            _browserEventHandler!.onReceivedTouchIconUrl(uri, precomposed);
             // ignore: deprecated_member_use_from_same_package
-            _inAppBrowserEventHandler!.androidOnReceivedTouchIconUrl(
+            _browserEventHandler!.androidOnReceivedTouchIconUrl(
               uri,
               precomposed,
             );
@@ -820,7 +820,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
         break;
       case "onJsAlert":
         if ((webviewParams != null && webviewParams!.onJsAlert != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusJsAlertRequest jsAlertRequest = CygnusJsAlertRequest.fromMap(arguments)!;
@@ -831,14 +831,14 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               jsAlertRequest,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!.onJsAlert(
+            return (await _browserEventHandler!.onJsAlert(
               jsAlertRequest,
             ))?.toMap();
         }
         break;
       case "onJsConfirm":
         if ((webviewParams != null && webviewParams!.onJsConfirm != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusJsConfirmRequest jsConfirmRequest = CygnusJsConfirmRequest.fromMap(
@@ -851,14 +851,14 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               jsConfirmRequest,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!.onJsConfirm(
+            return (await _browserEventHandler!.onJsConfirm(
               jsConfirmRequest,
             ))?.toMap();
         }
         break;
       case "onJsPrompt":
         if ((webviewParams != null && webviewParams!.onJsPrompt != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusJsPromptRequest jsPromptRequest = CygnusJsPromptRequest.fromMap(arguments)!;
@@ -869,7 +869,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               jsPromptRequest,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!.onJsPrompt(
+            return (await _browserEventHandler!.onJsPrompt(
               jsPromptRequest,
             ))?.toMap();
         }
@@ -879,7 +879,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onJsBeforeUnload != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.androidOnJsBeforeUnload != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusJsBeforeUnloadRequest jsBeforeUnloadRequest =
@@ -899,10 +899,10 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               ))?.toMap();
             }
           } else {
-            return ((await _inAppBrowserEventHandler!.onJsBeforeUnload(
+            return ((await _browserEventHandler!.onJsBeforeUnload(
                       jsBeforeUnloadRequest,
                     )) ??
-                    (await _inAppBrowserEventHandler!.androidOnJsBeforeUnload(
+                    (await _browserEventHandler!.androidOnJsBeforeUnload(
                       jsBeforeUnloadRequest,
                     )))
                 ?.toMap();
@@ -914,7 +914,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onSafeBrowsingHit != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.androidOnSafeBrowsingHit != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String url = call.arguments["url"];
           CygnusSafeBrowsingThreat? threatType = CygnusSafeBrowsingThreat.fromNativeValue(
             call.arguments["threatType"],
@@ -937,11 +937,11 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               ))?.toMap();
             }
           } else {
-            return ((await _inAppBrowserEventHandler!.onSafeBrowsingHit(
+            return ((await _browserEventHandler!.onSafeBrowsingHit(
                       uri,
                       threatType,
                     )) ??
-                    (await _inAppBrowserEventHandler!.androidOnSafeBrowsingHit(
+                    (await _browserEventHandler!.androidOnSafeBrowsingHit(
                       uri,
                       threatType,
                     )))
@@ -954,7 +954,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onReceivedLoginRequest != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.androidOnReceivedLoginRequest != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusLoginRequest loginRequest = CygnusLoginRequest.fromMap(arguments)!;
@@ -973,9 +973,9 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               );
             }
           } else {
-            _inAppBrowserEventHandler!.onReceivedLoginRequest(loginRequest);
+            _browserEventHandler!.onReceivedLoginRequest(loginRequest);
             // ignore: deprecated_member_use_from_same_package
-            _inAppBrowserEventHandler!.androidOnReceivedLoginRequest(
+            _browserEventHandler!.androidOnReceivedLoginRequest(
               loginRequest,
             );
           }
@@ -984,7 +984,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onPermissionRequestCanceled":
         if ((webviewParams != null &&
                 webviewParams!.onPermissionRequestCanceled != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusPermissionRequest permissionRequest = CygnusPermissionRequest.fromMap(
@@ -998,24 +998,24 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               permissionRequest,
             );
           else
-            _inAppBrowserEventHandler!.onPermissionRequestCanceled(
+            _browserEventHandler!.onPermissionRequestCanceled(
               permissionRequest,
             );
         }
         break;
       case "onRequestFocus":
         if ((webviewParams != null && webviewParams!.onRequestFocus != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           if (webviewParams != null && webviewParams!.onRequestFocus != null)
             webviewParams!.onRequestFocus!(_controllerFromPlatform);
           else
-            _inAppBrowserEventHandler!.onRequestFocus();
+            _browserEventHandler!.onRequestFocus();
         }
         break;
       case "onReceivedHttpAuthRequest":
         if ((webviewParams != null &&
                 webviewParams!.onReceivedHttpAuthRequest != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusHttpAuthenticationChallenge challenge =
@@ -1028,7 +1028,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               challenge,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!.onReceivedHttpAuthRequest(
+            return (await _browserEventHandler!.onReceivedHttpAuthRequest(
               challenge,
             ))?.toMap();
         }
@@ -1036,7 +1036,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onReceivedServerTrustAuthRequest":
         if ((webviewParams != null &&
                 webviewParams!.onReceivedServerTrustAuthRequest != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusServerTrustChallenge challenge = CygnusServerTrustChallenge.fromMap(
@@ -1050,7 +1050,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               challenge,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!
+            return (await _browserEventHandler!
                     .onReceivedServerTrustAuthRequest(challenge))
                 ?.toMap();
         }
@@ -1058,7 +1058,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onReceivedClientCertRequest":
         if ((webviewParams != null &&
                 webviewParams!.onReceivedClientCertRequest != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusClientCertChallenge challenge = CygnusClientCertChallenge.fromMap(
@@ -1072,7 +1072,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               challenge,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!
+            return (await _browserEventHandler!
                     .onReceivedClientCertRequest(challenge))
                 ?.toMap();
         }
@@ -1086,7 +1086,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                                 .params
                                 .onFindResultReceived !=
                             null))) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           int activeMatchOrdinal = call.arguments["activeMatchOrdinal"];
           int numberOfMatches = call.arguments["numberOfMatches"];
           bool isDoneCounting = call.arguments["isDoneCounting"];
@@ -1114,19 +1114,19 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 isDoneCounting,
               );
           } else {
-            if (_inAppBrowser!.findInteractionController != null &&
-                _inAppBrowser!
+            if (_browser!.findInteractionController != null &&
+                _browser!
                         .findInteractionController!
                         .onFindResultReceived !=
                     null)
-              _inAppBrowser!.findInteractionController!.onFindResultReceived!(
+              _browser!.findInteractionController!.onFindResultReceived!(
                 webviewParams!.findInteractionController!,
                 activeMatchOrdinal,
                 numberOfMatches,
                 isDoneCounting,
               );
             else
-              _inAppBrowserEventHandler!.onFindResultReceived(
+              _browserEventHandler!.onFindResultReceived(
                 activeMatchOrdinal,
                 numberOfMatches,
                 isDoneCounting,
@@ -1139,7 +1139,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onPermissionRequest != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.androidOnPermissionRequest != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String origin = call.arguments["origin"];
           List<String> resources = call.arguments["resources"].cast<String>();
 
@@ -1163,10 +1163,10 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               ))?.toMap();
             }
           } else {
-            return (await _inAppBrowserEventHandler!.onPermissionRequest(
+            return (await _browserEventHandler!.onPermissionRequest(
                   permissionRequest,
                 ))?.toMap() ??
-                (await _inAppBrowserEventHandler!.androidOnPermissionRequest(
+                (await _browserEventHandler!.androidOnPermissionRequest(
                   origin,
                   resources,
                 ))?.toMap();
@@ -1176,7 +1176,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onUpdateVisitedHistory":
         if ((webviewParams != null &&
                 webviewParams!.onUpdateVisitedHistory != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? url = call.arguments["url"];
           bool? isReload = call.arguments["isReload"];
           CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
@@ -1188,7 +1188,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               isReload,
             );
           else
-            _inAppBrowserEventHandler!.onUpdateVisitedHistory(uri, isReload);
+            _browserEventHandler!.onUpdateVisitedHistory(uri, isReload);
         }
         break;
       case "onWebContentProcessDidTerminate":
@@ -1206,23 +1206,23 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               _controllerFromPlatform,
             );
           }
-        } else if (_inAppBrowserEventHandler != null) {
-          _inAppBrowserEventHandler!.onWebContentProcessDidTerminate();
+        } else if (_browserEventHandler != null) {
+          _browserEventHandler!.onWebContentProcessDidTerminate();
           // ignore: deprecated_member_use_from_same_package
-          _inAppBrowserEventHandler!.iosOnWebContentProcessDidTerminate();
+          _browserEventHandler!.iosOnWebContentProcessDidTerminate();
         }
         break;
       case "onPageCommitVisible":
         if ((webviewParams != null &&
                 webviewParams!.onPageCommitVisible != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? url = call.arguments["url"];
           CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           if (webviewParams != null &&
               webviewParams!.onPageCommitVisible != null)
             webviewParams!.onPageCommitVisible!(_controllerFromPlatform, uri);
           else
-            _inAppBrowserEventHandler!.onPageCommitVisible(uri);
+            _browserEventHandler!.onPageCommitVisible(uri);
         }
         break;
       case "onDidReceiveServerRedirectForProvisionalNavigation":
@@ -1249,10 +1249,10 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               _controllerFromPlatform,
             );
           }
-        } else if (_inAppBrowserEventHandler != null) {
-          _inAppBrowserEventHandler!
+        } else if (_browserEventHandler != null) {
+          _browserEventHandler!
               .onDidReceiveServerRedirectForProvisionalNavigation();
-          _inAppBrowserEventHandler!
+          _browserEventHandler!
               .iosOnDidReceiveServerRedirectForProvisionalNavigation();
         }
         break;
@@ -1261,7 +1261,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onNavigationResponse != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.iosOnNavigationResponse != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           // ignore: deprecated_member_use_from_same_package
@@ -1287,10 +1287,10 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               ))?.toNativeValue();
             }
           } else {
-            return (await _inAppBrowserEventHandler!.onNavigationResponse(
+            return (await _browserEventHandler!.onNavigationResponse(
                   navigationResponse,
                 ))?.toNativeValue() ??
-                (await _inAppBrowserEventHandler!.iosOnNavigationResponse(
+                (await _browserEventHandler!.iosOnNavigationResponse(
                   iosOnNavigationResponse,
                 ))?.toNativeValue();
           }
@@ -1301,7 +1301,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.shouldAllowDeprecatedTLS != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.iosShouldAllowDeprecatedTLS != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusURLAuthenticationChallenge challenge =
@@ -1321,11 +1321,11 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               ))?.toNativeValue();
             }
           } else {
-            return (await _inAppBrowserEventHandler!.shouldAllowDeprecatedTLS(
+            return (await _browserEventHandler!.shouldAllowDeprecatedTLS(
                   challenge,
                 ))?.toNativeValue() ??
                 // ignore: deprecated_member_use_from_same_package
-                (await _inAppBrowserEventHandler!.iosShouldAllowDeprecatedTLS(
+                (await _browserEventHandler!.iosShouldAllowDeprecatedTLS(
                   challenge,
                 ))?.toNativeValue();
           }
@@ -1334,7 +1334,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onLongPressHitTestResult":
         if ((webviewParams != null &&
                 webviewParams!.onLongPressHitTestResult != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusWebViewHitTestResult hitTestResult =
@@ -1347,16 +1347,16 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               hitTestResult,
             );
           else
-            _inAppBrowserEventHandler!.onLongPressHitTestResult(hitTestResult);
+            _browserEventHandler!.onLongPressHitTestResult(hitTestResult);
         }
         break;
       case "onCreateContextMenu":
         CygnusContextMenu? contextMenu;
         if (webviewParams != null && webviewParams!.contextMenu != null) {
           contextMenu = webviewParams!.contextMenu;
-        } else if (_inAppBrowserEventHandler != null &&
-            _inAppBrowser!.contextMenu != null) {
-          contextMenu = _inAppBrowser!.contextMenu;
+        } else if (_browserEventHandler != null &&
+            _browser!.contextMenu != null) {
+          contextMenu = _browser!.contextMenu;
         }
 
         if (contextMenu != null && contextMenu.onCreateContextMenu != null) {
@@ -1372,9 +1372,9 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
         CygnusContextMenu? contextMenu;
         if (webviewParams != null && webviewParams!.contextMenu != null) {
           contextMenu = webviewParams!.contextMenu;
-        } else if (_inAppBrowserEventHandler != null &&
-            _inAppBrowser!.contextMenu != null) {
-          contextMenu = _inAppBrowser!.contextMenu;
+        } else if (_browserEventHandler != null &&
+            _browser!.contextMenu != null) {
+          contextMenu = _browser!.contextMenu;
         }
 
         if (contextMenu != null && contextMenu.onHideContextMenu != null) {
@@ -1385,9 +1385,9 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
         CygnusContextMenu? contextMenu;
         if (webviewParams != null && webviewParams!.contextMenu != null) {
           contextMenu = webviewParams!.contextMenu;
-        } else if (_inAppBrowserEventHandler != null &&
-            _inAppBrowser!.contextMenu != null) {
-          contextMenu = _inAppBrowser!.contextMenu;
+        } else if (_browserEventHandler != null &&
+            _browser!.contextMenu != null) {
+          contextMenu = _browser!.contextMenu;
         }
 
         if (contextMenu != null) {
@@ -1424,18 +1424,18 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onEnterFullscreen":
         if (webviewParams != null && webviewParams!.onEnterFullscreen != null)
           webviewParams!.onEnterFullscreen!(_controllerFromPlatform);
-        else if (_inAppBrowserEventHandler != null)
-          _inAppBrowserEventHandler!.onEnterFullscreen();
+        else if (_browserEventHandler != null)
+          _browserEventHandler!.onEnterFullscreen();
         break;
       case "onExitFullscreen":
         if (webviewParams != null && webviewParams!.onExitFullscreen != null)
           webviewParams!.onExitFullscreen!(_controllerFromPlatform);
-        else if (_inAppBrowserEventHandler != null)
-          _inAppBrowserEventHandler!.onExitFullscreen();
+        else if (_browserEventHandler != null)
+          _browserEventHandler!.onExitFullscreen();
         break;
       case "onOverScrolled":
         if ((webviewParams != null && webviewParams!.onOverScrolled != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           int x = call.arguments["x"];
           int y = call.arguments["y"];
           bool clampedX = call.arguments["clampedX"];
@@ -1450,27 +1450,27 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               clampedY,
             );
           else
-            _inAppBrowserEventHandler!.onOverScrolled(x, y, clampedX, clampedY);
+            _browserEventHandler!.onOverScrolled(x, y, clampedX, clampedY);
         }
         break;
       case "onWindowFocus":
         if (webviewParams != null && webviewParams!.onWindowFocus != null)
           webviewParams!.onWindowFocus!(_controllerFromPlatform);
-        else if (_inAppBrowserEventHandler != null)
-          _inAppBrowserEventHandler!.onWindowFocus();
+        else if (_browserEventHandler != null)
+          _browserEventHandler!.onWindowFocus();
         break;
       case "onWindowBlur":
         if (webviewParams != null && webviewParams!.onWindowBlur != null)
           webviewParams!.onWindowBlur!(_controllerFromPlatform);
-        else if (_inAppBrowserEventHandler != null)
-          _inAppBrowserEventHandler!.onWindowBlur();
+        else if (_browserEventHandler != null)
+          _browserEventHandler!.onWindowBlur();
         break;
       case "onPrintRequest":
         if ((webviewParams != null &&
                 (webviewParams!.onPrintRequest != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.onPrint != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? url = call.arguments["url"];
           String? printJobId = call.arguments["printJobId"];
           CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
@@ -1494,8 +1494,8 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
             }
           } else {
             // ignore: deprecated_member_use_from_same_package
-            _inAppBrowserEventHandler!.onPrint(uri);
-            return await _inAppBrowserEventHandler!.onPrintRequest(
+            _browserEventHandler!.onPrint(uri);
+            return await _browserEventHandler!.onPrintRequest(
               uri,
               printJob,
             );
@@ -1505,7 +1505,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onInjectedScriptLoaded":
         String id = call.arguments[0];
         var onLoadCallback = _injectedScriptsFromURL[id]?.onLoad;
-        if ((webviewParams != null || _inAppBrowserEventHandler != null) &&
+        if ((webviewParams != null || _browserEventHandler != null) &&
             onLoadCallback != null) {
           onLoadCallback();
         }
@@ -1513,7 +1513,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onInjectedScriptError":
         String id = call.arguments[0];
         var onErrorCallback = _injectedScriptsFromURL[id]?.onError;
-        if ((webviewParams != null || _inAppBrowserEventHandler != null) &&
+        if ((webviewParams != null || _browserEventHandler != null) &&
             onErrorCallback != null) {
           onErrorCallback();
         }
@@ -1521,7 +1521,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onCameraCaptureStateChanged":
         if ((webviewParams != null &&
                 webviewParams!.onCameraCaptureStateChanged != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           var oldState = CygnusMediaCaptureState.fromNativeValue(
             call.arguments["oldState"],
           );
@@ -1537,7 +1537,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               newState,
             );
           else
-            _inAppBrowserEventHandler!.onCameraCaptureStateChanged(
+            _browserEventHandler!.onCameraCaptureStateChanged(
               oldState,
               newState,
             );
@@ -1546,7 +1546,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onMicrophoneCaptureStateChanged":
         if ((webviewParams != null &&
                 webviewParams!.onMicrophoneCaptureStateChanged != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           var oldState = CygnusMediaCaptureState.fromNativeValue(
             call.arguments["oldState"],
           );
@@ -1562,7 +1562,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               newState,
             );
           else
-            _inAppBrowserEventHandler!.onMicrophoneCaptureStateChanged(
+            _browserEventHandler!.onMicrophoneCaptureStateChanged(
               oldState,
               newState,
             );
@@ -1571,7 +1571,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
       case "onContentSizeChanged":
         if ((webviewParams != null &&
                 webviewParams!.onContentSizeChanged != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           var oldContentSize = MapSize.fromMap(
             call.arguments["oldContentSize"]?.cast<String, dynamic>(),
           )!;
@@ -1587,7 +1587,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
               newContentSize,
             );
           else
-            _inAppBrowserEventHandler!.onContentSizeChanged(
+            _browserEventHandler!.onContentSizeChanged(
               oldContentSize,
               newContentSize,
             );
@@ -1609,7 +1609,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
           case "onLoadResource":
             if ((webviewParams != null &&
                     webviewParams!.onLoadResource != null) ||
-                _inAppBrowserEventHandler != null) {
+                _browserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
               arguments["startTime"] = arguments["startTime"] is int
@@ -1628,13 +1628,13 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                   response,
                 );
               else
-                _inAppBrowserEventHandler!.onLoadResource(response);
+                _browserEventHandler!.onLoadResource(response);
             }
             return null;
           case "shouldInterceptAjaxRequest":
             if ((webviewParams != null &&
                     webviewParams!.shouldInterceptAjaxRequest != null) ||
-                _inAppBrowserEventHandler != null) {
+                _browserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
               CygnusAjaxRequest request = CygnusAjaxRequest.fromMap(arguments)!;
@@ -1649,7 +1649,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 );
               else
                 return jsonEncode(
-                  await _inAppBrowserEventHandler!.shouldInterceptAjaxRequest(
+                  await _browserEventHandler!.shouldInterceptAjaxRequest(
                     request,
                   ),
                 );
@@ -1658,7 +1658,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
           case "onAjaxReadyStateChange":
             if ((webviewParams != null &&
                     webviewParams!.onAjaxReadyStateChange != null) ||
-                _inAppBrowserEventHandler != null) {
+                _browserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
               CygnusAjaxRequest request = CygnusAjaxRequest.fromMap(arguments)!;
@@ -1673,7 +1673,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 );
               else
                 return jsonEncode(
-                  (await _inAppBrowserEventHandler!.onAjaxReadyStateChange(
+                  (await _browserEventHandler!.onAjaxReadyStateChange(
                     request,
                   ))?.toNativeValue(),
                 );
@@ -1682,7 +1682,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
           case "onAjaxProgress":
             if ((webviewParams != null &&
                     webviewParams!.onAjaxProgress != null) ||
-                _inAppBrowserEventHandler != null) {
+                _browserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
               CygnusAjaxRequest request = CygnusAjaxRequest.fromMap(arguments)!;
@@ -1697,7 +1697,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 );
               else
                 return jsonEncode(
-                  (await _inAppBrowserEventHandler!.onAjaxProgress(
+                  (await _browserEventHandler!.onAjaxProgress(
                     request,
                   ))?.toNativeValue(),
                 );
@@ -1706,7 +1706,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
           case "shouldInterceptFetchRequest":
             if ((webviewParams != null &&
                     webviewParams!.shouldInterceptFetchRequest != null) ||
-                _inAppBrowserEventHandler != null) {
+                _browserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
               CygnusFetchRequest request = CygnusFetchRequest.fromMap(arguments)!;
@@ -1721,7 +1721,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
                 );
               else
                 return jsonEncode(
-                  await _inAppBrowserEventHandler!.shouldInterceptFetchRequest(
+                  await _browserEventHandler!.shouldInterceptFetchRequest(
                     request,
                   ),
                 );
@@ -1730,19 +1730,19 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
           case "onWindowFocus":
             if (webviewParams != null && webviewParams!.onWindowFocus != null)
               webviewParams!.onWindowFocus!(_controllerFromPlatform);
-            else if (_inAppBrowserEventHandler != null)
-              _inAppBrowserEventHandler!.onWindowFocus();
+            else if (_browserEventHandler != null)
+              _browserEventHandler!.onWindowFocus();
             return null;
           case "onWindowBlur":
             if (webviewParams != null && webviewParams!.onWindowBlur != null)
               webviewParams!.onWindowBlur!(_controllerFromPlatform);
-            else if (_inAppBrowserEventHandler != null)
-              _inAppBrowserEventHandler!.onWindowBlur();
+            else if (_browserEventHandler != null)
+              _browserEventHandler!.onWindowBlur();
             return null;
           case "onInjectedScriptLoaded":
             String id = handlerData.args[0];
             var onLoadCallback = _injectedScriptsFromURL[id]?.onLoad;
-            if ((webviewParams != null || _inAppBrowserEventHandler != null) &&
+            if ((webviewParams != null || _browserEventHandler != null) &&
                 onLoadCallback != null) {
               onLoadCallback();
             }
@@ -1750,7 +1750,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
           case "onInjectedScriptError":
             String id = handlerData.args[0];
             var onErrorCallback = _injectedScriptsFromURL[id]?.onError;
-            if ((webviewParams != null || _inAppBrowserEventHandler != null) &&
+            if ((webviewParams != null || _browserEventHandler != null) &&
                 onErrorCallback != null) {
               onErrorCallback();
             }
@@ -3072,7 +3072,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
   @override
   void dispose({bool isKeepAlive = false}) {
     disposeChannel(removeMethodCallHandler: !isKeepAlive);
-    _inAppBrowser = null;
+    _browser = null;
     webStorage.dispose();
     if (!isKeepAlive) {
       _controllerFromPlatform = null;

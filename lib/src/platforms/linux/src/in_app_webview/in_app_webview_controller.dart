@@ -30,7 +30,7 @@ class LinuxInAppWebViewControllerCreationParams
   });
 
   /// Creates a [LinuxInAppWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
-  factory LinuxInAppWebViewControllerCreationParams.fromPlatformInAppWebViewControllerCreationParams(
+  factory LinuxInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
     return LinuxInAppWebViewControllerCreationParams(
@@ -63,10 +63,10 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
   static final Map<CygnusWebViewKeepAlive, CygnusWebViewControllerKeepAliveProps?>
   _keepAliveMap = {};
 
-  LinuxInAppBrowser? _inAppBrowser;
+  LinuxInAppBrowser? _browser;
 
-  CygnusPlatformBrowserEvents? get _inAppBrowserEventHandler =>
-      _inAppBrowser?.eventHandler;
+  CygnusPlatformBrowserEvents? get _browserEventHandler =>
+      _browser?.eventHandler;
 
   dynamic _controllerFromPlatform;
 
@@ -78,7 +78,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
   ) : super.implementation(
         params is LinuxInAppWebViewControllerCreationParams
             ? params
-            : LinuxInAppWebViewControllerCreationParams.fromPlatformInAppWebViewControllerCreationParams(
+            : LinuxInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
@@ -114,20 +114,20 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
     return _staticValue;
   }
 
-  LinuxInAppWebViewController.fromInAppBrowser(
+  LinuxInAppWebViewController.fromBrowser(
     CygnusPlatformWebViewControllerCreationParams params,
     MethodChannel channel,
-    LinuxInAppBrowser inAppBrowser,
+    LinuxInAppBrowser browser,
     UnmodifiableListView<CygnusUserScript>? initialUserScripts,
   ) : super.implementation(
         params is LinuxInAppWebViewControllerCreationParams
             ? params
-            : LinuxInAppWebViewControllerCreationParams.fromPlatformInAppWebViewControllerCreationParams(
+            : LinuxInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
     this.channel = channel;
-    this._inAppBrowser = inAppBrowser;
+    this._browser = browser;
 
     if (initialUserScripts != null) {
       for (final userScript in initialUserScripts) {
@@ -185,10 +185,10 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
   _debugLog(String method, dynamic args) {
     debugLog(
       className: this.runtimeType.toString(),
-      name: _inAppBrowser == null
+      name: _browser == null
           ? "WebView"
-          : _inAppBrowser.runtimeType.toString(),
-      id: (getViewId() ?? _inAppBrowser?.id).toString(),
+          : _browser.runtimeType.toString(),
+      id: (getViewId() ?? _browser?.id).toString(),
       debugLoggingSettings: CygnusPlatformWebViewController.debugLoggingSettings,
       method: method,
       args: args,
@@ -205,30 +205,30 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
       case "onLoadStart":
         _injectedScriptsFromURL.clear();
         if ((webviewParams != null && webviewParams!.onLoadStart != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? url = call.arguments["url"];
           CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           if (webviewParams != null && webviewParams!.onLoadStart != null)
             webviewParams!.onLoadStart!(_controllerFromPlatform, uri);
           else
-            _inAppBrowserEventHandler!.onLoadStart(uri);
+            _browserEventHandler!.onLoadStart(uri);
         }
         break;
       case "onLoadStop":
         if ((webviewParams != null && webviewParams!.onLoadStop != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? url = call.arguments["url"];
           CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           if (webviewParams != null && webviewParams!.onLoadStop != null)
             webviewParams!.onLoadStop!(_controllerFromPlatform, uri);
           else
-            _inAppBrowserEventHandler!.onLoadStop(uri);
+            _browserEventHandler!.onLoadStop(uri);
         }
         break;
       case "shouldOverrideUrlLoading":
         if ((webviewParams != null &&
                 webviewParams!.shouldOverrideUrlLoading != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusNavigationAction navigationAction = CygnusNavigationAction.fromMap(
@@ -241,7 +241,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               _controllerFromPlatform,
               navigationAction,
             ))?.toNativeValue();
-          return (await _inAppBrowserEventHandler!.shouldOverrideUrlLoading(
+          return (await _browserEventHandler!.shouldOverrideUrlLoading(
             navigationAction,
           ))?.toNativeValue();
         }
@@ -249,7 +249,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
       case "onProgressChanged":
         if ((webviewParams != null &&
                 webviewParams!.onProgressChanged != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           int progress = call.arguments["progress"];
           if (webviewParams != null && webviewParams!.onProgressChanged != null)
             webviewParams!.onProgressChanged!(
@@ -257,13 +257,13 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               progress,
             );
           else
-            _inAppBrowserEventHandler!.onProgressChanged(progress);
+            _browserEventHandler!.onProgressChanged(progress);
         }
         break;
       case "onConsoleMessage":
         if ((webviewParams != null &&
                 webviewParams!.onConsoleMessage != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusConsoleMessage consoleMessage = CygnusConsoleMessage.fromMap(arguments)!;
@@ -273,35 +273,35 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               consoleMessage,
             );
           else
-            _inAppBrowserEventHandler!.onConsoleMessage(consoleMessage);
+            _browserEventHandler!.onConsoleMessage(consoleMessage);
         }
         break;
       case "onLoadResource":
         if ((webviewParams != null && webviewParams!.onLoadResource != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusLoadedResource resource = CygnusLoadedResource.fromMap(arguments)!;
           if (webviewParams != null && webviewParams!.onLoadResource != null)
             webviewParams!.onLoadResource!(_controllerFromPlatform, resource);
           else
-            _inAppBrowserEventHandler!.onLoadResource(resource);
+            _browserEventHandler!.onLoadResource(resource);
         }
         break;
       case "onTitleChanged":
         if ((webviewParams != null && webviewParams!.onTitleChanged != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? title = call.arguments["title"];
           if (webviewParams != null && webviewParams!.onTitleChanged != null)
             webviewParams!.onTitleChanged!(_controllerFromPlatform, title);
           else
-            _inAppBrowserEventHandler!.onTitleChanged(title);
+            _browserEventHandler!.onTitleChanged(title);
         }
         break;
       case "onUpdateVisitedHistory":
         if ((webviewParams != null &&
                 webviewParams!.onUpdateVisitedHistory != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? url = call.arguments["url"];
           CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           bool? isReload = call.arguments["isReload"];
@@ -313,7 +313,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               isReload,
             );
           else
-            _inAppBrowserEventHandler!.onUpdateVisitedHistory(uri, isReload);
+            _browserEventHandler!.onUpdateVisitedHistory(uri, isReload);
         }
         break;
       case "onReceivedError":
@@ -321,7 +321,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onReceivedError != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.onLoadError != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(
@@ -350,13 +350,13 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
             }
           } else {
             if (isForMainFrame) {
-              _inAppBrowserEventHandler!.onLoadError(
+              _browserEventHandler!.onLoadError(
                 request.url,
                 error.type.toNativeValue() ?? -1,
                 error.description,
               );
             }
-            _inAppBrowserEventHandler!.onReceivedError(request, error);
+            _browserEventHandler!.onReceivedError(request, error);
           }
         }
         break;
@@ -365,7 +365,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onReceivedHttpError != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.onLoadHttpError != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(
@@ -394,13 +394,13 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
             }
           } else {
             if (isForMainFrame) {
-              _inAppBrowserEventHandler!.onLoadHttpError(
+              _browserEventHandler!.onLoadHttpError(
                 request.url,
                 errorResponse.statusCode ?? -1,
                 errorResponse.reasonPhrase ?? '',
               );
             }
-            _inAppBrowserEventHandler!.onReceivedHttpError(
+            _browserEventHandler!.onReceivedHttpError(
               request,
               errorResponse,
             );
@@ -410,20 +410,20 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
       case "onPageCommitVisible":
         if ((webviewParams != null &&
                 webviewParams!.onPageCommitVisible != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? url = call.arguments["url"];
           CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           if (webviewParams != null &&
               webviewParams!.onPageCommitVisible != null)
             webviewParams!.onPageCommitVisible!(_controllerFromPlatform, uri);
           else
-            _inAppBrowserEventHandler!.onPageCommitVisible(uri);
+            _browserEventHandler!.onPageCommitVisible(uri);
         }
         break;
       case "onZoomScaleChanged":
         if ((webviewParams != null &&
                 webviewParams!.onZoomScaleChanged != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           double oldScale = call.arguments["oldScale"];
           double newScale = call.arguments["newScale"];
           if (webviewParams != null &&
@@ -434,29 +434,29 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               newScale,
             );
           else
-            _inAppBrowserEventHandler!.onZoomScaleChanged(oldScale, newScale);
+            _browserEventHandler!.onZoomScaleChanged(oldScale, newScale);
         }
         break;
       case "onScrollChanged":
         if ((webviewParams != null && webviewParams!.onScrollChanged != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           int x = call.arguments["x"];
           int y = call.arguments["y"];
           if (webviewParams != null && webviewParams!.onScrollChanged != null)
             webviewParams!.onScrollChanged!(_controllerFromPlatform, x, y);
           else
-            _inAppBrowserEventHandler!.onScrollChanged(x, y);
+            _browserEventHandler!.onScrollChanged(x, y);
         }
         break;
       case "onCloseWindow":
         if (webviewParams != null && webviewParams!.onCloseWindow != null)
           webviewParams!.onCloseWindow!(_controllerFromPlatform);
-        else if (_inAppBrowserEventHandler != null)
-          _inAppBrowserEventHandler!.onCloseWindow();
+        else if (_browserEventHandler != null)
+          _browserEventHandler!.onCloseWindow();
         break;
       case "onCreateWindow":
         if ((webviewParams != null && webviewParams!.onCreateWindow != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusCreateWindowAction createWindowAction = CygnusCreateWindowAction.fromMap(
@@ -469,14 +469,14 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               createWindowAction,
             );
           else
-            return await _inAppBrowserEventHandler!.onCreateWindow(
+            return await _browserEventHandler!.onCreateWindow(
               createWindowAction,
             );
         }
         return false;
       case "onJsAlert":
         if ((webviewParams != null && webviewParams!.onJsAlert != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusJsAlertRequest jsAlertRequest = CygnusJsAlertRequest.fromMap(arguments)!;
@@ -487,14 +487,14 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               jsAlertRequest,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!.onJsAlert(
+            return (await _browserEventHandler!.onJsAlert(
               jsAlertRequest,
             ))?.toMap();
         }
         return null;
       case "onJsConfirm":
         if ((webviewParams != null && webviewParams!.onJsConfirm != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusJsConfirmRequest jsConfirmRequest = CygnusJsConfirmRequest.fromMap(
@@ -507,14 +507,14 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               jsConfirmRequest,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!.onJsConfirm(
+            return (await _browserEventHandler!.onJsConfirm(
               jsConfirmRequest,
             ))?.toMap();
         }
         return null;
       case "onJsPrompt":
         if ((webviewParams != null && webviewParams!.onJsPrompt != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusJsPromptRequest jsPromptRequest = CygnusJsPromptRequest.fromMap(arguments)!;
@@ -525,7 +525,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               jsPromptRequest,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!.onJsPrompt(
+            return (await _browserEventHandler!.onJsPrompt(
               jsPromptRequest,
             ))?.toMap();
         }
@@ -533,7 +533,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
       case "onJsBeforeUnload":
         if ((webviewParams != null &&
                 webviewParams!.onJsBeforeUnload != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusJsBeforeUnloadRequest jsBeforeUnloadRequest =
@@ -545,7 +545,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               jsBeforeUnloadRequest,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!.onJsBeforeUnload(
+            return (await _browserEventHandler!.onJsBeforeUnload(
               jsBeforeUnloadRequest,
             ))?.toMap();
         }
@@ -553,7 +553,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
       case "onPermissionRequest":
         if ((webviewParams != null &&
                 webviewParams!.onPermissionRequest != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusPermissionRequest permissionRequest = CygnusPermissionRequest.fromMap(
@@ -567,7 +567,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               permissionRequest,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!.onPermissionRequest(
+            return (await _browserEventHandler!.onPermissionRequest(
               permissionRequest,
             ))?.toMap();
         }
@@ -575,7 +575,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
       case "onReceivedHttpAuthRequest":
         if ((webviewParams != null &&
                 webviewParams!.onReceivedHttpAuthRequest != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusHttpAuthenticationChallenge challenge =
@@ -588,7 +588,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               challenge,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!.onReceivedHttpAuthRequest(
+            return (await _browserEventHandler!.onReceivedHttpAuthRequest(
               challenge,
             ))?.toMap();
         }
@@ -596,7 +596,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
       case "onReceivedServerTrustAuthRequest":
         if ((webviewParams != null &&
                 webviewParams!.onReceivedServerTrustAuthRequest != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusServerTrustChallenge challenge = CygnusServerTrustChallenge.fromMap(
@@ -610,7 +610,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               challenge,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!
+            return (await _browserEventHandler!
                     .onReceivedServerTrustAuthRequest(challenge))
                 ?.toMap();
         }
@@ -618,7 +618,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
       case "onReceivedClientCertRequest":
         if ((webviewParams != null &&
                 webviewParams!.onReceivedClientCertRequest != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusClientCertChallenge challenge = CygnusClientCertChallenge.fromMap(
@@ -632,7 +632,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               challenge,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!
+            return (await _browserEventHandler!
                     .onReceivedClientCertRequest(challenge))
                 ?.toMap();
         }
@@ -642,7 +642,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onDownloadStart != null ||
                     webviewParams!.onDownloadStartRequest != null ||
                     webviewParams!.onDownloadStarting != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusDownloadStartRequest downloadStartRequest =
@@ -666,13 +666,13 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               );
             }
           } else {
-            _inAppBrowserEventHandler!.onDownloadStart(
+            _browserEventHandler!.onDownloadStart(
               downloadStartRequest.url,
             );
-            _inAppBrowserEventHandler!.onDownloadStartRequest(
+            _browserEventHandler!.onDownloadStartRequest(
               downloadStartRequest,
             );
-            return (await _inAppBrowserEventHandler!.onDownloadStarting(
+            return (await _browserEventHandler!.onDownloadStarting(
               downloadStartRequest,
             ))?.toMap();
           }
@@ -681,18 +681,18 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
       case "onEnterFullscreen":
         if (webviewParams != null && webviewParams!.onEnterFullscreen != null)
           webviewParams!.onEnterFullscreen!(_controllerFromPlatform);
-        else if (_inAppBrowserEventHandler != null)
-          _inAppBrowserEventHandler!.onEnterFullscreen();
+        else if (_browserEventHandler != null)
+          _browserEventHandler!.onEnterFullscreen();
         break;
       case "onExitFullscreen":
         if (webviewParams != null && webviewParams!.onExitFullscreen != null)
           webviewParams!.onExitFullscreen!(_controllerFromPlatform);
-        else if (_inAppBrowserEventHandler != null)
-          _inAppBrowserEventHandler!.onExitFullscreen();
+        else if (_browserEventHandler != null)
+          _browserEventHandler!.onExitFullscreen();
         break;
       case "onReceivedIcon":
         if ((webviewParams != null && webviewParams!.onReceivedIcon != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           // For now, we just have the URL, not the actual icon data
           // This could be enhanced to download the favicon
           String? faviconUrl = call.arguments["url"];
@@ -705,7 +705,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
                 Uint8List(0),
               );
             else
-              _inAppBrowserEventHandler!.onReceivedIcon(Uint8List(0));
+              _browserEventHandler!.onReceivedIcon(Uint8List(0));
           }
         }
         break;
@@ -713,9 +713,9 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
         CygnusContextMenu? contextMenu;
         if (webviewParams != null && webviewParams!.contextMenu != null) {
           contextMenu = webviewParams!.contextMenu;
-        } else if (_inAppBrowserEventHandler != null &&
-            _inAppBrowser!.contextMenu != null) {
-          contextMenu = _inAppBrowser!.contextMenu;
+        } else if (_browserEventHandler != null &&
+            _browser!.contextMenu != null) {
+          contextMenu = _browser!.contextMenu;
         }
 
         if (contextMenu != null && contextMenu.onCreateContextMenu != null) {
@@ -730,9 +730,9 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
         CygnusContextMenu? contextMenu;
         if (webviewParams != null && webviewParams!.contextMenu != null) {
           contextMenu = webviewParams!.contextMenu;
-        } else if (_inAppBrowserEventHandler != null &&
-            _inAppBrowser!.contextMenu != null) {
-          contextMenu = _inAppBrowser!.contextMenu;
+        } else if (_browserEventHandler != null &&
+            _browser!.contextMenu != null) {
+          contextMenu = _browser!.contextMenu;
         }
 
         if (contextMenu != null && contextMenu.onHideContextMenu != null) {
@@ -743,9 +743,9 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
         CygnusContextMenu? contextMenu;
         if (webviewParams != null && webviewParams!.contextMenu != null) {
           contextMenu = webviewParams!.contextMenu;
-        } else if (_inAppBrowserEventHandler != null &&
-            _inAppBrowser!.contextMenu != null) {
-          contextMenu = _inAppBrowser!.contextMenu;
+        } else if (_browserEventHandler != null &&
+            _browser!.contextMenu != null) {
+          contextMenu = _browser!.contextMenu;
         }
 
         if (contextMenu != null) {
@@ -780,7 +780,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
       case "onRenderProcessGone":
         if ((webviewParams != null &&
                 webviewParams!.onRenderProcessGone != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusRenderProcessGoneDetail detail = CygnusRenderProcessGoneDetail.fromMap(
@@ -793,13 +793,13 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               detail,
             );
           else
-            _inAppBrowserEventHandler!.onRenderProcessGone(detail);
+            _browserEventHandler!.onRenderProcessGone(detail);
         }
         break;
       case "onNavigationResponse":
         if ((webviewParams != null &&
                 webviewParams!.onNavigationResponse != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusNavigationResponse navigationResponse = CygnusNavigationResponse.fromMap(
@@ -813,7 +813,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               navigationResponse,
             ))?.toNativeValue();
           else
-            return (await _inAppBrowserEventHandler!.onNavigationResponse(
+            return (await _browserEventHandler!.onNavigationResponse(
               navigationResponse,
             ))?.toNativeValue();
         }
@@ -823,7 +823,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onPrintRequest != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.onPrint != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           String? url = call.arguments["url"];
           CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
 
@@ -841,8 +841,8 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
             }
           } else {
             // ignore: deprecated_member_use_from_same_package
-            _inAppBrowserEventHandler!.onPrint(uri);
-            return await _inAppBrowserEventHandler!.onPrintRequest(
+            _browserEventHandler!.onPrint(uri);
+            return await _browserEventHandler!.onPrintRequest(
               uri,
               null, // CygnusPrintJobController not supported on Linux
             );
@@ -852,7 +852,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
       case "onCameraCaptureStateChanged":
         if ((webviewParams != null &&
                 webviewParams!.onCameraCaptureStateChanged != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           var oldState = CygnusMediaCaptureState.fromNativeValue(
             call.arguments["oldState"],
           );
@@ -868,7 +868,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               newState,
             );
           else
-            _inAppBrowserEventHandler!.onCameraCaptureStateChanged(
+            _browserEventHandler!.onCameraCaptureStateChanged(
               oldState,
               newState,
             );
@@ -877,7 +877,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
       case "onMicrophoneCaptureStateChanged":
         if ((webviewParams != null &&
                 webviewParams!.onMicrophoneCaptureStateChanged != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           var oldState = CygnusMediaCaptureState.fromNativeValue(
             call.arguments["oldState"],
           );
@@ -893,7 +893,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               newState,
             );
           else
-            _inAppBrowserEventHandler!.onMicrophoneCaptureStateChanged(
+            _browserEventHandler!.onMicrophoneCaptureStateChanged(
               oldState,
               newState,
             );
@@ -902,7 +902,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
       case "onShowFileChooser":
         if ((webviewParams != null &&
                 webviewParams!.onShowFileChooser != null) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           CygnusShowFileChooserRequest request = CygnusShowFileChooserRequest.fromMap(
@@ -915,7 +915,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
               request,
             ))?.toMap();
           else
-            return (await _inAppBrowserEventHandler!.onShowFileChooser(
+            return (await _browserEventHandler!.onShowFileChooser(
               request,
             ))?.toMap();
         }
@@ -926,7 +926,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
                 (webviewParams!.onLoadResourceWithCustomScheme != null ||
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.onLoadResourceCustomScheme != null)) ||
-            _inAppBrowserEventHandler != null) {
+            _browserEventHandler != null) {
           Map<String, dynamic> requestMap = call.arguments
               .cast<String, dynamic>();
           CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(requestMap)!;
@@ -947,9 +947,9 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
                   ?.toMap();
             }
           } else {
-            return ((await _inAppBrowserEventHandler!
+            return ((await _browserEventHandler!
                         .onLoadResourceWithCustomScheme(request)) ??
-                    (await _inAppBrowserEventHandler!
+                    (await _browserEventHandler!
                         .onLoadResourceCustomScheme(request.url)))
                 ?.toMap();
           }
@@ -971,7 +971,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
           case "onLoadResource":
             if ((webviewParams != null &&
                     webviewParams!.onLoadResource != null) ||
-                _inAppBrowserEventHandler != null) {
+                _browserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
               arguments["startTime"] = arguments["startTime"] is int
@@ -990,13 +990,13 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
                   response,
                 );
               else
-                _inAppBrowserEventHandler!.onLoadResource(response);
+                _browserEventHandler!.onLoadResource(response);
             }
             return null;
           case "shouldInterceptAjaxRequest":
             if ((webviewParams != null &&
                     webviewParams!.shouldInterceptAjaxRequest != null) ||
-                _inAppBrowserEventHandler != null) {
+                _browserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
               CygnusAjaxRequest request = CygnusAjaxRequest.fromMap(arguments)!;
@@ -1011,7 +1011,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
                 );
               else
                 return jsonEncode(
-                  await _inAppBrowserEventHandler!.shouldInterceptAjaxRequest(
+                  await _browserEventHandler!.shouldInterceptAjaxRequest(
                     request,
                   ),
                 );
@@ -1020,7 +1020,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
           case "onAjaxReadyStateChange":
             if ((webviewParams != null &&
                     webviewParams!.onAjaxReadyStateChange != null) ||
-                _inAppBrowserEventHandler != null) {
+                _browserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
               CygnusAjaxRequest request = CygnusAjaxRequest.fromMap(arguments)!;
@@ -1035,7 +1035,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
                 );
               else
                 return jsonEncode(
-                  (await _inAppBrowserEventHandler!.onAjaxReadyStateChange(
+                  (await _browserEventHandler!.onAjaxReadyStateChange(
                     request,
                   ))?.toNativeValue(),
                 );
@@ -1044,7 +1044,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
           case "onAjaxProgress":
             if ((webviewParams != null &&
                     webviewParams!.onAjaxProgress != null) ||
-                _inAppBrowserEventHandler != null) {
+                _browserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
               CygnusAjaxRequest request = CygnusAjaxRequest.fromMap(arguments)!;
@@ -1059,7 +1059,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
                 );
               else
                 return jsonEncode(
-                  (await _inAppBrowserEventHandler!.onAjaxProgress(
+                  (await _browserEventHandler!.onAjaxProgress(
                     request,
                   ))?.toNativeValue(),
                 );
@@ -1068,7 +1068,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
           case "shouldInterceptFetchRequest":
             if ((webviewParams != null &&
                     webviewParams!.shouldInterceptFetchRequest != null) ||
-                _inAppBrowserEventHandler != null) {
+                _browserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
               CygnusFetchRequest request = CygnusFetchRequest.fromMap(arguments)!;
@@ -1083,7 +1083,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
                 );
               else
                 return jsonEncode(
-                  await _inAppBrowserEventHandler!.shouldInterceptFetchRequest(
+                  await _browserEventHandler!.shouldInterceptFetchRequest(
                     request,
                   ),
                 );
@@ -1092,19 +1092,19 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
           case "onWindowFocus":
             if (webviewParams != null && webviewParams!.onWindowFocus != null)
               webviewParams!.onWindowFocus!(_controllerFromPlatform);
-            else if (_inAppBrowserEventHandler != null)
-              _inAppBrowserEventHandler!.onWindowFocus();
+            else if (_browserEventHandler != null)
+              _browserEventHandler!.onWindowFocus();
             return null;
           case "onWindowBlur":
             if (webviewParams != null && webviewParams!.onWindowBlur != null)
               webviewParams!.onWindowBlur!(_controllerFromPlatform);
-            else if (_inAppBrowserEventHandler != null)
-              _inAppBrowserEventHandler!.onWindowBlur();
+            else if (_browserEventHandler != null)
+              _browserEventHandler!.onWindowBlur();
             return null;
           case "onInjectedScriptLoaded":
             String id = handlerData.args[0];
             var onLoadCallback = _injectedScriptsFromURL[id]?.onLoad;
-            if ((webviewParams != null || _inAppBrowserEventHandler != null) &&
+            if ((webviewParams != null || _browserEventHandler != null) &&
                 onLoadCallback != null) {
               onLoadCallback();
             }
@@ -1112,7 +1112,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
           case "onInjectedScriptError":
             String id = handlerData.args[0];
             var onErrorCallback = _injectedScriptsFromURL[id]?.onError;
-            if ((webviewParams != null || _inAppBrowserEventHandler != null) &&
+            if ((webviewParams != null || _browserEventHandler != null) &&
                 onErrorCallback != null) {
               onErrorCallback();
             }

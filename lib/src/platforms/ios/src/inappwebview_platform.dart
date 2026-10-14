@@ -45,7 +45,7 @@ class IOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
   @override
-  IOSInAppWebViewController createPlatformInAppWebViewController(
+  IOSInAppWebViewController createPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
     return IOSInAppWebViewController(params);
@@ -56,7 +56,7 @@ class IOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
   @override
-  IOSInAppWebViewController createPlatformInAppWebViewControllerStatic() {
+  IOSInAppWebViewController createPlatformWebViewControllerStatic() {
     return IOSInAppWebViewController.static();
   }
 
@@ -65,7 +65,7 @@ class IOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
   @override
-  IOSInAppWebViewWidget createPlatformInAppWebViewWidget(
+  IOSInAppWebViewWidget createPlatformWebViewWidget(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) {
     return IOSInAppWebViewWidget(params);
@@ -76,7 +76,7 @@ class IOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
   @override
-  IOSInAppWebViewWidget createPlatformInAppWebViewWidgetStatic() {
+  IOSInAppWebViewWidget createPlatformWebViewWidgetStatic() {
     return IOSInAppWebViewWidget.static();
   }
 
@@ -272,7 +272,7 @@ class IOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `flutter_inappwebview` instead.
   @override
-  IOSHeadlessInAppWebView createPlatformHeadlessInAppWebView(
+  IOSHeadlessInAppWebView createPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
     return IOSHeadlessInAppWebView(params);
@@ -283,7 +283,7 @@ class IOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `flutter_inappwebview` instead.
   @override
-  IOSHeadlessInAppWebView createPlatformHeadlessInAppWebViewStatic() {
+  IOSHeadlessInAppWebView createPlatformHeadlessWebViewStatic() {
     return IOSHeadlessInAppWebView.static();
   }
 
@@ -313,7 +313,7 @@ class IOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusBrowser] in `flutter_inappwebview` instead.
   @override
-  IOSInAppBrowser createPlatformInAppBrowser(
+  IOSInAppBrowser createPlatformBrowser(
     CygnusPlatformBrowserCreationParams params,
   ) {
     return IOSInAppBrowser(params);
@@ -324,7 +324,7 @@ class IOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusBrowser] in `flutter_inappwebview` instead.
   @override
-  IOSInAppBrowser createPlatformInAppBrowserStatic() {
+  IOSInAppBrowser createPlatformBrowserStatic() {
     return IOSInAppBrowser.static();
   }
 
@@ -504,7 +504,7 @@ class IOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusLocalhostServer] in `flutter_inappwebview` instead.
   @override
-  CygnusDefaultLocalhostServer createPlatformInAppLocalhostServer(
+  CygnusDefaultLocalhostServer createPlatformLocalhostServer(
     CygnusPlatformLocalhostServerCreationParams params,
   ) {
     return CygnusDefaultLocalhostServer(params);
@@ -515,7 +515,7 @@ class IOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusLocalhostServer] in `flutter_inappwebview` instead.
   @override
-  CygnusDefaultLocalhostServer createPlatformInAppLocalhostServerStatic() {
+  CygnusDefaultLocalhostServer createPlatformLocalhostServerStatic() {
     return CygnusDefaultLocalhostServer.static();
   }
 

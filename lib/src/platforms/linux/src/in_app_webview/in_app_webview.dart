@@ -102,7 +102,7 @@ class LinuxInAppWebViewWidgetCreationParams
 
   /// Constructs a [LinuxInAppWebViewWidgetCreationParams] using a
   /// [CygnusPlatformWebViewWidgetCreationParams].
-  LinuxInAppWebViewWidgetCreationParams.fromPlatformInAppWebViewWidgetCreationParams(
+  LinuxInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -207,7 +207,7 @@ class LinuxInAppWebViewWidget extends CygnusPlatformWebViewWidget {
     : super.implementation(
         params is LinuxInAppWebViewWidgetCreationParams
             ? params
-            : LinuxInAppWebViewWidgetCreationParams.fromPlatformInAppWebViewWidgetCreationParams(
+            : LinuxInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
                 params,
               ),
       );

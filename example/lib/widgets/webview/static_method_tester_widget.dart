@@ -58,12 +58,12 @@ enum StaticMethodType {
 
 /// Enum representing static method class types
 enum StaticClassType {
-  inAppWebViewController(
+  webViewController(
     CygnusWebViewController,
     'Static methods for WebView controller',
     Icons.web,
   ),
-  inAppBrowser(
+  browser(
     CygnusBrowser,
     'Static methods for in-app browser',
     Icons.open_in_browser,
@@ -193,7 +193,7 @@ class _StaticMethodTesterWidgetState extends State<StaticMethodTesterWidget> {
     return [
       // WebView controller static methods
       StaticMethodClass(
-        classType: StaticClassType.inAppWebViewController,
+        classType: StaticClassType.webViewController,
         methods: [
           StaticMethodEntry(
             methodType: StaticMethodType.getDefaultUserAgent,
@@ -345,7 +345,7 @@ class _StaticMethodTesterWidgetState extends State<StaticMethodTesterWidget> {
 
       // In-app browser static methods
       StaticMethodClass(
-        classType: StaticClassType.inAppBrowser,
+        classType: StaticClassType.browser,
         methods: [
           StaticMethodEntry(
             methodType: StaticMethodType.openWithSystemBrowser,

@@ -93,11 +93,11 @@ abstract class CygnusWebViewPlatform extends PlatformInterface {
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
-  CygnusPlatformWebViewController createPlatformInAppWebViewController(
+  CygnusPlatformWebViewController createPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
     throw UnimplementedError(
-      'createPlatformInAppWebViewController is not implemented on the current platform.',
+      'createPlatformWebViewController is not implemented on the current platform.',
     );
   }
 
@@ -105,9 +105,9 @@ abstract class CygnusWebViewPlatform extends PlatformInterface {
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
-  CygnusPlatformWebViewController createPlatformInAppWebViewControllerStatic() {
+  CygnusPlatformWebViewController createPlatformWebViewControllerStatic() {
     throw UnimplementedError(
-      'createPlatformInAppWebViewControllerStatic is not implemented on the current platform.',
+      'createPlatformWebViewControllerStatic is not implemented on the current platform.',
     );
   }
 
@@ -115,11 +115,11 @@ abstract class CygnusWebViewPlatform extends PlatformInterface {
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
-  CygnusPlatformWebViewWidget createPlatformInAppWebViewWidget(
+  CygnusPlatformWebViewWidget createPlatformWebViewWidget(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) {
     throw UnimplementedError(
-      'createPlatformInAppWebViewWidget is not implemented on the current platform.',
+      'createPlatformWebViewWidget is not implemented on the current platform.',
     );
   }
 
@@ -127,9 +127,9 @@ abstract class CygnusWebViewPlatform extends PlatformInterface {
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
-  CygnusPlatformWebViewWidget createPlatformInAppWebViewWidgetStatic() {
+  CygnusPlatformWebViewWidget createPlatformWebViewWidgetStatic() {
     throw UnimplementedError(
-      'createPlatformInAppWebViewWidgetStatic is not implemented on the current platform.',
+      'createPlatformWebViewWidgetStatic is not implemented on the current platform.',
     );
   }
 
@@ -362,11 +362,11 @@ abstract class CygnusWebViewPlatform extends PlatformInterface {
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `flutter_inappwebview` instead.
-  CygnusPlatformHeadlessWebView createPlatformHeadlessInAppWebView(
+  CygnusPlatformHeadlessWebView createPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
     throw UnimplementedError(
-      'createPlatformHeadlessInAppWebView is not implemented on the current platform.',
+      'createPlatformHeadlessWebView is not implemented on the current platform.',
     );
   }
 
@@ -374,9 +374,9 @@ abstract class CygnusWebViewPlatform extends PlatformInterface {
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `flutter_inappwebview` instead.
-  CygnusPlatformHeadlessWebView createPlatformHeadlessInAppWebViewStatic() {
+  CygnusPlatformHeadlessWebView createPlatformHeadlessWebViewStatic() {
     throw UnimplementedError(
-      'createPlatformHeadlessInAppWebViewStatic is not implemented on the current platform.',
+      'createPlatformHeadlessWebViewStatic is not implemented on the current platform.',
     );
   }
 
@@ -429,11 +429,11 @@ abstract class CygnusWebViewPlatform extends PlatformInterface {
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusBrowser] in `flutter_inappwebview` instead.
-  CygnusPlatformBrowser createPlatformInAppBrowser(
+  CygnusPlatformBrowser createPlatformBrowser(
     CygnusPlatformBrowserCreationParams params,
   ) {
     throw UnimplementedError(
-      'createPlatformInAppBrowser is not implemented on the current platform.',
+      'createPlatformBrowser is not implemented on the current platform.',
     );
   }
 
@@ -441,9 +441,9 @@ abstract class CygnusWebViewPlatform extends PlatformInterface {
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusBrowser] in `flutter_inappwebview` instead.
-  CygnusPlatformBrowser createPlatformInAppBrowserStatic() {
+  CygnusPlatformBrowser createPlatformBrowserStatic() {
     throw UnimplementedError(
-      'createPlatformInAppBrowserStatic is not implemented on the current platform.',
+      'createPlatformBrowserStatic is not implemented on the current platform.',
     );
   }
 
@@ -651,7 +651,7 @@ abstract class CygnusWebViewPlatform extends PlatformInterface {
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusDefaultLocalhostServer] in `flutter_inappwebview` instead.
-  CygnusPlatformLocalhostServer createPlatformInAppLocalhostServer(
+  CygnusPlatformLocalhostServer createPlatformLocalhostServer(
     CygnusPlatformLocalhostServerCreationParams params,
   ) {
     return CygnusDefaultLocalhostServer(params);
@@ -661,7 +661,7 @@ abstract class CygnusWebViewPlatform extends PlatformInterface {
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusDefaultLocalhostServer] in `flutter_inappwebview` instead.
-  CygnusPlatformLocalhostServer createPlatformInAppLocalhostServerStatic() {
+  CygnusPlatformLocalhostServer createPlatformLocalhostServerStatic() {
     return CygnusDefaultLocalhostServer(
       const CygnusPlatformLocalhostServerCreationParams(),
     );

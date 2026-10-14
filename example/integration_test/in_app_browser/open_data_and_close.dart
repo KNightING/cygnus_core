@@ -4,13 +4,13 @@ void openDataAndClose() {
   final shouldSkip = !CygnusBrowser.isClassSupported();
 
   skippableTest('open data and close', () async {
-    var inAppBrowser = new MyInAppBrowser();
-    expect(inAppBrowser.isOpened(), false);
+    var browser = new MyInAppBrowser();
+    expect(browser.isOpened(), false);
     expect(() async {
-      await inAppBrowser.show();
+      await browser.show();
     }, throwsAssertionError);
 
-    await inAppBrowser.openData(
+    await browser.openData(
       data: """
 <!doctype html>
 <html lang="en">
@@ -31,24 +31,24 @@ void openDataAndClose() {
       historyUrl: TEST_CROSS_PLATFORM_URL_1,
       baseUrl: TEST_CROSS_PLATFORM_URL_1,
     );
-    await inAppBrowser.browserCreated.future;
-    expect(inAppBrowser.isOpened(), true);
+    await browser.browserCreated.future;
+    expect(browser.isOpened(), true);
     expect(() async {
-      await inAppBrowser.openUrlRequest(
+      await browser.openUrlRequest(
         urlRequest: CygnusURLRequest(url: TEST_URL_1),
       );
     }, throwsAssertionError);
 
-    await inAppBrowser.firstPageLoaded.future;
-    var controller = inAppBrowser.webViewController;
+    await browser.firstPageLoaded.future;
+    var controller = browser.webViewController;
 
     expect(controller, isNotNull);
     final String? url = (await controller!.getUrl())?.toString();
     expect(url, TEST_CROSS_PLATFORM_URL_1.toString());
 
-    await inAppBrowser.close();
-    await inAppBrowser.browserClosed.future;
-    expect(inAppBrowser.isOpened(), false);
-    expect(inAppBrowser.webViewController, isNull);
+    await browser.close();
+    await browser.browserClosed.future;
+    expect(browser.isOpened(), false);
+    expect(browser.webViewController, isNull);
   }, skip: shouldSkip);
 }

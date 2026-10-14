@@ -27,7 +27,7 @@ class WindowsInAppBrowserCreationParams
   });
 
   /// Creates a [WindowsInAppBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
-  factory WindowsInAppBrowserCreationParams.fromPlatformInAppBrowserCreationParams(
+  factory WindowsInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformBrowserCreationParams params,
@@ -61,7 +61,7 @@ class WindowsInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     : super.implementation(
         params is WindowsInAppBrowserCreationParams
             ? params
-            : WindowsInAppBrowserCreationParams.fromPlatformInAppBrowserCreationParams(
+            : WindowsInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
                 params,
               ),
       ) {
@@ -103,7 +103,7 @@ class WindowsInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     handler = _handleMethod;
     initMethodCallHandler();
 
-    _webViewController = WindowsInAppWebViewController.fromInAppBrowser(
+    _webViewController = WindowsInAppWebViewController.fromBrowser(
       WindowsInAppWebViewControllerCreationParams(id: id),
       channel!,
       this,

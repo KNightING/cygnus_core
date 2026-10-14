@@ -130,7 +130,7 @@ class WebPlatformHeadlessInAppWebViewCreationParams
   });
 
   /// Creates a [WebPlatformHeadlessInAppWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
-  WebPlatformHeadlessInAppWebViewCreationParams.fromPlatformHeadlessInAppWebViewCreationParams(
+  WebPlatformHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -261,7 +261,7 @@ class WebPlatformHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
   ) : super.implementation(
         params is WebPlatformHeadlessInAppWebViewCreationParams
             ? params
-            : WebPlatformHeadlessInAppWebViewCreationParams.fromPlatformHeadlessInAppWebViewCreationParams(
+            : WebPlatformHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
                 params,
               ),
       ) {

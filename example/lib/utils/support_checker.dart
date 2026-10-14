@@ -481,10 +481,10 @@ class SupportChecker {
   /// Get all API definitions organized by class.
   static List<ApiClassDefinition> getAllApiDefinitions() {
     return [
-      _getInAppWebViewControllerDefinition(),
-      _getInAppWebViewEventsDefinition(),
-      _getHeadlessInAppWebViewDefinition(),
-      _getInAppBrowserDefinition(),
+      _getWebViewControllerDefinition(),
+      _getWebViewEventsDefinition(),
+      _getHeadlessWebViewDefinition(),
+      _getBrowserDefinition(),
       _getChromeSafariBrowserDefinition(),
       _getCookieManagerDefinition(),
       _getWebStorageDefinition(),
@@ -702,7 +702,7 @@ class SupportChecker {
   // API Class Definitions
   // ====================
 
-  static ApiClassDefinition _getInAppWebViewControllerDefinition() {
+  static ApiClassDefinition _getWebViewControllerDefinition() {
     final className = classNameOf(CygnusWebViewController);
     return ApiClassDefinition(
       className: className,
@@ -1691,7 +1691,7 @@ class SupportChecker {
     );
   }
 
-  static ApiClassDefinition _getInAppWebViewEventsDefinition() {
+  static ApiClassDefinition _getWebViewEventsDefinition() {
     final className = eventClassNameOf(CygnusWebView);
     return ApiClassDefinition(
       className: className,
@@ -2135,7 +2135,7 @@ class SupportChecker {
     );
   }
 
-  static ApiClassDefinition _getHeadlessInAppWebViewDefinition() {
+  static ApiClassDefinition _getHeadlessWebViewDefinition() {
     final className = classNameOf(CygnusHeadlessWebView);
     return ApiClassDefinition(
       className: className,
@@ -2176,7 +2176,7 @@ class SupportChecker {
     );
   }
 
-  static ApiClassDefinition _getInAppBrowserDefinition() {
+  static ApiClassDefinition _getBrowserDefinition() {
     final className = classNameOf(CygnusBrowser);
     return ApiClassDefinition(
       className: className,
