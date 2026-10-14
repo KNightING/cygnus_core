@@ -23,9 +23,10 @@ Cygnus 框架（Nuxt 網頁 + Flutter 殼）的 WebView 核心套件，供 KNigh
   - 階段 ②：Dart 公開 API 命名改為 Cygnus 風格（命名規則由使用者定義）。
   - 階段 ③：原生端、channel 前綴、JS 全域名稱是否更動與改成什麼，屆時再決定。
   - 階段 ④：`nuxt-flutter-app` 的 `flutter-host` 改依賴本套件。
-- **目前以 git 依賴使用，不發佈 pub.dev。** 根 `pubspec.yaml` 對 `dev_packages/*` 使用 `path:` 依賴，
-  `flutter pub publish` 會因此被拒絕（`invalid_dependency`）；`package.json` 的 `publish` 腳本是保留
-  的意圖，並不能直接成功執行。要發佈須先處理 `flutter_inappwebview_internal_annotations`。
+- **以 git 依賴使用，不發佈 pub.dev。** 根 `pubspec.yaml` 設定 `publish_to: none`，實際執行 `flutter pub publish`
+  會被 pub 以「A private package cannot be published.」拒絕，repo 也不保留任何發佈腳本；`dev_packages/*` 因此可以使用 `path:` 依賴。
+  日後若要改為發佈，須先讓 `flutter_inappwebview_internal_annotations` 與 `generators` 也能從 pub.dev 解析，
+  再移除 `publish_to`。
 - **對同 repo 的 `dev_packages` 一律用相對 `path:`**，不帶版本約束（`path` 依賴不得同時帶版本）。
 - **版本號即 milestone 標題**，起始為 `0.0.0`；根 `pubspec.yaml` 的 `version` 是唯一來源。
 

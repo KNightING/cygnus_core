@@ -14,12 +14,7 @@
     "docs:gen": ".fvm/flutter_sdk/bin/dart doc --output=doc/api .",
     "docs:gen:windows": ".fvm\\flutter_sdk\\bin\\dart.bat doc --output=doc/api .",
     "docs:serve": ".fvm/flutter_sdk/bin/flutter pub global activate dhttpd && .fvm/flutter_sdk/bin/flutter pub global run dhttpd:dhttpd --path doc/api",
-    "docs:serve:windows": ".fvm\\flutter_sdk\\bin\\flutter.bat pub global activate dhttpd && .fvm\\flutter_sdk\\bin\\flutter.bat pub global run dhttpd:dhttpd --path doc/api",
-
-    "publish:dry": ".fvm/flutter_sdk/bin/flutter pub publish --dry-run",
-    "publish:dry:windows": ".fvm\\flutter_sdk\\bin\\flutter.bat pub publish --dry-run",
-    "publish": ".fvm/flutter_sdk/bin/flutter pub publish",
-    "publish:windows": ".fvm\\flutter_sdk\\bin\\flutter.bat pub publish"
+    "docs:serve:windows": ".fvm\\flutter_sdk\\bin\\flutter.bat pub global activate dhttpd && .fvm\\flutter_sdk\\bin\\flutter.bat pub global run dhttpd:dhttpd --path doc/api"
   },
   "repository": {
     "type": "git",
