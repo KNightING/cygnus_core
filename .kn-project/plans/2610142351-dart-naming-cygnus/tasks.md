@@ -12,9 +12,11 @@
 - [ ] 重新執行 build_runner 產生 `*.g.dart`
 - [ ] 等價性驗證：把舊產生檔套用對照表，與新產生檔逐檔比對，必須完全一致
 
+- [ ] （Q5）小寫識別字（41 種、993 處）移除 `InApp`：先產生對照並檢查撞名，再以腳本替換；不得動到字串字面值（channel／JS 名稱）
 ## Phase 3 — 檔案與目錄路徑
 - [ ] 以 `git mv` 去掉 96 個路徑中的 `in_app_`
 - [ ] 同步更新 `import`／`export`／`part`／`part of` 路徑；確認沒有舊路徑殘留
+- [ ] （Q6）`lib/**` 內 19 個含 `inappwebview` 的檔名改為 `webview`（`flutter_inappwebview_<平台>.dart` → `flutter_webview_<平台>.dart` 等），並更新 7 個 `library` 指令與 `lib/cygnus_core.dart`、`platforms_native.dart` 的匯出路徑；先確認與 `in_app_` 規則合併後零撞名
 
 ## Phase 4 — 文件
 - [ ] 新增 `doc/dart-rename-map.md`（依 Q4）

@@ -59,7 +59,7 @@
 （本 repo 無 `app-flow.json`，不適用。）
 
 ## Open Questions / 待確認事項
-> Q1–Q4 已確認（2026-10-14）；Q5、Q6 為 Phase 1 審視時新發現，**確認前不得進入 Phase 2（改名）**。
+> Q1–Q6 皆已確認（Q5、Q6 於 2026-10-15 確認，範圍因此擴大，需**重新核准**後才進入 Phase 2）。
 
 ### Q1. 「檢查每個檔案時順便看有沒有優化的地方」要做到多深？ — 影響範圍：Phase 1 的工作量與成本
 > 前提：優化只**收集、不修改**；任何實際的優化改動都需另行核准，不在本計畫內做。
@@ -84,16 +84,16 @@
 
 ### Q5. 規則只涵蓋「類型名」，但小寫開頭的識別字（含公開方法名）仍有 `InApp`，要不要一起改？ — 影響範圍：41 種識別字、993 處
 > Phase 1 審視發現：`createPlatformInAppWebViewController`、`fromPlatformInAppWebViewControllerCreationParams` 等是**公開方法名**；`_inAppBrowserEventHandler`（721 處）、`_inAppBrowser`（78 處）等是私有欄位。
-- [ ] 選項 A：公開方法名與私有識別字都依「移除 `InApp`」改（如 `createPlatformInAppWebViewController` → `createPlatformWebViewController`、`_inAppBrowser` → `_browser`）　(建議，理由：改名後公開方法名與類別名一致；私有欄位名只是內部一致性，改動機械)
+- [x] 選項 A：公開方法名與私有識別字都依「移除 `InApp`」改（如 `createPlatformInAppWebViewController` → `createPlatformWebViewController`、`_inAppBrowser` → `_browser`）　(建議，理由：改名後公開方法名與類別名一致；私有欄位名只是內部一致性，改動機械)
 - [ ] 選項 B：只改公開方法名，私有識別字維持
 - [ ] 選項 C：都不改，維持目前「只改類型名」的規則
-- **決議**：_(待使用者勾選)_　狀態：⏳ 待確認
+- **決議**：已確認（2026-10-15）　狀態：✅
 
 ### Q6. 檔名與 `library` 指令中仍有 `inappwebview` 連寫的舊品牌名（11 種檔名、7 個 `library` 指令），要不要一起改？ — 影響範圍：11 種檔名共約 17 個檔案、7 個 `library` 指令
 > 例：`flutter_inappwebview_android.dart`（各平台 barrel，被 `lib/src/platforms/platforms_native.dart:5-11` 匯出）、`inappwebview_platform.dart`、`platform_inappwebview_controller.dart`。
 - [ ] 選項 A：不改，維持目前「只去掉 `in_app_`」的檔名規則　(建議，理由：這些檔名不是公開 API；`flutter_inappwebview_*` 是階段 ③ 處理原生／channel／JS 品牌名時再一併決定較合適)
-- [ ] 選項 B：一併把 `inappwebview` 改為 `webview`（含 `library` 指令與匯出路徑）
-- **決議**：_(待使用者勾選)_　狀態：⏳ 待確認
+- [x] 選項 B：一併把 `inappwebview` 改為 `webview`（含 `library` 指令與匯出路徑）
+- **決議**：已確認（2026-10-15）　狀態：✅
 
 ## Manual Follow-ups / 人工收尾事項
 無。本計畫只動 Dart 與文件，不涉及 migration、環境變數、部署設定或第三方主控台。需注意：改名是**破壞性的公開 API 變更**，`flutter-host` 用到的 8 個類型（`InAppWebView`、`InAppWebViewSettings`、`InAppWebViewController`、`ChromeSafariBrowser`、`WebUri`、`URLRequest`、`MixedContentMode`、`ScrollViewContentInsetAdjustmentBehavior`）會在階段 ④ 一併更新，在那之前它仍依賴舊 repo 的 tag，不受影響。（前兩份計畫遺留的 3 項——Windows／Linux 建置驗證、Apache-2.0 標示確認——仍有效，記在 issue #1 的結案留言。）
@@ -113,6 +113,8 @@
 - **[Q4]** `doc/dart-rename-map.md` 進版控 — 理由：使用者選擇；階段 ④ 與日後遷移需要。
 - **[核准閘]** 完成後：commit + 開 PR（預設；自動歸檔＋wiki，Rule 12 非互動鏈），base 為 `main` — 理由：使用者選擇；變動量大，PR 提供完整 diff。完成時會 `git fetch` 後 `git rebase origin/main` 並以 `--force-with-lease --force-if-includes` 更新遠端工作分支（已揭露）。
 - **[Phase 1]** 逐檔審視完成（唯讀，未修改任何檔案）：以 `flutter analyze`（4062 項）、`dart fix --dry-run`（2804 項可自動修正／358 個檔案）與腳本掃描涵蓋全部檔案，並細讀 12 個 warning 對應的原始碼；**未做人工逐行閱讀**。優化候選清單已回報使用者，實際優化不在本計畫內，由使用者另行決定；審視中另發現規則的兩處邊界（Q5、Q6）。
+- **[Q5]** 小寫識別字（公開方法名與私有欄位）也依「移除 `InApp`」改名 — 理由：使用者選擇；公開方法名（如 `createPlatformInAppWebViewController`）與新類別名一致。改名須避開撞名，並避開字串字面值（channel 名、JS 名）。
+- **[Q6]** `lib/**` 內檔名與 `library` 指令的 `inappwebview` 一併改為 `webview`（19 個檔案）— 理由：使用者選擇；已確認與 `in_app_` 去除規則合併後零撞名、零既有檔案衝突。`dev_packages/flutter_inappwebview_internal_annotations`（內部套件目錄）與 `example/**` 不在此範圍，維持原名，留待階段 ③。
 
 ## Git Completion Policy
 - PR 一律以 `--base main` 顯式指定 base，不依賴 `gh` 的預設值 (Rule 23)。
