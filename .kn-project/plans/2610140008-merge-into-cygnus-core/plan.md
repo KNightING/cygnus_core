@@ -200,6 +200,8 @@ cygnus_core/                          ← repo 根目錄 = 套件根目錄
 - **[執行中]** `scripts/publish.sh` 本來就以根目錄為基準，不需更動；`package.json` 的 `publish` 腳本依 Q7 B 保留，但根 `pubspec.yaml` 因 Q4 B 使用 `path:` 依賴，`flutter pub publish` 會被拒絕（analyzer 回報 `invalid_dependency`）— 理由：Q4 B 與 Q7 B 兩項使用者決定彼此有張力，已寫入 `project.md` 的保留鐵則並於回報中向使用者說明，未自行替使用者取捨。
 - **[執行中]** `NOTICE` 以「來源、授權、主要變更、未更動項目」四段撰寫，不另行主張版權；Apache-2.0 §4(b) 對「修改過的檔案」的逐檔標示，本階段僅以 `NOTICE` 與 git 歷史涵蓋（多數檔案的修改只是 `package:` 匯入與 dartdoc 前綴）— 理由：逐檔加註對數百個產生檔與搬移檔不切實際，且 `LICENSE`、各檔原版權標頭皆原樣保留；是否需要更嚴格的逐檔標示留給使用者判斷，列入人工收尾事項。
 - **[驗證]** `example/test/` 的單元測試有 4 個失敗（`responsive_phase7_screens_test` 的 `test_all_screens_mobile_no_overflow`、`event_console_widget_test` 的 2 個、`method_tester_widget_test` 的 1 個），**初始 commit 上同樣 4 個失敗**（`+10 -4`，名稱一致，皆為 UI 斷言），非本計畫造成，本計畫不處理 — 理由：與套件合併無關；已列為既有問題。
+- **[驗證]** Android 模擬器上的實機驗證有一個環境干擾：使用者的自訂桌面 `github.knighting.avalon.launcher`（設為嚴格偏好的 home）會在約 12–25 秒後把任何 App 切回後台（對照實驗：連系統 Settings 也會被切走），而 example 的 debug 冷啟動要十幾秒才出畫面。改以「進程已初始化後切回前景再立即截圖」取得證據：WebView 載入 flutter.dev，`shouldInterceptRequest`、`shouldInterceptFetchRequest` 事件正常記錄。先前一次空白＋`onReceivedError` 是切到後台造成的暫態（模擬器與主機網路皆正常），重新載入後恢復。這與本計畫的變更無關。
+- **[驗證]** 驗證涵蓋範圍：Android（建置＋實際啟動）、macOS（建置＋實際啟動）、Web（建置，含 Wasm 試編譯）、iOS 模擬器（**僅建置**，未實際啟動：此機的 iPad／iPhone 模擬器曾出現 locationd 損壞，與本計畫無關）；Windows、Linux 僅靜態檢查，列入人工收尾事項。
 
 ## Git Completion Policy
 - **完成後（使用者自訂，Rule 17 三選項之外）**：commit 一律自動；任務完成時 `git fetch` 後 `git rebase origin/main` 工作分支，再於本機 **fast-forward 合併進 `main`** 並 `git push origin main`，**不開 PR**。工作分支另以 `git push --force-with-lease --force-if-includes` 備份到遠端（此動作會重寫遠端工作分支歷史；`main` 的推送是 fast-forward，不改寫）。

@@ -40,13 +40,13 @@
 - [x] 更新 wiki 頁的檔案路徑（實際需改 2 頁共 3 行）
 
 ## Phase 5 — 驗證
-- [ ] `flutter analyze` 全數通過
-- [ ] build_runner 重跑，產物與現有 `*.g.dart` 無差異
-- [ ] Android debug 建置並於模擬器啟動 `example`
-- [ ] iOS 模擬器、macOS 建置通過
-- [ ] Web 建置通過
-- [ ] grep 確認舊套件名（`flutter_inappwebview_platform_interface` 等）已無殘留匯入
-- [ ] 版本檔 Version Gate：根 `pubspec.yaml` `version` 與 milestone `0.0.0` 一致（Rule 24）
+- [x] `flutter analyze` 全數通過（整包 0 error；4063 項 warning／info 為原本就有的 lint）
+- [x] build_runner 重跑，產物與現有 `*.g.dart` 無差異（`git status` 無 `.g.dart` 變動）
+- [x] Android debug 建置並於模擬器啟動 `example`（WebView 載入 flutter.dev；`shouldInterceptFetchRequest` 事件證明 JS 橋接運作）
+- [x] iOS 模擬器、macOS 建置通過（macOS 另實際啟動並載入 WebView；iOS 僅驗證編譯）
+- [x] Web 建置通過
+- [x] grep 確認舊套件名（`flutter_inappwebview_platform_interface` 等）已無殘留匯入（僅剩刻意不改的 Java namespace）
+- [x] 版本檔 Version Gate：根 `pubspec.yaml` `version` 與 milestone `0.0.0` 一致（Rule 24）
 - [ ] Windows、Linux 建置：列於人工收尾事項，由使用者驗證
 
 ## Phase 6 — 併入 main
