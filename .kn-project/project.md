@@ -20,6 +20,7 @@ Cygnus 框架（Nuxt 網頁 + Flutter 殼）的 WebView 核心套件，供 KNigh
   - 階段 ①（已完成）：合併為單一套件、套件名改為 `cygnus_core`。**不改** Dart 類別名、Android Java
     namespace、channel 前綴 `com.pichillilorenzo/`、JS 全域名稱 `window.flutter_inappwebview`——
     先只做結構合併，行為不變，把變更面壓到最小。
+  - Android 原生端（階段 ② 之後的獨立計畫，已完成）：159 個 Java 檔全數改寫為 Kotlin，命名空間由 `com.pichillilorenzo.flutter_inappwebview_android` 改為 `com.github.knighting.cygnus.core`；行為、channel、JS 名稱未動。
   - 階段 ②（已完成）：Dart 公開 API 命名改為 Cygnus 風格——型別前綴 `Cygnus` 並移除 `InApp`，檔名去掉 `in_app_`；完整對照見 `doc/dart-rename-map.md`。
   - 階段 ③：原生端、channel 前綴、JS 全域名稱是否更動與改成什麼，屆時再決定。
   - 階段 ④：`nuxt-flutter-app` 的 `flutter-host` 改依賴本套件。
@@ -50,7 +51,7 @@ gh repo set-default KNightING/cygnus_core
 | `lib/src/*`（`platform_interface`、`platforms` 以外） | 原 app-facing 套件的類別（`CygnusWebView`、`CygnusBrowser`、`CygnusChromeSafariBrowser` 等） |
 | `lib/src/platforms/<平台>/` | 各平台的 Dart 實作（android、ios、macos、windows、linux、web） |
 | `lib/src/platforms/platforms.dart` | 以 `dart.library.js_interop` 條件匯出：原生建置只公開 5 個平台的註冊類別，Web 改由 pubspec 的 `fileName` 註冊 |
-| `android/` `ios/` `macos/` `windows/` `linux/` | 各平台原生程式碼（Android 為 Java，命名空間 `com.pichillilorenzo.flutter_inappwebview_android`） |
+| `android/` `ios/` `macos/` `windows/` `linux/` | 各平台原生程式碼（Android 為 Kotlin，位於 `android/src/main/kotlin`，命名空間 `com.github.knighting.cygnus.core`） |
 | `dev_packages/flutter_inappwebview_internal_annotations` | 程式碼產生用註記（套件名階段 ① 不改） |
 | `dev_packages/generators` | 程式碼產生器 |
 | `example/` | 範例與整合測試（唯一保留的 example） |

@@ -1,4 +1,4 @@
-group 'com.pichillilorenzo.flutter_inappwebview_android'
+group 'com.github.knighting.cygnus.core'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -24,7 +24,7 @@ apply plugin: 'com.android.library'
 android {
     // Conditional for compatibility with AGP <4.2.
     if (project.android.hasProperty("namespace")) {
-        namespace 'com.pichillilorenzo.flutter_inappwebview_android'
+        namespace 'com.github.knighting.cygnus.core'
     }
     compileSdk = flutter.compileSdkVersion
 
@@ -58,5 +58,12 @@ android {
         implementation 'androidx.browser:browser:1.9.0'
         implementation 'androidx.appcompat:appcompat:1.7.1'
         implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.2.0'
+    }
+}
+
+// Kotlin 與 Java 的 JVM target 必須一致，否則 Gradle 會拒絕編譯
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     }
 }

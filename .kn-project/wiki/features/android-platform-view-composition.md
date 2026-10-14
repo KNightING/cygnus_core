@@ -89,7 +89,7 @@ await precacheHybridCompositionPlusPlusSupport();
 
 ## native 端只看「是否在真實 view 階層」
 
-Java 端沒有三種模式的概念，只有一個布林 `useHybridComposition`，它在 native 被分支判斷
+Android 原生端沒有三種模式的概念，只有一個布林 `useHybridComposition`，它在 native 被分支判斷
 **21 處**。這些分支問的其實是同一件事：**WebView 是否位於真實 view 階層中、是否有 `containerView`**。
 
 HCPP 在真實階層，與 HC 同側，因此 Dart 在 HCPP 模式下對 native 送 `useHybridComposition: true`。
@@ -97,13 +97,13 @@ HCPP 在真實階層，與 HC 同側，因此 Dart 在 HCPP 模式下對 native 
 
 | 類別 | 位置 | 非 hybrid（TLHC）時 |
 | :--- | :--- | :--- |
-| containerView 代理 | `FlutterWebView.java:67` / `:173` / `:179` / `:185` / `:192`、`InAppWebView.java:1712` / `:1766` / `:2236` | 以 FlutterView 作為 containerView 並代理 |
-| IME 代理 workaround | `InputAwareWebView.java:209` / `:230` / `:271` / `:349`（**四處**） | 執行 workaround |
-| 自訂浮動選單 | `InAppWebView.java:539` / `:651` / `:1746` / `:1755` | 用套件自建的浮動選單 |
-| layer type | `InAppWebView.java:445` / `:1124` | 不設 `setLayerType` |
+| containerView 代理 | `FlutterWebView.kt:63` / `:171` / `:177` / `:183` / `:190`、`InAppWebView.kt:1679` / `:1731` / `:2177` | 以 FlutterView 作為 containerView 並代理 |
+| IME 代理 workaround | `InputAwareWebView.kt:206` / `:226` / `:267` / `:342`（**四處**） | 執行 workaround |
+| 自訂浮動選單 | `InAppWebView.kt:529` / `:635` / `:1711` / `:1719` | 用套件自建的浮動選單 |
+| layer type | `InAppWebView.kt:438` / `:1100` | 不設 `setLayerType` |
 
 結構性佐證：多數 `!useHybridComposition` 分支另有 `containerView != null` 守衛，而 containerView
-只在非 hybrid 時才非 null（`FlutterWebView.java:67`），兩道守衛由建構方式保證一致。
+只在非 hybrid 時才非 null（`FlutterWebView` 建構式），兩道守衛由建構方式保證一致。
 
 ## 預設值必須三處一致
 
@@ -113,7 +113,7 @@ deprecated 的 `useHybridComposition` 有三個字面預設值，改動時必須
 - `lib/src/platform_interface/src/webview/webview_settings.dart`
   ——建構子預設值（另有同步的 `.g.dart`）
 - `lib/src/platforms/android/src/webview/webview.dart` ——widget 端的 `?? false`
-- `.../webview/in_app_webview/InAppWebViewSettings.java` ——native 欄位預設
+- `.../webview/in_app_webview/InAppWebViewSettings.kt` ——native 欄位預設
 
 ## 已知限制
 

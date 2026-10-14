@@ -34,7 +34,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.pichillilorenzo.flutter_inappwebview_android
+        package: com.github.knighting.cygnus.core
         pluginClass: InAppWebViewFlutterPlugin
         dartPluginClass: AndroidInAppWebViewPlatform
       ios:

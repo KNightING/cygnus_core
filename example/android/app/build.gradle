@@ -46,7 +46,7 @@ android {
 
     buildTypes {
         release {
-            // only for com.pichillilorenzo.flutter_inappwebview_android.R.menu.menu_main
+            // only for com.github.knighting.cygnus.core.R.menu.menu_main
             minifyEnabled false
             shrinkResources false
 
