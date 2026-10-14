@@ -1,6 +1,6 @@
-package com.github.knighting.cygnus.core.webview;
+package com.github.knighting.cygnus.core.webview
 
-public enum WebViewChannelDelegateMethods {
+enum class WebViewChannelDelegateMethods {
   getUrl,
   getTitle,
   getProgress,
@@ -33,13 +33,13 @@ public enum WebViewChannelDelegateMethods {
   /**
    * @deprecated
    */
-  @Deprecated
+  @Deprecated("deprecated")
   clearCache,
   clearSslPreferences,
   /**
    * @deprecated
    */
-  @Deprecated
+  @Deprecated("deprecated")
   findAll,
   findNext,
   clearMatches,
