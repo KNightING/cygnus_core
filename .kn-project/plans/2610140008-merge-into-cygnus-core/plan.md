@@ -105,7 +105,7 @@ cygnus_core/                          ← repo 根目錄 = 套件根目錄
 （本 repo 無 `app-flow.json`，不適用。）
 
 ## Open Questions / 待確認事項
-> 全部已確認（2026-10-14）；決議同步記於 `## Key Decisions`。
+> Q1–Q7 已確認（2026-10-14）；Q8 為 Phase 3 執行中新發現，**確認前不得進入 Phase 4 的清理工作**。決議同步記於 `## Key Decisions`。
 
 ### Q1. 套件根目錄放哪裡？ — 影響範圍：整個 repo 佈局
 - [x] 選項 A：repo 根目錄就是套件根目錄（根 `pubspec.yaml`）
@@ -142,6 +142,16 @@ cygnus_core/                          ← repo 根目錄 = 套件根目錄
 - [x] 選項 B：保留並改為發佈單一 `cygnus_core`
 - **決議**：B（使用者選擇，與建議不同；只改腳本，本計畫不實際發佈）　狀態：✅ 已確認
 
+### Q8. 舊套件資料夾裡剩下的非程式碼檔怎麼處理？ — 影響範圍：8 個舊套件資料夾（`flutter_inappwebview*/`）的 `CHANGELOG.md`、`LICENSE`、`README.md`、`analysis_options.yaml`、`build.yaml`、`.metadata`、`.gitignore`；`flutter_inappwebview_linux/WPE_BACKEND.md`；`flutter_inappwebview/.vscode`、`.fvmrc`
+- [ ] 選項 A：保留有價值的、合併重複的後刪除舊資料夾　(建議，理由：上游歷史與設定不遺失，又不留 8 份重複檔)
+  - 8 份 `CHANGELOG.md` → 搬到 `doc/upstream-changelogs/<原套件名>.md`，保留上游出處
+  - 8 份 `LICENSE` → 先以 md5 確認內容相同，只保留根目錄一份
+  - 8 份 `README.md` → 有用的說明併入新的根 `README.md`，其餘刪除
+  - 3 份不同的 `analysis_options.yaml` 與 `build.yaml` → 逐份比對後合併為根目錄各一份，避免 lint／產生器設定悄悄放寬
+  - `WPE_BACKEND.md` → 搬到 `doc/linux-wpe-backend.md`；`.metadata`、`.gitignore`、`.vscode`、`.fvmrc` 依需要併入根目錄
+- [ ] 選項 B：全部直接刪除（歷史仍可從初始 commit 與上游 repo 查到）
+- **決議**：_(待使用者勾選)_　狀態：⏳ 待確認
+
 ## Manual Follow-ups / 人工收尾事項
 - **[合併後]** 在 Windows 機器驗證 `example` 的 `flutter build windows` 與 `flutter run -d windows` 可啟動並載入網頁 — 於 `cygnus_core/example` 執行上述指令 — agent 在 macOS 上無法建置 Windows，且 Flutter 不支援跨平台建置
 - **[合併後]** 在 Linux 機器驗證 `example` 的 `flutter build linux` — 於 `cygnus_core/example` 執行，需 WPE WebKit 與 nlohmann_json 依賴 — 同上，本機無 Linux 環境
@@ -168,6 +178,11 @@ cygnus_core/                          ← repo 根目錄 = 套件根目錄
 - **[執行中]** 根目錄需新增 `analysis_options.yaml`（原三個套件各自有，內容不同） — 理由：合併後只剩一份分析設定；Phase 4 逐檔比對三份差異後合併，避免 lint 規則悄悄放寬。
 - **[執行中]** 根 `pubspec.yaml` 在 Phase 2 只宣告 android 與 web；ios／macos／windows／linux 的 plugin 宣告改到 Phase 3 與各自原生目錄一起加入 — 理由：宣告了 `pluginClass` 卻沒有對應原生目錄，使用端 `pod install`／CMake 會直接失敗；與原生搬移放在同一階段才能一起驗證。
 - **[執行中]** Web 的資產 `web_support.js` 併入 `lib/assets/web/`，執行期路徑由 `assets/packages/flutter_inappwebview_web/assets/web/web_support.js` 變為 `assets/packages/cygnus_core/assets/web/web_support.js` — 理由：資產路徑以套件名解析；使用端 `index.html` 若硬寫舊路徑需改，列入 README 說明（Phase 4）。
+- **[執行中]** Windows／Linux 的 CMake 除 `PROJECT_NAME`、`PLUGIN_NAME` 與 `include/` 目錄外，還須把 `set(flutter_inappwebview_<平台>_bundled_libraries` 改為 `set(cygnus_core_bundled_libraries` — 理由：Flutter 產生的 `generated_plugins.cmake` 以 `${plugin}_bundled_libraries` 取得需隨附的 DLL／so，不改則 WebView2 等函式庫不會被打包（原計畫只列了前三項，屬 `windows/**`、`linux/**` 目錄級範圍內的必要識別字）。
+- **[執行中]** 刻意不改：CMake 內的來源檔名（`flutter_inappwebview_windows_plugin.cpp` 等）、`flutter_inappwebview_windows_apply_standard_settings` 輔助函式與 `test/` 檔名 — 理由：來源檔名與標頭檔名由 `pluginClass` 決定（Flutter 產生的 `#include <cygnus_core/flutter_inappwebview_windows_plugin_c_api.h>` 即由它推得），pluginClass 本階段不改；輔助函式只在該 CMake 內自用。
+- **[執行中]** Linux `utils/log.h` 以 `"/flutter_inappwebview_linux/"` 切割來源路徑（只影響日誌顯示），改為 `"/cygnus_core/"` — 理由：插件符號連結目錄隨套件名改變，不改則日誌路徑不再被縮短。
+- **[執行中]** iOS／macOS：SPM library 名稱改為 `cygnus-core`（套件名的連字號形式）、target 與 podspec 為 `cygnus_core`；iOS 的 `WebView.storyboard` 的 `customModule` 同步改為 `cygnus_core` — 理由：Swift 模組名由 target／podspec 名決定，storyboard 以它解析自訂類別，不改會在執行期找不到 `InAppBrowserWebViewController`。
+- **[驗證]** 4 個原生平台＋Android 的對外名稱未被更動 — 依據：與初始 commit 比對 channel 前綴與 JS 全域名稱的逐檔出現次數完全相同，Java `namespace`／`group` 與 plugin 類別名亦未變。
 
 ## Git Completion Policy
 - **完成後（使用者自訂，Rule 17 三選項之外）**：commit 一律自動；任務完成時 `git fetch` 後 `git rebase origin/main` 工作分支，再於本機 **fast-forward 合併進 `main`** 並 `git push origin main`，**不開 PR**。工作分支另以 `git push --force-with-lease --force-if-includes` 備份到遠端（此動作會重寫遠端工作分支歷史；`main` 的推送是 fast-forward，不改寫）。

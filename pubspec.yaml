@@ -36,6 +36,18 @@ flutter:
         package: com.pichillilorenzo.flutter_inappwebview_android
         pluginClass: InAppWebViewFlutterPlugin
         dartPluginClass: AndroidInAppWebViewPlatform
+      ios:
+        pluginClass: InAppWebViewFlutterPlugin
+        dartPluginClass: IOSInAppWebViewPlatform
+      macos:
+        pluginClass: InAppWebViewFlutterPlugin
+        dartPluginClass: MacOSInAppWebViewPlatform
+      windows:
+        pluginClass: FlutterInappwebviewWindowsPluginCApi
+        dartPluginClass: WindowsInAppWebViewPlatform
+      linux:
+        pluginClass: FlutterInappwebviewLinuxPlugin
+        dartPluginClass: LinuxInAppWebViewPlatform
       web:
         pluginClass: InAppWebViewFlutterPlugin
         fileName: src/platforms/web/web/main.dart

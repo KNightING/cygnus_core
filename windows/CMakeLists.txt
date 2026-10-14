@@ -12,7 +12,7 @@ set(CPP_WINRT_VERSION "2.0.250303.1")
 message(VERBOSE "CMake system version is ${CMAKE_SYSTEM_VERSION} (using SDK ${CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION})")
 
 # Project-level configuration.
-set(PROJECT_NAME "flutter_inappwebview_windows")
+set(PROJECT_NAME "cygnus_core")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
@@ -21,11 +21,11 @@ cmake_policy(VERSION 3.14...3.25)
 
 # This value is used when generating builds using this plugin, so it must
 # not be changed
-set(PLUGIN_NAME "flutter_inappwebview_windows_plugin")
+set(PLUGIN_NAME "cygnus_core_plugin")
 
 find_program(NUGET nuget)
 if(NOT NUGET)
-  message(NOTICE "Nuget is not installed! The flutter_inappwebview_windows plugin requires it. Check https://inappwebview.dev/docs/intro#setup-windows")
+  message(NOTICE "Nuget is not installed! The cygnus_core plugin requires it. Check https://inappwebview.dev/docs/intro#setup-windows")
 endif()
 
 add_custom_target(${PROJECT_NAME}_DEPS ALL)
@@ -252,7 +252,7 @@ list(APPEND PLUGIN_SOURCES
 # Define the plugin library target. Its name must not be changed (see comment
 # on PLUGIN_NAME above).
 add_library(${PLUGIN_NAME} SHARED
-  "include/flutter_inappwebview_windows/flutter_inappwebview_windows_plugin_c_api.h"
+  "include/cygnus_core/flutter_inappwebview_windows_plugin_c_api.h"
   "flutter_inappwebview_windows_plugin_c_api.cpp"
   ${PLUGIN_SOURCES}
 )
@@ -319,7 +319,7 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE flutter flutter_wrapper_plugin)
 # List of absolute paths to libraries that should be bundled with the plugin.
 # This list could contain prebuilt libraries, or libraries created by an
 # external build triggered from this build file.
-set(flutter_inappwebview_windows_bundled_libraries
+set(cygnus_core_bundled_libraries
   PARENT_SCOPE
 )
 

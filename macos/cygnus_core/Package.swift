@@ -4,19 +4,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "flutter_inappwebview_ios",
+    name: "cygnus_core",
     platforms: [
-        .iOS("15.0"),
+        .macOS("12.0"),
     ],
     products: [
-        .library(name: "flutter-inappwebview-ios", targets: ["flutter_inappwebview_ios"])
+        .library(name: "cygnus-core", targets: ["cygnus_core"])
     ],
     dependencies: [
       .package(url: "https://github.com/apple/swift-collections.git", from: "1.2.1")
     ],
     targets: [
         .target(
-            name: "flutter_inappwebview_ios",
+            name: "cygnus_core",
             dependencies: [
                 .product(name: "Collections", package: "swift-collections")
             ],

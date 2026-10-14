@@ -3,6 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  cygnus_core
   url_launcher_linux
 )
 

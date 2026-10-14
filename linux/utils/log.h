@@ -17,9 +17,9 @@ static inline void debugLog(const std::basic_string<T>& msg, const bool& isError
 #ifndef NDEBUG
   std::basic_string<T> debugMsg = msg;
   if (!filename.empty() && line > 0) {
-    auto filenameSplit = split(filename, std::string{"/flutter_inappwebview_linux/"});
+    auto filenameSplit = split(filename, std::string{"/cygnus_core/"});
     std::string reduceFilenamePath =
-        filenameSplit.size() > 0 ? "flutter_inappwebview_linux/" + filenameSplit.back() : filename;
+        filenameSplit.size() > 0 ? "cygnus_core/" + filenameSplit.back() : filename;
     debugMsg = reduceFilenamePath + "(" + std::to_string(line) + "): " + debugMsg;
   }
 

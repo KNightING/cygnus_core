@@ -3,7 +3,7 @@
 # Run `pod lib lint flutterplugintest.podspec' to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'flutter_inappwebview_ios'
+  s.name             = 'cygnus_core'
   s.version          = '0.0.1'
   s.summary          = 'A new Flutter plugin.'
   s.description      = <<-DESC
@@ -13,10 +13,10 @@ A new Flutter plugin.
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Your Company' => 'email@example.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'flutter_inappwebview_ios/Sources/flutter_inappwebview_ios/**/*.swift'
-  s.resources = 'flutter_inappwebview_ios/Sources/flutter_inappwebview_ios/Resources/**/*.storyboard'
+  s.source_files = 'cygnus_core/Sources/cygnus_core/**/*.swift'
+  s.resources = 'cygnus_core/Sources/cygnus_core/Resources/**/*.storyboard'
   s.dependency 'Flutter'
-  s.resource_bundles = {'flutter_inappwebview_ios_privacy' => ['flutter_inappwebview_ios/Sources/flutter_inappwebview_ios/Resources/PrivacyInfo.xcprivacy']}
+  s.resource_bundles = {'cygnus_core_privacy' => ['cygnus_core/Sources/cygnus_core/Resources/PrivacyInfo.xcprivacy']}
 
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
 

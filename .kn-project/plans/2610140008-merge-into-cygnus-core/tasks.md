@@ -20,11 +20,11 @@
 - [x] `flutter analyze` 通過；`example` 以 Web 建置（`flutter build web`）通過（analyze 0 error；web 與 Android 建置皆成功）
 
 ## Phase 3 — 原生端搬移與必要改名
-- [ ] iOS：搬移到 `ios/`，podspec 與 SPM（`Package.swift`）名稱改 `cygnus_core`，Swift 目錄更名
-- [ ] macOS：同上
-- [ ] Windows：搬移到 `windows/`，`CMakeLists.txt` 的 `PROJECT_NAME`／`PLUGIN_NAME` 與 `include/` 目錄改 `cygnus_core`
-- [ ] Linux：同上
-- [ ] 確認各平台 plugin 類別名、Java namespace、channel 前綴、JS 全域名稱**皆未被更動**（以 grep 比對初始 commit）
+- [x] iOS：搬移到 `ios/`，podspec 與 SPM（`Package.swift`）名稱改 `cygnus_core`，Swift 目錄更名（含 storyboard 的 `customModule`；iOS 模擬器 debug 建置成功）
+- [x] macOS：同上（debug 建置成功；實際啟動並於 WebView 載入 flutter.dev，事件正常記錄）
+- [x] Windows：搬移到 `windows/`，`CMakeLists.txt` 的 `PROJECT_NAME`／`PLUGIN_NAME`／`cygnus_core_bundled_libraries` 與 `include/` 目錄改 `cygnus_core`（靜態檢查與 Flutter 產生的 registrant／cmake 吻合；實際建置待人工）
+- [x] Linux：同上（含 `utils/log.h` 的路徑切割字串；實際建置待人工）
+- [x] 確認各平台 plugin 類別名、Java namespace、channel 前綴、JS 全域名稱**皆未被更動**（以 grep 比對初始 commit：逐檔出現次數相同，唯一差異是本計畫文件自己的文字）
 
 ## Phase 4 — 產生器、工具、範例與文件
 - [ ] `dev_packages/generators/build.yaml` 的 `generate_for` 涵蓋新位置
