@@ -9,7 +9,7 @@ class OnWindowFocusEventJS {
 
     // This plugin is only for main frame
     @JvmStatic
-    fun ON_WINDOW_FOCUS_EVENT_JS_PLUGIN_SCRIPT(allowedOriginRules: Set<String>?): PluginScript {
+    fun ON_WINDOW_FOCUS_EVENT_JS_PLUGIN_SCRIPT(allowedOriginRules: MutableSet<String>?): PluginScript {
       return PluginScript(
         OnWindowFocusEventJS.ON_WINDOW_FOCUS_EVENT_JS_PLUGIN_SCRIPT_GROUP_NAME,
         OnWindowFocusEventJS.ON_WINDOW_FOCUS_EVENT_JS_SOURCE(),

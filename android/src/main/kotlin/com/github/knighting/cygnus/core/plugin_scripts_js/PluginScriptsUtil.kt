@@ -80,7 +80,7 @@ class PluginScriptsUtil {
 
     @JvmStatic
     fun CHECK_GLOBAL_KEY_DOWN_EVENT_TO_HIDE_CONTEXT_MENU_JS_PLUGIN_SCRIPT(
-      allowedOriginRules: Set<String>?,
+      allowedOriginRules: MutableSet<String>?,
       forMainFrameOnly: Boolean
     ): PluginScript {
       return PluginScript(

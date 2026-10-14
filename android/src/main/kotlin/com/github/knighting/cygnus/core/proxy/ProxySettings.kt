@@ -37,7 +37,7 @@ class ProxySettings : ISettings<ProxyConfig> {
         "directs" -> directs = value as MutableList<String>
         "proxyRules" -> {
           proxyRules = ArrayList()
-          val proxyRuleMapList = value as MutableList<MutableMap<String, String>>
+          val proxyRuleMapList = value as MutableList<MutableMap<String, String?>>
           for (proxyRuleMap in proxyRuleMapList) {
             val proxyRuleExt = ProxyRuleExt.fromMap(proxyRuleMap)
             if (proxyRuleExt != null) {
@@ -55,7 +55,7 @@ class ProxySettings : ISettings<ProxyConfig> {
   }
 
   override fun toMap(): MutableMap<String, Any?> {
-    val proxyRuleMapList: MutableList<Map<String, String>> = ArrayList()
+    val proxyRuleMapList: MutableList<Map<String, String?>> = ArrayList()
     for (proxyRuleExt in proxyRules) {
       proxyRuleMapList.add(proxyRuleExt.toMap())
     }

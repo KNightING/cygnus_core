@@ -14,7 +14,7 @@ class OnLoadResourceJS {
 
     @JvmStatic
     fun ON_LOAD_RESOURCE_JS_PLUGIN_SCRIPT(
-      allowedOriginRules: Set<String>?,
+      allowedOriginRules: MutableSet<String>?,
       forMainFrameOnly: Boolean
     ): PluginScript {
       return PluginScript(

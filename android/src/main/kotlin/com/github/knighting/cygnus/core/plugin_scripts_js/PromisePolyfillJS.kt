@@ -8,7 +8,7 @@ class PromisePolyfillJS {
     const val PROMISE_POLYFILL_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_PROMISE_POLYFILL_JS_PLUGIN_SCRIPT"
 
     @JvmStatic
-    fun PROMISE_POLYFILL_JS_PLUGIN_SCRIPT(allowedOriginRules: Set<String>?,
+    fun PROMISE_POLYFILL_JS_PLUGIN_SCRIPT(allowedOriginRules: MutableSet<String>?,
                                           forMainFrameOnly: Boolean): PluginScript {
       return PluginScript(
         PROMISE_POLYFILL_JS_PLUGIN_SCRIPT_GROUP_NAME,

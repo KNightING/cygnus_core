@@ -29,7 +29,7 @@ class KeyboardAvoidanceJS {
 
     // This plugin is only for the main frame
     @JvmStatic
-    fun KEYBOARD_AVOIDANCE_JS_PLUGIN_SCRIPT(allowedOriginRules: Set<String>?): PluginScript {
+    fun KEYBOARD_AVOIDANCE_JS_PLUGIN_SCRIPT(allowedOriginRules: MutableSet<String>?): PluginScript {
       return PluginScript(
         KeyboardAvoidanceJS.KEYBOARD_AVOIDANCE_JS_PLUGIN_SCRIPT_GROUP_NAME,
         KeyboardAvoidanceJS.KEYBOARD_AVOIDANCE_JS_SOURCE(),

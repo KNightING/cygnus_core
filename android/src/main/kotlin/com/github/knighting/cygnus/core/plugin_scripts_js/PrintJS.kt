@@ -8,7 +8,7 @@ class PrintJS {
     const val PRINT_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_PRINT_JS_PLUGIN_SCRIPT"
 
     @JvmStatic
-    fun PRINT_JS_PLUGIN_SCRIPT(allowedOriginRules: Set<String>?,
+    fun PRINT_JS_PLUGIN_SCRIPT(allowedOriginRules: MutableSet<String>?,
                                forMainFrameOnly: Boolean): PluginScript {
       return PluginScript(
         PrintJS.PRINT_JS_PLUGIN_SCRIPT_GROUP_NAME,

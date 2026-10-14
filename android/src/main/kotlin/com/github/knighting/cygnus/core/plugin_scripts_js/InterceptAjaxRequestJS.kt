@@ -29,7 +29,7 @@ class InterceptAjaxRequestJS {
     }
 
     @JvmStatic
-    fun INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT(allowedOriginRules: Set<String>?, forMainFrameOnly: Boolean, initialUseOnAjaxReadyStateChange: Boolean, initialUseOnAjaxProgress: Boolean): PluginScript {
+    fun INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT(allowedOriginRules: MutableSet<String>?, forMainFrameOnly: Boolean, initialUseOnAjaxReadyStateChange: Boolean, initialUseOnAjaxProgress: Boolean): PluginScript {
       return PluginScript(
                       InterceptAjaxRequestJS.INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT_GROUP_NAME,
                       InterceptAjaxRequestJS.INTERCEPT_AJAX_REQUEST_JS_SOURCE(initialUseOnAjaxReadyStateChange, initialUseOnAjaxProgress),

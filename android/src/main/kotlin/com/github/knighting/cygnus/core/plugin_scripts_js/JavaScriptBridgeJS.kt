@@ -23,7 +23,7 @@ class JavaScriptBridgeJS {
     private const val VAR_JAVASCRIPT_BRIDGE_BRIDGE_SECRET = "\$IN_APP_WEBVIEW_JAVASCRIPT_BRIDGE_BRIDGE_SECRET"
 
     @JvmStatic
-    fun JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT(expectedBridgeSecret: String, allowedOriginRules: Set<String>?, forMainFrameOnly: Boolean): PluginScript {
+    fun JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT(expectedBridgeSecret: String, allowedOriginRules: MutableSet<String>?, forMainFrameOnly: Boolean): PluginScript {
       val source = Util.replaceAll(JavaScriptBridgeJS.JAVASCRIPT_BRIDGE_JS_SOURCE(), VAR_JAVASCRIPT_BRIDGE_BRIDGE_SECRET, expectedBridgeSecret)
       return PluginScript(
               JavaScriptBridgeJS.JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT_GROUP_NAME,

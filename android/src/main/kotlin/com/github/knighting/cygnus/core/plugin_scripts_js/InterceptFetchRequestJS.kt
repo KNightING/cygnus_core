@@ -14,7 +14,7 @@ class InterceptFetchRequestJS {
     }
 
     @JvmStatic
-    fun INTERCEPT_FETCH_REQUEST_JS_PLUGIN_SCRIPT(allowedOriginRules: Set<String>?, forMainFrameOnly: Boolean): PluginScript {
+    fun INTERCEPT_FETCH_REQUEST_JS_PLUGIN_SCRIPT(allowedOriginRules: MutableSet<String>?, forMainFrameOnly: Boolean): PluginScript {
       return PluginScript(
               InterceptFetchRequestJS.INTERCEPT_FETCH_REQUEST_JS_PLUGIN_SCRIPT_GROUP_NAME,
               InterceptFetchRequestJS.INTERCEPT_FETCH_REQUEST_JS_SOURCE(),

@@ -9,7 +9,7 @@ class OnWindowBlurEventJS {
 
     // This plugin is only for main frame
     @JvmStatic
-    fun ON_WINDOW_BLUR_EVENT_JS_PLUGIN_SCRIPT(allowedOriginRules: Set<String>?): PluginScript {
+    fun ON_WINDOW_BLUR_EVENT_JS_PLUGIN_SCRIPT(allowedOriginRules: MutableSet<String>?): PluginScript {
       return PluginScript(
         OnWindowBlurEventJS.ON_WINDOW_BLUR_EVENT_JS_PLUGIN_SCRIPT_GROUP_NAME,
         OnWindowBlurEventJS.ON_WINDOW_BLUR_EVENT_JS_SOURCE(),
