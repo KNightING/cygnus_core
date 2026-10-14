@@ -35,7 +35,7 @@
 （本 repo 無 `app-flow.json`，不適用。）
 
 ## Open Questions / 待確認事項
-> Q1 已確認（2026-10-14）；Q2 為 Phase 3 驗證時新發現，**確認前不得進入完成流程（歸檔、PR）**。
+> Q1 已確認（2026-10-14）；Q2 為 Phase 3 驗證時新發現，2026-10-14 確認。
 
 ### Q1. `.github/instructions/general.instructions.md:159` 提到 `npm run publish:dry` 怎麼處理？ — 影響範圍：該檔 1 行
 - [x] 選項 A：一併刪除該行
@@ -44,9 +44,9 @@
 
 ### Q2. `publish:dry`、`publish:dry:windows` 與 `scripts/publish.sh` 是否仍要移除？ — 影響範圍：`package.json`、`scripts/publish.sh`（已於 Phase 1 移除，可還原）
 > 此題因驗證發現「`--dry-run` 其實不被 `publish_to: none` 拒絕」而新增；先前使用者的選擇是在錯誤說法下做的。
-- [ ] 選項 A：維持移除（已執行）　(建議，理由：repo 明定不發佈，發佈相關工具不留，避免誤以為仍可發佈；`--dry-run` 只是驗證套件內容，對一個永遠不發佈的 repo 價值很低)
+- [x] 選項 A：維持移除（已執行）
 - [ ] 選項 B：還原 `publish:dry`、`publish:dry:windows` 兩條，只保留「移除真正的 `publish`、`publish:windows` 與 `scripts/publish.sh`」
-- **決議**：_(待使用者勾選)_　狀態：⏳ 待確認
+- **決議**：A　狀態：✅ 已確認
 
 ## Manual Follow-ups / 人工收尾事項
 無。本計畫只改設定與腳本，不涉及 migration、環境變數、部署設定或第三方主控台。（前一份計畫 `2610140008` 的人工收尾事項——Windows／Linux 建置驗證、Apache-2.0 標示確認——仍有效，記錄在 issue #1 的結案留言。）
@@ -58,6 +58,8 @@
 - **[Q1]** 一併刪除 `.github/instructions/general.instructions.md:159` 那一行 — 理由：它指向本計畫移除的 `npm run publish:dry`，留著會誤導；只動這一行，其餘 `.github` 上游文件維持前一份計畫 Q9 的「另案」。
 - **[核准閘]** 完成後：commit + 開 PR（預設；自動歸檔＋wiki，Rule 12 非互動鏈），PR 的 base 為 `main` — 理由：使用者選擇；依 Rule 16 未沿用前一份計畫的「直接併入 main」。完成時會 `git fetch` 後 `git rebase origin/main` 並以 `--force-with-lease --force-if-includes` 更新遠端工作分支（已揭露）。
 - **[驗證]** 以一個與本專案無關的臨時空套件、不可達的 pub 服務位址與關閉的 stdin 做安全測試：有 `publish_to: none` 時實際發佈輸出「A private package cannot be published.」；去掉它（對照）則流程一路走到連線服務器才失敗 — 結論：`publish_to: none` 確實讓實際發佈被拒絕，但 `flutter pub publish --dry-run` 仍會執行並做驗證（本 repo 目前只會因缺少 `CHANGELOG.md` 而回報未滿足）。因此 `publish:dry` 系列仍可運作，是否移除成為一個需要使用者重新決定的事項（見 Q2）。
+- **[Q2]** 維持移除 `publish:dry`、`publish:dry:windows` 與 `scripts/publish.sh` — 理由：使用者在得知「`--dry-run` 不被 `publish_to: none` 拒絕、仍能驗證套件內容」後仍選擇維持；repo 明定不發佈，發佈相關工具不留。
+- **[Q2]** 更正 issue #2 內文中「`--dry-run` 同樣被拒」那一句 — 理由：該句不符事實；使用者同意現在更正（對外寫入）。
 
 ## Git Completion Policy
 - PR 一律以 `--base main` 顯式指定 base，不依賴 `gh` 的預設值 (Rule 23)。
