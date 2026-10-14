@@ -26,7 +26,7 @@ open class UserScript(
       val groupName = map["groupName"] as String?
       val source = map["source"] as String?
       val injectionTime = UserScriptInjectionTime.fromValue(map["injectionTime"] as Int)
-      val contentWorld = ContentWorld.fromMap(map["contentWorld"] as Map<String, Any?>?)
+      val contentWorld = ContentWorld.fromMap(map["contentWorld"] as MutableMap<String, Any?>?)
       val allowedOriginRules: MutableSet<String> = HashSet(map["allowedOriginRules"] as List<String>)
       val forMainFrameOnly = map["forMainFrameOnly"] as Boolean
       assert(source != null)
