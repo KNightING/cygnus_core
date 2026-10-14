@@ -75,7 +75,7 @@ flowchart LR
 
 ## References
 
-- 實作：`android/.../in_app_webview/InAppWebView.java:1604`（守衛呼叫點）、
+- 實作：`android/.../in_app_webview/InAppWebView.kt:1571`（守衛呼叫點）、
   `:1637`（`shouldDropSystemGestureArtefact`）、`:1667`（`isInsideSystemGestureArea`）、
   `:131`（門檻常數）
 - 相關節點：[軟鍵盤避讓](keyboard-avoidance.md)（兩者共用 `InAppWebView` 的觸控路徑）

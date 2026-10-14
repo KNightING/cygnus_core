@@ -20,7 +20,7 @@
 flowchart TD
   D["Dart: enabledHighFrequencyEvents()<br/>依 webviewParams 的 callback 是否為 null"]
   D --> C["creationParams['enabledHighFrequencyEvents']"]
-  C --> F["FlutterWebView.java 讀入"]
+  C --> F["FlutterWebView.kt 讀入"]
   F --> W["WebViewChannelDelegate<br/>.setEnabledHighFrequencyEvents()"]
   D --> M["platform view 建立後<br/>syncEnabledHighFrequencyEvents()"]
   M -->|"method channel"| W
