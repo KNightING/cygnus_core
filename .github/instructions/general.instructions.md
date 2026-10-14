@@ -156,7 +156,6 @@ The root `package.json` contains useful scripts for development and maintenance:
 - **`npm run format`**: Formats code in all packages using `dart format`.
 - **`npm run docs:gen`**: Generates API documentation.
 - **`npm run docs:serve`**: Serves the generated API documentation locally.
-- **`npm run publish:dry`**: Runs a dry-run publish check.
 
 ---
 
