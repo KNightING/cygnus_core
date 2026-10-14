@@ -7,47 +7,47 @@ part of 'modal_transition_style.dart';
 // **************************************************************************
 
 ///Class used to specify the transition style when presenting a view controller.
-class ModalTransitionStyle {
+class CygnusModalTransitionStyle {
   final int _value;
   final int? _nativeValue;
-  const ModalTransitionStyle._internal(this._value, this._nativeValue);
+  const CygnusModalTransitionStyle._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory ModalTransitionStyle._internalMultiPlatform(
+  factory CygnusModalTransitionStyle._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => ModalTransitionStyle._internal(value, nativeValue());
+  ) => CygnusModalTransitionStyle._internal(value, nativeValue());
 
   ///When the view controller is presented, its view slides up from the bottom of the screen.
   ///On dismissal, the view slides back down. This is the default transition style.
-  static const COVER_VERTICAL = ModalTransitionStyle._internal(0, 0);
+  static const COVER_VERTICAL = CygnusModalTransitionStyle._internal(0, 0);
 
   ///When the view controller is presented, the current view fades out while the new view fades in at the same time.
   ///On dismissal, a similar type of cross-fade is used to return to the original view.
-  static const CROSS_DISSOLVE = ModalTransitionStyle._internal(2, 2);
+  static const CROSS_DISSOLVE = CygnusModalTransitionStyle._internal(2, 2);
 
   ///When the view controller is presented, the current view initiates a horizontal 3D flip from right-to-left,
   ///resulting in the revealing of the new view as if it were on the back of the previous view.
   ///On dismissal, the flip occurs from left-to-right, returning to the original view.
-  static const FLIP_HORIZONTAL = ModalTransitionStyle._internal(1, 1);
+  static const FLIP_HORIZONTAL = CygnusModalTransitionStyle._internal(1, 1);
 
   ///When the view controller is presented, one corner of the current view curls up to reveal the presented view underneath.
   ///On dismissal, the curled up page unfurls itself back on top of the presented view.
   ///A view controller presented using this transition is itself prevented from presenting any additional view controllers.
-  static const PARTIAL_CURL = ModalTransitionStyle._internal(3, 3);
+  static const PARTIAL_CURL = CygnusModalTransitionStyle._internal(3, 3);
 
-  ///Set of all values of [ModalTransitionStyle].
-  static final Set<ModalTransitionStyle> values = [
-    ModalTransitionStyle.COVER_VERTICAL,
-    ModalTransitionStyle.CROSS_DISSOLVE,
-    ModalTransitionStyle.FLIP_HORIZONTAL,
-    ModalTransitionStyle.PARTIAL_CURL,
+  ///Set of all values of [CygnusModalTransitionStyle].
+  static final Set<CygnusModalTransitionStyle> values = [
+    CygnusModalTransitionStyle.COVER_VERTICAL,
+    CygnusModalTransitionStyle.CROSS_DISSOLVE,
+    CygnusModalTransitionStyle.FLIP_HORIZONTAL,
+    CygnusModalTransitionStyle.PARTIAL_CURL,
   ].toSet();
 
-  ///Gets a possible [ModalTransitionStyle] instance from [int] value.
-  static ModalTransitionStyle? fromValue(int? value) {
+  ///Gets a possible [CygnusModalTransitionStyle] instance from [int] value.
+  static CygnusModalTransitionStyle? fromValue(int? value) {
     if (value != null) {
       try {
-        return ModalTransitionStyle.values.firstWhere(
+        return CygnusModalTransitionStyle.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -57,11 +57,11 @@ class ModalTransitionStyle {
     return null;
   }
 
-  ///Gets a possible [ModalTransitionStyle] instance from a native value.
-  static ModalTransitionStyle? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusModalTransitionStyle] instance from a native value.
+  static CygnusModalTransitionStyle? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return ModalTransitionStyle.values.firstWhere(
+        return CygnusModalTransitionStyle.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -71,15 +71,15 @@ class ModalTransitionStyle {
     return null;
   }
 
-  /// Gets a possible [ModalTransitionStyle] instance value with name [name].
+  /// Gets a possible [CygnusModalTransitionStyle] instance value with name [name].
   ///
-  /// Goes through [ModalTransitionStyle.values] looking for a value with
-  /// name [name], as reported by [ModalTransitionStyle.name].
+  /// Goes through [CygnusModalTransitionStyle.values] looking for a value with
+  /// name [name], as reported by [CygnusModalTransitionStyle.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ModalTransitionStyle? byName(String? name) {
+  static CygnusModalTransitionStyle? byName(String? name) {
     if (name != null) {
       try {
-        return ModalTransitionStyle.values.firstWhere(
+        return CygnusModalTransitionStyle.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -89,7 +89,7 @@ class ModalTransitionStyle {
     return null;
   }
 
-  /// Creates a map from the names of [ModalTransitionStyle] values to the values.
+  /// Creates a map from the names of [CygnusModalTransitionStyle] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -97,9 +97,10 @@ class ModalTransitionStyle {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ModalTransitionStyle> asNameMap() =>
-      <String, ModalTransitionStyle>{
-        for (final value in ModalTransitionStyle.values) value.name(): value,
+  static Map<String, CygnusModalTransitionStyle> asNameMap() =>
+      <String, CygnusModalTransitionStyle>{
+        for (final value in CygnusModalTransitionStyle.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.
@@ -141,49 +142,55 @@ class ModalTransitionStyle {
 }
 
 ///An iOS-specific class used to specify the transition style when presenting a view controller.
-///Use [ModalTransitionStyle] instead.
-@Deprecated('Use ModalTransitionStyle instead')
-class IOSUIModalTransitionStyle {
+///Use [CygnusModalTransitionStyle] instead.
+@Deprecated('Use CygnusModalTransitionStyle instead')
+class CygnusIOSUIModalTransitionStyle {
   final int _value;
   final int? _nativeValue;
-  const IOSUIModalTransitionStyle._internal(this._value, this._nativeValue);
+  const CygnusIOSUIModalTransitionStyle._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory IOSUIModalTransitionStyle._internalMultiPlatform(
+  factory CygnusIOSUIModalTransitionStyle._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => IOSUIModalTransitionStyle._internal(value, nativeValue());
+  ) => CygnusIOSUIModalTransitionStyle._internal(value, nativeValue());
 
   ///When the view controller is presented, its view slides up from the bottom of the screen.
   ///On dismissal, the view slides back down. This is the default transition style.
-  static const COVER_VERTICAL = IOSUIModalTransitionStyle._internal(0, 0);
+  static const COVER_VERTICAL = CygnusIOSUIModalTransitionStyle._internal(0, 0);
 
   ///When the view controller is presented, the current view fades out while the new view fades in at the same time.
   ///On dismissal, a similar type of cross-fade is used to return to the original view.
-  static const CROSS_DISSOLVE = IOSUIModalTransitionStyle._internal(2, 2);
+  static const CROSS_DISSOLVE = CygnusIOSUIModalTransitionStyle._internal(2, 2);
 
   ///When the view controller is presented, the current view initiates a horizontal 3D flip from right-to-left,
   ///resulting in the revealing of the new view as if it were on the back of the previous view.
   ///On dismissal, the flip occurs from left-to-right, returning to the original view.
-  static const FLIP_HORIZONTAL = IOSUIModalTransitionStyle._internal(1, 1);
+  static const FLIP_HORIZONTAL = CygnusIOSUIModalTransitionStyle._internal(
+    1,
+    1,
+  );
 
   ///When the view controller is presented, one corner of the current view curls up to reveal the presented view underneath.
   ///On dismissal, the curled up page unfurls itself back on top of the presented view.
   ///A view controller presented using this transition is itself prevented from presenting any additional view controllers.
-  static const PARTIAL_CURL = IOSUIModalTransitionStyle._internal(3, 3);
+  static const PARTIAL_CURL = CygnusIOSUIModalTransitionStyle._internal(3, 3);
 
-  ///Set of all values of [IOSUIModalTransitionStyle].
-  static final Set<IOSUIModalTransitionStyle> values = [
-    IOSUIModalTransitionStyle.COVER_VERTICAL,
-    IOSUIModalTransitionStyle.CROSS_DISSOLVE,
-    IOSUIModalTransitionStyle.FLIP_HORIZONTAL,
-    IOSUIModalTransitionStyle.PARTIAL_CURL,
+  ///Set of all values of [CygnusIOSUIModalTransitionStyle].
+  static final Set<CygnusIOSUIModalTransitionStyle> values = [
+    CygnusIOSUIModalTransitionStyle.COVER_VERTICAL,
+    CygnusIOSUIModalTransitionStyle.CROSS_DISSOLVE,
+    CygnusIOSUIModalTransitionStyle.FLIP_HORIZONTAL,
+    CygnusIOSUIModalTransitionStyle.PARTIAL_CURL,
   ].toSet();
 
-  ///Gets a possible [IOSUIModalTransitionStyle] instance from [int] value.
-  static IOSUIModalTransitionStyle? fromValue(int? value) {
+  ///Gets a possible [CygnusIOSUIModalTransitionStyle] instance from [int] value.
+  static CygnusIOSUIModalTransitionStyle? fromValue(int? value) {
     if (value != null) {
       try {
-        return IOSUIModalTransitionStyle.values.firstWhere(
+        return CygnusIOSUIModalTransitionStyle.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -193,11 +200,11 @@ class IOSUIModalTransitionStyle {
     return null;
   }
 
-  ///Gets a possible [IOSUIModalTransitionStyle] instance from a native value.
-  static IOSUIModalTransitionStyle? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusIOSUIModalTransitionStyle] instance from a native value.
+  static CygnusIOSUIModalTransitionStyle? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return IOSUIModalTransitionStyle.values.firstWhere(
+        return CygnusIOSUIModalTransitionStyle.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -207,15 +214,15 @@ class IOSUIModalTransitionStyle {
     return null;
   }
 
-  /// Gets a possible [IOSUIModalTransitionStyle] instance value with name [name].
+  /// Gets a possible [CygnusIOSUIModalTransitionStyle] instance value with name [name].
   ///
-  /// Goes through [IOSUIModalTransitionStyle.values] looking for a value with
-  /// name [name], as reported by [IOSUIModalTransitionStyle.name].
+  /// Goes through [CygnusIOSUIModalTransitionStyle.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSUIModalTransitionStyle.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSUIModalTransitionStyle? byName(String? name) {
+  static CygnusIOSUIModalTransitionStyle? byName(String? name) {
     if (name != null) {
       try {
-        return IOSUIModalTransitionStyle.values.firstWhere(
+        return CygnusIOSUIModalTransitionStyle.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -225,7 +232,7 @@ class IOSUIModalTransitionStyle {
     return null;
   }
 
-  /// Creates a map from the names of [IOSUIModalTransitionStyle] values to the values.
+  /// Creates a map from the names of [CygnusIOSUIModalTransitionStyle] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -233,9 +240,9 @@ class IOSUIModalTransitionStyle {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSUIModalTransitionStyle> asNameMap() =>
-      <String, IOSUIModalTransitionStyle>{
-        for (final value in IOSUIModalTransitionStyle.values)
+  static Map<String, CygnusIOSUIModalTransitionStyle> asNameMap() =>
+      <String, CygnusIOSUIModalTransitionStyle>{
+        for (final value in CygnusIOSUIModalTransitionStyle.values)
           value.name(): value,
       };
 

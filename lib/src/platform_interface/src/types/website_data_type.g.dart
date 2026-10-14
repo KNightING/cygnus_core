@@ -7,38 +7,38 @@ part of 'website_data_type.dart';
 // **************************************************************************
 
 ///Class that represents a website data type.
-class WebsiteDataType {
+class CygnusWebsiteDataType {
   final String _value;
   final String? _nativeValue;
-  const WebsiteDataType._internal(this._value, this._nativeValue);
+  const CygnusWebsiteDataType._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory WebsiteDataType._internalMultiPlatform(
+  factory CygnusWebsiteDataType._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => WebsiteDataType._internal(value, nativeValue());
+  ) => CygnusWebsiteDataType._internal(value, nativeValue());
 
   ///Returns a set of all available website data types.
   static final ALL = [
-    WebsiteDataType.WKWebsiteDataTypeFetchCache,
-    WebsiteDataType.WKWebsiteDataTypeDiskCache,
-    WebsiteDataType.WKWebsiteDataTypeMemoryCache,
-    WebsiteDataType.WKWebsiteDataTypeOfflineWebApplicationCache,
-    WebsiteDataType.WKWebsiteDataTypeCookies,
-    WebsiteDataType.WKWebsiteDataTypeSessionStorage,
-    WebsiteDataType.WKWebsiteDataTypeLocalStorage,
-    WebsiteDataType.WKWebsiteDataTypeWebSQLDatabases,
-    WebsiteDataType.WKWebsiteDataTypeIndexedDBDatabases,
-    WebsiteDataType.WKWebsiteDataTypeServiceWorkerRegistrations,
+    CygnusWebsiteDataType.WKWebsiteDataTypeFetchCache,
+    CygnusWebsiteDataType.WKWebsiteDataTypeDiskCache,
+    CygnusWebsiteDataType.WKWebsiteDataTypeMemoryCache,
+    CygnusWebsiteDataType.WKWebsiteDataTypeOfflineWebApplicationCache,
+    CygnusWebsiteDataType.WKWebsiteDataTypeCookies,
+    CygnusWebsiteDataType.WKWebsiteDataTypeSessionStorage,
+    CygnusWebsiteDataType.WKWebsiteDataTypeLocalStorage,
+    CygnusWebsiteDataType.WKWebsiteDataTypeWebSQLDatabases,
+    CygnusWebsiteDataType.WKWebsiteDataTypeIndexedDBDatabases,
+    CygnusWebsiteDataType.WKWebsiteDataTypeServiceWorkerRegistrations,
   ].toSet();
 
   ///Cookies.
-  static const WKWebsiteDataTypeCookies = WebsiteDataType._internal(
+  static const WKWebsiteDataTypeCookies = CygnusWebsiteDataType._internal(
     'WKWebsiteDataTypeCookies',
     'WKWebsiteDataTypeCookies',
   );
 
   ///On-disk caches.
-  static const WKWebsiteDataTypeDiskCache = WebsiteDataType._internal(
+  static const WKWebsiteDataTypeDiskCache = CygnusWebsiteDataType._internal(
     'WKWebsiteDataTypeDiskCache',
     'WKWebsiteDataTypeDiskCache',
   );
@@ -46,32 +46,33 @@ class WebsiteDataType {
   ///On-disk Fetch caches.
   ///
   ///**NOTE**: available on iOS 11.3+.
-  static const WKWebsiteDataTypeFetchCache = WebsiteDataType._internal(
+  static const WKWebsiteDataTypeFetchCache = CygnusWebsiteDataType._internal(
     'WKWebsiteDataTypeFetchCache',
     'WKWebsiteDataTypeFetchCache',
   );
 
   ///IndexedDB databases.
-  static const WKWebsiteDataTypeIndexedDBDatabases = WebsiteDataType._internal(
-    'WKWebsiteDataTypeIndexedDBDatabases',
-    'WKWebsiteDataTypeIndexedDBDatabases',
-  );
+  static const WKWebsiteDataTypeIndexedDBDatabases =
+      CygnusWebsiteDataType._internal(
+        'WKWebsiteDataTypeIndexedDBDatabases',
+        'WKWebsiteDataTypeIndexedDBDatabases',
+      );
 
   ///HTML local storage.
-  static const WKWebsiteDataTypeLocalStorage = WebsiteDataType._internal(
+  static const WKWebsiteDataTypeLocalStorage = CygnusWebsiteDataType._internal(
     'WKWebsiteDataTypeLocalStorage',
     'WKWebsiteDataTypeLocalStorage',
   );
 
   ///In-memory caches.
-  static const WKWebsiteDataTypeMemoryCache = WebsiteDataType._internal(
+  static const WKWebsiteDataTypeMemoryCache = CygnusWebsiteDataType._internal(
     'WKWebsiteDataTypeMemoryCache',
     'WKWebsiteDataTypeMemoryCache',
   );
 
   ///HTML offline web application caches.
   static const WKWebsiteDataTypeOfflineWebApplicationCache =
-      WebsiteDataType._internal(
+      CygnusWebsiteDataType._internal(
         'WKWebsiteDataTypeOfflineWebApplicationCache',
         'WKWebsiteDataTypeOfflineWebApplicationCache',
       );
@@ -80,42 +81,44 @@ class WebsiteDataType {
   ///
   ///**NOTE**: available on iOS 11.3+.
   static const WKWebsiteDataTypeServiceWorkerRegistrations =
-      WebsiteDataType._internal(
+      CygnusWebsiteDataType._internal(
         'WKWebsiteDataTypeServiceWorkerRegistrations',
         'WKWebsiteDataTypeServiceWorkerRegistrations',
       );
 
   ///HTML session storage.
-  static const WKWebsiteDataTypeSessionStorage = WebsiteDataType._internal(
-    'WKWebsiteDataTypeSessionStorage',
-    'WKWebsiteDataTypeSessionStorage',
-  );
+  static const WKWebsiteDataTypeSessionStorage =
+      CygnusWebsiteDataType._internal(
+        'WKWebsiteDataTypeSessionStorage',
+        'WKWebsiteDataTypeSessionStorage',
+      );
 
   ///WebSQL databases.
-  static const WKWebsiteDataTypeWebSQLDatabases = WebsiteDataType._internal(
-    'WKWebsiteDataTypeWebSQLDatabases',
-    'WKWebsiteDataTypeWebSQLDatabases',
-  );
+  static const WKWebsiteDataTypeWebSQLDatabases =
+      CygnusWebsiteDataType._internal(
+        'WKWebsiteDataTypeWebSQLDatabases',
+        'WKWebsiteDataTypeWebSQLDatabases',
+      );
 
-  ///Set of all values of [WebsiteDataType].
-  static final Set<WebsiteDataType> values = [
-    WebsiteDataType.WKWebsiteDataTypeCookies,
-    WebsiteDataType.WKWebsiteDataTypeDiskCache,
-    WebsiteDataType.WKWebsiteDataTypeFetchCache,
-    WebsiteDataType.WKWebsiteDataTypeIndexedDBDatabases,
-    WebsiteDataType.WKWebsiteDataTypeLocalStorage,
-    WebsiteDataType.WKWebsiteDataTypeMemoryCache,
-    WebsiteDataType.WKWebsiteDataTypeOfflineWebApplicationCache,
-    WebsiteDataType.WKWebsiteDataTypeServiceWorkerRegistrations,
-    WebsiteDataType.WKWebsiteDataTypeSessionStorage,
-    WebsiteDataType.WKWebsiteDataTypeWebSQLDatabases,
+  ///Set of all values of [CygnusWebsiteDataType].
+  static final Set<CygnusWebsiteDataType> values = [
+    CygnusWebsiteDataType.WKWebsiteDataTypeCookies,
+    CygnusWebsiteDataType.WKWebsiteDataTypeDiskCache,
+    CygnusWebsiteDataType.WKWebsiteDataTypeFetchCache,
+    CygnusWebsiteDataType.WKWebsiteDataTypeIndexedDBDatabases,
+    CygnusWebsiteDataType.WKWebsiteDataTypeLocalStorage,
+    CygnusWebsiteDataType.WKWebsiteDataTypeMemoryCache,
+    CygnusWebsiteDataType.WKWebsiteDataTypeOfflineWebApplicationCache,
+    CygnusWebsiteDataType.WKWebsiteDataTypeServiceWorkerRegistrations,
+    CygnusWebsiteDataType.WKWebsiteDataTypeSessionStorage,
+    CygnusWebsiteDataType.WKWebsiteDataTypeWebSQLDatabases,
   ].toSet();
 
-  ///Gets a possible [WebsiteDataType] instance from [String] value.
-  static WebsiteDataType? fromValue(String? value) {
+  ///Gets a possible [CygnusWebsiteDataType] instance from [String] value.
+  static CygnusWebsiteDataType? fromValue(String? value) {
     if (value != null) {
       try {
-        return WebsiteDataType.values.firstWhere(
+        return CygnusWebsiteDataType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -125,11 +128,11 @@ class WebsiteDataType {
     return null;
   }
 
-  ///Gets a possible [WebsiteDataType] instance from a native value.
-  static WebsiteDataType? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusWebsiteDataType] instance from a native value.
+  static CygnusWebsiteDataType? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return WebsiteDataType.values.firstWhere(
+        return CygnusWebsiteDataType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -139,15 +142,15 @@ class WebsiteDataType {
     return null;
   }
 
-  /// Gets a possible [WebsiteDataType] instance value with name [name].
+  /// Gets a possible [CygnusWebsiteDataType] instance value with name [name].
   ///
-  /// Goes through [WebsiteDataType.values] looking for a value with
-  /// name [name], as reported by [WebsiteDataType.name].
+  /// Goes through [CygnusWebsiteDataType.values] looking for a value with
+  /// name [name], as reported by [CygnusWebsiteDataType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static WebsiteDataType? byName(String? name) {
+  static CygnusWebsiteDataType? byName(String? name) {
     if (name != null) {
       try {
-        return WebsiteDataType.values.firstWhere(
+        return CygnusWebsiteDataType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -157,7 +160,7 @@ class WebsiteDataType {
     return null;
   }
 
-  /// Creates a map from the names of [WebsiteDataType] values to the values.
+  /// Creates a map from the names of [CygnusWebsiteDataType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -165,9 +168,10 @@ class WebsiteDataType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, WebsiteDataType> asNameMap() => <String, WebsiteDataType>{
-    for (final value in WebsiteDataType.values) value.name(): value,
-  };
+  static Map<String, CygnusWebsiteDataType> asNameMap() =>
+      <String, CygnusWebsiteDataType>{
+        for (final value in CygnusWebsiteDataType.values) value.name(): value,
+      };
 
   ///Gets [String] value.
   String toValue() => _value;
@@ -223,74 +227,78 @@ class WebsiteDataType {
 ///
 ///**NOTE**: available on iOS 9.0+.
 ///
-///Use [WebsiteDataType] instead.
-@Deprecated('Use WebsiteDataType instead')
-class IOSWKWebsiteDataType {
+///Use [CygnusWebsiteDataType] instead.
+@Deprecated('Use CygnusWebsiteDataType instead')
+class CygnusIOSWKWebsiteDataType {
   final String _value;
   final String? _nativeValue;
-  const IOSWKWebsiteDataType._internal(this._value, this._nativeValue);
+  const CygnusIOSWKWebsiteDataType._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory IOSWKWebsiteDataType._internalMultiPlatform(
+  factory CygnusIOSWKWebsiteDataType._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => IOSWKWebsiteDataType._internal(value, nativeValue());
+  ) => CygnusIOSWKWebsiteDataType._internal(value, nativeValue());
 
   ///Returns a set of all available website data types.
   static final ALL = [
-    IOSWKWebsiteDataType.WKWebsiteDataTypeFetchCache,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeDiskCache,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeMemoryCache,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeOfflineWebApplicationCache,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeCookies,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeSessionStorage,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeLocalStorage,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeWebSQLDatabases,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeIndexedDBDatabases,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeServiceWorkerRegistrations,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeFetchCache,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeDiskCache,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeMemoryCache,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeOfflineWebApplicationCache,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeCookies,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeSessionStorage,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeLocalStorage,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeWebSQLDatabases,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeIndexedDBDatabases,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeServiceWorkerRegistrations,
   ].toSet();
 
   ///Cookies.
-  static const WKWebsiteDataTypeCookies = IOSWKWebsiteDataType._internal(
+  static const WKWebsiteDataTypeCookies = CygnusIOSWKWebsiteDataType._internal(
     'WKWebsiteDataTypeCookies',
     'WKWebsiteDataTypeCookies',
   );
 
   ///On-disk caches.
-  static const WKWebsiteDataTypeDiskCache = IOSWKWebsiteDataType._internal(
-    'WKWebsiteDataTypeDiskCache',
-    'WKWebsiteDataTypeDiskCache',
-  );
+  static const WKWebsiteDataTypeDiskCache =
+      CygnusIOSWKWebsiteDataType._internal(
+        'WKWebsiteDataTypeDiskCache',
+        'WKWebsiteDataTypeDiskCache',
+      );
 
   ///On-disk Fetch caches.
   ///
   ///**NOTE**: available on iOS 11.3+.
-  static const WKWebsiteDataTypeFetchCache = IOSWKWebsiteDataType._internal(
-    'WKWebsiteDataTypeFetchCache',
-    'WKWebsiteDataTypeFetchCache',
-  );
+  static const WKWebsiteDataTypeFetchCache =
+      CygnusIOSWKWebsiteDataType._internal(
+        'WKWebsiteDataTypeFetchCache',
+        'WKWebsiteDataTypeFetchCache',
+      );
 
   ///IndexedDB databases.
   static const WKWebsiteDataTypeIndexedDBDatabases =
-      IOSWKWebsiteDataType._internal(
+      CygnusIOSWKWebsiteDataType._internal(
         'WKWebsiteDataTypeIndexedDBDatabases',
         'WKWebsiteDataTypeIndexedDBDatabases',
       );
 
   ///HTML local storage.
-  static const WKWebsiteDataTypeLocalStorage = IOSWKWebsiteDataType._internal(
-    'WKWebsiteDataTypeLocalStorage',
-    'WKWebsiteDataTypeLocalStorage',
-  );
+  static const WKWebsiteDataTypeLocalStorage =
+      CygnusIOSWKWebsiteDataType._internal(
+        'WKWebsiteDataTypeLocalStorage',
+        'WKWebsiteDataTypeLocalStorage',
+      );
 
   ///In-memory caches.
-  static const WKWebsiteDataTypeMemoryCache = IOSWKWebsiteDataType._internal(
-    'WKWebsiteDataTypeMemoryCache',
-    'WKWebsiteDataTypeMemoryCache',
-  );
+  static const WKWebsiteDataTypeMemoryCache =
+      CygnusIOSWKWebsiteDataType._internal(
+        'WKWebsiteDataTypeMemoryCache',
+        'WKWebsiteDataTypeMemoryCache',
+      );
 
   ///HTML offline web application caches.
   static const WKWebsiteDataTypeOfflineWebApplicationCache =
-      IOSWKWebsiteDataType._internal(
+      CygnusIOSWKWebsiteDataType._internal(
         'WKWebsiteDataTypeOfflineWebApplicationCache',
         'WKWebsiteDataTypeOfflineWebApplicationCache',
       );
@@ -299,43 +307,44 @@ class IOSWKWebsiteDataType {
   ///
   ///**NOTE**: available on iOS 11.3+.
   static const WKWebsiteDataTypeServiceWorkerRegistrations =
-      IOSWKWebsiteDataType._internal(
+      CygnusIOSWKWebsiteDataType._internal(
         'WKWebsiteDataTypeServiceWorkerRegistrations',
         'WKWebsiteDataTypeServiceWorkerRegistrations',
       );
 
   ///HTML session storage.
-  static const WKWebsiteDataTypeSessionStorage = IOSWKWebsiteDataType._internal(
-    'WKWebsiteDataTypeSessionStorage',
-    'WKWebsiteDataTypeSessionStorage',
-  );
+  static const WKWebsiteDataTypeSessionStorage =
+      CygnusIOSWKWebsiteDataType._internal(
+        'WKWebsiteDataTypeSessionStorage',
+        'WKWebsiteDataTypeSessionStorage',
+      );
 
   ///WebSQL databases.
   static const WKWebsiteDataTypeWebSQLDatabases =
-      IOSWKWebsiteDataType._internal(
+      CygnusIOSWKWebsiteDataType._internal(
         'WKWebsiteDataTypeWebSQLDatabases',
         'WKWebsiteDataTypeWebSQLDatabases',
       );
 
-  ///Set of all values of [IOSWKWebsiteDataType].
-  static final Set<IOSWKWebsiteDataType> values = [
-    IOSWKWebsiteDataType.WKWebsiteDataTypeCookies,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeDiskCache,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeFetchCache,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeIndexedDBDatabases,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeLocalStorage,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeMemoryCache,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeOfflineWebApplicationCache,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeServiceWorkerRegistrations,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeSessionStorage,
-    IOSWKWebsiteDataType.WKWebsiteDataTypeWebSQLDatabases,
+  ///Set of all values of [CygnusIOSWKWebsiteDataType].
+  static final Set<CygnusIOSWKWebsiteDataType> values = [
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeCookies,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeDiskCache,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeFetchCache,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeIndexedDBDatabases,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeLocalStorage,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeMemoryCache,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeOfflineWebApplicationCache,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeServiceWorkerRegistrations,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeSessionStorage,
+    CygnusIOSWKWebsiteDataType.WKWebsiteDataTypeWebSQLDatabases,
   ].toSet();
 
-  ///Gets a possible [IOSWKWebsiteDataType] instance from [String] value.
-  static IOSWKWebsiteDataType? fromValue(String? value) {
+  ///Gets a possible [CygnusIOSWKWebsiteDataType] instance from [String] value.
+  static CygnusIOSWKWebsiteDataType? fromValue(String? value) {
     if (value != null) {
       try {
-        return IOSWKWebsiteDataType.values.firstWhere(
+        return CygnusIOSWKWebsiteDataType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -345,11 +354,11 @@ class IOSWKWebsiteDataType {
     return null;
   }
 
-  ///Gets a possible [IOSWKWebsiteDataType] instance from a native value.
-  static IOSWKWebsiteDataType? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusIOSWKWebsiteDataType] instance from a native value.
+  static CygnusIOSWKWebsiteDataType? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return IOSWKWebsiteDataType.values.firstWhere(
+        return CygnusIOSWKWebsiteDataType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -359,15 +368,15 @@ class IOSWKWebsiteDataType {
     return null;
   }
 
-  /// Gets a possible [IOSWKWebsiteDataType] instance value with name [name].
+  /// Gets a possible [CygnusIOSWKWebsiteDataType] instance value with name [name].
   ///
-  /// Goes through [IOSWKWebsiteDataType.values] looking for a value with
-  /// name [name], as reported by [IOSWKWebsiteDataType.name].
+  /// Goes through [CygnusIOSWKWebsiteDataType.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSWKWebsiteDataType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSWKWebsiteDataType? byName(String? name) {
+  static CygnusIOSWKWebsiteDataType? byName(String? name) {
     if (name != null) {
       try {
-        return IOSWKWebsiteDataType.values.firstWhere(
+        return CygnusIOSWKWebsiteDataType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -377,7 +386,7 @@ class IOSWKWebsiteDataType {
     return null;
   }
 
-  /// Creates a map from the names of [IOSWKWebsiteDataType] values to the values.
+  /// Creates a map from the names of [CygnusIOSWKWebsiteDataType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -385,9 +394,10 @@ class IOSWKWebsiteDataType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSWKWebsiteDataType> asNameMap() =>
-      <String, IOSWKWebsiteDataType>{
-        for (final value in IOSWKWebsiteDataType.values) value.name(): value,
+  static Map<String, CygnusIOSWKWebsiteDataType> asNameMap() =>
+      <String, CygnusIOSWKWebsiteDataType>{
+        for (final value in CygnusIOSWKWebsiteDataType.values)
+          value.name(): value,
       };
 
   ///Gets [String] value.

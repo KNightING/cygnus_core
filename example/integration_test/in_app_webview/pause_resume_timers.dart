@@ -1,21 +1,21 @@
 part of 'main.dart';
 
 void pauseResumeTimers() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.pauseTimers,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.pauseTimers,
   );
 
   skippableTestWidgets('pause/resume timers', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<void> pageLoaded = Completer<void>();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_URL_ABOUT_BLANK),
+          initialUrlRequest: CygnusURLRequest(url: TEST_URL_ABOUT_BLANK),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
           },
@@ -26,7 +26,7 @@ void pauseResumeTimers() {
       ),
     );
 
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
     await pageLoaded.future;
 
     await controller.evaluateJavascript(

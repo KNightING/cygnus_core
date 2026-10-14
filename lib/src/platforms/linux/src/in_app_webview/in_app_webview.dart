@@ -7,12 +7,12 @@ import '../webview_environment/webview_environment.dart';
 import 'in_app_webview_controller.dart';
 import 'custom_platform_view.dart';
 
-/// Object specifying creation parameters for creating a [PlatformInAppWebViewWidget].
+/// Object specifying creation parameters for creating a [CygnusPlatformWebViewWidget].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 class LinuxInAppWebViewWidgetCreationParams
-    extends PlatformInAppWebViewWidgetCreationParams {
+    extends CygnusPlatformWebViewWidgetCreationParams {
   LinuxInAppWebViewWidgetCreationParams({
     super.controllerFromPlatform,
     super.key,
@@ -49,7 +49,7 @@ class LinuxInAppWebViewWidgetCreationParams
     super.onReceivedHttpAuthRequest,
     super.onReceivedServerTrustAuthRequest,
     super.onReceivedClientCertRequest,
-    @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+    @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
     super.onFindResultReceived,
     super.shouldInterceptAjaxRequest,
     super.onAjaxReadyStateChange,
@@ -101,9 +101,9 @@ class LinuxInAppWebViewWidgetCreationParams
   });
 
   /// Constructs a [LinuxInAppWebViewWidgetCreationParams] using a
-  /// [PlatformInAppWebViewWidgetCreationParams].
+  /// [CygnusPlatformWebViewWidgetCreationParams].
   LinuxInAppWebViewWidgetCreationParams.fromPlatformInAppWebViewWidgetCreationParams(
-    PlatformInAppWebViewWidgetCreationParams params,
+    CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
         key: params.key,
@@ -198,12 +198,12 @@ class LinuxInAppWebViewWidgetCreationParams
   final LinuxWebViewEnvironment? webViewEnvironment;
 }
 
-///{@macro cygnus_core.PlatformInAppWebViewWidget}
-class LinuxInAppWebViewWidget extends PlatformInAppWebViewWidget {
+///{@macro cygnus_core.CygnusPlatformWebViewWidget}
+class LinuxInAppWebViewWidget extends CygnusPlatformWebViewWidget {
   /// Constructs a [LinuxInAppWebViewWidget].
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewWidget}
-  LinuxInAppWebViewWidget(PlatformInAppWebViewWidgetCreationParams params)
+  ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
+  LinuxInAppWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
     : super.implementation(
         params is LinuxInAppWebViewWidgetCreationParams
             ? params
@@ -227,7 +227,7 @@ class LinuxInAppWebViewWidget extends PlatformInAppWebViewWidget {
 
   @override
   Widget build(BuildContext context) {
-    final initialSettings = params.initialSettings ?? InAppWebViewSettings();
+    final initialSettings = params.initialSettings ?? CygnusWebViewSettings();
     _inferInitialSettings(initialSettings);
 
     Map<String, dynamic> settingsMap =
@@ -273,7 +273,7 @@ class LinuxInAppWebViewWidget extends PlatformInAppWebViewWidget {
     viewId = params.keepAlive?.id ?? viewId ?? id;
 
     _controller = LinuxInAppWebViewController(
-      PlatformInAppWebViewControllerCreationParams(
+      CygnusPlatformWebViewControllerCreationParams(
         id: viewId,
         webviewParams: params,
       ),
@@ -290,7 +290,7 @@ class LinuxInAppWebViewWidget extends PlatformInAppWebViewWidget {
     debugLog(
       className: runtimeType.toString(),
       id: viewId?.toString(),
-      debugLoggingSettings: PlatformInAppWebViewController.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformWebViewController.debugLoggingSettings,
       method: "onWebViewCreated",
       args: [],
     );
@@ -301,7 +301,7 @@ class LinuxInAppWebViewWidget extends PlatformInAppWebViewWidget {
     }
   }
 
-  void _inferInitialSettings(InAppWebViewSettings settings) {
+  void _inferInitialSettings(CygnusWebViewSettings settings) {
     if (params.shouldOverrideUrlLoading != null &&
         settings.useShouldOverrideUrlLoading == null) {
       settings.useShouldOverrideUrlLoading = true;
@@ -352,7 +352,7 @@ class LinuxInAppWebViewWidget extends PlatformInAppWebViewWidget {
     debugLog(
       className: runtimeType.toString(),
       id: viewId?.toString(),
-      debugLoggingSettings: PlatformInAppWebViewController.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformWebViewController.debugLoggingSettings,
       method: "dispose",
       args: [],
     );
@@ -363,7 +363,7 @@ class LinuxInAppWebViewWidget extends PlatformInAppWebViewWidget {
   }
 
   @override
-  T controllerFromPlatform<T>(PlatformInAppWebViewController controller) {
+  T controllerFromPlatform<T>(CygnusPlatformWebViewController controller) {
     // unused
     throw UnimplementedError();
   }

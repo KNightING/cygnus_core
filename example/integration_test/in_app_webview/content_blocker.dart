@@ -1,37 +1,37 @@
 part of 'main.dart';
 
 void contentBlocker() {
-  final shouldSkip = !InAppWebViewSettings.isPropertySupported(
-    InAppWebViewSettingsProperty.contentBlockers,
+  final shouldSkip = !CygnusWebViewSettings.isPropertySupported(
+    CygnusWebViewSettingsProperty.contentBlockers,
   );
 
   skippableTestWidgets('Content Blocker', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<void> pageLoaded = Completer<void>();
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+          initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
           },
-          initialSettings: InAppWebViewSettings(
+          initialSettings: CygnusWebViewSettings(
             clearCache: true,
             contentBlockers: [
-              ContentBlocker(
-                trigger: ContentBlockerTrigger(
+              CygnusContentBlocker(
+                trigger: CygnusContentBlockerTrigger(
                   urlFilter: ".*",
                   resourceType: [
-                    ContentBlockerTriggerResourceType.IMAGE,
-                    ContentBlockerTriggerResourceType.STYLE_SHEET,
+                    CygnusContentBlockerTriggerResourceType.IMAGE,
+                    CygnusContentBlockerTriggerResourceType.STYLE_SHEET,
                   ],
                   ifTopUrl: [TEST_CROSS_PLATFORM_URL_1.toString()],
                 ),
-                action: ContentBlockerAction(
-                  type: ContentBlockerActionType.BLOCK,
+                action: CygnusContentBlockerAction(
+                  type: CygnusContentBlockerActionType.BLOCK,
                 ),
               ),
             ],

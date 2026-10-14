@@ -11,17 +11,17 @@ part 'ui_event_attribution.g.dart';
 ///For more information on the proposed PCM web standard, see [Introducing Private Click Measurement](https://webkit.org/blog/11529/introducing-private-click-measurement-pcm/)
 ///and [Private Click Measurement Draft Community Group Report](https://privacycg.github.io/private-click-measurement/).
 ///
-///Check [UIEventAttribution](https://developer.apple.com/documentation/uikit/uieventattribution) for details.
+///Check [CygnusUIEventAttribution](https://developer.apple.com/documentation/uikit/uieventattribution) for details.
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- iOS
 @ExchangeableObject()
-class UIEventAttribution_ {
+class CygnusUIEventAttribution_ {
   ///An 8-bit number that identifies the source of the click for attribution. Value must be between 0 and 255.
   int sourceIdentifier;
 
   ///The destination URL of the attribution.
-  WebUri destinationURL;
+  CygnusWebUri destinationURL;
 
   ///A description of the source of the attribution.
   String sourceDescription;
@@ -30,7 +30,7 @@ class UIEventAttribution_ {
   String purchaser;
 
   @ExchangeableObjectConstructor()
-  UIEventAttribution_({
+  CygnusUIEventAttribution_({
     required this.sourceIdentifier,
     required this.destinationURL,
     required this.sourceDescription,

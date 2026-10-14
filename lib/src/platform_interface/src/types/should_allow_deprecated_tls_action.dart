@@ -2,34 +2,34 @@ import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_i
 import '../in_app_webview/platform_webview.dart';
 part 'should_allow_deprecated_tls_action.g.dart';
 
-///Class that is used by [PlatformWebViewCreationParams.shouldAllowDeprecatedTLS] event.
+///Class that is used by [CygnusPlatformWebViewCreationParams.shouldAllowDeprecatedTLS] event.
 ///It represents the policy to pass back to the decision handler.
 @ExchangeableEnum()
-class ShouldAllowDeprecatedTLSAction_ {
+class CygnusShouldAllowDeprecatedTLSAction_ {
   // ignore: unused_field
   final int _value;
-  const ShouldAllowDeprecatedTLSAction_._internal(this._value);
+  const CygnusShouldAllowDeprecatedTLSAction_._internal(this._value);
 
   ///Cancel the navigation.
-  static const CANCEL = const ShouldAllowDeprecatedTLSAction_._internal(0);
+  static const CANCEL = const CygnusShouldAllowDeprecatedTLSAction_._internal(0);
 
   ///Allow the navigation to continue.
-  static const ALLOW = const ShouldAllowDeprecatedTLSAction_._internal(1);
+  static const ALLOW = const CygnusShouldAllowDeprecatedTLSAction_._internal(1);
 }
 
-///Class that is used by [PlatformWebViewCreationParams.shouldAllowDeprecatedTLS] event.
+///Class that is used by [CygnusPlatformWebViewCreationParams.shouldAllowDeprecatedTLS] event.
 ///It represents the policy to pass back to the decision handler.
-///Use [ShouldAllowDeprecatedTLSAction] instead.
-@Deprecated("Use ShouldAllowDeprecatedTLSAction instead")
+///Use [CygnusShouldAllowDeprecatedTLSAction] instead.
+@Deprecated("Use CygnusShouldAllowDeprecatedTLSAction instead")
 @ExchangeableEnum()
-class IOSShouldAllowDeprecatedTLSAction_ {
+class CygnusIOSShouldAllowDeprecatedTLSAction_ {
   // ignore: unused_field
   final int _value;
-  const IOSShouldAllowDeprecatedTLSAction_._internal(this._value);
+  const CygnusIOSShouldAllowDeprecatedTLSAction_._internal(this._value);
 
   ///Cancel the navigation.
-  static const CANCEL = const IOSShouldAllowDeprecatedTLSAction_._internal(0);
+  static const CANCEL = const CygnusIOSShouldAllowDeprecatedTLSAction_._internal(0);
 
   ///Allow the navigation to continue.
-  static const ALLOW = const IOSShouldAllowDeprecatedTLSAction_._internal(1);
+  static const ALLOW = const CygnusIOSShouldAllowDeprecatedTLSAction_._internal(1);
 }

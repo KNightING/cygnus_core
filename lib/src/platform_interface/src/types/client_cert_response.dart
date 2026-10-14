@@ -7,9 +7,9 @@ import 'enum_method.dart';
 
 part 'client_cert_response.g.dart';
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onReceivedClientCertRequest] event.
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onReceivedClientCertRequest] event.
 @ExchangeableObject()
-class ClientCertResponse_ {
+class CygnusClientCertResponse_ {
   ///The file path of the certificate to use.
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
@@ -34,19 +34,19 @@ class ClientCertResponse_ {
   @SupportedPlatforms(platforms: [WindowsPlatform()])
   int selectedCertificate;
 
-  ///Indicate the [ClientCertResponseAction] to take in response of the client certificate challenge.
-  ClientCertResponseAction_? action;
+  ///Indicate the [CygnusClientCertResponseAction] to take in response of the client certificate challenge.
+  CygnusClientCertResponseAction_? action;
 
   @ExchangeableObjectConstructor()
-  ClientCertResponse_({
+  CygnusClientCertResponse_({
     this.certificatePath = "",
     this.certificatePassword = "",
     @Deprecated('Use keyStoreType instead') this.androidKeyStoreType = "PKCS12",
     this.keyStoreType = "PKCS12",
     this.selectedCertificate = -1,
-    this.action = ClientCertResponseAction_.CANCEL,
+    this.action = CygnusClientCertResponseAction_.CANCEL,
   }) {
-    if (this.action == ClientCertResponseAction_.PROCEED && !Util.isWindows)
+    if (this.action == CygnusClientCertResponseAction_.PROCEED && !Util.isWindows)
       assert(certificatePath.isNotEmpty);
 
     this.keyStoreType = this.keyStoreType ?? this.androidKeyStoreType;

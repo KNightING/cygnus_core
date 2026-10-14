@@ -41,22 +41,22 @@ void _logPluginSupportLinks() {
 }
 
 /// Interface for a platform implementation of a WebView.
-abstract class InAppWebViewPlatform extends PlatformInterface {
-  /// Creates a new [InAppWebViewPlatform].
-  InAppWebViewPlatform() : super(token: _token) {
+abstract class CygnusWebViewPlatform extends PlatformInterface {
+  /// Creates a new [CygnusWebViewPlatform].
+  CygnusWebViewPlatform() : super(token: _token) {
     _logPluginSupportLinks();
   }
 
   static final Object _token = Object();
 
-  static InAppWebViewPlatform? _instance;
+  static CygnusWebViewPlatform? _instance;
 
-  /// The instance of [InAppWebViewPlatform] to use.
-  static InAppWebViewPlatform? get instance => _instance;
+  /// The instance of [CygnusWebViewPlatform] to use.
+  static CygnusWebViewPlatform? get instance => _instance;
 
   /// Platform-specific plugins should set this with their own platform-specific
-  /// class that extends [InAppWebViewPlatform] when they register themselves.
-  static set instance(InAppWebViewPlatform? instance) {
+  /// class that extends [CygnusWebViewPlatform] when they register themselves.
+  static set instance(CygnusWebViewPlatform? instance) {
     if (instance == null) {
       throw AssertionError(
         'Platform interfaces can only be set to a non-null instance',
@@ -67,667 +67,667 @@ abstract class InAppWebViewPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  /// Creates a new [PlatformCookieManager].
+  /// Creates a new [CygnusPlatformCookieManager].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CookieManager] in `flutter_inappwebview` instead.
-  PlatformCookieManager createPlatformCookieManager(
-    PlatformCookieManagerCreationParams params,
+  /// Look at using [CygnusCookieManager] in `flutter_inappwebview` instead.
+  CygnusPlatformCookieManager createPlatformCookieManager(
+    CygnusPlatformCookieManagerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformCookieManager is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformCookieManager] to access static methods.
+  /// Creates a new empty [CygnusPlatformCookieManager] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CookieManager] in `flutter_inappwebview` instead.
-  PlatformCookieManager createPlatformCookieManagerStatic() {
+  /// Look at using [CygnusCookieManager] in `flutter_inappwebview` instead.
+  CygnusPlatformCookieManager createPlatformCookieManagerStatic() {
     throw UnimplementedError(
       'createPlatformCookieManagerStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformInAppWebViewController].
+  /// Creates a new [CygnusPlatformWebViewController].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [InAppWebViewController] in `flutter_inappwebview` instead.
-  PlatformInAppWebViewController createPlatformInAppWebViewController(
-    PlatformInAppWebViewControllerCreationParams params,
+  /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
+  CygnusPlatformWebViewController createPlatformInAppWebViewController(
+    CygnusPlatformWebViewControllerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformInAppWebViewController is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformInAppWebViewController] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebViewController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [InAppWebViewController] in `flutter_inappwebview` instead.
-  PlatformInAppWebViewController createPlatformInAppWebViewControllerStatic() {
+  /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
+  CygnusPlatformWebViewController createPlatformInAppWebViewControllerStatic() {
     throw UnimplementedError(
       'createPlatformInAppWebViewControllerStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformInAppWebViewWidget].
+  /// Creates a new [CygnusPlatformWebViewWidget].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [InAppWebView] in `flutter_inappwebview` instead.
-  PlatformInAppWebViewWidget createPlatformInAppWebViewWidget(
-    PlatformInAppWebViewWidgetCreationParams params,
+  /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
+  CygnusPlatformWebViewWidget createPlatformInAppWebViewWidget(
+    CygnusPlatformWebViewWidgetCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformInAppWebViewWidget is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformInAppWebViewWidget] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebViewWidget] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [InAppWebView] in `flutter_inappwebview` instead.
-  PlatformInAppWebViewWidget createPlatformInAppWebViewWidgetStatic() {
+  /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
+  CygnusPlatformWebViewWidget createPlatformInAppWebViewWidgetStatic() {
     throw UnimplementedError(
       'createPlatformInAppWebViewWidgetStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformFindInteractionController].
+  /// Creates a new [CygnusPlatformFindInteractionController].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [FindInteractionController] in `flutter_inappwebview` instead.
-  PlatformFindInteractionController createPlatformFindInteractionController(
-    PlatformFindInteractionControllerCreationParams params,
+  /// Look at using [CygnusFindInteractionController] in `flutter_inappwebview` instead.
+  CygnusPlatformFindInteractionController createPlatformFindInteractionController(
+    CygnusPlatformFindInteractionControllerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformFindInteractionController is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformFindInteractionController] to access static methods.
+  /// Creates a new empty [CygnusPlatformFindInteractionController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [FindInteractionController] in `flutter_inappwebview` instead.
-  PlatformFindInteractionController
+  /// Look at using [CygnusFindInteractionController] in `flutter_inappwebview` instead.
+  CygnusPlatformFindInteractionController
   createPlatformFindInteractionControllerStatic() {
     throw UnimplementedError(
       'createPlatformFindInteractionControllerStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformPrintJobController].
+  /// Creates a new [CygnusPlatformPrintJobController].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [PrintJobController] in `flutter_inappwebview` instead.
-  PlatformPrintJobController createPlatformPrintJobController(
-    PlatformPrintJobControllerCreationParams params,
+  /// Look at using [CygnusPrintJobController] in `flutter_inappwebview` instead.
+  CygnusPlatformPrintJobController createPlatformPrintJobController(
+    CygnusPlatformPrintJobControllerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformPrintJobController is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformPrintJobController] to access static methods.
+  /// Creates a new empty [CygnusPlatformPrintJobController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [PrintJobController] in `flutter_inappwebview` instead.
-  PlatformPrintJobController createPlatformPrintJobControllerStatic() {
+  /// Look at using [CygnusPrintJobController] in `flutter_inappwebview` instead.
+  CygnusPlatformPrintJobController createPlatformPrintJobControllerStatic() {
     throw UnimplementedError(
       'createPlatformPrintJobControllerStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformPullToRefreshController].
+  /// Creates a new [CygnusPlatformPullToRefreshController].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [PullToRefreshController] in `flutter_inappwebview` instead.
-  PlatformPullToRefreshController createPlatformPullToRefreshController(
-    PlatformPullToRefreshControllerCreationParams params,
+  /// Look at using [CygnusPullToRefreshController] in `flutter_inappwebview` instead.
+  CygnusPlatformPullToRefreshController createPlatformPullToRefreshController(
+    CygnusPlatformPullToRefreshControllerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformPullToRefreshController is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformPullToRefreshController] to access static methods.
+  /// Creates a new empty [CygnusPlatformPullToRefreshController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [PullToRefreshController] in `flutter_inappwebview` instead.
-  PlatformPullToRefreshController
+  /// Look at using [CygnusPullToRefreshController] in `flutter_inappwebview` instead.
+  CygnusPlatformPullToRefreshController
   createPlatformPullToRefreshControllerStatic() {
     throw UnimplementedError(
       'createPlatformPullToRefreshControllerStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformWebAuthenticationSession].
+  /// Creates a new [CygnusPlatformWebAuthenticationSession].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebAuthenticationSession] in `flutter_inappwebview` instead.
-  PlatformWebAuthenticationSession createPlatformWebAuthenticationSession(
-    PlatformWebAuthenticationSessionCreationParams params,
+  /// Look at using [CygnusWebAuthenticationSession] in `flutter_inappwebview` instead.
+  CygnusPlatformWebAuthenticationSession createPlatformWebAuthenticationSession(
+    CygnusPlatformWebAuthenticationSessionCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformWebAuthenticationSession is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformWebAuthenticationSession] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebAuthenticationSession] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebAuthenticationSession] in `flutter_inappwebview` instead.
-  PlatformWebAuthenticationSession
+  /// Look at using [CygnusWebAuthenticationSession] in `flutter_inappwebview` instead.
+  CygnusPlatformWebAuthenticationSession
   createPlatformWebAuthenticationSessionStatic() {
     throw UnimplementedError(
       'createPlatformWebAuthenticationSessionStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformWebMessageChannel].
+  /// Creates a new [CygnusPlatformWebMessageChannel].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebMessageChannel] in `flutter_inappwebview` instead.
-  PlatformWebMessageChannel createPlatformWebMessageChannel(
-    PlatformWebMessageChannelCreationParams params,
+  /// Look at using [CygnusWebMessageChannel] in `flutter_inappwebview` instead.
+  CygnusPlatformWebMessageChannel createPlatformWebMessageChannel(
+    CygnusPlatformWebMessageChannelCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformWebMessageChannel is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformWebMessageChannel] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebMessageChannel] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebMessageChannel] in `flutter_inappwebview` instead.
-  PlatformWebMessageChannel createPlatformWebMessageChannelStatic() {
+  /// Look at using [CygnusWebMessageChannel] in `flutter_inappwebview` instead.
+  CygnusPlatformWebMessageChannel createPlatformWebMessageChannelStatic() {
     throw UnimplementedError(
       'createPlatformWebMessageChannelStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformWebMessageListener].
+  /// Creates a new [CygnusPlatformWebMessageListener].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebMessageListener] in `flutter_inappwebview` instead.
-  PlatformWebMessageListener createPlatformWebMessageListener(
-    PlatformWebMessageListenerCreationParams params,
+  /// Look at using [CygnusWebMessageListener] in `flutter_inappwebview` instead.
+  CygnusPlatformWebMessageListener createPlatformWebMessageListener(
+    CygnusPlatformWebMessageListenerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformWebMessageListener is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformWebMessageListener] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebMessageListener] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebMessageListener] in `flutter_inappwebview` instead.
-  PlatformWebMessageListener createPlatformWebMessageListenerStatic() {
+  /// Look at using [CygnusWebMessageListener] in `flutter_inappwebview` instead.
+  CygnusPlatformWebMessageListener createPlatformWebMessageListenerStatic() {
     throw UnimplementedError(
       'createPlatformWebMessageListenerStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformJavaScriptReplyProxy].
+  /// Creates a new [CygnusPlatformJavaScriptReplyProxy].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [JavaScriptReplyProxy] in `flutter_inappwebview` instead.
-  PlatformJavaScriptReplyProxy createPlatformJavaScriptReplyProxy(
-    PlatformJavaScriptReplyProxyCreationParams params,
+  /// Look at using [CygnusJavaScriptReplyProxy] in `flutter_inappwebview` instead.
+  CygnusPlatformJavaScriptReplyProxy createPlatformJavaScriptReplyProxy(
+    CygnusPlatformJavaScriptReplyProxyCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformJavaScriptReplyProxy is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformWebMessagePort].
+  /// Creates a new [CygnusPlatformWebMessagePort].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebMessagePort] in `flutter_inappwebview` instead.
-  PlatformWebMessagePort createPlatformWebMessagePort(
-    PlatformWebMessagePortCreationParams params,
+  /// Look at using [CygnusWebMessagePort] in `flutter_inappwebview` instead.
+  CygnusPlatformWebMessagePort createPlatformWebMessagePort(
+    CygnusPlatformWebMessagePortCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformWebMessagePort is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformWebStorage].
+  /// Creates a new [CygnusPlatformWebStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebStorage] in `flutter_inappwebview` instead.
-  PlatformWebStorage createPlatformWebStorage(
-    PlatformWebStorageCreationParams params,
+  /// Look at using [CygnusWebStorage] in `flutter_inappwebview` instead.
+  CygnusPlatformWebStorage createPlatformWebStorage(
+    CygnusPlatformWebStorageCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformWebStorage is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformWebStorage] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebStorage] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebStorage] in `flutter_inappwebview` instead.
-  PlatformWebStorage createPlatformWebStorageStatic() {
+  /// Look at using [CygnusWebStorage] in `flutter_inappwebview` instead.
+  CygnusPlatformWebStorage createPlatformWebStorageStatic() {
     throw UnimplementedError(
       'createPlatformWebStorageStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformLocalStorage].
+  /// Creates a new [CygnusPlatformLocalStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [LocalStorage] in `flutter_inappwebview` instead.
-  PlatformLocalStorage createPlatformLocalStorage(
-    PlatformLocalStorageCreationParams params,
+  /// Look at using [CygnusLocalStorage] in `flutter_inappwebview` instead.
+  CygnusPlatformLocalStorage createPlatformLocalStorage(
+    CygnusPlatformLocalStorageCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformLocalStorage is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformLocalStorage] to access static methods.
+  /// Creates a new empty [CygnusPlatformLocalStorage] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [LocalStorage] in `flutter_inappwebview` instead.
-  PlatformLocalStorage createPlatformLocalStorageStatic() {
+  /// Look at using [CygnusLocalStorage] in `flutter_inappwebview` instead.
+  CygnusPlatformLocalStorage createPlatformLocalStorageStatic() {
     throw UnimplementedError(
       'createPlatformLocalStorageStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformSessionStorage].
+  /// Creates a new [CygnusPlatformSessionStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [PlatformSessionStorage] in `flutter_inappwebview` instead.
-  PlatformSessionStorage createPlatformSessionStorage(
-    PlatformSessionStorageCreationParams params,
+  /// Look at using [CygnusPlatformSessionStorage] in `flutter_inappwebview` instead.
+  CygnusPlatformSessionStorage createPlatformSessionStorage(
+    CygnusPlatformSessionStorageCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformSessionStorage is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformSessionStorage] to access static methods.
+  /// Creates a new empty [CygnusPlatformSessionStorage] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [PlatformSessionStorage] in `flutter_inappwebview` instead.
-  PlatformSessionStorage createPlatformSessionStorageStatic() {
+  /// Look at using [CygnusPlatformSessionStorage] in `flutter_inappwebview` instead.
+  CygnusPlatformSessionStorage createPlatformSessionStorageStatic() {
     throw UnimplementedError(
       'createPlatformSessionStorageStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformHeadlessInAppWebView].
+  /// Creates a new [CygnusPlatformHeadlessWebView].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [HeadlessInAppWebView] in `flutter_inappwebview` instead.
-  PlatformHeadlessInAppWebView createPlatformHeadlessInAppWebView(
-    PlatformHeadlessInAppWebViewCreationParams params,
+  /// Look at using [CygnusHeadlessWebView] in `flutter_inappwebview` instead.
+  CygnusPlatformHeadlessWebView createPlatformHeadlessInAppWebView(
+    CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformHeadlessInAppWebView is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformHeadlessInAppWebView] to access static methods.
+  /// Creates a new empty [CygnusPlatformHeadlessWebView] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [HeadlessInAppWebView] in `flutter_inappwebview` instead.
-  PlatformHeadlessInAppWebView createPlatformHeadlessInAppWebViewStatic() {
+  /// Look at using [CygnusHeadlessWebView] in `flutter_inappwebview` instead.
+  CygnusPlatformHeadlessWebView createPlatformHeadlessInAppWebViewStatic() {
     throw UnimplementedError(
       'createPlatformHeadlessInAppWebViewStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformWebStorageManager].
+  /// Creates a new [CygnusPlatformWebStorageManager].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebStorageManager] in `flutter_inappwebview` instead.
-  PlatformWebStorageManager createPlatformWebStorageManager(
-    PlatformWebStorageManagerCreationParams params,
+  /// Look at using [CygnusWebStorageManager] in `flutter_inappwebview` instead.
+  CygnusPlatformWebStorageManager createPlatformWebStorageManager(
+    CygnusPlatformWebStorageManagerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformWebStorageManager is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformWebStorageManager] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebStorageManager] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebStorageManager] in `flutter_inappwebview` instead.
-  PlatformWebStorageManager createPlatformWebStorageManagerStatic() {
+  /// Look at using [CygnusWebStorageManager] in `flutter_inappwebview` instead.
+  CygnusPlatformWebStorageManager createPlatformWebStorageManagerStatic() {
     throw UnimplementedError(
       'createPlatformWebStorageManagerStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformHttpAuthCredentialDatabase].
+  /// Creates a new [CygnusPlatformHttpAuthCredentialDatabase].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [HttpAuthCredentialDatabase] in `flutter_inappwebview` instead.
-  PlatformHttpAuthCredentialDatabase createPlatformHttpAuthCredentialDatabase(
-    PlatformHttpAuthCredentialDatabaseCreationParams params,
+  /// Look at using [CygnusHttpAuthCredentialDatabase] in `flutter_inappwebview` instead.
+  CygnusPlatformHttpAuthCredentialDatabase createPlatformHttpAuthCredentialDatabase(
+    CygnusPlatformHttpAuthCredentialDatabaseCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformHttpAuthCredentialDatabase is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformHttpAuthCredentialDatabase] to access static methods.
+  /// Creates a new empty [CygnusPlatformHttpAuthCredentialDatabase] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [HttpAuthCredentialDatabase] in `flutter_inappwebview` instead.
-  PlatformHttpAuthCredentialDatabase
+  /// Look at using [CygnusHttpAuthCredentialDatabase] in `flutter_inappwebview` instead.
+  CygnusPlatformHttpAuthCredentialDatabase
   createPlatformHttpAuthCredentialDatabaseStatic() {
     throw UnimplementedError(
       'createPlatformHttpAuthCredentialDatabaseStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformInAppBrowser].
+  /// Creates a new [CygnusPlatformBrowser].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [InAppBrowser] in `flutter_inappwebview` instead.
-  PlatformInAppBrowser createPlatformInAppBrowser(
-    PlatformInAppBrowserCreationParams params,
+  /// Look at using [CygnusBrowser] in `flutter_inappwebview` instead.
+  CygnusPlatformBrowser createPlatformInAppBrowser(
+    CygnusPlatformBrowserCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformInAppBrowser is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformInAppBrowser] to access static methods.
+  /// Creates a new empty [CygnusPlatformBrowser] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [InAppBrowser] in `flutter_inappwebview` instead.
-  PlatformInAppBrowser createPlatformInAppBrowserStatic() {
+  /// Look at using [CygnusBrowser] in `flutter_inappwebview` instead.
+  CygnusPlatformBrowser createPlatformInAppBrowserStatic() {
     throw UnimplementedError(
       'createPlatformInAppBrowserStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformProcessGlobalConfig].
+  /// Creates a new [CygnusPlatformProcessGlobalConfig].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [ProcessGlobalConfig] in `flutter_inappwebview` instead.
-  PlatformProcessGlobalConfig createPlatformProcessGlobalConfig(
-    PlatformProcessGlobalConfigCreationParams params,
+  /// Look at using [CygnusProcessGlobalConfig] in `flutter_inappwebview` instead.
+  CygnusPlatformProcessGlobalConfig createPlatformProcessGlobalConfig(
+    CygnusPlatformProcessGlobalConfigCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformProcessGlobalConfig is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformProcessGlobalConfig] to access static methods.
+  /// Creates a new empty [CygnusPlatformProcessGlobalConfig] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [ProcessGlobalConfig] in `flutter_inappwebview` instead.
-  PlatformProcessGlobalConfig createPlatformProcessGlobalConfigStatic() {
+  /// Look at using [CygnusProcessGlobalConfig] in `flutter_inappwebview` instead.
+  CygnusPlatformProcessGlobalConfig createPlatformProcessGlobalConfigStatic() {
     throw UnimplementedError(
       'createPlatformProcessGlobalConfigStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformProxyController].
+  /// Creates a new [CygnusPlatformProxyController].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [ProxyController] in `flutter_inappwebview` instead.
-  PlatformProxyController createPlatformProxyController(
-    PlatformProxyControllerCreationParams params,
+  /// Look at using [CygnusProxyController] in `flutter_inappwebview` instead.
+  CygnusPlatformProxyController createPlatformProxyController(
+    CygnusPlatformProxyControllerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformProxyController is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformProxyController] to access static methods.
+  /// Creates a new empty [CygnusPlatformProxyController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [ProxyController] in `flutter_inappwebview` instead.
-  PlatformProxyController createPlatformProxyControllerStatic() {
+  /// Look at using [CygnusProxyController] in `flutter_inappwebview` instead.
+  CygnusPlatformProxyController createPlatformProxyControllerStatic() {
     throw UnimplementedError(
       'createPlatformProxyControllerStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformServiceWorkerController].
+  /// Creates a new [CygnusPlatformServiceWorkerController].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [ServiceWorkerController] in `flutter_inappwebview` instead.
-  PlatformServiceWorkerController createPlatformServiceWorkerController(
-    PlatformServiceWorkerControllerCreationParams params,
+  /// Look at using [CygnusServiceWorkerController] in `flutter_inappwebview` instead.
+  CygnusPlatformServiceWorkerController createPlatformServiceWorkerController(
+    CygnusPlatformServiceWorkerControllerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformServiceWorkerController is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformServiceWorkerController] to access static methods.
+  /// Creates a new empty [CygnusPlatformServiceWorkerController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [ServiceWorkerController] in `flutter_inappwebview` instead.
-  PlatformServiceWorkerController
+  /// Look at using [CygnusServiceWorkerController] in `flutter_inappwebview` instead.
+  CygnusPlatformServiceWorkerController
   createPlatformServiceWorkerControllerStatic() {
     throw UnimplementedError(
       'createPlatformServiceWorkerControllerStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformTracingController].
+  /// Creates a new [CygnusPlatformTracingController].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [TracingController] in `flutter_inappwebview` instead.
-  PlatformTracingController createPlatformTracingController(
-    PlatformTracingControllerCreationParams params,
+  /// Look at using [CygnusTracingController] in `flutter_inappwebview` instead.
+  CygnusPlatformTracingController createPlatformTracingController(
+    CygnusPlatformTracingControllerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformTracingController is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformTracingController] to access static methods.
+  /// Creates a new empty [CygnusPlatformTracingController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [TracingController] in `flutter_inappwebview` instead.
-  PlatformTracingController createPlatformTracingControllerStatic() {
+  /// Look at using [CygnusTracingController] in `flutter_inappwebview` instead.
+  CygnusPlatformTracingController createPlatformTracingControllerStatic() {
     throw UnimplementedError(
       'createPlatformTracingControllerStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformAssetsPathHandler].
+  /// Creates a new [CygnusPlatformAssetsPathHandler].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [AssetsPathHandler] in `flutter_inappwebview` instead.
-  PlatformAssetsPathHandler createPlatformAssetsPathHandler(
-    PlatformAssetsPathHandlerCreationParams params,
+  /// Look at using [CygnusAssetsPathHandler] in `flutter_inappwebview` instead.
+  CygnusPlatformAssetsPathHandler createPlatformAssetsPathHandler(
+    CygnusPlatformAssetsPathHandlerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformAssetsPathHandler is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformAssetsPathHandler] to access static methods.
+  /// Creates a new empty [CygnusPlatformAssetsPathHandler] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [AssetsPathHandler] in `flutter_inappwebview` instead.
-  PlatformAssetsPathHandler createPlatformAssetsPathHandlerStatic() {
+  /// Look at using [CygnusAssetsPathHandler] in `flutter_inappwebview` instead.
+  CygnusPlatformAssetsPathHandler createPlatformAssetsPathHandlerStatic() {
     throw UnimplementedError(
       'createPlatformAssetsPathHandlerStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformResourcesPathHandler].
+  /// Creates a new [CygnusPlatformResourcesPathHandler].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [ResourcesPathHandler] in `flutter_inappwebview` instead.
-  PlatformResourcesPathHandler createPlatformResourcesPathHandler(
-    PlatformResourcesPathHandlerCreationParams params,
+  /// Look at using [CygnusResourcesPathHandler] in `flutter_inappwebview` instead.
+  CygnusPlatformResourcesPathHandler createPlatformResourcesPathHandler(
+    CygnusPlatformResourcesPathHandlerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformResourcesPathHandler is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformResourcesPathHandler] to access static methods.
+  /// Creates a new empty [CygnusPlatformResourcesPathHandler] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [ResourcesPathHandler] in `flutter_inappwebview` instead.
-  PlatformResourcesPathHandler createPlatformResourcesPathHandlerStatic() {
+  /// Look at using [CygnusResourcesPathHandler] in `flutter_inappwebview` instead.
+  CygnusPlatformResourcesPathHandler createPlatformResourcesPathHandlerStatic() {
     throw UnimplementedError(
       'createPlatformResourcesPathHandlerStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformInternalStoragePathHandler].
+  /// Creates a new [CygnusPlatformInternalStoragePathHandler].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [InternalStoragePathHandler] in `flutter_inappwebview` instead.
-  PlatformInternalStoragePathHandler createPlatformInternalStoragePathHandler(
-    PlatformInternalStoragePathHandlerCreationParams params,
+  /// Look at using [CygnusInternalStoragePathHandler] in `flutter_inappwebview` instead.
+  CygnusPlatformInternalStoragePathHandler createPlatformInternalStoragePathHandler(
+    CygnusPlatformInternalStoragePathHandlerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformInternalStoragePathHandler is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformInternalStoragePathHandler] to access static methods.
+  /// Creates a new empty [CygnusPlatformInternalStoragePathHandler] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [InternalStoragePathHandler] in `flutter_inappwebview` instead.
-  PlatformInternalStoragePathHandler
+  /// Look at using [CygnusInternalStoragePathHandler] in `flutter_inappwebview` instead.
+  CygnusPlatformInternalStoragePathHandler
   createPlatformInternalStoragePathHandlerStatic() {
     throw UnimplementedError(
       'createPlatformInternalStoragePathHandlerStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformCustomPathHandler].
+  /// Creates a new [CygnusPlatformCustomPathHandler].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CustomPathHandler] in `flutter_inappwebview` instead.
-  PlatformCustomPathHandler createPlatformCustomPathHandler(
-    PlatformCustomPathHandlerCreationParams params,
+  /// Look at using [CygnusCustomPathHandler] in `flutter_inappwebview` instead.
+  CygnusPlatformCustomPathHandler createPlatformCustomPathHandler(
+    CygnusPlatformCustomPathHandlerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformCustomPathHandler is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformCustomPathHandler] to access static methods.
+  /// Creates a new empty [CygnusPlatformCustomPathHandler] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CustomPathHandler] in `flutter_inappwebview` instead.
-  PlatformCustomPathHandler createPlatformCustomPathHandlerStatic() {
+  /// Look at using [CygnusCustomPathHandler] in `flutter_inappwebview` instead.
+  CygnusPlatformCustomPathHandler createPlatformCustomPathHandlerStatic() {
     throw UnimplementedError(
       'createPlatformCustomPathHandlerStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformWebViewFeature].
+  /// Creates a new [CygnusPlatformWebViewFeature].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebViewFeature] in `flutter_inappwebview` instead.
-  PlatformWebViewFeature createPlatformWebViewFeature(
-    PlatformWebViewFeatureCreationParams params,
+  /// Look at using [CygnusWebViewFeature] in `flutter_inappwebview` instead.
+  CygnusPlatformWebViewFeature createPlatformWebViewFeature(
+    CygnusPlatformWebViewFeatureCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformWebViewFeature is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformWebViewFeature] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebViewFeature] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebViewFeature] in `flutter_inappwebview` instead.
-  PlatformWebViewFeature createPlatformWebViewFeatureStatic() {
+  /// Look at using [CygnusWebViewFeature] in `flutter_inappwebview` instead.
+  CygnusPlatformWebViewFeature createPlatformWebViewFeatureStatic() {
     throw UnimplementedError(
       'createPlatformWebViewFeatureStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformInAppLocalhostServer] to access static methods.
+  /// Creates a new empty [CygnusPlatformLocalhostServer] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [DefaultInAppLocalhostServer] in `flutter_inappwebview` instead.
-  PlatformInAppLocalhostServer createPlatformInAppLocalhostServer(
-    PlatformInAppLocalhostServerCreationParams params,
+  /// Look at using [CygnusDefaultLocalhostServer] in `flutter_inappwebview` instead.
+  CygnusPlatformLocalhostServer createPlatformInAppLocalhostServer(
+    CygnusPlatformLocalhostServerCreationParams params,
   ) {
-    return DefaultInAppLocalhostServer(params);
+    return CygnusDefaultLocalhostServer(params);
   }
 
-  /// Creates a new empty [PlatformInAppLocalhostServer] to access static methods.
+  /// Creates a new empty [CygnusPlatformLocalhostServer] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [DefaultInAppLocalhostServer] in `flutter_inappwebview` instead.
-  PlatformInAppLocalhostServer createPlatformInAppLocalhostServerStatic() {
-    return DefaultInAppLocalhostServer(
-      const PlatformInAppLocalhostServerCreationParams(),
+  /// Look at using [CygnusDefaultLocalhostServer] in `flutter_inappwebview` instead.
+  CygnusPlatformLocalhostServer createPlatformInAppLocalhostServerStatic() {
+    return CygnusDefaultLocalhostServer(
+      const CygnusPlatformLocalhostServerCreationParams(),
     );
   }
 
-  /// Creates a new [PlatformChromeSafariBrowser].
+  /// Creates a new [CygnusPlatformChromeSafariBrowser].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [ChromeSafariBrowser] in `flutter_inappwebview` instead.
-  PlatformChromeSafariBrowser createPlatformChromeSafariBrowser(
-    PlatformChromeSafariBrowserCreationParams params,
+  /// Look at using [CygnusChromeSafariBrowser] in `flutter_inappwebview` instead.
+  CygnusPlatformChromeSafariBrowser createPlatformChromeSafariBrowser(
+    CygnusPlatformChromeSafariBrowserCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformChromeSafariBrowser is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformChromeSafariBrowser] to access static methods.
+  /// Creates a new empty [CygnusPlatformChromeSafariBrowser] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [ChromeSafariBrowser] in `flutter_inappwebview` instead.
-  PlatformChromeSafariBrowser createPlatformChromeSafariBrowserStatic() {
+  /// Look at using [CygnusChromeSafariBrowser] in `flutter_inappwebview` instead.
+  CygnusPlatformChromeSafariBrowser createPlatformChromeSafariBrowserStatic() {
     throw UnimplementedError(
       'createPlatformChromeSafariBrowserStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformWebViewEnvironment].
+  /// Creates a new [CygnusPlatformWebViewEnvironment].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebViewEnvironment] in `flutter_inappwebview` instead.
-  PlatformWebViewEnvironment createPlatformWebViewEnvironment(
-    PlatformWebViewEnvironmentCreationParams params,
+  /// Look at using [CygnusWebViewEnvironment] in `flutter_inappwebview` instead.
+  CygnusPlatformWebViewEnvironment createPlatformWebViewEnvironment(
+    CygnusPlatformWebViewEnvironmentCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformWebViewEnvironment is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformWebViewEnvironment] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebViewEnvironment] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebViewEnvironment] in `flutter_inappwebview` instead.
-  PlatformWebViewEnvironment createPlatformWebViewEnvironmentStatic() {
+  /// Look at using [CygnusWebViewEnvironment] in `flutter_inappwebview` instead.
+  CygnusPlatformWebViewEnvironment createPlatformWebViewEnvironmentStatic() {
     throw UnimplementedError(
       'createPlatformWebViewEnvironmentStatic is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new [PlatformWebNotificationController].
+  /// Creates a new [CygnusPlatformWebNotificationController].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebNotificationController] in `flutter_inappwebview` instead.
-  PlatformWebNotificationController createPlatformWebNotificationController(
-    PlatformWebNotificationControllerCreationParams params,
+  /// Look at using [CygnusWebNotificationController] in `flutter_inappwebview` instead.
+  CygnusPlatformWebNotificationController createPlatformWebNotificationController(
+    CygnusPlatformWebNotificationControllerCreationParams params,
   ) {
     throw UnimplementedError(
       'createPlatformWebNotificationController is not implemented on the current platform.',
     );
   }
 
-  /// Creates a new empty [PlatformWebNotificationController] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebNotificationController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebNotificationController] in `flutter_inappwebview` instead.
-  PlatformWebNotificationController
+  /// Look at using [CygnusWebNotificationController] in `flutter_inappwebview` instead.
+  CygnusPlatformWebNotificationController
   createPlatformWebNotificationControllerStatic() {
     throw UnimplementedError(
       'createPlatformWebNotificationControllerStatic is not implemented on the current platform.',

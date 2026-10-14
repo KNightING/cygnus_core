@@ -6,13 +6,13 @@ part of 'in_app_browser_menu_item.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents a custom menu item for a [PlatformInAppBrowser] instance.
+///Class that represents a custom menu item for a [CygnusPlatformBrowser] instance.
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- Android WebView
 ///- iOS WKWebView
 ///- macOS WKWebView
-class InAppBrowserMenuItem {
+class CygnusBrowserMenuItem {
   ///Item icon.
   dynamic icon;
 
@@ -44,7 +44,7 @@ class InAppBrowserMenuItem {
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
-  InAppBrowserMenuItem({
+  CygnusBrowserMenuItem({
     this.icon,
     this.iconColor,
     required this.id,
@@ -54,15 +54,15 @@ class InAppBrowserMenuItem {
     required this.title,
   });
 
-  ///Gets a possible [InAppBrowserMenuItem] instance from a [Map] value.
-  static InAppBrowserMenuItem? fromMap(
+  ///Gets a possible [CygnusBrowserMenuItem] instance from a [Map] value.
+  static CygnusBrowserMenuItem? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = InAppBrowserMenuItem(
+    final instance = CygnusBrowserMenuItem(
       icon: _deserializeIcon(map['icon'], enumMethod: enumMethod),
       iconColor: map['iconColor'] != null
           ? UtilColor.fromStringRepresentation(map['iconColor'])
@@ -78,7 +78,7 @@ class InAppBrowserMenuItem {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "icon": _serializeIcon(icon, enumMethod: enumMethod),
       "iconColor": iconColor?.toHex(),
@@ -96,6 +96,6 @@ class InAppBrowserMenuItem {
 
   @override
   String toString() {
-    return 'InAppBrowserMenuItem{icon: $icon, iconColor: $iconColor, id: $id, order: $order, showAsAction: $showAsAction, title: $title}';
+    return 'CygnusBrowserMenuItem{icon: $icon, iconColor: $iconColor, id: $id, order: $order, showAsAction: $showAsAction, title: $title}';
   }
 }

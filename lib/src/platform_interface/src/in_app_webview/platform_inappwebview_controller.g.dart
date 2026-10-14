@@ -6,9 +6,9 @@ part of 'platform_inappwebview_controller.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformInAppWebViewControllerClassSupported
-    on PlatformInAppWebViewController {
-  ///{@template cygnus_core.PlatformInAppWebViewController.supported_platforms}
+extension _CygnusPlatformWebViewControllerClassSupported
+    on CygnusPlatformWebViewController {
+  ///{@template cygnus_core.CygnusPlatformWebViewController.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -18,7 +18,7 @@ extension _PlatformInAppWebViewControllerClassSupported
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppWebViewController.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return kIsWeb && platform == null
@@ -34,11 +34,11 @@ extension _PlatformInAppWebViewControllerClassSupported
   }
 }
 
-///List of [PlatformInAppWebViewController]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformInAppWebViewControllerProperty {
-  ///Can be used to check if the [PlatformInAppWebViewController.tRexRunnerCss] property is supported at runtime.
+///List of [CygnusPlatformWebViewController]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformWebViewControllerProperty {
+  ///Can be used to check if the [CygnusPlatformWebViewController.tRexRunnerCss] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.tRexRunnerCss.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.tRexRunnerCss.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -48,13 +48,13 @@ enum PlatformInAppWebViewControllerProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppWebViewController.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   tRexRunnerCss,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.tRexRunnerHtml] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.tRexRunnerHtml] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.tRexRunnerHtml.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.tRexRunnerHtml.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -64,13 +64,13 @@ enum PlatformInAppWebViewControllerProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppWebViewController.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   tRexRunnerHtml,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.webStorage] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.webStorage] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.webStorage.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.webStorage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -79,19 +79,19 @@ enum PlatformInAppWebViewControllerProperty {
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
-  ///Use the [PlatformInAppWebViewController.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   webStorage,
 }
 
-extension _PlatformInAppWebViewControllerPropertySupported
-    on PlatformInAppWebViewController {
+extension _CygnusPlatformWebViewControllerPropertySupported
+    on CygnusPlatformWebViewController {
   static bool isPropertySupported(
-    PlatformInAppWebViewControllerProperty property, {
+    CygnusPlatformWebViewControllerProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformInAppWebViewControllerProperty.tRexRunnerCss:
+      case CygnusPlatformWebViewControllerProperty.tRexRunnerCss:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -102,7 +102,7 @@ extension _PlatformInAppWebViewControllerPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerProperty.tRexRunnerHtml:
+      case CygnusPlatformWebViewControllerProperty.tRexRunnerHtml:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -113,7 +113,7 @@ extension _PlatformInAppWebViewControllerPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerProperty.webStorage:
+      case CygnusPlatformWebViewControllerProperty.webStorage:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -127,11 +127,11 @@ extension _PlatformInAppWebViewControllerPropertySupported
   }
 }
 
-///List of [PlatformInAppWebViewController]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformInAppWebViewControllerMethod {
-  ///Can be used to check if the [PlatformInAppWebViewController.addDevToolsProtocolEventListener] method is supported at runtime.
+///List of [CygnusPlatformWebViewController]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformWebViewControllerMethod {
+  ///Can be used to check if the [CygnusPlatformWebViewController.addDevToolsProtocolEventListener] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.addDevToolsProtocolEventListener.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.addDevToolsProtocolEventListener.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2DevToolsProtocolEventReceiver.add_DevToolsProtocolEventReceived](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2devtoolsprotocoleventreceiver?view=webview2-1.0.2210.55#add_devtoolsprotocoleventreceived))
@@ -140,13 +140,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- [eventName]: all platforms
   ///- [callback]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   addDevToolsProtocolEventListener,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.addJavaScriptHandler] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.addJavaScriptHandler] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.addJavaScriptHandler.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.addJavaScriptHandler.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -159,59 +159,59 @@ enum PlatformInAppWebViewControllerMethod {
   ///- [handlerName]: all platforms
   ///- [callback]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   addJavaScriptHandler,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.addUserScript] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.addUserScript] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.addUserScript.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.addUserScript.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView ([Official API - WKUserContentController.addUserScript](https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1537448-adduserscript)):
-  ///    - This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
   ///- Linux WPE WebKit ([Official API - webkit_user_content_manager_add_script](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.UserContentManager.add_script.html))
   ///- macOS WKWebView ([Official API - WKUserContentController.addUserScript](https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1537448-adduserscript)):
-  ///    - This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [userScript]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   addUserScript,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.addUserScripts] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.addUserScripts] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.addUserScripts.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.addUserScripts.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView:
-  ///    - This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
   ///- Linux WPE WebKit
   ///- macOS WKWebView:
-  ///    - This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [userScripts]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   addUserScripts,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.addWebMessageListener] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.addWebMessageListener] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.addWebMessageListener.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.addWebMessageListener.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebViewCompat.WebMessageListener](https://developer.android.com/reference/androidx/webkit/WebViewCompat#addWebMessageListener(android.webkit.WebView,%20java.lang.String,%20java.util.Set%3Cjava.lang.String%3E,%20androidx.webkit.WebViewCompat.WebMessageListener))):
-  ///    - This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.WEB_MESSAGE_LISTENER].
+  ///- Android WebView ([Official API - WebViewCompat.CygnusWebMessageListener](https://developer.android.com/reference/androidx/webkit/WebViewCompat#addWebMessageListener(android.webkit.WebView,%20java.lang.String,%20java.util.Set%3Cjava.lang.String%3E,%20androidx.webkit.WebViewCompat.CygnusWebMessageListener))):
+  ///    - This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.WEB_MESSAGE_LISTENER].
   ///- iOS WKWebView:
   ///    - This method is implemented using JavaScript.
   ///- Linux WPE WebKit ([Official API - webkit_user_content_manager_add_script](https://webkitgtk.org/reference/webkit2gtk/stable/method.UserContentManager.add_script.html)):
@@ -224,13 +224,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [webMessageListener]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   addWebMessageListener,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.callAsyncJavaScript] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.callAsyncJavaScript] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.callAsyncJavaScript.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.callAsyncJavaScript.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 21+
@@ -245,13 +245,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- [arguments]: all platforms
   ///- [contentWorld]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   callAsyncJavaScript,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.callDevToolsProtocolMethod] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.callDevToolsProtocolMethod] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.callDevToolsProtocolMethod.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.callDevToolsProtocolMethod.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2.CallDevToolsProtocolMethod](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#calldevtoolsprotocolmethod))
@@ -260,13 +260,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- [methodName]: all platforms
   ///- [parameters]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   callDevToolsProtocolMethod,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.canGoBack] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.canGoBack] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.canGoBack.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.canGoBack.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.canGoBack](https://developer.android.com/reference/android/webkit/WebView#canGoBack()))
@@ -275,13 +275,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2 ([Official API - ICoreWebView2.get_CanGoBack](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#get_cangoback))
   ///- Linux WPE WebKit ([Official API - webkit_web_view_can_go_back](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.can_go_back.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   canGoBack,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.canGoBackOrForward] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.canGoBackOrForward] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.canGoBackOrForward.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.canGoBackOrForward.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.canGoBackOrForward](https://developer.android.com/reference/android/webkit/WebView#canGoBackOrForward(int)))
@@ -293,13 +293,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [steps]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   canGoBackOrForward,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.canGoForward] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.canGoForward] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.canGoForward.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.canGoForward.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.canGoForward](https://developer.android.com/reference/android/webkit/WebView#canGoForward()))
@@ -308,13 +308,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2 ([Official API - ICoreWebView2.get_CanGoForward](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#get_cangoforward))
   ///- Linux WPE WebKit ([Official API - webkit_web_view_can_go_forward](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.can_go_forward.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   canGoForward,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.canScrollHorizontally] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.canScrollHorizontally] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.canScrollHorizontally.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.canScrollHorizontally.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -325,13 +325,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///    - This method is implemented using JavaScript.
   ///- Web \<iframe\> but requires same origin
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   canScrollHorizontally,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.canScrollVertically] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.canScrollVertically] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.canScrollVertically.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.canScrollVertically.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -342,13 +342,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///    - This method is implemented using JavaScript.
   ///- Web \<iframe\> but requires same origin
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   canScrollVertically,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.clearAllCache] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.clearAllCache] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearAllCache.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearAllCache.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -359,38 +359,38 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [includeDiskFiles]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   clearAllCache,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.clearCache] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.clearCache] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearCache.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearCache.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
-  @Deprecated('Use InAppWebViewController.clearAllCache instead')
+  @Deprecated('Use CygnusWebViewController.clearAllCache instead')
   clearCache,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.clearClientCertPreferences] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.clearClientCertPreferences] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearClientCertPreferences.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearClientCertPreferences.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 21+ ([Official API - WebView.clearClientCertPreferences](https://developer.android.com/reference/android/webkit/WebView#clearClientCertPreferences(java.lang.Runnable)))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   clearClientCertPreferences,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.clearFocus] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.clearFocus] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearFocus.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearFocus.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - ViewGroup.clearFocus](https://developer.android.com/reference/android/view/ViewGroup#clearFocus()))
@@ -399,61 +399,61 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Linux WPE WebKit ([Official API - wpe_view_backend_remove_activity_state](https://wpewebkit.org/reference/stable/wpe-platform-2.0/func.view_backend_remove_activity_state.html)):
   ///    - Removes focused state from WPE backend and blurs active element via JavaScript
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   clearFocus,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.clearFormData] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.clearFormData] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearFormData.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearFormData.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.clearFormData](https://developer.android.com/reference/android/webkit/WebView#clearFormData()))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   clearFormData,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.clearHistory] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.clearHistory] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearHistory.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearHistory.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.clearHistory](https://developer.android.com/reference/android/webkit/WebView#clearHistory()))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   clearHistory,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.clearMatches] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.clearMatches] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearMatches.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearMatches.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
-  @Deprecated('Use FindInteractionController.clearMatches instead')
+  @Deprecated('Use CygnusFindInteractionController.clearMatches instead')
   clearMatches,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.clearSslPreferences] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.clearSslPreferences] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearSslPreferences.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearSslPreferences.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.clearSslPreferences](https://developer.android.com/reference/android/webkit/WebView#clearSslPreferences()))
   ///- Windows WebView2 ([Official API - ICoreWebView2_3.ClearServerCertificateErrorActions](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_14?view=webview2-1.0.2792.45#clearservercertificateerroractions))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   clearSslPreferences,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.closeAllMediaPresentations] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.closeAllMediaPresentations] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.closeAllMediaPresentations.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.closeAllMediaPresentations.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 14.5+ ([Official API - WKWebView.closeAllMediaPresentations](https://developer.apple.com/documentation/webkit/wkwebview/3752235-closeallmediapresentations))
@@ -461,13 +461,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Linux WPE WebKit ([Official API - JavaScript Document.exitFullscreen()/exitPictureInPicture()](https://developer.mozilla.org/en-US/docs/Web/API/Document/exitFullscreen)):
   ///    - Uses JavaScript to exit fullscreen and picture-in-picture modes
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   closeAllMediaPresentations,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.createPdf] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.createPdf] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.createPdf.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.createPdf.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 14.0+ ([Official API - WKWebView.createPdf](https://developer.apple.com/documentation/webkit/wkwebview/3650490-createpdf))
@@ -477,29 +477,29 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [pdfConfiguration]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   createPdf,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.createWebArchiveData] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.createWebArchiveData] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.createWebArchiveData.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.createWebArchiveData.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 14.0+ ([Official API - WKWebView.createWebArchiveData](https://developer.apple.com/documentation/webkit/wkwebview/3650491-createwebarchivedata))
   ///- macOS WKWebView 11.0+ ([Official API - WKWebView.createWebArchiveData](https://developer.apple.com/documentation/webkit/wkwebview/3650491-createwebarchivedata))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   createWebArchiveData,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.createWebMessageChannel] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.createWebMessageChannel] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.createWebMessageChannel.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.createWebMessageChannel.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewCompat.createWebMessageChannel](https://developer.android.com/reference/androidx/webkit/WebViewCompat#createWebMessageChannel(android.webkit.WebView))):
-  ///    - This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.CREATE_WEB_MESSAGE_CHANNEL].
+  ///    - This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.CREATE_WEB_MESSAGE_CHANNEL].
   ///- iOS WKWebView:
   ///    - This method is implemented using JavaScript.
   ///- macOS WKWebView:
@@ -509,24 +509,24 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2:
   ///    - Implemented via JavaScript MessageChannel API.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   createWebMessageChannel,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.disableWebView] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.disableWebView] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.disableWebView.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.disableWebView.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 28+ ([Official API - WebView.disableWebView](https://developer.android.com/reference/android/webkit/WebView#disableWebView()))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   disableWebView,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.dispose] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.dispose] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.dispose.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.dispose.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -538,13 +538,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [isKeepAlive]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   dispose,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.disposeKeepAlive] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.disposeKeepAlive] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.disposeKeepAlive.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.disposeKeepAlive.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -556,25 +556,25 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [keepAlive]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   disposeKeepAlive,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.enableSlowWholeDocumentDraw] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.enableSlowWholeDocumentDraw] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.enableSlowWholeDocumentDraw.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.enableSlowWholeDocumentDraw.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 21+ ([Official API - WebView.enableSlowWholeDocumentDraw](https://developer.android.com/reference/android/webkit/WebView#enableSlowWholeDocumentDraw())):
   ///    - This method should be called before any WebViews are created.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   enableSlowWholeDocumentDraw,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.evaluateJavascript] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.evaluateJavascript] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.evaluateJavascript.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.evaluateJavascript.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.evaluateJavascript](https://developer.android.com/reference/android/webkit/WebView#evaluateJavascript(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.String%3E)))
@@ -592,13 +592,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///    - macOS WKWebView 11.0+
   ///    - Windows WebView2
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   evaluateJavascript,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.findAllAsync] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.findAllAsync] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.findAllAsync.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.findAllAsync.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -608,14 +608,14 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [find]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
-  @Deprecated('Use FindInteractionController.findAll instead')
+  @Deprecated('Use CygnusFindInteractionController.findAll instead')
   findAllAsync,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.findNext] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.findNext] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.findNext.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.findNext.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -625,27 +625,27 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [forward]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
-  @Deprecated('Use FindInteractionController.findNext instead')
+  @Deprecated('Use CygnusFindInteractionController.findNext instead')
   findNext,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getCameraCaptureState] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getCameraCaptureState] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getCameraCaptureState.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getCameraCaptureState.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+ ([Official API - WKWebView.cameraCaptureState](https://developer.apple.com/documentation/webkit/wkwebview/3763093-cameracapturestate))
   ///- Linux WPE WebKit 2.34+ ([Official API - webkit_web_view_get_camera_capture_state](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.get_camera_capture_state.html))
   ///- macOS WKWebView 12.0+ ([Official API - WKWebView.cameraCaptureState](https://developer.apple.com/documentation/webkit/wkwebview/3763093-cameracapturestate))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getCameraCaptureState,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getCertificate] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getCertificate] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getCertificate.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getCertificate.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.getCertificate](https://developer.android.com/reference/android/webkit/WebView#getCertificate()))
@@ -654,13 +654,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit ([Official API - webkit_web_view_get_tls_info](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.get_tls_info.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getCertificate,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getContentHeight] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getContentHeight] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getContentHeight.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getContentHeight.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.getContentHeight](https://developer.android.com/reference/android/webkit/WebView#getContentHeight()))
@@ -672,13 +672,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2:
   ///    - This method is implemented using JavaScript.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getContentHeight,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getContentWidth] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getContentWidth] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getContentWidth.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getContentWidth.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
@@ -691,13 +691,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2:
   ///    - This method is implemented using JavaScript.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getContentWidth,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getCopyBackForwardList] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getCopyBackForwardList] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getCopyBackForwardList.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getCopyBackForwardList.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.copyBackForwardList](https://developer.android.com/reference/android/webkit/WebView#copyBackForwardList()))
@@ -706,24 +706,24 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getCopyBackForwardList,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getCurrentWebViewPackage] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getCurrentWebViewPackage] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getCurrentWebViewPackage.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getCurrentWebViewPackage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 21+ ([Official API - WebViewCompat.getCurrentWebViewPackage](https://developer.android.com/reference/androidx/webkit/WebViewCompat#getCurrentWebViewPackage(android.content.Context)))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getCurrentWebViewPackage,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getDefaultUserAgent] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getDefaultUserAgent] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getDefaultUserAgent.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getDefaultUserAgent.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.getDefaultUserAgent](https://developer.android.com/reference/android/webkit/WebSettings#getDefaultUserAgent(android.content.Context)))
@@ -731,13 +731,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- macOS WKWebView
   ///- Web \<iframe\> but requires same origin ([Official API - Navigator.userAgent](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/userAgent))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getDefaultUserAgent,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getFavicon] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getFavicon] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getFavicon.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getFavicon.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_15.GetFavicon](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_15?view=webview2-1.0.2849.39#getfavicon))
@@ -746,13 +746,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- [url]: all platforms
   ///- [faviconImageFormat]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getFavicon,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getFavicons] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getFavicons] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getFavicons.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getFavicons.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -762,24 +762,24 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getFavicons,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getFrameId] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getFrameId] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getFrameId.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getFrameId.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_20.get_FrameId](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_20?view=webview2-1.0.2849.39#get_frameid))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getFrameId,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getHitTestResult] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getHitTestResult] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getHitTestResult.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getHitTestResult.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.getHitTestResult](https://developer.android.com/reference/android/webkit/WebView#getHitTestResult()))
@@ -788,13 +788,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Linux WPE WebKit ([Official API - WebKitHitTestResult](https://webkitgtk.org/reference/webkit2gtk/stable/WebKitHitTestResult.html)):
   ///    - This method uses native WebKitHitTestResult from the mouse-target-changed signal.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getHitTestResult,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getHtml] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getHtml] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getHtml.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getHtml.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -805,24 +805,24 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getHtml,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getIFrameId] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getIFrameId] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getIFrameId.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getIFrameId.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Web \<iframe\> but requires same origin
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getIFrameId,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getJavaScriptBridgeName] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getJavaScriptBridgeName] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getJavaScriptBridgeName.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getJavaScriptBridgeName.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -832,24 +832,24 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getJavaScriptBridgeName,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getMemoryUsageTargetLevel] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getMemoryUsageTargetLevel] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getMemoryUsageTargetLevel.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getMemoryUsageTargetLevel.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_19.get_MemoryUsageTargetLevel](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_19?view=webview2-1.0.2849.39#get_memoryusagetargetlevel))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getMemoryUsageTargetLevel,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getMetaTags] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getMetaTags] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getMetaTags.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getMetaTags.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
@@ -865,13 +865,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2:
   ///    - This method is implemented using JavaScript.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getMetaTags,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getMetaThemeColor] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getMetaThemeColor] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getMetaThemeColor.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getMetaThemeColor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
@@ -886,26 +886,26 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2:
   ///    - This method is implemented using JavaScript.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getMetaThemeColor,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getMicrophoneCaptureState] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getMicrophoneCaptureState] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getMicrophoneCaptureState.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getMicrophoneCaptureState.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+ ([Official API - WKWebView.microphoneCaptureState](https://developer.apple.com/documentation/webkit/wkwebview/3763096-microphonecapturestate))
   ///- Linux WPE WebKit 2.34+ ([Official API - webkit_web_view_get_microphone_capture_state](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.get_microphone_capture_state.html))
   ///- macOS WKWebView 12.0+ ([Official API - WKWebView.microphoneCaptureState](https://developer.apple.com/documentation/webkit/wkwebview/3763096-microphonecapturestate))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getMicrophoneCaptureState,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getOptions] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getOptions] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getOptions.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getOptions.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -914,14 +914,14 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use getSettings instead')
   getOptions,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getOriginalUrl] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getOriginalUrl] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getOriginalUrl.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getOriginalUrl.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.getOriginalUrl](https://developer.android.com/reference/android/webkit/WebView#getOriginalUrl()))
@@ -934,13 +934,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2:
   ///    - Returns the current URL. WebView2 does not distinguish between original and current URL.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getOriginalUrl,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getProgress] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getProgress] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getProgress.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getProgress.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.getProgress](https://developer.android.com/reference/android/webkit/WebView#getProgress()))
@@ -950,50 +950,50 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2:
   ///    - Progress is tracked through navigation events: NavigationStarting (0), ContentLoading (33), DOMContentLoaded (66), NavigationCompleted (100).
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getProgress,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getSafeBrowsingPrivacyPolicyUrl] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getSafeBrowsingPrivacyPolicyUrl] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getSafeBrowsingPrivacyPolicyUrl.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getSafeBrowsingPrivacyPolicyUrl.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewCompat.getSafeBrowsingPrivacyPolicyUrl](https://developer.android.com/reference/androidx/webkit/WebViewCompat#getSafeBrowsingPrivacyPolicyUrl())):
-  ///    - This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.SAFE_BROWSING_PRIVACY_POLICY_URL].
+  ///    - This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.SAFE_BROWSING_PRIVACY_POLICY_URL].
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getSafeBrowsingPrivacyPolicyUrl,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getScale] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getScale] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getScale.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getScale.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use getZoomScale instead')
   getScale,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getScreenScale] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getScreenScale] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getScreenScale.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getScreenScale.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - wpe_screen_get_scale](https://wpewebkit.org/reference/stable/wpe-platform-1.0/method.Screen.get_scale.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getScreenScale,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getScrollX] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getScrollX] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getScrollX.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getScrollX.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.getScrollX](https://developer.android.com/reference/android/view/View#getScrollX()))
@@ -1005,13 +1005,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2:
   ///    - This method is implemented using JavaScript.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getScrollX,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getScrollY] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getScrollY] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getScrollY.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getScrollY.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.getScrollY](https://developer.android.com/reference/android/view/View#getScrollY()))
@@ -1023,13 +1023,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2:
   ///    - This method is implemented using JavaScript.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getScrollY,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getSelectedText] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getSelectedText] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getSelectedText.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getSelectedText.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
@@ -1043,13 +1043,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Web \<iframe\> but requires same origin:
   ///    - This method is implemented using JavaScript.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getSelectedText,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getSettings] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getSettings] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getSettings.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getSettings.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1059,13 +1059,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getSettings,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getTRexRunnerCss] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getTRexRunnerCss] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getTRexRunnerCss.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getTRexRunnerCss.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1074,14 +1074,14 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use tRexRunnerCss instead')
   getTRexRunnerCss,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getTRexRunnerHtml] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getTRexRunnerHtml] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getTRexRunnerHtml.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getTRexRunnerHtml.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1090,25 +1090,25 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use tRexRunnerHtml instead')
   getTRexRunnerHtml,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getTargetRefreshRate] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getTargetRefreshRate] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getTargetRefreshRate.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getTargetRefreshRate.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getTargetRefreshRate,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getTitle] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getTitle] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getTitle.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getTitle.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.getTitle](https://developer.android.com/reference/android/webkit/WebView#getTitle()))
@@ -1118,13 +1118,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2 ([Official API - ICoreWebView2.get_DocumentTitle](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#get_documenttitle))
   ///- Linux WPE WebKit ([Official API - webkit_web_view_get_title](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.get_title.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getTitle,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getUrl] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getUrl] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getUrl.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getUrl.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.getUrl](https://developer.android.com/reference/android/webkit/WebView#getUrl()))
@@ -1135,25 +1135,25 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2 ([Official API - ICoreWebView2.get_Source](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#get_source))
   ///- Linux WPE WebKit ([Official API - webkit_web_view_get_uri](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.get_uri.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getUrl,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getVariationsHeader] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getVariationsHeader] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getVariationsHeader.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getVariationsHeader.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewCompat.getVariationsHeader](https://developer.android.com/reference/androidx/webkit/WebViewCompat#getVariationsHeader())):
-  ///    - This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.GET_VARIATIONS_HEADER].
+  ///    - This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.GET_VARIATIONS_HEADER].
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getVariationsHeader,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getViewId] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getViewId] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getViewId.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getViewId.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1162,13 +1162,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getViewId,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.getZoomScale] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.getZoomScale] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.getZoomScale.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getZoomScale.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1176,13 +1176,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Linux WPE WebKit ([Official API - webkit_web_view_get_zoom_level](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.get_zoom_level.html))
   ///- Windows WebView2 ([Official API - ICoreWebView2Controller.get_ZoomFactor](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2controller?view=webview2-1.0.2849.39#get_zoomfactor))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getZoomScale,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.goBack] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.goBack] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.goBack.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.goBack.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.goBack](https://developer.android.com/reference/android/webkit/WebView#goBack()))
@@ -1192,13 +1192,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2 ([Official API - ICoreWebView2.GoBack](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#goback))
   ///- Linux WPE WebKit ([Official API - webkit_web_view_go_back](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.go_back.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   goBack,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.goBackOrForward] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.goBackOrForward] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.goBackOrForward.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.goBackOrForward.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.goBackOrForward](https://developer.android.com/reference/android/webkit/WebView#goBackOrForward(int)))
@@ -1211,13 +1211,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [steps]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   goBackOrForward,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.goForward] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.goForward] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.goForward.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.goForward.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.goForward](https://developer.android.com/reference/android/webkit/WebView#goForward()))
@@ -1227,13 +1227,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2 ([Official API - ICoreWebView2.GoForward](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#goforward))
   ///- Linux WPE WebKit ([Official API - webkit_web_view_go_forward](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.go_forward.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   goForward,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.goTo] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.goTo] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.goTo.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.goTo.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1245,13 +1245,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [historyItem]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   goTo,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.handlesURLScheme] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.handlesURLScheme] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.handlesURLScheme.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.handlesURLScheme.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 11.0+ ([Official API - WKWebView.handlesURLScheme](https://developer.apple.com/documentation/webkit/wkwebview/2875370-handlesurlscheme))
@@ -1262,13 +1262,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [urlScheme]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   handlesURLScheme,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.hasJavaScriptHandler] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.hasJavaScriptHandler] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.hasJavaScriptHandler.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.hasJavaScriptHandler.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1280,25 +1280,25 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [handlerName]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   hasJavaScriptHandler,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.hasOnlySecureContent] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.hasOnlySecureContent] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.hasOnlySecureContent.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.hasOnlySecureContent.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKWebView.hasOnlySecureContent](https://developer.apple.com/documentation/webkit/wkwebview/1415002-hasonlysecurecontent))
   ///- macOS WKWebView ([Official API - WKWebView.hasOnlySecureContent](https://developer.apple.com/documentation/webkit/wkwebview/1415002-hasonlysecurecontent))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   hasOnlySecureContent,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.hasUserScript] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.hasUserScript] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.hasUserScript.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.hasUserScript.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1310,13 +1310,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [userScript]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   hasUserScript,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.hasWebMessageListener] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.hasWebMessageListener] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.hasWebMessageListener.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.hasWebMessageListener.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1327,25 +1327,25 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [webMessageListener]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   hasWebMessageListener,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.hideInputMethod] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.hideInputMethod] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.hideInputMethod.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.hideInputMethod.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - InputMethodManager.hideSoftInputFromWindow](https://developer.android.com/reference/android/view/inputmethod/InputMethodManager#hideSoftInputFromWindow(android.os.IBinder,%20int)))
   ///- iOS WKWebView ([Official API - UIView.endEditing](https://developer.apple.com/documentation/uikit/uiview/1619630-endediting))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   hideInputMethod,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.injectCSSCode] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.injectCSSCode] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.injectCSSCode.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.injectCSSCode.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1360,13 +1360,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [source]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   injectCSSCode,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.injectCSSFileFromAsset] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.injectCSSFileFromAsset] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.injectCSSFileFromAsset.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.injectCSSFileFromAsset.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1377,13 +1377,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [assetFilePath]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   injectCSSFileFromAsset,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.injectCSSFileFromUrl] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.injectCSSFileFromUrl] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.injectCSSFileFromUrl.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.injectCSSFileFromUrl.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1399,13 +1399,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- [urlFile]: all platforms
   ///- [cssLinkHtmlTagAttributes]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   injectCSSFileFromUrl,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.injectJavascriptFileFromAsset] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.injectJavascriptFileFromAsset] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.injectJavascriptFileFromAsset.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.injectJavascriptFileFromAsset.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1417,13 +1417,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [assetFilePath]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   injectJavascriptFileFromAsset,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.injectJavascriptFileFromUrl] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.injectJavascriptFileFromUrl] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.injectJavascriptFileFromUrl.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.injectJavascriptFileFromUrl.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1437,13 +1437,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- [urlFile]: all platforms
   ///- [scriptHtmlTagAttributes]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   injectJavascriptFileFromUrl,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.isInFullscreen] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.isInFullscreen] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.isInFullscreen.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isInFullscreen.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1451,13 +1451,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- macOS WKWebView
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isInFullscreen,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.isInterfaceSupported] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.isInterfaceSupported] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.isInterfaceSupported.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isInterfaceSupported.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
@@ -1465,13 +1465,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [interface]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isInterfaceSupported,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.isLoading] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.isLoading] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.isLoading.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isLoading.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1481,47 +1481,47 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Web \<iframe\>
   ///- Windows WebView2
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isLoading,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.isMultiProcessEnabled] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.isMultiProcessEnabled] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.isMultiProcessEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isMultiProcessEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewCompat.isMultiProcessEnabled](https://developer.android.com/reference/androidx/webkit/WebViewCompat#isMultiProcessEnabled())):
-  ///    - This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.MULTI_PROCESS].
+  ///    - This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.MULTI_PROCESS].
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isMultiProcessEnabled,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.isMuted] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.isMuted] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.isMuted.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isMuted.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.30+ ([Official API - webkit_web_view_get_is_muted](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.get_is_muted.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isMuted,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.isPlayingAudio] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.isPlayingAudio] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.isPlayingAudio.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isPlayingAudio.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.8+ ([Official API - webkit_web_view_is_playing_audio](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.is_playing_audio.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isPlayingAudio,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.isSecureContext] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.isSecureContext] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.isSecureContext.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isSecureContext.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 21+:
@@ -1536,24 +1536,24 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2:
   ///    - This method is implemented using JavaScript.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isSecureContext,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.isVisible] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.isVisible] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.isVisible.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isVisible.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - wpe_view_get_visible](https://wpewebkit.org/reference/stable/wpe-platform-1.0/method.View.get_visible.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isVisible,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.loadData] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.loadData] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.loadData.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.loadData.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.loadDataWithBaseURL](https://developer.android.com/reference/android/webkit/WebView#loadDataWithBaseURL(java.lang.String,%20java.lang.String,%20java.lang.String,%20java.lang.String,%20java.lang.String)))
@@ -1586,13 +1586,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///    - iOS WKWebView
   ///    - macOS WKWebView
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   loadData,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.loadFile] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.loadFile] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.loadFile.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.loadFile.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.loadUrl](https://developer.android.com/reference/android/webkit/WebView#loadUrl(java.lang.String)))
@@ -1605,13 +1605,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [assetFilePath]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   loadFile,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.loadSimulatedRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.loadSimulatedRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.loadSimulatedRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.loadSimulatedRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+ ([Official API - WKWebView.loadSimulatedRequest(_:response:responseData:)](https://developer.apple.com/documentation/webkit/wkwebview/3763094-loadsimulatedrequest)):
@@ -1624,13 +1624,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- [data]: all platforms
   ///- [urlResponse]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   loadSimulatedRequest,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.loadUrl] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.loadUrl] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.loadUrl.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.loadUrl.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.loadUrl](https://developer.android.com/reference/android/webkit/WebView#loadUrl(java.lang.String))):
@@ -1650,24 +1650,24 @@ enum PlatformInAppWebViewControllerMethod {
   ///    - iOS WKWebView
   ///    - macOS WKWebView
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   loadUrl,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.openDevTools] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.openDevTools] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.openDevTools.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.openDevTools.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2.OpenDevToolsWindow](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#opendevtoolswindow))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   openDevTools,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.pageDown] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.pageDown] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.pageDown.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.pageDown.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.pageDown](https://developer.android.com/reference/android/webkit/WebView#pageDown(boolean)))
@@ -1675,13 +1675,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [bottom]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   pageDown,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.pageUp] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.pageUp] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.pageUp.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.pageUp.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.pageUp](https://developer.android.com/reference/android/webkit/WebView#pageUp(boolean)))
@@ -1689,25 +1689,25 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [top]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   pageUp,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.pause] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.pause] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.pause.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.pause.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.onPause](https://developer.android.com/reference/android/webkit/WebView#onPause()))
   ///- Windows WebView2 ([Official API - ICoreWebView2_3.TrySuspend](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_3?view=webview2-1.0.2792.45#trysuspend))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   pause,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.pauseAllMediaPlayback] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.pauseAllMediaPlayback] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.pauseAllMediaPlayback.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.pauseAllMediaPlayback.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+ ([Official API - WKWebView.pauseAllMediaPlayback](https://developer.apple.com/documentation/webkit/wkwebview/3752240-pauseallmediaplayback))
@@ -1715,13 +1715,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Linux WPE WebKit ([Official API - JavaScript HTMLMediaElement.pause()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause)):
   ///    - Uses JavaScript to pause all audio and video elements
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   pauseAllMediaPlayback,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.pauseTimers] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.pauseTimers] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.pauseTimers.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.pauseTimers.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.pauseTimers](https://developer.android.com/reference/android/webkit/WebView#pauseTimers()))
@@ -1730,13 +1730,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- macOS WKWebView:
   ///    - This method is implemented using JavaScript and it is restricted to just this WebView.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   pauseTimers,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.postUrl] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.postUrl] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.postUrl.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.postUrl.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.postUrl](https://developer.android.com/reference/android/webkit/WebView#postUrl(java.lang.String,%20byte[])))
@@ -1752,17 +1752,17 @@ enum PlatformInAppWebViewControllerMethod {
   ///- [url]: all platforms
   ///- [postData]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   postUrl,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.postWebMessage] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.postWebMessage] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.postWebMessage.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.postWebMessage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.postWebMessage](https://developer.android.com/reference/androidx/webkit/WebViewCompat#postWebMessage(android.webkit.WebView,%20androidx.webkit.WebMessageCompat,%20android.net.Uri))):
-  ///    - This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.POST_WEB_MESSAGE].
+  ///    - This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.POST_WEB_MESSAGE].
   ///- iOS WKWebView:
   ///    - This method is implemented using JavaScript.
   ///- macOS WKWebView:
@@ -1776,13 +1776,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- [message]: all platforms
   ///- [targetOrigin]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   postWebMessage,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.printCurrentPage] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.printCurrentPage] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.printCurrentPage.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.printCurrentPage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - PrintManager.print](https://developer.android.com/reference/android/print/PrintManager#print(java.lang.String,%20android.print.PrintDocumentAdapter,%20android.print.PrintAttributes)))
@@ -1790,19 +1790,19 @@ enum PlatformInAppWebViewControllerMethod {
   ///- macOS WKWebView ([Official API - WKWebView.printOperation](https://developer.apple.com/documentation/webkit/wkwebview/3516861-printoperation)):
   ///    - If macOS version is less than 11.0, it will use [Official API - NSView.printView](https://developer.apple.com/documentation/appkit/nsview/1483705-printview).
   ///- Web \<iframe\> but requires same origin ([Official API - Window.print](https://developer.mozilla.org/en-US/docs/Web/API/Window/print)):
-  ///    - [PlatformPrintJobController] is always `null`.
+  ///    - [CygnusPlatformPrintJobController] is always `null`.
   ///- Windows WebView2 ([Official API - ICoreWebView2_16.Print](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_16?view=webview2-1.0.2849.39#print))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [settings]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   printCurrentPage,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.reload] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.reload] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.reload.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.reload.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.reload](https://developer.android.com/reference/android/webkit/WebView#reload()))
@@ -1813,44 +1813,44 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2 ([Official API - ICoreWebView2.Reload](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#reload))
   ///- Linux WPE WebKit ([Official API - webkit_web_view_reload](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.reload.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   reload,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.reloadFromOrigin] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.reloadFromOrigin] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.reloadFromOrigin.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.reloadFromOrigin.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKWebView.reloadFromOrigin](https://developer.apple.com/documentation/webkit/wkwebview/1414956-reloadfromorigin))
   ///- macOS WKWebView ([Official API - WKWebView.reloadFromOrigin](https://developer.apple.com/documentation/webkit/wkwebview/1414956-reloadfromorigin))
   ///- Linux WPE WebKit ([Official API - webkit_web_view_reload_bypass_cache](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.reload_bypass_cache.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   reloadFromOrigin,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.removeAllUserScripts] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.removeAllUserScripts] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.removeAllUserScripts.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.removeAllUserScripts.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView ([Official API - WKUserContentController.removeAllUserScripts](https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1536540-removealluserscripts)):
-  ///    - This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
   ///- Linux WPE WebKit ([Official API - webkit_user_content_manager_remove_all_scripts](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.UserContentManager.remove_all_scripts.html))
   ///- macOS WKWebView ([Official API - WKUserContentController.removeAllUserScripts](https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1536540-removealluserscripts)):
-  ///    - This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeAllUserScripts,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.removeDevToolsProtocolEventListener] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.removeDevToolsProtocolEventListener] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.removeDevToolsProtocolEventListener.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.removeDevToolsProtocolEventListener.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2DevToolsProtocolEventReceiver.remove_DevToolsProtocolEventReceived](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2devtoolsprotocoleventreceiver?view=webview2-1.0.2210.55#remove_devtoolsprotocoleventreceived))
@@ -1858,13 +1858,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [eventName]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeDevToolsProtocolEventListener,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.removeJavaScriptHandler] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.removeJavaScriptHandler] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.removeJavaScriptHandler.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.removeJavaScriptHandler.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1876,98 +1876,98 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [handlerName]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeJavaScriptHandler,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.removeUserScript] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.removeUserScript] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.removeUserScript.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.removeUserScript.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView:
-  ///    - This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
   ///- Linux WPE WebKit
   ///- macOS WKWebView:
-  ///    - This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [userScript]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeUserScript,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.removeUserScripts] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.removeUserScripts] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.removeUserScripts.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.removeUserScripts.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView:
-  ///    - This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
   ///- Linux WPE WebKit
   ///- macOS WKWebView:
-  ///    - This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [userScripts]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeUserScripts,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.removeUserScriptsByGroupName] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.removeUserScriptsByGroupName] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.removeUserScriptsByGroupName.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.removeUserScriptsByGroupName.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView:
-  ///    - This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
   ///- Linux WPE WebKit
   ///- macOS WKWebView:
-  ///    - This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [groupName]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeUserScriptsByGroupName,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.requestEnterFullscreen] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.requestEnterFullscreen] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestEnterFullscreen.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestEnterFullscreen.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   requestEnterFullscreen,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.requestExitFullscreen] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.requestExitFullscreen] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestExitFullscreen.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestExitFullscreen.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   requestExitFullscreen,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.requestFocus] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.requestFocus] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestFocus.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestFocus.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.requestFocus](https://developer.android.com/reference/android/webkit/WebView#requestFocus(int,%20android.graphics.Rect)))
@@ -1982,39 +1982,39 @@ enum PlatformInAppWebViewControllerMethod {
   ///- [previouslyFocusedRect]:
   ///    - Android WebView
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   requestFocus,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.requestFocusNodeHref] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.requestFocusNodeHref] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestFocusNodeHref.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestFocusNodeHref.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.requestFocusNodeHref](https://developer.android.com/reference/android/webkit/WebView#requestFocusNodeHref(android.os.Message)))
   ///- iOS WKWebView:
   ///    - This method is implemented using JavaScript.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   requestFocusNodeHref,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.requestImageRef] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.requestImageRef] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestImageRef.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestImageRef.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.requestImageRef](https://developer.android.com/reference/android/webkit/WebView#requestImageRef(android.os.Message)))
   ///- iOS WKWebView:
   ///    - This method is implemented using JavaScript.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   requestImageRef,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.requestMediaPlaybackState] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.requestMediaPlaybackState] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestMediaPlaybackState.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestMediaPlaybackState.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+ ([Official API - WKWebView.requestMediaPlaybackState](https://developer.apple.com/documentation/webkit/wkwebview/3752241-requestmediaplaybackstate))
@@ -2022,35 +2022,35 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Linux WPE WebKit ([Official API - JavaScript HTMLMediaElement.paused](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/paused)):
   ///    - Uses JavaScript to query media playback state
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   requestMediaPlaybackState,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.requestPointerLock] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.requestPointerLock] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestPointerLock.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestPointerLock.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   requestPointerLock,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.requestPointerUnlock] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.requestPointerUnlock] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestPointerUnlock.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestPointerUnlock.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   requestPointerUnlock,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.restoreState] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.restoreState] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.restoreState.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.restoreState.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.restoreState](https://developer.android.com/reference/android/webkit/WebView#restoreState(android.os.Bundle))):
@@ -2062,25 +2062,25 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [state]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   restoreState,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.resume] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.resume] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.resume.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.resume.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.onResume](https://developer.android.com/reference/android/webkit/WebView#onResume()))
   ///- Windows WebView2 ([Official API - ICoreWebView2_3.Resume](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_3?view=webview2-1.0.2792.45#resume))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   resume,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.resumeTimers] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.resumeTimers] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.resumeTimers.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.resumeTimers.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.resumeTimers](https://developer.android.com/reference/android/webkit/WebView#resumeTimers()))
@@ -2089,13 +2089,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- macOS WKWebView:
   ///    - This method is implemented using JavaScript and it is restricted to just this WebView.
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   resumeTimers,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.saveState] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.saveState] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.saveState.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.saveState.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.saveState](https://developer.android.com/reference/android/webkit/WebView#saveState(android.os.Bundle))):
@@ -2104,35 +2104,35 @@ enum PlatformInAppWebViewControllerMethod {
   ///- macOS WKWebView 12.0+ ([Official API - WKWebView.interactionState](https://developer.apple.com/documentation/webkit/wkwebview/3752236-interactionstate))
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   saveState,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.saveWebArchive] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.saveWebArchive] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.saveWebArchive.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.saveWebArchive.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.saveWebArchive](https://developer.android.com/reference/android/webkit/WebView#saveWebArchive(java.lang.String,%20boolean,%20android.webkit.ValueCallback%3Cjava.lang.String%3E))):
-  ///    - If [autoname] is `false`, the [filePath] must ends with the [WebArchiveFormat.MHT] file extension.
+  ///    - If [autoname] is `false`, the [filePath] must ends with the [CygnusWebArchiveFormat.MHT] file extension.
   ///- iOS WKWebView 14.0+:
-  ///    - If [autoname] is `false`, the [filePath] must ends with the [WebArchiveFormat.WEBARCHIVE] file extension.
+  ///    - If [autoname] is `false`, the [filePath] must ends with the [CygnusWebArchiveFormat.WEBARCHIVE] file extension.
   ///- Linux WPE WebKit ([Official API - webkit_web_view_save_to_file](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.save_to_file.html)):
-  ///    - If [autoname] is `false`, the [filePath] must ends with the [WebArchiveFormat.MHT] file extension.
+  ///    - If [autoname] is `false`, the [filePath] must ends with the [CygnusWebArchiveFormat.MHT] file extension.
   ///- macOS WKWebView 11.0+:
-  ///    - If [autoname] is `false`, the [filePath] must ends with the [WebArchiveFormat.WEBARCHIVE] file extension.
+  ///    - If [autoname] is `false`, the [filePath] must ends with the [CygnusWebArchiveFormat.WEBARCHIVE] file extension.
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [filePath]: all platforms
   ///- [autoname]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   saveWebArchive,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.scrollBy] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.scrollBy] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.scrollBy.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.scrollBy.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.scrollBy](https://developer.android.com/reference/android/view/View#scrollBy(int,%20int)))
@@ -2149,13 +2149,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- [y]: all platforms
   ///- [animated]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   scrollBy,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.scrollTo] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.scrollTo] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.scrollTo.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.scrollTo.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.scrollTo](https://developer.android.com/reference/android/webkit/WebView#scrollTo(int,%20int)))
@@ -2172,13 +2172,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///- [y]: all platforms
   ///- [animated]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   scrollTo,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setAllMediaPlaybackSuspended] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setAllMediaPlaybackSuspended] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setAllMediaPlaybackSuspended.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setAllMediaPlaybackSuspended.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+ ([Official API - WKWebView.setAllMediaPlaybackSuspended](https://developer.apple.com/documentation/webkit/wkwebview/3752242-setallmediaplaybacksuspended))
@@ -2189,13 +2189,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [suspended]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setAllMediaPlaybackSuspended,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setCameraCaptureState] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setCameraCaptureState] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setCameraCaptureState.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setCameraCaptureState.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+ ([Official API - WKWebView.setCameraCaptureState](https://developer.apple.com/documentation/webkit/wkwebview/3763097-setcameracapturestate))
@@ -2206,13 +2206,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [state]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setCameraCaptureState,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setContextMenu] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setContextMenu] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setContextMenu.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setContextMenu.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -2221,13 +2221,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [contextMenu]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setContextMenu,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setInputMethodEnabled] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setInputMethodEnabled] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setInputMethodEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setInputMethodEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - UIResponder.inputView](https://developer.apple.com/documentation/uikit/uiresponder/1621092-inputview))
@@ -2235,13 +2235,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [enabled]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setInputMethodEnabled,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setJavaScriptBridgeName] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setJavaScriptBridgeName] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setJavaScriptBridgeName.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setJavaScriptBridgeName.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -2254,13 +2254,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [bridgeName]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setJavaScriptBridgeName,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setMemoryUsageTargetLevel] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setMemoryUsageTargetLevel] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setMemoryUsageTargetLevel.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setMemoryUsageTargetLevel.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_19.put_MemoryUsageTargetLevel](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_19?view=webview2-1.0.2849.39#put_memoryusagetargetlevel))
@@ -2268,13 +2268,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [level]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setMemoryUsageTargetLevel,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setMicrophoneCaptureState] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setMicrophoneCaptureState] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setMicrophoneCaptureState.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setMicrophoneCaptureState.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+ ([Official API - WKWebView.setMicrophoneCaptureState](https://developer.apple.com/documentation/webkit/wkwebview/3763098-setmicrophonecapturestate))
@@ -2285,13 +2285,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [state]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setMicrophoneCaptureState,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setMuted] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setMuted] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setMuted.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setMuted.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.30+ ([Official API - webkit_web_view_set_is_muted](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.set_is_muted.html))
@@ -2299,13 +2299,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [muted]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setMuted,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setOptions] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setOptions] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setOptions.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setOptions.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -2317,29 +2317,29 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [options]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use setSettings instead')
   setOptions,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setSafeBrowsingAllowlist] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setSafeBrowsingAllowlist] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setSafeBrowsingAllowlist.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setSafeBrowsingAllowlist.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewCompat.setSafeBrowsingAllowlist](https://developer.android.com/reference/androidx/webkit/WebViewCompat#setSafeBrowsingAllowlist(java.util.Set%3Cjava.lang.String%3E,%20android.webkit.ValueCallback%3Cjava.lang.Boolean%3E))):
-  ///    - This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.SAFE_BROWSING_ALLOWLIST].
+  ///    - This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.SAFE_BROWSING_ALLOWLIST].
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [hosts]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setSafeBrowsingAllowlist,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setSafeBrowsingWhitelist] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setSafeBrowsingWhitelist] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setSafeBrowsingWhitelist.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setSafeBrowsingWhitelist.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -2347,14 +2347,14 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [hosts]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use setSafeBrowsingAllowlist instead')
   setSafeBrowsingWhitelist,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setScreenScale] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setScreenScale] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setScreenScale.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setScreenScale.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - wpe_screen_set_scale](https://wpewebkit.org/reference/stable/wpe-platform-1.0/method.Screen.set_scale.html))
@@ -2362,13 +2362,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [scale]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setScreenScale,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setSettings] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setSettings] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setSettings.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setSettings.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -2381,13 +2381,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [settings]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setSettings,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setTargetRefreshRate] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setTargetRefreshRate] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setTargetRefreshRate.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setTargetRefreshRate.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit
@@ -2395,13 +2395,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [rate]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setTargetRefreshRate,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setVisible] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setVisible] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setVisible.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setVisible.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit
@@ -2409,13 +2409,13 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [visible]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setVisible,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.setWebContentsDebuggingEnabled] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.setWebContentsDebuggingEnabled] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.setWebContentsDebuggingEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setWebContentsDebuggingEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.setWebContentsDebuggingEnabled](https://developer.android.com/reference/android/webkit/WebView#setWebContentsDebuggingEnabled(boolean)))
@@ -2423,47 +2423,47 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [debuggingEnabled]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setWebContentsDebuggingEnabled,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.showInputMethod] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.showInputMethod] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.showInputMethod.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.showInputMethod.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - InputMethodManager.showSoftInput](https://developer.android.com/reference/android/view/inputmethod/InputMethodManager#showSoftInput(android.view.View,%20int)))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   showInputMethod,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.showSaveAsUI] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.showSaveAsUI] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.showSaveAsUI.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.showSaveAsUI.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_25.ShowSaveAsUI](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_25?view=webview2-1.0.2849.39#showsaveasui))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   showSaveAsUI,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.startSafeBrowsing] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.startSafeBrowsing] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.startSafeBrowsing.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.startSafeBrowsing.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.startSafeBrowsing](https://developer.android.com/reference/android/webkit/WebView#startSafeBrowsing(android.content.Context,%20android.webkit.ValueCallback%3Cjava.lang.Boolean%3E))):
-  ///    - This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.START_SAFE_BROWSING].
+  ///    - This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.START_SAFE_BROWSING].
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   startSafeBrowsing,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.stopLoading] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.stopLoading] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.stopLoading.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.stopLoading.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.stopLoading](https://developer.android.com/reference/android/webkit/WebView#stopLoading()))
@@ -2473,17 +2473,17 @@ enum PlatformInAppWebViewControllerMethod {
   ///- Windows WebView2 ([Official API - ICoreWebView2.Stop](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#stop))
   ///- Linux WPE WebKit ([Official API - webkit_web_view_stop_loading](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.stop_loading.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   stopLoading,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.takeScreenshot] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.takeScreenshot] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.takeScreenshot.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.takeScreenshot.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - To be able to take screenshots outside the visible viewport, you must call [PlatformInAppWebViewController.enableSlowWholeDocumentDraw] before any WebViews are created.
+  ///    - To be able to take screenshots outside the visible viewport, you must call [CygnusPlatformWebViewController.enableSlowWholeDocumentDraw] before any WebViews are created.
   ///- iOS WKWebView 11.0+ ([Official API - WKWebView.takeSnapshot](https://developer.apple.com/documentation/webkit/wkwebview/2873260-takesnapshot))
   ///- macOS WKWebView 10.13+ ([Official API - WKWebView.takeSnapshot](https://developer.apple.com/documentation/webkit/wkwebview/2873260-takesnapshot))
   ///- Windows WebView2
@@ -2492,24 +2492,24 @@ enum PlatformInAppWebViewControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [screenshotConfiguration]: all platforms
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   takeScreenshot,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.terminateWebProcess] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.terminateWebProcess] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.terminateWebProcess.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.terminateWebProcess.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.34+ ([Official API - webkit_web_view_terminate_web_process](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.terminate_web_process.html))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   terminateWebProcess,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.zoomBy] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.zoomBy] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.zoomBy.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.zoomBy.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 21+ ([Official API - WebView.zoomBy](https://developer.android.com/reference/android/webkit/WebView#zoomBy(float)))
@@ -2521,47 +2521,47 @@ enum PlatformInAppWebViewControllerMethod {
   ///- [animated]:
   ///    - iOS WKWebView
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   zoomBy,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.zoomIn] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.zoomIn] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.zoomIn.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.zoomIn.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.zoomIn](https://developer.android.com/reference/android/webkit/WebView#zoomIn()))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   zoomIn,
 
-  ///Can be used to check if the [PlatformInAppWebViewController.zoomOut] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewController.zoomOut] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewController.zoomOut.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.zoomOut.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.zoomOut](https://developer.android.com/reference/android/webkit/WebView#zoomOut()))
   ///
-  ///Use the [PlatformInAppWebViewController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebViewController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   zoomOut,
 }
 
-extension _PlatformInAppWebViewControllerMethodSupported
-    on PlatformInAppWebViewController {
+extension _CygnusPlatformWebViewControllerMethodSupported
+    on CygnusPlatformWebViewController {
   static bool isMethodSupported(
-    PlatformInAppWebViewControllerMethod method, {
+    CygnusPlatformWebViewControllerMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformInAppWebViewControllerMethod
+      case CygnusPlatformWebViewControllerMethod
           .addDevToolsProtocolEventListener:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.addJavaScriptHandler:
+      case CygnusPlatformWebViewControllerMethod.addJavaScriptHandler:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2571,7 +2571,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.addUserScript:
+      case CygnusPlatformWebViewControllerMethod.addUserScript:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2582,7 +2582,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.addUserScripts:
+      case CygnusPlatformWebViewControllerMethod.addUserScripts:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2593,7 +2593,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.addWebMessageListener:
+      case CygnusPlatformWebViewControllerMethod.addWebMessageListener:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2602,7 +2602,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.callAsyncJavaScript:
+      case CygnusPlatformWebViewControllerMethod.callAsyncJavaScript:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2611,30 +2611,12 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.callDevToolsProtocolMethod:
+      case CygnusPlatformWebViewControllerMethod.callDevToolsProtocolMethod:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.canGoBack:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-              TargetPlatform.windows,
-              TargetPlatform.linux,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.canGoBackOrForward:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-              TargetPlatform.linux,
-              TargetPlatform.windows,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.canGoForward:
+      case CygnusPlatformWebViewControllerMethod.canGoBack:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2643,7 +2625,25 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.canScrollHorizontally:
+      case CygnusPlatformWebViewControllerMethod.canGoBackOrForward:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+              TargetPlatform.linux,
+              TargetPlatform.windows,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewControllerMethod.canGoForward:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+              TargetPlatform.windows,
+              TargetPlatform.linux,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewControllerMethod.canScrollHorizontally:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2653,7 +2653,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.linux,
                     TargetPlatform.macOS,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.canScrollVertically:
+      case CygnusPlatformWebViewControllerMethod.canScrollVertically:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2663,7 +2663,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.linux,
                     TargetPlatform.macOS,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.clearAllCache:
+      case CygnusPlatformWebViewControllerMethod.clearAllCache:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2671,19 +2671,19 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.clearCache:
+      case CygnusPlatformWebViewControllerMethod.clearCache:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.clearClientCertPreferences:
+      case CygnusPlatformWebViewControllerMethod.clearClientCertPreferences:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.clearFocus:
+      case CygnusPlatformWebViewControllerMethod.clearFocus:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2691,50 +2691,50 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.clearFormData:
+      case CygnusPlatformWebViewControllerMethod.clearFormData:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.clearHistory:
+      case CygnusPlatformWebViewControllerMethod.clearHistory:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.clearMatches:
+      case CygnusPlatformWebViewControllerMethod.clearMatches:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.clearSslPreferences:
+      case CygnusPlatformWebViewControllerMethod.clearSslPreferences:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.closeAllMediaPresentations:
+      case CygnusPlatformWebViewControllerMethod.closeAllMediaPresentations:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.createPdf:
+      case CygnusPlatformWebViewControllerMethod.createPdf:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.createWebArchiveData:
+      case CygnusPlatformWebViewControllerMethod.createWebArchiveData:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.createWebMessageChannel:
+      case CygnusPlatformWebViewControllerMethod.createWebMessageChannel:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2743,12 +2743,12 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.linux,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.disableWebView:
+      case CygnusPlatformWebViewControllerMethod.disableWebView:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.dispose:
+      case CygnusPlatformWebViewControllerMethod.dispose:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2758,7 +2758,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.disposeKeepAlive:
+      case CygnusPlatformWebViewControllerMethod.disposeKeepAlive:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2767,103 +2767,12 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.enableSlowWholeDocumentDraw:
+      case CygnusPlatformWebViewControllerMethod.enableSlowWholeDocumentDraw:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.evaluateJavascript:
-        return kIsWeb && platform == null
-            ? true
-            : ((kIsWeb && platform != null) || !kIsWeb) &&
-                  [
-                    TargetPlatform.android,
-                    TargetPlatform.iOS,
-                    TargetPlatform.macOS,
-                    TargetPlatform.windows,
-                    TargetPlatform.linux,
-                  ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.findAllAsync:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.findNext:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getCameraCaptureState:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.iOS,
-              TargetPlatform.linux,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getCertificate:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-              TargetPlatform.windows,
-              TargetPlatform.linux,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getContentHeight:
-        return kIsWeb && platform == null
-            ? true
-            : ((kIsWeb && platform != null) || !kIsWeb) &&
-                  [
-                    TargetPlatform.android,
-                    TargetPlatform.iOS,
-                    TargetPlatform.macOS,
-                    TargetPlatform.linux,
-                    TargetPlatform.windows,
-                  ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getContentWidth:
-        return kIsWeb && platform == null
-            ? true
-            : ((kIsWeb && platform != null) || !kIsWeb) &&
-                  [
-                    TargetPlatform.android,
-                    TargetPlatform.iOS,
-                    TargetPlatform.macOS,
-                    TargetPlatform.linux,
-                    TargetPlatform.windows,
-                  ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getCopyBackForwardList:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-              TargetPlatform.windows,
-              TargetPlatform.linux,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getCurrentWebViewPackage:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getDefaultUserAgent:
-        return kIsWeb && platform == null
-            ? true
-            : ((kIsWeb && platform != null) || !kIsWeb) &&
-                  [
-                    TargetPlatform.android,
-                    TargetPlatform.iOS,
-                    TargetPlatform.macOS,
-                  ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getFavicon:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.windows,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getFavicons:
+      case CygnusPlatformWebViewControllerMethod.evaluateJavascript:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2874,19 +2783,110 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getFrameId:
+      case CygnusPlatformWebViewControllerMethod.findAllAsync:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewControllerMethod.findNext:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewControllerMethod.getCameraCaptureState:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.iOS,
+              TargetPlatform.linux,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewControllerMethod.getCertificate:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+              TargetPlatform.windows,
+              TargetPlatform.linux,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewControllerMethod.getContentHeight:
+        return kIsWeb && platform == null
+            ? true
+            : ((kIsWeb && platform != null) || !kIsWeb) &&
+                  [
+                    TargetPlatform.android,
+                    TargetPlatform.iOS,
+                    TargetPlatform.macOS,
+                    TargetPlatform.linux,
+                    TargetPlatform.windows,
+                  ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewControllerMethod.getContentWidth:
+        return kIsWeb && platform == null
+            ? true
+            : ((kIsWeb && platform != null) || !kIsWeb) &&
+                  [
+                    TargetPlatform.android,
+                    TargetPlatform.iOS,
+                    TargetPlatform.macOS,
+                    TargetPlatform.linux,
+                    TargetPlatform.windows,
+                  ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewControllerMethod.getCopyBackForwardList:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+              TargetPlatform.windows,
+              TargetPlatform.linux,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewControllerMethod.getCurrentWebViewPackage:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewControllerMethod.getDefaultUserAgent:
+        return kIsWeb && platform == null
+            ? true
+            : ((kIsWeb && platform != null) || !kIsWeb) &&
+                  [
+                    TargetPlatform.android,
+                    TargetPlatform.iOS,
+                    TargetPlatform.macOS,
+                  ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewControllerMethod.getFavicon:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getHitTestResult:
+      case CygnusPlatformWebViewControllerMethod.getFavicons:
+        return kIsWeb && platform == null
+            ? true
+            : ((kIsWeb && platform != null) || !kIsWeb) &&
+                  [
+                    TargetPlatform.android,
+                    TargetPlatform.iOS,
+                    TargetPlatform.macOS,
+                    TargetPlatform.windows,
+                    TargetPlatform.linux,
+                  ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewControllerMethod.getFrameId:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.windows,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewControllerMethod.getHitTestResult:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getHtml:
+      case CygnusPlatformWebViewControllerMethod.getHtml:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2897,12 +2897,12 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getIFrameId:
+      case CygnusPlatformWebViewControllerMethod.getIFrameId:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
                   [].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getJavaScriptBridgeName:
+      case CygnusPlatformWebViewControllerMethod.getJavaScriptBridgeName:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2913,12 +2913,12 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getMemoryUsageTargetLevel:
+      case CygnusPlatformWebViewControllerMethod.getMemoryUsageTargetLevel:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getMetaTags:
+      case CygnusPlatformWebViewControllerMethod.getMetaTags:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2929,7 +2929,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getMetaThemeColor:
+      case CygnusPlatformWebViewControllerMethod.getMetaThemeColor:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2940,14 +2940,14 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getMicrophoneCaptureState:
+      case CygnusPlatformWebViewControllerMethod.getMicrophoneCaptureState:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.linux,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getOptions:
+      case CygnusPlatformWebViewControllerMethod.getOptions:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2957,7 +2957,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getOriginalUrl:
+      case CygnusPlatformWebViewControllerMethod.getOriginalUrl:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2968,7 +2968,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getProgress:
+      case CygnusPlatformWebViewControllerMethod.getProgress:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2977,22 +2977,23 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.linux,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getSafeBrowsingPrivacyPolicyUrl:
+      case CygnusPlatformWebViewControllerMethod
+          .getSafeBrowsingPrivacyPolicyUrl:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getScale:
+      case CygnusPlatformWebViewControllerMethod.getScale:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getScreenScale:
+      case CygnusPlatformWebViewControllerMethod.getScreenScale:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getScrollX:
+      case CygnusPlatformWebViewControllerMethod.getScrollX:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3003,7 +3004,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.linux,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getScrollY:
+      case CygnusPlatformWebViewControllerMethod.getScrollY:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3014,7 +3015,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.linux,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getSelectedText:
+      case CygnusPlatformWebViewControllerMethod.getSelectedText:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3024,7 +3025,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.linux,
                     TargetPlatform.macOS,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getSettings:
+      case CygnusPlatformWebViewControllerMethod.getSettings:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3035,7 +3036,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getTRexRunnerCss:
+      case CygnusPlatformWebViewControllerMethod.getTRexRunnerCss:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3045,7 +3046,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getTRexRunnerHtml:
+      case CygnusPlatformWebViewControllerMethod.getTRexRunnerHtml:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3055,10 +3056,10 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getTargetRefreshRate:
+      case CygnusPlatformWebViewControllerMethod.getTargetRefreshRate:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getTitle:
+      case CygnusPlatformWebViewControllerMethod.getTitle:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3069,7 +3070,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getUrl:
+      case CygnusPlatformWebViewControllerMethod.getUrl:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3080,12 +3081,12 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getVariationsHeader:
+      case CygnusPlatformWebViewControllerMethod.getVariationsHeader:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getViewId:
+      case CygnusPlatformWebViewControllerMethod.getViewId:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3095,7 +3096,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.getZoomScale:
+      case CygnusPlatformWebViewControllerMethod.getZoomScale:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -3103,7 +3104,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.linux,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.goBack:
+      case CygnusPlatformWebViewControllerMethod.goBack:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3114,7 +3115,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.goBackOrForward:
+      case CygnusPlatformWebViewControllerMethod.goBackOrForward:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3125,7 +3126,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.goForward:
+      case CygnusPlatformWebViewControllerMethod.goForward:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3136,7 +3137,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.goTo:
+      case CygnusPlatformWebViewControllerMethod.goTo:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3146,14 +3147,14 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.handlesURLScheme:
+      case CygnusPlatformWebViewControllerMethod.handlesURLScheme:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.hasJavaScriptHandler:
+      case CygnusPlatformWebViewControllerMethod.hasJavaScriptHandler:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3163,13 +3164,13 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.hasOnlySecureContent:
+      case CygnusPlatformWebViewControllerMethod.hasOnlySecureContent:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.hasUserScript:
+      case CygnusPlatformWebViewControllerMethod.hasUserScript:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3179,7 +3180,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.hasWebMessageListener:
+      case CygnusPlatformWebViewControllerMethod.hasWebMessageListener:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -3187,13 +3188,13 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.linux,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.hideInputMethod:
+      case CygnusPlatformWebViewControllerMethod.hideInputMethod:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.injectCSSCode:
+      case CygnusPlatformWebViewControllerMethod.injectCSSCode:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3204,7 +3205,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.injectCSSFileFromAsset:
+      case CygnusPlatformWebViewControllerMethod.injectCSSFileFromAsset:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3213,7 +3214,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.iOS,
                     TargetPlatform.macOS,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.injectCSSFileFromUrl:
+      case CygnusPlatformWebViewControllerMethod.injectCSSFileFromUrl:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3224,7 +3225,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.injectJavascriptFileFromAsset:
+      case CygnusPlatformWebViewControllerMethod.injectJavascriptFileFromAsset:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3234,7 +3235,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.injectJavascriptFileFromUrl:
+      case CygnusPlatformWebViewControllerMethod.injectJavascriptFileFromUrl:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3244,7 +3245,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.linux,
                     TargetPlatform.macOS,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.isInFullscreen:
+      case CygnusPlatformWebViewControllerMethod.isInFullscreen:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -3252,12 +3253,12 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.isInterfaceSupported:
+      case CygnusPlatformWebViewControllerMethod.isInterfaceSupported:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.isLoading:
+      case CygnusPlatformWebViewControllerMethod.isLoading:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3268,18 +3269,18 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.isMultiProcessEnabled:
+      case CygnusPlatformWebViewControllerMethod.isMultiProcessEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.isMuted:
+      case CygnusPlatformWebViewControllerMethod.isMuted:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.isPlayingAudio:
+      case CygnusPlatformWebViewControllerMethod.isPlayingAudio:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.isSecureContext:
+      case CygnusPlatformWebViewControllerMethod.isSecureContext:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3290,10 +3291,10 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.isVisible:
+      case CygnusPlatformWebViewControllerMethod.isVisible:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.loadData:
+      case CygnusPlatformWebViewControllerMethod.loadData:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3304,7 +3305,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.loadFile:
+      case CygnusPlatformWebViewControllerMethod.loadFile:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3315,13 +3316,13 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.loadSimulatedRequest:
+      case CygnusPlatformWebViewControllerMethod.loadSimulatedRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.loadUrl:
+      case CygnusPlatformWebViewControllerMethod.loadUrl:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3332,42 +3333,42 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.openDevTools:
+      case CygnusPlatformWebViewControllerMethod.openDevTools:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.pageDown:
+      case CygnusPlatformWebViewControllerMethod.pageDown:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.pageUp:
+      case CygnusPlatformWebViewControllerMethod.pageUp:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.pause:
+      case CygnusPlatformWebViewControllerMethod.pause:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.pauseAllMediaPlayback:
+      case CygnusPlatformWebViewControllerMethod.pauseAllMediaPlayback:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.pauseTimers:
+      case CygnusPlatformWebViewControllerMethod.pauseTimers:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.postUrl:
+      case CygnusPlatformWebViewControllerMethod.postUrl:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3378,7 +3379,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.postWebMessage:
+      case CygnusPlatformWebViewControllerMethod.postWebMessage:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -3387,7 +3388,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.linux,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.printCurrentPage:
+      case CygnusPlatformWebViewControllerMethod.printCurrentPage:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3397,7 +3398,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.reload:
+      case CygnusPlatformWebViewControllerMethod.reload:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3408,14 +3409,14 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.reloadFromOrigin:
+      case CygnusPlatformWebViewControllerMethod.reloadFromOrigin:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.removeAllUserScripts:
+      case CygnusPlatformWebViewControllerMethod.removeAllUserScripts:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3426,13 +3427,13 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod
+      case CygnusPlatformWebViewControllerMethod
           .removeDevToolsProtocolEventListener:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.removeJavaScriptHandler:
+      case CygnusPlatformWebViewControllerMethod.removeJavaScriptHandler:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3442,18 +3443,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.removeUserScript:
-        return kIsWeb && platform == null
-            ? true
-            : ((kIsWeb && platform != null) || !kIsWeb) &&
-                  [
-                    TargetPlatform.android,
-                    TargetPlatform.iOS,
-                    TargetPlatform.linux,
-                    TargetPlatform.macOS,
-                    TargetPlatform.windows,
-                  ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.removeUserScripts:
+      case CygnusPlatformWebViewControllerMethod.removeUserScript:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3464,7 +3454,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.removeUserScriptsByGroupName:
+      case CygnusPlatformWebViewControllerMethod.removeUserScripts:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3475,13 +3465,24 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.requestEnterFullscreen:
+      case CygnusPlatformWebViewControllerMethod.removeUserScriptsByGroupName:
+        return kIsWeb && platform == null
+            ? true
+            : ((kIsWeb && platform != null) || !kIsWeb) &&
+                  [
+                    TargetPlatform.android,
+                    TargetPlatform.iOS,
+                    TargetPlatform.linux,
+                    TargetPlatform.macOS,
+                    TargetPlatform.windows,
+                  ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewControllerMethod.requestEnterFullscreen:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.requestExitFullscreen:
+      case CygnusPlatformWebViewControllerMethod.requestExitFullscreen:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.requestFocus:
+      case CygnusPlatformWebViewControllerMethod.requestFocus:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -3489,32 +3490,32 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.requestFocusNodeHref:
+      case CygnusPlatformWebViewControllerMethod.requestFocusNodeHref:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.requestImageRef:
+      case CygnusPlatformWebViewControllerMethod.requestImageRef:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.requestMediaPlaybackState:
+      case CygnusPlatformWebViewControllerMethod.requestMediaPlaybackState:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.requestPointerLock:
+      case CygnusPlatformWebViewControllerMethod.requestPointerLock:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.requestPointerUnlock:
+      case CygnusPlatformWebViewControllerMethod.requestPointerUnlock:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.restoreState:
+      case CygnusPlatformWebViewControllerMethod.restoreState:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -3522,20 +3523,20 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.resume:
+      case CygnusPlatformWebViewControllerMethod.resume:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.resumeTimers:
+      case CygnusPlatformWebViewControllerMethod.resumeTimers:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.saveState:
+      case CygnusPlatformWebViewControllerMethod.saveState:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -3543,7 +3544,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.saveWebArchive:
+      case CygnusPlatformWebViewControllerMethod.saveWebArchive:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -3551,7 +3552,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.linux,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.scrollBy:
+      case CygnusPlatformWebViewControllerMethod.scrollBy:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3562,7 +3563,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.linux,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.scrollTo:
+      case CygnusPlatformWebViewControllerMethod.scrollTo:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3573,30 +3574,30 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.linux,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setAllMediaPlaybackSuspended:
+      case CygnusPlatformWebViewControllerMethod.setAllMediaPlaybackSuspended:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setCameraCaptureState:
+      case CygnusPlatformWebViewControllerMethod.setCameraCaptureState:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.linux,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setContextMenu:
+      case CygnusPlatformWebViewControllerMethod.setContextMenu:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setInputMethodEnabled:
+      case CygnusPlatformWebViewControllerMethod.setInputMethodEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setJavaScriptBridgeName:
+      case CygnusPlatformWebViewControllerMethod.setJavaScriptBridgeName:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3607,22 +3608,22 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setMemoryUsageTargetLevel:
+      case CygnusPlatformWebViewControllerMethod.setMemoryUsageTargetLevel:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setMicrophoneCaptureState:
+      case CygnusPlatformWebViewControllerMethod.setMicrophoneCaptureState:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.linux,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setMuted:
+      case CygnusPlatformWebViewControllerMethod.setMuted:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setOptions:
+      case CygnusPlatformWebViewControllerMethod.setOptions:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3632,20 +3633,20 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setSafeBrowsingAllowlist:
+      case CygnusPlatformWebViewControllerMethod.setSafeBrowsingAllowlist:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setSafeBrowsingWhitelist:
+      case CygnusPlatformWebViewControllerMethod.setSafeBrowsingWhitelist:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setScreenScale:
+      case CygnusPlatformWebViewControllerMethod.setScreenScale:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setSettings:
+      case CygnusPlatformWebViewControllerMethod.setSettings:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3656,33 +3657,33 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setTargetRefreshRate:
+      case CygnusPlatformWebViewControllerMethod.setTargetRefreshRate:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setVisible:
+      case CygnusPlatformWebViewControllerMethod.setVisible:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.setWebContentsDebuggingEnabled:
+      case CygnusPlatformWebViewControllerMethod.setWebContentsDebuggingEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.showInputMethod:
+      case CygnusPlatformWebViewControllerMethod.showInputMethod:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.showSaveAsUI:
+      case CygnusPlatformWebViewControllerMethod.showSaveAsUI:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.startSafeBrowsing:
+      case CygnusPlatformWebViewControllerMethod.startSafeBrowsing:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.stopLoading:
+      case CygnusPlatformWebViewControllerMethod.stopLoading:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -3693,7 +3694,7 @@ extension _PlatformInAppWebViewControllerMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.takeScreenshot:
+      case CygnusPlatformWebViewControllerMethod.takeScreenshot:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -3702,22 +3703,22 @@ extension _PlatformInAppWebViewControllerMethodSupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.terminateWebProcess:
+      case CygnusPlatformWebViewControllerMethod.terminateWebProcess:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.zoomBy:
+      case CygnusPlatformWebViewControllerMethod.zoomBy:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.zoomIn:
+      case CygnusPlatformWebViewControllerMethod.zoomIn:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewControllerMethod.zoomOut:
+      case CygnusPlatformWebViewControllerMethod.zoomOut:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,

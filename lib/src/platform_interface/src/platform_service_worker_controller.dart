@@ -10,34 +10,34 @@ import 'types/main.dart';
 
 part 'platform_service_worker_controller.g.dart';
 
-///{@template cygnus_core.PlatformServiceWorkerControllerCreationParams}
-/// Object specifying creation parameters for creating a [PlatformServiceWorkerController].
+///{@template cygnus_core.CygnusPlatformServiceWorkerControllerCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformServiceWorkerController].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformServiceWorkerControllerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformServiceWorkerControllerCreationParams.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform()])
 @immutable
-class PlatformServiceWorkerControllerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformServiceWorkerController].
-  const PlatformServiceWorkerControllerCreationParams();
+class CygnusPlatformServiceWorkerControllerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformServiceWorkerController].
+  const CygnusPlatformServiceWorkerControllerCreationParams();
 
-  ///{@template cygnus_core.PlatformServiceWorkerControllerCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformServiceWorkerControllerCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformServiceWorkerControllerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformServiceWorkerControllerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformServiceWorkerController}
+///{@template cygnus_core.CygnusPlatformServiceWorkerController}
 ///Class that manages Service Workers used by `WebView`.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformServiceWorkerControllerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformServiceWorkerControllerCreationParams.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(
@@ -47,67 +47,67 @@ class PlatformServiceWorkerControllerCreationParams {
     ),
   ],
 )
-abstract class PlatformServiceWorkerController extends PlatformInterface {
-  /// Creates a new [PlatformServiceWorkerController]
-  factory PlatformServiceWorkerController(
-    PlatformServiceWorkerControllerCreationParams params,
+abstract class CygnusPlatformServiceWorkerController extends PlatformInterface {
+  /// Creates a new [CygnusPlatformServiceWorkerController]
+  factory CygnusPlatformServiceWorkerController(
+    CygnusPlatformServiceWorkerControllerCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformServiceWorkerController serviceWorkerController =
-        InAppWebViewPlatform.instance!.createPlatformServiceWorkerController(
+    final CygnusPlatformServiceWorkerController serviceWorkerController =
+        CygnusWebViewPlatform.instance!.createPlatformServiceWorkerController(
           params,
         );
     PlatformInterface.verify(serviceWorkerController, _token);
     return serviceWorkerController;
   }
 
-  /// Creates a new [PlatformServiceWorkerController]
-  factory PlatformServiceWorkerController.static() {
+  /// Creates a new [CygnusPlatformServiceWorkerController]
+  factory CygnusPlatformServiceWorkerController.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformServiceWorkerController serviceWorkerControllerStatic =
-        InAppWebViewPlatform.instance!
+    final CygnusPlatformServiceWorkerController serviceWorkerControllerStatic =
+        CygnusWebViewPlatform.instance!
             .createPlatformServiceWorkerControllerStatic();
     PlatformInterface.verify(serviceWorkerControllerStatic, _token);
     return serviceWorkerControllerStatic;
   }
 
   /// Used by the platform implementation to create a new
-  /// [PlatformServiceWorkerController].
+  /// [CygnusPlatformServiceWorkerController].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformServiceWorkerController.implementation(this.params)
+  CygnusPlatformServiceWorkerController.implementation(this.params)
     : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformServiceWorkerController].
-  final PlatformServiceWorkerControllerCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformServiceWorkerController].
+  final CygnusPlatformServiceWorkerControllerCreationParams params;
 
-  ///{@template cygnus_core.PlatformServiceWorkerController.serviceWorkerClient}
+  ///{@template cygnus_core.CygnusPlatformServiceWorkerController.serviceWorkerClient}
   ///Service Worker client.
   ///{@endtemplate}
-  ServiceWorkerClient? get serviceWorkerClient;
+  CygnusServiceWorkerClient? get serviceWorkerClient;
 
-  ///{@template cygnus_core.PlatformServiceWorkerController.setServiceWorkerClient}
+  ///{@template cygnus_core.CygnusPlatformServiceWorkerController.setServiceWorkerClient}
   ///Sets the client to capture service worker related callbacks.
-  ///A [ServiceWorkerClient] should be set before any service workers are active, e.g. a safe place is before any WebView instances are created or pages loaded.
+  ///A [CygnusServiceWorkerClient] should be set before any service workers are active, e.g. a safe place is before any WebView instances are created or pages loaded.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setServiceWorkerClient.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setServiceWorkerClient.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -117,18 +117,18 @@ abstract class PlatformServiceWorkerController extends PlatformInterface {
       ),
     ],
   )
-  Future<void> setServiceWorkerClient(ServiceWorkerClient? value) {
+  Future<void> setServiceWorkerClient(CygnusServiceWorkerClient? value) {
     throw UnimplementedError(
       'setServiceWorkerClient is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformServiceWorkerController.getAllowContentAccess}
+  ///{@template cygnus_core.CygnusPlatformServiceWorkerController.getAllowContentAccess}
   ///Gets whether Service Workers support content URL access.
-  ///This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.SERVICE_WORKER_CONTENT_ACCESS].
+  ///This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.SERVICE_WORKER_CONTENT_ACCESS].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.getAllowContentAccess.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.getAllowContentAccess.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -144,12 +144,12 @@ abstract class PlatformServiceWorkerController extends PlatformInterface {
     );
   }
 
-  ///{@template cygnus_core.PlatformServiceWorkerController.getAllowFileAccess}
+  ///{@template cygnus_core.CygnusPlatformServiceWorkerController.getAllowFileAccess}
   ///Gets whether Service Workers support file access.
-  ///This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.SERVICE_WORKER_FILE_ACCESS].
+  ///This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.SERVICE_WORKER_FILE_ACCESS].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.getAllowFileAccess.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.getAllowFileAccess.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -165,12 +165,12 @@ abstract class PlatformServiceWorkerController extends PlatformInterface {
     );
   }
 
-  ///{@template cygnus_core.PlatformServiceWorkerController.getBlockNetworkLoads}
+  ///{@template cygnus_core.CygnusPlatformServiceWorkerController.getBlockNetworkLoads}
   ///Gets whether Service Workers are prohibited from loading any resources from the network.
-  ///This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.SERVICE_WORKER_BLOCK_NETWORK_LOADS].
+  ///This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.SERVICE_WORKER_BLOCK_NETWORK_LOADS].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.getBlockNetworkLoads.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.getBlockNetworkLoads.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -186,12 +186,12 @@ abstract class PlatformServiceWorkerController extends PlatformInterface {
     );
   }
 
-  ///{@template cygnus_core.PlatformServiceWorkerController.getCacheMode}
+  ///{@template cygnus_core.CygnusPlatformServiceWorkerController.getCacheMode}
   ///Gets the current setting for overriding the cache mode.
-  ///This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.SERVICE_WORKER_CACHE_MODE].
+  ///This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.SERVICE_WORKER_CACHE_MODE].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.getCacheMode.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.getCacheMode.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -201,18 +201,18 @@ abstract class PlatformServiceWorkerController extends PlatformInterface {
       ),
     ],
   )
-  Future<CacheMode?> getCacheMode() {
+  Future<CygnusCacheMode?> getCacheMode() {
     throw UnimplementedError(
       'getCacheMode is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformServiceWorkerController.setAllowContentAccess}
+  ///{@template cygnus_core.CygnusPlatformServiceWorkerController.setAllowContentAccess}
   ///Enables or disables content URL access from Service Workers.
-  ///This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.SERVICE_WORKER_CONTENT_ACCESS].
+  ///This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.SERVICE_WORKER_CONTENT_ACCESS].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setAllowContentAccess.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setAllowContentAccess.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -228,12 +228,12 @@ abstract class PlatformServiceWorkerController extends PlatformInterface {
     );
   }
 
-  ///{@template cygnus_core.PlatformServiceWorkerController.setAllowFileAccess}
+  ///{@template cygnus_core.CygnusPlatformServiceWorkerController.setAllowFileAccess}
   ///Enables or disables file access within Service Workers.
-  ///This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.SERVICE_WORKER_FILE_ACCESS].
+  ///This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.SERVICE_WORKER_FILE_ACCESS].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setAllowFileAccess.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setAllowFileAccess.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -249,12 +249,12 @@ abstract class PlatformServiceWorkerController extends PlatformInterface {
     );
   }
 
-  ///{@template cygnus_core.PlatformServiceWorkerController.setBlockNetworkLoads}
+  ///{@template cygnus_core.CygnusPlatformServiceWorkerController.setBlockNetworkLoads}
   ///Sets whether Service Workers should not load resources from the network.
-  ///This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.SERVICE_WORKER_BLOCK_NETWORK_LOADS].
+  ///This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.SERVICE_WORKER_BLOCK_NETWORK_LOADS].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setBlockNetworkLoads.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setBlockNetworkLoads.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -270,12 +270,12 @@ abstract class PlatformServiceWorkerController extends PlatformInterface {
     );
   }
 
-  ///{@template cygnus_core.PlatformServiceWorkerController.setCacheMode}
+  ///{@template cygnus_core.CygnusPlatformServiceWorkerController.setCacheMode}
   ///Overrides the way the cache is used.
-  ///This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.SERVICE_WORKER_CACHE_MODE].
+  ///This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.SERVICE_WORKER_CACHE_MODE].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setCacheMode.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setCacheMode.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -285,33 +285,33 @@ abstract class PlatformServiceWorkerController extends PlatformInterface {
       ),
     ],
   )
-  Future<void> setCacheMode(CacheMode mode) {
+  Future<void> setCacheMode(CygnusCacheMode mode) {
     throw UnimplementedError(
       'setCacheMode is not implemented on the current platform',
     );
   }
 
-  ///{@macro cygnus_core.PlatformServiceWorkerControllerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerControllerCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
       params.isClassSupported(platform: platform);
 
-  ///{@template cygnus_core.PlatformServiceWorkerController.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformServiceWorkerController.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformServiceWorkerControllerMethod method, {
+    CygnusPlatformServiceWorkerControllerMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformServiceWorkerControllerMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformServiceWorkerControllerMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );
 }
 
-///{@template cygnus_core.ServiceWorkerClient}
+///{@template cygnus_core.CygnusServiceWorkerClient}
 ///Class used by clients to capture Service Worker related callbacks.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.ServiceWorkerClient.supported_platforms}
+///{@macro cygnus_core.CygnusServiceWorkerClient.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(
@@ -321,48 +321,48 @@ abstract class PlatformServiceWorkerController extends PlatformInterface {
     ),
   ],
 )
-class ServiceWorkerClient {
-  ///{@template cygnus_core.ServiceWorkerClient.shouldInterceptRequest}
+class CygnusServiceWorkerClient {
+  ///{@template cygnus_core.CygnusServiceWorkerClient.shouldInterceptRequest}
   ///Notify the host application of a resource request and allow the application to return the data.
   ///If the return value is `null`, the Service Worker will continue to load the resource as usual.
   ///Otherwise, the return response and data will be used.
   ///
-  ///This method is called only if [WebViewFeature.SERVICE_WORKER_SHOULD_INTERCEPT_REQUEST] is supported.
-  ///You can check whether that flag is supported using [WebViewFeature.isFeatureSupported].
+  ///This method is called only if [CygnusWebViewFeature.SERVICE_WORKER_SHOULD_INTERCEPT_REQUEST] is supported.
+  ///You can check whether that flag is supported using [CygnusWebViewFeature.isFeatureSupported].
   ///
   ///[request] represents an object containing the details of the request.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.ServiceWorkerClient.shouldInterceptRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusServiceWorkerClient.shouldInterceptRequest.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         apiName: 'ServiceWorkerClientCompat.shouldInterceptRequest',
         apiUrl:
-            'https://developer.android.com/reference/androidx/webkit/ServiceWorkerClientCompat#shouldInterceptRequest(android.webkit.WebResourceRequest)',
+            'https://developer.android.com/reference/androidx/webkit/ServiceWorkerClientCompat#shouldInterceptRequest(android.webkit.CygnusWebResourceRequest)',
       ),
     ],
   )
-  final Future<WebResourceResponse?> Function(WebResourceRequest request)?
+  final Future<CygnusWebResourceResponse?> Function(CygnusWebResourceRequest request)?
   shouldInterceptRequest;
 
-  ServiceWorkerClient({this.shouldInterceptRequest});
+  CygnusServiceWorkerClient({this.shouldInterceptRequest});
 
-  ///{@template cygnus_core.ServiceWorkerClient.isClassSupported}
+  ///{@template cygnus_core.CygnusServiceWorkerClient.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformServiceWorkerControllerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformServiceWorkerControllerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.ServiceWorkerClient.isPropertySupported}
+  ///{@template cygnus_core.CygnusServiceWorkerClient.isPropertySupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   static bool isPropertySupported(
-    ServiceWorkerClientProperty property, {
+    CygnusServiceWorkerClientProperty property, {
     TargetPlatform? platform,
-  }) => _ServiceWorkerClientPropertySupported.isPropertySupported(
+  }) => _CygnusServiceWorkerClientPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );

@@ -6,39 +6,39 @@ part of 'url_protection_space_http_auth_credentials.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents a [URLProtectionSpace] with all of its [URLCredential]s.
-///It used by [PlatformHttpAuthCredentialDatabase.getAllAuthCredentials].
-class URLProtectionSpaceHttpAuthCredentials {
+///Class that represents a [CygnusURLProtectionSpace] with all of its [CygnusURLCredential]s.
+///It used by [CygnusPlatformHttpAuthCredentialDatabase.getAllAuthCredentials].
+class CygnusURLProtectionSpaceHttpAuthCredentials {
   ///The list of all its http authentication credentials.
-  List<URLCredential>? credentials;
+  List<CygnusURLCredential>? credentials;
 
   ///The protection space.
-  URLProtectionSpace? protectionSpace;
-  URLProtectionSpaceHttpAuthCredentials({
+  CygnusURLProtectionSpace? protectionSpace;
+  CygnusURLProtectionSpaceHttpAuthCredentials({
     this.credentials,
     this.protectionSpace,
   });
 
-  ///Gets a possible [URLProtectionSpaceHttpAuthCredentials] instance from a [Map] value.
-  static URLProtectionSpaceHttpAuthCredentials? fromMap(
+  ///Gets a possible [CygnusURLProtectionSpaceHttpAuthCredentials] instance from a [Map] value.
+  static CygnusURLProtectionSpaceHttpAuthCredentials? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = URLProtectionSpaceHttpAuthCredentials(
+    final instance = CygnusURLProtectionSpaceHttpAuthCredentials(
       credentials: map['credentials'] != null
-          ? List<URLCredential>.from(
+          ? List<CygnusURLCredential>.from(
               map['credentials'].map(
-                (e) => URLCredential.fromMap(
+                (e) => CygnusURLCredential.fromMap(
                   e?.cast<String, dynamic>(),
                   enumMethod: enumMethod,
                 )!,
               ),
             )
           : null,
-      protectionSpace: URLProtectionSpace.fromMap(
+      protectionSpace: CygnusURLProtectionSpace.fromMap(
         map['protectionSpace']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -47,7 +47,7 @@ class URLProtectionSpaceHttpAuthCredentials {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "credentials": credentials
           ?.map((e) => e.toMap(enumMethod: enumMethod))
@@ -63,6 +63,6 @@ class URLProtectionSpaceHttpAuthCredentials {
 
   @override
   String toString() {
-    return 'URLProtectionSpaceHttpAuthCredentials{credentials: $credentials, protectionSpace: $protectionSpace}';
+    return 'CygnusURLProtectionSpaceHttpAuthCredentials{credentials: $credentials, protectionSpace: $protectionSpace}';
   }
 }

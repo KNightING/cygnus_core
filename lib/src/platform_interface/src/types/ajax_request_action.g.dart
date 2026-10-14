@@ -6,34 +6,34 @@ part of 'ajax_request_action.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class used by [AjaxRequest] class.
-class AjaxRequestAction {
+///Class used by [CygnusAjaxRequest] class.
+class CygnusAjaxRequestAction {
   final int _value;
   final int? _nativeValue;
-  const AjaxRequestAction._internal(this._value, this._nativeValue);
+  const CygnusAjaxRequestAction._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory AjaxRequestAction._internalMultiPlatform(
+  factory CygnusAjaxRequestAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => AjaxRequestAction._internal(value, nativeValue());
+  ) => CygnusAjaxRequestAction._internal(value, nativeValue());
 
-  ///Aborts the current [AjaxRequest].
-  static const ABORT = AjaxRequestAction._internal(0, 0);
+  ///Aborts the current [CygnusAjaxRequest].
+  static const ABORT = CygnusAjaxRequestAction._internal(0, 0);
 
-  ///Proceeds with the current [AjaxRequest].
-  static const PROCEED = AjaxRequestAction._internal(1, 1);
+  ///Proceeds with the current [CygnusAjaxRequest].
+  static const PROCEED = CygnusAjaxRequestAction._internal(1, 1);
 
-  ///Set of all values of [AjaxRequestAction].
-  static final Set<AjaxRequestAction> values = [
-    AjaxRequestAction.ABORT,
-    AjaxRequestAction.PROCEED,
+  ///Set of all values of [CygnusAjaxRequestAction].
+  static final Set<CygnusAjaxRequestAction> values = [
+    CygnusAjaxRequestAction.ABORT,
+    CygnusAjaxRequestAction.PROCEED,
   ].toSet();
 
-  ///Gets a possible [AjaxRequestAction] instance from [int] value.
-  static AjaxRequestAction? fromValue(int? value) {
+  ///Gets a possible [CygnusAjaxRequestAction] instance from [int] value.
+  static CygnusAjaxRequestAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return AjaxRequestAction.values.firstWhere(
+        return CygnusAjaxRequestAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -43,11 +43,11 @@ class AjaxRequestAction {
     return null;
   }
 
-  ///Gets a possible [AjaxRequestAction] instance from a native value.
-  static AjaxRequestAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusAjaxRequestAction] instance from a native value.
+  static CygnusAjaxRequestAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return AjaxRequestAction.values.firstWhere(
+        return CygnusAjaxRequestAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -57,15 +57,15 @@ class AjaxRequestAction {
     return null;
   }
 
-  /// Gets a possible [AjaxRequestAction] instance value with name [name].
+  /// Gets a possible [CygnusAjaxRequestAction] instance value with name [name].
   ///
-  /// Goes through [AjaxRequestAction.values] looking for a value with
-  /// name [name], as reported by [AjaxRequestAction.name].
+  /// Goes through [CygnusAjaxRequestAction.values] looking for a value with
+  /// name [name], as reported by [CygnusAjaxRequestAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static AjaxRequestAction? byName(String? name) {
+  static CygnusAjaxRequestAction? byName(String? name) {
     if (name != null) {
       try {
-        return AjaxRequestAction.values.firstWhere(
+        return CygnusAjaxRequestAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -75,7 +75,7 @@ class AjaxRequestAction {
     return null;
   }
 
-  /// Creates a map from the names of [AjaxRequestAction] values to the values.
+  /// Creates a map from the names of [CygnusAjaxRequestAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -83,9 +83,9 @@ class AjaxRequestAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, AjaxRequestAction> asNameMap() =>
-      <String, AjaxRequestAction>{
-        for (final value in AjaxRequestAction.values) value.name(): value,
+  static Map<String, CygnusAjaxRequestAction> asNameMap() =>
+      <String, CygnusAjaxRequestAction>{
+        for (final value in CygnusAjaxRequestAction.values) value.name(): value,
       };
 
   ///Gets [int] value.

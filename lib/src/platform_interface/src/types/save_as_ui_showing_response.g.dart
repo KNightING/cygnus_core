@@ -6,8 +6,8 @@ part of 'save_as_ui_showing_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onSaveAsUIShowing] event.
-class SaveAsUIShowingResponse {
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onSaveAsUIShowing] event.
+class CygnusSaveAsUIShowingResponse {
   ///Whether the save operation may replace an existing file.
   bool? allowReplace;
 
@@ -15,14 +15,14 @@ class SaveAsUIShowingResponse {
   bool? cancel;
 
   ///The save-as kind for the operation.
-  SaveAsKind? kind;
+  CygnusSaveAsKind? kind;
 
   ///The save file path to use.
   String? saveAsFilePath;
 
   ///Whether to suppress the default dialog.
   bool? suppressDefaultDialog;
-  SaveAsUIShowingResponse({
+  CygnusSaveAsUIShowingResponse({
     this.allowReplace,
     this.cancel,
     this.kind,
@@ -30,21 +30,23 @@ class SaveAsUIShowingResponse {
     this.suppressDefaultDialog,
   });
 
-  ///Gets a possible [SaveAsUIShowingResponse] instance from a [Map] value.
-  static SaveAsUIShowingResponse? fromMap(
+  ///Gets a possible [CygnusSaveAsUIShowingResponse] instance from a [Map] value.
+  static CygnusSaveAsUIShowingResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = SaveAsUIShowingResponse(
+    final instance = CygnusSaveAsUIShowingResponse(
       allowReplace: map['allowReplace'],
       cancel: map['cancel'],
-      kind: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => SaveAsKind.fromNativeValue(map['kind']),
-        EnumMethod.value => SaveAsKind.fromValue(map['kind']),
-        EnumMethod.name => SaveAsKind.byName(map['kind']),
+      kind: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusSaveAsKind.fromNativeValue(
+          map['kind'],
+        ),
+        CygnusEnumMethod.value => CygnusSaveAsKind.fromValue(map['kind']),
+        CygnusEnumMethod.name => CygnusSaveAsKind.byName(map['kind']),
       },
       saveAsFilePath: map['saveAsFilePath'],
       suppressDefaultDialog: map['suppressDefaultDialog'],
@@ -53,14 +55,14 @@ class SaveAsUIShowingResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "allowReplace": allowReplace,
       "cancel": cancel,
-      "kind": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => kind?.toNativeValue(),
-        EnumMethod.value => kind?.toValue(),
-        EnumMethod.name => kind?.name(),
+      "kind": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => kind?.toNativeValue(),
+        CygnusEnumMethod.value => kind?.toValue(),
+        CygnusEnumMethod.name => kind?.name(),
       },
       "saveAsFilePath": saveAsFilePath,
       "suppressDefaultDialog": suppressDefaultDialog,
@@ -74,6 +76,6 @@ class SaveAsUIShowingResponse {
 
   @override
   String toString() {
-    return 'SaveAsUIShowingResponse{allowReplace: $allowReplace, cancel: $cancel, kind: $kind, saveAsFilePath: $saveAsFilePath, suppressDefaultDialog: $suppressDefaultDialog}';
+    return 'CygnusSaveAsUIShowingResponse{allowReplace: $allowReplace, cancel: $cancel, kind: $kind, saveAsFilePath: $saveAsFilePath, suppressDefaultDialog: $suppressDefaultDialog}';
   }
 }

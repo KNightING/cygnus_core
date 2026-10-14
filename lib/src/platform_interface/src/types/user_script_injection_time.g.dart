@@ -6,38 +6,41 @@ part of 'user_script_injection_time.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class that represents contains the constants for the times at which to inject script content into a `WebView` used by an [UserScript].
-class UserScriptInjectionTime {
+///Class that represents contains the constants for the times at which to inject script content into a `WebView` used by an [CygnusUserScript].
+class CygnusUserScriptInjectionTime {
   final int _value;
   final int? _nativeValue;
-  const UserScriptInjectionTime._internal(this._value, this._nativeValue);
+  const CygnusUserScriptInjectionTime._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory UserScriptInjectionTime._internalMultiPlatform(
+  factory CygnusUserScriptInjectionTime._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => UserScriptInjectionTime._internal(value, nativeValue());
+  ) => CygnusUserScriptInjectionTime._internal(value, nativeValue());
 
   ///**NOTE for iOS**: A constant to inject the script after the document finishes loading, but before loading any other subresources.
   ///
   ///**NOTE for Android**: A constant to inject the script as soon as the page finishes loading.
-  static const AT_DOCUMENT_END = UserScriptInjectionTime._internal(1, 1);
+  static const AT_DOCUMENT_END = CygnusUserScriptInjectionTime._internal(1, 1);
 
   ///**NOTE for iOS**: A constant to inject the script after the creation of the webpage’s document element, but before loading any other content.
   ///
   ///**NOTE for Android**: A constant to try to inject the script as soon as the page starts loading.
-  static const AT_DOCUMENT_START = UserScriptInjectionTime._internal(0, 0);
+  static const AT_DOCUMENT_START = CygnusUserScriptInjectionTime._internal(
+    0,
+    0,
+  );
 
-  ///Set of all values of [UserScriptInjectionTime].
-  static final Set<UserScriptInjectionTime> values = [
-    UserScriptInjectionTime.AT_DOCUMENT_END,
-    UserScriptInjectionTime.AT_DOCUMENT_START,
+  ///Set of all values of [CygnusUserScriptInjectionTime].
+  static final Set<CygnusUserScriptInjectionTime> values = [
+    CygnusUserScriptInjectionTime.AT_DOCUMENT_END,
+    CygnusUserScriptInjectionTime.AT_DOCUMENT_START,
   ].toSet();
 
-  ///Gets a possible [UserScriptInjectionTime] instance from [int] value.
-  static UserScriptInjectionTime? fromValue(int? value) {
+  ///Gets a possible [CygnusUserScriptInjectionTime] instance from [int] value.
+  static CygnusUserScriptInjectionTime? fromValue(int? value) {
     if (value != null) {
       try {
-        return UserScriptInjectionTime.values.firstWhere(
+        return CygnusUserScriptInjectionTime.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -47,11 +50,11 @@ class UserScriptInjectionTime {
     return null;
   }
 
-  ///Gets a possible [UserScriptInjectionTime] instance from a native value.
-  static UserScriptInjectionTime? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusUserScriptInjectionTime] instance from a native value.
+  static CygnusUserScriptInjectionTime? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return UserScriptInjectionTime.values.firstWhere(
+        return CygnusUserScriptInjectionTime.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -61,15 +64,15 @@ class UserScriptInjectionTime {
     return null;
   }
 
-  /// Gets a possible [UserScriptInjectionTime] instance value with name [name].
+  /// Gets a possible [CygnusUserScriptInjectionTime] instance value with name [name].
   ///
-  /// Goes through [UserScriptInjectionTime.values] looking for a value with
-  /// name [name], as reported by [UserScriptInjectionTime.name].
+  /// Goes through [CygnusUserScriptInjectionTime.values] looking for a value with
+  /// name [name], as reported by [CygnusUserScriptInjectionTime.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static UserScriptInjectionTime? byName(String? name) {
+  static CygnusUserScriptInjectionTime? byName(String? name) {
     if (name != null) {
       try {
-        return UserScriptInjectionTime.values.firstWhere(
+        return CygnusUserScriptInjectionTime.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -79,7 +82,7 @@ class UserScriptInjectionTime {
     return null;
   }
 
-  /// Creates a map from the names of [UserScriptInjectionTime] values to the values.
+  /// Creates a map from the names of [CygnusUserScriptInjectionTime] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -87,9 +90,10 @@ class UserScriptInjectionTime {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, UserScriptInjectionTime> asNameMap() =>
-      <String, UserScriptInjectionTime>{
-        for (final value in UserScriptInjectionTime.values) value.name(): value,
+  static Map<String, CygnusUserScriptInjectionTime> asNameMap() =>
+      <String, CygnusUserScriptInjectionTime>{
+        for (final value in CygnusUserScriptInjectionTime.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

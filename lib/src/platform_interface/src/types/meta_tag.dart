@@ -6,9 +6,9 @@ import 'enum_method.dart';
 
 part 'meta_tag.g.dart';
 
-///Class that represents a `<meta>` HTML tag. It is used by the [PlatformInAppWebViewController.getMetaTags] method.
+///Class that represents a `<meta>` HTML tag. It is used by the [CygnusPlatformWebViewController.getMetaTags] method.
 @ExchangeableObject()
-class MetaTag_ {
+class CygnusMetaTag_ {
   ///The meta tag name value.
   String? name;
 
@@ -16,7 +16,7 @@ class MetaTag_ {
   String? content;
 
   ///The meta tag attributes list.
-  List<MetaTagAttribute_>? attrs;
+  List<CygnusMetaTagAttribute_>? attrs;
 
-  MetaTag_({this.name, this.content, this.attrs});
+  CygnusMetaTag_({this.name, this.content, this.attrs});
 }

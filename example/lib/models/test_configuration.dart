@@ -7,7 +7,7 @@ import 'package:flutter_inappwebview_example/utils/constants.dart';
 
 /// Specifies which type of WebView to use for test execution
 enum TestWebViewType {
-  /// Use a visible InAppWebView widget for real-time rendering
+  /// Use a visible CygnusWebView widget for real-time rendering
   inAppWebView,
 
   /// Use a headless WebView for background execution
@@ -285,7 +285,7 @@ enum CustomTestActionType {
   /// Wait for a specific navigation event (onLoadStop, onProgressChanged, etc.)
   waitForNavigationEvent,
 
-  /// Execute an InAppWebViewController method
+  /// Execute an CygnusWebViewController method
   controllerMethod,
   custom,
 }
@@ -587,7 +587,7 @@ class CustomTestAction {
     );
   }
 
-  /// Creates a controller method action to execute an InAppWebViewController method
+  /// Creates a controller method action to execute an CygnusWebViewController method
   factory CustomTestAction.controllerMethod(
     String methodId, {
     Map<String, dynamic>? parameters,
@@ -1054,7 +1054,7 @@ class TestConfiguration {
       // ============================================================
       CustomTestStep(
         id: 'storage_set_cookie',
-        name: 'Set Cookie',
+        name: 'Set CygnusCookie',
         description: 'Set a test cookie',
         category: TestCategory.storage,
         action: CustomTestAction.evaluateJs('''
@@ -1079,7 +1079,7 @@ class TestConfiguration {
       // ============================================================
       CustomTestStep(
         id: 'storage_local_set',
-        name: 'LocalStorage Set Item',
+        name: 'CygnusLocalStorage Set Item',
         description: 'Set an item in localStorage',
         category: TestCategory.storage,
         action: CustomTestAction.evaluateJs('''
@@ -1092,7 +1092,7 @@ class TestConfiguration {
       ),
       CustomTestStep(
         id: 'storage_local_get',
-        name: 'LocalStorage Get Item',
+        name: 'CygnusLocalStorage Get Item',
         description: 'Get an item from localStorage',
         category: TestCategory.storage,
         action: CustomTestAction.evaluateJs('localStorage.getItem("test_key")'),
@@ -1100,7 +1100,7 @@ class TestConfiguration {
       ),
       CustomTestStep(
         id: 'storage_local_remove',
-        name: 'LocalStorage Remove Item',
+        name: 'CygnusLocalStorage Remove Item',
         description: 'Remove an item from localStorage',
         category: TestCategory.storage,
         action: CustomTestAction.evaluateJs('''
@@ -1116,7 +1116,7 @@ class TestConfiguration {
       // ============================================================
       CustomTestStep(
         id: 'storage_session_set',
-        name: 'SessionStorage Set Item',
+        name: 'CygnusSessionStorage Set Item',
         description: 'Set an item in sessionStorage',
         category: TestCategory.storage,
         action: CustomTestAction.evaluateJs('''
@@ -1129,7 +1129,7 @@ class TestConfiguration {
       ),
       CustomTestStep(
         id: 'storage_session_get',
-        name: 'SessionStorage Get Item',
+        name: 'CygnusSessionStorage Get Item',
         description: 'Get an item from sessionStorage',
         category: TestCategory.storage,
         action: CustomTestAction.evaluateJs(

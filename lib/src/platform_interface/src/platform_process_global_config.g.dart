@@ -6,15 +6,15 @@ part of 'platform_process_global_config.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///{@template cygnus_core.ProcessGlobalConfigSettings}
-///Class that represents the settings used to configure the [PlatformProcessGlobalConfig].
+///{@template cygnus_core.CygnusProcessGlobalConfigSettings}
+///Class that represents the settings used to configure the [CygnusPlatformProcessGlobalConfig].
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.ProcessGlobalConfigSettings.supported_platforms}
+///{@macro cygnus_core.CygnusProcessGlobalConfigSettings.supported_platforms}
 ///
 ///**Officially Supported Platforms/Implementations**:
-///- Android WebView ([Official API - ProcessGlobalConfig.apply](https://developer.android.com/reference/androidx/webkit/ProcessGlobalConfig#apply(androidx.webkit.ProcessGlobalConfig)))
-class ProcessGlobalConfigSettings {
+///- Android WebView ([Official API - CygnusProcessGlobalConfig.apply](https://developer.android.com/reference/androidx/webkit/CygnusProcessGlobalConfig#apply(androidx.webkit.CygnusProcessGlobalConfig)))
+class CygnusProcessGlobalConfigSettings {
   ///The directory name suffix to be used for the current process.
   ///Must not contain a path separator and should not be empty.
   ///
@@ -29,17 +29,17 @@ class ProcessGlobalConfigSettings {
   ///This means that different processes in the same application cannot directly share `WebView`-related data,
   ///since the data directories must be distinct.
   ///Applications that use this API may have to explicitly pass data between processes.
-  ///For example, login cookies may have to be copied from one process's cookie jar to the other using [PlatformCookieManager] if both processes' WebViews are intended to be logged in.
+  ///For example, login cookies may have to be copied from one process's cookie jar to the other using [CygnusPlatformCookieManager] if both processes' WebViews are intended to be logged in.
   ///
   ///Most applications should simply ensure that all components of the app that rely
   ///on WebView are in the same process, to avoid needing multiple data directories.
-  ///The [PlatformInAppWebViewController.disableWebView] method can be used to ensure that the other processes do not use WebView by accident in this case.
+  ///The [CygnusPlatformWebViewController.disableWebView] method can be used to ensure that the other processes do not use WebView by accident in this case.
   ///
-  ///{@macro cygnus_core.ProcessGlobalConfigSettings.dataDirectorySuffix.supported_platforms}
+  ///{@macro cygnus_core.CygnusProcessGlobalConfigSettings.dataDirectorySuffix.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - Available only if [WebViewFeature.STARTUP_FEATURE_SET_DATA_DIRECTORY_SUFFIX] feature is supported.
+  ///    - Available only if [CygnusWebViewFeature.STARTUP_FEATURE_SET_DATA_DIRECTORY_SUFFIX] feature is supported.
   String? dataDirectorySuffix;
 
   ///Set the base directories that `WebView` will use for the current process.
@@ -60,32 +60,32 @@ class ProcessGlobalConfigSettings {
   ///If they do not already exist, `WebView` will attempt to create them during initialization, along with any missing parent directories.
   ///In such a case, the directory in which `WebView` creates missing directories must be readable and writable by the current process.
   ///
-  ///{@macro cygnus_core.ProcessGlobalConfigSettings.directoryBasePaths.supported_platforms}
+  ///{@macro cygnus_core.CygnusProcessGlobalConfigSettings.directoryBasePaths.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - Available only if [WebViewFeature.STARTUP_FEATURE_SET_DIRECTORY_BASE_PATHS] feature is supported.
-  ProcessGlobalConfigDirectoryBasePaths? directoryBasePaths;
+  ///    - Available only if [CygnusWebViewFeature.STARTUP_FEATURE_SET_DIRECTORY_BASE_PATHS] feature is supported.
+  CygnusProcessGlobalConfigDirectoryBasePaths? directoryBasePaths;
 
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - ProcessGlobalConfig.apply](https://developer.android.com/reference/androidx/webkit/ProcessGlobalConfig#apply(androidx.webkit.ProcessGlobalConfig)))
-  ProcessGlobalConfigSettings({
+  ///- Android WebView ([Official API - CygnusProcessGlobalConfig.apply](https://developer.android.com/reference/androidx/webkit/CygnusProcessGlobalConfig#apply(androidx.webkit.CygnusProcessGlobalConfig)))
+  CygnusProcessGlobalConfigSettings({
     this.dataDirectorySuffix,
     this.directoryBasePaths,
   });
 
-  ///Gets a possible [ProcessGlobalConfigSettings] instance from a [Map] value.
-  static ProcessGlobalConfigSettings? fromMap(
+  ///Gets a possible [CygnusProcessGlobalConfigSettings] instance from a [Map] value.
+  static CygnusProcessGlobalConfigSettings? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ProcessGlobalConfigSettings(
+    final instance = CygnusProcessGlobalConfigSettings(
       dataDirectorySuffix: map['dataDirectorySuffix'],
-      directoryBasePaths: ProcessGlobalConfigDirectoryBasePaths.fromMap(
+      directoryBasePaths: CygnusProcessGlobalConfigDirectoryBasePaths.fromMap(
         map['directoryBasePaths']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -93,27 +93,27 @@ class ProcessGlobalConfigSettings {
     return instance;
   }
 
-  ///{@template cygnus_core.ProcessGlobalConfigSettings.isClassSupported}
+  ///{@template cygnus_core.CygnusProcessGlobalConfigSettings.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      _ProcessGlobalConfigSettingsClassSupported.isClassSupported(
+      _CygnusProcessGlobalConfigSettingsClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.ProcessGlobalConfigSettings.isPropertySupported}
+  ///{@template cygnus_core.CygnusProcessGlobalConfigSettings.isPropertySupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   static bool isPropertySupported(
-    ProcessGlobalConfigSettingsProperty property, {
+    CygnusProcessGlobalConfigSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _ProcessGlobalConfigSettingsPropertySupported.isPropertySupported(
+  }) => _CygnusProcessGlobalConfigSettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "dataDirectorySuffix": dataDirectorySuffix,
       "directoryBasePaths": directoryBasePaths?.toMap(enumMethod: enumMethod),
@@ -125,42 +125,42 @@ class ProcessGlobalConfigSettings {
     return toMap();
   }
 
-  ///Returns a copy of ProcessGlobalConfigSettings.
-  ProcessGlobalConfigSettings copy() {
-    return ProcessGlobalConfigSettings.fromMap(toMap()) ??
-        ProcessGlobalConfigSettings();
+  ///Returns a copy of CygnusProcessGlobalConfigSettings.
+  CygnusProcessGlobalConfigSettings copy() {
+    return CygnusProcessGlobalConfigSettings.fromMap(toMap()) ??
+        CygnusProcessGlobalConfigSettings();
   }
 
   @override
   String toString() {
-    return 'ProcessGlobalConfigSettings{dataDirectorySuffix: $dataDirectorySuffix, directoryBasePaths: $directoryBasePaths}';
+    return 'CygnusProcessGlobalConfigSettings{dataDirectorySuffix: $dataDirectorySuffix, directoryBasePaths: $directoryBasePaths}';
   }
 }
 
-///Class that represents the settings used to configure the [ProcessGlobalConfigSettings.directoryBasePaths].
+///Class that represents the settings used to configure the [CygnusProcessGlobalConfigSettings.directoryBasePaths].
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- Android native WebView ([Official API - ProxyConfig](https://developer.android.com/reference/androidx/webkit/ProxyConfig))
-class ProcessGlobalConfigDirectoryBasePaths {
+class CygnusProcessGlobalConfigDirectoryBasePaths {
   ///The absolute base path for the WebView cache directory.
   String cacheDirectoryBasePath;
 
   ///The absolute base path for the WebView data directory.
   String dataDirectoryBasePath;
-  ProcessGlobalConfigDirectoryBasePaths({
+  CygnusProcessGlobalConfigDirectoryBasePaths({
     required this.cacheDirectoryBasePath,
     required this.dataDirectoryBasePath,
   });
 
-  ///Gets a possible [ProcessGlobalConfigDirectoryBasePaths] instance from a [Map] value.
-  static ProcessGlobalConfigDirectoryBasePaths? fromMap(
+  ///Gets a possible [CygnusProcessGlobalConfigDirectoryBasePaths] instance from a [Map] value.
+  static CygnusProcessGlobalConfigDirectoryBasePaths? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ProcessGlobalConfigDirectoryBasePaths(
+    final instance = CygnusProcessGlobalConfigDirectoryBasePaths(
       cacheDirectoryBasePath: map['cacheDirectoryBasePath'],
       dataDirectoryBasePath: map['dataDirectoryBasePath'],
     );
@@ -168,7 +168,7 @@ class ProcessGlobalConfigDirectoryBasePaths {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "cacheDirectoryBasePath": cacheDirectoryBasePath,
       "dataDirectoryBasePath": dataDirectoryBasePath,
@@ -182,7 +182,7 @@ class ProcessGlobalConfigDirectoryBasePaths {
 
   @override
   String toString() {
-    return 'ProcessGlobalConfigDirectoryBasePaths{cacheDirectoryBasePath: $cacheDirectoryBasePath, dataDirectoryBasePath: $dataDirectoryBasePath}';
+    return 'CygnusProcessGlobalConfigDirectoryBasePaths{cacheDirectoryBasePath: $cacheDirectoryBasePath, dataDirectoryBasePath: $dataDirectoryBasePath}';
   }
 }
 
@@ -190,14 +190,14 @@ class ProcessGlobalConfigDirectoryBasePaths {
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformProcessGlobalConfigCreationParamsClassSupported
-    on PlatformProcessGlobalConfigCreationParams {
-  ///{@template cygnus_core.PlatformProcessGlobalConfigCreationParams.supported_platforms}
+extension _CygnusPlatformProcessGlobalConfigCreationParamsClassSupported
+    on CygnusPlatformProcessGlobalConfigCreationParams {
+  ///{@template cygnus_core.CygnusPlatformProcessGlobalConfigCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PlatformProcessGlobalConfigCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformProcessGlobalConfigCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -205,14 +205,14 @@ extension _PlatformProcessGlobalConfigCreationParamsClassSupported
   }
 }
 
-extension _PlatformProcessGlobalConfigClassSupported
-    on PlatformProcessGlobalConfig {
-  ///{@template cygnus_core.PlatformProcessGlobalConfig.supported_platforms}
+extension _CygnusPlatformProcessGlobalConfigClassSupported
+    on CygnusPlatformProcessGlobalConfig {
+  ///{@template cygnus_core.CygnusPlatformProcessGlobalConfig.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - ProcessGlobalConfig](https://developer.android.com/reference/androidx/webkit/ProcessGlobalConfig))
+  ///- Android WebView ([Official API - CygnusProcessGlobalConfig](https://developer.android.com/reference/androidx/webkit/CygnusProcessGlobalConfig))
   ///
-  ///Use the [PlatformProcessGlobalConfig.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformProcessGlobalConfig.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -220,31 +220,31 @@ extension _PlatformProcessGlobalConfigClassSupported
   }
 }
 
-///List of [PlatformProcessGlobalConfig]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformProcessGlobalConfigMethod {
-  ///Can be used to check if the [PlatformProcessGlobalConfig.apply] method is supported at runtime.
+///List of [CygnusPlatformProcessGlobalConfig]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformProcessGlobalConfigMethod {
+  ///Can be used to check if the [CygnusPlatformProcessGlobalConfig.apply] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformProcessGlobalConfig.apply.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformProcessGlobalConfig.apply.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - ProcessGlobalConfig.apply](https://developer.android.com/reference/androidx/webkit/ProcessGlobalConfig#apply(androidx.webkit.ProcessGlobalConfig)))
+  ///- Android WebView ([Official API - CygnusProcessGlobalConfig.apply](https://developer.android.com/reference/androidx/webkit/CygnusProcessGlobalConfig#apply(androidx.webkit.CygnusProcessGlobalConfig)))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [settings]: all platforms
   ///
-  ///Use the [PlatformProcessGlobalConfig.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformProcessGlobalConfig.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   apply,
 }
 
-extension _PlatformProcessGlobalConfigMethodSupported
-    on PlatformProcessGlobalConfig {
+extension _CygnusPlatformProcessGlobalConfigMethodSupported
+    on CygnusPlatformProcessGlobalConfig {
   static bool isMethodSupported(
-    PlatformProcessGlobalConfigMethod method, {
+    CygnusPlatformProcessGlobalConfigMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformProcessGlobalConfigMethod.apply:
+      case CygnusPlatformProcessGlobalConfigMethod.apply:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -253,14 +253,14 @@ extension _PlatformProcessGlobalConfigMethodSupported
   }
 }
 
-extension _ProcessGlobalConfigSettingsClassSupported
-    on ProcessGlobalConfigSettings {
-  ///{@template cygnus_core.ProcessGlobalConfigSettings.supported_platforms}
+extension _CygnusProcessGlobalConfigSettingsClassSupported
+    on CygnusProcessGlobalConfigSettings {
+  ///{@template cygnus_core.CygnusProcessGlobalConfigSettings.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - ProcessGlobalConfig.apply](https://developer.android.com/reference/androidx/webkit/ProcessGlobalConfig#apply(androidx.webkit.ProcessGlobalConfig)))
+  ///- Android WebView ([Official API - CygnusProcessGlobalConfig.apply](https://developer.android.com/reference/androidx/webkit/CygnusProcessGlobalConfig#apply(androidx.webkit.CygnusProcessGlobalConfig)))
   ///
-  ///Use the [ProcessGlobalConfigSettings.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusProcessGlobalConfigSettings.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -268,46 +268,46 @@ extension _ProcessGlobalConfigSettingsClassSupported
   }
 }
 
-///List of [ProcessGlobalConfigSettings]'s properties that can be used to check i they are supported or not by the current platform.
-enum ProcessGlobalConfigSettingsProperty {
-  ///Can be used to check if the [ProcessGlobalConfigSettings.dataDirectorySuffix] property is supported at runtime.
+///List of [CygnusProcessGlobalConfigSettings]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusProcessGlobalConfigSettingsProperty {
+  ///Can be used to check if the [CygnusProcessGlobalConfigSettings.dataDirectorySuffix] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ProcessGlobalConfigSettings.dataDirectorySuffix.supported_platforms}
+  ///{@template cygnus_core.CygnusProcessGlobalConfigSettings.dataDirectorySuffix.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - Available only if [WebViewFeature.STARTUP_FEATURE_SET_DATA_DIRECTORY_SUFFIX] feature is supported.
+  ///    - Available only if [CygnusWebViewFeature.STARTUP_FEATURE_SET_DATA_DIRECTORY_SUFFIX] feature is supported.
   ///
-  ///Use the [ProcessGlobalConfigSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusProcessGlobalConfigSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   dataDirectorySuffix,
 
-  ///Can be used to check if the [ProcessGlobalConfigSettings.directoryBasePaths] property is supported at runtime.
+  ///Can be used to check if the [CygnusProcessGlobalConfigSettings.directoryBasePaths] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ProcessGlobalConfigSettings.directoryBasePaths.supported_platforms}
+  ///{@template cygnus_core.CygnusProcessGlobalConfigSettings.directoryBasePaths.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - Available only if [WebViewFeature.STARTUP_FEATURE_SET_DIRECTORY_BASE_PATHS] feature is supported.
+  ///    - Available only if [CygnusWebViewFeature.STARTUP_FEATURE_SET_DIRECTORY_BASE_PATHS] feature is supported.
   ///
-  ///Use the [ProcessGlobalConfigSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusProcessGlobalConfigSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   directoryBasePaths,
 }
 
-extension _ProcessGlobalConfigSettingsPropertySupported
-    on ProcessGlobalConfigSettings {
+extension _CygnusProcessGlobalConfigSettingsPropertySupported
+    on CygnusProcessGlobalConfigSettings {
   static bool isPropertySupported(
-    ProcessGlobalConfigSettingsProperty property, {
+    CygnusProcessGlobalConfigSettingsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case ProcessGlobalConfigSettingsProperty.dataDirectorySuffix:
+      case CygnusProcessGlobalConfigSettingsProperty.dataDirectorySuffix:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ProcessGlobalConfigSettingsProperty.directoryBasePaths:
+      case CygnusProcessGlobalConfigSettingsProperty.directoryBasePaths:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,

@@ -6,43 +6,47 @@ part of 'permission_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onPermissionRequest] event.
-class PermissionResponse {
-  ///Indicate the [PermissionResponseAction] to take in response of a permission request.
-  PermissionResponseAction? action;
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onPermissionRequest] event.
+class CygnusPermissionResponse {
+  ///Indicate the [CygnusPermissionResponseAction] to take in response of a permission request.
+  CygnusPermissionResponseAction? action;
 
   ///Resources granted to be accessed by origin.
   ///
-  ///**NOTE for iOS, macOS and Windows**: not used. The [action] taken is based on the [PermissionRequest.resources].
-  List<PermissionResourceType> resources;
-  PermissionResponse({
-    PermissionResponseAction? action,
+  ///**NOTE for iOS, macOS and Windows**: not used. The [action] taken is based on the [CygnusPermissionRequest.resources].
+  List<CygnusPermissionResourceType> resources;
+  CygnusPermissionResponse({
+    CygnusPermissionResponseAction? action,
     this.resources = const [],
-  }) : action = action ?? PermissionResponseAction.DENY;
+  }) : action = action ?? CygnusPermissionResponseAction.DENY;
 
-  ///Gets a possible [PermissionResponse] instance from a [Map] value.
-  static PermissionResponse? fromMap(
+  ///Gets a possible [CygnusPermissionResponse] instance from a [Map] value.
+  static CygnusPermissionResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = PermissionResponse();
-    instance.action = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => PermissionResponseAction.fromNativeValue(
+    final instance = CygnusPermissionResponse();
+    instance.action = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusPermissionResponseAction.fromNativeValue(map['action']),
+      CygnusEnumMethod.value => CygnusPermissionResponseAction.fromValue(
         map['action'],
       ),
-      EnumMethod.value => PermissionResponseAction.fromValue(map['action']),
-      EnumMethod.name => PermissionResponseAction.byName(map['action']),
+      CygnusEnumMethod.name => CygnusPermissionResponseAction.byName(
+        map['action'],
+      ),
     };
     if (map['resources'] != null) {
-      instance.resources = List<PermissionResourceType>.from(
+      instance.resources = List<CygnusPermissionResourceType>.from(
         map['resources'].map(
-          (e) => switch (enumMethod ?? EnumMethod.nativeValue) {
-            EnumMethod.nativeValue => PermissionResourceType.fromNativeValue(e),
-            EnumMethod.value => PermissionResourceType.fromValue(e),
-            EnumMethod.name => PermissionResourceType.byName(e),
+          (e) => switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+            CygnusEnumMethod.nativeValue =>
+              CygnusPermissionResourceType.fromNativeValue(e),
+            CygnusEnumMethod.value => CygnusPermissionResourceType.fromValue(e),
+            CygnusEnumMethod.name => CygnusPermissionResourceType.byName(e),
           }!,
         ),
       );
@@ -51,19 +55,19 @@ class PermissionResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "action": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => action?.toNativeValue(),
-        EnumMethod.value => action?.toValue(),
-        EnumMethod.name => action?.name(),
+      "action": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => action?.toNativeValue(),
+        CygnusEnumMethod.value => action?.toValue(),
+        CygnusEnumMethod.name => action?.name(),
       },
       "resources": resources
           .map(
-            (e) => switch (enumMethod ?? EnumMethod.nativeValue) {
-              EnumMethod.nativeValue => e.toNativeValue(),
-              EnumMethod.value => e.toValue(),
-              EnumMethod.name => e.name(),
+            (e) => switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+              CygnusEnumMethod.nativeValue => e.toNativeValue(),
+              CygnusEnumMethod.value => e.toValue(),
+              CygnusEnumMethod.name => e.name(),
             },
           )
           .toList(),
@@ -77,41 +81,42 @@ class PermissionResponse {
 
   @override
   String toString() {
-    return 'PermissionResponse{action: $action, resources: $resources}';
+    return 'CygnusPermissionResponse{action: $action, resources: $resources}';
   }
 }
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.androidOnPermissionRequest] event.
-///Use [PermissionResponse] instead.
-@Deprecated('Use PermissionResponse instead')
-class PermissionRequestResponse {
-  ///Indicate the [PermissionRequestResponseAction] to take in response of a permission request.
-  PermissionRequestResponseAction? action;
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.androidOnPermissionRequest] event.
+///Use [CygnusPermissionResponse] instead.
+@Deprecated('Use CygnusPermissionResponse instead')
+class CygnusPermissionRequestResponse {
+  ///Indicate the [CygnusPermissionRequestResponseAction] to take in response of a permission request.
+  CygnusPermissionRequestResponseAction? action;
 
   ///Resources granted to be accessed by origin.
   List<String> resources;
-  PermissionRequestResponse({
-    PermissionRequestResponseAction? action,
+  CygnusPermissionRequestResponse({
+    CygnusPermissionRequestResponseAction? action,
     this.resources = const [],
-  }) : action = action ?? PermissionRequestResponseAction.DENY;
+  }) : action = action ?? CygnusPermissionRequestResponseAction.DENY;
 
-  ///Gets a possible [PermissionRequestResponse] instance from a [Map] value.
-  static PermissionRequestResponse? fromMap(
+  ///Gets a possible [CygnusPermissionRequestResponse] instance from a [Map] value.
+  static CygnusPermissionRequestResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = PermissionRequestResponse();
-    instance.action = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => PermissionRequestResponseAction.fromNativeValue(
+    final instance = CygnusPermissionRequestResponse();
+    instance.action = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusPermissionRequestResponseAction.fromNativeValue(map['action']),
+      CygnusEnumMethod.value => CygnusPermissionRequestResponseAction.fromValue(
         map['action'],
       ),
-      EnumMethod.value => PermissionRequestResponseAction.fromValue(
+      CygnusEnumMethod.name => CygnusPermissionRequestResponseAction.byName(
         map['action'],
       ),
-      EnumMethod.name => PermissionRequestResponseAction.byName(map['action']),
     };
     if (map['resources'] != null) {
       instance.resources = List<String>.from(map['resources']!.cast<String>());
@@ -120,12 +125,12 @@ class PermissionRequestResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "action": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => action?.toNativeValue(),
-        EnumMethod.value => action?.toValue(),
-        EnumMethod.name => action?.name(),
+      "action": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => action?.toNativeValue(),
+        CygnusEnumMethod.value => action?.toValue(),
+        CygnusEnumMethod.name => action?.name(),
       },
       "resources": resources,
     };
@@ -138,6 +143,6 @@ class PermissionRequestResponse {
 
   @override
   String toString() {
-    return 'PermissionRequestResponse{action: $action, resources: $resources}';
+    return 'CygnusPermissionRequestResponse{action: $action, resources: $resources}';
   }
 }

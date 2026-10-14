@@ -46,33 +46,33 @@ final kJavaScriptHandlerForbiddenNames = UnmodifiableListView<String>([
   "onScrollChanged",
 ]);
 
-/// Object specifying creation parameters for creating a [PlatformInAppWebViewController].
+/// Object specifying creation parameters for creating a [CygnusPlatformWebViewController].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 @immutable
-class PlatformInAppWebViewControllerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformInAppWebViewController].
-  const PlatformInAppWebViewControllerCreationParams({
+class CygnusPlatformWebViewControllerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformWebViewController].
+  const CygnusPlatformWebViewControllerCreationParams({
     required this.id,
     this.webviewParams,
   });
 
-  ///{@macro cygnus_core.PlatformInAppWebViewController.id}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.id}
   final dynamic id;
 
-  ///{@macro cygnus_core.PlatformInAppWebViewController.webviewParams}
-  final PlatformWebViewCreationParams? webviewParams;
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.webviewParams}
+  final CygnusPlatformWebViewCreationParams? webviewParams;
 }
 
-///{@template cygnus_core.PlatformInAppWebViewController}
-///Controls a WebView, such as an [InAppWebView] widget instance, a [HeadlessInAppWebView] instance or [PlatformInAppBrowser] WebView instance.
+///{@template cygnus_core.CygnusPlatformWebViewController}
+///Controls a WebView, such as an [CygnusWebView] widget instance, a [CygnusHeadlessWebView] instance or [CygnusPlatformBrowser] WebView instance.
 ///
-///If you are using the [InAppWebView] widget, an [PlatformInAppWebViewController] instance can be obtained by setting the [InAppWebView.onWebViewCreated]
-///callback. Instead, if you are using an [PlatformInAppBrowser] instance, you can get it through the [PlatformInAppBrowser.webViewController] attribute.
+///If you are using the [CygnusWebView] widget, an [CygnusPlatformWebViewController] instance can be obtained by setting the [CygnusWebView.onWebViewCreated]
+///callback. Instead, if you are using an [CygnusPlatformBrowser] instance, you can get it through the [CygnusPlatformBrowser.webViewController] attribute.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformInAppWebViewController.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebViewController.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -83,11 +83,11 @@ class PlatformInAppWebViewControllerCreationParams {
     LinuxPlatform(),
   ],
 )
-abstract class PlatformInAppWebViewController extends PlatformInterface
-    implements Disposable {
-  ///Debug settings used by [PlatformInAppWebViewWidget], [PlatformHeadlessInAppWebView] and [PlatformInAppBrowser].
-  ///The default value excludes the [PlatformWebViewCreationParams.onScrollChanged], [PlatformWebViewCreationParams.onOverScrolled] and [PlatformWebViewCreationParams.onReceivedIcon] events.
-  static DebugLoggingSettings debugLoggingSettings = DebugLoggingSettings(
+abstract class CygnusPlatformWebViewController extends PlatformInterface
+    implements CygnusDisposable {
+  ///Debug settings used by [CygnusPlatformWebViewWidget], [CygnusPlatformHeadlessWebView] and [CygnusPlatformBrowser].
+  ///The default value excludes the [CygnusPlatformWebViewCreationParams.onScrollChanged], [CygnusPlatformWebViewCreationParams.onOverScrolled] and [CygnusPlatformWebViewCreationParams.onReceivedIcon] events.
+  static CygnusDebugLoggingSettings debugLoggingSettings = CygnusDebugLoggingSettings(
     maxLogMessageLength: 1000,
     excludeFilter: [
       RegExp(r"onScrollChanged"),
@@ -96,69 +96,69 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     ],
   );
 
-  /// Creates a new [PlatformInAppWebViewController]
-  factory PlatformInAppWebViewController(
-    PlatformInAppWebViewControllerCreationParams params,
+  /// Creates a new [CygnusPlatformWebViewController]
+  factory CygnusPlatformWebViewController(
+    CygnusPlatformWebViewControllerCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformInAppWebViewController inAppWebViewController =
-        InAppWebViewPlatform.instance!.createPlatformInAppWebViewController(
+    final CygnusPlatformWebViewController inAppWebViewController =
+        CygnusWebViewPlatform.instance!.createPlatformInAppWebViewController(
           params,
         );
     PlatformInterface.verify(inAppWebViewController, _token);
     return inAppWebViewController;
   }
 
-  /// Creates a new [PlatformInAppWebViewController] to access static methods.
-  factory PlatformInAppWebViewController.static() {
+  /// Creates a new [CygnusPlatformWebViewController] to access static methods.
+  factory CygnusPlatformWebViewController.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformInAppWebViewController inAppWebViewControllerStatic =
-        InAppWebViewPlatform.instance!
+    final CygnusPlatformWebViewController inAppWebViewControllerStatic =
+        CygnusWebViewPlatform.instance!
             .createPlatformInAppWebViewControllerStatic();
     PlatformInterface.verify(inAppWebViewControllerStatic, _token);
     return inAppWebViewControllerStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformInAppWebViewController].
+  /// Used by the platform implementation to create a new [CygnusPlatformWebViewController].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformInAppWebViewController.implementation(this.params)
+  CygnusPlatformWebViewController.implementation(this.params)
     : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformInAppWebViewController].
-  final PlatformInAppWebViewControllerCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformWebViewController].
+  final CygnusPlatformWebViewControllerCreationParams params;
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.id}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.id}
   /// WebView ID.
   ///{@endtemplate}
   dynamic get id => params.id;
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.webviewParams}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.webviewParams}
   /// WebView params.
   ///{@endtemplate}
-  PlatformWebViewCreationParams? get webviewParams => params.webviewParams;
+  CygnusPlatformWebViewCreationParams? get webviewParams => params.webviewParams;
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.webStorage}
-  ///Provides access to the JavaScript [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API): `window.sessionStorage` and `window.localStorage`.
+  ///{@template cygnus_core.CygnusPlatformWebViewController.webStorage}
+  ///Provides access to the JavaScript [Web CygnusStorage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API): `window.sessionStorage` and `window.localStorage`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.webStorage.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.webStorage.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -168,16 +168,16 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       WindowsPlatform(),
     ],
   )
-  PlatformWebStorage get webStorage => throw UnimplementedError(
-    '${PlatformInAppWebViewControllerProperty.webStorage.name} is not implemented on the current platform',
+  CygnusPlatformWebStorage get webStorage => throw UnimplementedError(
+    '${CygnusPlatformWebViewControllerProperty.webStorage.name} is not implemented on the current platform',
   );
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getUrl}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getUrl}
   ///Gets the URL for the current page.
-  ///This is not always the same as the URL passed to [PlatformWebViewCreationParams.onLoadStart] because although the load for that URL has begun, the current page may not have changed.
+  ///This is not always the same as the URL passed to [CygnusPlatformWebViewCreationParams.onLoadStart] because although the load for that URL has begun, the current page may not have changed.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getUrl.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getUrl.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -211,17 +211,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<WebUri?> getUrl() {
+  Future<CygnusWebUri?> getUrl() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getUrl.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getUrl.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getTitle}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getTitle}
   ///Gets the title for the current page.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getTitle.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getTitle.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -254,15 +254,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<String?> getTitle() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getTitle.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getTitle.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getFrameId}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getFrameId}
   ///Gets the ID of the main frame.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getFrameId.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getFrameId.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -274,15 +274,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<int?> getFrameId() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getFrameId.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getFrameId.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getMemoryUsageTargetLevel}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getMemoryUsageTargetLevel}
   ///Gets the WebView memory usage target level.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getMemoryUsageTargetLevel.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getMemoryUsageTargetLevel.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -292,17 +292,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<MemoryUsageTargetLevel?> getMemoryUsageTargetLevel() {
+  Future<CygnusMemoryUsageTargetLevel?> getMemoryUsageTargetLevel() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getMemoryUsageTargetLevel.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getMemoryUsageTargetLevel.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setMemoryUsageTargetLevel}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setMemoryUsageTargetLevel}
   ///Sets the WebView memory usage target level.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setMemoryUsageTargetLevel.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setMemoryUsageTargetLevel.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -312,17 +312,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<void> setMemoryUsageTargetLevel(MemoryUsageTargetLevel level) {
+  Future<void> setMemoryUsageTargetLevel(CygnusMemoryUsageTargetLevel level) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setMemoryUsageTargetLevel.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setMemoryUsageTargetLevel.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getProgress}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getProgress}
   ///Gets the progress for the current page. The progress value is between 0 and 100.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getProgress.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getProgress.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -353,11 +353,11 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<int?> getProgress() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getProgress.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getProgress.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getHtml}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getHtml}
   ///Gets the content html of the page. It first tries to get the content through javascript.
   ///If this doesn't work, it tries to get the content reading the file:
   ///- checking if it is an asset (`file:///`) or
@@ -366,7 +366,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///Returns `null` if it was unable to get it.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getHtml.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getHtml.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -379,15 +379,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<String?> getHtml() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getHtml.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getHtml.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getFavicons}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getFavicons}
   ///Gets the list of all favicons for the current page.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getFavicons.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getFavicons.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -398,19 +398,19 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       LinuxPlatform(),
     ],
   )
-  Future<List<Favicon>> getFavicons() {
+  Future<List<CygnusFavicon>> getFavicons() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getFavicons.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getFavicons.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getFavicon}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getFavicon}
   ///Gets the favicon bytes for the given favicon [url].
   ///
   ///[faviconImageFormat] specifies the favicon image format to return.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getFavicon.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getFavicon.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -421,15 +421,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     ],
   )
   Future<Uint8List?> getFavicon({
-    required WebUri url,
-    FaviconImageFormat faviconImageFormat = FaviconImageFormat.PNG,
+    required CygnusWebUri url,
+    CygnusFaviconImageFormat faviconImageFormat = CygnusFaviconImageFormat.PNG,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getFavicon.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getFavicon.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.loadUrl}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.loadUrl}
   ///Loads the given [urlRequest].
   ///
   ///- [allowingReadAccessTo], used in combination with [urlRequest] (using the `file://` scheme),
@@ -439,7 +439,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///Specify a directory to give WebView permission to read additional files in the specified directory.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.loadUrl.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.loadUrl.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -480,28 +480,28 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     ],
   )
   Future<void> loadUrl({
-    required URLRequest urlRequest,
+    required CygnusURLRequest urlRequest,
     @Deprecated('Use allowingReadAccessTo instead')
     Uri? iosAllowingReadAccessTo,
     @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
-    WebUri? allowingReadAccessTo,
+    CygnusWebUri? allowingReadAccessTo,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.loadUrl.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.loadUrl.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.postUrl}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.postUrl}
   ///Loads the given [url] with [postData] (x-www-form-urlencoded) using `POST` method into this WebView.
   ///
   ///Example:
   ///```dart
   ///var postData = Uint8List.fromList(utf8.encode("firstname=Foo&surname=Bar"));
-  ///controller.postUrl(url: WebUri("https://www.example.com/"), postData: postData);
+  ///controller.postUrl(url: CygnusWebUri("https://www.example.com/"), postData: postData);
   ///```
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.postUrl.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.postUrl.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -522,13 +522,13 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<void> postUrl({required WebUri url, required Uint8List postData}) {
+  Future<void> postUrl({required CygnusWebUri url, required Uint8List postData}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.postUrl.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.postUrl.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.loadData}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.loadData}
   ///Loads the given [data] into this WebView, using [baseUrl] as the base URL for the content.
   ///
   ///- [mimeType] argument specifies the format of the data. The default value is `"text/html"`.
@@ -541,7 +541,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///Specify a directory to give WebView permission to read additional files in the specified directory.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.loadData.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.loadData.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -594,20 +594,20 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     @SupportedPlatforms(
       platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
     )
-    WebUri? baseUrl,
+    CygnusWebUri? baseUrl,
     @Deprecated('Use historyUrl instead') Uri? androidHistoryUrl,
-    @SupportedPlatforms(platforms: [AndroidPlatform()]) WebUri? historyUrl,
+    @SupportedPlatforms(platforms: [AndroidPlatform()]) CygnusWebUri? historyUrl,
     @Deprecated('Use allowingReadAccessTo instead')
     Uri? iosAllowingReadAccessTo,
     @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
-    WebUri? allowingReadAccessTo,
+    CygnusWebUri? allowingReadAccessTo,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.loadData.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.loadData.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.loadFile}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.loadFile}
   ///Loads the given [assetFilePath].
   ///
   ///To be able to load your local files (assets, js, css, etc.), you need to add them in the `assets` section of the `pubspec.yaml` file, otherwise they cannot be found!
@@ -639,7 +639,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///```
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.loadFile.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.loadFile.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -672,15 +672,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> loadFile({required String assetFilePath}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.loadFile.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.loadFile.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.reload}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.reload}
   ///Reloads the WebView.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.reload.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.reload.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -719,15 +719,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> reload() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.reload.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.reload.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.goBack}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.goBack}
   ///Goes back in the history of the WebView.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.goBack.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.goBack.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -763,15 +763,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> goBack() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.goBack.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.goBack.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.canGoBack}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.canGoBack}
   ///Returns a boolean value indicating whether the WebView can move backward.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.canGoBack.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.canGoBack.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -803,15 +803,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> canGoBack() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.canGoBack.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.canGoBack.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.goForward}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.goForward}
   ///Goes forward in the history of the WebView.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.goForward.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.goForward.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -848,15 +848,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> goForward() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.goForward.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.goForward.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.canGoForward}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.canGoForward}
   ///Returns a boolean value indicating whether the WebView can move forward.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.canGoForward.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.canGoForward.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -888,15 +888,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> canGoForward() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.canGoForward.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.canGoForward.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.goBackOrForward}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.goBackOrForward}
   ///Goes to the history item that is the number of [steps] away from the current item. Steps is negative if backward and positive if forward.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.goBackOrForward.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.goBackOrForward.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -924,16 +924,16 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> goBackOrForward({required int steps}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.goBackOrForward.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.goBackOrForward.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.canGoBackOrForward}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.canGoBackOrForward}
   ///Returns a boolean value indicating whether the WebView can go back or forward the given number of [steps].
   ///Steps is negative if backward and positive if forward.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.canGoBackOrForward.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.canGoBackOrForward.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -949,15 +949,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> canGoBackOrForward({required int steps}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.canGoBackOrForward.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.canGoBackOrForward.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.goTo}
-  ///Navigates to a [WebHistoryItem] from the back-forward [WebHistory.list] and sets it as the current item.
+  ///{@template cygnus_core.CygnusPlatformWebViewController.goTo}
+  ///Navigates to a [CygnusWebHistoryItem] from the back-forward [CygnusWebHistory.list] and sets it as the current item.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.goTo.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.goTo.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -967,17 +967,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       WindowsPlatform(),
     ],
   )
-  Future<void> goTo({required WebHistoryItem historyItem}) {
+  Future<void> goTo({required CygnusWebHistoryItem historyItem}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.goTo.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.goTo.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.isLoading}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isLoading}
   ///Check if the WebView instance is in a loading state.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.isLoading.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.isLoading.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -994,15 +994,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> isLoading() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.isLoading.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.isLoading.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.stopLoading}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.stopLoading}
   ///Stops the WebView from loading.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.stopLoading.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.stopLoading.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1038,26 +1038,26 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> stopLoading() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.stopLoading.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.stopLoading.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.evaluateJavascript}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.evaluateJavascript}
   ///Evaluates JavaScript [source] code into the WebView and returns the result of the evaluation.
   ///
   ///[contentWorld], on iOS, it represents the namespace in which to evaluate the JavaScript [source] code.
   ///Instead, on Android, it will run the [source] code into an iframe, using `eval(source);` to get and return the result.
   ///This parameter doesn’t apply to changes you make to the underlying web content, such as the document’s DOM structure.
   ///Those changes remain visible to all scripts, regardless of which content world you specify.
-  ///For more information about content worlds, see [ContentWorld].
+  ///For more information about content worlds, see [CygnusContentWorld].
   ///
-  ///**NOTE**: This method shouldn't be called in the [PlatformWebViewCreationParams.onWebViewCreated] or [PlatformWebViewCreationParams.onLoadStart] events,
+  ///**NOTE**: This method shouldn't be called in the [CygnusPlatformWebViewCreationParams.onWebViewCreated] or [CygnusPlatformWebViewCreationParams.onLoadStart] events,
   ///because, in these events, the `WebView` is not ready to handle it yet.
-  ///Instead, you should call this method, for example, inside the [PlatformWebViewCreationParams.onLoadStop] event or in any other events
+  ///Instead, you should call this method, for example, inside the [CygnusPlatformWebViewCreationParams.onLoadStop] event or in any other events
   ///where you know the page is ready "enough".
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.evaluateJavascript.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.evaluateJavascript.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1098,25 +1098,25 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
         WindowsPlatform(),
       ],
     )
-    ContentWorld? contentWorld,
+    CygnusContentWorld? contentWorld,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.evaluateJavascript.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.evaluateJavascript.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.injectJavascriptFileFromUrl}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.injectJavascriptFileFromUrl}
   ///Injects an external JavaScript file into the WebView from a defined url.
   ///
   ///[scriptHtmlTagAttributes] represents the possible the `<script>` HTML attributes to be set.
   ///
-  ///**NOTE**: This method shouldn't be called in the [PlatformWebViewCreationParams.onWebViewCreated] or [PlatformWebViewCreationParams.onLoadStart] events,
+  ///**NOTE**: This method shouldn't be called in the [CygnusPlatformWebViewCreationParams.onWebViewCreated] or [CygnusPlatformWebViewCreationParams.onLoadStart] events,
   ///because, in these events, the `WebView` is not ready to handle it yet.
-  ///Instead, you should call this method, for example, inside the [PlatformWebViewCreationParams.onLoadStop] event or in any other events
+  ///Instead, you should call this method, for example, inside the [CygnusPlatformWebViewCreationParams.onLoadStop] event or in any other events
   ///where you know the page is ready "enough".
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.injectJavascriptFileFromUrl.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.injectJavascriptFileFromUrl.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -1127,24 +1127,24 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     ],
   )
   Future<void> injectJavascriptFileFromUrl({
-    required WebUri urlFile,
-    ScriptHtmlTagAttributes? scriptHtmlTagAttributes,
+    required CygnusWebUri urlFile,
+    CygnusScriptHtmlTagAttributes? scriptHtmlTagAttributes,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.injectJavascriptFileFromUrl.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.injectJavascriptFileFromUrl.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.injectJavascriptFileFromAsset}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.injectJavascriptFileFromAsset}
   ///Evaluates the content of a JavaScript file into the WebView from the flutter assets directory.
   ///
-  ///**NOTE**: This method shouldn't be called in the [PlatformWebViewCreationParams.onWebViewCreated] or [PlatformWebViewCreationParams.onLoadStart] events,
+  ///**NOTE**: This method shouldn't be called in the [CygnusPlatformWebViewCreationParams.onWebViewCreated] or [CygnusPlatformWebViewCreationParams.onLoadStart] events,
   ///because, in these events, the `WebView` is not ready to handle it yet.
-  ///Instead, you should call this method, for example, inside the [PlatformWebViewCreationParams.onLoadStop] event or in any other events
+  ///Instead, you should call this method, for example, inside the [CygnusPlatformWebViewCreationParams.onLoadStop] event or in any other events
   ///where you know the page is ready "enough".
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.injectJavascriptFileFromAsset.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.injectJavascriptFileFromAsset.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -1158,20 +1158,20 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     required String assetFilePath,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.injectJavascriptFileFromAsset.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.injectJavascriptFileFromAsset.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.injectCSSCode}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.injectCSSCode}
   ///Injects CSS into the WebView.
   ///
-  ///**NOTE**: This method shouldn't be called in the [PlatformWebViewCreationParams.onWebViewCreated] or [PlatformWebViewCreationParams.onLoadStart] events,
+  ///**NOTE**: This method shouldn't be called in the [CygnusPlatformWebViewCreationParams.onWebViewCreated] or [CygnusPlatformWebViewCreationParams.onLoadStart] events,
   ///because, in these events, the `WebView` is not ready to handle it yet.
-  ///Instead, you should call this method, for example, inside the [PlatformWebViewCreationParams.onLoadStop] event or in any other events
+  ///Instead, you should call this method, for example, inside the [CygnusPlatformWebViewCreationParams.onLoadStop] event or in any other events
   ///where you know the page is ready "enough".
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.injectCSSCode.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.injectCSSCode.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -1184,22 +1184,22 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> injectCSSCode({required String source}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.injectCSSCode.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.injectCSSCode.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.injectCSSFileFromUrl}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.injectCSSFileFromUrl}
   ///Injects an external CSS file into the WebView from a defined url.
   ///
   ///[cssLinkHtmlTagAttributes] represents the possible CSS stylesheet `<link>` HTML attributes to be set.
   ///
-  ///**NOTE**: This method shouldn't be called in the [PlatformWebViewCreationParams.onWebViewCreated] or [PlatformWebViewCreationParams.onLoadStart] events,
+  ///**NOTE**: This method shouldn't be called in the [CygnusPlatformWebViewCreationParams.onWebViewCreated] or [CygnusPlatformWebViewCreationParams.onLoadStart] events,
   ///because, in these events, the `WebView` is not ready to handle it yet.
-  ///Instead, you should call this method, for example, inside the [PlatformWebViewCreationParams.onLoadStop] event or in any other events
+  ///Instead, you should call this method, for example, inside the [CygnusPlatformWebViewCreationParams.onLoadStop] event or in any other events
   ///where you know the page is ready "enough".
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.injectCSSFileFromUrl.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.injectCSSFileFromUrl.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -1211,24 +1211,24 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     ],
   )
   Future<void> injectCSSFileFromUrl({
-    required WebUri urlFile,
-    CSSLinkHtmlTagAttributes? cssLinkHtmlTagAttributes,
+    required CygnusWebUri urlFile,
+    CygnusCSSLinkHtmlTagAttributes? cssLinkHtmlTagAttributes,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.injectCSSFileFromUrl.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.injectCSSFileFromUrl.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.injectCSSFileFromAsset}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.injectCSSFileFromAsset}
   ///Injects a CSS file into the WebView from the flutter assets directory.
   ///
-  ///**NOTE**: This method shouldn't be called in the [PlatformWebViewCreationParams.onWebViewCreated] or [PlatformWebViewCreationParams.onLoadStart] events,
+  ///**NOTE**: This method shouldn't be called in the [CygnusPlatformWebViewCreationParams.onWebViewCreated] or [CygnusPlatformWebViewCreationParams.onLoadStart] events,
   ///because, in these events, the `WebView` is not ready to handle it yet.
-  ///Instead, you should call this method, for example, inside the [PlatformWebViewCreationParams.onLoadStop] event or in any other events
+  ///Instead, you should call this method, for example, inside the [CygnusPlatformWebViewCreationParams.onLoadStop] event or in any other events
   ///where you know the page is ready "enough".
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.injectCSSFileFromAsset.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.injectCSSFileFromAsset.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -1239,12 +1239,12 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> injectCSSFileFromAsset({required String assetFilePath}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.injectCSSFileFromAsset.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.injectCSSFileFromAsset.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.addJavaScriptHandler}
-  ///Adds a JavaScript message handler [callback] ([JavaScriptHandlerCallback] or [JavaScriptHandlerFunction]) that listen to post messages sent from JavaScript by the handler with name [handlerName].
+  ///{@template cygnus_core.CygnusPlatformWebViewController.addJavaScriptHandler}
+  ///Adds a JavaScript message handler [callback] ([CygnusJavaScriptHandlerCallback] or [CygnusJavaScriptHandlerFunction]) that listen to post messages sent from JavaScript by the handler with name [handlerName].
   ///Forbidden [handlerName]s are represented by [kJavaScriptHandlerForbiddenNames], they are used internally by this plugin.
   ///
   ///The JavaScript function that can be used to call the handler is `window.flutter_inappwebview.callHandler(handlerName <String>, ...args)`,
@@ -1264,7 +1264,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///```
   ///
   ///`window.flutter_inappwebview.callHandler` returns a JavaScript [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-  ///that can be used to get the json result returned by [JavaScriptHandlerCallback] or [JavaScriptHandlerFunction].
+  ///that can be used to get the json result returned by [CygnusJavaScriptHandlerCallback] or [CygnusJavaScriptHandlerFunction].
   ///In this case, simply return data that you want to send and it will be automatically json encoded using [jsonEncode] from the `dart:convert` library.
   ///
   ///So, on the JavaScript side, to get data coming from the Dart side, you will use:
@@ -1294,12 +1294,12 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///
   ///There could be forbidden names for JavaScript handlers depending on the implementation platform.
   ///
-  ///**NOTE**: This method should be called, for example, in the [PlatformWebViewCreationParams.onWebViewCreated] or [PlatformWebViewCreationParams.onLoadStart] events or, at least,
+  ///**NOTE**: This method should be called, for example, in the [CygnusPlatformWebViewCreationParams.onWebViewCreated] or [CygnusPlatformWebViewCreationParams.onLoadStart] events or, at least,
   ///before you know that your JavaScript code will call the `window.flutter_inappwebview.callHandler` method,
   ///otherwise you won't be able to intercept the JavaScript message.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.addJavaScriptHandler.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.addJavaScriptHandler.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -1314,17 +1314,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     required Function callback,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.addJavaScriptHandler.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.addJavaScriptHandler.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.removeJavaScriptHandler}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.removeJavaScriptHandler}
   ///Removes a JavaScript message handler previously added with the [addJavaScriptHandler] associated to [handlerName] key.
   ///Returns the value associated with [handlerName] before it was removed.
   ///Returns `null` if [handlerName] was not found.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.removeJavaScriptHandler.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.removeJavaScriptHandler.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -1336,15 +1336,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Function? removeJavaScriptHandler({required String handlerName}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.removeJavaScriptHandler.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.removeJavaScriptHandler.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.hasJavaScriptHandler}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.hasJavaScriptHandler}
   ///Returns `true` if a JavaScript handler with [handlerName] already exists, otherwise `false`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.hasJavaScriptHandler.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.hasJavaScriptHandler.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -1356,22 +1356,22 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   bool hasJavaScriptHandler({required String handlerName}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.hasJavaScriptHandler.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.hasJavaScriptHandler.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.takeScreenshot}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.takeScreenshot}
   ///Takes a screenshot of the WebView's visible viewport and returns a [Uint8List]. Returns `null` if it wasn't be able to take it.
   ///
   ///[screenshotConfiguration] represents the configuration data to use when generating an image from a web view’s contents.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.takeScreenshot.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.takeScreenshot.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         note:
-            'To be able to take screenshots outside the visible viewport, you must call [PlatformInAppWebViewController.enableSlowWholeDocumentDraw] before any WebViews are created.',
+            'To be able to take screenshots outside the visible viewport, you must call [CygnusPlatformWebViewController.enableSlowWholeDocumentDraw] before any WebViews are created.',
       ),
       IOSPlatform(
         apiName: 'WKWebView.takeSnapshot',
@@ -1390,18 +1390,18 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     ],
   )
   Future<Uint8List?> takeScreenshot({
-    ScreenshotConfiguration? screenshotConfiguration,
+    CygnusScreenshotConfiguration? screenshotConfiguration,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.takeScreenshot.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.takeScreenshot.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setSettings}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setSettings}
   ///Sets the WebView settings with the new [settings] and evaluates them.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setSettings.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setSettings.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -1412,17 +1412,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       WindowsPlatform(),
     ],
   )
-  Future<void> setSettings({required InAppWebViewSettings settings}) {
+  Future<void> setSettings({required CygnusWebViewSettings settings}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setSettings.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setSettings.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getSettings}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getSettings}
   ///Gets the current WebView settings. Returns `null` if it wasn't able to get them.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getSettings.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getSettings.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -1433,20 +1433,20 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       WindowsPlatform(),
     ],
   )
-  Future<InAppWebViewSettings?> getSettings() {
+  Future<CygnusWebViewSettings?> getSettings() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getSettings.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getSettings.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getCopyBackForwardList}
-  ///Gets the WebHistory for this WebView. This contains the back/forward list for use in querying each item in the history stack.
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getCopyBackForwardList}
+  ///Gets the CygnusWebHistory for this WebView. This contains the back/forward list for use in querying each item in the history stack.
   ///This contains only a snapshot of the current state.
   ///Multiple calls to this method may return different objects.
   ///The object returned from this method will not be updated to reflect any new state.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getCopyBackForwardList.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getCopyBackForwardList.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1468,28 +1468,28 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       LinuxPlatform(),
     ],
   )
-  Future<WebHistory?> getCopyBackForwardList() {
+  Future<CygnusWebHistory?> getCopyBackForwardList() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getCopyBackForwardList.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getCopyBackForwardList.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearCache}
-  ///Use [PlatformInAppWebViewController.clearAllCache] instead
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearCache}
+  ///Use [CygnusPlatformWebViewController.clearAllCache] instead
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.clearCache.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.clearCache.supported_platforms}
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
-  @Deprecated("Use InAppWebViewController.clearAllCache instead")
+  @Deprecated("Use CygnusWebViewController.clearAllCache instead")
   Future<void> clearCache() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.clearCache.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.clearCache.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.scrollTo}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.scrollTo}
   ///Scrolls the WebView to the position.
   ///
   ///[x] represents the x position to scroll to.
@@ -1499,7 +1499,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///[animated] `true` to animate the scroll transition, `false` to make the scoll transition immediate.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.scrollTo.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.scrollTo.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1528,11 +1528,11 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     bool animated = false,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.scrollTo.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.scrollTo.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.scrollBy}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.scrollBy}
   ///Moves the scrolled position of the WebView.
   ///
   ///[x] represents the amount of pixels to scroll by horizontally.
@@ -1542,7 +1542,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///[animated] `true` to animate the scroll transition, `false` to make the scoll transition immediate.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.scrollBy.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.scrollBy.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1571,16 +1571,16 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     bool animated = false,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.scrollBy.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.scrollBy.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.pauseTimers}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.pauseTimers}
   ///On Android native WebView, it pauses all layout, parsing, and JavaScript timers for all WebViews.
   ///This is a global requests, not restricted to just this WebView. This can be useful if the application has been paused.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.pauseTimers.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.pauseTimers.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1600,15 +1600,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> pauseTimers() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.pauseTimers.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.pauseTimers.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.resumeTimers}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.resumeTimers}
   ///On Android, it resumes all layout, parsing, and JavaScript timers for all WebViews. This will resume dispatching all timers.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.resumeTimers.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.resumeTimers.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1628,18 +1628,18 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> resumeTimers() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.resumeTimers.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.resumeTimers.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.printCurrentPage}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.printCurrentPage}
   ///Prints the current page.
   ///
-  ///To obtain the [PlatformPrintJobController], use [settings] argument with [PrintJobSettings.handledByClient] to `true`.
-  ///Otherwise this method will return `null` and the [PlatformPrintJobController] will be handled and disposed automatically by the system.
+  ///To obtain the [CygnusPlatformPrintJobController], use [settings] argument with [CygnusPrintJobSettings.handledByClient] to `true`.
+  ///Otherwise this method will return `null` and the [CygnusPlatformPrintJobController] will be handled and disposed automatically by the system.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.printCurrentPage.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.printCurrentPage.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1662,7 +1662,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       WebPlatform(
         apiName: 'Window.print',
         apiUrl: 'https://developer.mozilla.org/en-US/docs/Web/API/Window/print',
-        note: '[PlatformPrintJobController] is always `null`.',
+        note: '[CygnusPlatformPrintJobController] is always `null`.',
       ),
       WindowsPlatform(
         apiName: 'ICoreWebView2_16.Print',
@@ -1671,19 +1671,19 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<PlatformPrintJobController?> printCurrentPage({
-    PrintJobSettings? settings,
+  Future<CygnusPlatformPrintJobController?> printCurrentPage({
+    CygnusPrintJobSettings? settings,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.printCurrentPage.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.printCurrentPage.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getContentHeight}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getContentHeight}
   ///Gets the height of the HTML content.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getContentHeight.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getContentHeight.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1708,15 +1708,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<int?> getContentHeight() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getContentHeight.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getContentHeight.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getContentWidth}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getContentWidth}
   ///Gets the width of the HTML content.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getContentWidth.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getContentWidth.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(note: 'This method is implemented using JavaScript.'),
@@ -1737,11 +1737,11 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<int?> getContentWidth() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getContentWidth.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getContentWidth.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.zoomBy}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.zoomBy}
   ///Performs a zoom operation in this WebView.
   ///
   ///[zoomFactor] represents the zoom factor to apply. On Android, the zoom factor will be clamped to the Webview's zoom limits and, also, this value must be in the range 0.01 (excluded) to 100.0 (included).
@@ -1749,7 +1749,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///[animated] `true` to animate the transition to the new scale, `false` to make the transition immediate.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.zoomBy.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.zoomBy.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1776,17 +1776,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     @SupportedPlatforms(platforms: [IOSPlatform()]) bool animated = false,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.zoomBy.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.zoomBy.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getOriginalUrl}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getOriginalUrl}
   ///Gets the URL that was originally requested for the current page.
-  ///This is not always the same as the URL passed to [InAppWebView.onLoadStart] because although the load for that URL has begun,
+  ///This is not always the same as the URL passed to [CygnusWebView.onLoadStart] because although the load for that URL has begun,
   ///the current page may not have changed. Also, there may have been redirects resulting in a different URL to that originally requested.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getOriginalUrl.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getOriginalUrl.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1812,17 +1812,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<WebUri?> getOriginalUrl() {
+  Future<CygnusWebUri?> getOriginalUrl() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getOriginalUrl.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getOriginalUrl.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getZoomScale}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getZoomScale}
   ///Gets the current zoom scale of the WebView.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getZoomScale.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getZoomScale.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -1845,15 +1845,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<double?> getZoomScale() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getZoomScale.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getZoomScale.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getSelectedText}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getSelectedText}
   ///Gets the selected text.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getSelectedText.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getSelectedText.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(note: 'This method is implemented using JavaScript.'),
@@ -1865,15 +1865,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<String?> getSelectedText() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getSelectedText.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getSelectedText.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getHitTestResult}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getHitTestResult}
   ///Gets the hit result for hitting an HTML elements.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getHitTestResult.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getHitTestResult.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1891,13 +1891,13 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<InAppWebViewHitTestResult?> getHitTestResult() {
+  Future<CygnusWebViewHitTestResult?> getHitTestResult() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getHitTestResult.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getHitTestResult.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestFocus}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestFocus}
   ///Call this method when you want to try the WebView to be the first responder.
   ///
   ///On Android, call this to try to give focus to the WebView and
@@ -1908,7 +1908,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///Returns `true` whether this WebView actually took focus; otherwise, `false`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.requestFocus.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.requestFocus.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1936,20 +1936,20 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool?> requestFocus({
     @SupportedPlatforms(platforms: [AndroidPlatform()])
-    FocusDirection? direction,
+    CygnusFocusDirection? direction,
     @SupportedPlatforms(platforms: [AndroidPlatform()])
-    InAppWebViewRect? previouslyFocusedRect,
+    CygnusWebViewRect? previouslyFocusedRect,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.requestFocus.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.requestFocus.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearFocus}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearFocus}
   ///Clears the current focus. On iOS and Android native WebView, it will clear also, for example, the current text selection.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.clearFocus.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.clearFocus.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1978,15 +1978,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> clearFocus() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.clearFocus.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.clearFocus.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setInputMethodEnabled}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setInputMethodEnabled}
   ///Enables/Disables the input method (system-supplied keyboard) whilst interacting with the webview.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setInputMethodEnabled.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setInputMethodEnabled.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -1998,15 +1998,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> setInputMethodEnabled(bool enabled) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setInputMethodEnabled.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setInputMethodEnabled.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.showInputMethod}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.showInputMethod}
   ///Explicitly request that the current input method's soft input area be shown to the user, if needed.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.showInputMethod.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.showInputMethod.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2018,15 +2018,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> showInputMethod() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.showInputMethod.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.showInputMethod.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.hideInputMethod}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.hideInputMethod}
   ///Request to hide the soft input view from the context of the view that is currently accepting input.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.hideInputMethod.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.hideInputMethod.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2043,27 +2043,27 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> hideInputMethod() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.hideInputMethod.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.hideInputMethod.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setContextMenu}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setContextMenu}
   ///Sets or updates the WebView context menu to be used next time it will appear.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setContextMenu.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setContextMenu.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform(), IOSPlatform()])
-  Future<void> setContextMenu(ContextMenu? contextMenu) {
+  Future<void> setContextMenu(CygnusContextMenu? contextMenu) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setContextMenu.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setContextMenu.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestFocusNodeHref}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestFocusNodeHref}
   ///Requests the anchor or image element URL at the last tapped point.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.requestFocusNodeHref.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.requestFocusNodeHref.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2074,17 +2074,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       IOSPlatform(note: 'This method is implemented using JavaScript.'),
     ],
   )
-  Future<RequestFocusNodeHrefResult?> requestFocusNodeHref() {
+  Future<CygnusRequestFocusNodeHrefResult?> requestFocusNodeHref() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.requestFocusNodeHref.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.requestFocusNodeHref.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestImageRef}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestImageRef}
   ///Requests the URL of the image last touched by the user.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.requestImageRef.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.requestImageRef.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2095,17 +2095,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       IOSPlatform(note: 'This method is implemented using JavaScript.'),
     ],
   )
-  Future<RequestImageRefResult?> requestImageRef() {
+  Future<CygnusRequestImageRefResult?> requestImageRef() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.requestImageRef.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.requestImageRef.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getMetaTags}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getMetaTags}
   ///Returns the list of `<meta>` tags of the current WebView.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getMetaTags.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getMetaTags.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(note: 'This method is implemented using JavaScript.'),
@@ -2116,18 +2116,18 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       WindowsPlatform(note: 'This method is implemented using JavaScript.'),
     ],
   )
-  Future<List<MetaTag>> getMetaTags() {
+  Future<List<CygnusMetaTag>> getMetaTags() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getMetaTags.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getMetaTags.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getMetaThemeColor}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getMetaThemeColor}
   ///Returns an instance of [Color] representing the `content` value of the
   ///`<meta name="theme-color" content="">` tag of the current WebView, if available, otherwise `null`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getMetaThemeColor.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getMetaThemeColor.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(note: 'This method is implemented using JavaScript.'),
@@ -2154,15 +2154,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<Color?> getMetaThemeColor() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getMetaThemeColor.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getMetaThemeColor.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getScrollX}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getScrollX}
   ///Returns the scrolled left position of the current WebView.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getScrollX.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getScrollX.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2187,15 +2187,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<int?> getScrollX() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getScrollX.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getScrollX.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getScrollY}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getScrollY}
   ///Returns the scrolled top position of the current WebView.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getScrollY.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getScrollY.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2220,15 +2220,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<int?> getScrollY() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getScrollY.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getScrollY.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getCertificate}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getCertificate}
   ///Gets the SSL certificate for the main top-level page or null if there is no certificate (the site is not secure).
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getCertificate.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getCertificate.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2246,17 +2246,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<SslCertificate?> getCertificate() {
+  Future<CygnusSslCertificate?> getCertificate() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getCertificate.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getCertificate.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.addUserScript}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.addUserScript}
   ///Injects the specified [userScript] into the webpage’s content.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.addUserScript.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.addUserScript.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -2265,7 +2265,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
         apiUrl:
             'https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1537448-adduserscript',
         note:
-            "This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
+            "This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
       ),
       LinuxPlatform(
         apiName: 'webkit_user_content_manager_add_script',
@@ -2277,91 +2277,91 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
         apiUrl:
             'https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1537448-adduserscript',
         note:
-            "This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
+            "This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
       ),
       WebPlatform(),
       WindowsPlatform(),
     ],
   )
-  Future<void> addUserScript({required UserScript userScript}) {
+  Future<void> addUserScript({required CygnusUserScript userScript}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.addUserScript.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.addUserScript.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.addUserScripts}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.addUserScripts}
   ///Injects the [userScripts] into the webpage’s content.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.addUserScripts.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.addUserScripts.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
       IOSPlatform(
         note:
-            "This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
+            "This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
       ),
       LinuxPlatform(),
       MacOSPlatform(
         note:
-            "This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
+            "This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
       ),
       WebPlatform(),
       WindowsPlatform(),
     ],
   )
-  Future<void> addUserScripts({required List<UserScript> userScripts}) {
+  Future<void> addUserScripts({required List<CygnusUserScript> userScripts}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.addUserScripts.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.addUserScripts.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.removeUserScript}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.removeUserScript}
   ///Removes the specified [userScript] from the webpage’s content.
   ///User scripts already loaded into the webpage's content cannot be removed. This will have effect only on the next page load.
   ///Returns `true` if [userScript] was in the list, `false` otherwise.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.removeUserScript.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.removeUserScript.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
       IOSPlatform(
         note:
-            "This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
+            "This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
       ),
       LinuxPlatform(),
       MacOSPlatform(
         note:
-            "This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
+            "This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
       ),
       WebPlatform(),
       WindowsPlatform(),
     ],
   )
-  Future<bool> removeUserScript({required UserScript userScript}) {
+  Future<bool> removeUserScript({required CygnusUserScript userScript}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.removeUserScript.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.removeUserScript.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.removeUserScriptsByGroupName}
-  ///Removes all the [UserScript]s with [groupName] as group name from the webpage’s content.
+  ///{@template cygnus_core.CygnusPlatformWebViewController.removeUserScriptsByGroupName}
+  ///Removes all the [CygnusUserScript]s with [groupName] as group name from the webpage’s content.
   ///User scripts already loaded into the webpage's content cannot be removed. This will have effect only on the next page load.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.removeUserScriptsByGroupName.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.removeUserScriptsByGroupName.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
       IOSPlatform(
         note:
-            "This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
+            "This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
       ),
       LinuxPlatform(),
       MacOSPlatform(
         note:
-            "This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
+            "This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
       ),
       WebPlatform(),
       WindowsPlatform(),
@@ -2369,43 +2369,43 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> removeUserScriptsByGroupName({required String groupName}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.removeUserScriptsByGroupName.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.removeUserScriptsByGroupName.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.removeUserScripts}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.removeUserScripts}
   ///Removes the [userScripts] from the webpage’s content.
   ///User scripts already loaded into the webpage's content cannot be removed. This will have effect only on the next page load.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.removeUserScripts.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.removeUserScripts.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
       IOSPlatform(
         note:
-            "This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
+            "This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
       ),
       LinuxPlatform(),
       MacOSPlatform(
         note:
-            "This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
+            "This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
       ),
       WebPlatform(),
       WindowsPlatform(),
     ],
   )
-  Future<void> removeUserScripts({required List<UserScript> userScripts}) {
+  Future<void> removeUserScripts({required List<CygnusUserScript> userScripts}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.removeUserScripts.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.removeUserScripts.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.removeAllUserScripts}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.removeAllUserScripts}
   ///Removes all the user scripts from the webpage’s content.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.removeAllUserScripts.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.removeAllUserScripts.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -2414,7 +2414,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
         apiUrl:
             'https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1536540-removealluserscripts',
         note:
-            "This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
+            "This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
       ),
       LinuxPlatform(
         apiName: 'webkit_user_content_manager_remove_all_scripts',
@@ -2426,7 +2426,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
         apiUrl:
             'https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1536540-removealluserscripts',
         note:
-            "This method will throw an error if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
+            "This method will throw an error if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to window WebViews. This is a limitation of the native WebKit APIs.",
       ),
       WebPlatform(),
       WindowsPlatform(),
@@ -2434,15 +2434,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> removeAllUserScripts() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.removeAllUserScripts.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.removeAllUserScripts.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.hasUserScript}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.hasUserScript}
   ///Returns `true` if the [userScript] has been already added, otherwise `false`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.hasUserScript.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.hasUserScript.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -2452,13 +2452,13 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       WindowsPlatform(),
     ],
   )
-  bool hasUserScript({required UserScript userScript}) {
+  bool hasUserScript({required CygnusUserScript userScript}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.hasUserScript.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.hasUserScript.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.callAsyncJavaScript}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.callAsyncJavaScript}
   ///Executes the specified string as an asynchronous JavaScript function.
   ///
   ///[functionBody] is the JavaScript string to use as the function body.
@@ -2476,15 +2476,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///Instead, on Android, it will run the [source] code into an iframe.
   ///This parameter doesn’t apply to changes you make to the underlying web content, such as the document’s DOM structure.
   ///Those changes remain visible to all scripts, regardless of which content world you specify.
-  ///For more information about content worlds, see [ContentWorld].
+  ///For more information about content worlds, see [CygnusContentWorld].
   ///
-  ///**NOTE**: This method shouldn't be called in the [PlatformWebViewCreationParams.onWebViewCreated] or [PlatformWebViewCreationParams.onLoadStart] events,
+  ///**NOTE**: This method shouldn't be called in the [CygnusPlatformWebViewCreationParams.onWebViewCreated] or [CygnusPlatformWebViewCreationParams.onLoadStart] events,
   ///because, in these events, the `WebView` is not ready to handle it yet.
-  ///Instead, you should call this method, for example, inside the [PlatformWebViewCreationParams.onLoadStop] event or in any other events
+  ///Instead, you should call this method, for example, inside the [CygnusPlatformWebViewCreationParams.onLoadStop] event or in any other events
   ///where you know the page is ready "enough".
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.callAsyncJavaScript.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.callAsyncJavaScript.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(available: '21'),
@@ -2511,17 +2511,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<CallAsyncJavaScriptResult?> callAsyncJavaScript({
+  Future<CygnusCallAsyncJavaScriptResult?> callAsyncJavaScript({
     required String functionBody,
     Map<String, dynamic> arguments = const <String, dynamic>{},
-    ContentWorld? contentWorld,
+    CygnusContentWorld? contentWorld,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.callAsyncJavaScript.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.callAsyncJavaScript.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.saveWebArchive}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.saveWebArchive}
   ///Saves the current WebView as a web archive.
   ///Returns the file path under which the web archive file was saved, or `null` if saving the file failed.
   ///
@@ -2531,7 +2531,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///If `true`, [filePath] is assumed to be a directory in which a filename will be chosen according to the URL of the current page.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.saveWebArchive.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.saveWebArchive.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2539,24 +2539,24 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
         apiUrl:
             'https://developer.android.com/reference/android/webkit/WebView#saveWebArchive(java.lang.String,%20boolean,%20android.webkit.ValueCallback%3Cjava.lang.String%3E)',
         note:
-            'If [autoname] is `false`, the [filePath] must ends with the [WebArchiveFormat.MHT] file extension.',
+            'If [autoname] is `false`, the [filePath] must ends with the [CygnusWebArchiveFormat.MHT] file extension.',
       ),
       IOSPlatform(
         available: '14.0',
         note:
-            'If [autoname] is `false`, the [filePath] must ends with the [WebArchiveFormat.WEBARCHIVE] file extension.',
+            'If [autoname] is `false`, the [filePath] must ends with the [CygnusWebArchiveFormat.WEBARCHIVE] file extension.',
       ),
       LinuxPlatform(
         apiName: 'webkit_web_view_save_to_file',
         apiUrl:
             'https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.save_to_file.html',
         note:
-            'If [autoname] is `false`, the [filePath] must ends with the [WebArchiveFormat.MHT] file extension.',
+            'If [autoname] is `false`, the [filePath] must ends with the [CygnusWebArchiveFormat.MHT] file extension.',
       ),
       MacOSPlatform(
         available: '11.0',
         note:
-            'If [autoname] is `false`, the [filePath] must ends with the [WebArchiveFormat.WEBARCHIVE] file extension.',
+            'If [autoname] is `false`, the [filePath] must ends with the [CygnusWebArchiveFormat.WEBARCHIVE] file extension.',
       ),
     ],
   )
@@ -2565,15 +2565,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     bool autoname = false,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.saveWebArchive.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.saveWebArchive.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.showSaveAsUI}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.showSaveAsUI}
   ///Shows the Save As UI for the current document.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.showSaveAsUI.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.showSaveAsUI.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -2583,17 +2583,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<SaveAsUIResult?> showSaveAsUI() {
+  Future<CygnusSaveAsUIResult?> showSaveAsUI() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.showSaveAsUI.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.showSaveAsUI.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.isSecureContext}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isSecureContext}
   ///Indicates whether the webpage context is capable of using features that require [secure contexts](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts).
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.isSecureContext.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.isSecureContext.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2613,20 +2613,20 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> isSecureContext() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.isSecureContext.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.isSecureContext.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.createWebMessageChannel}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.createWebMessageChannel}
   ///Creates a message channel to communicate with JavaScript and returns the message channel with ports that represent the endpoints of this message channel.
   ///The HTML5 message channel functionality is described [here](https://html.spec.whatwg.org/multipage/comms.html#messagechannel).
   ///
   ///The returned message channels are entangled and already in started state.
   ///
-  ///This method should be called when the page is loaded, for example, when the [PlatformWebViewCreationParams.onLoadStop] is fired, otherwise the [PlatformWebMessageChannel] won't work.
+  ///This method should be called when the page is loaded, for example, when the [CygnusPlatformWebViewCreationParams.onLoadStop] is fired, otherwise the [CygnusPlatformWebMessageChannel] won't work.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.createWebMessageChannel.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.createWebMessageChannel.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2634,7 +2634,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
         apiUrl:
             'https://developer.android.com/reference/androidx/webkit/WebViewCompat#createWebMessageChannel(android.webkit.WebView)',
         note:
-            'This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.CREATE_WEB_MESSAGE_CHANNEL].',
+            'This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.CREATE_WEB_MESSAGE_CHANNEL].',
       ),
       IOSPlatform(note: 'This method is implemented using JavaScript.'),
       MacOSPlatform(note: 'This method is implemented using JavaScript.'),
@@ -2642,20 +2642,20 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       WindowsPlatform(note: 'Implemented via JavaScript MessageChannel API.'),
     ],
   )
-  Future<PlatformWebMessageChannel?> createWebMessageChannel() {
+  Future<CygnusPlatformWebMessageChannel?> createWebMessageChannel() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.createWebMessageChannel.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.createWebMessageChannel.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.postWebMessage}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.postWebMessage}
   ///Post a message to main frame. The embedded application can restrict the messages to a certain target origin.
   ///See [HTML5 spec](https://html.spec.whatwg.org/multipage/comms.html#posting-messages) for how target origin can be used.
   ///
   ///A target origin can be set as a wildcard ("*"). However this is not recommended.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.postWebMessage.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.postWebMessage.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2663,7 +2663,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
         apiUrl:
             'https://developer.android.com/reference/androidx/webkit/WebViewCompat#postWebMessage(android.webkit.WebView,%20androidx.webkit.WebMessageCompat,%20android.net.Uri)',
         note:
-            'This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.POST_WEB_MESSAGE].',
+            'This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.POST_WEB_MESSAGE].',
       ),
       IOSPlatform(note: 'This method is implemented using JavaScript.'),
       MacOSPlatform(note: 'This method is implemented using JavaScript.'),
@@ -2672,22 +2672,22 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     ],
   )
   Future<void> postWebMessage({
-    required WebMessage message,
-    WebUri? targetOrigin,
+    required CygnusWebMessage message,
+    CygnusWebUri? targetOrigin,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.postWebMessage.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.postWebMessage.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.addWebMessageListener}
-  ///Adds a [PlatformWebMessageListener] to the WebView and injects a JavaScript object into each frame that the [PlatformWebMessageListener] will listen on.
+  ///{@template cygnus_core.CygnusPlatformWebViewController.addWebMessageListener}
+  ///Adds a [CygnusPlatformWebMessageListener] to the WebView and injects a JavaScript object into each frame that the [CygnusPlatformWebMessageListener] will listen on.
   ///
-  ///The injected JavaScript object will be named [PlatformWebMessageListener.jsObjectName] in the global scope.
-  ///This will inject the JavaScript object in any frame whose origin matches [PlatformWebMessageListener.allowedOriginRules]
+  ///The injected JavaScript object will be named [CygnusPlatformWebMessageListener.jsObjectName] in the global scope.
+  ///This will inject the JavaScript object in any frame whose origin matches [CygnusPlatformWebMessageListener.allowedOriginRules]
   ///for every navigation after this call, and the JavaScript object will be available immediately when the page begins to load.
   ///
-  ///Each [PlatformWebMessageListener.allowedOriginRules] entry must follow the format `SCHEME "://" [ HOSTNAME_PATTERN [ ":" PORT ] ]`, each part is explained in the below table:
+  ///Each [CygnusPlatformWebMessageListener.allowedOriginRules] entry must follow the format `SCHEME "://" [ HOSTNAME_PATTERN [ ":" PORT ] ]`, each part is explained in the below table:
   ///
   ///<table>
   ///   <colgroup>
@@ -2806,7 +2806,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///
   ///We start the communication between JavaScript and the app from the JavaScript side.
   ///In order to send message from the app to JavaScript, it needs to post a message from JavaScript first,
-  ///so the app will have a [PlatformJavaScriptReplyProxy] object to respond. Example:
+  ///so the app will have a [CygnusPlatformJavaScriptReplyProxy] object to respond. Example:
   ///
   ///```javascript
   /// // Web page (in JavaScript)
@@ -2819,10 +2819,10 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///
   ///```dart
   /// // Flutter App
-  /// child: InAppWebView(
+  /// child: CygnusWebView(
   ///   onWebViewCreated: (controller) async {
-  ///     if (defaultTargetPlatform != TargetPlatform.android || await WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) {
-  ///       await controller.addWebMessageListener(WebMessageListener(
+  ///     if (defaultTargetPlatform != TargetPlatform.android || await CygnusWebViewFeature.isFeatureSupported(CygnusWebViewFeature.WEB_MESSAGE_LISTENER)) {
+  ///       await controller.addWebMessageListener(CygnusWebMessageListener(
   ///         jsObjectName: "myObject",
   ///         onPostMessage: (message, sourceOrigin, isMainFrame, replyProxy) {
   ///           // do something about message, sourceOrigin and isMainFrame.
@@ -2830,21 +2830,21 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///         },
   ///       ));
   ///     }
-  ///     await controller.loadUrl(urlRequest: URLRequest(url: WebUri("https://www.example.com")));
+  ///     await controller.loadUrl(urlRequest: CygnusURLRequest(url: CygnusWebUri("https://www.example.com")));
   ///   },
   /// ),
   ///```
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.addWebMessageListener.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.addWebMessageListener.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
-        apiName: 'WebViewCompat.WebMessageListener',
+        apiName: 'WebViewCompat.CygnusWebMessageListener',
         apiUrl:
-            'https://developer.android.com/reference/androidx/webkit/WebViewCompat#addWebMessageListener(android.webkit.WebView,%20java.lang.String,%20java.util.Set%3Cjava.lang.String%3E,%20androidx.webkit.WebViewCompat.WebMessageListener)',
+            'https://developer.android.com/reference/androidx/webkit/WebViewCompat#addWebMessageListener(android.webkit.WebView,%20java.lang.String,%20java.util.Set%3Cjava.lang.String%3E,%20androidx.webkit.WebViewCompat.CygnusWebMessageListener)',
         note:
-            'This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.WEB_MESSAGE_LISTENER].',
+            'This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.WEB_MESSAGE_LISTENER].',
       ),
       IOSPlatform(note: 'This method is implemented using JavaScript.'),
       LinuxPlatform(
@@ -2858,18 +2858,18 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     ],
   )
   Future<void> addWebMessageListener(
-    PlatformWebMessageListener webMessageListener,
+    CygnusPlatformWebMessageListener webMessageListener,
   ) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.addWebMessageListener.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.addWebMessageListener.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.hasWebMessageListener}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.hasWebMessageListener}
   ///Returns `true` if the [webMessageListener] has been already added, otherwise `false`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.hasWebMessageListener.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.hasWebMessageListener.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -2878,17 +2878,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       MacOSPlatform(),
     ],
   )
-  bool hasWebMessageListener(PlatformWebMessageListener webMessageListener) {
+  bool hasWebMessageListener(CygnusPlatformWebMessageListener webMessageListener) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.hasWebMessageListener.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.hasWebMessageListener.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.canScrollVertically}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.canScrollVertically}
   ///Returns `true` if the webpage can scroll vertically, otherwise `false`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.canScrollVertically.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.canScrollVertically.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -2900,15 +2900,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> canScrollVertically() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.canScrollVertically.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.canScrollVertically.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.canScrollHorizontally}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.canScrollHorizontally}
   ///Returns `true` if the webpage can scroll horizontally, otherwise `false`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.canScrollHorizontally.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.canScrollHorizontally.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -2920,21 +2920,21 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> canScrollHorizontally() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.canScrollHorizontally.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.canScrollHorizontally.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.startSafeBrowsing}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.startSafeBrowsing}
   ///Starts Safe Browsing initialization.
   ///
   ///URL loads are not guaranteed to be protected by Safe Browsing until after the this method returns true.
   ///Safe Browsing is not fully supported on all devices. For those devices this method will returns false.
   ///
-  ///This should not be called if Safe Browsing has been disabled by manifest tag or [AndroidInAppWebViewOptions.safeBrowsingEnabled].
+  ///This should not be called if Safe Browsing has been disabled by manifest tag or [CygnusAndroidWebViewOptions.safeBrowsingEnabled].
   ///This prepares resources used for Safe Browsing.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.startSafeBrowsing.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.startSafeBrowsing.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2942,21 +2942,21 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
         apiUrl:
             'https://developer.android.com/reference/android/webkit/WebView#startSafeBrowsing(android.content.Context,%20android.webkit.ValueCallback%3Cjava.lang.Boolean%3E)',
         note:
-            'This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.START_SAFE_BROWSING].',
+            'This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.START_SAFE_BROWSING].',
       ),
     ],
   )
   Future<bool> startSafeBrowsing() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.startSafeBrowsing.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.startSafeBrowsing.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearSslPreferences}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearSslPreferences}
   ///Clears the SSL preferences table stored in response to proceeding with SSL certificate errors.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.clearSslPreferences.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.clearSslPreferences.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2973,16 +2973,16 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> clearSslPreferences() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.clearSslPreferences.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.clearSslPreferences.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.pause}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.pause}
   ///Does a best-effort attempt to pause any processing that can be paused safely, such as animations and geolocation. Note that this call does not pause JavaScript.
-  ///To pause JavaScript globally, use [PlatformInAppWebViewController.pauseTimers]. To resume WebView, call [resume].
+  ///To pause JavaScript globally, use [CygnusPlatformWebViewController.pauseTimers]. To resume WebView, call [resume].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.pause.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.pause.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2999,15 +2999,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> pause() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.pause.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.pause.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.resume}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.resume}
   ///Resumes a WebView after a previous call to [pause].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.resume.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.resume.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -3024,18 +3024,18 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> resume() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.resume.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.resume.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.pageDown}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.pageDown}
   ///Scrolls the contents of this WebView down by half the page size.
   ///Returns `true` if the page was scrolled.
   ///
   ///[bottom] `true` to jump to bottom of page.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.pageDown.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.pageDown.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -3047,18 +3047,18 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> pageDown({required bool bottom}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.pageDown.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.pageDown.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.pageUp}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.pageUp}
   ///Scrolls the contents of this WebView up by half the view size.
   ///Returns `true` if the page was scrolled.
   ///
   ///[top] `true` to jump to the top of the page.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.pageUp.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.pageUp.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -3070,16 +3070,16 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> pageUp({required bool top}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.pageUp.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.pageUp.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.zoomIn}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.zoomIn}
   ///Performs zoom in in this WebView.
   ///Returns `true` if zoom in succeeds, `false` if no zoom changes.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.zoomIn.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.zoomIn.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -3091,16 +3091,16 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> zoomIn() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.zoomIn.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.zoomIn.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.zoomOut}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.zoomOut}
   ///Performs zoom out in this WebView.
   ///Returns `true` if zoom out succeeds, `false` if no zoom changes.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.zoomOut.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.zoomOut.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -3112,15 +3112,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> zoomOut() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.zoomOut.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.zoomOut.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearHistory}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearHistory}
   ///Clears the internal back/forward list.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.clearHistory.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.clearHistory.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -3132,17 +3132,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> clearHistory() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.clearHistory.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.clearHistory.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearFormData}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearFormData}
   ///Removes the autocomplete popup from the currently focused form field, if present.
   ///Note this only affects the display of the autocomplete popup,
   ///it does not remove any saved form data from this WebView's store.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.clearFormData.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.clearFormData.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -3154,15 +3154,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> clearFormData() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.clearFormData.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.clearFormData.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.reloadFromOrigin}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.reloadFromOrigin}
   ///Reloads the current page, performing end-to-end revalidation using cache-validating conditionals if possible.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.reloadFromOrigin.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.reloadFromOrigin.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -3184,18 +3184,18 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> reloadFromOrigin() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.reloadFromOrigin.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.reloadFromOrigin.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.createPdf}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.createPdf}
   ///Generates PDF data from the web view’s contents asynchronously.
   ///Returns `null` if a problem occurred.
   ///
   ///[pdfConfiguration] represents the object that specifies the portion of the web view to capture as PDF data.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.createPdf.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.createPdf.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -3220,20 +3220,20 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   Future<Uint8List?> createPdf({
     @Deprecated("Use pdfConfiguration instead")
     // ignore: deprecated_member_use_from_same_package
-    IOSWKPDFConfiguration? iosWKPdfConfiguration,
-    PDFConfiguration? pdfConfiguration,
+    CygnusIOSWKPDFConfiguration? iosWKPdfConfiguration,
+    CygnusPDFConfiguration? pdfConfiguration,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.createPdf.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.createPdf.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.createWebArchiveData}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.createWebArchiveData}
   ///Creates a web archive of the web view’s current contents asynchronously.
   ///Returns `null` if a problem occurred.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.createWebArchiveData.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.createWebArchiveData.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -3252,15 +3252,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<Uint8List?> createWebArchiveData() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.createWebArchiveData.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.createWebArchiveData.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.hasOnlySecureContent}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.hasOnlySecureContent}
   ///A Boolean value indicating whether all resources on the page have been loaded over securely encrypted connections.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.hasOnlySecureContent.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.hasOnlySecureContent.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -3277,15 +3277,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> hasOnlySecureContent() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.hasOnlySecureContent.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.hasOnlySecureContent.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.pauseAllMediaPlayback}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.pauseAllMediaPlayback}
   ///Pauses playback of all media in the web view.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.pauseAllMediaPlayback.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.pauseAllMediaPlayback.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -3310,18 +3310,18 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> pauseAllMediaPlayback() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.pauseAllMediaPlayback.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.pauseAllMediaPlayback.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setAllMediaPlaybackSuspended}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setAllMediaPlaybackSuspended}
   ///Changes whether the webpage is suspending playback of all media in the page.
   ///Pass `true` to pause all media the web view is playing. Neither the user nor the webpage can resume playback until you call this method again with `false`.
   ///
   ///[suspended] represents a [bool] value that indicates whether the webpage should suspend media playback.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setAllMediaPlaybackSuspended.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setAllMediaPlaybackSuspended.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -3346,15 +3346,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> setAllMediaPlaybackSuspended({required bool suspended}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setAllMediaPlaybackSuspended.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setAllMediaPlaybackSuspended.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.closeAllMediaPresentations}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.closeAllMediaPresentations}
   ///Closes all media the web view is presenting, including picture-in-picture video and fullscreen video.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.closeAllMediaPresentations.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.closeAllMediaPresentations.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -3379,17 +3379,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> closeAllMediaPresentations() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.closeAllMediaPresentations.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.closeAllMediaPresentations.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestMediaPlaybackState}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestMediaPlaybackState}
   ///Requests the playback status of media in the web view.
-  ///Returns a [MediaPlaybackState] that indicates whether the media in the web view is playing, paused, or suspended.
-  ///If there’s no media in the web view to play, this method provides [MediaPlaybackState.NONE].
+  ///Returns a [CygnusMediaPlaybackState] that indicates whether the media in the web view is playing, paused, or suspended.
+  ///If there’s no media in the web view to play, this method provides [CygnusMediaPlaybackState.NONE].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.requestMediaPlaybackState.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.requestMediaPlaybackState.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -3412,17 +3412,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<MediaPlaybackState?> requestMediaPlaybackState() {
+  Future<CygnusMediaPlaybackState?> requestMediaPlaybackState() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.requestMediaPlaybackState.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.requestMediaPlaybackState.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.isInFullscreen}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isInFullscreen}
   ///Returns `true` if the `WebView` is in fullscreen mode, otherwise `false`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.isInFullscreen.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.isInFullscreen.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -3433,82 +3433,82 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> isInFullscreen() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.isInFullscreen.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.isInFullscreen.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestEnterFullscreen}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestEnterFullscreen}
   ///Requests the WebView to enter fullscreen mode.
   ///This dispatches a fullscreen request to the WPE backend.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.requestEnterFullscreen.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.requestEnterFullscreen.supported_platforms}
   @SupportedPlatforms(platforms: [LinuxPlatform()])
   Future<void> requestEnterFullscreen() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.requestEnterFullscreen.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.requestEnterFullscreen.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestExitFullscreen}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestExitFullscreen}
   ///Requests the WebView to exit fullscreen mode.
   ///This dispatches an exit fullscreen request to the WPE backend.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.requestExitFullscreen.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.requestExitFullscreen.supported_platforms}
   @SupportedPlatforms(platforms: [LinuxPlatform()])
   Future<void> requestExitFullscreen() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.requestExitFullscreen.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.requestExitFullscreen.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setVisible}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setVisible}
   ///Sets the visibility state of the WebView.
   ///When set to `false`, the WebView is marked as hidden which may reduce resource usage.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setVisible.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setVisible.supported_platforms}
   @SupportedPlatforms(platforms: [LinuxPlatform()])
   Future<void> setVisible({required bool visible}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setVisible.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setVisible.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setTargetRefreshRate}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setTargetRefreshRate}
   ///Sets the target refresh rate for the WebView in Hz.
   ///A value of 0 means the default rate.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setTargetRefreshRate.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setTargetRefreshRate.supported_platforms}
   @SupportedPlatforms(platforms: [LinuxPlatform()])
   Future<void> setTargetRefreshRate({required int rate}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setTargetRefreshRate.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setTargetRefreshRate.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getTargetRefreshRate}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getTargetRefreshRate}
   ///Gets the current target refresh rate for the WebView in Hz.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getTargetRefreshRate.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getTargetRefreshRate.supported_platforms}
   @SupportedPlatforms(platforms: [LinuxPlatform()])
   Future<int> getTargetRefreshRate() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getTargetRefreshRate.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getTargetRefreshRate.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getScreenScale}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getScreenScale}
   ///Gets the device pixel ratio (scale factor) of the screen where the WebView is displayed.
   ///
   ///The scale factor represents the ratio between physical pixels and logical pixels.
   ///For example, on a HiDPI display, this might return 2.0.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getScreenScale.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getScreenScale.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       LinuxPlatform(
@@ -3520,18 +3520,18 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<double> getScreenScale() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getScreenScale.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getScreenScale.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setScreenScale}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setScreenScale}
   ///Sets the device pixel ratio (scale factor) for the screen where the WebView is displayed.
   ///
   ///The scale factor represents the ratio between physical pixels and logical pixels.
   ///Setting this affects how content is rendered on HiDPI displays.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setScreenScale.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setScreenScale.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       LinuxPlatform(
@@ -3543,18 +3543,18 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> setScreenScale({required double scale}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setScreenScale.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setScreenScale.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.isVisible}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isVisible}
   ///Returns whether the WebView is currently visible.
   ///
   ///On Linux, this checks the WPE view visibility state.
   ///For the legacy FDO backend, this returns the last known visibility state.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.isVisible.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.isVisible.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       LinuxPlatform(
@@ -3566,42 +3566,42 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> isVisible() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.isVisible.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.isVisible.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestPointerLock}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestPointerLock}
   ///Requests pointer lock for the WebView.
   ///Pointer lock is useful for games and immersive applications.
   ///Returns `true` if the request was granted, `false` otherwise.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.requestPointerLock.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.requestPointerLock.supported_platforms}
   @SupportedPlatforms(platforms: [LinuxPlatform()])
   Future<bool> requestPointerLock() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.requestPointerLock.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.requestPointerLock.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.requestPointerUnlock}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.requestPointerUnlock}
   ///Releases the pointer lock for the WebView.
   ///Returns `true` if the unlock was successful, `false` otherwise.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.requestPointerUnlock.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.requestPointerUnlock.supported_platforms}
   @SupportedPlatforms(platforms: [LinuxPlatform()])
   Future<bool> requestPointerUnlock() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.requestPointerUnlock.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.requestPointerUnlock.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getCameraCaptureState}
-  ///Returns a [MediaCaptureState] that indicates whether the webpage is using the camera to capture images or video.
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getCameraCaptureState}
+  ///Returns a [CygnusMediaCaptureState] that indicates whether the webpage is using the camera to capture images or video.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getCameraCaptureState.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getCameraCaptureState.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -3624,17 +3624,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<MediaCaptureState?> getCameraCaptureState() {
+  Future<CygnusMediaCaptureState?> getCameraCaptureState() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getCameraCaptureState.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getCameraCaptureState.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setCameraCaptureState}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setCameraCaptureState}
   ///Changes whether the webpage is using the camera to capture images or video.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setCameraCaptureState.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setCameraCaptureState.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -3659,17 +3659,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<void> setCameraCaptureState({required MediaCaptureState state}) {
+  Future<void> setCameraCaptureState({required CygnusMediaCaptureState state}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setCameraCaptureState.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setCameraCaptureState.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getMicrophoneCaptureState}
-  ///Returns a [MediaCaptureState] that indicates whether the webpage is using the microphone to capture audio.
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getMicrophoneCaptureState}
+  ///Returns a [CygnusMediaCaptureState] that indicates whether the webpage is using the microphone to capture audio.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getMicrophoneCaptureState.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getMicrophoneCaptureState.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -3692,17 +3692,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<MediaCaptureState?> getMicrophoneCaptureState() {
+  Future<CygnusMediaCaptureState?> getMicrophoneCaptureState() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getMicrophoneCaptureState.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getMicrophoneCaptureState.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setMicrophoneCaptureState}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setMicrophoneCaptureState}
   ///Changes whether the webpage is using the microphone to capture audio.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setMicrophoneCaptureState.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setMicrophoneCaptureState.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -3727,20 +3727,20 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<void> setMicrophoneCaptureState({required MediaCaptureState state}) {
+  Future<void> setMicrophoneCaptureState({required CygnusMediaCaptureState state}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setMicrophoneCaptureState.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setMicrophoneCaptureState.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.isPlayingAudio}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isPlayingAudio}
   ///Returns whether the webpage is playing audio.
   ///
   ///Returns `true` if the page is playing audio, `false` otherwise.
   ///This is useful for providing visual feedback when a page is producing sound.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.isPlayingAudio.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.isPlayingAudio.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       LinuxPlatform(
@@ -3753,17 +3753,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> isPlayingAudio() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.isPlayingAudio.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.isPlayingAudio.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.isMuted}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isMuted}
   ///Returns whether the webpage audio is muted.
   ///
   ///Returns `true` if the page audio is muted, `false` otherwise.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.isMuted.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.isMuted.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       LinuxPlatform(
@@ -3776,18 +3776,18 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> isMuted() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.isMuted.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.isMuted.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setMuted}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setMuted}
   ///Sets the mute state of the webpage.
   ///
   ///When [muted] is `true`, the webpage audio will be muted.
   ///When [muted] is `false`, the webpage audio will be unmuted.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setMuted.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setMuted.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       LinuxPlatform(
@@ -3800,15 +3800,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> setMuted({required bool muted}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setMuted.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setMuted.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.terminateWebProcess}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.terminateWebProcess}
   ///Terminates the web process associated to the WebView.
   ///
   ///When the web process is terminated using this method, the
-  ///[PlatformWebViewCreationParams.onRenderProcessGone] callback is invoked
+  ///[CygnusPlatformWebViewCreationParams.onRenderProcessGone] callback is invoked
   ///with the reason set to indicate the process was terminated by the API.
   ///
   ///**Note**: This is a destructive operation that will crash the web content.
@@ -3816,7 +3816,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///misbehaving web process.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.terminateWebProcess.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.terminateWebProcess.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       LinuxPlatform(
@@ -3829,11 +3829,11 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> terminateWebProcess() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.terminateWebProcess.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.terminateWebProcess.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.loadSimulatedRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.loadSimulatedRequest}
   ///Loads the web content from the data you provide as if the data were the response to the request.
   ///If [urlResponse] is `null`, it loads the web content from the data as an utf8 encoded HTML string as the response to the request.
   ///
@@ -3845,15 +3845,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///
   ///Example:
   ///```dart
-  ///controller.loadSimulatedRequest(urlRequest: URLRequest(
-  ///    url: WebUri("https://flutter.dev"),
+  ///controller.loadSimulatedRequest(urlRequest: CygnusURLRequest(
+  ///    url: CygnusWebUri("https://flutter.dev"),
   ///  ),
   ///  data: Uint8List.fromList(utf8.encode("<h1>Hello</h1>"))
   ///);
   ///```
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.loadSimulatedRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.loadSimulatedRequest.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -3875,21 +3875,21 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     ],
   )
   Future<void> loadSimulatedRequest({
-    required URLRequest urlRequest,
+    required CygnusURLRequest urlRequest,
     required Uint8List data,
-    URLResponse? urlResponse,
+    CygnusURLResponse? urlResponse,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.loadSimulatedRequest.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.loadSimulatedRequest.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.openDevTools}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.openDevTools}
   ///Opens the DevTools window for the current document in the WebView.
   ///Does nothing if run when the DevTools window is already open.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.openDevTools.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.openDevTools.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -3901,11 +3901,11 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> openDevTools() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.openDevTools.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.openDevTools.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.callDevToolsProtocolMethod}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.callDevToolsProtocolMethod}
   ///Runs an asynchronous `DevToolsProtocol` method.
   ///
   ///For more information about available methods, navigate to [DevTools Protocol Viewer](https://chromedevtools.github.io/devtools-protocol/tot).
@@ -3920,7 +3920,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///the previous method's completed handler to run before calling the next method.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.callDevToolsProtocolMethod.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.callDevToolsProtocolMethod.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -3935,15 +3935,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     Map<String, dynamic>? parameters,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.callDevToolsProtocolMethod.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.callDevToolsProtocolMethod.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.addDevToolsProtocolEventListener}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.addDevToolsProtocolEventListener}
   ///Subscribe to a `DevToolsProtocol` event.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.addDevToolsProtocolEventListener.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.addDevToolsProtocolEventListener.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -3959,15 +3959,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     required Function(dynamic data) callback,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.addDevToolsProtocolEventListener.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.addDevToolsProtocolEventListener.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.removeDevToolsProtocolEventListener}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.removeDevToolsProtocolEventListener}
   ///Remove an event handler previously added with [addDevToolsProtocolEventListener].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.removeDevToolsProtocolEventListener.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.removeDevToolsProtocolEventListener.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -3982,28 +3982,28 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     required String eventName,
   }) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.removeDevToolsProtocolEventListener.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.removeDevToolsProtocolEventListener.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.isInterfaceSupported}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isInterfaceSupported}
   ///Returns `true` if the WebView supports the specified [interface], otherwise `false`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.isInterfaceSupported.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.isInterfaceSupported.supported_platforms}
   @SupportedPlatforms(platforms: [WindowsPlatform()])
-  Future<bool> isInterfaceSupported(WebViewInterface interface) async {
+  Future<bool> isInterfaceSupported(CygnusWebViewInterface interface) async {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.isInterfaceSupported.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.isInterfaceSupported.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.saveState}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.saveState}
   ///Returns the current state of interaction in a web view so that you can restore
   ///that state later to another web view using the [restoreState] method.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.saveState.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.saveState.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -4029,11 +4029,11 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<Uint8List?> saveState() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.saveState.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.saveState.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.restoreState}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.restoreState}
   ///Restores the state of this WebView from the given [state] returned by the [saveState] method.
   ///If it is called after this WebView has had a chance to build state (load pages, create a back/forward list, etc.),
   ///there may be undesirable side-effects.
@@ -4041,7 +4041,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///Returns `true` if the state was restored successfully, otherwise `false`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.restoreState.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.restoreState.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -4067,27 +4067,27 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> restoreState(Uint8List state) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.restoreState.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.restoreState.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getIFrameId}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getIFrameId}
   ///Returns the iframe `id` attribute used on the Web platform.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getIFrameId.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getIFrameId.supported_platforms}
   @SupportedPlatforms(platforms: [WebPlatform()])
   Future<String?> getIFrameId() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getIFrameId.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getIFrameId.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getViewId}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getViewId}
   ///View ID used internally.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getViewId.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getViewId.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -4099,15 +4099,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   dynamic getViewId() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getViewId.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getViewId.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getDefaultUserAgent}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getDefaultUserAgent}
   ///Gets the default user agent.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getDefaultUserAgent.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getDefaultUserAgent.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -4126,17 +4126,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<String> getDefaultUserAgent() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getDefaultUserAgent.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getDefaultUserAgent.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearClientCertPreferences}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearClientCertPreferences}
   ///Clears the client certificate preferences stored in response to proceeding/cancelling client cert requests.
   ///Note that WebView automatically clears these preferences when the system keychain is updated.
   ///The preferences are shared by all the WebViews that are created by the embedder application.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.clearClientCertPreferences.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.clearClientCertPreferences.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -4149,15 +4149,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> clearClientCertPreferences() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.clearClientCertPreferences.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.clearClientCertPreferences.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getSafeBrowsingPrivacyPolicyUrl}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getSafeBrowsingPrivacyPolicyUrl}
   ///Returns a URL pointing to the privacy policy for Safe Browsing reporting.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getSafeBrowsingPrivacyPolicyUrl.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getSafeBrowsingPrivacyPolicyUrl.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -4165,17 +4165,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
         apiUrl:
             'https://developer.android.com/reference/androidx/webkit/WebViewCompat#getSafeBrowsingPrivacyPolicyUrl()',
         note:
-            'This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.SAFE_BROWSING_PRIVACY_POLICY_URL].',
+            'This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.SAFE_BROWSING_PRIVACY_POLICY_URL].',
       ),
     ],
   )
-  Future<WebUri?> getSafeBrowsingPrivacyPolicyUrl() {
+  Future<CygnusWebUri?> getSafeBrowsingPrivacyPolicyUrl() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getSafeBrowsingPrivacyPolicyUrl.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getSafeBrowsingPrivacyPolicyUrl.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setSafeBrowsingAllowlist}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setSafeBrowsingAllowlist}
   ///Sets the list of hosts (domain names/IP addresses) that are exempt from SafeBrowsing checks. The list is global for all the WebViews.
   ///
   /// Each rule should take one of these:
@@ -4191,7 +4191,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///[hosts] represents the list of hosts. This value must never be `null`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setSafeBrowsingAllowlist.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setSafeBrowsingAllowlist.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -4199,17 +4199,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
         apiUrl:
             'https://developer.android.com/reference/androidx/webkit/WebViewCompat#setSafeBrowsingAllowlist(java.util.Set%3Cjava.lang.String%3E,%20android.webkit.ValueCallback%3Cjava.lang.Boolean%3E)',
         note:
-            'This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.SAFE_BROWSING_ALLOWLIST].',
+            'This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.SAFE_BROWSING_ALLOWLIST].',
       ),
     ],
   )
   Future<bool> setSafeBrowsingAllowlist({required List<String> hosts}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setSafeBrowsingAllowlist.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setSafeBrowsingAllowlist.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getCurrentWebViewPackage}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getCurrentWebViewPackage}
   ///If WebView has already been loaded into the current process this method will return the package that was used to load it.
   ///Otherwise, the package that would be used if the WebView was loaded right now will be returned;
   ///this does not cause WebView to be loaded, so this information may become outdated at any time.
@@ -4219,7 +4219,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///The next time the app starts and loads WebView it will use the new WebView package instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getCurrentWebViewPackage.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getCurrentWebViewPackage.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -4230,13 +4230,13 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       ),
     ],
   )
-  Future<WebViewPackageInfo?> getCurrentWebViewPackage() {
+  Future<CygnusWebViewPackageInfo?> getCurrentWebViewPackage() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getCurrentWebViewPackage.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getCurrentWebViewPackage.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setWebContentsDebuggingEnabled}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setWebContentsDebuggingEnabled}
   ///Enables debugging of web contents (HTML / CSS / JavaScript) loaded into any WebViews of this application.
   ///This flag can be enabled in order to facilitate debugging of web layouts and JavaScript code running inside WebViews.
   ///Please refer to WebView documentation for the debugging guide. The default is `false`.
@@ -4244,7 +4244,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///[debuggingEnabled] whether to enable web contents debugging.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setWebContentsDebuggingEnabled.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setWebContentsDebuggingEnabled.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -4256,11 +4256,11 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> setWebContentsDebuggingEnabled(bool debuggingEnabled) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setWebContentsDebuggingEnabled.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setWebContentsDebuggingEnabled.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getVariationsHeader}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getVariationsHeader}
   ///Gets the WebView variations encoded to be used as the X-Client-Data HTTP header.
   ///
   ///The app is responsible for adding the X-Client-Data header to any request
@@ -4271,7 +4271,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///The string may be empty if the header is not available.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getVariationsHeader.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getVariationsHeader.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -4279,17 +4279,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
         apiUrl:
             'https://developer.android.com/reference/androidx/webkit/WebViewCompat#getVariationsHeader()',
         note:
-            'This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.GET_VARIATIONS_HEADER].',
+            'This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.GET_VARIATIONS_HEADER].',
       ),
     ],
   )
   Future<String?> getVariationsHeader() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getVariationsHeader.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getVariationsHeader.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.isMultiProcessEnabled}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isMultiProcessEnabled}
   ///Returns `true` if WebView is running in multi process mode.
   ///
   ///In Android O and above, WebView may run in "multiprocess" mode.
@@ -4299,7 +4299,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///but is not shared with other application processes.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.isMultiProcessEnabled.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.isMultiProcessEnabled.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -4307,17 +4307,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
         apiUrl:
             'https://developer.android.com/reference/androidx/webkit/WebViewCompat#isMultiProcessEnabled()',
         note:
-            'This method should only be called if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.MULTI_PROCESS].',
+            'This method should only be called if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.MULTI_PROCESS].',
       ),
     ],
   )
   Future<bool> isMultiProcessEnabled() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.isMultiProcessEnabled.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.isMultiProcessEnabled.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.disableWebView}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.disableWebView}
   ///Indicate that the current process does not intend to use WebView,
   ///and that an exception should be thrown if a WebView is created or any other
   ///methods in the `android.webkit` package are used.
@@ -4325,10 +4325,10 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///Applications with multiple processes may wish to call this in processes that
   ///are not intended to use WebView to avoid accidentally incurring the memory usage
   ///of initializing WebView in long-lived processes that have no need for it,
-  ///and to prevent potential data directory conflicts (see [ProcessGlobalConfigSettings.dataDirectorySuffix]).
+  ///and to prevent potential data directory conflicts (see [CygnusProcessGlobalConfigSettings.dataDirectorySuffix]).
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.disableWebView.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.disableWebView.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -4341,17 +4341,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> disableWebView() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.disableWebView.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.disableWebView.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.handlesURLScheme}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.handlesURLScheme}
   ///Returns a Boolean value that indicates whether WebKit natively supports resources with the specified URL scheme.
   ///
   ///[urlScheme] represents the URL scheme associated with the resource.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.handlesURLScheme.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.handlesURLScheme.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -4374,15 +4374,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<bool> handlesURLScheme(String urlScheme) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.handlesURLScheme.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.handlesURLScheme.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.disposeKeepAlive}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.disposeKeepAlive}
   ///Disposes the WebView that is using the [keepAlive] instance for the keep alive feature.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.disposeKeepAlive.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.disposeKeepAlive.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -4392,19 +4392,19 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
       LinuxPlatform(),
     ],
   )
-  Future<void> disposeKeepAlive(InAppWebViewKeepAlive keepAlive) {
+  Future<void> disposeKeepAlive(CygnusWebViewKeepAlive keepAlive) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.disposeKeepAlive.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.disposeKeepAlive.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearAllCache}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearAllCache}
   ///Clears the resource cache. Note that the cache is per-application, so this will clear the cache for all WebViews used.
   ///
   ///[includeDiskFiles] if `false`, only the RAM cache is cleared. The default value is `true`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.clearAllCache.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.clearAllCache.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -4415,11 +4415,11 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> clearAllCache({bool includeDiskFiles = true}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.clearAllCache.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.clearAllCache.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.enableSlowWholeDocumentDraw}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.enableSlowWholeDocumentDraw}
   ///For apps targeting the L release, WebView has a new default behavior that reduces memory footprint and increases
   ///performance by intelligently choosing the portion of the HTML document that needs to be drawn.
   ///These optimizations are transparent to the developers.
@@ -4428,7 +4428,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///Enabling drawing the entire HTML document has a significant performance cost.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.enableSlowWholeDocumentDraw.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.enableSlowWholeDocumentDraw.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -4442,11 +4442,11 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> enableSlowWholeDocumentDraw() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.enableSlowWholeDocumentDraw.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.enableSlowWholeDocumentDraw.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setJavaScriptBridgeName}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setJavaScriptBridgeName}
   ///Sets the name of the JavaScript Bridge object that will be used to interact with the WebView.
   ///This method should be called before any WebViews are created or when there are no WebViews.
   ///Calling this method after a WebView has been created will not change
@@ -4458,7 +4458,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   ///The default name used by this plugin is `flutter_inappwebview`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setJavaScriptBridgeName.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setJavaScriptBridgeName.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -4471,17 +4471,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<void> setJavaScriptBridgeName(String bridgeName) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setJavaScriptBridgeName.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setJavaScriptBridgeName.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getJavaScriptBridgeName}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getJavaScriptBridgeName}
   ///Gets the name of the JavaScript Bridge object that is used to interact with the WebView.
   ///Use [setJavaScriptBridgeName] to set a custom name.
   ///The default name used by this plugin is `flutter_inappwebview`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getJavaScriptBridgeName.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getJavaScriptBridgeName.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -4494,15 +4494,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   Future<String> getJavaScriptBridgeName() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getJavaScriptBridgeName.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getJavaScriptBridgeName.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.tRexRunnerHtml}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.tRexRunnerHtml}
   ///Gets the html (with javascript) of the Chromium's t-rex runner game. Used in combination with [tRexRunnerCss].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.tRexRunnerHtml.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.tRexRunnerHtml.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -4514,14 +4514,14 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     ],
   )
   Future<String> get tRexRunnerHtml => throw UnimplementedError(
-    '${PlatformInAppWebViewControllerProperty.tRexRunnerHtml.name} is not implemented on the current platform',
+    '${CygnusPlatformWebViewControllerProperty.tRexRunnerHtml.name} is not implemented on the current platform',
   );
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.tRexRunnerCss}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.tRexRunnerCss}
   ///Gets the css of the Chromium's t-rex runner game. Used in combination with [tRexRunnerHtml].ì
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.tRexRunnerCss.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.tRexRunnerCss.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -4533,14 +4533,14 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     ],
   )
   Future<String> get tRexRunnerCss => throw UnimplementedError(
-    '${PlatformInAppWebViewControllerProperty.tRexRunnerCss.name} is not implemented on the current platform',
+    '${CygnusPlatformWebViewControllerProperty.tRexRunnerCss.name} is not implemented on the current platform',
   );
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setOptions}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setOptions}
   ///Use [setSettings] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setOptions.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setOptions.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -4551,17 +4551,17 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     ],
   )
   @Deprecated('Use setSettings instead')
-  Future<void> setOptions({required InAppWebViewGroupOptions options}) {
+  Future<void> setOptions({required CygnusWebViewGroupOptions options}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setOptions.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setOptions.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getOptions}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getOptions}
   ///Use [getSettings] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getOptions.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getOptions.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -4572,62 +4572,62 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
     ],
   )
   @Deprecated('Use getSettings instead')
-  Future<InAppWebViewGroupOptions?> getOptions() {
+  Future<CygnusWebViewGroupOptions?> getOptions() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getOptions.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getOptions.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.findAllAsync}
-  ///Use [PlatformFindInteractionController.findAll] instead.
+  ///{@template cygnus_core.CygnusPlatformWebViewController.findAllAsync}
+  ///Use [CygnusPlatformFindInteractionController.findAll] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.findAllAsync.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.findAllAsync.supported_platforms}
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
-  @Deprecated("Use FindInteractionController.findAll instead")
+  @Deprecated("Use CygnusFindInteractionController.findAll instead")
   Future<void> findAllAsync({required String find}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.findAllAsync.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.findAllAsync.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.findNext}
-  ///Use [PlatformFindInteractionController.findNext] instead.
+  ///{@template cygnus_core.CygnusPlatformWebViewController.findNext}
+  ///Use [CygnusPlatformFindInteractionController.findNext] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.findNext.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.findNext.supported_platforms}
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
-  @Deprecated("Use FindInteractionController.findNext instead")
+  @Deprecated("Use CygnusFindInteractionController.findNext instead")
   Future<void> findNext({required bool forward}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.findNext.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.findNext.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.clearMatches}
-  ///Use [PlatformFindInteractionController.clearMatches] instead.
+  ///{@template cygnus_core.CygnusPlatformWebViewController.clearMatches}
+  ///Use [CygnusPlatformFindInteractionController.clearMatches] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.clearMatches.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.clearMatches.supported_platforms}
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
-  @Deprecated("Use FindInteractionController.clearMatches instead")
+  @Deprecated("Use CygnusFindInteractionController.clearMatches instead")
   Future<void> clearMatches() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.clearMatches.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.clearMatches.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getTRexRunnerHtml}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getTRexRunnerHtml}
   ///Use [tRexRunnerHtml] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getTRexRunnerHtml.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getTRexRunnerHtml.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -4640,15 +4640,15 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   @Deprecated("Use tRexRunnerHtml instead")
   Future<String> getTRexRunnerHtml() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getTRexRunnerHtml.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getTRexRunnerHtml.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getTRexRunnerCss}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getTRexRunnerCss}
   ///Use [tRexRunnerCss] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getTRexRunnerCss.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getTRexRunnerCss.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -4661,73 +4661,73 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   @Deprecated("Use tRexRunnerCss instead")
   Future<String> getTRexRunnerCss() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getTRexRunnerCss.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getTRexRunnerCss.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.getScale}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.getScale}
   ///Use [getZoomScale] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.getScale.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.getScale.supported_platforms}
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
   @Deprecated('Use getZoomScale instead')
   Future<double?> getScale() {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.getScale.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.getScale.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.setSafeBrowsingWhitelist}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.setSafeBrowsingWhitelist}
   ///Use [setSafeBrowsingAllowlist] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.setSafeBrowsingWhitelist.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.setSafeBrowsingWhitelist.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated("Use setSafeBrowsingAllowlist instead")
   Future<bool> setSafeBrowsingWhitelist({required List<String> hosts}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.setSafeBrowsingWhitelist.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.setSafeBrowsingWhitelist.name} is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformInAppWebViewControllerClassSupported.isClassSupported(
+      _CygnusPlatformWebViewControllerClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformInAppWebViewControllerProperty property, {
+    CygnusPlatformWebViewControllerProperty property, {
     TargetPlatform? platform,
-  }) => _PlatformInAppWebViewControllerPropertySupported.isPropertySupported(
+  }) => _CygnusPlatformWebViewControllerPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformInAppWebViewControllerMethod method, {
+    CygnusPlatformWebViewControllerMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformInAppWebViewControllerMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformWebViewControllerMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );
 
-  ///{@template cygnus_core.PlatformInAppWebViewController.dispose}
+  ///{@template cygnus_core.CygnusPlatformWebViewController.dispose}
   ///Disposes the controller.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewController.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewController.dispose.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -4739,7 +4739,7 @@ abstract class PlatformInAppWebViewController extends PlatformInterface
   )
   void dispose({bool isKeepAlive = false}) {
     throw UnimplementedError(
-      '${PlatformInAppWebViewControllerMethod.dispose.name} is not implemented on the current platform',
+      '${CygnusPlatformWebViewControllerMethod.dispose.name} is not implemented on the current platform',
     );
   }
 }

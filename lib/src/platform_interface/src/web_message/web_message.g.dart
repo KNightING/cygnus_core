@@ -6,36 +6,36 @@ part of 'web_message.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///The type corresponding to the [WebMessage].
-class WebMessageType {
+///The type corresponding to the [CygnusWebMessage].
+class CygnusWebMessageType {
   final int _value;
   final int? _nativeValue;
-  const WebMessageType._internal(this._value, this._nativeValue);
+  const CygnusWebMessageType._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory WebMessageType._internalMultiPlatform(
+  factory CygnusWebMessageType._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => WebMessageType._internal(value, nativeValue());
+  ) => CygnusWebMessageType._internal(value, nativeValue());
 
   ///Indicates the payload of WebMessageCompat is JavaScript ArrayBuffer.
   ///
-  ///**NOTE**: available only if [WebViewFeature.WEB_MESSAGE_ARRAY_BUFFER] feature is supported.
-  static const ARRAY_BUFFER = WebMessageType._internal(1, 1);
+  ///**NOTE**: available only if [CygnusWebViewFeature.WEB_MESSAGE_ARRAY_BUFFER] feature is supported.
+  static const ARRAY_BUFFER = CygnusWebMessageType._internal(1, 1);
 
   ///Indicates the payload of WebMessageCompat is String.
-  static const STRING = WebMessageType._internal(0, 0);
+  static const STRING = CygnusWebMessageType._internal(0, 0);
 
-  ///Set of all values of [WebMessageType].
-  static final Set<WebMessageType> values = [
-    WebMessageType.ARRAY_BUFFER,
-    WebMessageType.STRING,
+  ///Set of all values of [CygnusWebMessageType].
+  static final Set<CygnusWebMessageType> values = [
+    CygnusWebMessageType.ARRAY_BUFFER,
+    CygnusWebMessageType.STRING,
   ].toSet();
 
-  ///Gets a possible [WebMessageType] instance from [int] value.
-  static WebMessageType? fromValue(int? value) {
+  ///Gets a possible [CygnusWebMessageType] instance from [int] value.
+  static CygnusWebMessageType? fromValue(int? value) {
     if (value != null) {
       try {
-        return WebMessageType.values.firstWhere(
+        return CygnusWebMessageType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -45,11 +45,11 @@ class WebMessageType {
     return null;
   }
 
-  ///Gets a possible [WebMessageType] instance from a native value.
-  static WebMessageType? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusWebMessageType] instance from a native value.
+  static CygnusWebMessageType? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return WebMessageType.values.firstWhere(
+        return CygnusWebMessageType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -59,15 +59,15 @@ class WebMessageType {
     return null;
   }
 
-  /// Gets a possible [WebMessageType] instance value with name [name].
+  /// Gets a possible [CygnusWebMessageType] instance value with name [name].
   ///
-  /// Goes through [WebMessageType.values] looking for a value with
-  /// name [name], as reported by [WebMessageType.name].
+  /// Goes through [CygnusWebMessageType.values] looking for a value with
+  /// name [name], as reported by [CygnusWebMessageType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static WebMessageType? byName(String? name) {
+  static CygnusWebMessageType? byName(String? name) {
     if (name != null) {
       try {
-        return WebMessageType.values.firstWhere(
+        return CygnusWebMessageType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -77,7 +77,7 @@ class WebMessageType {
     return null;
   }
 
-  /// Creates a map from the names of [WebMessageType] values to the values.
+  /// Creates a map from the names of [CygnusWebMessageType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -85,9 +85,10 @@ class WebMessageType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, WebMessageType> asNameMap() => <String, WebMessageType>{
-    for (final value in WebMessageType.values) value.name(): value,
-  };
+  static Map<String, CygnusWebMessageType> asNameMap() =>
+      <String, CygnusWebMessageType>{
+        for (final value in CygnusWebMessageType.values) value.name(): value,
+      };
 
   ///Gets [int] value.
   int toValue() => _value;
@@ -129,56 +130,62 @@ class WebMessageType {
 
 ///The Dart representation of the HTML5 PostMessage event.
 ///See https://html.spec.whatwg.org/multipage/comms.html#the-messageevent-interfaces for definition of a MessageEvent in HTML5.
-class WebMessage {
+class CygnusWebMessage {
   ///The data of the message.
   dynamic data;
 
   ///The ports that are sent with the message.
-  List<IWebMessagePort>? ports;
+  List<CygnusIWebMessagePort>? ports;
 
   ///The payload type of the message.
-  WebMessageType type;
-  WebMessage({this.data, this.type = WebMessageType.STRING, this.ports}) {
+  CygnusWebMessageType type;
+  CygnusWebMessage({
+    this.data,
+    this.type = CygnusWebMessageType.STRING,
+    this.ports,
+  }) {
     assert(
       ((this.data == null || this.data is String) &&
-              this.type == WebMessageType.STRING) ||
+              this.type == CygnusWebMessageType.STRING) ||
           (this.data != null &&
               this.data is Uint8List &&
-              this.type == WebMessageType.ARRAY_BUFFER),
+              this.type == CygnusWebMessageType.ARRAY_BUFFER),
     );
   }
 
-  ///Gets a possible [WebMessage] instance from a [Map] value.
-  static WebMessage? fromMap(
+  ///Gets a possible [CygnusWebMessage] instance from a [Map] value.
+  static CygnusWebMessage? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = WebMessage(
+    final instance = CygnusWebMessage(
       data: map['data'],
       ports: map['ports'] != null
-          ? List<IWebMessagePort>.from(map['ports'].map((e) => e))
+          ? List<CygnusIWebMessagePort>.from(map['ports'].map((e) => e))
           : null,
-      type: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => WebMessageType.fromNativeValue(map['type']),
-        EnumMethod.value => WebMessageType.fromValue(map['type']),
-        EnumMethod.name => WebMessageType.byName(map['type']),
+      type: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusWebMessageType.fromNativeValue(
+          map['type'],
+        ),
+        CygnusEnumMethod.value => CygnusWebMessageType.fromValue(map['type']),
+        CygnusEnumMethod.name => CygnusWebMessageType.byName(map['type']),
       }!,
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "data": data,
       "ports": ports?.map((e) => e.toMap(enumMethod: enumMethod)).toList(),
-      "type": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => type.toNativeValue(),
-        EnumMethod.value => type.toValue(),
-        EnumMethod.name => type.name(),
+      "type": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => type.toNativeValue(),
+        CygnusEnumMethod.value => type.toValue(),
+        CygnusEnumMethod.name => type.name(),
       },
     };
   }
@@ -190,6 +197,6 @@ class WebMessage {
 
   @override
   String toString() {
-    return 'WebMessage{data: $data, ports: $ports, type: $type}';
+    return 'CygnusWebMessage{data: $data, ports: $ports, type: $type}';
   }
 }

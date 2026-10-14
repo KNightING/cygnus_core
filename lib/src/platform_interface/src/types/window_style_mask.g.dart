@@ -7,21 +7,21 @@ part of 'window_style_mask.dart';
 // **************************************************************************
 
 ///Class that represents the flags that describe the browser window’s current style, such as if it’s resizable or in full-screen mode.
-class WindowStyleMask {
+class CygnusWindowStyleMask {
   final int _value;
   final int? _nativeValue;
-  const WindowStyleMask._internal(this._value, this._nativeValue);
+  const CygnusWindowStyleMask._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory WindowStyleMask._internalMultiPlatform(
+  factory CygnusWindowStyleMask._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => WindowStyleMask._internal(value, nativeValue());
+  ) => CygnusWindowStyleMask._internal(value, nativeValue());
 
   ///The window displays none of the usual peripheral elements. Useful only for display or caching purposes.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView ([Official API - NSWindow.StyleMask.borderless](https://developer.apple.com/documentation/appkit/nswindow/stylemask/1644698-borderless))
-  static final BORDERLESS = WindowStyleMask._internalMultiPlatform(0, () {
+  static final BORDERLESS = CygnusWindowStyleMask._internalMultiPlatform(0, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.macOS:
         return 0;
@@ -35,7 +35,7 @@ class WindowStyleMask {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView ([Official API - NSWindow.StyleMask.closable](https://developer.apple.com/documentation/appkit/nswindow/stylemask/1644610-closable))
-  static final CLOSABLE = WindowStyleMask._internalMultiPlatform(2, () {
+  static final CLOSABLE = CygnusWindowStyleMask._internalMultiPlatform(2, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.macOS:
         return 2;
@@ -49,7 +49,7 @@ class WindowStyleMask {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView ([Official API - NSWindow.StyleMask.docModalWindow](https://developer.apple.com/documentation/appkit/nswindow/stylemask/1644253-docmodalwindow))
-  static final DOC_MODAL_WINDOW = WindowStyleMask._internalMultiPlatform(
+  static final DOC_MODAL_WINDOW = CygnusWindowStyleMask._internalMultiPlatform(
     64,
     () {
       switch (defaultTargetPlatform) {
@@ -66,15 +66,18 @@ class WindowStyleMask {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView ([Official API - NSWindow.StyleMask.fullScreen](https://developer.apple.com/documentation/appkit/nswindow/stylemask/1644530-fullscreen))
-  static final FULLSCREEN = WindowStyleMask._internalMultiPlatform(16384, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.macOS:
-        return 16384;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final FULLSCREEN = CygnusWindowStyleMask._internalMultiPlatform(
+    16384,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.macOS:
+          return 16384;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
   ///When set, the window’s contentView consumes the full size of the window.
   ///Although you can combine this constant with other window style masks, it is respected only for windows with a title bar.
@@ -82,57 +85,27 @@ class WindowStyleMask {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView ([Official API - NSWindow.StyleMask.fullSizeContentView](https://developer.apple.com/documentation/appkit/nswindow/stylemask/1644646-fullsizecontentview))
-  static final FULL_SIZE_CONTENT_VIEW = WindowStyleMask._internalMultiPlatform(
-    32768,
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.macOS:
-          return 32768;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final FULL_SIZE_CONTENT_VIEW =
+      CygnusWindowStyleMask._internalMultiPlatform(32768, () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.macOS:
+            return 32768;
+          default:
+            break;
+        }
+        return null;
+      });
 
   ///The window is a HUD panel.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView ([Official API - NSWindow.StyleMask.hudWindow](https://developer.apple.com/documentation/appkit/nswindow/stylemask/1644653-hudwindow))
-  static final HUD_WINDOW = WindowStyleMask._internalMultiPlatform(8192, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.macOS:
-        return 8192;
-      default:
-        break;
-    }
-    return null;
-  });
-
-  ///The window displays a minimize button.
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- macOS WKWebView ([Official API - NSWindow.StyleMask.miniaturizable](https://developer.apple.com/documentation/appkit/nswindow/stylemask/1644650-miniaturizable))
-  static final MINIATURIZABLE = WindowStyleMask._internalMultiPlatform(4, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.macOS:
-        return 4;
-      default:
-        break;
-    }
-    return null;
-  });
-
-  ///The window is a panel that does not activate the owning app.
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- macOS WKWebView ([Official API - NSWindow.StyleMask.nonactivatingPanel](https://developer.apple.com/documentation/appkit/nswindow/stylemask/1644696-nonactivatingpanel))
-  static final NONACTIVATING_PANEL = WindowStyleMask._internalMultiPlatform(
-    128,
+  static final HUD_WINDOW = CygnusWindowStyleMask._internalMultiPlatform(
+    8192,
     () {
       switch (defaultTargetPlatform) {
         case TargetPlatform.macOS:
-          return 128;
+          return 8192;
         default:
           break;
       }
@@ -140,11 +113,43 @@ class WindowStyleMask {
     },
   );
 
+  ///The window displays a minimize button.
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- macOS WKWebView ([Official API - NSWindow.StyleMask.miniaturizable](https://developer.apple.com/documentation/appkit/nswindow/stylemask/1644650-miniaturizable))
+  static final MINIATURIZABLE = CygnusWindowStyleMask._internalMultiPlatform(
+    4,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.macOS:
+          return 4;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
+
+  ///The window is a panel that does not activate the owning app.
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- macOS WKWebView ([Official API - NSWindow.StyleMask.nonactivatingPanel](https://developer.apple.com/documentation/appkit/nswindow/stylemask/1644696-nonactivatingpanel))
+  static final NONACTIVATING_PANEL =
+      CygnusWindowStyleMask._internalMultiPlatform(128, () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.macOS:
+            return 128;
+          default:
+            break;
+        }
+        return null;
+      });
+
   ///The window can be resized by the user.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView ([Official API - NSWindow.StyleMask.miniaturizable](https://developer.apple.com/documentation/appkit/nswindow/stylemask/1644717-resizable))
-  static final RESIZABLE = WindowStyleMask._internalMultiPlatform(8, () {
+  static final RESIZABLE = CygnusWindowStyleMask._internalMultiPlatform(8, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.macOS:
         return 8;
@@ -158,7 +163,7 @@ class WindowStyleMask {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView ([Official API - NSWindow.StyleMask.titled](https://developer.apple.com/documentation/appkit/nswindow/stylemask/1644724-titled))
-  static final TITLED = WindowStyleMask._internalMultiPlatform(1, () {
+  static final TITLED = CygnusWindowStyleMask._internalMultiPlatform(1, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.macOS:
         return 1;
@@ -172,50 +177,53 @@ class WindowStyleMask {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView ([Official API - NSWindow.StyleMask.utilityWindow](https://developer.apple.com/documentation/appkit/nswindow/stylemask/1644672-utilitywindow))
-  static final UTILITY_WINDOW = WindowStyleMask._internalMultiPlatform(16, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.macOS:
-        return 16;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final UTILITY_WINDOW = CygnusWindowStyleMask._internalMultiPlatform(
+    16,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.macOS:
+          return 16;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
-  ///Set of all values of [WindowStyleMask].
-  static final Set<WindowStyleMask> values = [
-    WindowStyleMask.BORDERLESS,
-    WindowStyleMask.CLOSABLE,
-    WindowStyleMask.DOC_MODAL_WINDOW,
-    WindowStyleMask.FULLSCREEN,
-    WindowStyleMask.FULL_SIZE_CONTENT_VIEW,
-    WindowStyleMask.HUD_WINDOW,
-    WindowStyleMask.MINIATURIZABLE,
-    WindowStyleMask.NONACTIVATING_PANEL,
-    WindowStyleMask.RESIZABLE,
-    WindowStyleMask.TITLED,
-    WindowStyleMask.UTILITY_WINDOW,
+  ///Set of all values of [CygnusWindowStyleMask].
+  static final Set<CygnusWindowStyleMask> values = [
+    CygnusWindowStyleMask.BORDERLESS,
+    CygnusWindowStyleMask.CLOSABLE,
+    CygnusWindowStyleMask.DOC_MODAL_WINDOW,
+    CygnusWindowStyleMask.FULLSCREEN,
+    CygnusWindowStyleMask.FULL_SIZE_CONTENT_VIEW,
+    CygnusWindowStyleMask.HUD_WINDOW,
+    CygnusWindowStyleMask.MINIATURIZABLE,
+    CygnusWindowStyleMask.NONACTIVATING_PANEL,
+    CygnusWindowStyleMask.RESIZABLE,
+    CygnusWindowStyleMask.TITLED,
+    CygnusWindowStyleMask.UTILITY_WINDOW,
   ].toSet();
 
-  ///Gets a possible [WindowStyleMask] instance from [int] value.
-  static WindowStyleMask? fromValue(int? value) {
+  ///Gets a possible [CygnusWindowStyleMask] instance from [int] value.
+  static CygnusWindowStyleMask? fromValue(int? value) {
     if (value != null) {
       try {
-        return WindowStyleMask.values.firstWhere(
+        return CygnusWindowStyleMask.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
-        return WindowStyleMask._internal(value, value);
+        return CygnusWindowStyleMask._internal(value, value);
       }
     }
     return null;
   }
 
-  ///Gets a possible [WindowStyleMask] instance from a native value.
-  static WindowStyleMask? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusWindowStyleMask] instance from a native value.
+  static CygnusWindowStyleMask? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return WindowStyleMask.values.firstWhere(
+        return CygnusWindowStyleMask.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -225,15 +233,15 @@ class WindowStyleMask {
     return null;
   }
 
-  /// Gets a possible [WindowStyleMask] instance value with name [name].
+  /// Gets a possible [CygnusWindowStyleMask] instance value with name [name].
   ///
-  /// Goes through [WindowStyleMask.values] looking for a value with
-  /// name [name], as reported by [WindowStyleMask.name].
+  /// Goes through [CygnusWindowStyleMask.values] looking for a value with
+  /// name [name], as reported by [CygnusWindowStyleMask.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static WindowStyleMask? byName(String? name) {
+  static CygnusWindowStyleMask? byName(String? name) {
     if (name != null) {
       try {
-        return WindowStyleMask.values.firstWhere(
+        return CygnusWindowStyleMask.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -243,7 +251,7 @@ class WindowStyleMask {
     return null;
   }
 
-  /// Creates a map from the names of [WindowStyleMask] values to the values.
+  /// Creates a map from the names of [CygnusWindowStyleMask] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -251,9 +259,10 @@ class WindowStyleMask {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, WindowStyleMask> asNameMap() => <String, WindowStyleMask>{
-    for (final value in WindowStyleMask.values) value.name(): value,
-  };
+  static Map<String, CygnusWindowStyleMask> asNameMap() =>
+      <String, CygnusWindowStyleMask>{
+        for (final value in CygnusWindowStyleMask.values) value.name(): value,
+      };
 
   ///Gets [int] value.
   int toValue() => _value;
@@ -296,8 +305,8 @@ class WindowStyleMask {
   @override
   bool operator ==(value) => value == _value;
 
-  WindowStyleMask operator |(WindowStyleMask value) =>
-      WindowStyleMask._internal(
+  CygnusWindowStyleMask operator |(CygnusWindowStyleMask value) =>
+      CygnusWindowStyleMask._internal(
         value.toValue() | _value,
         value.toNativeValue() != null && _nativeValue != null
             ? value.toNativeValue()! | _nativeValue!

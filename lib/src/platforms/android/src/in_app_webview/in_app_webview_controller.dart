@@ -28,7 +28,7 @@ import 'headless_in_app_webview.dart';
 /// Returns every event when [webviewParams] is null or an in-app browser is listening, since
 /// those paths dispatch regardless of the widget callbacks.
 List<String> enabledHighFrequencyEvents({
-  required PlatformWebViewCreationParams? webviewParams,
+  required CygnusPlatformWebViewCreationParams? webviewParams,
   required bool hasInAppBrowserEventHandler,
 }) {
   const allEvents = <String>[
@@ -52,22 +52,22 @@ List<String> enabledHighFrequencyEvents({
 /// Object specifying creation parameters for creating a [AndroidInAppWebViewController].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformInAppWebViewControllerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebViewControllerCreationParams] for
 /// more information.
 @immutable
 class AndroidInAppWebViewControllerCreationParams
-    extends PlatformInAppWebViewControllerCreationParams {
+    extends CygnusPlatformWebViewControllerCreationParams {
   /// Creates a new [AndroidInAppWebViewControllerCreationParams] instance.
   const AndroidInAppWebViewControllerCreationParams({
     required super.id,
     super.webviewParams,
   });
 
-  /// Creates a [AndroidInAppWebViewControllerCreationParams] instance based on [PlatformInAppWebViewControllerCreationParams].
+  /// Creates a [AndroidInAppWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
   factory AndroidInAppWebViewControllerCreationParams.fromPlatformInAppWebViewControllerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformInAppWebViewControllerCreationParams params,
+    CygnusPlatformWebViewControllerCreationParams params,
   ) {
     return AndroidInAppWebViewControllerCreationParams(
       id: params.id,
@@ -76,32 +76,32 @@ class AndroidInAppWebViewControllerCreationParams
   }
 }
 
-///Controls a WebView, such as an [InAppWebView] widget instance, a [AndroidHeadlessInAppWebView] instance or [AndroidInAppBrowser] WebView instance.
+///Controls a WebView, such as an [CygnusWebView] widget instance, a [AndroidHeadlessInAppWebView] instance or [AndroidInAppBrowser] WebView instance.
 ///
-///If you are using the [InAppWebView] widget, an [InAppWebViewController] instance can be obtained by setting the [InAppWebView.onWebViewCreated]
+///If you are using the [CygnusWebView] widget, an [CygnusWebViewController] instance can be obtained by setting the [CygnusWebView.onWebViewCreated]
 ///callback. Instead, if you are using an [AndroidInAppBrowser] instance, you can get it through the [AndroidInAppBrowser.webViewController] attribute.
-class AndroidInAppWebViewController extends PlatformInAppWebViewController
+class AndroidInAppWebViewController extends CygnusPlatformWebViewController
     with ChannelController {
   static final MethodChannel _staticChannel = IN_APP_WEBVIEW_STATIC_CHANNEL;
 
   // List of properties to be saved and restored for keep alive feature
   Map<String, Function> _javaScriptHandlersMap = HashMap<String, Function>();
-  Map<UserScriptInjectionTime, List<UserScript>> _userScripts = {
-    UserScriptInjectionTime.AT_DOCUMENT_START: <UserScript>[],
-    UserScriptInjectionTime.AT_DOCUMENT_END: <UserScript>[],
+  Map<CygnusUserScriptInjectionTime, List<CygnusUserScript>> _userScripts = {
+    CygnusUserScriptInjectionTime.AT_DOCUMENT_START: <CygnusUserScript>[],
+    CygnusUserScriptInjectionTime.AT_DOCUMENT_END: <CygnusUserScript>[],
   };
   Set<String> _webMessageListenerObjNames = Set();
-  Map<String, ScriptHtmlTagAttributes> _injectedScriptsFromURL = {};
+  Map<String, CygnusScriptHtmlTagAttributes> _injectedScriptsFromURL = {};
   Set<AndroidWebMessageChannel> _webMessageChannels = Set();
   Set<AndroidWebMessageListener> _webMessageListeners = Set();
 
   // static map that contains the properties to be saved and restored for keep alive feature
-  static final Map<InAppWebViewKeepAlive, InAppWebViewControllerKeepAliveProps?>
+  static final Map<CygnusWebViewKeepAlive, CygnusWebViewControllerKeepAliveProps?>
   _keepAliveMap = {};
 
   AndroidInAppBrowser? _inAppBrowser;
 
-  PlatformInAppBrowserEvents? get _inAppBrowserEventHandler =>
+  CygnusPlatformBrowserEvents? get _inAppBrowserEventHandler =>
       _inAppBrowser?.eventHandler;
 
   dynamic _controllerFromPlatform;
@@ -110,7 +110,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   late AndroidWebStorage webStorage;
 
   AndroidInAppWebViewController(
-    PlatformInAppWebViewControllerCreationParams params,
+    CygnusPlatformWebViewControllerCreationParams params,
   ) : super.implementation(
         params is AndroidInAppWebViewControllerCreationParams
             ? params
@@ -126,12 +126,12 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
     if (initialUserScripts != null) {
       for (final userScript in initialUserScripts) {
         if (userScript.injectionTime ==
-            UserScriptInjectionTime.AT_DOCUMENT_START) {
-          this._userScripts[UserScriptInjectionTime.AT_DOCUMENT_START]?.add(
+            CygnusUserScriptInjectionTime.AT_DOCUMENT_START) {
+          this._userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_START]?.add(
             userScript,
           );
         } else {
-          this._userScripts[UserScriptInjectionTime.AT_DOCUMENT_END]?.add(
+          this._userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_END]?.add(
             userScript,
           );
         }
@@ -151,10 +151,10 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   AndroidInAppWebViewController.fromInAppBrowser(
-    PlatformInAppWebViewControllerCreationParams params,
+    CygnusPlatformWebViewControllerCreationParams params,
     MethodChannel channel,
     AndroidInAppBrowser inAppBrowser,
-    UnmodifiableListView<UserScript>? initialUserScripts,
+    UnmodifiableListView<CygnusUserScript>? initialUserScripts,
   ) : super.implementation(
         params is AndroidInAppWebViewControllerCreationParams
             ? params
@@ -168,12 +168,12 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
     if (initialUserScripts != null) {
       for (final userScript in initialUserScripts) {
         if (userScript.injectionTime ==
-            UserScriptInjectionTime.AT_DOCUMENT_START) {
-          this._userScripts[UserScriptInjectionTime.AT_DOCUMENT_START]?.add(
+            CygnusUserScriptInjectionTime.AT_DOCUMENT_START) {
+          this._userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_START]?.add(
             userScript,
           );
         } else {
-          this._userScripts[UserScriptInjectionTime.AT_DOCUMENT_END]?.add(
+          this._userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_END]?.add(
             userScript,
           );
         }
@@ -182,7 +182,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
     this._init(params);
   }
 
-  void _init(PlatformInAppWebViewControllerCreationParams params) {
+  void _init(CygnusPlatformWebViewControllerCreationParams params) {
     _controllerFromPlatform =
         params.webviewParams?.controllerFromPlatform?.call(this) ?? this;
 
@@ -193,15 +193,15 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
       ),
     );
 
-    if (params.webviewParams is PlatformInAppWebViewWidgetCreationParams) {
+    if (params.webviewParams is CygnusPlatformWebViewWidgetCreationParams) {
       final keepAlive =
-          (params.webviewParams as PlatformInAppWebViewWidgetCreationParams)
+          (params.webviewParams as CygnusPlatformWebViewWidgetCreationParams)
               .keepAlive;
       if (keepAlive != null) {
-        InAppWebViewControllerKeepAliveProps? props = _keepAliveMap[keepAlive];
+        CygnusWebViewControllerKeepAliveProps? props = _keepAliveMap[keepAlive];
         if (props == null) {
           // save controller properties to restore it later
-          _keepAliveMap[keepAlive] = InAppWebViewControllerKeepAliveProps(
+          _keepAliveMap[keepAlive] = CygnusWebViewControllerKeepAliveProps(
             injectedScriptsFromURL: _injectedScriptsFromURL,
             javaScriptHandlersMap: _javaScriptHandlersMap,
             userScripts: _userScripts,
@@ -231,14 +231,14 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
           ? "WebView"
           : _inAppBrowser.runtimeType.toString(),
       id: (getViewId() ?? _inAppBrowser?.id).toString(),
-      debugLoggingSettings: PlatformInAppWebViewController.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformWebViewController.debugLoggingSettings,
       method: method,
       args: args,
     );
   }
 
   Future<dynamic> _handleMethod(MethodCall call) async {
-    if (PlatformInAppWebViewController.debugLoggingSettings.enabled &&
+    if (CygnusPlatformWebViewController.debugLoggingSettings.enabled &&
         call.method != "onCallJsHandler") {
       _debugLog(call.method, call.arguments);
     }
@@ -249,7 +249,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
         if ((webviewParams != null && webviewParams!.onLoadStart != null) ||
             _inAppBrowserEventHandler != null) {
           String? url = call.arguments["url"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           if (webviewParams != null && webviewParams!.onLoadStart != null)
             webviewParams!.onLoadStart!(_controllerFromPlatform, uri);
           else
@@ -260,7 +260,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
         if ((webviewParams != null && webviewParams!.onLoadStop != null) ||
             _inAppBrowserEventHandler != null) {
           String? url = call.arguments["url"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           if (webviewParams != null && webviewParams!.onLoadStop != null)
             webviewParams!.onLoadStop!(_controllerFromPlatform, uri);
           else
@@ -273,10 +273,10 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.onLoadError != null)) ||
             _inAppBrowserEventHandler != null) {
-          WebResourceRequest request = WebResourceRequest.fromMap(
+          CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(
             call.arguments["request"].cast<String, dynamic>(),
           )!;
-          WebResourceError error = WebResourceError.fromMap(
+          CygnusWebResourceError error = CygnusWebResourceError.fromMap(
             call.arguments["error"].cast<String, dynamic>(),
           )!;
           var isForMainFrame = request.isForMainFrame ?? false;
@@ -315,10 +315,10 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
                     // ignore: deprecated_member_use_from_same_package
                     webviewParams!.onLoadHttpError != null)) ||
             _inAppBrowserEventHandler != null) {
-          WebResourceRequest request = WebResourceRequest.fromMap(
+          CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(
             call.arguments["request"].cast<String, dynamic>(),
           )!;
-          WebResourceResponse errorResponse = WebResourceResponse.fromMap(
+          CygnusWebResourceResponse errorResponse = CygnusWebResourceResponse.fromMap(
             call.arguments["errorResponse"].cast<String, dynamic>(),
           )!;
           var isForMainFrame = request.isForMainFrame ?? false;
@@ -374,7 +374,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          NavigationAction navigationAction = NavigationAction.fromMap(
+          CygnusNavigationAction navigationAction = CygnusNavigationAction.fromMap(
             arguments,
           )!;
 
@@ -395,7 +395,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          ConsoleMessage consoleMessage = ConsoleMessage.fromMap(arguments)!;
+          CygnusConsoleMessage consoleMessage = CygnusConsoleMessage.fromMap(arguments)!;
           if (webviewParams != null && webviewParams!.onConsoleMessage != null)
             webviewParams!.onConsoleMessage!(
               _controllerFromPlatform,
@@ -424,8 +424,8 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          DownloadStartRequest downloadStartRequest =
-              DownloadStartRequest.fromMap(arguments)!;
+          CygnusDownloadStartRequest downloadStartRequest =
+              CygnusDownloadStartRequest.fromMap(arguments)!;
 
           if (webviewParams != null) {
             if (webviewParams!.onDownloadStarting != null)
@@ -465,7 +465,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> requestMap = call.arguments["request"]
               .cast<String, dynamic>();
-          WebResourceRequest request = WebResourceRequest.fromMap(requestMap)!;
+          CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(requestMap)!;
 
           if (webviewParams != null) {
             if (webviewParams!.onLoadResourceWithCustomScheme != null)
@@ -497,7 +497,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          CreateWindowAction createWindowAction = CreateWindowAction.fromMap(
+          CygnusCreateWindowAction createWindowAction = CygnusCreateWindowAction.fromMap(
             arguments,
           )!;
 
@@ -593,7 +593,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          WebResourceRequest request = WebResourceRequest.fromMap(arguments)!;
+          CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(arguments)!;
 
           if (webviewParams != null) {
             if (webviewParams!.shouldInterceptRequest != null)
@@ -626,7 +626,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
                         null)) ||
             _inAppBrowserEventHandler != null) {
           String? url = call.arguments["url"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
 
           if (webviewParams != null) {
             if (webviewParams!.onRenderProcessUnresponsive != null)
@@ -657,7 +657,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
                     webviewParams!.androidOnRenderProcessResponsive != null)) ||
             _inAppBrowserEventHandler != null) {
           String? url = call.arguments["url"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
 
           if (webviewParams != null) {
             if (webviewParams!.onRenderProcessResponsive != null)
@@ -690,7 +690,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          RenderProcessGoneDetail detail = RenderProcessGoneDetail.fromMap(
+          CygnusRenderProcessGoneDetail detail = CygnusRenderProcessGoneDetail.fromMap(
             arguments,
           )!;
 
@@ -721,7 +721,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
                     webviewParams!.androidOnFormResubmission != null)) ||
             _inAppBrowserEventHandler != null) {
           String? url = call.arguments["url"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
 
           if (webviewParams != null) {
             if (webviewParams!.onFormResubmission != null)
@@ -817,7 +817,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           String url = call.arguments["url"];
           bool precomposed = call.arguments["precomposed"];
-          WebUri uri = WebUri(url);
+          CygnusWebUri uri = CygnusWebUri(url);
 
           if (webviewParams != null) {
             if (webviewParams!.onReceivedTouchIconUrl != null)
@@ -849,7 +849,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          JsAlertRequest jsAlertRequest = JsAlertRequest.fromMap(arguments)!;
+          CygnusJsAlertRequest jsAlertRequest = CygnusJsAlertRequest.fromMap(arguments)!;
 
           if (webviewParams != null && webviewParams!.onJsAlert != null)
             return (await webviewParams!.onJsAlert!(
@@ -867,7 +867,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          JsConfirmRequest jsConfirmRequest = JsConfirmRequest.fromMap(
+          CygnusJsConfirmRequest jsConfirmRequest = CygnusJsConfirmRequest.fromMap(
             arguments,
           )!;
 
@@ -887,7 +887,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          JsPromptRequest jsPromptRequest = JsPromptRequest.fromMap(arguments)!;
+          CygnusJsPromptRequest jsPromptRequest = CygnusJsPromptRequest.fromMap(arguments)!;
 
           if (webviewParams != null && webviewParams!.onJsPrompt != null)
             return (await webviewParams!.onJsPrompt!(
@@ -908,8 +908,8 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          JsBeforeUnloadRequest jsBeforeUnloadRequest =
-              JsBeforeUnloadRequest.fromMap(arguments)!;
+          CygnusJsBeforeUnloadRequest jsBeforeUnloadRequest =
+              CygnusJsBeforeUnloadRequest.fromMap(arguments)!;
 
           if (webviewParams != null) {
             if (webviewParams!.onJsBeforeUnload != null)
@@ -942,10 +942,10 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
                     webviewParams!.androidOnSafeBrowsingHit != null)) ||
             _inAppBrowserEventHandler != null) {
           String url = call.arguments["url"];
-          SafeBrowsingThreat? threatType = SafeBrowsingThreat.fromNativeValue(
+          CygnusSafeBrowsingThreat? threatType = CygnusSafeBrowsingThreat.fromNativeValue(
             call.arguments["threatType"],
           );
-          WebUri uri = WebUri(url);
+          CygnusWebUri uri = CygnusWebUri(url);
 
           if (webviewParams != null) {
             if (webviewParams!.onSafeBrowsingHit != null)
@@ -983,7 +983,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          LoginRequest loginRequest = LoginRequest.fromMap(arguments)!;
+          CygnusLoginRequest loginRequest = CygnusLoginRequest.fromMap(arguments)!;
 
           if (webviewParams != null) {
             if (webviewParams!.onReceivedLoginRequest != null)
@@ -1013,7 +1013,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          PermissionRequest permissionRequest = PermissionRequest.fromMap(
+          CygnusPermissionRequest permissionRequest = CygnusPermissionRequest.fromMap(
             arguments,
           )!;
 
@@ -1044,8 +1044,8 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          HttpAuthenticationChallenge challenge =
-              HttpAuthenticationChallenge.fromMap(arguments)!;
+          CygnusHttpAuthenticationChallenge challenge =
+              CygnusHttpAuthenticationChallenge.fromMap(arguments)!;
 
           if (webviewParams != null &&
               webviewParams!.onReceivedHttpAuthRequest != null)
@@ -1065,7 +1065,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          ServerTrustChallenge challenge = ServerTrustChallenge.fromMap(
+          CygnusServerTrustChallenge challenge = CygnusServerTrustChallenge.fromMap(
             arguments,
           )!;
 
@@ -1087,7 +1087,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          ClientCertChallenge challenge = ClientCertChallenge.fromMap(
+          CygnusClientCertChallenge challenge = CygnusClientCertChallenge.fromMap(
             arguments,
           )!;
 
@@ -1171,7 +1171,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          PermissionRequest permissionRequest = PermissionRequest.fromMap(
+          CygnusPermissionRequest permissionRequest = CygnusPermissionRequest.fromMap(
             arguments,
           )!;
 
@@ -1205,7 +1205,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           String? url = call.arguments["url"];
           bool? isReload = call.arguments["isReload"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           if (webviewParams != null &&
               webviewParams!.onUpdateVisitedHistory != null)
             webviewParams!.onUpdateVisitedHistory!(
@@ -1243,7 +1243,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
                 webviewParams!.onPageCommitVisible != null) ||
             _inAppBrowserEventHandler != null) {
           String? url = call.arguments["url"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           if (webviewParams != null &&
               webviewParams!.onPageCommitVisible != null)
             webviewParams!.onPageCommitVisible!(_controllerFromPlatform, uri);
@@ -1291,11 +1291,11 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
           // ignore: deprecated_member_use_from_same_package
-          IOSWKNavigationResponse iosOnNavigationResponse =
+          CygnusIOSWKNavigationResponse iosOnNavigationResponse =
               // ignore: deprecated_member_use_from_same_package
-              IOSWKNavigationResponse.fromMap(arguments)!;
+              CygnusIOSWKNavigationResponse.fromMap(arguments)!;
 
-          NavigationResponse navigationResponse = NavigationResponse.fromMap(
+          CygnusNavigationResponse navigationResponse = CygnusNavigationResponse.fromMap(
             arguments,
           )!;
 
@@ -1330,8 +1330,8 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          URLAuthenticationChallenge challenge =
-              URLAuthenticationChallenge.fromMap(arguments)!;
+          CygnusURLAuthenticationChallenge challenge =
+              CygnusURLAuthenticationChallenge.fromMap(arguments)!;
 
           if (webviewParams != null) {
             if (webviewParams!.shouldAllowDeprecatedTLS != null)
@@ -1363,8 +1363,8 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          InAppWebViewHitTestResult hitTestResult =
-              InAppWebViewHitTestResult.fromMap(arguments)!;
+          CygnusWebViewHitTestResult hitTestResult =
+              CygnusWebViewHitTestResult.fromMap(arguments)!;
 
           if (webviewParams != null &&
               webviewParams!.onLongPressHitTestResult != null)
@@ -1377,7 +1377,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
         }
         break;
       case "onCreateContextMenu":
-        ContextMenu? contextMenu;
+        CygnusContextMenu? contextMenu;
         if (webviewParams != null && webviewParams!.contextMenu != null) {
           contextMenu = webviewParams!.contextMenu;
         } else if (_inAppBrowserEventHandler != null &&
@@ -1388,14 +1388,14 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
         if (contextMenu != null && contextMenu.onCreateContextMenu != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          InAppWebViewHitTestResult hitTestResult =
-              InAppWebViewHitTestResult.fromMap(arguments)!;
+          CygnusWebViewHitTestResult hitTestResult =
+              CygnusWebViewHitTestResult.fromMap(arguments)!;
 
           contextMenu.onCreateContextMenu!(hitTestResult);
         }
         break;
       case "onHideContextMenu":
-        ContextMenu? contextMenu;
+        CygnusContextMenu? contextMenu;
         if (webviewParams != null && webviewParams!.contextMenu != null) {
           contextMenu = webviewParams!.contextMenu;
         } else if (_inAppBrowserEventHandler != null &&
@@ -1408,7 +1408,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
         }
         break;
       case "onContextMenuActionItemClicked":
-        ContextMenu? contextMenu;
+        CygnusContextMenu? contextMenu;
         if (webviewParams != null && webviewParams!.contextMenu != null) {
           contextMenu = webviewParams!.contextMenu;
         } else if (_inAppBrowserEventHandler != null &&
@@ -1422,7 +1422,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
           dynamic id = call.arguments["id"];
           String title = call.arguments["title"];
 
-          ContextMenuItem menuItemClicked = ContextMenuItem(
+          CygnusContextMenuItem menuItemClicked = CygnusContextMenuItem(
             id: id,
             // ignore: deprecated_member_use_from_same_package
             androidId: androidId,
@@ -1499,7 +1499,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           String? url = call.arguments["url"];
           String? printJobId = call.arguments["printJobId"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           AndroidPrintJobController? printJob = printJobId != null
               ? AndroidPrintJobController(
                   AndroidPrintJobControllerCreationParams(id: printJobId),
@@ -1548,10 +1548,10 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
         if ((webviewParams != null &&
                 webviewParams!.onCameraCaptureStateChanged != null) ||
             _inAppBrowserEventHandler != null) {
-          var oldState = MediaCaptureState.fromNativeValue(
+          var oldState = CygnusMediaCaptureState.fromNativeValue(
             call.arguments["oldState"],
           );
-          var newState = MediaCaptureState.fromNativeValue(
+          var newState = CygnusMediaCaptureState.fromNativeValue(
             call.arguments["newState"],
           );
 
@@ -1573,10 +1573,10 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
         if ((webviewParams != null &&
                 webviewParams!.onMicrophoneCaptureStateChanged != null) ||
             _inAppBrowserEventHandler != null) {
-          var oldState = MediaCaptureState.fromNativeValue(
+          var oldState = CygnusMediaCaptureState.fromNativeValue(
             call.arguments["oldState"],
           );
-          var newState = MediaCaptureState.fromNativeValue(
+          var newState = CygnusMediaCaptureState.fromNativeValue(
             call.arguments["newState"],
           );
 
@@ -1625,7 +1625,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          ShowFileChooserRequest request = ShowFileChooserRequest.fromMap(
+          CygnusShowFileChooserRequest request = CygnusShowFileChooserRequest.fromMap(
             arguments,
           )!;
 
@@ -1646,7 +1646,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
             .cast<String, dynamic>();
         // decode args to json
         handlerDataMap["args"] = jsonDecode(handlerDataMap["args"]);
-        final handlerData = JavaScriptHandlerFunctionData.fromMap(
+        final handlerData = CygnusJavaScriptHandlerFunctionData.fromMap(
           handlerDataMap,
         )!;
 
@@ -1666,7 +1666,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
                   ? arguments["duration"].toDouble()
                   : arguments["duration"];
 
-              var response = LoadedResource.fromMap(arguments)!;
+              var response = CygnusLoadedResource.fromMap(arguments)!;
 
               if (webviewParams != null &&
                   webviewParams!.onLoadResource != null)
@@ -1684,7 +1684,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
                 _inAppBrowserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
-              AjaxRequest request = AjaxRequest.fromMap(arguments)!;
+              CygnusAjaxRequest request = CygnusAjaxRequest.fromMap(arguments)!;
 
               if (webviewParams != null &&
                   webviewParams!.shouldInterceptAjaxRequest != null)
@@ -1708,7 +1708,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
                 _inAppBrowserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
-              AjaxRequest request = AjaxRequest.fromMap(arguments)!;
+              CygnusAjaxRequest request = CygnusAjaxRequest.fromMap(arguments)!;
 
               if (webviewParams != null &&
                   webviewParams!.onAjaxReadyStateChange != null)
@@ -1732,7 +1732,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
                 _inAppBrowserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
-              AjaxRequest request = AjaxRequest.fromMap(arguments)!;
+              CygnusAjaxRequest request = CygnusAjaxRequest.fromMap(arguments)!;
 
               if (webviewParams != null &&
                   webviewParams!.onAjaxProgress != null)
@@ -1756,7 +1756,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
                 _inAppBrowserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
-              FetchRequest request = FetchRequest.fromMap(arguments)!;
+              CygnusFetchRequest request = CygnusFetchRequest.fromMap(arguments)!;
 
               if (webviewParams != null &&
                   webviewParams!.shouldInterceptFetchRequest != null)
@@ -1809,15 +1809,15 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
           try {
             var jsHandlerResult = null;
             if (_javaScriptHandlersMap[handlerName]
-                is JavaScriptHandlerCallback) {
+                is CygnusJavaScriptHandlerCallback) {
               jsHandlerResult =
                   await (_javaScriptHandlersMap[handlerName]
-                      as JavaScriptHandlerCallback)(handlerData.args);
+                      as CygnusJavaScriptHandlerCallback)(handlerData.args);
             } else if (_javaScriptHandlersMap[handlerName]
-                is JavaScriptHandlerFunction) {
+                is CygnusJavaScriptHandlerFunction) {
               jsHandlerResult =
                   await (_javaScriptHandlersMap[handlerName]
-                      as JavaScriptHandlerFunction)(handlerData);
+                      as CygnusJavaScriptHandlerFunction)(handlerData);
             } else {
               jsHandlerResult = await _javaScriptHandlersMap[handlerName]!();
             }
@@ -1838,10 +1838,10 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<WebUri?> getUrl() async {
+  Future<CygnusWebUri?> getUrl() async {
     Map<String, dynamic> args = <String, dynamic>{};
     String? url = await channel?.invokeMethod<String?>('getUrl', args);
-    return url != null ? WebUri(url) : null;
+    return url != null ? CygnusWebUri(url) : null;
   }
 
   @override
@@ -1860,7 +1860,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   Future<String?> getHtml() async {
     String? html;
 
-    InAppWebViewSettings? settings = await getSettings();
+    CygnusWebViewSettings? settings = await getSettings();
     if (settings != null && settings.javaScriptEnabled == true) {
       html = await evaluateJavascript(
         source: "window.document.getElementsByTagName('html')[0].outerHTML;",
@@ -1896,8 +1896,8 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<List<Favicon>> getFavicons() async {
-    List<Favicon> favicons = [];
+  Future<List<CygnusFavicon>> getFavicons() async {
+    List<CygnusFavicon> favicons = [];
 
     var webviewUrl = await getUrl();
 
@@ -1918,7 +1918,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
       assetPathBase = assetPathSplit[0] + "/flutter_assets/";
     }
 
-    InAppWebViewSettings? settings = await getSettings();
+    CygnusWebViewSettings? settings = await getSettings();
     if (settings != null && settings.javaScriptEnabled == true) {
       List<Map<dynamic, dynamic>> links =
           (await evaluateJavascript(
@@ -1984,11 +1984,11 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
       HttpClient client = HttpClient();
       var faviconUrl =
           webviewUrl.scheme + "://" + webviewUrl.host + "/favicon.ico";
-      var faviconUri = WebUri(faviconUrl);
+      var faviconUri = CygnusWebUri(faviconUrl);
       var headRequest = await client.headUrl(faviconUri);
       var headResponse = await headRequest.close();
       if (headResponse.statusCode == 200) {
-        favicons.add(Favicon(url: faviconUri, rel: "shortcut icon"));
+        favicons.add(CygnusFavicon(url: faviconUri, rel: "shortcut icon"));
       }
     } catch (e) {
       developer.log(
@@ -2055,15 +2055,15 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
     return url.startsWith("http://") || url.startsWith("https://");
   }
 
-  List<Favicon> _createFavicons(
-    WebUri url,
+  List<CygnusFavicon> _createFavicons(
+    CygnusWebUri url,
     String? assetPathBase,
     String urlIcon,
     String? rel,
     String? sizes,
     bool isManifest,
   ) {
-    List<Favicon> favicons = [];
+    List<CygnusFavicon> favicons = [];
 
     List<String> urlSplit = urlIcon.split("/");
     if (!_isUrlAbsolute(urlIcon)) {
@@ -2090,12 +2090,12 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
         int width = int.parse(size.split("x")[0]);
         int height = int.parse(size.split("x")[1]);
         favicons.add(
-          Favicon(url: WebUri(urlIcon), rel: rel, width: width, height: height),
+          CygnusFavicon(url: CygnusWebUri(urlIcon), rel: rel, width: width, height: height),
         );
       }
     } else {
       favicons.add(
-        Favicon(url: WebUri(urlIcon), rel: rel, width: null, height: null),
+        CygnusFavicon(url: CygnusWebUri(urlIcon), rel: rel, width: null, height: null),
       );
     }
 
@@ -2104,10 +2104,10 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> loadUrl({
-    required URLRequest urlRequest,
+    required CygnusURLRequest urlRequest,
     @Deprecated('Use allowingReadAccessTo instead')
     Uri? iosAllowingReadAccessTo,
-    WebUri? allowingReadAccessTo,
+    CygnusWebUri? allowingReadAccessTo,
   }) async {
     assert(urlRequest.url != null && urlRequest.url.toString().isNotEmpty);
     assert(
@@ -2131,7 +2131,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> postUrl({
-    required WebUri url,
+    required CygnusWebUri url,
     required Uint8List postData,
   }) async {
     assert(url.toString().isNotEmpty);
@@ -2146,12 +2146,12 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
     required String data,
     String mimeType = "text/html",
     String encoding = "utf8",
-    WebUri? baseUrl,
+    CygnusWebUri? baseUrl,
     @Deprecated('Use historyUrl instead') Uri? androidHistoryUrl,
-    WebUri? historyUrl,
+    CygnusWebUri? historyUrl,
     @Deprecated('Use allowingReadAccessTo instead')
     Uri? iosAllowingReadAccessTo,
-    WebUri? allowingReadAccessTo,
+    CygnusWebUri? allowingReadAccessTo,
   }) async {
     assert(
       allowingReadAccessTo == null || allowingReadAccessTo.isScheme("file"),
@@ -2236,7 +2236,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<void> goTo({required WebHistoryItem historyItem}) async {
+  Future<void> goTo({required CygnusWebHistoryItem historyItem}) async {
     var steps = historyItem.offset;
     if (steps != null) {
       await goBackOrForward(steps: steps);
@@ -2258,7 +2258,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   @override
   Future<dynamic> evaluateJavascript({
     required String source,
-    ContentWorld? contentWorld,
+    CygnusContentWorld? contentWorld,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('source', () => source);
@@ -2276,8 +2276,8 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> injectJavascriptFileFromUrl({
-    required WebUri urlFile,
-    ScriptHtmlTagAttributes? scriptHtmlTagAttributes,
+    required CygnusWebUri urlFile,
+    CygnusScriptHtmlTagAttributes? scriptHtmlTagAttributes,
   }) async {
     assert(urlFile.toString().isNotEmpty);
     var id = scriptHtmlTagAttributes?.id;
@@ -2310,8 +2310,8 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> injectCSSFileFromUrl({
-    required WebUri urlFile,
-    CSSLinkHtmlTagAttributes? cssLinkHtmlTagAttributes,
+    required CygnusWebUri urlFile,
+    CygnusCSSLinkHtmlTagAttributes? cssLinkHtmlTagAttributes,
   }) async {
     assert(urlFile.toString().isNotEmpty);
     Map<String, dynamic> args = <String, dynamic>{};
@@ -2353,7 +2353,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<Uint8List?> takeScreenshot({
-    ScreenshotConfiguration? screenshotConfiguration,
+    CygnusScreenshotConfiguration? screenshotConfiguration,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent(
@@ -2365,28 +2365,28 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   @Deprecated('Use setSettings instead')
-  Future<void> setOptions({required InAppWebViewGroupOptions options}) async {
-    InAppWebViewSettings settings =
-        InAppWebViewSettings.fromMap(options.toMap()) ?? InAppWebViewSettings();
+  Future<void> setOptions({required CygnusWebViewGroupOptions options}) async {
+    CygnusWebViewSettings settings =
+        CygnusWebViewSettings.fromMap(options.toMap()) ?? CygnusWebViewSettings();
     await setSettings(settings: settings);
   }
 
   @override
   @Deprecated('Use getSettings instead')
-  Future<InAppWebViewGroupOptions?> getOptions() async {
-    InAppWebViewSettings? settings = await getSettings();
+  Future<CygnusWebViewGroupOptions?> getOptions() async {
+    CygnusWebViewSettings? settings = await getSettings();
 
     Map<dynamic, dynamic>? options = settings?.toMap();
     if (options != null) {
       options = options.cast<String, dynamic>();
-      return InAppWebViewGroupOptions.fromMap(options as Map<String, dynamic>);
+      return CygnusWebViewGroupOptions.fromMap(options as Map<String, dynamic>);
     }
 
     return null;
   }
 
   @override
-  Future<void> setSettings({required InAppWebViewSettings settings}) async {
+  Future<void> setSettings({required CygnusWebViewSettings settings}) async {
     Map<String, dynamic> args = <String, dynamic>{};
 
     args.putIfAbsent('settings', () => settings.toMap());
@@ -2394,7 +2394,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<InAppWebViewSettings?> getSettings() async {
+  Future<CygnusWebViewSettings?> getSettings() async {
     Map<String, dynamic> args = <String, dynamic>{};
 
     Map<dynamic, dynamic>? settings = await channel?.invokeMethod(
@@ -2403,31 +2403,31 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
     );
     if (settings != null) {
       settings = settings.cast<String, dynamic>();
-      return InAppWebViewSettings.fromMap(settings as Map<String, dynamic>);
+      return CygnusWebViewSettings.fromMap(settings as Map<String, dynamic>);
     }
 
     return null;
   }
 
   @override
-  Future<WebHistory?> getCopyBackForwardList() async {
+  Future<CygnusWebHistory?> getCopyBackForwardList() async {
     Map<String, dynamic> args = <String, dynamic>{};
     Map<String, dynamic>? result = (await channel?.invokeMethod(
       'getCopyBackForwardList',
       args,
     ))?.cast<String, dynamic>();
-    return WebHistory.fromMap(result);
+    return CygnusWebHistory.fromMap(result);
   }
 
   @override
-  @Deprecated("Use InAppWebViewController.clearAllCache instead")
+  @Deprecated("Use CygnusWebViewController.clearAllCache instead")
   Future<void> clearCache() async {
     Map<String, dynamic> args = <String, dynamic>{};
     await channel?.invokeMethod('clearCache', args);
   }
 
   @override
-  @Deprecated("Use FindInteractionController.findAll instead")
+  @Deprecated("Use CygnusFindInteractionController.findAll instead")
   Future<void> findAllAsync({required String find}) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('find', () => find);
@@ -2435,7 +2435,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  @Deprecated("Use FindInteractionController.findNext instead")
+  @Deprecated("Use CygnusFindInteractionController.findNext instead")
   Future<void> findNext({required bool forward}) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('forward', () => forward);
@@ -2443,7 +2443,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  @Deprecated("Use FindInteractionController.clearMatches instead")
+  @Deprecated("Use CygnusFindInteractionController.clearMatches instead")
   Future<void> clearMatches() async {
     Map<String, dynamic> args = <String, dynamic>{};
     await channel?.invokeMethod('clearMatches', args);
@@ -2501,7 +2501,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<AndroidPrintJobController?> printCurrentPage({
-    PrintJobSettings? settings,
+    CygnusPrintJobSettings? settings,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("settings", () => settings?.toMap());
@@ -2511,7 +2511,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
     );
     if (jobId != null) {
       return AndroidPrintJobController(
-        PlatformPrintJobControllerCreationParams(id: jobId),
+        CygnusPlatformPrintJobControllerCreationParams(id: jobId),
       );
     }
     return null;
@@ -2564,10 +2564,10 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<WebUri?> getOriginalUrl() async {
+  Future<CygnusWebUri?> getOriginalUrl() async {
     Map<String, dynamic> args = <String, dynamic>{};
     String? url = await channel?.invokeMethod<String?>('getOriginalUrl', args);
-    return url != null ? WebUri(url) : null;
+    return url != null ? CygnusWebUri(url) : null;
   }
 
   @override
@@ -2589,7 +2589,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<InAppWebViewHitTestResult?> getHitTestResult() async {
+  Future<CygnusWebViewHitTestResult?> getHitTestResult() async {
     Map<String, dynamic> args = <String, dynamic>{};
     Map<dynamic, dynamic>? hitTestResultMap = await channel?.invokeMethod(
       'getHitTestResult',
@@ -2602,18 +2602,18 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
     hitTestResultMap = hitTestResultMap.cast<String, dynamic>();
 
-    InAppWebViewHitTestResultType? type =
-        InAppWebViewHitTestResultType.fromNativeValue(
+    CygnusWebViewHitTestResultType? type =
+        CygnusWebViewHitTestResultType.fromNativeValue(
           hitTestResultMap["type"]?.toInt(),
         );
     String? extra = hitTestResultMap["extra"];
-    return InAppWebViewHitTestResult(type: type, extra: extra);
+    return CygnusWebViewHitTestResult(type: type, extra: extra);
   }
 
   @override
   Future<bool?> requestFocus({
-    FocusDirection? direction,
-    InAppWebViewRect? previouslyFocusedRect,
+    CygnusFocusDirection? direction,
+    CygnusWebViewRect? previouslyFocusedRect,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("direction", () => direction?.toNativeValue());
@@ -2643,7 +2643,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<void> setContextMenu(ContextMenu? contextMenu) async {
+  Future<void> setContextMenu(CygnusContextMenu? contextMenu) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("contextMenu", () => contextMenu?.toMap());
     await channel?.invokeMethod('setContextMenu', args);
@@ -2651,15 +2651,15 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<RequestFocusNodeHrefResult?> requestFocusNodeHref() async {
+  Future<CygnusRequestFocusNodeHrefResult?> requestFocusNodeHref() async {
     Map<String, dynamic> args = <String, dynamic>{};
     Map<dynamic, dynamic>? result = await channel?.invokeMethod(
       'requestFocusNodeHref',
       args,
     );
     return result != null
-        ? RequestFocusNodeHrefResult(
-            url: result['url'] != null ? WebUri(result['url']) : null,
+        ? CygnusRequestFocusNodeHrefResult(
+            url: result['url'] != null ? CygnusWebUri(result['url']) : null,
             title: result['title'],
             src: result['src'],
           )
@@ -2667,22 +2667,22 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<RequestImageRefResult?> requestImageRef() async {
+  Future<CygnusRequestImageRefResult?> requestImageRef() async {
     Map<String, dynamic> args = <String, dynamic>{};
     Map<dynamic, dynamic>? result = await channel?.invokeMethod(
       'requestImageRef',
       args,
     );
     return result != null
-        ? RequestImageRefResult(
-            url: result['url'] != null ? WebUri(result['url']) : null,
+        ? CygnusRequestImageRefResult(
+            url: result['url'] != null ? CygnusWebUri(result['url']) : null,
           )
         : null;
   }
 
   @override
-  Future<List<MetaTag>> getMetaTags() async {
-    List<MetaTag> metaTags = [];
+  Future<List<CygnusMetaTag>> getMetaTags() async {
+    List<CygnusMetaTag> metaTags = [];
 
     List<Map<dynamic, dynamic>>? metaTagList = (await evaluateJavascript(
       source: """
@@ -2727,11 +2727,11 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
     }
 
     for (var metaTag in metaTagList) {
-      var attrs = <MetaTagAttribute>[];
+      var attrs = <CygnusMetaTagAttribute>[];
 
       for (var metaTagAttr in metaTag["attrs"]) {
         attrs.add(
-          MetaTagAttribute(
+          CygnusMetaTagAttribute(
             name: metaTagAttr["name"],
             value: metaTagAttr["value"],
           ),
@@ -2739,7 +2739,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
       }
 
       metaTags.add(
-        MetaTag(
+        CygnusMetaTag(
           name: metaTag["name"],
           content: metaTag["content"],
           attrs: attrs,
@@ -2766,7 +2766,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
     // try using javascript
     var metaTags = await getMetaTags();
-    MetaTag? metaTagThemeColor;
+    CygnusMetaTag? metaTagThemeColor;
 
     for (var metaTag in metaTags) {
       if (metaTag.name == "theme-color") {
@@ -2801,17 +2801,17 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<SslCertificate?> getCertificate() async {
+  Future<CygnusSslCertificate?> getCertificate() async {
     Map<String, dynamic> args = <String, dynamic>{};
     Map<String, dynamic>? sslCertificateMap = (await channel?.invokeMethod(
       'getCertificate',
       args,
     ))?.cast<String, dynamic>();
-    return SslCertificate.fromMap(sslCertificateMap);
+    return CygnusSslCertificate.fromMap(sslCertificateMap);
   }
 
   @override
-  Future<void> addUserScript({required UserScript userScript}) async {
+  Future<void> addUserScript({required CygnusUserScript userScript}) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('userScript', () => userScript.toMap());
     if (!(_userScripts[userScript.injectionTime]?.contains(userScript) ??
@@ -2822,14 +2822,14 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<void> addUserScripts({required List<UserScript> userScripts}) async {
+  Future<void> addUserScripts({required List<CygnusUserScript> userScripts}) async {
     for (var i = 0; i < userScripts.length; i++) {
       await addUserScript(userScript: userScripts[i]);
     }
   }
 
   @override
-  Future<bool> removeUserScript({required UserScript userScript}) async {
+  Future<bool> removeUserScript({required CygnusUserScript userScript}) async {
     var index = _userScripts[userScript.injectionTime]?.indexOf(userScript);
     if (index == null || index == -1) {
       return false;
@@ -2846,8 +2846,8 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> removeUserScriptsByGroupName({required String groupName}) async {
-    final List<UserScript> userScriptsAtDocumentStart = List.from(
-      _userScripts[UserScriptInjectionTime.AT_DOCUMENT_START] ?? [],
+    final List<CygnusUserScript> userScriptsAtDocumentStart = List.from(
+      _userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_START] ?? [],
     );
     for (final userScript in userScriptsAtDocumentStart) {
       if (userScript.groupName == groupName) {
@@ -2855,8 +2855,8 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
       }
     }
 
-    final List<UserScript> userScriptsAtDocumentEnd = List.from(
-      _userScripts[UserScriptInjectionTime.AT_DOCUMENT_END] ?? [],
+    final List<CygnusUserScript> userScriptsAtDocumentEnd = List.from(
+      _userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_END] ?? [],
     );
     for (final userScript in userScriptsAtDocumentEnd) {
       if (userScript.groupName == groupName) {
@@ -2871,7 +2871,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> removeUserScripts({
-    required List<UserScript> userScripts,
+    required List<CygnusUserScript> userScripts,
   }) async {
     for (final userScript in userScripts) {
       await removeUserScript(userScript: userScript);
@@ -2880,24 +2880,24 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> removeAllUserScripts() async {
-    _userScripts[UserScriptInjectionTime.AT_DOCUMENT_START]?.clear();
-    _userScripts[UserScriptInjectionTime.AT_DOCUMENT_END]?.clear();
+    _userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_START]?.clear();
+    _userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_END]?.clear();
 
     Map<String, dynamic> args = <String, dynamic>{};
     await channel?.invokeMethod('removeAllUserScripts', args);
   }
 
   @override
-  bool hasUserScript({required UserScript userScript}) {
+  bool hasUserScript({required CygnusUserScript userScript}) {
     return _userScripts[userScript.injectionTime]?.contains(userScript) ??
         false;
   }
 
   @override
-  Future<CallAsyncJavaScriptResult?> callAsyncJavaScript({
+  Future<CygnusCallAsyncJavaScriptResult?> callAsyncJavaScript({
     required String functionBody,
     Map<String, dynamic> arguments = const <String, dynamic>{},
-    ContentWorld? contentWorld,
+    CygnusContentWorld? contentWorld,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('functionBody', () => functionBody);
@@ -2908,7 +2908,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
       return null;
     }
     data = json.decode(data);
-    return CallAsyncJavaScriptResult(
+    return CygnusCallAsyncJavaScriptResult(
       value: data["value"],
       error: data["error"],
     );
@@ -2921,8 +2921,8 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }) async {
     if (!autoname) {
       assert(
-        WebArchiveFormat.MHT.isSupported() &&
-            filePath.endsWith("." + WebArchiveFormat.MHT.toNativeValue()!),
+        CygnusWebArchiveFormat.MHT.isSupported() &&
+            filePath.endsWith("." + CygnusWebArchiveFormat.MHT.toNativeValue()!),
       );
     }
 
@@ -2954,11 +2954,11 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> postWebMessage({
-    required WebMessage message,
-    WebUri? targetOrigin,
+    required CygnusWebMessage message,
+    CygnusWebUri? targetOrigin,
   }) async {
     if (targetOrigin == null) {
-      targetOrigin = WebUri('');
+      targetOrigin = CygnusWebUri('');
     }
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('message', () => message.toMap());
@@ -2968,7 +2968,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> addWebMessageListener(
-    PlatformWebMessageListener webMessageListener,
+    CygnusPlatformWebMessageListener webMessageListener,
   ) async {
     assert(
       !_webMessageListeners.contains(webMessageListener),
@@ -2989,7 +2989,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  bool hasWebMessageListener(PlatformWebMessageListener webMessageListener) {
+  bool hasWebMessageListener(CygnusPlatformWebMessageListener webMessageListener) {
     return _webMessageListeners.contains(webMessageListener) ||
         _webMessageListenerObjNames.contains(
           webMessageListener.params.jsObjectName,
@@ -3109,13 +3109,13 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<WebUri?> getSafeBrowsingPrivacyPolicyUrl() async {
+  Future<CygnusWebUri?> getSafeBrowsingPrivacyPolicyUrl() async {
     Map<String, dynamic> args = <String, dynamic>{};
     String? url = await _staticChannel.invokeMethod(
       'getSafeBrowsingPrivacyPolicyUrl',
       args,
     );
-    return url != null ? WebUri(url) : null;
+    return url != null ? CygnusWebUri(url) : null;
   }
 
   @override
@@ -3136,13 +3136,13 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<WebViewPackageInfo?> getCurrentWebViewPackage() async {
+  Future<CygnusWebViewPackageInfo?> getCurrentWebViewPackage() async {
     Map<String, dynamic> args = <String, dynamic>{};
     Map<String, dynamic>? packageInfo = (await _staticChannel.invokeMethod(
       'getCurrentWebViewPackage',
       args,
     ))?.cast<String, dynamic>();
-    return WebViewPackageInfo.fromMap(packageInfo);
+    return CygnusWebViewPackageInfo.fromMap(packageInfo);
   }
 
   @override
@@ -3181,7 +3181,7 @@ class AndroidInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<void> disposeKeepAlive(InAppWebViewKeepAlive keepAlive) async {
+  Future<void> disposeKeepAlive(CygnusWebViewKeepAlive keepAlive) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('keepAliveId', () => keepAlive.id);
     await _staticChannel.invokeMethod('disposeKeepAlive', args);

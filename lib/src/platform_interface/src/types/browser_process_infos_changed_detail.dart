@@ -6,12 +6,12 @@ import 'enum_method.dart';
 
 part 'browser_process_infos_changed_detail.g.dart';
 
-///An object that contains information for the [PlatformWebViewEnvironment.onProcessInfosChanged] event.
+///An object that contains information for the [CygnusPlatformWebViewEnvironment.onProcessInfosChanged] event.
 @ExchangeableObject()
-class BrowserProcessInfosChangedDetail_ {
+class CygnusBrowserProcessInfosChangedDetail_ {
   ///The kind of the process.
   @SupportedPlatforms(platforms: [WindowsPlatform()])
-  List<BrowserProcessInfo_> infos;
+  List<CygnusBrowserProcessInfo_> infos;
 
-  BrowserProcessInfosChangedDetail_({this.infos = const []});
+  CygnusBrowserProcessInfosChangedDetail_({this.infos = const []});
 }

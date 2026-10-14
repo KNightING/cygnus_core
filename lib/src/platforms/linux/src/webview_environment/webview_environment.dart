@@ -8,30 +8,30 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 /// this class.
 @immutable
 class LinuxWebViewEnvironmentCreationParams
-    extends PlatformWebViewEnvironmentCreationParams {
+    extends CygnusPlatformWebViewEnvironmentCreationParams {
   /// Creates a new [LinuxWebViewEnvironmentCreationParams] instance.
   const LinuxWebViewEnvironmentCreationParams({super.settings});
 
-  /// Creates a [LinuxWebViewEnvironmentCreationParams] instance based on [PlatformWebViewEnvironmentCreationParams].
+  /// Creates a [LinuxWebViewEnvironmentCreationParams] instance based on [CygnusPlatformWebViewEnvironmentCreationParams].
   factory LinuxWebViewEnvironmentCreationParams.fromPlatformWebViewEnvironmentCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebViewEnvironmentCreationParams params,
+    CygnusPlatformWebViewEnvironmentCreationParams params,
   ) {
     return LinuxWebViewEnvironmentCreationParams(settings: params.settings);
   }
 }
 
-/// Linux implementation of [PlatformWebViewEnvironment].
+/// Linux implementation of [CygnusPlatformWebViewEnvironment].
 ///
 /// This class provides access to WPE WebKit version information and
 /// WebKitWebContext management on Linux.
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- Linux
-class LinuxWebViewEnvironment extends PlatformWebViewEnvironment
+class LinuxWebViewEnvironment extends CygnusPlatformWebViewEnvironment
     with ChannelController {
-  /// Static method channel for WebViewEnvironment operations.
+  /// Static method channel for CygnusWebViewEnvironment operations.
   static final MethodChannel _staticChannel = MethodChannel(
     'com.pichillilorenzo/flutter_webview_environment',
   );
@@ -40,7 +40,7 @@ class LinuxWebViewEnvironment extends PlatformWebViewEnvironment
   final String id = IdGenerator.generate();
 
   /// Creates a new [LinuxWebViewEnvironment].
-  LinuxWebViewEnvironment(PlatformWebViewEnvironmentCreationParams params)
+  LinuxWebViewEnvironment(CygnusPlatformWebViewEnvironmentCreationParams params)
     : super.implementation(
         params is LinuxWebViewEnvironmentCreationParams
             ? params
@@ -63,14 +63,14 @@ class LinuxWebViewEnvironment extends PlatformWebViewEnvironment
     debugLog(
       className: runtimeType.toString(),
       id: id,
-      debugLoggingSettings: PlatformWebViewEnvironment.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformWebViewEnvironment.debugLoggingSettings,
       method: method,
       args: args,
     );
   }
 
   Future<dynamic> _handleMethod(MethodCall call) async {
-    if (PlatformWebViewEnvironment.debugLoggingSettings.enabled) {
+    if (CygnusPlatformWebViewEnvironment.debugLoggingSettings.enabled) {
       _debugLog(call.method, call.arguments);
     }
 
@@ -80,12 +80,12 @@ class LinuxWebViewEnvironment extends PlatformWebViewEnvironment
     }
   }
 
-  /// {@macro cygnus_core.PlatformWebViewEnvironment.create}
+  /// {@macro cygnus_core.CygnusPlatformWebViewEnvironment.create}
   ///
   /// On Linux, this creates a new WebKitWebContext instance.
   @override
   Future<LinuxWebViewEnvironment> create({
-    WebViewEnvironmentSettings? settings,
+    CygnusWebViewEnvironmentSettings? settings,
   }) async {
     final env = LinuxWebViewEnvironment(
       LinuxWebViewEnvironmentCreationParams(settings: settings),
@@ -106,7 +106,7 @@ class LinuxWebViewEnvironment extends PlatformWebViewEnvironment
     return env;
   }
 
-  /// {@macro cygnus_core.PlatformWebViewEnvironment.getAvailableVersion}
+  /// {@macro cygnus_core.CygnusPlatformWebViewEnvironment.getAvailableVersion}
   ///
   /// On Linux, this returns the WPE WebKit version (e.g., "2.42.0").
   ///
@@ -117,13 +117,13 @@ class LinuxWebViewEnvironment extends PlatformWebViewEnvironment
     return await _staticChannel.invokeMethod<String>('getAvailableVersion');
   }
 
-  /// {@macro cygnus_core.PlatformWebViewEnvironment.isSpellCheckingEnabled}
+  /// {@macro cygnus_core.CygnusPlatformWebViewEnvironment.isSpellCheckingEnabled}
   @override
   Future<bool> isSpellCheckingEnabled() async {
     return await channel?.invokeMethod<bool>('isSpellCheckingEnabled') ?? false;
   }
 
-  /// {@macro cygnus_core.PlatformWebViewEnvironment.getSpellCheckingLanguages}
+  /// {@macro cygnus_core.CygnusPlatformWebViewEnvironment.getSpellCheckingLanguages}
   @override
   Future<List<String>> getSpellCheckingLanguages() async {
     final result = await channel?.invokeMethod<List>(
@@ -132,14 +132,14 @@ class LinuxWebViewEnvironment extends PlatformWebViewEnvironment
     return result?.cast<String>() ?? [];
   }
 
-  /// {@macro cygnus_core.PlatformWebViewEnvironment.getCacheModel}
+  /// {@macro cygnus_core.CygnusPlatformWebViewEnvironment.getCacheModel}
   @override
-  Future<CacheModel?> getCacheModel() async {
+  Future<CygnusCacheModel?> getCacheModel() async {
     final result = await channel?.invokeMethod<int>('getCacheModel');
-    return CacheModel.fromNativeValue(result);
+    return CygnusCacheModel.fromNativeValue(result);
   }
 
-  /// {@macro cygnus_core.PlatformWebViewEnvironment.isAutomationAllowed}
+  /// {@macro cygnus_core.CygnusPlatformWebViewEnvironment.isAutomationAllowed}
   @override
   Future<bool> isAutomationAllowed() async {
     return await channel?.invokeMethod<bool>('isAutomationAllowed') ?? false;

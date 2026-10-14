@@ -7,8 +7,8 @@ part of 'web_storage_origin.dart';
 // **************************************************************************
 
 ///Class that encapsulates information about the amount of storage currently used by an origin for the JavaScript storage APIs.
-///An origin comprises the host, scheme and port of a URI. See [PlatformWebStorageManager] for details.
-class WebStorageOrigin {
+///An origin comprises the host, scheme and port of a URI. See [CygnusPlatformWebStorageManager] for details.
+class CygnusWebStorageOrigin {
   ///The string representation of this origin.
   String? origin;
 
@@ -17,17 +17,17 @@ class WebStorageOrigin {
 
   ///The total amount of storage currently being used by this origin, for all JavaScript storage APIs, in bytes.
   int? usage;
-  WebStorageOrigin({this.origin, this.quota, this.usage});
+  CygnusWebStorageOrigin({this.origin, this.quota, this.usage});
 
-  ///Gets a possible [WebStorageOrigin] instance from a [Map] value.
-  static WebStorageOrigin? fromMap(
+  ///Gets a possible [CygnusWebStorageOrigin] instance from a [Map] value.
+  static CygnusWebStorageOrigin? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = WebStorageOrigin(
+    final instance = CygnusWebStorageOrigin(
       origin: map['origin'],
       quota: map['quota'],
       usage: map['usage'],
@@ -36,7 +36,7 @@ class WebStorageOrigin {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"origin": origin, "quota": quota, "usage": usage};
   }
 
@@ -47,15 +47,15 @@ class WebStorageOrigin {
 
   @override
   String toString() {
-    return 'WebStorageOrigin{origin: $origin, quota: $quota, usage: $usage}';
+    return 'CygnusWebStorageOrigin{origin: $origin, quota: $quota, usage: $usage}';
   }
 }
 
 ///Class that encapsulates information about the amount of storage currently used by an origin for the JavaScript storage APIs.
-///An origin comprises the host, scheme and port of a URI. See `AndroidWebStorageManager` for details.
-///Use [WebStorageOrigin] instead.
-@Deprecated('Use WebStorageOrigin instead')
-class AndroidWebStorageOrigin {
+///An origin comprises the host, scheme and port of a URI. See `CygnusAndroidWebStorageManager` for details.
+///Use [CygnusWebStorageOrigin] instead.
+@Deprecated('Use CygnusWebStorageOrigin instead')
+class CygnusAndroidWebStorageOrigin {
   ///The string representation of this origin.
   String? origin;
 
@@ -64,17 +64,17 @@ class AndroidWebStorageOrigin {
 
   ///The total amount of storage currently being used by this origin, for all JavaScript storage APIs, in bytes.
   int? usage;
-  AndroidWebStorageOrigin({this.origin, this.quota, this.usage});
+  CygnusAndroidWebStorageOrigin({this.origin, this.quota, this.usage});
 
-  ///Gets a possible [AndroidWebStorageOrigin] instance from a [Map] value.
-  static AndroidWebStorageOrigin? fromMap(
+  ///Gets a possible [CygnusAndroidWebStorageOrigin] instance from a [Map] value.
+  static CygnusAndroidWebStorageOrigin? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = AndroidWebStorageOrigin(
+    final instance = CygnusAndroidWebStorageOrigin(
       origin: map['origin'],
       quota: map['quota'],
       usage: map['usage'],
@@ -83,7 +83,7 @@ class AndroidWebStorageOrigin {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"origin": origin, "quota": quota, "usage": usage};
   }
 
@@ -94,6 +94,6 @@ class AndroidWebStorageOrigin {
 
   @override
   String toString() {
-    return 'AndroidWebStorageOrigin{origin: $origin, quota: $quota, usage: $usage}';
+    return 'CygnusAndroidWebStorageOrigin{origin: $origin, quota: $quota, usage: $usage}';
   }
 }

@@ -6,9 +6,9 @@ part of 'platform_web_storage.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformWebStorageCreationParamsClassSupported
-    on PlatformWebStorageCreationParams {
-  ///{@template cygnus_core.PlatformWebStorageCreationParams.supported_platforms}
+extension _CygnusPlatformWebStorageCreationParamsClassSupported
+    on CygnusPlatformWebStorageCreationParams {
+  ///{@template cygnus_core.CygnusPlatformWebStorageCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -18,7 +18,7 @@ extension _PlatformWebStorageCreationParamsClassSupported
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformWebStorageCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformWebStorageCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return kIsWeb && platform == null
@@ -34,11 +34,11 @@ extension _PlatformWebStorageCreationParamsClassSupported
   }
 }
 
-///List of [PlatformWebStorageCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformWebStorageCreationParamsProperty {
-  ///Can be used to check if the [PlatformWebStorageCreationParams.localStorage] property is supported at runtime.
+///List of [CygnusPlatformWebStorageCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformWebStorageCreationParamsProperty {
+  ///Can be used to check if the [CygnusPlatformWebStorageCreationParams.localStorage] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebStorageCreationParams.localStorage.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebStorageCreationParams.localStorage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -48,13 +48,13 @@ enum PlatformWebStorageCreationParamsProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformWebStorageCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebStorageCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   localStorage,
 
-  ///Can be used to check if the [PlatformWebStorageCreationParams.sessionStorage] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebStorageCreationParams.sessionStorage] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebStorageCreationParams.sessionStorage.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebStorageCreationParams.sessionStorage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -64,19 +64,19 @@ enum PlatformWebStorageCreationParamsProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformWebStorageCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebStorageCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   sessionStorage,
 }
 
-extension _PlatformWebStorageCreationParamsPropertySupported
-    on PlatformWebStorageCreationParams {
+extension _CygnusPlatformWebStorageCreationParamsPropertySupported
+    on CygnusPlatformWebStorageCreationParams {
   static bool isPropertySupported(
-    PlatformWebStorageCreationParamsProperty property, {
+    CygnusPlatformWebStorageCreationParamsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformWebStorageCreationParamsProperty.localStorage:
+      case CygnusPlatformWebStorageCreationParamsProperty.localStorage:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -87,7 +87,7 @@ extension _PlatformWebStorageCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebStorageCreationParamsProperty.sessionStorage:
+      case CygnusPlatformWebStorageCreationParamsProperty.sessionStorage:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -102,8 +102,8 @@ extension _PlatformWebStorageCreationParamsPropertySupported
   }
 }
 
-extension _PlatformWebStorageClassSupported on PlatformWebStorage {
-  ///{@template cygnus_core.PlatformWebStorage.supported_platforms}
+extension _CygnusPlatformWebStorageClassSupported on CygnusPlatformWebStorage {
+  ///{@template cygnus_core.CygnusPlatformWebStorage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -113,7 +113,7 @@ extension _PlatformWebStorageClassSupported on PlatformWebStorage {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformWebStorage.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformWebStorage.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return kIsWeb && platform == null
@@ -129,11 +129,11 @@ extension _PlatformWebStorageClassSupported on PlatformWebStorage {
   }
 }
 
-///List of [PlatformWebStorage]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformWebStorageProperty {
-  ///Can be used to check if the [PlatformWebStorage.localStorage] property is supported at runtime.
+///List of [CygnusPlatformWebStorage]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformWebStorageProperty {
+  ///Can be used to check if the [CygnusPlatformWebStorage.localStorage] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebStorage.localStorage.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebStorage.localStorage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -143,13 +143,13 @@ enum PlatformWebStorageProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformWebStorage.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebStorage.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   localStorage,
 
-  ///Can be used to check if the [PlatformWebStorage.sessionStorage] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebStorage.sessionStorage] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebStorage.sessionStorage.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebStorage.sessionStorage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -159,18 +159,19 @@ enum PlatformWebStorageProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformWebStorage.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebStorage.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   sessionStorage,
 }
 
-extension _PlatformWebStoragePropertySupported on PlatformWebStorage {
+extension _CygnusPlatformWebStoragePropertySupported
+    on CygnusPlatformWebStorage {
   static bool isPropertySupported(
-    PlatformWebStorageProperty property, {
+    CygnusPlatformWebStorageProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformWebStorageProperty.localStorage:
+      case CygnusPlatformWebStorageProperty.localStorage:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -181,7 +182,7 @@ extension _PlatformWebStoragePropertySupported on PlatformWebStorage {
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebStorageProperty.sessionStorage:
+      case CygnusPlatformWebStorageProperty.sessionStorage:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -196,11 +197,11 @@ extension _PlatformWebStoragePropertySupported on PlatformWebStorage {
   }
 }
 
-///List of [PlatformWebStorage]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformWebStorageMethod {
-  ///Can be used to check if the [PlatformWebStorage.dispose] method is supported at runtime.
+///List of [CygnusPlatformWebStorage]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformWebStorageMethod {
+  ///Can be used to check if the [CygnusPlatformWebStorage.dispose] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebStorage.dispose.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebStorage.dispose.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -210,18 +211,18 @@ enum PlatformWebStorageMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformWebStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebStorage.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   dispose,
 }
 
-extension _PlatformWebStorageMethodSupported on PlatformWebStorage {
+extension _CygnusPlatformWebStorageMethodSupported on CygnusPlatformWebStorage {
   static bool isMethodSupported(
-    PlatformWebStorageMethod method, {
+    CygnusPlatformWebStorageMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformWebStorageMethod.dispose:
+      case CygnusPlatformWebStorageMethod.dispose:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -236,9 +237,9 @@ extension _PlatformWebStorageMethodSupported on PlatformWebStorage {
   }
 }
 
-extension _PlatformStorageCreationParamsClassSupported
-    on PlatformStorageCreationParams {
-  ///{@template cygnus_core.PlatformStorageCreationParams.supported_platforms}
+extension _CygnusPlatformStorageCreationParamsClassSupported
+    on CygnusPlatformStorageCreationParams {
+  ///{@template cygnus_core.CygnusPlatformStorageCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -248,7 +249,7 @@ extension _PlatformStorageCreationParamsClassSupported
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformStorageCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformStorageCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return kIsWeb && platform == null
@@ -264,11 +265,11 @@ extension _PlatformStorageCreationParamsClassSupported
   }
 }
 
-///List of [PlatformStorageCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformStorageCreationParamsProperty {
-  ///Can be used to check if the [PlatformStorageCreationParams.controller] property is supported at runtime.
+///List of [CygnusPlatformStorageCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformStorageCreationParamsProperty {
+  ///Can be used to check if the [CygnusPlatformStorageCreationParams.controller] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformStorageCreationParams.controller.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformStorageCreationParams.controller.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -278,13 +279,13 @@ enum PlatformStorageCreationParamsProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformStorageCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformStorageCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   controller,
 
-  ///Can be used to check if the [PlatformStorageCreationParams.webStorageType] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformStorageCreationParams.webStorageType] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformStorageCreationParams.webStorageType.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformStorageCreationParams.webStorageType.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -294,19 +295,19 @@ enum PlatformStorageCreationParamsProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformStorageCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformStorageCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   webStorageType,
 }
 
-extension _PlatformStorageCreationParamsPropertySupported
-    on PlatformStorageCreationParams {
+extension _CygnusPlatformStorageCreationParamsPropertySupported
+    on CygnusPlatformStorageCreationParams {
   static bool isPropertySupported(
-    PlatformStorageCreationParamsProperty property, {
+    CygnusPlatformStorageCreationParamsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformStorageCreationParamsProperty.controller:
+      case CygnusPlatformStorageCreationParamsProperty.controller:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -317,304 +318,7 @@ extension _PlatformStorageCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformStorageCreationParamsProperty.webStorageType:
-        return kIsWeb && platform == null
-            ? true
-            : ((kIsWeb && platform != null) || !kIsWeb) &&
-                  [
-                    TargetPlatform.android,
-                    TargetPlatform.iOS,
-                    TargetPlatform.macOS,
-                    TargetPlatform.windows,
-                    TargetPlatform.linux,
-                  ].contains(platform ?? defaultTargetPlatform);
-    }
-  }
-}
-
-extension _PlatformLocalStorageCreationParamsClassSupported
-    on PlatformLocalStorageCreationParams {
-  ///{@template cygnus_core.PlatformLocalStorageCreationParams.supported_platforms}
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView
-  ///- iOS WKWebView
-  ///- macOS WKWebView
-  ///- Web \<iframe\> but requires same origin
-  ///- Windows WebView2
-  ///- Linux WPE WebKit
-  ///
-  ///Use the [PlatformLocalStorageCreationParams.isClassSupported] method to check if this class is supported at runtime.
-  ///{@endtemplate}
-  static bool isClassSupported({TargetPlatform? platform}) {
-    return kIsWeb && platform == null
-        ? true
-        : ((kIsWeb && platform != null) || !kIsWeb) &&
-              [
-                TargetPlatform.android,
-                TargetPlatform.iOS,
-                TargetPlatform.macOS,
-                TargetPlatform.windows,
-                TargetPlatform.linux,
-              ].contains(platform ?? defaultTargetPlatform);
-  }
-}
-
-extension _PlatformLocalStorageClassSupported on PlatformLocalStorage {
-  ///{@template cygnus_core.PlatformLocalStorage.supported_platforms}
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView
-  ///- iOS WKWebView
-  ///- macOS WKWebView
-  ///- Web \<iframe\> but requires same origin
-  ///- Windows WebView2
-  ///- Linux WPE WebKit
-  ///
-  ///Use the [PlatformLocalStorage.isClassSupported] method to check if this class is supported at runtime.
-  ///{@endtemplate}
-  static bool isClassSupported({TargetPlatform? platform}) {
-    return kIsWeb && platform == null
-        ? true
-        : ((kIsWeb && platform != null) || !kIsWeb) &&
-              [
-                TargetPlatform.android,
-                TargetPlatform.iOS,
-                TargetPlatform.macOS,
-                TargetPlatform.windows,
-                TargetPlatform.linux,
-              ].contains(platform ?? defaultTargetPlatform);
-  }
-}
-
-///List of [PlatformLocalStorage]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformLocalStorageMethod {
-  ///Can be used to check if the [PlatformLocalStorage.clear] method is supported at runtime.
-  ///
-  ///{@template cygnus_core.PlatformLocalStorage.clear.supported_platforms}
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView
-  ///- iOS WKWebView
-  ///- macOS WKWebView
-  ///- Web \<iframe\> but requires same origin
-  ///- Windows WebView2
-  ///- Linux WPE WebKit
-  ///
-  ///Use the [PlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
-  ///{@endtemplate}
-  clear,
-
-  ///Can be used to check if the [PlatformLocalStorage.dispose] method is supported at runtime.
-  ///
-  ///{@template cygnus_core.PlatformLocalStorage.dispose.supported_platforms}
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView
-  ///- iOS WKWebView
-  ///- macOS WKWebView
-  ///- Web \<iframe\> but requires same origin
-  ///- Windows WebView2
-  ///- Linux WPE WebKit
-  ///
-  ///Use the [PlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
-  ///{@endtemplate}
-  dispose,
-
-  ///Can be used to check if the [PlatformLocalStorage.getItem] method is supported at runtime.
-  ///
-  ///{@template cygnus_core.PlatformLocalStorage.getItem.supported_platforms}
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView
-  ///- iOS WKWebView
-  ///- macOS WKWebView
-  ///- Web \<iframe\> but requires same origin
-  ///- Windows WebView2
-  ///- Linux WPE WebKit
-  ///
-  ///**Parameters - Officially Supported Platforms/Implementations**:
-  ///- [key]: all platforms
-  ///
-  ///Use the [PlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
-  ///{@endtemplate}
-  getItem,
-
-  ///Can be used to check if the [PlatformLocalStorage.getItems] method is supported at runtime.
-  ///
-  ///{@template cygnus_core.PlatformLocalStorage.getItems.supported_platforms}
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView
-  ///- iOS WKWebView
-  ///- macOS WKWebView
-  ///- Web \<iframe\> but requires same origin
-  ///- Windows WebView2
-  ///- Linux WPE WebKit
-  ///
-  ///Use the [PlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
-  ///{@endtemplate}
-  getItems,
-
-  ///Can be used to check if the [PlatformLocalStorage.key] method is supported at runtime.
-  ///
-  ///{@template cygnus_core.PlatformLocalStorage.key.supported_platforms}
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView
-  ///- iOS WKWebView
-  ///- macOS WKWebView
-  ///- Web \<iframe\> but requires same origin
-  ///- Windows WebView2
-  ///- Linux WPE WebKit
-  ///
-  ///**Parameters - Officially Supported Platforms/Implementations**:
-  ///- [index]: all platforms
-  ///
-  ///Use the [PlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
-  ///{@endtemplate}
-  key,
-
-  ///Can be used to check if the [PlatformLocalStorage.length] method is supported at runtime.
-  ///
-  ///{@template cygnus_core.PlatformLocalStorage.length.supported_platforms}
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView
-  ///- iOS WKWebView
-  ///- macOS WKWebView
-  ///- Web \<iframe\> but requires same origin
-  ///- Windows WebView2
-  ///- Linux WPE WebKit
-  ///
-  ///Use the [PlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
-  ///{@endtemplate}
-  length,
-
-  ///Can be used to check if the [PlatformLocalStorage.removeItem] method is supported at runtime.
-  ///
-  ///{@template cygnus_core.PlatformLocalStorage.removeItem.supported_platforms}
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView
-  ///- iOS WKWebView
-  ///- macOS WKWebView
-  ///- Web \<iframe\> but requires same origin
-  ///- Windows WebView2
-  ///- Linux WPE WebKit
-  ///
-  ///**Parameters - Officially Supported Platforms/Implementations**:
-  ///- [key]: all platforms
-  ///
-  ///Use the [PlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
-  ///{@endtemplate}
-  removeItem,
-
-  ///Can be used to check if the [PlatformLocalStorage.setItem] method is supported at runtime.
-  ///
-  ///{@template cygnus_core.PlatformLocalStorage.setItem.supported_platforms}
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView
-  ///- iOS WKWebView
-  ///- macOS WKWebView
-  ///- Web \<iframe\> but requires same origin
-  ///- Windows WebView2
-  ///- Linux WPE WebKit
-  ///
-  ///**Parameters - Officially Supported Platforms/Implementations**:
-  ///- [key]: all platforms
-  ///- [value]: all platforms
-  ///
-  ///Use the [PlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
-  ///{@endtemplate}
-  setItem,
-}
-
-extension _PlatformLocalStorageMethodSupported on PlatformLocalStorage {
-  static bool isMethodSupported(
-    PlatformLocalStorageMethod method, {
-    TargetPlatform? platform,
-  }) {
-    switch (method) {
-      case PlatformLocalStorageMethod.clear:
-        return kIsWeb && platform == null
-            ? true
-            : ((kIsWeb && platform != null) || !kIsWeb) &&
-                  [
-                    TargetPlatform.android,
-                    TargetPlatform.iOS,
-                    TargetPlatform.macOS,
-                    TargetPlatform.windows,
-                    TargetPlatform.linux,
-                  ].contains(platform ?? defaultTargetPlatform);
-      case PlatformLocalStorageMethod.dispose:
-        return kIsWeb && platform == null
-            ? true
-            : ((kIsWeb && platform != null) || !kIsWeb) &&
-                  [
-                    TargetPlatform.android,
-                    TargetPlatform.iOS,
-                    TargetPlatform.macOS,
-                    TargetPlatform.windows,
-                    TargetPlatform.linux,
-                  ].contains(platform ?? defaultTargetPlatform);
-      case PlatformLocalStorageMethod.getItem:
-        return kIsWeb && platform == null
-            ? true
-            : ((kIsWeb && platform != null) || !kIsWeb) &&
-                  [
-                    TargetPlatform.android,
-                    TargetPlatform.iOS,
-                    TargetPlatform.macOS,
-                    TargetPlatform.windows,
-                    TargetPlatform.linux,
-                  ].contains(platform ?? defaultTargetPlatform);
-      case PlatformLocalStorageMethod.getItems:
-        return kIsWeb && platform == null
-            ? true
-            : ((kIsWeb && platform != null) || !kIsWeb) &&
-                  [
-                    TargetPlatform.android,
-                    TargetPlatform.iOS,
-                    TargetPlatform.macOS,
-                    TargetPlatform.windows,
-                    TargetPlatform.linux,
-                  ].contains(platform ?? defaultTargetPlatform);
-      case PlatformLocalStorageMethod.key:
-        return kIsWeb && platform == null
-            ? true
-            : ((kIsWeb && platform != null) || !kIsWeb) &&
-                  [
-                    TargetPlatform.android,
-                    TargetPlatform.iOS,
-                    TargetPlatform.macOS,
-                    TargetPlatform.windows,
-                    TargetPlatform.linux,
-                  ].contains(platform ?? defaultTargetPlatform);
-      case PlatformLocalStorageMethod.length:
-        return kIsWeb && platform == null
-            ? true
-            : ((kIsWeb && platform != null) || !kIsWeb) &&
-                  [
-                    TargetPlatform.android,
-                    TargetPlatform.iOS,
-                    TargetPlatform.macOS,
-                    TargetPlatform.windows,
-                    TargetPlatform.linux,
-                  ].contains(platform ?? defaultTargetPlatform);
-      case PlatformLocalStorageMethod.removeItem:
-        return kIsWeb && platform == null
-            ? true
-            : ((kIsWeb && platform != null) || !kIsWeb) &&
-                  [
-                    TargetPlatform.android,
-                    TargetPlatform.iOS,
-                    TargetPlatform.macOS,
-                    TargetPlatform.windows,
-                    TargetPlatform.linux,
-                  ].contains(platform ?? defaultTargetPlatform);
-      case PlatformLocalStorageMethod.setItem:
+      case CygnusPlatformStorageCreationParamsProperty.webStorageType:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -629,9 +333,9 @@ extension _PlatformLocalStorageMethodSupported on PlatformLocalStorage {
   }
 }
 
-extension _PlatformSessionStorageCreationParamsClassSupported
-    on PlatformSessionStorageCreationParams {
-  ///{@template cygnus_core.PlatformSessionStorageCreationParams.supported_platforms}
+extension _CygnusPlatformLocalStorageCreationParamsClassSupported
+    on CygnusPlatformLocalStorageCreationParams {
+  ///{@template cygnus_core.CygnusPlatformLocalStorageCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -641,7 +345,7 @@ extension _PlatformSessionStorageCreationParamsClassSupported
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformSessionStorageCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformLocalStorageCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return kIsWeb && platform == null
@@ -657,8 +361,9 @@ extension _PlatformSessionStorageCreationParamsClassSupported
   }
 }
 
-extension _PlatformSessionStorageClassSupported on PlatformSessionStorage {
-  ///{@template cygnus_core.PlatformSessionStorage.supported_platforms}
+extension _CygnusPlatformLocalStorageClassSupported
+    on CygnusPlatformLocalStorage {
+  ///{@template cygnus_core.CygnusPlatformLocalStorage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -668,7 +373,7 @@ extension _PlatformSessionStorageClassSupported on PlatformSessionStorage {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformSessionStorage.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformLocalStorage.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return kIsWeb && platform == null
@@ -684,11 +389,11 @@ extension _PlatformSessionStorageClassSupported on PlatformSessionStorage {
   }
 }
 
-///List of [PlatformSessionStorage]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformSessionStorageMethod {
-  ///Can be used to check if the [PlatformSessionStorage.clear] method is supported at runtime.
+///List of [CygnusPlatformLocalStorage]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformLocalStorageMethod {
+  ///Can be used to check if the [CygnusPlatformLocalStorage.clear] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformSessionStorage.clear.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformLocalStorage.clear.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -698,13 +403,13 @@ enum PlatformSessionStorageMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   clear,
 
-  ///Can be used to check if the [PlatformSessionStorage.dispose] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformLocalStorage.dispose] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformSessionStorage.dispose.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformLocalStorage.dispose.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -714,13 +419,13 @@ enum PlatformSessionStorageMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   dispose,
 
-  ///Can be used to check if the [PlatformSessionStorage.getItem] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformLocalStorage.getItem] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformSessionStorage.getItem.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformLocalStorage.getItem.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -733,13 +438,13 @@ enum PlatformSessionStorageMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [key]: all platforms
   ///
-  ///Use the [PlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getItem,
 
-  ///Can be used to check if the [PlatformSessionStorage.getItems] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformLocalStorage.getItems] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformSessionStorage.getItems.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformLocalStorage.getItems.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -749,13 +454,13 @@ enum PlatformSessionStorageMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getItems,
 
-  ///Can be used to check if the [PlatformSessionStorage.key] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformLocalStorage.key] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformSessionStorage.key.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformLocalStorage.key.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -768,13 +473,13 @@ enum PlatformSessionStorageMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [index]: all platforms
   ///
-  ///Use the [PlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   key,
 
-  ///Can be used to check if the [PlatformSessionStorage.length] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformLocalStorage.length] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformSessionStorage.length.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformLocalStorage.length.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -784,13 +489,13 @@ enum PlatformSessionStorageMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   length,
 
-  ///Can be used to check if the [PlatformSessionStorage.removeItem] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformLocalStorage.removeItem] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformSessionStorage.removeItem.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformLocalStorage.removeItem.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -803,13 +508,13 @@ enum PlatformSessionStorageMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [key]: all platforms
   ///
-  ///Use the [PlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeItem,
 
-  ///Can be used to check if the [PlatformSessionStorage.setItem] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformLocalStorage.setItem] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformSessionStorage.setItem.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformLocalStorage.setItem.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -823,18 +528,19 @@ enum PlatformSessionStorageMethod {
   ///- [key]: all platforms
   ///- [value]: all platforms
   ///
-  ///Use the [PlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformLocalStorage.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setItem,
 }
 
-extension _PlatformSessionStorageMethodSupported on PlatformSessionStorage {
+extension _CygnusPlatformLocalStorageMethodSupported
+    on CygnusPlatformLocalStorage {
   static bool isMethodSupported(
-    PlatformSessionStorageMethod method, {
+    CygnusPlatformLocalStorageMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformSessionStorageMethod.clear:
+      case CygnusPlatformLocalStorageMethod.clear:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -845,7 +551,7 @@ extension _PlatformSessionStorageMethodSupported on PlatformSessionStorage {
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformSessionStorageMethod.dispose:
+      case CygnusPlatformLocalStorageMethod.dispose:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -856,7 +562,7 @@ extension _PlatformSessionStorageMethodSupported on PlatformSessionStorage {
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformSessionStorageMethod.getItem:
+      case CygnusPlatformLocalStorageMethod.getItem:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -867,7 +573,7 @@ extension _PlatformSessionStorageMethodSupported on PlatformSessionStorage {
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformSessionStorageMethod.getItems:
+      case CygnusPlatformLocalStorageMethod.getItems:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -878,7 +584,7 @@ extension _PlatformSessionStorageMethodSupported on PlatformSessionStorage {
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformSessionStorageMethod.key:
+      case CygnusPlatformLocalStorageMethod.key:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -889,7 +595,7 @@ extension _PlatformSessionStorageMethodSupported on PlatformSessionStorage {
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformSessionStorageMethod.length:
+      case CygnusPlatformLocalStorageMethod.length:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -900,7 +606,7 @@ extension _PlatformSessionStorageMethodSupported on PlatformSessionStorage {
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformSessionStorageMethod.removeItem:
+      case CygnusPlatformLocalStorageMethod.removeItem:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -911,7 +617,306 @@ extension _PlatformSessionStorageMethodSupported on PlatformSessionStorage {
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformSessionStorageMethod.setItem:
+      case CygnusPlatformLocalStorageMethod.setItem:
+        return kIsWeb && platform == null
+            ? true
+            : ((kIsWeb && platform != null) || !kIsWeb) &&
+                  [
+                    TargetPlatform.android,
+                    TargetPlatform.iOS,
+                    TargetPlatform.macOS,
+                    TargetPlatform.windows,
+                    TargetPlatform.linux,
+                  ].contains(platform ?? defaultTargetPlatform);
+    }
+  }
+}
+
+extension _CygnusPlatformSessionStorageCreationParamsClassSupported
+    on CygnusPlatformSessionStorageCreationParams {
+  ///{@template cygnus_core.CygnusPlatformSessionStorageCreationParams.supported_platforms}
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- Android WebView
+  ///- iOS WKWebView
+  ///- macOS WKWebView
+  ///- Web \<iframe\> but requires same origin
+  ///- Windows WebView2
+  ///- Linux WPE WebKit
+  ///
+  ///Use the [CygnusPlatformSessionStorageCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///{@endtemplate}
+  static bool isClassSupported({TargetPlatform? platform}) {
+    return kIsWeb && platform == null
+        ? true
+        : ((kIsWeb && platform != null) || !kIsWeb) &&
+              [
+                TargetPlatform.android,
+                TargetPlatform.iOS,
+                TargetPlatform.macOS,
+                TargetPlatform.windows,
+                TargetPlatform.linux,
+              ].contains(platform ?? defaultTargetPlatform);
+  }
+}
+
+extension _CygnusPlatformSessionStorageClassSupported
+    on CygnusPlatformSessionStorage {
+  ///{@template cygnus_core.CygnusPlatformSessionStorage.supported_platforms}
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- Android WebView
+  ///- iOS WKWebView
+  ///- macOS WKWebView
+  ///- Web \<iframe\> but requires same origin
+  ///- Windows WebView2
+  ///- Linux WPE WebKit
+  ///
+  ///Use the [CygnusPlatformSessionStorage.isClassSupported] method to check if this class is supported at runtime.
+  ///{@endtemplate}
+  static bool isClassSupported({TargetPlatform? platform}) {
+    return kIsWeb && platform == null
+        ? true
+        : ((kIsWeb && platform != null) || !kIsWeb) &&
+              [
+                TargetPlatform.android,
+                TargetPlatform.iOS,
+                TargetPlatform.macOS,
+                TargetPlatform.windows,
+                TargetPlatform.linux,
+              ].contains(platform ?? defaultTargetPlatform);
+  }
+}
+
+///List of [CygnusPlatformSessionStorage]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformSessionStorageMethod {
+  ///Can be used to check if the [CygnusPlatformSessionStorage.clear] method is supported at runtime.
+  ///
+  ///{@template cygnus_core.CygnusPlatformSessionStorage.clear.supported_platforms}
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- Android WebView
+  ///- iOS WKWebView
+  ///- macOS WKWebView
+  ///- Web \<iframe\> but requires same origin
+  ///- Windows WebView2
+  ///- Linux WPE WebKit
+  ///
+  ///Use the [CygnusPlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///{@endtemplate}
+  clear,
+
+  ///Can be used to check if the [CygnusPlatformSessionStorage.dispose] method is supported at runtime.
+  ///
+  ///{@template cygnus_core.CygnusPlatformSessionStorage.dispose.supported_platforms}
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- Android WebView
+  ///- iOS WKWebView
+  ///- macOS WKWebView
+  ///- Web \<iframe\> but requires same origin
+  ///- Windows WebView2
+  ///- Linux WPE WebKit
+  ///
+  ///Use the [CygnusPlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///{@endtemplate}
+  dispose,
+
+  ///Can be used to check if the [CygnusPlatformSessionStorage.getItem] method is supported at runtime.
+  ///
+  ///{@template cygnus_core.CygnusPlatformSessionStorage.getItem.supported_platforms}
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- Android WebView
+  ///- iOS WKWebView
+  ///- macOS WKWebView
+  ///- Web \<iframe\> but requires same origin
+  ///- Windows WebView2
+  ///- Linux WPE WebKit
+  ///
+  ///**Parameters - Officially Supported Platforms/Implementations**:
+  ///- [key]: all platforms
+  ///
+  ///Use the [CygnusPlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///{@endtemplate}
+  getItem,
+
+  ///Can be used to check if the [CygnusPlatformSessionStorage.getItems] method is supported at runtime.
+  ///
+  ///{@template cygnus_core.CygnusPlatformSessionStorage.getItems.supported_platforms}
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- Android WebView
+  ///- iOS WKWebView
+  ///- macOS WKWebView
+  ///- Web \<iframe\> but requires same origin
+  ///- Windows WebView2
+  ///- Linux WPE WebKit
+  ///
+  ///Use the [CygnusPlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///{@endtemplate}
+  getItems,
+
+  ///Can be used to check if the [CygnusPlatformSessionStorage.key] method is supported at runtime.
+  ///
+  ///{@template cygnus_core.CygnusPlatformSessionStorage.key.supported_platforms}
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- Android WebView
+  ///- iOS WKWebView
+  ///- macOS WKWebView
+  ///- Web \<iframe\> but requires same origin
+  ///- Windows WebView2
+  ///- Linux WPE WebKit
+  ///
+  ///**Parameters - Officially Supported Platforms/Implementations**:
+  ///- [index]: all platforms
+  ///
+  ///Use the [CygnusPlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///{@endtemplate}
+  key,
+
+  ///Can be used to check if the [CygnusPlatformSessionStorage.length] method is supported at runtime.
+  ///
+  ///{@template cygnus_core.CygnusPlatformSessionStorage.length.supported_platforms}
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- Android WebView
+  ///- iOS WKWebView
+  ///- macOS WKWebView
+  ///- Web \<iframe\> but requires same origin
+  ///- Windows WebView2
+  ///- Linux WPE WebKit
+  ///
+  ///Use the [CygnusPlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///{@endtemplate}
+  length,
+
+  ///Can be used to check if the [CygnusPlatformSessionStorage.removeItem] method is supported at runtime.
+  ///
+  ///{@template cygnus_core.CygnusPlatformSessionStorage.removeItem.supported_platforms}
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- Android WebView
+  ///- iOS WKWebView
+  ///- macOS WKWebView
+  ///- Web \<iframe\> but requires same origin
+  ///- Windows WebView2
+  ///- Linux WPE WebKit
+  ///
+  ///**Parameters - Officially Supported Platforms/Implementations**:
+  ///- [key]: all platforms
+  ///
+  ///Use the [CygnusPlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///{@endtemplate}
+  removeItem,
+
+  ///Can be used to check if the [CygnusPlatformSessionStorage.setItem] method is supported at runtime.
+  ///
+  ///{@template cygnus_core.CygnusPlatformSessionStorage.setItem.supported_platforms}
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- Android WebView
+  ///- iOS WKWebView
+  ///- macOS WKWebView
+  ///- Web \<iframe\> but requires same origin
+  ///- Windows WebView2
+  ///- Linux WPE WebKit
+  ///
+  ///**Parameters - Officially Supported Platforms/Implementations**:
+  ///- [key]: all platforms
+  ///- [value]: all platforms
+  ///
+  ///Use the [CygnusPlatformSessionStorage.isMethodSupported] method to check if this method is supported at runtime.
+  ///{@endtemplate}
+  setItem,
+}
+
+extension _CygnusPlatformSessionStorageMethodSupported
+    on CygnusPlatformSessionStorage {
+  static bool isMethodSupported(
+    CygnusPlatformSessionStorageMethod method, {
+    TargetPlatform? platform,
+  }) {
+    switch (method) {
+      case CygnusPlatformSessionStorageMethod.clear:
+        return kIsWeb && platform == null
+            ? true
+            : ((kIsWeb && platform != null) || !kIsWeb) &&
+                  [
+                    TargetPlatform.android,
+                    TargetPlatform.iOS,
+                    TargetPlatform.macOS,
+                    TargetPlatform.windows,
+                    TargetPlatform.linux,
+                  ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformSessionStorageMethod.dispose:
+        return kIsWeb && platform == null
+            ? true
+            : ((kIsWeb && platform != null) || !kIsWeb) &&
+                  [
+                    TargetPlatform.android,
+                    TargetPlatform.iOS,
+                    TargetPlatform.macOS,
+                    TargetPlatform.windows,
+                    TargetPlatform.linux,
+                  ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformSessionStorageMethod.getItem:
+        return kIsWeb && platform == null
+            ? true
+            : ((kIsWeb && platform != null) || !kIsWeb) &&
+                  [
+                    TargetPlatform.android,
+                    TargetPlatform.iOS,
+                    TargetPlatform.macOS,
+                    TargetPlatform.windows,
+                    TargetPlatform.linux,
+                  ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformSessionStorageMethod.getItems:
+        return kIsWeb && platform == null
+            ? true
+            : ((kIsWeb && platform != null) || !kIsWeb) &&
+                  [
+                    TargetPlatform.android,
+                    TargetPlatform.iOS,
+                    TargetPlatform.macOS,
+                    TargetPlatform.windows,
+                    TargetPlatform.linux,
+                  ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformSessionStorageMethod.key:
+        return kIsWeb && platform == null
+            ? true
+            : ((kIsWeb && platform != null) || !kIsWeb) &&
+                  [
+                    TargetPlatform.android,
+                    TargetPlatform.iOS,
+                    TargetPlatform.macOS,
+                    TargetPlatform.windows,
+                    TargetPlatform.linux,
+                  ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformSessionStorageMethod.length:
+        return kIsWeb && platform == null
+            ? true
+            : ((kIsWeb && platform != null) || !kIsWeb) &&
+                  [
+                    TargetPlatform.android,
+                    TargetPlatform.iOS,
+                    TargetPlatform.macOS,
+                    TargetPlatform.windows,
+                    TargetPlatform.linux,
+                  ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformSessionStorageMethod.removeItem:
+        return kIsWeb && platform == null
+            ? true
+            : ((kIsWeb && platform != null) || !kIsWeb) &&
+                  [
+                    TargetPlatform.android,
+                    TargetPlatform.iOS,
+                    TargetPlatform.macOS,
+                    TargetPlatform.windows,
+                    TargetPlatform.linux,
+                  ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformSessionStorageMethod.setItem:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&

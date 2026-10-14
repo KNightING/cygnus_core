@@ -15,7 +15,7 @@ import 'package:flutter_inappwebview_example/providers/settings_manager.dart';
 import 'package:flutter_inappwebview_example/widgets/common/profile_selector_card.dart';
 import 'package:flutter_inappwebview_example/utils/responsive_utils.dart';
 
-/// Main screen for testing InAppWebView functionality
+/// Main screen for testing CygnusWebView functionality
 class WebViewTesterScreen extends StatefulWidget {
   const WebViewTesterScreen({super.key});
 
@@ -29,7 +29,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
     text: 'https://flutter.dev',
   );
 
-  InAppWebViewController? _webViewController;
+  CygnusWebViewController? _webViewController;
   bool _canGoBack = false;
   bool _canGoForward = false;
   double _progress = 0;
@@ -37,7 +37,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
   String? _currentUrl;
   String? _currentTitle;
   late TabController _tabController;
-  final List<UserScript> _userScripts = [];
+  final List<CygnusUserScript> _userScripts = [];
   double _webViewHeight = 320;
   static const double _minWebViewHeight = 160;
   static const double _minTabsHeight = 220;
@@ -286,7 +286,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       ],
     );
 
-    // The key goes on a wrapper rather than on the InAppWebView itself, whose own ValueKey
+    // The key goes on a wrapper rather than on the CygnusWebView itself, whose own ValueKey
     // deliberately changes with the settings revision to force a rebuild.
     final keptAlive = KeyedSubtree(key: _webViewKey, child: stack);
 
@@ -555,7 +555,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
   Widget _buildWebView(SettingsManager settingsManager) {
     final baseSettings = settingsManager.buildSettings();
     final mergedSettings =
-        InAppWebViewSettings.fromMap({
+        CygnusWebViewSettings.fromMap({
           ...baseSettings.toMap(),
           'useShouldOverrideUrlLoading': true,
           'useShouldInterceptAjaxRequest': true,
@@ -567,13 +567,13 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
           'javaScriptEnabled': true,
           'javaScriptCanOpenWindowsAutomatically': true,
         }) ??
-        InAppWebViewSettings();
+        CygnusWebViewSettings();
 
-    return InAppWebView(
+    return CygnusWebView(
       key: ValueKey(
         'webview-${settingsManager.settingsRevision}-${settingsManager.environmentRevision}',
       ),
-      initialUrlRequest: URLRequest(url: WebUri(_urlController.text)),
+      initialUrlRequest: CygnusURLRequest(url: CygnusWebUri(_urlController.text)),
       webViewEnvironment: settingsManager.webViewEnvironment,
       initialSettings: mergedSettings,
 
@@ -586,7 +586,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
         _webViewController = controller;
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onWebViewCreated.name,
+          CygnusPlatformWebViewCreationParamsProperty.onWebViewCreated.name,
           data: {'viewId': controller.getViewId()},
         );
       },
@@ -596,7 +596,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
         _forceShowReloadAfterStop = false;
         _logEvent(
           EventType.navigation,
-          PlatformWebViewCreationParamsProperty.onLoadStart.name,
+          CygnusPlatformWebViewCreationParamsProperty.onLoadStart.name,
           data: {'url': url?.toString()},
         );
         if (url != null) {
@@ -610,7 +610,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
         _forceShowReloadAfterStop = false;
         _logEvent(
           EventType.navigation,
-          PlatformWebViewCreationParamsProperty.onLoadStop.name,
+          CygnusPlatformWebViewCreationParamsProperty.onLoadStop.name,
           data: {'url': url?.toString()},
         );
         if (url != null) {
@@ -628,7 +628,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onReceivedError: (controller, request, error) {
         _logEvent(
           EventType.error,
-          PlatformWebViewCreationParamsProperty.onReceivedError.name,
+          CygnusPlatformWebViewCreationParamsProperty.onReceivedError.name,
           data: {
             'url': request.url.toString(),
             'errorType': error.type.name(),
@@ -641,7 +641,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onReceivedHttpError: (controller, request, response) {
         _logEvent(
           EventType.error,
-          PlatformWebViewCreationParamsProperty.onReceivedHttpError.name,
+          CygnusPlatformWebViewCreationParamsProperty.onReceivedHttpError.name,
           data: {
             'url': request.url.toString(),
             'statusCode': response.statusCode,
@@ -660,7 +660,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
         });
         _logEvent(
           EventType.performance,
-          PlatformWebViewCreationParamsProperty.onProgressChanged.name,
+          CygnusPlatformWebViewCreationParamsProperty.onProgressChanged.name,
           data: {'progress': progress},
         );
       },
@@ -669,7 +669,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onConsoleMessage: (controller, consoleMessage) {
         _logEvent(
           EventType.console,
-          PlatformWebViewCreationParamsProperty.onConsoleMessage.name,
+          CygnusPlatformWebViewCreationParamsProperty.onConsoleMessage.name,
           data: {
             'message': consoleMessage.message,
             'level': consoleMessage.messageLevel.name(),
@@ -681,7 +681,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onTitleChanged: (controller, title) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onTitleChanged.name,
+          CygnusPlatformWebViewCreationParamsProperty.onTitleChanged.name,
           data: {'title': title},
         );
         setState(() {
@@ -698,7 +698,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
         final url = navigationAction.request.url;
         _logEvent(
           EventType.navigation,
-          PlatformWebViewCreationParamsProperty.shouldOverrideUrlLoading.name,
+          CygnusPlatformWebViewCreationParamsProperty.shouldOverrideUrlLoading.name,
           data: {
             'url': url?.toString(),
             'isForMainFrame': navigationAction.isForMainFrame,
@@ -720,14 +720,14 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
           );
         }
 
-        return NavigationActionPolicy.ALLOW;
+        return CygnusNavigationActionPolicy.ALLOW;
       },
 
       // 10. onLoadResource
       onLoadResource: (controller, resource) {
         // _logEvent(
         //   EventType.network,
-        //   PlatformWebViewCreationParamsProperty.onLoadResource.name,
+        //   CygnusPlatformWebViewCreationParamsProperty.onLoadResource.name,
         //   data: {
         //     'url': resource.url?.toString(),
         //     'initiatorType': resource.initiatorType,
@@ -741,7 +741,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onUpdateVisitedHistory: (controller, url, isReload) {
         _logEvent(
           EventType.navigation,
-          PlatformWebViewCreationParamsProperty.onUpdateVisitedHistory.name,
+          CygnusPlatformWebViewCreationParamsProperty.onUpdateVisitedHistory.name,
           data: {'url': url?.toString(), 'isReload': isReload},
         );
         if (url != null) {
@@ -754,7 +754,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onPageCommitVisible: (controller, url) {
         _logEvent(
           EventType.navigation,
-          PlatformWebViewCreationParamsProperty.onPageCommitVisible.name,
+          CygnusPlatformWebViewCreationParamsProperty.onPageCommitVisible.name,
           data: {'url': url?.toString()},
         );
         if (url != null) {
@@ -766,7 +766,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onNavigationResponse: (controller, navigationResponse) async {
         _logEvent(
           EventType.navigation,
-          PlatformWebViewCreationParamsProperty.onNavigationResponse.name,
+          CygnusPlatformWebViewCreationParamsProperty.onNavigationResponse.name,
           data: {
             'url': navigationResponse.response?.url?.toString(),
             'statusCode': navigationResponse.response?.statusCode,
@@ -774,14 +774,14 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
             'canShowMIMEType': navigationResponse.canShowMIMEType,
           },
         );
-        return NavigationResponseAction.ALLOW;
+        return CygnusNavigationResponseAction.ALLOW;
       },
 
       // 14. onDidReceiveServerRedirectForProvisionalNavigation
       onDidReceiveServerRedirectForProvisionalNavigation: (controller) {
         _logEvent(
           EventType.navigation,
-          PlatformWebViewCreationParamsProperty
+          CygnusPlatformWebViewCreationParamsProperty
               .onDidReceiveServerRedirectForProvisionalNavigation
               .name,
         );
@@ -795,7 +795,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onCreateWindow: (controller, createWindowAction) async {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onCreateWindow.name,
+          CygnusPlatformWebViewCreationParamsProperty.onCreateWindow.name,
           data: {
             'url': createWindowAction.request.url?.toString(),
             'windowId': createWindowAction.windowId,
@@ -809,7 +809,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onCloseWindow: (controller) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onCloseWindow.name,
+          CygnusPlatformWebViewCreationParamsProperty.onCloseWindow.name,
         );
       },
 
@@ -817,7 +817,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onWindowFocus: (controller) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onWindowFocus.name,
+          CygnusPlatformWebViewCreationParamsProperty.onWindowFocus.name,
         );
       },
 
@@ -825,7 +825,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onWindowBlur: (controller) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onWindowBlur.name,
+          CygnusPlatformWebViewCreationParamsProperty.onWindowBlur.name,
         );
       },
 
@@ -837,53 +837,53 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onJsAlert: (controller, jsAlertRequest) async {
         _logEvent(
           EventType.javascript,
-          PlatformWebViewCreationParamsProperty.onJsAlert.name,
+          CygnusPlatformWebViewCreationParamsProperty.onJsAlert.name,
           data: {
             'message': jsAlertRequest.message,
             'url': jsAlertRequest.url?.toString(),
           },
         );
-        return JsAlertResponse(handledByClient: false);
+        return CygnusJsAlertResponse(handledByClient: false);
       },
 
       // 20. onJsConfirm
       onJsConfirm: (controller, jsConfirmRequest) async {
         _logEvent(
           EventType.javascript,
-          PlatformWebViewCreationParamsProperty.onJsConfirm.name,
+          CygnusPlatformWebViewCreationParamsProperty.onJsConfirm.name,
           data: {
             'message': jsConfirmRequest.message,
             'url': jsConfirmRequest.url?.toString(),
           },
         );
-        return JsConfirmResponse(handledByClient: false);
+        return CygnusJsConfirmResponse(handledByClient: false);
       },
 
       // 21. onJsPrompt
       onJsPrompt: (controller, jsPromptRequest) async {
         _logEvent(
           EventType.javascript,
-          PlatformWebViewCreationParamsProperty.onJsPrompt.name,
+          CygnusPlatformWebViewCreationParamsProperty.onJsPrompt.name,
           data: {
             'message': jsPromptRequest.message,
             'defaultValue': jsPromptRequest.defaultValue,
             'url': jsPromptRequest.url?.toString(),
           },
         );
-        return JsPromptResponse(handledByClient: false);
+        return CygnusJsPromptResponse(handledByClient: false);
       },
 
       // 22. onJsBeforeUnload
       onJsBeforeUnload: (controller, jsBeforeUnloadRequest) async {
         _logEvent(
           EventType.javascript,
-          PlatformWebViewCreationParamsProperty.onJsBeforeUnload.name,
+          CygnusPlatformWebViewCreationParamsProperty.onJsBeforeUnload.name,
           data: {
             'message': jsBeforeUnloadRequest.message,
             'url': jsBeforeUnloadRequest.url?.toString(),
           },
         );
-        return JsBeforeUnloadResponse(handledByClient: false);
+        return CygnusJsBeforeUnloadResponse(handledByClient: false);
       },
 
       // ============================================================
@@ -894,7 +894,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onReceivedHttpAuthRequest: (controller, challenge) async {
         _logEvent(
           EventType.network,
-          PlatformWebViewCreationParamsProperty.onReceivedHttpAuthRequest.name,
+          CygnusPlatformWebViewCreationParamsProperty.onReceivedHttpAuthRequest.name,
           data: {
             'host': challenge.protectionSpace.host,
             'port': challenge.protectionSpace.port,
@@ -902,14 +902,14 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
             'realm': challenge.protectionSpace.realm,
           },
         );
-        return HttpAuthResponse(action: HttpAuthResponseAction.CANCEL);
+        return CygnusHttpAuthResponse(action: CygnusHttpAuthResponseAction.CANCEL);
       },
 
       // 24. onReceivedServerTrustAuthRequest
       onReceivedServerTrustAuthRequest: (controller, challenge) async {
         _logEvent(
           EventType.network,
-          PlatformWebViewCreationParamsProperty
+          CygnusPlatformWebViewCreationParamsProperty
               .onReceivedServerTrustAuthRequest
               .name,
           data: {
@@ -918,8 +918,8 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
             'protocol': challenge.protectionSpace.protocol,
           },
         );
-        return ServerTrustAuthResponse(
-          action: ServerTrustAuthResponseAction.PROCEED,
+        return CygnusServerTrustAuthResponse(
+          action: CygnusServerTrustAuthResponseAction.PROCEED,
         );
       },
 
@@ -927,7 +927,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onReceivedClientCertRequest: (controller, challenge) async {
         _logEvent(
           EventType.network,
-          PlatformWebViewCreationParamsProperty
+          CygnusPlatformWebViewCreationParamsProperty
               .onReceivedClientCertRequest
               .name,
           data: {
@@ -936,7 +936,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
             'protocol': challenge.protectionSpace.protocol,
           },
         );
-        return ClientCertResponse(action: ClientCertResponseAction.CANCEL);
+        return CygnusClientCertResponse(action: CygnusClientCertResponseAction.CANCEL);
       },
 
       // ============================================================
@@ -947,7 +947,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       shouldInterceptAjaxRequest: (controller, ajaxRequest) async {
         _logEvent(
           EventType.network,
-          PlatformWebViewCreationParamsProperty.shouldInterceptAjaxRequest.name,
+          CygnusPlatformWebViewCreationParamsProperty.shouldInterceptAjaxRequest.name,
           data: {
             'url': ajaxRequest.url?.toString(),
             'method': ajaxRequest.method,
@@ -961,7 +961,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onAjaxReadyStateChange: (controller, ajaxRequest) async {
         _logEvent(
           EventType.network,
-          PlatformWebViewCreationParamsProperty.onAjaxReadyStateChange.name,
+          CygnusPlatformWebViewCreationParamsProperty.onAjaxReadyStateChange.name,
           data: {
             'url': ajaxRequest.url?.toString(),
             'method': ajaxRequest.method,
@@ -969,28 +969,28 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
             'status': ajaxRequest.status,
           },
         );
-        return AjaxRequestAction.PROCEED;
+        return CygnusAjaxRequestAction.PROCEED;
       },
 
       // 28. onAjaxProgress
       onAjaxProgress: (controller, ajaxRequest) async {
         _logEvent(
           EventType.network,
-          PlatformWebViewCreationParamsProperty.onAjaxProgress.name,
+          CygnusPlatformWebViewCreationParamsProperty.onAjaxProgress.name,
           data: {
             'url': ajaxRequest.url?.toString(),
             'method': ajaxRequest.method,
             'status': ajaxRequest.status,
           },
         );
-        return AjaxRequestAction.PROCEED;
+        return CygnusAjaxRequestAction.PROCEED;
       },
 
       // 29. shouldInterceptFetchRequest
       shouldInterceptFetchRequest: (controller, fetchRequest) async {
         _logEvent(
           EventType.network,
-          PlatformWebViewCreationParamsProperty
+          CygnusPlatformWebViewCreationParamsProperty
               .shouldInterceptFetchRequest
               .name,
           data: {
@@ -1007,7 +1007,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       shouldInterceptRequest: (controller, request) async {
         _logEvent(
           EventType.network,
-          PlatformWebViewCreationParamsProperty.shouldInterceptRequest.name,
+          CygnusPlatformWebViewCreationParamsProperty.shouldInterceptRequest.name,
           data: {
             'url': request.url.toString(),
             'method': request.method,
@@ -1021,7 +1021,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onLoadResourceWithCustomScheme: (controller, request) async {
         _logEvent(
           EventType.network,
-          PlatformWebViewCreationParamsProperty
+          CygnusPlatformWebViewCreationParamsProperty
               .onLoadResourceWithCustomScheme
               .name,
           data: {'url': request.url.toString(), 'scheme': request.url.scheme},
@@ -1037,7 +1037,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onDownloadStarting: (controller, downloadStartRequest) async {
         _logEvent(
           EventType.network,
-          PlatformWebViewCreationParamsProperty.onDownloadStarting.name,
+          CygnusPlatformWebViewCreationParamsProperty.onDownloadStarting.name,
           data: {
             'url': downloadStartRequest.url.toString(),
             'mimeType': downloadStartRequest.mimeType,
@@ -1045,9 +1045,9 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
             'suggestedFilename': downloadStartRequest.suggestedFilename,
           },
         );
-        return DownloadStartResponse(
+        return CygnusDownloadStartResponse(
           handled: true,
-          action: DownloadStartResponseAction.CANCEL,
+          action: CygnusDownloadStartResponseAction.CANCEL,
         );
       },
 
@@ -1059,7 +1059,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onScrollChanged: (controller, x, y) {
         // _logEvent(
         //   EventType.ui,
-        //   PlatformWebViewCreationParamsProperty.onScrollChanged.name,
+        //   CygnusPlatformWebViewCreationParamsProperty.onScrollChanged.name,
         //   data: {'x': x, 'y': y},
         // );
       },
@@ -1068,7 +1068,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onOverScrolled: (controller, x, y, clampedX, clampedY) {
         // _logEvent(
         //   EventType.ui,
-        //   PlatformWebViewCreationParamsProperty.onOverScrolled.name,
+        //   CygnusPlatformWebViewCreationParamsProperty.onOverScrolled.name,
         //   data: {'x': x, 'y': y, 'clampedX': clampedX, 'clampedY': clampedY},
         // );
       },
@@ -1081,7 +1081,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onZoomScaleChanged: (controller, oldScale, newScale) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onZoomScaleChanged.name,
+          CygnusPlatformWebViewCreationParamsProperty.onZoomScaleChanged.name,
           data: {'oldScale': oldScale, 'newScale': newScale},
         );
       },
@@ -1094,7 +1094,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onPrintRequest: (controller, url, printJobController) async {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onPrintRequest.name,
+          CygnusPlatformWebViewCreationParamsProperty.onPrintRequest.name,
           data: {'url': url?.toString()},
         );
         return false; // Don't handle print
@@ -1108,7 +1108,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onEnterFullscreen: (controller) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onEnterFullscreen.name,
+          CygnusPlatformWebViewCreationParamsProperty.onEnterFullscreen.name,
         );
       },
 
@@ -1116,7 +1116,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onExitFullscreen: (controller) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onExitFullscreen.name,
+          CygnusPlatformWebViewCreationParamsProperty.onExitFullscreen.name,
         );
       },
 
@@ -1128,16 +1128,16 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onPermissionRequest: (controller, permissionRequest) async {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onPermissionRequest.name,
+          CygnusPlatformWebViewCreationParamsProperty.onPermissionRequest.name,
           data: {
             'resources': permissionRequest.resources
                 .map((r) => r.name)
                 .toList(),
           },
         );
-        return PermissionResponse(
+        return CygnusPermissionResponse(
           resources: permissionRequest.resources,
-          action: PermissionResponseAction.GRANT,
+          action: CygnusPermissionResponseAction.GRANT,
         );
       },
 
@@ -1145,7 +1145,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onPermissionRequestCanceled: (controller, permissionRequest) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty
+          CygnusPlatformWebViewCreationParamsProperty
               .onPermissionRequestCanceled
               .name,
           data: {
@@ -1160,12 +1160,12 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onGeolocationPermissionsShowPrompt: (controller, origin) async {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty
+          CygnusPlatformWebViewCreationParamsProperty
               .onGeolocationPermissionsShowPrompt
               .name,
           data: {'origin': origin},
         );
-        return GeolocationPermissionShowPromptResponse(
+        return CygnusGeolocationPermissionShowPromptResponse(
           origin: origin,
           allow: false,
           retain: false,
@@ -1176,7 +1176,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onGeolocationPermissionsHidePrompt: (controller) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty
+          CygnusPlatformWebViewCreationParamsProperty
               .onGeolocationPermissionsHidePrompt
               .name,
         );
@@ -1190,7 +1190,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onLongPressHitTestResult: (controller, hitTestResult) async {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onLongPressHitTestResult.name,
+          CygnusPlatformWebViewCreationParamsProperty.onLongPressHitTestResult.name,
           data: {
             'type': hitTestResult.type?.name(),
             'extra': hitTestResult.extra,
@@ -1206,29 +1206,29 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onRenderProcessUnresponsive: (controller, url) async {
         _logEvent(
           EventType.error,
-          PlatformWebViewCreationParamsProperty
+          CygnusPlatformWebViewCreationParamsProperty
               .onRenderProcessUnresponsive
               .name,
           data: {'url': url?.toString()},
         );
-        return WebViewRenderProcessAction.TERMINATE;
+        return CygnusWebViewRenderProcessAction.TERMINATE;
       },
 
       // 45. onRenderProcessResponsive
       onRenderProcessResponsive: (controller, url) async {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onRenderProcessResponsive.name,
+          CygnusPlatformWebViewCreationParamsProperty.onRenderProcessResponsive.name,
           data: {'url': url?.toString()},
         );
-        return WebViewRenderProcessAction.TERMINATE;
+        return CygnusWebViewRenderProcessAction.TERMINATE;
       },
 
       // 46. onRenderProcessGone
       onRenderProcessGone: (controller, detail) {
         _logEvent(
           EventType.error,
-          PlatformWebViewCreationParamsProperty.onRenderProcessGone.name,
+          CygnusPlatformWebViewCreationParamsProperty.onRenderProcessGone.name,
           data: {
             'didCrash': detail.didCrash,
             'rendererPriorityAtExit': detail.rendererPriorityAtExit?.name(),
@@ -1244,17 +1244,17 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onFormResubmission: (controller, url) async {
         _logEvent(
           EventType.navigation,
-          PlatformWebViewCreationParamsProperty.onFormResubmission.name,
+          CygnusPlatformWebViewCreationParamsProperty.onFormResubmission.name,
           data: {'url': url?.toString()},
         );
-        return FormResubmissionAction.DONT_RESEND;
+        return CygnusFormResubmissionAction.DONT_RESEND;
       },
 
       // 48. onReceivedLoginRequest
       onReceivedLoginRequest: (controller, loginRequest) {
         _logEvent(
           EventType.network,
-          PlatformWebViewCreationParamsProperty.onReceivedLoginRequest.name,
+          CygnusPlatformWebViewCreationParamsProperty.onReceivedLoginRequest.name,
           data: {
             'realm': loginRequest.realm,
             'account': loginRequest.account,
@@ -1271,7 +1271,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onReceivedIcon: (controller, icon) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onReceivedIcon.name,
+          CygnusPlatformWebViewCreationParamsProperty.onReceivedIcon.name,
           data: {'iconSize': icon.length},
         );
       },
@@ -1280,7 +1280,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onReceivedTouchIconUrl: (controller, url, precomposed) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onReceivedTouchIconUrl.name,
+          CygnusPlatformWebViewCreationParamsProperty.onReceivedTouchIconUrl.name,
           data: {'url': url.toString(), 'precomposed': precomposed},
         );
       },
@@ -1293,12 +1293,12 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onSafeBrowsingHit: (controller, url, threatType) async {
         _logEvent(
           EventType.error,
-          PlatformWebViewCreationParamsProperty.onSafeBrowsingHit.name,
+          CygnusPlatformWebViewCreationParamsProperty.onSafeBrowsingHit.name,
           data: {'url': url.toString(), 'threatType': threatType?.name},
         );
-        return SafeBrowsingResponse(
+        return CygnusSafeBrowsingResponse(
           report: true,
-          action: SafeBrowsingResponseAction.BACK_TO_SAFETY,
+          action: CygnusSafeBrowsingResponseAction.BACK_TO_SAFETY,
         );
       },
 
@@ -1310,7 +1310,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onWebContentProcessDidTerminate: (controller) {
         _logEvent(
           EventType.error,
-          PlatformWebViewCreationParamsProperty
+          CygnusPlatformWebViewCreationParamsProperty
               .onWebContentProcessDidTerminate
               .name,
         );
@@ -1320,21 +1320,21 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       shouldAllowDeprecatedTLS: (controller, challenge) async {
         _logEvent(
           EventType.network,
-          PlatformWebViewCreationParamsProperty.shouldAllowDeprecatedTLS.name,
+          CygnusPlatformWebViewCreationParamsProperty.shouldAllowDeprecatedTLS.name,
           data: {
             'host': challenge.protectionSpace.host,
             'port': challenge.protectionSpace.port,
             'protocol': challenge.protectionSpace.protocol,
           },
         );
-        return ShouldAllowDeprecatedTLSAction.CANCEL;
+        return CygnusShouldAllowDeprecatedTLSAction.CANCEL;
       },
 
       // 54. onCameraCaptureStateChanged
       onCameraCaptureStateChanged: (controller, oldState, newState) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty
+          CygnusPlatformWebViewCreationParamsProperty
               .onCameraCaptureStateChanged
               .name,
           data: {'oldState': oldState?.name(), 'newState': newState?.name()},
@@ -1345,7 +1345,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onMicrophoneCaptureStateChanged: (controller, oldState, newState) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty
+          CygnusPlatformWebViewCreationParamsProperty
               .onMicrophoneCaptureStateChanged
               .name,
           data: {'oldState': oldState?.name(), 'newState': newState?.name()},
@@ -1356,7 +1356,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onContentSizeChanged: (controller, oldContentSize, newContentSize) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onContentSizeChanged.name,
+          CygnusPlatformWebViewCreationParamsProperty.onContentSizeChanged.name,
           data: {
             'oldWidth': oldContentSize.width,
             'oldHeight': oldContentSize.height,
@@ -1374,7 +1374,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onProcessFailed: (controller, detail) {
         _logEvent(
           EventType.error,
-          PlatformWebViewCreationParamsProperty.onProcessFailed.name,
+          CygnusPlatformWebViewCreationParamsProperty.onProcessFailed.name,
           data: {
             'kind': detail.kind.name(),
             'reason': detail.reason?.name(),
@@ -1387,7 +1387,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onAcceleratorKeyPressed: (controller, keyEventInfo) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onAcceleratorKeyPressed.name,
+          CygnusPlatformWebViewCreationParamsProperty.onAcceleratorKeyPressed.name,
           data: {
             'keyEventKind': keyEventInfo.keyEventKind,
             'virtualKey': keyEventInfo.virtualKey,
@@ -1404,7 +1404,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onRequestFocus: (controller) {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onRequestFocus.name,
+          CygnusPlatformWebViewCreationParamsProperty.onRequestFocus.name,
         );
       },
 
@@ -1412,14 +1412,14 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
       onShowFileChooser: (controller, fileChooserParams) async {
         _logEvent(
           EventType.ui,
-          PlatformWebViewCreationParamsProperty.onShowFileChooser.name,
+          CygnusPlatformWebViewCreationParamsProperty.onShowFileChooser.name,
           data: {
             'mode': fileChooserParams.mode.name(),
             'acceptTypes': fileChooserParams.acceptTypes,
             'isCaptureEnabled': fileChooserParams.isCaptureEnabled,
           },
         );
-        return ShowFileChooserResponse(handledByClient: false);
+        return CygnusShowFileChooserResponse(handledByClient: false);
       },
     );
   }
@@ -1488,7 +1488,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
     }
 
     await _webViewController?.loadUrl(
-      urlRequest: URLRequest(url: WebUri(finalUrl)),
+      urlRequest: CygnusURLRequest(url: CygnusWebUri(finalUrl)),
     );
 
     _logEvent(EventType.navigation, 'Loading URL: $finalUrl');
@@ -1519,7 +1519,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
     );
   }
 
-  Future<void> _addUserScript(UserScript script) async {
+  Future<void> _addUserScript(CygnusUserScript script) async {
     if (_webViewController == null) {
       throw Exception('WebView not initialized');
     }
@@ -1537,7 +1537,7 @@ class _WebViewTesterScreenState extends State<WebViewTesterScreen>
     );
   }
 
-  Future<void> _removeUserScript(UserScript script) async {
+  Future<void> _removeUserScript(CygnusUserScript script) async {
     if (_webViewController == null) {
       throw Exception('WebView not initialized');
     }

@@ -1,20 +1,20 @@
 part of 'main.dart';
 
 void onJsBeforeUnload() {
-  // final shouldSkip = !InAppWebView.isPropertySupported(
-  //   PlatformWebViewCreationParamsProperty.onJsBeforeUnload,
+  // final shouldSkip = !CygnusWebView.isPropertySupported(
+  //   CygnusPlatformWebViewCreationParamsProperty.onJsBeforeUnload,
   // );
   final shouldSkip = true;
   // on Android, for some reason, it works on an example app but not in this test
   skippableTestWidgets('onJsBeforeUnload', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<String> onJsBeforeUnloadCompleter = Completer<String>();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
           initialFile: "test_assets/in_app_webview_on_js_before_unload.html",
           onWebViewCreated: (controller) {

@@ -1,21 +1,21 @@
 part of 'main.dart';
 
-void loadAssetFile(InAppLocalhostServer localhostServer) {
-  final shouldSkip = kIsWeb || !InAppWebView.isClassSupported();
+void loadAssetFile(CygnusLocalhostServer localhostServer) {
+  final shouldSkip = kIsWeb || !CygnusWebView.isClassSupported();
 
   skippableTestWidgets('load asset file', (WidgetTester tester) async {
     expect(localhostServer.isRunning(), true);
 
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(
-            url: WebUri('http://localhost:8080/test_assets/index.html'),
+          initialUrlRequest: CygnusURLRequest(
+            url: CygnusWebUri('http://localhost:8080/test_assets/index.html'),
           ),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
@@ -23,7 +23,7 @@ void loadAssetFile(InAppLocalhostServer localhostServer) {
         ),
       ),
     );
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
     final String? currentUrl = (await controller.getUrl())?.toString();
     expect(currentUrl, 'http://localhost:8080/test_assets/index.html');
   }, skip: shouldSkip);

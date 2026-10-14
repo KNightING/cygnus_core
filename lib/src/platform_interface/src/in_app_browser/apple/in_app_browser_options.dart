@@ -8,10 +8,10 @@ import '../platform_in_app_browser.dart';
 import '../../types/main.dart';
 import '../../util.dart';
 
-///This class represents all the iOS-only [PlatformInAppBrowser] options available.
-///Use [InAppBrowserSettings] instead.
-@Deprecated('Use InAppBrowserSettings instead')
-class IOSInAppBrowserOptions implements BrowserOptions, IosOptions {
+///This class represents all the iOS-only [CygnusPlatformBrowser] options available.
+///Use [CygnusBrowserSettings] instead.
+@Deprecated('Use CygnusBrowserSettings instead')
+class CygnusIOSBrowserOptions implements CygnusBrowserOptions, CygnusIosOptions {
   ///Set to `true` to set the toolbar at the top translucent. The default value is `true`.
   bool toolbarTopTranslucent;
 
@@ -39,13 +39,13 @@ class IOSInAppBrowserOptions implements BrowserOptions, IosOptions {
   ///Set the custom color for the close button.
   Color? closeButtonColor;
 
-  ///Set the custom modal presentation style when presenting the WebView. The default value is [IOSUIModalPresentationStyle.FULL_SCREEN].
-  IOSUIModalPresentationStyle presentationStyle;
+  ///Set the custom modal presentation style when presenting the WebView. The default value is [CygnusIOSUIModalPresentationStyle.FULL_SCREEN].
+  CygnusIOSUIModalPresentationStyle presentationStyle;
 
-  ///Set to the custom transition style when presenting the WebView. The default value is [IOSUIModalTransitionStyle.COVER_VERTICAL].
-  IOSUIModalTransitionStyle transitionStyle;
+  ///Set to the custom transition style when presenting the WebView. The default value is [CygnusIOSUIModalTransitionStyle.COVER_VERTICAL].
+  CygnusIOSUIModalTransitionStyle transitionStyle;
 
-  IOSInAppBrowserOptions({
+  CygnusIOSBrowserOptions({
     this.toolbarTopTranslucent = true,
     this.toolbarTopTintColor,
     this.hideToolbarBottom = false,
@@ -54,8 +54,8 @@ class IOSInAppBrowserOptions implements BrowserOptions, IosOptions {
     this.toolbarBottomTranslucent = true,
     this.closeButtonCaption,
     this.closeButtonColor,
-    this.presentationStyle = IOSUIModalPresentationStyle.FULL_SCREEN,
-    this.transitionStyle = IOSUIModalTransitionStyle.COVER_VERTICAL,
+    this.presentationStyle = CygnusIOSUIModalPresentationStyle.FULL_SCREEN,
+    this.transitionStyle = CygnusIOSUIModalTransitionStyle.COVER_VERTICAL,
   });
 
   @override
@@ -74,8 +74,8 @@ class IOSInAppBrowserOptions implements BrowserOptions, IosOptions {
     };
   }
 
-  static IOSInAppBrowserOptions fromMap(Map<String, dynamic> map) {
-    var instance = IOSInAppBrowserOptions();
+  static CygnusIOSBrowserOptions fromMap(Map<String, dynamic> map) {
+    var instance = CygnusIOSBrowserOptions();
     instance.toolbarTopTranslucent = map["toolbarTopTranslucent"];
     instance.toolbarTopTintColor = UtilColor.fromHex(
       map["toolbarTopTintColor"],
@@ -90,10 +90,10 @@ class IOSInAppBrowserOptions implements BrowserOptions, IosOptions {
     instance.toolbarBottomTranslucent = map["toolbarBottomTranslucent"];
     instance.closeButtonCaption = map["closeButtonCaption"];
     instance.closeButtonColor = UtilColor.fromHex(map["closeButtonColor"]);
-    instance.presentationStyle = IOSUIModalPresentationStyle.fromNativeValue(
+    instance.presentationStyle = CygnusIOSUIModalPresentationStyle.fromNativeValue(
       map["presentationStyle"],
     )!;
-    instance.transitionStyle = IOSUIModalTransitionStyle.fromNativeValue(
+    instance.transitionStyle = CygnusIOSUIModalTransitionStyle.fromNativeValue(
       map["transitionStyle"],
     )!;
     return instance;
@@ -110,7 +110,7 @@ class IOSInAppBrowserOptions implements BrowserOptions, IosOptions {
   }
 
   @override
-  IOSInAppBrowserOptions copy() {
-    return IOSInAppBrowserOptions.fromMap(this.toMap());
+  CygnusIOSBrowserOptions copy() {
+    return CygnusIOSBrowserOptions.fromMap(this.toMap());
   }
 }

@@ -6,26 +6,28 @@ part of 'launching_external_uri_scheme_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onLaunchingExternalUriScheme] event.
-class LaunchingExternalUriSchemeResponse {
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onLaunchingExternalUriScheme] event.
+class CygnusLaunchingExternalUriSchemeResponse {
   ///Set to `true` to cancel the external URI scheme launch.
   bool cancel;
-  LaunchingExternalUriSchemeResponse({required this.cancel});
+  CygnusLaunchingExternalUriSchemeResponse({required this.cancel});
 
-  ///Gets a possible [LaunchingExternalUriSchemeResponse] instance from a [Map] value.
-  static LaunchingExternalUriSchemeResponse? fromMap(
+  ///Gets a possible [CygnusLaunchingExternalUriSchemeResponse] instance from a [Map] value.
+  static CygnusLaunchingExternalUriSchemeResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = LaunchingExternalUriSchemeResponse(cancel: map['cancel']);
+    final instance = CygnusLaunchingExternalUriSchemeResponse(
+      cancel: map['cancel'],
+    );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"cancel": cancel};
   }
 
@@ -36,6 +38,6 @@ class LaunchingExternalUriSchemeResponse {
 
   @override
   String toString() {
-    return 'LaunchingExternalUriSchemeResponse{cancel: $cancel}';
+    return 'CygnusLaunchingExternalUriSchemeResponse{cancel: $cancel}';
   }
 }

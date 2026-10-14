@@ -4,11 +4,11 @@ import 'enum_method.dart';
 
 part 'notification_received_response.g.dart';
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onNotificationReceived] event.
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onNotificationReceived] event.
 @ExchangeableObject()
-class NotificationReceivedResponse_ {
+class CygnusNotificationReceivedResponse_ {
   ///Set to `true` to indicate the notification has been handled by the host.
   bool handled;
 
-  NotificationReceivedResponse_({required this.handled});
+  CygnusNotificationReceivedResponse_({required this.handled});
 }

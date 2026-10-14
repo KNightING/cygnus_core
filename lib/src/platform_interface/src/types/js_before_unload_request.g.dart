@@ -6,32 +6,32 @@ part of 'js_before_unload_request.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the request of the [PlatformWebViewCreationParams.onJsBeforeUnload] event.
-class JsBeforeUnloadRequest {
+///Class that represents the request of the [CygnusPlatformWebViewCreationParams.onJsBeforeUnload] event.
+class CygnusJsBeforeUnloadRequest {
   ///Message to be displayed in the window.
   String? message;
 
   ///The url of the page requesting the dialog.
-  WebUri? url;
-  JsBeforeUnloadRequest({this.message, this.url});
+  CygnusWebUri? url;
+  CygnusJsBeforeUnloadRequest({this.message, this.url});
 
-  ///Gets a possible [JsBeforeUnloadRequest] instance from a [Map] value.
-  static JsBeforeUnloadRequest? fromMap(
+  ///Gets a possible [CygnusJsBeforeUnloadRequest] instance from a [Map] value.
+  static CygnusJsBeforeUnloadRequest? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = JsBeforeUnloadRequest(
+    final instance = CygnusJsBeforeUnloadRequest(
       message: map['message'],
-      url: map['url'] != null ? WebUri(map['url']) : null,
+      url: map['url'] != null ? CygnusWebUri(map['url']) : null,
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"message": message, "url": url?.toString()};
   }
 
@@ -42,6 +42,6 @@ class JsBeforeUnloadRequest {
 
   @override
   String toString() {
-    return 'JsBeforeUnloadRequest{message: $message, url: $url}';
+    return 'CygnusJsBeforeUnloadRequest{message: $message, url: $url}';
   }
 }

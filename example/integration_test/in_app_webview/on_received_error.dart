@@ -1,22 +1,22 @@
 part of 'main.dart';
 
 void onReceivedError() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onReceivedError,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onReceivedError,
   );
 
   skippableGroup('onReceivedError', () {
     skippableTestWidgets('invalid url', (WidgetTester tester) async {
       final Completer<String> errorUrlCompleter = Completer<String>();
-      final Completer<WebResourceErrorType> errorCodeCompleter =
-          Completer<WebResourceErrorType>();
+      final Completer<CygnusWebResourceErrorType> errorCodeCompleter =
+          Completer<CygnusWebResourceErrorType>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_NOT_A_WEBSITE_URL),
+            initialUrlRequest: CygnusURLRequest(url: TEST_NOT_A_WEBSITE_URL),
             onReceivedError: (controller, request, error) {
               errorUrlCompleter.complete(request.url.toString());
               errorCodeCompleter.complete(error.type);
@@ -26,9 +26,9 @@ void onReceivedError() {
       );
 
       final String url = await errorUrlCompleter.future;
-      final WebResourceErrorType errorType = await errorCodeCompleter.future;
+      final CygnusWebResourceErrorType errorType = await errorCodeCompleter.future;
 
-      expect(errorType, WebResourceErrorType.HOST_LOOKUP);
+      expect(errorType, CygnusWebResourceErrorType.HOST_LOOKUP);
       expect(url, TEST_NOT_A_WEBSITE_URL.toString());
     });
 
@@ -40,10 +40,10 @@ void onReceivedError() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(
-              url: WebUri(
+            initialUrlRequest: CygnusURLRequest(
+              url: CygnusWebUri(
                 'data:text/html;charset=utf-8;base64,PCFET0NUWVBFIGh0bWw+',
               ),
             ),

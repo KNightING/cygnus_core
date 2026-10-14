@@ -6,8 +6,8 @@ part of 'login_request.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class used by [PlatformWebViewCreationParams.onReceivedLoginRequest] event.
-class LoginRequest {
+///Class used by [CygnusPlatformWebViewCreationParams.onReceivedLoginRequest] event.
+class CygnusLoginRequest {
   ///An optional account. If not `null`, the account should be checked against accounts on the device.
   ///If it is a valid account, it should be used to log in the user. This value may be `null`.
   String? account;
@@ -17,17 +17,17 @@ class LoginRequest {
 
   ///The account realm used to look up accounts.
   String realm;
-  LoginRequest({this.account, required this.args, required this.realm});
+  CygnusLoginRequest({this.account, required this.args, required this.realm});
 
-  ///Gets a possible [LoginRequest] instance from a [Map] value.
-  static LoginRequest? fromMap(
+  ///Gets a possible [CygnusLoginRequest] instance from a [Map] value.
+  static CygnusLoginRequest? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = LoginRequest(
+    final instance = CygnusLoginRequest(
       account: map['account'],
       args: map['args'],
       realm: map['realm'],
@@ -36,7 +36,7 @@ class LoginRequest {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"account": account, "args": args, "realm": realm};
   }
 
@@ -47,6 +47,6 @@ class LoginRequest {
 
   @override
   String toString() {
-    return 'LoginRequest{account: $account, args: $args, realm: $realm}';
+    return 'CygnusLoginRequest{account: $account, args: $args, realm: $realm}';
   }
 }

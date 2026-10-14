@@ -6,7 +6,7 @@ part 'security_origin.g.dart';
 
 ///An object that identifies the origin of a particular resource.
 @ExchangeableObject()
-class SecurityOrigin_ {
+class CygnusSecurityOrigin_ {
   ///The security origin’s host.
   String host;
 
@@ -16,7 +16,7 @@ class SecurityOrigin_ {
   ///The security origin's protocol.
   String protocol;
 
-  SecurityOrigin_({
+  CygnusSecurityOrigin_({
     required this.host,
     required this.port,
     required this.protocol,
@@ -27,10 +27,10 @@ class SecurityOrigin_ {
 ///
 ///**NOTE**: available only on iOS 9.0+.
 ///
-///Use [SecurityOrigin] instead.
-@Deprecated("Use SecurityOrigin instead")
+///Use [CygnusSecurityOrigin] instead.
+@Deprecated("Use CygnusSecurityOrigin instead")
 @ExchangeableObject()
-class IOSWKSecurityOrigin_ {
+class CygnusIOSWKSecurityOrigin_ {
   ///The security origin’s host.
   String host;
 
@@ -40,7 +40,7 @@ class IOSWKSecurityOrigin_ {
   ///The security origin's protocol.
   String protocol;
 
-  IOSWKSecurityOrigin_({
+  CygnusIOSWKSecurityOrigin_({
     required this.host,
     required this.port,
     required this.protocol,

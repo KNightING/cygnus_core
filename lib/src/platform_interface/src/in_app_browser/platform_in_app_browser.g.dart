@@ -6,8 +6,8 @@ part of 'platform_in_app_browser.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformInAppBrowserClassSupported on PlatformInAppBrowser {
-  ///{@template cygnus_core.PlatformInAppBrowser.supported_platforms}
+extension _CygnusPlatformBrowserClassSupported on CygnusPlatformBrowser {
+  ///{@template cygnus_core.CygnusPlatformBrowser.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -16,7 +16,7 @@ extension _PlatformInAppBrowserClassSupported on PlatformInAppBrowser {
   ///- Windows WebView2
   ///- Linux WPE WebKit ([Official API - GtkWindow + WPE WebKit](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/class.WebView.html))
   ///
-  ///Use the [PlatformInAppBrowser.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -30,36 +30,36 @@ extension _PlatformInAppBrowserClassSupported on PlatformInAppBrowser {
   }
 }
 
-///List of [PlatformInAppBrowser]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformInAppBrowserProperty {
-  ///Can be used to check if the [PlatformInAppBrowser.contextMenu] property is supported at runtime.
+///List of [CygnusPlatformBrowser]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformBrowserProperty {
+  ///Can be used to check if the [CygnusPlatformBrowser.contextMenu] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.contextMenu.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.contextMenu.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///
-  ///Use the [PlatformInAppBrowser.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   contextMenu,
 
-  ///Can be used to check if the [PlatformInAppBrowser.findInteractionController] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.findInteractionController] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.findInteractionController.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.findInteractionController.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [PlatformInAppBrowser.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   findInteractionController,
 
-  ///Can be used to check if the [PlatformInAppBrowser.id] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.id] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.id.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.id.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -68,53 +68,53 @@ enum PlatformInAppBrowserProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppBrowser.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   id,
 
-  ///Can be used to check if the [PlatformInAppBrowser.initialUserScripts] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.initialUserScripts] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.initialUserScripts.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.initialUserScripts.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView:
-  ///    - This property will be ignored if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to iOS window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This property will be ignored if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to iOS window WebViews. This is a limitation of the native WebKit APIs.
   ///- macOS WKWebView:
-  ///    - This property will be ignored if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to iOS window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This property will be ignored if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to iOS window WebViews. This is a limitation of the native WebKit APIs.
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppBrowser.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   initialUserScripts,
 
-  ///Can be used to check if the [PlatformInAppBrowser.pullToRefreshController] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.pullToRefreshController] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.pullToRefreshController.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.pullToRefreshController.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///
-  ///Use the [PlatformInAppBrowser.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   pullToRefreshController,
 
-  ///Can be used to check if the [PlatformInAppBrowser.webViewEnvironment] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.webViewEnvironment] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.webViewEnvironment.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.webViewEnvironment.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PlatformInAppBrowser.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   webViewEnvironment,
 
-  ///Can be used to check if the [PlatformInAppBrowser.windowId] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.windowId] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.windowId.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.windowId.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -123,40 +123,31 @@ enum PlatformInAppBrowserProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppBrowser.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   windowId,
 }
 
-extension _PlatformInAppBrowserPropertySupported on PlatformInAppBrowser {
+extension _CygnusPlatformBrowserPropertySupported on CygnusPlatformBrowser {
   static bool isPropertySupported(
-    PlatformInAppBrowserProperty property, {
+    CygnusPlatformBrowserProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformInAppBrowserProperty.contextMenu:
+      case CygnusPlatformBrowserProperty.contextMenu:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserProperty.findInteractionController:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserProperty.id:
+      case CygnusPlatformBrowserProperty.findInteractionController:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
-              TargetPlatform.windows,
-              TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserProperty.initialUserScripts:
+      case CygnusPlatformBrowserProperty.id:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -165,18 +156,27 @@ extension _PlatformInAppBrowserPropertySupported on PlatformInAppBrowser {
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserProperty.pullToRefreshController:
+      case CygnusPlatformBrowserProperty.initialUserScripts:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+              TargetPlatform.windows,
+              TargetPlatform.linux,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserProperty.pullToRefreshController:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserProperty.webViewEnvironment:
+      case CygnusPlatformBrowserProperty.webViewEnvironment:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserProperty.windowId:
+      case CygnusPlatformBrowserProperty.windowId:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -189,11 +189,11 @@ extension _PlatformInAppBrowserPropertySupported on PlatformInAppBrowser {
   }
 }
 
-///List of [PlatformInAppBrowser]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformInAppBrowserMethod {
-  ///Can be used to check if the [PlatformInAppBrowser.addMenuItem] method is supported at runtime.
+///List of [CygnusPlatformBrowser]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformBrowserMethod {
+  ///Can be used to check if the [CygnusPlatformBrowser.addMenuItem] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.addMenuItem.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.addMenuItem.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -203,13 +203,13 @@ enum PlatformInAppBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [menuItem]: all platforms
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   addMenuItem,
 
-  ///Can be used to check if the [PlatformInAppBrowser.addMenuItems] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.addMenuItems] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.addMenuItems.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.addMenuItems.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -219,13 +219,13 @@ enum PlatformInAppBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [menuItems]: all platforms
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   addMenuItems,
 
-  ///Can be used to check if the [PlatformInAppBrowser.close] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.close] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.close.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.close.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -234,13 +234,13 @@ enum PlatformInAppBrowserMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   close,
 
-  ///Can be used to check if the [PlatformInAppBrowser.dispose] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.dispose] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.dispose.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.dispose.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -249,26 +249,26 @@ enum PlatformInAppBrowserMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   dispose,
 
-  ///Can be used to check if the [PlatformInAppBrowser.getOptions] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.getOptions] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.getOptions.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.getOptions.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use getSettings instead')
   getOptions,
 
-  ///Can be used to check if the [PlatformInAppBrowser.getSettings] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.getSettings] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.getSettings.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.getSettings.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -277,13 +277,13 @@ enum PlatformInAppBrowserMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getSettings,
 
-  ///Can be used to check if the [PlatformInAppBrowser.hasMenuItem] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.hasMenuItem] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.hasMenuItem.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.hasMenuItem.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -293,13 +293,13 @@ enum PlatformInAppBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [menuItem]: all platforms
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   hasMenuItem,
 
-  ///Can be used to check if the [PlatformInAppBrowser.hide] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.hide] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.hide.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.hide.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -308,13 +308,13 @@ enum PlatformInAppBrowserMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   hide,
 
-  ///Can be used to check if the [PlatformInAppBrowser.isHidden] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.isHidden] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.isHidden.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.isHidden.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -323,13 +323,13 @@ enum PlatformInAppBrowserMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isHidden,
 
-  ///Can be used to check if the [PlatformInAppBrowser.isOpened] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.isOpened] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.isOpened.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.isOpened.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -338,13 +338,13 @@ enum PlatformInAppBrowserMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isOpened,
 
-  ///Can be used to check if the [PlatformInAppBrowser.openData] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.openData] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.openData.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.openData.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -361,13 +361,13 @@ enum PlatformInAppBrowserMethod {
   ///- [historyUrl]: all platforms
   ///- [settings]: all platforms
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   openData,
 
-  ///Can be used to check if the [PlatformInAppBrowser.openFile] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.openFile] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.openFile.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.openFile.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -380,13 +380,13 @@ enum PlatformInAppBrowserMethod {
   ///- [assetFilePath]: all platforms
   ///- [settings]: all platforms
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   openFile,
 
-  ///Can be used to check if the [PlatformInAppBrowser.openUrlRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.openUrlRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.openUrlRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.openUrlRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -399,13 +399,13 @@ enum PlatformInAppBrowserMethod {
   ///- [urlRequest]: all platforms
   ///- [settings]: all platforms
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   openUrlRequest,
 
-  ///Can be used to check if the [PlatformInAppBrowser.openWithSystemBrowser] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.openWithSystemBrowser] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.openWithSystemBrowser.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.openWithSystemBrowser.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -417,26 +417,26 @@ enum PlatformInAppBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   openWithSystemBrowser,
 
-  ///Can be used to check if the [PlatformInAppBrowser.removeAllMenuItem] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.removeAllMenuItem] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.removeAllMenuItem.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.removeAllMenuItem.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView 14.0+
   ///- macOS WKWebView 10.15+
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeAllMenuItem,
 
-  ///Can be used to check if the [PlatformInAppBrowser.removeMenuItem] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.removeMenuItem] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.removeMenuItem.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.removeMenuItem.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -446,13 +446,13 @@ enum PlatformInAppBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [menuItem]: all platforms
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeMenuItem,
 
-  ///Can be used to check if the [PlatformInAppBrowser.removeMenuItems] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.removeMenuItems] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.removeMenuItems.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.removeMenuItems.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -462,13 +462,13 @@ enum PlatformInAppBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [menuItems]: all platforms
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeMenuItems,
 
-  ///Can be used to check if the [PlatformInAppBrowser.setOptions] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.setOptions] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.setOptions.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.setOptions.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -477,14 +477,14 @@ enum PlatformInAppBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [options]: all platforms
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use setSettings instead')
   setOptions,
 
-  ///Can be used to check if the [PlatformInAppBrowser.setSettings] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.setSettings] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.setSettings.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.setSettings.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -496,13 +496,13 @@ enum PlatformInAppBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [settings]: all platforms
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setSettings,
 
-  ///Can be used to check if the [PlatformInAppBrowser.show] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowser.show] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowser.show.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowser.show.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -511,41 +511,32 @@ enum PlatformInAppBrowserMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   show,
 }
 
-extension _PlatformInAppBrowserMethodSupported on PlatformInAppBrowser {
+extension _CygnusPlatformBrowserMethodSupported on CygnusPlatformBrowser {
   static bool isMethodSupported(
-    PlatformInAppBrowserMethod method, {
+    CygnusPlatformBrowserMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformInAppBrowserMethod.addMenuItem:
+      case CygnusPlatformBrowserMethod.addMenuItem:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.addMenuItems:
+      case CygnusPlatformBrowserMethod.addMenuItems:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.close:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-              TargetPlatform.windows,
-              TargetPlatform.linux,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.dispose:
+      case CygnusPlatformBrowserMethod.close:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -554,13 +545,7 @@ extension _PlatformInAppBrowserMethodSupported on PlatformInAppBrowser {
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.getOptions:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.getSettings:
+      case CygnusPlatformBrowserMethod.dispose:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -569,23 +554,13 @@ extension _PlatformInAppBrowserMethodSupported on PlatformInAppBrowser {
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.hasMenuItem:
+      case CygnusPlatformBrowserMethod.getOptions:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
-              TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.hide:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-              TargetPlatform.windows,
-              TargetPlatform.linux,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.isHidden:
+      case CygnusPlatformBrowserMethod.getSettings:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -594,7 +569,14 @@ extension _PlatformInAppBrowserMethodSupported on PlatformInAppBrowser {
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.isOpened:
+      case CygnusPlatformBrowserMethod.hasMenuItem:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserMethod.hide:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -603,7 +585,7 @@ extension _PlatformInAppBrowserMethodSupported on PlatformInAppBrowser {
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.openData:
+      case CygnusPlatformBrowserMethod.isHidden:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -612,7 +594,7 @@ extension _PlatformInAppBrowserMethodSupported on PlatformInAppBrowser {
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.openFile:
+      case CygnusPlatformBrowserMethod.isOpened:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -621,7 +603,7 @@ extension _PlatformInAppBrowserMethodSupported on PlatformInAppBrowser {
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.openUrlRequest:
+      case CygnusPlatformBrowserMethod.openData:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -630,7 +612,7 @@ extension _PlatformInAppBrowserMethodSupported on PlatformInAppBrowser {
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.openWithSystemBrowser:
+      case CygnusPlatformBrowserMethod.openFile:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -639,34 +621,7 @@ extension _PlatformInAppBrowserMethodSupported on PlatformInAppBrowser {
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.removeAllMenuItem:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.removeMenuItem:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.removeMenuItems:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.setOptions:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.setSettings:
+      case CygnusPlatformBrowserMethod.openUrlRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -675,7 +630,52 @@ extension _PlatformInAppBrowserMethodSupported on PlatformInAppBrowser {
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserMethod.show:
+      case CygnusPlatformBrowserMethod.openWithSystemBrowser:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+              TargetPlatform.windows,
+              TargetPlatform.linux,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserMethod.removeAllMenuItem:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserMethod.removeMenuItem:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserMethod.removeMenuItems:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserMethod.setOptions:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserMethod.setSettings:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+              TargetPlatform.windows,
+              TargetPlatform.linux,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserMethod.show:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -688,11 +688,11 @@ extension _PlatformInAppBrowserMethodSupported on PlatformInAppBrowser {
   }
 }
 
-///List of [PlatformInAppBrowserEvents]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformInAppBrowserEventsMethod {
-  ///Can be used to check if the [PlatformInAppBrowserEvents.androidOnFormResubmission] method is supported at runtime.
+///List of [CygnusPlatformBrowserEvents]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformBrowserEventsMethod {
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.androidOnFormResubmission] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.androidOnFormResubmission.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.androidOnFormResubmission.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -700,26 +700,26 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onFormResubmission instead')
   androidOnFormResubmission,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.androidOnGeolocationPermissionsHidePrompt] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.androidOnGeolocationPermissionsHidePrompt] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.androidOnGeolocationPermissionsHidePrompt.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.androidOnGeolocationPermissionsHidePrompt.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onGeolocationPermissionsHidePrompt instead')
   androidOnGeolocationPermissionsHidePrompt,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.androidOnGeolocationPermissionsShowPrompt] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.androidOnGeolocationPermissionsShowPrompt] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.androidOnGeolocationPermissionsShowPrompt.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.androidOnGeolocationPermissionsShowPrompt.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -727,14 +727,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [origin]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onGeolocationPermissionsShowPrompt instead')
   androidOnGeolocationPermissionsShowPrompt,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.androidOnJsBeforeUnload] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.androidOnJsBeforeUnload] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.androidOnJsBeforeUnload.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.androidOnJsBeforeUnload.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -742,14 +742,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [jsBeforeUnloadRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onJsBeforeUnload instead')
   androidOnJsBeforeUnload,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.androidOnPermissionRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.androidOnPermissionRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.androidOnPermissionRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.androidOnPermissionRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -758,14 +758,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [origin]: all platforms
   ///- [resources]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onPermissionRequest instead')
   androidOnPermissionRequest,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.androidOnReceivedIcon] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.androidOnReceivedIcon] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.androidOnReceivedIcon.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.androidOnReceivedIcon.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -773,14 +773,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [icon]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onReceivedIcon instead')
   androidOnReceivedIcon,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.androidOnReceivedLoginRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.androidOnReceivedLoginRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.androidOnReceivedLoginRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.androidOnReceivedLoginRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -788,14 +788,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [loginRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onReceivedLoginRequest instead')
   androidOnReceivedLoginRequest,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.androidOnReceivedTouchIconUrl] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.androidOnReceivedTouchIconUrl] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.androidOnReceivedTouchIconUrl.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.androidOnReceivedTouchIconUrl.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -804,14 +804,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [url]: all platforms
   ///- [precomposed]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onReceivedTouchIconUrl instead')
   androidOnReceivedTouchIconUrl,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.androidOnRenderProcessGone] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.androidOnRenderProcessGone] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.androidOnRenderProcessGone.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.androidOnRenderProcessGone.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -819,14 +819,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [detail]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onRenderProcessGone instead')
   androidOnRenderProcessGone,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.androidOnRenderProcessResponsive] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.androidOnRenderProcessResponsive] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.androidOnRenderProcessResponsive.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.androidOnRenderProcessResponsive.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -834,14 +834,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onRenderProcessResponsive instead')
   androidOnRenderProcessResponsive,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.androidOnRenderProcessUnresponsive] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.androidOnRenderProcessUnresponsive] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.androidOnRenderProcessUnresponsive.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.androidOnRenderProcessUnresponsive.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -849,14 +849,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onRenderProcessUnresponsive instead')
   androidOnRenderProcessUnresponsive,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.androidOnSafeBrowsingHit] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.androidOnSafeBrowsingHit] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.androidOnSafeBrowsingHit.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.androidOnSafeBrowsingHit.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -865,14 +865,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [url]: all platforms
   ///- [threatType]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onSafeBrowsingHit instead')
   androidOnSafeBrowsingHit,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.androidOnScaleChanged] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.androidOnScaleChanged] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.androidOnScaleChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.androidOnScaleChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -881,14 +881,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [oldScale]: all platforms
   ///- [newScale]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onZoomScaleChanged instead')
   androidOnScaleChanged,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.androidShouldInterceptRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.androidShouldInterceptRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.androidShouldInterceptRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.androidShouldInterceptRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -896,26 +896,26 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use shouldInterceptRequest instead')
   androidShouldInterceptRequest,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.iosOnDidReceiveServerRedirectForProvisionalNavigation] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.iosOnDidReceiveServerRedirectForProvisionalNavigation] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.iosOnDidReceiveServerRedirectForProvisionalNavigation.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.iosOnDidReceiveServerRedirectForProvisionalNavigation.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onDidReceiveServerRedirectForProvisionalNavigation instead')
   iosOnDidReceiveServerRedirectForProvisionalNavigation,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.iosOnNavigationResponse] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.iosOnNavigationResponse] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.iosOnNavigationResponse.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.iosOnNavigationResponse.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
@@ -923,26 +923,26 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [navigationResponse]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onNavigationResponse instead')
   iosOnNavigationResponse,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.iosOnWebContentProcessDidTerminate] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.iosOnWebContentProcessDidTerminate] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.iosOnWebContentProcessDidTerminate.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.iosOnWebContentProcessDidTerminate.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onWebContentProcessDidTerminate instead')
   iosOnWebContentProcessDidTerminate,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.iosShouldAllowDeprecatedTLS] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.iosShouldAllowDeprecatedTLS] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.iosShouldAllowDeprecatedTLS.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.iosShouldAllowDeprecatedTLS.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
@@ -950,14 +950,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [challenge]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use shouldAllowDeprecatedTLS instead')
   iosShouldAllowDeprecatedTLS,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onAcceleratorKeyPressed] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onAcceleratorKeyPressed] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onAcceleratorKeyPressed.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onAcceleratorKeyPressed.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2Controller.add_AcceleratorKeyPressed](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2controller?view=webview2-1.0.2849.39#add_acceleratorkeypressed))
@@ -965,47 +965,47 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [detail]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onAcceleratorKeyPressed,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onAjaxProgress] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onAjaxProgress] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onAjaxProgress.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onAjaxProgress.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - In order to be able to listen this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] and [InAppWebViewSettings.useOnAjaxProgress] settings documentation. Also, on Android that doesn't support the [WebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
+  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] and [CygnusWebViewSettings.useOnAjaxProgress] settings documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [ajaxRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onAjaxProgress,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onAjaxReadyStateChange] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onAjaxReadyStateChange] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onAjaxReadyStateChange.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onAjaxReadyStateChange.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - In order to be able to listen this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] and [InAppWebViewSettings.useOnAjaxReadyStateChange] settings documentation. Also, on Android that doesn't support the [WebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
+  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] and [CygnusWebViewSettings.useOnAjaxReadyStateChange] settings documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [ajaxRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onAjaxReadyStateChange,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onBrowserCreated] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onBrowserCreated] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onBrowserCreated.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onBrowserCreated.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1014,13 +1014,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onBrowserCreated,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onCameraCaptureStateChanged] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onCameraCaptureStateChanged] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onCameraCaptureStateChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onCameraCaptureStateChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+
@@ -1030,13 +1030,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [oldState]: all platforms
   ///- [newState]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onCameraCaptureStateChanged,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onCloseWindow] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onCloseWindow] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onCloseWindow.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onCloseWindow.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onCloseWindow](https://developer.android.com/reference/android/webkit/WebChromeClient#onCloseWindow(android.webkit.WebView)))
@@ -1045,16 +1045,16 @@ enum PlatformInAppBrowserEventsMethod {
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_WindowCloseRequested](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#add_windowcloserequested))
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onCloseWindow,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onConsoleMessage] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onConsoleMessage] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onConsoleMessage.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onConsoleMessage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebChromeClient.onConsoleMessage](https://developer.android.com/reference/android/webkit/WebChromeClient#onConsoleMessage(android.webkit.ConsoleMessage)))
+  ///- Android WebView ([Official API - WebChromeClient.onConsoleMessage](https://developer.android.com/reference/android/webkit/WebChromeClient#onConsoleMessage(android.webkit.CygnusConsoleMessage)))
   ///- iOS WKWebView:
   ///    - This event is implemented using JavaScript.
   ///- macOS WKWebView:
@@ -1065,13 +1065,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [consoleMessage]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onConsoleMessage,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onContentLoading] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onContentLoading] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onContentLoading.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onContentLoading.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_ContentLoading](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#add_contentloading))
@@ -1079,13 +1079,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onContentLoading,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onContentSizeChanged] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onContentSizeChanged] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onContentSizeChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onContentSizeChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
@@ -1094,33 +1094,33 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [oldContentSize]: all platforms
   ///- [newContentSize]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onContentSizeChanged,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onCreateWindow] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onCreateWindow] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onCreateWindow.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onCreateWindow.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onCreateWindow](https://developer.android.com/reference/android/webkit/WebChromeClient#onCreateWindow(android.webkit.WebView,%20boolean,%20boolean,%20android.os.Message))):
-  ///    - You need to set [InAppWebViewSettings.supportMultipleWindows] setting to `true`. Also, if the request has been created using JavaScript (`window.open()`), then there are some limitation: check the [NavigationAction] class.
+  ///    - You need to set [CygnusWebViewSettings.supportMultipleWindows] setting to `true`. Also, if the request has been created using JavaScript (`window.open()`), then there are some limitation: check the [CygnusNavigationAction] class.
   ///- iOS WKWebView ([Official API - WKUIDelegate.webView](https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview)):
-  ///    - Setting these initial settings [InAppWebViewSettings.supportZoom], [InAppWebViewSettings.useOnLoadResource], [InAppWebViewSettings.useShouldInterceptAjaxRequest], [InAppWebViewSettings.useShouldInterceptFetchRequest], [InAppWebViewSettings.applicationNameForUserAgent], [InAppWebViewSettings.javaScriptCanOpenWindowsAutomatically], [InAppWebViewSettings.javaScriptEnabled], [InAppWebViewSettings.minimumFontSize], [InAppWebViewSettings.preferredContentMode], [InAppWebViewSettings.incognito], [InAppWebViewSettings.cacheEnabled], [InAppWebViewSettings.mediaPlaybackRequiresUserGesture], [InAppWebViewSettings.resourceCustomSchemes], [InAppWebViewSettings.sharedCookiesEnabled], [InAppWebViewSettings.enableViewportScale], [InAppWebViewSettings.allowsAirPlayForMediaPlayback], [InAppWebViewSettings.allowsPictureInPictureMediaPlayback], [InAppWebViewSettings.isFraudulentWebsiteWarningEnabled], [InAppWebViewSettings.allowsInlineMediaPlayback], [InAppWebViewSettings.suppressesIncrementalRendering], [InAppWebViewSettings.selectionGranularity], [InAppWebViewSettings.ignoresViewportScaleLimits], [InAppWebViewSettings.limitsNavigationsToAppBoundDomains], [InAppWebViewSettings.upgradeKnownHostsToHTTPS], will have no effect due to a `WKWebView` limitation when creating the new window WebView: it's impossible to return the new `WKWebView` with a different `WKWebViewConfiguration` instance (see https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview). So, these options will be inherited from the caller WebView. Also, note that calling [InAppWebViewController.setSettings] method using the controller of the new created WebView, it will update also the WebView options of the caller WebView.
+  ///    - Setting these initial settings [CygnusWebViewSettings.supportZoom], [CygnusWebViewSettings.useOnLoadResource], [CygnusWebViewSettings.useShouldInterceptAjaxRequest], [CygnusWebViewSettings.useShouldInterceptFetchRequest], [CygnusWebViewSettings.applicationNameForUserAgent], [CygnusWebViewSettings.javaScriptCanOpenWindowsAutomatically], [CygnusWebViewSettings.javaScriptEnabled], [CygnusWebViewSettings.minimumFontSize], [CygnusWebViewSettings.preferredContentMode], [CygnusWebViewSettings.incognito], [CygnusWebViewSettings.cacheEnabled], [CygnusWebViewSettings.mediaPlaybackRequiresUserGesture], [CygnusWebViewSettings.resourceCustomSchemes], [CygnusWebViewSettings.sharedCookiesEnabled], [CygnusWebViewSettings.enableViewportScale], [CygnusWebViewSettings.allowsAirPlayForMediaPlayback], [CygnusWebViewSettings.allowsPictureInPictureMediaPlayback], [CygnusWebViewSettings.isFraudulentWebsiteWarningEnabled], [CygnusWebViewSettings.allowsInlineMediaPlayback], [CygnusWebViewSettings.suppressesIncrementalRendering], [CygnusWebViewSettings.selectionGranularity], [CygnusWebViewSettings.ignoresViewportScaleLimits], [CygnusWebViewSettings.limitsNavigationsToAppBoundDomains], [CygnusWebViewSettings.upgradeKnownHostsToHTTPS], will have no effect due to a `WKWebView` limitation when creating the new window WebView: it's impossible to return the new `WKWebView` with a different `WKWebViewConfiguration` instance (see https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview). So, these options will be inherited from the caller WebView. Also, note that calling [CygnusWebViewController.setSettings] method using the controller of the new created WebView, it will update also the WebView options of the caller WebView.
   ///- macOS WKWebView ([Official API - WKUIDelegate.webView](https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview)):
-  ///    - Setting these initial settings [InAppWebViewSettings.supportZoom], [InAppWebViewSettings.useOnLoadResource], [InAppWebViewSettings.useShouldInterceptAjaxRequest], [InAppWebViewSettings.useShouldInterceptFetchRequest], [InAppWebViewSettings.applicationNameForUserAgent], [InAppWebViewSettings.javaScriptCanOpenWindowsAutomatically], [InAppWebViewSettings.javaScriptEnabled], [InAppWebViewSettings.minimumFontSize], [InAppWebViewSettings.preferredContentMode], [InAppWebViewSettings.incognito], [InAppWebViewSettings.cacheEnabled], [InAppWebViewSettings.mediaPlaybackRequiresUserGesture], [InAppWebViewSettings.resourceCustomSchemes], [InAppWebViewSettings.sharedCookiesEnabled], [InAppWebViewSettings.enableViewportScale], [InAppWebViewSettings.allowsAirPlayForMediaPlayback], [InAppWebViewSettings.allowsPictureInPictureMediaPlayback], [InAppWebViewSettings.isFraudulentWebsiteWarningEnabled], [InAppWebViewSettings.allowsInlineMediaPlayback], [InAppWebViewSettings.suppressesIncrementalRendering], [InAppWebViewSettings.selectionGranularity], [InAppWebViewSettings.ignoresViewportScaleLimits], [InAppWebViewSettings.limitsNavigationsToAppBoundDomains], [InAppWebViewSettings.upgradeKnownHostsToHTTPS], will have no effect due to a `WKWebView` limitation when creating the new window WebView: it's impossible to return the new `WKWebView` with a different `WKWebViewConfiguration` instance (see https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview). So, these options will be inherited from the caller WebView. Also, note that calling [InAppWebViewController.setSettings] method using the controller of the new created WebView, it will update also the WebView options of the caller WebView.
+  ///    - Setting these initial settings [CygnusWebViewSettings.supportZoom], [CygnusWebViewSettings.useOnLoadResource], [CygnusWebViewSettings.useShouldInterceptAjaxRequest], [CygnusWebViewSettings.useShouldInterceptFetchRequest], [CygnusWebViewSettings.applicationNameForUserAgent], [CygnusWebViewSettings.javaScriptCanOpenWindowsAutomatically], [CygnusWebViewSettings.javaScriptEnabled], [CygnusWebViewSettings.minimumFontSize], [CygnusWebViewSettings.preferredContentMode], [CygnusWebViewSettings.incognito], [CygnusWebViewSettings.cacheEnabled], [CygnusWebViewSettings.mediaPlaybackRequiresUserGesture], [CygnusWebViewSettings.resourceCustomSchemes], [CygnusWebViewSettings.sharedCookiesEnabled], [CygnusWebViewSettings.enableViewportScale], [CygnusWebViewSettings.allowsAirPlayForMediaPlayback], [CygnusWebViewSettings.allowsPictureInPictureMediaPlayback], [CygnusWebViewSettings.isFraudulentWebsiteWarningEnabled], [CygnusWebViewSettings.allowsInlineMediaPlayback], [CygnusWebViewSettings.suppressesIncrementalRendering], [CygnusWebViewSettings.selectionGranularity], [CygnusWebViewSettings.ignoresViewportScaleLimits], [CygnusWebViewSettings.limitsNavigationsToAppBoundDomains], [CygnusWebViewSettings.upgradeKnownHostsToHTTPS], will have no effect due to a `WKWebView` limitation when creating the new window WebView: it's impossible to return the new `WKWebView` with a different `WKWebViewConfiguration` instance (see https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview). So, these options will be inherited from the caller WebView. Also, note that calling [CygnusWebViewController.setSettings] method using the controller of the new created WebView, it will update also the WebView options of the caller WebView.
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_NewWindowRequested](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#add_newwindowrequested))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [createWindowAction]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onCreateWindow,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onDOMContentLoaded] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onDOMContentLoaded] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onDOMContentLoaded.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onDOMContentLoaded.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_2.add_DOMContentLoaded](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_2?view=webview2-1.0.2210.55#add_domcontentloaded))
@@ -1128,25 +1128,25 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onDOMContentLoaded,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onDidReceiveServerRedirectForProvisionalNavigation] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onDidReceiveServerRedirectForProvisionalNavigation] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onDidReceiveServerRedirectForProvisionalNavigation.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onDidReceiveServerRedirectForProvisionalNavigation.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455627-webview))
   ///- macOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455627-webview))
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onDidReceiveServerRedirectForProvisionalNavigation,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onDownloadStart] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onDownloadStart] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onDownloadStart.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onDownloadStart.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1155,14 +1155,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onDownloadStarting instead')
   onDownloadStart,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onDownloadStartRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onDownloadStartRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onDownloadStartRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onDownloadStartRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1172,14 +1172,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [downloadStartRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onDownloadStarting instead')
   onDownloadStartRequest,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onDownloadStarting] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onDownloadStarting] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onDownloadStarting.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onDownloadStarting.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.setDownloadListener]((https://developer.android.com/reference/android/webkit/WebView#setDownloadListener(android.webkit.DownloadListener)))
@@ -1190,13 +1190,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [downloadStartRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onDownloadStarting,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onEnterFullscreen] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onEnterFullscreen] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onEnterFullscreen.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onEnterFullscreen.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onShowCustomView](https://developer.android.com/reference/android/webkit/WebChromeClient#onShowCustomView(android.view.View,%20android.webkit.WebChromeClient.CustomViewCallback)))
@@ -1204,13 +1204,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///- macOS WKWebView ([Official API - NSWindow.didEnterFullScreenNotification](https://developer.apple.com/documentation/appkit/nswindow/1419651-didenterfullscreennotification))
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_ContainsFullScreenElementChanged](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#add_containsfullscreenelementchanged))
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onEnterFullscreen,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onExit] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onExit] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onExit.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onExit.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1219,13 +1219,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onExit,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onExitFullscreen] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onExitFullscreen] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onExitFullscreen.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onExitFullscreen.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onHideCustomView](https://developer.android.com/reference/android/webkit/WebChromeClient#onHideCustomView()))
@@ -1233,13 +1233,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///- macOS WKWebView ([Official API - NSWindow.didExitFullScreenNotification](https://developer.apple.com/documentation/appkit/nswindow/1419177-didexitfullscreennotification))
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_ContainsFullScreenElementChanged](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#add_containsfullscreenelementchanged))
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onExitFullscreen,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onFaviconChanged] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onFaviconChanged] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onFaviconChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onFaviconChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onReceivedIcon](https://developer.android.com/reference/android/webkit/WebChromeClient#onReceivedIcon(android.webkit.WebView,%20android.graphics.Bitmap)))
@@ -1248,13 +1248,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [faviconChangedRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onFaviconChanged,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onFindResultReceived] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onFindResultReceived] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onFindResultReceived.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onFindResultReceived.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1266,14 +1266,16 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [numberOfMatches]: all platforms
   ///- [isDoneCounting]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
-  @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+  @Deprecated(
+    'Use CygnusFindInteractionController.onFindResultReceived instead',
+  )
   onFindResultReceived,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onFormResubmission] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onFormResubmission] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onFormResubmission.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onFormResubmission.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onFormResubmission](https://developer.android.com/reference/android/webkit/WebViewClient#onFormResubmission(android.webkit.WebView,%20android.os.Message,%20android.os.Message)))
@@ -1281,24 +1283,24 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onFormResubmission,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onGeolocationPermissionsHidePrompt] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onGeolocationPermissionsHidePrompt] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onGeolocationPermissionsHidePrompt.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onGeolocationPermissionsHidePrompt.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onGeolocationPermissionsHidePrompt](https://developer.android.com/reference/android/webkit/WebChromeClient#onGeolocationPermissionsHidePrompt()))
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onGeolocationPermissionsHidePrompt,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onGeolocationPermissionsShowPrompt] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onGeolocationPermissionsShowPrompt] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onGeolocationPermissionsShowPrompt.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onGeolocationPermissionsShowPrompt.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onGeolocationPermissionsShowPrompt](https://developer.android.com/reference/android/webkit/WebChromeClient#onGeolocationPermissionsShowPrompt(java.lang.String,%20android.webkit.GeolocationPermissions.Callback)))
@@ -1306,13 +1308,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [origin]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onGeolocationPermissionsShowPrompt,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onJsAlert] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onJsAlert] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onJsAlert.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onJsAlert.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onJsAlert](https://developer.android.com/reference/android/webkit/WebChromeClient#onJsAlert(android.webkit.WebView,%20java.lang.String,%20java.lang.String,%20android.webkit.JsResult)))
@@ -1322,13 +1324,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [jsAlertRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onJsAlert,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onJsConfirm] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onJsConfirm] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onJsConfirm.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onJsConfirm.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onJsConfirm](https://developer.android.com/reference/android/webkit/WebChromeClient#onJsConfirm(android.webkit.WebView,%20java.lang.String,%20java.lang.String,%20android.webkit.JsResult)))
@@ -1338,13 +1340,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [jsConfirmRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onJsConfirm,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onJsPrompt] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onJsPrompt] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onJsPrompt.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onJsPrompt.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onJsPrompt](https://developer.android.com/reference/android/webkit/WebChromeClient#onJsPrompt(android.webkit.WebView,%20java.lang.String,%20java.lang.String,%20java.lang.String,%20android.webkit.JsPromptResult)))
@@ -1354,13 +1356,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [jsPromptRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onJsPrompt,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onLaunchingExternalUriScheme] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onLaunchingExternalUriScheme] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onLaunchingExternalUriScheme.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onLaunchingExternalUriScheme.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_18.add_LaunchingExternalUriScheme](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_18?view=webview2-1.0.2849.39#add_launchingexternalurischeme))
@@ -1368,13 +1370,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onLaunchingExternalUriScheme,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onLoadError] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onLoadError] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onLoadError.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onLoadError.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1386,14 +1388,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [code]: all platforms
   ///- [message]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onReceivedError instead')
   onLoadError,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onLoadHttpError] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onLoadHttpError] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onLoadHttpError.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onLoadHttpError.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1405,14 +1407,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [statusCode]: all platforms
   ///- [description]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onReceivedHttpError instead')
   onLoadHttpError,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onLoadResource] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onLoadResource] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onLoadResource.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onLoadResource.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
@@ -1425,13 +1427,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [resource]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onLoadResource,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onLoadResourceCustomScheme] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onLoadResourceCustomScheme] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onLoadResourceCustomScheme.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onLoadResourceCustomScheme.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1441,14 +1443,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onLoadResourceWithCustomScheme instead')
   onLoadResourceCustomScheme,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onLoadResourceWithCustomScheme] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onLoadResourceWithCustomScheme] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onLoadResourceWithCustomScheme.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onLoadResourceWithCustomScheme.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1459,13 +1461,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onLoadResourceWithCustomScheme,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onLoadStart] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onLoadStart] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onLoadStart.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onLoadStart.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onPageStarted](https://developer.android.com/reference/android/webkit/WebViewClient#onPageStarted(android.webkit.WebView,%20java.lang.String,%20android.graphics.Bitmap)))
@@ -1476,13 +1478,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onLoadStart,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onLoadStop] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onLoadStop] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onLoadStop.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onLoadStop.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onPageFinished](https://developer.android.com/reference/android/webkit/WebViewClient#onPageFinished(android.webkit.WebView,%20java.lang.String)))
@@ -1493,13 +1495,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onLoadStop,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onLongPressHitTestResult] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onLongPressHitTestResult] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onLongPressHitTestResult.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onLongPressHitTestResult.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.setOnLongClickListener](https://developer.android.com/reference/android/view/View#setOnLongClickListener(android.view.View.OnLongClickListener)))
@@ -1508,24 +1510,24 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [hitTestResult]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onLongPressHitTestResult,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onMainWindowWillClose] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onMainWindowWillClose] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onMainWindowWillClose.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onMainWindowWillClose.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onMainWindowWillClose,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onMicrophoneCaptureStateChanged] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onMicrophoneCaptureStateChanged] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onMicrophoneCaptureStateChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onMicrophoneCaptureStateChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+
@@ -1535,13 +1537,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [oldState]: all platforms
   ///- [newState]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onMicrophoneCaptureStateChanged,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onNavigationResponse] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onNavigationResponse] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onNavigationResponse.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onNavigationResponse.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455643-webview))
@@ -1550,13 +1552,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [navigationResponse]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onNavigationResponse,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onNotificationReceived] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onNotificationReceived] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onNotificationReceived.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onNotificationReceived.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_24.add_NotificationReceived](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_24?view=webview2-1.0.2849.39#add_notificationreceived))
@@ -1564,13 +1566,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onNotificationReceived,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onOverScrolled] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onOverScrolled] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onOverScrolled.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onOverScrolled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.onOverScrolled](https://developer.android.com/reference/android/webkit/WebView#onOverScrolled(int,%20int,%20boolean,%20boolean)))
@@ -1582,13 +1584,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [clampedX]: all platforms
   ///- [clampedY]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onOverScrolled,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onPageCommitVisible] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onPageCommitVisible] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onPageCommitVisible.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onPageCommitVisible.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onPageCommitVisible](https://developer.android.com/reference/android/webkit/WebViewClient#onPageCommitVisible(android.webkit.WebView,%20java.lang.String)))
@@ -1598,46 +1600,46 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onPageCommitVisible,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onPermissionRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onPermissionRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onPermissionRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onPermissionRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView 21+ ([Official API - WebChromeClient.onPermissionRequest](https://developer.android.com/reference/android/webkit/WebChromeClient#onPermissionRequest(android.webkit.PermissionRequest)))
+  ///- Android WebView 21+ ([Official API - WebChromeClient.onPermissionRequest](https://developer.android.com/reference/android/webkit/WebChromeClient#onPermissionRequest(android.webkit.CygnusPermissionRequest)))
   ///- iOS WKWebView 15.0+:
-  ///    - The default [PermissionResponse.action] is [PermissionResponseAction.PROMPT].
+  ///    - The default [CygnusPermissionResponse.action] is [CygnusPermissionResponseAction.PROMPT].
   ///- macOS WKWebView 12.0+:
-  ///    - The default [PermissionResponse.action] is [PermissionResponseAction.PROMPT].
+  ///    - The default [CygnusPermissionResponse.action] is [CygnusPermissionResponseAction.PROMPT].
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_PermissionRequested](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#add_permissionrequested))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [permissionRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onPermissionRequest,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onPermissionRequestCanceled] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onPermissionRequestCanceled] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onPermissionRequestCanceled.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onPermissionRequestCanceled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView 21+ ([Official API - WebChromeClient.onPermissionRequestCanceled](https://developer.android.com/reference/android/webkit/WebChromeClient#onPermissionRequestCanceled(android.webkit.PermissionRequest)))
+  ///- Android WebView 21+ ([Official API - WebChromeClient.onPermissionRequestCanceled](https://developer.android.com/reference/android/webkit/WebChromeClient#onPermissionRequestCanceled(android.webkit.CygnusPermissionRequest)))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [permissionRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onPermissionRequestCanceled,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onPrint] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onPrint] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onPrint.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onPrint.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1646,14 +1648,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onPrintRequest instead')
   onPrint,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onPrintRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onPrintRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onPrintRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onPrintRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.scrollBy](https://developer.android.com/reference/android/view/View#scrollBy(int,%20int)))
@@ -1665,13 +1667,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [url]: all platforms
   ///- [printJobController]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onPrintRequest,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onProcessFailed] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onProcessFailed] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onProcessFailed.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onProcessFailed.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_ProcessFailed](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2849.39#add_processfailed))
@@ -1679,13 +1681,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [detail]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onProcessFailed,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onProgressChanged] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onProgressChanged] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onProgressChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onProgressChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onProgressChanged](https://developer.android.com/reference/android/webkit/WebChromeClient#onProgressChanged(android.webkit.WebView,%20int)))
@@ -1696,13 +1698,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [progress]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onProgressChanged,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onReceivedClientCertRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onReceivedClientCertRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onReceivedClientCertRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onReceivedClientCertRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onReceivedClientCertRequest](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedClientCertRequest(android.webkit.WebView,%20android.webkit.ClientCertRequest)))
@@ -1713,16 +1715,16 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [challenge]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onReceivedClientCertRequest,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onReceivedError] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onReceivedError] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onReceivedError.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onReceivedError.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebViewClient.onReceivedError](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedError(android.webkit.WebView,%20android.webkit.WebResourceRequest,%20android.webkit.WebResourceError)))
+  ///- Android WebView ([Official API - WebViewClient.onReceivedError](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedError(android.webkit.WebView,%20android.webkit.CygnusWebResourceRequest,%20android.webkit.CygnusWebResourceError)))
   ///- iOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455623-webview))
   ///- macOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455623-webview))
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_NavigationCompleted](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/iwebview2webview?view=webview2-0.8.355#add_navigationcompleted))
@@ -1731,13 +1733,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [request]: all platforms
   ///- [error]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onReceivedError,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onReceivedHttpAuthRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onReceivedHttpAuthRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onReceivedHttpAuthRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onReceivedHttpAuthRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onReceivedHttpAuthRequest](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedHttpAuthRequest(android.webkit.WebView,%20android.webkit.HttpAuthHandler,%20java.lang.String,%20java.lang.String)))
@@ -1748,16 +1750,16 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [challenge]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onReceivedHttpAuthRequest,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onReceivedHttpError] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onReceivedHttpError] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onReceivedHttpError.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onReceivedHttpError.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView 23+ ([Official API - WebViewClient.onReceivedHttpError](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedHttpError(android.webkit.WebView,%20android.webkit.WebResourceRequest,%20android.webkit.WebResourceResponse)))
+  ///- Android WebView 23+ ([Official API - WebViewClient.onReceivedHttpError](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedHttpError(android.webkit.WebView,%20android.webkit.CygnusWebResourceRequest,%20android.webkit.CygnusWebResourceResponse)))
   ///- iOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455643-webview))
   ///- macOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455643-webview))
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_NavigationCompleted](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/iwebview2webview?view=webview2-0.8.355#add_navigationcompleted))
@@ -1766,13 +1768,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [request]: all platforms
   ///- [errorResponse]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onReceivedHttpError,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onReceivedIcon] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onReceivedIcon] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onReceivedIcon.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onReceivedIcon.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onReceivedIcon](https://developer.android.com/reference/android/webkit/WebChromeClient#onReceivedIcon(android.webkit.WebView,%20android.graphics.Bitmap)))
@@ -1780,14 +1782,14 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [icon]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onFaviconChanged instead')
   onReceivedIcon,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onReceivedLoginRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onReceivedLoginRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onReceivedLoginRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onReceivedLoginRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onReceivedLoginRequest](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedLoginRequest(android.webkit.WebView,%20java.lang.String,%20java.lang.String,%20java.lang.String)))
@@ -1795,16 +1797,16 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [loginRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onReceivedLoginRequest,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onReceivedServerTrustAuthRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onReceivedServerTrustAuthRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onReceivedServerTrustAuthRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onReceivedServerTrustAuthRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebViewClient.onReceivedSslError](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedSslError(android.webkit.WebView,%20android.webkit.SslErrorHandler,%20android.net.http.SslError)))
+  ///- Android WebView ([Official API - WebViewClient.onReceivedSslError](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedSslError(android.webkit.WebView,%20android.webkit.SslErrorHandler,%20android.net.http.CygnusSslError)))
   ///- iOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455638-webview)):
   ///    - To override the certificate verification logic, you have to provide ATS (App Transport Security) exceptions in your iOS/macOS `Info.plist`. See `NSAppTransportSecurity` in the [Information Property List Key Reference](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW1) for details.
   ///- macOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455638-webview)):
@@ -1814,13 +1816,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [challenge]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onReceivedServerTrustAuthRequest,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onReceivedTouchIconUrl] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onReceivedTouchIconUrl] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onReceivedTouchIconUrl.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onReceivedTouchIconUrl.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onReceivedTouchIconUrl](https://developer.android.com/reference/android/webkit/WebChromeClient#onReceivedTouchIconUrl(android.webkit.WebView,%20java.lang.String,%20boolean)))
@@ -1829,28 +1831,28 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [url]: all platforms
   ///- [precomposed]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onReceivedTouchIconUrl,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onRenderProcessGone] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onRenderProcessGone] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onRenderProcessGone.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onRenderProcessGone.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView 26+ ([Official API - WebViewClient.onRenderProcessGone](https://developer.android.com/reference/android/webkit/WebViewClient#onRenderProcessGone(android.webkit.WebView,%20android.webkit.RenderProcessGoneDetail)))
+  ///- Android WebView 26+ ([Official API - WebViewClient.onRenderProcessGone](https://developer.android.com/reference/android/webkit/WebViewClient#onRenderProcessGone(android.webkit.WebView,%20android.webkit.CygnusRenderProcessGoneDetail)))
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_ProcessFailed](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2849.39#add_processfailed))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [detail]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onRenderProcessGone,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onRenderProcessResponsive] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onRenderProcessResponsive] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onRenderProcessResponsive.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onRenderProcessResponsive.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 29+ ([Official API - WebViewRenderProcessClient.onRenderProcessResponsive](https://developer.android.com/reference/android/webkit/WebViewRenderProcessClient#onRenderProcessResponsive(android.webkit.WebView,%20android.webkit.WebViewRenderProcess)))
@@ -1858,13 +1860,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onRenderProcessResponsive,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onRenderProcessUnresponsive] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onRenderProcessUnresponsive] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onRenderProcessUnresponsive.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onRenderProcessUnresponsive.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 29+ ([Official API - WebViewRenderProcessClient.onRenderProcessUnresponsive](https://developer.android.com/reference/android/webkit/WebViewRenderProcessClient#onRenderProcessUnresponsive(android.webkit.WebView,%20android.webkit.WebViewRenderProcess)))
@@ -1873,39 +1875,39 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onRenderProcessUnresponsive,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onRequestFocus] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onRequestFocus] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onRequestFocus.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onRequestFocus.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onRequestFocus](https://developer.android.com/reference/android/webkit/WebChromeClient#onRequestFocus(android.webkit.WebView)))
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onRequestFocus,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onSafeBrowsingHit] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onSafeBrowsingHit] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onSafeBrowsingHit.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onSafeBrowsingHit.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView 27+ ([Official API - WebViewClient.onSafeBrowsingHit](https://developer.android.com/reference/android/webkit/WebViewClient#onSafeBrowsingHit(android.webkit.WebView,%20android.webkit.WebResourceRequest,%20int,%20android.webkit.SafeBrowsingResponse)))
+  ///- Android WebView 27+ ([Official API - WebViewClient.onSafeBrowsingHit](https://developer.android.com/reference/android/webkit/WebViewClient#onSafeBrowsingHit(android.webkit.WebView,%20android.webkit.CygnusWebResourceRequest,%20int,%20android.webkit.CygnusSafeBrowsingResponse)))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///- [threatType]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onSafeBrowsingHit,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onSaveAsUIShowing] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onSaveAsUIShowing] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onSaveAsUIShowing.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onSaveAsUIShowing.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_25.add_SaveAsUIShowing](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_25?view=webview2-1.0.2849.39#add_saveasuishowing))
@@ -1913,13 +1915,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onSaveAsUIShowing,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onSaveFileSecurityCheckStarting] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onSaveFileSecurityCheckStarting] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onSaveFileSecurityCheckStarting.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onSaveFileSecurityCheckStarting.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_26.add_SaveFileSecurityCheckStarting](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_26?view=webview2-1.0.2849.39#add_savefilesecuritycheckstarting))
@@ -1927,13 +1929,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onSaveFileSecurityCheckStarting,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onScreenCaptureStarting] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onScreenCaptureStarting] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onScreenCaptureStarting.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onScreenCaptureStarting.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_27.add_ScreenCaptureStarting](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_27?view=webview2-1.0.2849.39#add_screencapturestarting))
@@ -1941,13 +1943,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onScreenCaptureStarting,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onScrollChanged] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onScrollChanged] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onScrollChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onScrollChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.onScrollChanged](https://developer.android.com/reference/android/webkit/WebView#onScrollChanged(int,%20int,%20int,%20int)))
@@ -1959,13 +1961,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [x]: all platforms
   ///- [y]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onScrollChanged,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onShowFileChooser] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onShowFileChooser] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onShowFileChooser.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onShowFileChooser.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onShowFileChooser](https://developer.android.com/reference/android/webkit/WebChromeClient#onShowFileChooser(android.webkit.WebView,%20android.webkit.ValueCallback%3Candroid.net.Uri[]%3E,%20android.webkit.WebChromeClient.FileChooserParams)))
@@ -1973,13 +1975,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onShowFileChooser,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onTitleChanged] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onTitleChanged] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onTitleChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onTitleChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onReceivedTitle](https://developer.android.com/reference/android/webkit/WebChromeClient#onReceivedTitle(android.webkit.WebView,%20java.lang.String)))
@@ -1990,13 +1992,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [title]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onTitleChanged,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onUpdateVisitedHistory] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onUpdateVisitedHistory] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onUpdateVisitedHistory.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onUpdateVisitedHistory.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.doUpdateVisitedHistory](https://developer.android.com/reference/android/webkit/WebViewClient#doUpdateVisitedHistory(android.webkit.WebView,%20java.lang.String,%20boolean)))
@@ -2009,52 +2011,52 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [isReload]:
   ///    - Android WebView
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onUpdateVisitedHistory,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onWebContentProcessDidTerminate] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onWebContentProcessDidTerminate] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onWebContentProcessDidTerminate.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onWebContentProcessDidTerminate.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKNavigationDelegate.webViewWebContentProcessDidTerminate](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455639-webviewwebcontentprocessdidtermi))
   ///- macOS WKWebView ([Official API - WKNavigationDelegate.webViewWebContentProcessDidTerminate](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455639-webviewwebcontentprocessdidtermi))
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_ProcessFailed](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2849.39#add_processfailed))
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onWebContentProcessDidTerminate,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onWindowBlur] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onWindowBlur] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onWindowBlur.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onWindowBlur.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onWindowBlur,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onWindowFocus] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onWindowFocus] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onWindowFocus.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onWindowFocus.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onWindowFocus,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.onZoomScaleChanged] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.onZoomScaleChanged] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.onZoomScaleChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.onZoomScaleChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onScaleChanged](https://developer.android.com/reference/android/webkit/WebViewClient#onScaleChanged(android.webkit.WebView,%20float,%20float)))
@@ -2065,13 +2067,13 @@ enum PlatformInAppBrowserEventsMethod {
   ///- [oldScale]: all platforms
   ///- [newScale]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onZoomScaleChanged,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.shouldAllowDeprecatedTLS] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.shouldAllowDeprecatedTLS] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.shouldAllowDeprecatedTLS.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.shouldAllowDeprecatedTLS.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 14.0+ ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/3601237-webview))
@@ -2080,66 +2082,66 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [challenge]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   shouldAllowDeprecatedTLS,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.shouldInterceptAjaxRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.shouldInterceptAjaxRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.shouldInterceptAjaxRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.shouldInterceptAjaxRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - In order to be able to listen this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] setting documentation. Also, on Android that doesn't support the [WebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
+  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] setting documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [ajaxRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   shouldInterceptAjaxRequest,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.shouldInterceptFetchRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.shouldInterceptFetchRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.shouldInterceptFetchRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.shouldInterceptFetchRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - In order to be able to listen this event, check the [InAppWebViewSettings.useShouldInterceptFetchRequest] setting documentation. Also, on Android that doesn't support the [WebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
+  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptFetchRequest] setting documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [fetchRequest]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   shouldInterceptFetchRequest,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.shouldInterceptRequest] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.shouldInterceptRequest] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.shouldInterceptRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.shouldInterceptRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebViewClient.shouldInterceptRequest](https://developer.android.com/reference/android/webkit/WebViewClient#shouldInterceptRequest(android.webkit.WebView,%20android.webkit.WebResourceRequest)))
+  ///- Android WebView ([Official API - WebViewClient.shouldInterceptRequest](https://developer.android.com/reference/android/webkit/WebViewClient#shouldInterceptRequest(android.webkit.WebView,%20android.webkit.CygnusWebResourceRequest)))
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_WebResourceRequested](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2478.35#add_webresourcerequested))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   shouldInterceptRequest,
 
-  ///Can be used to check if the [PlatformInAppBrowserEvents.shouldOverrideUrlLoading] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformBrowserEvents.shouldOverrideUrlLoading] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppBrowserEvents.shouldOverrideUrlLoading.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformBrowserEvents.shouldOverrideUrlLoading.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.shouldOverrideUrlLoading](https://developer.android.com/reference/android/webkit/WebViewClient#shouldOverrideUrlLoading(android.webkit.WebView,%20java.lang.String))):
-  ///    - There isn't any way to load an URL for a frame that is not the main frame, so if the request is not for the main frame, the navigation is allowed by default. However, if you want to cancel requests for subframes, you can use the [InAppWebViewSettings.regexToCancelSubFramesLoading] setting to write a Regular Expression that, if the url request of a subframe matches, then the request of that subframe is canceled. Instead, the [InAppWebViewSettings.regexToAllowSyncUrlLoading] setting could be used to allow navigation requests synchronously, as this event is synchronous on native side and the current plugin implementation will always cancel the current request and load a new request if this event returns [NavigationActionPolicy.ALLOW] because Flutter method channels work only asynchronously. Also, this event is not called for POST requests and is not called on the first page load.
+  ///    - There isn't any way to load an URL for a frame that is not the main frame, so if the request is not for the main frame, the navigation is allowed by default. However, if you want to cancel requests for subframes, you can use the [CygnusWebViewSettings.regexToCancelSubFramesLoading] setting to write a Regular Expression that, if the url request of a subframe matches, then the request of that subframe is canceled. Instead, the [CygnusWebViewSettings.regexToAllowSyncUrlLoading] setting could be used to allow navigation requests synchronously, as this event is synchronous on native side and the current plugin implementation will always cancel the current request and load a new request if this event returns [CygnusNavigationActionPolicy.ALLOW] because Flutter method channels work only asynchronously. Also, this event is not called for POST requests and is not called on the first page load.
   ///- iOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455641-webview))
   ///- macOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455641-webview))
   ///- Windows WebView2
@@ -2147,123 +2149,123 @@ enum PlatformInAppBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [navigationAction]: all platforms
   ///
-  ///Use the [PlatformInAppBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   shouldOverrideUrlLoading,
 }
 
-extension _PlatformInAppBrowserEventsMethodSupported
-    on PlatformInAppBrowserEvents {
+extension _CygnusPlatformBrowserEventsMethodSupported
+    on CygnusPlatformBrowserEvents {
   static bool isMethodSupported(
-    PlatformInAppBrowserEventsMethod method, {
+    CygnusPlatformBrowserEventsMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformInAppBrowserEventsMethod.androidOnFormResubmission:
+      case CygnusPlatformBrowserEventsMethod.androidOnFormResubmission:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod
+      case CygnusPlatformBrowserEventsMethod
           .androidOnGeolocationPermissionsHidePrompt:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod
+      case CygnusPlatformBrowserEventsMethod
           .androidOnGeolocationPermissionsShowPrompt:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.androidOnJsBeforeUnload:
+      case CygnusPlatformBrowserEventsMethod.androidOnJsBeforeUnload:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.androidOnPermissionRequest:
+      case CygnusPlatformBrowserEventsMethod.androidOnPermissionRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.androidOnReceivedIcon:
+      case CygnusPlatformBrowserEventsMethod.androidOnReceivedIcon:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.androidOnReceivedLoginRequest:
+      case CygnusPlatformBrowserEventsMethod.androidOnReceivedLoginRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.androidOnReceivedTouchIconUrl:
+      case CygnusPlatformBrowserEventsMethod.androidOnReceivedTouchIconUrl:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.androidOnRenderProcessGone:
+      case CygnusPlatformBrowserEventsMethod.androidOnRenderProcessGone:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.androidOnRenderProcessResponsive:
+      case CygnusPlatformBrowserEventsMethod.androidOnRenderProcessResponsive:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.androidOnRenderProcessUnresponsive:
+      case CygnusPlatformBrowserEventsMethod.androidOnRenderProcessUnresponsive:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.androidOnSafeBrowsingHit:
+      case CygnusPlatformBrowserEventsMethod.androidOnSafeBrowsingHit:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.androidOnScaleChanged:
+      case CygnusPlatformBrowserEventsMethod.androidOnScaleChanged:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.androidShouldInterceptRequest:
+      case CygnusPlatformBrowserEventsMethod.androidShouldInterceptRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod
+      case CygnusPlatformBrowserEventsMethod
           .iosOnDidReceiveServerRedirectForProvisionalNavigation:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.iosOnNavigationResponse:
+      case CygnusPlatformBrowserEventsMethod.iosOnNavigationResponse:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.iosOnWebContentProcessDidTerminate:
+      case CygnusPlatformBrowserEventsMethod.iosOnWebContentProcessDidTerminate:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.iosShouldAllowDeprecatedTLS:
+      case CygnusPlatformBrowserEventsMethod.iosShouldAllowDeprecatedTLS:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onAcceleratorKeyPressed:
+      case CygnusPlatformBrowserEventsMethod.onAcceleratorKeyPressed:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onAjaxProgress:
+      case CygnusPlatformBrowserEventsMethod.onAjaxProgress:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onAjaxReadyStateChange:
+      case CygnusPlatformBrowserEventsMethod.onAjaxReadyStateChange:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onBrowserCreated:
+      case CygnusPlatformBrowserEventsMethod.onBrowserCreated:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2272,13 +2274,13 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onCameraCaptureStateChanged:
+      case CygnusPlatformBrowserEventsMethod.onCameraCaptureStateChanged:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onCloseWindow:
+      case CygnusPlatformBrowserEventsMethod.onCloseWindow:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2288,7 +2290,7 @@ extension _PlatformInAppBrowserEventsMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onConsoleMessage:
+      case CygnusPlatformBrowserEventsMethod.onConsoleMessage:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2298,15 +2300,15 @@ extension _PlatformInAppBrowserEventsMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onContentLoading:
+      case CygnusPlatformBrowserEventsMethod.onContentLoading:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onContentSizeChanged:
+      case CygnusPlatformBrowserEventsMethod.onContentSizeChanged:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onCreateWindow:
+      case CygnusPlatformBrowserEventsMethod.onCreateWindow:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2314,40 +2316,32 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onDOMContentLoaded:
+      case CygnusPlatformBrowserEventsMethod.onDOMContentLoaded:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod
+      case CygnusPlatformBrowserEventsMethod
           .onDidReceiveServerRedirectForProvisionalNavigation:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onDownloadStart:
+      case CygnusPlatformBrowserEventsMethod.onDownloadStart:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onDownloadStartRequest:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onDownloadStarting:
+      case CygnusPlatformBrowserEventsMethod.onDownloadStartRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
-              TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onEnterFullscreen:
+      case CygnusPlatformBrowserEventsMethod.onDownloadStarting:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2355,7 +2349,15 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onExit:
+      case CygnusPlatformBrowserEventsMethod.onEnterFullscreen:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+              TargetPlatform.windows,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onExit:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2364,7 +2366,7 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onExitFullscreen:
+      case CygnusPlatformBrowserEventsMethod.onExitFullscreen:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2372,97 +2374,89 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onFaviconChanged:
+      case CygnusPlatformBrowserEventsMethod.onFaviconChanged:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onFindResultReceived:
+      case CygnusPlatformBrowserEventsMethod.onFindResultReceived:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onFormResubmission:
+      case CygnusPlatformBrowserEventsMethod.onFormResubmission:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onGeolocationPermissionsHidePrompt:
+      case CygnusPlatformBrowserEventsMethod.onGeolocationPermissionsHidePrompt:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onGeolocationPermissionsShowPrompt:
+      case CygnusPlatformBrowserEventsMethod.onGeolocationPermissionsShowPrompt:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onJsAlert:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onJsConfirm:
+      case CygnusPlatformBrowserEventsMethod.onJsAlert:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onJsPrompt:
+      case CygnusPlatformBrowserEventsMethod.onJsConfirm:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onLaunchingExternalUriScheme:
+      case CygnusPlatformBrowserEventsMethod.onJsPrompt:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onLaunchingExternalUriScheme:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onLoadError:
+      case CygnusPlatformBrowserEventsMethod.onLoadError:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onLoadHttpError:
+      case CygnusPlatformBrowserEventsMethod.onLoadHttpError:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onLoadResource:
+      case CygnusPlatformBrowserEventsMethod.onLoadResource:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onLoadResourceCustomScheme:
+      case CygnusPlatformBrowserEventsMethod.onLoadResourceCustomScheme:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onLoadResourceWithCustomScheme:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-              TargetPlatform.windows,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onLoadStart:
+      case CygnusPlatformBrowserEventsMethod.onLoadResourceWithCustomScheme:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2470,7 +2464,7 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onLoadStop:
+      case CygnusPlatformBrowserEventsMethod.onLoadStart:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2478,77 +2472,54 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onLongPressHitTestResult:
+      case CygnusPlatformBrowserEventsMethod.onLoadStop:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+              TargetPlatform.windows,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onLongPressHitTestResult:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onMainWindowWillClose:
+      case CygnusPlatformBrowserEventsMethod.onMainWindowWillClose:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onMicrophoneCaptureStateChanged:
+      case CygnusPlatformBrowserEventsMethod.onMicrophoneCaptureStateChanged:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onNavigationResponse:
+      case CygnusPlatformBrowserEventsMethod.onNavigationResponse:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onNotificationReceived:
+      case CygnusPlatformBrowserEventsMethod.onNotificationReceived:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onOverScrolled:
+      case CygnusPlatformBrowserEventsMethod.onOverScrolled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onPageCommitVisible:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onPermissionRequest:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-              TargetPlatform.windows,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onPermissionRequestCanceled:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onPrint:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onPrintRequest:
+      case CygnusPlatformBrowserEventsMethod.onPageCommitVisible:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onProcessFailed:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.windows,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onProgressChanged:
+      case CygnusPlatformBrowserEventsMethod.onPermissionRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2556,7 +2527,30 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onReceivedClientCertRequest:
+      case CygnusPlatformBrowserEventsMethod.onPermissionRequestCanceled:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onPrint:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onPrintRequest:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onProcessFailed:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.windows,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onProgressChanged:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2564,7 +2558,7 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onReceivedError:
+      case CygnusPlatformBrowserEventsMethod.onReceivedClientCertRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2572,7 +2566,7 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onReceivedHttpAuthRequest:
+      case CygnusPlatformBrowserEventsMethod.onReceivedError:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2580,7 +2574,7 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onReceivedHttpError:
+      case CygnusPlatformBrowserEventsMethod.onReceivedHttpAuthRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2588,17 +2582,7 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onReceivedIcon:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onReceivedLoginRequest:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onReceivedServerTrustAuthRequest:
+      case CygnusPlatformBrowserEventsMethod.onReceivedHttpError:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2606,66 +2590,17 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onReceivedTouchIconUrl:
+      case CygnusPlatformBrowserEventsMethod.onReceivedIcon:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onRenderProcessGone:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.windows,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onRenderProcessResponsive:
+      case CygnusPlatformBrowserEventsMethod.onReceivedLoginRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onRenderProcessUnresponsive:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.windows,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onRequestFocus:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onSafeBrowsingHit:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onSaveAsUIShowing:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.windows,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onSaveFileSecurityCheckStarting:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.windows,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onScreenCaptureStarting:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.windows,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onScrollChanged:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onShowFileChooser:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onTitleChanged:
+      case CygnusPlatformBrowserEventsMethod.onReceivedServerTrustAuthRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2673,7 +2608,66 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onUpdateVisitedHistory:
+      case CygnusPlatformBrowserEventsMethod.onReceivedTouchIconUrl:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onRenderProcessGone:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.windows,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onRenderProcessResponsive:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onRenderProcessUnresponsive:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.windows,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onRequestFocus:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onSafeBrowsingHit:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onSaveAsUIShowing:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.windows,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onSaveFileSecurityCheckStarting:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.windows,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onScreenCaptureStarting:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.windows,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onScrollChanged:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onShowFileChooser:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onTitleChanged:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2681,61 +2675,69 @@ extension _PlatformInAppBrowserEventsMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onWebContentProcessDidTerminate:
+      case CygnusPlatformBrowserEventsMethod.onUpdateVisitedHistory:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+              TargetPlatform.windows,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.onWebContentProcessDidTerminate:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onWindowBlur:
+      case CygnusPlatformBrowserEventsMethod.onWindowBlur:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onWindowFocus:
+      case CygnusPlatformBrowserEventsMethod.onWindowFocus:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.onZoomScaleChanged:
+      case CygnusPlatformBrowserEventsMethod.onZoomScaleChanged:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.shouldAllowDeprecatedTLS:
+      case CygnusPlatformBrowserEventsMethod.shouldAllowDeprecatedTLS:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.shouldInterceptAjaxRequest:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.shouldInterceptFetchRequest:
+      case CygnusPlatformBrowserEventsMethod.shouldInterceptAjaxRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.shouldInterceptRequest:
+      case CygnusPlatformBrowserEventsMethod.shouldInterceptFetchRequest:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformBrowserEventsMethod.shouldInterceptRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppBrowserEventsMethod.shouldOverrideUrlLoading:
+      case CygnusPlatformBrowserEventsMethod.shouldOverrideUrlLoading:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,

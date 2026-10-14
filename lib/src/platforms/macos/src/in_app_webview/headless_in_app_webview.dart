@@ -9,11 +9,11 @@ import 'in_app_webview_controller.dart';
 /// Object specifying creation parameters for creating a [MacOSHeadlessInAppWebView].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformHeadlessInAppWebViewCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformHeadlessWebViewCreationParams] for
 /// more information.
 @immutable
 class MacOSHeadlessInAppWebViewCreationParams
-    extends PlatformHeadlessInAppWebViewCreationParams {
+    extends CygnusPlatformHeadlessWebViewCreationParams {
   /// Creates a new [MacOSHeadlessInAppWebViewCreationParams] instance.
   MacOSHeadlessInAppWebViewCreationParams({
     super.controllerFromPlatform,
@@ -45,7 +45,7 @@ class MacOSHeadlessInAppWebViewCreationParams
     super.onReceivedHttpAuthRequest,
     super.onReceivedServerTrustAuthRequest,
     super.onReceivedClientCertRequest,
-    @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+    @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
     super.onFindResultReceived,
     super.shouldInterceptAjaxRequest,
     super.onAjaxReadyStateChange,
@@ -130,9 +130,9 @@ class MacOSHeadlessInAppWebViewCreationParams
     this.findInteractionController,
   });
 
-  /// Creates a [MacOSHeadlessInAppWebViewCreationParams] instance based on [PlatformHeadlessInAppWebViewCreationParams].
+  /// Creates a [MacOSHeadlessInAppWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
   MacOSHeadlessInAppWebViewCreationParams.fromPlatformHeadlessInAppWebViewCreationParams(
-    PlatformHeadlessInAppWebViewCreationParams params,
+    CygnusPlatformHeadlessWebViewCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
         initialSize: params.initialSize,
@@ -245,8 +245,8 @@ class MacOSHeadlessInAppWebViewCreationParams
   final MacOSFindInteractionController? findInteractionController;
 }
 
-///{@macro cygnus_core.PlatformHeadlessInAppWebView}
-class MacOSHeadlessInAppWebView extends PlatformHeadlessInAppWebView
+///{@macro cygnus_core.CygnusPlatformHeadlessWebView}
+class MacOSHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     with ChannelController {
   @override
   late final String id;
@@ -261,7 +261,7 @@ class MacOSHeadlessInAppWebView extends PlatformHeadlessInAppWebView
   MacOSInAppWebViewController? _webViewController;
 
   /// Constructs a [MacOSHeadlessInAppWebView].
-  MacOSHeadlessInAppWebView(PlatformHeadlessInAppWebViewCreationParams params)
+  MacOSHeadlessInAppWebView(CygnusPlatformHeadlessWebViewCreationParams params)
     : super.implementation(
         params is MacOSHeadlessInAppWebViewCreationParams
             ? params
@@ -322,7 +322,7 @@ class MacOSHeadlessInAppWebView extends PlatformHeadlessInAppWebView
     _started = true;
     _init();
 
-    final initialSettings = params.initialSettings ?? InAppWebViewSettings();
+    final initialSettings = params.initialSettings ?? CygnusWebViewSettings();
     _inferInitialSettings(initialSettings);
 
     Map<String, dynamic> settingsMap =
@@ -333,7 +333,7 @@ class MacOSHeadlessInAppWebView extends PlatformHeadlessInAppWebView
     Map<String, dynamic> pullToRefreshSettings =
         _macosParams.pullToRefreshController?.params.settings.toMap() ??
         _macosParams.pullToRefreshController?.params.options.toMap() ??
-        PullToRefreshSettings(enabled: false).toMap();
+        CygnusPullToRefreshSettings(enabled: false).toMap();
 
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('id', () => id);
@@ -356,7 +356,7 @@ class MacOSHeadlessInAppWebView extends PlatformHeadlessInAppWebView
     _running = true;
   }
 
-  void _inferInitialSettings(InAppWebViewSettings settings) {
+  void _inferInitialSettings(CygnusWebViewSettings settings) {
     if (params.shouldOverrideUrlLoading != null &&
         settings.useShouldOverrideUrlLoading == null) {
       settings.useShouldOverrideUrlLoading = true;

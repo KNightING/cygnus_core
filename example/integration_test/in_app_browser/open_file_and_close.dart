@@ -1,7 +1,7 @@
 part of 'main.dart';
 
 void openFileAndClose() {
-  final shouldSkip = !InAppBrowser.isClassSupported();
+  final shouldSkip = !CygnusBrowser.isClassSupported();
 
   skippableTest('open file and close', () async {
     var inAppBrowser = new MyInAppBrowser();
@@ -17,7 +17,7 @@ void openFileAndClose() {
     expect(inAppBrowser.isOpened(), true);
     expect(() async {
       await inAppBrowser.openUrlRequest(
-        urlRequest: URLRequest(url: TEST_URL_1),
+        urlRequest: CygnusURLRequest(url: TEST_URL_1),
       );
     }, throwsAssertionError);
 

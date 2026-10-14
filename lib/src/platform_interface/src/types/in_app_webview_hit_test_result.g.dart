@@ -7,45 +7,46 @@ part of 'in_app_webview_hit_test_result.dart';
 // **************************************************************************
 
 ///Class that represents the hit result for hitting an HTML elements.
-class InAppWebViewHitTestResult {
+class CygnusWebViewHitTestResult {
   ///Additional type-dependant information about the result.
   String? extra;
 
   ///The type of the hit test result.
-  InAppWebViewHitTestResultType? type;
-  InAppWebViewHitTestResult({this.extra, this.type});
+  CygnusWebViewHitTestResultType? type;
+  CygnusWebViewHitTestResult({this.extra, this.type});
 
-  ///Gets a possible [InAppWebViewHitTestResult] instance from a [Map] value.
-  static InAppWebViewHitTestResult? fromMap(
+  ///Gets a possible [CygnusWebViewHitTestResult] instance from a [Map] value.
+  static CygnusWebViewHitTestResult? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = InAppWebViewHitTestResult(
+    final instance = CygnusWebViewHitTestResult(
       extra: map['extra'],
-      type: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => InAppWebViewHitTestResultType.fromNativeValue(
+      type: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusWebViewHitTestResultType.fromNativeValue(map['type']),
+        CygnusEnumMethod.value => CygnusWebViewHitTestResultType.fromValue(
           map['type'],
         ),
-        EnumMethod.value => InAppWebViewHitTestResultType.fromValue(
+        CygnusEnumMethod.name => CygnusWebViewHitTestResultType.byName(
           map['type'],
         ),
-        EnumMethod.name => InAppWebViewHitTestResultType.byName(map['type']),
       },
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "extra": extra,
-      "type": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => type?.toNativeValue(),
-        EnumMethod.value => type?.toValue(),
-        EnumMethod.name => type?.name(),
+      "type": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => type?.toNativeValue(),
+        CygnusEnumMethod.value => type?.toValue(),
+        CygnusEnumMethod.name => type?.name(),
       },
     };
   }
@@ -57,6 +58,6 @@ class InAppWebViewHitTestResult {
 
   @override
   String toString() {
-    return 'InAppWebViewHitTestResult{extra: $extra, type: $type}';
+    return 'CygnusWebViewHitTestResult{extra: $extra, type: $type}';
   }
 }

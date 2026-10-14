@@ -1,1 +1,1 @@
-enum EnumMethod { nativeValue, value, name }
+enum CygnusEnumMethod { nativeValue, value, name }

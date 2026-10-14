@@ -9,11 +9,11 @@ import 'in_app_webview_controller.dart';
 /// Object specifying creation parameters for creating a [AndroidHeadlessInAppWebView].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformHeadlessInAppWebViewCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformHeadlessWebViewCreationParams] for
 /// more information.
 @immutable
 class AndroidHeadlessInAppWebViewCreationParams
-    extends PlatformHeadlessInAppWebViewCreationParams {
+    extends CygnusPlatformHeadlessWebViewCreationParams {
   /// Creates a new [AndroidHeadlessInAppWebViewCreationParams] instance.
   AndroidHeadlessInAppWebViewCreationParams({
     super.controllerFromPlatform,
@@ -45,7 +45,7 @@ class AndroidHeadlessInAppWebViewCreationParams
     super.onReceivedHttpAuthRequest,
     super.onReceivedServerTrustAuthRequest,
     super.onReceivedClientCertRequest,
-    @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+    @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
     super.onFindResultReceived,
     super.shouldInterceptAjaxRequest,
     super.onAjaxReadyStateChange,
@@ -130,9 +130,9 @@ class AndroidHeadlessInAppWebViewCreationParams
     this.findInteractionController,
   });
 
-  /// Creates a [AndroidHeadlessInAppWebViewCreationParams] instance based on [PlatformHeadlessInAppWebViewCreationParams].
+  /// Creates a [AndroidHeadlessInAppWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
   AndroidHeadlessInAppWebViewCreationParams.fromPlatformHeadlessInAppWebViewCreationParams(
-    PlatformHeadlessInAppWebViewCreationParams params,
+    CygnusPlatformHeadlessWebViewCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
         initialSize: params.initialSize,
@@ -250,8 +250,8 @@ class AndroidHeadlessInAppWebViewCreationParams
   final AndroidPullToRefreshController? pullToRefreshController;
 }
 
-///{@macro cygnus_core.PlatformHeadlessInAppWebView}
-class AndroidHeadlessInAppWebView extends PlatformHeadlessInAppWebView
+///{@macro cygnus_core.CygnusPlatformHeadlessWebView}
+class AndroidHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     with ChannelController {
   @override
   late final String id;
@@ -266,7 +266,7 @@ class AndroidHeadlessInAppWebView extends PlatformHeadlessInAppWebView
   AndroidInAppWebViewController? _webViewController;
 
   /// Constructs a [AndroidHeadlessInAppWebView].
-  AndroidHeadlessInAppWebView(PlatformHeadlessInAppWebViewCreationParams params)
+  AndroidHeadlessInAppWebView(CygnusPlatformHeadlessWebViewCreationParams params)
     : super.implementation(
         params is AndroidHeadlessInAppWebViewCreationParams
             ? params
@@ -331,7 +331,7 @@ class AndroidHeadlessInAppWebView extends PlatformHeadlessInAppWebView
     _started = true;
     _init();
 
-    final initialSettings = params.initialSettings ?? InAppWebViewSettings();
+    final initialSettings = params.initialSettings ?? CygnusWebViewSettings();
     _inferInitialSettings(initialSettings);
 
     Map<String, dynamic> settingsMap =
@@ -342,7 +342,7 @@ class AndroidHeadlessInAppWebView extends PlatformHeadlessInAppWebView
     Map<String, dynamic> pullToRefreshSettings =
         _androidParams.pullToRefreshController?.params.settings.toMap() ??
         _androidParams.pullToRefreshController?.params.options.toMap() ??
-        PullToRefreshSettings(enabled: false).toMap();
+        CygnusPullToRefreshSettings(enabled: false).toMap();
 
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('id', () => id);
@@ -365,7 +365,7 @@ class AndroidHeadlessInAppWebView extends PlatformHeadlessInAppWebView
     _running = true;
   }
 
-  void _inferInitialSettings(InAppWebViewSettings settings) {
+  void _inferInitialSettings(CygnusWebViewSettings settings) {
     if (params.shouldOverrideUrlLoading != null &&
         settings.useShouldOverrideUrlLoading == null) {
       settings.useShouldOverrideUrlLoading = true;

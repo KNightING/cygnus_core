@@ -6,13 +6,13 @@ part of 'save_file_security_check_starting_request.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the request used by the [PlatformWebViewCreationParams.onSaveFileSecurityCheckStarting] event.
-class SaveFileSecurityCheckStartingRequest {
+///Class that represents the request used by the [CygnusPlatformWebViewCreationParams.onSaveFileSecurityCheckStarting] event.
+class CygnusSaveFileSecurityCheckStartingRequest {
   ///Whether to cancel the save operation.
   bool? cancelSave;
 
   ///The document origin URI of the file save operation.
-  WebUri? documentOriginUri;
+  CygnusWebUri? documentOriginUri;
 
   ///The file extension to be saved.
   String? fileExtension;
@@ -22,7 +22,7 @@ class SaveFileSecurityCheckStartingRequest {
 
   ///Whether to suppress the default policy check.
   bool? suppressDefaultPolicy;
-  SaveFileSecurityCheckStartingRequest({
+  CygnusSaveFileSecurityCheckStartingRequest({
     this.cancelSave,
     this.documentOriginUri,
     this.fileExtension,
@@ -30,18 +30,18 @@ class SaveFileSecurityCheckStartingRequest {
     this.suppressDefaultPolicy,
   });
 
-  ///Gets a possible [SaveFileSecurityCheckStartingRequest] instance from a [Map] value.
-  static SaveFileSecurityCheckStartingRequest? fromMap(
+  ///Gets a possible [CygnusSaveFileSecurityCheckStartingRequest] instance from a [Map] value.
+  static CygnusSaveFileSecurityCheckStartingRequest? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = SaveFileSecurityCheckStartingRequest(
+    final instance = CygnusSaveFileSecurityCheckStartingRequest(
       cancelSave: map['cancelSave'],
       documentOriginUri: map['documentOriginUri'] != null
-          ? WebUri(map['documentOriginUri'])
+          ? CygnusWebUri(map['documentOriginUri'])
           : null,
       fileExtension: map['fileExtension'],
       filePath: map['filePath'],
@@ -51,7 +51,7 @@ class SaveFileSecurityCheckStartingRequest {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "cancelSave": cancelSave,
       "documentOriginUri": documentOriginUri?.toString(),
@@ -68,6 +68,6 @@ class SaveFileSecurityCheckStartingRequest {
 
   @override
   String toString() {
-    return 'SaveFileSecurityCheckStartingRequest{cancelSave: $cancelSave, documentOriginUri: $documentOriginUri, fileExtension: $fileExtension, filePath: $filePath, suppressDefaultPolicy: $suppressDefaultPolicy}';
+    return 'CygnusSaveFileSecurityCheckStartingRequest{cancelSave: $cancelSave, documentOriginUri: $documentOriginUri, fileExtension: $fileExtension, filePath: $filePath, suppressDefaultPolicy: $suppressDefaultPolicy}';
   }
 }

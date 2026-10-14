@@ -8,14 +8,14 @@ import 'types/main.dart';
 
 part 'platform_http_auth_credentials_database.g.dart';
 
-///{@template cygnus_core.PlatformHttpAuthCredentialDatabaseCreationParams}
-/// Object specifying creation parameters for creating a [PlatformHttpAuthCredentialDatabase].
+///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabaseCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformHttpAuthCredentialDatabase].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformHttpAuthCredentialDatabaseCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformHttpAuthCredentialDatabaseCreationParams.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -25,24 +25,24 @@ part 'platform_http_auth_credentials_database.g.dart';
   ],
 )
 @immutable
-class PlatformHttpAuthCredentialDatabaseCreationParams {
-  /// Used by the platform implementation to create a new [PlatformHttpAuthCredentialDatabase].
-  const PlatformHttpAuthCredentialDatabaseCreationParams();
+class CygnusPlatformHttpAuthCredentialDatabaseCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformHttpAuthCredentialDatabase].
+  const CygnusPlatformHttpAuthCredentialDatabaseCreationParams();
 
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabaseCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabaseCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformHttpAuthCredentialDatabaseCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformHttpAuthCredentialDatabaseCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformHttpAuthCredentialDatabase}
+///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase}
 ///Class that implements a singleton object (shared instance) which manages the shared HTTP auth credentials cache.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformHttpAuthCredentialDatabase.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(
@@ -63,63 +63,63 @@ class PlatformHttpAuthCredentialDatabaseCreationParams {
     ),
   ],
 )
-abstract class PlatformHttpAuthCredentialDatabase extends PlatformInterface {
-  /// Creates a new [PlatformHttpAuthCredentialDatabase]
-  factory PlatformHttpAuthCredentialDatabase(
-    PlatformHttpAuthCredentialDatabaseCreationParams params,
+abstract class CygnusPlatformHttpAuthCredentialDatabase extends PlatformInterface {
+  /// Creates a new [CygnusPlatformHttpAuthCredentialDatabase]
+  factory CygnusPlatformHttpAuthCredentialDatabase(
+    CygnusPlatformHttpAuthCredentialDatabaseCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformHttpAuthCredentialDatabase cookieManager =
-        InAppWebViewPlatform.instance!.createPlatformHttpAuthCredentialDatabase(
+    final CygnusPlatformHttpAuthCredentialDatabase cookieManager =
+        CygnusWebViewPlatform.instance!.createPlatformHttpAuthCredentialDatabase(
           params,
         );
     PlatformInterface.verify(cookieManager, _token);
     return cookieManager;
   }
 
-  /// Creates a new [PlatformHttpAuthCredentialDatabase] to access static methods.
-  factory PlatformHttpAuthCredentialDatabase.static() {
+  /// Creates a new [CygnusPlatformHttpAuthCredentialDatabase] to access static methods.
+  factory CygnusPlatformHttpAuthCredentialDatabase.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformHttpAuthCredentialDatabase httpAuthCredentialDatabaseStatic =
-        InAppWebViewPlatform.instance!
+    final CygnusPlatformHttpAuthCredentialDatabase httpAuthCredentialDatabaseStatic =
+        CygnusWebViewPlatform.instance!
             .createPlatformHttpAuthCredentialDatabaseStatic();
     PlatformInterface.verify(httpAuthCredentialDatabaseStatic, _token);
     return httpAuthCredentialDatabaseStatic;
   }
 
   /// Used by the platform implementation to create a new
-  /// [PlatformHttpAuthCredentialDatabase].
+  /// [CygnusPlatformHttpAuthCredentialDatabase].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformHttpAuthCredentialDatabase.implementation(this.params)
+  CygnusPlatformHttpAuthCredentialDatabase.implementation(this.params)
     : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformHttpAuthCredentialDatabase].
-  final PlatformHttpAuthCredentialDatabaseCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformHttpAuthCredentialDatabase].
+  final CygnusPlatformHttpAuthCredentialDatabaseCreationParams params;
 
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabase.getAllAuthCredentials}
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.getAllAuthCredentials}
   ///Gets a map list of all HTTP auth credentials saved.
-  ///Each map contains the key `protectionSpace` of type [URLProtectionSpace]
-  ///and the key `credentials` of type List<[URLCredential]> that contains all the HTTP auth credentials saved for that `protectionSpace`.
+  ///Each map contains the key `protectionSpace` of type [CygnusURLProtectionSpace]
+  ///and the key `credentials` of type List<[CygnusURLCredential]> that contains all the HTTP auth credentials saved for that `protectionSpace`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformHttpAuthCredentialDatabase.getAllAuthCredentials.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.getAllAuthCredentials.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -136,17 +136,17 @@ abstract class PlatformHttpAuthCredentialDatabase extends PlatformInterface {
       LinuxPlatform(note: 'Implemented using libsecret for secure storage.'),
     ],
   )
-  Future<List<URLProtectionSpaceHttpAuthCredentials>> getAllAuthCredentials() {
+  Future<List<CygnusURLProtectionSpaceHttpAuthCredentials>> getAllAuthCredentials() {
     throw UnimplementedError(
       'getAllAuthCredentials is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabase.getHttpAuthCredentials}
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.getHttpAuthCredentials}
   ///Gets all the HTTP auth credentials saved for that [protectionSpace].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformHttpAuthCredentialDatabase.getHttpAuthCredentials.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.getHttpAuthCredentials.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -155,19 +155,19 @@ abstract class PlatformHttpAuthCredentialDatabase extends PlatformInterface {
       LinuxPlatform(),
     ],
   )
-  Future<List<URLCredential>> getHttpAuthCredentials({
-    required URLProtectionSpace protectionSpace,
+  Future<List<CygnusURLCredential>> getHttpAuthCredentials({
+    required CygnusURLProtectionSpace protectionSpace,
   }) {
     throw UnimplementedError(
       'getHttpAuthCredentials is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabase.setHttpAuthCredential}
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.setHttpAuthCredential}
   ///Saves an HTTP auth [credential] for that [protectionSpace].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformHttpAuthCredentialDatabase.setHttpAuthCredential.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.setHttpAuthCredential.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -185,19 +185,19 @@ abstract class PlatformHttpAuthCredentialDatabase extends PlatformInterface {
     ],
   )
   Future<void> setHttpAuthCredential({
-    required URLProtectionSpace protectionSpace,
-    required URLCredential credential,
+    required CygnusURLProtectionSpace protectionSpace,
+    required CygnusURLCredential credential,
   }) {
     throw UnimplementedError(
       'setHttpAuthCredential is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabase.removeHttpAuthCredential}
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.removeHttpAuthCredential}
   ///Removes an HTTP auth [credential] for that [protectionSpace].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformHttpAuthCredentialDatabase.removeHttpAuthCredential.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.removeHttpAuthCredential.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -215,19 +215,19 @@ abstract class PlatformHttpAuthCredentialDatabase extends PlatformInterface {
     ],
   )
   Future<void> removeHttpAuthCredential({
-    required URLProtectionSpace protectionSpace,
-    required URLCredential credential,
+    required CygnusURLProtectionSpace protectionSpace,
+    required CygnusURLCredential credential,
   }) {
     throw UnimplementedError(
       'removeHttpAuthCredential is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabase.removeHttpAuthCredentials}
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.removeHttpAuthCredentials}
   ///Removes all the HTTP auth credentials saved for that [protectionSpace].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformHttpAuthCredentialDatabase.removeHttpAuthCredentials.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.removeHttpAuthCredentials.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -237,18 +237,18 @@ abstract class PlatformHttpAuthCredentialDatabase extends PlatformInterface {
     ],
   )
   Future<void> removeHttpAuthCredentials({
-    required URLProtectionSpace protectionSpace,
+    required CygnusURLProtectionSpace protectionSpace,
   }) {
     throw UnimplementedError(
       'removeHttpAuthCredentials is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabase.clearAllAuthCredentials}
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.clearAllAuthCredentials}
   ///Removes all the HTTP auth credentials saved in the database.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformHttpAuthCredentialDatabase.clearAllAuthCredentials.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.clearAllAuthCredentials.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -263,17 +263,17 @@ abstract class PlatformHttpAuthCredentialDatabase extends PlatformInterface {
     );
   }
 
-  ///{@macro cygnus_core.PlatformHttpAuthCredentialDatabaseCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformHttpAuthCredentialDatabaseCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
       params.isClassSupported(platform: platform);
 
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabase.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformHttpAuthCredentialDatabaseMethod method, {
+    CygnusPlatformHttpAuthCredentialDatabaseMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformHttpAuthCredentialDatabaseMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformHttpAuthCredentialDatabaseMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );

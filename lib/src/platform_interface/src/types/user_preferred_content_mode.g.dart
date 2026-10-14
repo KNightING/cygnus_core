@@ -7,37 +7,40 @@ part of 'user_preferred_content_mode.dart';
 // **************************************************************************
 
 ///Class that represents the content mode to prefer when loading and rendering a webpage.
-class UserPreferredContentMode {
+class CygnusUserPreferredContentMode {
   final int _value;
   final int? _nativeValue;
-  const UserPreferredContentMode._internal(this._value, this._nativeValue);
+  const CygnusUserPreferredContentMode._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory UserPreferredContentMode._internalMultiPlatform(
+  factory CygnusUserPreferredContentMode._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => UserPreferredContentMode._internal(value, nativeValue());
+  ) => CygnusUserPreferredContentMode._internal(value, nativeValue());
 
   ///Represents content targeting desktop browsers.
-  static const DESKTOP = UserPreferredContentMode._internal(2, 2);
+  static const DESKTOP = CygnusUserPreferredContentMode._internal(2, 2);
 
   ///Represents content targeting mobile browsers.
-  static const MOBILE = UserPreferredContentMode._internal(1, 1);
+  static const MOBILE = CygnusUserPreferredContentMode._internal(1, 1);
 
   ///The recommended content mode for the current platform.
-  static const RECOMMENDED = UserPreferredContentMode._internal(0, 0);
+  static const RECOMMENDED = CygnusUserPreferredContentMode._internal(0, 0);
 
-  ///Set of all values of [UserPreferredContentMode].
-  static final Set<UserPreferredContentMode> values = [
-    UserPreferredContentMode.DESKTOP,
-    UserPreferredContentMode.MOBILE,
-    UserPreferredContentMode.RECOMMENDED,
+  ///Set of all values of [CygnusUserPreferredContentMode].
+  static final Set<CygnusUserPreferredContentMode> values = [
+    CygnusUserPreferredContentMode.DESKTOP,
+    CygnusUserPreferredContentMode.MOBILE,
+    CygnusUserPreferredContentMode.RECOMMENDED,
   ].toSet();
 
-  ///Gets a possible [UserPreferredContentMode] instance from [int] value.
-  static UserPreferredContentMode? fromValue(int? value) {
+  ///Gets a possible [CygnusUserPreferredContentMode] instance from [int] value.
+  static CygnusUserPreferredContentMode? fromValue(int? value) {
     if (value != null) {
       try {
-        return UserPreferredContentMode.values.firstWhere(
+        return CygnusUserPreferredContentMode.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -47,11 +50,11 @@ class UserPreferredContentMode {
     return null;
   }
 
-  ///Gets a possible [UserPreferredContentMode] instance from a native value.
-  static UserPreferredContentMode? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusUserPreferredContentMode] instance from a native value.
+  static CygnusUserPreferredContentMode? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return UserPreferredContentMode.values.firstWhere(
+        return CygnusUserPreferredContentMode.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -61,15 +64,15 @@ class UserPreferredContentMode {
     return null;
   }
 
-  /// Gets a possible [UserPreferredContentMode] instance value with name [name].
+  /// Gets a possible [CygnusUserPreferredContentMode] instance value with name [name].
   ///
-  /// Goes through [UserPreferredContentMode.values] looking for a value with
-  /// name [name], as reported by [UserPreferredContentMode.name].
+  /// Goes through [CygnusUserPreferredContentMode.values] looking for a value with
+  /// name [name], as reported by [CygnusUserPreferredContentMode.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static UserPreferredContentMode? byName(String? name) {
+  static CygnusUserPreferredContentMode? byName(String? name) {
     if (name != null) {
       try {
-        return UserPreferredContentMode.values.firstWhere(
+        return CygnusUserPreferredContentMode.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -79,7 +82,7 @@ class UserPreferredContentMode {
     return null;
   }
 
-  /// Creates a map from the names of [UserPreferredContentMode] values to the values.
+  /// Creates a map from the names of [CygnusUserPreferredContentMode] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -87,9 +90,9 @@ class UserPreferredContentMode {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, UserPreferredContentMode> asNameMap() =>
-      <String, UserPreferredContentMode>{
-        for (final value in UserPreferredContentMode.values)
+  static Map<String, CygnusUserPreferredContentMode> asNameMap() =>
+      <String, CygnusUserPreferredContentMode>{
+        for (final value in CygnusUserPreferredContentMode.values)
           value.name(): value,
       };
 

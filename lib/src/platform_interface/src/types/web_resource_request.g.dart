@@ -7,7 +7,7 @@ part of 'web_resource_request.dart';
 // **************************************************************************
 
 ///Class representing a resource request of the `WebView`.
-class WebResourceRequest {
+class CygnusWebResourceRequest {
   ///Gets whether a gesture (such as a click) was associated with the request.
   ///For security reasons in certain situations this method may return `false` even though
   ///the sequence of events which caused the request to be created was initiated by a user
@@ -37,8 +37,8 @@ class WebResourceRequest {
   String? method;
 
   ///The URL for which the resource request was made.
-  WebUri url;
-  WebResourceRequest({
+  CygnusWebUri url;
+  CygnusWebResourceRequest({
     this.hasGesture,
     this.headers,
     this.isForMainFrame,
@@ -47,27 +47,27 @@ class WebResourceRequest {
     required this.url,
   });
 
-  ///Gets a possible [WebResourceRequest] instance from a [Map] value.
-  static WebResourceRequest? fromMap(
+  ///Gets a possible [CygnusWebResourceRequest] instance from a [Map] value.
+  static CygnusWebResourceRequest? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = WebResourceRequest(
+    final instance = CygnusWebResourceRequest(
       hasGesture: map['hasGesture'],
       headers: map['headers']?.cast<String, String>(),
       isForMainFrame: map['isForMainFrame'],
       isRedirect: map['isRedirect'],
       method: map['method'],
-      url: WebUri(map['url']),
+      url: CygnusWebUri(map['url']),
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "hasGesture": hasGesture,
       "headers": headers,
@@ -85,6 +85,6 @@ class WebResourceRequest {
 
   @override
   String toString() {
-    return 'WebResourceRequest{hasGesture: $hasGesture, headers: $headers, isForMainFrame: $isForMainFrame, isRedirect: $isRedirect, method: $method, url: $url}';
+    return 'CygnusWebResourceRequest{hasGesture: $hasGesture, headers: $headers, isForMainFrame: $isForMainFrame, isRedirect: $isRedirect, method: $method, url: $url}';
   }
 }

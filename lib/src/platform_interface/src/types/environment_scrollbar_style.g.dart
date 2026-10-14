@@ -6,22 +6,25 @@ part of 'environment_scrollbar_style.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///The ScrollBar style used during [PlatformWebViewEnvironment] creation.
-class EnvironmentScrollbarStyle {
+///The ScrollBar style used during [CygnusPlatformWebViewEnvironment] creation.
+class CygnusEnvironmentScrollbarStyle {
   final int _value;
   final int? _nativeValue;
-  const EnvironmentScrollbarStyle._internal(this._value, this._nativeValue);
+  const CygnusEnvironmentScrollbarStyle._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory EnvironmentScrollbarStyle._internalMultiPlatform(
+  factory CygnusEnvironmentScrollbarStyle._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => EnvironmentScrollbarStyle._internal(value, nativeValue());
+  ) => CygnusEnvironmentScrollbarStyle._internal(value, nativeValue());
 
   ///Browser default ScrollBar style.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final DEFAULT = EnvironmentScrollbarStyle._internalMultiPlatform(
+  static final DEFAULT = CygnusEnvironmentScrollbarStyle._internalMultiPlatform(
     0,
     () {
       switch (defaultTargetPlatform) {
@@ -40,7 +43,7 @@ class EnvironmentScrollbarStyle {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   static final FLUENT_OVERLAY =
-      EnvironmentScrollbarStyle._internalMultiPlatform(1, () {
+      CygnusEnvironmentScrollbarStyle._internalMultiPlatform(1, () {
         switch (defaultTargetPlatform) {
           case TargetPlatform.windows:
             return 1;
@@ -50,17 +53,17 @@ class EnvironmentScrollbarStyle {
         return null;
       });
 
-  ///Set of all values of [EnvironmentScrollbarStyle].
-  static final Set<EnvironmentScrollbarStyle> values = [
-    EnvironmentScrollbarStyle.DEFAULT,
-    EnvironmentScrollbarStyle.FLUENT_OVERLAY,
+  ///Set of all values of [CygnusEnvironmentScrollbarStyle].
+  static final Set<CygnusEnvironmentScrollbarStyle> values = [
+    CygnusEnvironmentScrollbarStyle.DEFAULT,
+    CygnusEnvironmentScrollbarStyle.FLUENT_OVERLAY,
   ].toSet();
 
-  ///Gets a possible [EnvironmentScrollbarStyle] instance from [int] value.
-  static EnvironmentScrollbarStyle? fromValue(int? value) {
+  ///Gets a possible [CygnusEnvironmentScrollbarStyle] instance from [int] value.
+  static CygnusEnvironmentScrollbarStyle? fromValue(int? value) {
     if (value != null) {
       try {
-        return EnvironmentScrollbarStyle.values.firstWhere(
+        return CygnusEnvironmentScrollbarStyle.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -70,11 +73,11 @@ class EnvironmentScrollbarStyle {
     return null;
   }
 
-  ///Gets a possible [EnvironmentScrollbarStyle] instance from a native value.
-  static EnvironmentScrollbarStyle? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusEnvironmentScrollbarStyle] instance from a native value.
+  static CygnusEnvironmentScrollbarStyle? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return EnvironmentScrollbarStyle.values.firstWhere(
+        return CygnusEnvironmentScrollbarStyle.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -84,15 +87,15 @@ class EnvironmentScrollbarStyle {
     return null;
   }
 
-  /// Gets a possible [EnvironmentScrollbarStyle] instance value with name [name].
+  /// Gets a possible [CygnusEnvironmentScrollbarStyle] instance value with name [name].
   ///
-  /// Goes through [EnvironmentScrollbarStyle.values] looking for a value with
-  /// name [name], as reported by [EnvironmentScrollbarStyle.name].
+  /// Goes through [CygnusEnvironmentScrollbarStyle.values] looking for a value with
+  /// name [name], as reported by [CygnusEnvironmentScrollbarStyle.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static EnvironmentScrollbarStyle? byName(String? name) {
+  static CygnusEnvironmentScrollbarStyle? byName(String? name) {
     if (name != null) {
       try {
-        return EnvironmentScrollbarStyle.values.firstWhere(
+        return CygnusEnvironmentScrollbarStyle.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -102,7 +105,7 @@ class EnvironmentScrollbarStyle {
     return null;
   }
 
-  /// Creates a map from the names of [EnvironmentScrollbarStyle] values to the values.
+  /// Creates a map from the names of [CygnusEnvironmentScrollbarStyle] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -110,9 +113,9 @@ class EnvironmentScrollbarStyle {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, EnvironmentScrollbarStyle> asNameMap() =>
-      <String, EnvironmentScrollbarStyle>{
-        for (final value in EnvironmentScrollbarStyle.values)
+  static Map<String, CygnusEnvironmentScrollbarStyle> asNameMap() =>
+      <String, CygnusEnvironmentScrollbarStyle>{
+        for (final value in CygnusEnvironmentScrollbarStyle.values)
           value.name(): value,
       };
 

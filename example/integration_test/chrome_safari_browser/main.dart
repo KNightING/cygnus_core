@@ -11,9 +11,9 @@ part 'trusted_web_activity.dart';
 part 'sf_safari_view_controller.dart';
 
 void main() {
-  final shouldSkip = !ChromeSafariBrowser.isClassSupported();
+  final shouldSkip = !CygnusChromeSafariBrowser.isClassSupported();
 
-  skippableGroup('ChromeSafariBrowser', () {
+  skippableGroup('CygnusChromeSafariBrowser', () {
     openAndClose();
     customMenuItem();
     customTabs();

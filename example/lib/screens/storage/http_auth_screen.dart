@@ -8,7 +8,7 @@ import 'package:flutter_inappwebview_example/utils/support_checker.dart';
 import 'package:flutter_inappwebview_example/widgets/common/parameter_dialog.dart';
 import 'package:flutter_inappwebview_example/widgets/common/method_result_history.dart';
 
-/// Screen for testing HttpAuthCredentialDatabase functionality
+/// Screen for testing CygnusHttpAuthCredentialDatabase functionality
 class HttpAuthScreen extends StatefulWidget {
   const HttpAuthScreen({super.key});
 
@@ -17,8 +17,8 @@ class HttpAuthScreen extends StatefulWidget {
 }
 
 class _HttpAuthScreenState extends State<HttpAuthScreen> {
-  final HttpAuthCredentialDatabase _db = HttpAuthCredentialDatabase.instance();
-  List<URLProtectionSpaceHttpAuthCredentials> _allCredentials = [];
+  final CygnusHttpAuthCredentialDatabase _db = CygnusHttpAuthCredentialDatabase.instance();
+  List<CygnusURLProtectionSpaceHttpAuthCredentials> _allCredentials = [];
   bool _isLoading = false;
 
   final Map<String, List<MethodResultEntry>> _methodHistory = {};
@@ -37,13 +37,13 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
       final credentials = await _db.getAllAuthCredentials();
       setState(() => _allCredentials = credentials);
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.getAllAuthCredentials.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.getAllAuthCredentials.name,
         'Found ${credentials.length} protection spaces',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.getAllAuthCredentials.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.getAllAuthCredentials.name,
         'Error getting credentials: $e',
         isError: true,
       );
@@ -53,7 +53,7 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
   }
 
   Future<void> _getHttpAuthCredentials(
-    URLProtectionSpace protectionSpace,
+    CygnusURLProtectionSpace protectionSpace,
   ) async {
     setState(() => _isLoading = true);
     try {
@@ -62,13 +62,13 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
       );
       _showCredentialsDialog(protectionSpace, credentials);
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.getHttpAuthCredentials.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.getHttpAuthCredentials.name,
         'Found ${credentials.length} credential(s)',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.getHttpAuthCredentials.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.getHttpAuthCredentials.name,
         'Error getting credentials: $e',
         isError: true,
       );
@@ -102,8 +102,8 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
   }
 
   Future<void> _removeHttpAuthCredential(
-    URLProtectionSpace protectionSpace,
-    URLCredential credential,
+    CygnusURLProtectionSpace protectionSpace,
+    CygnusURLCredential credential,
   ) async {
     final confirmed = await _showConfirmDialog(
       'Remove Credential',
@@ -118,14 +118,14 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
         credential: credential,
       );
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredential.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredential.name,
         'Credential removed',
         isError: false,
       );
       await _getAllAuthCredentials();
     } catch (e) {
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredential.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredential.name,
         'Error removing credential: $e',
         isError: true,
       );
@@ -153,7 +153,7 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
     final space = _protectionSpaceFromParams(params['protectionSpace']);
     if (space == null) {
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.getHttpAuthCredentials.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.getHttpAuthCredentials.name,
         'Protection space host is required',
         isError: true,
       );
@@ -186,7 +186,7 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
     final space = _protectionSpaceFromParams(params['protectionSpace']);
     if (space == null) {
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredential.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredential.name,
         'Protection space host is required',
         isError: true,
       );
@@ -195,7 +195,7 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
     final credential = _credentialFromParams(params['credential']);
     if (credential == null) {
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredential.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredential.name,
         'Credential username and password are required',
         isError: true,
       );
@@ -223,7 +223,7 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
     final space = _protectionSpaceFromParams(params['protectionSpace']);
     if (space == null) {
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredentials.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredentials.name,
         'Protection space host is required',
         isError: true,
       );
@@ -233,7 +233,7 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
   }
 
   Future<void> _removeHttpAuthCredentials(
-    URLProtectionSpace protectionSpace,
+    CygnusURLProtectionSpace protectionSpace,
   ) async {
     final confirmed = await _showConfirmDialog(
       'Remove All Credentials for Protection Space',
@@ -245,14 +245,14 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
     try {
       await _db.removeHttpAuthCredentials(protectionSpace: protectionSpace);
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredentials.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredentials.name,
         'Credentials removed for protection space',
         isError: false,
       );
       await _getAllAuthCredentials();
     } catch (e) {
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredentials.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredentials.name,
         'Error removing credentials: $e',
         isError: true,
       );
@@ -273,13 +273,13 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
       await _db.clearAllAuthCredentials();
       setState(() => _allCredentials = []);
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.clearAllAuthCredentials.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.clearAllAuthCredentials.name,
         'All credentials cleared',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.clearAllAuthCredentials.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.clearAllAuthCredentials.name,
         'Error clearing credentials: $e',
         isError: true,
       );
@@ -315,14 +315,14 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
     });
   }
 
-  URLProtectionSpace? _protectionSpaceFromParams(dynamic raw) {
+  CygnusURLProtectionSpace? _protectionSpaceFromParams(dynamic raw) {
     if (raw is! Map) return null;
     final host = raw['host']?.toString() ?? '';
     if (host.isEmpty) return null;
     final protocol = raw['protocol']?.toString();
     final realm = raw['realm']?.toString();
     final port = (raw['port'] as num?)?.toInt();
-    return URLProtectionSpace(
+    return CygnusURLProtectionSpace(
       host: host,
       protocol: protocol?.isNotEmpty == true ? protocol : null,
       port: port,
@@ -330,12 +330,12 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
     );
   }
 
-  URLCredential? _credentialFromParams(dynamic raw) {
+  CygnusURLCredential? _credentialFromParams(dynamic raw) {
     if (raw is! Map) return null;
     final username = raw['username']?.toString() ?? '';
     final password = raw['password']?.toString() ?? '';
     if (username.isEmpty || password.isEmpty) return null;
-    return URLCredential(username: username, password: password);
+    return CygnusURLCredential(username: username, password: password);
   }
 
   Future<void> _applyCredentialFromParams(Map<String, dynamic> params) async {
@@ -343,7 +343,7 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
     final credential = _credentialFromParams(params['credential']);
     if (space == null || credential == null) {
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.setHttpAuthCredential.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.setHttpAuthCredential.name,
         'Protection space, username, and password are required',
         isError: true,
       );
@@ -357,14 +357,14 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
         credential: credential,
       );
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.setHttpAuthCredential.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.setHttpAuthCredential.name,
         'Credential saved',
         isError: false,
       );
       await _getAllAuthCredentials();
     } catch (e) {
       _recordMethodResult(
-        PlatformHttpAuthCredentialDatabaseMethod.setHttpAuthCredential.name,
+        CygnusPlatformHttpAuthCredentialDatabaseMethod.setHttpAuthCredential.name,
         'Error saving credential: $e',
         isError: true,
       );
@@ -396,8 +396,8 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
   }
 
   void _showCredentialsDialog(
-    URLProtectionSpace protectionSpace,
-    List<URLCredential> credentials,
+    CygnusURLProtectionSpace protectionSpace,
+    List<CygnusURLCredential> credentials,
   ) {
     showDialog(
       context: context,
@@ -454,32 +454,32 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
         padding: const EdgeInsets.all(16),
         children: [
           _buildMethodSection(
-            PlatformHttpAuthCredentialDatabaseMethod.getAllAuthCredentials,
+            CygnusPlatformHttpAuthCredentialDatabaseMethod.getAllAuthCredentials,
             'Get all saved credentials',
             _getAllAuthCredentials,
           ),
           _buildMethodSection(
-            PlatformHttpAuthCredentialDatabaseMethod.getHttpAuthCredentials,
+            CygnusPlatformHttpAuthCredentialDatabaseMethod.getHttpAuthCredentials,
             'Get credentials for a protection space (select from list)',
             _promptGetHttpAuthCredentials,
           ),
           _buildMethodSection(
-            PlatformHttpAuthCredentialDatabaseMethod.setHttpAuthCredential,
+            CygnusPlatformHttpAuthCredentialDatabaseMethod.setHttpAuthCredential,
             'Save a new credential',
             _setHttpAuthCredential,
           ),
           _buildMethodSection(
-            PlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredential,
+            CygnusPlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredential,
             'Remove a specific credential (select from list)',
             _promptRemoveHttpAuthCredential,
           ),
           _buildMethodSection(
-            PlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredentials,
+            CygnusPlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredentials,
             'Remove all credentials for a protection space',
             _promptRemoveHttpAuthCredentials,
           ),
           _buildMethodSection(
-            PlatformHttpAuthCredentialDatabaseMethod.clearAllAuthCredentials,
+            CygnusPlatformHttpAuthCredentialDatabaseMethod.clearAllAuthCredentials,
             'Clear all credentials',
             _clearAllAuthCredentials,
           ),
@@ -491,14 +491,14 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
   }
 
   Widget _buildMethodSection(
-    PlatformHttpAuthCredentialDatabaseMethod method,
+    CygnusPlatformHttpAuthCredentialDatabaseMethod method,
     String description,
     VoidCallback? onPressed,
   ) {
     final methodName = method.name;
     final supportedPlatforms = SupportCheckHelper.supportedPlatformsForMethod(
       method: method,
-      checker: HttpAuthCredentialDatabase.isMethodSupported,
+      checker: CygnusHttpAuthCredentialDatabase.isMethodSupported,
     );
 
     return MethodTile(
@@ -520,7 +520,7 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
         icon: Icons.lock_outline,
         title: 'No credentials found',
         description:
-            'Click "${PlatformHttpAuthCredentialDatabaseMethod.setHttpAuthCredential.name}" to add HTTP auth credentials',
+            'Click "${CygnusPlatformHttpAuthCredentialDatabaseMethod.setHttpAuthCredential.name}" to add HTTP auth credentials',
       );
     }
 
@@ -649,7 +649,7 @@ class _HttpAuthScreenState extends State<HttpAuthScreen> {
     );
   }
 
-  String _buildProtectionSpaceDescription(URLProtectionSpace? space) {
+  String _buildProtectionSpaceDescription(CygnusURLProtectionSpace? space) {
     if (space == null) return 'Unknown';
 
     final parts = <String>[];

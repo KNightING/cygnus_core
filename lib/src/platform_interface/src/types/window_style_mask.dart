@@ -5,12 +5,12 @@ part 'window_style_mask.g.dart';
 
 ///Class that represents the flags that describe the browser window’s current style, such as if it’s resizable or in full-screen mode.
 @ExchangeableEnum(bitwiseOrOperator: true)
-class WindowStyleMask_ {
+class CygnusWindowStyleMask_ {
   // ignore: unused_field
   final int _value;
   // ignore: unused_field
   final int? _nativeValue = null;
-  const WindowStyleMask_._internal(this._value);
+  const CygnusWindowStyleMask_._internal(this._value);
 
   ///The window displays none of the usual peripheral elements. Useful only for display or caching purposes.
   @EnumSupportedPlatforms(
@@ -23,7 +23,7 @@ class WindowStyleMask_ {
       ),
     ],
   )
-  static const BORDERLESS = const WindowStyleMask_._internal(0);
+  static const BORDERLESS = const CygnusWindowStyleMask_._internal(0);
 
   ///The window displays a title bar.
   @EnumSupportedPlatforms(
@@ -36,7 +36,7 @@ class WindowStyleMask_ {
       ),
     ],
   )
-  static const TITLED = const WindowStyleMask_._internal(1);
+  static const TITLED = const CygnusWindowStyleMask_._internal(1);
 
   ///The window displays a close button.
   @EnumSupportedPlatforms(
@@ -49,7 +49,7 @@ class WindowStyleMask_ {
       ),
     ],
   )
-  static const CLOSABLE = const WindowStyleMask_._internal(2);
+  static const CLOSABLE = const CygnusWindowStyleMask_._internal(2);
 
   ///The window displays a minimize button.
   @EnumSupportedPlatforms(
@@ -62,7 +62,7 @@ class WindowStyleMask_ {
       ),
     ],
   )
-  static const MINIATURIZABLE = const WindowStyleMask_._internal(4);
+  static const MINIATURIZABLE = const CygnusWindowStyleMask_._internal(4);
 
   ///The window can be resized by the user.
   @EnumSupportedPlatforms(
@@ -75,7 +75,7 @@ class WindowStyleMask_ {
       ),
     ],
   )
-  static const RESIZABLE = const WindowStyleMask_._internal(8);
+  static const RESIZABLE = const CygnusWindowStyleMask_._internal(8);
 
   ///The window can appear full screen. A fullscreen window does not draw its title bar, and may have special handling for its toolbar.
   @EnumSupportedPlatforms(
@@ -88,7 +88,7 @@ class WindowStyleMask_ {
       ),
     ],
   )
-  static const FULLSCREEN = const WindowStyleMask_._internal(16384);
+  static const FULLSCREEN = const CygnusWindowStyleMask_._internal(16384);
 
   ///When set, the window’s contentView consumes the full size of the window.
   ///Although you can combine this constant with other window style masks, it is respected only for windows with a title bar.
@@ -103,7 +103,7 @@ class WindowStyleMask_ {
       ),
     ],
   )
-  static const FULL_SIZE_CONTENT_VIEW = const WindowStyleMask_._internal(32768);
+  static const FULL_SIZE_CONTENT_VIEW = const CygnusWindowStyleMask_._internal(32768);
 
   ///The window is a panel.
   @EnumSupportedPlatforms(
@@ -116,7 +116,7 @@ class WindowStyleMask_ {
       ),
     ],
   )
-  static const UTILITY_WINDOW = const WindowStyleMask_._internal(16);
+  static const UTILITY_WINDOW = const CygnusWindowStyleMask_._internal(16);
 
   ///The window is a document-modal panel.
   @EnumSupportedPlatforms(
@@ -129,7 +129,7 @@ class WindowStyleMask_ {
       ),
     ],
   )
-  static const DOC_MODAL_WINDOW = const WindowStyleMask_._internal(64);
+  static const DOC_MODAL_WINDOW = const CygnusWindowStyleMask_._internal(64);
 
   ///The window is a panel that does not activate the owning app.
   @EnumSupportedPlatforms(
@@ -142,7 +142,7 @@ class WindowStyleMask_ {
       ),
     ],
   )
-  static const NONACTIVATING_PANEL = const WindowStyleMask_._internal(128);
+  static const NONACTIVATING_PANEL = const CygnusWindowStyleMask_._internal(128);
 
   ///The window is a HUD panel.
   @EnumSupportedPlatforms(
@@ -155,5 +155,5 @@ class WindowStyleMask_ {
       ),
     ],
   )
-  static const HUD_WINDOW = const WindowStyleMask_._internal(8192);
+  static const HUD_WINDOW = const CygnusWindowStyleMask_._internal(8192);
 }

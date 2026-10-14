@@ -7,37 +7,37 @@ part of 'dismiss_button_style.dart';
 // **************************************************************************
 
 ///Class used to set the custom style for the dismiss button.
-class DismissButtonStyle {
+class CygnusDismissButtonStyle {
   final int _value;
   final int? _nativeValue;
-  const DismissButtonStyle._internal(this._value, this._nativeValue);
+  const CygnusDismissButtonStyle._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory DismissButtonStyle._internalMultiPlatform(
+  factory CygnusDismissButtonStyle._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => DismissButtonStyle._internal(value, nativeValue());
+  ) => CygnusDismissButtonStyle._internal(value, nativeValue());
 
   ///Makes the button title the localized string "Cancel".
-  static const CANCEL = DismissButtonStyle._internal(2, 2);
+  static const CANCEL = CygnusDismissButtonStyle._internal(2, 2);
 
   ///Makes the button title the localized string "Close".
-  static const CLOSE = DismissButtonStyle._internal(1, 1);
+  static const CLOSE = CygnusDismissButtonStyle._internal(1, 1);
 
   ///Makes the button title the localized string "Done".
-  static const DONE = DismissButtonStyle._internal(0, 0);
+  static const DONE = CygnusDismissButtonStyle._internal(0, 0);
 
-  ///Set of all values of [DismissButtonStyle].
-  static final Set<DismissButtonStyle> values = [
-    DismissButtonStyle.CANCEL,
-    DismissButtonStyle.CLOSE,
-    DismissButtonStyle.DONE,
+  ///Set of all values of [CygnusDismissButtonStyle].
+  static final Set<CygnusDismissButtonStyle> values = [
+    CygnusDismissButtonStyle.CANCEL,
+    CygnusDismissButtonStyle.CLOSE,
+    CygnusDismissButtonStyle.DONE,
   ].toSet();
 
-  ///Gets a possible [DismissButtonStyle] instance from [int] value.
-  static DismissButtonStyle? fromValue(int? value) {
+  ///Gets a possible [CygnusDismissButtonStyle] instance from [int] value.
+  static CygnusDismissButtonStyle? fromValue(int? value) {
     if (value != null) {
       try {
-        return DismissButtonStyle.values.firstWhere(
+        return CygnusDismissButtonStyle.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -47,11 +47,11 @@ class DismissButtonStyle {
     return null;
   }
 
-  ///Gets a possible [DismissButtonStyle] instance from a native value.
-  static DismissButtonStyle? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusDismissButtonStyle] instance from a native value.
+  static CygnusDismissButtonStyle? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return DismissButtonStyle.values.firstWhere(
+        return CygnusDismissButtonStyle.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -61,15 +61,15 @@ class DismissButtonStyle {
     return null;
   }
 
-  /// Gets a possible [DismissButtonStyle] instance value with name [name].
+  /// Gets a possible [CygnusDismissButtonStyle] instance value with name [name].
   ///
-  /// Goes through [DismissButtonStyle.values] looking for a value with
-  /// name [name], as reported by [DismissButtonStyle.name].
+  /// Goes through [CygnusDismissButtonStyle.values] looking for a value with
+  /// name [name], as reported by [CygnusDismissButtonStyle.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static DismissButtonStyle? byName(String? name) {
+  static CygnusDismissButtonStyle? byName(String? name) {
     if (name != null) {
       try {
-        return DismissButtonStyle.values.firstWhere(
+        return CygnusDismissButtonStyle.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -79,7 +79,7 @@ class DismissButtonStyle {
     return null;
   }
 
-  /// Creates a map from the names of [DismissButtonStyle] values to the values.
+  /// Creates a map from the names of [CygnusDismissButtonStyle] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -87,9 +87,10 @@ class DismissButtonStyle {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, DismissButtonStyle> asNameMap() =>
-      <String, DismissButtonStyle>{
-        for (final value in DismissButtonStyle.values) value.name(): value,
+  static Map<String, CygnusDismissButtonStyle> asNameMap() =>
+      <String, CygnusDismissButtonStyle>{
+        for (final value in CygnusDismissButtonStyle.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.
@@ -132,39 +133,42 @@ class DismissButtonStyle {
 ///
 ///**NOTE**: available on iOS 11.0+.
 ///
-///Use [DismissButtonStyle] instead.
-@Deprecated('Use DismissButtonStyle instead')
-class IOSSafariDismissButtonStyle {
+///Use [CygnusDismissButtonStyle] instead.
+@Deprecated('Use CygnusDismissButtonStyle instead')
+class CygnusIOSSafariDismissButtonStyle {
   final int _value;
   final int? _nativeValue;
-  const IOSSafariDismissButtonStyle._internal(this._value, this._nativeValue);
+  const CygnusIOSSafariDismissButtonStyle._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory IOSSafariDismissButtonStyle._internalMultiPlatform(
+  factory CygnusIOSSafariDismissButtonStyle._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => IOSSafariDismissButtonStyle._internal(value, nativeValue());
+  ) => CygnusIOSSafariDismissButtonStyle._internal(value, nativeValue());
 
   ///Makes the button title the localized string "Cancel".
-  static const CANCEL = IOSSafariDismissButtonStyle._internal(2, 2);
+  static const CANCEL = CygnusIOSSafariDismissButtonStyle._internal(2, 2);
 
   ///Makes the button title the localized string "Close".
-  static const CLOSE = IOSSafariDismissButtonStyle._internal(1, 1);
+  static const CLOSE = CygnusIOSSafariDismissButtonStyle._internal(1, 1);
 
   ///Makes the button title the localized string "Done".
-  static const DONE = IOSSafariDismissButtonStyle._internal(0, 0);
+  static const DONE = CygnusIOSSafariDismissButtonStyle._internal(0, 0);
 
-  ///Set of all values of [IOSSafariDismissButtonStyle].
-  static final Set<IOSSafariDismissButtonStyle> values = [
-    IOSSafariDismissButtonStyle.CANCEL,
-    IOSSafariDismissButtonStyle.CLOSE,
-    IOSSafariDismissButtonStyle.DONE,
+  ///Set of all values of [CygnusIOSSafariDismissButtonStyle].
+  static final Set<CygnusIOSSafariDismissButtonStyle> values = [
+    CygnusIOSSafariDismissButtonStyle.CANCEL,
+    CygnusIOSSafariDismissButtonStyle.CLOSE,
+    CygnusIOSSafariDismissButtonStyle.DONE,
   ].toSet();
 
-  ///Gets a possible [IOSSafariDismissButtonStyle] instance from [int] value.
-  static IOSSafariDismissButtonStyle? fromValue(int? value) {
+  ///Gets a possible [CygnusIOSSafariDismissButtonStyle] instance from [int] value.
+  static CygnusIOSSafariDismissButtonStyle? fromValue(int? value) {
     if (value != null) {
       try {
-        return IOSSafariDismissButtonStyle.values.firstWhere(
+        return CygnusIOSSafariDismissButtonStyle.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -174,11 +178,11 @@ class IOSSafariDismissButtonStyle {
     return null;
   }
 
-  ///Gets a possible [IOSSafariDismissButtonStyle] instance from a native value.
-  static IOSSafariDismissButtonStyle? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusIOSSafariDismissButtonStyle] instance from a native value.
+  static CygnusIOSSafariDismissButtonStyle? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return IOSSafariDismissButtonStyle.values.firstWhere(
+        return CygnusIOSSafariDismissButtonStyle.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -188,15 +192,15 @@ class IOSSafariDismissButtonStyle {
     return null;
   }
 
-  /// Gets a possible [IOSSafariDismissButtonStyle] instance value with name [name].
+  /// Gets a possible [CygnusIOSSafariDismissButtonStyle] instance value with name [name].
   ///
-  /// Goes through [IOSSafariDismissButtonStyle.values] looking for a value with
-  /// name [name], as reported by [IOSSafariDismissButtonStyle.name].
+  /// Goes through [CygnusIOSSafariDismissButtonStyle.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSSafariDismissButtonStyle.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSSafariDismissButtonStyle? byName(String? name) {
+  static CygnusIOSSafariDismissButtonStyle? byName(String? name) {
     if (name != null) {
       try {
-        return IOSSafariDismissButtonStyle.values.firstWhere(
+        return CygnusIOSSafariDismissButtonStyle.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -206,7 +210,7 @@ class IOSSafariDismissButtonStyle {
     return null;
   }
 
-  /// Creates a map from the names of [IOSSafariDismissButtonStyle] values to the values.
+  /// Creates a map from the names of [CygnusIOSSafariDismissButtonStyle] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -214,9 +218,9 @@ class IOSSafariDismissButtonStyle {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSSafariDismissButtonStyle> asNameMap() =>
-      <String, IOSSafariDismissButtonStyle>{
-        for (final value in IOSSafariDismissButtonStyle.values)
+  static Map<String, CygnusIOSSafariDismissButtonStyle> asNameMap() =>
+      <String, CygnusIOSSafariDismissButtonStyle>{
+        for (final value in CygnusIOSSafariDismissButtonStyle.values)
           value.name(): value,
       };
 

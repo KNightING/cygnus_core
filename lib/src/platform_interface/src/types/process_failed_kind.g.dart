@@ -7,15 +7,15 @@ part of 'process_failed_kind.dart';
 // **************************************************************************
 
 ///Class used to indicate the kind of process failure that has occurred.
-class ProcessFailedKind {
+class CygnusProcessFailedKind {
   final String _value;
   final int? _nativeValue;
-  const ProcessFailedKind._internal(this._value, this._nativeValue);
+  const CygnusProcessFailedKind._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory ProcessFailedKind._internalMultiPlatform(
+  factory CygnusProcessFailedKind._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => ProcessFailedKind._internal(value, nativeValue());
+  ) => CygnusProcessFailedKind._internal(value, nativeValue());
 
   ///Indicates that the browser process ended unexpectedly. The WebView automatically moves to the Closed state.
   ///The app has to recreate a new WebView to recover from this failure.
@@ -23,15 +23,18 @@ class ProcessFailedKind {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_KIND_BROWSER_PROCESS_EXITED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_kind))
   static final BROWSER_PROCESS_EXITED =
-      ProcessFailedKind._internalMultiPlatform('BROWSER_PROCESS_EXITED', () {
-        switch (defaultTargetPlatform) {
-          case TargetPlatform.windows:
-            return 0;
-          default:
-            break;
-        }
-        return null;
-      });
+      CygnusProcessFailedKind._internalMultiPlatform(
+        'BROWSER_PROCESS_EXITED',
+        () {
+          switch (defaultTargetPlatform) {
+            case TargetPlatform.windows:
+              return 0;
+            default:
+              break;
+          }
+          return null;
+        },
+      );
 
   ///Indicates that a frame-only render process ended unexpectedly.
   ///The process exit does not affect the top-level document, only a subset of the subframes within it.
@@ -40,7 +43,7 @@ class ProcessFailedKind {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_KIND_FRAME_RENDER_PROCESS_EXITED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_kind))
   static final FRAME_RENDER_PROCESS_EXITED =
-      ProcessFailedKind._internalMultiPlatform(
+      CygnusProcessFailedKind._internalMultiPlatform(
         'FRAME_RENDER_PROCESS_EXITED',
         () {
           switch (defaultTargetPlatform) {
@@ -59,18 +62,16 @@ class ProcessFailedKind {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_KIND_GPU_PROCESS_EXITED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_kind))
-  static final GPU_PROCESS_EXITED = ProcessFailedKind._internalMultiPlatform(
-    'GPU_PROCESS_EXITED',
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.windows:
-          return 6;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final GPU_PROCESS_EXITED =
+      CygnusProcessFailedKind._internalMultiPlatform('GPU_PROCESS_EXITED', () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.windows:
+            return 6;
+          default:
+            break;
+        }
+        return null;
+      });
 
   ///Indicates that a PPAPI plugin broker process ended unexpectedly.
   ///This failure is not fatal.
@@ -79,7 +80,7 @@ class ProcessFailedKind {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_KIND_PPAPI_BROKER_PROCESS_EXITED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_kind))
   static final PPAPI_BROKER_PROCESS_EXITED =
-      ProcessFailedKind._internalMultiPlatform(
+      CygnusProcessFailedKind._internalMultiPlatform(
         'PPAPI_BROKER_PROCESS_EXITED',
         () {
           switch (defaultTargetPlatform) {
@@ -99,7 +100,7 @@ class ProcessFailedKind {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_KIND_PPAPI_PLUGIN_PROCESS_EXITED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_kind))
   static final PPAPI_PLUGIN_PROCESS_EXITED =
-      ProcessFailedKind._internalMultiPlatform(
+      CygnusProcessFailedKind._internalMultiPlatform(
         'PPAPI_PLUGIN_PROCESS_EXITED',
         () {
           switch (defaultTargetPlatform) {
@@ -118,18 +119,19 @@ class ProcessFailedKind {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_KIND_RENDER_PROCESS_EXITED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_kind))
-  static final RENDER_PROCESS_EXITED = ProcessFailedKind._internalMultiPlatform(
-    'RENDER_PROCESS_EXITED',
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.windows:
-          return 1;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final RENDER_PROCESS_EXITED =
+      CygnusProcessFailedKind._internalMultiPlatform(
+        'RENDER_PROCESS_EXITED',
+        () {
+          switch (defaultTargetPlatform) {
+            case TargetPlatform.windows:
+              return 1;
+            default:
+              break;
+          }
+          return null;
+        },
+      );
 
   ///Indicates that the main frame's render process is unresponsive.
   ///Renderer process unresponsiveness can happen for the following reasons:
@@ -148,7 +150,7 @@ class ProcessFailedKind {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_KIND_RENDER_PROCESS_UNRESPONSIVE](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_kind))
   static final RENDER_PROCESS_UNRESPONSIVE =
-      ProcessFailedKind._internalMultiPlatform(
+      CygnusProcessFailedKind._internalMultiPlatform(
         'RENDER_PROCESS_UNRESPONSIVE',
         () {
           switch (defaultTargetPlatform) {
@@ -168,7 +170,7 @@ class ProcessFailedKind {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_KIND_SANDBOX_HELPER_PROCESS_EXITED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_kind))
   static final SANDBOX_HELPER_PROCESS_EXITED =
-      ProcessFailedKind._internalMultiPlatform(
+      CygnusProcessFailedKind._internalMultiPlatform(
         'SANDBOX_HELPER_PROCESS_EXITED',
         () {
           switch (defaultTargetPlatform) {
@@ -186,15 +188,18 @@ class ProcessFailedKind {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_KIND_UNKNOWN_PROCESS_EXITED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_kind))
   static final UNKNOWN_PROCESS_EXITED =
-      ProcessFailedKind._internalMultiPlatform('UNKNOWN_PROCESS_EXITED', () {
-        switch (defaultTargetPlatform) {
-          case TargetPlatform.windows:
-            return 9;
-          default:
-            break;
-        }
-        return null;
-      });
+      CygnusProcessFailedKind._internalMultiPlatform(
+        'UNKNOWN_PROCESS_EXITED',
+        () {
+          switch (defaultTargetPlatform) {
+            case TargetPlatform.windows:
+              return 9;
+            default:
+              break;
+          }
+          return null;
+        },
+      );
 
   ///Indicates that a utility process ended unexpectedly.
   ///The failed process is recreated automatically.
@@ -203,35 +208,38 @@ class ProcessFailedKind {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_KIND_UTILITY_PROCESS_EXITED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_kind))
   static final UTILITY_PROCESS_EXITED =
-      ProcessFailedKind._internalMultiPlatform('UTILITY_PROCESS_EXITED', () {
-        switch (defaultTargetPlatform) {
-          case TargetPlatform.windows:
-            return 4;
-          default:
-            break;
-        }
-        return null;
-      });
+      CygnusProcessFailedKind._internalMultiPlatform(
+        'UTILITY_PROCESS_EXITED',
+        () {
+          switch (defaultTargetPlatform) {
+            case TargetPlatform.windows:
+              return 4;
+            default:
+              break;
+          }
+          return null;
+        },
+      );
 
-  ///Set of all values of [ProcessFailedKind].
-  static final Set<ProcessFailedKind> values = [
-    ProcessFailedKind.BROWSER_PROCESS_EXITED,
-    ProcessFailedKind.FRAME_RENDER_PROCESS_EXITED,
-    ProcessFailedKind.GPU_PROCESS_EXITED,
-    ProcessFailedKind.PPAPI_BROKER_PROCESS_EXITED,
-    ProcessFailedKind.PPAPI_PLUGIN_PROCESS_EXITED,
-    ProcessFailedKind.RENDER_PROCESS_EXITED,
-    ProcessFailedKind.RENDER_PROCESS_UNRESPONSIVE,
-    ProcessFailedKind.SANDBOX_HELPER_PROCESS_EXITED,
-    ProcessFailedKind.UNKNOWN_PROCESS_EXITED,
-    ProcessFailedKind.UTILITY_PROCESS_EXITED,
+  ///Set of all values of [CygnusProcessFailedKind].
+  static final Set<CygnusProcessFailedKind> values = [
+    CygnusProcessFailedKind.BROWSER_PROCESS_EXITED,
+    CygnusProcessFailedKind.FRAME_RENDER_PROCESS_EXITED,
+    CygnusProcessFailedKind.GPU_PROCESS_EXITED,
+    CygnusProcessFailedKind.PPAPI_BROKER_PROCESS_EXITED,
+    CygnusProcessFailedKind.PPAPI_PLUGIN_PROCESS_EXITED,
+    CygnusProcessFailedKind.RENDER_PROCESS_EXITED,
+    CygnusProcessFailedKind.RENDER_PROCESS_UNRESPONSIVE,
+    CygnusProcessFailedKind.SANDBOX_HELPER_PROCESS_EXITED,
+    CygnusProcessFailedKind.UNKNOWN_PROCESS_EXITED,
+    CygnusProcessFailedKind.UTILITY_PROCESS_EXITED,
   ].toSet();
 
-  ///Gets a possible [ProcessFailedKind] instance from [String] value.
-  static ProcessFailedKind? fromValue(String? value) {
+  ///Gets a possible [CygnusProcessFailedKind] instance from [String] value.
+  static CygnusProcessFailedKind? fromValue(String? value) {
     if (value != null) {
       try {
-        return ProcessFailedKind.values.firstWhere(
+        return CygnusProcessFailedKind.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -241,11 +249,11 @@ class ProcessFailedKind {
     return null;
   }
 
-  ///Gets a possible [ProcessFailedKind] instance from a native value.
-  static ProcessFailedKind? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusProcessFailedKind] instance from a native value.
+  static CygnusProcessFailedKind? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return ProcessFailedKind.values.firstWhere(
+        return CygnusProcessFailedKind.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -255,15 +263,15 @@ class ProcessFailedKind {
     return null;
   }
 
-  /// Gets a possible [ProcessFailedKind] instance value with name [name].
+  /// Gets a possible [CygnusProcessFailedKind] instance value with name [name].
   ///
-  /// Goes through [ProcessFailedKind.values] looking for a value with
-  /// name [name], as reported by [ProcessFailedKind.name].
+  /// Goes through [CygnusProcessFailedKind.values] looking for a value with
+  /// name [name], as reported by [CygnusProcessFailedKind.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ProcessFailedKind? byName(String? name) {
+  static CygnusProcessFailedKind? byName(String? name) {
     if (name != null) {
       try {
-        return ProcessFailedKind.values.firstWhere(
+        return CygnusProcessFailedKind.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -273,7 +281,7 @@ class ProcessFailedKind {
     return null;
   }
 
-  /// Creates a map from the names of [ProcessFailedKind] values to the values.
+  /// Creates a map from the names of [CygnusProcessFailedKind] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -281,9 +289,9 @@ class ProcessFailedKind {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ProcessFailedKind> asNameMap() =>
-      <String, ProcessFailedKind>{
-        for (final value in ProcessFailedKind.values) value.name(): value,
+  static Map<String, CygnusProcessFailedKind> asNameMap() =>
+      <String, CygnusProcessFailedKind>{
+        for (final value in CygnusProcessFailedKind.values) value.name(): value,
       };
 
   ///Gets [String] value.

@@ -1,21 +1,21 @@
 part of 'main.dart';
 
 void createPdf() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.createPdf,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.createPdf,
   );
 
   skippableTestWidgets('createPdf', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<void> pageLoaded = Completer<void>();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+          initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
           },
@@ -26,11 +26,11 @@ void createPdf() {
       ),
     );
 
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
     await pageLoaded.future;
 
-    var pdfConfiguration = PDFConfiguration(
-      rect: InAppWebViewRect(width: 100, height: 100, x: 50, y: 50),
+    var pdfConfiguration = CygnusPDFConfiguration(
+      rect: CygnusWebViewRect(width: 100, height: 100, x: 50, y: 50),
     );
     var pdf = await controller.createPdf(pdfConfiguration: pdfConfiguration);
     expect(pdf, isNotNull);

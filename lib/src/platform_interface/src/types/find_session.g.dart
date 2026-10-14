@@ -6,7 +6,7 @@ part of 'find_session.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-class FindSession {
+class CygnusFindSession {
   ///Returns the index of the currently highlighted result.
   ///If no result is currently highlighted.
   int highlightedResultIndex;
@@ -15,32 +15,34 @@ class FindSession {
   int resultCount;
 
   /// Defines how results are reported through the find panel's UI.
-  SearchResultDisplayStyle searchResultDisplayStyle;
-  FindSession({
+  CygnusSearchResultDisplayStyle searchResultDisplayStyle;
+  CygnusFindSession({
     required this.highlightedResultIndex,
     required this.resultCount,
     required this.searchResultDisplayStyle,
   });
 
-  ///Gets a possible [FindSession] instance from a [Map] value.
-  static FindSession? fromMap(
+  ///Gets a possible [CygnusFindSession] instance from a [Map] value.
+  static CygnusFindSession? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = FindSession(
+    final instance = CygnusFindSession(
       highlightedResultIndex: map['highlightedResultIndex'],
       resultCount: map['resultCount'],
-      searchResultDisplayStyle: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => SearchResultDisplayStyle.fromNativeValue(
+      searchResultDisplayStyle: switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusSearchResultDisplayStyle.fromNativeValue(
+            map['searchResultDisplayStyle'],
+          ),
+        CygnusEnumMethod.value => CygnusSearchResultDisplayStyle.fromValue(
           map['searchResultDisplayStyle'],
         ),
-        EnumMethod.value => SearchResultDisplayStyle.fromValue(
-          map['searchResultDisplayStyle'],
-        ),
-        EnumMethod.name => SearchResultDisplayStyle.byName(
+        CygnusEnumMethod.name => CygnusSearchResultDisplayStyle.byName(
           map['searchResultDisplayStyle'],
         ),
       }!,
@@ -49,15 +51,16 @@ class FindSession {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "highlightedResultIndex": highlightedResultIndex,
       "resultCount": resultCount,
       "searchResultDisplayStyle": switch (enumMethod ??
-          EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => searchResultDisplayStyle.toNativeValue(),
-        EnumMethod.value => searchResultDisplayStyle.toValue(),
-        EnumMethod.name => searchResultDisplayStyle.name(),
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          searchResultDisplayStyle.toNativeValue(),
+        CygnusEnumMethod.value => searchResultDisplayStyle.toValue(),
+        CygnusEnumMethod.name => searchResultDisplayStyle.name(),
       },
     };
   }
@@ -69,6 +72,6 @@ class FindSession {
 
   @override
   String toString() {
-    return 'FindSession{highlightedResultIndex: $highlightedResultIndex, resultCount: $resultCount, searchResultDisplayStyle: $searchResultDisplayStyle}';
+    return 'CygnusFindSession{highlightedResultIndex: $highlightedResultIndex, resultCount: $resultCount, searchResultDisplayStyle: $searchResultDisplayStyle}';
   }
 }

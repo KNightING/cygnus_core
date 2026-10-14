@@ -11,13 +11,13 @@ import '../types/environment_scrollbar_style.dart';
 
 part 'webview_environment_settings.g.dart';
 
-///This class represents all the [PlatformWebViewEnvironment] settings available.
+///This class represents all the [CygnusPlatformWebViewEnvironment] settings available.
 ///
 ///The [browserExecutableFolder], [userDataFolder] and [additionalBrowserArguments]
 ///may be overridden by values either specified in environment variables or in the registry.
 @SupportedPlatforms(platforms: [WindowsPlatform(), LinuxPlatform()])
 @ExchangeableObject(copyMethod: true)
-class WebViewEnvironmentSettings_ {
+class CygnusWebViewEnvironmentSettings_ {
   ///Use [browserExecutableFolder] to specify whether WebView2 controls use a fixed
   ///or installed version of the WebView2 Runtime that exists on a user machine.
   ///To use a fixed version of the WebView2 Runtime, pass the folder path that contains
@@ -137,7 +137,7 @@ class WebViewEnvironmentSettings_ {
       ),
     ],
   )
-  final List<CustomSchemeRegistration_>? customSchemeRegistrations;
+  final List<CygnusCustomSchemeRegistration_>? customSchemeRegistrations;
 
   ///Whether other processes can create WebView2 from WebView2Environment created
   ///with the same user data folder and therefore sharing the same WebView browser process instance.
@@ -221,19 +221,19 @@ class WebViewEnvironmentSettings_ {
   )
   final bool? areBrowserExtensionsEnabled;
 
-  ///This property is [EnvironmentChannelSearchKind.MOST_STABLE] by default;
+  ///This property is [CygnusEnvironmentChannelSearchKind.MOST_STABLE] by default;
   ///environment creation searches for a release channel on the machine from
   ///most to least stable using the first channel found.
   ///
   ///The default search order is: WebView2 Runtime -> Beta -> Dev -> Canary.
-  ///Set [channelSearchKind] to [EnvironmentChannelSearchKind.LEAST_STABLE] to reverse
+  ///Set [channelSearchKind] to [CygnusEnvironmentChannelSearchKind.LEAST_STABLE] to reverse
   ///the search order so that environment creation searches for a channel from least to most stable.
   ///If [releaseChannels] has been provided, the loader will only search for channels in the set.
-  ///See [EnvironmentReleaseChannels] for more details on channels.
+  ///See [CygnusEnvironmentReleaseChannels] for more details on channels.
   ///
   ///This property can be overridden by the corresponding registry key [channelSearchKind]
   ///or the environment variable `WEBVIEW2_CHANNEL_SEARCH_KIND`.
-  ///Set the value to `1` to set the search kind to [EnvironmentChannelSearchKind.LEAST_STABLE].
+  ///Set the value to `1` to set the search kind to [CygnusEnvironmentChannelSearchKind.LEAST_STABLE].
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -244,42 +244,42 @@ class WebViewEnvironmentSettings_ {
       ),
     ],
   )
-  final EnvironmentChannelSearchKind_? channelSearchKind;
+  final CygnusEnvironmentChannelSearchKind_? channelSearchKind;
 
-  ///Sets the [releaseChannels], which is a mask of one or more [EnvironmentReleaseChannels]
+  ///Sets the [releaseChannels], which is a mask of one or more [CygnusEnvironmentReleaseChannels]
   ///indicating which channels environment creation should search for.
   ///
-  ///OR operation(s) can be applied to multiple [EnvironmentReleaseChannels] to create a mask.
+  ///OR operation(s) can be applied to multiple [CygnusEnvironmentReleaseChannels] to create a mask.
   ///The default value is a a mask of all the channels.
   ///By default, environment creation searches for channels from most to least stable,
   ///using the first channel found on the device.
   ///When [releaseChannels] is provided, environment creation will only
   ///search for the channels specified in the set.
-  ///Set [channelSearchKind] to [EnvironmentChannelSearchKind.LEAST_STABLE] to reverse
+  ///Set [channelSearchKind] to [CygnusEnvironmentChannelSearchKind.LEAST_STABLE] to reverse
   ///the search order so environment creation searches for least stable build first.
-  ///See [EnvironmentReleaseChannels] for descriptions of each channel.
+  ///See [CygnusEnvironmentReleaseChannels] for descriptions of each channel.
   ///
-  ///The [PlatformWebViewEnvironment] creation will fails with `HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND)`
-  ///if environment creation is unable to find any channel from the EnvironmentReleaseChannels installed on the device.
-  ///Use [PlatformWebViewEnvironment.getAvailableVersion] to verify which channel is used when this option is set.
+  ///The [CygnusPlatformWebViewEnvironment] creation will fails with `HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND)`
+  ///if environment creation is unable to find any channel from the CygnusEnvironmentReleaseChannels installed on the device.
+  ///Use [CygnusPlatformWebViewEnvironment.getAvailableVersion] to verify which channel is used when this option is set.
   ///
   ///Examples:
   ///
   ///| ReleaseChannels                                                                                                                       | Channel Search Kind: Most Stable (default)  | Channel Search Kind: Least Stable          |
   ///|--------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|--------------------------------------------|
-  ///| [EnvironmentReleaseChannels.BETA] | [EnvironmentReleaseChannels.STABLE]                                                                          | WebView2 Runtime -> Beta                    | Beta -> WebView2 Runtime                   |
-  ///| [EnvironmentReleaseChannels.CANARY] | [EnvironmentReleaseChannels.DEV] | [EnvironmentReleaseChannels.BETA] | [EnvironmentReleaseChannels.STABLE] | WebView2 Runtime -> Beta -> Dev -> Canary   | Canary -> Dev -> Beta -> WebView2 Runtime  |
-  ///| [EnvironmentReleaseChannels.CANARY]                                                                                                              | Canary                                      | Canary                                     |
-  ///| [EnvironmentReleaseChannels.BETA] | [EnvironmentReleaseChannels.CANARY] | [EnvironmentReleaseChannels.STABLE]                                    | WebView2 Runtime -> Beta -> Canary          | Canary -> Beta -> WebView2 Runtime         |
+  ///| [CygnusEnvironmentReleaseChannels.BETA] | [CygnusEnvironmentReleaseChannels.STABLE]                                                                          | WebView2 Runtime -> Beta                    | Beta -> WebView2 Runtime                   |
+  ///| [CygnusEnvironmentReleaseChannels.CANARY] | [CygnusEnvironmentReleaseChannels.DEV] | [CygnusEnvironmentReleaseChannels.BETA] | [CygnusEnvironmentReleaseChannels.STABLE] | WebView2 Runtime -> Beta -> Dev -> Canary   | Canary -> Dev -> Beta -> WebView2 Runtime  |
+  ///| [CygnusEnvironmentReleaseChannels.CANARY]                                                                                                              | Canary                                      | Canary                                     |
+  ///| [CygnusEnvironmentReleaseChannels.BETA] | [CygnusEnvironmentReleaseChannels.CANARY] | [CygnusEnvironmentReleaseChannels.STABLE]                                    | WebView2 Runtime -> Beta -> Canary          | Canary -> Beta -> WebView2 Runtime         |
   ///
   ///If both [browserExecutableFolder] and [releaseChannels] are provided, the [browserExecutableFolder] takes precedence,
   ///regardless of whether or not the channel of [browserExecutableFolder] is included in the [releaseChannels].
-  ///[releaseChannels] can be overridden by the corresponding registry override EnvironmentReleaseChannels or the environment
+  ///[releaseChannels] can be overridden by the corresponding registry override CygnusEnvironmentReleaseChannels or the environment
   ///variable `WEBVIEW2_RELEASE_CHANNELS`. Set the value to a comma-separated string of integers, which map to
   ///the following release channel values: Stable (0), Beta (1), Dev (2), and Canary (3).
   ///For example, the values "0,2" and "2,0" indicate that environment creation should only search for
   ///Dev channel and the WebView2 Runtime, using the order indicated by [channelSearchKind].
-  ///[PlatformWebViewEnvironment] creation attempts to interpret each integer and treats any invalid entry as Stable channel.
+  ///[CygnusPlatformWebViewEnvironment] creation attempts to interpret each integer and treats any invalid entry as Stable channel.
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -290,11 +290,11 @@ class WebViewEnvironmentSettings_ {
       ),
     ],
   )
-  final EnvironmentReleaseChannels_? releaseChannels;
+  final CygnusEnvironmentReleaseChannels_? releaseChannels;
 
   ///The ScrollBar style being set on the WebView2 Environment.
   ///
-  ///The default value is [EnvironmentScrollbarStyle.DEFAULT] which specifies the default browser ScrollBar style.
+  ///The default value is [CygnusEnvironmentScrollbarStyle.DEFAULT] which specifies the default browser ScrollBar style.
   ///The `color-scheme` CSS property needs to be set on the corresponding
   ///page to allow ScrollBar to follow light or dark theme.
   ///Please see [color-scheme](https://developer.mozilla.org/docs/Web/CSS/color-scheme#declaring_color_scheme_preferences) for how `color-scheme` can be set.
@@ -309,7 +309,7 @@ class WebViewEnvironmentSettings_ {
       ),
     ],
   )
-  final EnvironmentScrollbarStyle_? scrollbarStyle;
+  final CygnusEnvironmentScrollbarStyle_? scrollbarStyle;
 
   ///Set the cache model for the WebContext.
   ///
@@ -324,7 +324,7 @@ class WebViewEnvironmentSettings_ {
       ),
     ],
   )
-  final CacheModel_? cacheModel;
+  final CygnusCacheModel_? cacheModel;
 
   ///Enable or disable spell checking in the WebContext.
   ///
@@ -434,7 +434,7 @@ class WebViewEnvironmentSettings_ {
   )
   final List<String>? sandboxPaths;
 
-  WebViewEnvironmentSettings_({
+  CygnusWebViewEnvironmentSettings_({
     this.browserExecutableFolder,
     this.userDataFolder,
     this.additionalBrowserArguments,
@@ -461,9 +461,9 @@ class WebViewEnvironmentSettings_ {
 
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   static bool isPropertySupported(
-    WebViewEnvironmentSettingsProperty property, {
+    CygnusWebViewEnvironmentSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _WebViewEnvironmentSettingsPropertySupported.isPropertySupported(
+  }) => _CygnusWebViewEnvironmentSettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );

@@ -11,14 +11,14 @@ import 'types/proxy_rule.dart';
 
 part 'platform_proxy_controller.g.dart';
 
-///{@template cygnus_core.PlatformProxyControllerCreationParams}
-/// Object specifying creation parameters for creating a [PlatformProxyController].
+///{@template cygnus_core.CygnusPlatformProxyControllerCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformProxyController].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformProxyControllerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformProxyControllerCreationParams.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -28,20 +28,20 @@ part 'platform_proxy_controller.g.dart';
   ],
 )
 @immutable
-class PlatformProxyControllerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformProxyController].
-  const PlatformProxyControllerCreationParams();
+class CygnusPlatformProxyControllerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformProxyController].
+  const CygnusPlatformProxyControllerCreationParams();
 
-  ///{@template cygnus_core.PlatformProxyControllerCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformProxyControllerCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformProxyControllerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformProxyControllerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformProxyController}
+///{@template cygnus_core.CygnusPlatformProxyController}
 ///Manages setting and clearing a process-specific override for the WebView system-wide proxy settings that govern network requests made by `WebView`.
 ///
 ///`WebView` may make network requests in order to fetch content that is not otherwise read from the file system or provided directly by application code.
@@ -51,13 +51,13 @@ class PlatformProxyControllerCreationParams {
 ///this API may be used to explicitly specify the proxy rules that govern WebView initiated network requests.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformProxyController.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformProxyController.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(
-      apiName: 'ProxyController',
+      apiName: 'CygnusProxyController',
       apiUrl:
-          'https://developer.android.com/reference/androidx/webkit/ProxyController',
+          'https://developer.android.com/reference/androidx/webkit/CygnusProxyController',
     ),
     IOSPlatform(
       apiName: 'WKWebsiteDataStore.proxyConfigurations',
@@ -78,35 +78,35 @@ class PlatformProxyControllerCreationParams {
     ),
   ],
 )
-abstract class PlatformProxyController extends PlatformInterface {
-  /// Creates a new [PlatformProxyController]
-  factory PlatformProxyController(
-    PlatformProxyControllerCreationParams params,
+abstract class CygnusPlatformProxyController extends PlatformInterface {
+  /// Creates a new [CygnusPlatformProxyController]
+  factory CygnusPlatformProxyController(
+    CygnusPlatformProxyControllerCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformProxyController proxyController = InAppWebViewPlatform
+    final CygnusPlatformProxyController proxyController = CygnusWebViewPlatform
         .instance!
         .createPlatformProxyController(params);
     PlatformInterface.verify(proxyController, _token);
     return proxyController;
   }
 
-  /// Creates a new [PlatformProxyController] to access static methods.
-  factory PlatformProxyController.static() {
+  /// Creates a new [CygnusPlatformProxyController] to access static methods.
+  factory CygnusPlatformProxyController.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformProxyController proxyControllerStatic = InAppWebViewPlatform
+    final CygnusPlatformProxyController proxyControllerStatic = CygnusWebViewPlatform
         .instance!
         .createPlatformProxyControllerStatic();
     PlatformInterface.verify(proxyControllerStatic, _token);
@@ -114,32 +114,32 @@ abstract class PlatformProxyController extends PlatformInterface {
   }
 
   /// Used by the platform implementation to create a new
-  /// [PlatformProxyController].
+  /// [CygnusPlatformProxyController].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformProxyController.implementation(this.params) : super(token: _token);
+  CygnusPlatformProxyController.implementation(this.params) : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformProxyController].
-  final PlatformProxyControllerCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformProxyController].
+  final CygnusPlatformProxyControllerCreationParams params;
 
-  ///{@template cygnus_core.PlatformProxyController.setProxyOverride}
-  ///Sets [ProxySettings] which will be used by all `WebView`s in the app.
+  ///{@template cygnus_core.CygnusPlatformProxyController.setProxyOverride}
+  ///Sets [CygnusProxySettings] which will be used by all `WebView`s in the app.
   ///URLs that match patterns in the bypass list will not be directed to any proxy.
   ///Instead, the request will be made directly to the origin specified by the URL.
   ///Network connections are not guaranteed to immediately use the new proxy setting; wait for the method to return before loading a page.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformProxyController.setProxyOverride.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformProxyController.setProxyOverride.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
-        apiName: 'ProxyController.setProxyOverride',
+        apiName: 'CygnusProxyController.setProxyOverride',
         apiUrl:
-            'https://developer.android.com/reference/androidx/webkit/ProxyController#setProxyOverride(androidx.webkit.ProxyConfig,%20java.util.concurrent.Executor,%20java.lang.Runnable)',
+            'https://developer.android.com/reference/androidx/webkit/CygnusProxyController#setProxyOverride(androidx.webkit.ProxyConfig,%20java.util.concurrent.Executor,%20java.lang.Runnable)',
       ),
       IOSPlatform(
         apiName: 'WKWebsiteDataStore.proxyConfigurations',
@@ -160,25 +160,25 @@ abstract class PlatformProxyController extends PlatformInterface {
       ),
     ],
   )
-  Future<void> setProxyOverride({required ProxySettings settings}) {
+  Future<void> setProxyOverride({required CygnusProxySettings settings}) {
     throw UnimplementedError(
       'setProxyOverride is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformProxyController.clearProxyOverride}
+  ///{@template cygnus_core.CygnusPlatformProxyController.clearProxyOverride}
   ///Clears the proxy settings.
   ///Network connections are not guaranteed to immediately use the new proxy setting;
   ///wait for the method to return before loading a page.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformProxyController.clearProxyOverride.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformProxyController.clearProxyOverride.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
-        apiName: 'ProxyController.clearProxyOverride',
+        apiName: 'CygnusProxyController.clearProxyOverride',
         apiUrl:
-            'https://developer.android.com/reference/androidx/webkit/ProxyController#clearProxyOverride(java.util.concurrent.Executor,%20java.lang.Runnable)',
+            'https://developer.android.com/reference/androidx/webkit/CygnusProxyController#clearProxyOverride(java.util.concurrent.Executor,%20java.lang.Runnable)',
       ),
       IOSPlatform(
         apiName: 'WKWebsiteDataStore.proxyConfigurations',
@@ -205,27 +205,27 @@ abstract class PlatformProxyController extends PlatformInterface {
     );
   }
 
-  ///{@macro cygnus_core.PlatformProxyControllerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformProxyControllerCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
       params.isClassSupported(platform: platform);
 
-  ///{@template cygnus_core.PlatformProxyController.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformProxyController.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformProxyControllerMethod method, {
+    CygnusPlatformProxyControllerMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformProxyControllerMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformProxyControllerMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );
 }
 
-///{@template cygnus_core.ProxySettings}
-///Class that represents the settings used to configure the [PlatformProxyController].
+///{@template cygnus_core.CygnusProxySettings}
+///Class that represents the settings used to configure the [CygnusPlatformProxyController].
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.ProxySettings.supported_platforms}
+///{@macro cygnus_core.CygnusProxySettings.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(
@@ -253,7 +253,7 @@ abstract class PlatformProxyController extends PlatformInterface {
   ],
 )
 @ExchangeableObject(copyMethod: true)
-class ProxySettings_ {
+class CygnusProxySettings_ {
   ///List of bypass rules.
   ///
   ///A bypass rule describes URLs that should skip proxy override settings and make a direct connection instead. These can be URLs or IP addresses. Wildcards are accepted.
@@ -295,7 +295,7 @@ class ProxySettings_ {
       LinuxPlatform(),
     ],
   )
-  List<ProxyRule_> proxyRules;
+  List<CygnusProxyRule_> proxyRules;
 
   ///Hostnames without a period in them (and that are not IP literals) will skip proxy settings and be connected to directly instead. Examples: `"abc"`, `"local"`, `"some-domain"`.
   ///
@@ -323,11 +323,11 @@ class ProxySettings_ {
   ///
   ///Use [bypassRules] to add bypass rules.
   ///
-  ///**NOTE**: available only if [WebViewFeature.PROXY_OVERRIDE_REVERSE_BYPASS] feature is supported.
+  ///**NOTE**: available only if [CygnusWebViewFeature.PROXY_OVERRIDE_REVERSE_BYPASS] feature is supported.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   bool reverseBypassEnabled;
 
-  ProxySettings_({
+  CygnusProxySettings_({
     this.bypassRules = const [],
     this.directs = const [],
     this.proxyRules = const [],
@@ -336,19 +336,19 @@ class ProxySettings_ {
     this.reverseBypassEnabled = false,
   });
 
-  ///{@template cygnus_core.ProxySettings.isClassSupported}
+  ///{@template cygnus_core.CygnusProxySettings.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      _ProxySettingsClassSupported.isClassSupported(platform: platform);
+      _CygnusProxySettingsClassSupported.isClassSupported(platform: platform);
 
-  ///{@template cygnus_core.ProxySettings.isPropertySupported}
+  ///{@template cygnus_core.CygnusProxySettings.isPropertySupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   static bool isPropertySupported(
-    ProxySettingsProperty property, {
+    CygnusProxySettingsProperty property, {
     TargetPlatform? platform,
-  }) => _ProxySettingsPropertySupported.isPropertySupported(
+  }) => _CygnusProxySettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );

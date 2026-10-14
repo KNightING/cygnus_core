@@ -6,9 +6,9 @@ import 'enum_method.dart';
 
 part 'js_prompt_response.g.dart';
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onJsPrompt] event to control a JavaScript prompt dialog.
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onJsPrompt] event to control a JavaScript prompt dialog.
 @ExchangeableObject()
-class JsPromptResponse_ {
+class CygnusJsPromptResponse_ {
   ///Message to be displayed in the window.
   String message;
 
@@ -28,15 +28,15 @@ class JsPromptResponse_ {
   String? value;
 
   ///Action used to confirm that the user hit confirm or cancel button.
-  JsPromptResponseAction_? action;
+  CygnusJsPromptResponseAction_? action;
 
-  JsPromptResponse_({
+  CygnusJsPromptResponse_({
     this.message = "",
     this.defaultValue = "",
     this.handledByClient = false,
     this.confirmButtonTitle = "",
     this.cancelButtonTitle = "",
     this.value,
-    this.action = JsPromptResponseAction_.CANCEL,
+    this.action = CygnusJsPromptResponseAction_.CANCEL,
   });
 }

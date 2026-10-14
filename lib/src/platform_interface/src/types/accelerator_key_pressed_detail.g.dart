@@ -6,28 +6,28 @@ part of 'accelerator_key_pressed_detail.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents details of the [PlatformWebViewCreationParams.onAcceleratorKeyPressed] event.
-class AcceleratorKeyPressedDetail {
+///Class that represents details of the [CygnusPlatformWebViewCreationParams.onAcceleratorKeyPressed] event.
+class CygnusAcceleratorKeyPressedDetail {
   int? keyEventKind;
-  PhysicalKeyStatus? physicalKeyStatus;
+  CygnusPhysicalKeyStatus? physicalKeyStatus;
   int? virtualKey;
-  AcceleratorKeyPressedDetail({
+  CygnusAcceleratorKeyPressedDetail({
     this.keyEventKind,
     this.physicalKeyStatus,
     this.virtualKey,
   });
 
-  ///Gets a possible [AcceleratorKeyPressedDetail] instance from a [Map] value.
-  static AcceleratorKeyPressedDetail? fromMap(
+  ///Gets a possible [CygnusAcceleratorKeyPressedDetail] instance from a [Map] value.
+  static CygnusAcceleratorKeyPressedDetail? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = AcceleratorKeyPressedDetail(
+    final instance = CygnusAcceleratorKeyPressedDetail(
       keyEventKind: map['keyEventKind'],
-      physicalKeyStatus: PhysicalKeyStatus.fromMap(
+      physicalKeyStatus: CygnusPhysicalKeyStatus.fromMap(
         map['physicalKeyStatus']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -37,7 +37,7 @@ class AcceleratorKeyPressedDetail {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "keyEventKind": keyEventKind,
       "physicalKeyStatus": physicalKeyStatus?.toMap(enumMethod: enumMethod),
@@ -52,6 +52,6 @@ class AcceleratorKeyPressedDetail {
 
   @override
   String toString() {
-    return 'AcceleratorKeyPressedDetail{keyEventKind: $keyEventKind, physicalKeyStatus: $physicalKeyStatus, virtualKey: $virtualKey}';
+    return 'CygnusAcceleratorKeyPressedDetail{keyEventKind: $keyEventKind, physicalKeyStatus: $physicalKeyStatus, virtualKey: $virtualKey}';
   }
 }

@@ -6,38 +6,41 @@ part of 'permission_response_action.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class used by [PermissionResponse] class.
-class PermissionResponseAction {
+///Class used by [CygnusPermissionResponse] class.
+class CygnusPermissionResponseAction {
   final int _value;
   final int? _nativeValue;
-  const PermissionResponseAction._internal(this._value, this._nativeValue);
+  const CygnusPermissionResponseAction._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory PermissionResponseAction._internalMultiPlatform(
+  factory CygnusPermissionResponseAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => PermissionResponseAction._internal(value, nativeValue());
+  ) => CygnusPermissionResponseAction._internal(value, nativeValue());
 
   ///Denies the request.
-  static const DENY = PermissionResponseAction._internal(0, 0);
+  static const DENY = CygnusPermissionResponseAction._internal(0, 0);
 
   ///Grants origin the permission to access the given resources.
-  static const GRANT = PermissionResponseAction._internal(1, 1);
+  static const GRANT = CygnusPermissionResponseAction._internal(1, 1);
 
   ///Prompt the user for permission for the requested resource.
-  static const PROMPT = PermissionResponseAction._internal(2, 2);
+  static const PROMPT = CygnusPermissionResponseAction._internal(2, 2);
 
-  ///Set of all values of [PermissionResponseAction].
-  static final Set<PermissionResponseAction> values = [
-    PermissionResponseAction.DENY,
-    PermissionResponseAction.GRANT,
-    PermissionResponseAction.PROMPT,
+  ///Set of all values of [CygnusPermissionResponseAction].
+  static final Set<CygnusPermissionResponseAction> values = [
+    CygnusPermissionResponseAction.DENY,
+    CygnusPermissionResponseAction.GRANT,
+    CygnusPermissionResponseAction.PROMPT,
   ].toSet();
 
-  ///Gets a possible [PermissionResponseAction] instance from [int] value.
-  static PermissionResponseAction? fromValue(int? value) {
+  ///Gets a possible [CygnusPermissionResponseAction] instance from [int] value.
+  static CygnusPermissionResponseAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return PermissionResponseAction.values.firstWhere(
+        return CygnusPermissionResponseAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -47,11 +50,11 @@ class PermissionResponseAction {
     return null;
   }
 
-  ///Gets a possible [PermissionResponseAction] instance from a native value.
-  static PermissionResponseAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusPermissionResponseAction] instance from a native value.
+  static CygnusPermissionResponseAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return PermissionResponseAction.values.firstWhere(
+        return CygnusPermissionResponseAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -61,15 +64,15 @@ class PermissionResponseAction {
     return null;
   }
 
-  /// Gets a possible [PermissionResponseAction] instance value with name [name].
+  /// Gets a possible [CygnusPermissionResponseAction] instance value with name [name].
   ///
-  /// Goes through [PermissionResponseAction.values] looking for a value with
-  /// name [name], as reported by [PermissionResponseAction.name].
+  /// Goes through [CygnusPermissionResponseAction.values] looking for a value with
+  /// name [name], as reported by [CygnusPermissionResponseAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static PermissionResponseAction? byName(String? name) {
+  static CygnusPermissionResponseAction? byName(String? name) {
     if (name != null) {
       try {
-        return PermissionResponseAction.values.firstWhere(
+        return CygnusPermissionResponseAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -79,7 +82,7 @@ class PermissionResponseAction {
     return null;
   }
 
-  /// Creates a map from the names of [PermissionResponseAction] values to the values.
+  /// Creates a map from the names of [CygnusPermissionResponseAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -87,9 +90,9 @@ class PermissionResponseAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, PermissionResponseAction> asNameMap() =>
-      <String, PermissionResponseAction>{
-        for (final value in PermissionResponseAction.values)
+  static Map<String, CygnusPermissionResponseAction> asNameMap() =>
+      <String, CygnusPermissionResponseAction>{
+        for (final value in CygnusPermissionResponseAction.values)
           value.name(): value,
       };
 
@@ -129,39 +132,39 @@ class PermissionResponseAction {
   }
 }
 
-///Class used by [PermissionRequestResponse] class.
-///Use [PermissionResponseAction] instead.
-@Deprecated('Use PermissionResponseAction instead')
-class PermissionRequestResponseAction {
+///Class used by [CygnusPermissionRequestResponse] class.
+///Use [CygnusPermissionResponseAction] instead.
+@Deprecated('Use CygnusPermissionResponseAction instead')
+class CygnusPermissionRequestResponseAction {
   final int _value;
   final int? _nativeValue;
-  const PermissionRequestResponseAction._internal(
+  const CygnusPermissionRequestResponseAction._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory PermissionRequestResponseAction._internalMultiPlatform(
+  factory CygnusPermissionRequestResponseAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => PermissionRequestResponseAction._internal(value, nativeValue());
+  ) => CygnusPermissionRequestResponseAction._internal(value, nativeValue());
 
   ///Denies the request.
-  static const DENY = PermissionRequestResponseAction._internal(0, 0);
+  static const DENY = CygnusPermissionRequestResponseAction._internal(0, 0);
 
   ///Grants origin the permission to access the given resources.
-  static const GRANT = PermissionRequestResponseAction._internal(1, 1);
+  static const GRANT = CygnusPermissionRequestResponseAction._internal(1, 1);
 
-  ///Set of all values of [PermissionRequestResponseAction].
-  static final Set<PermissionRequestResponseAction> values = [
-    PermissionRequestResponseAction.DENY,
-    PermissionRequestResponseAction.GRANT,
+  ///Set of all values of [CygnusPermissionRequestResponseAction].
+  static final Set<CygnusPermissionRequestResponseAction> values = [
+    CygnusPermissionRequestResponseAction.DENY,
+    CygnusPermissionRequestResponseAction.GRANT,
   ].toSet();
 
-  ///Gets a possible [PermissionRequestResponseAction] instance from [int] value.
-  static PermissionRequestResponseAction? fromValue(int? value) {
+  ///Gets a possible [CygnusPermissionRequestResponseAction] instance from [int] value.
+  static CygnusPermissionRequestResponseAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return PermissionRequestResponseAction.values.firstWhere(
+        return CygnusPermissionRequestResponseAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -171,11 +174,11 @@ class PermissionRequestResponseAction {
     return null;
   }
 
-  ///Gets a possible [PermissionRequestResponseAction] instance from a native value.
-  static PermissionRequestResponseAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusPermissionRequestResponseAction] instance from a native value.
+  static CygnusPermissionRequestResponseAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return PermissionRequestResponseAction.values.firstWhere(
+        return CygnusPermissionRequestResponseAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -185,15 +188,15 @@ class PermissionRequestResponseAction {
     return null;
   }
 
-  /// Gets a possible [PermissionRequestResponseAction] instance value with name [name].
+  /// Gets a possible [CygnusPermissionRequestResponseAction] instance value with name [name].
   ///
-  /// Goes through [PermissionRequestResponseAction.values] looking for a value with
-  /// name [name], as reported by [PermissionRequestResponseAction.name].
+  /// Goes through [CygnusPermissionRequestResponseAction.values] looking for a value with
+  /// name [name], as reported by [CygnusPermissionRequestResponseAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static PermissionRequestResponseAction? byName(String? name) {
+  static CygnusPermissionRequestResponseAction? byName(String? name) {
     if (name != null) {
       try {
-        return PermissionRequestResponseAction.values.firstWhere(
+        return CygnusPermissionRequestResponseAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -203,7 +206,7 @@ class PermissionRequestResponseAction {
     return null;
   }
 
-  /// Creates a map from the names of [PermissionRequestResponseAction] values to the values.
+  /// Creates a map from the names of [CygnusPermissionRequestResponseAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -211,9 +214,9 @@ class PermissionRequestResponseAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, PermissionRequestResponseAction> asNameMap() =>
-      <String, PermissionRequestResponseAction>{
-        for (final value in PermissionRequestResponseAction.values)
+  static Map<String, CygnusPermissionRequestResponseAction> asNameMap() =>
+      <String, CygnusPermissionRequestResponseAction>{
+        for (final value in CygnusPermissionRequestResponseAction.values)
           value.name(): value,
       };
 

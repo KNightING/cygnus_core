@@ -7,7 +7,7 @@ part of 'window_features.dart';
 // **************************************************************************
 
 ///Class that specifies optional attributes for the containing window when a new web view is requested.
-class WindowFeatures {
+class CygnusWindowFeatures {
   ///A Boolean value indicating whether the containing window should be resizable, or `null` if resizability is not specified.
   bool? allowsResizing;
 
@@ -31,7 +31,7 @@ class WindowFeatures {
 
   ///A Double value specifying the y-coordinate of the containing window, or `null` if the y-coordinate is not specified.
   double? y;
-  WindowFeatures({
+  CygnusWindowFeatures({
     this.allowsResizing,
     this.height,
     this.menuBarVisibility,
@@ -42,15 +42,15 @@ class WindowFeatures {
     this.y,
   });
 
-  ///Gets a possible [WindowFeatures] instance from a [Map] value.
-  static WindowFeatures? fromMap(
+  ///Gets a possible [CygnusWindowFeatures] instance from a [Map] value.
+  static CygnusWindowFeatures? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = WindowFeatures(
+    final instance = CygnusWindowFeatures(
       allowsResizing: map['allowsResizing'],
       height: map['height'],
       menuBarVisibility: map['menuBarVisibility'],
@@ -64,7 +64,7 @@ class WindowFeatures {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "allowsResizing": allowsResizing,
       "height": height,
@@ -84,14 +84,14 @@ class WindowFeatures {
 
   @override
   String toString() {
-    return 'WindowFeatures{allowsResizing: $allowsResizing, height: $height, menuBarVisibility: $menuBarVisibility, statusBarVisibility: $statusBarVisibility, toolbarsVisibility: $toolbarsVisibility, width: $width, x: $x, y: $y}';
+    return 'CygnusWindowFeatures{allowsResizing: $allowsResizing, height: $height, menuBarVisibility: $menuBarVisibility, statusBarVisibility: $statusBarVisibility, toolbarsVisibility: $toolbarsVisibility, width: $width, x: $x, y: $y}';
   }
 }
 
 ///An iOS-specific class that specifies optional attributes for the containing window when a new web view is requested.
-///Use [WindowFeatures] instead.
-@Deprecated('Use WindowFeatures instead')
-class IOSWKWindowFeatures {
+///Use [CygnusWindowFeatures] instead.
+@Deprecated('Use CygnusWindowFeatures instead')
+class CygnusIOSWKWindowFeatures {
   ///A Boolean value indicating whether the containing window should be resizable, or `null` if resizability is not specified.
   bool? allowsResizing;
 
@@ -115,7 +115,7 @@ class IOSWKWindowFeatures {
 
   ///A Double value specifying the y-coordinate of the containing window, or `null` if the y-coordinate is not specified.
   double? y;
-  IOSWKWindowFeatures({
+  CygnusIOSWKWindowFeatures({
     this.allowsResizing,
     this.height,
     this.menuBarVisibility,
@@ -126,15 +126,15 @@ class IOSWKWindowFeatures {
     this.y,
   });
 
-  ///Gets a possible [IOSWKWindowFeatures] instance from a [Map] value.
-  static IOSWKWindowFeatures? fromMap(
+  ///Gets a possible [CygnusIOSWKWindowFeatures] instance from a [Map] value.
+  static CygnusIOSWKWindowFeatures? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = IOSWKWindowFeatures(
+    final instance = CygnusIOSWKWindowFeatures(
       allowsResizing: map['allowsResizing'],
       height: map['height'],
       menuBarVisibility: map['menuBarVisibility'],
@@ -148,7 +148,7 @@ class IOSWKWindowFeatures {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "allowsResizing": allowsResizing,
       "height": height,
@@ -168,6 +168,6 @@ class IOSWKWindowFeatures {
 
   @override
   String toString() {
-    return 'IOSWKWindowFeatures{allowsResizing: $allowsResizing, height: $height, menuBarVisibility: $menuBarVisibility, statusBarVisibility: $statusBarVisibility, toolbarsVisibility: $toolbarsVisibility, width: $width, x: $x, y: $y}';
+    return 'CygnusIOSWKWindowFeatures{allowsResizing: $allowsResizing, height: $height, menuBarVisibility: $menuBarVisibility, statusBarVisibility: $statusBarVisibility, toolbarsVisibility: $toolbarsVisibility, width: $width, x: $x, y: $y}';
   }
 }

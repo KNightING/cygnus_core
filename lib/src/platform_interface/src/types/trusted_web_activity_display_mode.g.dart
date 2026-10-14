@@ -7,11 +7,11 @@ part of 'trusted_web_activity_display_mode.dart';
 // **************************************************************************
 
 ///Class that represents display mode of a Trusted Web Activity.
-abstract class TrustedWebActivityDisplayMode {
-  TrustedWebActivityDisplayMode();
+abstract class CygnusTrustedWebActivityDisplayMode {
+  CygnusTrustedWebActivityDisplayMode();
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {};
   }
 
@@ -22,6 +22,6 @@ abstract class TrustedWebActivityDisplayMode {
 
   @override
   String toString() {
-    return 'TrustedWebActivityDisplayMode{}';
+    return 'CygnusTrustedWebActivityDisplayMode{}';
   }
 }

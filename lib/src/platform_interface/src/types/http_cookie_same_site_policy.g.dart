@@ -6,46 +6,52 @@ part of 'http_cookie_same_site_policy.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class that represents the same site policy of a cookie. Used by the [Cookie] class.
-class HTTPCookieSameSitePolicy {
+///Class that represents the same site policy of a cookie. Used by the [CygnusCookie] class.
+class CygnusHTTPCookieSameSitePolicy {
   final String _value;
   final String? _nativeValue;
-  const HTTPCookieSameSitePolicy._internal(this._value, this._nativeValue);
+  const CygnusHTTPCookieSameSitePolicy._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory HTTPCookieSameSitePolicy._internalMultiPlatform(
+  factory CygnusHTTPCookieSameSitePolicy._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => HTTPCookieSameSitePolicy._internal(value, nativeValue());
+  ) => CygnusHTTPCookieSameSitePolicy._internal(value, nativeValue());
 
   ///SameSite=Lax;
   ///
   ///Cookies are allowed to be sent with top-level navigations and will be sent along with GET
   ///request initiated by third party website. This is the default value in modern browsers.
-  static const LAX = HTTPCookieSameSitePolicy._internal('Lax', 'Lax');
+  static const LAX = CygnusHTTPCookieSameSitePolicy._internal('Lax', 'Lax');
 
   ///SameSite=None;
   ///
   ///Cookies will be sent in all contexts, i.e sending cross-origin is allowed.
   ///`None` requires the `Secure` attribute in latest browser versions.
-  static const NONE = HTTPCookieSameSitePolicy._internal('None', 'None');
+  static const NONE = CygnusHTTPCookieSameSitePolicy._internal('None', 'None');
 
   ///SameSite=Strict;
   ///
   ///Cookies will only be sent in a first-party context and not be sent along with requests initiated by third party websites.
-  static const STRICT = HTTPCookieSameSitePolicy._internal('Strict', 'Strict');
+  static const STRICT = CygnusHTTPCookieSameSitePolicy._internal(
+    'Strict',
+    'Strict',
+  );
 
-  ///Set of all values of [HTTPCookieSameSitePolicy].
-  static final Set<HTTPCookieSameSitePolicy> values = [
-    HTTPCookieSameSitePolicy.LAX,
-    HTTPCookieSameSitePolicy.NONE,
-    HTTPCookieSameSitePolicy.STRICT,
+  ///Set of all values of [CygnusHTTPCookieSameSitePolicy].
+  static final Set<CygnusHTTPCookieSameSitePolicy> values = [
+    CygnusHTTPCookieSameSitePolicy.LAX,
+    CygnusHTTPCookieSameSitePolicy.NONE,
+    CygnusHTTPCookieSameSitePolicy.STRICT,
   ].toSet();
 
-  ///Gets a possible [HTTPCookieSameSitePolicy] instance from [String] value.
-  static HTTPCookieSameSitePolicy? fromValue(String? value) {
+  ///Gets a possible [CygnusHTTPCookieSameSitePolicy] instance from [String] value.
+  static CygnusHTTPCookieSameSitePolicy? fromValue(String? value) {
     if (value != null) {
       try {
-        return HTTPCookieSameSitePolicy.values.firstWhere(
+        return CygnusHTTPCookieSameSitePolicy.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -55,11 +61,11 @@ class HTTPCookieSameSitePolicy {
     return null;
   }
 
-  ///Gets a possible [HTTPCookieSameSitePolicy] instance from a native value.
-  static HTTPCookieSameSitePolicy? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusHTTPCookieSameSitePolicy] instance from a native value.
+  static CygnusHTTPCookieSameSitePolicy? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return HTTPCookieSameSitePolicy.values.firstWhere(
+        return CygnusHTTPCookieSameSitePolicy.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -69,15 +75,15 @@ class HTTPCookieSameSitePolicy {
     return null;
   }
 
-  /// Gets a possible [HTTPCookieSameSitePolicy] instance value with name [name].
+  /// Gets a possible [CygnusHTTPCookieSameSitePolicy] instance value with name [name].
   ///
-  /// Goes through [HTTPCookieSameSitePolicy.values] looking for a value with
-  /// name [name], as reported by [HTTPCookieSameSitePolicy.name].
+  /// Goes through [CygnusHTTPCookieSameSitePolicy.values] looking for a value with
+  /// name [name], as reported by [CygnusHTTPCookieSameSitePolicy.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static HTTPCookieSameSitePolicy? byName(String? name) {
+  static CygnusHTTPCookieSameSitePolicy? byName(String? name) {
     if (name != null) {
       try {
-        return HTTPCookieSameSitePolicy.values.firstWhere(
+        return CygnusHTTPCookieSameSitePolicy.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -87,7 +93,7 @@ class HTTPCookieSameSitePolicy {
     return null;
   }
 
-  /// Creates a map from the names of [HTTPCookieSameSitePolicy] values to the values.
+  /// Creates a map from the names of [CygnusHTTPCookieSameSitePolicy] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -95,9 +101,9 @@ class HTTPCookieSameSitePolicy {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, HTTPCookieSameSitePolicy> asNameMap() =>
-      <String, HTTPCookieSameSitePolicy>{
-        for (final value in HTTPCookieSameSitePolicy.values)
+  static Map<String, CygnusHTTPCookieSameSitePolicy> asNameMap() =>
+      <String, CygnusHTTPCookieSameSitePolicy>{
+        for (final value in CygnusHTTPCookieSameSitePolicy.values)
           value.name(): value,
       };
 

@@ -8,32 +8,32 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 /// Object specifying creation parameters for creating a [IOSChromeSafariBrowser].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformChromeSafariBrowserCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformChromeSafariBrowserCreationParams] for
 /// more information.
 @immutable
 class IOSChromeSafariBrowserCreationParams
-    extends PlatformChromeSafariBrowserCreationParams {
+    extends CygnusPlatformChromeSafariBrowserCreationParams {
   /// Creates a new [IOSChromeSafariBrowserCreationParams] instance.
   const IOSChromeSafariBrowserCreationParams();
 
-  /// Creates a [IOSChromeSafariBrowserCreationParams] instance based on [PlatformChromeSafariBrowserCreationParams].
+  /// Creates a [IOSChromeSafariBrowserCreationParams] instance based on [CygnusPlatformChromeSafariBrowserCreationParams].
   factory IOSChromeSafariBrowserCreationParams.fromPlatformChromeSafariBrowserCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformChromeSafariBrowserCreationParams params,
+    CygnusPlatformChromeSafariBrowserCreationParams params,
   ) {
     return IOSChromeSafariBrowserCreationParams();
   }
 }
 
-///{@macro cygnus_core.PlatformChromeSafariBrowser}
-class IOSChromeSafariBrowser extends PlatformChromeSafariBrowser
+///{@macro cygnus_core.CygnusPlatformChromeSafariBrowser}
+class IOSChromeSafariBrowser extends CygnusPlatformChromeSafariBrowser
     with ChannelController {
   @override
   final String id = IdGenerator.generate();
 
   /// Constructs a [IOSChromeSafariBrowser].
-  IOSChromeSafariBrowser(PlatformChromeSafariBrowserCreationParams params)
+  IOSChromeSafariBrowser(CygnusPlatformChromeSafariBrowserCreationParams params)
     : super.implementation(
         params is IOSChromeSafariBrowserCreationParams
             ? params
@@ -51,7 +51,7 @@ class IOSChromeSafariBrowser extends PlatformChromeSafariBrowser
     return _staticValue;
   }
 
-  Map<int, ChromeSafariBrowserMenuItem> _menuItems = new HashMap();
+  Map<int, CygnusChromeSafariBrowserMenuItem> _menuItems = new HashMap();
   bool _isOpened = false;
   static const MethodChannel _staticChannel = const MethodChannel(
     'com.pichillilorenzo/flutter_chromesafaribrowser',
@@ -69,7 +69,7 @@ class IOSChromeSafariBrowser extends PlatformChromeSafariBrowser
     debugLog(
       className: this.runtimeType.toString(),
       id: id,
-      debugLoggingSettings: PlatformChromeSafariBrowser.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformChromeSafariBrowser.debugLoggingSettings,
       method: method,
       args: args,
     );
@@ -88,7 +88,7 @@ class IOSChromeSafariBrowser extends PlatformChromeSafariBrowser
         break;
       case "onInitialLoadDidRedirect":
         final String? url = call.arguments["url"];
-        final WebUri? uri = url != null ? WebUri(url) : null;
+        final CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
         eventHandler?.onInitialLoadDidRedirect(uri);
         break;
       case "onWillOpenInBrowser":
@@ -109,7 +109,7 @@ class IOSChromeSafariBrowser extends PlatformChromeSafariBrowser
             this._menuItems[id]?.action!(url, title);
           }
           if (this._menuItems[id]?.onClick != null) {
-            this._menuItems[id]?.onClick!(WebUri(url), title);
+            this._menuItems[id]?.onClick!(CygnusWebUri(url), title);
           }
         }
         break;
@@ -120,14 +120,14 @@ class IOSChromeSafariBrowser extends PlatformChromeSafariBrowser
 
   @override
   Future<void> open({
-    WebUri? url,
+    CygnusWebUri? url,
     Map<String, String>? headers,
-    List<WebUri>? otherLikelyURLs,
-    WebUri? referrer,
+    List<CygnusWebUri>? otherLikelyURLs,
+    CygnusWebUri? referrer,
     @Deprecated('Use settings instead')
     // ignore: deprecated_member_use_from_same_package
-    ChromeSafariBrowserClassOptions? options,
-    ChromeSafariBrowserSettings? settings,
+    CygnusChromeSafariBrowserClassOptions? options,
+    CygnusChromeSafariBrowserSettings? settings,
   }) async {
     assert(!_isOpened, 'The browser is already opened.');
     _isOpened = true;
@@ -151,7 +151,7 @@ class IOSChromeSafariBrowser extends PlatformChromeSafariBrowser
     var initialSettings =
         settings?.toMap() ??
         options?.toMap() ??
-        ChromeSafariBrowserSettings().toMap();
+        CygnusChromeSafariBrowserSettings().toMap();
 
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('id', () => id);
@@ -174,12 +174,12 @@ class IOSChromeSafariBrowser extends PlatformChromeSafariBrowser
   }
 
   @override
-  void addMenuItem(ChromeSafariBrowserMenuItem menuItem) {
+  void addMenuItem(CygnusChromeSafariBrowserMenuItem menuItem) {
     this._menuItems[menuItem.id] = menuItem;
   }
 
   @override
-  void addMenuItems(List<ChromeSafariBrowserMenuItem> menuItems) {
+  void addMenuItems(List<CygnusChromeSafariBrowserMenuItem> menuItems) {
     menuItems.forEach((menuItem) {
       this._menuItems[menuItem.id] = menuItem;
     });
@@ -199,19 +199,19 @@ class IOSChromeSafariBrowser extends PlatformChromeSafariBrowser
   }
 
   @override
-  Future<PrewarmingToken?> prewarmConnections(List<WebUri> URLs) async {
+  Future<CygnusPrewarmingToken?> prewarmConnections(List<CygnusWebUri> URLs) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('URLs', () => URLs.map((e) => e.toString()).toList());
     Map<String, dynamic>? result = (await _staticChannel.invokeMethod(
       "prewarmConnections",
       args,
     ))?.cast<String, dynamic>();
-    return PrewarmingToken.fromMap(result);
+    return CygnusPrewarmingToken.fromMap(result);
   }
 
   @override
   Future<void> invalidatePrewarmingToken(
-    PrewarmingToken prewarmingToken,
+    CygnusPrewarmingToken prewarmingToken,
   ) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('prewarmingToken', () => prewarmingToken.toMap());

@@ -7,14 +7,14 @@ part 'ui_image.g.dart';
 
 ///Class that represents an object that manages iOS and MacOS image data in your app.
 ///
-///Check iOS [UIKit.UIImage](https://developer.apple.com/documentation/uikit/uiimage) for more details.
+///Check iOS [UIKit.CygnusUIImage](https://developer.apple.com/documentation/uikit/uiimage) for more details.
 ///Check MacOS [AppKit.NSImage](https://developer.apple.com/documentation/appkit/nsimage) for more details.
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- iOS
 ///- MacOS
 @ExchangeableObject()
-class UIImage_ {
+class CygnusUIImage_ {
   ///The name of the image asset or file.
   String? name;
 
@@ -31,7 +31,7 @@ class UIImage_ {
   Uint8List? data;
 
   @ExchangeableObjectConstructor()
-  UIImage_({this.name, this.systemName, this.data}) {
+  CygnusUIImage_({this.name, this.systemName, this.data}) {
     assert(this.name != null || this.systemName != null || this.data != null);
   }
 }

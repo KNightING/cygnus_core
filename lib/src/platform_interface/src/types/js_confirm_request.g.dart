@@ -6,8 +6,8 @@ part of 'js_confirm_request.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the request of the [PlatformWebViewCreationParams.onJsConfirm] event.
-class JsConfirmRequest {
+///Class that represents the request of the [CygnusPlatformWebViewCreationParams.onJsConfirm] event.
+class CygnusJsConfirmRequest {
   ///Use [isMainFrame] instead.
   @Deprecated('Use isMainFrame instead')
   bool? iosIsMainFrame;
@@ -23,8 +23,8 @@ class JsConfirmRequest {
   String? message;
 
   ///The url of the page requesting the dialog.
-  WebUri? url;
-  JsConfirmRequest({
+  CygnusWebUri? url;
+  CygnusJsConfirmRequest({
     @Deprecated('Use isMainFrame instead') this.iosIsMainFrame,
     this.isMainFrame,
     this.message,
@@ -33,25 +33,25 @@ class JsConfirmRequest {
     isMainFrame = isMainFrame ?? iosIsMainFrame;
   }
 
-  ///Gets a possible [JsConfirmRequest] instance from a [Map] value.
-  static JsConfirmRequest? fromMap(
+  ///Gets a possible [CygnusJsConfirmRequest] instance from a [Map] value.
+  static CygnusJsConfirmRequest? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = JsConfirmRequest(
+    final instance = CygnusJsConfirmRequest(
       iosIsMainFrame: map['isMainFrame'],
       isMainFrame: map['isMainFrame'],
       message: map['message'],
-      url: map['url'] != null ? WebUri(map['url']) : null,
+      url: map['url'] != null ? CygnusWebUri(map['url']) : null,
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "isMainFrame": isMainFrame,
       "message": message,
@@ -66,6 +66,6 @@ class JsConfirmRequest {
 
   @override
   String toString() {
-    return 'JsConfirmRequest{isMainFrame: $isMainFrame, message: $message, url: $url}';
+    return 'CygnusJsConfirmRequest{isMainFrame: $isMainFrame, message: $message, url: $url}';
   }
 }

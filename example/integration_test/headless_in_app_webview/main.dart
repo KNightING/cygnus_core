@@ -15,9 +15,9 @@ part 'run_and_dispose.dart';
 part 'set_get_settings.dart';
 
 void main() {
-  final shouldSkip = !HeadlessInAppWebView.isClassSupported();
+  final shouldSkip = !CygnusHeadlessWebView.isClassSupported();
 
-  skippableGroup('HeadlessInAppWebView', () {
+  skippableGroup('CygnusHeadlessWebView', () {
     supported();
     runAndDispose();
     takeScreenshot();

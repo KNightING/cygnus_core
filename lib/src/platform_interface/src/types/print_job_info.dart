@@ -10,17 +10,17 @@ import 'enum_method.dart';
 
 part 'print_job_info.g.dart';
 
-///Class representing the description of a [PlatformPrintJobController].
+///Class representing the description of a [CygnusPlatformPrintJobController].
 ///Note that the print jobs state may change over time and this class represents a snapshot of this state.
 @ExchangeableObject()
-class PrintJobInfo_ {
+class CygnusPrintJobInfo_ {
   ///The state of the print job.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android native WebView
   ///- iOS
   ///- MacOS
-  PrintJobState_? state;
+  CygnusPrintJobState_? state;
 
   ///How many copies to print.
   ///
@@ -59,7 +59,7 @@ class PrintJobInfo_ {
   ///- Android native WebView
   ///- iOS
   ///- MacOS
-  Printer_? printer;
+  CygnusPrinter_? printer;
 
   ///The page order that will be used to generate the pages in this job.
   ///This is the physical page order of the pages.
@@ -67,13 +67,13 @@ class PrintJobInfo_ {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- MacOS
-  PrintJobPageOrder_? pageOrder;
+  CygnusPrintJobPageOrder_? pageOrder;
 
   ///The printing quality.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- MacOS
-  PrintJobRenderingQuality_? preferredRenderingQuality;
+  CygnusPrintJobRenderingQuality_? preferredRenderingQuality;
 
   ///Whether the progress panel is shown during the operation.
   ///
@@ -124,9 +124,9 @@ class PrintJobInfo_ {
   ///- Android native WebView
   ///- iOS
   ///- MacOS
-  PrintJobAttributes_? attributes;
+  CygnusPrintJobAttributes_? attributes;
 
-  PrintJobInfo_({
+  CygnusPrintJobInfo_({
     this.state,
     this.copies,
     this.numberOfPages,

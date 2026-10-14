@@ -6,11 +6,11 @@ import 'enum_method.dart';
 
 part 'request_focus_node_href_result.g.dart';
 
-///Class that represents the result used by the [PlatformInAppWebViewController.requestFocusNodeHref] method.
+///Class that represents the result used by the [CygnusPlatformWebViewController.requestFocusNodeHref] method.
 @ExchangeableObject()
-class RequestFocusNodeHrefResult_ {
+class CygnusRequestFocusNodeHrefResult_ {
   ///The anchor's href attribute.
-  WebUri? url;
+  CygnusWebUri? url;
 
   ///The anchor's text.
   String? title;
@@ -18,5 +18,5 @@ class RequestFocusNodeHrefResult_ {
   ///The image's src attribute.
   String? src;
 
-  RequestFocusNodeHrefResult_({this.url, this.title, this.src});
+  CygnusRequestFocusNodeHrefResult_({this.url, this.title, this.src});
 }

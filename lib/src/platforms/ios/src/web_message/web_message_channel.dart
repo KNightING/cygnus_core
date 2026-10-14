@@ -6,11 +6,11 @@ import 'web_message_port.dart';
 /// Object specifying creation parameters for creating a [IOSWebMessageChannel].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebMessageChannelCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebMessageChannelCreationParams] for
 /// more information.
 @immutable
 class IOSWebMessageChannelCreationParams
-    extends PlatformWebMessageChannelCreationParams {
+    extends CygnusPlatformWebMessageChannelCreationParams {
   /// Creates a new [IOSWebMessageChannelCreationParams] instance.
   const IOSWebMessageChannelCreationParams({
     required super.id,
@@ -18,11 +18,11 @@ class IOSWebMessageChannelCreationParams
     required super.port2,
   });
 
-  /// Creates a [IOSWebMessageChannelCreationParams] instance based on [PlatformWebMessageChannelCreationParams].
+  /// Creates a [IOSWebMessageChannelCreationParams] instance based on [CygnusPlatformWebMessageChannelCreationParams].
   factory IOSWebMessageChannelCreationParams.fromPlatformWebMessageChannelCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebMessageChannelCreationParams params,
+    CygnusPlatformWebMessageChannelCreationParams params,
   ) {
     return IOSWebMessageChannelCreationParams(
       id: params.id,
@@ -37,11 +37,11 @@ class IOSWebMessageChannelCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformWebMessageChannel}
-class IOSWebMessageChannel extends PlatformWebMessageChannel
+///{@macro cygnus_core.CygnusPlatformWebMessageChannel}
+class IOSWebMessageChannel extends CygnusPlatformWebMessageChannel
     with ChannelController {
   /// Constructs a [IOSWebMessageChannel].
-  IOSWebMessageChannel(PlatformWebMessageChannelCreationParams params)
+  IOSWebMessageChannel(CygnusPlatformWebMessageChannelCreationParams params)
     : super.implementation(
         params is IOSWebMessageChannelCreationParams
             ? params
@@ -95,8 +95,8 @@ class IOSWebMessageChannel extends PlatformWebMessageChannel
         int index = call.arguments["index"];
         var port = index == 0 ? _iosPort1 : _iosPort2;
         if (port.onMessage != null) {
-          WebMessage? message = call.arguments["message"] != null
-              ? WebMessage.fromMap(
+          CygnusWebMessage? message = call.arguments["message"] != null
+              ? CygnusWebMessage.fromMap(
                   call.arguments["message"].cast<String, dynamic>(),
                 )
               : null;

@@ -6,9 +6,9 @@ part of 'platform_cookie_manager.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformCookieManagerCreationParamsClassSupported
-    on PlatformCookieManagerCreationParams {
-  ///{@template cygnus_core.PlatformCookieManagerCreationParams.supported_platforms}
+extension _CygnusPlatformCookieManagerCreationParamsClassSupported
+    on CygnusPlatformCookieManagerCreationParams {
+  ///{@template cygnus_core.CygnusPlatformCookieManagerCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -18,7 +18,7 @@ extension _PlatformCookieManagerCreationParamsClassSupported
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
-  ///Use the [PlatformCookieManagerCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformCookieManagerCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return kIsWeb && platform == null
@@ -34,28 +34,28 @@ extension _PlatformCookieManagerCreationParamsClassSupported
   }
 }
 
-///List of [PlatformCookieManagerCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformCookieManagerCreationParamsProperty {
-  ///Can be used to check if the [PlatformCookieManagerCreationParams.webViewEnvironment] property is supported at runtime.
+///List of [CygnusPlatformCookieManagerCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformCookieManagerCreationParamsProperty {
+  ///Can be used to check if the [CygnusPlatformCookieManagerCreationParams.webViewEnvironment] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformCookieManagerCreationParams.webViewEnvironment.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformCookieManagerCreationParams.webViewEnvironment.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PlatformCookieManagerCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformCookieManagerCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   webViewEnvironment,
 }
 
-extension _PlatformCookieManagerCreationParamsPropertySupported
-    on PlatformCookieManagerCreationParams {
+extension _CygnusPlatformCookieManagerCreationParamsPropertySupported
+    on CygnusPlatformCookieManagerCreationParams {
   static bool isPropertySupported(
-    PlatformCookieManagerCreationParamsProperty property, {
+    CygnusPlatformCookieManagerCreationParamsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformCookieManagerCreationParamsProperty.webViewEnvironment:
+      case CygnusPlatformCookieManagerCreationParamsProperty.webViewEnvironment:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
@@ -64,15 +64,16 @@ extension _PlatformCookieManagerCreationParamsPropertySupported
   }
 }
 
-extension _PlatformCookieManagerClassSupported on PlatformCookieManager {
-  ///{@template cygnus_core.PlatformCookieManager.supported_platforms}
+extension _CygnusPlatformCookieManagerClassSupported
+    on CygnusPlatformCookieManager {
+  ///{@template cygnus_core.CygnusPlatformCookieManager.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - It is implemented using [CookieManager](https://developer.android.com/reference/android/webkit/CookieManager).
+  ///    - It is implemented using [CygnusCookieManager](https://developer.android.com/reference/android/webkit/CygnusCookieManager).
   ///- iOS WKWebView:
   ///    - It is implemented using [WKHTTPCookieStore](https://developer.apple.com/documentation/webkit/wkhttpcookiestore). On iOS below 11.0, it is implemented using JavaScript. See https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies for JavaScript restrictions.
-  ///- Linux WPE WebKit ([Official API - WebKitCookieManager](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/class.CookieManager.html)):
+  ///- Linux WPE WebKit ([Official API - WebKitCookieManager](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/class.CygnusCookieManager.html)):
   ///    - It is implemented using WebKitCookieManager from WPE WebKit.
   ///- macOS WKWebView:
   ///    - It is implemented using [WKHTTPCookieStore](https://developer.apple.com/documentation/webkit/wkhttpcookiestore).
@@ -80,7 +81,7 @@ extension _PlatformCookieManagerClassSupported on PlatformCookieManager {
   ///    - It is implemented using JavaScript. See https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies for JavaScript restrictions.
   ///- Windows WebView2
   ///
-  ///Use the [PlatformCookieManager.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformCookieManager.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return kIsWeb && platform == null
@@ -96,14 +97,14 @@ extension _PlatformCookieManagerClassSupported on PlatformCookieManager {
   }
 }
 
-///List of [PlatformCookieManager]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformCookieManagerMethod {
-  ///Can be used to check if the [PlatformCookieManager.deleteAllCookies] method is supported at runtime.
+///List of [CygnusPlatformCookieManager]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformCookieManagerMethod {
+  ///Can be used to check if the [CygnusPlatformCookieManager.deleteAllCookies] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformCookieManager.deleteAllCookies.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformCookieManager.deleteAllCookies.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - CookieManager.removeAllCookies](https://developer.android.com/reference/android/webkit/CookieManager#removeAllCookies(android.webkit.ValueCallback%3Cjava.lang.Boolean%3E)))
+  ///- Android WebView ([Official API - CygnusCookieManager.removeAllCookies](https://developer.android.com/reference/android/webkit/CygnusCookieManager#removeAllCookies(android.webkit.ValueCallback%3Cjava.lang.Boolean%3E)))
   ///- iOS WKWebView 11.0+ ([Official API - WKWebsiteDataStore.removeData](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532938-removedata)):
   ///    - It will return always `true`.
   ///- macOS WKWebView 10.13+ ([Official API - WKWebsiteDataStore.removeData](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532938-removedata)):
@@ -112,25 +113,25 @@ enum PlatformCookieManagerMethod {
   ///- Linux WPE WebKit ([Official API - webkit_website_data_manager_clear](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebsiteDataManager.clear.html)):
   ///    - Uses WebsiteDataManager to clear all cookie data.
   ///
-  ///Use the [PlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   deleteAllCookies,
 
-  ///Can be used to check if the [PlatformCookieManager.deleteCookie] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformCookieManager.deleteCookie] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformCookieManager.deleteCookie.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformCookieManager.deleteCookie.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - CookieManager.getCookie](https://developer.android.com/reference/android/webkit/CookieManager#getCookie(java.lang.String)))
+  ///- Android WebView ([Official API - CygnusCookieManager.getCookie](https://developer.android.com/reference/android/webkit/CygnusCookieManager#getCookie(java.lang.String)))
   ///- iOS WKWebView ([Official API - WKHTTPCookieStore.delete](https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882009-delete)):
-  ///    - On iOS below 11.0, the [webViewController] is used for deleting the cookie (also session-only cookie) using JavaScript (cookie with `isHttpOnly` enabled cannot be deleted, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to delete the cookie (session-only cookie and cookie with `isHttpOnly` enabled won't be deleted!). In this case, this method will return always `true`.
+  ///    - On iOS below 11.0, the [webViewController] is used for deleting the cookie (also session-only cookie) using JavaScript (cookie with `isHttpOnly` enabled cannot be deleted, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to delete the cookie (session-only cookie and cookie with `isHttpOnly` enabled won't be deleted!). In this case, this method will return always `true`.
   ///- macOS WKWebView ([Official API - WKHTTPCookieStore.delete](https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882009-delete)):
-  ///    - On macOS below 10.13, the [webViewController] is used for deleting the cookie (also session-only cookie) using JavaScript (cookie with `isHttpOnly` enabled cannot be deleted, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to delete the cookie (session-only cookie and cookie with `isHttpOnly` enabled won't be deleted!). In this case, this method will return always `true`.
+  ///    - On macOS below 10.13, the [webViewController] is used for deleting the cookie (also session-only cookie) using JavaScript (cookie with `isHttpOnly` enabled cannot be deleted, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to delete the cookie (session-only cookie and cookie with `isHttpOnly` enabled won't be deleted!). In this case, this method will return always `true`.
   ///- Web \<iframe\> but requires same origin:
-  ///    - The [webViewController] is used for deleting the cookie (also session-only cookie) using JavaScript (cookie with `isHttpOnly` enabled cannot be deleted, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to delete the cookie (session-only cookie and cookie with `isHttpOnly` enabled won't be deleted!). In this case, this method will return always `true`.
+  ///    - The [webViewController] is used for deleting the cookie (also session-only cookie) using JavaScript (cookie with `isHttpOnly` enabled cannot be deleted, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to delete the cookie (session-only cookie and cookie with `isHttpOnly` enabled won't be deleted!). In this case, this method will return always `true`.
   ///- Windows WebView2:
   ///    - The [webViewController] could be used to access cookies accessible only on the WebView managed by that controller, such as cookie with partition key.
-  ///- Linux WPE WebKit ([Official API - webkit_cookie_manager_delete_cookie](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.CookieManager.delete_cookie.html))
+  ///- Linux WPE WebKit ([Official API - webkit_cookie_manager_delete_cookie](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.CygnusCookieManager.delete_cookie.html))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
@@ -143,25 +144,25 @@ enum PlatformCookieManagerMethod {
   ///    - Web \<iframe\> but requires same origin
   ///    - Windows WebView2
   ///
-  ///Use the [PlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   deleteCookie,
 
-  ///Can be used to check if the [PlatformCookieManager.deleteCookies] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformCookieManager.deleteCookies] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformCookieManager.deleteCookies.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformCookieManager.deleteCookies.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - CookieManager.getCookie](https://developer.android.com/reference/android/webkit/CookieManager#getCookie(java.lang.String)))
+  ///- Android WebView ([Official API - CygnusCookieManager.getCookie](https://developer.android.com/reference/android/webkit/CygnusCookieManager#getCookie(java.lang.String)))
   ///- iOS WKWebView ([Official API - WKHTTPCookieStore.delete](https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882009-delete)):
-  ///    - On iOS below 11.0, the [webViewController] is used for deleting the cookies (also session-only cookies) using JavaScript (cookies with `isHttpOnly` enabled cannot be deleted, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to delete the cookies (session-only cookies and cookies with `isHttpOnly` enabled won't be deleted!). In this case, this method will return always `true`.
+  ///    - On iOS below 11.0, the [webViewController] is used for deleting the cookies (also session-only cookies) using JavaScript (cookies with `isHttpOnly` enabled cannot be deleted, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to delete the cookies (session-only cookies and cookies with `isHttpOnly` enabled won't be deleted!). In this case, this method will return always `true`.
   ///- macOS WKWebView ([Official API - WKHTTPCookieStore.delete](https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882009-delete)):
-  ///    - On macOS below 10.13, the [webViewController] is used for deleting the cookies (also session-only cookies) using JavaScript (cookies with `isHttpOnly` enabled cannot be deleted, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to delete the cookies (session-only cookies and cookies with `isHttpOnly` enabled won't be deleted!). In this case, this method will return always `true`.
+  ///    - On macOS below 10.13, the [webViewController] is used for deleting the cookies (also session-only cookies) using JavaScript (cookies with `isHttpOnly` enabled cannot be deleted, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to delete the cookies (session-only cookies and cookies with `isHttpOnly` enabled won't be deleted!). In this case, this method will return always `true`.
   ///- Web \<iframe\> but requires same origin:
-  ///    - The [webViewController] is used for deleting the cookies (also session-only cookies) using JavaScript (cookies with `isHttpOnly` enabled cannot be deleted, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to delete the cookies (session-only cookies and cookies with `isHttpOnly` enabled won't be deleted!). In this case, this method will return always `true`.
+  ///    - The [webViewController] is used for deleting the cookies (also session-only cookies) using JavaScript (cookies with `isHttpOnly` enabled cannot be deleted, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to delete the cookies (session-only cookies and cookies with `isHttpOnly` enabled won't be deleted!). In this case, this method will return always `true`.
   ///- Windows WebView2:
   ///    - The [webViewController] could be used to access cookies accessible only on the WebView managed by that controller, such as cookie with partition key.
-  ///- Linux WPE WebKit ([Official API - webkit_cookie_manager_delete_cookie](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.CookieManager.delete_cookie.html))
+  ///- Linux WPE WebKit ([Official API - webkit_cookie_manager_delete_cookie](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.CygnusCookieManager.delete_cookie.html))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
@@ -173,49 +174,49 @@ enum PlatformCookieManagerMethod {
   ///    - Web \<iframe\> but requires same origin
   ///    - Windows WebView2
   ///
-  ///Use the [PlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   deleteCookies,
 
-  ///Can be used to check if the [PlatformCookieManager.flush] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformCookieManager.flush] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformCookieManager.flush.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformCookieManager.flush.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - CookieManager.flush](https://developer.android.com/reference/android/webkit/CookieManager#flush()))
+  ///- Android WebView ([Official API - CygnusCookieManager.flush](https://developer.android.com/reference/android/webkit/CygnusCookieManager#flush()))
   ///
-  ///Use the [PlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   flush,
 
-  ///Can be used to check if the [PlatformCookieManager.getAllCookies] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformCookieManager.getAllCookies] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformCookieManager.getAllCookies.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformCookieManager.getAllCookies.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 11.0+ ([Official API - WKHTTPCookieStore.getAllCookies](https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882005-getallcookies))
   ///- macOS WKWebView 10.13+ ([Official API - WKHTTPCookieStore.getAllCookies](https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882005-getallcookies))
-  ///- Linux WPE WebKit ([Official API - webkit_cookie_manager_get_all_cookies](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.CookieManager.get_all_cookies.html))
+  ///- Linux WPE WebKit ([Official API - webkit_cookie_manager_get_all_cookies](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.CygnusCookieManager.get_all_cookies.html))
   ///
-  ///Use the [PlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getAllCookies,
 
-  ///Can be used to check if the [PlatformCookieManager.getCookie] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformCookieManager.getCookie] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformCookieManager.getCookie.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformCookieManager.getCookie.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - CookieManager.getCookie](https://developer.android.com/reference/android/webkit/CookieManager#getCookie(java.lang.String)))
+  ///- Android WebView ([Official API - CygnusCookieManager.getCookie](https://developer.android.com/reference/android/webkit/CygnusCookieManager#getCookie(java.lang.String)))
   ///- iOS WKWebView ([Official API - WKHTTPCookieStore.getAllCookies](https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882005-getallcookies)):
-  ///    - On iOS below 11.0, the [webViewController] is used for getting the cookie (also session-only cookie) using JavaScript (cookie with `isHttpOnly` enabled cannot be found, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. All the cookies returned this way will have all the properties to `null` except for [Cookie.name] and [Cookie.value]. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to get the cookie (session-only cookie and cookie with `isHttpOnly` enabled won't be found!).
+  ///    - On iOS below 11.0, the [webViewController] is used for getting the cookie (also session-only cookie) using JavaScript (cookie with `isHttpOnly` enabled cannot be found, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. All the cookies returned this way will have all the properties to `null` except for [CygnusCookie.name] and [CygnusCookie.value]. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to get the cookie (session-only cookie and cookie with `isHttpOnly` enabled won't be found!).
   ///- macOS WKWebView ([Official API - WKHTTPCookieStore.getAllCookies](https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882005-getallcookies)):
-  ///    - On macOS below 10.13, the [webViewController] is used for getting the cookie (also session-only cookie) using JavaScript (cookie with `isHttpOnly` enabled cannot be found, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. All the cookies returned this way will have all the properties to `null` except for [Cookie.name] and [Cookie.value]. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to get the cookie (session-only cookie and cookie with `isHttpOnly` enabled won't be found!).
+  ///    - On macOS below 10.13, the [webViewController] is used for getting the cookie (also session-only cookie) using JavaScript (cookie with `isHttpOnly` enabled cannot be found, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. All the cookies returned this way will have all the properties to `null` except for [CygnusCookie.name] and [CygnusCookie.value]. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to get the cookie (session-only cookie and cookie with `isHttpOnly` enabled won't be found!).
   ///- Web \<iframe\> but requires same origin:
-  ///    - The [webViewController] is used for getting the cookie (also session-only cookie) using JavaScript (cookie with `isHttpOnly` enabled cannot be found, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to get the cookie (session-only cookie and cookie with `isHttpOnly` enabled won't be found!).
+  ///    - The [webViewController] is used for getting the cookie (also session-only cookie) using JavaScript (cookie with `isHttpOnly` enabled cannot be found, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to get the cookie (session-only cookie and cookie with `isHttpOnly` enabled won't be found!).
   ///- Windows WebView2:
   ///    - The [webViewController] could be used to access cookies accessible only on the WebView managed by that controller, such as cookie with partition key.
-  ///- Linux WPE WebKit ([Official API - webkit_cookie_manager_get_cookies](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.CookieManager.get_cookies.html))
+  ///- Linux WPE WebKit ([Official API - webkit_cookie_manager_get_cookies](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.CygnusCookieManager.get_cookies.html))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
@@ -226,25 +227,25 @@ enum PlatformCookieManagerMethod {
   ///    - Web \<iframe\> but requires same origin
   ///    - Windows WebView2
   ///
-  ///Use the [PlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getCookie,
 
-  ///Can be used to check if the [PlatformCookieManager.getCookies] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformCookieManager.getCookies] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformCookieManager.getCookies.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformCookieManager.getCookies.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - CookieManager.getCookie](https://developer.android.com/reference/android/webkit/CookieManager#getCookie(java.lang.String)))
+  ///- Android WebView ([Official API - CygnusCookieManager.getCookie](https://developer.android.com/reference/android/webkit/CygnusCookieManager#getCookie(java.lang.String)))
   ///- iOS WKWebView ([Official API - WKHTTPCookieStore.getAllCookies](https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882005-getallcookies)):
-  ///    - On iOS below 11.0, the [webViewController] is used for getting the cookies (also session-only cookies) using JavaScript (cookies with `isHttpOnly` enabled cannot be found, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. All the cookies returned this way will have all the properties to `null` except for [Cookie.name] and [Cookie.value]. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to get the cookies (session-only cookies and cookies with `isHttpOnly` enabled won't be found!).
+  ///    - On iOS below 11.0, the [webViewController] is used for getting the cookies (also session-only cookies) using JavaScript (cookies with `isHttpOnly` enabled cannot be found, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. All the cookies returned this way will have all the properties to `null` except for [CygnusCookie.name] and [CygnusCookie.value]. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to get the cookies (session-only cookies and cookies with `isHttpOnly` enabled won't be found!).
   ///- macOS WKWebView ([Official API - WKHTTPCookieStore.getAllCookies](https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882005-getallcookies)):
-  ///    - On macOS below 10.13, the [webViewController] is used for getting the cookies (also session-only cookies) using JavaScript (cookies with `isHttpOnly` enabled cannot be found, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. All the cookies returned this way will have all the properties to `null` except for [Cookie.name] and [Cookie.value]. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to get the cookies (session-only cookies and cookies with `isHttpOnly` enabled won't be found!).
+  ///    - On macOS below 10.13, the [webViewController] is used for getting the cookies (also session-only cookies) using JavaScript (cookies with `isHttpOnly` enabled cannot be found, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. All the cookies returned this way will have all the properties to `null` except for [CygnusCookie.name] and [CygnusCookie.value]. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to get the cookies (session-only cookies and cookies with `isHttpOnly` enabled won't be found!).
   ///- Web \<iframe\> but requires same origin:
-  ///    - The [webViewController] is used for getting the cookies (also session-only cookies) using JavaScript (cookies with `isHttpOnly` enabled cannot be found, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to get the cookies (session-only cookies and cookies with `isHttpOnly` enabled won't be found!).
+  ///    - The [webViewController] is used for getting the cookies (also session-only cookies) using JavaScript (cookies with `isHttpOnly` enabled cannot be found, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) from the current context of the `WebView` managed by that controller. JavaScript must be enabled in order to work. In this case the [url] parameter is ignored. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to get the cookies (session-only cookies and cookies with `isHttpOnly` enabled won't be found!).
   ///- Windows WebView2:
   ///    - The [webViewController] could be used to access cookies accessible only on the WebView managed by that controller, such as cookie with partition key.
-  ///- Linux WPE WebKit ([Official API - webkit_cookie_manager_get_cookies](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.CookieManager.get_cookies.html))
+  ///- Linux WPE WebKit ([Official API - webkit_cookie_manager_get_cookies](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.CygnusCookieManager.get_cookies.html))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
@@ -254,36 +255,36 @@ enum PlatformCookieManagerMethod {
   ///    - Web \<iframe\> but requires same origin
   ///    - Windows WebView2
   ///
-  ///Use the [PlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getCookies,
 
-  ///Can be used to check if the [PlatformCookieManager.removeSessionCookies] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformCookieManager.removeSessionCookies] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformCookieManager.removeSessionCookies.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformCookieManager.removeSessionCookies.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - CookieManager.removeSessionCookies](https://developer.android.com/reference/android/webkit/CookieManager#removeSessionCookies(android.webkit.ValueCallback%3Cjava.lang.Boolean%3E)))
+  ///- Android WebView ([Official API - CygnusCookieManager.removeSessionCookies](https://developer.android.com/reference/android/webkit/CygnusCookieManager#removeSessionCookies(android.webkit.ValueCallback%3Cjava.lang.Boolean%3E)))
   ///
-  ///Use the [PlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeSessionCookies,
 
-  ///Can be used to check if the [PlatformCookieManager.setCookie] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformCookieManager.setCookie] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformCookieManager.setCookie.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformCookieManager.setCookie.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - CookieManager.setCookie](https://developer.android.com/reference/android/webkit/CookieManager#setCookie(java.lang.String,%20java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.Boolean%3E)))
+  ///- Android WebView ([Official API - CygnusCookieManager.setCookie](https://developer.android.com/reference/android/webkit/CygnusCookieManager#setCookie(java.lang.String,%20java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.Boolean%3E)))
   ///- iOS WKWebView ([Official API - WKHTTPCookieStore.setCookie](https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882007-setcookie)):
-  ///    - On iOS below 11.0, the [webViewController] could be used if you need to set a session-only cookie using JavaScript (so [isHttpOnly] cannot be set, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) on the current URL of the `WebView` managed by that controller. JavaScript must be enabled in order to work. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to set the cookie (session-only cookie won't work! In that case, you should set also [expiresDate] or [maxAge]). In this case, this method will return always `true`.
+  ///    - On iOS below 11.0, the [webViewController] could be used if you need to set a session-only cookie using JavaScript (so [isHttpOnly] cannot be set, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) on the current URL of the `WebView` managed by that controller. JavaScript must be enabled in order to work. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to set the cookie (session-only cookie won't work! In that case, you should set also [expiresDate] or [maxAge]). In this case, this method will return always `true`.
   ///- macOS WKWebView ([Official API - WKHTTPCookieStore.setCookie](https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882007-setcookie)):
-  ///    - On macOS below 10.13, the [webViewController] could be used if you need to set a session-only cookie using JavaScript (so [isHttpOnly] cannot be set, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) on the current URL of the `WebView` managed by that controller. JavaScript must be enabled in order to work. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to set the cookie (session-only cookie won't work! In that case, you should set also [expiresDate] or [maxAge]). In this case, this method will return always `true`.
+  ///    - On macOS below 10.13, the [webViewController] could be used if you need to set a session-only cookie using JavaScript (so [isHttpOnly] cannot be set, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) on the current URL of the `WebView` managed by that controller. JavaScript must be enabled in order to work. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to set the cookie (session-only cookie won't work! In that case, you should set also [expiresDate] or [maxAge]). In this case, this method will return always `true`.
   ///- Web \<iframe\> but requires same origin:
-  ///    - The [webViewController] could be used if you need to set a session-only cookie using JavaScript (so [isHttpOnly] cannot be set, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) on the current URL of the `WebView` managed by that controller. JavaScript must be enabled in order to work. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [PlatformHeadlessInAppWebView] to set the cookie (session-only cookie won't work! In that case, you should set also [expiresDate] or [maxAge]). In this case, this method will return always `true`.
+  ///    - The [webViewController] could be used if you need to set a session-only cookie using JavaScript (so [isHttpOnly] cannot be set, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies) on the current URL of the `WebView` managed by that controller. JavaScript must be enabled in order to work. If [webViewController] is `null` or JavaScript is disabled for it, it will try to use a [CygnusPlatformHeadlessWebView] to set the cookie (session-only cookie won't work! In that case, you should set also [expiresDate] or [maxAge]). In this case, this method will return always `true`.
   ///- Windows WebView2:
   ///    - The [webViewController] could be used to access cookies accessible only on the WebView managed by that controller, such as cookie with partition key.
-  ///- Linux WPE WebKit ([Official API - webkit_cookie_manager_add_cookie](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.CookieManager.add_cookie.html))
+  ///- Linux WPE WebKit ([Official API - webkit_cookie_manager_add_cookie](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.CygnusCookieManager.add_cookie.html))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
@@ -302,18 +303,19 @@ enum PlatformCookieManagerMethod {
   ///    - Web \<iframe\> but requires same origin
   ///    - Windows WebView2
   ///
-  ///Use the [PlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformCookieManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setCookie,
 }
 
-extension _PlatformCookieManagerMethodSupported on PlatformCookieManager {
+extension _CygnusPlatformCookieManagerMethodSupported
+    on CygnusPlatformCookieManager {
   static bool isMethodSupported(
-    PlatformCookieManagerMethod method, {
+    CygnusPlatformCookieManagerMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformCookieManagerMethod.deleteAllCookies:
+      case CygnusPlatformCookieManagerMethod.deleteAllCookies:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -322,7 +324,7 @@ extension _PlatformCookieManagerMethodSupported on PlatformCookieManager {
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformCookieManagerMethod.deleteCookie:
+      case CygnusPlatformCookieManagerMethod.deleteCookie:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -333,7 +335,7 @@ extension _PlatformCookieManagerMethodSupported on PlatformCookieManager {
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformCookieManagerMethod.deleteCookies:
+      case CygnusPlatformCookieManagerMethod.deleteCookies:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -344,19 +346,19 @@ extension _PlatformCookieManagerMethodSupported on PlatformCookieManager {
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformCookieManagerMethod.flush:
+      case CygnusPlatformCookieManagerMethod.flush:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformCookieManagerMethod.getAllCookies:
+      case CygnusPlatformCookieManagerMethod.getAllCookies:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformCookieManagerMethod.getCookie:
+      case CygnusPlatformCookieManagerMethod.getCookie:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -367,7 +369,7 @@ extension _PlatformCookieManagerMethodSupported on PlatformCookieManager {
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformCookieManagerMethod.getCookies:
+      case CygnusPlatformCookieManagerMethod.getCookies:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -378,12 +380,12 @@ extension _PlatformCookieManagerMethodSupported on PlatformCookieManager {
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformCookieManagerMethod.removeSessionCookies:
+      case CygnusPlatformCookieManagerMethod.removeSessionCookies:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformCookieManagerMethod.setCookie:
+      case CygnusPlatformCookieManagerMethod.setCookie:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&

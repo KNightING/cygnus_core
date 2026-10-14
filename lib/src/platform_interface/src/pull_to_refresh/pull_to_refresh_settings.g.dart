@@ -6,17 +6,17 @@ part of 'pull_to_refresh_settings.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Pull-To-Refresh Settings for [PlatformPullToRefreshController].
+///Pull-To-Refresh Settings for [CygnusPlatformPullToRefreshController].
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- Android WebView
 ///- iOS WKWebView
-class PullToRefreshSettings {
+class CygnusPullToRefreshSettings {
   ///The title text to display in the refresh control.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
-  AttributedString? attributedTitle;
+  CygnusAttributedString? attributedTitle;
 
   ///The background color of the refresh control.
   ///
@@ -50,7 +50,7 @@ class PullToRefreshSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  PullToRefreshSize? size;
+  CygnusPullToRefreshSize? size;
 
   ///The distance in pixels that the refresh indicator can be pulled beyond its resting position.
   ///
@@ -62,7 +62,7 @@ class PullToRefreshSettings {
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
-  PullToRefreshSettings({
+  CygnusPullToRefreshSettings({
     this.attributedTitle,
     this.backgroundColor,
     this.color,
@@ -72,16 +72,16 @@ class PullToRefreshSettings {
     this.slingshotDistance,
   });
 
-  ///Gets a possible [PullToRefreshSettings] instance from a [Map] value.
-  static PullToRefreshSettings? fromMap(
+  ///Gets a possible [CygnusPullToRefreshSettings] instance from a [Map] value.
+  static CygnusPullToRefreshSettings? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = PullToRefreshSettings(
-      attributedTitle: AttributedString.fromMap(
+    final instance = CygnusPullToRefreshSettings(
+      attributedTitle: CygnusAttributedString.fromMap(
         map['attributedTitle']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -92,12 +92,14 @@ class PullToRefreshSettings {
           ? UtilColor.fromStringRepresentation(map['color'])
           : null,
       distanceToTriggerSync: map['distanceToTriggerSync'],
-      size: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PullToRefreshSize.fromNativeValue(
+      size: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusPullToRefreshSize.fromNativeValue(
           map['size'],
         ),
-        EnumMethod.value => PullToRefreshSize.fromValue(map['size']),
-        EnumMethod.name => PullToRefreshSize.byName(map['size']),
+        CygnusEnumMethod.value => CygnusPullToRefreshSize.fromValue(
+          map['size'],
+        ),
+        CygnusEnumMethod.name => CygnusPullToRefreshSize.byName(map['size']),
       },
       slingshotDistance: map['slingshotDistance'],
     );
@@ -107,25 +109,25 @@ class PullToRefreshSettings {
 
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   static bool isPropertySupported(
-    PullToRefreshSettingsProperty property, {
+    CygnusPullToRefreshSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _PullToRefreshSettingsPropertySupported.isPropertySupported(
+  }) => _CygnusPullToRefreshSettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "attributedTitle": attributedTitle?.toMap(enumMethod: enumMethod),
       "backgroundColor": backgroundColor?.toHex(),
       "color": color?.toHex(),
       "distanceToTriggerSync": distanceToTriggerSync,
       "enabled": enabled,
-      "size": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => size?.toNativeValue(),
-        EnumMethod.value => size?.toValue(),
-        EnumMethod.name => size?.name(),
+      "size": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => size?.toNativeValue(),
+        CygnusEnumMethod.value => size?.toValue(),
+        CygnusEnumMethod.name => size?.name(),
       },
       "slingshotDistance": slingshotDistance,
     };
@@ -136,14 +138,15 @@ class PullToRefreshSettings {
     return toMap();
   }
 
-  ///Returns a copy of PullToRefreshSettings.
-  PullToRefreshSettings copy() {
-    return PullToRefreshSettings.fromMap(toMap()) ?? PullToRefreshSettings();
+  ///Returns a copy of CygnusPullToRefreshSettings.
+  CygnusPullToRefreshSettings copy() {
+    return CygnusPullToRefreshSettings.fromMap(toMap()) ??
+        CygnusPullToRefreshSettings();
   }
 
   @override
   String toString() {
-    return 'PullToRefreshSettings{attributedTitle: $attributedTitle, backgroundColor: $backgroundColor, color: $color, distanceToTriggerSync: $distanceToTriggerSync, enabled: $enabled, size: $size, slingshotDistance: $slingshotDistance}';
+    return 'CygnusPullToRefreshSettings{attributedTitle: $attributedTitle, backgroundColor: $backgroundColor, color: $color, distanceToTriggerSync: $distanceToTriggerSync, enabled: $enabled, size: $size, slingshotDistance: $slingshotDistance}';
   }
 }
 
@@ -151,127 +154,128 @@ class PullToRefreshSettings {
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-///List of [PullToRefreshSettings]'s properties that can be used to check i they are supported or not by the current platform.
-enum PullToRefreshSettingsProperty {
-  ///Can be used to check if the [PullToRefreshSettings.attributedTitle] property is supported at runtime.
+///List of [CygnusPullToRefreshSettings]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPullToRefreshSettingsProperty {
+  ///Can be used to check if the [CygnusPullToRefreshSettings.attributedTitle] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PullToRefreshSettings.attributedTitle.supported_platforms}
+  ///{@template cygnus_core.CygnusPullToRefreshSettings.attributedTitle.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [PullToRefreshSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPullToRefreshSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   attributedTitle,
 
-  ///Can be used to check if the [PullToRefreshSettings.backgroundColor] property is supported at runtime.
+  ///Can be used to check if the [CygnusPullToRefreshSettings.backgroundColor] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PullToRefreshSettings.backgroundColor.supported_platforms}
+  ///{@template cygnus_core.CygnusPullToRefreshSettings.backgroundColor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///
-  ///Use the [PullToRefreshSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPullToRefreshSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   backgroundColor,
 
-  ///Can be used to check if the [PullToRefreshSettings.color] property is supported at runtime.
+  ///Can be used to check if the [CygnusPullToRefreshSettings.color] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PullToRefreshSettings.color.supported_platforms}
+  ///{@template cygnus_core.CygnusPullToRefreshSettings.color.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///
-  ///Use the [PullToRefreshSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPullToRefreshSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   color,
 
-  ///Can be used to check if the [PullToRefreshSettings.distanceToTriggerSync] property is supported at runtime.
+  ///Can be used to check if the [CygnusPullToRefreshSettings.distanceToTriggerSync] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PullToRefreshSettings.distanceToTriggerSync.supported_platforms}
+  ///{@template cygnus_core.CygnusPullToRefreshSettings.distanceToTriggerSync.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PullToRefreshSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPullToRefreshSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   distanceToTriggerSync,
 
-  ///Can be used to check if the [PullToRefreshSettings.enabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusPullToRefreshSettings.enabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PullToRefreshSettings.enabled.supported_platforms}
+  ///{@template cygnus_core.CygnusPullToRefreshSettings.enabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///
-  ///Use the [PullToRefreshSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPullToRefreshSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enabled,
 
-  ///Can be used to check if the [PullToRefreshSettings.size] property is supported at runtime.
+  ///Can be used to check if the [CygnusPullToRefreshSettings.size] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PullToRefreshSettings.size.supported_platforms}
+  ///{@template cygnus_core.CygnusPullToRefreshSettings.size.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PullToRefreshSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPullToRefreshSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   size,
 
-  ///Can be used to check if the [PullToRefreshSettings.slingshotDistance] property is supported at runtime.
+  ///Can be used to check if the [CygnusPullToRefreshSettings.slingshotDistance] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PullToRefreshSettings.slingshotDistance.supported_platforms}
+  ///{@template cygnus_core.CygnusPullToRefreshSettings.slingshotDistance.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PullToRefreshSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPullToRefreshSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   slingshotDistance,
 }
 
-extension _PullToRefreshSettingsPropertySupported on PullToRefreshSettings {
+extension _CygnusPullToRefreshSettingsPropertySupported
+    on CygnusPullToRefreshSettings {
   static bool isPropertySupported(
-    PullToRefreshSettingsProperty property, {
+    CygnusPullToRefreshSettingsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PullToRefreshSettingsProperty.attributedTitle:
+      case CygnusPullToRefreshSettingsProperty.attributedTitle:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PullToRefreshSettingsProperty.backgroundColor:
+      case CygnusPullToRefreshSettingsProperty.backgroundColor:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PullToRefreshSettingsProperty.color:
+      case CygnusPullToRefreshSettingsProperty.color:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PullToRefreshSettingsProperty.distanceToTriggerSync:
+      case CygnusPullToRefreshSettingsProperty.distanceToTriggerSync:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PullToRefreshSettingsProperty.enabled:
+      case CygnusPullToRefreshSettingsProperty.enabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PullToRefreshSettingsProperty.size:
+      case CygnusPullToRefreshSettingsProperty.size:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PullToRefreshSettingsProperty.slingshotDistance:
+      case CygnusPullToRefreshSettingsProperty.slingshotDistance:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,

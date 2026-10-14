@@ -6,9 +6,9 @@ import 'enum_method.dart';
 
 part 'download_start_request.g.dart';
 
-///Class representing a download request of the WebView used by the event [PlatformWebViewCreationParams.onDownloadStartRequest].
+///Class representing a download request of the WebView used by the event [CygnusPlatformWebViewCreationParams.onDownloadStartRequest].
 @ExchangeableObject()
-class DownloadStartRequest_ {
+class CygnusDownloadStartRequest_ {
   ///The full url to the content that should be downloaded.
   @SupportedPlatforms(
     platforms: [
@@ -18,7 +18,7 @@ class DownloadStartRequest_ {
       WindowsPlatform(),
     ],
   )
-  WebUri url;
+  CygnusWebUri url;
 
   ///the user agent to be used for the download.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
@@ -67,7 +67,7 @@ class DownloadStartRequest_ {
   )
   String? textEncodingName;
 
-  DownloadStartRequest_({
+  CygnusDownloadStartRequest_({
     required this.url,
     this.userAgent,
     this.contentDisposition,

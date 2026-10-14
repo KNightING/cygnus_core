@@ -7,20 +7,20 @@ import '../in_app_webview/in_app_webview_controller.dart';
 /// Object specifying creation parameters for creating a [WindowsWebStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebStorageCreationParams] for
 /// more information.
-class WindowsWebStorageCreationParams extends PlatformWebStorageCreationParams {
+class WindowsWebStorageCreationParams extends CygnusPlatformWebStorageCreationParams {
   /// Creates a new [WindowsWebStorageCreationParams] instance.
   WindowsWebStorageCreationParams({
     required super.localStorage,
     required super.sessionStorage,
   });
 
-  /// Creates a [WindowsWebStorageCreationParams] instance based on [PlatformWebStorageCreationParams].
+  /// Creates a [WindowsWebStorageCreationParams] instance based on [CygnusPlatformWebStorageCreationParams].
   factory WindowsWebStorageCreationParams.fromPlatformWebStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebStorageCreationParams params,
+    CygnusPlatformWebStorageCreationParams params,
   ) {
     return WindowsWebStorageCreationParams(
       localStorage: params.localStorage,
@@ -29,10 +29,10 @@ class WindowsWebStorageCreationParams extends PlatformWebStorageCreationParams {
   }
 }
 
-///{@macro cygnus_core.PlatformWebStorage}
-class WindowsWebStorage extends PlatformWebStorage {
+///{@macro cygnus_core.CygnusPlatformWebStorage}
+class WindowsWebStorage extends CygnusPlatformWebStorage {
   /// Constructs a [WindowsWebStorage].
-  WindowsWebStorage(PlatformWebStorageCreationParams params)
+  WindowsWebStorage(CygnusPlatformWebStorageCreationParams params)
     : super.implementation(
         params is WindowsWebStorageCreationParams
             ? params
@@ -42,10 +42,10 @@ class WindowsWebStorage extends PlatformWebStorage {
       );
 
   @override
-  PlatformLocalStorage get localStorage => params.localStorage;
+  CygnusPlatformLocalStorage get localStorage => params.localStorage;
 
   @override
-  PlatformSessionStorage get sessionStorage => params.sessionStorage;
+  CygnusPlatformSessionStorage get sessionStorage => params.sessionStorage;
 
   @override
   void dispose() {
@@ -57,20 +57,20 @@ class WindowsWebStorage extends PlatformWebStorage {
 /// Object specifying creation parameters for creating a [WindowsStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformStorageCreationParams] for
 /// more information.
-class WindowsStorageCreationParams extends PlatformStorageCreationParams {
+class WindowsStorageCreationParams extends CygnusPlatformStorageCreationParams {
   /// Creates a new [WindowsStorageCreationParams] instance.
   WindowsStorageCreationParams({
     required super.controller,
     required super.webStorageType,
   });
 
-  /// Creates a [WindowsStorageCreationParams] instance based on [PlatformStorageCreationParams].
+  /// Creates a [WindowsStorageCreationParams] instance based on [CygnusPlatformStorageCreationParams].
   factory WindowsStorageCreationParams.fromPlatformStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformStorageCreationParams params,
+    CygnusPlatformStorageCreationParams params,
   ) {
     return WindowsStorageCreationParams(
       controller: params.controller,
@@ -79,8 +79,8 @@ class WindowsStorageCreationParams extends PlatformStorageCreationParams {
   }
 }
 
-///{@macro cygnus_core.PlatformStorage}
-abstract mixin class WindowsStorage implements PlatformStorage {
+///{@macro cygnus_core.CygnusPlatformStorage}
+abstract mixin class WindowsStorage implements CygnusPlatformStorage {
   @override
   WindowsInAppWebViewController? controller;
 
@@ -137,8 +137,8 @@ abstract mixin class WindowsStorage implements PlatformStorage {
   }
 
   @override
-  Future<List<WebStorageItem>> getItems() async {
-    var webStorageItems = <WebStorageItem>[];
+  Future<List<CygnusWebStorageItem>> getItems() async {
+    var webStorageItems = <CygnusWebStorageItem>[];
 
     List<Map<dynamic, dynamic>>? items = (await controller?.evaluateJavascript(
       source:
@@ -165,7 +165,7 @@ abstract mixin class WindowsStorage implements PlatformStorage {
 
     for (var item in items) {
       webStorageItems.add(
-        WebStorageItem(key: item["key"], value: item["value"]),
+        CygnusWebStorageItem(key: item["key"], value: item["value"]),
       );
     }
 
@@ -202,27 +202,27 @@ abstract mixin class WindowsStorage implements PlatformStorage {
 /// Object specifying creation parameters for creating a [WindowsLocalStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformLocalStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformLocalStorageCreationParams] for
 /// more information.
 class WindowsLocalStorageCreationParams
-    extends PlatformLocalStorageCreationParams {
+    extends CygnusPlatformLocalStorageCreationParams {
   /// Creates a new [WindowsLocalStorageCreationParams] instance.
   WindowsLocalStorageCreationParams(super.params);
 
-  /// Creates a [WindowsLocalStorageCreationParams] instance based on [PlatformLocalStorageCreationParams].
+  /// Creates a [WindowsLocalStorageCreationParams] instance based on [CygnusPlatformLocalStorageCreationParams].
   factory WindowsLocalStorageCreationParams.fromPlatformLocalStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformLocalStorageCreationParams params,
+    CygnusPlatformLocalStorageCreationParams params,
   ) {
     return WindowsLocalStorageCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformLocalStorage}
-class WindowsLocalStorage extends PlatformLocalStorage with WindowsStorage {
+///{@macro cygnus_core.CygnusPlatformLocalStorage}
+class WindowsLocalStorage extends CygnusPlatformLocalStorage with WindowsStorage {
   /// Constructs a [WindowsLocalStorage].
-  WindowsLocalStorage(PlatformLocalStorageCreationParams params)
+  WindowsLocalStorage(CygnusPlatformLocalStorageCreationParams params)
     : super.implementation(
         params is WindowsLocalStorageCreationParams
             ? params
@@ -233,14 +233,14 @@ class WindowsLocalStorage extends PlatformLocalStorage with WindowsStorage {
 
   /// Default storage
   factory WindowsLocalStorage.defaultStorage({
-    required PlatformInAppWebViewController? controller,
+    required CygnusPlatformWebViewController? controller,
   }) {
     return WindowsLocalStorage(
       WindowsLocalStorageCreationParams(
-        PlatformLocalStorageCreationParams(
-          PlatformStorageCreationParams(
+        CygnusPlatformLocalStorageCreationParams(
+          CygnusPlatformStorageCreationParams(
             controller: controller,
-            webStorageType: WebStorageType.LOCAL_STORAGE,
+            webStorageType: CygnusWebStorageType.LOCAL_STORAGE,
           ),
         ),
       ),
@@ -255,27 +255,27 @@ class WindowsLocalStorage extends PlatformLocalStorage with WindowsStorage {
 /// Object specifying creation parameters for creating a [WindowsSessionStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformSessionStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformSessionStorageCreationParams] for
 /// more information.
 class WindowsSessionStorageCreationParams
-    extends PlatformSessionStorageCreationParams {
+    extends CygnusPlatformSessionStorageCreationParams {
   /// Creates a new [WindowsSessionStorageCreationParams] instance.
   WindowsSessionStorageCreationParams(super.params);
 
-  /// Creates a [WindowsSessionStorageCreationParams] instance based on [PlatformSessionStorageCreationParams].
+  /// Creates a [WindowsSessionStorageCreationParams] instance based on [CygnusPlatformSessionStorageCreationParams].
   factory WindowsSessionStorageCreationParams.fromPlatformSessionStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformSessionStorageCreationParams params,
+    CygnusPlatformSessionStorageCreationParams params,
   ) {
     return WindowsSessionStorageCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformSessionStorage}
-class WindowsSessionStorage extends PlatformSessionStorage with WindowsStorage {
+///{@macro cygnus_core.CygnusPlatformSessionStorage}
+class WindowsSessionStorage extends CygnusPlatformSessionStorage with WindowsStorage {
   /// Constructs a [WindowsSessionStorage].
-  WindowsSessionStorage(PlatformSessionStorageCreationParams params)
+  WindowsSessionStorage(CygnusPlatformSessionStorageCreationParams params)
     : super.implementation(
         params is WindowsSessionStorageCreationParams
             ? params
@@ -286,14 +286,14 @@ class WindowsSessionStorage extends PlatformSessionStorage with WindowsStorage {
 
   /// Default storage
   factory WindowsSessionStorage.defaultStorage({
-    required PlatformInAppWebViewController? controller,
+    required CygnusPlatformWebViewController? controller,
   }) {
     return WindowsSessionStorage(
       WindowsSessionStorageCreationParams(
-        PlatformSessionStorageCreationParams(
-          PlatformStorageCreationParams(
+        CygnusPlatformSessionStorageCreationParams(
+          CygnusPlatformStorageCreationParams(
             controller: controller,
-            webStorageType: WebStorageType.SESSION_STORAGE,
+            webStorageType: CygnusWebStorageType.SESSION_STORAGE,
           ),
         ),
       ),

@@ -14,14 +14,14 @@ import 'platform_webview.dart';
 
 part 'platform_inappwebview_widget.g.dart';
 
-///{@template cygnus_core.PlatformInAppWebViewWidgetCreationParams}
-///Object specifying creation parameters for creating a [PlatformInAppWebViewWidget].
+///{@template cygnus_core.CygnusPlatformWebViewWidgetCreationParams}
+///Object specifying creation parameters for creating a [CygnusPlatformWebViewWidget].
 ///
 ///Platform specific implementations can add additional fields by extending
 ///this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformInAppWebViewWidgetCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebViewWidgetCreationParams.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -32,12 +32,12 @@ part 'platform_inappwebview_widget.g.dart';
     LinuxPlatform(),
   ],
 )
-class PlatformInAppWebViewWidgetCreationParams
-    extends PlatformWebViewCreationParams {
-  ///{@macro cygnus_core.PlatformInAppWebViewWidgetCreationParams}
+class CygnusPlatformWebViewWidgetCreationParams
+    extends CygnusPlatformWebViewCreationParams {
+  ///{@macro cygnus_core.CygnusPlatformWebViewWidgetCreationParams}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.supported_platforms}
-  PlatformInAppWebViewWidgetCreationParams({
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.supported_platforms}
+  CygnusPlatformWebViewWidgetCreationParams({
     this.key,
     this.layoutDirection,
     this.gestureRecognizers,
@@ -77,7 +77,7 @@ class PlatformInAppWebViewWidgetCreationParams
     super.onReceivedHttpAuthRequest,
     super.onReceivedServerTrustAuthRequest,
     super.onReceivedClientCertRequest,
-    @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+    @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
     super.onFindResultReceived,
     super.shouldInterceptAjaxRequest,
     super.onAjaxReadyStateChange,
@@ -192,11 +192,11 @@ class PlatformInAppWebViewWidgetCreationParams
   /// recognizer.
   final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
 
-  ///{@template cygnus_core.PlatformInAppWebViewWidgetCreationParams.headlessWebView}
-  ///The [PlatformHeadlessInAppWebView] to use to initialize this widget.
+  ///{@template cygnus_core.CygnusPlatformWebViewWidgetCreationParams.headlessWebView}
+  ///The [CygnusPlatformHeadlessWebView] to use to initialize this widget.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewWidgetCreationParams.keepAlive.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewWidgetCreationParams.keepAlive.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -206,15 +206,15 @@ class PlatformInAppWebViewWidgetCreationParams
       WindowsPlatform(),
     ],
   )
-  final PlatformHeadlessInAppWebView? headlessWebView;
+  final CygnusPlatformHeadlessWebView? headlessWebView;
 
-  ///{@template cygnus_core.PlatformInAppWebViewWidgetCreationParams.keepAlive}
+  ///{@template cygnus_core.CygnusPlatformWebViewWidgetCreationParams.keepAlive}
   ///Used to keep alive this WebView.
-  ///Remember to dispose the [InAppWebViewKeepAlive] instance
-  ///using [InAppWebViewController.disposeKeepAlive].
+  ///Remember to dispose the [CygnusWebViewKeepAlive] instance
+  ///using [CygnusWebViewController.disposeKeepAlive].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewWidgetCreationParams.keepAlive.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewWidgetCreationParams.keepAlive.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -223,22 +223,22 @@ class PlatformInAppWebViewWidgetCreationParams
       WindowsPlatform(),
     ],
   )
-  final InAppWebViewKeepAlive? keepAlive;
+  final CygnusWebViewKeepAlive? keepAlive;
 
-  ///{@template cygnus_core.PlatformInAppWebViewWidgetCreationParams.webViewEnvironment}
+  ///{@template cygnus_core.CygnusPlatformWebViewWidgetCreationParams.webViewEnvironment}
   ///Used to prevent gesture delay on iOS caused by Flutter's gestures handling
   ///between native/platform views.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewWidgetCreationParams.webViewEnvironment.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewWidgetCreationParams.webViewEnvironment.supported_platforms}
   @SupportedPlatforms(platforms: [IOSPlatform()])
   final bool? preventGestureDelay;
 
-  ///{@template cygnus_core.PlatformInAppWebViewWidgetCreationParams.webViewEnvironment}
-  ///Used to create the [PlatformInAppWebViewWidget] using the specified environment.
+  ///{@template cygnus_core.CygnusPlatformWebViewWidgetCreationParams.webViewEnvironment}
+  ///Used to create the [CygnusPlatformWebViewWidget] using the specified environment.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewWidgetCreationParams.webViewEnvironment.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewWidgetCreationParams.webViewEnvironment.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(),
@@ -249,26 +249,26 @@ class PlatformInAppWebViewWidgetCreationParams
       ),
     ],
   )
-  final PlatformWebViewEnvironment? webViewEnvironment;
+  final CygnusPlatformWebViewEnvironment? webViewEnvironment;
 
-  ///{@template cygnus_core.PlatformInAppWebViewWidgetCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformWebViewWidgetCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   @override
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformInAppWebViewWidgetCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformWebViewWidgetCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformInAppWebViewWidgetCreationParams.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformWebViewWidgetCreationParams.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
-  ///The property should be one of the [PlatformWebViewCreationParamsProperty] or [PlatformInAppWebViewWidgetCreationParamsProperty] values.
+  ///The property should be one of the [CygnusPlatformWebViewCreationParamsProperty] or [CygnusPlatformWebViewWidgetCreationParamsProperty] values.
   ///{@endtemplate}
   @override
   bool isPropertySupported(dynamic property, {TargetPlatform? platform}) =>
-      property is PlatformWebViewCreationParamsProperty
+      property is CygnusPlatformWebViewCreationParamsProperty
       ? super.isPropertySupported(property, platform: platform)
-      : _PlatformInAppWebViewWidgetCreationParamsPropertySupported.isPropertySupported(
+      : _CygnusPlatformWebViewWidgetCreationParamsPropertySupported.isPropertySupported(
           property,
           platform: platform,
         );
@@ -276,71 +276,71 @@ class PlatformInAppWebViewWidgetCreationParams
 
 ///Interface for a platform implementation of a web view widget.
 ///
-///{@template cygnus_core.PlatformInAppWebViewWidget}
+///{@template cygnus_core.CygnusPlatformWebViewWidget}
 ///Flutter Widget for adding an **inline native WebView** integrated in the flutter widget tree.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformInAppWebViewWidgetCreationParams.supported_platforms}
-abstract class PlatformInAppWebViewWidget extends PlatformInterface
-    implements Disposable {
-  /// Creates a new [PlatformInAppWebViewWidget]
-  factory PlatformInAppWebViewWidget(
-    PlatformInAppWebViewWidgetCreationParams params,
+///{@macro cygnus_core.CygnusPlatformWebViewWidgetCreationParams.supported_platforms}
+abstract class CygnusPlatformWebViewWidget extends PlatformInterface
+    implements CygnusDisposable {
+  /// Creates a new [CygnusPlatformWebViewWidget]
+  factory CygnusPlatformWebViewWidget(
+    CygnusPlatformWebViewWidgetCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformInAppWebViewWidget webViewWidgetDelegate =
-        InAppWebViewPlatform.instance!.createPlatformInAppWebViewWidget(params);
+    final CygnusPlatformWebViewWidget webViewWidgetDelegate =
+        CygnusWebViewPlatform.instance!.createPlatformInAppWebViewWidget(params);
     PlatformInterface.verify(webViewWidgetDelegate, _token);
     return webViewWidgetDelegate;
   }
 
-  /// Creates a new [PlatformInAppWebViewWidget] to access static methods.
-  factory PlatformInAppWebViewWidget.static() {
+  /// Creates a new [CygnusPlatformWebViewWidget] to access static methods.
+  factory CygnusPlatformWebViewWidget.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformInAppWebViewWidget inAppWebViewWidgetStatic =
-        InAppWebViewPlatform.instance!.createPlatformInAppWebViewWidgetStatic();
+    final CygnusPlatformWebViewWidget inAppWebViewWidgetStatic =
+        CygnusWebViewPlatform.instance!.createPlatformInAppWebViewWidgetStatic();
     PlatformInterface.verify(inAppWebViewWidgetStatic, _token);
     return inAppWebViewWidgetStatic;
   }
 
   /// Used by the platform implementation to create a new
-  /// [PlatformInAppWebViewWidget].
+  /// [CygnusPlatformWebViewWidget].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformInAppWebViewWidget.implementation(this.params) : super(token: _token);
+  CygnusPlatformWebViewWidget.implementation(this.params) : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformInAppWebViewWidget].
-  final PlatformInAppWebViewWidgetCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformWebViewWidget].
+  final CygnusPlatformWebViewWidgetCreationParams params;
 
   /// Builds a new WebView.
   ///
   /// Returns a Widget tree that embeds the created web view.
   Widget build(BuildContext context);
 
-  /// Gets the `InAppWebViewController` instance controller
-  T controllerFromPlatform<T>(PlatformInAppWebViewController controller);
+  /// Gets the `CygnusWebViewController` instance controller
+  T controllerFromPlatform<T>(CygnusPlatformWebViewController controller);
 
-  ///{@macro cygnus_core.PlatformInAppWebViewWidgetCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformWebViewWidgetCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
       params.isClassSupported(platform: platform);
 
-  ///{@macro cygnus_core.PlatformInAppWebViewWidgetCreationParams.isPropertySupported}
+  ///{@macro cygnus_core.CygnusPlatformWebViewWidgetCreationParams.isPropertySupported}
   bool isPropertySupported(dynamic property, {TargetPlatform? platform}) =>
       params.isPropertySupported(property, platform: platform);
 

@@ -809,7 +809,7 @@ class _CustomTestStepDialogState extends State<CustomTestStepDialog> {
             }
 
             // Access displayName dynamically to avoid type errors
-            // caused by contravariance in function arguments (e.g. UserScriptInjectionTime vs dynamic)
+            // caused by contravariance in function arguments (e.g. CygnusUserScriptInjectionTime vs dynamic)
             final dynamic displayNameFunc = (defValue as dynamic).displayName;
 
             // Create a new hint with the current value

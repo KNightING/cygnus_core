@@ -6,42 +6,42 @@ part of 'launching_external_uri_scheme_request.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the request used by the [PlatformWebViewCreationParams.onLaunchingExternalUriScheme] event.
-class LaunchingExternalUriSchemeRequest {
+///Class that represents the request used by the [CygnusPlatformWebViewCreationParams.onLaunchingExternalUriScheme] event.
+class CygnusLaunchingExternalUriSchemeRequest {
   ///The origin initiating the external URI scheme launch.
-  WebUri? initiatingOrigin;
+  CygnusWebUri? initiatingOrigin;
 
   ///Whether the external URI scheme request was initiated through a user gesture.
   bool? isUserInitiated;
 
   ///The URI with the external URI scheme to be launched.
-  WebUri uri;
-  LaunchingExternalUriSchemeRequest({
+  CygnusWebUri uri;
+  CygnusLaunchingExternalUriSchemeRequest({
     this.initiatingOrigin,
     this.isUserInitiated,
     required this.uri,
   });
 
-  ///Gets a possible [LaunchingExternalUriSchemeRequest] instance from a [Map] value.
-  static LaunchingExternalUriSchemeRequest? fromMap(
+  ///Gets a possible [CygnusLaunchingExternalUriSchemeRequest] instance from a [Map] value.
+  static CygnusLaunchingExternalUriSchemeRequest? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = LaunchingExternalUriSchemeRequest(
+    final instance = CygnusLaunchingExternalUriSchemeRequest(
       initiatingOrigin: map['initiatingOrigin'] != null
-          ? WebUri(map['initiatingOrigin'])
+          ? CygnusWebUri(map['initiatingOrigin'])
           : null,
       isUserInitiated: map['isUserInitiated'],
-      uri: WebUri(map['uri']),
+      uri: CygnusWebUri(map['uri']),
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "initiatingOrigin": initiatingOrigin?.toString(),
       "isUserInitiated": isUserInitiated,
@@ -56,6 +56,6 @@ class LaunchingExternalUriSchemeRequest {
 
   @override
   String toString() {
-    return 'LaunchingExternalUriSchemeRequest{initiatingOrigin: $initiatingOrigin, isUserInitiated: $isUserInitiated, uri: $uri}';
+    return 'CygnusLaunchingExternalUriSchemeRequest{initiatingOrigin: $initiatingOrigin, isUserInitiated: $isUserInitiated, uri: $uri}';
   }
 }

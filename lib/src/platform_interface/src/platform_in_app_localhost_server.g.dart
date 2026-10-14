@@ -6,9 +6,9 @@ part of 'platform_in_app_localhost_server.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformInAppLocalhostServerCreationParamsClassSupported
-    on PlatformInAppLocalhostServerCreationParams {
-  ///{@template cygnus_core.PlatformInAppLocalhostServerCreationParams.supported_platforms}
+extension _CygnusPlatformLocalhostServerCreationParamsClassSupported
+    on CygnusPlatformLocalhostServerCreationParams {
+  ///{@template cygnus_core.CygnusPlatformLocalhostServerCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -17,7 +17,7 @@ extension _PlatformInAppLocalhostServerCreationParamsClassSupported
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppLocalhostServerCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformLocalhostServerCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -31,9 +31,9 @@ extension _PlatformInAppLocalhostServerCreationParamsClassSupported
   }
 }
 
-extension _PlatformInAppLocalhostServerClassSupported
-    on PlatformInAppLocalhostServer {
-  ///{@template cygnus_core.PlatformInAppLocalhostServer.supported_platforms}
+extension _CygnusPlatformLocalhostServerClassSupported
+    on CygnusPlatformLocalhostServer {
+  ///{@template cygnus_core.CygnusPlatformLocalhostServer.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -42,7 +42,7 @@ extension _PlatformInAppLocalhostServerClassSupported
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppLocalhostServer.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformLocalhostServer.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -56,11 +56,11 @@ extension _PlatformInAppLocalhostServerClassSupported
   }
 }
 
-///List of [PlatformInAppLocalhostServer]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformInAppLocalhostServerMethod {
-  ///Can be used to check if the [PlatformInAppLocalhostServer.close] method is supported at runtime.
+///List of [CygnusPlatformLocalhostServer]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformLocalhostServerMethod {
+  ///Can be used to check if the [CygnusPlatformLocalhostServer.close] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppLocalhostServer.close.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformLocalhostServer.close.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -69,13 +69,13 @@ enum PlatformInAppLocalhostServerMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppLocalhostServer.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformLocalhostServer.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   close,
 
-  ///Can be used to check if the [PlatformInAppLocalhostServer.isRunning] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformLocalhostServer.isRunning] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppLocalhostServer.isRunning.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformLocalhostServer.isRunning.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -84,13 +84,13 @@ enum PlatformInAppLocalhostServerMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppLocalhostServer.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformLocalhostServer.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isRunning,
 
-  ///Can be used to check if the [PlatformInAppLocalhostServer.start] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformLocalhostServer.start] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppLocalhostServer.start.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformLocalhostServer.start.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -99,19 +99,19 @@ enum PlatformInAppLocalhostServerMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppLocalhostServer.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformLocalhostServer.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   start,
 }
 
-extension _PlatformInAppLocalhostServerMethodSupported
-    on PlatformInAppLocalhostServer {
+extension _CygnusPlatformLocalhostServerMethodSupported
+    on CygnusPlatformLocalhostServer {
   static bool isMethodSupported(
-    PlatformInAppLocalhostServerMethod method, {
+    CygnusPlatformLocalhostServerMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformInAppLocalhostServerMethod.close:
+      case CygnusPlatformLocalhostServerMethod.close:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -120,7 +120,7 @@ extension _PlatformInAppLocalhostServerMethodSupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppLocalhostServerMethod.isRunning:
+      case CygnusPlatformLocalhostServerMethod.isRunning:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -129,7 +129,7 @@ extension _PlatformInAppLocalhostServerMethodSupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppLocalhostServerMethod.start:
+      case CygnusPlatformLocalhostServerMethod.start:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,

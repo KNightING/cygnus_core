@@ -1,24 +1,24 @@
 part of 'main.dart';
 
 void setGetDelete() {
-  final shouldSkip = !CookieManager.isClassSupported();
+  final shouldSkip = !CygnusCookieManager.isClassSupported();
 
   skippableTestWidgets('set, get, delete', (WidgetTester tester) async {
-    CookieManager cookieManager = CookieManager.instance();
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    CygnusCookieManager cookieManager = CygnusCookieManager.instance();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<String> pageLoaded = Completer<String>();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+          initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
           },
-          initialSettings: InAppWebViewSettings(clearCache: true),
+          initialSettings: CygnusWebViewSettings(clearCache: true),
           onLoadStop: (controller, url) {
             pageLoaded.complete(url!.toString());
           },
@@ -26,10 +26,10 @@ void setGetDelete() {
       ),
     );
 
-    final url = WebUri(await pageLoaded.future);
+    final url = CygnusWebUri(await pageLoaded.future);
 
-    if (CookieManager.isMethodSupported(
-      PlatformCookieManagerMethod.removeSessionCookies,
+    if (CygnusCookieManager.isMethodSupported(
+      CygnusPlatformCookieManagerMethod.removeSessionCookies,
     )) {
       await cookieManager.setCookie(
         url: url,
@@ -41,10 +41,10 @@ void setGetDelete() {
 
     // Empty cookie-value is allowed according to https://datatracker.ietf.org/doc/html/rfc6265#section-4.1.1
     await cookieManager.setCookie(url: url, name: "myCookie", value: "");
-    List<Cookie> cookies = await cookieManager.getCookies(url: url);
+    List<CygnusCookie> cookies = await cookieManager.getCookies(url: url);
     expect(cookies, isNotEmpty);
 
-    Cookie? cookie = await cookieManager.getCookie(url: url, name: "myCookie");
+    CygnusCookie? cookie = await cookieManager.getCookie(url: url, name: "myCookie");
     expect(cookie?.value.toString(), "");
 
     await cookieManager.setCookie(url: url, name: "myCookie", value: "myValue");

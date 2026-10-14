@@ -6,42 +6,42 @@ part of 'context_menu.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the WebView context menu. It used by [PlatformWebViewCreationParams.contextMenu].
+///Class that represents the WebView context menu. It used by [CygnusPlatformWebViewCreationParams.contextMenu].
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- Android WebView:
 ///    - To make it work properly on Android, JavaScript should be enabled!
 ///- iOS WKWebView
-class ContextMenu {
-  ///List of the custom [ContextMenuItem].
-  final List<ContextMenuItem> menuItems;
+class CygnusContextMenu {
+  ///List of the custom [CygnusContextMenuItem].
+  final List<CygnusContextMenuItem> menuItems;
 
   ///Event fired when a context menu item has been clicked.
   ///
-  ///[contextMenuItemClicked] represents the [ContextMenuItem] clicked.
-  final void Function(ContextMenuItem)? onContextMenuActionItemClicked;
+  ///[contextMenuItemClicked] represents the [CygnusContextMenuItem] clicked.
+  final void Function(CygnusContextMenuItem)? onContextMenuActionItemClicked;
 
   ///Event fired when the context menu for this WebView is being built.
   ///
   ///[hitTestResult] represents the hit result for hitting an HTML elements.
-  final void Function(InAppWebViewHitTestResult)? onCreateContextMenu;
+  final void Function(CygnusWebViewHitTestResult)? onCreateContextMenu;
 
   ///Event fired when the context menu for this WebView is being hidden.
   final void Function()? onHideContextMenu;
 
   ///Use [settings] instead
   @Deprecated('Use settings instead')
-  final ContextMenuOptions? options;
+  final CygnusContextMenuOptions? options;
 
   ///Context menu settings.
-  final ContextMenuSettings? settings;
+  final CygnusContextMenuSettings? settings;
 
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
   ///    - To make it work properly on Android, JavaScript should be enabled!
   ///- iOS WKWebView
-  ContextMenu({
+  CygnusContextMenu({
     this.menuItems = const [],
     this.onCreateContextMenu,
     this.onHideContextMenu,
@@ -50,28 +50,28 @@ class ContextMenu {
     this.onContextMenuActionItemClicked,
   });
 
-  ///Gets a possible [ContextMenu] instance from a [Map] value.
-  static ContextMenu? fromMap(
+  ///Gets a possible [CygnusContextMenu] instance from a [Map] value.
+  static CygnusContextMenu? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ContextMenu(
-      menuItems: List<ContextMenuItem>.from(
+    final instance = CygnusContextMenu(
+      menuItems: List<CygnusContextMenuItem>.from(
         map['menuItems'].map(
-          (e) => ContextMenuItem.fromMap(
+          (e) => CygnusContextMenuItem.fromMap(
             e?.cast<String, dynamic>(),
             enumMethod: enumMethod,
           )!,
         ),
       ),
-      options: ContextMenuOptions.fromMap(
+      options: CygnusContextMenuOptions.fromMap(
         map['settings']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
-      settings: ContextMenuSettings.fromMap(
+      settings: CygnusContextMenuSettings.fromMap(
         map['settings']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -80,16 +80,18 @@ class ContextMenu {
   }
 
   @ExchangeableObjectMethod(toMapMergeWith: true)
-  Map<String, dynamic> _toMapMergeWith({EnumMethod? enumMethod}) {
+  Map<String, dynamic> _toMapMergeWith({CygnusEnumMethod? enumMethod}) {
     return {
       "settings":
-          (settings as ContextMenuSettings?)?.toMap(enumMethod: enumMethod) ??
-          (options as ContextMenuOptions?)?.toMap(enumMethod: enumMethod),
+          (settings as CygnusContextMenuSettings?)?.toMap(
+            enumMethod: enumMethod,
+          ) ??
+          (options as CygnusContextMenuOptions?)?.toMap(enumMethod: enumMethod),
     };
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "menuItems": menuItems
           .map((e) => e.toMap(enumMethod: enumMethod))
@@ -106,6 +108,6 @@ class ContextMenu {
 
   @override
   String toString() {
-    return 'ContextMenu{menuItems: $menuItems, settings: $settings}';
+    return 'CygnusContextMenu{menuItems: $menuItems, settings: $settings}';
   }
 }

@@ -7,36 +7,42 @@ part of 'scrollview_deceleration_rate.dart';
 // **************************************************************************
 
 ///Class that represents a floating-point value that determines the rate of deceleration after the user lifts their finger.
-class ScrollViewDecelerationRate {
+class CygnusScrollViewDecelerationRate {
   final String _value;
   final String? _nativeValue;
-  const ScrollViewDecelerationRate._internal(this._value, this._nativeValue);
+  const CygnusScrollViewDecelerationRate._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory ScrollViewDecelerationRate._internalMultiPlatform(
+  factory CygnusScrollViewDecelerationRate._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => ScrollViewDecelerationRate._internal(value, nativeValue());
+  ) => CygnusScrollViewDecelerationRate._internal(value, nativeValue());
 
   ///A fast deceleration rate for a scroll view: `0.99`.
-  static const FAST = ScrollViewDecelerationRate._internal('FAST', 'FAST');
+  static const FAST = CygnusScrollViewDecelerationRate._internal(
+    'FAST',
+    'FAST',
+  );
 
   ///The default deceleration rate for a scroll view: `0.998`.
-  static const NORMAL = ScrollViewDecelerationRate._internal(
+  static const NORMAL = CygnusScrollViewDecelerationRate._internal(
     'NORMAL',
     'NORMAL',
   );
 
-  ///Set of all values of [ScrollViewDecelerationRate].
-  static final Set<ScrollViewDecelerationRate> values = [
-    ScrollViewDecelerationRate.FAST,
-    ScrollViewDecelerationRate.NORMAL,
+  ///Set of all values of [CygnusScrollViewDecelerationRate].
+  static final Set<CygnusScrollViewDecelerationRate> values = [
+    CygnusScrollViewDecelerationRate.FAST,
+    CygnusScrollViewDecelerationRate.NORMAL,
   ].toSet();
 
-  ///Gets a possible [ScrollViewDecelerationRate] instance from [String] value.
-  static ScrollViewDecelerationRate? fromValue(String? value) {
+  ///Gets a possible [CygnusScrollViewDecelerationRate] instance from [String] value.
+  static CygnusScrollViewDecelerationRate? fromValue(String? value) {
     if (value != null) {
       try {
-        return ScrollViewDecelerationRate.values.firstWhere(
+        return CygnusScrollViewDecelerationRate.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -46,11 +52,11 @@ class ScrollViewDecelerationRate {
     return null;
   }
 
-  ///Gets a possible [ScrollViewDecelerationRate] instance from a native value.
-  static ScrollViewDecelerationRate? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusScrollViewDecelerationRate] instance from a native value.
+  static CygnusScrollViewDecelerationRate? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return ScrollViewDecelerationRate.values.firstWhere(
+        return CygnusScrollViewDecelerationRate.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -60,15 +66,15 @@ class ScrollViewDecelerationRate {
     return null;
   }
 
-  /// Gets a possible [ScrollViewDecelerationRate] instance value with name [name].
+  /// Gets a possible [CygnusScrollViewDecelerationRate] instance value with name [name].
   ///
-  /// Goes through [ScrollViewDecelerationRate.values] looking for a value with
-  /// name [name], as reported by [ScrollViewDecelerationRate.name].
+  /// Goes through [CygnusScrollViewDecelerationRate.values] looking for a value with
+  /// name [name], as reported by [CygnusScrollViewDecelerationRate.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ScrollViewDecelerationRate? byName(String? name) {
+  static CygnusScrollViewDecelerationRate? byName(String? name) {
     if (name != null) {
       try {
-        return ScrollViewDecelerationRate.values.firstWhere(
+        return CygnusScrollViewDecelerationRate.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -78,7 +84,7 @@ class ScrollViewDecelerationRate {
     return null;
   }
 
-  /// Creates a map from the names of [ScrollViewDecelerationRate] values to the values.
+  /// Creates a map from the names of [CygnusScrollViewDecelerationRate] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -86,9 +92,9 @@ class ScrollViewDecelerationRate {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ScrollViewDecelerationRate> asNameMap() =>
-      <String, ScrollViewDecelerationRate>{
-        for (final value in ScrollViewDecelerationRate.values)
+  static Map<String, CygnusScrollViewDecelerationRate> asNameMap() =>
+      <String, CygnusScrollViewDecelerationRate>{
+        for (final value in CygnusScrollViewDecelerationRate.values)
           value.name(): value,
       };
 
@@ -127,41 +133,44 @@ class ScrollViewDecelerationRate {
 }
 
 ///Class that represents a floating-point value that determines the rate of deceleration after the user lifts their finger.
-///Use [ScrollViewDecelerationRate] instead.
-@Deprecated('Use ScrollViewDecelerationRate instead')
-class IOSUIScrollViewDecelerationRate {
+///Use [CygnusScrollViewDecelerationRate] instead.
+@Deprecated('Use CygnusScrollViewDecelerationRate instead')
+class CygnusIOSUIScrollViewDecelerationRate {
   final String _value;
   final String? _nativeValue;
-  const IOSUIScrollViewDecelerationRate._internal(
+  const CygnusIOSUIScrollViewDecelerationRate._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory IOSUIScrollViewDecelerationRate._internalMultiPlatform(
+  factory CygnusIOSUIScrollViewDecelerationRate._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => IOSUIScrollViewDecelerationRate._internal(value, nativeValue());
+  ) => CygnusIOSUIScrollViewDecelerationRate._internal(value, nativeValue());
 
   ///A fast deceleration rate for a scroll view: `0.99`.
-  static const FAST = IOSUIScrollViewDecelerationRate._internal('FAST', 'FAST');
+  static const FAST = CygnusIOSUIScrollViewDecelerationRate._internal(
+    'FAST',
+    'FAST',
+  );
 
   ///The default deceleration rate for a scroll view: `0.998`.
-  static const NORMAL = IOSUIScrollViewDecelerationRate._internal(
+  static const NORMAL = CygnusIOSUIScrollViewDecelerationRate._internal(
     'NORMAL',
     'NORMAL',
   );
 
-  ///Set of all values of [IOSUIScrollViewDecelerationRate].
-  static final Set<IOSUIScrollViewDecelerationRate> values = [
-    IOSUIScrollViewDecelerationRate.FAST,
-    IOSUIScrollViewDecelerationRate.NORMAL,
+  ///Set of all values of [CygnusIOSUIScrollViewDecelerationRate].
+  static final Set<CygnusIOSUIScrollViewDecelerationRate> values = [
+    CygnusIOSUIScrollViewDecelerationRate.FAST,
+    CygnusIOSUIScrollViewDecelerationRate.NORMAL,
   ].toSet();
 
-  ///Gets a possible [IOSUIScrollViewDecelerationRate] instance from [String] value.
-  static IOSUIScrollViewDecelerationRate? fromValue(String? value) {
+  ///Gets a possible [CygnusIOSUIScrollViewDecelerationRate] instance from [String] value.
+  static CygnusIOSUIScrollViewDecelerationRate? fromValue(String? value) {
     if (value != null) {
       try {
-        return IOSUIScrollViewDecelerationRate.values.firstWhere(
+        return CygnusIOSUIScrollViewDecelerationRate.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -171,11 +180,11 @@ class IOSUIScrollViewDecelerationRate {
     return null;
   }
 
-  ///Gets a possible [IOSUIScrollViewDecelerationRate] instance from a native value.
-  static IOSUIScrollViewDecelerationRate? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusIOSUIScrollViewDecelerationRate] instance from a native value.
+  static CygnusIOSUIScrollViewDecelerationRate? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return IOSUIScrollViewDecelerationRate.values.firstWhere(
+        return CygnusIOSUIScrollViewDecelerationRate.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -185,15 +194,15 @@ class IOSUIScrollViewDecelerationRate {
     return null;
   }
 
-  /// Gets a possible [IOSUIScrollViewDecelerationRate] instance value with name [name].
+  /// Gets a possible [CygnusIOSUIScrollViewDecelerationRate] instance value with name [name].
   ///
-  /// Goes through [IOSUIScrollViewDecelerationRate.values] looking for a value with
-  /// name [name], as reported by [IOSUIScrollViewDecelerationRate.name].
+  /// Goes through [CygnusIOSUIScrollViewDecelerationRate.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSUIScrollViewDecelerationRate.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSUIScrollViewDecelerationRate? byName(String? name) {
+  static CygnusIOSUIScrollViewDecelerationRate? byName(String? name) {
     if (name != null) {
       try {
-        return IOSUIScrollViewDecelerationRate.values.firstWhere(
+        return CygnusIOSUIScrollViewDecelerationRate.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -203,7 +212,7 @@ class IOSUIScrollViewDecelerationRate {
     return null;
   }
 
-  /// Creates a map from the names of [IOSUIScrollViewDecelerationRate] values to the values.
+  /// Creates a map from the names of [CygnusIOSUIScrollViewDecelerationRate] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -211,9 +220,9 @@ class IOSUIScrollViewDecelerationRate {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSUIScrollViewDecelerationRate> asNameMap() =>
-      <String, IOSUIScrollViewDecelerationRate>{
-        for (final value in IOSUIScrollViewDecelerationRate.values)
+  static Map<String, CygnusIOSUIScrollViewDecelerationRate> asNameMap() =>
+      <String, CygnusIOSUIScrollViewDecelerationRate>{
+        for (final value in CygnusIOSUIScrollViewDecelerationRate.values)
           value.name(): value,
       };
 

@@ -12,18 +12,18 @@ import 'web_authenticate_session_settings.dart';
 // ignore: uri_has_not_been_generated
 part 'platform_web_authenticate_session.g.dart';
 
-///A completion handler for the [PlatformWebAuthenticationSession].
-typedef WebAuthenticationSessionCompletionHandler =
-    Future<void> Function(WebUri? url, WebAuthenticationSessionError? error)?;
+///A completion handler for the [CygnusPlatformWebAuthenticationSession].
+typedef CygnusWebAuthenticationSessionCompletionHandler =
+    Future<void> Function(CygnusWebUri? url, CygnusWebAuthenticationSessionError? error)?;
 
-///{@template cygnus_core.PlatformWebAuthenticationSessionCreationParams}
-/// Object specifying creation parameters for creating a [PlatformWebAuthenticationSession].
+///{@template cygnus_core.CygnusPlatformWebAuthenticationSessionCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformWebAuthenticationSession].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformWebAuthenticationSessionCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebAuthenticationSessionCreationParams.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     IOSPlatform(available: '11.0'),
@@ -31,149 +31,149 @@ typedef WebAuthenticationSessionCompletionHandler =
   ],
 )
 @immutable
-class PlatformWebAuthenticationSessionCreationParams {
-  /// Used by the platform implementation to create a new [PlatformWebAuthenticationSession].
-  const PlatformWebAuthenticationSessionCreationParams();
+class CygnusPlatformWebAuthenticationSessionCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformWebAuthenticationSession].
+  const CygnusPlatformWebAuthenticationSessionCreationParams();
 
-  ///{@template cygnus_core.PlatformWebAuthenticationSessionCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformWebAuthenticationSessionCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformWebAuthenticationSessionCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformWebAuthenticationSessionCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformWebAuthenticationSession}
+///{@template cygnus_core.CygnusPlatformWebAuthenticationSession}
 ///A session that an app uses to authenticate a user through a web service.
 ///
 ///It is implemented using [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) on iOS 12.0+ and MacOS 10.15+
 ///and [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) on iOS 11.0.
 ///
-///Use an [PlatformWebAuthenticationSession] instance to authenticate a user through a web service, including one run by a third party.
+///Use an [CygnusPlatformWebAuthenticationSession] instance to authenticate a user through a web service, including one run by a third party.
 ///Initialize the session with a URL that points to the authentication webpage.
 ///A browser loads and displays the page, from which the user can authenticate.
 ///In iOS, the browser is a secure, embedded web view.
 ///In macOS, the system opens the user's default browser if it supports web authentication sessions, or Safari otherwise.
 ///
 ///On completion, the service sends a callback URL to the session with an authentication token, and the session passes this URL back to the app through a completion handler.
-///[PlatformWebAuthenticationSession] ensures that only the calling app's session receives the authentication callback, even when more than one app registers the same callback URL scheme.
+///[CygnusPlatformWebAuthenticationSession] ensures that only the calling app's session receives the authentication callback, even when more than one app registers the same callback URL scheme.
 ///
 ///**NOTE**: Remember to dispose it when you don't need it anymore.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformWebAuthenticationSession.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebAuthenticationSession.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     IOSPlatform(available: '11.0'),
     MacOSPlatform(available: '10.15'),
   ],
 )
-abstract class PlatformWebAuthenticationSession extends PlatformInterface
-    implements Disposable {
+abstract class CygnusPlatformWebAuthenticationSession extends PlatformInterface
+    implements CygnusDisposable {
   ///Debug settings.
-  static DebugLoggingSettings debugLoggingSettings = DebugLoggingSettings();
+  static CygnusDebugLoggingSettings debugLoggingSettings = CygnusDebugLoggingSettings();
 
-  /// Creates a new [PlatformWebAuthenticationSession]
-  factory PlatformWebAuthenticationSession(
-    PlatformWebAuthenticationSessionCreationParams params,
+  /// Creates a new [CygnusPlatformWebAuthenticationSession]
+  factory CygnusPlatformWebAuthenticationSession(
+    CygnusPlatformWebAuthenticationSessionCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformWebAuthenticationSession webAuthenticationSession =
-        InAppWebViewPlatform.instance!.createPlatformWebAuthenticationSession(
+    final CygnusPlatformWebAuthenticationSession webAuthenticationSession =
+        CygnusWebViewPlatform.instance!.createPlatformWebAuthenticationSession(
           params,
         );
     PlatformInterface.verify(webAuthenticationSession, _token);
     return webAuthenticationSession;
   }
 
-  /// Creates a new [PlatformWebAuthenticationSession] to access static methods.
-  factory PlatformWebAuthenticationSession.static() {
+  /// Creates a new [CygnusPlatformWebAuthenticationSession] to access static methods.
+  factory CygnusPlatformWebAuthenticationSession.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformWebAuthenticationSession webAuthenticationSessionStatic =
-        InAppWebViewPlatform.instance!
+    final CygnusPlatformWebAuthenticationSession webAuthenticationSessionStatic =
+        CygnusWebViewPlatform.instance!
             .createPlatformWebAuthenticationSessionStatic();
     PlatformInterface.verify(webAuthenticationSessionStatic, _token);
     return webAuthenticationSessionStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformWebAuthenticationSession].
+  /// Used by the platform implementation to create a new [CygnusPlatformWebAuthenticationSession].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformWebAuthenticationSession.implementation(this.params)
+  CygnusPlatformWebAuthenticationSession.implementation(this.params)
     : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformWebAuthenticationSession].
-  final PlatformWebAuthenticationSessionCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformWebAuthenticationSession].
+  final CygnusPlatformWebAuthenticationSessionCreationParams params;
 
-  ///{@template cygnus_core.PlatformWebAuthenticationSession.id}
+  ///{@template cygnus_core.CygnusPlatformWebAuthenticationSession.id}
   ///ID used internally.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebAuthenticationSession.id.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebAuthenticationSession.id.supported_platforms}
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
   String get id =>
       throw UnimplementedError('id is not implemented on the current platform');
 
-  ///{@template cygnus_core.PlatformWebAuthenticationSession.url}
+  ///{@template cygnus_core.CygnusPlatformWebAuthenticationSession.url}
   ///A URL with the `http` or `https` scheme pointing to the authentication webpage.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebAuthenticationSession.url.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebAuthenticationSession.url.supported_platforms}
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
-  WebUri get url => throw UnimplementedError(
+  CygnusWebUri get url => throw UnimplementedError(
     'url is not implemented on the current platform',
   );
 
-  ///{@template cygnus_core.PlatformWebAuthenticationSession.callbackURLScheme}
+  ///{@template cygnus_core.CygnusPlatformWebAuthenticationSession.callbackURLScheme}
   ///The custom URL scheme that the app expects in the callback URL.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebAuthenticationSession.callbackURLScheme.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebAuthenticationSession.callbackURLScheme.supported_platforms}
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
   String? get callbackURLScheme => throw UnimplementedError(
     'callbackURLScheme is not implemented on the current platform',
   );
 
-  ///{@template cygnus_core.PlatformWebAuthenticationSession.initialSettings}
+  ///{@template cygnus_core.CygnusPlatformWebAuthenticationSession.initialSettings}
   ///Initial settings.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebAuthenticationSession.initialSettings.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebAuthenticationSession.initialSettings.supported_platforms}
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
-  WebAuthenticationSessionSettings? get initialSettings =>
+  CygnusWebAuthenticationSessionSettings? get initialSettings =>
       throw UnimplementedError(
         'initialSettings is not implemented on the current platform',
       );
 
-  ///{@template cygnus_core.PlatformWebAuthenticationSession.onComplete}
+  ///{@template cygnus_core.CygnusPlatformWebAuthenticationSession.onComplete}
   ///A completion handler the session calls when it completes successfully, or when the user cancels the session.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebAuthenticationSession.onComplete.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebAuthenticationSession.onComplete.supported_platforms}
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
-  WebAuthenticationSessionCompletionHandler get onComplete =>
+  CygnusWebAuthenticationSessionCompletionHandler get onComplete =>
       throw UnimplementedError(
         'onComplete is not implemented on the current platform',
       );
 
-  ///{@template cygnus_core.PlatformWebAuthenticationSession.create}
+  ///{@template cygnus_core.CygnusPlatformWebAuthenticationSession.create}
   ///Used to create and initialize a session.
   ///
   ///[url] represents a URL with the `http` or `https` scheme pointing to the authentication webpage.
@@ -185,24 +185,24 @@ abstract class PlatformWebAuthenticationSession extends PlatformInterface
   ///[initialSettings] represents initial settings.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebAuthenticationSession.create.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebAuthenticationSession.create.supported_platforms}
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
-  Future<PlatformWebAuthenticationSession> create({
-    required WebUri url,
+  Future<CygnusPlatformWebAuthenticationSession> create({
+    required CygnusWebUri url,
     String? callbackURLScheme,
-    WebAuthenticationSessionCompletionHandler onComplete,
-    WebAuthenticationSessionSettings? initialSettings,
+    CygnusWebAuthenticationSessionCompletionHandler onComplete,
+    CygnusWebAuthenticationSessionSettings? initialSettings,
   }) {
     throw UnimplementedError(
       'create is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformWebAuthenticationSession.canStart}
+  ///{@template cygnus_core.CygnusPlatformWebAuthenticationSession.canStart}
   ///Indicates whether the session can begin.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebAuthenticationSession.canStart.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebAuthenticationSession.canStart.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -223,16 +223,16 @@ abstract class PlatformWebAuthenticationSession extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebAuthenticationSession.start}
+  ///{@template cygnus_core.CygnusPlatformWebAuthenticationSession.start}
   ///Starts the web authentication session.
   ///
   ///Returns a boolean value indicating whether the web authentication session started successfully.
   ///
-  ///Only call this method once for a given [PlatformWebAuthenticationSession] instance after initialization.
+  ///Only call this method once for a given [CygnusPlatformWebAuthenticationSession] instance after initialization.
   ///Calling the [start] method on a canceled session results in a failure.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebAuthenticationSession.start.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebAuthenticationSession.start.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -253,14 +253,14 @@ abstract class PlatformWebAuthenticationSession extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebAuthenticationSession.cancel}
+  ///{@template cygnus_core.CygnusPlatformWebAuthenticationSession.cancel}
   ///Cancels the web authentication session.
   ///
   ///If the session has already presented a view with the authentication webpage, calling this method dismisses that view.
   ///Calling [cancel] on an already canceled session has no effect.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebAuthenticationSession.cancel.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebAuthenticationSession.cancel.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -281,11 +281,11 @@ abstract class PlatformWebAuthenticationSession extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebAuthenticationSession.dispose}
+  ///{@template cygnus_core.CygnusPlatformWebAuthenticationSession.dispose}
   ///Disposes the web authentication session.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebAuthenticationSession.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebAuthenticationSession.dispose.supported_platforms}
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
   @override
   Future<void> dispose() {
@@ -294,13 +294,13 @@ abstract class PlatformWebAuthenticationSession extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebAuthenticationSession.isAvailable}
+  ///{@template cygnus_core.CygnusPlatformWebAuthenticationSession.isAvailable}
   ///Returns `true` if [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession)
   ///or [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) is available.
   ///Otherwise returns `false`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebAuthenticationSession.isAvailable.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebAuthenticationSession.isAvailable.supported_platforms}
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
   Future<bool> isAvailable() {
     throw UnimplementedError(
@@ -308,30 +308,30 @@ abstract class PlatformWebAuthenticationSession extends PlatformInterface
     );
   }
 
-  ///{@macro cygnus_core.PlatformWebAuthenticationSessionCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformWebAuthenticationSessionCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformWebAuthenticationSessionClassSupported.isClassSupported(
+      _CygnusPlatformWebAuthenticationSessionClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformWebAuthenticationSession.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformWebAuthenticationSession.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformWebAuthenticationSessionProperty property, {
+    CygnusPlatformWebAuthenticationSessionProperty property, {
     TargetPlatform? platform,
-  }) => _PlatformWebAuthenticationSessionPropertySupported.isPropertySupported(
+  }) => _CygnusPlatformWebAuthenticationSessionPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 
-  ///{@template cygnus_core.PlatformWebAuthenticationSession.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformWebAuthenticationSession.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformWebAuthenticationSessionMethod method, {
+    CygnusPlatformWebAuthenticationSessionMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformWebAuthenticationSessionMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformWebAuthenticationSessionMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );

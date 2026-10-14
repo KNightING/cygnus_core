@@ -7,15 +7,15 @@ part of 'permission_resource_type.dart';
 // **************************************************************************
 
 ///Class that represents a type of resource used to ask user's permission.
-class PermissionResourceType {
+class CygnusPermissionResourceType {
   final String _value;
   final dynamic _nativeValue;
-  const PermissionResourceType._internal(this._value, this._nativeValue);
+  const CygnusPermissionResourceType._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory PermissionResourceType._internalMultiPlatform(
+  factory CygnusPermissionResourceType._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => PermissionResourceType._internal(value, nativeValue());
+  ) => CygnusPermissionResourceType._internal(value, nativeValue());
 
   ///Indicates permission to play audio and video automatically on sites.
   ///This permission affects the autoplay attribute and play method of the audio
@@ -25,7 +25,7 @@ class PermissionResourceType {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PERMISSION_KIND_AUTOPLAY](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2792.45#corewebview2_permission_kind))
-  static final AUTOPLAY = PermissionResourceType._internalMultiPlatform(
+  static final AUTOPLAY = CygnusPermissionResourceType._internalMultiPlatform(
     'AUTOPLAY',
     () {
       switch (defaultTargetPlatform) {
@@ -41,11 +41,11 @@ class PermissionResourceType {
   ///Resource belongs to video capture device, like camera.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - PermissionRequest.RESOURCE_VIDEO_CAPTURE](https://developer.android.com/reference/android/webkit/PermissionRequest#RESOURCE_VIDEO_CAPTURE))
+  ///- Android WebView ([Official API - CygnusPermissionRequest.RESOURCE_VIDEO_CAPTURE](https://developer.android.com/reference/android/webkit/CygnusPermissionRequest#RESOURCE_VIDEO_CAPTURE))
   ///- iOS WKWebView 15.0+ ([Official API - WKMediaCaptureType.camera](https://developer.apple.com/documentation/webkit/wkmediacapturetype/camera))
   ///- macOS WKWebView 12.0+ ([Official API - WKMediaCaptureType.camera](https://developer.apple.com/documentation/webkit/wkmediacapturetype/camera))
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PERMISSION_KIND_CAMERA](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2792.45#corewebview2_permission_kind))
-  static final CAMERA = PermissionResourceType._internalMultiPlatform(
+  static final CAMERA = CygnusPermissionResourceType._internalMultiPlatform(
     'CAMERA',
     () {
       switch (defaultTargetPlatform) {
@@ -70,7 +70,7 @@ class PermissionResourceType {
   ///- iOS WKWebView 15.0+ ([Official API - WKMediaCaptureType.cameraAndMicrophone](https://developer.apple.com/documentation/webkit/wkmediacapturetype/cameraandmicrophone))
   ///- macOS WKWebView 12.0+ ([Official API - WKMediaCaptureType.cameraAndMicrophone](https://developer.apple.com/documentation/webkit/wkmediacapturetype/cameraandmicrophone))
   static final CAMERA_AND_MICROPHONE =
-      PermissionResourceType._internalMultiPlatform(
+      CygnusPermissionResourceType._internalMultiPlatform(
         'CAMERA_AND_MICROPHONE',
         () {
           switch (defaultTargetPlatform) {
@@ -89,18 +89,16 @@ class PermissionResourceType {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PERMISSION_KIND_CLIPBOARD_READ](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2792.45#corewebview2_permission_kind))
-  static final CLIPBOARD_READ = PermissionResourceType._internalMultiPlatform(
-    'CLIPBOARD_READ',
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.windows:
-          return 6;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final CLIPBOARD_READ =
+      CygnusPermissionResourceType._internalMultiPlatform('CLIPBOARD_READ', () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.windows:
+            return 6;
+          default:
+            break;
+        }
+        return null;
+      });
 
   ///Resource belongs to the device’s orientation and motion.
   ///
@@ -108,7 +106,7 @@ class PermissionResourceType {
   ///- iOS WKWebView 15.0+
   ///- macOS WKWebView 12.0+
   static final DEVICE_ORIENTATION_AND_MOTION =
-      PermissionResourceType._internalMultiPlatform(
+      CygnusPermissionResourceType._internalMultiPlatform(
         'DEVICE_ORIENTATION_AND_MOTION',
         () {
           switch (defaultTargetPlatform) {
@@ -130,35 +128,34 @@ class PermissionResourceType {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PERMISSION_KIND_FILE_READ_WRITE](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2792.45#corewebview2_permission_kind))
-  static final FILE_READ_WRITE = PermissionResourceType._internalMultiPlatform(
-    'FILE_READ_WRITE',
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.windows:
-          return 8;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final FILE_READ_WRITE =
+      CygnusPermissionResourceType._internalMultiPlatform(
+        'FILE_READ_WRITE',
+        () {
+          switch (defaultTargetPlatform) {
+            case TargetPlatform.windows:
+              return 8;
+            default:
+              break;
+          }
+          return null;
+        },
+      );
 
   ///Indicates permission to access geolocation.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PERMISSION_KIND_GEOLOCATION](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2792.45#corewebview2_permission_kind))
-  static final GEOLOCATION = PermissionResourceType._internalMultiPlatform(
-    'GEOLOCATION',
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.windows:
-          return 3;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final GEOLOCATION =
+      CygnusPermissionResourceType._internalMultiPlatform('GEOLOCATION', () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.windows:
+            return 3;
+          default:
+            break;
+        }
+        return null;
+      });
 
   ///Indicates permission to use fonts on the device.
   ///Permission is requested when developers use the [Local Font Access API](https://wicg.github.io/local-font-access/)
@@ -166,27 +163,25 @@ class PermissionResourceType {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PERMISSION_KIND_LOCAL_FONTS](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2792.45#corewebview2_permission_kind))
-  static final LOCAL_FONTS = PermissionResourceType._internalMultiPlatform(
-    'LOCAL_FONTS',
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.windows:
-          return 10;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final LOCAL_FONTS =
+      CygnusPermissionResourceType._internalMultiPlatform('LOCAL_FONTS', () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.windows:
+            return 10;
+          default:
+            break;
+        }
+        return null;
+      });
 
   ///Resource belongs to audio capture device, like microphone.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - PermissionRequest.RESOURCE_AUDIO_CAPTURE](https://developer.android.com/reference/android/webkit/PermissionRequest#RESOURCE_AUDIO_CAPTURE))
+  ///- Android WebView ([Official API - CygnusPermissionRequest.RESOURCE_AUDIO_CAPTURE](https://developer.android.com/reference/android/webkit/CygnusPermissionRequest#RESOURCE_AUDIO_CAPTURE))
   ///- iOS WKWebView 15.0+ ([Official API - WKMediaCaptureType.microphone](https://developer.apple.com/documentation/webkit/wkmediacapturetype/microphone))
   ///- macOS WKWebView 12.0+ ([Official API - WKMediaCaptureType.microphone](https://developer.apple.com/documentation/webkit/wkmediacapturetype/microphone))
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PERMISSION_KIND_MICROPHONE](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2792.45#corewebview2_permission_kind))
-  static final MICROPHONE = PermissionResourceType._internalMultiPlatform(
+  static final MICROPHONE = CygnusPermissionResourceType._internalMultiPlatform(
     'MICROPHONE',
     () {
       switch (defaultTargetPlatform) {
@@ -210,9 +205,9 @@ class PermissionResourceType {
   ///Permission may be requested for this resource in API levels 21 and above, if the Android device has been updated to WebView 45 or above.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - PermissionRequest.RESOURCE_MIDI_SYSEX](https://developer.android.com/reference/android/webkit/PermissionRequest#RESOURCE_MIDI_SYSEX))
+  ///- Android WebView ([Official API - CygnusPermissionRequest.RESOURCE_MIDI_SYSEX](https://developer.android.com/reference/android/webkit/CygnusPermissionRequest#RESOURCE_MIDI_SYSEX))
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PERMISSION_KIND_MIDI_SYSTEM_EXCLUSIVE_MESSAGES](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2792.45#corewebview2_permission_kind))
-  static final MIDI_SYSEX = PermissionResourceType._internalMultiPlatform(
+  static final MIDI_SYSEX = CygnusPermissionResourceType._internalMultiPlatform(
     'MIDI_SYSEX',
     () {
       switch (defaultTargetPlatform) {
@@ -233,7 +228,7 @@ class PermissionResourceType {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PERMISSION_KIND_MULTIPLE_AUTOMATIC_DOWNLOADS](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2792.45#corewebview2_permission_kind))
   static final MULTIPLE_AUTOMATIC_DOWNLOADS =
-      PermissionResourceType._internalMultiPlatform(
+      CygnusPermissionResourceType._internalMultiPlatform(
         'MULTIPLE_AUTOMATIC_DOWNLOADS',
         () {
           switch (defaultTargetPlatform) {
@@ -250,59 +245,58 @@ class PermissionResourceType {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PERMISSION_KIND_NOTIFICATIONS](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2792.45#corewebview2_permission_kind))
-  static final NOTIFICATIONS = PermissionResourceType._internalMultiPlatform(
-    'NOTIFICATIONS',
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.windows:
-          return 4;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
-
-  ///Indicates permission to access generic sensor. Generic Sensor covers ambient-light-sensor, accelerometer, gyroscope, and magnetometer.
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- Windows WebView2 ([Official API - COREWEBVIEW2_PERMISSION_KIND_OTHER_SENSORS](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2792.45#corewebview2_permission_kind))
-  static final OTHER_SENSORS = PermissionResourceType._internalMultiPlatform(
-    'OTHER_SENSORS',
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.windows:
-          return 5;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
-
-  ///Resource belongs to protected media identifier. After the user grants this resource, the origin can use EME APIs to generate the license requests.
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - PermissionRequest.RESOURCE_PROTECTED_MEDIA_ID](https://developer.android.com/reference/android/webkit/PermissionRequest#RESOURCE_PROTECTED_MEDIA_ID))
-  ///- Linux WPE WebKit ([Official API - WebKitMediaKeySystemPermissionRequest](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/class.MediaKeySystemPermissionRequest.html))
-  static final PROTECTED_MEDIA_ID =
-      PermissionResourceType._internalMultiPlatform('PROTECTED_MEDIA_ID', () {
+  static final NOTIFICATIONS =
+      CygnusPermissionResourceType._internalMultiPlatform('NOTIFICATIONS', () {
         switch (defaultTargetPlatform) {
-          case TargetPlatform.android:
-            return 'android.webkit.resource.PROTECTED_MEDIA_ID';
-          case TargetPlatform.linux:
-            return 'PROTECTED_MEDIA_ID';
+          case TargetPlatform.windows:
+            return 4;
           default:
             break;
         }
         return null;
       });
 
+  ///Indicates permission to access generic sensor. Generic Sensor covers ambient-light-sensor, accelerometer, gyroscope, and magnetometer.
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- Windows WebView2 ([Official API - COREWEBVIEW2_PERMISSION_KIND_OTHER_SENSORS](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2792.45#corewebview2_permission_kind))
+  static final OTHER_SENSORS =
+      CygnusPermissionResourceType._internalMultiPlatform('OTHER_SENSORS', () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.windows:
+            return 5;
+          default:
+            break;
+        }
+        return null;
+      });
+
+  ///Resource belongs to protected media identifier. After the user grants this resource, the origin can use EME APIs to generate the license requests.
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- Android WebView ([Official API - CygnusPermissionRequest.RESOURCE_PROTECTED_MEDIA_ID](https://developer.android.com/reference/android/webkit/CygnusPermissionRequest#RESOURCE_PROTECTED_MEDIA_ID))
+  ///- Linux WPE WebKit ([Official API - WebKitMediaKeySystemPermissionRequest](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/class.MediaKeySystemPermissionRequest.html))
+  static final PROTECTED_MEDIA_ID =
+      CygnusPermissionResourceType._internalMultiPlatform(
+        'PROTECTED_MEDIA_ID',
+        () {
+          switch (defaultTargetPlatform) {
+            case TargetPlatform.android:
+              return 'android.webkit.resource.PROTECTED_MEDIA_ID';
+            case TargetPlatform.linux:
+              return 'PROTECTED_MEDIA_ID';
+            default:
+              break;
+          }
+          return null;
+        },
+      );
+
   ///Indicates an unknown permission.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PERMISSION_KIND_UNKNOWN_PERMISSION](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2792.45#corewebview2_permission_kind))
-  static final UNKNOWN = PermissionResourceType._internalMultiPlatform(
+  static final UNKNOWN = CygnusPermissionResourceType._internalMultiPlatform(
     'UNKNOWN',
     () {
       switch (defaultTargetPlatform) {
@@ -322,41 +316,44 @@ class PermissionResourceType {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PERMISSION_KIND_WINDOW_MANAGEMENT](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2792.45#corewebview2_permission_kind))
   static final WINDOW_MANAGEMENT =
-      PermissionResourceType._internalMultiPlatform('WINDOW_MANAGEMENT', () {
-        switch (defaultTargetPlatform) {
-          case TargetPlatform.windows:
-            return 12;
-          default:
-            break;
-        }
-        return null;
-      });
+      CygnusPermissionResourceType._internalMultiPlatform(
+        'WINDOW_MANAGEMENT',
+        () {
+          switch (defaultTargetPlatform) {
+            case TargetPlatform.windows:
+              return 12;
+            default:
+              break;
+          }
+          return null;
+        },
+      );
 
-  ///Set of all values of [PermissionResourceType].
-  static final Set<PermissionResourceType> values = [
-    PermissionResourceType.AUTOPLAY,
-    PermissionResourceType.CAMERA,
-    PermissionResourceType.CAMERA_AND_MICROPHONE,
-    PermissionResourceType.CLIPBOARD_READ,
-    PermissionResourceType.DEVICE_ORIENTATION_AND_MOTION,
-    PermissionResourceType.FILE_READ_WRITE,
-    PermissionResourceType.GEOLOCATION,
-    PermissionResourceType.LOCAL_FONTS,
-    PermissionResourceType.MICROPHONE,
-    PermissionResourceType.MIDI_SYSEX,
-    PermissionResourceType.MULTIPLE_AUTOMATIC_DOWNLOADS,
-    PermissionResourceType.NOTIFICATIONS,
-    PermissionResourceType.OTHER_SENSORS,
-    PermissionResourceType.PROTECTED_MEDIA_ID,
-    PermissionResourceType.UNKNOWN,
-    PermissionResourceType.WINDOW_MANAGEMENT,
+  ///Set of all values of [CygnusPermissionResourceType].
+  static final Set<CygnusPermissionResourceType> values = [
+    CygnusPermissionResourceType.AUTOPLAY,
+    CygnusPermissionResourceType.CAMERA,
+    CygnusPermissionResourceType.CAMERA_AND_MICROPHONE,
+    CygnusPermissionResourceType.CLIPBOARD_READ,
+    CygnusPermissionResourceType.DEVICE_ORIENTATION_AND_MOTION,
+    CygnusPermissionResourceType.FILE_READ_WRITE,
+    CygnusPermissionResourceType.GEOLOCATION,
+    CygnusPermissionResourceType.LOCAL_FONTS,
+    CygnusPermissionResourceType.MICROPHONE,
+    CygnusPermissionResourceType.MIDI_SYSEX,
+    CygnusPermissionResourceType.MULTIPLE_AUTOMATIC_DOWNLOADS,
+    CygnusPermissionResourceType.NOTIFICATIONS,
+    CygnusPermissionResourceType.OTHER_SENSORS,
+    CygnusPermissionResourceType.PROTECTED_MEDIA_ID,
+    CygnusPermissionResourceType.UNKNOWN,
+    CygnusPermissionResourceType.WINDOW_MANAGEMENT,
   ].toSet();
 
-  ///Gets a possible [PermissionResourceType] instance from [String] value.
-  static PermissionResourceType? fromValue(String? value) {
+  ///Gets a possible [CygnusPermissionResourceType] instance from [String] value.
+  static CygnusPermissionResourceType? fromValue(String? value) {
     if (value != null) {
       try {
-        return PermissionResourceType.values.firstWhere(
+        return CygnusPermissionResourceType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -366,11 +363,11 @@ class PermissionResourceType {
     return null;
   }
 
-  ///Gets a possible [PermissionResourceType] instance from a native value.
-  static PermissionResourceType? fromNativeValue(dynamic value) {
+  ///Gets a possible [CygnusPermissionResourceType] instance from a native value.
+  static CygnusPermissionResourceType? fromNativeValue(dynamic value) {
     if (value != null) {
       try {
-        return PermissionResourceType.values.firstWhere(
+        return CygnusPermissionResourceType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -380,15 +377,15 @@ class PermissionResourceType {
     return null;
   }
 
-  /// Gets a possible [PermissionResourceType] instance value with name [name].
+  /// Gets a possible [CygnusPermissionResourceType] instance value with name [name].
   ///
-  /// Goes through [PermissionResourceType.values] looking for a value with
-  /// name [name], as reported by [PermissionResourceType.name].
+  /// Goes through [CygnusPermissionResourceType.values] looking for a value with
+  /// name [name], as reported by [CygnusPermissionResourceType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static PermissionResourceType? byName(String? name) {
+  static CygnusPermissionResourceType? byName(String? name) {
     if (name != null) {
       try {
-        return PermissionResourceType.values.firstWhere(
+        return CygnusPermissionResourceType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -398,7 +395,7 @@ class PermissionResourceType {
     return null;
   }
 
-  /// Creates a map from the names of [PermissionResourceType] values to the values.
+  /// Creates a map from the names of [CygnusPermissionResourceType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -406,9 +403,10 @@ class PermissionResourceType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, PermissionResourceType> asNameMap() =>
-      <String, PermissionResourceType>{
-        for (final value in PermissionResourceType.values) value.name(): value,
+  static Map<String, CygnusPermissionResourceType> asNameMap() =>
+      <String, CygnusPermissionResourceType>{
+        for (final value in CygnusPermissionResourceType.values)
+          value.name(): value,
       };
 
   ///Gets [String] value.

@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void shouldInterceptRequest() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.shouldInterceptRequest,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.shouldInterceptRequest,
   );
 
   skippableTestWidgets('shouldInterceptRequest', (WidgetTester tester) async {
@@ -13,17 +13,17 @@ void shouldInterceptRequest() {
     ];
     List<String> resourceLoaded = [];
 
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<void> pageLoaded = Completer<void>();
     final Completer<void> loadedResourceCompleter = Completer<void>();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialData: InAppWebViewInitialData(
+          initialData: CygnusWebViewInitialData(
             data: """
 <!doctype html>
 <html lang="en">

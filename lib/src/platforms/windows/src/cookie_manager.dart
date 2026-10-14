@@ -9,19 +9,19 @@ import 'webview_environment/webview_environment.dart';
 /// Object specifying creation parameters for creating a [WindowsCookieManager].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformCookieManagerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformCookieManagerCreationParams] for
 /// more information.
 @immutable
 class WindowsCookieManagerCreationParams
-    extends PlatformCookieManagerCreationParams {
+    extends CygnusPlatformCookieManagerCreationParams {
   /// Creates a new [WindowsCookieManagerCreationParams] instance.
   const WindowsCookieManagerCreationParams({this.webViewEnvironment});
 
-  /// Creates a [WindowsCookieManagerCreationParams] instance based on [PlatformCookieManagerCreationParams].
+  /// Creates a [WindowsCookieManagerCreationParams] instance based on [CygnusPlatformCookieManagerCreationParams].
   factory WindowsCookieManagerCreationParams.fromPlatformCookieManagerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformCookieManagerCreationParams params,
+    CygnusPlatformCookieManagerCreationParams params,
   ) {
     return WindowsCookieManagerCreationParams(
       webViewEnvironment:
@@ -33,11 +33,11 @@ class WindowsCookieManagerCreationParams
   final WindowsWebViewEnvironment? webViewEnvironment;
 }
 
-///{@macro cygnus_core.PlatformCookieManager}
-class WindowsCookieManager extends PlatformCookieManager
+///{@macro cygnus_core.CygnusPlatformCookieManager}
+class WindowsCookieManager extends CygnusPlatformCookieManager
     with ChannelController {
   /// Creates a new [WindowsCookieManager].
-  WindowsCookieManager(PlatformCookieManagerCreationParams params)
+  WindowsCookieManager(CygnusPlatformCookieManagerCreationParams params)
     : super.implementation(
         params is WindowsCookieManagerCreationParams
             ? params
@@ -89,7 +89,7 @@ class WindowsCookieManager extends PlatformCookieManager
 
   @override
   Future<bool> setCookie({
-    required WebUri url,
+    required CygnusWebUri url,
     required String name,
     required String value,
     String path = "/",
@@ -98,10 +98,10 @@ class WindowsCookieManager extends PlatformCookieManager
     int? maxAge,
     bool? isSecure,
     bool? isHttpOnly,
-    HTTPCookieSameSitePolicy? sameSite,
+    CygnusHTTPCookieSameSitePolicy? sameSite,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
     assert(name.isNotEmpty);
@@ -128,15 +128,15 @@ class WindowsCookieManager extends PlatformCookieManager
   }
 
   @override
-  Future<List<Cookie>> getCookies({
-    required WebUri url,
+  Future<List<CygnusCookie>> getCookies({
+    required CygnusWebUri url,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
 
-    List<Cookie> cookies = [];
+    List<CygnusCookie> cookies = [];
 
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('url', () => url.toString());
@@ -151,13 +151,13 @@ class WindowsCookieManager extends PlatformCookieManager
 
     cookieListMap.forEach((cookieMap) {
       cookies.add(
-        Cookie(
+        CygnusCookie(
           name: cookieMap["name"],
           value: cookieMap["value"],
           expiresDate: cookieMap["expiresDate"],
           isSessionOnly: cookieMap["isSessionOnly"],
           domain: cookieMap["domain"],
-          sameSite: HTTPCookieSameSitePolicy.fromNativeValue(
+          sameSite: CygnusHTTPCookieSameSitePolicy.fromNativeValue(
             cookieMap["sameSite"],
           ),
           isSecure: cookieMap["isSecure"],
@@ -170,12 +170,12 @@ class WindowsCookieManager extends PlatformCookieManager
   }
 
   @override
-  Future<Cookie?> getCookie({
-    required WebUri url,
+  Future<CygnusCookie?> getCookie({
+    required CygnusWebUri url,
     required String name,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
     assert(name.isNotEmpty);
@@ -193,13 +193,13 @@ class WindowsCookieManager extends PlatformCookieManager
     for (var i = 0; i < cookies.length; i++) {
       cookies[i] = cookies[i].cast<String, dynamic>();
       if (cookies[i]["name"] == name)
-        return Cookie(
+        return CygnusCookie(
           name: cookies[i]["name"],
           value: cookies[i]["value"],
           expiresDate: cookies[i]["expiresDate"],
           isSessionOnly: cookies[i]["isSessionOnly"],
           domain: cookies[i]["domain"],
-          sameSite: HTTPCookieSameSitePolicy.fromNativeValue(
+          sameSite: CygnusHTTPCookieSameSitePolicy.fromNativeValue(
             cookies[i]["sameSite"],
           ),
           isSecure: cookies[i]["isSecure"],
@@ -212,13 +212,13 @@ class WindowsCookieManager extends PlatformCookieManager
 
   @override
   Future<bool> deleteCookie({
-    required WebUri url,
+    required CygnusWebUri url,
     required String name,
     String path = "/",
     String? domain,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
     assert(name.isNotEmpty);
@@ -238,12 +238,12 @@ class WindowsCookieManager extends PlatformCookieManager
 
   @override
   Future<bool> deleteCookies({
-    required WebUri url,
+    required CygnusWebUri url,
     String path = "/",
     String? domain,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
 

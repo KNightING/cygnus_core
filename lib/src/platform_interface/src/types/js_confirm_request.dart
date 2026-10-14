@@ -6,11 +6,11 @@ import 'enum_method.dart';
 
 part 'js_confirm_request.g.dart';
 
-///Class that represents the request of the [PlatformWebViewCreationParams.onJsConfirm] event.
+///Class that represents the request of the [CygnusPlatformWebViewCreationParams.onJsConfirm] event.
 @ExchangeableObject()
-class JsConfirmRequest_ {
+class CygnusJsConfirmRequest_ {
   ///The url of the page requesting the dialog.
-  WebUri? url;
+  CygnusWebUri? url;
 
   ///Message to be displayed in the window.
   String? message;
@@ -23,7 +23,7 @@ class JsConfirmRequest_ {
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
   bool? isMainFrame;
 
-  JsConfirmRequest_({
+  CygnusJsConfirmRequest_({
     this.url,
     this.message,
     @Deprecated("Use isMainFrame instead") this.iosIsMainFrame,

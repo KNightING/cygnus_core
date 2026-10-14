@@ -4,34 +4,34 @@ import '../content_blocker.dart';
 
 part 'content_blocker_trigger_resource_type.g.dart';
 
-///Class that represents the possible resource type defined for a [ContentBlockerTrigger].
+///Class that represents the possible resource type defined for a [CygnusContentBlockerTrigger].
 @ExchangeableEnum()
-class ContentBlockerTriggerResourceType_ {
+class CygnusContentBlockerTriggerResourceType_ {
   // ignore: unused_field
   final String _value;
-  const ContentBlockerTriggerResourceType_._internal(this._value);
+  const CygnusContentBlockerTriggerResourceType_._internal(this._value);
 
-  static const DOCUMENT = const ContentBlockerTriggerResourceType_._internal(
+  static const DOCUMENT = const CygnusContentBlockerTriggerResourceType_._internal(
     'document',
   );
-  static const IMAGE = const ContentBlockerTriggerResourceType_._internal(
+  static const IMAGE = const CygnusContentBlockerTriggerResourceType_._internal(
     'image',
   );
-  static const STYLE_SHEET = const ContentBlockerTriggerResourceType_._internal(
+  static const STYLE_SHEET = const CygnusContentBlockerTriggerResourceType_._internal(
     'style-sheet',
   );
-  static const SCRIPT = const ContentBlockerTriggerResourceType_._internal(
+  static const SCRIPT = const CygnusContentBlockerTriggerResourceType_._internal(
     'script',
   );
-  static const FONT = const ContentBlockerTriggerResourceType_._internal(
+  static const FONT = const CygnusContentBlockerTriggerResourceType_._internal(
     'font',
   );
-  static const MEDIA = const ContentBlockerTriggerResourceType_._internal(
+  static const MEDIA = const CygnusContentBlockerTriggerResourceType_._internal(
     'media',
   );
   static const SVG_DOCUMENT =
-      const ContentBlockerTriggerResourceType_._internal('svg-document');
+      const CygnusContentBlockerTriggerResourceType_._internal('svg-document');
 
   ///Any untyped load
-  static const RAW = const ContentBlockerTriggerResourceType_._internal('raw');
+  static const RAW = const CygnusContentBlockerTriggerResourceType_._internal('raw');
 }

@@ -1,7 +1,7 @@
 part of 'main.dart';
 
 void openUrlAndClose() {
-  final shouldSkip = !InAppBrowser.isClassSupported();
+  final shouldSkip = !CygnusBrowser.isClassSupported();
 
   skippableTest('open url and close', () async {
     var inAppBrowser = new MyInAppBrowser();
@@ -10,12 +10,12 @@ void openUrlAndClose() {
       await inAppBrowser.show();
     }, throwsAssertionError);
 
-    await inAppBrowser.openUrlRequest(urlRequest: URLRequest(url: TEST_URL_1));
+    await inAppBrowser.openUrlRequest(urlRequest: CygnusURLRequest(url: TEST_URL_1));
     await inAppBrowser.browserCreated.future;
     expect(inAppBrowser.isOpened(), true);
     expect(() async {
       await inAppBrowser.openUrlRequest(
-        urlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+        urlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
       );
     }, throwsAssertionError);
 

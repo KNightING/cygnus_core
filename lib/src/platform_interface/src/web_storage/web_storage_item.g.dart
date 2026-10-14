@@ -7,28 +7,28 @@ part of 'web_storage_item.dart';
 // **************************************************************************
 
 ///Class that represents a single web storage item of the JavaScript `window.sessionStorage` and `window.localStorage` objects.
-class WebStorageItem {
+class CygnusWebStorageItem {
   ///Item key.
   String? key;
 
   ///Item value.
   dynamic value;
-  WebStorageItem({this.key, this.value});
+  CygnusWebStorageItem({this.key, this.value});
 
-  ///Gets a possible [WebStorageItem] instance from a [Map] value.
-  static WebStorageItem? fromMap(
+  ///Gets a possible [CygnusWebStorageItem] instance from a [Map] value.
+  static CygnusWebStorageItem? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = WebStorageItem(key: map['key'], value: map['value']);
+    final instance = CygnusWebStorageItem(key: map['key'], value: map['value']);
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"key": key, "value": value};
   }
 
@@ -39,6 +39,6 @@ class WebStorageItem {
 
   @override
   String toString() {
-    return 'WebStorageItem{key: $key, value: $value}';
+    return 'CygnusWebStorageItem{key: $key, value: $value}';
   }
 }

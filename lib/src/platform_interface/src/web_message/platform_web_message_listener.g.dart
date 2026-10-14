@@ -6,9 +6,9 @@ part of 'platform_web_message_listener.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformWebMessageListenerCreationParamsClassSupported
-    on PlatformWebMessageListenerCreationParams {
-  ///{@template cygnus_core.PlatformWebMessageListenerCreationParams.supported_platforms}
+extension _CygnusPlatformWebMessageListenerCreationParamsClassSupported
+    on CygnusPlatformWebMessageListenerCreationParams {
+  ///{@template cygnus_core.CygnusPlatformWebMessageListenerCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -17,7 +17,7 @@ extension _PlatformWebMessageListenerCreationParamsClassSupported
   ///- Linux WPE WebKit
   ///- Windows WebView2
   ///
-  ///Use the [PlatformWebMessageListenerCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformWebMessageListenerCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -31,11 +31,11 @@ extension _PlatformWebMessageListenerCreationParamsClassSupported
   }
 }
 
-///List of [PlatformWebMessageListenerCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformWebMessageListenerCreationParamsProperty {
-  ///Can be used to check if the [PlatformWebMessageListenerCreationParams.allowedOriginRules] property is supported at runtime.
+///List of [CygnusPlatformWebMessageListenerCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformWebMessageListenerCreationParamsProperty {
+  ///Can be used to check if the [CygnusPlatformWebMessageListenerCreationParams.allowedOriginRules] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebMessageListenerCreationParams.allowedOriginRules.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebMessageListenerCreationParams.allowedOriginRules.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -44,13 +44,13 @@ enum PlatformWebMessageListenerCreationParamsProperty {
   ///- Linux WPE WebKit
   ///- Windows WebView2
   ///
-  ///Use the [PlatformWebMessageListenerCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebMessageListenerCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowedOriginRules,
 
-  ///Can be used to check if the [PlatformWebMessageListenerCreationParams.jsObjectName] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebMessageListenerCreationParams.jsObjectName] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebMessageListenerCreationParams.jsObjectName.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebMessageListenerCreationParams.jsObjectName.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -59,16 +59,16 @@ enum PlatformWebMessageListenerCreationParamsProperty {
   ///- Linux WPE WebKit
   ///- Windows WebView2
   ///
-  ///Use the [PlatformWebMessageListenerCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebMessageListenerCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   jsObjectName,
 
-  ///Can be used to check if the [PlatformWebMessageListenerCreationParams.onPostMessage] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebMessageListenerCreationParams.onPostMessage] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebMessageListenerCreationParams.onPostMessage.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebMessageListenerCreationParams.onPostMessage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebViewCompat.WebMessageListener.onPostMessage](https://developer.android.com/reference/androidx/webkit/WebViewCompat.WebMessageListener#onPostMessage(android.webkit.WebView,%20androidx.webkit.WebMessageCompat,%20android.net.Uri,%20boolean,%20androidx.webkit.JavaScriptReplyProxy)))
+  ///- Android WebView ([Official API - WebViewCompat.CygnusWebMessageListener.onPostMessage](https://developer.android.com/reference/androidx/webkit/WebViewCompat.CygnusWebMessageListener#onPostMessage(android.webkit.WebView,%20androidx.webkit.WebMessageCompat,%20android.net.Uri,%20boolean,%20androidx.webkit.CygnusJavaScriptReplyProxy)))
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Linux WPE WebKit
@@ -80,19 +80,20 @@ enum PlatformWebMessageListenerCreationParamsProperty {
   ///- [isMainFrame]: all platforms
   ///- [replyProxy]: all platforms
   ///
-  ///Use the [PlatformWebMessageListenerCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebMessageListenerCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onPostMessage,
 }
 
-extension _PlatformWebMessageListenerCreationParamsPropertySupported
-    on PlatformWebMessageListenerCreationParams {
+extension _CygnusPlatformWebMessageListenerCreationParamsPropertySupported
+    on CygnusPlatformWebMessageListenerCreationParams {
   static bool isPropertySupported(
-    PlatformWebMessageListenerCreationParamsProperty property, {
+    CygnusPlatformWebMessageListenerCreationParamsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformWebMessageListenerCreationParamsProperty.allowedOriginRules:
+      case CygnusPlatformWebMessageListenerCreationParamsProperty
+          .allowedOriginRules:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -101,7 +102,7 @@ extension _PlatformWebMessageListenerCreationParamsPropertySupported
               TargetPlatform.linux,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebMessageListenerCreationParamsProperty.jsObjectName:
+      case CygnusPlatformWebMessageListenerCreationParamsProperty.jsObjectName:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -110,7 +111,7 @@ extension _PlatformWebMessageListenerCreationParamsPropertySupported
               TargetPlatform.linux,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebMessageListenerCreationParamsProperty.onPostMessage:
+      case CygnusPlatformWebMessageListenerCreationParamsProperty.onPostMessage:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -123,9 +124,9 @@ extension _PlatformWebMessageListenerCreationParamsPropertySupported
   }
 }
 
-extension _PlatformWebMessageListenerClassSupported
-    on PlatformWebMessageListener {
-  ///{@template cygnus_core.PlatformWebMessageListener.supported_platforms}
+extension _CygnusPlatformWebMessageListenerClassSupported
+    on CygnusPlatformWebMessageListener {
+  ///{@template cygnus_core.CygnusPlatformWebMessageListener.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -134,7 +135,7 @@ extension _PlatformWebMessageListenerClassSupported
   ///- Linux WPE WebKit
   ///- Windows WebView2
   ///
-  ///Use the [PlatformWebMessageListener.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformWebMessageListener.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -148,11 +149,11 @@ extension _PlatformWebMessageListenerClassSupported
   }
 }
 
-///List of [PlatformWebMessageListener]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformWebMessageListenerMethod {
-  ///Can be used to check if the [PlatformWebMessageListener.dispose] method is supported at runtime.
+///List of [CygnusPlatformWebMessageListener]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformWebMessageListenerMethod {
+  ///Can be used to check if the [CygnusPlatformWebMessageListener.dispose] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebMessageListener.dispose.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebMessageListener.dispose.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -161,19 +162,19 @@ enum PlatformWebMessageListenerMethod {
   ///- Linux WPE WebKit
   ///- Windows WebView2
   ///
-  ///Use the [PlatformWebMessageListener.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebMessageListener.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   dispose,
 }
 
-extension _PlatformWebMessageListenerMethodSupported
-    on PlatformWebMessageListener {
+extension _CygnusPlatformWebMessageListenerMethodSupported
+    on CygnusPlatformWebMessageListener {
   static bool isMethodSupported(
-    PlatformWebMessageListenerMethod method, {
+    CygnusPlatformWebMessageListenerMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformWebMessageListenerMethod.dispose:
+      case CygnusPlatformWebMessageListenerMethod.dispose:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,

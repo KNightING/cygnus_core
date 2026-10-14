@@ -3,160 +3,160 @@ import 'dart:ui';
 import 'package:flutter/services.dart';
 import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
 
-///{@macro cygnus_core.PlatformPullToRefreshController}
+///{@macro cygnus_core.CygnusPlatformPullToRefreshController}
 ///
-///{@macro cygnus_core.PlatformPullToRefreshController.supported_platforms}
-class PullToRefreshController {
-  ///{@macro cygnus_core.PlatformPullToRefreshController}
+///{@macro cygnus_core.CygnusPlatformPullToRefreshController.supported_platforms}
+class CygnusPullToRefreshController {
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.supported_platforms}
-  PullToRefreshController({
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.supported_platforms}
+  CygnusPullToRefreshController({
     void Function()? onRefresh,
-    @Deprecated("Use settings instead") PullToRefreshOptions? options,
-    PullToRefreshSettings? settings,
+    @Deprecated("Use settings instead") CygnusPullToRefreshOptions? options,
+    CygnusPullToRefreshSettings? settings,
   }) : this.fromPlatformCreationParams(
-         params: PlatformPullToRefreshControllerCreationParams(
+         params: CygnusPlatformPullToRefreshControllerCreationParams(
            onRefresh: onRefresh,
            options: options,
            settings: settings,
          ),
        );
 
-  /// Constructs a [PullToRefreshController].
+  /// Constructs a [CygnusPullToRefreshController].
   ///
-  /// See [PullToRefreshController.fromPlatformCreationParams] for setting parameters for
+  /// See [CygnusPullToRefreshController.fromPlatformCreationParams] for setting parameters for
   /// a specific platform.
-  PullToRefreshController.fromPlatformCreationParams({
-    required PlatformPullToRefreshControllerCreationParams params,
-  }) : this.fromPlatform(platform: PlatformPullToRefreshController(params));
+  CygnusPullToRefreshController.fromPlatformCreationParams({
+    required CygnusPlatformPullToRefreshControllerCreationParams params,
+  }) : this.fromPlatform(platform: CygnusPlatformPullToRefreshController(params));
 
-  /// Constructs a [PullToRefreshController] from a specific platform implementation.
-  PullToRefreshController.fromPlatform({required this.platform});
+  /// Constructs a [CygnusPullToRefreshController] from a specific platform implementation.
+  CygnusPullToRefreshController.fromPlatform({required this.platform});
 
-  /// Implementation of [PlatformPullToRefreshController] for the current platform.
-  final PlatformPullToRefreshController platform;
+  /// Implementation of [CygnusPlatformPullToRefreshController] for the current platform.
+  final CygnusPlatformPullToRefreshController platform;
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.options}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.options}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.options.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.options.supported_platforms}
   @Deprecated("Use settings instead")
-  PullToRefreshOptions get options => platform.options;
+  CygnusPullToRefreshOptions get options => platform.options;
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.settings}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.settings}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.settings.supported_platforms}
-  PullToRefreshSettings get settings => platform.settings;
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.settings.supported_platforms}
+  CygnusPullToRefreshSettings get settings => platform.settings;
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.onRefresh}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.onRefresh}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.onRefresh.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.onRefresh.supported_platforms}
   void Function()? get onRefresh => platform.onRefresh;
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setEnabled}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setEnabled}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setEnabled.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setEnabled.supported_platforms}
   Future<void> setEnabled(bool enabled) => platform.setEnabled(enabled);
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.isEnabled}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.isEnabled}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.isEnabled.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.isEnabled.supported_platforms}
   Future<bool> isEnabled() => platform.isEnabled();
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.beginRefreshing}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.beginRefreshing}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.beginRefreshing.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.beginRefreshing.supported_platforms}
   Future<void> beginRefreshing() => platform.beginRefreshing();
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.endRefreshing}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.endRefreshing}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.endRefreshing.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.endRefreshing.supported_platforms}
   Future<void> endRefreshing() => platform.endRefreshing();
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.isRefreshing}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.isRefreshing}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.isRefreshing.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.isRefreshing.supported_platforms}
   Future<bool> isRefreshing() => platform.isRefreshing();
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setColor}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setColor}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setColor.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setColor.supported_platforms}
   Future<void> setColor(Color color) => platform.setColor(color);
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setBackgroundColor}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setBackgroundColor}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setBackgroundColor.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setBackgroundColor.supported_platforms}
   Future<void> setBackgroundColor(Color color) =>
       platform.setBackgroundColor(color);
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setDistanceToTriggerSync}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setDistanceToTriggerSync}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setDistanceToTriggerSync.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setDistanceToTriggerSync.supported_platforms}
   Future<void> setDistanceToTriggerSync(int distanceToTriggerSync) =>
       platform.setDistanceToTriggerSync(distanceToTriggerSync);
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setSlingshotDistance}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setSlingshotDistance}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setSlingshotDistance.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setSlingshotDistance.supported_platforms}
   Future<void> setSlingshotDistance(int slingshotDistance) =>
       platform.setSlingshotDistance(slingshotDistance);
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.getDefaultSlingshotDistance}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.getDefaultSlingshotDistance}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.getDefaultSlingshotDistance.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.getDefaultSlingshotDistance.supported_platforms}
   Future<int> getDefaultSlingshotDistance() =>
       platform.getDefaultSlingshotDistance();
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setSize}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setSize}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setSize.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setSize.supported_platforms}
   @Deprecated("Use setIndicatorSize instead")
-  Future<void> setSize(AndroidPullToRefreshSize size) => platform.setSize(size);
+  Future<void> setSize(CygnusAndroidPullToRefreshSize size) => platform.setSize(size);
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setIndicatorSize}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setIndicatorSize}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setIndicatorSize.supported_platforms}
-  Future<void> setIndicatorSize(PullToRefreshSize size) =>
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setIndicatorSize.supported_platforms}
+  Future<void> setIndicatorSize(CygnusPullToRefreshSize size) =>
       platform.setIndicatorSize(size);
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setAttributedTitle}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setAttributedTitle}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setAttributedTitle.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setAttributedTitle.supported_platforms}
   @Deprecated("Use setStyledTitle instead")
-  Future<void> setAttributedTitle(IOSNSAttributedString attributedTitle) =>
+  Future<void> setAttributedTitle(CygnusIOSNSAttributedString attributedTitle) =>
       platform.setAttributedTitle(attributedTitle);
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setStyledTitle}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setStyledTitle}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setStyledTitle.supported_platforms}
-  Future<void> setStyledTitle(AttributedString attributedTitle) =>
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setStyledTitle.supported_platforms}
+  Future<void> setStyledTitle(CygnusAttributedString attributedTitle) =>
       platform.setStyledTitle(attributedTitle);
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.dispose}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.dispose}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.dispose.supported_platforms}
   void dispose({bool isKeepAlive = false}) =>
       platform.dispose(isKeepAlive: isKeepAlive);
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.isClassSupported}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformPullToRefreshController.static().isClassSupported(
+      CygnusPlatformPullToRefreshController.static().isClassSupported(
         platform: platform,
       );
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.isPropertySupported}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.isPropertySupported}
   static bool isPropertySupported(
-    PlatformPullToRefreshControllerCreationParamsProperty property, {
+    CygnusPlatformPullToRefreshControllerCreationParamsProperty property, {
     TargetPlatform? platform,
-  }) => PlatformPullToRefreshController.static().isPropertySupported(
+  }) => CygnusPlatformPullToRefreshController.static().isPropertySupported(
     property,
     platform: platform,
   );
 
-  ///{@macro cygnus_core.PlatformPullToRefreshController.isMethodSupported}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.isMethodSupported}
   static bool isMethodSupported(
-    PlatformPullToRefreshControllerMethod method, {
+    CygnusPlatformPullToRefreshControllerMethod method, {
     TargetPlatform? platform,
-  }) => PlatformPullToRefreshController.static().isMethodSupported(
+  }) => CygnusPlatformPullToRefreshController.static().isMethodSupported(
     method,
     platform: platform,
   );

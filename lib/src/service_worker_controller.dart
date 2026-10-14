@@ -3,109 +3,109 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
 
-///{@macro cygnus_core.PlatformServiceWorkerController}
+///{@macro cygnus_core.CygnusPlatformServiceWorkerController}
 ///
-///{@macro cygnus_core.PlatformServiceWorkerController.supported_platforms}
-class ServiceWorkerController {
-  ///{@macro cygnus_core.PlatformServiceWorkerController}
-  ServiceWorkerController()
+///{@macro cygnus_core.CygnusPlatformServiceWorkerController.supported_platforms}
+class CygnusServiceWorkerController {
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController}
+  CygnusServiceWorkerController()
     : this.fromPlatformCreationParams(
-        const PlatformServiceWorkerControllerCreationParams(),
+        const CygnusPlatformServiceWorkerControllerCreationParams(),
       );
 
-  /// Constructs a [ServiceWorkerController] from creation params for a specific
+  /// Constructs a [CygnusServiceWorkerController] from creation params for a specific
   /// platform.
-  ServiceWorkerController.fromPlatformCreationParams(
-    PlatformServiceWorkerControllerCreationParams params,
-  ) : this.fromPlatform(PlatformServiceWorkerController(params));
+  CygnusServiceWorkerController.fromPlatformCreationParams(
+    CygnusPlatformServiceWorkerControllerCreationParams params,
+  ) : this.fromPlatform(CygnusPlatformServiceWorkerController(params));
 
-  /// Constructs a [ServiceWorkerController] from a specific platform
+  /// Constructs a [CygnusServiceWorkerController] from a specific platform
   /// implementation.
-  ServiceWorkerController.fromPlatform(this.platform);
+  CygnusServiceWorkerController.fromPlatform(this.platform);
 
-  /// Implementation of [PlatformServiceWorkerController] for the current platform.
-  final PlatformServiceWorkerController platform;
+  /// Implementation of [CygnusPlatformServiceWorkerController] for the current platform.
+  final CygnusPlatformServiceWorkerController platform;
 
-  static ServiceWorkerController? _instance;
+  static CygnusServiceWorkerController? _instance;
 
-  ///Gets the [ServiceWorkerController] shared instance.
-  static ServiceWorkerController instance() {
+  ///Gets the [CygnusServiceWorkerController] shared instance.
+  static CygnusServiceWorkerController instance() {
     if (_instance == null) {
-      _instance = ServiceWorkerController();
+      _instance = CygnusServiceWorkerController();
     }
     return _instance!;
   }
 
-  ///{@macro cygnus_core.PlatformServiceWorkerController.serviceWorkerClient}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.serviceWorkerClient}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.serviceWorkerClient.supported_platforms}
-  ServiceWorkerClient? get serviceWorkerClient => platform.serviceWorkerClient;
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.serviceWorkerClient.supported_platforms}
+  CygnusServiceWorkerClient? get serviceWorkerClient => platform.serviceWorkerClient;
 
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setServiceWorkerClient}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setServiceWorkerClient}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setServiceWorkerClient.supported_platforms}
-  setServiceWorkerClient(ServiceWorkerClient? value) =>
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setServiceWorkerClient.supported_platforms}
+  setServiceWorkerClient(CygnusServiceWorkerClient? value) =>
       platform.setServiceWorkerClient(value);
 
-  ///{@macro cygnus_core.PlatformServiceWorkerController.getAllowContentAccess}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.getAllowContentAccess}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.getAllowContentAccess.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.getAllowContentAccess.supported_platforms}
   static Future<bool> getAllowContentAccess() =>
-      PlatformServiceWorkerController.static().getAllowContentAccess();
+      CygnusPlatformServiceWorkerController.static().getAllowContentAccess();
 
-  ///{@macro cygnus_core.PlatformServiceWorkerController.getAllowFileAccess}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.getAllowFileAccess}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.getAllowFileAccess.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.getAllowFileAccess.supported_platforms}
   static Future<bool> getAllowFileAccess() =>
-      PlatformServiceWorkerController.static().getAllowFileAccess();
+      CygnusPlatformServiceWorkerController.static().getAllowFileAccess();
 
-  ///{@macro cygnus_core.PlatformServiceWorkerController.getBlockNetworkLoads}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.getBlockNetworkLoads}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.getBlockNetworkLoads.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.getBlockNetworkLoads.supported_platforms}
   static Future<bool> getBlockNetworkLoads() =>
-      PlatformServiceWorkerController.static().getBlockNetworkLoads();
+      CygnusPlatformServiceWorkerController.static().getBlockNetworkLoads();
 
-  ///{@macro cygnus_core.PlatformServiceWorkerController.getCacheMode}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.getCacheMode}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.getCacheMode.supported_platforms}
-  static Future<CacheMode?> getCacheMode() =>
-      PlatformServiceWorkerController.static().getCacheMode();
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.getCacheMode.supported_platforms}
+  static Future<CygnusCacheMode?> getCacheMode() =>
+      CygnusPlatformServiceWorkerController.static().getCacheMode();
 
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setAllowContentAccess}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setAllowContentAccess}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setAllowContentAccess.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setAllowContentAccess.supported_platforms}
   static Future<void> setAllowContentAccess(bool allow) =>
-      PlatformServiceWorkerController.static().setAllowContentAccess(allow);
+      CygnusPlatformServiceWorkerController.static().setAllowContentAccess(allow);
 
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setAllowFileAccess}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setAllowFileAccess}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setAllowFileAccess.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setAllowFileAccess.supported_platforms}
   static Future<void> setAllowFileAccess(bool allow) =>
-      PlatformServiceWorkerController.static().setAllowFileAccess(allow);
+      CygnusPlatformServiceWorkerController.static().setAllowFileAccess(allow);
 
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setBlockNetworkLoads}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setBlockNetworkLoads}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setBlockNetworkLoads.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setBlockNetworkLoads.supported_platforms}
   static Future<void> setBlockNetworkLoads(bool flag) =>
-      PlatformServiceWorkerController.static().setBlockNetworkLoads(flag);
+      CygnusPlatformServiceWorkerController.static().setBlockNetworkLoads(flag);
 
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setCacheMode}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setCacheMode}
   ///
-  ///{@macro cygnus_core.PlatformServiceWorkerController.setCacheMode.supported_platforms}
-  static Future<void> setCacheMode(CacheMode mode) =>
-      PlatformServiceWorkerController.static().setCacheMode(mode);
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.setCacheMode.supported_platforms}
+  static Future<void> setCacheMode(CygnusCacheMode mode) =>
+      CygnusPlatformServiceWorkerController.static().setCacheMode(mode);
 
-  ///{@macro cygnus_core.PlatformServiceWorkerControllerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerControllerCreationParams.isClassSupported}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformServiceWorkerController.static().isClassSupported(
+      CygnusPlatformServiceWorkerController.static().isClassSupported(
         platform: platform,
       );
 
-  ///{@macro cygnus_core.PlatformServiceWorkerController.isMethodSupported}
+  ///{@macro cygnus_core.CygnusPlatformServiceWorkerController.isMethodSupported}
   static bool isMethodSupported(
-    PlatformServiceWorkerControllerMethod method, {
+    CygnusPlatformServiceWorkerControllerMethod method, {
     TargetPlatform? platform,
-  }) => PlatformServiceWorkerController.static().isMethodSupported(
+  }) => CygnusPlatformServiceWorkerController.static().isMethodSupported(
     method,
     platform: platform,
   );
@@ -117,35 +117,35 @@ class ServiceWorkerController {
 ///
 ///**Official Android API**: https://developer.android.com/reference/androidx/webkit/ServiceWorkerControllerCompat
 ///
-///Use [ServiceWorkerController] instead.
-@Deprecated("Use ServiceWorkerController instead")
-class AndroidServiceWorkerController {
-  static AndroidServiceWorkerController? _instance;
+///Use [CygnusServiceWorkerController] instead.
+@Deprecated("Use CygnusServiceWorkerController instead")
+class CygnusAndroidServiceWorkerController {
+  static CygnusAndroidServiceWorkerController? _instance;
 
-  AndroidServiceWorkerClient? _serviceWorkerClient;
+  CygnusAndroidServiceWorkerClient? _serviceWorkerClient;
 
-  AndroidServiceWorkerClient? get serviceWorkerClient => _serviceWorkerClient;
+  CygnusAndroidServiceWorkerClient? get serviceWorkerClient => _serviceWorkerClient;
 
-  ///Gets the [AndroidServiceWorkerController] shared instance.
-  static AndroidServiceWorkerController instance() {
+  ///Gets the [CygnusAndroidServiceWorkerController] shared instance.
+  static CygnusAndroidServiceWorkerController instance() {
     return (_instance != null) ? _instance! : _init();
   }
 
-  static AndroidServiceWorkerController _init() {
-    _instance = AndroidServiceWorkerController();
+  static CygnusAndroidServiceWorkerController _init() {
+    _instance = CygnusAndroidServiceWorkerController();
     return _instance!;
   }
 
   @Deprecated("Use setServiceWorkerClient instead")
-  set serviceWorkerClient(AndroidServiceWorkerClient? value) {
+  set serviceWorkerClient(CygnusAndroidServiceWorkerClient? value) {
     setServiceWorkerClient(value);
   }
 
   ///Sets the service worker client
-  setServiceWorkerClient(AndroidServiceWorkerClient? value) async {
-    await ServiceWorkerController.instance().setServiceWorkerClient(
+  setServiceWorkerClient(CygnusAndroidServiceWorkerClient? value) async {
+    await CygnusServiceWorkerController.instance().setServiceWorkerClient(
       value != null
-          ? ServiceWorkerClient(
+          ? CygnusServiceWorkerClient(
               shouldInterceptRequest: value.shouldInterceptRequest,
             )
           : null,
@@ -154,86 +154,86 @@ class AndroidServiceWorkerController {
   }
 
   ///Gets whether Service Workers support content URL access.
-  ///This method should only be called if [AndroidWebViewFeature.isFeatureSupported] returns `true` for [AndroidWebViewFeature.SERVICE_WORKER_CONTENT_ACCESS].
+  ///This method should only be called if [CygnusAndroidWebViewFeature.isFeatureSupported] returns `true` for [CygnusAndroidWebViewFeature.SERVICE_WORKER_CONTENT_ACCESS].
   ///
   ///**NOTE**: available on Android 24+.
   ///
   ///**Official Android API**: https://developer.android.com/reference/androidx/webkit/ServiceWorkerWebSettingsCompat#getAllowContentAccess()
   static Future<bool> getAllowContentAccess() async {
-    return await ServiceWorkerController.getAllowContentAccess();
+    return await CygnusServiceWorkerController.getAllowContentAccess();
   }
 
   ///Gets whether Service Workers support file access.
-  ///This method should only be called if [AndroidWebViewFeature.isFeatureSupported] returns `true` for [AndroidWebViewFeature.SERVICE_WORKER_FILE_ACCESS].
+  ///This method should only be called if [CygnusAndroidWebViewFeature.isFeatureSupported] returns `true` for [CygnusAndroidWebViewFeature.SERVICE_WORKER_FILE_ACCESS].
   ///
   ///**NOTE**: available on Android 24+.
   ///
   ///**Official Android API**: https://developer.android.com/reference/androidx/webkit/ServiceWorkerWebSettingsCompat#getAllowFileAccess()
   static Future<bool> getAllowFileAccess() async {
-    return await ServiceWorkerController.getAllowFileAccess();
+    return await CygnusServiceWorkerController.getAllowFileAccess();
   }
 
   ///Gets whether Service Workers are prohibited from loading any resources from the network.
-  ///This method should only be called if [AndroidWebViewFeature.isFeatureSupported] returns `true` for [AndroidWebViewFeature.SERVICE_WORKER_BLOCK_NETWORK_LOADS].
+  ///This method should only be called if [CygnusAndroidWebViewFeature.isFeatureSupported] returns `true` for [CygnusAndroidWebViewFeature.SERVICE_WORKER_BLOCK_NETWORK_LOADS].
   ///
   ///**NOTE**: available on Android 24+.
   ///
   ///**Official Android API**: https://developer.android.com/reference/androidx/webkit/ServiceWorkerWebSettingsCompat#getBlockNetworkLoads()
   static Future<bool> getBlockNetworkLoads() async {
-    return await ServiceWorkerController.getBlockNetworkLoads();
+    return await CygnusServiceWorkerController.getBlockNetworkLoads();
   }
 
   ///Gets the current setting for overriding the cache mode.
-  ///This method should only be called if [AndroidWebViewFeature.isFeatureSupported] returns `true` for [AndroidWebViewFeature.SERVICE_WORKER_CACHE_MODE].
+  ///This method should only be called if [CygnusAndroidWebViewFeature.isFeatureSupported] returns `true` for [CygnusAndroidWebViewFeature.SERVICE_WORKER_CACHE_MODE].
   ///
   ///**NOTE**: available on Android 24+.
   ///
   ///**Official Android API**: https://developer.android.com/reference/androidx/webkit/ServiceWorkerWebSettingsCompat#getCacheMode()
-  static Future<AndroidCacheMode?> getCacheMode() async {
-    return AndroidCacheMode.fromNativeValue(
-      (await ServiceWorkerController.getCacheMode())?.toNativeValue(),
+  static Future<CygnusAndroidCacheMode?> getCacheMode() async {
+    return CygnusAndroidCacheMode.fromNativeValue(
+      (await CygnusServiceWorkerController.getCacheMode())?.toNativeValue(),
     );
   }
 
   ///Enables or disables content URL access from Service Workers.
-  ///This method should only be called if [AndroidWebViewFeature.isFeatureSupported] returns `true` for [AndroidWebViewFeature.SERVICE_WORKER_CONTENT_ACCESS].
+  ///This method should only be called if [CygnusAndroidWebViewFeature.isFeatureSupported] returns `true` for [CygnusAndroidWebViewFeature.SERVICE_WORKER_CONTENT_ACCESS].
   ///
   ///**NOTE**: available on Android 24+.
   ///
   ///**Official Android API**: https://developer.android.com/reference/androidx/webkit/ServiceWorkerWebSettingsCompat#setAllowContentAccess(boolean)
   static Future<void> setAllowContentAccess(bool allow) async {
-    await ServiceWorkerController.setAllowContentAccess(allow);
+    await CygnusServiceWorkerController.setAllowContentAccess(allow);
   }
 
   ///Enables or disables file access within Service Workers.
-  ///This method should only be called if [AndroidWebViewFeature.isFeatureSupported] returns `true` for [AndroidWebViewFeature.SERVICE_WORKER_FILE_ACCESS].
+  ///This method should only be called if [CygnusAndroidWebViewFeature.isFeatureSupported] returns `true` for [CygnusAndroidWebViewFeature.SERVICE_WORKER_FILE_ACCESS].
   ///
   ///**NOTE**: available on Android 24+.
   ///
   ///**Official Android API**: https://developer.android.com/reference/androidx/webkit/ServiceWorkerWebSettingsCompat#setAllowFileAccess(boolean)
   static Future<void> setAllowFileAccess(bool allow) async {
-    await ServiceWorkerController.setAllowFileAccess(allow);
+    await CygnusServiceWorkerController.setAllowFileAccess(allow);
   }
 
   ///Sets whether Service Workers should not load resources from the network.
-  ///This method should only be called if [AndroidWebViewFeature.isFeatureSupported] returns `true` for [AndroidWebViewFeature.SERVICE_WORKER_BLOCK_NETWORK_LOADS].
+  ///This method should only be called if [CygnusAndroidWebViewFeature.isFeatureSupported] returns `true` for [CygnusAndroidWebViewFeature.SERVICE_WORKER_BLOCK_NETWORK_LOADS].
   ///
   ///**NOTE**: available on Android 24+.
   ///
   ///**Official Android API**: https://developer.android.com/reference/androidx/webkit/ServiceWorkerWebSettingsCompat#setBlockNetworkLoads(boolean)
   static Future<void> setBlockNetworkLoads(bool flag) async {
-    await ServiceWorkerController.setBlockNetworkLoads(flag);
+    await CygnusServiceWorkerController.setBlockNetworkLoads(flag);
   }
 
   ///Overrides the way the cache is used.
-  ///This method should only be called if [AndroidWebViewFeature.isFeatureSupported] returns `true` for [AndroidWebViewFeature.SERVICE_WORKER_CACHE_MODE].
+  ///This method should only be called if [CygnusAndroidWebViewFeature.isFeatureSupported] returns `true` for [CygnusAndroidWebViewFeature.SERVICE_WORKER_CACHE_MODE].
   ///
   ///**NOTE**: available on Android 24+.
   ///
   ///**Official Android API**: https://developer.android.com/reference/androidx/webkit/ServiceWorkerWebSettingsCompat#setCacheMode(int)
-  static Future<void> setCacheMode(AndroidCacheMode mode) async {
-    await ServiceWorkerController.setCacheMode(
-      CacheMode.fromNativeValue(mode.toNativeValue())!,
+  static Future<void> setCacheMode(CygnusAndroidCacheMode mode) async {
+    await CygnusServiceWorkerController.setCacheMode(
+      CygnusCacheMode.fromNativeValue(mode.toNativeValue())!,
     );
   }
 }
@@ -243,21 +243,21 @@ class AndroidServiceWorkerController {
 ///**NOTE**: available on Android 24+.
 ///
 ///**Official Android API**: https://developer.android.com/reference/androidx/webkit/ServiceWorkerClientCompat
-///Use [ServiceWorkerClient] instead.
-@Deprecated("Use ServiceWorkerClient instead")
-class AndroidServiceWorkerClient {
+///Use [CygnusServiceWorkerClient] instead.
+@Deprecated("Use CygnusServiceWorkerClient instead")
+class CygnusAndroidServiceWorkerClient {
   ///Notify the host application of a resource request and allow the application to return the data.
   ///If the return value is `null`, the Service Worker will continue to load the resource as usual.
   ///Otherwise, the return response and data will be used.
   ///
-  ///This method is called only if [AndroidWebViewFeature.SERVICE_WORKER_SHOULD_INTERCEPT_REQUEST] is supported.
-  ///You can check whether that flag is supported using [AndroidWebViewFeature.isFeatureSupported].
+  ///This method is called only if [CygnusAndroidWebViewFeature.SERVICE_WORKER_SHOULD_INTERCEPT_REQUEST] is supported.
+  ///You can check whether that flag is supported using [CygnusAndroidWebViewFeature.isFeatureSupported].
   ///
   ///[request] represents an object containing the details of the request.
   ///
   ///**NOTE**: available on Android 24+.
-  final Future<WebResourceResponse?> Function(WebResourceRequest request)?
+  final Future<CygnusWebResourceResponse?> Function(CygnusWebResourceRequest request)?
   shouldInterceptRequest;
 
-  AndroidServiceWorkerClient({this.shouldInterceptRequest});
+  CygnusAndroidServiceWorkerClient({this.shouldInterceptRequest});
 }

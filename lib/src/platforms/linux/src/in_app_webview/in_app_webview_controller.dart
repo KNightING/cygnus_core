@@ -18,20 +18,20 @@ import '_static_channel.dart';
 /// Object specifying creation parameters for creating a [LinuxInAppWebViewController].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformInAppWebViewControllerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebViewControllerCreationParams] for
 /// more information.
 @immutable
 class LinuxInAppWebViewControllerCreationParams
-    extends PlatformInAppWebViewControllerCreationParams {
+    extends CygnusPlatformWebViewControllerCreationParams {
   /// Creates a new [LinuxInAppWebViewControllerCreationParams] instance.
   const LinuxInAppWebViewControllerCreationParams({
     required super.id,
     super.webviewParams,
   });
 
-  /// Creates a [LinuxInAppWebViewControllerCreationParams] instance based on [PlatformInAppWebViewControllerCreationParams].
+  /// Creates a [LinuxInAppWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
   factory LinuxInAppWebViewControllerCreationParams.fromPlatformInAppWebViewControllerCreationParams(
-    PlatformInAppWebViewControllerCreationParams params,
+    CygnusPlatformWebViewControllerCreationParams params,
   ) {
     return LinuxInAppWebViewControllerCreationParams(
       id: params.id,
@@ -40,32 +40,32 @@ class LinuxInAppWebViewControllerCreationParams
   }
 }
 
-/// Controls a WebView, such as an [InAppWebView] widget instance.
+/// Controls a WebView, such as an [CygnusWebView] widget instance.
 ///
-/// If you are using the [InAppWebView] widget, an [InAppWebViewController] instance
-/// can be obtained by setting the [InAppWebView.onWebViewCreated] callback.
-class LinuxInAppWebViewController extends PlatformInAppWebViewController
+/// If you are using the [CygnusWebView] widget, an [CygnusWebViewController] instance
+/// can be obtained by setting the [CygnusWebView.onWebViewCreated] callback.
+class LinuxInAppWebViewController extends CygnusPlatformWebViewController
     with ChannelController {
   static final MethodChannel _staticChannel = IN_APP_WEBVIEW_STATIC_CHANNEL;
 
   // List of properties to be saved and restored for keep alive feature
   Map<String, Function> _javaScriptHandlersMap = HashMap<String, Function>();
-  Map<UserScriptInjectionTime, List<UserScript>> _userScripts = {
-    UserScriptInjectionTime.AT_DOCUMENT_START: <UserScript>[],
-    UserScriptInjectionTime.AT_DOCUMENT_END: <UserScript>[],
+  Map<CygnusUserScriptInjectionTime, List<CygnusUserScript>> _userScripts = {
+    CygnusUserScriptInjectionTime.AT_DOCUMENT_START: <CygnusUserScript>[],
+    CygnusUserScriptInjectionTime.AT_DOCUMENT_END: <CygnusUserScript>[],
   };
   Set<LinuxWebMessageListener> _webMessageListeners = Set();
   Set<String> _webMessageListenerObjNames = Set();
   Set<LinuxWebMessageChannel> _webMessageChannels = Set();
-  Map<String, ScriptHtmlTagAttributes> _injectedScriptsFromURL = {};
+  Map<String, CygnusScriptHtmlTagAttributes> _injectedScriptsFromURL = {};
 
   // static map that contains the properties to be saved and restored for keep alive feature
-  static final Map<InAppWebViewKeepAlive, InAppWebViewControllerKeepAliveProps?>
+  static final Map<CygnusWebViewKeepAlive, CygnusWebViewControllerKeepAliveProps?>
   _keepAliveMap = {};
 
   LinuxInAppBrowser? _inAppBrowser;
 
-  PlatformInAppBrowserEvents? get _inAppBrowserEventHandler =>
+  CygnusPlatformBrowserEvents? get _inAppBrowserEventHandler =>
       _inAppBrowser?.eventHandler;
 
   dynamic _controllerFromPlatform;
@@ -74,7 +74,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   late LinuxWebStorage webStorage;
 
   LinuxInAppWebViewController(
-    PlatformInAppWebViewControllerCreationParams params,
+    CygnusPlatformWebViewControllerCreationParams params,
   ) : super.implementation(
         params is LinuxInAppWebViewControllerCreationParams
             ? params
@@ -90,12 +90,12 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
     if (initialUserScripts != null) {
       for (final userScript in initialUserScripts) {
         if (userScript.injectionTime ==
-            UserScriptInjectionTime.AT_DOCUMENT_START) {
-          this._userScripts[UserScriptInjectionTime.AT_DOCUMENT_START]?.add(
+            CygnusUserScriptInjectionTime.AT_DOCUMENT_START) {
+          this._userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_START]?.add(
             userScript,
           );
         } else {
-          this._userScripts[UserScriptInjectionTime.AT_DOCUMENT_END]?.add(
+          this._userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_END]?.add(
             userScript,
           );
         }
@@ -115,10 +115,10 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }
 
   LinuxInAppWebViewController.fromInAppBrowser(
-    PlatformInAppWebViewControllerCreationParams params,
+    CygnusPlatformWebViewControllerCreationParams params,
     MethodChannel channel,
     LinuxInAppBrowser inAppBrowser,
-    UnmodifiableListView<UserScript>? initialUserScripts,
+    UnmodifiableListView<CygnusUserScript>? initialUserScripts,
   ) : super.implementation(
         params is LinuxInAppWebViewControllerCreationParams
             ? params
@@ -132,12 +132,12 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
     if (initialUserScripts != null) {
       for (final userScript in initialUserScripts) {
         if (userScript.injectionTime ==
-            UserScriptInjectionTime.AT_DOCUMENT_START) {
-          this._userScripts[UserScriptInjectionTime.AT_DOCUMENT_START]?.add(
+            CygnusUserScriptInjectionTime.AT_DOCUMENT_START) {
+          this._userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_START]?.add(
             userScript,
           );
         } else {
-          this._userScripts[UserScriptInjectionTime.AT_DOCUMENT_END]?.add(
+          this._userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_END]?.add(
             userScript,
           );
         }
@@ -146,7 +146,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
     this._init(params);
   }
 
-  void _init(PlatformInAppWebViewControllerCreationParams params) {
+  void _init(CygnusPlatformWebViewControllerCreationParams params) {
     _controllerFromPlatform =
         params.webviewParams?.controllerFromPlatform?.call(this) ?? this;
 
@@ -157,15 +157,15 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
       ),
     );
 
-    if (params.webviewParams is PlatformInAppWebViewWidgetCreationParams) {
+    if (params.webviewParams is CygnusPlatformWebViewWidgetCreationParams) {
       final keepAlive =
-          (params.webviewParams as PlatformInAppWebViewWidgetCreationParams)
+          (params.webviewParams as CygnusPlatformWebViewWidgetCreationParams)
               .keepAlive;
       if (keepAlive != null) {
-        InAppWebViewControllerKeepAliveProps? props = _keepAliveMap[keepAlive];
+        CygnusWebViewControllerKeepAliveProps? props = _keepAliveMap[keepAlive];
         if (props == null) {
           // save controller properties to restore it later
-          _keepAliveMap[keepAlive] = InAppWebViewControllerKeepAliveProps(
+          _keepAliveMap[keepAlive] = CygnusWebViewControllerKeepAliveProps(
             injectedScriptsFromURL: _injectedScriptsFromURL,
             javaScriptHandlersMap: _javaScriptHandlersMap,
             userScripts: _userScripts,
@@ -189,14 +189,14 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
           ? "WebView"
           : _inAppBrowser.runtimeType.toString(),
       id: (getViewId() ?? _inAppBrowser?.id).toString(),
-      debugLoggingSettings: PlatformInAppWebViewController.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformWebViewController.debugLoggingSettings,
       method: method,
       args: args,
     );
   }
 
   Future<dynamic> _handleMethod(MethodCall call) async {
-    if (PlatformInAppWebViewController.debugLoggingSettings.enabled &&
+    if (CygnusPlatformWebViewController.debugLoggingSettings.enabled &&
         call.method != "onCallJsHandler") {
       _debugLog(call.method, call.arguments);
     }
@@ -207,7 +207,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
         if ((webviewParams != null && webviewParams!.onLoadStart != null) ||
             _inAppBrowserEventHandler != null) {
           String? url = call.arguments["url"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           if (webviewParams != null && webviewParams!.onLoadStart != null)
             webviewParams!.onLoadStart!(_controllerFromPlatform, uri);
           else
@@ -218,7 +218,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
         if ((webviewParams != null && webviewParams!.onLoadStop != null) ||
             _inAppBrowserEventHandler != null) {
           String? url = call.arguments["url"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           if (webviewParams != null && webviewParams!.onLoadStop != null)
             webviewParams!.onLoadStop!(_controllerFromPlatform, uri);
           else
@@ -231,7 +231,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          NavigationAction navigationAction = NavigationAction.fromMap(
+          CygnusNavigationAction navigationAction = CygnusNavigationAction.fromMap(
             arguments,
           )!;
 
@@ -266,7 +266,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          ConsoleMessage consoleMessage = ConsoleMessage.fromMap(arguments)!;
+          CygnusConsoleMessage consoleMessage = CygnusConsoleMessage.fromMap(arguments)!;
           if (webviewParams != null && webviewParams!.onConsoleMessage != null)
             webviewParams!.onConsoleMessage!(
               _controllerFromPlatform,
@@ -281,7 +281,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          LoadedResource resource = LoadedResource.fromMap(arguments)!;
+          CygnusLoadedResource resource = CygnusLoadedResource.fromMap(arguments)!;
           if (webviewParams != null && webviewParams!.onLoadResource != null)
             webviewParams!.onLoadResource!(_controllerFromPlatform, resource);
           else
@@ -303,7 +303,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
                 webviewParams!.onUpdateVisitedHistory != null) ||
             _inAppBrowserEventHandler != null) {
           String? url = call.arguments["url"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           bool? isReload = call.arguments["isReload"];
           if (webviewParams != null &&
               webviewParams!.onUpdateVisitedHistory != null)
@@ -324,10 +324,10 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          WebResourceRequest request = WebResourceRequest.fromMap(
+          CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(
             arguments["request"]?.cast<String, dynamic>(),
           )!;
-          WebResourceError error = WebResourceError.fromMap(
+          CygnusWebResourceError error = CygnusWebResourceError.fromMap(
             arguments["error"]?.cast<String, dynamic>(),
           )!;
           var isForMainFrame = request.isForMainFrame ?? false;
@@ -368,10 +368,10 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          WebResourceRequest request = WebResourceRequest.fromMap(
+          CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(
             arguments["request"]?.cast<String, dynamic>(),
           )!;
-          WebResourceResponse errorResponse = WebResourceResponse.fromMap(
+          CygnusWebResourceResponse errorResponse = CygnusWebResourceResponse.fromMap(
             arguments["errorResponse"]?.cast<String, dynamic>(),
           )!;
           var isForMainFrame = request.isForMainFrame ?? false;
@@ -412,7 +412,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
                 webviewParams!.onPageCommitVisible != null) ||
             _inAppBrowserEventHandler != null) {
           String? url = call.arguments["url"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           if (webviewParams != null &&
               webviewParams!.onPageCommitVisible != null)
             webviewParams!.onPageCommitVisible!(_controllerFromPlatform, uri);
@@ -459,7 +459,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          CreateWindowAction createWindowAction = CreateWindowAction.fromMap(
+          CygnusCreateWindowAction createWindowAction = CygnusCreateWindowAction.fromMap(
             arguments,
           )!;
 
@@ -479,7 +479,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          JsAlertRequest jsAlertRequest = JsAlertRequest.fromMap(arguments)!;
+          CygnusJsAlertRequest jsAlertRequest = CygnusJsAlertRequest.fromMap(arguments)!;
 
           if (webviewParams != null && webviewParams!.onJsAlert != null)
             return (await webviewParams!.onJsAlert!(
@@ -497,7 +497,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          JsConfirmRequest jsConfirmRequest = JsConfirmRequest.fromMap(
+          CygnusJsConfirmRequest jsConfirmRequest = CygnusJsConfirmRequest.fromMap(
             arguments,
           )!;
 
@@ -517,7 +517,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          JsPromptRequest jsPromptRequest = JsPromptRequest.fromMap(arguments)!;
+          CygnusJsPromptRequest jsPromptRequest = CygnusJsPromptRequest.fromMap(arguments)!;
 
           if (webviewParams != null && webviewParams!.onJsPrompt != null)
             return (await webviewParams!.onJsPrompt!(
@@ -536,8 +536,8 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          JsBeforeUnloadRequest jsBeforeUnloadRequest =
-              JsBeforeUnloadRequest.fromMap(arguments)!;
+          CygnusJsBeforeUnloadRequest jsBeforeUnloadRequest =
+              CygnusJsBeforeUnloadRequest.fromMap(arguments)!;
 
           if (webviewParams != null && webviewParams!.onJsBeforeUnload != null)
             return (await webviewParams!.onJsBeforeUnload!(
@@ -556,7 +556,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          PermissionRequest permissionRequest = PermissionRequest.fromMap(
+          CygnusPermissionRequest permissionRequest = CygnusPermissionRequest.fromMap(
             arguments,
           )!;
 
@@ -578,8 +578,8 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          HttpAuthenticationChallenge challenge =
-              HttpAuthenticationChallenge.fromMap(arguments)!;
+          CygnusHttpAuthenticationChallenge challenge =
+              CygnusHttpAuthenticationChallenge.fromMap(arguments)!;
 
           if (webviewParams != null &&
               webviewParams!.onReceivedHttpAuthRequest != null)
@@ -599,7 +599,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          ServerTrustChallenge challenge = ServerTrustChallenge.fromMap(
+          CygnusServerTrustChallenge challenge = CygnusServerTrustChallenge.fromMap(
             arguments,
           )!;
 
@@ -621,7 +621,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          ClientCertChallenge challenge = ClientCertChallenge.fromMap(
+          CygnusClientCertChallenge challenge = CygnusClientCertChallenge.fromMap(
             arguments,
           )!;
 
@@ -645,8 +645,8 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          DownloadStartRequest downloadStartRequest =
-              DownloadStartRequest.fromMap(arguments)!;
+          CygnusDownloadStartRequest downloadStartRequest =
+              CygnusDownloadStartRequest.fromMap(arguments)!;
 
           if (webviewParams != null) {
             if (webviewParams!.onDownloadStarting != null)
@@ -710,7 +710,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
         }
         break;
       case "onCreateContextMenu":
-        ContextMenu? contextMenu;
+        CygnusContextMenu? contextMenu;
         if (webviewParams != null && webviewParams!.contextMenu != null) {
           contextMenu = webviewParams!.contextMenu;
         } else if (_inAppBrowserEventHandler != null &&
@@ -721,13 +721,13 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
         if (contextMenu != null && contextMenu.onCreateContextMenu != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          InAppWebViewHitTestResult hitTestResult =
-              InAppWebViewHitTestResult.fromMap(arguments)!;
+          CygnusWebViewHitTestResult hitTestResult =
+              CygnusWebViewHitTestResult.fromMap(arguments)!;
           contextMenu.onCreateContextMenu!(hitTestResult);
         }
         break;
       case "onHideContextMenu":
-        ContextMenu? contextMenu;
+        CygnusContextMenu? contextMenu;
         if (webviewParams != null && webviewParams!.contextMenu != null) {
           contextMenu = webviewParams!.contextMenu;
         } else if (_inAppBrowserEventHandler != null &&
@@ -740,7 +740,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
         }
         break;
       case "onContextMenuActionItemClicked":
-        ContextMenu? contextMenu;
+        CygnusContextMenu? contextMenu;
         if (webviewParams != null && webviewParams!.contextMenu != null) {
           contextMenu = webviewParams!.contextMenu;
         } else if (_inAppBrowserEventHandler != null &&
@@ -754,7 +754,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
           String id = arguments["id"] ?? "";
           String title = arguments["title"] ?? "";
 
-          ContextMenuItem menuItemClicked = ContextMenuItem(
+          CygnusContextMenuItem menuItemClicked = CygnusContextMenuItem(
             id: id,
             title: title,
             action: null,
@@ -783,7 +783,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          RenderProcessGoneDetail detail = RenderProcessGoneDetail.fromMap(
+          CygnusRenderProcessGoneDetail detail = CygnusRenderProcessGoneDetail.fromMap(
             arguments,
           )!;
           if (webviewParams != null &&
@@ -802,7 +802,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          NavigationResponse navigationResponse = NavigationResponse.fromMap(
+          CygnusNavigationResponse navigationResponse = CygnusNavigationResponse.fromMap(
             arguments,
           )!;
 
@@ -825,14 +825,14 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
                     webviewParams!.onPrint != null)) ||
             _inAppBrowserEventHandler != null) {
           String? url = call.arguments["url"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
 
           if (webviewParams != null) {
             if (webviewParams!.onPrintRequest != null)
               return await webviewParams!.onPrintRequest!(
                 _controllerFromPlatform,
                 uri,
-                null, // PrintJobController not supported on Linux
+                null, // CygnusPrintJobController not supported on Linux
               );
             else {
               // ignore: deprecated_member_use_from_same_package
@@ -844,7 +844,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler!.onPrint(uri);
             return await _inAppBrowserEventHandler!.onPrintRequest(
               uri,
-              null, // PrintJobController not supported on Linux
+              null, // CygnusPrintJobController not supported on Linux
             );
           }
         }
@@ -853,10 +853,10 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
         if ((webviewParams != null &&
                 webviewParams!.onCameraCaptureStateChanged != null) ||
             _inAppBrowserEventHandler != null) {
-          var oldState = MediaCaptureState.fromNativeValue(
+          var oldState = CygnusMediaCaptureState.fromNativeValue(
             call.arguments["oldState"],
           );
-          var newState = MediaCaptureState.fromNativeValue(
+          var newState = CygnusMediaCaptureState.fromNativeValue(
             call.arguments["newState"],
           );
 
@@ -878,10 +878,10 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
         if ((webviewParams != null &&
                 webviewParams!.onMicrophoneCaptureStateChanged != null) ||
             _inAppBrowserEventHandler != null) {
-          var oldState = MediaCaptureState.fromNativeValue(
+          var oldState = CygnusMediaCaptureState.fromNativeValue(
             call.arguments["oldState"],
           );
-          var newState = MediaCaptureState.fromNativeValue(
+          var newState = CygnusMediaCaptureState.fromNativeValue(
             call.arguments["newState"],
           );
 
@@ -905,7 +905,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          ShowFileChooserRequest request = ShowFileChooserRequest.fromMap(
+          CygnusShowFileChooserRequest request = CygnusShowFileChooserRequest.fromMap(
             arguments,
           )!;
 
@@ -920,7 +920,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             ))?.toMap();
         }
         return null;
-      // onFindResultReceived is now handled by FindInteractionController
+      // onFindResultReceived is now handled by CygnusFindInteractionController
       case "onLoadResourceWithCustomScheme":
         if ((webviewParams != null &&
                 (webviewParams!.onLoadResourceWithCustomScheme != null ||
@@ -929,7 +929,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             _inAppBrowserEventHandler != null) {
           Map<String, dynamic> requestMap = call.arguments
               .cast<String, dynamic>();
-          WebResourceRequest request = WebResourceRequest.fromMap(requestMap)!;
+          CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(requestMap)!;
 
           if (webviewParams != null) {
             if (webviewParams!.onLoadResourceWithCustomScheme != null)
@@ -961,7 +961,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
             .cast<String, dynamic>();
         // decode args to json
         handlerDataMap["args"] = jsonDecode(handlerDataMap["args"]);
-        final handlerData = JavaScriptHandlerFunctionData.fromMap(
+        final handlerData = CygnusJavaScriptHandlerFunctionData.fromMap(
           handlerDataMap,
         )!;
 
@@ -981,7 +981,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
                   ? arguments["duration"].toDouble()
                   : arguments["duration"];
 
-              var response = LoadedResource.fromMap(arguments)!;
+              var response = CygnusLoadedResource.fromMap(arguments)!;
 
               if (webviewParams != null &&
                   webviewParams!.onLoadResource != null)
@@ -999,7 +999,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
                 _inAppBrowserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
-              AjaxRequest request = AjaxRequest.fromMap(arguments)!;
+              CygnusAjaxRequest request = CygnusAjaxRequest.fromMap(arguments)!;
 
               if (webviewParams != null &&
                   webviewParams!.shouldInterceptAjaxRequest != null)
@@ -1023,7 +1023,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
                 _inAppBrowserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
-              AjaxRequest request = AjaxRequest.fromMap(arguments)!;
+              CygnusAjaxRequest request = CygnusAjaxRequest.fromMap(arguments)!;
 
               if (webviewParams != null &&
                   webviewParams!.onAjaxReadyStateChange != null)
@@ -1047,7 +1047,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
                 _inAppBrowserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
-              AjaxRequest request = AjaxRequest.fromMap(arguments)!;
+              CygnusAjaxRequest request = CygnusAjaxRequest.fromMap(arguments)!;
 
               if (webviewParams != null &&
                   webviewParams!.onAjaxProgress != null)
@@ -1071,7 +1071,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
                 _inAppBrowserEventHandler != null) {
               Map<String, dynamic> arguments = handlerData.args[0]
                   .cast<String, dynamic>();
-              FetchRequest request = FetchRequest.fromMap(arguments)!;
+              CygnusFetchRequest request = CygnusFetchRequest.fromMap(arguments)!;
 
               if (webviewParams != null &&
                   webviewParams!.shouldInterceptFetchRequest != null)
@@ -1127,8 +1127,8 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
                 // Forward to the listener's channel
                 Map<String, dynamic>? messageMap = arguments["message"]
                     ?.cast<String, dynamic>();
-                WebMessage? message = messageMap != null
-                    ? WebMessage.fromMap(messageMap)
+                CygnusWebMessage? message = messageMap != null
+                    ? CygnusWebMessage.fromMap(messageMap)
                     : null;
                 String? sourceOrigin = arguments["sourceOrigin"];
                 bool isMainFrame = arguments["isMainFrame"] ?? true;
@@ -1152,8 +1152,8 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
               if (webMessageChannel.id == webMessageChannelId) {
                 Map<String, dynamic>? messageMap = arguments["message"]
                     ?.cast<String, dynamic>();
-                WebMessage? message = messageMap != null
-                    ? WebMessage.fromMap(messageMap)
+                CygnusWebMessage? message = messageMap != null
+                    ? CygnusWebMessage.fromMap(messageMap)
                     : null;
                 webMessageChannel.internalChannel?.invokeMethod("onMessage", {
                   "index": index,
@@ -1170,15 +1170,15 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
           try {
             var jsHandlerResult = null;
             if (_javaScriptHandlersMap[handlerName]
-                is JavaScriptHandlerCallback) {
+                is CygnusJavaScriptHandlerCallback) {
               jsHandlerResult =
                   await (_javaScriptHandlersMap[handlerName]
-                      as JavaScriptHandlerCallback)(handlerData.args);
+                      as CygnusJavaScriptHandlerCallback)(handlerData.args);
             } else if (_javaScriptHandlersMap[handlerName]
-                is JavaScriptHandlerFunction) {
+                is CygnusJavaScriptHandlerFunction) {
               jsHandlerResult =
                   await (_javaScriptHandlersMap[handlerName]
-                      as JavaScriptHandlerFunction)(handlerData);
+                      as CygnusJavaScriptHandlerFunction)(handlerData);
             } else {
               jsHandlerResult = await _javaScriptHandlersMap[handlerName]!();
             }
@@ -1199,10 +1199,10 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<WebUri?> getUrl() async {
+  Future<CygnusWebUri?> getUrl() async {
     Map<String, dynamic> args = <String, dynamic>{};
     String? url = await channel?.invokeMethod<String?>('getUrl', args);
-    return url != null ? WebUri(url) : null;
+    return url != null ? CygnusWebUri(url) : null;
   }
 
   @override
@@ -1213,10 +1213,10 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> loadUrl({
-    required URLRequest urlRequest,
+    required CygnusURLRequest urlRequest,
     @Deprecated('Use allowingReadAccessTo instead')
     Uri? iosAllowingReadAccessTo,
-    WebUri? allowingReadAccessTo,
+    CygnusWebUri? allowingReadAccessTo,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('urlRequest', () => urlRequest.toMap());
@@ -1234,12 +1234,12 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
     required String data,
     String mimeType = "text/html",
     String encoding = "utf8",
-    WebUri? baseUrl,
+    CygnusWebUri? baseUrl,
     @Deprecated('Use historyUrl instead') Uri? androidHistoryUrl,
-    WebUri? historyUrl,
+    CygnusWebUri? historyUrl,
     @Deprecated('Use allowingReadAccessTo instead')
     Uri? iosAllowingReadAccessTo,
-    WebUri? allowingReadAccessTo,
+    CygnusWebUri? allowingReadAccessTo,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('data', () => data);
@@ -1251,7 +1251,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> postUrl({
-    required WebUri url,
+    required CygnusWebUri url,
     required Uint8List postData,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
@@ -1324,7 +1324,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   @override
   Future<dynamic> evaluateJavascript({
     required String source,
-    ContentWorld? contentWorld,
+    CygnusContentWorld? contentWorld,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('source', () => source);
@@ -1341,10 +1341,10 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<CallAsyncJavaScriptResult?> callAsyncJavaScript({
+  Future<CygnusCallAsyncJavaScriptResult?> callAsyncJavaScript({
     required String functionBody,
     Map<String, dynamic> arguments = const <String, dynamic>{},
-    ContentWorld? contentWorld,
+    CygnusContentWorld? contentWorld,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('functionBody', () => functionBody);
@@ -1365,12 +1365,12 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
     if (jsonResult != null) {
       try {
         Map<String, dynamic> result = jsonDecode(jsonResult);
-        return CallAsyncJavaScriptResult(
+        return CygnusCallAsyncJavaScriptResult(
           value: result['value'],
           error: result['error'],
         );
       } catch (e) {
-        return CallAsyncJavaScriptResult(
+        return CygnusCallAsyncJavaScriptResult(
           value: null,
           error: 'Failed to decode result: $e',
         );
@@ -1381,8 +1381,8 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> injectJavascriptFileFromUrl({
-    required WebUri urlFile,
-    ScriptHtmlTagAttributes? scriptHtmlTagAttributes,
+    required CygnusWebUri urlFile,
+    CygnusScriptHtmlTagAttributes? scriptHtmlTagAttributes,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('urlFile', () => urlFile.toString());
@@ -1402,8 +1402,8 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> injectCSSFileFromUrl({
-    required WebUri urlFile,
-    CSSLinkHtmlTagAttributes? cssLinkHtmlTagAttributes,
+    required CygnusWebUri urlFile,
+    CygnusCSSLinkHtmlTagAttributes? cssLinkHtmlTagAttributes,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('urlFile', () => urlFile.toString());
@@ -1433,27 +1433,27 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<SslCertificate?> getCertificate() async {
+  Future<CygnusSslCertificate?> getCertificate() async {
     Map<String, dynamic> args = <String, dynamic>{};
     Map<dynamic, dynamic>? result = await channel?.invokeMethod(
       'getCertificate',
       args,
     );
     if (result != null) {
-      return SslCertificate.fromMap(result.cast<String, dynamic>());
+      return CygnusSslCertificate.fromMap(result.cast<String, dynamic>());
     }
     return null;
   }
 
   @override
-  Future<InAppWebViewHitTestResult?> getHitTestResult() async {
+  Future<CygnusWebViewHitTestResult?> getHitTestResult() async {
     Map<String, dynamic> args = <String, dynamic>{};
     Map<dynamic, dynamic>? result = await channel?.invokeMethod(
       'getHitTestResult',
       args,
     );
     if (result != null) {
-      return InAppWebViewHitTestResult.fromMap(result.cast<String, dynamic>());
+      return CygnusWebViewHitTestResult.fromMap(result.cast<String, dynamic>());
     }
     return null;
   }
@@ -1487,7 +1487,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<void> disposeKeepAlive(InAppWebViewKeepAlive keepAlive) async {
+  Future<void> disposeKeepAlive(CygnusWebViewKeepAlive keepAlive) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('keepAliveId', () => keepAlive.id);
     await _staticChannel.invokeMethod('disposeKeepAlive', args);
@@ -1587,7 +1587,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<InAppWebViewSettings?> getSettings() async {
+  Future<CygnusWebViewSettings?> getSettings() async {
     Map<String, dynamic> args = <String, dynamic>{};
     Map<dynamic, dynamic>? settings = await channel?.invokeMethod(
       'getSettings',
@@ -1595,13 +1595,13 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
     );
     if (settings != null) {
       settings = settings.cast<String, dynamic>();
-      return InAppWebViewSettings.fromMap(settings as Map<String, dynamic>);
+      return CygnusWebViewSettings.fromMap(settings as Map<String, dynamic>);
     }
     return null;
   }
 
   @override
-  Future<void> setSettings({required InAppWebViewSettings settings}) async {
+  Future<void> setSettings({required CygnusWebViewSettings settings}) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('settings', () => settings.toMap());
     await channel?.invokeMethod('setSettings', args);
@@ -1630,7 +1630,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<void> addUserScript({required UserScript userScript}) async {
+  Future<void> addUserScript({required CygnusUserScript userScript}) async {
     // Note: WebKitGTK doesn't support content worlds like WKWebView,
     // so we ignore the contentWorld parameter
     Map<String, dynamic> args = <String, dynamic>{};
@@ -1641,14 +1641,14 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<void> addUserScripts({required List<UserScript> userScripts}) async {
+  Future<void> addUserScripts({required List<CygnusUserScript> userScripts}) async {
     for (var userScript in userScripts) {
       await addUserScript(userScript: userScript);
     }
   }
 
   @override
-  Future<bool> removeUserScript({required UserScript userScript}) async {
+  Future<bool> removeUserScript({required CygnusUserScript userScript}) async {
     var index =
         _userScripts[userScript.injectionTime]?.indexOf(userScript) ?? -1;
     if (index == -1) {
@@ -1673,17 +1673,17 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
     args.putIfAbsent('groupName', () => groupName);
     await channel?.invokeMethod('removeUserScriptsByGroupName', args);
 
-    _userScripts[UserScriptInjectionTime.AT_DOCUMENT_START]?.removeWhere(
+    _userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_START]?.removeWhere(
       (element) => element.groupName == groupName,
     );
-    _userScripts[UserScriptInjectionTime.AT_DOCUMENT_END]?.removeWhere(
+    _userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_END]?.removeWhere(
       (element) => element.groupName == groupName,
     );
   }
 
   @override
   Future<void> removeUserScripts({
-    required List<UserScript> userScripts,
+    required List<CygnusUserScript> userScripts,
   }) async {
     for (var userScript in userScripts) {
       await removeUserScript(userScript: userScript);
@@ -1693,30 +1693,30 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   @override
   Future<void> removeAllUserScripts() async {
     await channel?.invokeMethod('removeAllUserScripts', {});
-    _userScripts[UserScriptInjectionTime.AT_DOCUMENT_START]?.clear();
-    _userScripts[UserScriptInjectionTime.AT_DOCUMENT_END]?.clear();
+    _userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_START]?.clear();
+    _userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_END]?.clear();
   }
 
   /// Returns all user scripts that have been added.
   /// This is a Linux-specific method for accessing the user scripts cache.
-  Future<List<UserScript>> getUserScripts() async {
-    List<UserScript> result = [];
+  Future<List<CygnusUserScript>> getUserScripts() async {
+    List<CygnusUserScript> result = [];
     result.addAll(
-      _userScripts[UserScriptInjectionTime.AT_DOCUMENT_START] ?? [],
+      _userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_START] ?? [],
     );
-    result.addAll(_userScripts[UserScriptInjectionTime.AT_DOCUMENT_END] ?? []);
+    result.addAll(_userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_END] ?? []);
     return result;
   }
 
   @override
-  bool hasUserScript({required UserScript userScript}) {
+  bool hasUserScript({required CygnusUserScript userScript}) {
     return _userScripts[userScript.injectionTime]?.contains(userScript) ??
         false;
   }
 
   @override
   Future<void> addWebMessageListener(
-    PlatformWebMessageListener webMessageListener,
+    CygnusPlatformWebMessageListener webMessageListener,
   ) async {
     assert(
       !_webMessageListeners.contains(webMessageListener),
@@ -1737,7 +1737,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  bool hasWebMessageListener(PlatformWebMessageListener webMessageListener) {
+  bool hasWebMessageListener(CygnusPlatformWebMessageListener webMessageListener) {
     return _webMessageListeners.contains(webMessageListener) ||
         _webMessageListenerObjNames.contains(
           webMessageListener.params.jsObjectName,
@@ -1760,11 +1760,11 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> postWebMessage({
-    required WebMessage message,
-    WebUri? targetOrigin,
+    required CygnusWebMessage message,
+    CygnusWebUri? targetOrigin,
   }) async {
     if (targetOrigin == null) {
-      targetOrigin = WebUri('');
+      targetOrigin = CygnusWebUri('');
     }
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('message', () => message.toMap());
@@ -1773,10 +1773,10 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<WebUri?> getOriginalUrl() async {
+  Future<CygnusWebUri?> getOriginalUrl() async {
     Map<String, dynamic> args = <String, dynamic>{};
     String? url = await channel?.invokeMethod<String?>('getOriginalUrl', args);
-    return url != null ? WebUri(url) : null;
+    return url != null ? CygnusWebUri(url) : null;
   }
 
   /// Sets the zoom level of the WebView.
@@ -1851,7 +1851,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<Uint8List?> takeScreenshot({
-    ScreenshotConfiguration? screenshotConfiguration,
+    CygnusScreenshotConfiguration? screenshotConfiguration,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent(
@@ -1881,8 +1881,8 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }) async {
     if (!autoname) {
       assert(
-        WebArchiveFormat.MHT.isSupported() &&
-            filePath.endsWith("." + WebArchiveFormat.MHT.toNativeValue()!),
+        CygnusWebArchiveFormat.MHT.isSupported() &&
+            filePath.endsWith("." + CygnusWebArchiveFormat.MHT.toNativeValue()!),
       );
     }
 
@@ -1905,14 +1905,14 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<WebHistory?> getCopyBackForwardList() async {
+  Future<CygnusWebHistory?> getCopyBackForwardList() async {
     Map<String, dynamic> args = <String, dynamic>{};
     Map<dynamic, dynamic>? result = await channel?.invokeMethod(
       'getCopyBackForwardList',
       args,
     );
     if (result != null) {
-      return WebHistory.fromMap(result.cast<String, dynamic>());
+      return CygnusWebHistory.fromMap(result.cast<String, dynamic>());
     }
     return null;
   }
@@ -1933,8 +1933,8 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<List<Favicon>> getFavicons() async {
-    List<Favicon> favicons = [];
+  Future<List<CygnusFavicon>> getFavicons() async {
+    List<CygnusFavicon> favicons = [];
 
     var webviewUrl = await getUrl();
 
@@ -1955,7 +1955,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
       assetPathBase = assetPathSplit[0] + "/flutter_assets/";
     }
 
-    InAppWebViewSettings? settings = await getSettings();
+    CygnusWebViewSettings? settings = await getSettings();
     if (settings != null && settings.javaScriptEnabled == true) {
       var jsResult = await evaluateJavascript(
         source: """
@@ -2023,11 +2023,11 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
       HttpClient client = HttpClient();
       var faviconUrl =
           webviewUrl.scheme + "://" + webviewUrl.host + "/favicon.ico";
-      var faviconUri = WebUri(faviconUrl);
+      var faviconUri = CygnusWebUri(faviconUrl);
       var headRequest = await client.headUrl(faviconUri);
       var headResponse = await headRequest.close();
       if (headResponse.statusCode == 200) {
-        favicons.add(Favicon(url: faviconUri, rel: "shortcut icon"));
+        favicons.add(CygnusFavicon(url: faviconUri, rel: "shortcut icon"));
       }
     } catch (e) {
       developer.log(
@@ -2094,15 +2094,15 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
     return url.startsWith("http://") || url.startsWith("https://");
   }
 
-  List<Favicon> _createFavicons(
-    WebUri url,
+  List<CygnusFavicon> _createFavicons(
+    CygnusWebUri url,
     String? assetPathBase,
     String urlIcon,
     String? rel,
     String? sizes,
     bool isManifest,
   ) {
-    List<Favicon> favicons = [];
+    List<CygnusFavicon> favicons = [];
 
     List<String> urlSplit = urlIcon.split("/");
     if (!_isUrlAbsolute(urlIcon)) {
@@ -2129,12 +2129,12 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
         int width = int.parse(size.split("x")[0]);
         int height = int.parse(size.split("x")[1]);
         favicons.add(
-          Favicon(url: WebUri(urlIcon), rel: rel, width: width, height: height),
+          CygnusFavicon(url: CygnusWebUri(urlIcon), rel: rel, width: width, height: height),
         );
       }
     } else {
       favicons.add(
-        Favicon(url: WebUri(urlIcon), rel: rel, width: null, height: null),
+        CygnusFavicon(url: CygnusWebUri(urlIcon), rel: rel, width: null, height: null),
       );
     }
 
@@ -2161,54 +2161,54 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<MediaPlaybackState?> requestMediaPlaybackState() async {
+  Future<CygnusMediaPlaybackState?> requestMediaPlaybackState() async {
     Map<String, dynamic> args = <String, dynamic>{};
     int? result = await channel?.invokeMethod<int?>(
       'requestMediaPlaybackState',
       args,
     );
     if (result != null) {
-      return MediaPlaybackState.fromNativeValue(result);
+      return CygnusMediaPlaybackState.fromNativeValue(result);
     }
     return null;
   }
 
   @override
-  Future<MediaCaptureState?> getCameraCaptureState() async {
+  Future<CygnusMediaCaptureState?> getCameraCaptureState() async {
     Map<String, dynamic> args = <String, dynamic>{};
     int? result = await channel?.invokeMethod<int?>(
       'getCameraCaptureState',
       args,
     );
     if (result != null) {
-      return MediaCaptureState.fromNativeValue(result);
+      return CygnusMediaCaptureState.fromNativeValue(result);
     }
     return null;
   }
 
   @override
-  Future<void> setCameraCaptureState({required MediaCaptureState state}) async {
+  Future<void> setCameraCaptureState({required CygnusMediaCaptureState state}) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('state', () => state.toNativeValue());
     await channel?.invokeMethod('setCameraCaptureState', args);
   }
 
   @override
-  Future<MediaCaptureState?> getMicrophoneCaptureState() async {
+  Future<CygnusMediaCaptureState?> getMicrophoneCaptureState() async {
     Map<String, dynamic> args = <String, dynamic>{};
     int? result = await channel?.invokeMethod<int?>(
       'getMicrophoneCaptureState',
       args,
     );
     if (result != null) {
-      return MediaCaptureState.fromNativeValue(result);
+      return CygnusMediaCaptureState.fromNativeValue(result);
     }
     return null;
   }
 
   @override
   Future<void> setMicrophoneCaptureState({
-    required MediaCaptureState state,
+    required CygnusMediaCaptureState state,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('state', () => state.toNativeValue());
@@ -2216,8 +2216,8 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<List<MetaTag>> getMetaTags() async {
-    List<MetaTag> metaTags = [];
+  Future<List<CygnusMetaTag>> getMetaTags() async {
+    List<CygnusMetaTag> metaTags = [];
 
     List<Map<dynamic, dynamic>>? metaTagList = (await evaluateJavascript(
       source: """
@@ -2262,11 +2262,11 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
     }
 
     for (var metaTag in metaTagList) {
-      var attrs = <MetaTagAttribute>[];
+      var attrs = <CygnusMetaTagAttribute>[];
 
       for (var metaTagAttr in metaTag["attrs"]) {
         attrs.add(
-          MetaTagAttribute(
+          CygnusMetaTagAttribute(
             name: metaTagAttr["name"],
             value: metaTagAttr["value"],
           ),
@@ -2274,7 +2274,7 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
       }
 
       metaTags.add(
-        MetaTag(
+        CygnusMetaTag(
           name: metaTag["name"],
           content: metaTag["content"],
           attrs: attrs,
@@ -2332,8 +2332,8 @@ class LinuxInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<bool?> requestFocus({
-    FocusDirection? direction,
-    InAppWebViewRect? previouslyFocusedRect,
+    CygnusFocusDirection? direction,
+    CygnusWebViewRect? previouslyFocusedRect,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     return await channel?.invokeMethod<bool?>('requestFocus', args);

@@ -3,19 +3,19 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
 
-///{@macro cygnus_core.PlatformInAppLocalhostServer}
+///{@macro cygnus_core.CygnusPlatformLocalhostServer}
 ///
-///{@macro cygnus_core.PlatformInAppLocalhostServer.supported_platforms}
-class InAppLocalhostServer {
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer}
-  InAppLocalhostServer({
+///{@macro cygnus_core.CygnusPlatformLocalhostServer.supported_platforms}
+class CygnusLocalhostServer {
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer}
+  CygnusLocalhostServer({
     int port = 8080,
     String directoryIndex = 'index.html',
     String documentRoot = './',
     bool shared = false,
     Future<bool> Function(HttpRequest request)? onData,
   }) : this.fromPlatformCreationParams(
-         PlatformInAppLocalhostServerCreationParams(
+         CygnusPlatformLocalhostServerCreationParams(
            port: port,
            directoryIndex: directoryIndex,
            documentRoot: documentRoot,
@@ -24,70 +24,70 @@ class InAppLocalhostServer {
          ),
        );
 
-  /// Constructs a [InAppLocalhostServer] from creation params for a specific
+  /// Constructs a [CygnusLocalhostServer] from creation params for a specific
   /// platform.
-  InAppLocalhostServer.fromPlatformCreationParams(
-    PlatformInAppLocalhostServerCreationParams params,
-  ) : this.fromPlatform(PlatformInAppLocalhostServer(params));
+  CygnusLocalhostServer.fromPlatformCreationParams(
+    CygnusPlatformLocalhostServerCreationParams params,
+  ) : this.fromPlatform(CygnusPlatformLocalhostServer(params));
 
-  /// Constructs a [InAppLocalhostServer] from a specific platform
+  /// Constructs a [CygnusLocalhostServer] from a specific platform
   /// implementation.
-  InAppLocalhostServer.fromPlatform(this.platform);
+  CygnusLocalhostServer.fromPlatform(this.platform);
 
-  /// Implementation of [PlatformInAppLocalhostServer] for the current platform.
-  final PlatformInAppLocalhostServer platform;
+  /// Implementation of [CygnusPlatformLocalhostServer] for the current platform.
+  final CygnusPlatformLocalhostServer platform;
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.port}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.port}
   ///
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.port.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.port.supported_platforms}
   int get port => platform.port;
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.directoryIndex}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.directoryIndex}
   ///
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.directoryIndex.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.directoryIndex.supported_platforms}
   String get directoryIndex => platform.directoryIndex;
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.documentRoot}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.documentRoot}
   ///
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.documentRoot.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.documentRoot.supported_platforms}
   String get documentRoot => platform.documentRoot;
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.shared}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.shared}
   ///
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.shared.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.shared.supported_platforms}
   bool get shared => platform.shared;
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.onData}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.onData}
   ///
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.onData.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.onData.supported_platforms}
   Future<bool> Function(HttpRequest request)? get onData => platform.onData;
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.start}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.start}
   ///
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.start.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.start.supported_platforms}
   Future<void> start() => platform.start();
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.close}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.close}
   ///
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.close.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.close.supported_platforms}
   Future<void> close() => platform.close();
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.isRunning}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.isRunning}
   ///
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.isRunning.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.isRunning.supported_platforms}
   bool isRunning() => platform.isRunning();
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServerCreationParams.isClassSupported}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformInAppLocalhostServer.static().isClassSupported(
+      CygnusPlatformLocalhostServer.static().isClassSupported(
         platform: platform,
       );
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.isMethodSupported}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.isMethodSupported}
   static bool isMethodSupported(
-    PlatformInAppLocalhostServerMethod method, {
+    CygnusPlatformLocalhostServerMethod method, {
     TargetPlatform? platform,
-  }) => PlatformInAppLocalhostServer.static().isMethodSupported(
+  }) => CygnusPlatformLocalhostServer.static().isMethodSupported(
     method,
     platform: platform,
   );

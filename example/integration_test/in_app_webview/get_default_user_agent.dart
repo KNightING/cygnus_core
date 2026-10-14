@@ -1,11 +1,11 @@
 part of 'main.dart';
 
 void getDefaultUserAgent() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.getDefaultUserAgent,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.getDefaultUserAgent,
   );
 
   skippableTest('getDefaultUserAgent', () async {
-    expect(await InAppWebViewController.getDefaultUserAgent(), isNotNull);
+    expect(await CygnusWebViewController.getDefaultUserAgent(), isNotNull);
   }, skip: shouldSkip);
 }

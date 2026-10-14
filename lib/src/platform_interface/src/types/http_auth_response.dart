@@ -6,25 +6,25 @@ import 'enum_method.dart';
 
 part 'http_auth_response.g.dart';
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onReceivedHttpAuthRequest] event.
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onReceivedHttpAuthRequest] event.
 @ExchangeableObject()
-class HttpAuthResponse_ {
-  ///Represents the username used for the authentication if the [action] corresponds to [HttpAuthResponseAction.PROCEED]
+class CygnusHttpAuthResponse_ {
+  ///Represents the username used for the authentication if the [action] corresponds to [CygnusHttpAuthResponseAction.PROCEED]
   String username;
 
-  ///Represents the password used for the authentication if the [action] corresponds to [HttpAuthResponseAction.PROCEED]
+  ///Represents the password used for the authentication if the [action] corresponds to [CygnusHttpAuthResponseAction.PROCEED]
   String password;
 
   ///Indicate if the given credentials need to be saved permanently.
   bool permanentPersistence;
 
-  ///Indicate the [HttpAuthResponseAction] to take in response of the authentication challenge.
-  HttpAuthResponseAction_? action;
+  ///Indicate the [CygnusHttpAuthResponseAction] to take in response of the authentication challenge.
+  CygnusHttpAuthResponseAction_? action;
 
-  HttpAuthResponse_({
+  CygnusHttpAuthResponse_({
     this.username = "",
     this.password = "",
     this.permanentPersistence = false,
-    this.action = HttpAuthResponseAction_.CANCEL,
+    this.action = CygnusHttpAuthResponseAction_.CANCEL,
   });
 }

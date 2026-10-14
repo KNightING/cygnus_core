@@ -1,25 +1,25 @@
 part of 'main.dart';
 
 void onLoadResourceWithCustomScheme() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onLoadResourceWithCustomScheme,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onLoadResourceWithCustomScheme,
   );
 
   skippableTestWidgets('onLoadResourceWithCustomScheme', (
     WidgetTester tester,
   ) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<void> imageLoaded = Completer<void>();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
           initialFile:
               "test_assets/in_app_webview_on_load_resource_custom_scheme_test.html",
-          initialSettings: InAppWebViewSettings(
+          initialSettings: CygnusWebViewSettings(
             clearCache: true,
             resourceCustomSchemes: ["my-special-custom-scheme"],
           ),
@@ -43,7 +43,7 @@ void onLoadResourceWithCustomScheme() {
                       0,
                     ),
               );
-              var response = CustomSchemeResponse(
+              var response = CygnusCustomSchemeResponse(
                 data: bytes.buffer.asUint8List(),
                 contentType: "image/svg+xml",
                 contentEncoding: "utf-8",

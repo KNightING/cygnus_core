@@ -7,61 +7,64 @@ part of 'underline_style.dart';
 // **************************************************************************
 
 ///Class that represents the constants for the underline style and strikethrough style attribute keys.
-class UnderlineStyle {
+class CygnusUnderlineStyle {
   final int _value;
   final int? _nativeValue;
-  const UnderlineStyle._internal(this._value, this._nativeValue);
+  const CygnusUnderlineStyle._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory UnderlineStyle._internalMultiPlatform(
+  factory CygnusUnderlineStyle._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => UnderlineStyle._internal(value, nativeValue());
+  ) => CygnusUnderlineStyle._internal(value, nativeValue());
 
   ///Draw the line only beneath or through words, not whitespace.
-  static const BY_WORD = UnderlineStyle._internal(32768, 32768);
+  static const BY_WORD = CygnusUnderlineStyle._internal(32768, 32768);
 
   ///Draw a double line.
-  static const DOUBLE = UnderlineStyle._internal(9, 9);
+  static const DOUBLE = CygnusUnderlineStyle._internal(9, 9);
 
   ///Draw a line of dashes.
-  static const PATTERN_DASH = UnderlineStyle._internal(512, 512);
+  static const PATTERN_DASH = CygnusUnderlineStyle._internal(512, 512);
 
   ///Draw a line of alternating dashes and dots.
-  static const PATTERN_DASH_DOT = UnderlineStyle._internal(768, 768);
+  static const PATTERN_DASH_DOT = CygnusUnderlineStyle._internal(768, 768);
 
   ///Draw a line of alternating dashes and two dots.
-  static const PATTERN_DASH_DOT_DOT = UnderlineStyle._internal(1024, 1024);
+  static const PATTERN_DASH_DOT_DOT = CygnusUnderlineStyle._internal(
+    1024,
+    1024,
+  );
 
   ///Draw a line of dots.
-  static const PATTERN_DOT = UnderlineStyle._internal(256, 256);
+  static const PATTERN_DOT = CygnusUnderlineStyle._internal(256, 256);
 
   ///Draw a single line.
-  static const SINGLE = UnderlineStyle._internal(1, 1);
+  static const SINGLE = CygnusUnderlineStyle._internal(1, 1);
 
   ///Do not draw a line.
-  static const STYLE_NONE = UnderlineStyle._internal(0, 0);
+  static const STYLE_NONE = CygnusUnderlineStyle._internal(0, 0);
 
   ///Draw a thick line.
-  static const THICK = UnderlineStyle._internal(2, 2);
+  static const THICK = CygnusUnderlineStyle._internal(2, 2);
 
-  ///Set of all values of [UnderlineStyle].
-  static final Set<UnderlineStyle> values = [
-    UnderlineStyle.BY_WORD,
-    UnderlineStyle.DOUBLE,
-    UnderlineStyle.PATTERN_DASH,
-    UnderlineStyle.PATTERN_DASH_DOT,
-    UnderlineStyle.PATTERN_DASH_DOT_DOT,
-    UnderlineStyle.PATTERN_DOT,
-    UnderlineStyle.SINGLE,
-    UnderlineStyle.STYLE_NONE,
-    UnderlineStyle.THICK,
+  ///Set of all values of [CygnusUnderlineStyle].
+  static final Set<CygnusUnderlineStyle> values = [
+    CygnusUnderlineStyle.BY_WORD,
+    CygnusUnderlineStyle.DOUBLE,
+    CygnusUnderlineStyle.PATTERN_DASH,
+    CygnusUnderlineStyle.PATTERN_DASH_DOT,
+    CygnusUnderlineStyle.PATTERN_DASH_DOT_DOT,
+    CygnusUnderlineStyle.PATTERN_DOT,
+    CygnusUnderlineStyle.SINGLE,
+    CygnusUnderlineStyle.STYLE_NONE,
+    CygnusUnderlineStyle.THICK,
   ].toSet();
 
-  ///Gets a possible [UnderlineStyle] instance from [int] value.
-  static UnderlineStyle? fromValue(int? value) {
+  ///Gets a possible [CygnusUnderlineStyle] instance from [int] value.
+  static CygnusUnderlineStyle? fromValue(int? value) {
     if (value != null) {
       try {
-        return UnderlineStyle.values.firstWhere(
+        return CygnusUnderlineStyle.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -71,11 +74,11 @@ class UnderlineStyle {
     return null;
   }
 
-  ///Gets a possible [UnderlineStyle] instance from a native value.
-  static UnderlineStyle? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusUnderlineStyle] instance from a native value.
+  static CygnusUnderlineStyle? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return UnderlineStyle.values.firstWhere(
+        return CygnusUnderlineStyle.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -85,15 +88,15 @@ class UnderlineStyle {
     return null;
   }
 
-  /// Gets a possible [UnderlineStyle] instance value with name [name].
+  /// Gets a possible [CygnusUnderlineStyle] instance value with name [name].
   ///
-  /// Goes through [UnderlineStyle.values] looking for a value with
-  /// name [name], as reported by [UnderlineStyle.name].
+  /// Goes through [CygnusUnderlineStyle.values] looking for a value with
+  /// name [name], as reported by [CygnusUnderlineStyle.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static UnderlineStyle? byName(String? name) {
+  static CygnusUnderlineStyle? byName(String? name) {
     if (name != null) {
       try {
-        return UnderlineStyle.values.firstWhere(
+        return CygnusUnderlineStyle.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -103,7 +106,7 @@ class UnderlineStyle {
     return null;
   }
 
-  /// Creates a map from the names of [UnderlineStyle] values to the values.
+  /// Creates a map from the names of [CygnusUnderlineStyle] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -111,9 +114,10 @@ class UnderlineStyle {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, UnderlineStyle> asNameMap() => <String, UnderlineStyle>{
-    for (final value in UnderlineStyle.values) value.name(): value,
-  };
+  static Map<String, CygnusUnderlineStyle> asNameMap() =>
+      <String, CygnusUnderlineStyle>{
+        for (final value in CygnusUnderlineStyle.values) value.name(): value,
+      };
 
   ///Gets [int] value.
   int toValue() => _value;
@@ -164,63 +168,66 @@ class UnderlineStyle {
 }
 
 ///An iOS-specific Class that represents the constants for the underline style and strikethrough style attribute keys.
-///Use [UnderlineStyle] instead.
-@Deprecated('Use UnderlineStyle instead')
-class IOSNSUnderlineStyle {
+///Use [CygnusUnderlineStyle] instead.
+@Deprecated('Use CygnusUnderlineStyle instead')
+class CygnusIOSNSUnderlineStyle {
   final int _value;
   final int? _nativeValue;
-  const IOSNSUnderlineStyle._internal(this._value, this._nativeValue);
+  const CygnusIOSNSUnderlineStyle._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory IOSNSUnderlineStyle._internalMultiPlatform(
+  factory CygnusIOSNSUnderlineStyle._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => IOSNSUnderlineStyle._internal(value, nativeValue());
+  ) => CygnusIOSNSUnderlineStyle._internal(value, nativeValue());
 
   ///Draw the line only beneath or through words, not whitespace.
-  static const BY_WORD = IOSNSUnderlineStyle._internal(32768, 32768);
+  static const BY_WORD = CygnusIOSNSUnderlineStyle._internal(32768, 32768);
 
   ///Draw a double line.
-  static const DOUBLE = IOSNSUnderlineStyle._internal(9, 9);
+  static const DOUBLE = CygnusIOSNSUnderlineStyle._internal(9, 9);
 
   ///Draw a line of dashes.
-  static const PATTERN_DASH = IOSNSUnderlineStyle._internal(512, 512);
+  static const PATTERN_DASH = CygnusIOSNSUnderlineStyle._internal(512, 512);
 
   ///Draw a line of alternating dashes and dots.
-  static const PATTERN_DASH_DOT = IOSNSUnderlineStyle._internal(768, 768);
+  static const PATTERN_DASH_DOT = CygnusIOSNSUnderlineStyle._internal(768, 768);
 
   ///Draw a line of alternating dashes and two dots.
-  static const PATTERN_DASH_DOT_DOT = IOSNSUnderlineStyle._internal(1024, 1024);
+  static const PATTERN_DASH_DOT_DOT = CygnusIOSNSUnderlineStyle._internal(
+    1024,
+    1024,
+  );
 
   ///Draw a line of dots.
-  static const PATTERN_DOT = IOSNSUnderlineStyle._internal(256, 256);
+  static const PATTERN_DOT = CygnusIOSNSUnderlineStyle._internal(256, 256);
 
   ///Draw a single line.
-  static const SINGLE = IOSNSUnderlineStyle._internal(1, 1);
+  static const SINGLE = CygnusIOSNSUnderlineStyle._internal(1, 1);
 
   ///Do not draw a line.
-  static const STYLE_NONE = IOSNSUnderlineStyle._internal(0, 0);
+  static const STYLE_NONE = CygnusIOSNSUnderlineStyle._internal(0, 0);
 
   ///Draw a thick line.
-  static const THICK = IOSNSUnderlineStyle._internal(2, 2);
+  static const THICK = CygnusIOSNSUnderlineStyle._internal(2, 2);
 
-  ///Set of all values of [IOSNSUnderlineStyle].
-  static final Set<IOSNSUnderlineStyle> values = [
-    IOSNSUnderlineStyle.BY_WORD,
-    IOSNSUnderlineStyle.DOUBLE,
-    IOSNSUnderlineStyle.PATTERN_DASH,
-    IOSNSUnderlineStyle.PATTERN_DASH_DOT,
-    IOSNSUnderlineStyle.PATTERN_DASH_DOT_DOT,
-    IOSNSUnderlineStyle.PATTERN_DOT,
-    IOSNSUnderlineStyle.SINGLE,
-    IOSNSUnderlineStyle.STYLE_NONE,
-    IOSNSUnderlineStyle.THICK,
+  ///Set of all values of [CygnusIOSNSUnderlineStyle].
+  static final Set<CygnusIOSNSUnderlineStyle> values = [
+    CygnusIOSNSUnderlineStyle.BY_WORD,
+    CygnusIOSNSUnderlineStyle.DOUBLE,
+    CygnusIOSNSUnderlineStyle.PATTERN_DASH,
+    CygnusIOSNSUnderlineStyle.PATTERN_DASH_DOT,
+    CygnusIOSNSUnderlineStyle.PATTERN_DASH_DOT_DOT,
+    CygnusIOSNSUnderlineStyle.PATTERN_DOT,
+    CygnusIOSNSUnderlineStyle.SINGLE,
+    CygnusIOSNSUnderlineStyle.STYLE_NONE,
+    CygnusIOSNSUnderlineStyle.THICK,
   ].toSet();
 
-  ///Gets a possible [IOSNSUnderlineStyle] instance from [int] value.
-  static IOSNSUnderlineStyle? fromValue(int? value) {
+  ///Gets a possible [CygnusIOSNSUnderlineStyle] instance from [int] value.
+  static CygnusIOSNSUnderlineStyle? fromValue(int? value) {
     if (value != null) {
       try {
-        return IOSNSUnderlineStyle.values.firstWhere(
+        return CygnusIOSNSUnderlineStyle.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -230,11 +237,11 @@ class IOSNSUnderlineStyle {
     return null;
   }
 
-  ///Gets a possible [IOSNSUnderlineStyle] instance from a native value.
-  static IOSNSUnderlineStyle? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusIOSNSUnderlineStyle] instance from a native value.
+  static CygnusIOSNSUnderlineStyle? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return IOSNSUnderlineStyle.values.firstWhere(
+        return CygnusIOSNSUnderlineStyle.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -244,15 +251,15 @@ class IOSNSUnderlineStyle {
     return null;
   }
 
-  /// Gets a possible [IOSNSUnderlineStyle] instance value with name [name].
+  /// Gets a possible [CygnusIOSNSUnderlineStyle] instance value with name [name].
   ///
-  /// Goes through [IOSNSUnderlineStyle.values] looking for a value with
-  /// name [name], as reported by [IOSNSUnderlineStyle.name].
+  /// Goes through [CygnusIOSNSUnderlineStyle.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSNSUnderlineStyle.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSNSUnderlineStyle? byName(String? name) {
+  static CygnusIOSNSUnderlineStyle? byName(String? name) {
     if (name != null) {
       try {
-        return IOSNSUnderlineStyle.values.firstWhere(
+        return CygnusIOSNSUnderlineStyle.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -262,7 +269,7 @@ class IOSNSUnderlineStyle {
     return null;
   }
 
-  /// Creates a map from the names of [IOSNSUnderlineStyle] values to the values.
+  /// Creates a map from the names of [CygnusIOSNSUnderlineStyle] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -270,9 +277,10 @@ class IOSNSUnderlineStyle {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSNSUnderlineStyle> asNameMap() =>
-      <String, IOSNSUnderlineStyle>{
-        for (final value in IOSNSUnderlineStyle.values) value.name(): value,
+  static Map<String, CygnusIOSNSUnderlineStyle> asNameMap() =>
+      <String, CygnusIOSNSUnderlineStyle>{
+        for (final value in CygnusIOSNSUnderlineStyle.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

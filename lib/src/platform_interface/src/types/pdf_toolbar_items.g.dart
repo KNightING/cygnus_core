@@ -7,95 +7,95 @@ part of 'pdf_toolbar_items.dart';
 // **************************************************************************
 
 ///Class used to customize the PDF toolbar items.
-class PdfToolbarItems {
+class CygnusPdfToolbarItems {
   final int _value;
   final int? _nativeValue;
-  const PdfToolbarItems._internal(this._value, this._nativeValue);
+  const CygnusPdfToolbarItems._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory PdfToolbarItems._internalMultiPlatform(
+  factory CygnusPdfToolbarItems._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => PdfToolbarItems._internal(value, nativeValue());
+  ) => CygnusPdfToolbarItems._internal(value, nativeValue());
 
   ///The bookmarks button.
-  static const BOOKMARKS = PdfToolbarItems._internal(256, 256);
+  static const BOOKMARKS = CygnusPdfToolbarItems._internal(256, 256);
 
   ///The fit page button.
-  static const FIT_PAGE = PdfToolbarItems._internal(64, 64);
+  static const FIT_PAGE = CygnusPdfToolbarItems._internal(64, 64);
 
   ///The full screen button.
-  static const FULL_SCREEN = PdfToolbarItems._internal(2048, 2048);
+  static const FULL_SCREEN = CygnusPdfToolbarItems._internal(2048, 2048);
 
   ///The more settings button.
-  static const MORE_SETTINGS = PdfToolbarItems._internal(4096, 4096);
+  static const MORE_SETTINGS = CygnusPdfToolbarItems._internal(4096, 4096);
 
   ///No item.
-  static const NONE = PdfToolbarItems._internal(0, 0);
+  static const NONE = CygnusPdfToolbarItems._internal(0, 0);
 
   ///The page layout button.
-  static const PAGE_LAYOUT = PdfToolbarItems._internal(128, 128);
+  static const PAGE_LAYOUT = CygnusPdfToolbarItems._internal(128, 128);
 
   ///The page select button.
-  static const PAGE_SELECTOR = PdfToolbarItems._internal(512, 512);
+  static const PAGE_SELECTOR = CygnusPdfToolbarItems._internal(512, 512);
 
   ///The print button.
-  static const PRINT = PdfToolbarItems._internal(2, 2);
+  static const PRINT = CygnusPdfToolbarItems._internal(2, 2);
 
   ///The rotate button.
-  static const ROTATE = PdfToolbarItems._internal(32, 32);
+  static const ROTATE = CygnusPdfToolbarItems._internal(32, 32);
 
   ///The save button.
-  static const SAVE = PdfToolbarItems._internal(1, 1);
+  static const SAVE = CygnusPdfToolbarItems._internal(1, 1);
 
   ///The save as button.
-  static const SAVE_AS = PdfToolbarItems._internal(4, 4);
+  static const SAVE_AS = CygnusPdfToolbarItems._internal(4, 4);
 
   ///The search button.
-  static const SEARCH = PdfToolbarItems._internal(1024, 1024);
+  static const SEARCH = CygnusPdfToolbarItems._internal(1024, 1024);
 
   ///The zoom in button.
-  static const ZOOM_IN = PdfToolbarItems._internal(8, 8);
+  static const ZOOM_IN = CygnusPdfToolbarItems._internal(8, 8);
 
   ///The zoom out button.
-  static const ZOOM_OUT = PdfToolbarItems._internal(16, 16);
+  static const ZOOM_OUT = CygnusPdfToolbarItems._internal(16, 16);
 
-  ///Set of all values of [PdfToolbarItems].
-  static final Set<PdfToolbarItems> values = [
-    PdfToolbarItems.BOOKMARKS,
-    PdfToolbarItems.FIT_PAGE,
-    PdfToolbarItems.FULL_SCREEN,
-    PdfToolbarItems.MORE_SETTINGS,
-    PdfToolbarItems.NONE,
-    PdfToolbarItems.PAGE_LAYOUT,
-    PdfToolbarItems.PAGE_SELECTOR,
-    PdfToolbarItems.PRINT,
-    PdfToolbarItems.ROTATE,
-    PdfToolbarItems.SAVE,
-    PdfToolbarItems.SAVE_AS,
-    PdfToolbarItems.SEARCH,
-    PdfToolbarItems.ZOOM_IN,
-    PdfToolbarItems.ZOOM_OUT,
+  ///Set of all values of [CygnusPdfToolbarItems].
+  static final Set<CygnusPdfToolbarItems> values = [
+    CygnusPdfToolbarItems.BOOKMARKS,
+    CygnusPdfToolbarItems.FIT_PAGE,
+    CygnusPdfToolbarItems.FULL_SCREEN,
+    CygnusPdfToolbarItems.MORE_SETTINGS,
+    CygnusPdfToolbarItems.NONE,
+    CygnusPdfToolbarItems.PAGE_LAYOUT,
+    CygnusPdfToolbarItems.PAGE_SELECTOR,
+    CygnusPdfToolbarItems.PRINT,
+    CygnusPdfToolbarItems.ROTATE,
+    CygnusPdfToolbarItems.SAVE,
+    CygnusPdfToolbarItems.SAVE_AS,
+    CygnusPdfToolbarItems.SEARCH,
+    CygnusPdfToolbarItems.ZOOM_IN,
+    CygnusPdfToolbarItems.ZOOM_OUT,
   ].toSet();
 
-  ///Gets a possible [PdfToolbarItems] instance from [int] value.
-  static PdfToolbarItems? fromValue(int? value) {
+  ///Gets a possible [CygnusPdfToolbarItems] instance from [int] value.
+  static CygnusPdfToolbarItems? fromValue(int? value) {
     if (value != null) {
       try {
-        return PdfToolbarItems.values.firstWhere(
+        return CygnusPdfToolbarItems.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
-        return PdfToolbarItems._internal(value, value);
+        return CygnusPdfToolbarItems._internal(value, value);
       }
     }
     return null;
   }
 
-  ///Gets a possible [PdfToolbarItems] instance from a native value.
-  static PdfToolbarItems? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusPdfToolbarItems] instance from a native value.
+  static CygnusPdfToolbarItems? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return PdfToolbarItems.values.firstWhere(
+        return CygnusPdfToolbarItems.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -105,15 +105,15 @@ class PdfToolbarItems {
     return null;
   }
 
-  /// Gets a possible [PdfToolbarItems] instance value with name [name].
+  /// Gets a possible [CygnusPdfToolbarItems] instance value with name [name].
   ///
-  /// Goes through [PdfToolbarItems.values] looking for a value with
-  /// name [name], as reported by [PdfToolbarItems.name].
+  /// Goes through [CygnusPdfToolbarItems.values] looking for a value with
+  /// name [name], as reported by [CygnusPdfToolbarItems.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static PdfToolbarItems? byName(String? name) {
+  static CygnusPdfToolbarItems? byName(String? name) {
     if (name != null) {
       try {
-        return PdfToolbarItems.values.firstWhere(
+        return CygnusPdfToolbarItems.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -123,7 +123,7 @@ class PdfToolbarItems {
     return null;
   }
 
-  /// Creates a map from the names of [PdfToolbarItems] values to the values.
+  /// Creates a map from the names of [CygnusPdfToolbarItems] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -131,9 +131,10 @@ class PdfToolbarItems {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, PdfToolbarItems> asNameMap() => <String, PdfToolbarItems>{
-    for (final value in PdfToolbarItems.values) value.name(): value,
-  };
+  static Map<String, CygnusPdfToolbarItems> asNameMap() =>
+      <String, CygnusPdfToolbarItems>{
+        for (final value in CygnusPdfToolbarItems.values) value.name(): value,
+      };
 
   ///Gets [int] value.
   int toValue() => _value;
@@ -182,8 +183,8 @@ class PdfToolbarItems {
   @override
   bool operator ==(value) => value == _value;
 
-  PdfToolbarItems operator |(PdfToolbarItems value) =>
-      PdfToolbarItems._internal(
+  CygnusPdfToolbarItems operator |(CygnusPdfToolbarItems value) =>
+      CygnusPdfToolbarItems._internal(
         value.toValue() | _value,
         value.toNativeValue() != null && _nativeValue != null
             ? value.toNativeValue()! | _nativeValue!

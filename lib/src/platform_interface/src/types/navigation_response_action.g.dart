@@ -6,41 +6,44 @@ part of 'navigation_response_action.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class that is used by [PlatformWebViewCreationParams.onNavigationResponse] event.
+///Class that is used by [CygnusPlatformWebViewCreationParams.onNavigationResponse] event.
 ///It represents the policy to pass back to the decision handler.
-class NavigationResponseAction {
+class CygnusNavigationResponseAction {
   final int _value;
   final int? _nativeValue;
-  const NavigationResponseAction._internal(this._value, this._nativeValue);
+  const CygnusNavigationResponseAction._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory NavigationResponseAction._internalMultiPlatform(
+  factory CygnusNavigationResponseAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => NavigationResponseAction._internal(value, nativeValue());
+  ) => CygnusNavigationResponseAction._internal(value, nativeValue());
 
   ///Allow the navigation to continue.
-  static const ALLOW = NavigationResponseAction._internal(1, 1);
+  static const ALLOW = CygnusNavigationResponseAction._internal(1, 1);
 
   ///Cancel the navigation.
-  static const CANCEL = NavigationResponseAction._internal(0, 0);
+  static const CANCEL = CygnusNavigationResponseAction._internal(0, 0);
 
   ///Turn the navigation into a download.
   ///
   ///**NOTE**: available only on iOS 14.5+. It will fallback to [CANCEL].
-  static const DOWNLOAD = NavigationResponseAction._internal(2, 2);
+  static const DOWNLOAD = CygnusNavigationResponseAction._internal(2, 2);
 
-  ///Set of all values of [NavigationResponseAction].
-  static final Set<NavigationResponseAction> values = [
-    NavigationResponseAction.ALLOW,
-    NavigationResponseAction.CANCEL,
-    NavigationResponseAction.DOWNLOAD,
+  ///Set of all values of [CygnusNavigationResponseAction].
+  static final Set<CygnusNavigationResponseAction> values = [
+    CygnusNavigationResponseAction.ALLOW,
+    CygnusNavigationResponseAction.CANCEL,
+    CygnusNavigationResponseAction.DOWNLOAD,
   ].toSet();
 
-  ///Gets a possible [NavigationResponseAction] instance from [int] value.
-  static NavigationResponseAction? fromValue(int? value) {
+  ///Gets a possible [CygnusNavigationResponseAction] instance from [int] value.
+  static CygnusNavigationResponseAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return NavigationResponseAction.values.firstWhere(
+        return CygnusNavigationResponseAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -50,11 +53,11 @@ class NavigationResponseAction {
     return null;
   }
 
-  ///Gets a possible [NavigationResponseAction] instance from a native value.
-  static NavigationResponseAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusNavigationResponseAction] instance from a native value.
+  static CygnusNavigationResponseAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return NavigationResponseAction.values.firstWhere(
+        return CygnusNavigationResponseAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -64,15 +67,15 @@ class NavigationResponseAction {
     return null;
   }
 
-  /// Gets a possible [NavigationResponseAction] instance value with name [name].
+  /// Gets a possible [CygnusNavigationResponseAction] instance value with name [name].
   ///
-  /// Goes through [NavigationResponseAction.values] looking for a value with
-  /// name [name], as reported by [NavigationResponseAction.name].
+  /// Goes through [CygnusNavigationResponseAction.values] looking for a value with
+  /// name [name], as reported by [CygnusNavigationResponseAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static NavigationResponseAction? byName(String? name) {
+  static CygnusNavigationResponseAction? byName(String? name) {
     if (name != null) {
       try {
-        return NavigationResponseAction.values.firstWhere(
+        return CygnusNavigationResponseAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -82,7 +85,7 @@ class NavigationResponseAction {
     return null;
   }
 
-  /// Creates a map from the names of [NavigationResponseAction] values to the values.
+  /// Creates a map from the names of [CygnusNavigationResponseAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -90,9 +93,9 @@ class NavigationResponseAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, NavigationResponseAction> asNameMap() =>
-      <String, NavigationResponseAction>{
-        for (final value in NavigationResponseAction.values)
+  static Map<String, CygnusNavigationResponseAction> asNameMap() =>
+      <String, CygnusNavigationResponseAction>{
+        for (final value in CygnusNavigationResponseAction.values)
           value.name(): value,
       };
 
@@ -132,37 +135,40 @@ class NavigationResponseAction {
   }
 }
 
-///Class that is used by [PlatformWebViewCreationParams.onNavigationResponse] event.
+///Class that is used by [CygnusPlatformWebViewCreationParams.onNavigationResponse] event.
 ///It represents the policy to pass back to the decision handler.
-///Use [NavigationResponseAction] instead.
-@Deprecated('Use NavigationResponseAction instead')
-class IOSNavigationResponseAction {
+///Use [CygnusNavigationResponseAction] instead.
+@Deprecated('Use CygnusNavigationResponseAction instead')
+class CygnusIOSNavigationResponseAction {
   final int _value;
   final int? _nativeValue;
-  const IOSNavigationResponseAction._internal(this._value, this._nativeValue);
+  const CygnusIOSNavigationResponseAction._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory IOSNavigationResponseAction._internalMultiPlatform(
+  factory CygnusIOSNavigationResponseAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => IOSNavigationResponseAction._internal(value, nativeValue());
+  ) => CygnusIOSNavigationResponseAction._internal(value, nativeValue());
 
   ///Allow the navigation to continue.
-  static const ALLOW = IOSNavigationResponseAction._internal(1, 1);
+  static const ALLOW = CygnusIOSNavigationResponseAction._internal(1, 1);
 
   ///Cancel the navigation.
-  static const CANCEL = IOSNavigationResponseAction._internal(0, 0);
+  static const CANCEL = CygnusIOSNavigationResponseAction._internal(0, 0);
 
-  ///Set of all values of [IOSNavigationResponseAction].
-  static final Set<IOSNavigationResponseAction> values = [
-    IOSNavigationResponseAction.ALLOW,
-    IOSNavigationResponseAction.CANCEL,
+  ///Set of all values of [CygnusIOSNavigationResponseAction].
+  static final Set<CygnusIOSNavigationResponseAction> values = [
+    CygnusIOSNavigationResponseAction.ALLOW,
+    CygnusIOSNavigationResponseAction.CANCEL,
   ].toSet();
 
-  ///Gets a possible [IOSNavigationResponseAction] instance from [int] value.
-  static IOSNavigationResponseAction? fromValue(int? value) {
+  ///Gets a possible [CygnusIOSNavigationResponseAction] instance from [int] value.
+  static CygnusIOSNavigationResponseAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return IOSNavigationResponseAction.values.firstWhere(
+        return CygnusIOSNavigationResponseAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -172,11 +178,11 @@ class IOSNavigationResponseAction {
     return null;
   }
 
-  ///Gets a possible [IOSNavigationResponseAction] instance from a native value.
-  static IOSNavigationResponseAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusIOSNavigationResponseAction] instance from a native value.
+  static CygnusIOSNavigationResponseAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return IOSNavigationResponseAction.values.firstWhere(
+        return CygnusIOSNavigationResponseAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -186,15 +192,15 @@ class IOSNavigationResponseAction {
     return null;
   }
 
-  /// Gets a possible [IOSNavigationResponseAction] instance value with name [name].
+  /// Gets a possible [CygnusIOSNavigationResponseAction] instance value with name [name].
   ///
-  /// Goes through [IOSNavigationResponseAction.values] looking for a value with
-  /// name [name], as reported by [IOSNavigationResponseAction.name].
+  /// Goes through [CygnusIOSNavigationResponseAction.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSNavigationResponseAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSNavigationResponseAction? byName(String? name) {
+  static CygnusIOSNavigationResponseAction? byName(String? name) {
     if (name != null) {
       try {
-        return IOSNavigationResponseAction.values.firstWhere(
+        return CygnusIOSNavigationResponseAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -204,7 +210,7 @@ class IOSNavigationResponseAction {
     return null;
   }
 
-  /// Creates a map from the names of [IOSNavigationResponseAction] values to the values.
+  /// Creates a map from the names of [CygnusIOSNavigationResponseAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -212,9 +218,9 @@ class IOSNavigationResponseAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSNavigationResponseAction> asNameMap() =>
-      <String, IOSNavigationResponseAction>{
-        for (final value in IOSNavigationResponseAction.values)
+  static Map<String, CygnusIOSNavigationResponseAction> asNameMap() =>
+      <String, CygnusIOSNavigationResponseAction>{
+        for (final value in CygnusIOSNavigationResponseAction.values)
           value.name(): value,
       };
 

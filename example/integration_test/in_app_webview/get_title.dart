@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void getTitle() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.getTitle,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.getTitle,
   );
 
   final String getTitleTest = '''
@@ -18,21 +18,21 @@ void getTitle() {
   );
 
   var url = !kIsWeb
-      ? WebUri('data:text/html;charset=utf-8;base64,$getTitleTestBase64')
+      ? CygnusWebUri('data:text/html;charset=utf-8;base64,$getTitleTestBase64')
       : TEST_WEB_PLATFORM_URL_1;
   var expectedValue = !kIsWeb ? 'Some title' : 'page';
 
   skippableTestWidgets('getTitle', (WidgetTester tester) async {
     final Completer<void> pageStarted = Completer<void>();
     final Completer<void> pageLoaded = Completer<void>();
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
-          initialUrlRequest: URLRequest(url: url),
+        child: CygnusWebView(
+          initialUrlRequest: CygnusURLRequest(url: url),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
           },
@@ -46,7 +46,7 @@ void getTitle() {
       ),
     );
 
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
     await tester.pump();
     await pageStarted.future;
     await pageLoaded.future;

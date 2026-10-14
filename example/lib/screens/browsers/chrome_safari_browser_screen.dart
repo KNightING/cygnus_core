@@ -11,15 +11,15 @@ import 'package:provider/provider.dart';
 import 'package:flutter_inappwebview_example/providers/event_log_provider.dart';
 import 'package:flutter_inappwebview_example/models/event_log_entry.dart';
 
-/// Custom ChromeSafariBrowser implementation for testing
-class TestChromeSafariBrowser extends ChromeSafariBrowser {
+/// Custom CygnusChromeSafariBrowser implementation for testing
+class TestChromeSafariBrowser extends CygnusChromeSafariBrowser {
   final void Function(String event, Map<String, dynamic>? data)? onEvent;
 
   TestChromeSafariBrowser({this.onEvent});
 
   @override
   void onOpened() {
-    onEvent?.call(PlatformChromeSafariBrowserEventsMethod.onOpened.name, {
+    onEvent?.call(CygnusPlatformChromeSafariBrowserEventsMethod.onOpened.name, {
       'id': id,
     });
   }
@@ -27,23 +27,23 @@ class TestChromeSafariBrowser extends ChromeSafariBrowser {
   @override
   void onCompletedInitialLoad(bool? didLoadSuccessfully) {
     onEvent?.call(
-      PlatformChromeSafariBrowserEventsMethod.onCompletedInitialLoad.name,
+      CygnusPlatformChromeSafariBrowserEventsMethod.onCompletedInitialLoad.name,
       {'didLoadSuccessfully': didLoadSuccessfully},
     );
   }
 
   @override
-  void onInitialLoadDidRedirect(WebUri? url) {
+  void onInitialLoadDidRedirect(CygnusWebUri? url) {
     onEvent?.call(
-      PlatformChromeSafariBrowserEventsMethod.onInitialLoadDidRedirect.name,
+      CygnusPlatformChromeSafariBrowserEventsMethod.onInitialLoadDidRedirect.name,
       {'url': url?.toString()},
     );
   }
 
   @override
-  void onNavigationEvent(CustomTabsNavigationEventType? navigationEvent) {
+  void onNavigationEvent(CygnusCustomTabsNavigationEventType? navigationEvent) {
     onEvent?.call(
-      PlatformChromeSafariBrowserEventsMethod.onNavigationEvent.name,
+      CygnusPlatformChromeSafariBrowserEventsMethod.onNavigationEvent.name,
       {'navigationEvent': navigationEvent?.name()},
     );
   }
@@ -51,32 +51,32 @@ class TestChromeSafariBrowser extends ChromeSafariBrowser {
   @override
   void onServiceConnected() {
     onEvent?.call(
-      PlatformChromeSafariBrowserEventsMethod.onServiceConnected.name,
+      CygnusPlatformChromeSafariBrowserEventsMethod.onServiceConnected.name,
       null,
     );
   }
 
   @override
   void onClosed() {
-    onEvent?.call(PlatformChromeSafariBrowserEventsMethod.onClosed.name, null);
+    onEvent?.call(CygnusPlatformChromeSafariBrowserEventsMethod.onClosed.name, null);
   }
 
   @override
   void onWillOpenInBrowser() {
     onEvent?.call(
-      PlatformChromeSafariBrowserEventsMethod.onWillOpenInBrowser.name,
+      CygnusPlatformChromeSafariBrowserEventsMethod.onWillOpenInBrowser.name,
       null,
     );
   }
 
   @override
   void onRelationshipValidationResult(
-    CustomTabsRelationType? relation,
-    WebUri? requestedOrigin,
+    CygnusCustomTabsRelationType? relation,
+    CygnusWebUri? requestedOrigin,
     bool result,
   ) {
     onEvent?.call(
-      PlatformChromeSafariBrowserEventsMethod
+      CygnusPlatformChromeSafariBrowserEventsMethod
           .onRelationshipValidationResult
           .name,
       {
@@ -90,14 +90,14 @@ class TestChromeSafariBrowser extends ChromeSafariBrowser {
   @override
   void onMessageChannelReady() {
     onEvent?.call(
-      PlatformChromeSafariBrowserEventsMethod.onMessageChannelReady.name,
+      CygnusPlatformChromeSafariBrowserEventsMethod.onMessageChannelReady.name,
       null,
     );
   }
 
   @override
   void onPostMessage(String message) {
-    onEvent?.call(PlatformChromeSafariBrowserEventsMethod.onPostMessage.name, {
+    onEvent?.call(CygnusPlatformChromeSafariBrowserEventsMethod.onPostMessage.name, {
       'message': message,
     });
   }
@@ -105,7 +105,7 @@ class TestChromeSafariBrowser extends ChromeSafariBrowser {
   @override
   void onVerticalScrollEvent(bool isDirectionUp) {
     onEvent?.call(
-      PlatformChromeSafariBrowserEventsMethod.onVerticalScrollEvent.name,
+      CygnusPlatformChromeSafariBrowserEventsMethod.onVerticalScrollEvent.name,
       {'isDirectionUp': isDirectionUp},
     );
   }
@@ -113,7 +113,7 @@ class TestChromeSafariBrowser extends ChromeSafariBrowser {
   @override
   void onGreatestScrollPercentageIncreased(int scrollPercentage) {
     onEvent?.call(
-      PlatformChromeSafariBrowserEventsMethod
+      CygnusPlatformChromeSafariBrowserEventsMethod
           .onGreatestScrollPercentageIncreased
           .name,
       {'scrollPercentage': scrollPercentage},
@@ -122,13 +122,13 @@ class TestChromeSafariBrowser extends ChromeSafariBrowser {
 
   @override
   void onSessionEnded(bool didUserInteract) {
-    onEvent?.call(PlatformChromeSafariBrowserEventsMethod.onSessionEnded.name, {
+    onEvent?.call(CygnusPlatformChromeSafariBrowserEventsMethod.onSessionEnded.name, {
       'didUserInteract': didUserInteract,
     });
   }
 }
 
-/// Screen for testing ChromeSafariBrowser functionality
+/// Screen for testing CygnusChromeSafariBrowser functionality
 class ChromeSafariBrowserScreen extends StatefulWidget {
   const ChromeSafariBrowserScreen({super.key});
 
@@ -147,7 +147,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
   bool _isLoading = false;
   bool _browserOpened = false;
   Color _toolbarColor = Colors.blue;
-  final List<ChromeSafariBrowserMenuItem> _menuItems = [];
+  final List<CygnusChromeSafariBrowserMenuItem> _menuItems = [];
 
   final Map<String, List<MethodResultEntry>> _methodHistory = {};
   final Map<String, int> _selectedHistoryIndex = {};
@@ -158,10 +158,10 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
       _browser = TestChromeSafariBrowser(
         onEvent: (event, data) {
           _logEvent(EventType.ui, event, data: data);
-          if (event == PlatformChromeSafariBrowserEventsMethod.onClosed.name) {
+          if (event == CygnusPlatformChromeSafariBrowserEventsMethod.onClosed.name) {
             setState(() => _browserOpened = false);
           } else if (event ==
-              PlatformChromeSafariBrowserEventsMethod.onOpened.name) {
+              CygnusPlatformChromeSafariBrowserEventsMethod.onOpened.name) {
             setState(() => _browserOpened = true);
           }
         },
@@ -171,7 +171,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
     }
   }
 
-  String _staticMethodName(PlatformChromeSafariBrowserMethod method) {
+  String _staticMethodName(CygnusPlatformChromeSafariBrowserMethod method) {
     return '${method.name} (static)';
   }
 
@@ -204,7 +204,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
     final url = _urlController.text.trim();
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.open.name,
+        CygnusPlatformChromeSafariBrowserMethod.open.name,
         'Please enter a URL',
         isError: true,
       );
@@ -214,26 +214,26 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
     setState(() => _isLoading = true);
     try {
       await _browser?.open(
-        url: WebUri(url),
-        settings: ChromeSafariBrowserSettings(
-          shareState: CustomTabsShareState.SHARE_STATE_ON,
+        url: CygnusWebUri(url),
+        settings: CygnusChromeSafariBrowserSettings(
+          shareState: CygnusCustomTabsShareState.SHARE_STATE_ON,
           toolbarBackgroundColor: _toolbarColor,
           isSingleInstance: false,
           isTrustedWebActivity: false,
           keepAliveEnabled: true,
           barCollapsingEnabled: true,
-          presentationStyle: ModalPresentationStyle.FULL_SCREEN,
-          dismissButtonStyle: DismissButtonStyle.CLOSE,
+          presentationStyle: CygnusModalPresentationStyle.FULL_SCREEN,
+          dismissButtonStyle: CygnusDismissButtonStyle.CLOSE,
         ),
       );
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.open.name,
+        CygnusPlatformChromeSafariBrowserMethod.open.name,
         'Browser opened',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.open.name,
+        CygnusPlatformChromeSafariBrowserMethod.open.name,
         'Error opening browser: $e',
         isError: true,
       );
@@ -246,7 +246,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
     final url = _urlController.text.trim();
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.launchUrl.name,
+        CygnusPlatformChromeSafariBrowserMethod.launchUrl.name,
         'Please enter a URL',
         isError: true,
       );
@@ -255,15 +255,15 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
 
     setState(() => _isLoading = true);
     try {
-      await _browser?.launchUrl(url: WebUri(url));
+      await _browser?.launchUrl(url: CygnusWebUri(url));
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.launchUrl.name,
+        CygnusPlatformChromeSafariBrowserMethod.launchUrl.name,
         'URL launched',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.launchUrl.name,
+        CygnusPlatformChromeSafariBrowserMethod.launchUrl.name,
         'Error launching URL: $e',
         isError: true,
       );
@@ -276,7 +276,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
     final url = _urlController.text.trim();
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.mayLaunchUrl.name,
+        CygnusPlatformChromeSafariBrowserMethod.mayLaunchUrl.name,
         'Please enter a URL',
         isError: true,
       );
@@ -285,15 +285,15 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
 
     setState(() => _isLoading = true);
     try {
-      final result = await _browser?.mayLaunchUrl(url: WebUri(url));
+      final result = await _browser?.mayLaunchUrl(url: CygnusWebUri(url));
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.mayLaunchUrl.name,
+        CygnusPlatformChromeSafariBrowserMethod.mayLaunchUrl.name,
         'mayLaunchUrl result: $result',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.mayLaunchUrl.name,
+        CygnusPlatformChromeSafariBrowserMethod.mayLaunchUrl.name,
         'Error: $e',
         isError: true,
       );
@@ -306,7 +306,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
     final url = _urlController.text.trim();
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.validateRelationship.name,
+        CygnusPlatformChromeSafariBrowserMethod.validateRelationship.name,
         'Please enter a URL',
         isError: true,
       );
@@ -316,17 +316,17 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
     setState(() => _isLoading = true);
     try {
       final result = await _browser?.validateRelationship(
-        relation: CustomTabsRelationType.USE_AS_ORIGIN,
-        origin: WebUri(url),
+        relation: CygnusCustomTabsRelationType.USE_AS_ORIGIN,
+        origin: CygnusWebUri(url),
       );
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.validateRelationship.name,
+        CygnusPlatformChromeSafariBrowserMethod.validateRelationship.name,
         'validateRelationship result: $result',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.validateRelationship.name,
+        CygnusPlatformChromeSafariBrowserMethod.validateRelationship.name,
         'Error: $e',
         isError: true,
       );
@@ -341,13 +341,13 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
       await _browser?.close();
       setState(() => _browserOpened = false);
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.close.name,
+        CygnusPlatformChromeSafariBrowserMethod.close.name,
         'Browser closed',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.close.name,
+        CygnusPlatformChromeSafariBrowserMethod.close.name,
         'Error closing browser: $e',
         isError: true,
       );
@@ -362,7 +362,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
       // Create a simple colored icon
       final iconData = await _createActionButtonIcon();
       _browser?.setActionButton(
-        ChromeSafariBrowserActionButton(
+        CygnusChromeSafariBrowserActionButton(
           id: 1,
           description: 'Test Action',
           icon: iconData,
@@ -373,7 +373,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
               data: {'url': url?.toString(), 'title': title},
             );
             _recordMethodResult(
-              PlatformChromeSafariBrowserMethod.setActionButton.name,
+              CygnusPlatformChromeSafariBrowserMethod.setActionButton.name,
               'Action button clicked',
               isError: false,
             );
@@ -381,13 +381,13 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
         ),
       );
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.setActionButton.name,
+        CygnusPlatformChromeSafariBrowserMethod.setActionButton.name,
         'Action button set',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.setActionButton.name,
+        CygnusPlatformChromeSafariBrowserMethod.setActionButton.name,
         'Error setting action button: $e',
         isError: true,
       );
@@ -416,13 +416,13 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
         description: 'Updated Action',
       );
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.updateActionButton.name,
+        CygnusPlatformChromeSafariBrowserMethod.updateActionButton.name,
         'Action button updated',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.updateActionButton.name,
+        CygnusPlatformChromeSafariBrowserMethod.updateActionButton.name,
         'Error updating action button: $e',
         isError: true,
       );
@@ -432,7 +432,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
   }
 
   void _addMenuItem() {
-    final menuItem = ChromeSafariBrowserMenuItem(
+    final menuItem = CygnusChromeSafariBrowserMenuItem(
       id: _menuItems.length + 1,
       label: 'Menu Item ${_menuItems.length + 1}',
       onClick: (url, title) {
@@ -442,7 +442,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
           data: {'url': url, 'title': title},
         );
         _recordMethodResult(
-          PlatformChromeSafariBrowserMethod.addMenuItem.name,
+          CygnusPlatformChromeSafariBrowserMethod.addMenuItem.name,
           'Menu item clicked',
           isError: false,
         );
@@ -454,7 +454,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
       _menuItems.add(menuItem);
     });
     _recordMethodResult(
-      PlatformChromeSafariBrowserMethod.addMenuItem.name,
+      CygnusPlatformChromeSafariBrowserMethod.addMenuItem.name,
       'Menu item added',
       isError: false,
     );
@@ -464,7 +464,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
     final url = _urlController.text.trim();
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.requestPostMessageChannel.name,
+        CygnusPlatformChromeSafariBrowserMethod.requestPostMessageChannel.name,
         'Please enter a URL',
         isError: true,
       );
@@ -474,16 +474,16 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
     setState(() => _isLoading = true);
     try {
       final result = await _browser?.requestPostMessageChannel(
-        sourceOrigin: WebUri(url),
+        sourceOrigin: CygnusWebUri(url),
       );
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.requestPostMessageChannel.name,
+        CygnusPlatformChromeSafariBrowserMethod.requestPostMessageChannel.name,
         'requestPostMessageChannel result: $result',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.requestPostMessageChannel.name,
+        CygnusPlatformChromeSafariBrowserMethod.requestPostMessageChannel.name,
         'Error: $e',
         isError: true,
       );
@@ -496,7 +496,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
     final message = _messageController.text.trim();
     if (message.isEmpty) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.postMessage.name,
+        CygnusPlatformChromeSafariBrowserMethod.postMessage.name,
         'Please enter a message',
         isError: true,
       );
@@ -507,13 +507,13 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
     try {
       final result = await _browser?.postMessage(message);
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.postMessage.name,
+        CygnusPlatformChromeSafariBrowserMethod.postMessage.name,
         'postMessage result: ${result?.name}',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.postMessage.name,
+        CygnusPlatformChromeSafariBrowserMethod.postMessage.name,
         'Error: $e',
         isError: true,
       );
@@ -527,13 +527,13 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
     try {
       final result = await _browser?.isEngagementSignalsApiAvailable();
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.isEngagementSignalsApiAvailable.name,
+        CygnusPlatformChromeSafariBrowserMethod.isEngagementSignalsApiAvailable.name,
         'isEngagementSignalsApiAvailable: $result',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformChromeSafariBrowserMethod.isEngagementSignalsApiAvailable.name,
+        CygnusPlatformChromeSafariBrowserMethod.isEngagementSignalsApiAvailable.name,
         'Error: $e',
         isError: true,
       );
@@ -545,7 +545,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
   void _checkIsOpened() {
     final opened = _browser?.isOpened() ?? false;
     _recordMethodResult(
-      PlatformChromeSafariBrowserMethod.isOpened.name,
+      CygnusPlatformChromeSafariBrowserMethod.isOpened.name,
       'Browser is opened: $opened',
       isError: false,
     );
@@ -554,15 +554,15 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
   Future<void> _isAvailable() async {
     setState(() => _isLoading = true);
     try {
-      final available = await ChromeSafariBrowser.isAvailable();
+      final available = await CygnusChromeSafariBrowser.isAvailable();
       _recordMethodResult(
-        _staticMethodName(PlatformChromeSafariBrowserMethod.isAvailable),
-        '$ChromeSafariBrowser is available: $available',
+        _staticMethodName(CygnusPlatformChromeSafariBrowserMethod.isAvailable),
+        '$CygnusChromeSafariBrowser is available: $available',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        _staticMethodName(PlatformChromeSafariBrowserMethod.isAvailable),
+        _staticMethodName(CygnusPlatformChromeSafariBrowserMethod.isAvailable),
         'Error: $e',
         isError: true,
       );
@@ -574,15 +574,15 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
   Future<void> _getMaxToolbarItems() async {
     setState(() => _isLoading = true);
     try {
-      final maxItems = await ChromeSafariBrowser.getMaxToolbarItems();
+      final maxItems = await CygnusChromeSafariBrowser.getMaxToolbarItems();
       _recordMethodResult(
-        _staticMethodName(PlatformChromeSafariBrowserMethod.getMaxToolbarItems),
+        _staticMethodName(CygnusPlatformChromeSafariBrowserMethod.getMaxToolbarItems),
         'Max toolbar items: $maxItems',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        _staticMethodName(PlatformChromeSafariBrowserMethod.getMaxToolbarItems),
+        _staticMethodName(CygnusPlatformChromeSafariBrowserMethod.getMaxToolbarItems),
         'Error: $e',
         isError: true,
       );
@@ -594,15 +594,15 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
   Future<void> _getPackageName() async {
     setState(() => _isLoading = true);
     try {
-      final packageName = await ChromeSafariBrowser.getPackageName();
+      final packageName = await CygnusChromeSafariBrowser.getPackageName();
       _recordMethodResult(
-        _staticMethodName(PlatformChromeSafariBrowserMethod.getPackageName),
+        _staticMethodName(CygnusPlatformChromeSafariBrowserMethod.getPackageName),
         'Package name: $packageName',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        _staticMethodName(PlatformChromeSafariBrowserMethod.getPackageName),
+        _staticMethodName(CygnusPlatformChromeSafariBrowserMethod.getPackageName),
         'Error: $e',
         isError: true,
       );
@@ -614,15 +614,15 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
   Future<void> _clearWebsiteData() async {
     setState(() => _isLoading = true);
     try {
-      await ChromeSafariBrowser.clearWebsiteData();
+      await CygnusChromeSafariBrowser.clearWebsiteData();
       _recordMethodResult(
-        _staticMethodName(PlatformChromeSafariBrowserMethod.clearWebsiteData),
+        _staticMethodName(CygnusPlatformChromeSafariBrowserMethod.clearWebsiteData),
         'Website data cleared',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        _staticMethodName(PlatformChromeSafariBrowserMethod.clearWebsiteData),
+        _staticMethodName(CygnusPlatformChromeSafariBrowserMethod.clearWebsiteData),
         'Error: $e',
         isError: true,
       );
@@ -635,7 +635,7 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
     final url = _urlController.text.trim();
     if (url.isEmpty) {
       _recordMethodResult(
-        _staticMethodName(PlatformChromeSafariBrowserMethod.prewarmConnections),
+        _staticMethodName(CygnusPlatformChromeSafariBrowserMethod.prewarmConnections),
         'Please enter a URL',
         isError: true,
       );
@@ -644,15 +644,15 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
 
     setState(() => _isLoading = true);
     try {
-      final token = await ChromeSafariBrowser.prewarmConnections([WebUri(url)]);
+      final token = await CygnusChromeSafariBrowser.prewarmConnections([CygnusWebUri(url)]);
       _recordMethodResult(
-        _staticMethodName(PlatformChromeSafariBrowserMethod.prewarmConnections),
+        _staticMethodName(CygnusPlatformChromeSafariBrowserMethod.prewarmConnections),
         'Prewarm token: ${token?.id}',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        _staticMethodName(PlatformChromeSafariBrowserMethod.prewarmConnections),
+        _staticMethodName(CygnusPlatformChromeSafariBrowserMethod.prewarmConnections),
         'Error: $e',
         isError: true,
       );
@@ -890,39 +890,39 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
             ),
             const SizedBox(height: 12),
             _buildMethodTile(
-              PlatformChromeSafariBrowserMethod.open.name,
+              CygnusPlatformChromeSafariBrowserMethod.open.name,
               'Open Chrome Custom Tab / Safari View Controller',
-              PlatformChromeSafariBrowserMethod.open,
+              CygnusPlatformChromeSafariBrowserMethod.open,
               _open,
             ),
             _buildMethodTile(
-              PlatformChromeSafariBrowserMethod.launchUrl.name,
+              CygnusPlatformChromeSafariBrowserMethod.launchUrl.name,
               'Launch URL in already opened browser',
-              PlatformChromeSafariBrowserMethod.launchUrl,
+              CygnusPlatformChromeSafariBrowserMethod.launchUrl,
               _browserOpened ? _launchUrl : null,
             ),
             _buildMethodTile(
-              PlatformChromeSafariBrowserMethod.mayLaunchUrl.name,
+              CygnusPlatformChromeSafariBrowserMethod.mayLaunchUrl.name,
               'Hint browser to preload URL',
-              PlatformChromeSafariBrowserMethod.mayLaunchUrl,
+              CygnusPlatformChromeSafariBrowserMethod.mayLaunchUrl,
               _mayLaunchUrl,
             ),
             _buildMethodTile(
-              PlatformChromeSafariBrowserMethod.validateRelationship.name,
+              CygnusPlatformChromeSafariBrowserMethod.validateRelationship.name,
               'Validate Digital Asset Links',
-              PlatformChromeSafariBrowserMethod.validateRelationship,
+              CygnusPlatformChromeSafariBrowserMethod.validateRelationship,
               _validateRelationship,
             ),
             _buildMethodTile(
-              PlatformChromeSafariBrowserMethod.close.name,
+              CygnusPlatformChromeSafariBrowserMethod.close.name,
               'Close the browser',
-              PlatformChromeSafariBrowserMethod.close,
+              CygnusPlatformChromeSafariBrowserMethod.close,
               _browserOpened ? _close : null,
             ),
             _buildMethodTile(
-              PlatformChromeSafariBrowserMethod.isOpened.name,
+              CygnusPlatformChromeSafariBrowserMethod.isOpened.name,
               'Check if browser is opened',
-              PlatformChromeSafariBrowserMethod.isOpened,
+              CygnusPlatformChromeSafariBrowserMethod.isOpened,
               _checkIsOpened,
             ),
           ],
@@ -944,21 +944,21 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
             ),
             const SizedBox(height: 12),
             _buildMethodTile(
-              PlatformChromeSafariBrowserMethod.setActionButton.name,
+              CygnusPlatformChromeSafariBrowserMethod.setActionButton.name,
               'Set action button (before open)',
-              PlatformChromeSafariBrowserMethod.setActionButton,
+              CygnusPlatformChromeSafariBrowserMethod.setActionButton,
               _setActionButton,
             ),
             _buildMethodTile(
-              PlatformChromeSafariBrowserMethod.updateActionButton.name,
+              CygnusPlatformChromeSafariBrowserMethod.updateActionButton.name,
               'Update action button icon',
-              PlatformChromeSafariBrowserMethod.updateActionButton,
+              CygnusPlatformChromeSafariBrowserMethod.updateActionButton,
               _browserOpened ? _updateActionButton : null,
             ),
             _buildMethodTile(
-              PlatformChromeSafariBrowserMethod.addMenuItem.name,
+              CygnusPlatformChromeSafariBrowserMethod.addMenuItem.name,
               'Add menu item (before open)',
-              PlatformChromeSafariBrowserMethod.addMenuItem,
+              CygnusPlatformChromeSafariBrowserMethod.addMenuItem,
               _addMenuItem,
             ),
             if (_menuItems.isNotEmpty) ...[
@@ -987,23 +987,23 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
             ),
             const SizedBox(height: 12),
             _buildMethodTile(
-              PlatformChromeSafariBrowserMethod.requestPostMessageChannel.name,
+              CygnusPlatformChromeSafariBrowserMethod.requestPostMessageChannel.name,
               'Request post message channel',
-              PlatformChromeSafariBrowserMethod.requestPostMessageChannel,
+              CygnusPlatformChromeSafariBrowserMethod.requestPostMessageChannel,
               _browserOpened ? _requestPostMessageChannel : null,
             ),
             _buildMethodTile(
-              PlatformChromeSafariBrowserMethod.postMessage.name,
+              CygnusPlatformChromeSafariBrowserMethod.postMessage.name,
               'Send a message to the browser',
-              PlatformChromeSafariBrowserMethod.postMessage,
+              CygnusPlatformChromeSafariBrowserMethod.postMessage,
               _browserOpened ? _postMessage : null,
             ),
             _buildMethodTile(
-              PlatformChromeSafariBrowserMethod
+              CygnusPlatformChromeSafariBrowserMethod
                   .isEngagementSignalsApiAvailable
                   .name,
               'Check if engagement signals API is available',
-              PlatformChromeSafariBrowserMethod.isEngagementSignalsApiAvailable,
+              CygnusPlatformChromeSafariBrowserMethod.isEngagementSignalsApiAvailable,
               _isEngagementSignalsApiAvailable,
             ),
           ],
@@ -1025,41 +1025,41 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
             ),
             const SizedBox(height: 12),
             _buildMethodTile(
-              _staticMethodName(PlatformChromeSafariBrowserMethod.isAvailable),
+              _staticMethodName(CygnusPlatformChromeSafariBrowserMethod.isAvailable),
               'Check if Chrome Custom Tabs / Safari VC is available',
-              PlatformChromeSafariBrowserMethod.isAvailable,
+              CygnusPlatformChromeSafariBrowserMethod.isAvailable,
               _isAvailable,
             ),
             _buildMethodTile(
               _staticMethodName(
-                PlatformChromeSafariBrowserMethod.getMaxToolbarItems,
+                CygnusPlatformChromeSafariBrowserMethod.getMaxToolbarItems,
               ),
               'Get max toolbar items',
-              PlatformChromeSafariBrowserMethod.getMaxToolbarItems,
+              CygnusPlatformChromeSafariBrowserMethod.getMaxToolbarItems,
               _getMaxToolbarItems,
             ),
             _buildMethodTile(
               _staticMethodName(
-                PlatformChromeSafariBrowserMethod.getPackageName,
+                CygnusPlatformChromeSafariBrowserMethod.getPackageName,
               ),
               'Get Custom Tabs package name',
-              PlatformChromeSafariBrowserMethod.getPackageName,
+              CygnusPlatformChromeSafariBrowserMethod.getPackageName,
               _getPackageName,
             ),
             _buildMethodTile(
               _staticMethodName(
-                PlatformChromeSafariBrowserMethod.clearWebsiteData,
+                CygnusPlatformChromeSafariBrowserMethod.clearWebsiteData,
               ),
               'Clear website data',
-              PlatformChromeSafariBrowserMethod.clearWebsiteData,
+              CygnusPlatformChromeSafariBrowserMethod.clearWebsiteData,
               _clearWebsiteData,
             ),
             _buildMethodTile(
               _staticMethodName(
-                PlatformChromeSafariBrowserMethod.prewarmConnections,
+                CygnusPlatformChromeSafariBrowserMethod.prewarmConnections,
               ),
               'Prewarm connections',
-              PlatformChromeSafariBrowserMethod.prewarmConnections,
+              CygnusPlatformChromeSafariBrowserMethod.prewarmConnections,
               _prewarmConnections,
             ),
           ],
@@ -1071,12 +1071,12 @@ class _ChromeSafariBrowserScreenState extends State<ChromeSafariBrowserScreen> {
   Widget _buildMethodTile(
     String methodName,
     String description,
-    PlatformChromeSafariBrowserMethod method,
+    CygnusPlatformChromeSafariBrowserMethod method,
     VoidCallback? onPressed,
   ) {
     final supportedPlatforms = SupportCheckHelper.supportedPlatformsForMethod(
       method: method,
-      checker: ChromeSafariBrowser.isMethodSupported,
+      checker: CygnusChromeSafariBrowser.isMethodSupported,
     );
 
     return Padding(

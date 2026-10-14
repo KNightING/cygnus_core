@@ -1,20 +1,20 @@
 part of 'main.dart';
 
 void findInteractions() {
-  final shouldSkip = !FindInteractionController.isClassSupported();
+  final shouldSkip = !CygnusFindInteractionController.isClassSupported();
 
   skippableTestWidgets('find interactions', (WidgetTester tester) async {
     final Completer<void> pageLoaded = Completer<void>();
-    final findInteractionController = FindInteractionController();
+    final findInteractionController = CygnusFindInteractionController();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
           initialFile: "test_assets/in_app_webview_initial_file_test.html",
           findInteractionController: findInteractionController,
-          initialSettings: InAppWebViewSettings(
+          initialSettings: CygnusWebViewSettings(
             clearCache: true,
             isFindInteractionEnabled: true,
           ),
@@ -55,8 +55,8 @@ void findInteractions() {
       findInteractionController.setSearchText(secondSearchText),
       completes,
     );
-    if (FindInteractionController.isMethodSupported(
-      PlatformFindInteractionControllerMethod.presentFindNavigator,
+    if (CygnusFindInteractionController.isMethodSupported(
+      CygnusPlatformFindInteractionControllerMethod.presentFindNavigator,
     )) {
       await expectLater(
         findInteractionController.presentFindNavigator(),
@@ -79,7 +79,7 @@ void findInteractions() {
   skippableTestWidgets('onFindResultReceived', (WidgetTester tester) async {
     final Completer<void> pageLoaded = Completer<void>();
     final Completer<int> numberOfMatchesCompleter = Completer<int>();
-    final findInteractionController = FindInteractionController(
+    final findInteractionController = CygnusFindInteractionController(
       onFindResultReceived:
           (
             controller,
@@ -96,10 +96,10 @@ void findInteractions() {
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
           initialFile: "test_assets/in_app_webview_initial_file_test.html",
-          initialSettings: InAppWebViewSettings(
+          initialSettings: CygnusWebViewSettings(
             clearCache: true,
             isFindInteractionEnabled: false,
           ),

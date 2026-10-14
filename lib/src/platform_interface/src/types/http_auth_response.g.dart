@@ -6,41 +6,44 @@ part of 'http_auth_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onReceivedHttpAuthRequest] event.
-class HttpAuthResponse {
-  ///Indicate the [HttpAuthResponseAction] to take in response of the authentication challenge.
-  HttpAuthResponseAction? action;
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onReceivedHttpAuthRequest] event.
+class CygnusHttpAuthResponse {
+  ///Indicate the [CygnusHttpAuthResponseAction] to take in response of the authentication challenge.
+  CygnusHttpAuthResponseAction? action;
 
-  ///Represents the password used for the authentication if the [action] corresponds to [HttpAuthResponseAction.PROCEED]
+  ///Represents the password used for the authentication if the [action] corresponds to [CygnusHttpAuthResponseAction.PROCEED]
   String password;
 
   ///Indicate if the given credentials need to be saved permanently.
   bool permanentPersistence;
 
-  ///Represents the username used for the authentication if the [action] corresponds to [HttpAuthResponseAction.PROCEED]
+  ///Represents the username used for the authentication if the [action] corresponds to [CygnusHttpAuthResponseAction.PROCEED]
   String username;
-  HttpAuthResponse({
-    HttpAuthResponseAction? action,
+  CygnusHttpAuthResponse({
+    CygnusHttpAuthResponseAction? action,
     this.password = "",
     this.permanentPersistence = false,
     this.username = "",
-  }) : action = action ?? HttpAuthResponseAction.CANCEL;
+  }) : action = action ?? CygnusHttpAuthResponseAction.CANCEL;
 
-  ///Gets a possible [HttpAuthResponse] instance from a [Map] value.
-  static HttpAuthResponse? fromMap(
+  ///Gets a possible [CygnusHttpAuthResponse] instance from a [Map] value.
+  static CygnusHttpAuthResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = HttpAuthResponse();
-    instance.action = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => HttpAuthResponseAction.fromNativeValue(
+    final instance = CygnusHttpAuthResponse();
+    instance.action = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusHttpAuthResponseAction.fromNativeValue(map['action']),
+      CygnusEnumMethod.value => CygnusHttpAuthResponseAction.fromValue(
         map['action'],
       ),
-      EnumMethod.value => HttpAuthResponseAction.fromValue(map['action']),
-      EnumMethod.name => HttpAuthResponseAction.byName(map['action']),
+      CygnusEnumMethod.name => CygnusHttpAuthResponseAction.byName(
+        map['action'],
+      ),
     };
     if (map['password'] != null) {
       instance.password = map['password'];
@@ -55,12 +58,12 @@ class HttpAuthResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "action": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => action?.toNativeValue(),
-        EnumMethod.value => action?.toValue(),
-        EnumMethod.name => action?.name(),
+      "action": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => action?.toNativeValue(),
+        CygnusEnumMethod.value => action?.toValue(),
+        CygnusEnumMethod.name => action?.name(),
       },
       "password": password,
       "permanentPersistence": permanentPersistence,
@@ -75,6 +78,6 @@ class HttpAuthResponse {
 
   @override
   String toString() {
-    return 'HttpAuthResponse{action: $action, password: $password, permanentPersistence: $permanentPersistence, username: $username}';
+    return 'CygnusHttpAuthResponse{action: $action, password: $password, permanentPersistence: $permanentPersistence, username: $username}';
   }
 }

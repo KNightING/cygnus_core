@@ -6,25 +6,28 @@ part of 'show_file_chooser_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class used in the [PlatformWebViewCreationParams.onShowFileChooser] method.
-class ShowFileChooserResponse {
+///Class used in the [CygnusPlatformWebViewCreationParams.onShowFileChooser] method.
+class CygnusShowFileChooserResponse {
   ///The file paths of the selected files or `null` to cancel the request.
   ///Each file path must be a valid file URI using the "file:" scheme.
   final List<String>? filePaths;
 
   ///Whether the file chooser request was handled by the client.
   final bool handledByClient;
-  ShowFileChooserResponse({this.filePaths, required this.handledByClient});
+  CygnusShowFileChooserResponse({
+    this.filePaths,
+    required this.handledByClient,
+  });
 
-  ///Gets a possible [ShowFileChooserResponse] instance from a [Map] value.
-  static ShowFileChooserResponse? fromMap(
+  ///Gets a possible [CygnusShowFileChooserResponse] instance from a [Map] value.
+  static CygnusShowFileChooserResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ShowFileChooserResponse(
+    final instance = CygnusShowFileChooserResponse(
       filePaths: map['filePaths'] != null
           ? List<String>.from(map['filePaths']!.cast<String>())
           : null,
@@ -34,7 +37,7 @@ class ShowFileChooserResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"filePaths": filePaths, "handledByClient": handledByClient};
   }
 
@@ -45,6 +48,6 @@ class ShowFileChooserResponse {
 
   @override
   String toString() {
-    return 'ShowFileChooserResponse{filePaths: $filePaths, handledByClient: $handledByClient}';
+    return 'CygnusShowFileChooserResponse{filePaths: $filePaths, handledByClient: $handledByClient}';
   }
 }

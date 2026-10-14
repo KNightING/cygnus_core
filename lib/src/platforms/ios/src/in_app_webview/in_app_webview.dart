@@ -8,12 +8,12 @@ import '../pull_to_refresh/pull_to_refresh_controller.dart';
 import 'headless_in_app_webview.dart';
 import 'in_app_webview_controller.dart';
 
-/// Object specifying creation parameters for creating a [PlatformInAppWebViewWidget].
+/// Object specifying creation parameters for creating a [CygnusPlatformWebViewWidget].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 class IOSInAppWebViewWidgetCreationParams
-    extends PlatformInAppWebViewWidgetCreationParams {
+    extends CygnusPlatformWebViewWidgetCreationParams {
   IOSInAppWebViewWidgetCreationParams({
     super.controllerFromPlatform,
     super.key,
@@ -49,7 +49,7 @@ class IOSInAppWebViewWidgetCreationParams
     super.onReceivedHttpAuthRequest,
     super.onReceivedServerTrustAuthRequest,
     super.onReceivedClientCertRequest,
-    @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+    @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
     super.onFindResultReceived,
     super.shouldInterceptAjaxRequest,
     super.onAjaxReadyStateChange,
@@ -135,9 +135,9 @@ class IOSInAppWebViewWidgetCreationParams
   });
 
   /// Constructs a [IOSInAppWebViewWidgetCreationParams] using a
-  /// [PlatformInAppWebViewWidgetCreationParams].
+  /// [CygnusPlatformWebViewWidgetCreationParams].
   IOSInAppWebViewWidgetCreationParams.fromPlatformInAppWebViewWidgetCreationParams(
-    PlatformInAppWebViewWidgetCreationParams params,
+    CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
         key: params.key,
@@ -259,12 +259,12 @@ class IOSInAppWebViewWidgetCreationParams
   final IOSPullToRefreshController? pullToRefreshController;
 }
 
-///{@macro cygnus_core.PlatformInAppWebViewWidget}
-class IOSInAppWebViewWidget extends PlatformInAppWebViewWidget {
+///{@macro cygnus_core.CygnusPlatformWebViewWidget}
+class IOSInAppWebViewWidget extends CygnusPlatformWebViewWidget {
   /// Constructs a [IOSInAppWebViewWidget].
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewWidget}
-  IOSInAppWebViewWidget(PlatformInAppWebViewWidgetCreationParams params)
+  ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
+  IOSInAppWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
     : super.implementation(
         params is IOSInAppWebViewWidgetCreationParams
             ? params
@@ -291,7 +291,7 @@ class IOSInAppWebViewWidget extends PlatformInAppWebViewWidget {
 
   @override
   Widget build(BuildContext context) {
-    final initialSettings = params.initialSettings ?? InAppWebViewSettings();
+    final initialSettings = params.initialSettings ?? CygnusWebViewSettings();
     _inferInitialSettings(initialSettings);
 
     Map<String, dynamic> settingsMap =
@@ -304,7 +304,7 @@ class IOSInAppWebViewWidget extends PlatformInAppWebViewWidget {
         params.pullToRefreshController?.params.settings.toMap() ??
         // ignore: deprecated_member_use_from_same_package
         params.pullToRefreshController?.params.options.toMap() ??
-        PullToRefreshSettings(enabled: false).toMap();
+        CygnusPullToRefreshSettings(enabled: false).toMap();
 
     if ((params.headlessWebView?.isRunning() ?? false) &&
         params.keepAlive != null) {
@@ -347,7 +347,7 @@ class IOSInAppWebViewWidget extends PlatformInAppWebViewWidget {
     viewId = params.keepAlive?.id ?? viewId ?? id;
     _iosHeadlessInAppWebView?.internalDispose();
     _controller = IOSInAppWebViewController(
-      PlatformInAppWebViewControllerCreationParams(
+      CygnusPlatformWebViewControllerCreationParams(
         id: viewId,
         webviewParams: params,
       ),
@@ -357,7 +357,7 @@ class IOSInAppWebViewWidget extends PlatformInAppWebViewWidget {
     debugLog(
       className: runtimeType.toString(),
       id: viewId?.toString(),
-      debugLoggingSettings: PlatformInAppWebViewController.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformWebViewController.debugLoggingSettings,
       method: "onWebViewCreated",
       args: [],
     );
@@ -368,7 +368,7 @@ class IOSInAppWebViewWidget extends PlatformInAppWebViewWidget {
     }
   }
 
-  void _inferInitialSettings(InAppWebViewSettings settings) {
+  void _inferInitialSettings(CygnusWebViewSettings settings) {
     if (params.shouldOverrideUrlLoading != null &&
         settings.useShouldOverrideUrlLoading == null) {
       settings.useShouldOverrideUrlLoading = true;
@@ -419,7 +419,7 @@ class IOSInAppWebViewWidget extends PlatformInAppWebViewWidget {
     debugLog(
       className: runtimeType.toString(),
       id: viewId?.toString(),
-      debugLoggingSettings: PlatformInAppWebViewController.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformWebViewController.debugLoggingSettings,
       method: "dispose",
       args: [],
     );
@@ -431,7 +431,7 @@ class IOSInAppWebViewWidget extends PlatformInAppWebViewWidget {
   }
 
   @override
-  T controllerFromPlatform<T>(PlatformInAppWebViewController controller) {
+  T controllerFromPlatform<T>(CygnusPlatformWebViewController controller) {
     // unused
     throw UnimplementedError();
   }

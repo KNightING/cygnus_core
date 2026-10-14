@@ -6,16 +6,16 @@ part of 'print_job_orientation.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class representing the orientation of a [PlatformPrintJobController].
-class PrintJobOrientation {
+///Class representing the orientation of a [CygnusPlatformPrintJobController].
+class CygnusPrintJobOrientation {
   final int _value;
   final int? _nativeValue;
-  const PrintJobOrientation._internal(this._value, this._nativeValue);
+  const CygnusPrintJobOrientation._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory PrintJobOrientation._internalMultiPlatform(
+  factory CygnusPrintJobOrientation._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => PrintJobOrientation._internal(value, nativeValue());
+  ) => CygnusPrintJobOrientation._internal(value, nativeValue());
 
   ///Pages are printed in landscape orientation.
   ///
@@ -24,21 +24,24 @@ class PrintJobOrientation {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  static final LANDSCAPE = PrintJobOrientation._internalMultiPlatform(1, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.android:
-        return 1;
-      case TargetPlatform.iOS:
-        return 1;
-      case TargetPlatform.macOS:
-        return 1;
-      case TargetPlatform.windows:
-        return 1;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final LANDSCAPE = CygnusPrintJobOrientation._internalMultiPlatform(
+    1,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.android:
+          return 1;
+        case TargetPlatform.iOS:
+          return 1;
+        case TargetPlatform.macOS:
+          return 1;
+        case TargetPlatform.windows:
+          return 1;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
   ///Pages are printed in portrait orientation.
   ///
@@ -47,33 +50,36 @@ class PrintJobOrientation {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  static final PORTRAIT = PrintJobOrientation._internalMultiPlatform(0, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.android:
-        return 0;
-      case TargetPlatform.iOS:
-        return 0;
-      case TargetPlatform.macOS:
-        return 0;
-      case TargetPlatform.windows:
-        return 0;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final PORTRAIT = CygnusPrintJobOrientation._internalMultiPlatform(
+    0,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.android:
+          return 0;
+        case TargetPlatform.iOS:
+          return 0;
+        case TargetPlatform.macOS:
+          return 0;
+        case TargetPlatform.windows:
+          return 0;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
-  ///Set of all values of [PrintJobOrientation].
-  static final Set<PrintJobOrientation> values = [
-    PrintJobOrientation.LANDSCAPE,
-    PrintJobOrientation.PORTRAIT,
+  ///Set of all values of [CygnusPrintJobOrientation].
+  static final Set<CygnusPrintJobOrientation> values = [
+    CygnusPrintJobOrientation.LANDSCAPE,
+    CygnusPrintJobOrientation.PORTRAIT,
   ].toSet();
 
-  ///Gets a possible [PrintJobOrientation] instance from [int] value.
-  static PrintJobOrientation? fromValue(int? value) {
+  ///Gets a possible [CygnusPrintJobOrientation] instance from [int] value.
+  static CygnusPrintJobOrientation? fromValue(int? value) {
     if (value != null) {
       try {
-        return PrintJobOrientation.values.firstWhere(
+        return CygnusPrintJobOrientation.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -83,11 +89,11 @@ class PrintJobOrientation {
     return null;
   }
 
-  ///Gets a possible [PrintJobOrientation] instance from a native value.
-  static PrintJobOrientation? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusPrintJobOrientation] instance from a native value.
+  static CygnusPrintJobOrientation? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return PrintJobOrientation.values.firstWhere(
+        return CygnusPrintJobOrientation.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -97,15 +103,15 @@ class PrintJobOrientation {
     return null;
   }
 
-  /// Gets a possible [PrintJobOrientation] instance value with name [name].
+  /// Gets a possible [CygnusPrintJobOrientation] instance value with name [name].
   ///
-  /// Goes through [PrintJobOrientation.values] looking for a value with
-  /// name [name], as reported by [PrintJobOrientation.name].
+  /// Goes through [CygnusPrintJobOrientation.values] looking for a value with
+  /// name [name], as reported by [CygnusPrintJobOrientation.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static PrintJobOrientation? byName(String? name) {
+  static CygnusPrintJobOrientation? byName(String? name) {
     if (name != null) {
       try {
-        return PrintJobOrientation.values.firstWhere(
+        return CygnusPrintJobOrientation.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -115,7 +121,7 @@ class PrintJobOrientation {
     return null;
   }
 
-  /// Creates a map from the names of [PrintJobOrientation] values to the values.
+  /// Creates a map from the names of [CygnusPrintJobOrientation] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -123,9 +129,10 @@ class PrintJobOrientation {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, PrintJobOrientation> asNameMap() =>
-      <String, PrintJobOrientation>{
-        for (final value in PrintJobOrientation.values) value.name(): value,
+  static Map<String, CygnusPrintJobOrientation> asNameMap() =>
+      <String, CygnusPrintJobOrientation>{
+        for (final value in CygnusPrintJobOrientation.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

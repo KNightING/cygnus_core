@@ -11,14 +11,14 @@ import 'platform_webview.dart';
 
 part 'platform_headless_in_app_webview.g.dart';
 
-///{@template cygnus_core.PlatformHeadlessInAppWebViewCreationParams}
-///Object specifying creation parameters for creating a [PlatformInAppWebViewWidget].
+///{@template cygnus_core.CygnusPlatformHeadlessWebViewCreationParams}
+///Object specifying creation parameters for creating a [CygnusPlatformWebViewWidget].
 ///
 ///Platform specific implementations can add additional fields by extending
 ///this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformHeadlessInAppWebViewCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformHeadlessWebViewCreationParams.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -29,12 +29,12 @@ part 'platform_headless_in_app_webview.g.dart';
     LinuxPlatform(),
   ],
 )
-class PlatformHeadlessInAppWebViewCreationParams
-    extends PlatformWebViewCreationParams {
-  ///{@macro cygnus_core.PlatformHeadlessInAppWebViewCreationParams}
+class CygnusPlatformHeadlessWebViewCreationParams
+    extends CygnusPlatformWebViewCreationParams {
+  ///{@macro cygnus_core.CygnusPlatformHeadlessWebViewCreationParams}
   ///
-  ///{@macro cygnus_core.PlatformHeadlessInAppWebViewCreationParams.supported_platforms}
-  const PlatformHeadlessInAppWebViewCreationParams({
+  ///{@macro cygnus_core.CygnusPlatformHeadlessWebViewCreationParams.supported_platforms}
+  const CygnusPlatformHeadlessWebViewCreationParams({
     this.initialSize = const Size(-1, -1),
     this.webViewEnvironment,
     super.controllerFromPlatform,
@@ -68,7 +68,7 @@ class PlatformHeadlessInAppWebViewCreationParams
     super.onReceivedHttpAuthRequest,
     super.onReceivedServerTrustAuthRequest,
     super.onReceivedClientCertRequest,
-    @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+    @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
     super.onFindResultReceived,
     super.shouldInterceptAjaxRequest,
     super.onAjaxReadyStateChange,
@@ -161,14 +161,14 @@ class PlatformHeadlessInAppWebViewCreationParams
     super.findInteractionController,
   });
 
-  ///{@template cygnus_core.PlatformHeadlessInAppWebViewCreationParams.initialSize}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebViewCreationParams.initialSize}
   ///The WebView initial size in pixels.
   ///
   ///Set `-1` to match the corresponding width or height of the current device screen size.
   ///`Size(-1, -1)` will match both width and height of the current device screen size.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformHeadlessInAppWebViewCreationParams.initialSize.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformHeadlessWebViewCreationParams.initialSize.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -184,11 +184,11 @@ class PlatformHeadlessInAppWebViewCreationParams
   )
   final Size initialSize;
 
-  ///{@template cygnus_core.PlatformHeadlessInAppWebViewCreationParams.webViewEnvironment}
-  ///Used to create the [PlatformHeadlessInAppWebView] using the specified environment.
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebViewCreationParams.webViewEnvironment}
+  ///Used to create the [CygnusPlatformHeadlessWebView] using the specified environment.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformHeadlessInAppWebViewCreationParams.webViewEnvironment.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformHeadlessWebViewCreationParams.webViewEnvironment.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(),
@@ -199,39 +199,39 @@ class PlatformHeadlessInAppWebViewCreationParams
       ),
     ],
   )
-  final PlatformWebViewEnvironment? webViewEnvironment;
+  final CygnusPlatformWebViewEnvironment? webViewEnvironment;
 
-  ///{@template cygnus_core.PlatformHeadlessInAppWebViewCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebViewCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   @override
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformHeadlessInAppWebViewCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformHeadlessWebViewCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformHeadlessInAppWebViewCreationParams.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebViewCreationParams.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
-  ///The property should be one of the [PlatformWebViewCreationParamsProperty] or [PlatformHeadlessInAppWebViewCreationParamsProperty] values.
+  ///The property should be one of the [CygnusPlatformWebViewCreationParamsProperty] or [CygnusPlatformHeadlessWebViewCreationParamsProperty] values.
   ///{@endtemplate}
   @override
   bool isPropertySupported(dynamic property, {TargetPlatform? platform}) =>
-      property is PlatformWebViewCreationParamsProperty
+      property is CygnusPlatformWebViewCreationParamsProperty
       ? super.isPropertySupported(property, platform: platform)
-      : _PlatformHeadlessInAppWebViewCreationParamsPropertySupported.isPropertySupported(
+      : _CygnusPlatformHeadlessWebViewCreationParamsPropertySupported.isPropertySupported(
           property,
           platform: platform,
         );
 }
 
-///{@template cygnus_core.PlatformHeadlessInAppWebView}
+///{@template cygnus_core.CygnusPlatformHeadlessWebView}
 ///Class that represents a WebView in headless mode.
-///It can be used to run a WebView in background without attaching an `InAppWebView` to the widget tree.
+///It can be used to run a WebView in background without attaching an `CygnusWebView` to the widget tree.
 ///
 ///**NOTE**: Remember to dispose it when you don't need it anymore.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformHeadlessInAppWebView.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformHeadlessWebView.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -242,75 +242,75 @@ class PlatformHeadlessInAppWebViewCreationParams
     LinuxPlatform(),
   ],
 )
-abstract class PlatformHeadlessInAppWebView extends PlatformInterface
-    implements Disposable {
-  /// Creates a new [PlatformHeadlessInAppWebView]
-  factory PlatformHeadlessInAppWebView(
-    PlatformHeadlessInAppWebViewCreationParams params,
+abstract class CygnusPlatformHeadlessWebView extends PlatformInterface
+    implements CygnusDisposable {
+  /// Creates a new [CygnusPlatformHeadlessWebView]
+  factory CygnusPlatformHeadlessWebView(
+    CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformHeadlessInAppWebView webViewControllerDelegate =
-        InAppWebViewPlatform.instance!.createPlatformHeadlessInAppWebView(
+    final CygnusPlatformHeadlessWebView webViewControllerDelegate =
+        CygnusWebViewPlatform.instance!.createPlatformHeadlessInAppWebView(
           params,
         );
     PlatformInterface.verify(webViewControllerDelegate, _token);
     return webViewControllerDelegate;
   }
 
-  /// Creates a new [PlatformHeadlessInAppWebView] to access static methods.
-  factory PlatformHeadlessInAppWebView.static() {
+  /// Creates a new [CygnusPlatformHeadlessWebView] to access static methods.
+  factory CygnusPlatformHeadlessWebView.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformHeadlessInAppWebView headlessInAppWebViewStatic =
-        InAppWebViewPlatform.instance!
+    final CygnusPlatformHeadlessWebView headlessInAppWebViewStatic =
+        CygnusWebViewPlatform.instance!
             .createPlatformHeadlessInAppWebViewStatic();
     PlatformInterface.verify(headlessInAppWebViewStatic, _token);
     return headlessInAppWebViewStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformHeadlessInAppWebView].
+  /// Used by the platform implementation to create a new [CygnusPlatformHeadlessWebView].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformHeadlessInAppWebView.implementation(this.params)
+  CygnusPlatformHeadlessWebView.implementation(this.params)
     : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformHeadlessInAppWebView].
-  final PlatformHeadlessInAppWebViewCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformHeadlessWebView].
+  final CygnusPlatformHeadlessWebViewCreationParams params;
 
-  ///{@template cygnus_core.PlatformHeadlessInAppWebView.id}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebView.id}
   ///View ID.
   ///{@endtemplate}
   String get id =>
       throw UnimplementedError('id is not implemented on the current platform');
 
-  ///{@template cygnus_core.PlatformHeadlessInAppWebView.webViewController}
-  ///WebView Controller that can be used to access the [InAppWebViewController] API.
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebView.webViewController}
+  ///WebView Controller that can be used to access the [CygnusWebViewController] API.
   ///{@endtemplate}
-  PlatformInAppWebViewController? get webViewController =>
+  CygnusPlatformWebViewController? get webViewController =>
       throw UnimplementedError(
         'webViewController is not implemented on the current platform',
       );
 
-  ///{@template cygnus_core.PlatformHeadlessInAppWebView.run}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebView.run}
   ///Runs the headless WebView.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformHeadlessInAppWebView.run.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformHeadlessWebView.run.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -328,11 +328,11 @@ abstract class PlatformHeadlessInAppWebView extends PlatformInterface
     throw UnimplementedError('run is not implemented on the current platform');
   }
 
-  ///{@template cygnus_core.PlatformHeadlessInAppWebView.isRunning}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebView.isRunning}
   ///Indicates if the headless WebView is running or not.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformHeadlessInAppWebView.isRunning.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformHeadlessWebView.isRunning.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -349,16 +349,16 @@ abstract class PlatformHeadlessInAppWebView extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformHeadlessInAppWebView.setSize}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebView.setSize}
   ///Set the size of the WebView in pixels.
   ///
   ///Set `-1` to match the corresponding width or height of the current device screen size.
   ///`Size(-1, -1)` will match both width and height of the current device screen size.
   ///
-  ///Note that if the [PlatformHeadlessInAppWebView] is not running, this method won't have effect.
+  ///Note that if the [CygnusPlatformHeadlessWebView] is not running, this method won't have effect.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformHeadlessInAppWebView.setSize.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformHeadlessWebView.setSize.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -377,13 +377,13 @@ abstract class PlatformHeadlessInAppWebView extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformHeadlessInAppWebView.getSize}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebView.getSize}
   ///Gets the current size in pixels of the WebView.
   ///
-  ///Note that if the [PlatformHeadlessInAppWebView] is not running, this method will return `null`.
+  ///Note that if the [CygnusPlatformHeadlessWebView] is not running, this method will return `null`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformHeadlessInAppWebView.getSize.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformHeadlessWebView.getSize.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -399,11 +399,11 @@ abstract class PlatformHeadlessInAppWebView extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformHeadlessInAppWebView.dispose}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebView.dispose}
   ///Disposes the headless WebView.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformHeadlessInAppWebView.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformHeadlessWebView.dispose.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -420,21 +420,21 @@ abstract class PlatformHeadlessInAppWebView extends PlatformInterface
     );
   }
 
-  ///{@macro cygnus_core.PlatformHeadlessInAppWebViewCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformHeadlessWebViewCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
       params.isClassSupported(platform: platform);
 
-  ///{@macro cygnus_core.PlatformHeadlessInAppWebViewCreationParams.isPropertySupported}
+  ///{@macro cygnus_core.CygnusPlatformHeadlessWebViewCreationParams.isPropertySupported}
   bool isPropertySupported(dynamic property, {TargetPlatform? platform}) =>
       params.isPropertySupported(property, platform: platform);
 
-  ///{@template cygnus_core.PlatformHeadlessInAppWebView.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebView.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformHeadlessInAppWebViewMethod method, {
+    CygnusPlatformHeadlessWebViewMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformHeadlessInAppWebViewMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformHeadlessWebViewMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );

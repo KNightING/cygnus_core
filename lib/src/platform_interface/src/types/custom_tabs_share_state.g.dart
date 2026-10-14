@@ -7,37 +7,37 @@ part of 'custom_tabs_share_state.dart';
 // **************************************************************************
 
 ///Class representing the share state that should be applied to the custom tab.
-class CustomTabsShareState {
+class CygnusCustomTabsShareState {
   final int _value;
   final int? _nativeValue;
-  const CustomTabsShareState._internal(this._value, this._nativeValue);
+  const CygnusCustomTabsShareState._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory CustomTabsShareState._internalMultiPlatform(
+  factory CygnusCustomTabsShareState._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => CustomTabsShareState._internal(value, nativeValue());
+  ) => CygnusCustomTabsShareState._internal(value, nativeValue());
 
   ///Applies the default share settings depending on the browser.
-  static const SHARE_STATE_DEFAULT = CustomTabsShareState._internal(0, 0);
+  static const SHARE_STATE_DEFAULT = CygnusCustomTabsShareState._internal(0, 0);
 
   ///Explicitly does not show a share option in the tab.
-  static const SHARE_STATE_OFF = CustomTabsShareState._internal(2, 2);
+  static const SHARE_STATE_OFF = CygnusCustomTabsShareState._internal(2, 2);
 
   ///Shows a share option in the tab.
-  static const SHARE_STATE_ON = CustomTabsShareState._internal(1, 1);
+  static const SHARE_STATE_ON = CygnusCustomTabsShareState._internal(1, 1);
 
-  ///Set of all values of [CustomTabsShareState].
-  static final Set<CustomTabsShareState> values = [
-    CustomTabsShareState.SHARE_STATE_DEFAULT,
-    CustomTabsShareState.SHARE_STATE_OFF,
-    CustomTabsShareState.SHARE_STATE_ON,
+  ///Set of all values of [CygnusCustomTabsShareState].
+  static final Set<CygnusCustomTabsShareState> values = [
+    CygnusCustomTabsShareState.SHARE_STATE_DEFAULT,
+    CygnusCustomTabsShareState.SHARE_STATE_OFF,
+    CygnusCustomTabsShareState.SHARE_STATE_ON,
   ].toSet();
 
-  ///Gets a possible [CustomTabsShareState] instance from [int] value.
-  static CustomTabsShareState? fromValue(int? value) {
+  ///Gets a possible [CygnusCustomTabsShareState] instance from [int] value.
+  static CygnusCustomTabsShareState? fromValue(int? value) {
     if (value != null) {
       try {
-        return CustomTabsShareState.values.firstWhere(
+        return CygnusCustomTabsShareState.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -47,11 +47,11 @@ class CustomTabsShareState {
     return null;
   }
 
-  ///Gets a possible [CustomTabsShareState] instance from a native value.
-  static CustomTabsShareState? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusCustomTabsShareState] instance from a native value.
+  static CygnusCustomTabsShareState? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return CustomTabsShareState.values.firstWhere(
+        return CygnusCustomTabsShareState.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -61,15 +61,15 @@ class CustomTabsShareState {
     return null;
   }
 
-  /// Gets a possible [CustomTabsShareState] instance value with name [name].
+  /// Gets a possible [CygnusCustomTabsShareState] instance value with name [name].
   ///
-  /// Goes through [CustomTabsShareState.values] looking for a value with
-  /// name [name], as reported by [CustomTabsShareState.name].
+  /// Goes through [CygnusCustomTabsShareState.values] looking for a value with
+  /// name [name], as reported by [CygnusCustomTabsShareState.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static CustomTabsShareState? byName(String? name) {
+  static CygnusCustomTabsShareState? byName(String? name) {
     if (name != null) {
       try {
-        return CustomTabsShareState.values.firstWhere(
+        return CygnusCustomTabsShareState.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -79,7 +79,7 @@ class CustomTabsShareState {
     return null;
   }
 
-  /// Creates a map from the names of [CustomTabsShareState] values to the values.
+  /// Creates a map from the names of [CygnusCustomTabsShareState] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -87,9 +87,10 @@ class CustomTabsShareState {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, CustomTabsShareState> asNameMap() =>
-      <String, CustomTabsShareState>{
-        for (final value in CustomTabsShareState.values) value.name(): value,
+  static Map<String, CygnusCustomTabsShareState> asNameMap() =>
+      <String, CygnusCustomTabsShareState>{
+        for (final value in CygnusCustomTabsShareState.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

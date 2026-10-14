@@ -10,7 +10,7 @@ part 'set_service_worker_client.dart';
 part 'should_intercept_request.dart';
 
 void main() {
-  final shouldSkip = !ServiceWorkerController.isClassSupported();
+  final shouldSkip = !CygnusServiceWorkerController.isClassSupported();
 
   skippableGroup('Service Worker Controller', () {
     shouldInterceptRequest();

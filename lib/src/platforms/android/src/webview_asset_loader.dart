@@ -5,38 +5,38 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 /// Object specifying creation parameters for creating a [AndroidPathHandler].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformPathHandlerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformPathHandlerCreationParams] for
 /// more information.
 @immutable
 class AndroidPathHandlerCreationParams
-    extends PlatformPathHandlerCreationParams {
+    extends CygnusPlatformPathHandlerCreationParams {
   /// Creates a new [AndroidPathHandlerCreationParams] instance.
   AndroidPathHandlerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformPathHandlerCreationParams params,
+    CygnusPlatformPathHandlerCreationParams params,
   ) : super(path: params.path);
 
-  /// Creates a [AndroidPathHandlerCreationParams] instance based on [PlatformPathHandlerCreationParams].
+  /// Creates a [AndroidPathHandlerCreationParams] instance based on [CygnusPlatformPathHandlerCreationParams].
   factory AndroidPathHandlerCreationParams.fromPlatformPathHandlerCreationParams(
-    PlatformPathHandlerCreationParams params,
+    CygnusPlatformPathHandlerCreationParams params,
   ) {
     return AndroidPathHandlerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformPathHandler}
+///{@macro cygnus_core.CygnusPlatformPathHandler}
 abstract mixin class AndroidPathHandler
-    implements ChannelController, PlatformPathHandler {
+    implements ChannelController, CygnusPlatformPathHandler {
   final String _id = IdGenerator.generate();
 
   @override
-  late final PlatformPathHandlerEvents? eventHandler;
+  late final CygnusPlatformPathHandlerEvents? eventHandler;
 
   @override
   late final String path;
 
-  void _init(PlatformPathHandlerCreationParams params) {
+  void _init(CygnusPlatformPathHandlerCreationParams params) {
     this.path = params.path;
     channel = MethodChannel(
       'com.pichillilorenzo/flutter_inappwebview_custompathhandler_${_id}',
@@ -56,7 +56,7 @@ abstract mixin class AndroidPathHandler
   }
 
   @override
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"path": path, "type": type, "id": _id};
   }
 
@@ -80,31 +80,31 @@ abstract mixin class AndroidPathHandler
 /// Object specifying creation parameters for creating a [AndroidAssetsPathHandler].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformAssetsPathHandlerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformAssetsPathHandlerCreationParams] for
 /// more information.
 @immutable
 class AndroidAssetsPathHandlerCreationParams
-    extends PlatformAssetsPathHandlerCreationParams {
+    extends CygnusPlatformAssetsPathHandlerCreationParams {
   /// Creates a new [AndroidAssetsPathHandlerCreationParams] instance.
   AndroidAssetsPathHandlerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformAssetsPathHandlerCreationParams params,
+    CygnusPlatformAssetsPathHandlerCreationParams params,
   ) : super(params);
 
-  /// Creates a [AndroidAssetsPathHandlerCreationParams] instance based on [PlatformAssetsPathHandlerCreationParams].
+  /// Creates a [AndroidAssetsPathHandlerCreationParams] instance based on [CygnusPlatformAssetsPathHandlerCreationParams].
   factory AndroidAssetsPathHandlerCreationParams.fromPlatformAssetsPathHandlerCreationParams(
-    PlatformAssetsPathHandlerCreationParams params,
+    CygnusPlatformAssetsPathHandlerCreationParams params,
   ) {
     return AndroidAssetsPathHandlerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformAssetsPathHandler}
-class AndroidAssetsPathHandler extends PlatformAssetsPathHandler
+///{@macro cygnus_core.CygnusPlatformAssetsPathHandler}
+class AndroidAssetsPathHandler extends CygnusPlatformAssetsPathHandler
     with AndroidPathHandler, ChannelController {
   /// Constructs a [AndroidAssetsPathHandler].
-  AndroidAssetsPathHandler(PlatformAssetsPathHandlerCreationParams params)
+  AndroidAssetsPathHandler(CygnusPlatformAssetsPathHandlerCreationParams params)
     : super.implementation(
         params is AndroidAssetsPathHandlerCreationParams
             ? params
@@ -117,8 +117,8 @@ class AndroidAssetsPathHandler extends PlatformAssetsPathHandler
 
   static final AndroidAssetsPathHandler _staticValue = AndroidAssetsPathHandler(
     AndroidAssetsPathHandlerCreationParams(
-      PlatformAssetsPathHandlerCreationParams(
-        PlatformPathHandlerCreationParams(path: ''),
+      CygnusPlatformAssetsPathHandlerCreationParams(
+        CygnusPlatformPathHandlerCreationParams(path: ''),
       ),
     ),
   );
@@ -130,31 +130,31 @@ class AndroidAssetsPathHandler extends PlatformAssetsPathHandler
 /// Object specifying creation parameters for creating a [AndroidResourcesPathHandler].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformResourcesPathHandlerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformResourcesPathHandlerCreationParams] for
 /// more information.
 @immutable
 class AndroidResourcesPathHandlerCreationParams
-    extends PlatformResourcesPathHandlerCreationParams {
+    extends CygnusPlatformResourcesPathHandlerCreationParams {
   /// Creates a new [AndroidResourcesPathHandlerCreationParams] instance.
   AndroidResourcesPathHandlerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformResourcesPathHandlerCreationParams params,
+    CygnusPlatformResourcesPathHandlerCreationParams params,
   ) : super(params);
 
-  /// Creates a [AndroidResourcesPathHandlerCreationParams] instance based on [PlatformResourcesPathHandlerCreationParams].
+  /// Creates a [AndroidResourcesPathHandlerCreationParams] instance based on [CygnusPlatformResourcesPathHandlerCreationParams].
   factory AndroidResourcesPathHandlerCreationParams.fromPlatformResourcesPathHandlerCreationParams(
-    PlatformResourcesPathHandlerCreationParams params,
+    CygnusPlatformResourcesPathHandlerCreationParams params,
   ) {
     return AndroidResourcesPathHandlerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformResourcesPathHandler}
-class AndroidResourcesPathHandler extends PlatformResourcesPathHandler
+///{@macro cygnus_core.CygnusPlatformResourcesPathHandler}
+class AndroidResourcesPathHandler extends CygnusPlatformResourcesPathHandler
     with AndroidPathHandler, ChannelController {
   /// Constructs a [AndroidResourcesPathHandler].
-  AndroidResourcesPathHandler(PlatformResourcesPathHandlerCreationParams params)
+  AndroidResourcesPathHandler(CygnusPlatformResourcesPathHandlerCreationParams params)
     : super.implementation(
         params is AndroidResourcesPathHandlerCreationParams
             ? params
@@ -168,8 +168,8 @@ class AndroidResourcesPathHandler extends PlatformResourcesPathHandler
   static final AndroidResourcesPathHandler _staticValue =
       AndroidResourcesPathHandler(
         AndroidResourcesPathHandlerCreationParams(
-          PlatformResourcesPathHandlerCreationParams(
-            PlatformPathHandlerCreationParams(path: ''),
+          CygnusPlatformResourcesPathHandlerCreationParams(
+            CygnusPlatformPathHandlerCreationParams(path: ''),
           ),
         ),
       );
@@ -181,33 +181,33 @@ class AndroidResourcesPathHandler extends PlatformResourcesPathHandler
 /// Object specifying creation parameters for creating a [AndroidInternalStoragePathHandler].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformInternalStoragePathHandlerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformInternalStoragePathHandlerCreationParams] for
 /// more information.
 @immutable
 class AndroidInternalStoragePathHandlerCreationParams
-    extends PlatformInternalStoragePathHandlerCreationParams {
+    extends CygnusPlatformInternalStoragePathHandlerCreationParams {
   /// Creates a new [AndroidInternalStoragePathHandlerCreationParams] instance.
   AndroidInternalStoragePathHandlerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformInternalStoragePathHandlerCreationParams params,
+    CygnusPlatformInternalStoragePathHandlerCreationParams params,
   ) : super(params, directory: params.directory);
 
-  /// Creates a [AndroidInternalStoragePathHandlerCreationParams] instance based on [PlatformInternalStoragePathHandlerCreationParams].
+  /// Creates a [AndroidInternalStoragePathHandlerCreationParams] instance based on [CygnusPlatformInternalStoragePathHandlerCreationParams].
   factory AndroidInternalStoragePathHandlerCreationParams.fromPlatformInternalStoragePathHandlerCreationParams(
-    PlatformInternalStoragePathHandlerCreationParams params,
+    CygnusPlatformInternalStoragePathHandlerCreationParams params,
   ) {
     return AndroidInternalStoragePathHandlerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformInternalStoragePathHandler}
+///{@macro cygnus_core.CygnusPlatformInternalStoragePathHandler}
 class AndroidInternalStoragePathHandler
-    extends PlatformInternalStoragePathHandler
+    extends CygnusPlatformInternalStoragePathHandler
     with AndroidPathHandler, ChannelController {
   /// Constructs a [AndroidInternalStoragePathHandler].
   AndroidInternalStoragePathHandler(
-    PlatformInternalStoragePathHandlerCreationParams params,
+    CygnusPlatformInternalStoragePathHandlerCreationParams params,
   ) : super.implementation(
         params is AndroidInternalStoragePathHandlerCreationParams
             ? params
@@ -221,8 +221,8 @@ class AndroidInternalStoragePathHandler
   static final AndroidInternalStoragePathHandler _staticValue =
       AndroidInternalStoragePathHandler(
         AndroidInternalStoragePathHandlerCreationParams(
-          PlatformInternalStoragePathHandlerCreationParams(
-            PlatformPathHandlerCreationParams(path: ''),
+          CygnusPlatformInternalStoragePathHandlerCreationParams(
+            CygnusPlatformPathHandlerCreationParams(path: ''),
             directory: '',
           ),
         ),
@@ -238,7 +238,7 @@ class AndroidInternalStoragePathHandler
   String get directory => _internalParams.directory;
 
   @override
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {...super.toMap(), 'directory': directory};
   }
 }
@@ -246,31 +246,31 @@ class AndroidInternalStoragePathHandler
 /// Object specifying creation parameters for creating a [AndroidCustomPathHandler].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformCustomPathHandlerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformCustomPathHandlerCreationParams] for
 /// more information.
 @immutable
 class AndroidCustomPathHandlerCreationParams
-    extends PlatformCustomPathHandlerCreationParams {
+    extends CygnusPlatformCustomPathHandlerCreationParams {
   /// Creates a new [AndroidCustomPathHandlerCreationParams] instance.
   AndroidCustomPathHandlerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformCustomPathHandlerCreationParams params,
+    CygnusPlatformCustomPathHandlerCreationParams params,
   ) : super(params);
 
-  /// Creates a [AndroidCustomPathHandlerCreationParams] instance based on [PlatformCustomPathHandlerCreationParams].
+  /// Creates a [AndroidCustomPathHandlerCreationParams] instance based on [CygnusPlatformCustomPathHandlerCreationParams].
   factory AndroidCustomPathHandlerCreationParams.fromPlatformCustomPathHandlerCreationParams(
-    PlatformCustomPathHandlerCreationParams params,
+    CygnusPlatformCustomPathHandlerCreationParams params,
   ) {
     return AndroidCustomPathHandlerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformCustomPathHandler}
-class AndroidCustomPathHandler extends PlatformCustomPathHandler
+///{@macro cygnus_core.CygnusPlatformCustomPathHandler}
+class AndroidCustomPathHandler extends CygnusPlatformCustomPathHandler
     with AndroidPathHandler, ChannelController {
   /// Constructs a [AndroidCustomPathHandler].
-  AndroidCustomPathHandler(PlatformCustomPathHandlerCreationParams params)
+  AndroidCustomPathHandler(CygnusPlatformCustomPathHandlerCreationParams params)
     : super.implementation(
         params is AndroidCustomPathHandlerCreationParams
             ? params
@@ -283,8 +283,8 @@ class AndroidCustomPathHandler extends PlatformCustomPathHandler
 
   static final AndroidCustomPathHandler _staticValue = AndroidCustomPathHandler(
     AndroidCustomPathHandlerCreationParams(
-      PlatformCustomPathHandlerCreationParams(
-        PlatformPathHandlerCreationParams(path: ''),
+      CygnusPlatformCustomPathHandlerCreationParams(
+        CygnusPlatformPathHandlerCreationParams(path: ''),
       ),
     ),
   );

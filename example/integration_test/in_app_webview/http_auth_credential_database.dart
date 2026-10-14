@@ -1,50 +1,50 @@
 part of 'main.dart';
 
 void httpAuthCredentialDatabase() {
-  final shouldSkip = !HttpAuthCredentialDatabase.isClassSupported();
+  final shouldSkip = !CygnusHttpAuthCredentialDatabase.isClassSupported();
 
   skippableGroup('Http Auth Credential Database', () {
     skippableTestWidgets('use saved credentials', (WidgetTester tester) async {
-      HttpAuthCredentialDatabase httpAuthCredentialDatabase =
-          HttpAuthCredentialDatabase.instance();
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      CygnusHttpAuthCredentialDatabase httpAuthCredentialDatabase =
+          CygnusHttpAuthCredentialDatabase.instance();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       httpAuthCredentialDatabase.setHttpAuthCredential(
-        protectionSpace: URLProtectionSpace(
+        protectionSpace: CygnusURLProtectionSpace(
           host: environment["NODE_SERVER_IP"]!,
           protocol: "http",
           realm: "Node",
           port: 8081,
         ),
-        credential: URLCredential(username: "USERNAME", password: "PASSWORD"),
+        credential: CygnusURLCredential(username: "USERNAME", password: "PASSWORD"),
       );
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(
-              url: WebUri("http://${environment["NODE_SERVER_IP"]}:8081/"),
+            initialUrlRequest: CygnusURLRequest(
+              url: CygnusWebUri("http://${environment["NODE_SERVER_IP"]}:8081/"),
             ),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
-            initialSettings: InAppWebViewSettings(clearCache: true),
+            initialSettings: CygnusWebViewSettings(clearCache: true),
             onLoadStop: (controller, url) {
               pageLoaded.complete();
             },
             onReceivedHttpAuthRequest: (controller, challenge) async {
-              return new HttpAuthResponse(
-                action: HttpAuthResponseAction.USE_SAVED_HTTP_AUTH_CREDENTIALS,
+              return new CygnusHttpAuthResponse(
+                action: CygnusHttpAuthResponseAction.USE_SAVED_HTTP_AUTH_CREDENTIALS,
               );
             },
           ),
         ),
       );
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoaded.future;
 
@@ -54,7 +54,7 @@ void httpAuthCredentialDatabase() {
       expect(h1Content, "Authorized");
 
       var credentials = await httpAuthCredentialDatabase.getHttpAuthCredentials(
-        protectionSpace: URLProtectionSpace(
+        protectionSpace: CygnusURLProtectionSpace(
           host: environment["NODE_SERVER_IP"]!,
           protocol: "http",
           realm: "Node",
@@ -65,7 +65,7 @@ void httpAuthCredentialDatabase() {
 
       await httpAuthCredentialDatabase.clearAllAuthCredentials();
       credentials = await httpAuthCredentialDatabase.getHttpAuthCredentials(
-        protectionSpace: URLProtectionSpace(
+        protectionSpace: CygnusURLProtectionSpace(
           host: environment["NODE_SERVER_IP"]!,
           protocol: "http",
           realm: "Node",
@@ -76,37 +76,37 @@ void httpAuthCredentialDatabase() {
     });
 
     skippableTestWidgets('save credentials', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(
-              url: WebUri("http://${environment["NODE_SERVER_IP"]}:8081/"),
+            initialUrlRequest: CygnusURLRequest(
+              url: CygnusWebUri("http://${environment["NODE_SERVER_IP"]}:8081/"),
             ),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
-            initialSettings: InAppWebViewSettings(clearCache: true),
+            initialSettings: CygnusWebViewSettings(clearCache: true),
             onLoadStop: (controller, url) {
               pageLoaded.complete();
             },
             onReceivedHttpAuthRequest: (controller, challenge) async {
-              return new HttpAuthResponse(
+              return new CygnusHttpAuthResponse(
                 username: "USERNAME",
                 password: "PASSWORD",
-                action: HttpAuthResponseAction.PROCEED,
+                action: CygnusHttpAuthResponseAction.PROCEED,
                 permanentPersistence: true,
               );
             },
           ),
         ),
       );
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoaded.future;
 

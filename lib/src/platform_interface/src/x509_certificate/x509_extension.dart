@@ -7,14 +7,14 @@ import 'oid.dart';
 import 'asn1_distinguished_names.dart';
 import 'asn1_decoder.dart';
 
-class X509Extension {
-  ASN1Object? block;
+class CygnusX509Extension {
+  CygnusASN1Object? block;
 
-  X509Extension({required this.block});
+  CygnusX509Extension({required this.block});
 
   String? get oid => block?.subAtIndex(0)?.value;
 
-  String? get name => OID.fromValue(oid)?.name();
+  String? get name => CygnusOID.fromValue(oid)?.name();
 
   bool get isCritical {
     if ((block?.sub?.length ?? 0) > 2) {
@@ -26,7 +26,7 @@ class X509Extension {
   dynamic get value {
     var sub = block?.sub;
     if (sub != null && sub.length > 0) {
-      ASN1Object? valueBlock;
+      CygnusASN1Object? valueBlock;
       try {
         valueBlock = sub.last;
       } catch (e) {}
@@ -37,10 +37,10 @@ class X509Extension {
     return null;
   }
 
-  ASN1Object? get valueAsBlock {
+  CygnusASN1Object? get valueAsBlock {
     var sub = block?.sub;
     if (sub != null && sub.length > 0) {
-      ASN1Object? valueBlock;
+      CygnusASN1Object? valueBlock;
       try {
         valueBlock = sub.last;
       } catch (e) {}
@@ -51,9 +51,9 @@ class X509Extension {
 
   List<String> get valueAsStrings {
     var result = <String>[];
-    var sub = <ASN1Object>[];
+    var sub = <CygnusASN1Object>[];
     try {
-      sub = block?.sub?.last.sub?.last.sub ?? <ASN1Object>[];
+      sub = block?.sub?.last.sub?.last.sub ?? <CygnusASN1Object>[];
     } catch (e) {}
 
     for (var item in sub) {
@@ -81,9 +81,9 @@ class X509Extension {
   //
   List<String> get alternativeNameAsStrings {
     List<String> result = [];
-    var sub = <ASN1Object>[];
+    var sub = <CygnusASN1Object>[];
     try {
-      sub = block?.sub?.last.sub?.last.sub ?? <ASN1Object>[];
+      sub = block?.sub?.last.sub?.last.sub ?? <CygnusASN1Object>[];
     } catch (e) {}
     for (var item in sub) {
       var name = generalName(item: item);
@@ -94,7 +94,7 @@ class X509Extension {
     return result;
   }
 
-  String? generalName({required ASN1Object item}) {
+  String? generalName({required CygnusASN1Object item}) {
     var nameType = item.identifier?.tagNumber().toValue();
     if (nameType == null) {
       return null;
@@ -112,7 +112,7 @@ class X509Extension {
         var name = item.value is String ? item.value : null;
         return name;
       case 4:
-        return ASN1DistinguishedNames.string(block: item);
+        return CygnusASN1DistinguishedNames.string(block: item);
       case 7:
         var ip = item.value is List<int> ? item.value : null;
         if (ip != null) {
@@ -124,7 +124,7 @@ class X509Extension {
         if (value != null) {
           try {
             var data = utf8.encode(value);
-            var oid = ASN1DERDecoder.decodeOid(contentData: data);
+            var oid = CygnusASN1DERDecoder.decodeOid(contentData: data);
             return oid;
           } catch (e) {}
         }
@@ -137,8 +137,8 @@ class X509Extension {
 }
 
 /// Recognition for Basic Constraint Extension (2.5.29.19)
-class BasicConstraintExtension extends X509Extension {
-  BasicConstraintExtension({required block}) : super(block: block);
+class CygnusBasicConstraintExtension extends CygnusX509Extension {
+  CygnusBasicConstraintExtension({required block}) : super(block: block);
 
   bool get isCA {
     var data = valueAsBlock?.subAtIndex(0)?.subAtIndex(0)?.value;
@@ -158,7 +158,7 @@ class BasicConstraintExtension extends X509Extension {
     return toMap().toString();
   }
 
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"isCA": isCA, "pathLenConstraint": pathLenConstraint};
   }
 
@@ -168,14 +168,14 @@ class BasicConstraintExtension extends X509Extension {
 }
 
 /// Recognition for Subject Key Identifier Extension (2.5.29.14)
-class SubjectKeyIdentifierExtension extends X509Extension {
-  SubjectKeyIdentifierExtension({required block}) : super(block: block);
+class CygnusSubjectKeyIdentifierExtension extends CygnusX509Extension {
+  CygnusSubjectKeyIdentifierExtension({required block}) : super(block: block);
 
   @override
   List<int>? get value {
     var rawValue = valueAsBlock?.encoded;
     if (rawValue != null) {
-      return ASN1DERDecoder.sequenceContent(data: rawValue.toList());
+      return CygnusASN1DERDecoder.sequenceContent(data: rawValue.toList());
     }
     return null;
   }
@@ -185,7 +185,7 @@ class SubjectKeyIdentifierExtension extends X509Extension {
     return toMap().toString();
   }
 
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"value": value};
   }
 
@@ -194,18 +194,18 @@ class SubjectKeyIdentifierExtension extends X509Extension {
   }
 }
 
-class AuthorityInfoAccess {
+class CygnusAuthorityInfoAccess {
   String method;
   String location;
 
-  AuthorityInfoAccess({required this.method, required this.location});
+  CygnusAuthorityInfoAccess({required this.method, required this.location});
 
   @override
   String toString() {
     return toMap().toString();
   }
 
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"method": method, "location": location};
   }
 
@@ -215,25 +215,25 @@ class AuthorityInfoAccess {
 }
 
 /// Recognition for Authority Info Access Extension (1.3.6.1.5.5.7.1.1)
-class AuthorityInfoAccessExtension extends X509Extension {
-  AuthorityInfoAccessExtension({required block}) : super(block: block);
+class CygnusAuthorityInfoAccessExtension extends CygnusX509Extension {
+  CygnusAuthorityInfoAccessExtension({required block}) : super(block: block);
 
-  List<AuthorityInfoAccess>? get infoAccess {
+  List<CygnusAuthorityInfoAccess>? get infoAccess {
     if (valueAsBlock == null) {
       return null;
     }
-    var subs = valueAsBlock!.subAtIndex(0)?.sub ?? <ASN1Object>[];
-    List<AuthorityInfoAccess> result = <AuthorityInfoAccess>[];
+    var subs = valueAsBlock!.subAtIndex(0)?.sub ?? <CygnusASN1Object>[];
+    List<CygnusAuthorityInfoAccess> result = <CygnusAuthorityInfoAccess>[];
     subs.forEach((sub) {
       var oidData = sub.subAtIndex(0)?.encoded;
       var nameBlock = sub.subAtIndex(1);
       if (oidData == null || nameBlock == null) {
         return;
       }
-      var oid = ASN1DERDecoder.decodeOid(contentData: oidData.toList());
+      var oid = CygnusASN1DERDecoder.decodeOid(contentData: oidData.toList());
       var location = generalName(item: nameBlock);
       if (oid != null && location != null) {
-        result.add(AuthorityInfoAccess(method: oid, location: location));
+        result.add(CygnusAuthorityInfoAccess(method: oid, location: location));
       }
     });
     return result;
@@ -244,7 +244,7 @@ class AuthorityInfoAccessExtension extends X509Extension {
     return toMap().toString();
   }
 
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "infoAccess": infoAccess
           ?.map((e) => e.toMap(enumMethod: enumMethod))
@@ -258,8 +258,8 @@ class AuthorityInfoAccessExtension extends X509Extension {
 }
 
 /// Recognition for Authority Key Identifier Extension (2.5.29.35)
-class AuthorityKeyIdentifierExtension extends X509Extension {
-  AuthorityKeyIdentifierExtension({required block}) : super(block: block);
+class CygnusAuthorityKeyIdentifierExtension extends CygnusX509Extension {
+  CygnusAuthorityKeyIdentifierExtension({required block}) : super(block: block);
 
   ///AuthorityKeyIdentifier ::= SEQUENCE {
   ///   keyIdentifier             [0] KeyIdentifier           OPTIONAL,
@@ -270,7 +270,7 @@ class AuthorityKeyIdentifierExtension extends X509Extension {
     if (sequence == null) {
       return null;
     }
-    ASN1Object? sub;
+    CygnusASN1Object? sub;
     try {
       sub = sequence.firstWhere(
         (element) => element.identifier?.tagNumber().toValue() == 0,
@@ -285,7 +285,7 @@ class AuthorityKeyIdentifierExtension extends X509Extension {
     if (sequence == null) {
       return null;
     }
-    ASN1Object? sub;
+    CygnusASN1Object? sub;
     try {
       sub = sequence.firstWhere(
         (element) => element.identifier?.tagNumber().toValue() == 1,
@@ -310,7 +310,7 @@ class AuthorityKeyIdentifierExtension extends X509Extension {
     if (sequence == null) {
       return null;
     }
-    ASN1Object? sub;
+    CygnusASN1Object? sub;
     try {
       sub = sequence.firstWhere(
         (element) => element.identifier?.tagNumber().toValue() == 2,
@@ -325,7 +325,7 @@ class AuthorityKeyIdentifierExtension extends X509Extension {
     return toMap().toString();
   }
 
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "keyIdentifier": keyIdentifier,
       "certificateIssuer": certificateIssuer,
@@ -338,18 +338,18 @@ class AuthorityKeyIdentifierExtension extends X509Extension {
   }
 }
 
-class CertificatePolicyQualifier {
+class CygnusCertificatePolicyQualifier {
   String oid;
   String? value;
 
-  CertificatePolicyQualifier({required this.oid, this.value});
+  CygnusCertificatePolicyQualifier({required this.oid, this.value});
 
   @override
   String toString() {
     return toMap().toString();
   }
 
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"oid": oid, "value": value};
   }
 
@@ -358,18 +358,18 @@ class CertificatePolicyQualifier {
   }
 }
 
-class CertificatePolicy {
+class CygnusCertificatePolicy {
   String oid;
-  List<CertificatePolicyQualifier>? qualifiers;
+  List<CygnusCertificatePolicyQualifier>? qualifiers;
 
-  CertificatePolicy({required this.oid, this.qualifiers});
+  CygnusCertificatePolicy({required this.oid, this.qualifiers});
 
   @override
   String toString() {
     return toMap().toString();
   }
 
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "oid": oid,
       "qualifiers": qualifiers
@@ -384,21 +384,21 @@ class CertificatePolicy {
 }
 
 /// Recognition for Certificate Policies Extension (2.5.29.32)
-class CertificatePoliciesExtension extends X509Extension {
-  CertificatePoliciesExtension({required block}) : super(block: block);
+class CygnusCertificatePoliciesExtension extends CygnusX509Extension {
+  CygnusCertificatePoliciesExtension({required block}) : super(block: block);
 
-  List<CertificatePolicy>? get policies {
+  List<CygnusCertificatePolicy>? get policies {
     if (valueAsBlock == null) {
       return null;
     }
-    var subs = valueAsBlock!.subAtIndex(0)?.sub ?? <ASN1Object>[];
+    var subs = valueAsBlock!.subAtIndex(0)?.sub ?? <CygnusASN1Object>[];
 
-    List<CertificatePolicy> result = <CertificatePolicy>[];
+    List<CygnusCertificatePolicy> result = <CygnusCertificatePolicy>[];
     subs.forEach((sub) {
       var data = sub.subAtIndex(0)?.encoded;
       String? oid;
       if (data != null) {
-        oid = ASN1DERDecoder.decodeOid(contentData: data.toList());
+        oid = CygnusASN1DERDecoder.decodeOid(contentData: data.toList());
         if (oid == null) {
           return;
         }
@@ -406,24 +406,24 @@ class CertificatePoliciesExtension extends X509Extension {
         return;
       }
 
-      List<CertificatePolicyQualifier>? qualifiers;
+      List<CygnusCertificatePolicyQualifier>? qualifiers;
       var subQualifiers = sub.subAtIndex(1);
       if (subQualifiers != null && subQualifiers.sub != null) {
-        qualifiers = <CertificatePolicyQualifier>[];
+        qualifiers = <CygnusCertificatePolicyQualifier>[];
         subQualifiers.sub!.forEach((sub) {
           var rawValue = sub.subAtIndex(0)?.encoded;
           String? oid;
           if (rawValue != null) {
-            oid = ASN1DERDecoder.decodeOid(contentData: rawValue.toList());
+            oid = CygnusASN1DERDecoder.decodeOid(contentData: rawValue.toList());
             if (oid == null) {
               return;
             }
             var value = sub.subAtIndex(1)?.asString;
-            qualifiers!.add(CertificatePolicyQualifier(oid: oid, value: value));
+            qualifiers!.add(CygnusCertificatePolicyQualifier(oid: oid, value: value));
           }
         });
       }
-      result.add(CertificatePolicy(oid: oid, qualifiers: qualifiers));
+      result.add(CygnusCertificatePolicy(oid: oid, qualifiers: qualifiers));
     });
     return result;
   }
@@ -433,7 +433,7 @@ class CertificatePoliciesExtension extends X509Extension {
     return toMap().toString();
   }
 
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "policies": policies
           ?.map((e) => e.toMap(enumMethod: enumMethod))
@@ -446,14 +446,14 @@ class CertificatePoliciesExtension extends X509Extension {
   }
 }
 
-class CRLDistributionPointsExtension extends X509Extension {
-  CRLDistributionPointsExtension({required block}) : super(block: block);
+class CygnusCRLDistributionPointsExtension extends CygnusX509Extension {
+  CygnusCRLDistributionPointsExtension({required block}) : super(block: block);
 
   List<String>? get crls {
     if (valueAsBlock == null) {
       return null;
     }
-    var subs = valueAsBlock!.subAtIndex(0)?.sub ?? <ASN1Object>[];
+    var subs = valueAsBlock!.subAtIndex(0)?.sub ?? <CygnusASN1Object>[];
     List<String> result = <String>[];
     subs.forEach((sub) {
       var asString = sub.asString;
@@ -469,7 +469,7 @@ class CRLDistributionPointsExtension extends X509Extension {
     return toMap().toString();
   }
 
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"crls": crls};
   }
 

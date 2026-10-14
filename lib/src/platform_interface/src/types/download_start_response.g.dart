@@ -6,15 +6,15 @@ part of 'download_start_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class representing a download response of the WebView used by the event [PlatformWebViewCreationParams.onDownloadStartRequest].
-class DownloadStartResponse {
+///Class representing a download response of the WebView used by the event [CygnusPlatformWebViewCreationParams.onDownloadStartRequest].
+class CygnusDownloadStartResponse {
   ///Action to take for the download request.
   ///
   ///If canceled, the download save dialog is not displayed regardless of the [handled] property.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  DownloadStartResponseAction? action;
+  CygnusDownloadStartResponseAction? action;
 
   ///Set this flag to `true` to hide the default download dialog for this download.
   ///
@@ -34,29 +34,30 @@ class DownloadStartResponse {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   String? resultFilePath;
-  DownloadStartResponse({
+  CygnusDownloadStartResponse({
     this.action,
     required this.handled,
     this.resultFilePath,
   });
 
-  ///Gets a possible [DownloadStartResponse] instance from a [Map] value.
-  static DownloadStartResponse? fromMap(
+  ///Gets a possible [CygnusDownloadStartResponse] instance from a [Map] value.
+  static CygnusDownloadStartResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = DownloadStartResponse(
-      action: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => DownloadStartResponseAction.fromNativeValue(
+    final instance = CygnusDownloadStartResponse(
+      action: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusDownloadStartResponseAction.fromNativeValue(map['action']),
+        CygnusEnumMethod.value => CygnusDownloadStartResponseAction.fromValue(
           map['action'],
         ),
-        EnumMethod.value => DownloadStartResponseAction.fromValue(
+        CygnusEnumMethod.name => CygnusDownloadStartResponseAction.byName(
           map['action'],
         ),
-        EnumMethod.name => DownloadStartResponseAction.byName(map['action']),
       },
       handled: map['handled'],
       resultFilePath: map['resultFilePath'],
@@ -65,12 +66,12 @@ class DownloadStartResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "action": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => action?.toNativeValue(),
-        EnumMethod.value => action?.toValue(),
-        EnumMethod.name => action?.name(),
+      "action": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => action?.toNativeValue(),
+        CygnusEnumMethod.value => action?.toValue(),
+        CygnusEnumMethod.name => action?.name(),
       },
       "handled": handled,
       "resultFilePath": resultFilePath,
@@ -84,6 +85,6 @@ class DownloadStartResponse {
 
   @override
   String toString() {
-    return 'DownloadStartResponse{action: $action, handled: $handled, resultFilePath: $resultFilePath}';
+    return 'CygnusDownloadStartResponse{action: $action, handled: $handled, resultFilePath: $resultFilePath}';
   }
 }

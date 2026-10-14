@@ -4,16 +4,16 @@ import 'js_before_unload_response.dart';
 
 part 'js_before_unload_response_action.g.dart';
 
-///Class used by [JsBeforeUnloadResponse] class.
+///Class used by [CygnusJsBeforeUnloadResponse] class.
 @ExchangeableEnum()
-class JsBeforeUnloadResponseAction_ {
+class CygnusJsBeforeUnloadResponseAction_ {
   // ignore: unused_field
   final int _value;
-  const JsBeforeUnloadResponseAction_._internal(this._value);
+  const CygnusJsBeforeUnloadResponseAction_._internal(this._value);
 
   ///Confirm that the user hit confirm button.
-  static const CONFIRM = const JsBeforeUnloadResponseAction_._internal(0);
+  static const CONFIRM = const CygnusJsBeforeUnloadResponseAction_._internal(0);
 
   ///Confirm that the user hit cancel button.
-  static const CANCEL = const JsBeforeUnloadResponseAction_._internal(1);
+  static const CANCEL = const CygnusJsBeforeUnloadResponseAction_._internal(1);
 }

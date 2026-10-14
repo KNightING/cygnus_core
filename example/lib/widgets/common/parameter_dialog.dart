@@ -26,7 +26,7 @@ class ParameterValueHint<T> {
 
 /// A specialized hint for enum parameters that includes available values.
 /// Works with both standard Dart enums and custom enum-like classes
-/// (like UserScriptInjectionTime, CompressFormat) that have a `values` property
+/// (like CygnusUserScriptInjectionTime, CygnusCompressFormat) that have a `values` property
 /// and a `name()` method.
 class EnumParameterValueHint<T> extends ParameterValueHint<Object?> {
   /// The list of all available enum values.
@@ -166,7 +166,7 @@ class _ParameterDialogState extends State<ParameterDialog> {
         final key = _pathKey(path);
         _hintedTypes[key] = ParameterValueType.enumeration;
         // Wrap the typed displayName function in a dynamic closure to handle
-        // the generic type properly (e.g., String Function(CompressFormat) -> String Function(dynamic))
+        // the generic type properly (e.g., String Function(CygnusCompressFormat) -> String Function(dynamic))
         // We use dynamic access here to bypass covariant check failures with generic functions
         final userDisplayName = (value as dynamic).displayName;
         String Function(dynamic) displayNameFn;

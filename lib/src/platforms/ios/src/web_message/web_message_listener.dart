@@ -5,11 +5,11 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 /// Object specifying creation parameters for creating a [IOSWebMessageListener].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebMessageListenerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebMessageListenerCreationParams] for
 /// more information.
 @immutable
 class IOSWebMessageListenerCreationParams
-    extends PlatformWebMessageListenerCreationParams {
+    extends CygnusPlatformWebMessageListenerCreationParams {
   /// Creates a new [IOSWebMessageListenerCreationParams] instance.
   const IOSWebMessageListenerCreationParams({
     required this.allowedOriginRules,
@@ -17,11 +17,11 @@ class IOSWebMessageListenerCreationParams
     super.onPostMessage,
   });
 
-  /// Creates a [IOSWebMessageListenerCreationParams] instance based on [PlatformWebMessageListenerCreationParams].
+  /// Creates a [IOSWebMessageListenerCreationParams] instance based on [CygnusPlatformWebMessageListenerCreationParams].
   factory IOSWebMessageListenerCreationParams.fromPlatformWebMessageListenerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebMessageListenerCreationParams params,
+    CygnusPlatformWebMessageListenerCreationParams params,
   ) {
     return IOSWebMessageListenerCreationParams(
       allowedOriginRules: params.allowedOriginRules ?? Set.from(["*"]),
@@ -39,11 +39,11 @@ class IOSWebMessageListenerCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformWebMessageListener}
-class IOSWebMessageListener extends PlatformWebMessageListener
+///{@macro cygnus_core.CygnusPlatformWebMessageListener}
+class IOSWebMessageListener extends CygnusPlatformWebMessageListener
     with ChannelController {
   /// Constructs a [IOSWebMessageListener].
-  IOSWebMessageListener(PlatformWebMessageListenerCreationParams params)
+  IOSWebMessageListener(CygnusPlatformWebMessageListenerCreationParams params)
     : super.implementation(
         params is IOSWebMessageListenerCreationParams
             ? params
@@ -87,19 +87,19 @@ class IOSWebMessageListener extends PlatformWebMessageListener
       case "onPostMessage":
         if (_replyProxy == null) {
           _replyProxy = IOSJavaScriptReplyProxy(
-            PlatformJavaScriptReplyProxyCreationParams(
+            CygnusPlatformJavaScriptReplyProxyCreationParams(
               webMessageListener: this,
             ),
           );
         }
         if (onPostMessage != null) {
-          WebMessage? message = call.arguments["message"] != null
-              ? WebMessage.fromMap(
+          CygnusWebMessage? message = call.arguments["message"] != null
+              ? CygnusWebMessage.fromMap(
                   call.arguments["message"].cast<String, dynamic>(),
                 )
               : null;
-          WebUri? sourceOrigin = call.arguments["sourceOrigin"] != null
-              ? WebUri(call.arguments["sourceOrigin"])
+          CygnusWebUri? sourceOrigin = call.arguments["sourceOrigin"] != null
+              ? CygnusWebUri(call.arguments["sourceOrigin"])
               : null;
           bool isMainFrame = call.arguments["isMainFrame"];
           onPostMessage!(message, sourceOrigin, isMainFrame, _replyProxy!);
@@ -139,21 +139,21 @@ class IOSWebMessageListener extends PlatformWebMessageListener
 /// Object specifying creation parameters for creating a [IOSJavaScriptReplyProxy].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformJavaScriptReplyProxyCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformJavaScriptReplyProxyCreationParams] for
 /// more information.
 @immutable
 class IOSJavaScriptReplyProxyCreationParams
-    extends PlatformJavaScriptReplyProxyCreationParams {
+    extends CygnusPlatformJavaScriptReplyProxyCreationParams {
   /// Creates a new [IOSJavaScriptReplyProxyCreationParams] instance.
   const IOSJavaScriptReplyProxyCreationParams({
     required super.webMessageListener,
   });
 
-  /// Creates a [IOSJavaScriptReplyProxyCreationParams] instance based on [PlatformJavaScriptReplyProxyCreationParams].
+  /// Creates a [IOSJavaScriptReplyProxyCreationParams] instance based on [CygnusPlatformJavaScriptReplyProxyCreationParams].
   factory IOSJavaScriptReplyProxyCreationParams.fromPlatformJavaScriptReplyProxyCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformJavaScriptReplyProxyCreationParams params,
+    CygnusPlatformJavaScriptReplyProxyCreationParams params,
   ) {
     return IOSJavaScriptReplyProxyCreationParams(
       webMessageListener: params.webMessageListener,
@@ -161,10 +161,10 @@ class IOSJavaScriptReplyProxyCreationParams
   }
 }
 
-///{@macro cygnus_core.JavaScriptReplyProxy}
-class IOSJavaScriptReplyProxy extends PlatformJavaScriptReplyProxy {
+///{@macro cygnus_core.CygnusJavaScriptReplyProxy}
+class IOSJavaScriptReplyProxy extends CygnusPlatformJavaScriptReplyProxy {
   /// Constructs a [IOSWebMessageListener].
-  IOSJavaScriptReplyProxy(PlatformJavaScriptReplyProxyCreationParams params)
+  IOSJavaScriptReplyProxy(CygnusPlatformJavaScriptReplyProxyCreationParams params)
     : super.implementation(
         params is IOSJavaScriptReplyProxyCreationParams
             ? params
@@ -177,7 +177,7 @@ class IOSJavaScriptReplyProxy extends PlatformJavaScriptReplyProxy {
       params.webMessageListener as IOSWebMessageListener;
 
   @override
-  Future<void> postMessage(WebMessage message) async {
+  Future<void> postMessage(CygnusWebMessage message) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('message', () => message.toMap());
     await _iosWebMessageListener.channel?.invokeMethod('postMessage', args);

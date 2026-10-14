@@ -6,8 +6,8 @@ part of 'script_html_tag_attributes.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the possible the `<script>` HTML attributes to be set used by [PlatformInAppWebViewController.injectJavascriptFileFromUrl].
-class ScriptHtmlTagAttributes {
+///Class that represents the possible the `<script>` HTML attributes to be set used by [CygnusPlatformWebViewController.injectJavascriptFileFromUrl].
+class CygnusScriptHtmlTagAttributes {
   ///For classic scripts, if the [async] attribute is present,
   ///then the classic script will be fetched in parallel to parsing and evaluated as soon as it is available.
   ///
@@ -24,7 +24,7 @@ class ScriptHtmlTagAttributes {
 
   ///Normal script elements pass minimal information to the `window.onerror` for scripts which do not pass the standard CORS checks.
   ///To allow error logging for sites which use a separate domain for static media, use this attribute.
-  CrossOrigin? crossOrigin;
+  CygnusCrossOrigin? crossOrigin;
 
   ///This Boolean attribute is set to indicate to a browser that the script is meant to be executed after the document has been parsed, but before firing `DOMContentLoaded`.
   ///
@@ -62,12 +62,12 @@ class ScriptHtmlTagAttributes {
   Function? onLoad;
 
   ///Indicates which referrer to send when fetching the script, or resources fetched by the script.
-  ReferrerPolicy? referrerPolicy;
+  CygnusReferrerPolicy? referrerPolicy;
 
   ///This attribute indicates the type of script represented. The value of this attribute will be in one of the following categories.
   ///The default value is `text/javascript`.
   String type;
-  ScriptHtmlTagAttributes({
+  CygnusScriptHtmlTagAttributes({
     this.type = "text/javascript",
     this.id,
     this.async,
@@ -88,34 +88,40 @@ class ScriptHtmlTagAttributes {
     }
   }
 
-  ///Gets a possible [ScriptHtmlTagAttributes] instance from a [Map] value.
-  static ScriptHtmlTagAttributes? fromMap(
+  ///Gets a possible [CygnusScriptHtmlTagAttributes] instance from a [Map] value.
+  static CygnusScriptHtmlTagAttributes? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ScriptHtmlTagAttributes(
+    final instance = CygnusScriptHtmlTagAttributes(
       async: map['async'],
-      crossOrigin: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => CrossOrigin.fromNativeValue(
+      crossOrigin: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusCrossOrigin.fromNativeValue(
           map['crossOrigin'],
         ),
-        EnumMethod.value => CrossOrigin.fromValue(map['crossOrigin']),
-        EnumMethod.name => CrossOrigin.byName(map['crossOrigin']),
+        CygnusEnumMethod.value => CygnusCrossOrigin.fromValue(
+          map['crossOrigin'],
+        ),
+        CygnusEnumMethod.name => CygnusCrossOrigin.byName(map['crossOrigin']),
       },
       defer: map['defer'],
       id: map['id'],
       integrity: map['integrity'],
       noModule: map['noModule'],
       nonce: map['nonce'],
-      referrerPolicy: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => ReferrerPolicy.fromNativeValue(
+      referrerPolicy: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusReferrerPolicy.fromNativeValue(
           map['referrerPolicy'],
         ),
-        EnumMethod.value => ReferrerPolicy.fromValue(map['referrerPolicy']),
-        EnumMethod.name => ReferrerPolicy.byName(map['referrerPolicy']),
+        CygnusEnumMethod.value => CygnusReferrerPolicy.fromValue(
+          map['referrerPolicy'],
+        ),
+        CygnusEnumMethod.name => CygnusReferrerPolicy.byName(
+          map['referrerPolicy'],
+        ),
       },
     );
     if (map['type'] != null) {
@@ -125,23 +131,23 @@ class ScriptHtmlTagAttributes {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "async": async,
-      "crossOrigin": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => crossOrigin?.toNativeValue(),
-        EnumMethod.value => crossOrigin?.toValue(),
-        EnumMethod.name => crossOrigin?.name(),
+      "crossOrigin": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => crossOrigin?.toNativeValue(),
+        CygnusEnumMethod.value => crossOrigin?.toValue(),
+        CygnusEnumMethod.name => crossOrigin?.name(),
       },
       "defer": defer,
       "id": id,
       "integrity": integrity,
       "noModule": noModule,
       "nonce": nonce,
-      "referrerPolicy": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => referrerPolicy?.toNativeValue(),
-        EnumMethod.value => referrerPolicy?.toValue(),
-        EnumMethod.name => referrerPolicy?.name(),
+      "referrerPolicy": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => referrerPolicy?.toNativeValue(),
+        CygnusEnumMethod.value => referrerPolicy?.toValue(),
+        CygnusEnumMethod.name => referrerPolicy?.name(),
       },
       "type": type,
     };
@@ -154,6 +160,6 @@ class ScriptHtmlTagAttributes {
 
   @override
   String toString() {
-    return 'ScriptHtmlTagAttributes{async: $async, crossOrigin: $crossOrigin, defer: $defer, id: $id, integrity: $integrity, noModule: $noModule, nonce: $nonce, referrerPolicy: $referrerPolicy, type: $type}';
+    return 'CygnusScriptHtmlTagAttributes{async: $async, crossOrigin: $crossOrigin, defer: $defer, id: $id, integrity: $integrity, noModule: $noModule, nonce: $nonce, referrerPolicy: $referrerPolicy, type: $type}';
   }
 }

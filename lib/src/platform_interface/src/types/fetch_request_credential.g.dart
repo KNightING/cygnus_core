@@ -6,26 +6,26 @@ part of 'fetch_request_credential.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that is an interface for [FetchRequestCredentialDefault], [FetchRequestFederatedCredential] and [FetchRequestPasswordCredential] classes.
-class FetchRequestCredential {
+///Class that is an interface for [CygnusFetchRequestCredentialDefault], [CygnusFetchRequestFederatedCredential] and [CygnusFetchRequestPasswordCredential] classes.
+class CygnusFetchRequestCredential {
   ///Type of credentials.
   String? type;
-  FetchRequestCredential({this.type});
+  CygnusFetchRequestCredential({this.type});
 
-  ///Gets a possible [FetchRequestCredential] instance from a [Map] value.
-  static FetchRequestCredential? fromMap(
+  ///Gets a possible [CygnusFetchRequestCredential] instance from a [Map] value.
+  static CygnusFetchRequestCredential? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = FetchRequestCredential(type: map['type']);
+    final instance = CygnusFetchRequestCredential(type: map['type']);
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"type": type};
   }
 
@@ -36,6 +36,6 @@ class FetchRequestCredential {
 
   @override
   String toString() {
-    return 'FetchRequestCredential{type: $type}';
+    return 'CygnusFetchRequestCredential{type: $type}';
   }
 }

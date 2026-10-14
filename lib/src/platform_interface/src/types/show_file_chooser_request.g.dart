@@ -6,8 +6,8 @@ part of 'show_file_chooser_request.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class used in the [PlatformWebViewCreationParams.onShowFileChooser] method.
-class ShowFileChooserRequest {
+///Class used in the [CygnusPlatformWebViewCreationParams.onShowFileChooser] method.
+class CygnusShowFileChooserRequest {
   ///An array of acceptable MIME types.
   ///The returned MIME type could be partial such as audio/*.
   ///The array will be empty if no acceptable types are specified.
@@ -22,12 +22,12 @@ class ShowFileChooserRequest {
   final bool isCaptureEnabled;
 
   ///The file chooser mode.
-  final ShowFileChooserRequestMode mode;
+  final CygnusShowFileChooserRequestMode mode;
 
   ///The title to use for this file selector.
   ///If `null` a default title should be used.
   final String? title;
-  ShowFileChooserRequest({
+  CygnusShowFileChooserRequest({
     required this.acceptTypes,
     this.filenameHint,
     required this.isCaptureEnabled,
@@ -35,24 +35,27 @@ class ShowFileChooserRequest {
     this.title,
   });
 
-  ///Gets a possible [ShowFileChooserRequest] instance from a [Map] value.
-  static ShowFileChooserRequest? fromMap(
+  ///Gets a possible [CygnusShowFileChooserRequest] instance from a [Map] value.
+  static CygnusShowFileChooserRequest? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ShowFileChooserRequest(
+    final instance = CygnusShowFileChooserRequest(
       acceptTypes: List<String>.from(map['acceptTypes']!.cast<String>()),
       filenameHint: map['filenameHint'],
       isCaptureEnabled: map['isCaptureEnabled'],
-      mode: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => ShowFileChooserRequestMode.fromNativeValue(
+      mode: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusShowFileChooserRequestMode.fromNativeValue(map['mode']),
+        CygnusEnumMethod.value => CygnusShowFileChooserRequestMode.fromValue(
           map['mode'],
         ),
-        EnumMethod.value => ShowFileChooserRequestMode.fromValue(map['mode']),
-        EnumMethod.name => ShowFileChooserRequestMode.byName(map['mode']),
+        CygnusEnumMethod.name => CygnusShowFileChooserRequestMode.byName(
+          map['mode'],
+        ),
       }!,
       title: map['title'],
     );
@@ -60,15 +63,15 @@ class ShowFileChooserRequest {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "acceptTypes": acceptTypes,
       "filenameHint": filenameHint,
       "isCaptureEnabled": isCaptureEnabled,
-      "mode": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => mode.toNativeValue(),
-        EnumMethod.value => mode.toValue(),
-        EnumMethod.name => mode.name(),
+      "mode": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => mode.toNativeValue(),
+        CygnusEnumMethod.value => mode.toValue(),
+        CygnusEnumMethod.name => mode.name(),
       },
       "title": title,
     };
@@ -81,6 +84,6 @@ class ShowFileChooserRequest {
 
   @override
   String toString() {
-    return 'ShowFileChooserRequest{acceptTypes: $acceptTypes, filenameHint: $filenameHint, isCaptureEnabled: $isCaptureEnabled, mode: $mode, title: $title}';
+    return 'CygnusShowFileChooserRequest{acceptTypes: $acceptTypes, filenameHint: $filenameHint, isCaptureEnabled: $isCaptureEnabled, mode: $mode, title: $title}';
   }
 }

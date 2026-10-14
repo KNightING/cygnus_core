@@ -31,8 +31,8 @@ void main() {
 
       expect(find.text('Test Suite'), findsOneWidget);
       expect(find.text('WebView Tester'), findsOneWidget);
-      expect(find.text('Storage & Cookies'), findsOneWidget);
-      expect(find.text('Cookie Manager'), findsOneWidget);
+      expect(find.text('CygnusStorage & Cookies'), findsOneWidget);
+      expect(find.text('CygnusCookie Manager'), findsOneWidget);
 
       await tester.scrollUntilVisible(
         find.text('Browsers'),

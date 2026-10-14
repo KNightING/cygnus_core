@@ -7,12 +7,12 @@ part 'web_resource_error.g.dart';
 
 ///Encapsulates information about errors occurred during loading of web resources.
 @ExchangeableObject()
-class WebResourceError_ {
+class CygnusWebResourceError_ {
   ///The type of the error.
-  WebResourceErrorType_ type;
+  CygnusWebResourceErrorType_ type;
 
   ///The string describing the error.
   String description;
 
-  WebResourceError_({required this.type, required this.description});
+  CygnusWebResourceError_({required this.type, required this.description});
 }

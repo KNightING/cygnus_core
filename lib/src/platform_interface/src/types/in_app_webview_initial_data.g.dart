@@ -7,13 +7,13 @@ part of 'in_app_webview_initial_data.dart';
 // **************************************************************************
 
 ///Initial [data] as a content for an `WebView` instance, using [baseUrl] as the base URL for it.
-class InAppWebViewInitialData {
+class CygnusWebViewInitialData {
   ///Use [historyUrl] instead.
   @Deprecated('Use historyUrl instead')
   Uri? androidHistoryUrl;
 
   ///The URL to use as the page's base URL. If `null` defaults to `about:blank`.
-  WebUri? baseUrl;
+  CygnusWebUri? baseUrl;
 
   ///A String of data in the given encoding.
   String data;
@@ -25,11 +25,11 @@ class InAppWebViewInitialData {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  WebUri? historyUrl;
+  CygnusWebUri? historyUrl;
 
   ///The MIME type of the data, e.g. "text/html". The default value is `"text/html"`.
   String mimeType;
-  InAppWebViewInitialData({
+  CygnusWebViewInitialData({
     @Deprecated('Use historyUrl instead') this.androidHistoryUrl,
     this.baseUrl,
     required this.data,
@@ -39,24 +39,28 @@ class InAppWebViewInitialData {
   }) {
     historyUrl =
         historyUrl ??
-        (androidHistoryUrl != null ? WebUri.uri(androidHistoryUrl!) : null);
+        (androidHistoryUrl != null
+            ? CygnusWebUri.uri(androidHistoryUrl!)
+            : null);
   }
 
-  ///Gets a possible [InAppWebViewInitialData] instance from a [Map] value.
-  static InAppWebViewInitialData? fromMap(
+  ///Gets a possible [CygnusWebViewInitialData] instance from a [Map] value.
+  static CygnusWebViewInitialData? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = InAppWebViewInitialData(
+    final instance = CygnusWebViewInitialData(
       androidHistoryUrl: map['historyUrl'] != null
           ? Uri.tryParse(map['historyUrl'])
           : null,
-      baseUrl: map['baseUrl'] != null ? WebUri(map['baseUrl']) : null,
+      baseUrl: map['baseUrl'] != null ? CygnusWebUri(map['baseUrl']) : null,
       data: map['data'],
-      historyUrl: map['historyUrl'] != null ? WebUri(map['historyUrl']) : null,
+      historyUrl: map['historyUrl'] != null
+          ? CygnusWebUri(map['historyUrl'])
+          : null,
     );
     if (map['encoding'] != null) {
       instance.encoding = map['encoding'];
@@ -68,7 +72,7 @@ class InAppWebViewInitialData {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "baseUrl": baseUrl?.toString(),
       "data": data,
@@ -85,6 +89,6 @@ class InAppWebViewInitialData {
 
   @override
   String toString() {
-    return 'InAppWebViewInitialData{baseUrl: $baseUrl, data: $data, encoding: $encoding, historyUrl: $historyUrl, mimeType: $mimeType}';
+    return 'CygnusWebViewInitialData{baseUrl: $baseUrl, data: $data, encoding: $encoding, historyUrl: $historyUrl, mimeType: $mimeType}';
   }
 }

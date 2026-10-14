@@ -6,7 +6,7 @@ part of 'platform_webview_asset_loader.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///{@template cygnus_core.WebViewAssetLoader}
+///{@template cygnus_core.CygnusWebViewAssetLoader}
 ///Helper class to load local files including application's static assets and resources using http(s):// URLs inside a `WebView` class.
 ///Loading local files using web-like URLs instead of `file://` is desirable as it is compatible with the Same-Origin policy.
 ///
@@ -18,11 +18,11 @@ part of 'platform_webview_asset_loader.dart';
 ///(at paths reserved for this purpose) or the default domain reserved for this: `appassets.androidplatform.net`.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.WebViewAssetLoader.supported_platforms}
+///{@macro cygnus_core.CygnusWebViewAssetLoader.supported_platforms}
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- Android WebView
-class WebViewAssetLoader {
+class CygnusWebViewAssetLoader {
   ///An unused domain reserved for Android applications to intercept requests for app assets.
   ///
   ///It is used by default unless the user specified a different domain.
@@ -36,35 +36,37 @@ class WebViewAssetLoader {
 
   ///List of registered path handlers.
   ///
-  ///[WebViewAssetLoader] will try Path Handlers in the order they're registered,
+  ///[CygnusWebViewAssetLoader] will try Path Handlers in the order they're registered,
   ///and will use whichever is the first to return a non-null.
-  List<PlatformPathHandler>? pathHandlers;
+  List<CygnusPlatformPathHandler>? pathHandlers;
 
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  WebViewAssetLoader({this.domain, this.httpAllowed, this.pathHandlers});
+  CygnusWebViewAssetLoader({this.domain, this.httpAllowed, this.pathHandlers});
 
-  ///Gets a possible [WebViewAssetLoader] instance from a [Map] value.
-  static WebViewAssetLoader? fromMap(
+  ///Gets a possible [CygnusWebViewAssetLoader] instance from a [Map] value.
+  static CygnusWebViewAssetLoader? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = WebViewAssetLoader(
+    final instance = CygnusWebViewAssetLoader(
       domain: map['domain'],
       httpAllowed: map['httpAllowed'],
       pathHandlers: map['pathHandlers'] != null
-          ? List<PlatformPathHandler>.from(map['pathHandlers'].map((e) => e))
+          ? List<CygnusPlatformPathHandler>.from(
+              map['pathHandlers'].map((e) => e),
+            )
           : null,
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "domain": domain,
       "httpAllowed": httpAllowed,
@@ -79,14 +81,15 @@ class WebViewAssetLoader {
     return toMap();
   }
 
-  ///Returns a copy of WebViewAssetLoader.
-  WebViewAssetLoader copy() {
-    return WebViewAssetLoader.fromMap(toMap()) ?? WebViewAssetLoader();
+  ///Returns a copy of CygnusWebViewAssetLoader.
+  CygnusWebViewAssetLoader copy() {
+    return CygnusWebViewAssetLoader.fromMap(toMap()) ??
+        CygnusWebViewAssetLoader();
   }
 
   @override
   String toString() {
-    return 'WebViewAssetLoader{domain: $domain, httpAllowed: $httpAllowed, pathHandlers: $pathHandlers}';
+    return 'CygnusWebViewAssetLoader{domain: $domain, httpAllowed: $httpAllowed, pathHandlers: $pathHandlers}';
   }
 }
 
@@ -94,14 +97,14 @@ class WebViewAssetLoader {
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformPathHandlerCreationParamsClassSupported
-    on PlatformPathHandlerCreationParams {
-  ///{@template cygnus_core.PlatformPathHandlerCreationParams.supported_platforms}
+extension _CygnusPlatformPathHandlerCreationParamsClassSupported
+    on CygnusPlatformPathHandlerCreationParams {
+  ///{@template cygnus_core.CygnusPlatformPathHandlerCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PlatformPathHandlerCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformPathHandlerCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -109,14 +112,14 @@ extension _PlatformPathHandlerCreationParamsClassSupported
   }
 }
 
-extension _PlatformAssetsPathHandlerCreationParamsClassSupported
-    on PlatformAssetsPathHandlerCreationParams {
-  ///{@template cygnus_core.PlatformAssetsPathHandlerCreationParams.supported_platforms}
+extension _CygnusPlatformAssetsPathHandlerCreationParamsClassSupported
+    on CygnusPlatformAssetsPathHandlerCreationParams {
+  ///{@template cygnus_core.CygnusPlatformAssetsPathHandlerCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PlatformAssetsPathHandlerCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformAssetsPathHandlerCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -124,14 +127,14 @@ extension _PlatformAssetsPathHandlerCreationParamsClassSupported
   }
 }
 
-extension _PlatformAssetsPathHandlerClassSupported
-    on PlatformAssetsPathHandler {
-  ///{@template cygnus_core.PlatformAssetsPathHandler.supported_platforms}
+extension _CygnusPlatformAssetsPathHandlerClassSupported
+    on CygnusPlatformAssetsPathHandler {
+  ///{@template cygnus_core.CygnusPlatformAssetsPathHandler.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PlatformAssetsPathHandler.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformAssetsPathHandler.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -139,14 +142,14 @@ extension _PlatformAssetsPathHandlerClassSupported
   }
 }
 
-extension _PlatformResourcesPathHandlerCreationParamsClassSupported
-    on PlatformResourcesPathHandlerCreationParams {
-  ///{@template cygnus_core.PlatformResourcesPathHandlerCreationParams.supported_platforms}
+extension _CygnusPlatformResourcesPathHandlerCreationParamsClassSupported
+    on CygnusPlatformResourcesPathHandlerCreationParams {
+  ///{@template cygnus_core.CygnusPlatformResourcesPathHandlerCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PlatformResourcesPathHandlerCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformResourcesPathHandlerCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -154,14 +157,14 @@ extension _PlatformResourcesPathHandlerCreationParamsClassSupported
   }
 }
 
-extension _PlatformResourcesPathHandlerClassSupported
-    on PlatformResourcesPathHandler {
-  ///{@template cygnus_core.PlatformResourcesPathHandler.supported_platforms}
+extension _CygnusPlatformResourcesPathHandlerClassSupported
+    on CygnusPlatformResourcesPathHandler {
+  ///{@template cygnus_core.CygnusPlatformResourcesPathHandler.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PlatformResourcesPathHandler.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformResourcesPathHandler.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -169,14 +172,14 @@ extension _PlatformResourcesPathHandlerClassSupported
   }
 }
 
-extension _PlatformInternalStoragePathHandlerCreationParamsClassSupported
-    on PlatformInternalStoragePathHandlerCreationParams {
-  ///{@template cygnus_core.PlatformInternalStoragePathHandlerCreationParams.supported_platforms}
+extension _CygnusPlatformInternalStoragePathHandlerCreationParamsClassSupported
+    on CygnusPlatformInternalStoragePathHandlerCreationParams {
+  ///{@template cygnus_core.CygnusPlatformInternalStoragePathHandlerCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PlatformInternalStoragePathHandlerCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformInternalStoragePathHandlerCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -184,14 +187,14 @@ extension _PlatformInternalStoragePathHandlerCreationParamsClassSupported
   }
 }
 
-extension _PlatformInternalStoragePathHandlerClassSupported
-    on PlatformInternalStoragePathHandler {
-  ///{@template cygnus_core.PlatformInternalStoragePathHandler.supported_platforms}
+extension _CygnusPlatformInternalStoragePathHandlerClassSupported
+    on CygnusPlatformInternalStoragePathHandler {
+  ///{@template cygnus_core.CygnusPlatformInternalStoragePathHandler.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PlatformInternalStoragePathHandler.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformInternalStoragePathHandler.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -199,14 +202,14 @@ extension _PlatformInternalStoragePathHandlerClassSupported
   }
 }
 
-extension _PlatformCustomPathHandlerCreationParamsClassSupported
-    on PlatformCustomPathHandlerCreationParams {
-  ///{@template cygnus_core.PlatformCustomPathHandlerCreationParams.supported_platforms}
+extension _CygnusPlatformCustomPathHandlerCreationParamsClassSupported
+    on CygnusPlatformCustomPathHandlerCreationParams {
+  ///{@template cygnus_core.CygnusPlatformCustomPathHandlerCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PlatformCustomPathHandlerCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformCustomPathHandlerCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -214,14 +217,14 @@ extension _PlatformCustomPathHandlerCreationParamsClassSupported
   }
 }
 
-extension _PlatformCustomPathHandlerClassSupported
-    on PlatformCustomPathHandler {
-  ///{@template cygnus_core.PlatformCustomPathHandler.supported_platforms}
+extension _CygnusPlatformCustomPathHandlerClassSupported
+    on CygnusPlatformCustomPathHandler {
+  ///{@template cygnus_core.CygnusPlatformCustomPathHandler.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PlatformCustomPathHandler.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformCustomPathHandler.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&

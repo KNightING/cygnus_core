@@ -8,31 +8,31 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'mime_type_resolver.dart';
 import 'platform_in_app_localhost_server.dart';
 
-/// Object specifying creation parameters for creating a [DefaultInAppLocalhostServer].
+/// Object specifying creation parameters for creating a [CygnusDefaultLocalhostServer].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformInAppLocalhostServerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformLocalhostServerCreationParams] for
 /// more information.
 @immutable
-class DefaultInAppLocalhostServerCreationParams
-    extends PlatformInAppLocalhostServerCreationParams {
-  /// Creates a new [DefaultInAppLocalhostServerCreationParams] instance.
-  const DefaultInAppLocalhostServerCreationParams(
+class CygnusDefaultLocalhostServerCreationParams
+    extends CygnusPlatformLocalhostServerCreationParams {
+  /// Creates a new [CygnusDefaultLocalhostServerCreationParams] instance.
+  const CygnusDefaultLocalhostServerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformInAppLocalhostServerCreationParams params,
+    CygnusPlatformLocalhostServerCreationParams params,
   ) : super();
 
-  /// Creates a [DefaultInAppLocalhostServerCreationParams] instance based on [PlatformInAppLocalhostServerCreationParams].
-  factory DefaultInAppLocalhostServerCreationParams.fromPlatformInAppLocalhostServerCreationParams(
-    PlatformInAppLocalhostServerCreationParams params,
+  /// Creates a [CygnusDefaultLocalhostServerCreationParams] instance based on [CygnusPlatformLocalhostServerCreationParams].
+  factory CygnusDefaultLocalhostServerCreationParams.fromPlatformInAppLocalhostServerCreationParams(
+    CygnusPlatformLocalhostServerCreationParams params,
   ) {
-    return DefaultInAppLocalhostServerCreationParams(params);
+    return CygnusDefaultLocalhostServerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformInAppLocalhostServer}
-class DefaultInAppLocalhostServer extends PlatformInAppLocalhostServer {
+///{@macro cygnus_core.CygnusPlatformLocalhostServer}
+class CygnusDefaultLocalhostServer extends CygnusPlatformLocalhostServer {
   bool _started = false;
   HttpServer? _server;
   int _port = 8080;
@@ -41,20 +41,20 @@ class DefaultInAppLocalhostServer extends PlatformInAppLocalhostServer {
   String _documentRoot = './';
   Future<bool> Function(HttpRequest)? _customOnData;
 
-  static final DefaultInAppLocalhostServer _staticValue =
-      DefaultInAppLocalhostServer(
-        const PlatformInAppLocalhostServerCreationParams(),
+  static final CygnusDefaultLocalhostServer _staticValue =
+      CygnusDefaultLocalhostServer(
+        const CygnusPlatformLocalhostServerCreationParams(),
       );
 
-  /// Creates a new empty [DefaultInAppLocalhostServer] to access static methods.
-  factory DefaultInAppLocalhostServer.static() => _staticValue;
+  /// Creates a new empty [CygnusDefaultLocalhostServer] to access static methods.
+  factory CygnusDefaultLocalhostServer.static() => _staticValue;
 
-  /// Creates a new [DefaultInAppLocalhostServer].
-  DefaultInAppLocalhostServer(PlatformInAppLocalhostServerCreationParams params)
+  /// Creates a new [CygnusDefaultLocalhostServer].
+  CygnusDefaultLocalhostServer(CygnusPlatformLocalhostServerCreationParams params)
     : super.implementation(
-        params is DefaultInAppLocalhostServerCreationParams
+        params is CygnusDefaultLocalhostServerCreationParams
             ? params
-            : DefaultInAppLocalhostServerCreationParams.fromPlatformInAppLocalhostServerCreationParams(
+            : CygnusDefaultLocalhostServerCreationParams.fromPlatformInAppLocalhostServerCreationParams(
                 params,
               ),
       ) {
@@ -134,7 +134,7 @@ class DefaultInAppLocalhostServer extends PlatformInAppLocalhostServer {
             var contentType = ContentType('text', 'html', charset: 'utf-8');
             if (!request.requestedUri.path.endsWith('/') &&
                 request.requestedUri.pathSegments.isNotEmpty) {
-              final mimeType = MimeTypeResolver.lookup(
+              final mimeType = CygnusMimeTypeResolver.lookup(
                 request.requestedUri.path,
               );
               if (mimeType != null) {

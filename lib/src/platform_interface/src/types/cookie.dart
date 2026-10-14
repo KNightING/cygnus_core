@@ -7,9 +7,9 @@ import 'enum_method.dart';
 
 part 'cookie.g.dart';
 
-///Class that represents a cookie returned by the [PlatformCookieManager].
+///Class that represents a cookie returned by the [CygnusPlatformCookieManager].
 @ExchangeableObject()
-class Cookie_ {
+class CygnusCookie_ {
   ///The cookie name.
   @SupportedPlatforms(
     platforms: [
@@ -41,7 +41,7 @@ class Cookie_ {
       MacOSPlatform(),
       AndroidPlatform(
         note:
-            "available on Android only if [WebViewFeature.GET_COOKIE_INFO] feature is supported.",
+            "available on Android only if [CygnusWebViewFeature.GET_COOKIE_INFO] feature is supported.",
       ),
       WindowsPlatform(),
     ],
@@ -61,7 +61,7 @@ class Cookie_ {
       MacOSPlatform(),
       AndroidPlatform(
         note:
-            "available on Android only if [WebViewFeature.GET_COOKIE_INFO] feature is supported.",
+            "available on Android only if [CygnusWebViewFeature.GET_COOKIE_INFO] feature is supported.",
       ),
       WindowsPlatform(),
     ],
@@ -75,12 +75,12 @@ class Cookie_ {
       MacOSPlatform(),
       AndroidPlatform(
         note:
-            "available on Android only if [WebViewFeature.GET_COOKIE_INFO] feature is supported.",
+            "available on Android only if [CygnusWebViewFeature.GET_COOKIE_INFO] feature is supported.",
       ),
       WindowsPlatform(),
     ],
   )
-  HTTPCookieSameSitePolicy_? sameSite;
+  CygnusHTTPCookieSameSitePolicy_? sameSite;
 
   ///Indicates if the cookie is secure or not.
   @SupportedPlatforms(
@@ -89,7 +89,7 @@ class Cookie_ {
       MacOSPlatform(),
       AndroidPlatform(
         note:
-            "available on Android only if [WebViewFeature.GET_COOKIE_INFO] feature is supported.",
+            "available on Android only if [CygnusWebViewFeature.GET_COOKIE_INFO] feature is supported.",
       ),
       WindowsPlatform(),
     ],
@@ -103,7 +103,7 @@ class Cookie_ {
       MacOSPlatform(),
       AndroidPlatform(
         note:
-            "available on Android only if [WebViewFeature.GET_COOKIE_INFO] feature is supported.",
+            "available on Android only if [CygnusWebViewFeature.GET_COOKIE_INFO] feature is supported.",
       ),
       WindowsPlatform(),
     ],
@@ -117,14 +117,14 @@ class Cookie_ {
       MacOSPlatform(),
       AndroidPlatform(
         note:
-            "available on Android only if [WebViewFeature.GET_COOKIE_INFO] feature is supported.",
+            "available on Android only if [CygnusWebViewFeature.GET_COOKIE_INFO] feature is supported.",
       ),
       WindowsPlatform(),
     ],
   )
   String? path;
 
-  Cookie_({
+  CygnusCookie_({
     required this.name,
     required this.value,
     this.expiresDate,

@@ -5,21 +5,21 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 /// Object specifying creation parameters for creating a [AndroidFindInteractionController].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformFindInteractionControllerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformFindInteractionControllerCreationParams] for
 /// more information.
 @immutable
 class AndroidFindInteractionControllerCreationParams
-    extends PlatformFindInteractionControllerCreationParams {
+    extends CygnusPlatformFindInteractionControllerCreationParams {
   /// Creates a new [AndroidFindInteractionControllerCreationParams] instance.
   const AndroidFindInteractionControllerCreationParams({
     super.onFindResultReceived,
   });
 
-  /// Creates a [AndroidFindInteractionControllerCreationParams] instance based on [PlatformFindInteractionControllerCreationParams].
+  /// Creates a [AndroidFindInteractionControllerCreationParams] instance based on [CygnusPlatformFindInteractionControllerCreationParams].
   factory AndroidFindInteractionControllerCreationParams.fromPlatformFindInteractionControllerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformFindInteractionControllerCreationParams params,
+    CygnusPlatformFindInteractionControllerCreationParams params,
   ) {
     return AndroidFindInteractionControllerCreationParams(
       onFindResultReceived: params.onFindResultReceived,
@@ -27,12 +27,12 @@ class AndroidFindInteractionControllerCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformFindInteractionController}
-class AndroidFindInteractionController extends PlatformFindInteractionController
+///{@macro cygnus_core.CygnusPlatformFindInteractionController}
+class AndroidFindInteractionController extends CygnusPlatformFindInteractionController
     with ChannelController {
   /// Constructs a [AndroidFindInteractionController].
   AndroidFindInteractionController(
-    PlatformFindInteractionControllerCreationParams params,
+    CygnusPlatformFindInteractionControllerCreationParams params,
   ) : super.implementation(
         params is AndroidFindInteractionControllerCreationParams
             ? params
@@ -55,7 +55,7 @@ class AndroidFindInteractionController extends PlatformFindInteractionController
     debugLog(
       className: this.runtimeType.toString(),
       debugLoggingSettings:
-          PlatformFindInteractionController.debugLoggingSettings,
+          CygnusPlatformFindInteractionController.debugLoggingSettings,
       method: method,
       args: args,
     );
@@ -84,50 +84,50 @@ class AndroidFindInteractionController extends PlatformFindInteractionController
     return null;
   }
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.findAll}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.findAll}
   Future<void> findAll({String? find}) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('find', () => find);
     await channel?.invokeMethod('findAll', args);
   }
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.findNext}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.findNext}
   Future<void> findNext({bool forward = true}) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('forward', () => forward);
     await channel?.invokeMethod('findNext', args);
   }
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.clearMatches}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.clearMatches}
   Future<void> clearMatches() async {
     Map<String, dynamic> args = <String, dynamic>{};
     await channel?.invokeMethod('clearMatches', args);
   }
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.setSearchText}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.setSearchText}
   Future<void> setSearchText(String? searchText) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('searchText', () => searchText);
     await channel?.invokeMethod('setSearchText', args);
   }
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.getSearchText}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.getSearchText}
   Future<String?> getSearchText() async {
     Map<String, dynamic> args = <String, dynamic>{};
     return await channel?.invokeMethod<String?>('getSearchText', args);
   }
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.getActiveFindSession}
-  Future<FindSession?> getActiveFindSession() async {
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.getActiveFindSession}
+  Future<CygnusFindSession?> getActiveFindSession() async {
     Map<String, dynamic> args = <String, dynamic>{};
     Map<String, dynamic>? result = (await channel?.invokeMethod(
       'getActiveFindSession',
       args,
     ))?.cast<String, dynamic>();
-    return FindSession.fromMap(result);
+    return CygnusFindSession.fromMap(result);
   }
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.dispose}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.dispose}
   @override
   void dispose({bool isKeepAlive = false}) {
     disposeChannel(removeMethodCallHandler: !isKeepAlive);

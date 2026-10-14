@@ -182,7 +182,7 @@ String? _dartNativeSyncCommunication(
           webViewHtmlElement.onCloseWindow();
           break;
         case 'getUserOnlyScriptsAt':
-          final injectionTime = UserScriptInjectionTime.fromNativeValue(
+          final injectionTime = CygnusUserScriptInjectionTime.fromNativeValue(
             args![0],
           );
           result = webViewHtmlElement.userContentController

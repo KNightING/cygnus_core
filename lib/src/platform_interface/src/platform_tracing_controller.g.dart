@@ -6,16 +6,16 @@ part of 'platform_tracing_controller.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///{@template cygnus_core.TracingSettings}
-///Class that represents the settings used to configure the [PlatformTracingController].
+///{@template cygnus_core.CygnusTracingSettings}
+///Class that represents the settings used to configure the [CygnusPlatformTracingController].
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.TracingSettings.supported_platforms}
+///{@macro cygnus_core.CygnusTracingSettings.supported_platforms}
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- Android WebView ([Official API - TracingConfig](https://developer.android.com/reference/androidx/webkit/TracingConfig))
-class TracingSettings {
-  ///Adds predefined [TracingCategory] and/or custom [String] sets of categories to be included in the trace output.
+class CygnusTracingSettings {
+  ///Adds predefined [CygnusTracingCategory] and/or custom [String] sets of categories to be included in the trace output.
   ///
   ///Note that the categories are defined by the currently-in-use version of WebView.
   ///They live in chromium code and are not part of the Android API.
@@ -26,43 +26,47 @@ class TracingSettings {
   List<dynamic> categories;
 
   ///The tracing mode for this configuration.
-  ///When tracingMode is not set explicitly, the default is [TracingMode.RECORD_CONTINUOUSLY].
+  ///When tracingMode is not set explicitly, the default is [CygnusTracingMode.RECORD_CONTINUOUSLY].
   ///
-  ///{@macro cygnus_core.TracingSettings.tracingMode.supported_platforms}
+  ///{@macro cygnus_core.CygnusTracingSettings.tracingMode.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  TracingMode? tracingMode;
+  CygnusTracingMode? tracingMode;
 
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - TracingConfig](https://developer.android.com/reference/androidx/webkit/TracingConfig))
-  TracingSettings({this.categories = const [], this.tracingMode}) {
+  CygnusTracingSettings({this.categories = const [], this.tracingMode}) {
     assert(
       this.categories
           .map(
-            (e) => e.runtimeType is String || e.runtimeType is TracingCategory,
+            (e) =>
+                e.runtimeType is String ||
+                e.runtimeType is CygnusTracingCategory,
           )
           .contains(false),
-      "categories must contain only String or TracingCategory items",
+      "categories must contain only String or CygnusTracingCategory items",
     );
   }
 
-  ///Gets a possible [TracingSettings] instance from a [Map] value.
-  static TracingSettings? fromMap(
+  ///Gets a possible [CygnusTracingSettings] instance from a [Map] value.
+  static CygnusTracingSettings? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = TracingSettings(
-      tracingMode: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => TracingMode.fromNativeValue(
+    final instance = CygnusTracingSettings(
+      tracingMode: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusTracingMode.fromNativeValue(
           map['tracingMode'],
         ),
-        EnumMethod.value => TracingMode.fromValue(map['tracingMode']),
-        EnumMethod.name => TracingMode.byName(map['tracingMode']),
+        CygnusEnumMethod.value => CygnusTracingMode.fromValue(
+          map['tracingMode'],
+        ),
+        CygnusEnumMethod.name => CygnusTracingMode.byName(map['tracingMode']),
       },
     );
     if (map['categories'] != null) {
@@ -74,31 +78,31 @@ class TracingSettings {
     return instance;
   }
 
-  ///{@template cygnus_core.TracingSettings.isClassSupported}
+  ///{@template cygnus_core.CygnusTracingSettings.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      _TracingSettingsClassSupported.isClassSupported(platform: platform);
+      _CygnusTracingSettingsClassSupported.isClassSupported(platform: platform);
 
-  ///{@template cygnus_core.TracingSettings.isPropertySupported}
+  ///{@template cygnus_core.CygnusTracingSettings.isPropertySupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   static bool isPropertySupported(
-    TracingSettingsProperty property, {
+    CygnusTracingSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _TracingSettingsPropertySupported.isPropertySupported(
+  }) => _CygnusTracingSettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "categories": _serializeCategories(categories, enumMethod: enumMethod),
-      "tracingMode": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => tracingMode?.toNativeValue(),
-        EnumMethod.value => tracingMode?.toValue(),
-        EnumMethod.name => tracingMode?.name(),
+      "tracingMode": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => tracingMode?.toNativeValue(),
+        CygnusEnumMethod.value => tracingMode?.toValue(),
+        CygnusEnumMethod.name => tracingMode?.name(),
       },
     };
   }
@@ -108,14 +112,14 @@ class TracingSettings {
     return toMap();
   }
 
-  ///Returns a copy of TracingSettings.
-  TracingSettings copy() {
-    return TracingSettings.fromMap(toMap()) ?? TracingSettings();
+  ///Returns a copy of CygnusTracingSettings.
+  CygnusTracingSettings copy() {
+    return CygnusTracingSettings.fromMap(toMap()) ?? CygnusTracingSettings();
   }
 
   @override
   String toString() {
-    return 'TracingSettings{categories: $categories, tracingMode: $tracingMode}';
+    return 'CygnusTracingSettings{categories: $categories, tracingMode: $tracingMode}';
   }
 }
 
@@ -123,14 +127,14 @@ class TracingSettings {
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformTracingControllerCreationParamsClassSupported
-    on PlatformTracingControllerCreationParams {
-  ///{@template cygnus_core.PlatformTracingControllerCreationParams.supported_platforms}
+extension _CygnusPlatformTracingControllerCreationParamsClassSupported
+    on CygnusPlatformTracingControllerCreationParams {
+  ///{@template cygnus_core.CygnusPlatformTracingControllerCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PlatformTracingControllerCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformTracingControllerCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -138,14 +142,14 @@ extension _PlatformTracingControllerCreationParamsClassSupported
   }
 }
 
-extension _PlatformTracingControllerClassSupported
-    on PlatformTracingController {
-  ///{@template cygnus_core.PlatformTracingController.supported_platforms}
+extension _CygnusPlatformTracingControllerClassSupported
+    on CygnusPlatformTracingController {
+  ///{@template cygnus_core.CygnusPlatformTracingController.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - TracingController](https://developer.android.com/reference/androidx/webkit/TracingController))
+  ///- Android WebView ([Official API - CygnusTracingController](https://developer.android.com/reference/androidx/webkit/CygnusTracingController))
   ///
-  ///Use the [PlatformTracingController.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformTracingController.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -153,66 +157,66 @@ extension _PlatformTracingControllerClassSupported
   }
 }
 
-///List of [PlatformTracingController]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformTracingControllerMethod {
-  ///Can be used to check if the [PlatformTracingController.isTracing] method is supported at runtime.
+///List of [CygnusPlatformTracingController]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformTracingControllerMethod {
+  ///Can be used to check if the [CygnusPlatformTracingController.isTracing] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformTracingController.isTracing.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformTracingController.isTracing.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - TracingController.isTracing](https://developer.android.com/reference/android/webkit/TracingController#isTracing()))
+  ///- Android WebView ([Official API - CygnusTracingController.isTracing](https://developer.android.com/reference/android/webkit/CygnusTracingController#isTracing()))
   ///
-  ///Use the [PlatformTracingController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformTracingController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isTracing,
 
-  ///Can be used to check if the [PlatformTracingController.start] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformTracingController.start] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformTracingController.start.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformTracingController.start.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - TracingController.start](https://developer.android.com/reference/android/webkit/TracingController#start(android.webkit.TracingConfig)))
+  ///- Android WebView ([Official API - CygnusTracingController.start](https://developer.android.com/reference/android/webkit/CygnusTracingController#start(android.webkit.TracingConfig)))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [settings]: all platforms
   ///
-  ///Use the [PlatformTracingController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformTracingController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   start,
 
-  ///Can be used to check if the [PlatformTracingController.stop] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformTracingController.stop] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformTracingController.stop.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformTracingController.stop.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - TracingController.stop](https://developer.android.com/reference/android/webkit/TracingController#stop(java.io.OutputStream,%20java.util.concurrent.Executor)))
+  ///- Android WebView ([Official API - CygnusTracingController.stop](https://developer.android.com/reference/android/webkit/CygnusTracingController#stop(java.io.OutputStream,%20java.util.concurrent.Executor)))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [filePath]: all platforms
   ///
-  ///Use the [PlatformTracingController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformTracingController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   stop,
 }
 
-extension _PlatformTracingControllerMethodSupported
-    on PlatformTracingController {
+extension _CygnusPlatformTracingControllerMethodSupported
+    on CygnusPlatformTracingController {
   static bool isMethodSupported(
-    PlatformTracingControllerMethod method, {
+    CygnusPlatformTracingControllerMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformTracingControllerMethod.isTracing:
+      case CygnusPlatformTracingControllerMethod.isTracing:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformTracingControllerMethod.start:
+      case CygnusPlatformTracingControllerMethod.start:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformTracingControllerMethod.stop:
+      case CygnusPlatformTracingControllerMethod.stop:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -221,13 +225,13 @@ extension _PlatformTracingControllerMethodSupported
   }
 }
 
-extension _TracingSettingsClassSupported on TracingSettings {
-  ///{@template cygnus_core.TracingSettings.supported_platforms}
+extension _CygnusTracingSettingsClassSupported on CygnusTracingSettings {
+  ///{@template cygnus_core.CygnusTracingSettings.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - TracingConfig](https://developer.android.com/reference/androidx/webkit/TracingConfig))
   ///
-  ///Use the [TracingSettings.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusTracingSettings.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -235,27 +239,27 @@ extension _TracingSettingsClassSupported on TracingSettings {
   }
 }
 
-///List of [TracingSettings]'s properties that can be used to check i they are supported or not by the current platform.
-enum TracingSettingsProperty {
-  ///Can be used to check if the [TracingSettings.tracingMode] property is supported at runtime.
+///List of [CygnusTracingSettings]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusTracingSettingsProperty {
+  ///Can be used to check if the [CygnusTracingSettings.tracingMode] property is supported at runtime.
   ///
-  ///{@template cygnus_core.TracingSettings.tracingMode.supported_platforms}
+  ///{@template cygnus_core.CygnusTracingSettings.tracingMode.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [TracingSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusTracingSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   tracingMode,
 }
 
-extension _TracingSettingsPropertySupported on TracingSettings {
+extension _CygnusTracingSettingsPropertySupported on CygnusTracingSettings {
   static bool isPropertySupported(
-    TracingSettingsProperty property, {
+    CygnusTracingSettingsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case TracingSettingsProperty.tracingMode:
+      case CygnusTracingSettingsProperty.tracingMode:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,

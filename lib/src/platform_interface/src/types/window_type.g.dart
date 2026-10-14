@@ -7,22 +7,22 @@ part of 'window_type.dart';
 // **************************************************************************
 
 ///Class that represents how a browser window should be added to the main window.
-class WindowType {
+class CygnusWindowType {
   final String _value;
   final String? _nativeValue;
-  const WindowType._internal(this._value, this._nativeValue);
+  const CygnusWindowType._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory WindowType._internalMultiPlatform(
+  factory CygnusWindowType._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => WindowType._internal(value, nativeValue());
+  ) => CygnusWindowType._internal(value, nativeValue());
 
   ///Adds the new browser window as a child window of the main window.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///- Windows WebView2
-  static final CHILD = WindowType._internalMultiPlatform('CHILD', () {
+  static final CHILD = CygnusWindowType._internalMultiPlatform('CHILD', () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.macOS:
         return 'CHILD';
@@ -38,7 +38,7 @@ class WindowType {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView 10.12++
-  static final TABBED = WindowType._internalMultiPlatform('TABBED', () {
+  static final TABBED = CygnusWindowType._internalMultiPlatform('TABBED', () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.macOS:
         return 'TABBED';
@@ -53,7 +53,7 @@ class WindowType {
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///- Windows WebView2
-  static final WINDOW = WindowType._internalMultiPlatform('WINDOW', () {
+  static final WINDOW = CygnusWindowType._internalMultiPlatform('WINDOW', () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.macOS:
         return 'WINDOW';
@@ -65,18 +65,18 @@ class WindowType {
     return null;
   });
 
-  ///Set of all values of [WindowType].
-  static final Set<WindowType> values = [
-    WindowType.CHILD,
-    WindowType.TABBED,
-    WindowType.WINDOW,
+  ///Set of all values of [CygnusWindowType].
+  static final Set<CygnusWindowType> values = [
+    CygnusWindowType.CHILD,
+    CygnusWindowType.TABBED,
+    CygnusWindowType.WINDOW,
   ].toSet();
 
-  ///Gets a possible [WindowType] instance from [String] value.
-  static WindowType? fromValue(String? value) {
+  ///Gets a possible [CygnusWindowType] instance from [String] value.
+  static CygnusWindowType? fromValue(String? value) {
     if (value != null) {
       try {
-        return WindowType.values.firstWhere(
+        return CygnusWindowType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -86,11 +86,11 @@ class WindowType {
     return null;
   }
 
-  ///Gets a possible [WindowType] instance from a native value.
-  static WindowType? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusWindowType] instance from a native value.
+  static CygnusWindowType? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return WindowType.values.firstWhere(
+        return CygnusWindowType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -100,15 +100,15 @@ class WindowType {
     return null;
   }
 
-  /// Gets a possible [WindowType] instance value with name [name].
+  /// Gets a possible [CygnusWindowType] instance value with name [name].
   ///
-  /// Goes through [WindowType.values] looking for a value with
-  /// name [name], as reported by [WindowType.name].
+  /// Goes through [CygnusWindowType.values] looking for a value with
+  /// name [name], as reported by [CygnusWindowType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static WindowType? byName(String? name) {
+  static CygnusWindowType? byName(String? name) {
     if (name != null) {
       try {
-        return WindowType.values.firstWhere(
+        return CygnusWindowType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -118,7 +118,7 @@ class WindowType {
     return null;
   }
 
-  /// Creates a map from the names of [WindowType] values to the values.
+  /// Creates a map from the names of [CygnusWindowType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -126,9 +126,10 @@ class WindowType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, WindowType> asNameMap() => <String, WindowType>{
-    for (final value in WindowType.values) value.name(): value,
-  };
+  static Map<String, CygnusWindowType> asNameMap() =>
+      <String, CygnusWindowType>{
+        for (final value in CygnusWindowType.values) value.name(): value,
+      };
 
   ///Gets [String] value.
   String toValue() => _value;

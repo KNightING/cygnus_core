@@ -7,26 +7,26 @@ part of 'url_request.dart';
 // **************************************************************************
 
 ///A URL load request that is independent of protocol or URL scheme.
-class URLRequest {
+class CygnusURLRequest {
   ///A Boolean value indicating whether the request is allowed to use the built-in cellular radios to satisfy the request.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView ([Official API - URLRequest.allowsCellularAccess](https://developer.apple.com/documentation/foundation/urlrequest/2011607-allowscellularaccess/))
-  ///- macOS WKWebView ([Official API - URLRequest.allowsCellularAccess](https://developer.apple.com/documentation/foundation/urlrequest/2011607-allowscellularaccess/))
+  ///- iOS WKWebView ([Official API - CygnusURLRequest.allowsCellularAccess](https://developer.apple.com/documentation/foundation/urlrequest/2011607-allowscellularaccess/))
+  ///- macOS WKWebView ([Official API - CygnusURLRequest.allowsCellularAccess](https://developer.apple.com/documentation/foundation/urlrequest/2011607-allowscellularaccess/))
   bool? allowsCellularAccess;
 
   ///A Boolean value that indicates whether the request may use the network when the user has specified Low Data Mode.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView 13.0+ ([Official API - URLRequest.allowsConstrainedNetworkAccess](https://developer.apple.com/documentation/foundation/urlrequest/3358304-allowsconstrainednetworkaccess))
-  ///- macOS WKWebView 10.15+ ([Official API - URLRequest.allowsConstrainedNetworkAccess](https://developer.apple.com/documentation/foundation/urlrequest/3358304-allowsconstrainednetworkaccess))
+  ///- iOS WKWebView 13.0+ ([Official API - CygnusURLRequest.allowsConstrainedNetworkAccess](https://developer.apple.com/documentation/foundation/urlrequest/3358304-allowsconstrainednetworkaccess))
+  ///- macOS WKWebView 10.15+ ([Official API - CygnusURLRequest.allowsConstrainedNetworkAccess](https://developer.apple.com/documentation/foundation/urlrequest/3358304-allowsconstrainednetworkaccess))
   bool? allowsConstrainedNetworkAccess;
 
   ///A Boolean value that indicates whether connections may use a network interface that the system considers expensive.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView 13.0+ ([Official API - URLRequest.allowsExpensiveNetworkAccess](https://developer.apple.com/documentation/foundation/urlrequest/3358305-allowsexpensivenetworkaccess))
-  ///- macOS WKWebView 10.15+ ([Official API - URLRequest.allowsExpensiveNetworkAccess](https://developer.apple.com/documentation/foundation/urlrequest/3358305-allowsexpensivenetworkaccess))
+  ///- iOS WKWebView 13.0+ ([Official API - CygnusURLRequest.allowsExpensiveNetworkAccess](https://developer.apple.com/documentation/foundation/urlrequest/3358305-allowsexpensivenetworkaccess))
+  ///- macOS WKWebView 10.15+ ([Official API - CygnusURLRequest.allowsExpensiveNetworkAccess](https://developer.apple.com/documentation/foundation/urlrequest/3358305-allowsexpensivenetworkaccess))
   bool? allowsExpensiveNetworkAccess;
 
   ///`true` if server endpoint is known to support HTTP/3. Enables QUIC racing
@@ -34,18 +34,18 @@ class URLRequest {
   ///The default may be `true` in a future OS update.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView 14.5+ ([Official API - URLRequest.assumesHTTP3Capable](https://developer.apple.com/documentation/foundation/urlrequest/3738175-assumeshttp3capable))
-  ///- macOS WKWebView 11.3+ ([Official API - URLRequest.assumesHTTP3Capable](https://developer.apple.com/documentation/foundation/urlrequest/3738175-assumeshttp3capable))
+  ///- iOS WKWebView 14.5+ ([Official API - CygnusURLRequest.assumesHTTP3Capable](https://developer.apple.com/documentation/foundation/urlrequest/3738175-assumeshttp3capable))
+  ///- macOS WKWebView 11.3+ ([Official API - CygnusURLRequest.assumesHTTP3Capable](https://developer.apple.com/documentation/foundation/urlrequest/3738175-assumeshttp3capable))
   bool? assumesHTTP3Capable;
 
   ///The entities that can make a network request.
   ///
-  ///If you don’t set a value, the system assumes [URLRequestAttribution.DEVELOPER].
+  ///If you don’t set a value, the system assumes [CygnusURLRequestAttribution.DEVELOPER].
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView 15.0+ ([Official API - URLRequest.attribution](https://developer.apple.com/documentation/foundation/urlrequest/3767318-attribution))
-  ///- macOS WKWebView 12.0+ ([Official API - URLRequest.attribution](https://developer.apple.com/documentation/foundation/urlrequest/3767318-attribution))
-  URLRequestAttribution? attribution;
+  ///- iOS WKWebView 15.0+ ([Official API - CygnusURLRequest.attribution](https://developer.apple.com/documentation/foundation/urlrequest/3767318-attribution))
+  ///- macOS WKWebView 12.0+ ([Official API - CygnusURLRequest.attribution](https://developer.apple.com/documentation/foundation/urlrequest/3767318-attribution))
+  CygnusURLRequestAttribution? attribution;
 
   ///The data sent as the message body of a request, such as for an HTTP POST request.
   Uint8List? body;
@@ -53,9 +53,9 @@ class URLRequest {
   ///The request’s cache policy.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView ([Official API - URLRequest.cachePolicy](https://developer.apple.com/documentation/foundation/urlrequest/2011593-cachepolicy))
-  ///- macOS WKWebView ([Official API - URLRequest.cachePolicy](https://developer.apple.com/documentation/foundation/urlrequest/2011593-cachepolicy))
-  URLRequestCachePolicy? cachePolicy;
+  ///- iOS WKWebView ([Official API - CygnusURLRequest.cachePolicy](https://developer.apple.com/documentation/foundation/urlrequest/2011593-cachepolicy))
+  ///- macOS WKWebView ([Official API - CygnusURLRequest.cachePolicy](https://developer.apple.com/documentation/foundation/urlrequest/2011593-cachepolicy))
+  CygnusURLRequestCachePolicy? cachePolicy;
 
   ///A dictionary containing all of the HTTP header fields for a request.
   Map<String, String>? headers;
@@ -63,15 +63,15 @@ class URLRequest {
   ///A Boolean value indicating whether cookies will be sent with and set for this request.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView ([Official API - URLRequest.httpShouldHandleCookies](https://developer.apple.com/documentation/foundation/urlrequest/2011548-httpshouldhandlecookies))
-  ///- macOS WKWebView ([Official API - URLRequest.httpShouldHandleCookies](https://developer.apple.com/documentation/foundation/urlrequest/2011548-httpshouldhandlecookies))
+  ///- iOS WKWebView ([Official API - CygnusURLRequest.httpShouldHandleCookies](https://developer.apple.com/documentation/foundation/urlrequest/2011548-httpshouldhandlecookies))
+  ///- macOS WKWebView ([Official API - CygnusURLRequest.httpShouldHandleCookies](https://developer.apple.com/documentation/foundation/urlrequest/2011548-httpshouldhandlecookies))
   bool? httpShouldHandleCookies;
 
   ///A Boolean value indicating whether the request should transmit before the previous response is received.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView ([Official API - URLRequest.httpShouldUsePipelining](https://developer.apple.com/documentation/foundation/urlrequest/2011508-httpshouldusepipelining))
-  ///- macOS WKWebView ([Official API - URLRequest.httpShouldUsePipelining](https://developer.apple.com/documentation/foundation/urlrequest/2011508-httpshouldusepipelining))
+  ///- iOS WKWebView ([Official API - CygnusURLRequest.httpShouldUsePipelining](https://developer.apple.com/documentation/foundation/urlrequest/2011508-httpshouldusepipelining))
+  ///- macOS WKWebView ([Official API - CygnusURLRequest.httpShouldUsePipelining](https://developer.apple.com/documentation/foundation/urlrequest/2011508-httpshouldusepipelining))
   bool? httpShouldUsePipelining;
 
   ///Use [allowsCellularAccess] instead.
@@ -88,7 +88,7 @@ class URLRequest {
 
   ///Use [cachePolicy] instead.
   @Deprecated('Use cachePolicy instead')
-  IOSURLRequestCachePolicy? iosCachePolicy;
+  CygnusIOSURLRequestCachePolicy? iosCachePolicy;
 
   ///Use [httpShouldHandleCookies] instead.
   @Deprecated('Use httpShouldHandleCookies instead')
@@ -104,7 +104,7 @@ class URLRequest {
 
   ///Use [networkServiceType] instead.
   @Deprecated('Use networkServiceType instead')
-  IOSURLRequestNetworkServiceType? iosNetworkServiceType;
+  CygnusIOSURLRequestNetworkServiceType? iosNetworkServiceType;
 
   ///Use [timeoutInterval] instead.
   @Deprecated('Use timeoutInterval instead')
@@ -114,9 +114,9 @@ class URLRequest {
   ///This URL is used for the cookie “same domain as main document” policy.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView ([Official API - URLRequest.mainDocumentURL](https://developer.apple.com/documentation/foundation/urlrequest/2011552-maindocumenturl))
-  ///- macOS WKWebView ([Official API - URLRequest.mainDocumentURL](https://developer.apple.com/documentation/foundation/urlrequest/2011552-maindocumenturl))
-  WebUri? mainDocumentURL;
+  ///- iOS WKWebView ([Official API - CygnusURLRequest.mainDocumentURL](https://developer.apple.com/documentation/foundation/urlrequest/2011552-maindocumenturl))
+  ///- macOS WKWebView ([Official API - CygnusURLRequest.mainDocumentURL](https://developer.apple.com/documentation/foundation/urlrequest/2011552-maindocumenturl))
+  CygnusWebUri? mainDocumentURL;
 
   ///The HTTP request method.
   ///
@@ -126,20 +126,20 @@ class URLRequest {
   ///The service type associated with this request.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView ([Official API - URLRequest.networkServiceType](https://developer.apple.com/documentation/foundation/urlrequest/2011409-networkservicetype))
-  ///- macOS WKWebView ([Official API - URLRequest.networkServiceType](https://developer.apple.com/documentation/foundation/urlrequest/2011409-networkservicetype))
-  URLRequestNetworkServiceType? networkServiceType;
+  ///- iOS WKWebView ([Official API - CygnusURLRequest.networkServiceType](https://developer.apple.com/documentation/foundation/urlrequest/2011409-networkservicetype))
+  ///- macOS WKWebView ([Official API - CygnusURLRequest.networkServiceType](https://developer.apple.com/documentation/foundation/urlrequest/2011409-networkservicetype))
+  CygnusURLRequestNetworkServiceType? networkServiceType;
 
   ///The timeout interval of the request.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView ([Official API - URLRequest.timeoutInterval](https://developer.apple.com/documentation/foundation/urlrequest/2011509-timeoutinterval))
-  ///- macOS WKWebView ([Official API - URLRequest.timeoutInterval](https://developer.apple.com/documentation/foundation/urlrequest/2011509-timeoutinterval))
+  ///- iOS WKWebView ([Official API - CygnusURLRequest.timeoutInterval](https://developer.apple.com/documentation/foundation/urlrequest/2011509-timeoutinterval))
+  ///- macOS WKWebView ([Official API - CygnusURLRequest.timeoutInterval](https://developer.apple.com/documentation/foundation/urlrequest/2011509-timeoutinterval))
   double? timeoutInterval;
 
   ///The URL of the request. Setting this to `null` will load `about:blank`.
-  WebUri? url;
-  URLRequest({
+  CygnusWebUri? url;
+  CygnusURLRequest({
     this.allowsCellularAccess,
     this.allowsConstrainedNetworkAccess,
     this.allowsExpensiveNetworkAccess,
@@ -177,51 +177,61 @@ class URLRequest {
         allowsExpensiveNetworkAccess ?? iosAllowsExpensiveNetworkAccess;
     cachePolicy =
         cachePolicy ??
-        URLRequestCachePolicy.fromNativeValue(iosCachePolicy?.toNativeValue());
+        CygnusURLRequestCachePolicy.fromNativeValue(
+          iosCachePolicy?.toNativeValue(),
+        );
     httpShouldHandleCookies =
         httpShouldHandleCookies ?? iosHttpShouldHandleCookies;
     httpShouldUsePipelining =
         httpShouldUsePipelining ?? iosHttpShouldUsePipelining;
     mainDocumentURL =
         mainDocumentURL ??
-        (iosMainDocumentURL != null ? WebUri.uri(iosMainDocumentURL!) : null);
+        (iosMainDocumentURL != null
+            ? CygnusWebUri.uri(iosMainDocumentURL!)
+            : null);
     networkServiceType =
         networkServiceType ??
-        URLRequestNetworkServiceType.fromNativeValue(
+        CygnusURLRequestNetworkServiceType.fromNativeValue(
           iosNetworkServiceType?.toNativeValue(),
         );
     timeoutInterval = timeoutInterval ?? iosTimeoutInterval;
   }
 
-  ///Gets a possible [URLRequest] instance from a [Map] value.
-  static URLRequest? fromMap(
+  ///Gets a possible [CygnusURLRequest] instance from a [Map] value.
+  static CygnusURLRequest? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = URLRequest(
+    final instance = CygnusURLRequest(
       allowsCellularAccess: map['allowsCellularAccess'],
       allowsConstrainedNetworkAccess: map['allowsConstrainedNetworkAccess'],
       allowsExpensiveNetworkAccess: map['allowsExpensiveNetworkAccess'],
       assumesHTTP3Capable: map['assumesHTTP3Capable'],
-      attribution: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => URLRequestAttribution.fromNativeValue(
+      attribution: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusURLRequestAttribution.fromNativeValue(map['attribution']),
+        CygnusEnumMethod.value => CygnusURLRequestAttribution.fromValue(
           map['attribution'],
         ),
-        EnumMethod.value => URLRequestAttribution.fromValue(map['attribution']),
-        EnumMethod.name => URLRequestAttribution.byName(map['attribution']),
+        CygnusEnumMethod.name => CygnusURLRequestAttribution.byName(
+          map['attribution'],
+        ),
       },
       body: map['body'] != null
           ? Uint8List.fromList(map['body'].cast<int>())
           : null,
-      cachePolicy: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => URLRequestCachePolicy.fromNativeValue(
+      cachePolicy: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusURLRequestCachePolicy.fromNativeValue(map['cachePolicy']),
+        CygnusEnumMethod.value => CygnusURLRequestCachePolicy.fromValue(
           map['cachePolicy'],
         ),
-        EnumMethod.value => URLRequestCachePolicy.fromValue(map['cachePolicy']),
-        EnumMethod.name => URLRequestCachePolicy.byName(map['cachePolicy']),
+        CygnusEnumMethod.name => CygnusURLRequestCachePolicy.byName(
+          map['cachePolicy'],
+        ),
       },
       headers: map['headers']?.cast<String, String>(),
       httpShouldHandleCookies: map['httpShouldHandleCookies'],
@@ -229,81 +239,86 @@ class URLRequest {
       iosAllowsCellularAccess: map['allowsCellularAccess'],
       iosAllowsConstrainedNetworkAccess: map['allowsConstrainedNetworkAccess'],
       iosAllowsExpensiveNetworkAccess: map['allowsExpensiveNetworkAccess'],
-      iosCachePolicy: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => IOSURLRequestCachePolicy.fromNativeValue(
+      iosCachePolicy: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusIOSURLRequestCachePolicy.fromNativeValue(map['cachePolicy']),
+        CygnusEnumMethod.value => CygnusIOSURLRequestCachePolicy.fromValue(
           map['cachePolicy'],
         ),
-        EnumMethod.value => IOSURLRequestCachePolicy.fromValue(
+        CygnusEnumMethod.name => CygnusIOSURLRequestCachePolicy.byName(
           map['cachePolicy'],
         ),
-        EnumMethod.name => IOSURLRequestCachePolicy.byName(map['cachePolicy']),
       },
       iosHttpShouldHandleCookies: map['httpShouldHandleCookies'],
       iosHttpShouldUsePipelining: map['httpShouldUsePipelining'],
       iosMainDocumentURL: map['mainDocumentURL'] != null
           ? Uri.tryParse(map['mainDocumentURL'])
           : null,
-      iosNetworkServiceType: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue =>
-          IOSURLRequestNetworkServiceType.fromNativeValue(
+      iosNetworkServiceType: switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusIOSURLRequestNetworkServiceType.fromNativeValue(
             map['networkServiceType'],
           ),
-        EnumMethod.value => IOSURLRequestNetworkServiceType.fromValue(
-          map['networkServiceType'],
-        ),
-        EnumMethod.name => IOSURLRequestNetworkServiceType.byName(
+        CygnusEnumMethod.value =>
+          CygnusIOSURLRequestNetworkServiceType.fromValue(
+            map['networkServiceType'],
+          ),
+        CygnusEnumMethod.name => CygnusIOSURLRequestNetworkServiceType.byName(
           map['networkServiceType'],
         ),
       },
       iosTimeoutInterval: map['timeoutInterval'],
       mainDocumentURL: map['mainDocumentURL'] != null
-          ? WebUri(map['mainDocumentURL'])
+          ? CygnusWebUri(map['mainDocumentURL'])
           : null,
       method: map['method'],
-      networkServiceType: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => URLRequestNetworkServiceType.fromNativeValue(
+      networkServiceType: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusURLRequestNetworkServiceType.fromNativeValue(
+            map['networkServiceType'],
+          ),
+        CygnusEnumMethod.value => CygnusURLRequestNetworkServiceType.fromValue(
           map['networkServiceType'],
         ),
-        EnumMethod.value => URLRequestNetworkServiceType.fromValue(
-          map['networkServiceType'],
-        ),
-        EnumMethod.name => URLRequestNetworkServiceType.byName(
+        CygnusEnumMethod.name => CygnusURLRequestNetworkServiceType.byName(
           map['networkServiceType'],
         ),
       },
       timeoutInterval: map['timeoutInterval'],
-      url: map['url'] != null ? WebUri(map['url']) : null,
+      url: map['url'] != null ? CygnusWebUri(map['url']) : null,
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "allowsCellularAccess": allowsCellularAccess,
       "allowsConstrainedNetworkAccess": allowsConstrainedNetworkAccess,
       "allowsExpensiveNetworkAccess": allowsExpensiveNetworkAccess,
       "assumesHTTP3Capable": assumesHTTP3Capable,
-      "attribution": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => attribution?.toNativeValue(),
-        EnumMethod.value => attribution?.toValue(),
-        EnumMethod.name => attribution?.name(),
+      "attribution": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => attribution?.toNativeValue(),
+        CygnusEnumMethod.value => attribution?.toValue(),
+        CygnusEnumMethod.name => attribution?.name(),
       },
       "body": body,
-      "cachePolicy": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => cachePolicy?.toNativeValue(),
-        EnumMethod.value => cachePolicy?.toValue(),
-        EnumMethod.name => cachePolicy?.name(),
+      "cachePolicy": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => cachePolicy?.toNativeValue(),
+        CygnusEnumMethod.value => cachePolicy?.toValue(),
+        CygnusEnumMethod.name => cachePolicy?.name(),
       },
       "headers": headers,
       "httpShouldHandleCookies": httpShouldHandleCookies,
       "httpShouldUsePipelining": httpShouldUsePipelining,
       "mainDocumentURL": mainDocumentURL?.toString(),
       "method": method,
-      "networkServiceType": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => networkServiceType?.toNativeValue(),
-        EnumMethod.value => networkServiceType?.toValue(),
-        EnumMethod.name => networkServiceType?.name(),
+      "networkServiceType": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => networkServiceType?.toNativeValue(),
+        CygnusEnumMethod.value => networkServiceType?.toValue(),
+        CygnusEnumMethod.name => networkServiceType?.name(),
       },
       "timeoutInterval": timeoutInterval,
       "url": url?.toString(),
@@ -317,6 +332,6 @@ class URLRequest {
 
   @override
   String toString() {
-    return 'URLRequest{allowsCellularAccess: $allowsCellularAccess, allowsConstrainedNetworkAccess: $allowsConstrainedNetworkAccess, allowsExpensiveNetworkAccess: $allowsExpensiveNetworkAccess, assumesHTTP3Capable: $assumesHTTP3Capable, attribution: $attribution, body: $body, cachePolicy: $cachePolicy, headers: $headers, httpShouldHandleCookies: $httpShouldHandleCookies, httpShouldUsePipelining: $httpShouldUsePipelining, mainDocumentURL: $mainDocumentURL, method: $method, networkServiceType: $networkServiceType, timeoutInterval: $timeoutInterval, url: $url}';
+    return 'CygnusURLRequest{allowsCellularAccess: $allowsCellularAccess, allowsConstrainedNetworkAccess: $allowsConstrainedNetworkAccess, allowsExpensiveNetworkAccess: $allowsExpensiveNetworkAccess, assumesHTTP3Capable: $assumesHTTP3Capable, attribution: $attribution, body: $body, cachePolicy: $cachePolicy, headers: $headers, httpShouldHandleCookies: $httpShouldHandleCookies, httpShouldUsePipelining: $httpShouldUsePipelining, mainDocumentURL: $mainDocumentURL, method: $method, networkServiceType: $networkServiceType, timeoutInterval: $timeoutInterval, url: $url}';
   }
 }

@@ -6,9 +6,9 @@ import 'enum_method.dart';
 
 part 'js_confirm_response.g.dart';
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onJsConfirm] event to control a JavaScript confirm dialog.
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onJsConfirm] event to control a JavaScript confirm dialog.
 @ExchangeableObject()
-class JsConfirmResponse_ {
+class CygnusJsConfirmResponse_ {
   ///Message to be displayed in the window.
   String message;
 
@@ -22,13 +22,13 @@ class JsConfirmResponse_ {
   bool handledByClient;
 
   ///Action used to confirm that the user hit confirm or cancel button.
-  JsConfirmResponseAction_? action;
+  CygnusJsConfirmResponseAction_? action;
 
-  JsConfirmResponse_({
+  CygnusJsConfirmResponse_({
     this.message = "",
     this.handledByClient = false,
     this.confirmButtonTitle = "",
     this.cancelButtonTitle = "",
-    this.action = JsConfirmResponseAction_.CANCEL,
+    this.action = CygnusJsConfirmResponseAction_.CANCEL,
   });
 }

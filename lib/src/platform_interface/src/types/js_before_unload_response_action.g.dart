@@ -6,34 +6,37 @@ part of 'js_before_unload_response_action.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class used by [JsBeforeUnloadResponse] class.
-class JsBeforeUnloadResponseAction {
+///Class used by [CygnusJsBeforeUnloadResponse] class.
+class CygnusJsBeforeUnloadResponseAction {
   final int _value;
   final int? _nativeValue;
-  const JsBeforeUnloadResponseAction._internal(this._value, this._nativeValue);
+  const CygnusJsBeforeUnloadResponseAction._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory JsBeforeUnloadResponseAction._internalMultiPlatform(
+  factory CygnusJsBeforeUnloadResponseAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => JsBeforeUnloadResponseAction._internal(value, nativeValue());
+  ) => CygnusJsBeforeUnloadResponseAction._internal(value, nativeValue());
 
   ///Confirm that the user hit cancel button.
-  static const CANCEL = JsBeforeUnloadResponseAction._internal(1, 1);
+  static const CANCEL = CygnusJsBeforeUnloadResponseAction._internal(1, 1);
 
   ///Confirm that the user hit confirm button.
-  static const CONFIRM = JsBeforeUnloadResponseAction._internal(0, 0);
+  static const CONFIRM = CygnusJsBeforeUnloadResponseAction._internal(0, 0);
 
-  ///Set of all values of [JsBeforeUnloadResponseAction].
-  static final Set<JsBeforeUnloadResponseAction> values = [
-    JsBeforeUnloadResponseAction.CANCEL,
-    JsBeforeUnloadResponseAction.CONFIRM,
+  ///Set of all values of [CygnusJsBeforeUnloadResponseAction].
+  static final Set<CygnusJsBeforeUnloadResponseAction> values = [
+    CygnusJsBeforeUnloadResponseAction.CANCEL,
+    CygnusJsBeforeUnloadResponseAction.CONFIRM,
   ].toSet();
 
-  ///Gets a possible [JsBeforeUnloadResponseAction] instance from [int] value.
-  static JsBeforeUnloadResponseAction? fromValue(int? value) {
+  ///Gets a possible [CygnusJsBeforeUnloadResponseAction] instance from [int] value.
+  static CygnusJsBeforeUnloadResponseAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return JsBeforeUnloadResponseAction.values.firstWhere(
+        return CygnusJsBeforeUnloadResponseAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -43,11 +46,11 @@ class JsBeforeUnloadResponseAction {
     return null;
   }
 
-  ///Gets a possible [JsBeforeUnloadResponseAction] instance from a native value.
-  static JsBeforeUnloadResponseAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusJsBeforeUnloadResponseAction] instance from a native value.
+  static CygnusJsBeforeUnloadResponseAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return JsBeforeUnloadResponseAction.values.firstWhere(
+        return CygnusJsBeforeUnloadResponseAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -57,15 +60,15 @@ class JsBeforeUnloadResponseAction {
     return null;
   }
 
-  /// Gets a possible [JsBeforeUnloadResponseAction] instance value with name [name].
+  /// Gets a possible [CygnusJsBeforeUnloadResponseAction] instance value with name [name].
   ///
-  /// Goes through [JsBeforeUnloadResponseAction.values] looking for a value with
-  /// name [name], as reported by [JsBeforeUnloadResponseAction.name].
+  /// Goes through [CygnusJsBeforeUnloadResponseAction.values] looking for a value with
+  /// name [name], as reported by [CygnusJsBeforeUnloadResponseAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static JsBeforeUnloadResponseAction? byName(String? name) {
+  static CygnusJsBeforeUnloadResponseAction? byName(String? name) {
     if (name != null) {
       try {
-        return JsBeforeUnloadResponseAction.values.firstWhere(
+        return CygnusJsBeforeUnloadResponseAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -75,7 +78,7 @@ class JsBeforeUnloadResponseAction {
     return null;
   }
 
-  /// Creates a map from the names of [JsBeforeUnloadResponseAction] values to the values.
+  /// Creates a map from the names of [CygnusJsBeforeUnloadResponseAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -83,9 +86,9 @@ class JsBeforeUnloadResponseAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, JsBeforeUnloadResponseAction> asNameMap() =>
-      <String, JsBeforeUnloadResponseAction>{
-        for (final value in JsBeforeUnloadResponseAction.values)
+  static Map<String, CygnusJsBeforeUnloadResponseAction> asNameMap() =>
+      <String, CygnusJsBeforeUnloadResponseAction>{
+        for (final value in CygnusJsBeforeUnloadResponseAction.values)
           value.name(): value,
       };
 

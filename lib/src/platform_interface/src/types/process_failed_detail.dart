@@ -9,14 +9,14 @@ part 'process_failed_detail.g.dart';
 
 ///An object that contains information about a frame on a webpage.
 @ExchangeableObject()
-class ProcessFailedDetail_ {
+class CygnusProcessFailedDetail_ {
   ///The kind of process failure that has occurred.
   @SupportedPlatforms(platforms: [WindowsPlatform()])
-  ProcessFailedKind_ kind;
+  CygnusProcessFailedKind_ kind;
 
   ///The exit code of the failing process, for telemetry purposes.
   ///
-  ///The exit code is always STILL_ACTIVE (259) when [ProcessFailedKind.RENDER_PROCESS_UNRESPONSIVE].
+  ///The exit code is always STILL_ACTIVE (259) when [CygnusProcessFailedKind.RENDER_PROCESS_UNRESPONSIVE].
   @SupportedPlatforms(platforms: [WindowsPlatform()])
   int? exitCode;
 
@@ -30,7 +30,7 @@ class ProcessFailedDetail_ {
 
   ///The reason for the process failure.
   @SupportedPlatforms(platforms: [WindowsPlatform()])
-  ProcessFailedReason_? reason;
+  CygnusProcessFailedReason_? reason;
 
   ///This property is the full path of the module that caused the crash in cases of Windows Code Integrity failures.
   ///
@@ -45,16 +45,16 @@ class ProcessFailedDetail_ {
   @SupportedPlatforms(platforms: [WindowsPlatform()])
   String? failureSourceModulePath;
 
-  ///The collection of [FrameInfo]s for frames in the WebView that were being rendered by the failed process.
+  ///The collection of [CygnusFrameInfo]s for frames in the WebView that were being rendered by the failed process.
   ///
   ///The content in these frames is replaced with an error page.
-  ///This is only available when [ProcessFailedKind] is [ProcessFailedKind.FRAME_RENDER_PROCESS_EXITED];
+  ///This is only available when [CygnusProcessFailedKind] is [CygnusProcessFailedKind.FRAME_RENDER_PROCESS_EXITED];
   ///frames is null for all other process failure kinds, including the case in which the failed process was the renderer
-  ///for the main frame and subframes within it, for which the failure kind is [ProcessFailedKind.RENDER_PROCESS_EXITED].
+  ///for the main frame and subframes within it, for which the failure kind is [CygnusProcessFailedKind.RENDER_PROCESS_EXITED].
   @SupportedPlatforms(platforms: [WindowsPlatform()])
-  List<FrameInfo_>? frameInfos;
+  List<CygnusFrameInfo_>? frameInfos;
 
-  ProcessFailedDetail_({
+  CygnusProcessFailedDetail_({
     required this.kind,
     this.exitCode,
     this.processDescription,

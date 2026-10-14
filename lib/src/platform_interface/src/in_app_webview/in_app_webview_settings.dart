@@ -27,15 +27,15 @@ import '../types/vertical_scrollbar_position.dart';
 
 part 'in_app_webview_settings.g.dart';
 
-List<ContentBlocker> _deserializeContentBlockers(
+List<CygnusContentBlocker> _deserializeContentBlockers(
   List<dynamic>? contentBlockersMapList, {
-  EnumMethod? enumMethod,
+  CygnusEnumMethod? enumMethod,
 }) {
-  List<ContentBlocker> contentBlockers = [];
+  List<CygnusContentBlocker> contentBlockers = [];
   if (contentBlockersMapList != null) {
     contentBlockersMapList.forEach((contentBlocker) {
       contentBlockers.add(
-        ContentBlocker.fromMap(
+        CygnusContentBlocker.fromMap(
           Map<dynamic, Map<dynamic, dynamic>>.from(
             Map<dynamic, dynamic>.from(contentBlocker),
           ),
@@ -47,7 +47,7 @@ List<ContentBlocker> _deserializeContentBlockers(
   return contentBlockers;
 }
 
-///{@template cygnus_core.InAppWebViewSettings}
+///{@template cygnus_core.CygnusWebViewSettings}
 ///This class represents all the WebView settings available.
 ///{@endtemplate}
 @ExchangeableObject(copyMethod: true)
@@ -60,12 +60,12 @@ List<ContentBlocker> _deserializeContentBlockers(
     WindowsPlatform(),
   ],
 )
-class InAppWebViewSettings_ {
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.shouldOverrideUrlLoading] event.
+class CygnusWebViewSettings_ {
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading] event.
   ///
-  ///If the [PlatformWebViewCreationParams.shouldOverrideUrlLoading] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -76,11 +76,11 @@ class InAppWebViewSettings_ {
   )
   bool? useShouldOverrideUrlLoading;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.onLoadResource] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.onLoadResource] event.
   ///
-  ///If the [PlatformWebViewCreationParams.onLoadResource] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.onLoadResource] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -91,18 +91,18 @@ class InAppWebViewSettings_ {
   )
   bool? useOnLoadResource;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.onDownloadStartRequest] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.onDownloadStartRequest] event.
   ///
-  ///If the [PlatformWebViewCreationParams.onDownloadStartRequest] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.onDownloadStartRequest] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
   bool? useOnDownloadStart;
 
-  ///Use [PlatformInAppWebViewController.clearAllCache] instead.
-  @Deprecated("Use InAppWebViewController.clearAllCache instead")
+  ///Use [CygnusPlatformWebViewController.clearAllCache] instead.
+  @Deprecated("Use CygnusWebViewController.clearAllCache instead")
   @ExchangeableObjectProperty(leaveDeprecatedInToMapMethod: true)
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
@@ -294,7 +294,7 @@ class InAppWebViewSettings_ {
   )
   bool? horizontalScrollBarEnabled;
 
-  ///List of custom schemes that the WebView must handle. Use the [PlatformWebViewCreationParams.onLoadResourceWithCustomScheme] event to intercept resource requests with custom scheme.
+  ///List of custom schemes that the WebView must handle. Use the [CygnusPlatformWebViewCreationParams.onLoadResourceWithCustomScheme] event to intercept resource requests with custom scheme.
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -304,7 +304,7 @@ class InAppWebViewSettings_ {
   )
   List<String>? resourceCustomSchemes;
 
-  ///List of [ContentBlocker] that are a set of rules used to block content in the browser window.
+  ///List of [CygnusContentBlocker] that are a set of rules used to block content in the browser window.
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -318,9 +318,9 @@ class InAppWebViewSettings_ {
     ],
   )
   @ExchangeableObjectProperty(deserializer: _deserializeContentBlockers)
-  List<ContentBlocker>? contentBlockers;
+  List<CygnusContentBlocker>? contentBlockers;
 
-  ///Sets the content mode that the WebView needs to use when loading and rendering a webpage. The default value is [UserPreferredContentMode.RECOMMENDED].
+  ///Sets the content mode that the WebView needs to use when loading and rendering a webpage. The default value is [CygnusUserPreferredContentMode.RECOMMENDED].
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -338,58 +338,58 @@ class InAppWebViewSettings_ {
       ),
     ],
   )
-  UserPreferredContentMode_? preferredContentMode;
+  CygnusUserPreferredContentMode_? preferredContentMode;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.shouldInterceptAjaxRequest] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest] event.
   ///
-  ///Due to the async nature of [PlatformWebViewCreationParams.shouldInterceptAjaxRequest] event implementation,
-  ///it will intercept only async `XMLHttpRequest`s ([AjaxRequest.isAsync] with `true`).
-  ///To be able to intercept sync `XMLHttpRequest`s, use [InAppWebViewSettings.interceptOnlyAsyncAjaxRequests] to `false`.
-  ///If necessary, you should implement your own logic using for example an [UserScript] overriding the
+  ///Due to the async nature of [CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest] event implementation,
+  ///it will intercept only async `XMLHttpRequest`s ([CygnusAjaxRequest.isAsync] with `true`).
+  ///To be able to intercept sync `XMLHttpRequest`s, use [CygnusWebViewSettings.interceptOnlyAsyncAjaxRequests] to `false`.
+  ///If necessary, you should implement your own logic using for example an [CygnusUserScript] overriding the
   ///[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) JavaScript object.
   ///
-  ///If the [PlatformWebViewCreationParams.shouldInterceptAjaxRequest] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
   bool? useShouldInterceptAjaxRequest;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.onAjaxReadyStateChange] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.onAjaxReadyStateChange] event.
   ///Also, [useShouldInterceptAjaxRequest] must be set to `true` to take effect.
   ///
-  ///Due to the async nature of [PlatformWebViewCreationParams.onAjaxReadyStateChange] event implementation,
+  ///Due to the async nature of [CygnusPlatformWebViewCreationParams.onAjaxReadyStateChange] event implementation,
   ///using it could cause some issues, so, be careful when using it.
-  ///In this case, you should implement your own logic using for example an [UserScript] overriding the
+  ///In this case, you should implement your own logic using for example an [CygnusUserScript] overriding the
   ///[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) JavaScript object.
   ///
-  ///If the [PlatformWebViewCreationParams.onAjaxReadyStateChange] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.onAjaxReadyStateChange] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
   bool? useOnAjaxReadyStateChange;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.onAjaxProgress] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.onAjaxProgress] event.
   ///Also, [useShouldInterceptAjaxRequest] must be set to `true` to take effect.
   ///
-  ///Due to the async nature of [PlatformWebViewCreationParams.onAjaxProgress] event implementation,
+  ///Due to the async nature of [CygnusPlatformWebViewCreationParams.onAjaxProgress] event implementation,
   ///using it could cause some issues, so, be careful when using it.
-  ///In this case, you should implement your own logic using for example an [UserScript] overriding the
+  ///In this case, you should implement your own logic using for example an [CygnusUserScript] overriding the
   ///[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) JavaScript object.
   ///
-  ///If the [PlatformWebViewCreationParams.onAjaxProgress] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.onAjaxProgress] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
   bool? useOnAjaxProgress;
 
   ///Set to `false` to be able to listen to also sync `XMLHttpRequest`s at the
-  ///[PlatformWebViewCreationParams.shouldInterceptAjaxRequest] event.
+  ///[CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest] event.
   ///
   ///**NOTE**: Using `false` will cause the `XMLHttpRequest.send()` method for sync
   ///requests to not wait on the JavaScript code the response synchronously,
@@ -399,11 +399,11 @@ class InAppWebViewSettings_ {
   )
   bool? interceptOnlyAsyncAjaxRequests;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.shouldInterceptFetchRequest] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.shouldInterceptFetchRequest] event.
   ///
-  ///If the [PlatformWebViewCreationParams.shouldInterceptFetchRequest] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.shouldInterceptFetchRequest] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
@@ -559,7 +559,7 @@ because there isn't any way to make the website data store non-persistent for th
 
   ///Set to `true` to allow audio playing when the app goes in background or the screen is locked or another app is opened.
   ///However, there will be no controls in the notification bar or on the lockscreen.
-  ///Also, make sure to not call [PlatformInAppWebViewController.pause], otherwise it will stop audio playing.
+  ///Also, make sure to not call [CygnusPlatformWebViewController.pause], otherwise it will stop audio playing.
   ///The default value is `false`.
   ///
   ///**IMPORTANT NOTE**: if you use this setting, your app could be rejected by the Google Play Store.
@@ -567,10 +567,10 @@ because there isn't any way to make the website data store non-persistent for th
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   bool? allowBackgroundAudioPlaying;
 
-  ///Use a [WebViewAssetLoader] instance to load local files including application's static assets and resources using http(s):// URLs.
+  ///Use a [CygnusWebViewAssetLoader] instance to load local files including application's static assets and resources using http(s):// URLs.
   ///Loading local files using web-like URLs instead of `file://` is desirable as it is compatible with the Same-Origin policy.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
-  WebViewAssetLoader_? webViewAssetLoader;
+  CygnusWebViewAssetLoader_? webViewAssetLoader;
 
   ///Sets the text zoom of the page in percent. The default value is `100`.
   @SupportedPlatforms(
@@ -584,8 +584,8 @@ because there isn't any way to make the website data store non-persistent for th
   )
   int? textZoom;
 
-  ///Use [PlatformCookieManager.removeSessionCookies] instead.
-  @Deprecated("Use CookieManager.removeSessionCookies instead")
+  ///Use [CygnusPlatformCookieManager.removeSessionCookies] instead.
+  @Deprecated("Use CygnusCookieManager.removeSessionCookies instead")
   @ExchangeableObjectProperty(leaveDeprecatedInToMapMethod: true)
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   bool? clearSessionCache;
@@ -688,7 +688,7 @@ because there isn't any way to make the website data store non-persistent for th
       ),
     ],
   )
-  MixedContentMode_? mixedContentMode;
+  CygnusMixedContentMode_? mixedContentMode;
 
   ///Enables or disables content URL access within WebView. Content URL access allows WebView to load content from a content provider installed in the system. The default value is `true`.
   @SupportedPlatforms(
@@ -747,7 +747,7 @@ because there isn't any way to make the website data store non-persistent for th
   bool? blockNetworkLoads;
 
   ///Overrides the way the cache is used. The way the cache is used is based on the navigation type. For a normal page load, the cache is checked and content is re-validated as needed.
-  ///When navigating back, content is not revalidated, instead the content is just retrieved from the cache. The default value is [CacheMode.LOAD_DEFAULT].
+  ///When navigating back, content is not revalidated, instead the content is just retrieved from the cache. The default value is [CygnusCacheMode.LOAD_DEFAULT].
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -757,7 +757,7 @@ because there isn't any way to make the website data store non-persistent for th
       ),
     ],
   )
-  CacheMode_? cacheMode;
+  CygnusCacheMode_? cacheMode;
 
   ///Sets the cursive font family name. The default value is `"cursive"`.
   @SupportedPlatforms(
@@ -838,7 +838,7 @@ because there isn't any way to make the website data store non-persistent for th
       ),
     ],
   )
-  ActionModeMenuItem_? disabledActionModeMenuItems;
+  CygnusActionModeMenuItem_? disabledActionModeMenuItems;
 
   ///Sets the fantasy font family name. The default value is `"fantasy"`.
   @SupportedPlatforms(
@@ -876,7 +876,7 @@ because there isn't any way to make the website data store non-persistent for th
 
   ///Use [algorithmicDarkeningAllowed] instead.
   ///
-  ///Set the force dark mode for this WebView. The default value is [ForceDark.OFF].
+  ///Set the force dark mode for this WebView. The default value is [CygnusForceDark.OFF].
   ///
   ///Deprecated - The "force dark" model previously implemented by WebView was complex and didn't
   ///interoperate well with current Web standards for `prefers-color-scheme` and `color-scheme`.
@@ -895,12 +895,12 @@ because there isn't any way to make the website data store non-persistent for th
       ),
     ],
   )
-  ForceDark_? forceDark;
+  CygnusForceDark_? forceDark;
 
   ///Use [algorithmicDarkeningAllowed] instead.
   ///
   ///Set how WebView content should be darkened.
-  ///The default value is [ForceDarkStrategy.PREFER_WEB_THEME_OVER_USER_AGENT_DARKENING].
+  ///The default value is [CygnusForceDarkStrategy.PREFER_WEB_THEME_OVER_USER_AGENT_DARKENING].
   ///
   ///Deprecated - The "force dark" model previously implemented by WebView was complex and didn't
   ///interoperate well with current Web standards for `prefers-color-scheme` and `color-scheme`.
@@ -916,11 +916,11 @@ because there isn't any way to make the website data store non-persistent for th
         apiUrl:
             "https://developer.android.com/reference/androidx/webkit/WebSettingsCompat#setForceDarkStrategy(android.webkit.WebSettings,int)",
         note:
-            "it will take effect only if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.FORCE_DARK_STRATEGY].",
+            "it will take effect only if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.FORCE_DARK_STRATEGY].",
       ),
     ],
   )
-  ForceDarkStrategy_? forceDarkStrategy;
+  CygnusForceDarkStrategy_? forceDarkStrategy;
 
   ///Sets whether Geolocation is enabled. The default is `true`.
   @SupportedPlatforms(
@@ -932,7 +932,7 @@ because there isn't any way to make the website data store non-persistent for th
         note:
             """Please note that in order for the Geolocation API to be usable by a page in the WebView, the following requirements must be met:
 - an application must have permission to access the device location, see [Manifest.permission.ACCESS_COARSE_LOCATION](https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION), [Manifest.permission.ACCESS_FINE_LOCATION](https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION);
-- an application must provide an implementation of the [PlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt] callback to receive notifications that a page is requesting access to location via the JavaScript Geolocation API.""",
+- an application must provide an implementation of the [CygnusPlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt] callback to receive notifications that a page is requesting access to location via the JavaScript Geolocation API.""",
       ),
     ],
   )
@@ -944,11 +944,11 @@ because there isn't any way to make the website data store non-persistent for th
       AndroidPlatform(
         apiName: "WebSettings.setLayoutAlgorithm",
         apiUrl:
-            "https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setLayoutAlgorithm(android.webkit.WebSettings.LayoutAlgorithm)",
+            "https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setLayoutAlgorithm(android.webkit.WebSettings.CygnusLayoutAlgorithm)",
       ),
     ],
   )
-  LayoutAlgorithm_? layoutAlgorithm;
+  CygnusLayoutAlgorithm_? layoutAlgorithm;
 
   ///Sets whether the WebView loads pages in overview mode, that is, zooms out the content to fit on screen by width.
   ///This setting is taken into account when the content width is greater than the width of the WebView control, for example, when [useWideViewPort] is enabled.
@@ -1116,9 +1116,9 @@ because there isn't any way to make the website data store non-persistent for th
     platforms: [
       AndroidPlatform(
         available: "21",
-        apiName: "CookieManager.setAcceptThirdPartyCookies",
+        apiName: "CygnusCookieManager.setAcceptThirdPartyCookies",
         apiUrl:
-            "https://developer.android.com/reference/android/webkit/CookieManager#setAcceptThirdPartyCookies(android.webkit.WebView,%20boolean)",
+            "https://developer.android.com/reference/android/webkit/CygnusCookieManager#setAcceptThirdPartyCookies(android.webkit.WebView,%20boolean)",
       ),
     ],
   )
@@ -1138,7 +1138,7 @@ because there isn't any way to make the website data store non-persistent for th
   bool? hardwareAcceleration;
 
   ///Sets whether the WebView supports multiple windows.
-  ///If set to `true`, [PlatformWebViewCreationParams.onCreateWindow] event must be implemented by the host application. The default value is `false`.
+  ///If set to `true`, [CygnusPlatformWebViewCreationParams.onCreateWindow] event must be implemented by the host application. The default value is `false`.
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1150,16 +1150,16 @@ because there isn't any way to make the website data store non-persistent for th
   )
   bool? supportMultipleWindows;
 
-  ///Regular expression used on native side by the [PlatformWebViewCreationParams.shouldOverrideUrlLoading]
+  ///Regular expression used on native side by the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading]
   ///event to cancel navigation requests for frames that are not the main frame.
   ///If the url request of a sub-frame matches the regular expression, then the request of that sub-frame is canceled.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   String? regexToCancelSubFramesLoading;
 
-  ///Regular expression used on native side by the [PlatformWebViewCreationParams.shouldOverrideUrlLoading]
+  ///Regular expression used on native side by the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading]
   ///event to allow navigation requests synchronously.
   ///If the url request match the regular expression, then the request is allowed automatically,
-  ///and the [PlatformWebViewCreationParams.shouldOverrideUrlLoading] event will not be fired.
+  ///and the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading] event will not be fired.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   String? regexToAllowSyncUrlLoading;
 
@@ -1186,12 +1186,12 @@ as it can cause framerate drops on animations in Android 9 and lower (see [Hybri
   ///
   ///**Leaving this unset picks the mode automatically**: Hybrid Composition++ wherever it is
   ///actually available, Texture Layer Hybrid Composition everywhere else. Set it explicitly to
-  ///pin one mode -- [AndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION] is the way to opt
+  ///pin one mode -- [CygnusAndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION] is the way to opt
   ///out of HCPP.
   ///
   ///This supersedes the deprecated [useHybridComposition]. When this is non-null it wins;
   ///when it is null and [useHybridComposition] is `true` the WebView still gets
-  ///[AndroidCompositionMode.HYBRID_COMPOSITION], so existing code keeps its behaviour.
+  ///[CygnusAndroidCompositionMode.HYBRID_COMPOSITION], so existing code keeps its behaviour.
   ///
   ///Because the composition mode is fixed when the platform view is created, the automatic
   ///choice waits for the one-off support check to answer before creating the WebView. That
@@ -1199,8 +1199,8 @@ as it can cause framerate drops on animations in Android 9 and lower (see [Hybri
   ///subsequent ones use the cached answer and are not delayed. Pinning a mode explicitly skips
   ///the wait entirely.
   ///
-  ///Only applies to the [PlatformInAppWebViewWidget] — [PlatformInAppBrowser] and
-  ///[PlatformHeadlessInAppWebView] do not go through a platform view, so composition mode
+  ///Only applies to the [CygnusPlatformWebViewWidget] — [CygnusPlatformBrowser] and
+  ///[CygnusPlatformHeadlessWebView] do not go through a platform view, so composition mode
   ///has no meaning for them.
   ///
   ///Can only be set through the initial settings: the composition mode is fixed when the
@@ -1209,16 +1209,16 @@ as it can cause framerate drops on animations in Android 9 and lower (see [Hybri
     platforms: [
       AndroidPlatform(
         note:
-            """[AndroidCompositionMode.HYBRID_COMPOSITION_PLUS_PLUS] additionally requires API 34+,
+            """[CygnusAndroidCompositionMode.HYBRID_COMPOSITION_PLUS_PLUS] additionally requires API 34+,
 Impeller running on Vulkan, and the embedding application to opt in -- a plugin cannot turn it on
 for the application. Apps opt in with the `io.flutter.embedding.android.EnableHcpp` manifest
 meta-data (used by release builds) or `flutter run --enable-hcpp` during development. When any
 requirement is missing it falls back to
-[AndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION].""",
+[CygnusAndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION].""",
       ),
     ],
   )
-  AndroidCompositionMode_? androidCompositionMode;
+  CygnusAndroidCompositionMode_? androidCompositionMode;
 
   ///Set to `false` to stop the plugin keeping the focused input element visible when the
   ///soft keyboard opens. The default value is `true`.
@@ -1309,25 +1309,25 @@ requirement is missing it falls back to
   @SupportedPlatforms(platforms: [AndroidPlatform(), IOSPlatform()])
   bool? keyboardAvoidance;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.shouldInterceptRequest] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.shouldInterceptRequest] event.
   ///
-  ///If the [PlatformWebViewCreationParams.shouldInterceptRequest] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.shouldInterceptRequest] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   bool? useShouldInterceptRequest;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.onRenderProcessGone] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.onRenderProcessGone] event.
   ///
-  ///If the [PlatformWebViewCreationParams.onRenderProcessGone] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.onRenderProcessGone] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   bool? useOnRenderProcessGone;
 
   ///Sets the WebView's over-scroll mode.
   ///Setting the over-scroll mode of a WebView will have an effect only if the WebView is capable of scrolling.
-  ///The default value is [OverScrollMode.IF_CONTENT_SCROLLS].
+  ///The default value is [CygnusOverScrollMode.IF_CONTENT_SCROLLS].
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1337,7 +1337,7 @@ requirement is missing it falls back to
       ),
     ],
   )
-  OverScrollMode_? overScrollMode;
+  CygnusOverScrollMode_? overScrollMode;
 
   ///Informs WebView of the network state.
   ///This is used to set the JavaScript property `window.navigator.isOnline` and generates the online/offline event as specified in HTML5, sec. 5.7.7.
@@ -1357,7 +1357,7 @@ requirement is missing it falls back to
   ///For example, if a view has a background drawable and you want to draw the scrollbars inside the padding specified by the drawable,
   ///you can use SCROLLBARS_INSIDE_OVERLAY or SCROLLBARS_INSIDE_INSET. If you want them to appear at the edge of the view, ignoring the padding,
   ///then you can use SCROLLBARS_OUTSIDE_OVERLAY or SCROLLBARS_OUTSIDE_INSET.
-  ///The default value is [ScrollBarStyle.SCROLLBARS_INSIDE_OVERLAY].
+  ///The default value is [CygnusScrollBarStyle.SCROLLBARS_INSIDE_OVERLAY].
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1367,10 +1367,10 @@ requirement is missing it falls back to
       ),
     ],
   )
-  ScrollBarStyle_? scrollBarStyle;
+  CygnusScrollBarStyle_? scrollBarStyle;
 
   ///Sets the position of the vertical scroll bar.
-  ///The default value is [VerticalScrollbarPosition.SCROLLBAR_POSITION_DEFAULT].
+  ///The default value is [CygnusVerticalScrollbarPosition.SCROLLBAR_POSITION_DEFAULT].
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1380,7 +1380,7 @@ requirement is missing it falls back to
       ),
     ],
   )
-  VerticalScrollbarPosition_? verticalScrollbarPosition;
+  CygnusVerticalScrollbarPosition_? verticalScrollbarPosition;
 
   ///Defines the delay in milliseconds that a scrollbar waits before fade out.
   @SupportedPlatforms(
@@ -1429,7 +1429,7 @@ requirement is missing it falls back to
       ),
     ],
   )
-  RendererPriorityPolicy_? rendererPriorityPolicy;
+  CygnusRendererPriorityPolicy_? rendererPriorityPolicy;
 
   ///Sets whether the default Android WebView’s internal error page should be suppressed or displayed for bad navigations.
   ///`true` means suppressed (not shown), `false` means it will be displayed. The default value is `false`.
@@ -1516,7 +1516,7 @@ requirement is missing it falls back to
         apiUrl:
             "https://developer.android.com/reference/androidx/webkit/WebSettingsCompat#setAlgorithmicDarkeningAllowed(android.webkit.WebSettings,boolean)",
         note:
-            "available on Android only if [WebViewFeature.ALGORITHMIC_DARKENING] feature is supported.",
+            "available on Android only if [CygnusWebViewFeature.ALGORITHMIC_DARKENING] feature is supported.",
       ),
     ],
   )
@@ -1534,7 +1534,7 @@ requirement is missing it falls back to
     platforms: [
       AndroidPlatform(
         note:
-            "available on Android only if [WebViewFeature.ENTERPRISE_AUTHENTICATION_APP_LINK_POLICY] feature is supported.",
+            "available on Android only if [CygnusWebViewFeature.ENTERPRISE_AUTHENTICATION_APP_LINK_POLICY] feature is supported.",
       ),
     ],
   )
@@ -1547,13 +1547,13 @@ requirement is missing it falls back to
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   Uint8List? defaultVideoPoster;
 
-  ///Set an allow-list of origins to receive the X-Requested-With HTTP header from the WebView owning the passed [InAppWebViewSettings].
+  ///Set an allow-list of origins to receive the X-Requested-With HTTP header from the WebView owning the passed [CygnusWebViewSettings].
   ///
   ///Historically, this header was sent on all requests from WebView, containing the app package name of the embedding app. Depending on the version of installed WebView, this may no longer be the case, as the header was deprecated in late 2022, and its use discontinued.
   ///
   ///Apps can use this method to restore the legacy behavior for servers that still rely on the deprecated header, but it should not be used to identify the webview to first-party servers under the control of the app developer.
   ///
-  ///The format of the strings in the allow-list follows the origin rules of [PlatformInAppWebViewController.addWebMessageListener].
+  ///The format of the strings in the allow-list follows the origin rules of [CygnusPlatformWebViewController.addWebMessageListener].
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1561,7 +1561,7 @@ requirement is missing it falls back to
         apiUrl:
             "https://developer.android.com/reference/androidx/webkit/WebSettingsCompat#setRequestedWithHeaderOriginAllowList(android.webkit.WebSettings,java.util.Set%3Cjava.lang.String%3E)",
         note:
-            "available on Android only if [WebViewFeature.REQUESTED_WITH_HEADER_ALLOW_LIST] feature is supported.",
+            "available on Android only if [CygnusWebViewFeature.REQUESTED_WITH_HEADER_ALLOW_LIST] feature is supported.",
       ),
     ],
   )
@@ -1614,7 +1614,7 @@ requirement is missing it falls back to
   ///**NOTE for Windows**: Swiping down to refresh is off by default and not exposed via API currently,
   ///it requires the "--pull-to-refresh" option to be included in
   ///the additional browser arguments to be configured.
-  ///(See [WebViewEnvironmentSettings.additionalBrowserArguments].).
+  ///(See [CygnusWebViewEnvironmentSettings.additionalBrowserArguments].).
   ///When set to `false`, the end user cannot swipe to navigate or pull to refresh.
   ///This API only affects the overscrolling navigation functionality and has
   ///no effect on the scrolling interaction used to explore the web content shown in WebView2.
@@ -1725,7 +1725,7 @@ requirement is missing it falls back to
   bool? isFraudulentWebsiteWarningEnabled;
 
   ///The level of granularity with which the user can interactively select content in the web view.
-  ///The default value is [SelectionGranularity.DYNAMIC].
+  ///The default value is [CygnusSelectionGranularity.DYNAMIC].
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -1735,11 +1735,11 @@ requirement is missing it falls back to
       ),
     ],
   )
-  SelectionGranularity_? selectionGranularity;
+  CygnusSelectionGranularity_? selectionGranularity;
 
   ///Specifying a dataDetectoryTypes value adds interactivity to web content that matches the value.
-  ///For example, Safari adds a link to “apple.com” in the text “Visit apple.com” if the dataDetectorTypes property is set to [DataDetectorTypes.LINK].
-  ///The default value is [DataDetectorTypes.NONE].
+  ///For example, Safari adds a link to “apple.com” in the text “Visit apple.com” if the dataDetectorTypes property is set to [CygnusDataDetectorTypes.LINK].
+  ///The default value is [CygnusDataDetectorTypes.NONE].
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -1750,7 +1750,7 @@ requirement is missing it falls back to
       ),
     ],
   )
-  List<DataDetectorTypes_>? dataDetectorTypes;
+  List<CygnusDataDetectorTypes_>? dataDetectorTypes;
 
   ///Set `true` if shared cookies from `HTTPCookieStorage.shared` should used for every load request in the WebView.
   ///The default value is `false`.
@@ -1790,8 +1790,8 @@ requirement is missing it falls back to
   )
   bool? accessibilityIgnoresInvertColors;
 
-  ///A [ScrollViewDecelerationRate] value that determines the rate of deceleration after the user lifts their finger.
-  ///The default value is [ScrollViewDecelerationRate.NORMAL].
+  ///A [CygnusScrollViewDecelerationRate] value that determines the rate of deceleration after the user lifts their finger.
+  ///The default value is [CygnusScrollViewDecelerationRate.NORMAL].
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -1801,10 +1801,10 @@ requirement is missing it falls back to
       ),
     ],
   )
-  ScrollViewDecelerationRate_? decelerationRate;
+  CygnusScrollViewDecelerationRate_? decelerationRate;
 
   ///A Boolean value that determines whether bouncing always occurs when vertical scrolling reaches the end of the content.
-  ///If this property is set to `true` and [InAppWebViewSettings.disallowOverScroll] is `false`,
+  ///If this property is set to `true` and [CygnusWebViewSettings.disallowOverScroll] is `false`,
   ///vertical dragging is allowed even if the content is smaller than the bounds of the scroll view.
   ///The default value is `false`.
   @SupportedPlatforms(
@@ -1819,7 +1819,7 @@ requirement is missing it falls back to
   bool? alwaysBounceVertical;
 
   ///A Boolean value that determines whether bouncing always occurs when horizontal scrolling reaches the end of the content view.
-  ///If this property is set to `true` and [InAppWebViewSettings.disallowOverScroll] is `false`,
+  ///If this property is set to `true` and [CygnusWebViewSettings.disallowOverScroll] is `false`,
   ///horizontal dragging is allowed even if the content is smaller than the bounds of the scroll view.
   ///The default value is `false`.
   @SupportedPlatforms(
@@ -1892,7 +1892,7 @@ requirement is missing it falls back to
   double? minimumZoomScale;
 
   ///Configures how safe area insets are added to the adjusted content inset.
-  ///The default value is [ScrollViewContentInsetAdjustmentBehavior.NEVER].
+  ///The default value is [CygnusScrollViewContentInsetAdjustmentBehavior.NEVER].
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -1903,7 +1903,7 @@ requirement is missing it falls back to
       ),
     ],
   )
-  ScrollViewContentInsetAdjustmentBehavior_? contentInsetAdjustmentBehavior;
+  CygnusScrollViewContentInsetAdjustmentBehavior_? contentInsetAdjustmentBehavior;
 
   ///A Boolean value that determines whether scrolling is disabled in a particular direction.
   ///If this property is `false`, scrolling is permitted in both horizontal and vertical directions.
@@ -1986,77 +1986,77 @@ requirement is missing it falls back to
   )
   bool? limitsNavigationsToAppBoundDomains;
 
-  ///Set to `true` to be able to listen to the [PlatformWebViewCreationParams.onNavigationResponse] event.
+  ///Set to `true` to be able to listen to the [CygnusPlatformWebViewCreationParams.onNavigationResponse] event.
   ///
-  ///If the [PlatformWebViewCreationParams.onNavigationResponse] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.onNavigationResponse] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
   bool? useOnNavigationResponse;
 
-  ///Set to `true` to enable Apple Pay API for the `WebView` at its first page load or on the next page load (using [PlatformInAppWebViewController.setOptions]). The default value is `false`.
+  ///Set to `true` to enable Apple Pay API for the `WebView` at its first page load or on the next page load (using [CygnusPlatformWebViewController.setOptions]). The default value is `false`.
   ///
   ///**IMPORTANT NOTE**: As written in the official [Safari 13 Release Notes](https://developer.apple.com/documentation/safari-release-notes/safari-13-release-notes#Payment-Request-API),
-  ///it won't work if any script injection APIs are used (such as [PlatformInAppWebViewController.evaluateJavascript] or [UserScript]).
+  ///it won't work if any script injection APIs are used (such as [CygnusPlatformWebViewController.evaluateJavascript] or [CygnusUserScript]).
   ///So, when this attribute is `true`, all the methods, options, and events implemented using JavaScript won't be called or won't do anything and the result will always be `null`.
   ///
   ///Methods affected:
-  ///- [PlatformInAppWebViewController.addUserScript]
-  ///- [PlatformInAppWebViewController.addUserScripts]
-  ///- [PlatformInAppWebViewController.removeUserScript]
-  ///- [PlatformInAppWebViewController.removeUserScripts]
-  ///- [PlatformInAppWebViewController.removeAllUserScripts]
-  ///- [PlatformInAppWebViewController.evaluateJavascript]
-  ///- [PlatformInAppWebViewController.callAsyncJavaScript]
-  ///- [PlatformInAppWebViewController.injectJavascriptFileFromUrl]
-  ///- [PlatformInAppWebViewController.injectJavascriptFileFromAsset]
-  ///- [PlatformInAppWebViewController.injectCSSCode]
-  ///- [PlatformInAppWebViewController.injectCSSFileFromUrl]
-  ///- [PlatformInAppWebViewController.injectCSSFileFromAsset]
-  ///- [PlatformInAppWebViewController.findAllAsync]
-  ///- [PlatformInAppWebViewController.findNext]
-  ///- [PlatformInAppWebViewController.clearMatches]
-  ///- [PlatformInAppWebViewController.pauseTimers]
-  ///- [PlatformInAppWebViewController.getSelectedText]
-  ///- [PlatformInAppWebViewController.getHitTestResult]
-  ///- [PlatformInAppWebViewController.requestFocusNodeHref]
-  ///- [PlatformInAppWebViewController.requestImageRef]
-  ///- [PlatformInAppWebViewController.postWebMessage]
-  ///- [PlatformInAppWebViewController.createWebMessageChannel]
-  ///- [PlatformInAppWebViewController.addWebMessageListener]
+  ///- [CygnusPlatformWebViewController.addUserScript]
+  ///- [CygnusPlatformWebViewController.addUserScripts]
+  ///- [CygnusPlatformWebViewController.removeUserScript]
+  ///- [CygnusPlatformWebViewController.removeUserScripts]
+  ///- [CygnusPlatformWebViewController.removeAllUserScripts]
+  ///- [CygnusPlatformWebViewController.evaluateJavascript]
+  ///- [CygnusPlatformWebViewController.callAsyncJavaScript]
+  ///- [CygnusPlatformWebViewController.injectJavascriptFileFromUrl]
+  ///- [CygnusPlatformWebViewController.injectJavascriptFileFromAsset]
+  ///- [CygnusPlatformWebViewController.injectCSSCode]
+  ///- [CygnusPlatformWebViewController.injectCSSFileFromUrl]
+  ///- [CygnusPlatformWebViewController.injectCSSFileFromAsset]
+  ///- [CygnusPlatformWebViewController.findAllAsync]
+  ///- [CygnusPlatformWebViewController.findNext]
+  ///- [CygnusPlatformWebViewController.clearMatches]
+  ///- [CygnusPlatformWebViewController.pauseTimers]
+  ///- [CygnusPlatformWebViewController.getSelectedText]
+  ///- [CygnusPlatformWebViewController.getHitTestResult]
+  ///- [CygnusPlatformWebViewController.requestFocusNodeHref]
+  ///- [CygnusPlatformWebViewController.requestImageRef]
+  ///- [CygnusPlatformWebViewController.postWebMessage]
+  ///- [CygnusPlatformWebViewController.createWebMessageChannel]
+  ///- [CygnusPlatformWebViewController.addWebMessageListener]
   ///
   ///Settings affected:
-  ///- [PlatformWebViewCreationParams.initialUserScripts]
-  ///- [InAppWebViewSettings.supportZoom]
-  ///- [InAppWebViewSettings.useOnLoadResource]
-  ///- [InAppWebViewSettings.useShouldInterceptAjaxRequest]
-  ///- [InAppWebViewSettings.useShouldInterceptFetchRequest]
-  ///- [InAppWebViewSettings.enableViewportScale]
+  ///- [CygnusPlatformWebViewCreationParams.initialUserScripts]
+  ///- [CygnusWebViewSettings.supportZoom]
+  ///- [CygnusWebViewSettings.useOnLoadResource]
+  ///- [CygnusWebViewSettings.useShouldInterceptAjaxRequest]
+  ///- [CygnusWebViewSettings.useShouldInterceptFetchRequest]
+  ///- [CygnusWebViewSettings.enableViewportScale]
   ///
   ///Events affected:
-  ///- the `hitTestResult` argument of [PlatformWebViewCreationParams.onLongPressHitTestResult] will be empty
-  ///- the `hitTestResult` argument of [ContextMenu.onCreateContextMenu] will be empty
-  ///- [PlatformWebViewCreationParams.onLoadResource]
-  ///- [PlatformWebViewCreationParams.shouldInterceptAjaxRequest]
-  ///- [PlatformWebViewCreationParams.onAjaxReadyStateChange]
-  ///- [PlatformWebViewCreationParams.onAjaxProgress]
-  ///- [PlatformWebViewCreationParams.shouldInterceptFetchRequest]
-  ///- [PlatformWebViewCreationParams.onConsoleMessage]
-  ///- [PlatformWebViewCreationParams.onPrintRequest]
-  ///- [PlatformWebViewCreationParams.onWindowFocus]
-  ///- [PlatformWebViewCreationParams.onWindowBlur]
-  ///- [PlatformWebViewCreationParams.onFindResultReceived]
-  ///- [FindInteractionController.onFindResultReceived]
+  ///- the `hitTestResult` argument of [CygnusPlatformWebViewCreationParams.onLongPressHitTestResult] will be empty
+  ///- the `hitTestResult` argument of [CygnusContextMenu.onCreateContextMenu] will be empty
+  ///- [CygnusPlatformWebViewCreationParams.onLoadResource]
+  ///- [CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest]
+  ///- [CygnusPlatformWebViewCreationParams.onAjaxReadyStateChange]
+  ///- [CygnusPlatformWebViewCreationParams.onAjaxProgress]
+  ///- [CygnusPlatformWebViewCreationParams.shouldInterceptFetchRequest]
+  ///- [CygnusPlatformWebViewCreationParams.onConsoleMessage]
+  ///- [CygnusPlatformWebViewCreationParams.onPrintRequest]
+  ///- [CygnusPlatformWebViewCreationParams.onWindowFocus]
+  ///- [CygnusPlatformWebViewCreationParams.onWindowBlur]
+  ///- [CygnusPlatformWebViewCreationParams.onFindResultReceived]
+  ///- [CygnusFindInteractionController.onFindResultReceived]
   @SupportedPlatforms(platforms: [IOSPlatform(available: "13.0")])
   bool? applePayAPIEnabled;
 
-  ///Used in combination with [PlatformWebViewCreationParams.initialUrlRequest] or [PlatformWebViewCreationParams.initialData] (using the `file://` scheme), it represents the URL from which to read the web content.
+  ///Used in combination with [CygnusPlatformWebViewCreationParams.initialUrlRequest] or [CygnusPlatformWebViewCreationParams.initialData] (using the `file://` scheme), it represents the URL from which to read the web content.
   ///This URL must be a file-based URL (using the `file://` scheme).
-  ///Specify the same value as the [URLRequest.url] if you are using it with the [PlatformWebViewCreationParams.initialUrlRequest] parameter or
-  ///the [InAppWebViewInitialData.baseUrl] if you are using it with the [PlatformWebViewCreationParams.initialData] parameter to prevent WebView from reading any other content.
+  ///Specify the same value as the [CygnusURLRequest.url] if you are using it with the [CygnusPlatformWebViewCreationParams.initialUrlRequest] parameter or
+  ///the [CygnusWebViewInitialData.baseUrl] if you are using it with the [CygnusPlatformWebViewCreationParams.initialData] parameter to prevent WebView from reading any other content.
   ///Specify a directory to give WebView permission to read additional files in the specified directory.
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
-  WebUri? allowingReadAccessTo;
+  CygnusWebUri? allowingReadAccessTo;
 
   ///Set to `true` to disable the context menu (copy, select, etc.) that is shown when the user emits a long press event on a HTML link.
   ///This is implemented using also JavaScript, so it must be enabled or it won't work.
@@ -2301,11 +2301,11 @@ requirement is missing it falls back to
   bool? javaScriptHandlersForMainFrameOnly;
 
   ///Set to `false` to disable the JavaScript Bridge completely.
-  ///This will affect also all the internal plugin [UserScript]s
+  ///This will affect also all the internal plugin [CygnusUserScript]s
   ///that are using the JavaScript Bridge to work.
   ///
   ///**NOTE**: setting or changing this value after the WebView has been created won't have any effect.
-  ///It should be set when initializing the WebView through [PlatformWebViewCreationParams.initialSettings] parameter.
+  ///It should be set when initializing the WebView through [CygnusPlatformWebViewCreationParams.initialSettings] parameter.
   ///
   ///The default value is `true`.
   @SupportedPlatforms(
@@ -2329,9 +2329,9 @@ requirement is missing it falls back to
   ///as it was set to `false`.
   ///
   ///**NOTE**: setting or changing this value after the WebView has been created won't have any effect.
-  ///It should be set when initializing the WebView through [PlatformWebViewCreationParams.initialSettings] parameter.
+  ///It should be set when initializing the WebView through [CygnusPlatformWebViewCreationParams.initialSettings] parameter.
   ///
-  ///**NOTE for Android**: each origin pattern MUST follow the table rule of [PlatformInAppWebViewController.addWebMessageListener].
+  ///**NOTE for Android**: each origin pattern MUST follow the table rule of [CygnusPlatformWebViewController.addWebMessageListener].
   ///
   ///**NOTE for iOS, macOS, Windows**: each origin pattern will be used as a
   ///Regular Expression Pattern that will be used on JavaScript side using [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).
@@ -2353,7 +2353,7 @@ requirement is missing it falls back to
   ///it only for the JavaScript Bridge internal plugin.
   ///
   ///**NOTE**: setting or changing this value after the WebView has been created won't have any effect.
-  ///It should be set when initializing the WebView through [PlatformWebViewCreationParams.initialSettings] parameter.
+  ///It should be set when initializing the WebView through [CygnusPlatformWebViewCreationParams.initialSettings] parameter.
   ///
   ///The default value is `false`.
   @SupportedPlatforms(
@@ -2367,15 +2367,15 @@ requirement is missing it falls back to
   bool? javaScriptBridgeForMainFrameOnly;
 
   ///A [Set] of patterns that will be used to match the allowed origins
-  ///that are able to load all the internal plugin [UserScript]s used by the plugin itself.
+  ///that are able to load all the internal plugin [CygnusUserScript]s used by the plugin itself.
   ///Adding `'*'` as an allowed origin or setting this to `null`, it means it will allow every origin.
   ///Instead, an empty [Set] will block every origin.
   ///
   ///**NOTE**: If [javaScriptBridgeOriginAllowList] is not present, this value will affect also the JavaScript Bridge internal plugin.
   ///Also, setting or changing this value after the WebView has been created won't have any effect.
-  ///It should be set when initializing the WebView through [PlatformWebViewCreationParams.initialSettings] parameter.
+  ///It should be set when initializing the WebView through [CygnusPlatformWebViewCreationParams.initialSettings] parameter.
   ///
-  ///**NOTE for Android**: each origin pattern MUST follow the table rule of [PlatformInAppWebViewController.addWebMessageListener].
+  ///**NOTE for Android**: each origin pattern MUST follow the table rule of [CygnusPlatformWebViewController.addWebMessageListener].
   ///
   ///**NOTE for iOS, macOS, Windows**: each origin pattern will be used as a
   ///Regular Expression Pattern that will be used on JavaScript side using [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).
@@ -2391,11 +2391,11 @@ requirement is missing it falls back to
   )
   Set<String>? pluginScriptsOriginAllowList;
 
-  ///Set to `true` to allow internal plugin [UserScript]s only on the main frame.
+  ///Set to `true` to allow internal plugin [CygnusUserScript]s only on the main frame.
   ///
   ///**NOTE**: If [javaScriptBridgeForMainFrameOnly] is not present, this value will affect also the JavaScript Bridge internal plugin.
   ///Also, setting or changing this value after the WebView has been created won't have any effect.
-  ///It should be set when initializing the WebView through [PlatformWebViewCreationParams.initialSettings] parameter.
+  ///It should be set when initializing the WebView through [CygnusPlatformWebViewCreationParams.initialSettings] parameter.
   ///
   ///The default value is `false`.
   @SupportedPlatforms(
@@ -2542,7 +2542,7 @@ requirement is missing it falls back to
 
   ///This property is used to customize the PDF toolbar items.
   ///
-  ///By default, it is [PdfToolbarItems.NONE] and so it displays all of the items.
+  ///By default, it is [CygnusPdfToolbarItems.NONE] and so it displays all of the items.
   ///Changes to this property apply to all CoreWebView2s in the same environment and using the same profile.
   ///Changes to this setting apply only after the next navigation.
   @SupportedPlatforms(
@@ -2555,7 +2555,7 @@ requirement is missing it falls back to
       ),
     ],
   )
-  PdfToolbarItems_? hiddenPdfToolbarItems;
+  CygnusPdfToolbarItems_? hiddenPdfToolbarItems;
 
   ///[reputationCheckingRequired] is used to control whether SmartScreen enabled or not.
   ///
@@ -2628,7 +2628,7 @@ requirement is missing it falls back to
   bool? isUserInteractionEnabled;
 
   ///A Boolean value that determines whether to listen and handle the
-  ///[PlatformWebViewCreationParams.onAcceleratorKeyPressed] event.
+  ///[CygnusPlatformWebViewCreationParams.onAcceleratorKeyPressed] event.
   ///
   ///The default value is `false`.
   @SupportedPlatforms(platforms: [WindowsPlatform()])
@@ -2657,11 +2657,11 @@ requirement is missing it falls back to
   )
   double? alpha;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.onShowFileChooser] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.onShowFileChooser] event.
   ///
-  ///If the [PlatformWebViewCreationParams.onShowFileChooser] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.onShowFileChooser] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   bool? useOnShowFileChooser;
 
@@ -2704,7 +2704,7 @@ requirement is missing it falls back to
       ),
     ],
   )
-  Set<Sandbox_>? iframeSandbox;
+  Set<CygnusSandbox_>? iframeSandbox;
 
   ///A string that reflects the `referrerpolicy` HTML attribute indicating which referrer to use when fetching the linked resource.
   @SupportedPlatforms(
@@ -2717,7 +2717,7 @@ requirement is missing it falls back to
       ),
     ],
   )
-  ReferrerPolicy_? iframeReferrerPolicy;
+  CygnusReferrerPolicy_? iframeReferrerPolicy;
 
   ///A string that reflects the `name` HTML attribute, containing a name by which to refer to the frame.
   @SupportedPlatforms(
@@ -3040,7 +3040,7 @@ requirement is missing it falls back to
       ),
     ],
   )
-  FontHintingStyle_? fontHintingStyle;
+  CygnusFontHintingStyle_? fontHintingStyle;
 
   ///Sets the font subpixel layout for LCD rendering.
   ///This determines how subpixel rendering is performed based on the
@@ -3060,7 +3060,7 @@ requirement is missing it falls back to
       ),
     ],
   )
-  FontSubpixelLayout_? fontSubpixelLayout;
+  CygnusFontSubpixelLayout_? fontSubpixelLayout;
 
   ///Sets the font DPI (dots per inch) for text rendering.
   ///This affects the size at which fonts are rendered.
@@ -3416,11 +3416,11 @@ requirement is missing it falls back to
   bool? allowTopNavigationToDataUrls;
 
   @ExchangeableObjectConstructor()
-  InAppWebViewSettings_({
+  CygnusWebViewSettings_({
     this.useShouldOverrideUrlLoading,
     this.useOnLoadResource,
     this.useOnDownloadStart,
-    @Deprecated("Use InAppWebViewController.clearAllCache instead")
+    @Deprecated("Use CygnusWebViewController.clearAllCache instead")
     this.clearCache = false,
     this.userAgent = "",
     this.applicationNameForUserAgent = "",
@@ -3432,7 +3432,7 @@ requirement is missing it falls back to
     this.horizontalScrollBarEnabled = true,
     this.resourceCustomSchemes = const [],
     this.contentBlockers = const [],
-    this.preferredContentMode = UserPreferredContentMode_.RECOMMENDED,
+    this.preferredContentMode = CygnusUserPreferredContentMode_.RECOMMENDED,
     this.useShouldInterceptAjaxRequest,
     this.useOnAjaxReadyStateChange,
     this.useOnAjaxProgress,
@@ -3448,7 +3448,7 @@ requirement is missing it falls back to
     this.allowFileAccessFromFileURLs = false,
     this.allowUniversalAccessFromFileURLs = false,
     this.textZoom,
-    @Deprecated("Use CookieManager.removeSessionCookies instead")
+    @Deprecated("Use CygnusCookieManager.removeSessionCookies instead")
     this.clearSessionCache = false,
     this.builtInZoomControls = true,
     this.displayZoomControls = false,
@@ -3462,7 +3462,7 @@ requirement is missing it falls back to
     this.appCachePath,
     this.blockNetworkImage = false,
     this.blockNetworkLoads = false,
-    this.cacheMode = CacheMode_.LOAD_DEFAULT,
+    this.cacheMode = CygnusCacheMode_.LOAD_DEFAULT,
     this.cursiveFontFamily = "cursive",
     this.defaultFixedFontSize = 16,
     this.defaultFontSize = 16,
@@ -3495,11 +3495,11 @@ requirement is missing it falls back to
     this.keyboardAvoidance = true,
     this.useShouldInterceptRequest,
     this.useOnRenderProcessGone,
-    this.overScrollMode = OverScrollMode_.IF_CONTENT_SCROLLS,
+    this.overScrollMode = CygnusOverScrollMode_.IF_CONTENT_SCROLLS,
     this.networkAvailable,
-    this.scrollBarStyle = ScrollBarStyle_.SCROLLBARS_INSIDE_OVERLAY,
+    this.scrollBarStyle = CygnusScrollBarStyle_.SCROLLBARS_INSIDE_OVERLAY,
     this.verticalScrollbarPosition =
-        VerticalScrollbarPosition_.SCROLLBAR_POSITION_DEFAULT,
+        CygnusVerticalScrollbarPosition_.SCROLLBAR_POSITION_DEFAULT,
     this.scrollBarDefaultDelayBeforeFade,
     this.scrollbarFadingEnabled = true,
     this.scrollBarFadeDuration,
@@ -3523,12 +3523,12 @@ requirement is missing it falls back to
     this.allowsInlineMediaPlayback = false,
     this.allowsPictureInPictureMediaPlayback = true,
     this.isFraudulentWebsiteWarningEnabled = true,
-    this.selectionGranularity = SelectionGranularity_.DYNAMIC,
-    this.dataDetectorTypes = const [DataDetectorTypes_.NONE],
+    this.selectionGranularity = CygnusSelectionGranularity_.DYNAMIC,
+    this.dataDetectorTypes = const [CygnusDataDetectorTypes_.NONE],
     this.sharedCookiesEnabled = false,
     this.automaticallyAdjustsScrollIndicatorInsets = false,
     this.accessibilityIgnoresInvertColors = false,
-    this.decelerationRate = ScrollViewDecelerationRate_.NORMAL,
+    this.decelerationRate = CygnusScrollViewDecelerationRate_.NORMAL,
     this.alwaysBounceVertical = false,
     this.alwaysBounceHorizontal = false,
     this.scrollsToTop = true,
@@ -3536,7 +3536,7 @@ requirement is missing it falls back to
     this.maximumZoomScale = 1.0,
     this.minimumZoomScale = 1.0,
     this.contentInsetAdjustmentBehavior =
-        ScrollViewContentInsetAdjustmentBehavior_.NEVER,
+        CygnusScrollViewContentInsetAdjustmentBehavior_.NEVER,
     this.isDirectionalLockEnabled = false,
     this.mediaType,
     this.pageZoom = 1.0,
@@ -3571,7 +3571,7 @@ requirement is missing it falls back to
     this.generalAutofillEnabled = true,
     this.passwordAutosaveEnabled = false,
     this.pinchZoomEnabled = true,
-    this.hiddenPdfToolbarItems = PdfToolbarItems_.NONE,
+    this.hiddenPdfToolbarItems = CygnusPdfToolbarItems_.NONE,
     this.reputationCheckingRequired = true,
     this.nonClientRegionSupportEnabled = false,
     this.isUserInteractionEnabled = true,
@@ -3650,35 +3650,35 @@ requirement is missing it falls back to
 
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   static bool isPropertySupported(
-    InAppWebViewSettingsProperty property, {
+    CygnusWebViewSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _InAppWebViewSettingsPropertySupported.isPropertySupported(
+  }) => _CygnusWebViewSettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 }
 
 ///Class that represents the options that can be used for a `WebView`.
-///Use [InAppWebViewSettings] instead.
-@Deprecated('Use InAppWebViewSettings instead')
-class InAppWebViewGroupOptions {
+///Use [CygnusWebViewSettings] instead.
+@Deprecated('Use CygnusWebViewSettings instead')
+class CygnusWebViewGroupOptions {
   ///Cross-platform options.
-  late InAppWebViewOptions crossPlatform;
+  late CygnusInAppWebViewOptions crossPlatform;
 
   ///Android-specific options.
-  late AndroidInAppWebViewOptions android;
+  late CygnusAndroidWebViewOptions android;
 
   ///iOS-specific options.
-  late IOSInAppWebViewOptions ios;
+  late CygnusIOSWebViewOptions ios;
 
-  InAppWebViewGroupOptions({
-    InAppWebViewOptions? crossPlatform,
-    AndroidInAppWebViewOptions? android,
-    IOSInAppWebViewOptions? ios,
+  CygnusWebViewGroupOptions({
+    CygnusInAppWebViewOptions? crossPlatform,
+    CygnusAndroidWebViewOptions? android,
+    CygnusIOSWebViewOptions? ios,
   }) {
-    this.crossPlatform = crossPlatform ?? InAppWebViewOptions();
-    this.android = android ?? AndroidInAppWebViewOptions();
-    this.ios = ios ?? IOSInAppWebViewOptions();
+    this.crossPlatform = crossPlatform ?? CygnusInAppWebViewOptions();
+    this.android = android ?? CygnusAndroidWebViewOptions();
+    this.ios = ios ?? CygnusIOSWebViewOptions();
   }
 
   Map<String, dynamic> toMap() {
@@ -3692,19 +3692,19 @@ class InAppWebViewGroupOptions {
     return options;
   }
 
-  static InAppWebViewGroupOptions fromMap(Map<String, dynamic> options) {
-    InAppWebViewGroupOptions inAppWebViewGroupOptions =
-        InAppWebViewGroupOptions();
+  static CygnusWebViewGroupOptions fromMap(Map<String, dynamic> options) {
+    CygnusWebViewGroupOptions inAppWebViewGroupOptions =
+        CygnusWebViewGroupOptions();
 
-    inAppWebViewGroupOptions.crossPlatform = InAppWebViewOptions.fromMap(
+    inAppWebViewGroupOptions.crossPlatform = CygnusInAppWebViewOptions.fromMap(
       options,
     );
     if (Util.isAndroid)
-      inAppWebViewGroupOptions.android = AndroidInAppWebViewOptions.fromMap(
+      inAppWebViewGroupOptions.android = CygnusAndroidWebViewOptions.fromMap(
         options,
       );
     else if (Util.isIOS)
-      inAppWebViewGroupOptions.ios = IOSInAppWebViewOptions.fromMap(options);
+      inAppWebViewGroupOptions.ios = CygnusIOSWebViewOptions.fromMap(options);
 
     return inAppWebViewGroupOptions;
   }
@@ -3718,22 +3718,22 @@ class InAppWebViewGroupOptions {
     return toMap().toString();
   }
 
-  InAppWebViewGroupOptions copy() {
-    return InAppWebViewGroupOptions.fromMap(this.toMap());
+  CygnusWebViewGroupOptions copy() {
+    return CygnusWebViewGroupOptions.fromMap(this.toMap());
   }
 }
 
-class WebViewOptions {
+class CygnusWebViewOptions {
   Map<String, dynamic> toMap() {
     return {};
   }
 
-  static WebViewOptions fromMap(Map<String, dynamic> map) {
-    return WebViewOptions();
+  static CygnusWebViewOptions fromMap(Map<String, dynamic> map) {
+    return CygnusWebViewOptions();
   }
 
-  WebViewOptions copy() {
-    return WebViewOptions.fromMap(this.toMap());
+  CygnusWebViewOptions copy() {
+    return CygnusWebViewOptions.fromMap(this.toMap());
   }
 
   Map<String, dynamic> toJson() {
@@ -3746,17 +3746,17 @@ class WebViewOptions {
   }
 }
 
-///Use [InAppWebViewSettings] instead.
-@Deprecated('Use InAppWebViewSettings instead')
-class InAppWebViewOptions
-    implements WebViewOptions, BrowserOptions, AndroidOptions, IosOptions {
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.shouldOverrideUrlLoading] event. The default value is `false`.
+///Use [CygnusWebViewSettings] instead.
+@Deprecated('Use CygnusWebViewSettings instead')
+class CygnusInAppWebViewOptions
+    implements CygnusWebViewOptions, CygnusBrowserOptions, CygnusAndroidOptions, CygnusIosOptions {
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading] event. The default value is `false`.
   bool useShouldOverrideUrlLoading;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.onLoadResource] event. The default value is `false`.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.onLoadResource] event. The default value is `false`.
   bool useOnLoadResource;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.onDownloadStart] event. The default value is `false`.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.onDownloadStart] event. The default value is `false`.
   bool useOnDownloadStart;
 
   ///Set to `true` to have all the browser's cache cleared before the new WebView is opened. The default value is `false`.
@@ -3792,25 +3792,25 @@ class InAppWebViewOptions
   ///Define whether the horizontal scrollbar should be drawn or not. The default value is `true`.
   bool horizontalScrollBarEnabled;
 
-  ///List of custom schemes that the WebView must handle. Use the [PlatformWebViewCreationParams.onLoadResourceCustomScheme] event to intercept resource requests with custom scheme.
+  ///List of custom schemes that the WebView must handle. Use the [CygnusPlatformWebViewCreationParams.onLoadResourceCustomScheme] event to intercept resource requests with custom scheme.
   ///
   ///**NOTE**: available on iOS 11.0+.
   List<String> resourceCustomSchemes;
 
-  ///List of [ContentBlocker] that are a set of rules used to block content in the browser window.
+  ///List of [CygnusContentBlocker] that are a set of rules used to block content in the browser window.
   ///
   ///**NOTE**: available on iOS 11.0+.
-  List<ContentBlocker> contentBlockers;
+  List<CygnusContentBlocker> contentBlockers;
 
-  ///Sets the content mode that the WebView needs to use when loading and rendering a webpage. The default value is [UserPreferredContentMode.RECOMMENDED].
+  ///Sets the content mode that the WebView needs to use when loading and rendering a webpage. The default value is [CygnusUserPreferredContentMode.RECOMMENDED].
   ///
   ///**NOTE**: available on iOS 13.0+.
-  UserPreferredContentMode? preferredContentMode;
+  CygnusUserPreferredContentMode? preferredContentMode;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.shouldInterceptAjaxRequest] event. The default value is `false`.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest] event. The default value is `false`.
   bool useShouldInterceptAjaxRequest;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.shouldInterceptFetchRequest] event. The default value is `false`.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.shouldInterceptFetchRequest] event. The default value is `false`.
   bool useShouldInterceptFetchRequest;
 
   ///Set to `true` to open a browser window with incognito mode. The default value is `false`.
@@ -3862,7 +3862,7 @@ class InAppWebViewOptions
   ///The default value is `false`.
   bool allowUniversalAccessFromFileURLs;
 
-  InAppWebViewOptions({
+  CygnusInAppWebViewOptions({
     this.useShouldOverrideUrlLoading = false,
     this.useOnLoadResource = false,
     this.useOnDownloadStart = false,
@@ -3877,7 +3877,7 @@ class InAppWebViewOptions
     this.horizontalScrollBarEnabled = true,
     this.resourceCustomSchemes = const [],
     this.contentBlockers = const [],
-    this.preferredContentMode = UserPreferredContentMode.RECOMMENDED,
+    this.preferredContentMode = CygnusUserPreferredContentMode.RECOMMENDED,
     this.useShouldInterceptAjaxRequest = false,
     this.useShouldInterceptFetchRequest = false,
     this.incognito = false,
@@ -3935,13 +3935,13 @@ class InAppWebViewOptions
     };
   }
 
-  static InAppWebViewOptions fromMap(Map<String, dynamic> map) {
-    List<ContentBlocker> contentBlockers = [];
+  static CygnusInAppWebViewOptions fromMap(Map<String, dynamic> map) {
+    List<CygnusContentBlocker> contentBlockers = [];
     List<dynamic>? contentBlockersMapList = map["contentBlockers"];
     if (contentBlockersMapList != null) {
       contentBlockersMapList.forEach((contentBlocker) {
         contentBlockers.add(
-          ContentBlocker.fromMap(
+          CygnusContentBlocker.fromMap(
             Map<String, Map<String, dynamic>>.from(
               Map<String, dynamic>.from(contentBlocker),
             ),
@@ -3950,7 +3950,7 @@ class InAppWebViewOptions
       });
     }
 
-    var instance = InAppWebViewOptions();
+    var instance = CygnusInAppWebViewOptions();
     instance.useShouldOverrideUrlLoading = map["useShouldOverrideUrlLoading"];
     instance.useOnLoadResource = map["useOnLoadResource"];
     instance.useOnDownloadStart = map["useOnDownloadStart"];
@@ -3968,7 +3968,7 @@ class InAppWebViewOptions
       map["resourceCustomSchemes"] ?? [],
     );
     instance.contentBlockers = contentBlockers;
-    instance.preferredContentMode = UserPreferredContentMode.fromNativeValue(
+    instance.preferredContentMode = CygnusUserPreferredContentMode.fromNativeValue(
       map["preferredContentMode"],
     );
     instance.useShouldInterceptAjaxRequest =
@@ -3999,7 +3999,7 @@ class InAppWebViewOptions
   }
 
   @override
-  InAppWebViewOptions copy() {
-    return InAppWebViewOptions.fromMap(this.toMap());
+  CygnusInAppWebViewOptions copy() {
+    return CygnusInAppWebViewOptions.fromMap(this.toMap());
   }
 }

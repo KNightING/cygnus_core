@@ -7,33 +7,33 @@ part of 'pull_to_refresh_size.dart';
 // **************************************************************************
 
 ///Class representing the size of the refresh indicator.
-class PullToRefreshSize {
+class CygnusPullToRefreshSize {
   final int _value;
   final int? _nativeValue;
-  const PullToRefreshSize._internal(this._value, this._nativeValue);
+  const CygnusPullToRefreshSize._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory PullToRefreshSize._internalMultiPlatform(
+  factory CygnusPullToRefreshSize._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => PullToRefreshSize._internal(value, nativeValue());
+  ) => CygnusPullToRefreshSize._internal(value, nativeValue());
 
   ///Default size.
-  static const DEFAULT = PullToRefreshSize._internal(1, 1);
+  static const DEFAULT = CygnusPullToRefreshSize._internal(1, 1);
 
   ///Large size.
-  static const LARGE = PullToRefreshSize._internal(0, 0);
+  static const LARGE = CygnusPullToRefreshSize._internal(0, 0);
 
-  ///Set of all values of [PullToRefreshSize].
-  static final Set<PullToRefreshSize> values = [
-    PullToRefreshSize.DEFAULT,
-    PullToRefreshSize.LARGE,
+  ///Set of all values of [CygnusPullToRefreshSize].
+  static final Set<CygnusPullToRefreshSize> values = [
+    CygnusPullToRefreshSize.DEFAULT,
+    CygnusPullToRefreshSize.LARGE,
   ].toSet();
 
-  ///Gets a possible [PullToRefreshSize] instance from [int] value.
-  static PullToRefreshSize? fromValue(int? value) {
+  ///Gets a possible [CygnusPullToRefreshSize] instance from [int] value.
+  static CygnusPullToRefreshSize? fromValue(int? value) {
     if (value != null) {
       try {
-        return PullToRefreshSize.values.firstWhere(
+        return CygnusPullToRefreshSize.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -43,11 +43,11 @@ class PullToRefreshSize {
     return null;
   }
 
-  ///Gets a possible [PullToRefreshSize] instance from a native value.
-  static PullToRefreshSize? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusPullToRefreshSize] instance from a native value.
+  static CygnusPullToRefreshSize? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return PullToRefreshSize.values.firstWhere(
+        return CygnusPullToRefreshSize.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -57,15 +57,15 @@ class PullToRefreshSize {
     return null;
   }
 
-  /// Gets a possible [PullToRefreshSize] instance value with name [name].
+  /// Gets a possible [CygnusPullToRefreshSize] instance value with name [name].
   ///
-  /// Goes through [PullToRefreshSize.values] looking for a value with
-  /// name [name], as reported by [PullToRefreshSize.name].
+  /// Goes through [CygnusPullToRefreshSize.values] looking for a value with
+  /// name [name], as reported by [CygnusPullToRefreshSize.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static PullToRefreshSize? byName(String? name) {
+  static CygnusPullToRefreshSize? byName(String? name) {
     if (name != null) {
       try {
-        return PullToRefreshSize.values.firstWhere(
+        return CygnusPullToRefreshSize.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -75,7 +75,7 @@ class PullToRefreshSize {
     return null;
   }
 
-  /// Creates a map from the names of [PullToRefreshSize] values to the values.
+  /// Creates a map from the names of [CygnusPullToRefreshSize] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -83,9 +83,9 @@ class PullToRefreshSize {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, PullToRefreshSize> asNameMap() =>
-      <String, PullToRefreshSize>{
-        for (final value in PullToRefreshSize.values) value.name(): value,
+  static Map<String, CygnusPullToRefreshSize> asNameMap() =>
+      <String, CygnusPullToRefreshSize>{
+        for (final value in CygnusPullToRefreshSize.values) value.name(): value,
       };
 
   ///Gets [int] value.
@@ -123,35 +123,38 @@ class PullToRefreshSize {
 }
 
 ///Android-specific class representing the size of the refresh indicator.
-///Use [PullToRefreshSize] instead.
-@Deprecated('Use PullToRefreshSize instead')
-class AndroidPullToRefreshSize {
+///Use [CygnusPullToRefreshSize] instead.
+@Deprecated('Use CygnusPullToRefreshSize instead')
+class CygnusAndroidPullToRefreshSize {
   final int _value;
   final int? _nativeValue;
-  const AndroidPullToRefreshSize._internal(this._value, this._nativeValue);
+  const CygnusAndroidPullToRefreshSize._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory AndroidPullToRefreshSize._internalMultiPlatform(
+  factory CygnusAndroidPullToRefreshSize._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => AndroidPullToRefreshSize._internal(value, nativeValue());
+  ) => CygnusAndroidPullToRefreshSize._internal(value, nativeValue());
 
   ///Default size.
-  static const DEFAULT = AndroidPullToRefreshSize._internal(1, 1);
+  static const DEFAULT = CygnusAndroidPullToRefreshSize._internal(1, 1);
 
   ///Large size.
-  static const LARGE = AndroidPullToRefreshSize._internal(0, 0);
+  static const LARGE = CygnusAndroidPullToRefreshSize._internal(0, 0);
 
-  ///Set of all values of [AndroidPullToRefreshSize].
-  static final Set<AndroidPullToRefreshSize> values = [
-    AndroidPullToRefreshSize.DEFAULT,
-    AndroidPullToRefreshSize.LARGE,
+  ///Set of all values of [CygnusAndroidPullToRefreshSize].
+  static final Set<CygnusAndroidPullToRefreshSize> values = [
+    CygnusAndroidPullToRefreshSize.DEFAULT,
+    CygnusAndroidPullToRefreshSize.LARGE,
   ].toSet();
 
-  ///Gets a possible [AndroidPullToRefreshSize] instance from [int] value.
-  static AndroidPullToRefreshSize? fromValue(int? value) {
+  ///Gets a possible [CygnusAndroidPullToRefreshSize] instance from [int] value.
+  static CygnusAndroidPullToRefreshSize? fromValue(int? value) {
     if (value != null) {
       try {
-        return AndroidPullToRefreshSize.values.firstWhere(
+        return CygnusAndroidPullToRefreshSize.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -161,11 +164,11 @@ class AndroidPullToRefreshSize {
     return null;
   }
 
-  ///Gets a possible [AndroidPullToRefreshSize] instance from a native value.
-  static AndroidPullToRefreshSize? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusAndroidPullToRefreshSize] instance from a native value.
+  static CygnusAndroidPullToRefreshSize? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return AndroidPullToRefreshSize.values.firstWhere(
+        return CygnusAndroidPullToRefreshSize.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -175,15 +178,15 @@ class AndroidPullToRefreshSize {
     return null;
   }
 
-  /// Gets a possible [AndroidPullToRefreshSize] instance value with name [name].
+  /// Gets a possible [CygnusAndroidPullToRefreshSize] instance value with name [name].
   ///
-  /// Goes through [AndroidPullToRefreshSize.values] looking for a value with
-  /// name [name], as reported by [AndroidPullToRefreshSize.name].
+  /// Goes through [CygnusAndroidPullToRefreshSize.values] looking for a value with
+  /// name [name], as reported by [CygnusAndroidPullToRefreshSize.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static AndroidPullToRefreshSize? byName(String? name) {
+  static CygnusAndroidPullToRefreshSize? byName(String? name) {
     if (name != null) {
       try {
-        return AndroidPullToRefreshSize.values.firstWhere(
+        return CygnusAndroidPullToRefreshSize.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -193,7 +196,7 @@ class AndroidPullToRefreshSize {
     return null;
   }
 
-  /// Creates a map from the names of [AndroidPullToRefreshSize] values to the values.
+  /// Creates a map from the names of [CygnusAndroidPullToRefreshSize] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -201,9 +204,9 @@ class AndroidPullToRefreshSize {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, AndroidPullToRefreshSize> asNameMap() =>
-      <String, AndroidPullToRefreshSize>{
-        for (final value in AndroidPullToRefreshSize.values)
+  static Map<String, CygnusAndroidPullToRefreshSize> asNameMap() =>
+      <String, CygnusAndroidPullToRefreshSize>{
+        for (final value in CygnusAndroidPullToRefreshSize.values)
           value.name(): value,
       };
 

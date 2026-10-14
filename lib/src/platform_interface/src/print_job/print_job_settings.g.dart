@@ -6,14 +6,14 @@ part of 'print_job_settings.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the settings of a [PlatformPrintJobController].
+///Class that represents the settings of a [CygnusPlatformPrintJobController].
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- Android WebView
 ///- iOS WKWebView
 ///- macOS WKWebView
 ///- Windows WebView2
-class PrintJobSettings {
+class CygnusPrintJobSettings {
   ///`true` to animate the display of the sheet, `false` to display the sheet immediately.
   ///
   ///**Officially Supported Platforms/Implementations**:
@@ -40,7 +40,7 @@ class PrintJobSettings {
   ///- Android WebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  PrintJobColorMode? colorMode;
+  CygnusPrintJobColorMode? colorMode;
 
   ///How many copies to print.
   ///The default value is `1`.
@@ -63,7 +63,7 @@ class PrintJobSettings {
   ///- Android WebView 23+
   ///- iOS WKWebView
   ///- Windows WebView2
-  PrintJobDuplexMode? duplexMode;
+  CygnusPrintJobDuplexMode? duplexMode;
 
   ///A fax number.
   ///
@@ -97,9 +97,9 @@ class PrintJobSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 14.5+
-  PrintJobRenderingQuality? forceRenderingQuality;
+  CygnusPrintJobRenderingQuality? forceRenderingQuality;
 
-  ///Set this to `true` to handle the [PlatformPrintJobController].
+  ///Set this to `true` to handle the [CygnusPlatformPrintJobController].
   ///Otherwise, it will be handled and disposed automatically by the system.
   ///The default value is `false`.
   ///
@@ -137,7 +137,7 @@ class PrintJobSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
-  PrintJobPaginationMode? horizontalPagination;
+  CygnusPrintJobPaginationMode? horizontalPagination;
 
   ///Indicates whether the image is centered horizontally.
   ///The default value is `true`.
@@ -157,7 +157,7 @@ class PrintJobSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
-  PrintJobDisposition? jobDisposition;
+  CygnusPrintJobDisposition? jobDisposition;
 
   ///The name of the print job.
   ///An application should set this property to a name appropriate to the content being printed.
@@ -169,11 +169,11 @@ class PrintJobSettings {
   ///- macOS WKWebView
   String? jobName;
 
-  ///An URL containing the location to which the job file will be saved when the [jobDisposition] is [PrintJobDisposition.SAVE].
+  ///An URL containing the location to which the job file will be saved when the [jobDisposition] is [CygnusPrintJobDisposition.SAVE].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
-  WebUri? jobSavingURL;
+  CygnusWebUri? jobSavingURL;
 
   ///An integer value that specifies the last page in the print job.
   ///
@@ -217,7 +217,7 @@ class PrintJobSettings {
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- Windows WebView2
-  PrintJobMediaSize? mediaSize;
+  CygnusPrintJobMediaSize? mediaSize;
 
   ///If `true`, collates output.
   ///
@@ -239,13 +239,13 @@ class PrintJobSettings {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  PrintJobOrientation? orientation;
+  CygnusPrintJobOrientation? orientation;
 
   ///The kind of printable content.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
-  PrintJobOutputType? outputType;
+  CygnusPrintJobOutputType? outputType;
 
   ///The page height in inches.
   ///The default height is 11 inches.
@@ -258,7 +258,7 @@ class PrintJobSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
-  PrintJobPageOrder? pageOrder;
+  CygnusPrintJobPageOrder? pageOrder;
 
   ///The page ranges to print.
   ///Pages are specified as a comma-separated list of page ranges where each page range specifies
@@ -304,11 +304,11 @@ class PrintJobSettings {
   String? paperName;
 
   ///The print dialog kind to show when [showUI] is `true`.
-  ///The default value is [PrintJobDialogKind.BROWSER].
+  ///The default value is [CygnusPrintJobDialogKind.BROWSER].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  PrintJobDialogKind? printDialogKind;
+  CygnusPrintJobDialogKind? printDialogKind;
 
   ///The name of the printer to use.
   ///Defaults to the user default printer.
@@ -321,7 +321,7 @@ class PrintJobSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  PrintJobResolution? resolution;
+  CygnusPrintJobResolution? resolution;
 
   ///The current scaling factor. From `0.0` to `1.0`.
   ///
@@ -457,7 +457,7 @@ class PrintJobSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
-  PrintJobPaginationMode? verticalPagination;
+  CygnusPrintJobPaginationMode? verticalPagination;
 
   ///
   ///**Officially Supported Platforms/Implementations**:
@@ -465,7 +465,7 @@ class PrintJobSettings {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  PrintJobSettings({
+  CygnusPrintJobSettings({
     this.animated = true,
     this.canSpawnSeparateThread = true,
     this.collate,
@@ -505,7 +505,7 @@ class PrintJobSettings {
     this.pagesDown,
     this.pagesPerSide,
     this.paperName,
-    PrintJobDialogKind? printDialogKind,
+    CygnusPrintJobDialogKind? printDialogKind,
     this.printerName,
     this.resolution,
     this.scalingFactor,
@@ -526,104 +526,126 @@ class PrintJobSettings {
     this.showsScaling = true,
     this.time,
     this.verticalPagination,
-  }) : printDialogKind = printDialogKind ?? PrintJobDialogKind.BROWSER;
+  }) : printDialogKind = printDialogKind ?? CygnusPrintJobDialogKind.BROWSER;
 
-  ///Gets a possible [PrintJobSettings] instance from a [Map] value.
-  static PrintJobSettings? fromMap(
+  ///Gets a possible [CygnusPrintJobSettings] instance from a [Map] value.
+  static CygnusPrintJobSettings? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = PrintJobSettings(
+    final instance = CygnusPrintJobSettings(
       collate: map['collate'],
-      colorMode: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobColorMode.fromNativeValue(
+      colorMode: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusPrintJobColorMode.fromNativeValue(
           map['colorMode'],
         ),
-        EnumMethod.value => PrintJobColorMode.fromValue(map['colorMode']),
-        EnumMethod.name => PrintJobColorMode.byName(map['colorMode']),
+        CygnusEnumMethod.value => CygnusPrintJobColorMode.fromValue(
+          map['colorMode'],
+        ),
+        CygnusEnumMethod.name => CygnusPrintJobColorMode.byName(
+          map['colorMode'],
+        ),
       },
-      duplexMode: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobDuplexMode.fromNativeValue(
+      duplexMode: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusPrintJobDuplexMode.fromNativeValue(map['duplexMode']),
+        CygnusEnumMethod.value => CygnusPrintJobDuplexMode.fromValue(
           map['duplexMode'],
         ),
-        EnumMethod.value => PrintJobDuplexMode.fromValue(map['duplexMode']),
-        EnumMethod.name => PrintJobDuplexMode.byName(map['duplexMode']),
+        CygnusEnumMethod.name => CygnusPrintJobDuplexMode.byName(
+          map['duplexMode'],
+        ),
       },
       faxNumber: map['faxNumber'],
       firstPage: map['firstPage'],
       footerHeight: map['footerHeight'],
       footerUri: map['footerUri'],
-      forceRenderingQuality: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobRenderingQuality.fromNativeValue(
+      forceRenderingQuality: switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusPrintJobRenderingQuality.fromNativeValue(
+            map['forceRenderingQuality'],
+          ),
+        CygnusEnumMethod.value => CygnusPrintJobRenderingQuality.fromValue(
           map['forceRenderingQuality'],
         ),
-        EnumMethod.value => PrintJobRenderingQuality.fromValue(
-          map['forceRenderingQuality'],
-        ),
-        EnumMethod.name => PrintJobRenderingQuality.byName(
+        CygnusEnumMethod.name => CygnusPrintJobRenderingQuality.byName(
           map['forceRenderingQuality'],
         ),
       },
       headerHeight: map['headerHeight'],
       headerTitle: map['headerTitle'],
-      horizontalPagination: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobPaginationMode.fromNativeValue(
+      horizontalPagination: switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusPrintJobPaginationMode.fromNativeValue(
+            map['horizontalPagination'],
+          ),
+        CygnusEnumMethod.value => CygnusPrintJobPaginationMode.fromValue(
           map['horizontalPagination'],
         ),
-        EnumMethod.value => PrintJobPaginationMode.fromValue(
-          map['horizontalPagination'],
-        ),
-        EnumMethod.name => PrintJobPaginationMode.byName(
+        CygnusEnumMethod.name => CygnusPrintJobPaginationMode.byName(
           map['horizontalPagination'],
         ),
       },
-      jobDisposition: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobDisposition.fromNativeValue(
+      jobDisposition: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusPrintJobDisposition.fromNativeValue(map['jobDisposition']),
+        CygnusEnumMethod.value => CygnusPrintJobDisposition.fromValue(
           map['jobDisposition'],
         ),
-        EnumMethod.value => PrintJobDisposition.fromValue(
+        CygnusEnumMethod.name => CygnusPrintJobDisposition.byName(
           map['jobDisposition'],
         ),
-        EnumMethod.name => PrintJobDisposition.byName(map['jobDisposition']),
       },
       jobName: map['jobName'],
       jobSavingURL: map['jobSavingURL'] != null
-          ? WebUri(map['jobSavingURL'])
+          ? CygnusWebUri(map['jobSavingURL'])
           : null,
       lastPage: map['lastPage'],
       margins: MapEdgeInsets.fromMap(map['margins']?.cast<String, dynamic>()),
       maximumContentHeight: map['maximumContentHeight'],
       maximumContentWidth: map['maximumContentWidth'],
-      mediaSize: PrintJobMediaSize.fromMap(
+      mediaSize: CygnusPrintJobMediaSize.fromMap(
         map['mediaSize']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
       mustCollate: map['mustCollate'],
       numberOfPages: map['numberOfPages'],
-      orientation: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobOrientation.fromNativeValue(
+      orientation: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusPrintJobOrientation.fromNativeValue(map['orientation']),
+        CygnusEnumMethod.value => CygnusPrintJobOrientation.fromValue(
           map['orientation'],
         ),
-        EnumMethod.value => PrintJobOrientation.fromValue(map['orientation']),
-        EnumMethod.name => PrintJobOrientation.byName(map['orientation']),
+        CygnusEnumMethod.name => CygnusPrintJobOrientation.byName(
+          map['orientation'],
+        ),
       },
-      outputType: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobOutputType.fromNativeValue(
+      outputType: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusPrintJobOutputType.fromNativeValue(map['outputType']),
+        CygnusEnumMethod.value => CygnusPrintJobOutputType.fromValue(
           map['outputType'],
         ),
-        EnumMethod.value => PrintJobOutputType.fromValue(map['outputType']),
-        EnumMethod.name => PrintJobOutputType.byName(map['outputType']),
+        CygnusEnumMethod.name => CygnusPrintJobOutputType.byName(
+          map['outputType'],
+        ),
       },
       pageHeight: map['pageHeight'],
-      pageOrder: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobPageOrder.fromNativeValue(
+      pageOrder: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusPrintJobPageOrder.fromNativeValue(
           map['pageOrder'],
         ),
-        EnumMethod.value => PrintJobPageOrder.fromValue(map['pageOrder']),
-        EnumMethod.name => PrintJobPageOrder.byName(map['pageOrder']),
+        CygnusEnumMethod.value => CygnusPrintJobPageOrder.fromValue(
+          map['pageOrder'],
+        ),
+        CygnusEnumMethod.name => CygnusPrintJobPageOrder.byName(
+          map['pageOrder'],
+        ),
       },
       pageRanges: map['pageRanges'],
       pageWidth: map['pageWidth'],
@@ -632,7 +654,7 @@ class PrintJobSettings {
       pagesPerSide: map['pagesPerSide'],
       paperName: map['paperName'],
       printerName: map['printerName'],
-      resolution: PrintJobResolution.fromMap(
+      resolution: CygnusPrintJobResolution.fromMap(
         map['resolution']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -641,14 +663,15 @@ class PrintJobSettings {
       shouldPrintHeaderAndFooter: map['shouldPrintHeaderAndFooter'],
       shouldPrintSelectionOnly: map['shouldPrintSelectionOnly'],
       time: map['time'],
-      verticalPagination: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobPaginationMode.fromNativeValue(
+      verticalPagination: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusPrintJobPaginationMode.fromNativeValue(
+            map['verticalPagination'],
+          ),
+        CygnusEnumMethod.value => CygnusPrintJobPaginationMode.fromValue(
           map['verticalPagination'],
         ),
-        EnumMethod.value => PrintJobPaginationMode.fromValue(
-          map['verticalPagination'],
-        ),
-        EnumMethod.name => PrintJobPaginationMode.byName(
+        CygnusEnumMethod.name => CygnusPrintJobPaginationMode.byName(
           map['verticalPagination'],
         ),
       },
@@ -661,12 +684,17 @@ class PrintJobSettings {
     instance.headerAndFooter = map['headerAndFooter'];
     instance.isHorizontallyCentered = map['isHorizontallyCentered'];
     instance.isVerticallyCentered = map['isVerticallyCentered'];
-    instance.printDialogKind = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => PrintJobDialogKind.fromNativeValue(
+    instance.printDialogKind = switch (enumMethod ??
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue => CygnusPrintJobDialogKind.fromNativeValue(
         map['printDialogKind'],
       ),
-      EnumMethod.value => PrintJobDialogKind.fromValue(map['printDialogKind']),
-      EnumMethod.name => PrintJobDialogKind.byName(map['printDialogKind']),
+      CygnusEnumMethod.value => CygnusPrintJobDialogKind.fromValue(
+        map['printDialogKind'],
+      ),
+      CygnusEnumMethod.name => CygnusPrintJobDialogKind.byName(
+        map['printDialogKind'],
+      ),
     };
     instance.showUI = map['showUI'];
     instance.showsNumberOfCopies = map['showsNumberOfCopies'];
@@ -686,55 +714,57 @@ class PrintJobSettings {
 
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   static bool isPropertySupported(
-    PrintJobSettingsProperty property, {
+    CygnusPrintJobSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _PrintJobSettingsPropertySupported.isPropertySupported(
+  }) => _CygnusPrintJobSettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "animated": animated,
       "canSpawnSeparateThread": canSpawnSeparateThread,
       "collate": collate,
-      "colorMode": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => colorMode?.toNativeValue(),
-        EnumMethod.value => colorMode?.toValue(),
-        EnumMethod.name => colorMode?.name(),
+      "colorMode": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => colorMode?.toNativeValue(),
+        CygnusEnumMethod.value => colorMode?.toValue(),
+        CygnusEnumMethod.name => colorMode?.name(),
       },
       "copies": copies,
       "detailedErrorReporting": detailedErrorReporting,
-      "duplexMode": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => duplexMode?.toNativeValue(),
-        EnumMethod.value => duplexMode?.toValue(),
-        EnumMethod.name => duplexMode?.name(),
+      "duplexMode": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => duplexMode?.toNativeValue(),
+        CygnusEnumMethod.value => duplexMode?.toValue(),
+        CygnusEnumMethod.name => duplexMode?.name(),
       },
       "faxNumber": faxNumber,
       "firstPage": firstPage,
       "footerHeight": footerHeight,
       "footerUri": footerUri,
-      "forceRenderingQuality": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => forceRenderingQuality?.toNativeValue(),
-        EnumMethod.value => forceRenderingQuality?.toValue(),
-        EnumMethod.name => forceRenderingQuality?.name(),
+      "forceRenderingQuality": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => forceRenderingQuality?.toNativeValue(),
+        CygnusEnumMethod.value => forceRenderingQuality?.toValue(),
+        CygnusEnumMethod.name => forceRenderingQuality?.name(),
       },
       "handledByClient": handledByClient,
       "headerAndFooter": headerAndFooter,
       "headerHeight": headerHeight,
       "headerTitle": headerTitle,
-      "horizontalPagination": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => horizontalPagination?.toNativeValue(),
-        EnumMethod.value => horizontalPagination?.toValue(),
-        EnumMethod.name => horizontalPagination?.name(),
+      "horizontalPagination": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => horizontalPagination?.toNativeValue(),
+        CygnusEnumMethod.value => horizontalPagination?.toValue(),
+        CygnusEnumMethod.name => horizontalPagination?.name(),
       },
       "isHorizontallyCentered": isHorizontallyCentered,
       "isVerticallyCentered": isVerticallyCentered,
-      "jobDisposition": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => jobDisposition?.toNativeValue(),
-        EnumMethod.value => jobDisposition?.toValue(),
-        EnumMethod.name => jobDisposition?.name(),
+      "jobDisposition": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => jobDisposition?.toNativeValue(),
+        CygnusEnumMethod.value => jobDisposition?.toValue(),
+        CygnusEnumMethod.name => jobDisposition?.name(),
       },
       "jobName": jobName,
       "jobSavingURL": jobSavingURL?.toString(),
@@ -745,21 +775,21 @@ class PrintJobSettings {
       "mediaSize": mediaSize?.toMap(enumMethod: enumMethod),
       "mustCollate": mustCollate,
       "numberOfPages": numberOfPages,
-      "orientation": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => orientation?.toNativeValue(),
-        EnumMethod.value => orientation?.toValue(),
-        EnumMethod.name => orientation?.name(),
+      "orientation": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => orientation?.toNativeValue(),
+        CygnusEnumMethod.value => orientation?.toValue(),
+        CygnusEnumMethod.name => orientation?.name(),
       },
-      "outputType": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => outputType?.toNativeValue(),
-        EnumMethod.value => outputType?.toValue(),
-        EnumMethod.name => outputType?.name(),
+      "outputType": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => outputType?.toNativeValue(),
+        CygnusEnumMethod.value => outputType?.toValue(),
+        CygnusEnumMethod.name => outputType?.name(),
       },
       "pageHeight": pageHeight,
-      "pageOrder": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => pageOrder?.toNativeValue(),
-        EnumMethod.value => pageOrder?.toValue(),
-        EnumMethod.name => pageOrder?.name(),
+      "pageOrder": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => pageOrder?.toNativeValue(),
+        CygnusEnumMethod.value => pageOrder?.toValue(),
+        CygnusEnumMethod.name => pageOrder?.name(),
       },
       "pageRanges": pageRanges,
       "pageWidth": pageWidth,
@@ -767,10 +797,10 @@ class PrintJobSettings {
       "pagesDown": pagesDown,
       "pagesPerSide": pagesPerSide,
       "paperName": paperName,
-      "printDialogKind": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => printDialogKind?.toNativeValue(),
-        EnumMethod.value => printDialogKind?.toValue(),
-        EnumMethod.name => printDialogKind?.name(),
+      "printDialogKind": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => printDialogKind?.toNativeValue(),
+        CygnusEnumMethod.value => printDialogKind?.toValue(),
+        CygnusEnumMethod.name => printDialogKind?.name(),
       },
       "printerName": printerName,
       "resolution": resolution?.toMap(enumMethod: enumMethod),
@@ -791,10 +821,11 @@ class PrintJobSettings {
       "showsProgressPanel": showsProgressPanel,
       "showsScaling": showsScaling,
       "time": time,
-      "verticalPagination": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => verticalPagination?.toNativeValue(),
-        EnumMethod.value => verticalPagination?.toValue(),
-        EnumMethod.name => verticalPagination?.name(),
+      "verticalPagination": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => verticalPagination?.toNativeValue(),
+        CygnusEnumMethod.value => verticalPagination?.toValue(),
+        CygnusEnumMethod.name => verticalPagination?.name(),
       },
     };
   }
@@ -804,14 +835,14 @@ class PrintJobSettings {
     return toMap();
   }
 
-  ///Returns a copy of PrintJobSettings.
-  PrintJobSettings copy() {
-    return PrintJobSettings.fromMap(toMap()) ?? PrintJobSettings();
+  ///Returns a copy of CygnusPrintJobSettings.
+  CygnusPrintJobSettings copy() {
+    return CygnusPrintJobSettings.fromMap(toMap()) ?? CygnusPrintJobSettings();
   }
 
   @override
   String toString() {
-    return 'PrintJobSettings{animated: $animated, canSpawnSeparateThread: $canSpawnSeparateThread, collate: $collate, colorMode: $colorMode, copies: $copies, detailedErrorReporting: $detailedErrorReporting, duplexMode: $duplexMode, faxNumber: $faxNumber, firstPage: $firstPage, footerHeight: $footerHeight, footerUri: $footerUri, forceRenderingQuality: $forceRenderingQuality, handledByClient: $handledByClient, headerAndFooter: $headerAndFooter, headerHeight: $headerHeight, headerTitle: $headerTitle, horizontalPagination: $horizontalPagination, isHorizontallyCentered: $isHorizontallyCentered, isVerticallyCentered: $isVerticallyCentered, jobDisposition: $jobDisposition, jobName: $jobName, jobSavingURL: $jobSavingURL, lastPage: $lastPage, margins: $margins, maximumContentHeight: $maximumContentHeight, maximumContentWidth: $maximumContentWidth, mediaSize: $mediaSize, mustCollate: $mustCollate, numberOfPages: $numberOfPages, orientation: $orientation, outputType: $outputType, pageHeight: $pageHeight, pageOrder: $pageOrder, pageRanges: $pageRanges, pageWidth: $pageWidth, pagesAcross: $pagesAcross, pagesDown: $pagesDown, pagesPerSide: $pagesPerSide, paperName: $paperName, printDialogKind: $printDialogKind, printerName: $printerName, resolution: $resolution, scalingFactor: $scalingFactor, shouldPrintBackgrounds: $shouldPrintBackgrounds, shouldPrintHeaderAndFooter: $shouldPrintHeaderAndFooter, shouldPrintSelectionOnly: $shouldPrintSelectionOnly, showUI: $showUI, showsNumberOfCopies: $showsNumberOfCopies, showsPageRange: $showsPageRange, showsPageSetupAccessory: $showsPageSetupAccessory, showsPaperOrientation: $showsPaperOrientation, showsPaperSelectionForLoadedPapers: $showsPaperSelectionForLoadedPapers, showsPaperSize: $showsPaperSize, showsPreview: $showsPreview, showsPrintPanel: $showsPrintPanel, showsPrintSelection: $showsPrintSelection, showsProgressPanel: $showsProgressPanel, showsScaling: $showsScaling, time: $time, verticalPagination: $verticalPagination}';
+    return 'CygnusPrintJobSettings{animated: $animated, canSpawnSeparateThread: $canSpawnSeparateThread, collate: $collate, colorMode: $colorMode, copies: $copies, detailedErrorReporting: $detailedErrorReporting, duplexMode: $duplexMode, faxNumber: $faxNumber, firstPage: $firstPage, footerHeight: $footerHeight, footerUri: $footerUri, forceRenderingQuality: $forceRenderingQuality, handledByClient: $handledByClient, headerAndFooter: $headerAndFooter, headerHeight: $headerHeight, headerTitle: $headerTitle, horizontalPagination: $horizontalPagination, isHorizontallyCentered: $isHorizontallyCentered, isVerticallyCentered: $isVerticallyCentered, jobDisposition: $jobDisposition, jobName: $jobName, jobSavingURL: $jobSavingURL, lastPage: $lastPage, margins: $margins, maximumContentHeight: $maximumContentHeight, maximumContentWidth: $maximumContentWidth, mediaSize: $mediaSize, mustCollate: $mustCollate, numberOfPages: $numberOfPages, orientation: $orientation, outputType: $outputType, pageHeight: $pageHeight, pageOrder: $pageOrder, pageRanges: $pageRanges, pageWidth: $pageWidth, pagesAcross: $pagesAcross, pagesDown: $pagesDown, pagesPerSide: $pagesPerSide, paperName: $paperName, printDialogKind: $printDialogKind, printerName: $printerName, resolution: $resolution, scalingFactor: $scalingFactor, shouldPrintBackgrounds: $shouldPrintBackgrounds, shouldPrintHeaderAndFooter: $shouldPrintHeaderAndFooter, shouldPrintSelectionOnly: $shouldPrintSelectionOnly, showUI: $showUI, showsNumberOfCopies: $showsNumberOfCopies, showsPageRange: $showsPageRange, showsPageSetupAccessory: $showsPageSetupAccessory, showsPaperOrientation: $showsPaperOrientation, showsPaperSelectionForLoadedPapers: $showsPaperSelectionForLoadedPapers, showsPaperSize: $showsPaperSize, showsPreview: $showsPreview, showsPrintPanel: $showsPrintPanel, showsPrintSelection: $showsPrintSelection, showsProgressPanel: $showsProgressPanel, showsScaling: $showsScaling, time: $time, verticalPagination: $verticalPagination}';
   }
 }
 
@@ -819,344 +850,344 @@ class PrintJobSettings {
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-///List of [PrintJobSettings]'s properties that can be used to check i they are supported or not by the current platform.
-enum PrintJobSettingsProperty {
-  ///Can be used to check if the [PrintJobSettings.animated] property is supported at runtime.
+///List of [CygnusPrintJobSettings]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPrintJobSettingsProperty {
+  ///Can be used to check if the [CygnusPrintJobSettings.animated] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.animated.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.animated.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   animated,
 
-  ///Can be used to check if the [PrintJobSettings.canSpawnSeparateThread] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.canSpawnSeparateThread] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.canSpawnSeparateThread.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.canSpawnSeparateThread.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   canSpawnSeparateThread,
 
-  ///Can be used to check if the [PrintJobSettings.collate] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.collate] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.collate.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.collate.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   collate,
 
-  ///Can be used to check if the [PrintJobSettings.colorMode] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.colorMode] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.colorMode.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.colorMode.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   colorMode,
 
-  ///Can be used to check if the [PrintJobSettings.copies] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.copies] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.copies.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.copies.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   copies,
 
-  ///Can be used to check if the [PrintJobSettings.detailedErrorReporting] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.detailedErrorReporting] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.detailedErrorReporting.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.detailedErrorReporting.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   detailedErrorReporting,
 
-  ///Can be used to check if the [PrintJobSettings.duplexMode] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.duplexMode] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.duplexMode.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.duplexMode.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 23+
   ///- iOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   duplexMode,
 
-  ///Can be used to check if the [PrintJobSettings.faxNumber] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.faxNumber] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.faxNumber.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.faxNumber.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   faxNumber,
 
-  ///Can be used to check if the [PrintJobSettings.firstPage] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.firstPage] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.firstPage.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.firstPage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   firstPage,
 
-  ///Can be used to check if the [PrintJobSettings.footerHeight] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.footerHeight] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.footerHeight.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.footerHeight.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   footerHeight,
 
-  ///Can be used to check if the [PrintJobSettings.footerUri] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.footerUri] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.footerUri.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.footerUri.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   footerUri,
 
-  ///Can be used to check if the [PrintJobSettings.forceRenderingQuality] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.forceRenderingQuality] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.forceRenderingQuality.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.forceRenderingQuality.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 14.5+
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   forceRenderingQuality,
 
-  ///Can be used to check if the [PrintJobSettings.handledByClient] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.handledByClient] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.handledByClient.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.handledByClient.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   handledByClient,
 
-  ///Can be used to check if the [PrintJobSettings.headerAndFooter] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.headerAndFooter] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.headerAndFooter.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.headerAndFooter.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   headerAndFooter,
 
-  ///Can be used to check if the [PrintJobSettings.headerHeight] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.headerHeight] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.headerHeight.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.headerHeight.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   headerHeight,
 
-  ///Can be used to check if the [PrintJobSettings.headerTitle] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.headerTitle] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.headerTitle.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.headerTitle.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   headerTitle,
 
-  ///Can be used to check if the [PrintJobSettings.horizontalPagination] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.horizontalPagination] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.horizontalPagination.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.horizontalPagination.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   horizontalPagination,
 
-  ///Can be used to check if the [PrintJobSettings.isHorizontallyCentered] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.isHorizontallyCentered] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.isHorizontallyCentered.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.isHorizontallyCentered.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   isHorizontallyCentered,
 
-  ///Can be used to check if the [PrintJobSettings.isVerticallyCentered] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.isVerticallyCentered] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.isVerticallyCentered.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.isVerticallyCentered.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   isVerticallyCentered,
 
-  ///Can be used to check if the [PrintJobSettings.jobDisposition] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.jobDisposition] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.jobDisposition.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.jobDisposition.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   jobDisposition,
 
-  ///Can be used to check if the [PrintJobSettings.jobName] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.jobName] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.jobName.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.jobName.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   jobName,
 
-  ///Can be used to check if the [PrintJobSettings.jobSavingURL] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.jobSavingURL] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.jobSavingURL.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.jobSavingURL.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   jobSavingURL,
 
-  ///Can be used to check if the [PrintJobSettings.lastPage] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.lastPage] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.lastPage.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.lastPage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   lastPage,
 
-  ///Can be used to check if the [PrintJobSettings.margins] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.margins] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.margins.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.margins.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   margins,
 
-  ///Can be used to check if the [PrintJobSettings.maximumContentHeight] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.maximumContentHeight] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.maximumContentHeight.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.maximumContentHeight.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   maximumContentHeight,
 
-  ///Can be used to check if the [PrintJobSettings.maximumContentWidth] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.maximumContentWidth] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.maximumContentWidth.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.maximumContentWidth.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   maximumContentWidth,
 
-  ///Can be used to check if the [PrintJobSettings.mediaSize] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.mediaSize] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.mediaSize.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.mediaSize.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   mediaSize,
 
-  ///Can be used to check if the [PrintJobSettings.mustCollate] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.mustCollate] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.mustCollate.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.mustCollate.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   mustCollate,
 
-  ///Can be used to check if the [PrintJobSettings.numberOfPages] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.numberOfPages] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.numberOfPages.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.numberOfPages.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   numberOfPages,
 
-  ///Can be used to check if the [PrintJobSettings.orientation] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.orientation] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.orientation.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.orientation.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1164,476 +1195,476 @@ enum PrintJobSettingsProperty {
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   orientation,
 
-  ///Can be used to check if the [PrintJobSettings.outputType] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.outputType] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.outputType.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.outputType.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   outputType,
 
-  ///Can be used to check if the [PrintJobSettings.pageHeight] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.pageHeight] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.pageHeight.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.pageHeight.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   pageHeight,
 
-  ///Can be used to check if the [PrintJobSettings.pageOrder] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.pageOrder] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.pageOrder.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.pageOrder.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   pageOrder,
 
-  ///Can be used to check if the [PrintJobSettings.pageRanges] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.pageRanges] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.pageRanges.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.pageRanges.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   pageRanges,
 
-  ///Can be used to check if the [PrintJobSettings.pageWidth] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.pageWidth] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.pageWidth.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.pageWidth.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   pageWidth,
 
-  ///Can be used to check if the [PrintJobSettings.pagesAcross] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.pagesAcross] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.pagesAcross.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.pagesAcross.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   pagesAcross,
 
-  ///Can be used to check if the [PrintJobSettings.pagesDown] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.pagesDown] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.pagesDown.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.pagesDown.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   pagesDown,
 
-  ///Can be used to check if the [PrintJobSettings.pagesPerSide] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.pagesPerSide] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.pagesPerSide.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.pagesPerSide.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   pagesPerSide,
 
-  ///Can be used to check if the [PrintJobSettings.paperName] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.paperName] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.paperName.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.paperName.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   paperName,
 
-  ///Can be used to check if the [PrintJobSettings.printDialogKind] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.printDialogKind] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.printDialogKind.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.printDialogKind.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   printDialogKind,
 
-  ///Can be used to check if the [PrintJobSettings.printerName] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.printerName] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.printerName.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.printerName.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   printerName,
 
-  ///Can be used to check if the [PrintJobSettings.resolution] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.resolution] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.resolution.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.resolution.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   resolution,
 
-  ///Can be used to check if the [PrintJobSettings.scalingFactor] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.scalingFactor] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.scalingFactor.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.scalingFactor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   scalingFactor,
 
-  ///Can be used to check if the [PrintJobSettings.shouldPrintBackgrounds] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.shouldPrintBackgrounds] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.shouldPrintBackgrounds.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.shouldPrintBackgrounds.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   shouldPrintBackgrounds,
 
-  ///Can be used to check if the [PrintJobSettings.shouldPrintHeaderAndFooter] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.shouldPrintHeaderAndFooter] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.shouldPrintHeaderAndFooter.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.shouldPrintHeaderAndFooter.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   shouldPrintHeaderAndFooter,
 
-  ///Can be used to check if the [PrintJobSettings.shouldPrintSelectionOnly] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.shouldPrintSelectionOnly] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.shouldPrintSelectionOnly.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.shouldPrintSelectionOnly.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   shouldPrintSelectionOnly,
 
-  ///Can be used to check if the [PrintJobSettings.showUI] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.showUI] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.showUI.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.showUI.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   showUI,
 
-  ///Can be used to check if the [PrintJobSettings.showsNumberOfCopies] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.showsNumberOfCopies] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.showsNumberOfCopies.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.showsNumberOfCopies.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   showsNumberOfCopies,
 
-  ///Can be used to check if the [PrintJobSettings.showsPageRange] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.showsPageRange] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.showsPageRange.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.showsPageRange.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   showsPageRange,
 
-  ///Can be used to check if the [PrintJobSettings.showsPageSetupAccessory] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.showsPageSetupAccessory] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.showsPageSetupAccessory.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.showsPageSetupAccessory.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   showsPageSetupAccessory,
 
-  ///Can be used to check if the [PrintJobSettings.showsPaperOrientation] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.showsPaperOrientation] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.showsPaperOrientation.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.showsPaperOrientation.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   showsPaperOrientation,
 
-  ///Can be used to check if the [PrintJobSettings.showsPaperSelectionForLoadedPapers] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.showsPaperSelectionForLoadedPapers] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.showsPaperSelectionForLoadedPapers.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.showsPaperSelectionForLoadedPapers.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   showsPaperSelectionForLoadedPapers,
 
-  ///Can be used to check if the [PrintJobSettings.showsPaperSize] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.showsPaperSize] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.showsPaperSize.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.showsPaperSize.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   showsPaperSize,
 
-  ///Can be used to check if the [PrintJobSettings.showsPreview] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.showsPreview] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.showsPreview.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.showsPreview.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   showsPreview,
 
-  ///Can be used to check if the [PrintJobSettings.showsPrintPanel] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.showsPrintPanel] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.showsPrintPanel.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.showsPrintPanel.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   showsPrintPanel,
 
-  ///Can be used to check if the [PrintJobSettings.showsPrintSelection] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.showsPrintSelection] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.showsPrintSelection.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.showsPrintSelection.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   showsPrintSelection,
 
-  ///Can be used to check if the [PrintJobSettings.showsProgressPanel] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.showsProgressPanel] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.showsProgressPanel.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.showsProgressPanel.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   showsProgressPanel,
 
-  ///Can be used to check if the [PrintJobSettings.showsScaling] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.showsScaling] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.showsScaling.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.showsScaling.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   showsScaling,
 
-  ///Can be used to check if the [PrintJobSettings.time] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.time] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.time.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.time.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   time,
 
-  ///Can be used to check if the [PrintJobSettings.verticalPagination] property is supported at runtime.
+  ///Can be used to check if the [CygnusPrintJobSettings.verticalPagination] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PrintJobSettings.verticalPagination.supported_platforms}
+  ///{@template cygnus_core.CygnusPrintJobSettings.verticalPagination.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   ///
-  ///Use the [PrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPrintJobSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   verticalPagination,
 }
 
-extension _PrintJobSettingsPropertySupported on PrintJobSettings {
+extension _CygnusPrintJobSettingsPropertySupported on CygnusPrintJobSettings {
   static bool isPropertySupported(
-    PrintJobSettingsProperty property, {
+    CygnusPrintJobSettingsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PrintJobSettingsProperty.animated:
+      case CygnusPrintJobSettingsProperty.animated:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.canSpawnSeparateThread:
+      case CygnusPrintJobSettingsProperty.canSpawnSeparateThread:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.collate:
+      case CygnusPrintJobSettingsProperty.collate:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.colorMode:
+      case CygnusPrintJobSettingsProperty.colorMode:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.copies:
+      case CygnusPrintJobSettingsProperty.copies:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.detailedErrorReporting:
+      case CygnusPrintJobSettingsProperty.detailedErrorReporting:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.duplexMode:
+      case CygnusPrintJobSettingsProperty.duplexMode:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.faxNumber:
+      case CygnusPrintJobSettingsProperty.faxNumber:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.firstPage:
+      case CygnusPrintJobSettingsProperty.firstPage:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.footerHeight:
+      case CygnusPrintJobSettingsProperty.footerHeight:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.footerUri:
+      case CygnusPrintJobSettingsProperty.footerUri:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.forceRenderingQuality:
+      case CygnusPrintJobSettingsProperty.forceRenderingQuality:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.handledByClient:
+      case CygnusPrintJobSettingsProperty.handledByClient:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.headerAndFooter:
+      case CygnusPrintJobSettingsProperty.headerAndFooter:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.headerHeight:
+      case CygnusPrintJobSettingsProperty.headerHeight:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.headerTitle:
+      case CygnusPrintJobSettingsProperty.headerTitle:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.horizontalPagination:
+      case CygnusPrintJobSettingsProperty.horizontalPagination:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.isHorizontallyCentered:
+      case CygnusPrintJobSettingsProperty.isHorizontallyCentered:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.isVerticallyCentered:
+      case CygnusPrintJobSettingsProperty.isVerticallyCentered:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.jobDisposition:
+      case CygnusPrintJobSettingsProperty.jobDisposition:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.jobName:
+      case CygnusPrintJobSettingsProperty.jobName:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.jobSavingURL:
+      case CygnusPrintJobSettingsProperty.jobSavingURL:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.lastPage:
+      case CygnusPrintJobSettingsProperty.lastPage:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.margins:
+      case CygnusPrintJobSettingsProperty.margins:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.maximumContentHeight:
+      case CygnusPrintJobSettingsProperty.maximumContentHeight:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.maximumContentWidth:
+      case CygnusPrintJobSettingsProperty.maximumContentWidth:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.mediaSize:
+      case CygnusPrintJobSettingsProperty.mediaSize:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.mustCollate:
+      case CygnusPrintJobSettingsProperty.mustCollate:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.numberOfPages:
+      case CygnusPrintJobSettingsProperty.numberOfPages:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.orientation:
+      case CygnusPrintJobSettingsProperty.orientation:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -1641,125 +1672,125 @@ extension _PrintJobSettingsPropertySupported on PrintJobSettings {
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.outputType:
+      case CygnusPrintJobSettingsProperty.outputType:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.pageHeight:
+      case CygnusPrintJobSettingsProperty.pageHeight:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.pageOrder:
+      case CygnusPrintJobSettingsProperty.pageOrder:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.pageRanges:
+      case CygnusPrintJobSettingsProperty.pageRanges:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.pageWidth:
+      case CygnusPrintJobSettingsProperty.pageWidth:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.pagesAcross:
+      case CygnusPrintJobSettingsProperty.pagesAcross:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.pagesDown:
+      case CygnusPrintJobSettingsProperty.pagesDown:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.pagesPerSide:
+      case CygnusPrintJobSettingsProperty.pagesPerSide:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.paperName:
+      case CygnusPrintJobSettingsProperty.paperName:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.printDialogKind:
+      case CygnusPrintJobSettingsProperty.printDialogKind:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.printerName:
+      case CygnusPrintJobSettingsProperty.printerName:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.resolution:
+      case CygnusPrintJobSettingsProperty.resolution:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.scalingFactor:
+      case CygnusPrintJobSettingsProperty.scalingFactor:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.shouldPrintBackgrounds:
+      case CygnusPrintJobSettingsProperty.shouldPrintBackgrounds:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.shouldPrintHeaderAndFooter:
+      case CygnusPrintJobSettingsProperty.shouldPrintHeaderAndFooter:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.shouldPrintSelectionOnly:
+      case CygnusPrintJobSettingsProperty.shouldPrintSelectionOnly:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.showUI:
+      case CygnusPrintJobSettingsProperty.showUI:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.showsNumberOfCopies:
+      case CygnusPrintJobSettingsProperty.showsNumberOfCopies:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.showsPageRange:
+      case CygnusPrintJobSettingsProperty.showsPageRange:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.showsPageSetupAccessory:
+      case CygnusPrintJobSettingsProperty.showsPageSetupAccessory:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.showsPaperOrientation:
+      case CygnusPrintJobSettingsProperty.showsPaperOrientation:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.showsPaperSelectionForLoadedPapers:
+      case CygnusPrintJobSettingsProperty.showsPaperSelectionForLoadedPapers:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.showsPaperSize:
+      case CygnusPrintJobSettingsProperty.showsPaperSize:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.showsPreview:
+      case CygnusPrintJobSettingsProperty.showsPreview:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.showsPrintPanel:
+      case CygnusPrintJobSettingsProperty.showsPrintPanel:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.showsPrintSelection:
+      case CygnusPrintJobSettingsProperty.showsPrintSelection:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.showsProgressPanel:
+      case CygnusPrintJobSettingsProperty.showsProgressPanel:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.showsScaling:
+      case CygnusPrintJobSettingsProperty.showsScaling:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.time:
+      case CygnusPrintJobSettingsProperty.time:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
-      case PrintJobSettingsProperty.verticalPagination:
+      case CygnusPrintJobSettingsProperty.verticalPagination:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.macOS].contains(platform ?? defaultTargetPlatform);
     }

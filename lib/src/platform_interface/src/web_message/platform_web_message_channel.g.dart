@@ -6,9 +6,9 @@ part of 'platform_web_message_channel.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformWebMessageChannelCreationParamsClassSupported
-    on PlatformWebMessageChannelCreationParams {
-  ///{@template cygnus_core.PlatformWebMessageChannelCreationParams.supported_platforms}
+extension _CygnusPlatformWebMessageChannelCreationParamsClassSupported
+    on CygnusPlatformWebMessageChannelCreationParams {
+  ///{@template cygnus_core.CygnusPlatformWebMessageChannelCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -19,7 +19,7 @@ extension _PlatformWebMessageChannelCreationParamsClassSupported
   ///- Windows WebView2:
   ///    - Implemented via JavaScript MessageChannel API.
   ///
-  ///Use the [PlatformWebMessageChannelCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformWebMessageChannelCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -33,11 +33,11 @@ extension _PlatformWebMessageChannelCreationParamsClassSupported
   }
 }
 
-///List of [PlatformWebMessageChannelCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformWebMessageChannelCreationParamsProperty {
-  ///Can be used to check if the [PlatformWebMessageChannelCreationParams.id] property is supported at runtime.
+///List of [CygnusPlatformWebMessageChannelCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformWebMessageChannelCreationParamsProperty {
+  ///Can be used to check if the [CygnusPlatformWebMessageChannelCreationParams.id] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebMessageChannelCreationParams.id.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebMessageChannelCreationParams.id.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -48,13 +48,13 @@ enum PlatformWebMessageChannelCreationParamsProperty {
   ///- Windows WebView2:
   ///    - Implemented via JavaScript MessageChannel API.
   ///
-  ///Use the [PlatformWebMessageChannelCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebMessageChannelCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   id,
 
-  ///Can be used to check if the [PlatformWebMessageChannelCreationParams.port1] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebMessageChannelCreationParams.port1] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebMessageChannelCreationParams.port1.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebMessageChannelCreationParams.port1.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -65,13 +65,13 @@ enum PlatformWebMessageChannelCreationParamsProperty {
   ///- Windows WebView2:
   ///    - Implemented via JavaScript MessageChannel API.
   ///
-  ///Use the [PlatformWebMessageChannelCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebMessageChannelCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   port1,
 
-  ///Can be used to check if the [PlatformWebMessageChannelCreationParams.port2] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebMessageChannelCreationParams.port2] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebMessageChannelCreationParams.port2.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebMessageChannelCreationParams.port2.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -82,19 +82,19 @@ enum PlatformWebMessageChannelCreationParamsProperty {
   ///- Windows WebView2:
   ///    - Implemented via JavaScript MessageChannel API.
   ///
-  ///Use the [PlatformWebMessageChannelCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebMessageChannelCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   port2,
 }
 
-extension _PlatformWebMessageChannelCreationParamsPropertySupported
-    on PlatformWebMessageChannelCreationParams {
+extension _CygnusPlatformWebMessageChannelCreationParamsPropertySupported
+    on CygnusPlatformWebMessageChannelCreationParams {
   static bool isPropertySupported(
-    PlatformWebMessageChannelCreationParamsProperty property, {
+    CygnusPlatformWebMessageChannelCreationParamsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformWebMessageChannelCreationParamsProperty.id:
+      case CygnusPlatformWebMessageChannelCreationParamsProperty.id:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -103,7 +103,7 @@ extension _PlatformWebMessageChannelCreationParamsPropertySupported
               TargetPlatform.linux,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebMessageChannelCreationParamsProperty.port1:
+      case CygnusPlatformWebMessageChannelCreationParamsProperty.port1:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -112,7 +112,7 @@ extension _PlatformWebMessageChannelCreationParamsPropertySupported
               TargetPlatform.linux,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebMessageChannelCreationParamsProperty.port2:
+      case CygnusPlatformWebMessageChannelCreationParamsProperty.port2:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -125,9 +125,9 @@ extension _PlatformWebMessageChannelCreationParamsPropertySupported
   }
 }
 
-extension _PlatformWebMessageChannelClassSupported
-    on PlatformWebMessageChannel {
-  ///{@template cygnus_core.PlatformWebMessageChannel.supported_platforms}
+extension _CygnusPlatformWebMessageChannelClassSupported
+    on CygnusPlatformWebMessageChannel {
+  ///{@template cygnus_core.CygnusPlatformWebMessageChannel.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -138,7 +138,7 @@ extension _PlatformWebMessageChannelClassSupported
   ///- Windows WebView2:
   ///    - Implemented via JavaScript MessageChannel API.
   ///
-  ///Use the [PlatformWebMessageChannel.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformWebMessageChannel.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -152,11 +152,11 @@ extension _PlatformWebMessageChannelClassSupported
   }
 }
 
-///List of [PlatformWebMessageChannel]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformWebMessageChannelMethod {
-  ///Can be used to check if the [PlatformWebMessageChannel.dispose] method is supported at runtime.
+///List of [CygnusPlatformWebMessageChannel]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformWebMessageChannelMethod {
+  ///Can be used to check if the [CygnusPlatformWebMessageChannel.dispose] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebMessageChannel.dispose.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebMessageChannel.dispose.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -167,19 +167,19 @@ enum PlatformWebMessageChannelMethod {
   ///- Windows WebView2:
   ///    - Implemented via JavaScript MessageChannel API.
   ///
-  ///Use the [PlatformWebMessageChannel.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebMessageChannel.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   dispose,
 }
 
-extension _PlatformWebMessageChannelMethodSupported
-    on PlatformWebMessageChannel {
+extension _CygnusPlatformWebMessageChannelMethodSupported
+    on CygnusPlatformWebMessageChannel {
   static bool isMethodSupported(
-    PlatformWebMessageChannelMethod method, {
+    CygnusPlatformWebMessageChannelMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformWebMessageChannelMethod.dispose:
+      case CygnusPlatformWebMessageChannelMethod.dispose:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,

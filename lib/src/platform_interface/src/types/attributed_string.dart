@@ -11,9 +11,9 @@ import 'enum_method.dart';
 part 'attributed_string.g.dart';
 
 ///Class that represents a string with associated attributes
-///used by the [PlatformPullToRefreshController] and [PullToRefreshSettings] classes.
+///used by the [CygnusPlatformPullToRefreshController] and [CygnusPullToRefreshSettings] classes.
 @ExchangeableObject()
-class AttributedString_ {
+class CygnusAttributedString_ {
   ///The characters for the new object.
   String string;
 
@@ -73,9 +73,9 @@ class AttributedString_ {
 
   ///The strikethrough style of the text.
   ///
-  ///This value indicates whether the text has a line through it and corresponds to one of the constants described in [UnderlineStyle].
-  ///The default value for this attribute is [UnderlineStyle.STYLE_NONE].
-  UnderlineStyle_? strikethroughStyle;
+  ///This value indicates whether the text has a line through it and corresponds to one of the constants described in [CygnusUnderlineStyle].
+  ///The default value for this attribute is [CygnusUnderlineStyle.STYLE_NONE].
+  CygnusUnderlineStyle_? strikethroughStyle;
 
   ///The color of the stroke.
   ///
@@ -96,9 +96,9 @@ class AttributedString_ {
 
   ///The text effect.
   ///
-  ///The value of this attribute is a [AttributedStringTextEffectStyle] object.
+  ///The value of this attribute is a [CygnusAttributedStringTextEffectStyle] object.
   ///The default value of this property is `null`, indicating no text effect.
-  AttributedStringTextEffectStyle_? textEffect;
+  CygnusAttributedStringTextEffectStyle_? textEffect;
 
   ///The color of the underline.
   ///
@@ -108,11 +108,11 @@ class AttributedString_ {
 
   ///The underline style of the text.
   ///
-  ///This value indicates whether the text is underlined and corresponds to one of the constants described in [UnderlineStyle].
-  ///The default value for this attribute is [UnderlineStyle.STYLE_NONE].
-  UnderlineStyle_? underlineStyle;
+  ///This value indicates whether the text is underlined and corresponds to one of the constants described in [CygnusUnderlineStyle].
+  ///The default value for this attribute is [CygnusUnderlineStyle.STYLE_NONE].
+  CygnusUnderlineStyle_? underlineStyle;
 
-  AttributedString_({
+  CygnusAttributedString_({
     required this.string,
     this.backgroundColor,
     this.baselineOffset,
@@ -132,11 +132,11 @@ class AttributedString_ {
 }
 
 ///An iOS-specific class that represents a string with associated attributes
-///used by the [PlatformPullToRefreshController] and [PullToRefreshOptions] classes.
-///Use [AttributedString] instead.
-@Deprecated("Use AttributedString instead")
+///used by the [CygnusPlatformPullToRefreshController] and [CygnusPullToRefreshOptions] classes.
+///Use [CygnusAttributedString] instead.
+@Deprecated("Use CygnusAttributedString instead")
 @ExchangeableObject()
-class IOSNSAttributedString_ {
+class CygnusIOSNSAttributedString_ {
   ///The characters for the new object.
   String string;
 
@@ -196,9 +196,9 @@ class IOSNSAttributedString_ {
 
   ///The strikethrough style of the text.
   ///
-  ///This value indicates whether the text has a line through it and corresponds to one of the constants described in [IOSNSUnderlineStyle].
-  ///The default value for this attribute is [IOSNSUnderlineStyle.STYLE_NONE].
-  IOSNSUnderlineStyle_? strikethroughStyle;
+  ///This value indicates whether the text has a line through it and corresponds to one of the constants described in [CygnusIOSNSUnderlineStyle].
+  ///The default value for this attribute is [CygnusIOSNSUnderlineStyle.STYLE_NONE].
+  CygnusIOSNSUnderlineStyle_? strikethroughStyle;
 
   ///The color of the stroke.
   ///
@@ -219,9 +219,9 @@ class IOSNSAttributedString_ {
 
   ///The text effect.
   ///
-  ///The value of this attribute is a [IOSNSAttributedStringTextEffectStyle] object.
+  ///The value of this attribute is a [CygnusIOSNSAttributedStringTextEffectStyle] object.
   ///The default value of this property is `null`, indicating no text effect.
-  IOSNSAttributedStringTextEffectStyle_? textEffect;
+  CygnusIOSNSAttributedStringTextEffectStyle_? textEffect;
 
   ///The color of the underline.
   ///
@@ -231,11 +231,11 @@ class IOSNSAttributedString_ {
 
   ///The underline style of the text.
   ///
-  ///This value indicates whether the text is underlined and corresponds to one of the constants described in [IOSNSUnderlineStyle].
-  ///The default value for this attribute is [IOSNSUnderlineStyle.STYLE_NONE].
-  IOSNSUnderlineStyle_? underlineStyle;
+  ///This value indicates whether the text is underlined and corresponds to one of the constants described in [CygnusIOSNSUnderlineStyle].
+  ///The default value for this attribute is [CygnusIOSNSUnderlineStyle.STYLE_NONE].
+  CygnusIOSNSUnderlineStyle_? underlineStyle;
 
-  IOSNSAttributedString_({
+  CygnusIOSNSAttributedString_({
     required this.string,
     this.backgroundColor,
     this.baselineOffset,

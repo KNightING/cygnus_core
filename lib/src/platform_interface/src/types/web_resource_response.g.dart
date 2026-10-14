@@ -7,7 +7,7 @@ part of 'web_resource_response.dart';
 // **************************************************************************
 
 ///Class representing a resource response of the `WebView`.
-class WebResourceResponse {
+class CygnusWebResourceResponse {
   ///The resource response's encoding. The default value is `utf-8`.
   String? contentEncoding;
 
@@ -33,7 +33,7 @@ class WebResourceResponse {
   ///
   ///**NOTE**: available on Android 21+. For Android < 21 it won't be used.
   int? statusCode;
-  WebResourceResponse({
+  CygnusWebResourceResponse({
     this.contentEncoding = "utf-8",
     this.contentType = "",
     this.data,
@@ -42,15 +42,15 @@ class WebResourceResponse {
     this.statusCode,
   });
 
-  ///Gets a possible [WebResourceResponse] instance from a [Map] value.
-  static WebResourceResponse? fromMap(
+  ///Gets a possible [CygnusWebResourceResponse] instance from a [Map] value.
+  static CygnusWebResourceResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = WebResourceResponse(
+    final instance = CygnusWebResourceResponse(
       data: map['data'] != null
           ? Uint8List.fromList(map['data'].cast<int>())
           : null,
@@ -64,7 +64,7 @@ class WebResourceResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "contentEncoding": contentEncoding,
       "contentType": contentType,
@@ -82,6 +82,6 @@ class WebResourceResponse {
 
   @override
   String toString() {
-    return 'WebResourceResponse{contentEncoding: $contentEncoding, contentType: $contentType, data: $data, headers: $headers, reasonPhrase: $reasonPhrase, statusCode: $statusCode}';
+    return 'CygnusWebResourceResponse{contentEncoding: $contentEncoding, contentType: $contentType, data: $data, headers: $headers, reasonPhrase: $reasonPhrase, statusCode: $statusCode}';
   }
 }

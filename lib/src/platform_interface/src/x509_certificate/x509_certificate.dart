@@ -12,9 +12,9 @@ import 'asn1_distinguished_names.dart';
 
 ///Class that represents a X.509 certificate.
 ///This provides a standard way to access all the attributes of an X.509 certificate.
-class X509Certificate {
-  List<ASN1Object>? asn1;
-  ASN1Object? block1;
+class CygnusX509Certificate {
+  List<CygnusASN1Object>? asn1;
+  CygnusASN1Object? block1;
 
   ///Returns the encoded form of this certificate. It is
   ///assumed that each certificate type would have only a single
@@ -25,62 +25,62 @@ class X509Certificate {
   static const beginPemBlock = "-----BEGIN CERTIFICATE-----";
   static const endPemBlock = "-----END CERTIFICATE-----";
 
-  X509Certificate({ASN1Object? asn1}) {
+  CygnusX509Certificate({CygnusASN1Object? asn1}) {
     if (asn1 != null) {
       var block1 = asn1.subAtIndex(0);
       if (block1 == null) {
-        throw ASN1ParseError();
+        throw CygnusASN1ParseError();
       }
     }
   }
 
-  static X509Certificate fromData({required Uint8List data}) {
+  static CygnusX509Certificate fromData({required Uint8List data}) {
     var decoded = utf8.decode(data, allowMalformed: true);
-    if (decoded.contains(X509Certificate.beginPemBlock)) {
-      return X509Certificate.fromPemData(pem: data);
+    if (decoded.contains(CygnusX509Certificate.beginPemBlock)) {
+      return CygnusX509Certificate.fromPemData(pem: data);
     } else {
-      return X509Certificate.fromDerData(der: data);
+      return CygnusX509Certificate.fromDerData(der: data);
     }
   }
 
-  static X509Certificate fromDerData({required Uint8List der}) {
-    var asn1 = ASN1DERDecoder.decode(data: der.toList(growable: true));
+  static CygnusX509Certificate fromDerData({required Uint8List der}) {
+    var asn1 = CygnusASN1DERDecoder.decode(data: der.toList(growable: true));
     if (asn1.length > 0) {
       var block1 = asn1.first.subAtIndex(0);
       if (block1 != null) {
-        var certificate = X509Certificate();
+        var certificate = CygnusX509Certificate();
         certificate.asn1 = asn1;
         certificate.block1 = block1;
         certificate.encoded = der;
         return certificate;
       }
     }
-    throw ASN1ParseError();
+    throw CygnusASN1ParseError();
   }
 
-  static X509Certificate fromPemData({required Uint8List pem}) {
-    var derData = X509Certificate.decodeToDER(pemData: pem);
+  static CygnusX509Certificate fromPemData({required Uint8List pem}) {
+    var derData = CygnusX509Certificate.decodeToDER(pemData: pem);
     if (derData == null) {
-      throw ASN1ParseError();
+      throw CygnusASN1ParseError();
     }
-    return X509Certificate.fromDerData(der: derData);
+    return CygnusX509Certificate.fromDerData(der: derData);
   }
 
   ///Read possible PEM encoding
   static Uint8List? decodeToDER({required pemData}) {
     var pem = String.fromCharCodes(pemData);
-    if (pem.contains(X509Certificate.beginPemBlock)) {
+    if (pem.contains(CygnusX509Certificate.beginPemBlock)) {
       var lines = pem.split("\n");
       var base64buffer = "";
       var certLine = false;
       for (var line in lines) {
-        if (line == X509Certificate.endPemBlock) {
+        if (line == CygnusX509Certificate.endPemBlock) {
           certLine = false;
         }
         if (certLine) {
           base64buffer += line;
         }
-        if (line == X509Certificate.beginPemBlock) {
+        if (line == CygnusX509Certificate.beginPemBlock) {
           certLine = true;
         }
       }
@@ -130,24 +130,24 @@ class X509Certificate {
 
   ///Gets the serialNumber value from the certificate.
   List<int>? get serialNumber {
-    var data = block1?.atIndex(X509BlockPosition.serialNumber)?.value;
+    var data = block1?.atIndex(CygnusX509BlockPosition.serialNumber)?.value;
     return data is List<int> ? data : null;
   }
 
   ///Returns the issuer (issuer distinguished name) value from the certificate as a String.
   String? get issuerDistinguishedName {
-    var issuerBlock = block1?.atIndex(X509BlockPosition.issuer);
+    var issuerBlock = block1?.atIndex(CygnusX509BlockPosition.issuer);
     if (issuerBlock != null) {
-      return ASN1DistinguishedNames.string(block: issuerBlock);
+      return CygnusASN1DistinguishedNames.string(block: issuerBlock);
     }
     return null;
   }
 
   List<String> get issuerOIDs {
     var result = <String>[];
-    var issuerBlock = block1?.atIndex(X509BlockPosition.issuer);
+    var issuerBlock = block1?.atIndex(CygnusX509BlockPosition.issuer);
     if (issuerBlock != null) {
-      for (var sub in (issuerBlock.sub ?? <ASN1Object>[])) {
+      for (var sub in (issuerBlock.sub ?? <CygnusASN1Object>[])) {
         var value = firstLeafValue(block: sub);
         if (value is String) {
           result.add(value);
@@ -157,12 +157,12 @@ class X509Certificate {
     return result;
   }
 
-  String? issuer({String? oid, ASN1DistinguishedNames? dn}) {
+  String? issuer({String? oid, CygnusASN1DistinguishedNames? dn}) {
     if (oid == null && dn != null) {
       oid = dn.oid();
     }
     if (oid != null) {
-      var issuerBlock = block1?.atIndex(X509BlockPosition.issuer);
+      var issuerBlock = block1?.atIndex(CygnusX509BlockPosition.issuer);
       if (issuerBlock != null) {
         var oidBlock = issuerBlock.findOid(oidValue: oid);
         if (oidBlock != null) {
@@ -180,18 +180,18 @@ class X509Certificate {
 
   ///Returns the subject (subject distinguished name) value from the certificate as a String.
   String? get subjectDistinguishedName {
-    var subjectBlock = block1?.atIndex(X509BlockPosition.subject);
+    var subjectBlock = block1?.atIndex(CygnusX509BlockPosition.subject);
     if (subjectBlock != null) {
-      return ASN1DistinguishedNames.string(block: subjectBlock);
+      return CygnusASN1DistinguishedNames.string(block: subjectBlock);
     }
     return null;
   }
 
   List<String> get subjectOIDs {
     var result = <String>[];
-    var subjectBlock = block1?.atIndex(X509BlockPosition.subject);
+    var subjectBlock = block1?.atIndex(CygnusX509BlockPosition.subject);
     if (subjectBlock != null) {
-      for (var sub in (subjectBlock.sub ?? <ASN1Object>[])) {
+      for (var sub in (subjectBlock.sub ?? <CygnusASN1Object>[])) {
         var value = firstLeafValue(block: sub);
         if (value is String) {
           result.add(value);
@@ -201,12 +201,12 @@ class X509Certificate {
     return result;
   }
 
-  String? subject({String? oid, ASN1DistinguishedNames? dn}) {
+  String? subject({String? oid, CygnusASN1DistinguishedNames? dn}) {
     if (oid == null && dn != null) {
       oid = dn.oid();
     }
     if (oid != null) {
-      var subjectBlock = block1?.atIndex(X509BlockPosition.subject);
+      var subjectBlock = block1?.atIndex(CygnusX509BlockPosition.subject);
       if (subjectBlock != null) {
         var oidBlock = subjectBlock.findOid(oidValue: oid);
         if (oidBlock != null) {
@@ -225,7 +225,7 @@ class X509Certificate {
   ///Gets the notBefore date from the validity period of the certificate.
   DateTime? get notBefore {
     var data = block1
-        ?.atIndex(X509BlockPosition.dateValidity)
+        ?.atIndex(CygnusX509BlockPosition.dateValidity)
         ?.subAtIndex(0)
         ?.value;
     return data is DateTime ? data : null;
@@ -234,7 +234,7 @@ class X509Certificate {
   ///Gets the notAfter date from the validity period of the certificate.
   DateTime? get notAfter {
     var data = block1
-        ?.atIndex(X509BlockPosition.dateValidity)
+        ?.atIndex(CygnusX509BlockPosition.dateValidity)
         ?.subAtIndex(1)
         ?.value;
     return data is DateTime ? data : null;
@@ -247,9 +247,9 @@ class X509Certificate {
   }
 
   ///Gets the signature algorithm name for the certificate signature algorithm.
-  String? get sigAlgName => OID.fromValue(sigAlgOID ?? '')?.name();
+  String? get sigAlgName => CygnusOID.fromValue(sigAlgOID ?? '')?.name();
 
-  ///Gets the signature algorithm OID string from the certificate.
+  ///Gets the signature algorithm CygnusOID string from the certificate.
   String? get sigAlgOID {
     var data = block1?.subAtIndex(2)?.subAtIndex(0)?.value;
     return data is String ? data : null;
@@ -258,9 +258,9 @@ class X509Certificate {
   ///Gets the DER-encoded signature algorithm parameters from this certificate's signature algorithm.
   List<int>? get sigAlgParams => null;
 
-  ///Gets a boolean array representing bits of the KeyUsage extension, (OID = 2.5.29.15).
+  ///Gets a boolean array representing bits of the CygnusKeyUsage extension, (CygnusOID = 2.5.29.15).
   ///```
-  ///KeyUsage ::= BIT STRING {
+  ///CygnusKeyUsage ::= BIT STRING {
   ///digitalSignature        (0),
   ///nonRepudiation          (1),
   ///keyEncipherment         (2),
@@ -274,7 +274,7 @@ class X509Certificate {
   ///```
   List<bool> get keyUsage {
     var result = <bool>[];
-    var oidBlock = block1?.findOid(oid: OID.keyUsage);
+    var oidBlock = block1?.findOid(oid: CygnusOID.keyUsage);
     if (oidBlock != null) {
       var sub = oidBlock.parent?.sub;
       if (sub != null && sub.length > 0) {
@@ -290,115 +290,115 @@ class X509Certificate {
   }
 
   ///Gets a list of Strings representing the OBJECT IDENTIFIERs of the ExtKeyUsageSyntax field of
-  ///the extended key usage extension, (OID = 2.5.29.37).
+  ///the extended key usage extension, (CygnusOID = 2.5.29.37).
   List<String> get extendedKeyUsage =>
-      extensionObject(oid: OID.extKeyUsage)?.valueAsStrings ?? <String>[];
+      extensionObject(oid: CygnusOID.extKeyUsage)?.valueAsStrings ?? <String>[];
 
-  ///Gets a collection of subject alternative names from the SubjectAltName extension, (OID = 2.5.29.17).
+  ///Gets a collection of subject alternative names from the SubjectAltName extension, (CygnusOID = 2.5.29.17).
   List<String> get subjectAlternativeNames =>
-      extensionObject(oid: OID.subjectAltName)?.alternativeNameAsStrings ??
+      extensionObject(oid: CygnusOID.subjectAltName)?.alternativeNameAsStrings ??
       <String>[];
 
-  ///Gets a collection of issuer alternative names from the IssuerAltName extension, (OID = 2.5.29.18).
+  ///Gets a collection of issuer alternative names from the IssuerAltName extension, (CygnusOID = 2.5.29.18).
   List<String> get issuerAlternativeNames =>
-      extensionObject(oid: OID.issuerAltName)?.alternativeNameAsStrings ??
+      extensionObject(oid: CygnusOID.issuerAltName)?.alternativeNameAsStrings ??
       <String>[];
 
   ///Gets the informations of the public key from this certificate.
-  X509PublicKey? get publicKey {
-    var pkBlock = block1?.atIndex(X509BlockPosition.publicKey);
+  CygnusX509PublicKey? get publicKey {
+    var pkBlock = block1?.atIndex(CygnusX509BlockPosition.publicKey);
     if (pkBlock != null) {
-      return X509PublicKey(pkBlock: pkBlock);
+      return CygnusX509PublicKey(pkBlock: pkBlock);
     }
     return null;
   }
 
-  ///Get a list of critical extension OID codes
+  ///Get a list of critical extension CygnusOID codes
   List<String> get criticalExtensionOIDs {
     var extensionBlocks = this.extensionBlocks;
     if (extensionBlocks == null) {
       return <String>[];
     }
     return extensionBlocks
-        .map((block) => X509Extension(block: block))
+        .map((block) => CygnusX509Extension(block: block))
         .where((extension) => extension.isCritical)
         .map((extension) => extension.oid ?? '')
         .toList();
   }
 
-  ///Get a list of non critical extension OID codes
+  ///Get a list of non critical extension CygnusOID codes
   List<String> get nonCriticalExtensionOIDs {
     var extensionBlocks = this.extensionBlocks;
     if (extensionBlocks == null) {
       return <String>[];
     }
     return extensionBlocks
-        .map((block) => X509Extension(block: block))
+        .map((block) => CygnusX509Extension(block: block))
         .where((extension) => !extension.isCritical)
         .map((extension) => extension.oid ?? '')
         .toList();
   }
 
   ///Gets the certificate constraints path length from the
-  ///critical BasicConstraints extension, (OID = 2.5.29.19).
-  BasicConstraintExtension? get basicConstraints =>
-      extensionObject(oid: OID.basicConstraints) as BasicConstraintExtension?;
+  ///critical BasicConstraints extension, (CygnusOID = 2.5.29.19).
+  CygnusBasicConstraintExtension? get basicConstraints =>
+      extensionObject(oid: CygnusOID.basicConstraints) as CygnusBasicConstraintExtension?;
 
-  ///Gets the raw bits from the Subject Key Identifier (SKID) extension, (OID = 2.5.29.14).
-  SubjectKeyIdentifierExtension? get subjectKeyIdentifier =>
-      extensionObject(oid: OID.subjectKeyIdentifier)
-          as SubjectKeyIdentifierExtension?;
+  ///Gets the raw bits from the Subject Key Identifier (SKID) extension, (CygnusOID = 2.5.29.14).
+  CygnusSubjectKeyIdentifierExtension? get subjectKeyIdentifier =>
+      extensionObject(oid: CygnusOID.subjectKeyIdentifier)
+          as CygnusSubjectKeyIdentifierExtension?;
 
-  ///Gets the raw bits from the Authority Key Identifier extension, (OID = 2.5.29.35).
-  AuthorityKeyIdentifierExtension? get authorityKeyIdentifier =>
-      extensionObject(oid: OID.authorityKeyIdentifier)
-          as AuthorityKeyIdentifierExtension?;
+  ///Gets the raw bits from the Authority Key Identifier extension, (CygnusOID = 2.5.29.35).
+  CygnusAuthorityKeyIdentifierExtension? get authorityKeyIdentifier =>
+      extensionObject(oid: CygnusOID.authorityKeyIdentifier)
+          as CygnusAuthorityKeyIdentifierExtension?;
 
-  ///Gets the list of certificate policies from the CertificatePolicies extension, (OID = 2.5.29.32).
-  CertificatePoliciesExtension? get certificatePolicies =>
-      extensionObject(oid: OID.certificatePolicies)
-          as CertificatePoliciesExtension?;
+  ///Gets the list of certificate policies from the CertificatePolicies extension, (CygnusOID = 2.5.29.32).
+  CygnusCertificatePoliciesExtension? get certificatePolicies =>
+      extensionObject(oid: CygnusOID.certificatePolicies)
+          as CygnusCertificatePoliciesExtension?;
 
-  ///Gets the list of CRL distribution points from the CRLDistributionPoints extension, (OID = 2.5.29.31).
-  CRLDistributionPointsExtension? get cRLDistributionPoints =>
-      extensionObject(oid: OID.cRLDistributionPoints)
-          as CRLDistributionPointsExtension?;
+  ///Gets the list of CRL distribution points from the CRLDistributionPoints extension, (CygnusOID = 2.5.29.31).
+  CygnusCRLDistributionPointsExtension? get cRLDistributionPoints =>
+      extensionObject(oid: CygnusOID.cRLDistributionPoints)
+          as CygnusCRLDistributionPointsExtension?;
 
   ///Gets the map of the format (as a key) and location (as a value) of additional information
   ///about the CA who issued the certificate in which this extension appears
-  ///from the AuthorityInfoAccess extension, (OID = 1.3.6.1.5.5.5.7.1.1).
-  AuthorityInfoAccessExtension? get authorityInfoAccess =>
-      extensionObject(oid: OID.authorityInfoAccess)
-          as AuthorityInfoAccessExtension?;
+  ///from the CygnusAuthorityInfoAccess extension, (CygnusOID = 1.3.6.1.5.5.5.7.1.1).
+  CygnusAuthorityInfoAccessExtension? get authorityInfoAccess =>
+      extensionObject(oid: CygnusOID.authorityInfoAccess)
+          as CygnusAuthorityInfoAccessExtension?;
 
-  List<ASN1Object>? get extensionBlocks =>
-      block1?.atIndex(X509BlockPosition.extensions)?.subAtIndex(0)?.sub;
+  List<CygnusASN1Object>? get extensionBlocks =>
+      block1?.atIndex(CygnusX509BlockPosition.extensions)?.subAtIndex(0)?.sub;
 
-  ///Gets the extension information of the given OID code or enum string value.
-  X509Extension? extensionObject({String? oidValue, OID? oid}) {
+  ///Gets the extension information of the given CygnusOID code or enum string value.
+  CygnusX509Extension? extensionObject({String? oidValue, CygnusOID? oid}) {
     if (oidValue == null && oid != null) {
       oidValue = oid.toValue();
     }
     if (oidValue != null) {
       var block = block1
-          ?.atIndex(X509BlockPosition.extensions)
+          ?.atIndex(CygnusX509BlockPosition.extensions)
           ?.findOid(oidValue: oidValue)
           ?.parent;
       if (block != null) {
-        if (oidValue == OID.basicConstraints.toValue()) {
-          return BasicConstraintExtension(block: block);
-        } else if (oidValue == OID.subjectKeyIdentifier.toValue()) {
-          return SubjectKeyIdentifierExtension(block: block);
-        } else if (oidValue == OID.authorityInfoAccess.toValue()) {
-          return AuthorityInfoAccessExtension(block: block);
-        } else if (oidValue == OID.authorityKeyIdentifier.toValue()) {
-          return AuthorityKeyIdentifierExtension(block: block);
-        } else if (oidValue == OID.certificatePolicies.toValue()) {
-          return CertificatePoliciesExtension(block: block);
-        } else if (oidValue == OID.cRLDistributionPoints.toValue()) {
-          return CRLDistributionPointsExtension(block: block);
+        if (oidValue == CygnusOID.basicConstraints.toValue()) {
+          return CygnusBasicConstraintExtension(block: block);
+        } else if (oidValue == CygnusOID.subjectKeyIdentifier.toValue()) {
+          return CygnusSubjectKeyIdentifierExtension(block: block);
+        } else if (oidValue == CygnusOID.authorityInfoAccess.toValue()) {
+          return CygnusAuthorityInfoAccessExtension(block: block);
+        } else if (oidValue == CygnusOID.authorityKeyIdentifier.toValue()) {
+          return CygnusAuthorityKeyIdentifierExtension(block: block);
+        } else if (oidValue == CygnusOID.certificatePolicies.toValue()) {
+          return CygnusCertificatePoliciesExtension(block: block);
+        } else if (oidValue == CygnusOID.cRLDistributionPoints.toValue()) {
+          return CygnusCRLDistributionPointsExtension(block: block);
         }
-        return X509Extension(block: block);
+        return CygnusX509Extension(block: block);
       }
     }
     return null;
@@ -409,7 +409,7 @@ class X509Certificate {
     return description;
   }
 
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "basicConstraints": basicConstraints?.toMap(enumMethod: enumMethod),
       "subjectAlternativeNames": subjectAlternativeNames,
@@ -449,10 +449,10 @@ class X509Certificate {
   }
 }
 
-dynamic firstLeafValue({required ASN1Object block}) {
+dynamic firstLeafValue({required CygnusASN1Object block}) {
   var sub = block.sub;
   if (sub != null && sub.length > 0) {
-    ASN1Object? subFirst;
+    CygnusASN1Object? subFirst;
     try {
       subFirst = sub.first;
     } catch (e) {}
@@ -463,7 +463,7 @@ dynamic firstLeafValue({required ASN1Object block}) {
   return block.value;
 }
 
-enum X509BlockPosition {
+enum CygnusX509BlockPosition {
   version,
   serialNumber,
   signatureAlg,

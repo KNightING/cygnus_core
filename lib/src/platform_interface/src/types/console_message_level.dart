@@ -4,23 +4,23 @@ part 'console_message_level.g.dart';
 
 ///Class representing the level of a console message.
 @ExchangeableEnum()
-class ConsoleMessageLevel_ {
+class CygnusConsoleMessageLevel_ {
   // ignore: unused_field
   final int _value;
-  const ConsoleMessageLevel_._internal(this._value);
+  const CygnusConsoleMessageLevel_._internal(this._value);
 
   ///Console TIP level
-  static const TIP = const ConsoleMessageLevel_._internal(0);
+  static const TIP = const CygnusConsoleMessageLevel_._internal(0);
 
   ///Console LOG level
-  static const LOG = const ConsoleMessageLevel_._internal(1);
+  static const LOG = const CygnusConsoleMessageLevel_._internal(1);
 
   ///Console WARNING level
-  static const WARNING = const ConsoleMessageLevel_._internal(2);
+  static const WARNING = const CygnusConsoleMessageLevel_._internal(2);
 
   ///Console ERROR level
-  static const ERROR = const ConsoleMessageLevel_._internal(3);
+  static const ERROR = const CygnusConsoleMessageLevel_._internal(3);
 
   ///Console DEBUG level
-  static const DEBUG = const ConsoleMessageLevel_._internal(4);
+  static const DEBUG = const CygnusConsoleMessageLevel_._internal(4);
 }

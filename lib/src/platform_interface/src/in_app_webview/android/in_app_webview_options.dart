@@ -5,12 +5,12 @@ import '../../types/main.dart';
 import '../../in_app_browser/in_app_browser_settings.dart';
 import '../in_app_webview_settings.dart';
 
-class AndroidOptions {}
+class CygnusAndroidOptions {}
 
-///Use [InAppWebViewSettings] instead.
-@Deprecated('Use InAppWebViewSettings instead')
-class AndroidInAppWebViewOptions
-    implements WebViewOptions, BrowserOptions, AndroidOptions {
+///Use [CygnusWebViewSettings] instead.
+@Deprecated('Use CygnusWebViewSettings instead')
+class CygnusAndroidWebViewOptions
+    implements CygnusWebViewOptions, CygnusBrowserOptions, CygnusAndroidOptions {
   ///Sets the text zoom of the page in percent. The default value is `100`.
   int textZoom;
 
@@ -44,7 +44,7 @@ class AndroidInAppWebViewOptions
   ///Configures the WebView's behavior when a secure origin attempts to load a resource from an insecure origin.
   ///
   ///**NOTE**: available on Android 21+.
-  AndroidMixedContentMode? mixedContentMode;
+  CygnusAndroidMixedContentMode? mixedContentMode;
 
   ///Enables or disables content URL access within WebView. Content URL access allows WebView to load content from a content provider installed in the system. The default value is `true`.
   bool allowContentAccess;
@@ -64,8 +64,8 @@ class AndroidInAppWebViewOptions
   bool blockNetworkLoads;
 
   ///Overrides the way the cache is used. The way the cache is used is based on the navigation type. For a normal page load, the cache is checked and content is re-validated as needed.
-  ///When navigating back, content is not revalidated, instead the content is just retrieved from the cache. The default value is [AndroidCacheMode.LOAD_DEFAULT].
-  AndroidCacheMode? cacheMode;
+  ///When navigating back, content is not revalidated, instead the content is just retrieved from the cache. The default value is [CygnusAndroidCacheMode.LOAD_DEFAULT].
+  CygnusAndroidCacheMode? cacheMode;
 
   ///Sets the cursive font family name. The default value is `"cursive"`.
   String cursiveFontFamily;
@@ -82,7 +82,7 @@ class AndroidInAppWebViewOptions
   ///Disables the action mode menu items according to menuItems flag.
   ///
   ///**NOTE**: available on Android 24+.
-  AndroidActionModeMenuItem? disabledActionModeMenuItems;
+  CygnusAndroidActionModeMenuItem? disabledActionModeMenuItems;
 
   ///Sets the fantasy font family name. The default value is `"fantasy"`.
   String fantasyFontFamily;
@@ -90,16 +90,16 @@ class AndroidInAppWebViewOptions
   ///Sets the fixed font family name. The default value is `"monospace"`.
   String fixedFontFamily;
 
-  ///Set the force dark mode for this WebView. The default value is [AndroidForceDark.FORCE_DARK_OFF].
+  ///Set the force dark mode for this WebView. The default value is [CygnusAndroidForceDark.FORCE_DARK_OFF].
   ///
   ///**NOTE**: available on Android 29+.
-  AndroidForceDark? forceDark;
+  CygnusAndroidForceDark? forceDark;
 
   ///Sets whether Geolocation API is enabled. The default value is `true`.
   bool geolocationEnabled;
 
   ///Sets the underlying layout algorithm. This will cause a re-layout of the WebView.
-  AndroidLayoutAlgorithm? layoutAlgorithm;
+  CygnusAndroidLayoutAlgorithm? layoutAlgorithm;
 
   ///Sets whether the WebView loads pages in overview mode, that is, zooms out the content to fit on screen by width.
   ///This setting is taken into account when the content width is greater than the width of the WebView control, for example, when [useWideViewPort] is enabled.
@@ -158,10 +158,10 @@ class AndroidInAppWebViewOptions
   bool hardwareAcceleration;
 
   ///Sets whether the WebView supports multiple windows.
-  ///If set to `true`, [PlatformWebViewCreationParams.onCreateWindow] event must be implemented by the host application. The default value is `false`.
+  ///If set to `true`, [CygnusPlatformWebViewCreationParams.onCreateWindow] event must be implemented by the host application. The default value is `false`.
   bool supportMultipleWindows;
 
-  ///Regular expression used by [PlatformWebViewCreationParams.shouldOverrideUrlLoading] event to cancel navigation requests for frames that are not the main frame.
+  ///Regular expression used by [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading] event to cancel navigation requests for frames that are not the main frame.
   ///If the url request of a subframe matches the regular expression, then the request of that subframe is canceled.
   String? regexToCancelSubFramesLoading;
 
@@ -172,16 +172,16 @@ class AndroidInAppWebViewOptions
   ///as it can cause framerate drops on animations in Android 9 and lower (see [Hybrid-Composition#performance](https://github.com/flutter/flutter/wiki/Hybrid-Composition#performance)).
   bool useHybridComposition;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.androidShouldInterceptRequest] event. The default value is `false`.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.androidShouldInterceptRequest] event. The default value is `false`.
   bool useShouldInterceptRequest;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.androidOnRenderProcessGone] event. The default value is `false`.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.androidOnRenderProcessGone] event. The default value is `false`.
   bool useOnRenderProcessGone;
 
   ///Sets the WebView's over-scroll mode.
   ///Setting the over-scroll mode of a WebView will have an effect only if the WebView is capable of scrolling.
-  ///The default value is [AndroidOverScrollMode.OVER_SCROLL_IF_CONTENT_SCROLLS].
-  AndroidOverScrollMode? overScrollMode;
+  ///The default value is [CygnusAndroidOverScrollMode.OVER_SCROLL_IF_CONTENT_SCROLLS].
+  CygnusAndroidOverScrollMode? overScrollMode;
 
   ///Informs WebView of the network state.
   ///This is used to set the JavaScript property `window.navigator.isOnline` and generates the online/offline event as specified in HTML5, sec. 5.7.7.
@@ -192,12 +192,12 @@ class AndroidInAppWebViewOptions
   ///For example, if a view has a background drawable and you want to draw the scrollbars inside the padding specified by the drawable,
   ///you can use SCROLLBARS_INSIDE_OVERLAY or SCROLLBARS_INSIDE_INSET. If you want them to appear at the edge of the view, ignoring the padding,
   ///then you can use SCROLLBARS_OUTSIDE_OVERLAY or SCROLLBARS_OUTSIDE_INSET.
-  ///The default value is [AndroidScrollBarStyle.SCROLLBARS_INSIDE_OVERLAY].
-  AndroidScrollBarStyle? scrollBarStyle;
+  ///The default value is [CygnusAndroidScrollBarStyle.SCROLLBARS_INSIDE_OVERLAY].
+  CygnusAndroidScrollBarStyle? scrollBarStyle;
 
   ///Sets the position of the vertical scroll bar.
-  ///The default value is [AndroidVerticalScrollbarPosition.SCROLLBAR_POSITION_DEFAULT].
-  AndroidVerticalScrollbarPosition? verticalScrollbarPosition;
+  ///The default value is [CygnusAndroidVerticalScrollbarPosition.SCROLLBAR_POSITION_DEFAULT].
+  CygnusAndroidVerticalScrollbarPosition? verticalScrollbarPosition;
 
   ///Defines the delay in milliseconds that a scrollbar waits before fade out.
   int? scrollBarDefaultDelayBeforeFade;
@@ -210,7 +210,7 @@ class AndroidInAppWebViewOptions
   int? scrollBarFadeDuration;
 
   ///Sets the renderer priority policy for this WebView.
-  RendererPriorityPolicy? rendererPriorityPolicy;
+  CygnusRendererPriorityPolicy? rendererPriorityPolicy;
 
   ///Sets whether the default Android error page should be disabled.
   ///The default value is `false`.
@@ -236,7 +236,7 @@ class AndroidInAppWebViewOptions
   ///**NOTE**: available on Android 29+.
   Color? horizontalScrollbarTrackColor;
 
-  AndroidInAppWebViewOptions({
+  CygnusAndroidWebViewOptions({
     this.textZoom = 100,
     this.clearSessionCache = false,
     this.builtInZoomControls = true,
@@ -251,7 +251,7 @@ class AndroidInAppWebViewOptions
     this.appCachePath,
     this.blockNetworkImage = false,
     this.blockNetworkLoads = false,
-    this.cacheMode = AndroidCacheMode.LOAD_DEFAULT,
+    this.cacheMode = CygnusAndroidCacheMode.LOAD_DEFAULT,
     this.cursiveFontFamily = "cursive",
     this.defaultFixedFontSize = 16,
     this.defaultFontSize = 16,
@@ -259,7 +259,7 @@ class AndroidInAppWebViewOptions
     this.disabledActionModeMenuItems,
     this.fantasyFontFamily = "fantasy",
     this.fixedFontFamily = "monospace",
-    this.forceDark = AndroidForceDark.FORCE_DARK_OFF,
+    this.forceDark = CygnusAndroidForceDark.FORCE_DARK_OFF,
     this.geolocationEnabled = true,
     this.layoutAlgorithm,
     this.loadWithOverviewMode = true,
@@ -279,11 +279,11 @@ class AndroidInAppWebViewOptions
     this.useHybridComposition = true,
     this.useShouldInterceptRequest = false,
     this.useOnRenderProcessGone = false,
-    this.overScrollMode = AndroidOverScrollMode.OVER_SCROLL_IF_CONTENT_SCROLLS,
+    this.overScrollMode = CygnusAndroidOverScrollMode.OVER_SCROLL_IF_CONTENT_SCROLLS,
     this.networkAvailable,
-    this.scrollBarStyle = AndroidScrollBarStyle.SCROLLBARS_INSIDE_OVERLAY,
+    this.scrollBarStyle = CygnusAndroidScrollBarStyle.SCROLLBARS_INSIDE_OVERLAY,
     this.verticalScrollbarPosition =
-        AndroidVerticalScrollbarPosition.SCROLLBAR_POSITION_DEFAULT,
+        CygnusAndroidVerticalScrollbarPosition.SCROLLBAR_POSITION_DEFAULT,
     this.scrollBarDefaultDelayBeforeFade,
     this.scrollbarFadingEnabled = true,
     this.scrollBarFadeDuration,
@@ -357,8 +357,8 @@ class AndroidInAppWebViewOptions
     };
   }
 
-  static AndroidInAppWebViewOptions fromMap(Map<String, dynamic> map) {
-    var instance = AndroidInAppWebViewOptions();
+  static CygnusAndroidWebViewOptions fromMap(Map<String, dynamic> map) {
+    var instance = CygnusAndroidWebViewOptions();
     instance.textZoom = map["textZoom"];
     instance.clearSessionCache = map["clearSessionCache"];
     instance.builtInZoomControls = map["builtInZoomControls"];
@@ -367,7 +367,7 @@ class AndroidInAppWebViewOptions
     instance.domStorageEnabled = map["domStorageEnabled"];
     instance.useWideViewPort = map["useWideViewPort"];
     instance.safeBrowsingEnabled = map["safeBrowsingEnabled"];
-    instance.mixedContentMode = AndroidMixedContentMode.fromNativeValue(
+    instance.mixedContentMode = CygnusAndroidMixedContentMode.fromNativeValue(
       map["mixedContentMode"],
     );
     instance.allowContentAccess = map["allowContentAccess"];
@@ -375,20 +375,20 @@ class AndroidInAppWebViewOptions
     instance.appCachePath = map["appCachePath"];
     instance.blockNetworkImage = map["blockNetworkImage"];
     instance.blockNetworkLoads = map["blockNetworkLoads"];
-    instance.cacheMode = AndroidCacheMode.fromNativeValue(map["cacheMode"]);
+    instance.cacheMode = CygnusAndroidCacheMode.fromNativeValue(map["cacheMode"]);
     instance.cursiveFontFamily = map["cursiveFontFamily"];
     instance.defaultFixedFontSize = map["defaultFixedFontSize"];
     instance.defaultFontSize = map["defaultFontSize"];
     instance.defaultTextEncodingName = map["defaultTextEncodingName"];
     instance.disabledActionModeMenuItems =
-        AndroidActionModeMenuItem.fromNativeValue(
+        CygnusAndroidActionModeMenuItem.fromNativeValue(
           map["disabledActionModeMenuItems"],
         );
     instance.fantasyFontFamily = map["fantasyFontFamily"];
     instance.fixedFontFamily = map["fixedFontFamily"];
-    instance.forceDark = AndroidForceDark.fromNativeValue(map["forceDark"]);
+    instance.forceDark = CygnusAndroidForceDark.fromNativeValue(map["forceDark"]);
     instance.geolocationEnabled = map["geolocationEnabled"];
-    instance.layoutAlgorithm = AndroidLayoutAlgorithm.fromNativeValue(
+    instance.layoutAlgorithm = CygnusAndroidLayoutAlgorithm.fromNativeValue(
       map["layoutAlgorithm"],
     );
     instance.loadWithOverviewMode = map["loadWithOverviewMode"];
@@ -409,22 +409,22 @@ class AndroidInAppWebViewOptions
     instance.useHybridComposition = map["useHybridComposition"];
     instance.useShouldInterceptRequest = map["useShouldInterceptRequest"];
     instance.useOnRenderProcessGone = map["useOnRenderProcessGone"];
-    instance.overScrollMode = AndroidOverScrollMode.fromNativeValue(
+    instance.overScrollMode = CygnusAndroidOverScrollMode.fromNativeValue(
       map["overScrollMode"],
     );
     instance.networkAvailable = map["networkAvailable"];
-    instance.scrollBarStyle = AndroidScrollBarStyle.fromNativeValue(
+    instance.scrollBarStyle = CygnusAndroidScrollBarStyle.fromNativeValue(
       map["scrollBarStyle"],
     );
     instance.verticalScrollbarPosition =
-        AndroidVerticalScrollbarPosition.fromNativeValue(
+        CygnusAndroidVerticalScrollbarPosition.fromNativeValue(
           map["verticalScrollbarPosition"],
         );
     instance.scrollBarDefaultDelayBeforeFade =
         map["scrollBarDefaultDelayBeforeFade"];
     instance.scrollbarFadingEnabled = map["scrollbarFadingEnabled"];
     instance.scrollBarFadeDuration = map["scrollBarFadeDuration"];
-    instance.rendererPriorityPolicy = RendererPriorityPolicy.fromMap(
+    instance.rendererPriorityPolicy = CygnusRendererPriorityPolicy.fromMap(
       map["rendererPriorityPolicy"]?.cast<String, dynamic>(),
     );
     instance.disableDefaultErrorPage = map["disableDefaultErrorPage"];
@@ -454,7 +454,7 @@ class AndroidInAppWebViewOptions
   }
 
   @override
-  AndroidInAppWebViewOptions copy() {
-    return AndroidInAppWebViewOptions.fromMap(this.toMap());
+  CygnusAndroidWebViewOptions copy() {
+    return CygnusAndroidWebViewOptions.fromMap(this.toMap());
   }
 }

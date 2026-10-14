@@ -9,31 +9,31 @@ import '../web_storage_manager.dart';
 ///
 ///**NOTE**: available on iOS 9.0+.
 ///
-///Use [WebStorageManager] instead.
-@Deprecated("Use WebStorageManager instead")
-class IOSWebStorageManager {
+///Use [CygnusWebStorageManager] instead.
+@Deprecated("Use CygnusWebStorageManager instead")
+class CygnusIOSWebStorageManager {
   ///Fetches data records containing the given website data types.
   ///
   ///[dataTypes] represents the website data types to fetch records for.
-  Future<List<IOSWKWebsiteDataRecord>> fetchDataRecords({
-    required Set<IOSWKWebsiteDataType> dataTypes,
+  Future<List<CygnusIOSWKWebsiteDataRecord>> fetchDataRecords({
+    required Set<CygnusIOSWKWebsiteDataType> dataTypes,
   }) async {
-    List<IOSWKWebsiteDataRecord> recordList = [];
-    Set<WebsiteDataType> dataTypesList = Set();
+    List<CygnusIOSWKWebsiteDataRecord> recordList = [];
+    Set<CygnusWebsiteDataType> dataTypesList = Set();
     for (var dataType in dataTypes) {
       dataTypesList.add(
-        WebsiteDataType.fromNativeValue(dataType.toNativeValue())!,
+        CygnusWebsiteDataType.fromNativeValue(dataType.toNativeValue())!,
       );
     }
 
-    List<WebsiteDataRecord> records = await WebStorageManager.instance()
+    List<CygnusWebsiteDataRecord> records = await CygnusWebStorageManager.instance()
         .fetchDataRecords(dataTypes: dataTypesList);
 
     for (var record in records) {
-      Set<WebsiteDataType> dataTypesString = record.dataTypes ?? Set();
-      Set<IOSWKWebsiteDataType> dataTypes = Set();
+      Set<CygnusWebsiteDataType> dataTypesString = record.dataTypes ?? Set();
+      Set<CygnusIOSWKWebsiteDataType> dataTypes = Set();
       for (var dataTypeValue in dataTypesString) {
-        var dataType = IOSWKWebsiteDataType.fromNativeValue(
+        var dataType = CygnusIOSWKWebsiteDataType.fromNativeValue(
           dataTypeValue.toNativeValue(),
         );
         if (dataType != null) {
@@ -41,7 +41,7 @@ class IOSWebStorageManager {
         }
       }
       recordList.add(
-        IOSWKWebsiteDataRecord(
+        CygnusIOSWKWebsiteDataRecord(
           displayName: record.displayName,
           dataTypes: dataTypes,
         ),
@@ -56,22 +56,22 @@ class IOSWebStorageManager {
   ///
   ///[dataRecords] represents the website data records to delete website data for.
   Future<void> removeDataFor({
-    required Set<IOSWKWebsiteDataType> dataTypes,
-    required List<IOSWKWebsiteDataRecord> dataRecords,
+    required Set<CygnusIOSWKWebsiteDataType> dataTypes,
+    required List<CygnusIOSWKWebsiteDataRecord> dataRecords,
   }) async {
-    Set<WebsiteDataType> dataTypesList = Set();
+    Set<CygnusWebsiteDataType> dataTypesList = Set();
     for (var dataType in dataTypes) {
       dataTypesList.add(
-        WebsiteDataType.fromNativeValue(dataType.toNativeValue())!,
+        CygnusWebsiteDataType.fromNativeValue(dataType.toNativeValue())!,
       );
     }
 
-    List<WebsiteDataRecord> recordList = [];
+    List<CygnusWebsiteDataRecord> recordList = [];
     for (var record in dataRecords) {
-      recordList.add(WebsiteDataRecord.fromMap(record.toMap())!);
+      recordList.add(CygnusWebsiteDataRecord.fromMap(record.toMap())!);
     }
 
-    await WebStorageManager.instance().removeDataFor(
+    await CygnusWebStorageManager.instance().removeDataFor(
       dataRecords: recordList,
       dataTypes: dataTypesList,
     );
@@ -83,17 +83,17 @@ class IOSWebStorageManager {
   ///
   ///[date] represents a date. All website data modified after this date will be removed.
   Future<void> removeDataModifiedSince({
-    required Set<IOSWKWebsiteDataType> dataTypes,
+    required Set<CygnusIOSWKWebsiteDataType> dataTypes,
     required DateTime date,
   }) async {
-    Set<WebsiteDataType> dataTypesList = Set();
+    Set<CygnusWebsiteDataType> dataTypesList = Set();
     for (var dataType in dataTypes) {
       dataTypesList.add(
-        WebsiteDataType.fromNativeValue(dataType.toNativeValue())!,
+        CygnusWebsiteDataType.fromNativeValue(dataType.toNativeValue())!,
       );
     }
 
-    await WebStorageManager.instance().removeDataModifiedSince(
+    await CygnusWebStorageManager.instance().removeDataModifiedSince(
       dataTypes: dataTypesList,
       date: date,
     );

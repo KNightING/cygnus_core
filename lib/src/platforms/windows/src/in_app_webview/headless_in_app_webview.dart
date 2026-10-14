@@ -10,11 +10,11 @@ import 'in_app_webview_controller.dart';
 /// Object specifying creation parameters for creating a [WindowsHeadlessInAppWebView].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformHeadlessInAppWebViewCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformHeadlessWebViewCreationParams] for
 /// more information.
 @immutable
 class WindowsHeadlessInAppWebViewCreationParams
-    extends PlatformHeadlessInAppWebViewCreationParams {
+    extends CygnusPlatformHeadlessWebViewCreationParams {
   /// Creates a new [WindowsHeadlessInAppWebViewCreationParams] instance.
   WindowsHeadlessInAppWebViewCreationParams({
     super.controllerFromPlatform,
@@ -51,7 +51,7 @@ class WindowsHeadlessInAppWebViewCreationParams
     super.onReceivedHttpAuthRequest,
     super.onReceivedServerTrustAuthRequest,
     super.onReceivedClientCertRequest,
-    @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+    @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
     super.onFindResultReceived,
     super.shouldInterceptAjaxRequest,
     super.onAjaxReadyStateChange,
@@ -140,9 +140,9 @@ class WindowsHeadlessInAppWebViewCreationParams
     this.findInteractionController,
   });
 
-  /// Creates a [WindowsHeadlessInAppWebViewCreationParams] instance based on [PlatformHeadlessInAppWebViewCreationParams].
+  /// Creates a [WindowsHeadlessInAppWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
   WindowsHeadlessInAppWebViewCreationParams.fromPlatformHeadlessInAppWebViewCreationParams(
-    PlatformHeadlessInAppWebViewCreationParams params,
+    CygnusPlatformHeadlessWebViewCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
         webViewEnvironment:
@@ -269,8 +269,8 @@ class WindowsHeadlessInAppWebViewCreationParams
   final WindowsWebViewEnvironment? webViewEnvironment;
 }
 
-///{@macro cygnus_core.PlatformHeadlessInAppWebView}
-class WindowsHeadlessInAppWebView extends PlatformHeadlessInAppWebView
+///{@macro cygnus_core.CygnusPlatformHeadlessWebView}
+class WindowsHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     with ChannelController {
   @override
   late final String id;
@@ -285,7 +285,7 @@ class WindowsHeadlessInAppWebView extends PlatformHeadlessInAppWebView
   WindowsInAppWebViewController? _webViewController;
 
   /// Constructs a [WindowsHeadlessInAppWebView].
-  WindowsHeadlessInAppWebView(PlatformHeadlessInAppWebViewCreationParams params)
+  WindowsHeadlessInAppWebView(CygnusPlatformHeadlessWebViewCreationParams params)
     : super.implementation(
         params is WindowsHeadlessInAppWebViewCreationParams
             ? params
@@ -349,7 +349,7 @@ class WindowsHeadlessInAppWebView extends PlatformHeadlessInAppWebView
     _started = true;
     _init();
 
-    final initialSettings = params.initialSettings ?? InAppWebViewSettings();
+    final initialSettings = params.initialSettings ?? CygnusWebViewSettings();
     _inferInitialSettings(initialSettings);
 
     Map<String, dynamic> settingsMap =
@@ -360,7 +360,7 @@ class WindowsHeadlessInAppWebView extends PlatformHeadlessInAppWebView
     Map<String, dynamic> pullToRefreshSettings =
         _windowsParams.pullToRefreshController?.params.settings.toMap() ??
         _windowsParams.pullToRefreshController?.params.options.toMap() ??
-        PullToRefreshSettings(enabled: false).toMap();
+        CygnusPullToRefreshSettings(enabled: false).toMap();
 
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('id', () => id);
@@ -390,7 +390,7 @@ class WindowsHeadlessInAppWebView extends PlatformHeadlessInAppWebView
     }
   }
 
-  void _inferInitialSettings(InAppWebViewSettings settings) {
+  void _inferInitialSettings(CygnusWebViewSettings settings) {
     if (params.shouldOverrideUrlLoading != null &&
         settings.useShouldOverrideUrlLoading == null) {
       settings.useShouldOverrideUrlLoading = true;

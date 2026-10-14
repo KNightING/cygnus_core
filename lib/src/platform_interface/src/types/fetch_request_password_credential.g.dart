@@ -7,9 +7,10 @@ part of 'fetch_request_password_credential.dart';
 // **************************************************************************
 
 ///Class that represents a [PasswordCredential](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential) type of credentials.
-class FetchRequestPasswordCredential extends FetchRequestCredential {
+class CygnusFetchRequestPasswordCredential
+    extends CygnusFetchRequestCredential {
   ///URL pointing to an image for an icon. This image is intended for display in a credential chooser. The URL must be accessible without authentication.
-  WebUri? iconURL;
+  CygnusWebUri? iconURL;
 
   ///Credential's identifier.
   dynamic id;
@@ -19,7 +20,7 @@ class FetchRequestPasswordCredential extends FetchRequestCredential {
 
   ///The password of the credential.
   String? password;
-  FetchRequestPasswordCredential({
+  CygnusFetchRequestPasswordCredential({
     this.iconURL,
     this.id,
     this.name,
@@ -27,16 +28,16 @@ class FetchRequestPasswordCredential extends FetchRequestCredential {
     String? type,
   }) : super(type: type);
 
-  ///Gets a possible [FetchRequestPasswordCredential] instance from a [Map] value.
-  static FetchRequestPasswordCredential? fromMap(
+  ///Gets a possible [CygnusFetchRequestPasswordCredential] instance from a [Map] value.
+  static CygnusFetchRequestPasswordCredential? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = FetchRequestPasswordCredential(
-      iconURL: map['iconURL'] != null ? WebUri(map['iconURL']) : null,
+    final instance = CygnusFetchRequestPasswordCredential(
+      iconURL: map['iconURL'] != null ? CygnusWebUri(map['iconURL']) : null,
       id: map['id'],
       name: map['name'],
       password: map['password'],
@@ -46,7 +47,7 @@ class FetchRequestPasswordCredential extends FetchRequestCredential {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "type": type,
       "iconURL": iconURL?.toString(),
@@ -63,6 +64,6 @@ class FetchRequestPasswordCredential extends FetchRequestCredential {
 
   @override
   String toString() {
-    return 'FetchRequestPasswordCredential{type: $type, iconURL: $iconURL, id: $id, name: $name, password: $password}';
+    return 'CygnusFetchRequestPasswordCredential{type: $type, iconURL: $iconURL, id: $id, name: $name, password: $password}';
   }
 }

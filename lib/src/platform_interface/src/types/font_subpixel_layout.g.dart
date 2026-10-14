@@ -9,45 +9,45 @@ part of 'font_subpixel_layout.dart';
 ///Font subpixel layout order used for text rendering on Linux.
 ///This setting determines how subpixel rendering is performed based on
 ///the physical arrangement of the display's RGB subpixels.
-class FontSubpixelLayout {
+class CygnusFontSubpixelLayout {
   final int _value;
   final int? _nativeValue;
-  const FontSubpixelLayout._internal(this._value, this._nativeValue);
+  const CygnusFontSubpixelLayout._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory FontSubpixelLayout._internalMultiPlatform(
+  factory CygnusFontSubpixelLayout._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => FontSubpixelLayout._internal(value, nativeValue());
+  ) => CygnusFontSubpixelLayout._internal(value, nativeValue());
 
   ///BGR subpixel layout (horizontal BGR order).
   ///Used for LCD displays with horizontal BGR subpixel arrangement.
-  static const BGR = FontSubpixelLayout._internal(1, 1);
+  static const BGR = CygnusFontSubpixelLayout._internal(1, 1);
 
   ///RGB subpixel layout (horizontal RGB order).
   ///Used for most LCD displays with horizontal RGB subpixel arrangement.
-  static const RGB = FontSubpixelLayout._internal(0, 0);
+  static const RGB = CygnusFontSubpixelLayout._internal(0, 0);
 
   ///Vertical BGR subpixel layout.
   ///Used for displays with vertical BGR subpixel arrangement.
-  static const VBGR = FontSubpixelLayout._internal(3, 3);
+  static const VBGR = CygnusFontSubpixelLayout._internal(3, 3);
 
   ///Vertical RGB subpixel layout.
   ///Used for displays with vertical RGB subpixel arrangement.
-  static const VRGB = FontSubpixelLayout._internal(2, 2);
+  static const VRGB = CygnusFontSubpixelLayout._internal(2, 2);
 
-  ///Set of all values of [FontSubpixelLayout].
-  static final Set<FontSubpixelLayout> values = [
-    FontSubpixelLayout.BGR,
-    FontSubpixelLayout.RGB,
-    FontSubpixelLayout.VBGR,
-    FontSubpixelLayout.VRGB,
+  ///Set of all values of [CygnusFontSubpixelLayout].
+  static final Set<CygnusFontSubpixelLayout> values = [
+    CygnusFontSubpixelLayout.BGR,
+    CygnusFontSubpixelLayout.RGB,
+    CygnusFontSubpixelLayout.VBGR,
+    CygnusFontSubpixelLayout.VRGB,
   ].toSet();
 
-  ///Gets a possible [FontSubpixelLayout] instance from [int] value.
-  static FontSubpixelLayout? fromValue(int? value) {
+  ///Gets a possible [CygnusFontSubpixelLayout] instance from [int] value.
+  static CygnusFontSubpixelLayout? fromValue(int? value) {
     if (value != null) {
       try {
-        return FontSubpixelLayout.values.firstWhere(
+        return CygnusFontSubpixelLayout.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -57,11 +57,11 @@ class FontSubpixelLayout {
     return null;
   }
 
-  ///Gets a possible [FontSubpixelLayout] instance from a native value.
-  static FontSubpixelLayout? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusFontSubpixelLayout] instance from a native value.
+  static CygnusFontSubpixelLayout? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return FontSubpixelLayout.values.firstWhere(
+        return CygnusFontSubpixelLayout.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -71,15 +71,15 @@ class FontSubpixelLayout {
     return null;
   }
 
-  /// Gets a possible [FontSubpixelLayout] instance value with name [name].
+  /// Gets a possible [CygnusFontSubpixelLayout] instance value with name [name].
   ///
-  /// Goes through [FontSubpixelLayout.values] looking for a value with
-  /// name [name], as reported by [FontSubpixelLayout.name].
+  /// Goes through [CygnusFontSubpixelLayout.values] looking for a value with
+  /// name [name], as reported by [CygnusFontSubpixelLayout.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static FontSubpixelLayout? byName(String? name) {
+  static CygnusFontSubpixelLayout? byName(String? name) {
     if (name != null) {
       try {
-        return FontSubpixelLayout.values.firstWhere(
+        return CygnusFontSubpixelLayout.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -89,7 +89,7 @@ class FontSubpixelLayout {
     return null;
   }
 
-  /// Creates a map from the names of [FontSubpixelLayout] values to the values.
+  /// Creates a map from the names of [CygnusFontSubpixelLayout] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -97,9 +97,10 @@ class FontSubpixelLayout {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, FontSubpixelLayout> asNameMap() =>
-      <String, FontSubpixelLayout>{
-        for (final value in FontSubpixelLayout.values) value.name(): value,
+  static Map<String, CygnusFontSubpixelLayout> asNameMap() =>
+      <String, CygnusFontSubpixelLayout>{
+        for (final value in CygnusFontSubpixelLayout.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

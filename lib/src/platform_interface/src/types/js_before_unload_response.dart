@@ -6,9 +6,9 @@ import 'enum_method.dart';
 
 part 'js_before_unload_response.g.dart';
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onJsBeforeUnload] event to control a JavaScript alert dialog.
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onJsBeforeUnload] event to control a JavaScript alert dialog.
 @ExchangeableObject()
-class JsBeforeUnloadResponse_ {
+class CygnusJsBeforeUnloadResponse_ {
   ///Message to be displayed in the window.
   String message;
 
@@ -22,13 +22,13 @@ class JsBeforeUnloadResponse_ {
   bool handledByClient;
 
   ///Action used to confirm that the user hit confirm or cancel button.
-  JsBeforeUnloadResponseAction_? action;
+  CygnusJsBeforeUnloadResponseAction_? action;
 
-  JsBeforeUnloadResponse_({
+  CygnusJsBeforeUnloadResponse_({
     this.message = "",
     this.handledByClient = false,
     this.confirmButtonTitle = "",
     this.cancelButtonTitle = "",
-    this.action = JsBeforeUnloadResponseAction_.CONFIRM,
+    this.action = CygnusJsBeforeUnloadResponseAction_.CONFIRM,
   });
 }

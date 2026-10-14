@@ -8,30 +8,30 @@ import 'types/main.dart';
 
 part 'platform_tracing_controller.g.dart';
 
-///{@template cygnus_core.PlatformTracingControllerCreationParams}
-/// Object specifying creation parameters for creating a [PlatformTracingController].
+///{@template cygnus_core.CygnusPlatformTracingControllerCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformTracingController].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformTracingControllerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformTracingControllerCreationParams.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform()])
 @immutable
-class PlatformTracingControllerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformTracingController].
-  const PlatformTracingControllerCreationParams();
+class CygnusPlatformTracingControllerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformTracingController].
+  const CygnusPlatformTracingControllerCreationParams();
 
-  ///{@template cygnus_core.PlatformTracingControllerCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformTracingControllerCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformTracingControllerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformTracingControllerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformTracingController}
+///{@template cygnus_core.CygnusPlatformTracingController}
 ///Manages tracing of `WebView`s.
 ///In particular provides functionality for the app to enable/disable tracing of parts of code and to collect tracing data.
 ///This is useful for profiling performance issues, debugging and memory usage analysis in production and real life scenarios.
@@ -40,88 +40,88 @@ class PlatformTracingControllerCreationParams {
 ///This file can be loaded in "chrome://tracing" for further analysis.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformTracingController.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformTracingController.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(
-      apiName: 'TracingController',
+      apiName: 'CygnusTracingController',
       apiUrl:
-          'https://developer.android.com/reference/androidx/webkit/TracingController',
+          'https://developer.android.com/reference/androidx/webkit/CygnusTracingController',
     ),
   ],
 )
-abstract class PlatformTracingController extends PlatformInterface {
-  /// Creates a new [PlatformTracingController]
-  factory PlatformTracingController(
-    PlatformTracingControllerCreationParams params,
+abstract class CygnusPlatformTracingController extends PlatformInterface {
+  /// Creates a new [CygnusPlatformTracingController]
+  factory CygnusPlatformTracingController(
+    CygnusPlatformTracingControllerCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformTracingController tracingController = InAppWebViewPlatform
+    final CygnusPlatformTracingController tracingController = CygnusWebViewPlatform
         .instance!
         .createPlatformTracingController(params);
     PlatformInterface.verify(tracingController, _token);
     return tracingController;
   }
 
-  /// Creates a new [PlatformTracingController]
-  factory PlatformTracingController.static() {
+  /// Creates a new [CygnusPlatformTracingController]
+  factory CygnusPlatformTracingController.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformTracingController tracingControllerStatic =
-        InAppWebViewPlatform.instance!.createPlatformTracingControllerStatic();
+    final CygnusPlatformTracingController tracingControllerStatic =
+        CygnusWebViewPlatform.instance!.createPlatformTracingControllerStatic();
     PlatformInterface.verify(tracingControllerStatic, _token);
     return tracingControllerStatic;
   }
 
   /// Used by the platform implementation to create a new
-  /// [PlatformTracingController].
+  /// [CygnusPlatformTracingController].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformTracingController.implementation(this.params) : super(token: _token);
+  CygnusPlatformTracingController.implementation(this.params) : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformTracingController].
-  final PlatformTracingControllerCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformTracingController].
+  final CygnusPlatformTracingControllerCreationParams params;
 
-  ///{@template cygnus_core.PlatformTracingController.start}
+  ///{@template cygnus_core.CygnusPlatformTracingController.start}
   ///Starts tracing all `WebView`s.
   ///Depending on the trace mode in trace config specifies how the trace events are recorded.
-  ///For tracing modes [TracingMode.RECORD_UNTIL_FULL] and [TracingMode.RECORD_CONTINUOUSLY]
+  ///For tracing modes [CygnusTracingMode.RECORD_UNTIL_FULL] and [CygnusTracingMode.RECORD_CONTINUOUSLY]
   ///the events are recorded using an internal buffer and flushed to the outputStream
   ///when [stop] is called.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformTracingController.start.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformTracingController.start.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
-        apiName: 'TracingController.start',
+        apiName: 'CygnusTracingController.start',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/TracingController#start(android.webkit.TracingConfig)',
+            'https://developer.android.com/reference/android/webkit/CygnusTracingController#start(android.webkit.TracingConfig)',
       ),
     ],
   )
-  Future<void> start({required TracingSettings settings}) {
+  Future<void> start({required CygnusTracingSettings settings}) {
     throw UnimplementedError(
       'start is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformTracingController.stop}
+  ///{@template cygnus_core.CygnusPlatformTracingController.stop}
   ///Stops tracing and flushes tracing data to the specified output stream.
   ///The data is sent to the specified output stream in json format typically in
   ///chunks.
@@ -130,13 +130,13 @@ abstract class PlatformTracingController extends PlatformInterface {
   ///`true` otherwise.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformTracingController.stop.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformTracingController.stop.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
-        apiName: 'TracingController.stop',
+        apiName: 'CygnusTracingController.stop',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/TracingController#stop(java.io.OutputStream,%20java.util.concurrent.Executor)',
+            'https://developer.android.com/reference/android/webkit/CygnusTracingController#stop(java.io.OutputStream,%20java.util.concurrent.Executor)',
       ),
     ],
   )
@@ -144,17 +144,17 @@ abstract class PlatformTracingController extends PlatformInterface {
     throw UnimplementedError('stop is not implemented on the current platform');
   }
 
-  ///{@template cygnus_core.PlatformTracingController.isTracing}
+  ///{@template cygnus_core.CygnusPlatformTracingController.isTracing}
   ///Returns whether the WebView framework is tracing.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformTracingController.isTracing.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformTracingController.isTracing.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
-        apiName: 'TracingController.isTracing',
+        apiName: 'CygnusTracingController.isTracing',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/TracingController#isTracing()',
+            'https://developer.android.com/reference/android/webkit/CygnusTracingController#isTracing()',
       ),
     ],
   )
@@ -164,17 +164,17 @@ abstract class PlatformTracingController extends PlatformInterface {
     );
   }
 
-  ///{@macro cygnus_core.PlatformTracingControllerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformTracingControllerCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
       params.isClassSupported(platform: platform);
 
-  ///{@template cygnus_core.PlatformTracingController.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformTracingController.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformTracingControllerMethod method, {
+    CygnusPlatformTracingControllerMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformTracingControllerMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformTracingControllerMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );
@@ -182,17 +182,17 @@ abstract class PlatformTracingController extends PlatformInterface {
 
 List<dynamic> _deserializeCategories(
   List<dynamic> categories, {
-  EnumMethod? enumMethod,
+  CygnusEnumMethod? enumMethod,
 }) {
   List<dynamic> deserializedCategories = [];
   for (dynamic category in categories) {
     if (category is String) {
       deserializedCategories.add(category);
     } else if (category is int) {
-      final mode = switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => TracingCategory.fromNativeValue(category),
-        EnumMethod.value => TracingCategory.fromValue(category),
-        EnumMethod.name => null,
+      final mode = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusTracingCategory.fromNativeValue(category),
+        CygnusEnumMethod.value => CygnusTracingCategory.fromValue(category),
+        CygnusEnumMethod.name => null,
       };
       if (mode != null) {
         deserializedCategories.add(mode);
@@ -204,28 +204,28 @@ List<dynamic> _deserializeCategories(
 
 List<dynamic> _serializeCategories(
   List<dynamic> categories, {
-  EnumMethod? enumMethod,
+  CygnusEnumMethod? enumMethod,
 }) {
   List<dynamic> serializedCategories = [];
   for (dynamic category in categories) {
     if (category is String) {
       serializedCategories.add(category);
-    } else if (category is TracingCategory) {
-      serializedCategories.add(switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => category.toNativeValue(),
-        EnumMethod.value => category.toValue(),
-        EnumMethod.name => null,
+    } else if (category is CygnusTracingCategory) {
+      serializedCategories.add(switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => category.toNativeValue(),
+        CygnusEnumMethod.value => category.toValue(),
+        CygnusEnumMethod.name => null,
       });
     }
   }
   return serializedCategories;
 }
 
-///{@template cygnus_core.TracingSettings}
-///Class that represents the settings used to configure the [PlatformTracingController].
+///{@template cygnus_core.CygnusTracingSettings}
+///Class that represents the settings used to configure the [CygnusPlatformTracingController].
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.TracingSettings.supported_platforms}
+///{@macro cygnus_core.CygnusTracingSettings.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(
@@ -236,8 +236,8 @@ List<dynamic> _serializeCategories(
   ],
 )
 @ExchangeableObject(copyMethod: true)
-class TracingSettings_ {
-  ///Adds predefined [TracingCategory] and/or custom [String] sets of categories to be included in the trace output.
+class CygnusTracingSettings_ {
+  ///Adds predefined [CygnusTracingCategory] and/or custom [String] sets of categories to be included in the trace output.
   ///
   ///Note that the categories are defined by the currently-in-use version of WebView.
   ///They live in chromium code and are not part of the Android API.
@@ -252,37 +252,37 @@ class TracingSettings_ {
   List<dynamic> categories;
 
   ///The tracing mode for this configuration.
-  ///When tracingMode is not set explicitly, the default is [TracingMode.RECORD_CONTINUOUSLY].
+  ///When tracingMode is not set explicitly, the default is [CygnusTracingMode.RECORD_CONTINUOUSLY].
   ///
-  ///{@macro cygnus_core.TracingSettings.tracingMode.supported_platforms}
+  ///{@macro cygnus_core.CygnusTracingSettings.tracingMode.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
-  TracingMode_? tracingMode;
+  CygnusTracingMode_? tracingMode;
 
   @ExchangeableObjectConstructor()
-  TracingSettings_({this.categories = const [], this.tracingMode}) {
+  CygnusTracingSettings_({this.categories = const [], this.tracingMode}) {
     assert(
       this.categories
           .map(
-            (e) => e.runtimeType is String || e.runtimeType is TracingCategory,
+            (e) => e.runtimeType is String || e.runtimeType is CygnusTracingCategory,
           )
           .contains(false),
-      "categories must contain only String or TracingCategory items",
+      "categories must contain only String or CygnusTracingCategory items",
     );
   }
 
-  ///{@template cygnus_core.TracingSettings.isClassSupported}
+  ///{@template cygnus_core.CygnusTracingSettings.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      _TracingSettingsClassSupported.isClassSupported(platform: platform);
+      _CygnusTracingSettingsClassSupported.isClassSupported(platform: platform);
 
-  ///{@template cygnus_core.TracingSettings.isPropertySupported}
+  ///{@template cygnus_core.CygnusTracingSettings.isPropertySupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   static bool isPropertySupported(
-    TracingSettingsProperty property, {
+    CygnusTracingSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _TracingSettingsPropertySupported.isPropertySupported(
+  }) => _CygnusTracingSettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );

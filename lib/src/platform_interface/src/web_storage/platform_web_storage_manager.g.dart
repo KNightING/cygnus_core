@@ -6,9 +6,9 @@ part of 'platform_web_storage_manager.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformWebStorageManagerCreationParamsClassSupported
-    on PlatformWebStorageManagerCreationParams {
-  ///{@template cygnus_core.PlatformWebStorageManagerCreationParams.supported_platforms}
+extension _CygnusPlatformWebStorageManagerCreationParamsClassSupported
+    on CygnusPlatformWebStorageManagerCreationParams {
+  ///{@template cygnus_core.CygnusPlatformWebStorageManagerCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -16,7 +16,7 @@ extension _PlatformWebStorageManagerCreationParamsClassSupported
   ///- Linux WPE WebKit
   ///- macOS WKWebView
   ///
-  ///Use the [PlatformWebStorageManagerCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformWebStorageManagerCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -29,17 +29,17 @@ extension _PlatformWebStorageManagerCreationParamsClassSupported
   }
 }
 
-extension _PlatformWebStorageManagerClassSupported
-    on PlatformWebStorageManager {
-  ///{@template cygnus_core.PlatformWebStorageManager.supported_platforms}
+extension _CygnusPlatformWebStorageManagerClassSupported
+    on CygnusPlatformWebStorageManager {
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebStorage](https://developer.android.com/reference/android/webkit/WebStorage.html))
+  ///- Android WebView ([Official API - CygnusWebStorage](https://developer.android.com/reference/android/webkit/CygnusWebStorage.html))
   ///- iOS WKWebView 9.0+ ([Official API - WKWebsiteDataStore](https://developer.apple.com/documentation/webkit/wkwebsitedatastore))
   ///- Linux WPE WebKit ([Official API - WebKitWebsiteDataManager](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/class.WebsiteDataManager.html))
   ///- macOS WKWebView ([Official API - WKWebsiteDataStore](https://developer.apple.com/documentation/webkit/wkwebsitedatastore))
   ///
-  ///Use the [PlatformWebStorageManager.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformWebStorageManager.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -52,36 +52,36 @@ extension _PlatformWebStorageManagerClassSupported
   }
 }
 
-///List of [PlatformWebStorageManager]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformWebStorageManagerMethod {
-  ///Can be used to check if the [PlatformWebStorageManager.deleteAllData] method is supported at runtime.
+///List of [CygnusPlatformWebStorageManager]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformWebStorageManagerMethod {
+  ///Can be used to check if the [CygnusPlatformWebStorageManager.deleteAllData] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebStorageManager.deleteAllData.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.deleteAllData.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebStorage.deleteAllData](https://developer.android.com/reference/android/webkit/WebStorage#deleteAllData()))
+  ///- Android WebView ([Official API - CygnusWebStorage.deleteAllData](https://developer.android.com/reference/android/webkit/CygnusWebStorage#deleteAllData()))
   ///
-  ///Use the [PlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   deleteAllData,
 
-  ///Can be used to check if the [PlatformWebStorageManager.deleteOrigin] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebStorageManager.deleteOrigin] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebStorageManager.deleteOrigin.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.deleteOrigin.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebStorage.deleteOrigin](https://developer.android.com/reference/android/webkit/WebStorage#deleteOrigin(java.lang.String)))
+  ///- Android WebView ([Official API - CygnusWebStorage.deleteOrigin](https://developer.android.com/reference/android/webkit/CygnusWebStorage#deleteOrigin(java.lang.String)))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [origin]: all platforms
   ///
-  ///Use the [PlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   deleteOrigin,
 
-  ///Can be used to check if the [PlatformWebStorageManager.fetchDataRecords] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebStorageManager.fetchDataRecords] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebStorageManager.fetchDataRecords.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.fetchDataRecords.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 9.0+ ([Official API - WKWebsiteDataStore.fetchDataRecords](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532932-fetchdatarecords))
@@ -91,52 +91,52 @@ enum PlatformWebStorageManagerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [dataTypes]: all platforms
   ///
-  ///Use the [PlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   fetchDataRecords,
 
-  ///Can be used to check if the [PlatformWebStorageManager.getOrigins] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebStorageManager.getOrigins] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebStorageManager.getOrigins.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.getOrigins.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebStorage.getOrigins](https://developer.android.com/reference/android/webkit/WebStorage#getOrigins(android.webkit.ValueCallback%3Cjava.util.Map%3E)))
+  ///- Android WebView ([Official API - CygnusWebStorage.getOrigins](https://developer.android.com/reference/android/webkit/CygnusWebStorage#getOrigins(android.webkit.ValueCallback%3Cjava.util.Map%3E)))
   ///
-  ///Use the [PlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getOrigins,
 
-  ///Can be used to check if the [PlatformWebStorageManager.getQuotaForOrigin] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebStorageManager.getQuotaForOrigin] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebStorageManager.getQuotaForOrigin.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.getQuotaForOrigin.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebStorage.getQuotaForOrigin](https://developer.android.com/reference/android/webkit/WebStorage#getQuotaForOrigin(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.Long%3E)))
+  ///- Android WebView ([Official API - CygnusWebStorage.getQuotaForOrigin](https://developer.android.com/reference/android/webkit/CygnusWebStorage#getQuotaForOrigin(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.Long%3E)))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [origin]: all platforms
   ///
-  ///Use the [PlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getQuotaForOrigin,
 
-  ///Can be used to check if the [PlatformWebStorageManager.getUsageForOrigin] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebStorageManager.getUsageForOrigin] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebStorageManager.getUsageForOrigin.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.getUsageForOrigin.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebStorage.getUsageForOrigin](https://developer.android.com/reference/android/webkit/WebStorage#getUsageForOrigin(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.Long%3E)))
+  ///- Android WebView ([Official API - CygnusWebStorage.getUsageForOrigin](https://developer.android.com/reference/android/webkit/CygnusWebStorage#getUsageForOrigin(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.Long%3E)))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [origin]: all platforms
   ///
-  ///Use the [PlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getUsageForOrigin,
 
-  ///Can be used to check if the [PlatformWebStorageManager.removeDataFor] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebStorageManager.removeDataFor] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebStorageManager.removeDataFor.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.removeDataFor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 9.0+ ([Official API - WKWebsiteDataStore.removeData](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532936-removedata))
@@ -147,13 +147,13 @@ enum PlatformWebStorageManagerMethod {
   ///- [dataTypes]: all platforms
   ///- [dataRecords]: all platforms
   ///
-  ///Use the [PlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeDataFor,
 
-  ///Can be used to check if the [PlatformWebStorageManager.removeDataModifiedSince] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebStorageManager.removeDataModifiedSince] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebStorageManager.removeDataModifiedSince.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.removeDataModifiedSince.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 9.0+ ([Official API - WKWebsiteDataStore.removeData](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532938-removedata))
@@ -164,58 +164,58 @@ enum PlatformWebStorageManagerMethod {
   ///- [dataTypes]: all platforms
   ///- [date]: all platforms
   ///
-  ///Use the [PlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebStorageManager.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeDataModifiedSince,
 }
 
-extension _PlatformWebStorageManagerMethodSupported
-    on PlatformWebStorageManager {
+extension _CygnusPlatformWebStorageManagerMethodSupported
+    on CygnusPlatformWebStorageManager {
   static bool isMethodSupported(
-    PlatformWebStorageManagerMethod method, {
+    CygnusPlatformWebStorageManagerMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformWebStorageManagerMethod.deleteAllData:
+      case CygnusPlatformWebStorageManagerMethod.deleteAllData:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebStorageManagerMethod.deleteOrigin:
+      case CygnusPlatformWebStorageManagerMethod.deleteOrigin:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebStorageManagerMethod.fetchDataRecords:
+      case CygnusPlatformWebStorageManagerMethod.fetchDataRecords:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.linux,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebStorageManagerMethod.getOrigins:
+      case CygnusPlatformWebStorageManagerMethod.getOrigins:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebStorageManagerMethod.getQuotaForOrigin:
+      case CygnusPlatformWebStorageManagerMethod.getQuotaForOrigin:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebStorageManagerMethod.getUsageForOrigin:
+      case CygnusPlatformWebStorageManagerMethod.getUsageForOrigin:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebStorageManagerMethod.removeDataFor:
+      case CygnusPlatformWebStorageManagerMethod.removeDataFor:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.linux,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebStorageManagerMethod.removeDataModifiedSince:
+      case CygnusPlatformWebStorageManagerMethod.removeDataModifiedSince:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,

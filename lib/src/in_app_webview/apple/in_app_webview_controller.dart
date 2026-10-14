@@ -6,30 +6,30 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 
 import '../in_app_webview_controller.dart';
 
-///Use [InAppWebViewController] instead.
-@Deprecated("Use InAppWebViewController instead")
-class IOSInAppWebViewController {
-  PlatformInAppWebViewController? _controller;
+///Use [CygnusWebViewController] instead.
+@Deprecated("Use CygnusWebViewController instead")
+class CygnusIOSWebViewController {
+  CygnusPlatformWebViewController? _controller;
 
-  IOSInAppWebViewController({
-    required PlatformInAppWebViewController controller,
+  CygnusIOSWebViewController({
+    required CygnusPlatformWebViewController controller,
   }) {
     this._controller = controller;
   }
 
-  ///Use [InAppWebViewController.reloadFromOrigin] instead.
-  @Deprecated("Use InAppWebViewController.reloadFromOrigin instead")
+  ///Use [CygnusWebViewController.reloadFromOrigin] instead.
+  @Deprecated("Use CygnusWebViewController.reloadFromOrigin instead")
   Future<void> reloadFromOrigin() async {
     await _controller?.reloadFromOrigin();
   }
 
-  ///Use [InAppWebViewController.createPdf] instead.
-  @Deprecated("Use InAppWebViewController.createPdf instead")
+  ///Use [CygnusWebViewController.createPdf] instead.
+  @Deprecated("Use CygnusWebViewController.createPdf instead")
   Future<Uint8List?> createPdf({
     @Deprecated("Use pdfConfiguration instead")
     // ignore: deprecated_member_use_from_same_package
-    IOSWKPDFConfiguration? iosWKPdfConfiguration,
-    PDFConfiguration? pdfConfiguration,
+    CygnusIOSWKPDFConfiguration? iosWKPdfConfiguration,
+    CygnusPDFConfiguration? pdfConfiguration,
   }) async {
     return await _controller?.createPdf(
       iosWKPdfConfiguration: iosWKPdfConfiguration,
@@ -37,22 +37,22 @@ class IOSInAppWebViewController {
     );
   }
 
-  ///Use [InAppWebViewController.createWebArchiveData] instead.
-  @Deprecated("Use InAppWebViewController.createWebArchiveData instead")
+  ///Use [CygnusWebViewController.createWebArchiveData] instead.
+  @Deprecated("Use CygnusWebViewController.createWebArchiveData instead")
   Future<Uint8List?> createWebArchiveData() async {
     return await _controller?.createWebArchiveData();
   }
 
-  ///Use [InAppWebViewController.hasOnlySecureContent] instead.
-  @Deprecated("Use InAppWebViewController.hasOnlySecureContent instead")
+  ///Use [CygnusWebViewController.hasOnlySecureContent] instead.
+  @Deprecated("Use CygnusWebViewController.hasOnlySecureContent instead")
   Future<bool> hasOnlySecureContent() async {
     return await _controller?.hasOnlySecureContent() ?? false;
   }
 
-  ///Use [InAppWebViewController.handlesURLScheme] instead.
-  @Deprecated("Use InAppWebViewController.handlesURLScheme instead")
+  ///Use [CygnusWebViewController.handlesURLScheme] instead.
+  @Deprecated("Use CygnusWebViewController.handlesURLScheme instead")
   static Future<bool> handlesURLScheme(String urlScheme) async {
-    return await InAppWebViewController.handlesURLScheme(urlScheme);
+    return await CygnusWebViewController.handlesURLScheme(urlScheme);
   }
 
   void dispose() {

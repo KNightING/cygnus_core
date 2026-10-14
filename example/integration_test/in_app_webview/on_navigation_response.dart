@@ -1,14 +1,14 @@
 part of 'main.dart';
 
 void onNavigationResponse() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onNavigationResponse,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onNavigationResponse,
   );
 
   skippableGroup('onNavigationResponse', () {
     skippableTestWidgets('allow navigation', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
       final Completer<String> onNavigationResponseCompleter =
           Completer<String>();
@@ -16,9 +16,9 @@ void onNavigationResponse() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_URL_1),
+            initialUrlRequest: CygnusURLRequest(url: TEST_URL_1),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -29,7 +29,7 @@ void onNavigationResponse() {
               onNavigationResponseCompleter.complete(
                 navigationResponse.response!.url.toString(),
               );
-              return NavigationResponseAction.ALLOW;
+              return CygnusNavigationResponseAction.ALLOW;
             },
           ),
         ),
@@ -41,8 +41,8 @@ void onNavigationResponse() {
     });
 
     skippableTestWidgets('cancel navigation', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
       final Completer<String> onNavigationResponseCompleter =
           Completer<String>();
@@ -50,9 +50,9 @@ void onNavigationResponse() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_URL_1),
+            initialUrlRequest: CygnusURLRequest(url: TEST_URL_1),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -63,7 +63,7 @@ void onNavigationResponse() {
               onNavigationResponseCompleter.complete(
                 navigationResponse.response!.url.toString(),
               );
-              return NavigationResponseAction.CANCEL;
+              return CygnusNavigationResponseAction.CANCEL;
             },
           ),
         ),

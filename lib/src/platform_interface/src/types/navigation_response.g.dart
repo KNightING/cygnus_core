@@ -6,8 +6,8 @@ part of 'navigation_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the navigation response used by the [PlatformWebViewCreationParams.onNavigationResponse] event.
-class NavigationResponse {
+///Class that represents the navigation response used by the [CygnusPlatformWebViewCreationParams.onNavigationResponse] event.
+class CygnusNavigationResponse {
   ///A Boolean value that indicates whether WebKit is capable of displaying the response’s MIME type natively.
   bool canShowMIMEType;
 
@@ -15,25 +15,25 @@ class NavigationResponse {
   bool isForMainFrame;
 
   ///The URL for the response.
-  URLResponse? response;
-  NavigationResponse({
+  CygnusURLResponse? response;
+  CygnusNavigationResponse({
     required this.canShowMIMEType,
     required this.isForMainFrame,
     this.response,
   });
 
-  ///Gets a possible [NavigationResponse] instance from a [Map] value.
-  static NavigationResponse? fromMap(
+  ///Gets a possible [CygnusNavigationResponse] instance from a [Map] value.
+  static CygnusNavigationResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = NavigationResponse(
+    final instance = CygnusNavigationResponse(
       canShowMIMEType: map['canShowMIMEType'],
       isForMainFrame: map['isForMainFrame'],
-      response: URLResponse.fromMap(
+      response: CygnusURLResponse.fromMap(
         map['response']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -42,7 +42,7 @@ class NavigationResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "canShowMIMEType": canShowMIMEType,
       "isForMainFrame": isForMainFrame,
@@ -57,14 +57,14 @@ class NavigationResponse {
 
   @override
   String toString() {
-    return 'NavigationResponse{canShowMIMEType: $canShowMIMEType, isForMainFrame: $isForMainFrame, response: $response}';
+    return 'CygnusNavigationResponse{canShowMIMEType: $canShowMIMEType, isForMainFrame: $isForMainFrame, response: $response}';
   }
 }
 
-///An iOS-specific Class that represents the navigation response used by the [PlatformWebViewCreationParams.onNavigationResponse] event.
-///Use [NavigationResponse] instead.
-@Deprecated('Use NavigationResponse instead')
-class IOSWKNavigationResponse {
+///An iOS-specific Class that represents the navigation response used by the [CygnusPlatformWebViewCreationParams.onNavigationResponse] event.
+///Use [CygnusNavigationResponse] instead.
+@Deprecated('Use CygnusNavigationResponse instead')
+class CygnusIOSWKNavigationResponse {
   ///A Boolean value that indicates whether WebKit is capable of displaying the response’s MIME type natively.
   bool canShowMIMEType;
 
@@ -72,25 +72,25 @@ class IOSWKNavigationResponse {
   bool isForMainFrame;
 
   ///The URL for the response.
-  IOSURLResponse? response;
-  IOSWKNavigationResponse({
+  CygnusIOSURLResponse? response;
+  CygnusIOSWKNavigationResponse({
     required this.canShowMIMEType,
     required this.isForMainFrame,
     this.response,
   });
 
-  ///Gets a possible [IOSWKNavigationResponse] instance from a [Map] value.
-  static IOSWKNavigationResponse? fromMap(
+  ///Gets a possible [CygnusIOSWKNavigationResponse] instance from a [Map] value.
+  static CygnusIOSWKNavigationResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = IOSWKNavigationResponse(
+    final instance = CygnusIOSWKNavigationResponse(
       canShowMIMEType: map['canShowMIMEType'],
       isForMainFrame: map['isForMainFrame'],
-      response: IOSURLResponse.fromMap(
+      response: CygnusIOSURLResponse.fromMap(
         map['response']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -99,7 +99,7 @@ class IOSWKNavigationResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "canShowMIMEType": canShowMIMEType,
       "isForMainFrame": isForMainFrame,
@@ -114,6 +114,6 @@ class IOSWKNavigationResponse {
 
   @override
   String toString() {
-    return 'IOSWKNavigationResponse{canShowMIMEType: $canShowMIMEType, isForMainFrame: $isForMainFrame, response: $response}';
+    return 'CygnusIOSWKNavigationResponse{canShowMIMEType: $canShowMIMEType, isForMainFrame: $isForMainFrame, response: $response}';
   }
 }

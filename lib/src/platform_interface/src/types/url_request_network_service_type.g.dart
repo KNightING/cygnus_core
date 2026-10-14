@@ -7,64 +7,79 @@ part of 'url_request_network_service_type.dart';
 // **************************************************************************
 
 ///Class that represents the constants that specify how a request uses network resources.
-class URLRequestNetworkServiceType {
+class CygnusURLRequestNetworkServiceType {
   final int _value;
   final int? _nativeValue;
-  const URLRequestNetworkServiceType._internal(this._value, this._nativeValue);
+  const CygnusURLRequestNetworkServiceType._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory URLRequestNetworkServiceType._internalMultiPlatform(
+  factory CygnusURLRequestNetworkServiceType._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => URLRequestNetworkServiceType._internal(value, nativeValue());
+  ) => CygnusURLRequestNetworkServiceType._internal(value, nativeValue());
 
   ///A service type for streaming audio/video data.
-  static const AV_STREAMING = URLRequestNetworkServiceType._internal(8, 8);
+  static const AV_STREAMING = CygnusURLRequestNetworkServiceType._internal(
+    8,
+    8,
+  );
 
   ///A service type for background traffic.
   ///
   ///You should specify this type if your app is performing a download that was not requested by the user—for example,
   ///prefetching content so that it will be available when the user chooses to view it.
-  static const BACKGROUND = URLRequestNetworkServiceType._internal(3, 3);
+  static const BACKGROUND = CygnusURLRequestNetworkServiceType._internal(3, 3);
 
   ///A service type for call signaling.
   ///
   ///Use this service type with network traffic that establishes, maintains, or tears down a VoIP call.
-  static const CALL_SIGNALING = URLRequestNetworkServiceType._internal(11, 11);
+  static const CALL_SIGNALING = CygnusURLRequestNetworkServiceType._internal(
+    11,
+    11,
+  );
 
   ///A service type for standard network traffic.
-  static const DEFAULT = URLRequestNetworkServiceType._internal(0, 0);
+  static const DEFAULT = CygnusURLRequestNetworkServiceType._internal(0, 0);
 
   ///A service type for responsive (time-sensitive) audio/video data.
-  static const RESPONSIVE_AV = URLRequestNetworkServiceType._internal(9, 9);
+  static const RESPONSIVE_AV = CygnusURLRequestNetworkServiceType._internal(
+    9,
+    9,
+  );
 
   ///A service type for data that the user is actively waiting for.
   ///
   ///Use this service type for interactive situations where the user is anticipating a quick response, like instant messaging or completing a purchase.
-  static const RESPONSIVE_DATA = URLRequestNetworkServiceType._internal(6, 6);
+  static const RESPONSIVE_DATA = CygnusURLRequestNetworkServiceType._internal(
+    6,
+    6,
+  );
 
   ///A service type for video traffic.
-  static const VIDEO = URLRequestNetworkServiceType._internal(2, 2);
+  static const VIDEO = CygnusURLRequestNetworkServiceType._internal(2, 2);
 
   ///A service type for voice traffic.
-  static const VOICE = URLRequestNetworkServiceType._internal(4, 4);
+  static const VOICE = CygnusURLRequestNetworkServiceType._internal(4, 4);
 
-  ///Set of all values of [URLRequestNetworkServiceType].
-  static final Set<URLRequestNetworkServiceType> values = [
-    URLRequestNetworkServiceType.AV_STREAMING,
-    URLRequestNetworkServiceType.BACKGROUND,
-    URLRequestNetworkServiceType.CALL_SIGNALING,
-    URLRequestNetworkServiceType.DEFAULT,
-    URLRequestNetworkServiceType.RESPONSIVE_AV,
-    URLRequestNetworkServiceType.RESPONSIVE_DATA,
-    URLRequestNetworkServiceType.VIDEO,
-    URLRequestNetworkServiceType.VOICE,
+  ///Set of all values of [CygnusURLRequestNetworkServiceType].
+  static final Set<CygnusURLRequestNetworkServiceType> values = [
+    CygnusURLRequestNetworkServiceType.AV_STREAMING,
+    CygnusURLRequestNetworkServiceType.BACKGROUND,
+    CygnusURLRequestNetworkServiceType.CALL_SIGNALING,
+    CygnusURLRequestNetworkServiceType.DEFAULT,
+    CygnusURLRequestNetworkServiceType.RESPONSIVE_AV,
+    CygnusURLRequestNetworkServiceType.RESPONSIVE_DATA,
+    CygnusURLRequestNetworkServiceType.VIDEO,
+    CygnusURLRequestNetworkServiceType.VOICE,
   ].toSet();
 
-  ///Gets a possible [URLRequestNetworkServiceType] instance from [int] value.
-  static URLRequestNetworkServiceType? fromValue(int? value) {
+  ///Gets a possible [CygnusURLRequestNetworkServiceType] instance from [int] value.
+  static CygnusURLRequestNetworkServiceType? fromValue(int? value) {
     if (value != null) {
       try {
-        return URLRequestNetworkServiceType.values.firstWhere(
+        return CygnusURLRequestNetworkServiceType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -74,11 +89,11 @@ class URLRequestNetworkServiceType {
     return null;
   }
 
-  ///Gets a possible [URLRequestNetworkServiceType] instance from a native value.
-  static URLRequestNetworkServiceType? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusURLRequestNetworkServiceType] instance from a native value.
+  static CygnusURLRequestNetworkServiceType? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return URLRequestNetworkServiceType.values.firstWhere(
+        return CygnusURLRequestNetworkServiceType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -88,15 +103,15 @@ class URLRequestNetworkServiceType {
     return null;
   }
 
-  /// Gets a possible [URLRequestNetworkServiceType] instance value with name [name].
+  /// Gets a possible [CygnusURLRequestNetworkServiceType] instance value with name [name].
   ///
-  /// Goes through [URLRequestNetworkServiceType.values] looking for a value with
-  /// name [name], as reported by [URLRequestNetworkServiceType.name].
+  /// Goes through [CygnusURLRequestNetworkServiceType.values] looking for a value with
+  /// name [name], as reported by [CygnusURLRequestNetworkServiceType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static URLRequestNetworkServiceType? byName(String? name) {
+  static CygnusURLRequestNetworkServiceType? byName(String? name) {
     if (name != null) {
       try {
-        return URLRequestNetworkServiceType.values.firstWhere(
+        return CygnusURLRequestNetworkServiceType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -106,7 +121,7 @@ class URLRequestNetworkServiceType {
     return null;
   }
 
-  /// Creates a map from the names of [URLRequestNetworkServiceType] values to the values.
+  /// Creates a map from the names of [CygnusURLRequestNetworkServiceType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -114,9 +129,9 @@ class URLRequestNetworkServiceType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, URLRequestNetworkServiceType> asNameMap() =>
-      <String, URLRequestNetworkServiceType>{
-        for (final value in URLRequestNetworkServiceType.values)
+  static Map<String, CygnusURLRequestNetworkServiceType> asNameMap() =>
+      <String, CygnusURLRequestNetworkServiceType>{
+        for (final value in CygnusURLRequestNetworkServiceType.values)
           value.name(): value,
       };
 
@@ -167,75 +182,82 @@ class URLRequestNetworkServiceType {
 }
 
 ///An iOS-specific Class that represents the constants that specify how a request uses network resources.
-///Use [URLRequestNetworkServiceType] instead.
-@Deprecated('Use URLRequestNetworkServiceType instead')
-class IOSURLRequestNetworkServiceType {
+///Use [CygnusURLRequestNetworkServiceType] instead.
+@Deprecated('Use CygnusURLRequestNetworkServiceType instead')
+class CygnusIOSURLRequestNetworkServiceType {
   final int _value;
   final int? _nativeValue;
-  const IOSURLRequestNetworkServiceType._internal(
+  const CygnusIOSURLRequestNetworkServiceType._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory IOSURLRequestNetworkServiceType._internalMultiPlatform(
+  factory CygnusIOSURLRequestNetworkServiceType._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => IOSURLRequestNetworkServiceType._internal(value, nativeValue());
+  ) => CygnusIOSURLRequestNetworkServiceType._internal(value, nativeValue());
 
   ///A service type for streaming audio/video data.
-  static const AV_STREAMING = IOSURLRequestNetworkServiceType._internal(8, 8);
+  static const AV_STREAMING = CygnusIOSURLRequestNetworkServiceType._internal(
+    8,
+    8,
+  );
 
   ///A service type for background traffic.
   ///
   ///You should specify this type if your app is performing a download that was not requested by the user—for example,
   ///prefetching content so that it will be available when the user chooses to view it.
-  static const BACKGROUND = IOSURLRequestNetworkServiceType._internal(3, 3);
+  static const BACKGROUND = CygnusIOSURLRequestNetworkServiceType._internal(
+    3,
+    3,
+  );
 
   ///A service type for call signaling.
   ///
   ///Use this service type with network traffic that establishes, maintains, or tears down a VoIP call.
-  static const CALL_SIGNALING = IOSURLRequestNetworkServiceType._internal(
+  static const CALL_SIGNALING = CygnusIOSURLRequestNetworkServiceType._internal(
     11,
     11,
   );
 
   ///A service type for standard network traffic.
-  static const DEFAULT = IOSURLRequestNetworkServiceType._internal(0, 0);
+  static const DEFAULT = CygnusIOSURLRequestNetworkServiceType._internal(0, 0);
 
   ///A service type for responsive (time-sensitive) audio/video data.
-  static const RESPONSIVE_AV = IOSURLRequestNetworkServiceType._internal(9, 9);
+  static const RESPONSIVE_AV = CygnusIOSURLRequestNetworkServiceType._internal(
+    9,
+    9,
+  );
 
   ///A service type for data that the user is actively waiting for.
   ///
   ///Use this service type for interactive situations where the user is anticipating a quick response, like instant messaging or completing a purchase.
-  static const RESPONSIVE_DATA = IOSURLRequestNetworkServiceType._internal(
-    6,
-    6,
-  );
+  static const RESPONSIVE_DATA =
+      CygnusIOSURLRequestNetworkServiceType._internal(6, 6);
 
   ///A service type for video traffic.
-  static const VIDEO = IOSURLRequestNetworkServiceType._internal(2, 2);
+  static const VIDEO = CygnusIOSURLRequestNetworkServiceType._internal(2, 2);
 
   ///A service type for voice traffic.
-  static const VOICE = IOSURLRequestNetworkServiceType._internal(4, 4);
+  static const VOICE = CygnusIOSURLRequestNetworkServiceType._internal(4, 4);
 
-  ///Set of all values of [IOSURLRequestNetworkServiceType].
-  static final Set<IOSURLRequestNetworkServiceType> values = [
-    IOSURLRequestNetworkServiceType.AV_STREAMING,
-    IOSURLRequestNetworkServiceType.BACKGROUND,
-    IOSURLRequestNetworkServiceType.CALL_SIGNALING,
-    IOSURLRequestNetworkServiceType.DEFAULT,
-    IOSURLRequestNetworkServiceType.RESPONSIVE_AV,
-    IOSURLRequestNetworkServiceType.RESPONSIVE_DATA,
-    IOSURLRequestNetworkServiceType.VIDEO,
-    IOSURLRequestNetworkServiceType.VOICE,
+  ///Set of all values of [CygnusIOSURLRequestNetworkServiceType].
+  static final Set<CygnusIOSURLRequestNetworkServiceType> values = [
+    CygnusIOSURLRequestNetworkServiceType.AV_STREAMING,
+    CygnusIOSURLRequestNetworkServiceType.BACKGROUND,
+    CygnusIOSURLRequestNetworkServiceType.CALL_SIGNALING,
+    CygnusIOSURLRequestNetworkServiceType.DEFAULT,
+    CygnusIOSURLRequestNetworkServiceType.RESPONSIVE_AV,
+    CygnusIOSURLRequestNetworkServiceType.RESPONSIVE_DATA,
+    CygnusIOSURLRequestNetworkServiceType.VIDEO,
+    CygnusIOSURLRequestNetworkServiceType.VOICE,
   ].toSet();
 
-  ///Gets a possible [IOSURLRequestNetworkServiceType] instance from [int] value.
-  static IOSURLRequestNetworkServiceType? fromValue(int? value) {
+  ///Gets a possible [CygnusIOSURLRequestNetworkServiceType] instance from [int] value.
+  static CygnusIOSURLRequestNetworkServiceType? fromValue(int? value) {
     if (value != null) {
       try {
-        return IOSURLRequestNetworkServiceType.values.firstWhere(
+        return CygnusIOSURLRequestNetworkServiceType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -245,11 +267,11 @@ class IOSURLRequestNetworkServiceType {
     return null;
   }
 
-  ///Gets a possible [IOSURLRequestNetworkServiceType] instance from a native value.
-  static IOSURLRequestNetworkServiceType? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusIOSURLRequestNetworkServiceType] instance from a native value.
+  static CygnusIOSURLRequestNetworkServiceType? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return IOSURLRequestNetworkServiceType.values.firstWhere(
+        return CygnusIOSURLRequestNetworkServiceType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -259,15 +281,15 @@ class IOSURLRequestNetworkServiceType {
     return null;
   }
 
-  /// Gets a possible [IOSURLRequestNetworkServiceType] instance value with name [name].
+  /// Gets a possible [CygnusIOSURLRequestNetworkServiceType] instance value with name [name].
   ///
-  /// Goes through [IOSURLRequestNetworkServiceType.values] looking for a value with
-  /// name [name], as reported by [IOSURLRequestNetworkServiceType.name].
+  /// Goes through [CygnusIOSURLRequestNetworkServiceType.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSURLRequestNetworkServiceType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSURLRequestNetworkServiceType? byName(String? name) {
+  static CygnusIOSURLRequestNetworkServiceType? byName(String? name) {
     if (name != null) {
       try {
-        return IOSURLRequestNetworkServiceType.values.firstWhere(
+        return CygnusIOSURLRequestNetworkServiceType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -277,7 +299,7 @@ class IOSURLRequestNetworkServiceType {
     return null;
   }
 
-  /// Creates a map from the names of [IOSURLRequestNetworkServiceType] values to the values.
+  /// Creates a map from the names of [CygnusIOSURLRequestNetworkServiceType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -285,9 +307,9 @@ class IOSURLRequestNetworkServiceType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSURLRequestNetworkServiceType> asNameMap() =>
-      <String, IOSURLRequestNetworkServiceType>{
-        for (final value in IOSURLRequestNetworkServiceType.values)
+  static Map<String, CygnusIOSURLRequestNetworkServiceType> asNameMap() =>
+      <String, CygnusIOSURLRequestNetworkServiceType>{
+        for (final value in CygnusIOSURLRequestNetworkServiceType.values)
           value.name(): value,
       };
 

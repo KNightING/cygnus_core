@@ -6,38 +6,47 @@ part of 'safe_browsing_response_action.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class used by [SafeBrowsingResponse] class.
-class SafeBrowsingResponseAction {
+///Class used by [CygnusSafeBrowsingResponse] class.
+class CygnusSafeBrowsingResponseAction {
   final int _value;
   final int? _nativeValue;
-  const SafeBrowsingResponseAction._internal(this._value, this._nativeValue);
+  const CygnusSafeBrowsingResponseAction._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory SafeBrowsingResponseAction._internalMultiPlatform(
+  factory CygnusSafeBrowsingResponseAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => SafeBrowsingResponseAction._internal(value, nativeValue());
+  ) => CygnusSafeBrowsingResponseAction._internal(value, nativeValue());
 
   ///Act as if the user clicked the "back to safety" button.
-  static const BACK_TO_SAFETY = SafeBrowsingResponseAction._internal(0, 0);
+  static const BACK_TO_SAFETY = CygnusSafeBrowsingResponseAction._internal(
+    0,
+    0,
+  );
 
   ///Act as if the user clicked the "visit this unsafe site" button.
-  static const PROCEED = SafeBrowsingResponseAction._internal(1, 1);
+  static const PROCEED = CygnusSafeBrowsingResponseAction._internal(1, 1);
 
   ///Display the default interstitial.
-  static const SHOW_INTERSTITIAL = SafeBrowsingResponseAction._internal(2, 2);
+  static const SHOW_INTERSTITIAL = CygnusSafeBrowsingResponseAction._internal(
+    2,
+    2,
+  );
 
-  ///Set of all values of [SafeBrowsingResponseAction].
-  static final Set<SafeBrowsingResponseAction> values = [
-    SafeBrowsingResponseAction.BACK_TO_SAFETY,
-    SafeBrowsingResponseAction.PROCEED,
-    SafeBrowsingResponseAction.SHOW_INTERSTITIAL,
+  ///Set of all values of [CygnusSafeBrowsingResponseAction].
+  static final Set<CygnusSafeBrowsingResponseAction> values = [
+    CygnusSafeBrowsingResponseAction.BACK_TO_SAFETY,
+    CygnusSafeBrowsingResponseAction.PROCEED,
+    CygnusSafeBrowsingResponseAction.SHOW_INTERSTITIAL,
   ].toSet();
 
-  ///Gets a possible [SafeBrowsingResponseAction] instance from [int] value.
-  static SafeBrowsingResponseAction? fromValue(int? value) {
+  ///Gets a possible [CygnusSafeBrowsingResponseAction] instance from [int] value.
+  static CygnusSafeBrowsingResponseAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return SafeBrowsingResponseAction.values.firstWhere(
+        return CygnusSafeBrowsingResponseAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -47,11 +56,11 @@ class SafeBrowsingResponseAction {
     return null;
   }
 
-  ///Gets a possible [SafeBrowsingResponseAction] instance from a native value.
-  static SafeBrowsingResponseAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusSafeBrowsingResponseAction] instance from a native value.
+  static CygnusSafeBrowsingResponseAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return SafeBrowsingResponseAction.values.firstWhere(
+        return CygnusSafeBrowsingResponseAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -61,15 +70,15 @@ class SafeBrowsingResponseAction {
     return null;
   }
 
-  /// Gets a possible [SafeBrowsingResponseAction] instance value with name [name].
+  /// Gets a possible [CygnusSafeBrowsingResponseAction] instance value with name [name].
   ///
-  /// Goes through [SafeBrowsingResponseAction.values] looking for a value with
-  /// name [name], as reported by [SafeBrowsingResponseAction.name].
+  /// Goes through [CygnusSafeBrowsingResponseAction.values] looking for a value with
+  /// name [name], as reported by [CygnusSafeBrowsingResponseAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static SafeBrowsingResponseAction? byName(String? name) {
+  static CygnusSafeBrowsingResponseAction? byName(String? name) {
     if (name != null) {
       try {
-        return SafeBrowsingResponseAction.values.firstWhere(
+        return CygnusSafeBrowsingResponseAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -79,7 +88,7 @@ class SafeBrowsingResponseAction {
     return null;
   }
 
-  /// Creates a map from the names of [SafeBrowsingResponseAction] values to the values.
+  /// Creates a map from the names of [CygnusSafeBrowsingResponseAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -87,9 +96,9 @@ class SafeBrowsingResponseAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, SafeBrowsingResponseAction> asNameMap() =>
-      <String, SafeBrowsingResponseAction>{
-        for (final value in SafeBrowsingResponseAction.values)
+  static Map<String, CygnusSafeBrowsingResponseAction> asNameMap() =>
+      <String, CygnusSafeBrowsingResponseAction>{
+        for (final value in CygnusSafeBrowsingResponseAction.values)
           value.name(): value,
       };
 

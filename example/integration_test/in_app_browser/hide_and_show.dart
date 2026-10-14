@@ -1,14 +1,14 @@
 part of 'main.dart';
 
 void hideAndShow() {
-  final shouldSkip = !InAppBrowser.isClassSupported();
+  final shouldSkip = !CygnusBrowser.isClassSupported();
 
   skippableTest('hide and show', () async {
     var inAppBrowser = new MyInAppBrowser();
     await inAppBrowser.openUrlRequest(
-      urlRequest: URLRequest(url: TEST_URL_1),
-      settings: InAppBrowserClassSettings(
-        browserSettings: InAppBrowserSettings(hidden: true),
+      urlRequest: CygnusURLRequest(url: TEST_URL_1),
+      settings: CygnusBrowserClassSettings(
+        browserSettings: CygnusBrowserSettings(hidden: true),
       ),
     );
     await inAppBrowser.browserCreated.future;

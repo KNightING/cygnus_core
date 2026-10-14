@@ -10,11 +10,11 @@ import 'in_app_webview_controller.dart';
 /// Object specifying creation parameters for creating a [LinuxHeadlessInAppWebView].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformHeadlessInAppWebViewCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformHeadlessWebViewCreationParams] for
 /// more information.
 @immutable
 class LinuxHeadlessInAppWebViewCreationParams
-    extends PlatformHeadlessInAppWebViewCreationParams {
+    extends CygnusPlatformHeadlessWebViewCreationParams {
   /// Creates a new [LinuxHeadlessInAppWebViewCreationParams] instance.
   LinuxHeadlessInAppWebViewCreationParams({
     super.controllerFromPlatform,
@@ -47,7 +47,7 @@ class LinuxHeadlessInAppWebViewCreationParams
     super.onReceivedHttpAuthRequest,
     super.onReceivedServerTrustAuthRequest,
     super.onReceivedClientCertRequest,
-    @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+    @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
     super.onFindResultReceived,
     super.shouldInterceptAjaxRequest,
     super.onAjaxReadyStateChange,
@@ -132,9 +132,9 @@ class LinuxHeadlessInAppWebViewCreationParams
     this.findInteractionController,
   });
 
-  /// Creates a [LinuxHeadlessInAppWebViewCreationParams] instance based on [PlatformHeadlessInAppWebViewCreationParams].
+  /// Creates a [LinuxHeadlessInAppWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
   LinuxHeadlessInAppWebViewCreationParams.fromPlatformHeadlessInAppWebViewCreationParams(
-    PlatformHeadlessInAppWebViewCreationParams params,
+    CygnusPlatformHeadlessWebViewCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
         initialSize: params.initialSize,
@@ -252,8 +252,8 @@ class LinuxHeadlessInAppWebViewCreationParams
   final LinuxFindInteractionController? findInteractionController;
 }
 
-///{@macro cygnus_core.PlatformHeadlessInAppWebView}
-class LinuxHeadlessInAppWebView extends PlatformHeadlessInAppWebView
+///{@macro cygnus_core.CygnusPlatformHeadlessWebView}
+class LinuxHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     with ChannelController {
   @override
   late final String id;
@@ -268,7 +268,7 @@ class LinuxHeadlessInAppWebView extends PlatformHeadlessInAppWebView
   LinuxInAppWebViewController? _webViewController;
 
   /// Constructs a [LinuxHeadlessInAppWebView].
-  LinuxHeadlessInAppWebView(PlatformHeadlessInAppWebViewCreationParams params)
+  LinuxHeadlessInAppWebView(CygnusPlatformHeadlessWebViewCreationParams params)
     : super.implementation(
         params is LinuxHeadlessInAppWebViewCreationParams
             ? params
@@ -331,7 +331,7 @@ class LinuxHeadlessInAppWebView extends PlatformHeadlessInAppWebView
     _started = true;
     _init();
 
-    final initialSettings = params.initialSettings ?? InAppWebViewSettings();
+    final initialSettings = params.initialSettings ?? CygnusWebViewSettings();
     _inferInitialSettings(initialSettings);
 
     Map<String, dynamic> settingsMap =
@@ -367,7 +367,7 @@ class LinuxHeadlessInAppWebView extends PlatformHeadlessInAppWebView
     }
   }
 
-  void _inferInitialSettings(InAppWebViewSettings settings) {
+  void _inferInitialSettings(CygnusWebViewSettings settings) {
     if (params.shouldOverrideUrlLoading != null &&
         settings.useShouldOverrideUrlLoading == null) {
       settings.useShouldOverrideUrlLoading = true;

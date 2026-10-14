@@ -15,40 +15,40 @@ import 'webview_environment_settings.dart';
 
 part 'platform_webview_environment.g.dart';
 
-/// Object specifying creation parameters for creating a [PlatformWebViewEnvironment].
+/// Object specifying creation parameters for creating a [CygnusPlatformWebViewEnvironment].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 @SupportedPlatforms(platforms: [WindowsPlatform(), LinuxPlatform()])
 @immutable
-class PlatformWebViewEnvironmentCreationParams {
-  /// Used by the platform implementation to create a new [PlatformWebViewEnvironment].
-  const PlatformWebViewEnvironmentCreationParams({this.settings});
+class CygnusPlatformWebViewEnvironmentCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformWebViewEnvironment].
+  const CygnusPlatformWebViewEnvironmentCreationParams({this.settings});
 
-  ///{@template cygnus_core.PlatformWebViewEnvironmentCreationParams.settings}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironmentCreationParams.settings}
   /// WebView Environment settings.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironmentCreationParams.settings.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironmentCreationParams.settings.supported_platforms}
   @SupportedPlatforms(platforms: [WindowsPlatform()])
-  final WebViewEnvironmentSettings? settings;
+  final CygnusWebViewEnvironmentSettings? settings;
 
-  ///{@template cygnus_core.PlatformWebViewEnvironmentCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironmentCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformWebViewEnvironmentCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformWebViewEnvironmentCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformWebViewEnvironmentCreationParams.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironmentCreationParams.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformWebViewEnvironmentCreationParamsProperty property, {
+    CygnusPlatformWebViewEnvironmentCreationParamsProperty property, {
     TargetPlatform? platform,
   }) =>
-      _PlatformWebViewEnvironmentCreationParamsPropertySupported.isPropertySupported(
+      _CygnusPlatformWebViewEnvironmentCreationParamsPropertySupported.isPropertySupported(
         property,
         platform: platform,
       );
@@ -57,92 +57,92 @@ class PlatformWebViewEnvironmentCreationParams {
 ///Controls a WebView Environment used by WebView instances.
 ///Use [dispose] when not needed anymore to release references.
 ///
-///{@macro cygnus_core.PlatformWebViewEnvironment.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.supported_platforms}
 @SupportedPlatforms(platforms: [WindowsPlatform(), LinuxPlatform()])
-abstract class PlatformWebViewEnvironment extends PlatformInterface
-    implements Disposable {
-  ///Debug settings used by [PlatformWebViewEnvironment].
-  static DebugLoggingSettings debugLoggingSettings = DebugLoggingSettings(
+abstract class CygnusPlatformWebViewEnvironment extends PlatformInterface
+    implements CygnusDisposable {
+  ///Debug settings used by [CygnusPlatformWebViewEnvironment].
+  static CygnusDebugLoggingSettings debugLoggingSettings = CygnusDebugLoggingSettings(
     maxLogMessageLength: 1000,
   );
 
-  /// Creates a new [PlatformInAppWebViewController]
-  factory PlatformWebViewEnvironment(
-    PlatformWebViewEnvironmentCreationParams params,
+  /// Creates a new [CygnusPlatformWebViewController]
+  factory CygnusPlatformWebViewEnvironment(
+    CygnusPlatformWebViewEnvironmentCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformWebViewEnvironment webViewEnvironment = InAppWebViewPlatform
+    final CygnusPlatformWebViewEnvironment webViewEnvironment = CygnusWebViewPlatform
         .instance!
         .createPlatformWebViewEnvironment(params);
     PlatformInterface.verify(webViewEnvironment, _token);
     return webViewEnvironment;
   }
 
-  /// Creates a new [PlatformWebViewEnvironment] to access static methods.
-  factory PlatformWebViewEnvironment.static() {
+  /// Creates a new [CygnusPlatformWebViewEnvironment] to access static methods.
+  factory CygnusPlatformWebViewEnvironment.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformWebViewEnvironment webViewEnvironment = InAppWebViewPlatform
+    final CygnusPlatformWebViewEnvironment webViewEnvironment = CygnusWebViewPlatform
         .instance!
         .createPlatformWebViewEnvironmentStatic();
     PlatformInterface.verify(webViewEnvironment, _token);
     return webViewEnvironment;
   }
 
-  /// Used by the platform implementation to create a new [PlatformWebViewEnvironment].
+  /// Used by the platform implementation to create a new [CygnusPlatformWebViewEnvironment].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformWebViewEnvironment.implementation(this.params) : super(token: _token);
+  CygnusPlatformWebViewEnvironment.implementation(this.params) : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformWebViewEnvironment].
-  final PlatformWebViewEnvironmentCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformWebViewEnvironment].
+  final CygnusPlatformWebViewEnvironmentCreationParams params;
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.id}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.id}
   /// WebView Environment ID.
   ///{@endtemplate}
   @SupportedPlatforms(platforms: [WindowsPlatform(), LinuxPlatform()])
   String get id =>
       throw UnimplementedError('id is not implemented on the current platform');
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironmentCreationParams.settings}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironmentCreationParams.settings}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironmentCreationParams.settings.supported_platforms}
-  WebViewEnvironmentSettings? get settings => params.settings;
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironmentCreationParams.settings.supported_platforms}
+  CygnusWebViewEnvironmentSettings? get settings => params.settings;
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.isInterfaceSupported}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.isInterfaceSupported}
   ///Returns `true` if the WebView Environment supports the specified [interface], otherwise `false`.
-  ///Only the ones related to [WebViewInterface.ICoreWebView2Environment] are valid interfaces to check;
+  ///Only the ones related to [CygnusWebViewInterface.ICoreWebView2Environment] are valid interfaces to check;
   ///otherwise, it will always return `false`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.isInterfaceSupported.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.isInterfaceSupported.supported_platforms}
   @SupportedPlatforms(platforms: [WindowsPlatform()])
-  Future<bool> isInterfaceSupported(WebViewInterface interface) async {
+  Future<bool> isInterfaceSupported(CygnusWebViewInterface interface) async {
     throw UnimplementedError(
       'isInterfaceSupported is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.getProcessInfos}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.getProcessInfos}
   ///Returns a list of all process using same user data folder except for crashpad process.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getProcessInfos.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getProcessInfos.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -153,28 +153,28 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
       ),
     ],
   )
-  Future<List<BrowserProcessInfo>> getProcessInfos() async {
+  Future<List<CygnusBrowserProcessInfo>> getProcessInfos() async {
     throw UnimplementedError(
       'getProcessInfos is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.getProcessInfos}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.getProcessInfos}
   ///Returns the path of the folder where minidump files are written.
   ///
   ///Whenever a WebView2 process crashes, a crash dump file will be created in the crash dump folder.
   ///The crash dump format is minidump files.
   ///Please see [Minidump Files documentation](https://learn.microsoft.com/en-us/windows/win32/debug/minidump-files) for detailed information.
   ///Normally when a single child process fails, a minidump will be generated and written to disk,
-  ///then the [PlatformWebViewCreationParams.onProcessFailed] event is raised.
+  ///then the [CygnusPlatformWebViewCreationParams.onProcessFailed] event is raised.
   ///But for unexpected crashes, a minidump file might
-  ///not be generated at all, despite whether [PlatformWebViewCreationParams.onProcessFailed] event is raised.
+  ///not be generated at all, despite whether [CygnusPlatformWebViewCreationParams.onProcessFailed] event is raised.
   ///If there are multiple process failures at once, multiple minidump files could be generated.
   ///Thus [getFailureReportFolderPath] could contain old minidump files that are
-  ///not associated with a specific [PlatformWebViewCreationParams.onProcessFailed] event.
+  ///not associated with a specific [CygnusPlatformWebViewCreationParams.onProcessFailed] event.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getFailureReportFolderPath.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getFailureReportFolderPath.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -191,14 +191,14 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.create}
-  ///Creates the [PlatformWebViewEnvironment] using [settings].
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.create}
+  ///Creates the [CygnusPlatformWebViewEnvironment] using [settings].
   ///
   ///Check https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2210.55#createcorewebview2environmentwithoptions
   ///for more info.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.create.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.create.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -215,15 +215,15 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
       ),
     ],
   )
-  Future<PlatformWebViewEnvironment> create({
-    WebViewEnvironmentSettings? settings,
+  Future<CygnusPlatformWebViewEnvironment> create({
+    CygnusWebViewEnvironmentSettings? settings,
   }) {
     throw UnimplementedError(
       'create is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.getAvailableVersion}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.getAvailableVersion}
   ///Get the browser version info including channel name if it is not the WebView2 Runtime.
   ///
   ///Channel names are Beta, Dev, and Canary.
@@ -232,7 +232,7 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
   ///Returns `null` if it fails to find an installed WebView2 runtime or non-stable Microsoft Edge installation.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getAvailableVersion.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getAvailableVersion.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -255,7 +255,7 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.compareBrowserVersions}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.compareBrowserVersions}
   ///This method is for anyone want to compare version correctly to determine which version is newer, older or same.
   ///
   ///Use it to determine whether to use webview2 or certain feature based upon version.
@@ -264,7 +264,7 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
   ///Directly use the version info obtained from [getAvailableVersion] with input, channel information is ignored.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.compareBrowserVersions.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.compareBrowserVersions.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -283,10 +283,10 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.onNewBrowserVersionAvailable}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.onNewBrowserVersionAvailable}
   ///[onNewBrowserVersionAvailable] runs when a newer version of the WebView2 Runtime
   ///is installed and available using WebView2.
-  ///To use the newer version of the browser you must create a new [PlatformWebViewEnvironment] and WebView.
+  ///To use the newer version of the browser you must create a new [CygnusPlatformWebViewEnvironment] and WebView.
   ///The event only runs for new version from the same WebView2 Runtime from which the code is running.
   ///When not running with installed WebView2 Runtime, no event is run.
   ///
@@ -296,7 +296,7 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
   ///Or simply prompt the user to restart the app.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.onNewBrowserVersionAvailable.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.onNewBrowserVersionAvailable.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -308,7 +308,7 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
   )
   void Function()? onNewBrowserVersionAvailable;
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.onBrowserProcessExited}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.onBrowserProcessExited}
   ///The [onBrowserProcessExited] event is raised when the collection of WebView2 Runtime
   ///processes for the browser process of this environment terminate due to browser process failure
   ///or normal shutdown (for example, when all associated WebViews are closed),
@@ -316,9 +316,9 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
   ///To learn about what these processes are, go to [Process model](https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/process-model).
   ///
   ///Multiple app processes can share a browser process by creating their webviews
-  ///from a [PlatformWebViewEnvironment] with the same user data folder.
+  ///from a [CygnusPlatformWebViewEnvironment] with the same user data folder.
   ///When the entire collection of WebView2Runtime processes for the browser process exit,
-  ///all associated [PlatformWebViewEnvironment] objects receive the [onBrowserProcessExited] event.
+  ///all associated [CygnusPlatformWebViewEnvironment] objects receive the [onBrowserProcessExited] event.
   ///Multiple processes sharing the same browser process need to coordinate their
   ///use of the shared user data folder to avoid race conditions and unnecessary waits.
   ///For example, one process should not clear the user data folder at the same
@@ -327,24 +327,24 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
   ///are using the same browser process (the browser process will not exit
   ///until those other processes have closed their webviews too).
   ///
-  ///The difference between [onBrowserProcessExited] and [PlatformWebViewCreationParams.onProcessFailed] is that
+  ///The difference between [onBrowserProcessExited] and [CygnusPlatformWebViewCreationParams.onProcessFailed] is that
   ///[onBrowserProcessExited] is raised for any browser process exit
   ///(expected or unexpected, after all associated processes have exited too),
-  ///while [PlatformWebViewCreationParams.onProcessFailed] is raised for
+  ///while [CygnusPlatformWebViewCreationParams.onProcessFailed] is raised for
   ///unexpected process exits of any kind (browser, render, GPU, and all other types),
   ///or for main frame render process unresponsiveness.
   ///To learn more about the WebView2 Process Model, go to
   ///[Process model](https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/process-model).
   ///
   ///In the case the browser process crashes, both [onBrowserProcessExited] and
-  ///[PlatformWebViewCreationParams.onProcessFailed] events are raised, but the order is not guaranteed.
+  ///[CygnusPlatformWebViewCreationParams.onProcessFailed] events are raised, but the order is not guaranteed.
   ///These events are intended for different scenarios.
   ///It is up to the app to coordinate the handlers so they do not try to perform
   ///reliability recovery while also trying to move to a new WebView2 Runtime version
   ///or remove the user data folder.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.onBrowserProcessExited.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.onBrowserProcessExited.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -355,13 +355,13 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
       ),
     ],
   )
-  void Function(BrowserProcessExitedDetail detail)? onBrowserProcessExited;
+  void Function(CygnusBrowserProcessExitedDetail detail)? onBrowserProcessExited;
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.onProcessInfosChanged}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.onProcessInfosChanged}
   ///Event fired with a list of all process using same user data folder except for crashpad process.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.onProcessInfosChanged.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.onProcessInfosChanged.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -372,13 +372,13 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
       ),
     ],
   )
-  void Function(BrowserProcessInfosChangedDetail detail)? onProcessInfosChanged;
+  void Function(CygnusBrowserProcessInfosChangedDetail detail)? onProcessInfosChanged;
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.isSpellCheckingEnabled}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.isSpellCheckingEnabled}
   ///Returns whether spell checking is enabled for this WebContext.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.isSpellCheckingEnabled.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.isSpellCheckingEnabled.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       LinuxPlatform(
@@ -394,14 +394,14 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.getSpellCheckingLanguages}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.getSpellCheckingLanguages}
   ///Returns the list of spell checking languages currently configured for this WebContext.
   ///
   ///The locale strings are in the form `lang_COUNTRY` where `lang` is an
   ///ISO-639 language code and `COUNTRY` is an ISO-3166 country code.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getSpellCheckingLanguages.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getSpellCheckingLanguages.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       LinuxPlatform(
@@ -417,11 +417,11 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.getCacheModel}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.getCacheModel}
   ///Returns the current cache model for this WebContext.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getCacheModel.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getCacheModel.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       LinuxPlatform(
@@ -431,19 +431,19 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
       ),
     ],
   )
-  Future<CacheModel?> getCacheModel() {
+  Future<CygnusCacheModel?> getCacheModel() {
     throw UnimplementedError(
       'getCacheModel is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.isAutomationAllowed}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.isAutomationAllowed}
   ///Returns whether automation is allowed for this WebContext.
   ///
   ///When automation is allowed, web pages can use the WebDriver API.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.isAutomationAllowed.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.isAutomationAllowed.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       LinuxPlatform(
@@ -459,11 +459,11 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.dispose}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.dispose}
   ///Disposes the WebView Environment reference.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.dispose.supported_platforms}
   @SupportedPlatforms(platforms: [WindowsPlatform(), LinuxPlatform()])
   Future<void> dispose() {
     throw UnimplementedError(
@@ -471,33 +471,33 @@ abstract class PlatformWebViewEnvironment extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformWebViewEnvironmentClassSupported.isClassSupported(
+      _CygnusPlatformWebViewEnvironmentClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
-  ///The property should be one of the [PlatformWebViewEnvironmentProperty] or [PlatformWebViewEnvironmentCreationParamsProperty] values.
+  ///The property should be one of the [CygnusPlatformWebViewEnvironmentProperty] or [CygnusPlatformWebViewEnvironmentCreationParamsProperty] values.
   ///{@endtemplate}
   bool isPropertySupported(dynamic property, {TargetPlatform? platform}) =>
-      property is PlatformWebViewEnvironmentCreationParamsProperty
+      property is CygnusPlatformWebViewEnvironmentCreationParamsProperty
       ? params.isPropertySupported(property, platform: platform)
-      : _PlatformWebViewEnvironmentPropertySupported.isPropertySupported(
+      : _CygnusPlatformWebViewEnvironmentPropertySupported.isPropertySupported(
           property,
           platform: platform,
         );
 
-  ///{@template cygnus_core.PlatformWebViewEnvironment.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformWebViewEnvironment.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformWebViewEnvironmentMethod method, {
+    CygnusPlatformWebViewEnvironmentMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformWebViewEnvironmentMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformWebViewEnvironmentMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );

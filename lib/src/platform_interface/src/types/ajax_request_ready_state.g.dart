@@ -6,46 +6,46 @@ part of 'ajax_request_ready_state.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class used by [AjaxRequest] class. It represents the state of an [AjaxRequest].
-class AjaxRequestReadyState {
+///Class used by [CygnusAjaxRequest] class. It represents the state of an [CygnusAjaxRequest].
+class CygnusAjaxRequestReadyState {
   final int _value;
   final int? _nativeValue;
-  const AjaxRequestReadyState._internal(this._value, this._nativeValue);
+  const CygnusAjaxRequestReadyState._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory AjaxRequestReadyState._internalMultiPlatform(
+  factory CygnusAjaxRequestReadyState._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => AjaxRequestReadyState._internal(value, nativeValue());
+  ) => CygnusAjaxRequestReadyState._internal(value, nativeValue());
 
   ///The operation is complete.
-  static const DONE = AjaxRequestReadyState._internal(4, 4);
+  static const DONE = CygnusAjaxRequestReadyState._internal(4, 4);
 
-  ///`XMLHttpRequest.send()` has been called, and [AjaxRequest.headers] and [AjaxRequest.status] are available.
-  static const HEADERS_RECEIVED = AjaxRequestReadyState._internal(2, 2);
+  ///`XMLHttpRequest.send()` has been called, and [CygnusAjaxRequest.headers] and [CygnusAjaxRequest.status] are available.
+  static const HEADERS_RECEIVED = CygnusAjaxRequestReadyState._internal(2, 2);
 
-  ///Downloading; [AjaxRequest.responseText] holds partial data.
-  static const LOADING = AjaxRequestReadyState._internal(3, 3);
+  ///Downloading; [CygnusAjaxRequest.responseText] holds partial data.
+  static const LOADING = CygnusAjaxRequestReadyState._internal(3, 3);
 
   ///`XMLHttpRequest.open()` has been called.
-  static const OPENED = AjaxRequestReadyState._internal(1, 1);
+  static const OPENED = CygnusAjaxRequestReadyState._internal(1, 1);
 
   ///Client has been created. `XMLHttpRequest.open()` not called yet.
-  static const UNSENT = AjaxRequestReadyState._internal(0, 0);
+  static const UNSENT = CygnusAjaxRequestReadyState._internal(0, 0);
 
-  ///Set of all values of [AjaxRequestReadyState].
-  static final Set<AjaxRequestReadyState> values = [
-    AjaxRequestReadyState.DONE,
-    AjaxRequestReadyState.HEADERS_RECEIVED,
-    AjaxRequestReadyState.LOADING,
-    AjaxRequestReadyState.OPENED,
-    AjaxRequestReadyState.UNSENT,
+  ///Set of all values of [CygnusAjaxRequestReadyState].
+  static final Set<CygnusAjaxRequestReadyState> values = [
+    CygnusAjaxRequestReadyState.DONE,
+    CygnusAjaxRequestReadyState.HEADERS_RECEIVED,
+    CygnusAjaxRequestReadyState.LOADING,
+    CygnusAjaxRequestReadyState.OPENED,
+    CygnusAjaxRequestReadyState.UNSENT,
   ].toSet();
 
-  ///Gets a possible [AjaxRequestReadyState] instance from [int] value.
-  static AjaxRequestReadyState? fromValue(int? value) {
+  ///Gets a possible [CygnusAjaxRequestReadyState] instance from [int] value.
+  static CygnusAjaxRequestReadyState? fromValue(int? value) {
     if (value != null) {
       try {
-        return AjaxRequestReadyState.values.firstWhere(
+        return CygnusAjaxRequestReadyState.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -55,11 +55,11 @@ class AjaxRequestReadyState {
     return null;
   }
 
-  ///Gets a possible [AjaxRequestReadyState] instance from a native value.
-  static AjaxRequestReadyState? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusAjaxRequestReadyState] instance from a native value.
+  static CygnusAjaxRequestReadyState? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return AjaxRequestReadyState.values.firstWhere(
+        return CygnusAjaxRequestReadyState.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -69,15 +69,15 @@ class AjaxRequestReadyState {
     return null;
   }
 
-  /// Gets a possible [AjaxRequestReadyState] instance value with name [name].
+  /// Gets a possible [CygnusAjaxRequestReadyState] instance value with name [name].
   ///
-  /// Goes through [AjaxRequestReadyState.values] looking for a value with
-  /// name [name], as reported by [AjaxRequestReadyState.name].
+  /// Goes through [CygnusAjaxRequestReadyState.values] looking for a value with
+  /// name [name], as reported by [CygnusAjaxRequestReadyState.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static AjaxRequestReadyState? byName(String? name) {
+  static CygnusAjaxRequestReadyState? byName(String? name) {
     if (name != null) {
       try {
-        return AjaxRequestReadyState.values.firstWhere(
+        return CygnusAjaxRequestReadyState.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -87,7 +87,7 @@ class AjaxRequestReadyState {
     return null;
   }
 
-  /// Creates a map from the names of [AjaxRequestReadyState] values to the values.
+  /// Creates a map from the names of [CygnusAjaxRequestReadyState] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -95,9 +95,10 @@ class AjaxRequestReadyState {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, AjaxRequestReadyState> asNameMap() =>
-      <String, AjaxRequestReadyState>{
-        for (final value in AjaxRequestReadyState.values) value.name(): value,
+  static Map<String, CygnusAjaxRequestReadyState> asNameMap() =>
+      <String, CygnusAjaxRequestReadyState>{
+        for (final value in CygnusAjaxRequestReadyState.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

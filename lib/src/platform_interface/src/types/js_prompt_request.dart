@@ -6,11 +6,11 @@ import 'enum_method.dart';
 
 part 'js_prompt_request.g.dart';
 
-///Class that represents the request of the [PlatformWebViewCreationParams.onJsPrompt] event.
+///Class that represents the request of the [CygnusPlatformWebViewCreationParams.onJsPrompt] event.
 @ExchangeableObject()
-class JsPromptRequest_ {
+class CygnusJsPromptRequest_ {
   ///The url of the page requesting the dialog.
-  WebUri? url;
+  CygnusWebUri? url;
 
   ///Message to be displayed in the window.
   String? message;
@@ -26,7 +26,7 @@ class JsPromptRequest_ {
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
   bool? isMainFrame;
 
-  JsPromptRequest_({
+  CygnusJsPromptRequest_({
     this.url,
     this.message,
     this.defaultValue,

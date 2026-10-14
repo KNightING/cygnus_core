@@ -6,19 +6,19 @@ import 'web_message_channel.dart';
 /// Object specifying creation parameters for creating a [IOSWebMessagePort].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebMessagePortCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebMessagePortCreationParams] for
 /// more information.
 @immutable
 class IOSWebMessagePortCreationParams
-    extends PlatformWebMessagePortCreationParams {
+    extends CygnusPlatformWebMessagePortCreationParams {
   /// Creates a new [IOSWebMessagePortCreationParams] instance.
   const IOSWebMessagePortCreationParams({required super.index});
 
-  /// Creates a [IOSWebMessagePortCreationParams] instance based on [PlatformWebMessagePortCreationParams].
+  /// Creates a [IOSWebMessagePortCreationParams] instance based on [CygnusPlatformWebMessagePortCreationParams].
   factory IOSWebMessagePortCreationParams.fromPlatformWebMessagePortCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebMessagePortCreationParams params,
+    CygnusPlatformWebMessagePortCreationParams params,
   ) {
     return IOSWebMessagePortCreationParams(index: params.index);
   }
@@ -29,13 +29,13 @@ class IOSWebMessagePortCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformWebMessagePort}
-class IOSWebMessagePort extends PlatformWebMessagePort {
-  WebMessageCallback? _onMessage;
+///{@macro cygnus_core.CygnusPlatformWebMessagePort}
+class IOSWebMessagePort extends CygnusPlatformWebMessagePort {
+  CygnusWebMessageCallback? _onMessage;
   late IOSWebMessageChannel _webMessageChannel;
 
   /// Constructs a [IOSWebMessagePort].
-  IOSWebMessagePort(PlatformWebMessagePortCreationParams params)
+  IOSWebMessagePort(CygnusPlatformWebMessagePortCreationParams params)
     : super.implementation(
         params is IOSWebMessagePortCreationParams
             ? params
@@ -45,7 +45,7 @@ class IOSWebMessagePort extends PlatformWebMessagePort {
       );
 
   @override
-  Future<void> setWebMessageCallback(WebMessageCallback? onMessage) async {
+  Future<void> setWebMessageCallback(CygnusWebMessageCallback? onMessage) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('index', () => params.index);
     await _webMessageChannel.internalChannel?.invokeMethod(
@@ -56,7 +56,7 @@ class IOSWebMessagePort extends PlatformWebMessagePort {
   }
 
   @override
-  Future<void> postMessage(WebMessage message) async {
+  Future<void> postMessage(CygnusWebMessage message) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('index', () => params.index);
     args.putIfAbsent('message', () => message.toMap());
@@ -71,7 +71,7 @@ class IOSWebMessagePort extends PlatformWebMessagePort {
   }
 
   @override
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "index": params.index,
       "webMessageChannelId": this._webMessageChannel.params.id,
@@ -90,8 +90,8 @@ class IOSWebMessagePort extends PlatformWebMessagePort {
 }
 
 extension InternalWebMessagePort on IOSWebMessagePort {
-  WebMessageCallback? get onMessage => _onMessage;
-  void set onMessage(WebMessageCallback? value) => _onMessage = value;
+  CygnusWebMessageCallback? get onMessage => _onMessage;
+  void set onMessage(CygnusWebMessageCallback? value) => _onMessage = value;
 
   IOSWebMessageChannel get webMessageChannel => _webMessageChannel;
   void set webMessageChannel(IOSWebMessageChannel value) =>

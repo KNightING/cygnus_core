@@ -7,23 +7,26 @@ part of 'environment_channel_search_kind.dart';
 // **************************************************************************
 
 ///The channel search kind determines the order that release
-///channels are searched for during [PlatformWebViewEnvironment] creation.
-class EnvironmentChannelSearchKind {
+///channels are searched for during [CygnusPlatformWebViewEnvironment] creation.
+class CygnusEnvironmentChannelSearchKind {
   final int _value;
   final int? _nativeValue;
-  const EnvironmentChannelSearchKind._internal(this._value, this._nativeValue);
+  const CygnusEnvironmentChannelSearchKind._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory EnvironmentChannelSearchKind._internalMultiPlatform(
+  factory CygnusEnvironmentChannelSearchKind._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => EnvironmentChannelSearchKind._internal(value, nativeValue());
+  ) => CygnusEnvironmentChannelSearchKind._internal(value, nativeValue());
 
   ///Search for a release channel from least to most stable: Canary -> Dev -> Beta -> WebView2 Runtime.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   static final LEAST_STABLE =
-      EnvironmentChannelSearchKind._internalMultiPlatform(1, () {
+      CygnusEnvironmentChannelSearchKind._internalMultiPlatform(1, () {
         switch (defaultTargetPlatform) {
           case TargetPlatform.windows:
             return 1;
@@ -38,7 +41,7 @@ class EnvironmentChannelSearchKind {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   static final MOST_STABLE =
-      EnvironmentChannelSearchKind._internalMultiPlatform(0, () {
+      CygnusEnvironmentChannelSearchKind._internalMultiPlatform(0, () {
         switch (defaultTargetPlatform) {
           case TargetPlatform.windows:
             return 0;
@@ -48,17 +51,17 @@ class EnvironmentChannelSearchKind {
         return null;
       });
 
-  ///Set of all values of [EnvironmentChannelSearchKind].
-  static final Set<EnvironmentChannelSearchKind> values = [
-    EnvironmentChannelSearchKind.LEAST_STABLE,
-    EnvironmentChannelSearchKind.MOST_STABLE,
+  ///Set of all values of [CygnusEnvironmentChannelSearchKind].
+  static final Set<CygnusEnvironmentChannelSearchKind> values = [
+    CygnusEnvironmentChannelSearchKind.LEAST_STABLE,
+    CygnusEnvironmentChannelSearchKind.MOST_STABLE,
   ].toSet();
 
-  ///Gets a possible [EnvironmentChannelSearchKind] instance from [int] value.
-  static EnvironmentChannelSearchKind? fromValue(int? value) {
+  ///Gets a possible [CygnusEnvironmentChannelSearchKind] instance from [int] value.
+  static CygnusEnvironmentChannelSearchKind? fromValue(int? value) {
     if (value != null) {
       try {
-        return EnvironmentChannelSearchKind.values.firstWhere(
+        return CygnusEnvironmentChannelSearchKind.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -68,11 +71,11 @@ class EnvironmentChannelSearchKind {
     return null;
   }
 
-  ///Gets a possible [EnvironmentChannelSearchKind] instance from a native value.
-  static EnvironmentChannelSearchKind? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusEnvironmentChannelSearchKind] instance from a native value.
+  static CygnusEnvironmentChannelSearchKind? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return EnvironmentChannelSearchKind.values.firstWhere(
+        return CygnusEnvironmentChannelSearchKind.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -82,15 +85,15 @@ class EnvironmentChannelSearchKind {
     return null;
   }
 
-  /// Gets a possible [EnvironmentChannelSearchKind] instance value with name [name].
+  /// Gets a possible [CygnusEnvironmentChannelSearchKind] instance value with name [name].
   ///
-  /// Goes through [EnvironmentChannelSearchKind.values] looking for a value with
-  /// name [name], as reported by [EnvironmentChannelSearchKind.name].
+  /// Goes through [CygnusEnvironmentChannelSearchKind.values] looking for a value with
+  /// name [name], as reported by [CygnusEnvironmentChannelSearchKind.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static EnvironmentChannelSearchKind? byName(String? name) {
+  static CygnusEnvironmentChannelSearchKind? byName(String? name) {
     if (name != null) {
       try {
-        return EnvironmentChannelSearchKind.values.firstWhere(
+        return CygnusEnvironmentChannelSearchKind.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -100,7 +103,7 @@ class EnvironmentChannelSearchKind {
     return null;
   }
 
-  /// Creates a map from the names of [EnvironmentChannelSearchKind] values to the values.
+  /// Creates a map from the names of [CygnusEnvironmentChannelSearchKind] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -108,9 +111,9 @@ class EnvironmentChannelSearchKind {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, EnvironmentChannelSearchKind> asNameMap() =>
-      <String, EnvironmentChannelSearchKind>{
-        for (final value in EnvironmentChannelSearchKind.values)
+  static Map<String, CygnusEnvironmentChannelSearchKind> asNameMap() =>
+      <String, CygnusEnvironmentChannelSearchKind>{
+        for (final value in CygnusEnvironmentChannelSearchKind.values)
           value.name(): value,
       };
 

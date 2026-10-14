@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void onLoadResource() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onLoadResource,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onLoadResource,
   );
 
   skippableTestWidgets('onLoadResource', (WidgetTester tester) async {
@@ -19,10 +19,10 @@ void onLoadResource() {
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
           initialFile: "test_assets/in_app_webview_on_load_resource_test.html",
-          initialSettings: InAppWebViewSettings(clearCache: true),
+          initialSettings: CygnusWebViewSettings(clearCache: true),
           onLoadStop: (controller, url) {
             pageLoaded.complete();
           },

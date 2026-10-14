@@ -6,26 +6,26 @@ part of 'prewarming_token.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the Prewarming Token returned by [PlatformChromeSafariBrowser.prewarmConnections].
-class PrewarmingToken {
+///Class that represents the Prewarming Token returned by [CygnusPlatformChromeSafariBrowser.prewarmConnections].
+class CygnusPrewarmingToken {
   ///Prewarming Token id.
   final String id;
-  PrewarmingToken({required this.id});
+  CygnusPrewarmingToken({required this.id});
 
-  ///Gets a possible [PrewarmingToken] instance from a [Map] value.
-  static PrewarmingToken? fromMap(
+  ///Gets a possible [CygnusPrewarmingToken] instance from a [Map] value.
+  static CygnusPrewarmingToken? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = PrewarmingToken(id: map['id']);
+    final instance = CygnusPrewarmingToken(id: map['id']);
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"id": id};
   }
 
@@ -36,6 +36,6 @@ class PrewarmingToken {
 
   @override
   String toString() {
-    return 'PrewarmingToken{id: $id}';
+    return 'CygnusPrewarmingToken{id: $id}';
   }
 }

@@ -6,11 +6,11 @@ import 'enum_method.dart';
 
 part 'js_alert_request.g.dart';
 
-///Class that represents the request of the [PlatformWebViewCreationParams.onJsAlert] event.
+///Class that represents the request of the [CygnusPlatformWebViewCreationParams.onJsAlert] event.
 @ExchangeableObject()
-class JsAlertRequest_ {
+class CygnusJsAlertRequest_ {
   ///The url of the page requesting the dialog.
-  WebUri? url;
+  CygnusWebUri? url;
 
   ///Message to be displayed in the window.
   String? message;
@@ -23,7 +23,7 @@ class JsAlertRequest_ {
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
   bool? isMainFrame;
 
-  JsAlertRequest_({
+  CygnusJsAlertRequest_({
     this.url,
     this.message,
     @Deprecated("Use isMainFrame instead") this.iosIsMainFrame,

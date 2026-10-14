@@ -1,13 +1,13 @@
 part of 'main.dart';
 
 void setWebContentsDebuggingEnabled() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.setWebContentsDebuggingEnabled,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.setWebContentsDebuggingEnabled,
   );
 
   skippableTest('setWebContentsDebuggingEnabled', () async {
     expect(
-      InAppWebViewController.setWebContentsDebuggingEnabled(true),
+      CygnusWebViewController.setWebContentsDebuggingEnabled(true),
       completes,
     );
   }, skip: shouldSkip);

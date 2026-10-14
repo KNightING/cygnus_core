@@ -5,11 +5,11 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 /// Object specifying creation parameters for creating a [AndroidWebMessageListener].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebMessageListenerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebMessageListenerCreationParams] for
 /// more information.
 @immutable
 class AndroidWebMessageListenerCreationParams
-    extends PlatformWebMessageListenerCreationParams {
+    extends CygnusPlatformWebMessageListenerCreationParams {
   /// Creates a new [AndroidWebMessageListenerCreationParams] instance.
   const AndroidWebMessageListenerCreationParams({
     required this.allowedOriginRules,
@@ -17,11 +17,11 @@ class AndroidWebMessageListenerCreationParams
     super.onPostMessage,
   });
 
-  /// Creates a [AndroidWebMessageListenerCreationParams] instance based on [PlatformWebMessageListenerCreationParams].
+  /// Creates a [AndroidWebMessageListenerCreationParams] instance based on [CygnusPlatformWebMessageListenerCreationParams].
   factory AndroidWebMessageListenerCreationParams.fromPlatformWebMessageListenerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebMessageListenerCreationParams params,
+    CygnusPlatformWebMessageListenerCreationParams params,
   ) {
     return AndroidWebMessageListenerCreationParams(
       allowedOriginRules: params.allowedOriginRules ?? Set.from(["*"]),
@@ -39,11 +39,11 @@ class AndroidWebMessageListenerCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformWebMessageListener}
-class AndroidWebMessageListener extends PlatformWebMessageListener
+///{@macro cygnus_core.CygnusPlatformWebMessageListener}
+class AndroidWebMessageListener extends CygnusPlatformWebMessageListener
     with ChannelController {
   /// Constructs a [AndroidWebMessageListener].
-  AndroidWebMessageListener(PlatformWebMessageListenerCreationParams params)
+  AndroidWebMessageListener(CygnusPlatformWebMessageListenerCreationParams params)
     : super.implementation(
         params is AndroidWebMessageListenerCreationParams
             ? params
@@ -88,19 +88,19 @@ class AndroidWebMessageListener extends PlatformWebMessageListener
       case "onPostMessage":
         if (_replyProxy == null) {
           _replyProxy = AndroidJavaScriptReplyProxy(
-            PlatformJavaScriptReplyProxyCreationParams(
+            CygnusPlatformJavaScriptReplyProxyCreationParams(
               webMessageListener: this,
             ),
           );
         }
         if (onPostMessage != null) {
-          WebMessage? message = call.arguments["message"] != null
-              ? WebMessage.fromMap(
+          CygnusWebMessage? message = call.arguments["message"] != null
+              ? CygnusWebMessage.fromMap(
                   call.arguments["message"].cast<String, dynamic>(),
                 )
               : null;
-          WebUri? sourceOrigin = call.arguments["sourceOrigin"] != null
-              ? WebUri(call.arguments["sourceOrigin"])
+          CygnusWebUri? sourceOrigin = call.arguments["sourceOrigin"] != null
+              ? CygnusWebUri(call.arguments["sourceOrigin"])
               : null;
           bool isMainFrame = call.arguments["isMainFrame"];
           onPostMessage!(message, sourceOrigin, isMainFrame, _replyProxy!);
@@ -140,21 +140,21 @@ class AndroidWebMessageListener extends PlatformWebMessageListener
 /// Object specifying creation parameters for creating a [AndroidJavaScriptReplyProxy].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformJavaScriptReplyProxyCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformJavaScriptReplyProxyCreationParams] for
 /// more information.
 @immutable
 class AndroidJavaScriptReplyProxyCreationParams
-    extends PlatformJavaScriptReplyProxyCreationParams {
+    extends CygnusPlatformJavaScriptReplyProxyCreationParams {
   /// Creates a new [AndroidJavaScriptReplyProxyCreationParams] instance.
   const AndroidJavaScriptReplyProxyCreationParams({
     required super.webMessageListener,
   });
 
-  /// Creates a [AndroidJavaScriptReplyProxyCreationParams] instance based on [PlatformJavaScriptReplyProxyCreationParams].
+  /// Creates a [AndroidJavaScriptReplyProxyCreationParams] instance based on [CygnusPlatformJavaScriptReplyProxyCreationParams].
   factory AndroidJavaScriptReplyProxyCreationParams.fromPlatformJavaScriptReplyProxyCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformJavaScriptReplyProxyCreationParams params,
+    CygnusPlatformJavaScriptReplyProxyCreationParams params,
   ) {
     return AndroidJavaScriptReplyProxyCreationParams(
       webMessageListener: params.webMessageListener,
@@ -162,10 +162,10 @@ class AndroidJavaScriptReplyProxyCreationParams
   }
 }
 
-///{@macro cygnus_core.JavaScriptReplyProxy}
-class AndroidJavaScriptReplyProxy extends PlatformJavaScriptReplyProxy {
+///{@macro cygnus_core.CygnusJavaScriptReplyProxy}
+class AndroidJavaScriptReplyProxy extends CygnusPlatformJavaScriptReplyProxy {
   /// Constructs a [AndroidWebMessageListener].
-  AndroidJavaScriptReplyProxy(PlatformJavaScriptReplyProxyCreationParams params)
+  AndroidJavaScriptReplyProxy(CygnusPlatformJavaScriptReplyProxyCreationParams params)
     : super.implementation(
         params is AndroidJavaScriptReplyProxyCreationParams
             ? params
@@ -178,7 +178,7 @@ class AndroidJavaScriptReplyProxy extends PlatformJavaScriptReplyProxy {
       params.webMessageListener as AndroidWebMessageListener;
 
   @override
-  Future<void> postMessage(WebMessage message) async {
+  Future<void> postMessage(CygnusWebMessage message) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('message', () => message.toMap());
     await _androidWebMessageListener.channel?.invokeMethod('postMessage', args);

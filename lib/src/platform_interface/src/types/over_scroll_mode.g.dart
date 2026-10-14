@@ -8,37 +8,37 @@ part of 'over_scroll_mode.dart';
 
 ///Class used to configure the `WebView`'s over-scroll mode.
 ///Setting the over-scroll mode of a WebView will have an effect only if the `WebView` is capable of scrolling.
-class OverScrollMode {
+class CygnusOverScrollMode {
   final int _value;
   final int? _nativeValue;
-  const OverScrollMode._internal(this._value, this._nativeValue);
+  const CygnusOverScrollMode._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory OverScrollMode._internalMultiPlatform(
+  factory CygnusOverScrollMode._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => OverScrollMode._internal(value, nativeValue());
+  ) => CygnusOverScrollMode._internal(value, nativeValue());
 
   ///Always allow a user to over-scroll this view, provided it is a view that can scroll.
-  static const ALWAYS = OverScrollMode._internal(0, 0);
+  static const ALWAYS = CygnusOverScrollMode._internal(0, 0);
 
   ///Allow a user to over-scroll this view only if the content is large enough to meaningfully scroll, provided it is a view that can scroll.
-  static const IF_CONTENT_SCROLLS = OverScrollMode._internal(1, 1);
+  static const IF_CONTENT_SCROLLS = CygnusOverScrollMode._internal(1, 1);
 
   ///Never allow a user to over-scroll this view.
-  static const NEVER = OverScrollMode._internal(2, 2);
+  static const NEVER = CygnusOverScrollMode._internal(2, 2);
 
-  ///Set of all values of [OverScrollMode].
-  static final Set<OverScrollMode> values = [
-    OverScrollMode.ALWAYS,
-    OverScrollMode.IF_CONTENT_SCROLLS,
-    OverScrollMode.NEVER,
+  ///Set of all values of [CygnusOverScrollMode].
+  static final Set<CygnusOverScrollMode> values = [
+    CygnusOverScrollMode.ALWAYS,
+    CygnusOverScrollMode.IF_CONTENT_SCROLLS,
+    CygnusOverScrollMode.NEVER,
   ].toSet();
 
-  ///Gets a possible [OverScrollMode] instance from [int] value.
-  static OverScrollMode? fromValue(int? value) {
+  ///Gets a possible [CygnusOverScrollMode] instance from [int] value.
+  static CygnusOverScrollMode? fromValue(int? value) {
     if (value != null) {
       try {
-        return OverScrollMode.values.firstWhere(
+        return CygnusOverScrollMode.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -48,11 +48,11 @@ class OverScrollMode {
     return null;
   }
 
-  ///Gets a possible [OverScrollMode] instance from a native value.
-  static OverScrollMode? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusOverScrollMode] instance from a native value.
+  static CygnusOverScrollMode? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return OverScrollMode.values.firstWhere(
+        return CygnusOverScrollMode.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -62,15 +62,15 @@ class OverScrollMode {
     return null;
   }
 
-  /// Gets a possible [OverScrollMode] instance value with name [name].
+  /// Gets a possible [CygnusOverScrollMode] instance value with name [name].
   ///
-  /// Goes through [OverScrollMode.values] looking for a value with
-  /// name [name], as reported by [OverScrollMode.name].
+  /// Goes through [CygnusOverScrollMode.values] looking for a value with
+  /// name [name], as reported by [CygnusOverScrollMode.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static OverScrollMode? byName(String? name) {
+  static CygnusOverScrollMode? byName(String? name) {
     if (name != null) {
       try {
-        return OverScrollMode.values.firstWhere(
+        return CygnusOverScrollMode.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -80,7 +80,7 @@ class OverScrollMode {
     return null;
   }
 
-  /// Creates a map from the names of [OverScrollMode] values to the values.
+  /// Creates a map from the names of [CygnusOverScrollMode] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -88,9 +88,10 @@ class OverScrollMode {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, OverScrollMode> asNameMap() => <String, OverScrollMode>{
-    for (final value in OverScrollMode.values) value.name(): value,
-  };
+  static Map<String, CygnusOverScrollMode> asNameMap() =>
+      <String, CygnusOverScrollMode>{
+        for (final value in CygnusOverScrollMode.values) value.name(): value,
+      };
 
   ///Gets [int] value.
   int toValue() => _value;
@@ -130,42 +131,40 @@ class OverScrollMode {
 
 ///An Android-specific class used to configure the `WebView`'s over-scroll mode.
 ///Setting the over-scroll mode of a WebView will have an effect only if the `WebView` is capable of scrolling.
-///Use [OverScrollMode] instead.
-@Deprecated('Use OverScrollMode instead')
-class AndroidOverScrollMode {
+///Use [CygnusOverScrollMode] instead.
+@Deprecated('Use CygnusOverScrollMode instead')
+class CygnusAndroidOverScrollMode {
   final int _value;
   final int? _nativeValue;
-  const AndroidOverScrollMode._internal(this._value, this._nativeValue);
+  const CygnusAndroidOverScrollMode._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory AndroidOverScrollMode._internalMultiPlatform(
+  factory CygnusAndroidOverScrollMode._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => AndroidOverScrollMode._internal(value, nativeValue());
+  ) => CygnusAndroidOverScrollMode._internal(value, nativeValue());
 
   ///Always allow a user to over-scroll this view, provided it is a view that can scroll.
-  static const OVER_SCROLL_ALWAYS = AndroidOverScrollMode._internal(0, 0);
+  static const OVER_SCROLL_ALWAYS = CygnusAndroidOverScrollMode._internal(0, 0);
 
   ///Allow a user to over-scroll this view only if the content is large enough to meaningfully scroll, provided it is a view that can scroll.
-  static const OVER_SCROLL_IF_CONTENT_SCROLLS = AndroidOverScrollMode._internal(
-    1,
-    1,
-  );
+  static const OVER_SCROLL_IF_CONTENT_SCROLLS =
+      CygnusAndroidOverScrollMode._internal(1, 1);
 
   ///Never allow a user to over-scroll this view.
-  static const OVER_SCROLL_NEVER = AndroidOverScrollMode._internal(2, 2);
+  static const OVER_SCROLL_NEVER = CygnusAndroidOverScrollMode._internal(2, 2);
 
-  ///Set of all values of [AndroidOverScrollMode].
-  static final Set<AndroidOverScrollMode> values = [
-    AndroidOverScrollMode.OVER_SCROLL_ALWAYS,
-    AndroidOverScrollMode.OVER_SCROLL_IF_CONTENT_SCROLLS,
-    AndroidOverScrollMode.OVER_SCROLL_NEVER,
+  ///Set of all values of [CygnusAndroidOverScrollMode].
+  static final Set<CygnusAndroidOverScrollMode> values = [
+    CygnusAndroidOverScrollMode.OVER_SCROLL_ALWAYS,
+    CygnusAndroidOverScrollMode.OVER_SCROLL_IF_CONTENT_SCROLLS,
+    CygnusAndroidOverScrollMode.OVER_SCROLL_NEVER,
   ].toSet();
 
-  ///Gets a possible [AndroidOverScrollMode] instance from [int] value.
-  static AndroidOverScrollMode? fromValue(int? value) {
+  ///Gets a possible [CygnusAndroidOverScrollMode] instance from [int] value.
+  static CygnusAndroidOverScrollMode? fromValue(int? value) {
     if (value != null) {
       try {
-        return AndroidOverScrollMode.values.firstWhere(
+        return CygnusAndroidOverScrollMode.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -175,11 +174,11 @@ class AndroidOverScrollMode {
     return null;
   }
 
-  ///Gets a possible [AndroidOverScrollMode] instance from a native value.
-  static AndroidOverScrollMode? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusAndroidOverScrollMode] instance from a native value.
+  static CygnusAndroidOverScrollMode? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return AndroidOverScrollMode.values.firstWhere(
+        return CygnusAndroidOverScrollMode.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -189,15 +188,15 @@ class AndroidOverScrollMode {
     return null;
   }
 
-  /// Gets a possible [AndroidOverScrollMode] instance value with name [name].
+  /// Gets a possible [CygnusAndroidOverScrollMode] instance value with name [name].
   ///
-  /// Goes through [AndroidOverScrollMode.values] looking for a value with
-  /// name [name], as reported by [AndroidOverScrollMode.name].
+  /// Goes through [CygnusAndroidOverScrollMode.values] looking for a value with
+  /// name [name], as reported by [CygnusAndroidOverScrollMode.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static AndroidOverScrollMode? byName(String? name) {
+  static CygnusAndroidOverScrollMode? byName(String? name) {
     if (name != null) {
       try {
-        return AndroidOverScrollMode.values.firstWhere(
+        return CygnusAndroidOverScrollMode.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -207,7 +206,7 @@ class AndroidOverScrollMode {
     return null;
   }
 
-  /// Creates a map from the names of [AndroidOverScrollMode] values to the values.
+  /// Creates a map from the names of [CygnusAndroidOverScrollMode] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -215,9 +214,10 @@ class AndroidOverScrollMode {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, AndroidOverScrollMode> asNameMap() =>
-      <String, AndroidOverScrollMode>{
-        for (final value in AndroidOverScrollMode.values) value.name(): value,
+  static Map<String, CygnusAndroidOverScrollMode> asNameMap() =>
+      <String, CygnusAndroidOverScrollMode>{
+        for (final value in CygnusAndroidOverScrollMode.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

@@ -7,31 +7,31 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 /// Object specifying creation parameters for creating a [AndroidProxyController].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformProxyControllerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformProxyControllerCreationParams] for
 /// more information.
 @immutable
 class AndroidProxyControllerCreationParams
-    extends PlatformProxyControllerCreationParams {
+    extends CygnusPlatformProxyControllerCreationParams {
   /// Creates a new [AndroidProxyControllerCreationParams] instance.
   const AndroidProxyControllerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformProxyControllerCreationParams params,
+    CygnusPlatformProxyControllerCreationParams params,
   ) : super();
 
-  /// Creates a [AndroidProxyControllerCreationParams] instance based on [PlatformProxyControllerCreationParams].
+  /// Creates a [AndroidProxyControllerCreationParams] instance based on [CygnusPlatformProxyControllerCreationParams].
   factory AndroidProxyControllerCreationParams.fromPlatformProxyControllerCreationParams(
-    PlatformProxyControllerCreationParams params,
+    CygnusPlatformProxyControllerCreationParams params,
   ) {
     return AndroidProxyControllerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformProxyController}
-class AndroidProxyController extends PlatformProxyController
+///{@macro cygnus_core.CygnusPlatformProxyController}
+class AndroidProxyController extends CygnusPlatformProxyController
     with ChannelController {
   /// Creates a new [AndroidProxyController].
-  AndroidProxyController(PlatformProxyControllerCreationParams params)
+  AndroidProxyController(CygnusPlatformProxyControllerCreationParams params)
     : super.implementation(
         params is AndroidProxyControllerCreationParams
             ? params
@@ -56,7 +56,7 @@ class AndroidProxyController extends PlatformProxyController
   static AndroidProxyController _init() {
     _instance = AndroidProxyController(
       AndroidProxyControllerCreationParams(
-        const PlatformProxyControllerCreationParams(),
+        const CygnusPlatformProxyControllerCreationParams(),
       ),
     );
     return _instance!;
@@ -64,7 +64,7 @@ class AndroidProxyController extends PlatformProxyController
 
   static final AndroidProxyController _staticValue = AndroidProxyController(
     AndroidProxyControllerCreationParams(
-      const PlatformProxyControllerCreationParams(),
+      const CygnusPlatformProxyControllerCreationParams(),
     ),
   );
 
@@ -76,7 +76,7 @@ class AndroidProxyController extends PlatformProxyController
   Future<dynamic> _handleMethod(MethodCall call) async {}
 
   @override
-  Future<void> setProxyOverride({required ProxySettings settings}) async {
+  Future<void> setProxyOverride({required CygnusProxySettings settings}) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("settings", () => settings.toMap());
     await channel?.invokeMethod('setProxyOverride', args);

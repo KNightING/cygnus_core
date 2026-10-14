@@ -6,11 +6,11 @@ import 'enum_method.dart';
 
 part 'navigation_response.g.dart';
 
-///Class that represents the navigation response used by the [PlatformWebViewCreationParams.onNavigationResponse] event.
+///Class that represents the navigation response used by the [CygnusPlatformWebViewCreationParams.onNavigationResponse] event.
 @ExchangeableObject()
-class NavigationResponse_ {
+class CygnusNavigationResponse_ {
   ///The URL for the response.
-  URLResponse_? response;
+  CygnusURLResponse_? response;
 
   ///A Boolean value that indicates whether the response targets the web view’s main frame.
   bool isForMainFrame;
@@ -18,20 +18,20 @@ class NavigationResponse_ {
   ///A Boolean value that indicates whether WebKit is capable of displaying the response’s MIME type natively.
   bool canShowMIMEType;
 
-  NavigationResponse_({
+  CygnusNavigationResponse_({
     this.response,
     required this.isForMainFrame,
     required this.canShowMIMEType,
   });
 }
 
-///An iOS-specific Class that represents the navigation response used by the [PlatformWebViewCreationParams.onNavigationResponse] event.
-///Use [NavigationResponse] instead.
-@Deprecated("Use NavigationResponse instead")
+///An iOS-specific Class that represents the navigation response used by the [CygnusPlatformWebViewCreationParams.onNavigationResponse] event.
+///Use [CygnusNavigationResponse] instead.
+@Deprecated("Use CygnusNavigationResponse instead")
 @ExchangeableObject()
-class IOSWKNavigationResponse_ {
+class CygnusIOSWKNavigationResponse_ {
   ///The URL for the response.
-  IOSURLResponse_? response;
+  CygnusIOSURLResponse_? response;
 
   ///A Boolean value that indicates whether the response targets the web view’s main frame.
   bool isForMainFrame;
@@ -39,7 +39,7 @@ class IOSWKNavigationResponse_ {
   ///A Boolean value that indicates whether WebKit is capable of displaying the response’s MIME type natively.
   bool canShowMIMEType;
 
-  IOSWKNavigationResponse_({
+  CygnusIOSWKNavigationResponse_({
     this.response,
     required this.isForMainFrame,
     required this.canShowMIMEType,

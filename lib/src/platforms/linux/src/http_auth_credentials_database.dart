@@ -6,27 +6,27 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 /// Object specifying creation parameters for creating a [LinuxHttpAuthCredentialDatabase].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformHttpAuthCredentialDatabaseCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformHttpAuthCredentialDatabaseCreationParams] for
 /// more information.
 @immutable
 class LinuxHttpAuthCredentialDatabaseCreationParams
-    extends PlatformHttpAuthCredentialDatabaseCreationParams {
+    extends CygnusPlatformHttpAuthCredentialDatabaseCreationParams {
   /// Creates a new [LinuxHttpAuthCredentialDatabaseCreationParams] instance.
   const LinuxHttpAuthCredentialDatabaseCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformHttpAuthCredentialDatabaseCreationParams params,
+    CygnusPlatformHttpAuthCredentialDatabaseCreationParams params,
   ) : super();
 
-  /// Creates a [LinuxHttpAuthCredentialDatabaseCreationParams] instance based on [PlatformHttpAuthCredentialDatabaseCreationParams].
+  /// Creates a [LinuxHttpAuthCredentialDatabaseCreationParams] instance based on [CygnusPlatformHttpAuthCredentialDatabaseCreationParams].
   factory LinuxHttpAuthCredentialDatabaseCreationParams.fromPlatformHttpAuthCredentialDatabaseCreationParams(
-    PlatformHttpAuthCredentialDatabaseCreationParams params,
+    CygnusPlatformHttpAuthCredentialDatabaseCreationParams params,
   ) {
     return LinuxHttpAuthCredentialDatabaseCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformHttpAuthCredentialDatabase}
+///{@macro cygnus_core.CygnusPlatformHttpAuthCredentialDatabase}
 ///
 /// This implementation delegates to native C++ code which uses libsecret for secure storage.
 /// Passwords are stored in the system keyring (gnome-keyring, KDE Wallet, etc.).
@@ -36,14 +36,14 @@ class LinuxHttpAuthCredentialDatabaseCreationParams
 /// The native `appId` is resolved from `GApplication.application_id` when available.
 /// If it is null/empty, it falls back to the executable filename (from `/proc/self/exe`), sanitized.
 class LinuxHttpAuthCredentialDatabase
-    extends PlatformHttpAuthCredentialDatabase {
+    extends CygnusPlatformHttpAuthCredentialDatabase {
   static const MethodChannel _channel = MethodChannel(
     'com.pichillilorenzo/flutter_inappwebview_credential_database',
   );
 
   /// Creates a new [LinuxHttpAuthCredentialDatabase].
   LinuxHttpAuthCredentialDatabase(
-    PlatformHttpAuthCredentialDatabaseCreationParams params,
+    CygnusPlatformHttpAuthCredentialDatabaseCreationParams params,
   ) : super.implementation(
         params is LinuxHttpAuthCredentialDatabaseCreationParams
             ? params
@@ -62,7 +62,7 @@ class LinuxHttpAuthCredentialDatabase
   static LinuxHttpAuthCredentialDatabase _init() {
     _instance = LinuxHttpAuthCredentialDatabase(
       LinuxHttpAuthCredentialDatabaseCreationParams(
-        const PlatformHttpAuthCredentialDatabaseCreationParams(),
+        const CygnusPlatformHttpAuthCredentialDatabaseCreationParams(),
       ),
     );
     return _instance!;
@@ -71,7 +71,7 @@ class LinuxHttpAuthCredentialDatabase
   static final LinuxHttpAuthCredentialDatabase _staticValue =
       LinuxHttpAuthCredentialDatabase(
         LinuxHttpAuthCredentialDatabaseCreationParams(
-          const PlatformHttpAuthCredentialDatabaseCreationParams(),
+          const CygnusPlatformHttpAuthCredentialDatabaseCreationParams(),
         ),
       );
 
@@ -80,15 +80,15 @@ class LinuxHttpAuthCredentialDatabase
   }
 
   @override
-  Future<List<URLProtectionSpaceHttpAuthCredentials>>
+  Future<List<CygnusURLProtectionSpaceHttpAuthCredentials>>
   getAllAuthCredentials() async {
     final List<dynamic> allCredentials =
         await _channel.invokeMethod<List>('getAllAuthCredentials', {}) ?? [];
 
-    List<URLProtectionSpaceHttpAuthCredentials> result = [];
+    List<CygnusURLProtectionSpaceHttpAuthCredentials> result = [];
 
     for (final Map<dynamic, dynamic> map in allCredentials) {
-      final element = URLProtectionSpaceHttpAuthCredentials.fromMap(
+      final element = CygnusURLProtectionSpaceHttpAuthCredentials.fromMap(
         map.cast<String, dynamic>(),
       );
       if (element != null) {
@@ -99,8 +99,8 @@ class LinuxHttpAuthCredentialDatabase
   }
 
   @override
-  Future<List<URLCredential>> getHttpAuthCredentials({
-    required URLProtectionSpace protectionSpace,
+  Future<List<CygnusURLCredential>> getHttpAuthCredentials({
+    required CygnusURLProtectionSpace protectionSpace,
   }) async {
     final Map<String, dynamic> args = {
       'host': protectionSpace.host,
@@ -112,9 +112,9 @@ class LinuxHttpAuthCredentialDatabase
     final List<dynamic> credentialList =
         await _channel.invokeMethod<List>('getHttpAuthCredentials', args) ?? [];
 
-    List<URLCredential> credentials = [];
+    List<CygnusURLCredential> credentials = [];
     for (final Map<dynamic, dynamic> map in credentialList) {
-      final credential = URLCredential.fromMap(map.cast<String, dynamic>());
+      final credential = CygnusURLCredential.fromMap(map.cast<String, dynamic>());
       if (credential != null) {
         credentials.add(credential);
       }
@@ -124,8 +124,8 @@ class LinuxHttpAuthCredentialDatabase
 
   @override
   Future<void> setHttpAuthCredential({
-    required URLProtectionSpace protectionSpace,
-    required URLCredential credential,
+    required CygnusURLProtectionSpace protectionSpace,
+    required CygnusURLCredential credential,
   }) async {
     final Map<String, dynamic> args = {
       'host': protectionSpace.host,
@@ -140,8 +140,8 @@ class LinuxHttpAuthCredentialDatabase
 
   @override
   Future<void> removeHttpAuthCredential({
-    required URLProtectionSpace protectionSpace,
-    required URLCredential credential,
+    required CygnusURLProtectionSpace protectionSpace,
+    required CygnusURLCredential credential,
   }) async {
     final Map<String, dynamic> args = {
       'host': protectionSpace.host,
@@ -156,7 +156,7 @@ class LinuxHttpAuthCredentialDatabase
 
   @override
   Future<void> removeHttpAuthCredentials({
-    required URLProtectionSpace protectionSpace,
+    required CygnusURLProtectionSpace protectionSpace,
   }) async {
     final Map<String, dynamic> args = {
       'host': protectionSpace.host,

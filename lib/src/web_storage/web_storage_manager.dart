@@ -6,108 +6,108 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 import 'android/web_storage_manager.dart';
 import 'ios/web_storage_manager.dart';
 
-///{@macro cygnus_core.PlatformWebStorageManager}
+///{@macro cygnus_core.CygnusPlatformWebStorageManager}
 ///
-///{@macro cygnus_core.PlatformWebStorageManager.supported_platforms}
-class WebStorageManager {
-  ///{@macro cygnus_core.PlatformWebStorageManager}
-  WebStorageManager()
+///{@macro cygnus_core.CygnusPlatformWebStorageManager.supported_platforms}
+class CygnusWebStorageManager {
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager}
+  CygnusWebStorageManager()
     : this.fromPlatformCreationParams(
-        const PlatformWebStorageManagerCreationParams(),
+        const CygnusPlatformWebStorageManagerCreationParams(),
       );
 
-  /// Constructs a [WebStorageManager] from creation params for a specific
+  /// Constructs a [CygnusWebStorageManager] from creation params for a specific
   /// platform.
-  WebStorageManager.fromPlatformCreationParams(
-    PlatformWebStorageManagerCreationParams params,
-  ) : this.fromPlatform(PlatformWebStorageManager(params));
+  CygnusWebStorageManager.fromPlatformCreationParams(
+    CygnusPlatformWebStorageManagerCreationParams params,
+  ) : this.fromPlatform(CygnusPlatformWebStorageManager(params));
 
-  /// Constructs a [WebStorageManager] from a specific platform
+  /// Constructs a [CygnusWebStorageManager] from a specific platform
   /// implementation.
-  WebStorageManager.fromPlatform(this.platform);
+  CygnusWebStorageManager.fromPlatform(this.platform);
 
-  /// Implementation of [PlatformCookieManager] for the current platform.
-  final PlatformWebStorageManager platform;
+  /// Implementation of [CygnusPlatformCookieManager] for the current platform.
+  final CygnusPlatformWebStorageManager platform;
 
-  static WebStorageManager? _instance;
+  static CygnusWebStorageManager? _instance;
 
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformWebStorageManager.static().isClassSupported(platform: platform);
+      CygnusPlatformWebStorageManager.static().isClassSupported(platform: platform);
 
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   static bool isMethodSupported(
-    PlatformWebStorageManagerMethod method, {
+    CygnusPlatformWebStorageManagerMethod method, {
     TargetPlatform? platform,
-  }) => PlatformWebStorageManager.static().isMethodSupported(
+  }) => CygnusPlatformWebStorageManager.static().isMethodSupported(
     method,
     platform: platform,
   );
 
-  ///Use [WebStorageManager] instead.
-  @Deprecated("Use WebStorageManager instead")
-  AndroidWebStorageManager android = AndroidWebStorageManager();
+  ///Use [CygnusWebStorageManager] instead.
+  @Deprecated("Use CygnusWebStorageManager instead")
+  CygnusAndroidWebStorageManager android = CygnusAndroidWebStorageManager();
 
-  ///Use [WebStorageManager] instead.
-  @Deprecated("Use WebStorageManager instead")
-  IOSWebStorageManager ios = IOSWebStorageManager();
+  ///Use [CygnusWebStorageManager] instead.
+  @Deprecated("Use CygnusWebStorageManager instead")
+  CygnusIOSWebStorageManager ios = CygnusIOSWebStorageManager();
 
-  ///Gets the [WebStorageManager] shared instance.
-  static WebStorageManager instance() {
+  ///Gets the [CygnusWebStorageManager] shared instance.
+  static CygnusWebStorageManager instance() {
     if (_instance == null) {
-      _instance = WebStorageManager();
+      _instance = CygnusWebStorageManager();
     }
     return _instance!;
   }
 
-  ///{@macro cygnus_core.PlatformWebStorageManager.getOrigins}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.getOrigins}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.getOrigins.supported_platforms}
-  Future<List<WebStorageOrigin>> getOrigins() => platform.getOrigins();
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.getOrigins.supported_platforms}
+  Future<List<CygnusWebStorageOrigin>> getOrigins() => platform.getOrigins();
 
-  ///{@macro cygnus_core.PlatformWebStorageManager.deleteAllData}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.deleteAllData}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.deleteAllData.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.deleteAllData.supported_platforms}
   Future<void> deleteAllData() => platform.deleteAllData();
 
-  ///{@macro cygnus_core.PlatformWebStorageManager.deleteOrigin}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.deleteOrigin}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.deleteOrigin.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.deleteOrigin.supported_platforms}
   Future<void> deleteOrigin({required String origin}) =>
       platform.deleteOrigin(origin: origin);
 
-  ///{@macro cygnus_core.PlatformWebStorageManager.getQuotaForOrigin}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.getQuotaForOrigin}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.getQuotaForOrigin.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.getQuotaForOrigin.supported_platforms}
   Future<int> getQuotaForOrigin({required String origin}) =>
       platform.getQuotaForOrigin(origin: origin);
 
-  ///{@macro cygnus_core.PlatformWebStorageManager.getUsageForOrigin}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.getUsageForOrigin}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.getUsageForOrigin.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.getUsageForOrigin.supported_platforms}
   Future<int> getUsageForOrigin({required String origin}) =>
       platform.getUsageForOrigin(origin: origin);
 
-  ///{@macro cygnus_core.PlatformWebStorageManager.fetchDataRecords}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.fetchDataRecords}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.fetchDataRecords.supported_platforms}
-  Future<List<WebsiteDataRecord>> fetchDataRecords({
-    required Set<WebsiteDataType> dataTypes,
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.fetchDataRecords.supported_platforms}
+  Future<List<CygnusWebsiteDataRecord>> fetchDataRecords({
+    required Set<CygnusWebsiteDataType> dataTypes,
   }) => platform.fetchDataRecords(dataTypes: dataTypes);
 
-  ///{@macro cygnus_core.PlatformWebStorageManager.removeDataFor}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.removeDataFor}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.removeDataFor.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.removeDataFor.supported_platforms}
   Future<void> removeDataFor({
-    required Set<WebsiteDataType> dataTypes,
-    required List<WebsiteDataRecord> dataRecords,
+    required Set<CygnusWebsiteDataType> dataTypes,
+    required List<CygnusWebsiteDataRecord> dataRecords,
   }) => platform.removeDataFor(dataTypes: dataTypes, dataRecords: dataRecords);
 
-  ///{@macro cygnus_core.PlatformWebStorageManager.removeDataModifiedSince}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.removeDataModifiedSince}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.removeDataModifiedSince.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.removeDataModifiedSince.supported_platforms}
   Future<void> removeDataModifiedSince({
-    required Set<WebsiteDataType> dataTypes,
+    required Set<CygnusWebsiteDataType> dataTypes,
     required DateTime date,
   }) => platform.removeDataModifiedSince(dataTypes: dataTypes, date: date);
 }

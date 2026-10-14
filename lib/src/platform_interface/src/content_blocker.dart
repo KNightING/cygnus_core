@@ -7,32 +7,32 @@ import 'types/main.dart';
 ///
 ///In general, this [article](https://developer.apple.com/documentation/safariservices/creating_a_content_blocker) can be used to get an overview about this functionality
 ///but on Android there are two types of [action] that are unavailable: `block-cookies` and `ignore-previous-rules`.
-class ContentBlocker {
+class CygnusContentBlocker {
   ///Trigger of the content blocker. The trigger tells to the WebView when to perform the corresponding action.
-  ContentBlockerTrigger trigger;
+  CygnusContentBlockerTrigger trigger;
 
   ///Action associated to the trigger. The action tells to the WebView what to do when the trigger is matched.
-  ContentBlockerAction action;
+  CygnusContentBlockerAction action;
 
-  ContentBlocker({required this.trigger, required this.action});
+  CygnusContentBlocker({required this.trigger, required this.action});
 
-  Map<String, Map<String, dynamic>> toMap({EnumMethod? enumMethod}) {
+  Map<String, Map<String, dynamic>> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "trigger": trigger.toMap(enumMethod: enumMethod),
       "action": action.toMap(enumMethod: enumMethod),
     };
   }
 
-  static ContentBlocker fromMap(
+  static CygnusContentBlocker fromMap(
     Map<dynamic, Map<dynamic, dynamic>> map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
-    return ContentBlocker(
-      trigger: ContentBlockerTrigger.fromMap(
+    return CygnusContentBlocker(
+      trigger: CygnusContentBlockerTrigger.fromMap(
         Map<String, dynamic>.from(map["trigger"]!),
         enumMethod: enumMethod,
       ),
-      action: ContentBlockerAction.fromMap(
+      action: CygnusContentBlockerAction.fromMap(
         Map<String, dynamic>.from(map["action"]!),
         enumMethod: enumMethod,
       ),
@@ -41,15 +41,15 @@ class ContentBlocker {
 
   @override
   String toString() {
-    return 'ContentBlocker{trigger: $trigger, action: $action}';
+    return 'CygnusContentBlocker{trigger: $trigger, action: $action}';
   }
 }
 
 ///Trigger of the content blocker. The trigger tells to the WebView when to perform the corresponding action.
-///A trigger dictionary must include an [ContentBlockerTrigger.urlFilter], which specifies a pattern to match the URL against.
+///A trigger dictionary must include an [CygnusContentBlockerTrigger.urlFilter], which specifies a pattern to match the URL against.
 ///The remaining properties are optional and modify the behavior of the trigger.
 ///For example, you can limit the trigger to specific domains or have it not apply when a match is found on a specific domain.
-class ContentBlockerTrigger {
+class CygnusContentBlockerTrigger {
   ///A regular expression pattern to match the URL against.
   String urlFilter;
 
@@ -69,7 +69,7 @@ class ContentBlockerTrigger {
   ///- MacOS
   bool urlFilterIsCaseSensitive;
 
-  ///A list of [ContentBlockerTriggerResourceType] representing the resource types
+  ///A list of [CygnusContentBlockerTriggerResourceType] representing the resource types
   ///(how the browser intends to use the resource) that the rule should match.
   ///If not specified, the rule matches all resource types.
   ///
@@ -77,11 +77,11 @@ class ContentBlockerTrigger {
   ///- Android native WebView
   ///- iOS
   ///- MacOS
-  List<ContentBlockerTriggerResourceType> resourceType;
+  List<CygnusContentBlockerTriggerResourceType> resourceType;
 
   ///A list of strings matched to a URL's domain; limits action to a list of specific domains.
   ///Values must be lowercase ASCII, or punycode for non-ASCII.
-  ///Add * in front to match domain and subdomains. Can't be used with [ContentBlockerTrigger.unlessDomain].
+  ///Add * in front to match domain and subdomains. Can't be used with [CygnusContentBlockerTrigger.unlessDomain].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android native WebView
@@ -91,7 +91,7 @@ class ContentBlockerTrigger {
 
   ///A list of strings matched to a URL's domain; acts on any site except domains in a provided list.
   ///Values must be lowercase ASCII, or punycode for non-ASCII.
-  ///Add * in front to match domain and subdomains. Can't be used with [ContentBlockerTrigger.ifDomain].
+  ///Add * in front to match domain and subdomains. Can't be used with [CygnusContentBlockerTrigger.ifDomain].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android native WebView
@@ -99,17 +99,17 @@ class ContentBlockerTrigger {
   ///- MacOS
   List<String> unlessDomain;
 
-  ///A list of [ContentBlockerTriggerLoadType] that can include one of two mutually exclusive values.
+  ///A list of [CygnusContentBlockerTriggerLoadType] that can include one of two mutually exclusive values.
   ///If not specified, the rule matches all load types.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android native WebView
   ///- iOS
   ///- MacOS
-  List<ContentBlockerTriggerLoadType> loadType;
+  List<CygnusContentBlockerTriggerLoadType> loadType;
 
   ///A list of strings matched to the entire main document URL; limits the action to a specific list of URL patterns.
-  ///Values must be lowercase ASCII, or punycode for non-ASCII. Can't be used with [ContentBlockerTrigger.unlessTopUrl].
+  ///Values must be lowercase ASCII, or punycode for non-ASCII. Can't be used with [CygnusContentBlockerTrigger.unlessTopUrl].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android native WebView
@@ -118,7 +118,7 @@ class ContentBlockerTrigger {
   List<String> ifTopUrl;
 
   ///An array of strings matched to the entire main document URL; acts on any site except URL patterns in provided list.
-  ///Values must be lowercase ASCII, or punycode for non-ASCII. Can't be used with [ContentBlockerTrigger.ifTopUrl].
+  ///Values must be lowercase ASCII, or punycode for non-ASCII. Can't be used with [CygnusContentBlockerTrigger.ifTopUrl].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android native WebView
@@ -131,70 +131,70 @@ class ContentBlockerTrigger {
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS
   ///- MacOS
-  List<ContentBlockerTriggerLoadContext> loadContext;
+  List<CygnusContentBlockerTriggerLoadContext> loadContext;
 
-  ContentBlockerTrigger({
+  CygnusContentBlockerTrigger({
     required this.urlFilter,
     this.ifFrameUrl = const <String>[],
     this.urlFilterIsCaseSensitive = false,
-    this.resourceType = const <ContentBlockerTriggerResourceType>[],
+    this.resourceType = const <CygnusContentBlockerTriggerResourceType>[],
     this.ifDomain = const <String>[],
     this.unlessDomain = const <String>[],
-    this.loadType = const <ContentBlockerTriggerLoadType>[],
+    this.loadType = const <CygnusContentBlockerTriggerLoadType>[],
     this.ifTopUrl = const <String>[],
     this.unlessTopUrl = const <String>[],
-    this.loadContext = const <ContentBlockerTriggerLoadContext>[],
+    this.loadContext = const <CygnusContentBlockerTriggerLoadContext>[],
   }) {
     assert(!(this.ifDomain.isEmpty || this.unlessDomain.isEmpty) == false);
     assert(this.loadType.length <= 2);
     assert(!(this.ifTopUrl.isEmpty || this.unlessTopUrl.isEmpty) == false);
   }
 
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     List<String> resourceTypeStringList = [];
     resourceType.forEach((type) {
-      switch (enumMethod ?? EnumMethod.nativeValue) {
-        case EnumMethod.nativeValue:
+      switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        case CygnusEnumMethod.nativeValue:
           if (type.isSupported()) {
             resourceTypeStringList.add(type.toNativeValue()!);
           }
           break;
-        case EnumMethod.value:
+        case CygnusEnumMethod.value:
           resourceTypeStringList.add(type.toValue());
           break;
-        case EnumMethod.name:
+        case CygnusEnumMethod.name:
           resourceTypeStringList.add(type.name());
           break;
       }
     });
     List<String> loadTypeStringList = [];
     loadType.forEach((type) {
-      switch (enumMethod ?? EnumMethod.nativeValue) {
-        case EnumMethod.nativeValue:
+      switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        case CygnusEnumMethod.nativeValue:
           if (type.isSupported()) {
             loadTypeStringList.add(type.toNativeValue()!);
           }
           break;
-        case EnumMethod.value:
+        case CygnusEnumMethod.value:
           loadTypeStringList.add(type.toValue());
           break;
-        case EnumMethod.name:
+        case CygnusEnumMethod.name:
           loadTypeStringList.add(type.name());
           break;
       }
     });
     List<String> loadContextStringList = [];
     loadContext.forEach((type) {
-      switch (enumMethod ?? EnumMethod.nativeValue) {
-        case EnumMethod.nativeValue:
+      switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        case CygnusEnumMethod.nativeValue:
           if (type.isSupported()) {
             loadContextStringList.add(type.toNativeValue()!);
           }
           break;
-        case EnumMethod.value:
+        case CygnusEnumMethod.value:
           loadContextStringList.add(type.toValue());
           break;
-        case EnumMethod.name:
+        case CygnusEnumMethod.name:
           loadContextStringList.add(type.name());
           break;
       }
@@ -225,25 +225,25 @@ class ContentBlockerTrigger {
     return map;
   }
 
-  static ContentBlockerTrigger fromMap(
+  static CygnusContentBlockerTrigger fromMap(
     Map<String, dynamic> map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
-    List<ContentBlockerTriggerResourceType> resourceType = [];
-    List<ContentBlockerTriggerLoadType> loadType = [];
-    List<ContentBlockerTriggerLoadContext> loadContext = [];
+    List<CygnusContentBlockerTriggerResourceType> resourceType = [];
+    List<CygnusContentBlockerTriggerLoadType> loadType = [];
+    List<CygnusContentBlockerTriggerLoadContext> loadContext = [];
 
     List<String> resourceTypeStringList = List<String>.from(
       map["resource-type"] ?? [],
     );
     resourceTypeStringList.forEach((typeValue) {
-      var type = switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue =>
-          ContentBlockerTriggerResourceType.fromNativeValue(typeValue),
-        EnumMethod.value => ContentBlockerTriggerResourceType.fromValue(
+      var type = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusContentBlockerTriggerResourceType.fromNativeValue(typeValue),
+        CygnusEnumMethod.value => CygnusContentBlockerTriggerResourceType.fromValue(
           typeValue,
         ),
-        EnumMethod.name => ContentBlockerTriggerResourceType.byName(typeValue),
+        CygnusEnumMethod.name => CygnusContentBlockerTriggerResourceType.byName(typeValue),
       };
       if (type != null) {
         resourceType.add(type);
@@ -252,12 +252,12 @@ class ContentBlockerTrigger {
 
     List<String> loadTypeStringList = List<String>.from(map["load-type"] ?? []);
     loadTypeStringList.forEach((typeValue) {
-      var type = switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => ContentBlockerTriggerLoadType.fromNativeValue(
+      var type = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusContentBlockerTriggerLoadType.fromNativeValue(
           typeValue,
         ),
-        EnumMethod.value => ContentBlockerTriggerLoadType.fromValue(typeValue),
-        EnumMethod.name => ContentBlockerTriggerLoadType.byName(typeValue),
+        CygnusEnumMethod.value => CygnusContentBlockerTriggerLoadType.fromValue(typeValue),
+        CygnusEnumMethod.name => CygnusContentBlockerTriggerLoadType.byName(typeValue),
       };
       if (type != null) {
         loadType.add(type);
@@ -268,20 +268,20 @@ class ContentBlockerTrigger {
       map["load-context"] ?? [],
     );
     loadContextStringList.forEach((typeValue) {
-      var context = switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue =>
-          ContentBlockerTriggerLoadContext.fromNativeValue(typeValue),
-        EnumMethod.value => ContentBlockerTriggerLoadContext.fromValue(
+      var context = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusContentBlockerTriggerLoadContext.fromNativeValue(typeValue),
+        CygnusEnumMethod.value => CygnusContentBlockerTriggerLoadContext.fromValue(
           typeValue,
         ),
-        EnumMethod.name => ContentBlockerTriggerLoadContext.byName(typeValue),
+        CygnusEnumMethod.name => CygnusContentBlockerTriggerLoadContext.byName(typeValue),
       };
       if (context != null) {
         loadContext.add(context);
       }
     });
 
-    return ContentBlockerTrigger(
+    return CygnusContentBlockerTrigger(
       urlFilter: map["url-filter"],
       ifFrameUrl: List<String>.from(map["if-frame-url"] ?? []),
       urlFilterIsCaseSensitive: map["url-filter-is-case-sensitive"],
@@ -297,7 +297,7 @@ class ContentBlockerTrigger {
 
   @override
   String toString() {
-    return 'ContentBlockerTrigger{urlFilter: $urlFilter, ifFrameUrl: $ifFrameUrl, urlFilterIsCaseSensitive: $urlFilterIsCaseSensitive, resourceType: $resourceType, ifDomain: $ifDomain, unlessDomain: $unlessDomain, loadType: $loadType, ifTopUrl: $ifTopUrl, unlessTopUrl: $unlessTopUrl, loadContext: $loadContext}';
+    return 'CygnusContentBlockerTrigger{urlFilter: $urlFilter, ifFrameUrl: $ifFrameUrl, urlFilterIsCaseSensitive: $urlFilterIsCaseSensitive, resourceType: $resourceType, ifDomain: $ifDomain, unlessDomain: $unlessDomain, loadType: $loadType, ifTopUrl: $ifTopUrl, unlessTopUrl: $unlessTopUrl, loadContext: $loadContext}';
   }
 }
 
@@ -306,26 +306,26 @@ class ContentBlockerTrigger {
 ///The WebView evaluates all the triggers, it executes the actions in order.
 ///When a domain matches a trigger, all rules after the triggered rule that specify the same action are skipped.
 ///Group the rules with similar actions together to improve performance.
-class ContentBlockerAction {
+class CygnusContentBlockerAction {
   ///Type of the action.
-  ContentBlockerActionType type;
+  CygnusContentBlockerActionType type;
 
-  ///If the action type is [ContentBlockerActionType.CSS_DISPLAY_NONE], then also the [selector] property is required, otherwise it is ignored.
+  ///If the action type is [CygnusContentBlockerActionType.CSS_DISPLAY_NONE], then also the [selector] property is required, otherwise it is ignored.
   ///It specify a string that defines a selector list. Use CSS identifiers as the individual selector values, separated by commas.
   String? selector;
 
-  ContentBlockerAction({required this.type, this.selector}) {
-    if (this.type == ContentBlockerActionType.CSS_DISPLAY_NONE) {
+  CygnusContentBlockerAction({required this.type, this.selector}) {
+    if (this.type == CygnusContentBlockerActionType.CSS_DISPLAY_NONE) {
       assert(this.selector != null);
     }
   }
 
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     Map<String, dynamic> map = {
-      "type": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => type.toNativeValue(),
-        EnumMethod.value => type.toValue(),
-        EnumMethod.name => type.name(),
+      "type": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => type.toNativeValue(),
+        CygnusEnumMethod.value => type.toValue(),
+        CygnusEnumMethod.name => type.name(),
       },
       "selector": selector,
     };
@@ -342,17 +342,17 @@ class ContentBlockerAction {
     return map;
   }
 
-  static ContentBlockerAction fromMap(
+  static CygnusContentBlockerAction fromMap(
     Map<String, dynamic> map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
-    return ContentBlockerAction(
-      type: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => ContentBlockerActionType.fromNativeValue(
+    return CygnusContentBlockerAction(
+      type: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusContentBlockerActionType.fromNativeValue(
           map["type"],
         ),
-        EnumMethod.value => ContentBlockerActionType.fromValue(map["type"]),
-        EnumMethod.name => ContentBlockerActionType.byName(map["type"]),
+        CygnusEnumMethod.value => CygnusContentBlockerActionType.fromValue(map["type"]),
+        CygnusEnumMethod.name => CygnusContentBlockerActionType.byName(map["type"]),
       }!,
       selector: map["selector"],
     );
@@ -360,6 +360,6 @@ class ContentBlockerAction {
 
   @override
   String toString() {
-    return 'ContentBlockerAction{type: $type, selector: $selector}';
+    return 'CygnusContentBlockerAction{type: $type, selector: $selector}';
   }
 }

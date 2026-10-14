@@ -9,12 +9,12 @@ import 'in_app_webview_controller.dart';
 
 import 'custom_platform_view.dart';
 
-/// Object specifying creation parameters for creating a [PlatformInAppWebViewWidget].
+/// Object specifying creation parameters for creating a [CygnusPlatformWebViewWidget].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 class WindowsInAppWebViewWidgetCreationParams
-    extends PlatformInAppWebViewWidgetCreationParams {
+    extends CygnusPlatformWebViewWidgetCreationParams {
   WindowsInAppWebViewWidgetCreationParams({
     super.controllerFromPlatform,
     super.key,
@@ -55,7 +55,7 @@ class WindowsInAppWebViewWidgetCreationParams
     super.onReceivedHttpAuthRequest,
     super.onReceivedServerTrustAuthRequest,
     super.onReceivedClientCertRequest,
-    @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+    @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
     super.onFindResultReceived,
     super.shouldInterceptAjaxRequest,
     super.onAjaxReadyStateChange,
@@ -145,9 +145,9 @@ class WindowsInAppWebViewWidgetCreationParams
   });
 
   /// Constructs a [WindowsInAppWebViewWidgetCreationParams] using a
-  /// [PlatformInAppWebViewWidgetCreationParams].
+  /// [CygnusPlatformWebViewWidgetCreationParams].
   WindowsInAppWebViewWidgetCreationParams.fromPlatformInAppWebViewWidgetCreationParams(
-    PlatformInAppWebViewWidgetCreationParams params,
+    CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
         key: params.key,
@@ -279,12 +279,12 @@ class WindowsInAppWebViewWidgetCreationParams
   final WindowsWebViewEnvironment? webViewEnvironment;
 }
 
-///{@macro cygnus_core.PlatformInAppWebViewWidget}
-class WindowsInAppWebViewWidget extends PlatformInAppWebViewWidget {
+///{@macro cygnus_core.CygnusPlatformWebViewWidget}
+class WindowsInAppWebViewWidget extends CygnusPlatformWebViewWidget {
   /// Constructs a [WindowsInAppWebViewWidget].
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewWidget}
-  WindowsInAppWebViewWidget(PlatformInAppWebViewWidgetCreationParams params)
+  ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
+  WindowsInAppWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
     : super.implementation(
         params is WindowsInAppWebViewWidgetCreationParams
             ? params
@@ -310,7 +310,7 @@ class WindowsInAppWebViewWidget extends PlatformInAppWebViewWidget {
 
   @override
   Widget build(BuildContext context) {
-    final initialSettings = params.initialSettings ?? InAppWebViewSettings();
+    final initialSettings = params.initialSettings ?? CygnusWebViewSettings();
     _inferInitialSettings(initialSettings);
 
     Map<String, dynamic> settingsMap =
@@ -356,7 +356,7 @@ class WindowsInAppWebViewWidget extends PlatformInAppWebViewWidget {
     viewId = params.keepAlive?.id ?? viewId ?? id;
     _windowsHeadlessInAppWebView?.internalDispose();
     _controller = WindowsInAppWebViewController(
-      PlatformInAppWebViewControllerCreationParams(
+      CygnusPlatformWebViewControllerCreationParams(
         id: viewId,
         webviewParams: params,
       ),
@@ -365,7 +365,7 @@ class WindowsInAppWebViewWidget extends PlatformInAppWebViewWidget {
     debugLog(
       className: runtimeType.toString(),
       id: viewId?.toString(),
-      debugLoggingSettings: PlatformInAppWebViewController.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformWebViewController.debugLoggingSettings,
       method: "onWebViewCreated",
       args: [],
     );
@@ -376,7 +376,7 @@ class WindowsInAppWebViewWidget extends PlatformInAppWebViewWidget {
     }
   }
 
-  void _inferInitialSettings(InAppWebViewSettings settings) {
+  void _inferInitialSettings(CygnusWebViewSettings settings) {
     if (params.shouldOverrideUrlLoading != null &&
         settings.useShouldOverrideUrlLoading == null) {
       settings.useShouldOverrideUrlLoading = true;
@@ -427,7 +427,7 @@ class WindowsInAppWebViewWidget extends PlatformInAppWebViewWidget {
     debugLog(
       className: runtimeType.toString(),
       id: viewId?.toString(),
-      debugLoggingSettings: PlatformInAppWebViewController.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformWebViewController.debugLoggingSettings,
       method: "dispose",
       args: [],
     );
@@ -438,7 +438,7 @@ class WindowsInAppWebViewWidget extends PlatformInAppWebViewWidget {
   }
 
   @override
-  T controllerFromPlatform<T>(PlatformInAppWebViewController controller) {
+  T controllerFromPlatform<T>(CygnusPlatformWebViewController controller) {
     // unused
     throw UnimplementedError();
   }

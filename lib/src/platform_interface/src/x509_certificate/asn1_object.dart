@@ -5,34 +5,34 @@ import 'x509_certificate.dart';
 import 'asn1_identifier.dart';
 import 'oid.dart';
 
-class ASN1Object {
+class CygnusASN1Object {
   /// This property contains the DER encoded object
   Uint8List? encoded;
 
   /// This property contains the decoded object whenever is possible
   dynamic value;
 
-  ASN1Identifier? identifier;
+  CygnusASN1Identifier? identifier;
 
-  List<ASN1Object>? sub;
+  List<CygnusASN1Object>? sub;
 
-  ASN1Object? parent;
+  CygnusASN1Object? parent;
 
-  ASN1Object? subAtIndex(int index) {
+  CygnusASN1Object? subAtIndex(int index) {
     if (sub != null && index >= 0 && index < sub!.length) {
       return sub![index];
     }
     return null;
   }
 
-  ASN1Object? firstSub() {
+  CygnusASN1Object? firstSub() {
     if (subCount() > 0) {
       return sub!.first;
     }
     return null;
   }
 
-  ASN1Object? lastSub() {
+  CygnusASN1Object? lastSub() {
     if (subCount() > 0) {
       return sub!.last;
     }
@@ -43,11 +43,11 @@ class ASN1Object {
     return sub?.length ?? 0;
   }
 
-  ASN1Object? findOid({OID? oid, String? oidValue}) {
+  CygnusASN1Object? findOid({CygnusOID? oid, String? oidValue}) {
     oidValue = oid != null ? oid.toValue() : oidValue;
-    for (var child in (sub ?? <ASN1Object>[])) {
+    for (var child in (sub ?? <CygnusASN1Object>[])) {
       if (child.identifier?.tagNumber() ==
-          ASN1IdentifierTagNumber.OBJECT_IDENTIFIER) {
+          CygnusASN1IdentifierTagNumber.OBJECT_IDENTIFIER) {
         if (child.value == oidValue) {
           return child;
         }
@@ -69,16 +69,16 @@ class ASN1Object {
     var output = insets;
     output += identifier?.description.toUpperCase() ?? "";
     output += (value != null ? ": $value" : "");
-    if (identifier?.typeClass() == ASN1IdentifierClass.UNIVERSAL &&
-        identifier?.tagNumber() == ASN1IdentifierTagNumber.OBJECT_IDENTIFIER) {
-      var descr = OID.fromValue(value?.toString() ?? "")?.name();
+    if (identifier?.typeClass() == CygnusASN1IdentifierClass.UNIVERSAL &&
+        identifier?.tagNumber() == CygnusASN1IdentifierTagNumber.OBJECT_IDENTIFIER) {
+      var descr = CygnusOID.fromValue(value?.toString() ?? "")?.name();
       if (descr != null) {
         output += " ($descr)";
       }
     }
     output += sub != null && sub!.length > 0 ? " {" : "";
     output += "\n";
-    for (var item in (sub ?? <ASN1Object>[])) {
+    for (var item in (sub ?? <CygnusASN1Object>[])) {
       output += item.printAsn1(insets: insets + "    ");
     }
     output += sub != null && sub!.length > 0 ? "}\n" : "";
@@ -90,7 +90,7 @@ class ASN1Object {
     return description;
   }
 
-  ASN1Object? atIndex(X509BlockPosition x509blockPosition) {
+  CygnusASN1Object? atIndex(CygnusX509BlockPosition x509blockPosition) {
     if (sub != null && x509blockPosition.index < sub!.length) {
       return sub![x509blockPosition.index];
     }

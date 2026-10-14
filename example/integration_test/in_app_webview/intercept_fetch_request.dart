@@ -1,14 +1,14 @@
 part of 'main.dart';
 
 void interceptFetchRequest() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.shouldInterceptFetchRequest,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.shouldInterceptFetchRequest,
   );
 
   skippableGroup('intercept fetch request', () {
     skippableTestWidgets('send string data', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<Map<String, dynamic>> fetchPostCompleter =
           Completer<Map<String, dynamic>>();
       final Completer<void> shouldInterceptFetchPostRequestCompleter =
@@ -16,9 +16,9 @@ void interceptFetchRequest() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialData: InAppWebViewInitialData(
+            initialData: CygnusWebViewInitialData(
               data:
                   """
 <!doctype html>
@@ -88,8 +88,8 @@ void interceptFetchRequest() {
     });
 
     skippableTestWidgets('send json data', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<Map<String, dynamic>> fetchPostCompleter =
           Completer<Map<String, dynamic>>();
       final Completer<void> shouldInterceptFetchPostRequestCompleter =
@@ -97,9 +97,9 @@ void interceptFetchRequest() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialData: InAppWebViewInitialData(
+            initialData: CygnusWebViewInitialData(
               data:
                   """
 <!doctype html>
@@ -179,8 +179,8 @@ void interceptFetchRequest() {
     skippableTestWidgets('send URLSearchParams data', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<Map<String, dynamic>> fetchPostCompleter =
           Completer<Map<String, dynamic>>();
       final Completer<void> shouldInterceptFetchPostRequestCompleter =
@@ -188,9 +188,9 @@ void interceptFetchRequest() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialData: InAppWebViewInitialData(
+            initialData: CygnusWebViewInitialData(
               data:
                   """
 <!doctype html>
@@ -262,8 +262,8 @@ void interceptFetchRequest() {
     });
 
     skippableTestWidgets('send FormData', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<Map<String, dynamic>> fetchPostCompleter =
           Completer<Map<String, dynamic>>();
       final Completer<void> shouldInterceptFetchPostRequestCompleter =
@@ -271,9 +271,9 @@ void interceptFetchRequest() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialData: InAppWebViewInitialData(
+            initialData: CygnusWebViewInitialData(
               data:
                   """
 <!doctype html>

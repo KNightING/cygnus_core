@@ -7,39 +7,41 @@ part of 'save_as_kind.dart';
 // **************************************************************************
 
 ///Constants that describe the Save As kind.
-class SaveAsKind {
+class CygnusSaveAsKind {
   final int _value;
   final int? _nativeValue;
-  const SaveAsKind._internal(this._value, this._nativeValue);
+  const CygnusSaveAsKind._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory SaveAsKind._internalMultiPlatform(int value, Function nativeValue) =>
-      SaveAsKind._internal(value, nativeValue());
+  factory CygnusSaveAsKind._internalMultiPlatform(
+    int value,
+    Function nativeValue,
+  ) => CygnusSaveAsKind._internal(value, nativeValue());
 
   ///Save the page with a resources directory.
-  static const COMPLETE = SaveAsKind._internal(3, 3);
+  static const COMPLETE = CygnusSaveAsKind._internal(3, 3);
 
   ///Default kind to save non-HTML content.
-  static const DEFAULT = SaveAsKind._internal(0, 0);
+  static const DEFAULT = CygnusSaveAsKind._internal(0, 0);
 
   ///Save the page as HTML only.
-  static const HTML_ONLY = SaveAsKind._internal(1, 1);
+  static const HTML_ONLY = CygnusSaveAsKind._internal(1, 1);
 
   ///Save the page as a single file (MHTML).
-  static const SINGLE_FILE = SaveAsKind._internal(2, 2);
+  static const SINGLE_FILE = CygnusSaveAsKind._internal(2, 2);
 
-  ///Set of all values of [SaveAsKind].
-  static final Set<SaveAsKind> values = [
-    SaveAsKind.COMPLETE,
-    SaveAsKind.DEFAULT,
-    SaveAsKind.HTML_ONLY,
-    SaveAsKind.SINGLE_FILE,
+  ///Set of all values of [CygnusSaveAsKind].
+  static final Set<CygnusSaveAsKind> values = [
+    CygnusSaveAsKind.COMPLETE,
+    CygnusSaveAsKind.DEFAULT,
+    CygnusSaveAsKind.HTML_ONLY,
+    CygnusSaveAsKind.SINGLE_FILE,
   ].toSet();
 
-  ///Gets a possible [SaveAsKind] instance from [int] value.
-  static SaveAsKind? fromValue(int? value) {
+  ///Gets a possible [CygnusSaveAsKind] instance from [int] value.
+  static CygnusSaveAsKind? fromValue(int? value) {
     if (value != null) {
       try {
-        return SaveAsKind.values.firstWhere(
+        return CygnusSaveAsKind.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -49,11 +51,11 @@ class SaveAsKind {
     return null;
   }
 
-  ///Gets a possible [SaveAsKind] instance from a native value.
-  static SaveAsKind? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusSaveAsKind] instance from a native value.
+  static CygnusSaveAsKind? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return SaveAsKind.values.firstWhere(
+        return CygnusSaveAsKind.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -63,15 +65,15 @@ class SaveAsKind {
     return null;
   }
 
-  /// Gets a possible [SaveAsKind] instance value with name [name].
+  /// Gets a possible [CygnusSaveAsKind] instance value with name [name].
   ///
-  /// Goes through [SaveAsKind.values] looking for a value with
-  /// name [name], as reported by [SaveAsKind.name].
+  /// Goes through [CygnusSaveAsKind.values] looking for a value with
+  /// name [name], as reported by [CygnusSaveAsKind.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static SaveAsKind? byName(String? name) {
+  static CygnusSaveAsKind? byName(String? name) {
     if (name != null) {
       try {
-        return SaveAsKind.values.firstWhere(
+        return CygnusSaveAsKind.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -81,7 +83,7 @@ class SaveAsKind {
     return null;
   }
 
-  /// Creates a map from the names of [SaveAsKind] values to the values.
+  /// Creates a map from the names of [CygnusSaveAsKind] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -89,9 +91,10 @@ class SaveAsKind {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, SaveAsKind> asNameMap() => <String, SaveAsKind>{
-    for (final value in SaveAsKind.values) value.name(): value,
-  };
+  static Map<String, CygnusSaveAsKind> asNameMap() =>
+      <String, CygnusSaveAsKind>{
+        for (final value in CygnusSaveAsKind.values) value.name(): value,
+      };
 
   ///Gets [int] value.
   int toValue() => _value;

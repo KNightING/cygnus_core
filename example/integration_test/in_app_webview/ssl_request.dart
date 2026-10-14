@@ -1,21 +1,21 @@
 part of 'main.dart';
 
 void sslRequest() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onReceivedServerTrustAuthRequest,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onReceivedServerTrustAuthRequest,
   );
 
   skippableTestWidgets('SSL request', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<void> pageLoaded = Completer<void>();
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(
-            url: WebUri("https://${environment["NODE_SERVER_IP"]}:4433/"),
+          initialUrlRequest: CygnusURLRequest(
+            url: CygnusWebUri("https://${environment["NODE_SERVER_IP"]}:4433/"),
           ),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
@@ -24,22 +24,22 @@ void sslRequest() {
             pageLoaded.complete();
           },
           onReceivedServerTrustAuthRequest: (controller, challenge) async {
-            return new ServerTrustAuthResponse(
-              action: ServerTrustAuthResponseAction.PROCEED,
+            return new CygnusServerTrustAuthResponse(
+              action: CygnusServerTrustAuthResponseAction.PROCEED,
             );
           },
           onReceivedClientCertRequest: (controller, challenge) async {
-            return new ClientCertResponse(
+            return new CygnusClientCertResponse(
               certificatePath: "test_assets/certificate.pfx",
               certificatePassword: "password",
               keyStoreType: "PKCS12",
-              action: ClientCertResponseAction.PROCEED,
+              action: CygnusClientCertResponseAction.PROCEED,
             );
           },
         ),
       ),
     );
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
     await pageLoaded.future;
 
     final String h1Content = await controller.evaluateJavascript(

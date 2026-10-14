@@ -6,34 +6,34 @@ part of 'js_confirm_response_action.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class used by [JsConfirmResponse] class.
-class JsConfirmResponseAction {
+///Class used by [CygnusJsConfirmResponse] class.
+class CygnusJsConfirmResponseAction {
   final int _value;
   final int? _nativeValue;
-  const JsConfirmResponseAction._internal(this._value, this._nativeValue);
+  const CygnusJsConfirmResponseAction._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory JsConfirmResponseAction._internalMultiPlatform(
+  factory CygnusJsConfirmResponseAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => JsConfirmResponseAction._internal(value, nativeValue());
+  ) => CygnusJsConfirmResponseAction._internal(value, nativeValue());
 
   ///Confirm that the user hit cancel button.
-  static const CANCEL = JsConfirmResponseAction._internal(1, 1);
+  static const CANCEL = CygnusJsConfirmResponseAction._internal(1, 1);
 
   ///Confirm that the user hit confirm button.
-  static const CONFIRM = JsConfirmResponseAction._internal(0, 0);
+  static const CONFIRM = CygnusJsConfirmResponseAction._internal(0, 0);
 
-  ///Set of all values of [JsConfirmResponseAction].
-  static final Set<JsConfirmResponseAction> values = [
-    JsConfirmResponseAction.CANCEL,
-    JsConfirmResponseAction.CONFIRM,
+  ///Set of all values of [CygnusJsConfirmResponseAction].
+  static final Set<CygnusJsConfirmResponseAction> values = [
+    CygnusJsConfirmResponseAction.CANCEL,
+    CygnusJsConfirmResponseAction.CONFIRM,
   ].toSet();
 
-  ///Gets a possible [JsConfirmResponseAction] instance from [int] value.
-  static JsConfirmResponseAction? fromValue(int? value) {
+  ///Gets a possible [CygnusJsConfirmResponseAction] instance from [int] value.
+  static CygnusJsConfirmResponseAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return JsConfirmResponseAction.values.firstWhere(
+        return CygnusJsConfirmResponseAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -43,11 +43,11 @@ class JsConfirmResponseAction {
     return null;
   }
 
-  ///Gets a possible [JsConfirmResponseAction] instance from a native value.
-  static JsConfirmResponseAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusJsConfirmResponseAction] instance from a native value.
+  static CygnusJsConfirmResponseAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return JsConfirmResponseAction.values.firstWhere(
+        return CygnusJsConfirmResponseAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -57,15 +57,15 @@ class JsConfirmResponseAction {
     return null;
   }
 
-  /// Gets a possible [JsConfirmResponseAction] instance value with name [name].
+  /// Gets a possible [CygnusJsConfirmResponseAction] instance value with name [name].
   ///
-  /// Goes through [JsConfirmResponseAction.values] looking for a value with
-  /// name [name], as reported by [JsConfirmResponseAction.name].
+  /// Goes through [CygnusJsConfirmResponseAction.values] looking for a value with
+  /// name [name], as reported by [CygnusJsConfirmResponseAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static JsConfirmResponseAction? byName(String? name) {
+  static CygnusJsConfirmResponseAction? byName(String? name) {
     if (name != null) {
       try {
-        return JsConfirmResponseAction.values.firstWhere(
+        return CygnusJsConfirmResponseAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -75,7 +75,7 @@ class JsConfirmResponseAction {
     return null;
   }
 
-  /// Creates a map from the names of [JsConfirmResponseAction] values to the values.
+  /// Creates a map from the names of [CygnusJsConfirmResponseAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -83,9 +83,10 @@ class JsConfirmResponseAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, JsConfirmResponseAction> asNameMap() =>
-      <String, JsConfirmResponseAction>{
-        for (final value in JsConfirmResponseAction.values) value.name(): value,
+  static Map<String, CygnusJsConfirmResponseAction> asNameMap() =>
+      <String, CygnusJsConfirmResponseAction>{
+        for (final value in CygnusJsConfirmResponseAction.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

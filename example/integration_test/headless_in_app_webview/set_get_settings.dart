@@ -4,13 +4,13 @@ void setGetSettings() {
   final shouldSkip = false;
 
   skippableTest('set/get settings', () async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<void> pageLoaded = Completer<void>();
 
-    var headlessWebView = new HeadlessInAppWebView(
-      initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
-      initialSettings: InAppWebViewSettings(javaScriptEnabled: false),
+    var headlessWebView = new CygnusHeadlessWebView(
+      initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+      initialSettings: CygnusWebViewSettings(javaScriptEnabled: false),
       onWebViewCreated: (controller) {
         controllerCompleter.complete(controller);
       },
@@ -20,7 +20,7 @@ void setGetSettings() {
     );
 
     await headlessWebView.run();
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
     await pageLoaded.future;
 
     var settings = await controller.getSettings();
@@ -28,7 +28,7 @@ void setGetSettings() {
     expect(settings!.javaScriptEnabled, false);
 
     await controller.setSettings(
-      settings: InAppWebViewSettings(javaScriptEnabled: true),
+      settings: CygnusWebViewSettings(javaScriptEnabled: true),
     );
 
     settings = await controller.getSettings();

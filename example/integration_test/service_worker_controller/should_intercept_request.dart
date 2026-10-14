@@ -1,26 +1,26 @@
 part of 'main.dart';
 
 void shouldInterceptRequest() {
-  final shouldSkip = !ServiceWorkerController.isMethodSupported(
-    PlatformServiceWorkerControllerMethod.setServiceWorkerClient,
+  final shouldSkip = !CygnusServiceWorkerController.isMethodSupported(
+    CygnusPlatformServiceWorkerControllerMethod.setServiceWorkerClient,
   );
 
   skippableTestWidgets('shouldInterceptRequest', (WidgetTester tester) async {
     final Completer completer = Completer();
 
-    var swAvailable = await WebViewFeature.isFeatureSupported(
-      WebViewFeature.SERVICE_WORKER_BASIC_USAGE,
+    var swAvailable = await CygnusWebViewFeature.isFeatureSupported(
+      CygnusWebViewFeature.SERVICE_WORKER_BASIC_USAGE,
     );
-    var swInterceptAvailable = await WebViewFeature.isFeatureSupported(
-      WebViewFeature.SERVICE_WORKER_SHOULD_INTERCEPT_REQUEST,
+    var swInterceptAvailable = await CygnusWebViewFeature.isFeatureSupported(
+      CygnusWebViewFeature.SERVICE_WORKER_SHOULD_INTERCEPT_REQUEST,
     );
 
     if (swAvailable && swInterceptAvailable) {
-      ServiceWorkerController serviceWorkerController =
-          ServiceWorkerController.instance();
+      CygnusServiceWorkerController serviceWorkerController =
+          CygnusServiceWorkerController.instance();
 
       await serviceWorkerController.setServiceWorkerClient(
-        ServiceWorkerClient(
+        CygnusServiceWorkerClient(
           shouldInterceptRequest: (request) async {
             if (!completer.isCompleted) {
               completer.complete();
@@ -36,9 +36,9 @@ void shouldInterceptRequest() {
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_SERVICE_WORKER_URL),
+          initialUrlRequest: CygnusURLRequest(url: TEST_SERVICE_WORKER_URL),
         ),
       ),
     );

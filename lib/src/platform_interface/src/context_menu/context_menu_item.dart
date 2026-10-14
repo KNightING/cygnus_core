@@ -6,9 +6,9 @@ import '../types/enum_method.dart';
 
 part 'context_menu_item.g.dart';
 
-///Class that represent an item of the [ContextMenu].
+///Class that represent an item of the [CygnusContextMenu].
 @ExchangeableObject()
-class ContextMenuItem_ {
+class CygnusContextMenuItem_ {
   ///Use [id] instead.
   @Deprecated("Use id instead")
   int? androidId;
@@ -29,7 +29,7 @@ class ContextMenuItem_ {
   Function()? action;
 
   @ExchangeableObjectConstructor()
-  ContextMenuItem_({
+  CygnusContextMenuItem_({
     this.id,
     @Deprecated("Use id instead") this.androidId,
     @Deprecated("Use id instead") this.iosId,
@@ -49,7 +49,7 @@ class ContextMenuItem_ {
 
   @ExchangeableObjectMethod(toMapMergeWith: true)
   // ignore: unused_element
-  Map<String, dynamic> _toMapMergeWith({EnumMethod? enumMethod}) {
+  Map<String, dynamic> _toMapMergeWith({CygnusEnumMethod? enumMethod}) {
     return {"androidId": androidId, "iosId": iosId};
   }
 }

@@ -4,30 +4,30 @@ import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_i
 part 'android_composition_mode.g.dart';
 
 ///Class that represents how the Android WebView is composited with the Flutter UI,
-///used by `InAppWebViewSettings.androidCompositionMode`.
+///used by `CygnusWebViewSettings.androidCompositionMode`.
 ///
 ///Leaving that setting unset picks a mode automatically: [HYBRID_COMPOSITION_PLUS_PLUS] where
 ///it is available, [TEXTURE_LAYER_HYBRID_COMPOSITION] everywhere else. These members exist to
 ///pin one mode explicitly.
 @ExchangeableEnum()
-class AndroidCompositionMode_ {
+class CygnusAndroidCompositionMode_ {
   // ignore: unused_field
   final int _value;
-  const AndroidCompositionMode_._internal(this._value);
+  const CygnusAndroidCompositionMode_._internal(this._value);
 
   ///Texture Layer Hybrid Composition: the WebView draws into a texture that Flutter composites.
   ///Flutter only pays for its own composition, and the raster and platform threads stay separate.
   ///This is the default.
   @EnumSupportedPlatforms(platforms: [EnumAndroidPlatform()])
   static const TEXTURE_LAYER_HYBRID_COMPOSITION =
-      const AndroidCompositionMode_._internal(0);
+      const CygnusAndroidCompositionMode_._internal(0);
 
   ///Hybrid Composition: the WebView is placed in the real Android view hierarchy and Flutter
   ///draws its own content into `FlutterImageView`s above it. Full native fidelity, but Flutter
   ///pays to composite everything drawn over the WebView and the raster and platform threads
   ///are merged.
   @EnumSupportedPlatforms(platforms: [EnumAndroidPlatform()])
-  static const HYBRID_COMPOSITION = const AndroidCompositionMode_._internal(1);
+  static const HYBRID_COMPOSITION = const CygnusAndroidCompositionMode_._internal(1);
 
   ///Hybrid Composition++: the WebView and Flutter each draw into their own native Surface and
   ///SurfaceFlinger composites them. Full native fidelity without the thread merge.
@@ -46,5 +46,5 @@ class AndroidCompositionMode_ {
   ///[TEXTURE_LAYER_HYBRID_COMPOSITION]; nothing throws and nothing goes blank.
   @EnumSupportedPlatforms(platforms: [EnumAndroidPlatform(available: '34')])
   static const HYBRID_COMPOSITION_PLUS_PLUS =
-      const AndroidCompositionMode_._internal(2);
+      const CygnusAndroidCompositionMode_._internal(2);
 }

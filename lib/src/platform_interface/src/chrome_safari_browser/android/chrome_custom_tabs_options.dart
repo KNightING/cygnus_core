@@ -8,19 +8,19 @@ import '../platform_chrome_safari_browser.dart';
 
 import '../../in_app_webview/android/in_app_webview_options.dart';
 
-///This class represents all the Android-only [PlatformChromeSafariBrowser] options available.
-///Use [ChromeSafariBrowserSettings] instead.
-@Deprecated('Use ChromeSafariBrowserSettings instead')
-class AndroidChromeCustomTabsOptions
-    implements ChromeSafariBrowserOptions, AndroidOptions {
+///This class represents all the Android-only [CygnusPlatformChromeSafariBrowser] options available.
+///Use [CygnusChromeSafariBrowserSettings] instead.
+@Deprecated('Use CygnusChromeSafariBrowserSettings instead')
+class CygnusAndroidChromeCustomTabsOptions
+    implements CygnusChromeSafariBrowserOptions, CygnusAndroidOptions {
   ///Use [shareState] instead.
   @Deprecated('Use shareState instead')
   bool? addDefaultShareMenuItem;
 
-  ///The share state that should be applied to the custom tab. The default value is [CustomTabsShareState.SHARE_STATE_DEFAULT].
+  ///The share state that should be applied to the custom tab. The default value is [CygnusCustomTabsShareState.SHARE_STATE_DEFAULT].
   ///
   ///**NOTE**: Not available in a Trusted Web Activity.
-  CustomTabsShareState shareState;
+  CygnusCustomTabsShareState shareState;
 
   ///Set to `false` if the title shouldn't be shown in the custom tab. The default value is `true`.
   ///
@@ -67,16 +67,16 @@ class AndroidChromeCustomTabsOptions
   ///Sets a display mode of a Trusted Web Activity.
   ///
   ///**NOTE**: Available only in a Trusted Web Activity.
-  TrustedWebActivityDisplayMode? displayMode;
+  CygnusTrustedWebActivityDisplayMode? displayMode;
 
   ///Sets a screen orientation. This can be used e.g. to enable the locking of an orientation lock type.
   ///
   ///**NOTE**: Available only in a Trusted Web Activity.
-  TrustedWebActivityScreenOrientation screenOrientation;
+  CygnusTrustedWebActivityScreenOrientation screenOrientation;
 
-  AndroidChromeCustomTabsOptions({
+  CygnusAndroidChromeCustomTabsOptions({
     @Deprecated('Use shareState instead') this.addDefaultShareMenuItem,
-    this.shareState = CustomTabsShareState.SHARE_STATE_DEFAULT,
+    this.shareState = CygnusCustomTabsShareState.SHARE_STATE_DEFAULT,
     this.showTitle = true,
     this.toolbarBackgroundColor,
     this.enableUrlBarHiding = false,
@@ -88,7 +88,7 @@ class AndroidChromeCustomTabsOptions
     this.isTrustedWebActivity = false,
     this.additionalTrustedOrigins = const [],
     this.displayMode,
-    this.screenOrientation = TrustedWebActivityScreenOrientation.DEFAULT,
+    this.screenOrientation = CygnusTrustedWebActivityScreenOrientation.DEFAULT,
   });
 
   @override
@@ -112,9 +112,9 @@ class AndroidChromeCustomTabsOptions
     };
   }
 
-  static AndroidChromeCustomTabsOptions fromMap(Map<String, dynamic> map) {
-    AndroidChromeCustomTabsOptions options =
-        new AndroidChromeCustomTabsOptions();
+  static CygnusAndroidChromeCustomTabsOptions fromMap(Map<String, dynamic> map) {
+    CygnusAndroidChromeCustomTabsOptions options =
+        new CygnusAndroidChromeCustomTabsOptions();
     // ignore: deprecated_member_use_from_same_package
     options.addDefaultShareMenuItem = map["addDefaultShareMenuItem"];
     options.shareState = map["shareState"];
@@ -132,13 +132,13 @@ class AndroidChromeCustomTabsOptions
     options.additionalTrustedOrigins = map["additionalTrustedOrigins"];
     switch (map["displayMode"]["type"]) {
       case "IMMERSIVE_MODE":
-        options.displayMode = TrustedWebActivityImmersiveDisplayMode.fromMap(
+        options.displayMode = CygnusTrustedWebActivityImmersiveDisplayMode.fromMap(
           map["displayMode"],
         );
         break;
       case "DEFAULT_MODE":
       default:
-        options.displayMode = TrustedWebActivityDefaultDisplayMode();
+        options.displayMode = CygnusTrustedWebActivityDefaultDisplayMode();
         break;
     }
     options.screenOrientation = map["screenOrientation"];
@@ -156,7 +156,7 @@ class AndroidChromeCustomTabsOptions
   }
 
   @override
-  AndroidChromeCustomTabsOptions copy() {
-    return AndroidChromeCustomTabsOptions.fromMap(this.toMap());
+  CygnusAndroidChromeCustomTabsOptions copy() {
+    return CygnusAndroidChromeCustomTabsOptions.fromMap(this.toMap());
   }
 }

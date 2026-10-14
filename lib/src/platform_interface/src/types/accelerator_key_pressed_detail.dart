@@ -6,15 +6,15 @@ import 'physical_key_status.dart';
 
 part 'accelerator_key_pressed_detail.g.dart';
 
-///Class that represents details of the [PlatformWebViewCreationParams.onAcceleratorKeyPressed] event.
+///Class that represents details of the [CygnusPlatformWebViewCreationParams.onAcceleratorKeyPressed] event.
 @ExchangeableObject()
-class AcceleratorKeyPressedDetail_ {
+class CygnusAcceleratorKeyPressedDetail_ {
   int? keyEventKind;
-  PhysicalKeyStatus_? physicalKeyStatus;
+  CygnusPhysicalKeyStatus_? physicalKeyStatus;
   int? virtualKey;
 
   @ExchangeableObjectConstructor()
-  AcceleratorKeyPressedDetail_({
+  CygnusAcceleratorKeyPressedDetail_({
     this.keyEventKind,
     this.physicalKeyStatus,
     this.virtualKey,

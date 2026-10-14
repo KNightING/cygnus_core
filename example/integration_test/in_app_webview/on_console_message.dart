@@ -1,25 +1,25 @@
 part of 'main.dart';
 
 void onConsoleMessage() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onConsoleMessage,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onConsoleMessage,
   );
 
   skippableTestWidgets('onConsoleMessage', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
-    final Completer<ConsoleMessage> onConsoleMessageCompleter =
-        Completer<ConsoleMessage>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
+    final Completer<CygnusConsoleMessage> onConsoleMessageCompleter =
+        Completer<CygnusConsoleMessage>();
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
           initialFile: !kIsWeb
               ? "test_assets/in_app_webview_on_console_message_test.html"
               : null,
           initialUrlRequest: kIsWeb
-              ? URLRequest(url: TEST_WEB_PLATFORM_URL_1)
+              ? CygnusURLRequest(url: TEST_WEB_PLATFORM_URL_1)
               : null,
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
@@ -31,9 +31,9 @@ void onConsoleMessage() {
       ),
     );
     await tester.pump();
-    final ConsoleMessage consoleMessage =
+    final CygnusConsoleMessage consoleMessage =
         await onConsoleMessageCompleter.future;
     expect(consoleMessage.message, 'message');
-    expect(consoleMessage.messageLevel, ConsoleMessageLevel.LOG);
+    expect(consoleMessage.messageLevel, CygnusConsoleMessageLevel.LOG);
   }, skip: shouldSkip);
 }

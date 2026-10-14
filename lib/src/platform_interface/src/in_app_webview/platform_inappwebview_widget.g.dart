@@ -6,9 +6,9 @@ part of 'platform_inappwebview_widget.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformInAppWebViewWidgetCreationParamsClassSupported
-    on PlatformInAppWebViewWidgetCreationParams {
-  ///{@template cygnus_core.PlatformInAppWebViewWidgetCreationParams.supported_platforms}
+extension _CygnusPlatformWebViewWidgetCreationParamsClassSupported
+    on CygnusPlatformWebViewWidgetCreationParams {
+  ///{@template cygnus_core.CygnusPlatformWebViewWidgetCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -18,7 +18,7 @@ extension _PlatformInAppWebViewWidgetCreationParamsClassSupported
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformInAppWebViewWidgetCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformWebViewWidgetCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return kIsWeb && platform == null
@@ -34,11 +34,11 @@ extension _PlatformInAppWebViewWidgetCreationParamsClassSupported
   }
 }
 
-///List of [PlatformInAppWebViewWidgetCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformInAppWebViewWidgetCreationParamsProperty {
-  ///Can be used to check if the [PlatformInAppWebViewWidgetCreationParams.headlessWebView] property is supported at runtime.
+///List of [CygnusPlatformWebViewWidgetCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformWebViewWidgetCreationParamsProperty {
+  ///Can be used to check if the [CygnusPlatformWebViewWidgetCreationParams.headlessWebView] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewWidgetCreationParams.headlessWebView.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewWidgetCreationParams.headlessWebView.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -47,13 +47,13 @@ enum PlatformInAppWebViewWidgetCreationParamsProperty {
   ///- Web \<iframe\>
   ///- Windows WebView2
   ///
-  ///Use the [PlatformInAppWebViewWidgetCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewWidgetCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   headlessWebView,
 
-  ///Can be used to check if the [PlatformInAppWebViewWidgetCreationParams.keepAlive] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewWidgetCreationParams.keepAlive] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewWidgetCreationParams.keepAlive.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewWidgetCreationParams.keepAlive.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -61,42 +61,42 @@ enum PlatformInAppWebViewWidgetCreationParamsProperty {
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [PlatformInAppWebViewWidgetCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewWidgetCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   keepAlive,
 
-  ///Can be used to check if the [PlatformInAppWebViewWidgetCreationParams.preventGestureDelay] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewWidgetCreationParams.preventGestureDelay] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewWidgetCreationParams.preventGestureDelay.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewWidgetCreationParams.preventGestureDelay.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [PlatformInAppWebViewWidgetCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewWidgetCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   preventGestureDelay,
 
-  ///Can be used to check if the [PlatformInAppWebViewWidgetCreationParams.webViewEnvironment] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewWidgetCreationParams.webViewEnvironment] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformInAppWebViewWidgetCreationParams.webViewEnvironment.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewWidgetCreationParams.webViewEnvironment.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///- Linux WPE WebKit ([Official API - WebKitWebContext](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/class.WebContext.html))
   ///
-  ///Use the [PlatformInAppWebViewWidgetCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewWidgetCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   webViewEnvironment,
 }
 
-extension _PlatformInAppWebViewWidgetCreationParamsPropertySupported
-    on PlatformInAppWebViewWidgetCreationParams {
+extension _CygnusPlatformWebViewWidgetCreationParamsPropertySupported
+    on CygnusPlatformWebViewWidgetCreationParams {
   static bool isPropertySupported(
-    PlatformInAppWebViewWidgetCreationParamsProperty property, {
+    CygnusPlatformWebViewWidgetCreationParamsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformInAppWebViewWidgetCreationParamsProperty.headlessWebView:
+      case CygnusPlatformWebViewWidgetCreationParamsProperty.headlessWebView:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -106,7 +106,7 @@ extension _PlatformInAppWebViewWidgetCreationParamsPropertySupported
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewWidgetCreationParamsProperty.keepAlive:
+      case CygnusPlatformWebViewWidgetCreationParamsProperty.keepAlive:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -114,10 +114,11 @@ extension _PlatformInAppWebViewWidgetCreationParamsPropertySupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewWidgetCreationParamsProperty.preventGestureDelay:
+      case CygnusPlatformWebViewWidgetCreationParamsProperty
+          .preventGestureDelay:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformInAppWebViewWidgetCreationParamsProperty.webViewEnvironment:
+      case CygnusPlatformWebViewWidgetCreationParamsProperty.webViewEnvironment:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,

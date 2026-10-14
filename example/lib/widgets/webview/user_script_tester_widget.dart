@@ -3,9 +3,9 @@ import 'package:cygnus_core/cygnus_core.dart';
 
 /// Widget to test user script injection
 class UserScriptTesterWidget extends StatefulWidget {
-  final Future<void> Function(UserScript script) onAddScript;
-  final Future<void> Function(UserScript script) onRemoveScript;
-  final List<UserScript>? scripts;
+  final Future<void> Function(CygnusUserScript script) onAddScript;
+  final Future<void> Function(CygnusUserScript script) onRemoveScript;
+  final List<CygnusUserScript>? scripts;
 
   const UserScriptTesterWidget({
     super.key,
@@ -20,8 +20,8 @@ class UserScriptTesterWidget extends StatefulWidget {
 
 class _UserScriptTesterWidgetState extends State<UserScriptTesterWidget> {
   final TextEditingController _sourceController = TextEditingController();
-  UserScriptInjectionTime _injectionTime =
-      UserScriptInjectionTime.AT_DOCUMENT_START;
+  CygnusUserScriptInjectionTime _injectionTime =
+      CygnusUserScriptInjectionTime.AT_DOCUMENT_START;
   bool _forMainFrameOnly = false;
   bool _isAdding = false;
 
@@ -100,10 +100,10 @@ class _UserScriptTesterWidgetState extends State<UserScriptTesterWidget> {
                       ),
                     ),
                     const SizedBox(height: 4),
-                    DropdownButton<UserScriptInjectionTime>(
+                    DropdownButton<CygnusUserScriptInjectionTime>(
                       value: _injectionTime,
                       isExpanded: true,
-                      items: UserScriptInjectionTime.values.map((time) {
+                      items: CygnusUserScriptInjectionTime.values.map((time) {
                         return DropdownMenuItem(
                           value: time,
                           child: Text(
@@ -187,7 +187,7 @@ class _UserScriptTesterWidgetState extends State<UserScriptTesterWidget> {
     );
   }
 
-  Widget _buildScriptItem(UserScript script, int index) {
+  Widget _buildScriptItem(CygnusUserScript script, int index) {
     return Card(
       margin: const EdgeInsets.all(8),
       child: Padding(
@@ -265,7 +265,7 @@ class _UserScriptTesterWidgetState extends State<UserScriptTesterWidget> {
     });
 
     try {
-      final script = UserScript(
+      final script = CygnusUserScript(
         source: source,
         injectionTime: _injectionTime,
         forMainFrameOnly: _forMainFrameOnly,
@@ -290,7 +290,7 @@ class _UserScriptTesterWidgetState extends State<UserScriptTesterWidget> {
     }
   }
 
-  Future<void> _removeScript(UserScript script) async {
+  Future<void> _removeScript(CygnusUserScript script) async {
     try {
       await widget.onRemoveScript(script);
     } catch (e) {

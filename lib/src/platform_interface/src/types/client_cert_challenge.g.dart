@@ -6,9 +6,9 @@ part of 'client_cert_challenge.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the challenge of the [PlatformWebViewCreationParams.onReceivedClientCertRequest] event.
+///Class that represents the challenge of the [CygnusPlatformWebViewCreationParams.onReceivedClientCertRequest] event.
 ///It provides all the information about the challenge.
-class ClientCertChallenge extends URLAuthenticationChallenge {
+class CygnusClientCertChallenge extends CygnusURLAuthenticationChallenge {
   ///The collection contains Base64 encoding of DER encoded distinguished names
   ///of certificate authorities allowed by the server.
   ///
@@ -40,14 +40,14 @@ class ClientCertChallenge extends URLAuthenticationChallenge {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  List<SslCertificate>? mutuallyTrustedCertificates;
+  List<CygnusSslCertificate>? mutuallyTrustedCertificates;
 
   ///The acceptable certificate issuers for the certificate matching the private key.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 21+ ([Official API - ClientCertRequest.getPrincipals](https://developer.android.com/reference/android/webkit/ClientCertRequest#getPrincipals()))
   List<String>? principals;
-  ClientCertChallenge({
+  CygnusClientCertChallenge({
     this.allowedCertificateAuthorities,
     @Deprecated('Use keyTypes instead') this.androidKeyTypes,
     @Deprecated('Use principals instead') this.androidPrincipals,
@@ -55,22 +55,22 @@ class ClientCertChallenge extends URLAuthenticationChallenge {
     this.keyTypes,
     this.mutuallyTrustedCertificates,
     this.principals,
-    required URLProtectionSpace protectionSpace,
+    required CygnusURLProtectionSpace protectionSpace,
   }) : super(protectionSpace: protectionSpace) {
     keyTypes = keyTypes ?? androidKeyTypes;
     principals = principals ?? androidPrincipals;
   }
 
-  ///Gets a possible [ClientCertChallenge] instance from a [Map] value.
-  static ClientCertChallenge? fromMap(
+  ///Gets a possible [CygnusClientCertChallenge] instance from a [Map] value.
+  static CygnusClientCertChallenge? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ClientCertChallenge(
-      protectionSpace: URLProtectionSpace.fromMap(
+    final instance = CygnusClientCertChallenge(
+      protectionSpace: CygnusURLProtectionSpace.fromMap(
         map['protectionSpace']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       )!,
@@ -91,9 +91,9 @@ class ClientCertChallenge extends URLAuthenticationChallenge {
           ? List<String>.from(map['keyTypes']!.cast<String>())
           : null,
       mutuallyTrustedCertificates: map['mutuallyTrustedCertificates'] != null
-          ? List<SslCertificate>.from(
+          ? List<CygnusSslCertificate>.from(
               map['mutuallyTrustedCertificates'].map(
-                (e) => SslCertificate.fromMap(
+                (e) => CygnusSslCertificate.fromMap(
                   e?.cast<String, dynamic>(),
                   enumMethod: enumMethod,
                 )!,
@@ -108,7 +108,7 @@ class ClientCertChallenge extends URLAuthenticationChallenge {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "protectionSpace": protectionSpace.toMap(enumMethod: enumMethod),
       "allowedCertificateAuthorities": allowedCertificateAuthorities,
@@ -128,6 +128,6 @@ class ClientCertChallenge extends URLAuthenticationChallenge {
 
   @override
   String toString() {
-    return 'ClientCertChallenge{protectionSpace: $protectionSpace, allowedCertificateAuthorities: $allowedCertificateAuthorities, isProxy: $isProxy, keyTypes: $keyTypes, mutuallyTrustedCertificates: $mutuallyTrustedCertificates, principals: $principals}';
+    return 'CygnusClientCertChallenge{protectionSpace: $protectionSpace, allowedCertificateAuthorities: $allowedCertificateAuthorities, isProxy: $isProxy, keyTypes: $keyTypes, mutuallyTrustedCertificates: $mutuallyTrustedCertificates, principals: $principals}';
   }
 }

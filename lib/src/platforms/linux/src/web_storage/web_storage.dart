@@ -7,20 +7,20 @@ import '../in_app_webview/in_app_webview_controller.dart';
 /// Object specifying creation parameters for creating a [LinuxWebStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebStorageCreationParams] for
 /// more information.
-class LinuxWebStorageCreationParams extends PlatformWebStorageCreationParams {
+class LinuxWebStorageCreationParams extends CygnusPlatformWebStorageCreationParams {
   /// Creates a new [LinuxWebStorageCreationParams] instance.
   LinuxWebStorageCreationParams({
     required super.localStorage,
     required super.sessionStorage,
   });
 
-  /// Creates a [LinuxWebStorageCreationParams] instance based on [PlatformWebStorageCreationParams].
+  /// Creates a [LinuxWebStorageCreationParams] instance based on [CygnusPlatformWebStorageCreationParams].
   factory LinuxWebStorageCreationParams.fromPlatformWebStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebStorageCreationParams params,
+    CygnusPlatformWebStorageCreationParams params,
   ) {
     return LinuxWebStorageCreationParams(
       localStorage: params.localStorage,
@@ -29,10 +29,10 @@ class LinuxWebStorageCreationParams extends PlatformWebStorageCreationParams {
   }
 }
 
-///{@macro cygnus_core.PlatformWebStorage}
-class LinuxWebStorage extends PlatformWebStorage {
+///{@macro cygnus_core.CygnusPlatformWebStorage}
+class LinuxWebStorage extends CygnusPlatformWebStorage {
   /// Constructs a [LinuxWebStorage].
-  LinuxWebStorage(PlatformWebStorageCreationParams params)
+  LinuxWebStorage(CygnusPlatformWebStorageCreationParams params)
     : super.implementation(
         params is LinuxWebStorageCreationParams
             ? params
@@ -42,10 +42,10 @@ class LinuxWebStorage extends PlatformWebStorage {
       );
 
   @override
-  PlatformLocalStorage get localStorage => params.localStorage;
+  CygnusPlatformLocalStorage get localStorage => params.localStorage;
 
   @override
-  PlatformSessionStorage get sessionStorage => params.sessionStorage;
+  CygnusPlatformSessionStorage get sessionStorage => params.sessionStorage;
 
   @override
   void dispose() {
@@ -57,20 +57,20 @@ class LinuxWebStorage extends PlatformWebStorage {
 /// Object specifying creation parameters for creating a [LinuxStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformStorageCreationParams] for
 /// more information.
-class LinuxStorageCreationParams extends PlatformStorageCreationParams {
+class LinuxStorageCreationParams extends CygnusPlatformStorageCreationParams {
   /// Creates a new [LinuxStorageCreationParams] instance.
   LinuxStorageCreationParams({
     required super.controller,
     required super.webStorageType,
   });
 
-  /// Creates a [LinuxStorageCreationParams] instance based on [PlatformStorageCreationParams].
+  /// Creates a [LinuxStorageCreationParams] instance based on [CygnusPlatformStorageCreationParams].
   factory LinuxStorageCreationParams.fromPlatformStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformStorageCreationParams params,
+    CygnusPlatformStorageCreationParams params,
   ) {
     return LinuxStorageCreationParams(
       controller: params.controller,
@@ -79,8 +79,8 @@ class LinuxStorageCreationParams extends PlatformStorageCreationParams {
   }
 }
 
-///{@macro cygnus_core.PlatformStorage}
-abstract mixin class LinuxStorage implements PlatformStorage {
+///{@macro cygnus_core.CygnusPlatformStorage}
+abstract mixin class LinuxStorage implements CygnusPlatformStorage {
   @override
   LinuxInAppWebViewController? controller;
 
@@ -137,8 +137,8 @@ abstract mixin class LinuxStorage implements PlatformStorage {
   }
 
   @override
-  Future<List<WebStorageItem>> getItems() async {
-    var webStorageItems = <WebStorageItem>[];
+  Future<List<CygnusWebStorageItem>> getItems() async {
+    var webStorageItems = <CygnusWebStorageItem>[];
 
     List<Map<dynamic, dynamic>>? items = (await controller?.evaluateJavascript(
       source:
@@ -165,7 +165,7 @@ abstract mixin class LinuxStorage implements PlatformStorage {
 
     for (var item in items) {
       webStorageItems.add(
-        WebStorageItem(key: item["key"], value: item["value"]),
+        CygnusWebStorageItem(key: item["key"], value: item["value"]),
       );
     }
 
@@ -202,26 +202,26 @@ abstract mixin class LinuxStorage implements PlatformStorage {
 /// Object specifying creation parameters for creating a [LinuxLocalStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformLocalStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformLocalStorageCreationParams] for
 /// more information.
-class LinuxLocalStorageCreationParams extends PlatformLocalStorageCreationParams {
+class LinuxLocalStorageCreationParams extends CygnusPlatformLocalStorageCreationParams {
   /// Creates a new [LinuxLocalStorageCreationParams] instance.
   LinuxLocalStorageCreationParams(super.params);
 
-  /// Creates a [LinuxLocalStorageCreationParams] instance based on [PlatformLocalStorageCreationParams].
+  /// Creates a [LinuxLocalStorageCreationParams] instance based on [CygnusPlatformLocalStorageCreationParams].
   factory LinuxLocalStorageCreationParams.fromPlatformLocalStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformLocalStorageCreationParams params,
+    CygnusPlatformLocalStorageCreationParams params,
   ) {
     return LinuxLocalStorageCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformLocalStorage}
-class LinuxLocalStorage extends PlatformLocalStorage with LinuxStorage {
+///{@macro cygnus_core.CygnusPlatformLocalStorage}
+class LinuxLocalStorage extends CygnusPlatformLocalStorage with LinuxStorage {
   /// Constructs a [LinuxLocalStorage].
-  LinuxLocalStorage(PlatformLocalStorageCreationParams params)
+  LinuxLocalStorage(CygnusPlatformLocalStorageCreationParams params)
     : super.implementation(
         params is LinuxLocalStorageCreationParams
             ? params
@@ -232,14 +232,14 @@ class LinuxLocalStorage extends PlatformLocalStorage with LinuxStorage {
 
   /// Default storage
   factory LinuxLocalStorage.defaultStorage({
-    required PlatformInAppWebViewController? controller,
+    required CygnusPlatformWebViewController? controller,
   }) {
     return LinuxLocalStorage(
       LinuxLocalStorageCreationParams(
-        PlatformLocalStorageCreationParams(
-          PlatformStorageCreationParams(
+        CygnusPlatformLocalStorageCreationParams(
+          CygnusPlatformStorageCreationParams(
             controller: controller,
-            webStorageType: WebStorageType.LOCAL_STORAGE,
+            webStorageType: CygnusWebStorageType.LOCAL_STORAGE,
           ),
         ),
       ),
@@ -254,27 +254,27 @@ class LinuxLocalStorage extends PlatformLocalStorage with LinuxStorage {
 /// Object specifying creation parameters for creating a [LinuxSessionStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformSessionStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformSessionStorageCreationParams] for
 /// more information.
 class LinuxSessionStorageCreationParams
-    extends PlatformSessionStorageCreationParams {
+    extends CygnusPlatformSessionStorageCreationParams {
   /// Creates a new [LinuxSessionStorageCreationParams] instance.
   LinuxSessionStorageCreationParams(super.params);
 
-  /// Creates a [LinuxSessionStorageCreationParams] instance based on [PlatformSessionStorageCreationParams].
+  /// Creates a [LinuxSessionStorageCreationParams] instance based on [CygnusPlatformSessionStorageCreationParams].
   factory LinuxSessionStorageCreationParams.fromPlatformSessionStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformSessionStorageCreationParams params,
+    CygnusPlatformSessionStorageCreationParams params,
   ) {
     return LinuxSessionStorageCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformSessionStorage}
-class LinuxSessionStorage extends PlatformSessionStorage with LinuxStorage {
+///{@macro cygnus_core.CygnusPlatformSessionStorage}
+class LinuxSessionStorage extends CygnusPlatformSessionStorage with LinuxStorage {
   /// Constructs a [LinuxSessionStorage].
-  LinuxSessionStorage(PlatformSessionStorageCreationParams params)
+  LinuxSessionStorage(CygnusPlatformSessionStorageCreationParams params)
     : super.implementation(
         params is LinuxSessionStorageCreationParams
             ? params
@@ -285,14 +285,14 @@ class LinuxSessionStorage extends PlatformSessionStorage with LinuxStorage {
 
   /// Default storage
   factory LinuxSessionStorage.defaultStorage({
-    required PlatformInAppWebViewController? controller,
+    required CygnusPlatformWebViewController? controller,
   }) {
     return LinuxSessionStorage(
       LinuxSessionStorageCreationParams(
-        PlatformSessionStorageCreationParams(
-          PlatformStorageCreationParams(
+        CygnusPlatformSessionStorageCreationParams(
+          CygnusPlatformStorageCreationParams(
             controller: controller,
-            webStorageType: WebStorageType.SESSION_STORAGE,
+            webStorageType: CygnusWebStorageType.SESSION_STORAGE,
           ),
         ),
       ),

@@ -22,20 +22,20 @@ import '../types/enum_method.dart';
 
 part 'in_app_browser_settings.g.dart';
 
-///Class that represents the settings that can be used for an [InAppBrowser] instance.
-class InAppBrowserClassSettings {
+///Class that represents the settings that can be used for an [CygnusBrowser] instance.
+class CygnusBrowserClassSettings {
   ///Browser settings.
-  late InAppBrowserSettings browserSettings;
+  late CygnusBrowserSettings browserSettings;
 
   ///WebView settings.
-  late InAppWebViewSettings webViewSettings;
+  late CygnusWebViewSettings webViewSettings;
 
-  InAppBrowserClassSettings({
-    InAppBrowserSettings? browserSettings,
-    InAppWebViewSettings? webViewSettings,
+  CygnusBrowserClassSettings({
+    CygnusBrowserSettings? browserSettings,
+    CygnusWebViewSettings? webViewSettings,
   }) {
-    this.browserSettings = browserSettings ?? InAppBrowserSettings();
-    this.webViewSettings = webViewSettings ?? InAppWebViewSettings();
+    this.browserSettings = browserSettings ?? CygnusBrowserSettings();
+    this.webViewSettings = webViewSettings ?? CygnusWebViewSettings();
   }
 
   Map<String, dynamic> toMap() {
@@ -55,39 +55,39 @@ class InAppBrowserClassSettings {
     return toMap().toString();
   }
 
-  factory InAppBrowserClassSettings.fromMap(
+  factory CygnusBrowserClassSettings.fromMap(
     Map<String, dynamic> options, {
-    InAppBrowserClassSettings? instance,
-    EnumMethod? enumMethod,
+    CygnusBrowserClassSettings? instance,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (instance == null) {
-      instance = InAppBrowserClassSettings();
+      instance = CygnusBrowserClassSettings();
     }
     instance.browserSettings =
-        InAppBrowserSettings.fromMap(options, enumMethod: enumMethod) ??
-        InAppBrowserSettings();
+        CygnusBrowserSettings.fromMap(options, enumMethod: enumMethod) ??
+        CygnusBrowserSettings();
     instance.webViewSettings =
-        InAppWebViewSettings.fromMap(options, enumMethod: enumMethod) ??
-        InAppWebViewSettings();
+        CygnusWebViewSettings.fromMap(options, enumMethod: enumMethod) ??
+        CygnusWebViewSettings();
     return instance;
   }
 
-  InAppBrowserClassSettings copy() {
-    return InAppBrowserClassSettings.fromMap(toMap());
+  CygnusBrowserClassSettings copy() {
+    return CygnusBrowserClassSettings.fromMap(toMap());
   }
 }
 
-class BrowserOptions {
+class CygnusBrowserOptions {
   Map<String, dynamic> toMap() {
     return {};
   }
 
-  static BrowserOptions fromMap(Map<String, dynamic> map) {
-    return BrowserOptions();
+  static CygnusBrowserOptions fromMap(Map<String, dynamic> map) {
+    return CygnusBrowserOptions();
   }
 
-  BrowserOptions copy() {
-    return BrowserOptions.fromMap(this.toMap());
+  CygnusBrowserOptions copy() {
+    return CygnusBrowserOptions.fromMap(this.toMap());
   }
 
   Map<String, dynamic> toJson() {
@@ -100,8 +100,8 @@ class BrowserOptions {
   }
 }
 
-///{@template cygnus_core.InAppWebViewSettings}
-///This class represents all [InAppBrowser] settings available.
+///{@template cygnus_core.CygnusWebViewSettings}
+///This class represents all [CygnusBrowser] settings available.
 ///{@endtemplate}
 @ExchangeableObject(copyMethod: true)
 @SupportedPlatforms(
@@ -116,8 +116,8 @@ class BrowserOptions {
     ),
   ],
 )
-class InAppBrowserSettings_
-    implements BrowserOptions, AndroidOptions, IosOptions {
+class CygnusBrowserSettings_
+    implements CygnusBrowserOptions, CygnusAndroidOptions, CygnusIosOptions {
   ///Set to `true` to create the browser and load the page, but not show it. Omit or set to `false` to have the browser open and load normally.
   ///The default value is `false`.
   @SupportedPlatforms(
@@ -201,15 +201,15 @@ class InAppBrowserSettings_
   )
   String? toolbarTopFixedTitle;
 
-  ///Set to `false` to not close the InAppBrowser when the user click on the Android back button and the WebView cannot go back to the history. The default value is `true`.
+  ///Set to `false` to not close the CygnusBrowser when the user click on the Android back button and the WebView cannot go back to the history. The default value is `true`.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   bool? closeOnCannotGoBack;
 
-  ///Set to `false` to block the InAppBrowser WebView going back when the user click on the Android back button. The default value is `true`.
+  ///Set to `false` to block the CygnusBrowser WebView going back when the user click on the Android back button. The default value is `true`.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   bool? allowGoBackWithBackButton;
 
-  ///Set to `true` to close the InAppBrowser when the user click on the Android back button. The default value is `false`.
+  ///Set to `true` to close the CygnusBrowser when the user click on the Android back button. The default value is `false`.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   bool? shouldCloseOnBackButtonPressed;
 
@@ -257,20 +257,20 @@ class InAppBrowserSettings_
   @SupportedPlatforms(platforms: [IOSPlatform()])
   Color_? menuButtonColor;
 
-  ///Set the custom modal presentation style when presenting the WebView. The default value is [ModalPresentationStyle.FULL_SCREEN].
+  ///Set the custom modal presentation style when presenting the WebView. The default value is [CygnusModalPresentationStyle.FULL_SCREEN].
   @SupportedPlatforms(platforms: [IOSPlatform()])
-  ModalPresentationStyle_? presentationStyle;
+  CygnusModalPresentationStyle_? presentationStyle;
 
-  ///Set to the custom transition style when presenting the WebView. The default value is [ModalTransitionStyle.COVER_VERTICAL].
+  ///Set to the custom transition style when presenting the WebView. The default value is [CygnusModalTransitionStyle.COVER_VERTICAL].
   @SupportedPlatforms(platforms: [IOSPlatform()])
-  ModalTransitionStyle_? transitionStyle;
+  CygnusModalTransitionStyle_? transitionStyle;
 
   ///How the browser window should be added to the main window.
-  ///The default value is [WindowType.WINDOW].
+  ///The default value is [CygnusWindowType.WINDOW].
   @SupportedPlatforms(
     platforms: [MacOSPlatform(), WindowsPlatform(), LinuxPlatform()],
   )
-  WindowType_? windowType;
+  CygnusWindowType_? windowType;
 
   ///The window’s alpha value.
   ///The default value is `1.0`.
@@ -281,20 +281,20 @@ class InAppBrowserSettings_
 
   ///Flags that describe the window’s current style, such as if it’s resizable or in full-screen mode.
   @SupportedPlatforms(platforms: [MacOSPlatform()])
-  WindowStyleMask_? windowStyleMask;
+  CygnusWindowStyleMask_? windowStyleMask;
 
   ///The type of separator that the app displays between the title bar and content of a window.
   @SupportedPlatforms(platforms: [MacOSPlatform(available: '11.0')])
-  WindowTitlebarSeparatorStyle_? windowTitlebarSeparatorStyle;
+  CygnusWindowTitlebarSeparatorStyle_? windowTitlebarSeparatorStyle;
 
   ///Sets the origin and size of the window’s frame rectangle according to a given frame rectangle,
   ///thereby setting its position and size onscreen.
   @SupportedPlatforms(
     platforms: [MacOSPlatform(), WindowsPlatform(), LinuxPlatform()],
   )
-  InAppWebViewRect_? windowFrame;
+  CygnusWebViewRect_? windowFrame;
 
-  InAppBrowserSettings_({
+  CygnusBrowserSettings_({
     this.hidden = false,
     this.hideToolbarTop = false,
     this.toolbarTopBackgroundColor,
@@ -311,8 +311,8 @@ class InAppBrowserSettings_
     this.closeButtonColor,
     this.hideCloseButton = false,
     this.menuButtonColor,
-    this.presentationStyle = ModalPresentationStyle_.FULL_SCREEN,
-    this.transitionStyle = ModalTransitionStyle_.COVER_VERTICAL,
+    this.presentationStyle = CygnusModalPresentationStyle_.FULL_SCREEN,
+    this.transitionStyle = CygnusModalTransitionStyle_.COVER_VERTICAL,
     this.hideTitleBar = false,
     this.toolbarTopFixedTitle,
     this.closeOnCannotGoBack = true,
@@ -327,7 +327,7 @@ class InAppBrowserSettings_
 
   @override
   @ExchangeableObjectMethod(ignore: true)
-  InAppBrowserSettings_ copy() {
+  CygnusBrowserSettings_ copy() {
     throw UnimplementedError();
   }
 
@@ -345,41 +345,41 @@ class InAppBrowserSettings_
 
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   static bool isPropertySupported(
-    InAppBrowserSettingsProperty property, {
+    CygnusBrowserSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _InAppBrowserSettingsPropertySupported.isPropertySupported(
+  }) => _CygnusBrowserSettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 }
 
-///Class that represents the options that can be used for an [InAppBrowser] WebView.
-///Use [InAppBrowserClassSettings] instead.
-@Deprecated('Use InAppBrowserClassSettings instead')
-class InAppBrowserClassOptions {
+///Class that represents the options that can be used for an [CygnusBrowser] WebView.
+///Use [CygnusBrowserClassSettings] instead.
+@Deprecated('Use CygnusBrowserClassSettings instead')
+class CygnusBrowserClassOptions {
   ///Cross-platform options.
-  late InAppBrowserOptions crossPlatform;
+  late CygnusInAppBrowserOptions crossPlatform;
 
   ///Android-specific options.
-  late AndroidInAppBrowserOptions android;
+  late CygnusAndroidBrowserOptions android;
 
   ///iOS-specific options.
-  late IOSInAppBrowserOptions ios;
+  late CygnusIOSBrowserOptions ios;
 
   ///WebView options.
-  late InAppWebViewGroupOptions inAppWebViewGroupOptions;
+  late CygnusWebViewGroupOptions inAppWebViewGroupOptions;
 
-  InAppBrowserClassOptions({
-    InAppBrowserOptions? crossPlatform,
-    AndroidInAppBrowserOptions? android,
-    IOSInAppBrowserOptions? ios,
-    InAppWebViewGroupOptions? inAppWebViewGroupOptions,
+  CygnusBrowserClassOptions({
+    CygnusInAppBrowserOptions? crossPlatform,
+    CygnusAndroidBrowserOptions? android,
+    CygnusIOSBrowserOptions? ios,
+    CygnusWebViewGroupOptions? inAppWebViewGroupOptions,
   }) {
-    this.crossPlatform = crossPlatform ?? InAppBrowserOptions();
-    this.android = android ?? AndroidInAppBrowserOptions();
-    this.ios = ios ?? IOSInAppBrowserOptions();
+    this.crossPlatform = crossPlatform ?? CygnusInAppBrowserOptions();
+    this.android = android ?? CygnusAndroidBrowserOptions();
+    this.ios = ios ?? CygnusIOSBrowserOptions();
     this.inAppWebViewGroupOptions =
-        inAppWebViewGroupOptions ?? InAppWebViewGroupOptions();
+        inAppWebViewGroupOptions ?? CygnusWebViewGroupOptions();
   }
 
   Map<String, dynamic> toMap() {
@@ -407,45 +407,45 @@ class InAppBrowserClassOptions {
     return toMap().toString();
   }
 
-  static InAppBrowserClassOptions fromMap(
+  static CygnusBrowserClassOptions fromMap(
     Map<String, dynamic> options, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
-    InAppBrowserClassOptions inAppBrowserClassOptions =
-        InAppBrowserClassOptions();
+    CygnusBrowserClassOptions inAppBrowserClassOptions =
+        CygnusBrowserClassOptions();
 
-    inAppBrowserClassOptions.crossPlatform = InAppBrowserOptions.fromMap(
+    inAppBrowserClassOptions.crossPlatform = CygnusInAppBrowserOptions.fromMap(
       options,
     );
     inAppBrowserClassOptions.inAppWebViewGroupOptions =
-        InAppWebViewGroupOptions();
+        CygnusWebViewGroupOptions();
     inAppBrowserClassOptions.inAppWebViewGroupOptions.crossPlatform =
-        InAppWebViewOptions.fromMap(options);
+        CygnusInAppWebViewOptions.fromMap(options);
     if (Util.isAndroid) {
-      inAppBrowserClassOptions.android = AndroidInAppBrowserOptions.fromMap(
+      inAppBrowserClassOptions.android = CygnusAndroidBrowserOptions.fromMap(
         options,
       );
       inAppBrowserClassOptions.inAppWebViewGroupOptions.android =
-          AndroidInAppWebViewOptions.fromMap(options);
+          CygnusAndroidWebViewOptions.fromMap(options);
     } else if (Util.isIOS) {
-      inAppBrowserClassOptions.ios = IOSInAppBrowserOptions.fromMap(options);
+      inAppBrowserClassOptions.ios = CygnusIOSBrowserOptions.fromMap(options);
       inAppBrowserClassOptions.inAppWebViewGroupOptions.ios =
-          IOSInAppWebViewOptions.fromMap(options);
+          CygnusIOSWebViewOptions.fromMap(options);
     }
 
     return inAppBrowserClassOptions;
   }
 
-  InAppBrowserClassOptions copy() {
-    return InAppBrowserClassOptions.fromMap(this.toMap());
+  CygnusBrowserClassOptions copy() {
+    return CygnusBrowserClassOptions.fromMap(this.toMap());
   }
 }
 
-///This class represents all the cross-platform [InAppBrowser] options available.
-///Use [InAppBrowserClassSettings] instead.
-@Deprecated('Use InAppBrowserClassSettings instead')
-class InAppBrowserOptions
-    implements BrowserOptions, AndroidOptions, IosOptions {
+///This class represents all the cross-platform [CygnusBrowser] options available.
+///Use [CygnusBrowserClassSettings] instead.
+@Deprecated('Use CygnusBrowserClassSettings instead')
+class CygnusInAppBrowserOptions
+    implements CygnusBrowserOptions, CygnusAndroidOptions, CygnusIosOptions {
   ///Set to `true` to create the browser and load the page, but not show it. Omit or set to `false` to have the browser open and load normally.
   ///The default value is `false`.
   bool hidden;
@@ -462,7 +462,7 @@ class InAppBrowserOptions
   ///Set to `true` to hide the progress bar when the WebView is loading a page. The default value is `false`.
   bool hideProgressBar;
 
-  InAppBrowserOptions({
+  CygnusInAppBrowserOptions({
     this.hidden = false,
     this.hideToolbarTop = false,
     this.toolbarTopBackgroundColor,
@@ -481,8 +481,8 @@ class InAppBrowserOptions
     };
   }
 
-  static InAppBrowserOptions fromMap(Map<String, dynamic> map) {
-    var instance = InAppBrowserOptions();
+  static CygnusInAppBrowserOptions fromMap(Map<String, dynamic> map) {
+    var instance = CygnusInAppBrowserOptions();
     instance.hidden = map["hidden"];
     instance.hideToolbarTop = map["hideToolbarTop"];
     instance.toolbarTopBackgroundColor = UtilColor.fromHex(
@@ -504,7 +504,7 @@ class InAppBrowserOptions
   }
 
   @override
-  InAppBrowserOptions copy() {
-    return InAppBrowserOptions.fromMap(this.toMap());
+  CygnusInAppBrowserOptions copy() {
+    return CygnusInAppBrowserOptions.fromMap(this.toMap());
   }
 }

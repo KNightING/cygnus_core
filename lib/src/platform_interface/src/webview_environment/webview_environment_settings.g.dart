@@ -6,7 +6,7 @@ part of 'webview_environment_settings.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///This class represents all the [PlatformWebViewEnvironment] settings available.
+///This class represents all the [CygnusPlatformWebViewEnvironment] settings available.
 ///
 ///The [browserExecutableFolder], [userDataFolder] and [additionalBrowserArguments]
 ///may be overridden by values either specified in environment variables or in the registry.
@@ -14,7 +14,7 @@ part of 'webview_environment_settings.dart';
 ///**Officially Supported Platforms/Implementations**:
 ///- Windows WebView2
 ///- Linux WPE WebKit
-class WebViewEnvironmentSettings {
+class CygnusWebViewEnvironmentSettings {
   ///If there are multiple switches, there should be a space in between them.
   ///The one exception is if multiple features are being enabled/disabled for a single switch,
   ///in which case the features should be comma-seperated.
@@ -78,31 +78,31 @@ class WebViewEnvironmentSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - webkit_web_context_set_cache_model](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebContext.set_cache_model.html))
-  final CacheModel? cacheModel;
+  final CygnusCacheModel? cacheModel;
 
-  ///This property is [EnvironmentChannelSearchKind.MOST_STABLE] by default;
+  ///This property is [CygnusEnvironmentChannelSearchKind.MOST_STABLE] by default;
   ///environment creation searches for a release channel on the machine from
   ///most to least stable using the first channel found.
   ///
   ///The default search order is: WebView2 Runtime -> Beta -> Dev -> Canary.
-  ///Set [channelSearchKind] to [EnvironmentChannelSearchKind.LEAST_STABLE] to reverse
+  ///Set [channelSearchKind] to [CygnusEnvironmentChannelSearchKind.LEAST_STABLE] to reverse
   ///the search order so that environment creation searches for a channel from least to most stable.
   ///If [releaseChannels] has been provided, the loader will only search for channels in the set.
-  ///See [EnvironmentReleaseChannels] for more details on channels.
+  ///See [CygnusEnvironmentReleaseChannels] for more details on channels.
   ///
   ///This property can be overridden by the corresponding registry key [channelSearchKind]
   ///or the environment variable `WEBVIEW2_CHANNEL_SEARCH_KIND`.
-  ///Set the value to `1` to set the search kind to [EnvironmentChannelSearchKind.LEAST_STABLE].
+  ///Set the value to `1` to set the search kind to [CygnusEnvironmentChannelSearchKind.LEAST_STABLE].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.2478.35+ ([Official API - ICoreWebView2EnvironmentOptions7.put_ChannelSearchKind](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions7?view=webview2-1.0.2849.39#put_channelsearchkind))
-  final EnvironmentChannelSearchKind? channelSearchKind;
+  final CygnusEnvironmentChannelSearchKind? channelSearchKind;
 
   ///Set the array of custom scheme registrations to be used.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.1587.40+ ([Official API - ICoreWebView2EnvironmentOptions4.SetCustomSchemeRegistrations](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions4?view=webview2-1.0.2739.15#setcustomschemeregistrations))
-  final List<CustomSchemeRegistration>? customSchemeRegistrations;
+  final List<CygnusCustomSchemeRegistration>? customSchemeRegistrations;
 
   ///This property is used to enable/disable tracking prevention feature in WebView2.
   ///
@@ -159,44 +159,44 @@ class WebViewEnvironmentSettings {
   ///- Linux WPE WebKit ([Official API - webkit_web_context_set_preferred_languages](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebContext.set_preferred_languages.html))
   final List<String>? preferredLanguages;
 
-  ///Sets the [releaseChannels], which is a mask of one or more [EnvironmentReleaseChannels]
+  ///Sets the [releaseChannels], which is a mask of one or more [CygnusEnvironmentReleaseChannels]
   ///indicating which channels environment creation should search for.
   ///
-  ///OR operation(s) can be applied to multiple [EnvironmentReleaseChannels] to create a mask.
+  ///OR operation(s) can be applied to multiple [CygnusEnvironmentReleaseChannels] to create a mask.
   ///The default value is a a mask of all the channels.
   ///By default, environment creation searches for channels from most to least stable,
   ///using the first channel found on the device.
   ///When [releaseChannels] is provided, environment creation will only
   ///search for the channels specified in the set.
-  ///Set [channelSearchKind] to [EnvironmentChannelSearchKind.LEAST_STABLE] to reverse
+  ///Set [channelSearchKind] to [CygnusEnvironmentChannelSearchKind.LEAST_STABLE] to reverse
   ///the search order so environment creation searches for least stable build first.
-  ///See [EnvironmentReleaseChannels] for descriptions of each channel.
+  ///See [CygnusEnvironmentReleaseChannels] for descriptions of each channel.
   ///
-  ///The [PlatformWebViewEnvironment] creation will fails with `HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND)`
-  ///if environment creation is unable to find any channel from the EnvironmentReleaseChannels installed on the device.
-  ///Use [PlatformWebViewEnvironment.getAvailableVersion] to verify which channel is used when this option is set.
+  ///The [CygnusPlatformWebViewEnvironment] creation will fails with `HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND)`
+  ///if environment creation is unable to find any channel from the CygnusEnvironmentReleaseChannels installed on the device.
+  ///Use [CygnusPlatformWebViewEnvironment.getAvailableVersion] to verify which channel is used when this option is set.
   ///
   ///Examples:
   ///
   ///| ReleaseChannels                                                                                                                       | Channel Search Kind: Most Stable (default)  | Channel Search Kind: Least Stable          |
   ///|--------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|--------------------------------------------|
-  ///| [EnvironmentReleaseChannels.BETA] | [EnvironmentReleaseChannels.STABLE]                                                                          | WebView2 Runtime -> Beta                    | Beta -> WebView2 Runtime                   |
-  ///| [EnvironmentReleaseChannels.CANARY] | [EnvironmentReleaseChannels.DEV] | [EnvironmentReleaseChannels.BETA] | [EnvironmentReleaseChannels.STABLE] | WebView2 Runtime -> Beta -> Dev -> Canary   | Canary -> Dev -> Beta -> WebView2 Runtime  |
-  ///| [EnvironmentReleaseChannels.CANARY]                                                                                                              | Canary                                      | Canary                                     |
-  ///| [EnvironmentReleaseChannels.BETA] | [EnvironmentReleaseChannels.CANARY] | [EnvironmentReleaseChannels.STABLE]                                    | WebView2 Runtime -> Beta -> Canary          | Canary -> Beta -> WebView2 Runtime         |
+  ///| [CygnusEnvironmentReleaseChannels.BETA] | [CygnusEnvironmentReleaseChannels.STABLE]                                                                          | WebView2 Runtime -> Beta                    | Beta -> WebView2 Runtime                   |
+  ///| [CygnusEnvironmentReleaseChannels.CANARY] | [CygnusEnvironmentReleaseChannels.DEV] | [CygnusEnvironmentReleaseChannels.BETA] | [CygnusEnvironmentReleaseChannels.STABLE] | WebView2 Runtime -> Beta -> Dev -> Canary   | Canary -> Dev -> Beta -> WebView2 Runtime  |
+  ///| [CygnusEnvironmentReleaseChannels.CANARY]                                                                                                              | Canary                                      | Canary                                     |
+  ///| [CygnusEnvironmentReleaseChannels.BETA] | [CygnusEnvironmentReleaseChannels.CANARY] | [CygnusEnvironmentReleaseChannels.STABLE]                                    | WebView2 Runtime -> Beta -> Canary          | Canary -> Beta -> WebView2 Runtime         |
   ///
   ///If both [browserExecutableFolder] and [releaseChannels] are provided, the [browserExecutableFolder] takes precedence,
   ///regardless of whether or not the channel of [browserExecutableFolder] is included in the [releaseChannels].
-  ///[releaseChannels] can be overridden by the corresponding registry override EnvironmentReleaseChannels or the environment
+  ///[releaseChannels] can be overridden by the corresponding registry override CygnusEnvironmentReleaseChannels or the environment
   ///variable `WEBVIEW2_RELEASE_CHANNELS`. Set the value to a comma-separated string of integers, which map to
   ///the following release channel values: Stable (0), Beta (1), Dev (2), and Canary (3).
   ///For example, the values "0,2" and "2,0" indicate that environment creation should only search for
   ///Dev channel and the WebView2 Runtime, using the order indicated by [channelSearchKind].
-  ///[PlatformWebViewEnvironment] creation attempts to interpret each integer and treats any invalid entry as Stable channel.
+  ///[CygnusPlatformWebViewEnvironment] creation attempts to interpret each integer and treats any invalid entry as Stable channel.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.2478.35+ ([Official API - ICoreWebView2EnvironmentOptions7.put_ReleaseChannels](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions7?view=webview2-1.0.2849.39#put_releasechannels))
-  final EnvironmentReleaseChannels? releaseChannels;
+  final CygnusEnvironmentReleaseChannels? releaseChannels;
 
   ///Set additional paths that should be accessible when running in sandbox mode.
   ///
@@ -209,7 +209,7 @@ class WebViewEnvironmentSettings {
 
   ///The ScrollBar style being set on the WebView2 Environment.
   ///
-  ///The default value is [EnvironmentScrollbarStyle.DEFAULT] which specifies the default browser ScrollBar style.
+  ///The default value is [CygnusEnvironmentScrollbarStyle.DEFAULT] which specifies the default browser ScrollBar style.
   ///The `color-scheme` CSS property needs to be set on the corresponding
   ///page to allow ScrollBar to follow light or dark theme.
   ///Please see [color-scheme](https://developer.mozilla.org/docs/Web/CSS/color-scheme#declaring_color_scheme_preferences) for how `color-scheme` can be set.
@@ -217,7 +217,7 @@ class WebViewEnvironmentSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.2535.41+ ([Official API - ICoreWebView2EnvironmentOptions8.put_ScrollBarStyle](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions8?view=webview2-1.0.2849.39#put_scrollbarstyle))
-  final EnvironmentScrollbarStyle? scrollbarStyle;
+  final CygnusEnvironmentScrollbarStyle? scrollbarStyle;
 
   ///Enable or disable spell checking in the WebContext.
   ///
@@ -286,7 +286,7 @@ class WebViewEnvironmentSettings {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///- Linux WPE WebKit
-  WebViewEnvironmentSettings({
+  CygnusWebViewEnvironmentSettings({
     this.additionalBrowserArguments,
     this.allowSingleSignOnUsingOSPrimaryAccount,
     this.areBrowserExtensionsEnabled,
@@ -311,41 +311,44 @@ class WebViewEnvironmentSettings {
     this.webProcessExtensionsDirectory,
   });
 
-  ///Gets a possible [WebViewEnvironmentSettings] instance from a [Map] value.
-  static WebViewEnvironmentSettings? fromMap(
+  ///Gets a possible [CygnusWebViewEnvironmentSettings] instance from a [Map] value.
+  static CygnusWebViewEnvironmentSettings? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = WebViewEnvironmentSettings(
+    final instance = CygnusWebViewEnvironmentSettings(
       additionalBrowserArguments: map['additionalBrowserArguments'],
       allowSingleSignOnUsingOSPrimaryAccount:
           map['allowSingleSignOnUsingOSPrimaryAccount'],
       areBrowserExtensionsEnabled: map['areBrowserExtensionsEnabled'],
       automationAllowed: map['automationAllowed'],
       browserExecutableFolder: map['browserExecutableFolder'],
-      cacheModel: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => CacheModel.fromNativeValue(map['cacheModel']),
-        EnumMethod.value => CacheModel.fromValue(map['cacheModel']),
-        EnumMethod.name => CacheModel.byName(map['cacheModel']),
+      cacheModel: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusCacheModel.fromNativeValue(
+          map['cacheModel'],
+        ),
+        CygnusEnumMethod.value => CygnusCacheModel.fromValue(map['cacheModel']),
+        CygnusEnumMethod.name => CygnusCacheModel.byName(map['cacheModel']),
       },
-      channelSearchKind: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => EnvironmentChannelSearchKind.fromNativeValue(
+      channelSearchKind: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusEnvironmentChannelSearchKind.fromNativeValue(
+            map['channelSearchKind'],
+          ),
+        CygnusEnumMethod.value => CygnusEnvironmentChannelSearchKind.fromValue(
           map['channelSearchKind'],
         ),
-        EnumMethod.value => EnvironmentChannelSearchKind.fromValue(
-          map['channelSearchKind'],
-        ),
-        EnumMethod.name => EnvironmentChannelSearchKind.byName(
+        CygnusEnumMethod.name => CygnusEnvironmentChannelSearchKind.byName(
           map['channelSearchKind'],
         ),
       },
       customSchemeRegistrations: map['customSchemeRegistrations'] != null
-          ? List<CustomSchemeRegistration>.from(
+          ? List<CygnusCustomSchemeRegistration>.from(
               map['customSchemeRegistrations'].map(
-                (e) => CustomSchemeRegistration.fromMap(
+                (e) => CygnusCustomSchemeRegistration.fromMap(
                   e?.cast<String, dynamic>(),
                   enumMethod: enumMethod,
                 )!,
@@ -359,28 +362,30 @@ class WebViewEnvironmentSettings {
       preferredLanguages: map['preferredLanguages'] != null
           ? List<String>.from(map['preferredLanguages']!.cast<String>())
           : null,
-      releaseChannels: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => EnvironmentReleaseChannels.fromNativeValue(
+      releaseChannels: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusEnvironmentReleaseChannels.fromNativeValue(
+            map['releaseChannels'],
+          ),
+        CygnusEnumMethod.value => CygnusEnvironmentReleaseChannels.fromValue(
           map['releaseChannels'],
         ),
-        EnumMethod.value => EnvironmentReleaseChannels.fromValue(
-          map['releaseChannels'],
-        ),
-        EnumMethod.name => EnvironmentReleaseChannels.byName(
+        CygnusEnumMethod.name => CygnusEnvironmentReleaseChannels.byName(
           map['releaseChannels'],
         ),
       },
       sandboxPaths: map['sandboxPaths'] != null
           ? List<String>.from(map['sandboxPaths']!.cast<String>())
           : null,
-      scrollbarStyle: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => EnvironmentScrollbarStyle.fromNativeValue(
+      scrollbarStyle: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusEnvironmentScrollbarStyle.fromNativeValue(
+            map['scrollbarStyle'],
+          ),
+        CygnusEnumMethod.value => CygnusEnvironmentScrollbarStyle.fromValue(
           map['scrollbarStyle'],
         ),
-        EnumMethod.value => EnvironmentScrollbarStyle.fromValue(
-          map['scrollbarStyle'],
-        ),
-        EnumMethod.name => EnvironmentScrollbarStyle.byName(
+        CygnusEnumMethod.name => CygnusEnvironmentScrollbarStyle.byName(
           map['scrollbarStyle'],
         ),
       },
@@ -398,15 +403,15 @@ class WebViewEnvironmentSettings {
 
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   static bool isPropertySupported(
-    WebViewEnvironmentSettingsProperty property, {
+    CygnusWebViewEnvironmentSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _WebViewEnvironmentSettingsPropertySupported.isPropertySupported(
+  }) => _CygnusWebViewEnvironmentSettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "additionalBrowserArguments": additionalBrowserArguments,
       "allowSingleSignOnUsingOSPrimaryAccount":
@@ -414,15 +419,15 @@ class WebViewEnvironmentSettings {
       "areBrowserExtensionsEnabled": areBrowserExtensionsEnabled,
       "automationAllowed": automationAllowed,
       "browserExecutableFolder": browserExecutableFolder,
-      "cacheModel": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => cacheModel?.toNativeValue(),
-        EnumMethod.value => cacheModel?.toValue(),
-        EnumMethod.name => cacheModel?.name(),
+      "cacheModel": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => cacheModel?.toNativeValue(),
+        CygnusEnumMethod.value => cacheModel?.toValue(),
+        CygnusEnumMethod.name => cacheModel?.name(),
       },
-      "channelSearchKind": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => channelSearchKind?.toNativeValue(),
-        EnumMethod.value => channelSearchKind?.toValue(),
-        EnumMethod.name => channelSearchKind?.name(),
+      "channelSearchKind": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => channelSearchKind?.toNativeValue(),
+        CygnusEnumMethod.value => channelSearchKind?.toValue(),
+        CygnusEnumMethod.name => channelSearchKind?.name(),
       },
       "customSchemeRegistrations": customSchemeRegistrations
           ?.map((e) => e.toMap(enumMethod: enumMethod))
@@ -432,16 +437,16 @@ class WebViewEnvironmentSettings {
       "isCustomCrashReportingEnabled": isCustomCrashReportingEnabled,
       "language": language,
       "preferredLanguages": preferredLanguages,
-      "releaseChannels": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => releaseChannels?.toNativeValue(),
-        EnumMethod.value => releaseChannels?.toValue(),
-        EnumMethod.name => releaseChannels?.name(),
+      "releaseChannels": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => releaseChannels?.toNativeValue(),
+        CygnusEnumMethod.value => releaseChannels?.toValue(),
+        CygnusEnumMethod.name => releaseChannels?.name(),
       },
       "sandboxPaths": sandboxPaths,
-      "scrollbarStyle": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => scrollbarStyle?.toNativeValue(),
-        EnumMethod.value => scrollbarStyle?.toValue(),
-        EnumMethod.name => scrollbarStyle?.name(),
+      "scrollbarStyle": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => scrollbarStyle?.toNativeValue(),
+        CygnusEnumMethod.value => scrollbarStyle?.toValue(),
+        CygnusEnumMethod.name => scrollbarStyle?.name(),
       },
       "spellCheckingEnabled": spellCheckingEnabled,
       "spellCheckingLanguages": spellCheckingLanguages,
@@ -457,15 +462,15 @@ class WebViewEnvironmentSettings {
     return toMap();
   }
 
-  ///Returns a copy of WebViewEnvironmentSettings.
-  WebViewEnvironmentSettings copy() {
-    return WebViewEnvironmentSettings.fromMap(toMap()) ??
-        WebViewEnvironmentSettings();
+  ///Returns a copy of CygnusWebViewEnvironmentSettings.
+  CygnusWebViewEnvironmentSettings copy() {
+    return CygnusWebViewEnvironmentSettings.fromMap(toMap()) ??
+        CygnusWebViewEnvironmentSettings();
   }
 
   @override
   String toString() {
-    return 'WebViewEnvironmentSettings{additionalBrowserArguments: $additionalBrowserArguments, allowSingleSignOnUsingOSPrimaryAccount: $allowSingleSignOnUsingOSPrimaryAccount, areBrowserExtensionsEnabled: $areBrowserExtensionsEnabled, automationAllowed: $automationAllowed, browserExecutableFolder: $browserExecutableFolder, cacheModel: $cacheModel, channelSearchKind: $channelSearchKind, customSchemeRegistrations: $customSchemeRegistrations, enableTrackingPrevention: $enableTrackingPrevention, exclusiveUserDataFolderAccess: $exclusiveUserDataFolderAccess, isCustomCrashReportingEnabled: $isCustomCrashReportingEnabled, language: $language, preferredLanguages: $preferredLanguages, releaseChannels: $releaseChannels, sandboxPaths: $sandboxPaths, scrollbarStyle: $scrollbarStyle, spellCheckingEnabled: $spellCheckingEnabled, spellCheckingLanguages: $spellCheckingLanguages, targetCompatibleBrowserVersion: $targetCompatibleBrowserVersion, timeZoneOverride: $timeZoneOverride, userDataFolder: $userDataFolder, webProcessExtensionsDirectory: $webProcessExtensionsDirectory}';
+    return 'CygnusWebViewEnvironmentSettings{additionalBrowserArguments: $additionalBrowserArguments, allowSingleSignOnUsingOSPrimaryAccount: $allowSingleSignOnUsingOSPrimaryAccount, areBrowserExtensionsEnabled: $areBrowserExtensionsEnabled, automationAllowed: $automationAllowed, browserExecutableFolder: $browserExecutableFolder, cacheModel: $cacheModel, channelSearchKind: $channelSearchKind, customSchemeRegistrations: $customSchemeRegistrations, enableTrackingPrevention: $enableTrackingPrevention, exclusiveUserDataFolderAccess: $exclusiveUserDataFolderAccess, isCustomCrashReportingEnabled: $isCustomCrashReportingEnabled, language: $language, preferredLanguages: $preferredLanguages, releaseChannels: $releaseChannels, sandboxPaths: $sandboxPaths, scrollbarStyle: $scrollbarStyle, spellCheckingEnabled: $spellCheckingEnabled, spellCheckingLanguages: $spellCheckingLanguages, targetCompatibleBrowserVersion: $targetCompatibleBrowserVersion, timeZoneOverride: $timeZoneOverride, userDataFolder: $userDataFolder, webProcessExtensionsDirectory: $webProcessExtensionsDirectory}';
   }
 }
 
@@ -473,352 +478,356 @@ class WebViewEnvironmentSettings {
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-///List of [WebViewEnvironmentSettings]'s properties that can be used to check i they are supported or not by the current platform.
-enum WebViewEnvironmentSettingsProperty {
-  ///Can be used to check if the [WebViewEnvironmentSettings.additionalBrowserArguments] property is supported at runtime.
+///List of [CygnusWebViewEnvironmentSettings]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusWebViewEnvironmentSettingsProperty {
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.additionalBrowserArguments] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.additionalBrowserArguments.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.additionalBrowserArguments.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2EnvironmentOptions.put_AdditionalBrowserArguments](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions?view=webview2-1.0.2210.55#put_additionalbrowserarguments))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   additionalBrowserArguments,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.allowSingleSignOnUsingOSPrimaryAccount] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.allowSingleSignOnUsingOSPrimaryAccount] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.allowSingleSignOnUsingOSPrimaryAccount.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.allowSingleSignOnUsingOSPrimaryAccount.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2EnvironmentOptions.put_AllowSingleSignOnUsingOSPrimaryAccount](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions?view=webview2-1.0.2210.55#put_allowsinglesignonusingosprimaryaccount))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowSingleSignOnUsingOSPrimaryAccount,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.areBrowserExtensionsEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.areBrowserExtensionsEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.areBrowserExtensionsEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.areBrowserExtensionsEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.2210.55+ ([Official API - ICoreWebView2EnvironmentOptions6.put_AreBrowserExtensionsEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions6?view=webview2-1.0.2849.39#put_arebrowserextensionsenabled))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   areBrowserExtensionsEnabled,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.automationAllowed] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.automationAllowed] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.automationAllowed.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.automationAllowed.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - webkit_web_context_set_automation_allowed](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebContext.set_automation_allowed.html))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   automationAllowed,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.browserExecutableFolder] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.browserExecutableFolder] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.browserExecutableFolder.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.browserExecutableFolder.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - CreateCoreWebView2EnvironmentWithOptions.browserExecutableFolder](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2210.55#createcorewebview2environmentwithoptions))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   browserExecutableFolder,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.cacheModel] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.cacheModel] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.cacheModel.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.cacheModel.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - webkit_web_context_set_cache_model](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebContext.set_cache_model.html))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   cacheModel,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.channelSearchKind] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.channelSearchKind] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.channelSearchKind.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.channelSearchKind.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.2478.35+ ([Official API - ICoreWebView2EnvironmentOptions7.put_ChannelSearchKind](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions7?view=webview2-1.0.2849.39#put_channelsearchkind))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   channelSearchKind,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.customSchemeRegistrations] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.customSchemeRegistrations] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.customSchemeRegistrations.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.customSchemeRegistrations.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.1587.40+ ([Official API - ICoreWebView2EnvironmentOptions4.SetCustomSchemeRegistrations](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions4?view=webview2-1.0.2739.15#setcustomschemeregistrations))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   customSchemeRegistrations,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.enableTrackingPrevention] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.enableTrackingPrevention] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.enableTrackingPrevention.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.enableTrackingPrevention.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.1661.34+ ([Official API - ICoreWebView2EnvironmentOptions5.put_EnableTrackingPrevention](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions5?view=webview2-1.0.2849.39#put_enabletrackingprevention))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableTrackingPrevention,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.exclusiveUserDataFolderAccess] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.exclusiveUserDataFolderAccess] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.exclusiveUserDataFolderAccess.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.exclusiveUserDataFolderAccess.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.1185.39+ ([Official API - ICoreWebView2EnvironmentOptions2.put_ExclusiveUserDataFolderAccess](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions2?view=webview2-1.0.2849.39#put_exclusiveuserdatafolderaccess))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   exclusiveUserDataFolderAccess,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.isCustomCrashReportingEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.isCustomCrashReportingEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.isCustomCrashReportingEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.isCustomCrashReportingEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.1518.46+ ([Official API - ICoreWebView2EnvironmentOptions3.put_IsCustomCrashReportingEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions3?view=webview2-1.0.2849.39#put_iscustomcrashreportingenabled))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   isCustomCrashReportingEnabled,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.language] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.language] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.language.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.language.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2EnvironmentOptions.put_Language](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions?view=webview2-1.0.2210.55#put_language))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   language,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.preferredLanguages] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.preferredLanguages] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.preferredLanguages.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.preferredLanguages.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - webkit_web_context_set_preferred_languages](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebContext.set_preferred_languages.html))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   preferredLanguages,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.releaseChannels] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.releaseChannels] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.releaseChannels.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.releaseChannels.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.2478.35+ ([Official API - ICoreWebView2EnvironmentOptions7.put_ReleaseChannels](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions7?view=webview2-1.0.2849.39#put_releasechannels))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   releaseChannels,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.sandboxPaths] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.sandboxPaths] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.sandboxPaths.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.sandboxPaths.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - webkit_web_context_add_path_to_sandbox](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebContext.add_path_to_sandbox.html))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   sandboxPaths,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.scrollbarStyle] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.scrollbarStyle] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.scrollbarStyle.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.scrollbarStyle.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.2535.41+ ([Official API - ICoreWebView2EnvironmentOptions8.put_ScrollBarStyle](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions8?view=webview2-1.0.2849.39#put_scrollbarstyle))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   scrollbarStyle,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.spellCheckingEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.spellCheckingEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.spellCheckingEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.spellCheckingEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - webkit_web_context_set_spell_checking_enabled](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebContext.set_spell_checking_enabled.html))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   spellCheckingEnabled,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.spellCheckingLanguages] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.spellCheckingLanguages] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.spellCheckingLanguages.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.spellCheckingLanguages.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - webkit_web_context_set_spell_checking_languages](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebContext.set_spell_checking_languages.html))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   spellCheckingLanguages,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.targetCompatibleBrowserVersion] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.targetCompatibleBrowserVersion] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.targetCompatibleBrowserVersion.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.targetCompatibleBrowserVersion.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2EnvironmentOptions.put_TargetCompatibleBrowserVersion](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2environmentoptions?view=webview2-1.0.2210.55#put_targetcompatiblebrowserversion))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   targetCompatibleBrowserVersion,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.timeZoneOverride] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.timeZoneOverride] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.timeZoneOverride.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.timeZoneOverride.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - time-zone-override](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/class.WebContext.html)):
   ///    - This property must be set at WebContext construction time.
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   timeZoneOverride,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.userDataFolder] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.userDataFolder] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.userDataFolder.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.userDataFolder.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - CreateCoreWebView2EnvironmentWithOptions.userDataFolder](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2210.55#createcorewebview2environmentwithoptions))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   userDataFolder,
 
-  ///Can be used to check if the [WebViewEnvironmentSettings.webProcessExtensionsDirectory] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewEnvironmentSettings.webProcessExtensionsDirectory] property is supported at runtime.
   ///
-  ///{@template cygnus_core.WebViewEnvironmentSettings.webProcessExtensionsDirectory.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewEnvironmentSettings.webProcessExtensionsDirectory.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - webkit_web_context_set_web_process_extensions_directory](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebContext.set_web_process_extensions_directory.html))
   ///
-  ///Use the [WebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewEnvironmentSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   webProcessExtensionsDirectory,
 }
 
-extension _WebViewEnvironmentSettingsPropertySupported
-    on WebViewEnvironmentSettings {
+extension _CygnusWebViewEnvironmentSettingsPropertySupported
+    on CygnusWebViewEnvironmentSettings {
   static bool isPropertySupported(
-    WebViewEnvironmentSettingsProperty property, {
+    CygnusWebViewEnvironmentSettingsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case WebViewEnvironmentSettingsProperty.additionalBrowserArguments:
+      case CygnusWebViewEnvironmentSettingsProperty.additionalBrowserArguments:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty
+      case CygnusWebViewEnvironmentSettingsProperty
           .allowSingleSignOnUsingOSPrimaryAccount:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.areBrowserExtensionsEnabled:
+      case CygnusWebViewEnvironmentSettingsProperty.areBrowserExtensionsEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.automationAllowed:
+      case CygnusWebViewEnvironmentSettingsProperty.automationAllowed:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.browserExecutableFolder:
+      case CygnusWebViewEnvironmentSettingsProperty.browserExecutableFolder:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.cacheModel:
+      case CygnusWebViewEnvironmentSettingsProperty.cacheModel:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.channelSearchKind:
+      case CygnusWebViewEnvironmentSettingsProperty.channelSearchKind:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.customSchemeRegistrations:
+      case CygnusWebViewEnvironmentSettingsProperty.customSchemeRegistrations:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.enableTrackingPrevention:
+      case CygnusWebViewEnvironmentSettingsProperty.enableTrackingPrevention:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.exclusiveUserDataFolderAccess:
+      case CygnusWebViewEnvironmentSettingsProperty
+          .exclusiveUserDataFolderAccess:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.isCustomCrashReportingEnabled:
+      case CygnusWebViewEnvironmentSettingsProperty
+          .isCustomCrashReportingEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.language:
+      case CygnusWebViewEnvironmentSettingsProperty.language:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.preferredLanguages:
+      case CygnusWebViewEnvironmentSettingsProperty.preferredLanguages:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.releaseChannels:
+      case CygnusWebViewEnvironmentSettingsProperty.releaseChannels:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.sandboxPaths:
+      case CygnusWebViewEnvironmentSettingsProperty.sandboxPaths:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.scrollbarStyle:
+      case CygnusWebViewEnvironmentSettingsProperty.scrollbarStyle:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.spellCheckingEnabled:
+      case CygnusWebViewEnvironmentSettingsProperty.spellCheckingEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.spellCheckingLanguages:
+      case CygnusWebViewEnvironmentSettingsProperty.spellCheckingLanguages:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.targetCompatibleBrowserVersion:
+      case CygnusWebViewEnvironmentSettingsProperty
+          .targetCompatibleBrowserVersion:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.timeZoneOverride:
+      case CygnusWebViewEnvironmentSettingsProperty.timeZoneOverride:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.userDataFolder:
+      case CygnusWebViewEnvironmentSettingsProperty.userDataFolder:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case WebViewEnvironmentSettingsProperty.webProcessExtensionsDirectory:
+      case CygnusWebViewEnvironmentSettingsProperty
+          .webProcessExtensionsDirectory:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
     }

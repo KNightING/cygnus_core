@@ -6,26 +6,28 @@ part of 'notification_received_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onNotificationReceived] event.
-class NotificationReceivedResponse {
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onNotificationReceived] event.
+class CygnusNotificationReceivedResponse {
   ///Set to `true` to indicate the notification has been handled by the host.
   bool handled;
-  NotificationReceivedResponse({required this.handled});
+  CygnusNotificationReceivedResponse({required this.handled});
 
-  ///Gets a possible [NotificationReceivedResponse] instance from a [Map] value.
-  static NotificationReceivedResponse? fromMap(
+  ///Gets a possible [CygnusNotificationReceivedResponse] instance from a [Map] value.
+  static CygnusNotificationReceivedResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = NotificationReceivedResponse(handled: map['handled']);
+    final instance = CygnusNotificationReceivedResponse(
+      handled: map['handled'],
+    );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"handled": handled};
   }
 
@@ -36,6 +38,6 @@ class NotificationReceivedResponse {
 
   @override
   String toString() {
-    return 'NotificationReceivedResponse{handled: $handled}';
+    return 'CygnusNotificationReceivedResponse{handled: $handled}';
   }
 }

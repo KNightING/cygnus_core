@@ -7,21 +7,21 @@ import '../in_app_webview/in_app_webview_controller.dart';
 /// Object specifying creation parameters for creating a [WebPlatformWebStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebStorageCreationParams] for
 /// more information.
 class WebPlatformWebStorageCreationParams
-    extends PlatformWebStorageCreationParams {
+    extends CygnusPlatformWebStorageCreationParams {
   /// Creates a new [WebPlatformWebStorageCreationParams] instance.
   WebPlatformWebStorageCreationParams({
     required super.localStorage,
     required super.sessionStorage,
   });
 
-  /// Creates a [WebPlatformWebStorageCreationParams] instance based on [PlatformWebStorageCreationParams].
+  /// Creates a [WebPlatformWebStorageCreationParams] instance based on [CygnusPlatformWebStorageCreationParams].
   factory WebPlatformWebStorageCreationParams.fromPlatformWebStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebStorageCreationParams params,
+    CygnusPlatformWebStorageCreationParams params,
   ) {
     return WebPlatformWebStorageCreationParams(
       localStorage: params.localStorage,
@@ -30,10 +30,10 @@ class WebPlatformWebStorageCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformWebStorage}
-class WebPlatformWebStorage extends PlatformWebStorage {
+///{@macro cygnus_core.CygnusPlatformWebStorage}
+class WebPlatformWebStorage extends CygnusPlatformWebStorage {
   /// Constructs a [WebPlatformWebStorage].
-  WebPlatformWebStorage(PlatformWebStorageCreationParams params)
+  WebPlatformWebStorage(CygnusPlatformWebStorageCreationParams params)
     : super.implementation(
         params is WebPlatformWebStorageCreationParams
             ? params
@@ -43,10 +43,10 @@ class WebPlatformWebStorage extends PlatformWebStorage {
       );
 
   @override
-  PlatformLocalStorage get localStorage => params.localStorage;
+  CygnusPlatformLocalStorage get localStorage => params.localStorage;
 
   @override
-  PlatformSessionStorage get sessionStorage => params.sessionStorage;
+  CygnusPlatformSessionStorage get sessionStorage => params.sessionStorage;
 
   @override
   void dispose() {
@@ -58,20 +58,20 @@ class WebPlatformWebStorage extends PlatformWebStorage {
 /// Object specifying creation parameters for creating a [WebPlatformStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformStorageCreationParams] for
 /// more information.
-class WebPlatformStorageCreationParams extends PlatformStorageCreationParams {
+class WebPlatformStorageCreationParams extends CygnusPlatformStorageCreationParams {
   /// Creates a new [WebPlatformStorageCreationParams] instance.
   WebPlatformStorageCreationParams({
     required super.controller,
     required super.webStorageType,
   });
 
-  /// Creates a [WebPlatformStorageCreationParams] instance based on [PlatformStorageCreationParams].
+  /// Creates a [WebPlatformStorageCreationParams] instance based on [CygnusPlatformStorageCreationParams].
   factory WebPlatformStorageCreationParams.fromPlatformStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformStorageCreationParams params,
+    CygnusPlatformStorageCreationParams params,
   ) {
     return WebPlatformStorageCreationParams(
       controller: params.controller,
@@ -80,8 +80,8 @@ class WebPlatformStorageCreationParams extends PlatformStorageCreationParams {
   }
 }
 
-///{@macro cygnus_core.PlatformStorage}
-abstract mixin class WebPlatformStorage implements PlatformStorage {
+///{@macro cygnus_core.CygnusPlatformStorage}
+abstract mixin class WebPlatformStorage implements CygnusPlatformStorage {
   @override
   WebPlatformInAppWebViewController? controller;
 
@@ -139,8 +139,8 @@ abstract mixin class WebPlatformStorage implements PlatformStorage {
   }
 
   @override
-  Future<List<WebStorageItem>> getItems() async {
-    var webStorageItems = <WebStorageItem>[];
+  Future<List<CygnusWebStorageItem>> getItems() async {
+    var webStorageItems = <CygnusWebStorageItem>[];
 
     List<Map<dynamic, dynamic>>? items = (await controller?.evaluateJavascript(
       source:
@@ -167,7 +167,7 @@ abstract mixin class WebPlatformStorage implements PlatformStorage {
 
     for (var item in items) {
       webStorageItems.add(
-        WebStorageItem(key: item["key"], value: item["value"]),
+        CygnusWebStorageItem(key: item["key"], value: item["value"]),
       );
     }
 
@@ -205,28 +205,28 @@ abstract mixin class WebPlatformStorage implements PlatformStorage {
 /// Object specifying creation parameters for creating a [WebPlatformLocalStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformLocalStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformLocalStorageCreationParams] for
 /// more information.
 class WebPlatformLocalStorageCreationParams
-    extends PlatformLocalStorageCreationParams {
+    extends CygnusPlatformLocalStorageCreationParams {
   /// Creates a new [WebPlatformLocalStorageCreationParams] instance.
   WebPlatformLocalStorageCreationParams(super.params);
 
-  /// Creates a [WebPlatformLocalStorageCreationParams] instance based on [PlatformLocalStorageCreationParams].
+  /// Creates a [WebPlatformLocalStorageCreationParams] instance based on [CygnusPlatformLocalStorageCreationParams].
   factory WebPlatformLocalStorageCreationParams.fromPlatformLocalStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformLocalStorageCreationParams params,
+    CygnusPlatformLocalStorageCreationParams params,
   ) {
     return WebPlatformLocalStorageCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformLocalStorage}
-class WebPlatformLocalStorage extends PlatformLocalStorage
+///{@macro cygnus_core.CygnusPlatformLocalStorage}
+class WebPlatformLocalStorage extends CygnusPlatformLocalStorage
     with WebPlatformStorage {
   /// Constructs a [WebPlatformLocalStorage].
-  WebPlatformLocalStorage(PlatformLocalStorageCreationParams params)
+  WebPlatformLocalStorage(CygnusPlatformLocalStorageCreationParams params)
     : super.implementation(
         params is WebPlatformLocalStorageCreationParams
             ? params
@@ -237,14 +237,14 @@ class WebPlatformLocalStorage extends PlatformLocalStorage
 
   /// Default storage
   factory WebPlatformLocalStorage.defaultStorage({
-    required PlatformInAppWebViewController? controller,
+    required CygnusPlatformWebViewController? controller,
   }) {
     return WebPlatformLocalStorage(
       WebPlatformLocalStorageCreationParams(
-        PlatformLocalStorageCreationParams(
-          PlatformStorageCreationParams(
+        CygnusPlatformLocalStorageCreationParams(
+          CygnusPlatformStorageCreationParams(
             controller: controller,
-            webStorageType: WebStorageType.LOCAL_STORAGE,
+            webStorageType: CygnusWebStorageType.LOCAL_STORAGE,
           ),
         ),
       ),
@@ -259,28 +259,28 @@ class WebPlatformLocalStorage extends PlatformLocalStorage
 /// Object specifying creation parameters for creating a [WebPlatformSessionStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformSessionStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformSessionStorageCreationParams] for
 /// more information.
 class WebPlatformSessionStorageCreationParams
-    extends PlatformSessionStorageCreationParams {
+    extends CygnusPlatformSessionStorageCreationParams {
   /// Creates a new [WebPlatformSessionStorageCreationParams] instance.
   WebPlatformSessionStorageCreationParams(super.params);
 
-  /// Creates a [WebPlatformSessionStorageCreationParams] instance based on [PlatformSessionStorageCreationParams].
+  /// Creates a [WebPlatformSessionStorageCreationParams] instance based on [CygnusPlatformSessionStorageCreationParams].
   factory WebPlatformSessionStorageCreationParams.fromPlatformSessionStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformSessionStorageCreationParams params,
+    CygnusPlatformSessionStorageCreationParams params,
   ) {
     return WebPlatformSessionStorageCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformSessionStorage}
-class WebPlatformSessionStorage extends PlatformSessionStorage
+///{@macro cygnus_core.CygnusPlatformSessionStorage}
+class WebPlatformSessionStorage extends CygnusPlatformSessionStorage
     with WebPlatformStorage {
   /// Constructs a [WebPlatformSessionStorage].
-  WebPlatformSessionStorage(PlatformSessionStorageCreationParams params)
+  WebPlatformSessionStorage(CygnusPlatformSessionStorageCreationParams params)
     : super.implementation(
         params is WebPlatformSessionStorageCreationParams
             ? params
@@ -291,14 +291,14 @@ class WebPlatformSessionStorage extends PlatformSessionStorage
 
   /// Default storage
   factory WebPlatformSessionStorage.defaultStorage({
-    required PlatformInAppWebViewController? controller,
+    required CygnusPlatformWebViewController? controller,
   }) {
     return WebPlatformSessionStorage(
       WebPlatformSessionStorageCreationParams(
-        PlatformSessionStorageCreationParams(
-          PlatformStorageCreationParams(
+        CygnusPlatformSessionStorageCreationParams(
+          CygnusPlatformStorageCreationParams(
             controller: controller,
-            webStorageType: WebStorageType.SESSION_STORAGE,
+            webStorageType: CygnusWebStorageType.SESSION_STORAGE,
           ),
         ),
       ),

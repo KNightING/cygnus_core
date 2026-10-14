@@ -8,7 +8,7 @@ import '../types/enum_method.dart';
 
 part 'context_menu.g.dart';
 
-///Class that represents the WebView context menu. It used by [PlatformWebViewCreationParams.contextMenu].
+///Class that represents the WebView context menu. It used by [CygnusPlatformWebViewCreationParams.contextMenu].
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(
@@ -19,11 +19,11 @@ part 'context_menu.g.dart';
   ],
 )
 @ExchangeableObject()
-class ContextMenu_ {
+class CygnusContextMenu_ {
   ///Event fired when the context menu for this WebView is being built.
   ///
   ///[hitTestResult] represents the hit result for hitting an HTML elements.
-  final void Function(InAppWebViewHitTestResult_ hitTestResult)?
+  final void Function(CygnusWebViewHitTestResult_ hitTestResult)?
   onCreateContextMenu;
 
   ///Event fired when the context menu for this WebView is being hidden.
@@ -31,22 +31,22 @@ class ContextMenu_ {
 
   ///Event fired when a context menu item has been clicked.
   ///
-  ///[contextMenuItemClicked] represents the [ContextMenuItem] clicked.
-  final void Function(ContextMenuItem_ contextMenuItemClicked)?
+  ///[contextMenuItemClicked] represents the [CygnusContextMenuItem] clicked.
+  final void Function(CygnusContextMenuItem_ contextMenuItemClicked)?
   onContextMenuActionItemClicked;
 
   ///Use [settings] instead
   @Deprecated("Use settings instead")
-  final ContextMenuOptions_? options;
+  final CygnusContextMenuOptions_? options;
 
   ///Context menu settings.
-  final ContextMenuSettings_? settings;
+  final CygnusContextMenuSettings_? settings;
 
-  ///List of the custom [ContextMenuItem].
-  final List<ContextMenuItem_> menuItems;
+  ///List of the custom [CygnusContextMenuItem].
+  final List<CygnusContextMenuItem_> menuItems;
 
   @ExchangeableObjectConstructor()
-  ContextMenu_({
+  CygnusContextMenu_({
     this.menuItems = const [],
     this.onCreateContextMenu,
     this.onHideContextMenu,
@@ -57,11 +57,11 @@ class ContextMenu_ {
 
   @ExchangeableObjectMethod(toMapMergeWith: true)
   // ignore: unused_element
-  Map<String, dynamic> _toMapMergeWith({EnumMethod? enumMethod}) {
+  Map<String, dynamic> _toMapMergeWith({CygnusEnumMethod? enumMethod}) {
     return {
       "settings":
-          (settings as ContextMenuSettings?)?.toMap(enumMethod: enumMethod) ??
-          (options as ContextMenuOptions?)?.toMap(enumMethod: enumMethod),
+          (settings as CygnusContextMenuSettings?)?.toMap(enumMethod: enumMethod) ??
+          (options as CygnusContextMenuOptions?)?.toMap(enumMethod: enumMethod),
     };
   }
 }

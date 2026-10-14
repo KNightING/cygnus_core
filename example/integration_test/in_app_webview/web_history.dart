@@ -1,29 +1,29 @@
 part of 'main.dart';
 
 void webHistory() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.getCopyBackForwardList,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.getCopyBackForwardList,
   );
 
   skippableGroup('web history', () {
-    final shouldSkipTest1 = !InAppWebViewController.isMethodSupported(
-      PlatformInAppWebViewControllerMethod.getCopyBackForwardList,
+    final shouldSkipTest1 = !CygnusWebViewController.isMethodSupported(
+      CygnusPlatformWebViewControllerMethod.getCopyBackForwardList,
     );
 
     skippableTestWidgets('get history list and go back/forward', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final StreamController<String> pageLoads =
           StreamController<String>.broadcast();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+            initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -34,7 +34,7 @@ void webHistory() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
 
       await tester.pump();
@@ -61,7 +61,7 @@ void webHistory() {
 
       // Start listening BEFORE navigation to avoid race condition
       var loadFuture = waitForUrl(TEST_URL_1.toString());
-      await controller.loadUrl(urlRequest: URLRequest(url: TEST_URL_1));
+      await controller.loadUrl(urlRequest: CygnusURLRequest(url: TEST_URL_1));
       url = await loadFuture;
       webHistory = await controller.getCopyBackForwardList();
       expect(url, TEST_URL_1.toString());
@@ -136,17 +136,17 @@ void webHistory() {
     skippableTestWidgets('go back/forward on web platform', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final StreamController<String> pageLoads =
           StreamController<String>.broadcast();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_WEB_PLATFORM_URL_1),
+            initialUrlRequest: CygnusURLRequest(url: TEST_WEB_PLATFORM_URL_1),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -157,7 +157,7 @@ void webHistory() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
 
       await tester.pump();
@@ -189,22 +189,22 @@ void webHistory() {
       pageLoads.close();
     }, skip: shouldSkipTest2);
 
-    final shouldSkipTest3 = !InAppWebViewController.isMethodSupported(
-      PlatformInAppWebViewControllerMethod.clearHistory,
+    final shouldSkipTest3 = !CygnusWebViewController.isMethodSupported(
+      CygnusPlatformWebViewControllerMethod.clearHistory,
     );
 
     skippableTestWidgets('clearHistory', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final StreamController<String> pageLoads =
           StreamController<String>.broadcast();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+            initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -215,10 +215,10 @@ void webHistory() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoads.stream.first;
-      await controller.loadUrl(urlRequest: URLRequest(url: TEST_URL_1));
+      await controller.loadUrl(urlRequest: CygnusURLRequest(url: TEST_URL_1));
       await pageLoads.stream.first;
 
       var webHistory = await controller.getCopyBackForwardList();

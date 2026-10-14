@@ -6,34 +6,37 @@ part of 'server_trust_auth_response_action.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class used by [ServerTrustAuthResponse] class.
-class ServerTrustAuthResponseAction {
+///Class used by [CygnusServerTrustAuthResponse] class.
+class CygnusServerTrustAuthResponseAction {
   final int _value;
   final int? _nativeValue;
-  const ServerTrustAuthResponseAction._internal(this._value, this._nativeValue);
+  const CygnusServerTrustAuthResponseAction._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory ServerTrustAuthResponseAction._internalMultiPlatform(
+  factory CygnusServerTrustAuthResponseAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => ServerTrustAuthResponseAction._internal(value, nativeValue());
+  ) => CygnusServerTrustAuthResponseAction._internal(value, nativeValue());
 
   ///Instructs the WebView to cancel the authentication challenge.
-  static const CANCEL = ServerTrustAuthResponseAction._internal(0, 0);
+  static const CANCEL = CygnusServerTrustAuthResponseAction._internal(0, 0);
 
   ///Instructs the WebView to proceed with the authentication challenge.
-  static const PROCEED = ServerTrustAuthResponseAction._internal(1, 1);
+  static const PROCEED = CygnusServerTrustAuthResponseAction._internal(1, 1);
 
-  ///Set of all values of [ServerTrustAuthResponseAction].
-  static final Set<ServerTrustAuthResponseAction> values = [
-    ServerTrustAuthResponseAction.CANCEL,
-    ServerTrustAuthResponseAction.PROCEED,
+  ///Set of all values of [CygnusServerTrustAuthResponseAction].
+  static final Set<CygnusServerTrustAuthResponseAction> values = [
+    CygnusServerTrustAuthResponseAction.CANCEL,
+    CygnusServerTrustAuthResponseAction.PROCEED,
   ].toSet();
 
-  ///Gets a possible [ServerTrustAuthResponseAction] instance from [int] value.
-  static ServerTrustAuthResponseAction? fromValue(int? value) {
+  ///Gets a possible [CygnusServerTrustAuthResponseAction] instance from [int] value.
+  static CygnusServerTrustAuthResponseAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return ServerTrustAuthResponseAction.values.firstWhere(
+        return CygnusServerTrustAuthResponseAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -43,11 +46,11 @@ class ServerTrustAuthResponseAction {
     return null;
   }
 
-  ///Gets a possible [ServerTrustAuthResponseAction] instance from a native value.
-  static ServerTrustAuthResponseAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusServerTrustAuthResponseAction] instance from a native value.
+  static CygnusServerTrustAuthResponseAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return ServerTrustAuthResponseAction.values.firstWhere(
+        return CygnusServerTrustAuthResponseAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -57,15 +60,15 @@ class ServerTrustAuthResponseAction {
     return null;
   }
 
-  /// Gets a possible [ServerTrustAuthResponseAction] instance value with name [name].
+  /// Gets a possible [CygnusServerTrustAuthResponseAction] instance value with name [name].
   ///
-  /// Goes through [ServerTrustAuthResponseAction.values] looking for a value with
-  /// name [name], as reported by [ServerTrustAuthResponseAction.name].
+  /// Goes through [CygnusServerTrustAuthResponseAction.values] looking for a value with
+  /// name [name], as reported by [CygnusServerTrustAuthResponseAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ServerTrustAuthResponseAction? byName(String? name) {
+  static CygnusServerTrustAuthResponseAction? byName(String? name) {
     if (name != null) {
       try {
-        return ServerTrustAuthResponseAction.values.firstWhere(
+        return CygnusServerTrustAuthResponseAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -75,7 +78,7 @@ class ServerTrustAuthResponseAction {
     return null;
   }
 
-  /// Creates a map from the names of [ServerTrustAuthResponseAction] values to the values.
+  /// Creates a map from the names of [CygnusServerTrustAuthResponseAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -83,9 +86,9 @@ class ServerTrustAuthResponseAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ServerTrustAuthResponseAction> asNameMap() =>
-      <String, ServerTrustAuthResponseAction>{
-        for (final value in ServerTrustAuthResponseAction.values)
+  static Map<String, CygnusServerTrustAuthResponseAction> asNameMap() =>
+      <String, CygnusServerTrustAuthResponseAction>{
+        for (final value in CygnusServerTrustAuthResponseAction.values)
           value.name(): value,
       };
 

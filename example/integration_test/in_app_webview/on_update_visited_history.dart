@@ -1,15 +1,15 @@
 part of 'main.dart';
 
 void onUpdateVisitedHistory() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onUpdateVisitedHistory,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onUpdateVisitedHistory,
   );
 
   var url = !kIsWeb ? TEST_CROSS_PLATFORM_URL_1 : TEST_WEB_PLATFORM_URL_1;
 
   skippableTestWidgets('onUpdateVisitedHistory', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<String> firstPushCompleter = Completer<String>();
     final Completer<String> secondPushCompleter = Completer<String>();
     final Completer<void> pageLoaded = Completer<void>();
@@ -17,10 +17,10 @@ void onUpdateVisitedHistory() {
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: url),
-          initialSettings: InAppWebViewSettings(clearCache: true),
+          initialUrlRequest: CygnusURLRequest(url: url),
+          initialSettings: CygnusWebViewSettings(clearCache: true),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
           },
@@ -38,7 +38,7 @@ void onUpdateVisitedHistory() {
       ),
     );
 
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
     await tester.pump();
     await pageLoaded.future;
 

@@ -21,22 +21,22 @@ extension on HTMLIFrameElement {
   external String? get csp;
 }
 
-class InAppWebViewWebElement implements Disposable {
+class InAppWebViewWebElement implements CygnusDisposable {
   late dynamic _viewId;
   late BinaryMessenger _messenger;
   late HTMLDivElement iframeContainer;
   late HTMLIFrameElement iframe;
   late MethodChannel? _channel;
-  InAppWebViewSettings? initialSettings;
-  URLRequest? initialUrlRequest;
-  InAppWebViewInitialData? initialData;
-  UnmodifiableListView<UserScript>? initialUserScripts;
+  CygnusWebViewSettings? initialSettings;
+  CygnusURLRequest? initialUrlRequest;
+  CygnusWebViewInitialData? initialData;
+  UnmodifiableListView<CygnusUserScript>? initialUserScripts;
   String? initialFile;
   String? headlessWebViewId;
   final UserContentController userContentController = UserContentController();
   late final int? windowId;
 
-  InAppWebViewSettings? settings;
+  CygnusWebViewSettings? settings;
   JSWebView? jsWebView;
   bool isLoading = false;
 
@@ -103,7 +103,7 @@ class InAppWebViewWebElement implements Disposable {
       case "getIFrameId":
         return getIFrameId();
       case "loadUrl":
-        URLRequest urlRequest = URLRequest.fromMap(
+        CygnusURLRequest urlRequest = CygnusURLRequest.fromMap(
           call.arguments["urlRequest"].cast<String, dynamic>(),
         )!;
         await loadUrl(urlRequest: urlRequest);
@@ -141,11 +141,11 @@ class InAppWebViewWebElement implements Disposable {
       case "getSettings":
         return await getSettings();
       case "setSettings":
-        InAppWebViewSettings newSettings =
-            InAppWebViewSettings.fromMap(
+        CygnusWebViewSettings newSettings =
+            CygnusWebViewSettings.fromMap(
               call.arguments["settings"].cast<String, dynamic>(),
             ) ??
-            InAppWebViewSettings();
+            CygnusWebViewSettings();
         await setSettings(newSettings);
         break;
       case "getUrl":
@@ -214,13 +214,13 @@ class InAppWebViewWebElement implements Disposable {
       case "canScrollHorizontally":
         return await canScrollHorizontally();
       case "addUserScript":
-        UserScript userScript = UserScript.fromMap(
+        CygnusUserScript userScript = CygnusUserScript.fromMap(
           call.arguments["userScript"].cast<String, dynamic>(),
         )!;
         userContentController.addUserOnlyScript(userScript);
         break;
       case "removeUserScript":
-        UserScript userScript = UserScript.fromMap(
+        CygnusUserScript userScript = CygnusUserScript.fromMap(
           call.arguments["userScript"].cast<String, dynamic>(),
         )!;
         userContentController.removeUserOnlyScript(userScript);
@@ -275,13 +275,13 @@ class InAppWebViewWebElement implements Disposable {
     }
 
     if (headlessWebViewId == null && settings == null) {
-      settings = initialSettings ?? InAppWebViewSettings();
+      settings = initialSettings ?? CygnusWebViewSettings();
 
-      Set<Sandbox> sandbox = Set.from(Sandbox.values);
+      Set<CygnusSandbox> sandbox = Set.from(CygnusSandbox.values);
 
       if (settings!.javaScriptEnabled != null &&
           !settings!.javaScriptEnabled!) {
-        sandbox.remove(Sandbox.ALLOW_SCRIPTS);
+        sandbox.remove(CygnusSandbox.ALLOW_SCRIPTS);
       }
 
       iframe.allow = settings!.iframeAllow ?? iframe.allow;
@@ -296,14 +296,14 @@ class InAppWebViewWebElement implements Disposable {
       iframe.ariaHidden = settings!.iframeAriaHidden ?? iframe.ariaHidden;
 
       if (settings!.iframeSandbox != null &&
-          settings!.iframeSandbox != Sandbox.ALLOW_ALL) {
+          settings!.iframeSandbox != CygnusSandbox.ALLOW_ALL) {
         iframe.setAttribute(
           "sandbox",
           settings!.iframeSandbox!.map((e) => e.toNativeValue()).join(" "),
         );
-      } else if (settings!.iframeSandbox == Sandbox.ALLOW_ALL) {
+      } else if (settings!.iframeSandbox == CygnusSandbox.ALLOW_ALL) {
         iframe.removeAttribute("sandbox");
-      } else if (sandbox != Sandbox.values) {
+      } else if (sandbox != CygnusSandbox.values) {
         iframe.setAttribute(
           "sandbox",
           sandbox.map((e) => e.toNativeValue()).join(" "),
@@ -335,7 +335,7 @@ class InAppWebViewWebElement implements Disposable {
   }
 
   Future<XMLHttpRequest> _makeRequest(
-    URLRequest urlRequest, {
+    CygnusURLRequest urlRequest, {
     bool? withCredentials,
     String? responseType,
     String? mimeType,
@@ -363,7 +363,7 @@ class InAppWebViewWebElement implements Disposable {
     return iframe.id;
   }
 
-  Future<void> loadUrl({required URLRequest urlRequest}) async {
+  Future<void> loadUrl({required CygnusURLRequest urlRequest}) async {
     if ((urlRequest.method == null || urlRequest.method == "GET") &&
         (urlRequest.headers == null || urlRequest.headers!.isEmpty)) {
       iframe.src = urlRequest.url.toString();
@@ -372,7 +372,7 @@ class InAppWebViewWebElement implements Disposable {
         iframe.src = _convertHttpResponseToData(await _makeRequest(urlRequest));
       } catch (e) {
         log(
-          'Can\'t load the URLRequest for "${urlRequest.url}". Probably caused by a CORS policy error.',
+          'Can\'t load the CygnusURLRequest for "${urlRequest.url}". Probably caused by a CORS policy error.',
           name: runtimeType.toString(),
           error: e,
         );
@@ -440,7 +440,7 @@ class InAppWebViewWebElement implements Disposable {
     required Uint8List postData,
   }) async {
     await loadUrl(
-      urlRequest: URLRequest(url: WebUri(url), method: "POST", body: postData),
+      urlRequest: CygnusURLRequest(url: CygnusWebUri(url), method: "POST", body: postData),
     );
   }
 
@@ -528,16 +528,16 @@ class InAppWebViewWebElement implements Disposable {
     return jsWebView?.canScrollHorizontally().toDart ?? false;
   }
 
-  Set<Sandbox> getSandbox() {
+  Set<CygnusSandbox> getSandbox() {
     var sandbox = iframe.sandbox;
-    Set<Sandbox> values = Set();
+    Set<CygnusSandbox> values = Set();
     for (int i = 0; i < sandbox.length; i++) {
-      var token = Sandbox.fromNativeValue(sandbox.item(i));
+      var token = CygnusSandbox.fromNativeValue(sandbox.item(i));
       if (token != null) {
         values.add(token);
       }
     }
-    return values.isEmpty ? Set.from(Sandbox.values) : values;
+    return values.isEmpty ? Set.from(CygnusSandbox.values) : values;
   }
 
   Size getSize() {
@@ -545,15 +545,15 @@ class InAppWebViewWebElement implements Disposable {
     return Size(size!.width!.toDartDouble, size.height!.toDartDouble);
   }
 
-  Future<void> setSettings(InAppWebViewSettings newSettings) async {
-    Set<Sandbox> sandbox = getSandbox();
+  Future<void> setSettings(CygnusWebViewSettings newSettings) async {
+    Set<CygnusSandbox> sandbox = getSandbox();
 
     if (newSettings.javaScriptEnabled != null &&
         settings!.javaScriptEnabled != newSettings.javaScriptEnabled) {
       if (!newSettings.javaScriptEnabled!) {
-        sandbox.remove(Sandbox.ALLOW_SCRIPTS);
+        sandbox.remove(CygnusSandbox.ALLOW_SCRIPTS);
       } else {
-        sandbox.add(Sandbox.ALLOW_SCRIPTS);
+        sandbox.add(CygnusSandbox.ALLOW_SCRIPTS);
       }
     }
 
@@ -582,15 +582,15 @@ class InAppWebViewWebElement implements Disposable {
 
     if (settings!.iframeSandbox != newSettings.iframeSandbox) {
       var sandbox = newSettings.iframeSandbox;
-      if (sandbox != null && sandbox != Sandbox.ALLOW_ALL) {
+      if (sandbox != null && sandbox != CygnusSandbox.ALLOW_ALL) {
         iframe.setAttribute(
           "sandbox",
           sandbox.map((e) => e.toNativeValue()).join(" "),
         );
-      } else if (sandbox == Sandbox.ALLOW_ALL) {
+      } else if (sandbox == CygnusSandbox.ALLOW_ALL) {
         iframe.removeAttribute("sandbox");
       }
-    } else if (sandbox != Sandbox.values) {
+    } else if (sandbox != CygnusSandbox.values) {
       iframe.setAttribute(
         "sandbox",
         sandbox.map((e) => e.toNativeValue()).join(" "),
@@ -675,7 +675,7 @@ class InAppWebViewWebElement implements Disposable {
     final windowId = InAppWebViewManager.windowAutoincrementId;
     InAppWebViewManager.windowAutoincrementId++;
 
-    final createWindowAction = CreateWindowAction.fromMap({
+    final createWindowAction = CygnusCreateWindowAction.fromMap({
       "windowId": windowId,
       "isForMainFrame": true,
       "request": {"url": url, "method": "GET"},
@@ -800,41 +800,41 @@ class InAppWebViewWebElement implements Disposable {
   }
 }
 
-class UserContentController implements Disposable {
-  final Map<UserScriptInjectionTime, List<UserScript>> _userOnlyScripts = {
-    UserScriptInjectionTime.AT_DOCUMENT_START: [],
-    UserScriptInjectionTime.AT_DOCUMENT_END: [],
+class UserContentController implements CygnusDisposable {
+  final Map<CygnusUserScriptInjectionTime, List<CygnusUserScript>> _userOnlyScripts = {
+    CygnusUserScriptInjectionTime.AT_DOCUMENT_START: [],
+    CygnusUserScriptInjectionTime.AT_DOCUMENT_END: [],
   };
 
   UserContentController();
 
-  List<UserScript> getUserOnlyScriptsAt(UserScriptInjectionTime injectionTime) {
+  List<CygnusUserScript> getUserOnlyScriptsAt(CygnusUserScriptInjectionTime injectionTime) {
     return _userOnlyScripts[injectionTime]!;
   }
 
-  void addUserOnlyScript(UserScript userScript) {
+  void addUserOnlyScript(CygnusUserScript userScript) {
     _userOnlyScripts[userScript.injectionTime]!.add(userScript);
   }
 
-  void addUserOnlyScripts(List<UserScript> userScripts) {
+  void addUserOnlyScripts(List<CygnusUserScript> userScripts) {
     for (var userScript in userScripts) {
       addUserOnlyScript(userScript);
     }
   }
 
-  bool removeUserOnlyScript(UserScript userScript) {
+  bool removeUserOnlyScript(CygnusUserScript userScript) {
     return _userOnlyScripts[userScript.injectionTime]!.remove(userScript);
   }
 
-  UserScript removeUserOnlyScriptAt(
+  CygnusUserScript removeUserOnlyScriptAt(
     int index,
-    UserScriptInjectionTime injectionTime,
+    CygnusUserScriptInjectionTime injectionTime,
   ) {
     return _userOnlyScripts[injectionTime]!.removeAt(index);
   }
 
   void removeUserOnlyScriptsByGroupName(String groupName) {
-    for (var injectionTime in UserScriptInjectionTime.values) {
+    for (var injectionTime in CygnusUserScriptInjectionTime.values) {
       _userOnlyScripts[injectionTime]!.removeWhere(
         (userScript) => userScript.groupName == groupName,
       );
@@ -842,8 +842,8 @@ class UserContentController implements Disposable {
   }
 
   removeAllUserOnlyScripts() {
-    _userOnlyScripts[UserScriptInjectionTime.AT_DOCUMENT_START]!.clear();
-    _userOnlyScripts[UserScriptInjectionTime.AT_DOCUMENT_END]!.clear();
+    _userOnlyScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_START]!.clear();
+    _userOnlyScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_END]!.clear();
   }
 
   @override

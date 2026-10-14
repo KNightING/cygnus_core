@@ -5,21 +5,21 @@ import '../types/enum_method.dart';
 
 part 'context_menu_settings.g.dart';
 
-///Class that represents available settings used by [ContextMenu].
+///Class that represents available settings used by [CygnusContextMenu].
 @ExchangeableObject(copyMethod: true)
-class ContextMenuSettings_ {
+class CygnusContextMenuSettings_ {
   ///Whether all the default system context menu items should be hidden or not. The default value is `false`.
   bool hideDefaultSystemContextMenuItems;
 
-  ContextMenuSettings_({this.hideDefaultSystemContextMenuItems = false});
+  CygnusContextMenuSettings_({this.hideDefaultSystemContextMenuItems = false});
 }
 
-///Use [ContextMenuSettings] instead.
-@Deprecated("Use ContextMenuSettings instead")
+///Use [CygnusContextMenuSettings] instead.
+@Deprecated("Use CygnusContextMenuSettings instead")
 @ExchangeableObject(copyMethod: true)
-class ContextMenuOptions_ {
+class CygnusContextMenuOptions_ {
   ///Whether all the default system context menu items should be hidden or not. The default value is `false`.
   bool hideDefaultSystemContextMenuItems;
 
-  ContextMenuOptions_({this.hideDefaultSystemContextMenuItems = false});
+  CygnusContextMenuOptions_({this.hideDefaultSystemContextMenuItems = false});
 }

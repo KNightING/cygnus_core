@@ -7,7 +7,7 @@ part 'in_app_webview_initial_data.g.dart';
 
 ///Initial [data] as a content for an `WebView` instance, using [baseUrl] as the base URL for it.
 @ExchangeableObject()
-class InAppWebViewInitialData_ {
+class CygnusWebViewInitialData_ {
   ///A String of data in the given encoding.
   String data;
 
@@ -18,7 +18,7 @@ class InAppWebViewInitialData_ {
   String encoding;
 
   ///The URL to use as the page's base URL. If `null` defaults to `about:blank`.
-  WebUri? baseUrl;
+  CygnusWebUri? baseUrl;
 
   ///Use [historyUrl] instead.
   @Deprecated('Use historyUrl instead')
@@ -26,9 +26,9 @@ class InAppWebViewInitialData_ {
 
   ///The URL to use as the history entry. If `null` defaults to `about:blank`. If non-null, this must be a valid URL.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
-  WebUri? historyUrl;
+  CygnusWebUri? historyUrl;
 
-  InAppWebViewInitialData_({
+  CygnusWebViewInitialData_({
     required this.data,
     this.mimeType = "text/html",
     this.encoding = "utf8",

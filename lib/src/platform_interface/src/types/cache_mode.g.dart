@@ -7,40 +7,42 @@ part of 'cache_mode.dart';
 // **************************************************************************
 
 ///Class used to override the way the cache is used.
-class CacheMode {
+class CygnusCacheMode {
   final int _value;
   final int? _nativeValue;
-  const CacheMode._internal(this._value, this._nativeValue);
+  const CygnusCacheMode._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory CacheMode._internalMultiPlatform(int value, Function nativeValue) =>
-      CacheMode._internal(value, nativeValue());
+  factory CygnusCacheMode._internalMultiPlatform(
+    int value,
+    Function nativeValue,
+  ) => CygnusCacheMode._internal(value, nativeValue());
 
   ///Use cached resources when they are available, even if they have expired. Otherwise load resources from the network.
-  static const LOAD_CACHE_ELSE_NETWORK = CacheMode._internal(1, 1);
+  static const LOAD_CACHE_ELSE_NETWORK = CygnusCacheMode._internal(1, 1);
 
   ///Don't use the network, load from the cache.
-  static const LOAD_CACHE_ONLY = CacheMode._internal(3, 3);
+  static const LOAD_CACHE_ONLY = CygnusCacheMode._internal(3, 3);
 
   ///Default cache usage mode. If the navigation type doesn't impose any specific behavior,
   ///use cached resources when they are available and not expired, otherwise load resources from the network.
-  static const LOAD_DEFAULT = CacheMode._internal(-1, -1);
+  static const LOAD_DEFAULT = CygnusCacheMode._internal(-1, -1);
 
   ///Don't use the cache, load from the network.
-  static const LOAD_NO_CACHE = CacheMode._internal(2, 2);
+  static const LOAD_NO_CACHE = CygnusCacheMode._internal(2, 2);
 
-  ///Set of all values of [CacheMode].
-  static final Set<CacheMode> values = [
-    CacheMode.LOAD_CACHE_ELSE_NETWORK,
-    CacheMode.LOAD_CACHE_ONLY,
-    CacheMode.LOAD_DEFAULT,
-    CacheMode.LOAD_NO_CACHE,
+  ///Set of all values of [CygnusCacheMode].
+  static final Set<CygnusCacheMode> values = [
+    CygnusCacheMode.LOAD_CACHE_ELSE_NETWORK,
+    CygnusCacheMode.LOAD_CACHE_ONLY,
+    CygnusCacheMode.LOAD_DEFAULT,
+    CygnusCacheMode.LOAD_NO_CACHE,
   ].toSet();
 
-  ///Gets a possible [CacheMode] instance from [int] value.
-  static CacheMode? fromValue(int? value) {
+  ///Gets a possible [CygnusCacheMode] instance from [int] value.
+  static CygnusCacheMode? fromValue(int? value) {
     if (value != null) {
       try {
-        return CacheMode.values.firstWhere(
+        return CygnusCacheMode.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -50,11 +52,11 @@ class CacheMode {
     return null;
   }
 
-  ///Gets a possible [CacheMode] instance from a native value.
-  static CacheMode? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusCacheMode] instance from a native value.
+  static CygnusCacheMode? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return CacheMode.values.firstWhere(
+        return CygnusCacheMode.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -64,15 +66,17 @@ class CacheMode {
     return null;
   }
 
-  /// Gets a possible [CacheMode] instance value with name [name].
+  /// Gets a possible [CygnusCacheMode] instance value with name [name].
   ///
-  /// Goes through [CacheMode.values] looking for a value with
-  /// name [name], as reported by [CacheMode.name].
+  /// Goes through [CygnusCacheMode.values] looking for a value with
+  /// name [name], as reported by [CygnusCacheMode.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static CacheMode? byName(String? name) {
+  static CygnusCacheMode? byName(String? name) {
     if (name != null) {
       try {
-        return CacheMode.values.firstWhere((element) => element.name() == name);
+        return CygnusCacheMode.values.firstWhere(
+          (element) => element.name() == name,
+        );
       } catch (e) {
         return null;
       }
@@ -80,7 +84,7 @@ class CacheMode {
     return null;
   }
 
-  /// Creates a map from the names of [CacheMode] values to the values.
+  /// Creates a map from the names of [CygnusCacheMode] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -88,8 +92,8 @@ class CacheMode {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, CacheMode> asNameMap() => <String, CacheMode>{
-    for (final value in CacheMode.values) value.name(): value,
+  static Map<String, CygnusCacheMode> asNameMap() => <String, CygnusCacheMode>{
+    for (final value in CygnusCacheMode.values) value.name(): value,
   };
 
   ///Gets [int] value.
@@ -131,44 +135,44 @@ class CacheMode {
 }
 
 ///An Android-specific class used to override the way the cache is used.
-///Use [CacheMode] instead.
-@Deprecated('Use CacheMode instead')
-class AndroidCacheMode {
+///Use [CygnusCacheMode] instead.
+@Deprecated('Use CygnusCacheMode instead')
+class CygnusAndroidCacheMode {
   final int _value;
   final int? _nativeValue;
-  const AndroidCacheMode._internal(this._value, this._nativeValue);
+  const CygnusAndroidCacheMode._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory AndroidCacheMode._internalMultiPlatform(
+  factory CygnusAndroidCacheMode._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => AndroidCacheMode._internal(value, nativeValue());
+  ) => CygnusAndroidCacheMode._internal(value, nativeValue());
 
   ///Use cached resources when they are available, even if they have expired. Otherwise load resources from the network.
-  static const LOAD_CACHE_ELSE_NETWORK = AndroidCacheMode._internal(1, 1);
+  static const LOAD_CACHE_ELSE_NETWORK = CygnusAndroidCacheMode._internal(1, 1);
 
   ///Don't use the network, load from the cache.
-  static const LOAD_CACHE_ONLY = AndroidCacheMode._internal(3, 3);
+  static const LOAD_CACHE_ONLY = CygnusAndroidCacheMode._internal(3, 3);
 
   ///Default cache usage mode. If the navigation type doesn't impose any specific behavior,
   ///use cached resources when they are available and not expired, otherwise load resources from the network.
-  static const LOAD_DEFAULT = AndroidCacheMode._internal(-1, -1);
+  static const LOAD_DEFAULT = CygnusAndroidCacheMode._internal(-1, -1);
 
   ///Don't use the cache, load from the network.
-  static const LOAD_NO_CACHE = AndroidCacheMode._internal(2, 2);
+  static const LOAD_NO_CACHE = CygnusAndroidCacheMode._internal(2, 2);
 
-  ///Set of all values of [AndroidCacheMode].
-  static final Set<AndroidCacheMode> values = [
-    AndroidCacheMode.LOAD_CACHE_ELSE_NETWORK,
-    AndroidCacheMode.LOAD_CACHE_ONLY,
-    AndroidCacheMode.LOAD_DEFAULT,
-    AndroidCacheMode.LOAD_NO_CACHE,
+  ///Set of all values of [CygnusAndroidCacheMode].
+  static final Set<CygnusAndroidCacheMode> values = [
+    CygnusAndroidCacheMode.LOAD_CACHE_ELSE_NETWORK,
+    CygnusAndroidCacheMode.LOAD_CACHE_ONLY,
+    CygnusAndroidCacheMode.LOAD_DEFAULT,
+    CygnusAndroidCacheMode.LOAD_NO_CACHE,
   ].toSet();
 
-  ///Gets a possible [AndroidCacheMode] instance from [int] value.
-  static AndroidCacheMode? fromValue(int? value) {
+  ///Gets a possible [CygnusAndroidCacheMode] instance from [int] value.
+  static CygnusAndroidCacheMode? fromValue(int? value) {
     if (value != null) {
       try {
-        return AndroidCacheMode.values.firstWhere(
+        return CygnusAndroidCacheMode.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -178,11 +182,11 @@ class AndroidCacheMode {
     return null;
   }
 
-  ///Gets a possible [AndroidCacheMode] instance from a native value.
-  static AndroidCacheMode? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusAndroidCacheMode] instance from a native value.
+  static CygnusAndroidCacheMode? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return AndroidCacheMode.values.firstWhere(
+        return CygnusAndroidCacheMode.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -192,15 +196,15 @@ class AndroidCacheMode {
     return null;
   }
 
-  /// Gets a possible [AndroidCacheMode] instance value with name [name].
+  /// Gets a possible [CygnusAndroidCacheMode] instance value with name [name].
   ///
-  /// Goes through [AndroidCacheMode.values] looking for a value with
-  /// name [name], as reported by [AndroidCacheMode.name].
+  /// Goes through [CygnusAndroidCacheMode.values] looking for a value with
+  /// name [name], as reported by [CygnusAndroidCacheMode.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static AndroidCacheMode? byName(String? name) {
+  static CygnusAndroidCacheMode? byName(String? name) {
     if (name != null) {
       try {
-        return AndroidCacheMode.values.firstWhere(
+        return CygnusAndroidCacheMode.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -210,7 +214,7 @@ class AndroidCacheMode {
     return null;
   }
 
-  /// Creates a map from the names of [AndroidCacheMode] values to the values.
+  /// Creates a map from the names of [CygnusAndroidCacheMode] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -218,9 +222,9 @@ class AndroidCacheMode {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, AndroidCacheMode> asNameMap() =>
-      <String, AndroidCacheMode>{
-        for (final value in AndroidCacheMode.values) value.name(): value,
+  static Map<String, CygnusAndroidCacheMode> asNameMap() =>
+      <String, CygnusAndroidCacheMode>{
+        for (final value in CygnusAndroidCacheMode.values) value.name(): value,
       };
 
   ///Gets [int] value.

@@ -56,15 +56,15 @@ void main() {
 
     final mixedContent = security!.firstWhere(
       (definition) =>
-          definition.property == InAppWebViewSettingsProperty.mixedContentMode,
+          definition.property == CygnusWebViewSettingsProperty.mixedContentMode,
     );
     final cacheMode = cache!.firstWhere(
       (definition) =>
-          definition.property == InAppWebViewSettingsProperty.cacheMode,
+          definition.property == CygnusWebViewSettingsProperty.cacheMode,
     );
 
-    expect(mixedContent.enumValues, unorderedEquals(MixedContentMode.values));
-    expect(cacheMode.enumValues, unorderedEquals(CacheMode.values));
+    expect(mixedContent.enumValues, unorderedEquals(CygnusMixedContentMode.values));
+    expect(cacheMode.enumValues, unorderedEquals(CygnusCacheMode.values));
   });
 
   test('enumValues fields are lists when provided', () {
@@ -100,38 +100,38 @@ void main() {
     final channelSearchKind = releaseChannel!.firstWhere(
       (definition) =>
           definition.property ==
-          WebViewEnvironmentSettingsProperty.channelSearchKind,
+          CygnusWebViewEnvironmentSettingsProperty.channelSearchKind,
     );
     final releaseChannels = releaseChannel.firstWhere(
       (definition) =>
           definition.property ==
-          WebViewEnvironmentSettingsProperty.releaseChannels,
+          CygnusWebViewEnvironmentSettingsProperty.releaseChannels,
     );
     final scrollbarStyle = appearance!.firstWhere(
       (definition) =>
           definition.property ==
-          WebViewEnvironmentSettingsProperty.scrollbarStyle,
+          CygnusWebViewEnvironmentSettingsProperty.scrollbarStyle,
     );
     final cacheModel = cache!.firstWhere(
       (definition) =>
-          definition.property == WebViewEnvironmentSettingsProperty.cacheModel,
+          definition.property == CygnusWebViewEnvironmentSettingsProperty.cacheModel,
     );
 
     final expectedChannelKinds = _enumValuesForPlatform(
       TargetPlatform.windows,
-      () => EnvironmentChannelSearchKind.values,
+      () => CygnusEnvironmentChannelSearchKind.values,
     );
     final expectedReleaseChannels = _enumValuesForPlatform(
       TargetPlatform.windows,
-      () => EnvironmentReleaseChannels.values,
+      () => CygnusEnvironmentReleaseChannels.values,
     );
     final expectedScrollbarStyles = _enumValuesForPlatform(
       TargetPlatform.windows,
-      () => EnvironmentScrollbarStyle.values,
+      () => CygnusEnvironmentScrollbarStyle.values,
     );
     final expectedCacheModels = _enumValuesForPlatform(
       TargetPlatform.windows,
-      () => CacheModel.values,
+      () => CygnusCacheModel.values,
     );
 
     expect(channelSearchKind.enumValues, unorderedEquals(expectedChannelKinds));

@@ -6,41 +6,42 @@ part of 'server_trust_auth_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onReceivedServerTrustAuthRequest] event.
-class ServerTrustAuthResponse {
-  ///Indicate the [ServerTrustAuthResponseAction] to take in response of the server trust authentication challenge.
-  ServerTrustAuthResponseAction? action;
-  ServerTrustAuthResponse({ServerTrustAuthResponseAction? action})
-    : action = action ?? ServerTrustAuthResponseAction.CANCEL;
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onReceivedServerTrustAuthRequest] event.
+class CygnusServerTrustAuthResponse {
+  ///Indicate the [CygnusServerTrustAuthResponseAction] to take in response of the server trust authentication challenge.
+  CygnusServerTrustAuthResponseAction? action;
+  CygnusServerTrustAuthResponse({CygnusServerTrustAuthResponseAction? action})
+    : action = action ?? CygnusServerTrustAuthResponseAction.CANCEL;
 
-  ///Gets a possible [ServerTrustAuthResponse] instance from a [Map] value.
-  static ServerTrustAuthResponse? fromMap(
+  ///Gets a possible [CygnusServerTrustAuthResponse] instance from a [Map] value.
+  static CygnusServerTrustAuthResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ServerTrustAuthResponse();
-    instance.action = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => ServerTrustAuthResponseAction.fromNativeValue(
+    final instance = CygnusServerTrustAuthResponse();
+    instance.action = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusServerTrustAuthResponseAction.fromNativeValue(map['action']),
+      CygnusEnumMethod.value => CygnusServerTrustAuthResponseAction.fromValue(
         map['action'],
       ),
-      EnumMethod.value => ServerTrustAuthResponseAction.fromValue(
+      CygnusEnumMethod.name => CygnusServerTrustAuthResponseAction.byName(
         map['action'],
       ),
-      EnumMethod.name => ServerTrustAuthResponseAction.byName(map['action']),
     };
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "action": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => action?.toNativeValue(),
-        EnumMethod.value => action?.toValue(),
-        EnumMethod.name => action?.name(),
+      "action": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => action?.toNativeValue(),
+        CygnusEnumMethod.value => action?.toValue(),
+        CygnusEnumMethod.name => action?.name(),
       },
     };
   }
@@ -52,6 +53,6 @@ class ServerTrustAuthResponse {
 
   @override
   String toString() {
-    return 'ServerTrustAuthResponse{action: $action}';
+    return 'CygnusServerTrustAuthResponse{action: $action}';
   }
 }

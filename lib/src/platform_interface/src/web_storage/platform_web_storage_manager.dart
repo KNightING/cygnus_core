@@ -9,14 +9,14 @@ import '../types/main.dart';
 
 part 'platform_web_storage_manager.g.dart';
 
-///{@template cygnus_core.PlatformWebStorageManagerCreationParams}
-/// Object specifying creation parameters for creating a [PlatformWebStorageManager].
+///{@template cygnus_core.CygnusPlatformWebStorageManagerCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformWebStorageManager].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformWebStorageManagerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebStorageManagerCreationParams.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -26,30 +26,30 @@ part 'platform_web_storage_manager.g.dart';
   ],
 )
 @immutable
-class PlatformWebStorageManagerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformWebStorageManager].
-  const PlatformWebStorageManagerCreationParams();
+class CygnusPlatformWebStorageManagerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformWebStorageManager].
+  const CygnusPlatformWebStorageManagerCreationParams();
 
-  ///{@template cygnus_core.PlatformWebStorageManagerCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManagerCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformWebStorageManagerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformWebStorageManagerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformWebStorageManager}
+///{@template cygnus_core.CygnusPlatformWebStorageManager}
 ///Class that implements a singleton object (shared instance) which manages the web storage used by WebView instances.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformWebStorageManager.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebStorageManager.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(
-      apiName: 'WebStorage',
+      apiName: 'CygnusWebStorage',
       apiUrl:
-          'https://developer.android.com/reference/android/webkit/WebStorage.html',
+          'https://developer.android.com/reference/android/webkit/CygnusWebStorage.html',
     ),
     IOSPlatform(
       apiName: 'WKWebsiteDataStore',
@@ -69,85 +69,85 @@ class PlatformWebStorageManagerCreationParams {
     ),
   ],
 )
-abstract class PlatformWebStorageManager extends PlatformInterface {
-  /// Creates a new [PlatformWebStorageManager]
-  factory PlatformWebStorageManager(
-    PlatformWebStorageManagerCreationParams params,
+abstract class CygnusPlatformWebStorageManager extends PlatformInterface {
+  /// Creates a new [CygnusPlatformWebStorageManager]
+  factory CygnusPlatformWebStorageManager(
+    CygnusPlatformWebStorageManagerCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformWebStorageManager webStorageManager = InAppWebViewPlatform
+    final CygnusPlatformWebStorageManager webStorageManager = CygnusWebViewPlatform
         .instance!
         .createPlatformWebStorageManager(params);
     PlatformInterface.verify(webStorageManager, _token);
     return webStorageManager;
   }
 
-  /// Creates a new [PlatformWebStorageManager] to access static methods.
-  factory PlatformWebStorageManager.static() {
+  /// Creates a new [CygnusPlatformWebStorageManager] to access static methods.
+  factory CygnusPlatformWebStorageManager.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformWebStorageManager webStorageManagerStatic =
-        InAppWebViewPlatform.instance!.createPlatformWebStorageManagerStatic();
+    final CygnusPlatformWebStorageManager webStorageManagerStatic =
+        CygnusWebViewPlatform.instance!.createPlatformWebStorageManagerStatic();
     PlatformInterface.verify(webStorageManagerStatic, _token);
     return webStorageManagerStatic;
   }
 
   /// Used by the platform implementation to create a new
-  /// [PlatformWebStorageManager].
+  /// [CygnusPlatformWebStorageManager].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformWebStorageManager.implementation(this.params) : super(token: _token);
+  CygnusPlatformWebStorageManager.implementation(this.params) : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformWebStorageManager].
-  final PlatformWebStorageManagerCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformWebStorageManager].
+  final CygnusPlatformWebStorageManagerCreationParams params;
 
-  ///{@template cygnus_core.PlatformWebStorageManager.getOrigins}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.getOrigins}
   ///Gets the origins currently using either the Application Cache or Web SQL Database APIs.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.getOrigins.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.getOrigins.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
-        apiName: 'WebStorage.getOrigins',
+        apiName: 'CygnusWebStorage.getOrigins',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/WebStorage#getOrigins(android.webkit.ValueCallback%3Cjava.util.Map%3E)',
+            'https://developer.android.com/reference/android/webkit/CygnusWebStorage#getOrigins(android.webkit.ValueCallback%3Cjava.util.Map%3E)',
       ),
     ],
   )
-  Future<List<WebStorageOrigin>> getOrigins() {
+  Future<List<CygnusWebStorageOrigin>> getOrigins() {
     throw UnimplementedError(
       'getOrigins is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformWebStorageManager.deleteAllData}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.deleteAllData}
   ///Clears all storage currently being used by the JavaScript storage APIs.
-  ///This includes the Application Cache, Web SQL Database and the HTML5 Web Storage APIs.
+  ///This includes the Application Cache, Web SQL Database and the HTML5 Web CygnusStorage APIs.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.deleteAllData.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.deleteAllData.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
-        apiName: 'WebStorage.deleteAllData',
+        apiName: 'CygnusWebStorage.deleteAllData',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/WebStorage#deleteAllData()',
+            'https://developer.android.com/reference/android/webkit/CygnusWebStorage#deleteAllData()',
       ),
     ],
   )
@@ -157,18 +157,18 @@ abstract class PlatformWebStorageManager extends PlatformInterface {
     );
   }
 
-  ///{@template cygnus_core.PlatformWebStorageManager.deleteOrigin}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.deleteOrigin}
   ///Clears the storage currently being used by both the Application Cache and Web SQL Database APIs by the given [origin].
   ///The origin is specified using its string representation.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.deleteOrigin.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.deleteOrigin.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
-        apiName: 'WebStorage.deleteOrigin',
+        apiName: 'CygnusWebStorage.deleteOrigin',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/WebStorage#deleteOrigin(java.lang.String)',
+            'https://developer.android.com/reference/android/webkit/CygnusWebStorage#deleteOrigin(java.lang.String)',
       ),
     ],
   )
@@ -178,19 +178,19 @@ abstract class PlatformWebStorageManager extends PlatformInterface {
     );
   }
 
-  ///{@template cygnus_core.PlatformWebStorageManager.getQuotaForOrigin}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.getQuotaForOrigin}
   ///Gets the storage quota for the Web SQL Database API for the given [origin].
   ///The quota is given in bytes and the origin is specified using its string representation.
   ///Note that a quota is not enforced on a per-origin basis for the Application Cache API.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.getQuotaForOrigin.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.getQuotaForOrigin.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
-        apiName: 'WebStorage.getQuotaForOrigin',
+        apiName: 'CygnusWebStorage.getQuotaForOrigin',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/WebStorage#getQuotaForOrigin(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.Long%3E)',
+            'https://developer.android.com/reference/android/webkit/CygnusWebStorage#getQuotaForOrigin(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.Long%3E)',
       ),
     ],
   )
@@ -200,18 +200,18 @@ abstract class PlatformWebStorageManager extends PlatformInterface {
     );
   }
 
-  ///{@template cygnus_core.PlatformWebStorageManager.getUsageForOrigin}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.getUsageForOrigin}
   ///Gets the amount of storage currently being used by both the Application Cache and Web SQL Database APIs by the given [origin].
   ///The amount is given in bytes and the origin is specified using its string representation.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.getUsageForOrigin.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.getUsageForOrigin.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
-        apiName: 'WebStorage.getUsageForOrigin',
+        apiName: 'CygnusWebStorage.getUsageForOrigin',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/WebStorage#getUsageForOrigin(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.Long%3E)',
+            'https://developer.android.com/reference/android/webkit/CygnusWebStorage#getUsageForOrigin(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.Long%3E)',
       ),
     ],
   )
@@ -221,13 +221,13 @@ abstract class PlatformWebStorageManager extends PlatformInterface {
     );
   }
 
-  ///{@template cygnus_core.PlatformWebStorageManager.fetchDataRecords}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.fetchDataRecords}
   ///Fetches data records containing the given website data types.
   ///
   ///[dataTypes] represents the website data types to fetch records for.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.fetchDataRecords.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.fetchDataRecords.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -248,15 +248,15 @@ abstract class PlatformWebStorageManager extends PlatformInterface {
       ),
     ],
   )
-  Future<List<WebsiteDataRecord>> fetchDataRecords({
-    required Set<WebsiteDataType> dataTypes,
+  Future<List<CygnusWebsiteDataRecord>> fetchDataRecords({
+    required Set<CygnusWebsiteDataType> dataTypes,
   }) {
     throw UnimplementedError(
       'fetchDataRecords is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformWebStorageManager.removeDataFor}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.removeDataFor}
   ///Removes website data of the given types for the given data records.
   ///
   ///[dataTypes] represents the website data types that should be removed.
@@ -264,7 +264,7 @@ abstract class PlatformWebStorageManager extends PlatformInterface {
   ///[dataRecords] represents the website data records to delete website data for.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.removeDataFor.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.removeDataFor.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -286,15 +286,15 @@ abstract class PlatformWebStorageManager extends PlatformInterface {
     ],
   )
   Future<void> removeDataFor({
-    required Set<WebsiteDataType> dataTypes,
-    required List<WebsiteDataRecord> dataRecords,
+    required Set<CygnusWebsiteDataType> dataTypes,
+    required List<CygnusWebsiteDataRecord> dataRecords,
   }) {
     throw UnimplementedError(
       'removeDataFor is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformWebStorageManager.removeDataModifiedSince}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.removeDataModifiedSince}
   ///Removes all website data of the given types that has been modified since the given date.
   ///
   ///[dataTypes] represents the website data types that should be removed.
@@ -302,7 +302,7 @@ abstract class PlatformWebStorageManager extends PlatformInterface {
   ///[date] represents a date. All website data modified after this date will be removed.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebStorageManager.removeDataModifiedSince.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageManager.removeDataModifiedSince.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -324,7 +324,7 @@ abstract class PlatformWebStorageManager extends PlatformInterface {
     ],
   )
   Future<void> removeDataModifiedSince({
-    required Set<WebsiteDataType> dataTypes,
+    required Set<CygnusWebsiteDataType> dataTypes,
     required DateTime date,
   }) {
     throw UnimplementedError(
@@ -332,21 +332,21 @@ abstract class PlatformWebStorageManager extends PlatformInterface {
     );
   }
 
-  ///{@template cygnus_core.PlatformWebStorageManager.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformWebStorageManagerClassSupported.isClassSupported(
+      _CygnusPlatformWebStorageManagerClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformWebStorageManager.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformWebStorageManager.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformWebStorageManagerMethod method, {
+    CygnusPlatformWebStorageManagerMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformWebStorageManagerMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformWebStorageManagerMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );

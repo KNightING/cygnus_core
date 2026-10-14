@@ -6,11 +6,11 @@ import 'enum_method.dart';
 
 part 'favicon.g.dart';
 
-///Class that represents a favicon of a website. It is used by [PlatformInAppWebViewController.getFavicons] method.
+///Class that represents a favicon of a website. It is used by [CygnusPlatformWebViewController.getFavicons] method.
 @ExchangeableObject()
-class Favicon_ {
+class CygnusFavicon_ {
   ///The url of the favicon image.
-  WebUri url;
+  CygnusWebUri url;
 
   ///The relationship between the current web page and the favicon image.
   String? rel;
@@ -21,5 +21,5 @@ class Favicon_ {
   ///The height of the favicon image.
   int? height;
 
-  Favicon_({required this.url, this.rel, this.width, this.height});
+  CygnusFavicon_({required this.url, this.rel, this.width, this.height});
 }

@@ -6,99 +6,106 @@ part of 'url_protection_space_authentication_method.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class that represents the constants describing known values of the [URLProtectionSpace.authenticationMethod] property.
-class URLProtectionSpaceAuthenticationMethod {
+///Class that represents the constants describing known values of the [CygnusURLProtectionSpace.authenticationMethod] property.
+class CygnusURLProtectionSpaceAuthenticationMethod {
   final String _value;
   final String? _nativeValue;
-  const URLProtectionSpaceAuthenticationMethod._internal(
+  const CygnusURLProtectionSpaceAuthenticationMethod._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory URLProtectionSpaceAuthenticationMethod._internalMultiPlatform(
+  factory CygnusURLProtectionSpaceAuthenticationMethod._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => URLProtectionSpaceAuthenticationMethod._internal(value, nativeValue());
+  ) => CygnusURLProtectionSpaceAuthenticationMethod._internal(
+    value,
+    nativeValue(),
+  );
 
   ///Use client certificate authentication for this protection space.
   static const NSURL_AUTHENTICATION_METHOD_CLIENT_CERTIFICATE =
-      URLProtectionSpaceAuthenticationMethod._internal(
+      CygnusURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodClientCertificate',
         'NSURLAuthenticationMethodClientCertificate',
       );
 
   ///Use the default authentication method for a protocol.
   static const NSURL_AUTHENTICATION_METHOD_DEFAULT =
-      URLProtectionSpaceAuthenticationMethod._internal(
+      CygnusURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodDefault',
         'NSURLAuthenticationMethodDefault',
       );
 
   ///Use HTML form authentication for this protection space.
   static const NSURL_AUTHENTICATION_METHOD_HTML_FORM =
-      URLProtectionSpaceAuthenticationMethod._internal(
+      CygnusURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodHTMLForm',
         'NSURLAuthenticationMethodHTMLForm',
       );
 
   ///Use HTTP basic authentication for this protection space.
   static const NSURL_AUTHENTICATION_METHOD_HTTP_BASIC =
-      URLProtectionSpaceAuthenticationMethod._internal(
+      CygnusURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodHTTPBasic',
         'NSURLAuthenticationMethodHTTPBasic',
       );
 
   ///Use HTTP digest authentication for this protection space.
   static const NSURL_AUTHENTICATION_METHOD_HTTP_DIGEST =
-      URLProtectionSpaceAuthenticationMethod._internal(
+      CygnusURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodHTTPDigest',
         'NSURLAuthenticationMethodHTTPDigest',
       );
 
   ///Negotiate whether to use Kerberos or NTLM authentication for this protection space.
   static const NSURL_AUTHENTICATION_METHOD_NEGOTIATE =
-      URLProtectionSpaceAuthenticationMethod._internal(
+      CygnusURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodNegotiate',
         'NSURLAuthenticationMethodNegotiate',
       );
 
   ///Use NTLM authentication for this protection space.
   static const NSURL_AUTHENTICATION_METHOD_NTLM =
-      URLProtectionSpaceAuthenticationMethod._internal(
+      CygnusURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodNTLM',
         'NSURLAuthenticationMethodNTLM',
       );
 
   ///Perform server trust authentication (certificate validation) for this protection space.
   static const NSURL_AUTHENTICATION_METHOD_SERVER_TRUST =
-      URLProtectionSpaceAuthenticationMethod._internal(
+      CygnusURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodServerTrust',
         'NSURLAuthenticationMethodServerTrust',
       );
 
-  ///Set of all values of [URLProtectionSpaceAuthenticationMethod].
-  static final Set<URLProtectionSpaceAuthenticationMethod> values = [
-    URLProtectionSpaceAuthenticationMethod
+  ///Set of all values of [CygnusURLProtectionSpaceAuthenticationMethod].
+  static final Set<CygnusURLProtectionSpaceAuthenticationMethod> values = [
+    CygnusURLProtectionSpaceAuthenticationMethod
         .NSURL_AUTHENTICATION_METHOD_CLIENT_CERTIFICATE,
-    URLProtectionSpaceAuthenticationMethod.NSURL_AUTHENTICATION_METHOD_DEFAULT,
-    URLProtectionSpaceAuthenticationMethod
+    CygnusURLProtectionSpaceAuthenticationMethod
+        .NSURL_AUTHENTICATION_METHOD_DEFAULT,
+    CygnusURLProtectionSpaceAuthenticationMethod
         .NSURL_AUTHENTICATION_METHOD_HTML_FORM,
-    URLProtectionSpaceAuthenticationMethod
+    CygnusURLProtectionSpaceAuthenticationMethod
         .NSURL_AUTHENTICATION_METHOD_HTTP_BASIC,
-    URLProtectionSpaceAuthenticationMethod
+    CygnusURLProtectionSpaceAuthenticationMethod
         .NSURL_AUTHENTICATION_METHOD_HTTP_DIGEST,
-    URLProtectionSpaceAuthenticationMethod
+    CygnusURLProtectionSpaceAuthenticationMethod
         .NSURL_AUTHENTICATION_METHOD_NEGOTIATE,
-    URLProtectionSpaceAuthenticationMethod.NSURL_AUTHENTICATION_METHOD_NTLM,
-    URLProtectionSpaceAuthenticationMethod
+    CygnusURLProtectionSpaceAuthenticationMethod
+        .NSURL_AUTHENTICATION_METHOD_NTLM,
+    CygnusURLProtectionSpaceAuthenticationMethod
         .NSURL_AUTHENTICATION_METHOD_SERVER_TRUST,
   ].toSet();
 
-  ///Gets a possible [URLProtectionSpaceAuthenticationMethod] instance from [String] value.
-  static URLProtectionSpaceAuthenticationMethod? fromValue(String? value) {
+  ///Gets a possible [CygnusURLProtectionSpaceAuthenticationMethod] instance from [String] value.
+  static CygnusURLProtectionSpaceAuthenticationMethod? fromValue(
+    String? value,
+  ) {
     if (value != null) {
       try {
-        return URLProtectionSpaceAuthenticationMethod.values.firstWhere(
+        return CygnusURLProtectionSpaceAuthenticationMethod.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -108,13 +115,13 @@ class URLProtectionSpaceAuthenticationMethod {
     return null;
   }
 
-  ///Gets a possible [URLProtectionSpaceAuthenticationMethod] instance from a native value.
-  static URLProtectionSpaceAuthenticationMethod? fromNativeValue(
+  ///Gets a possible [CygnusURLProtectionSpaceAuthenticationMethod] instance from a native value.
+  static CygnusURLProtectionSpaceAuthenticationMethod? fromNativeValue(
     String? value,
   ) {
     if (value != null) {
       try {
-        return URLProtectionSpaceAuthenticationMethod.values.firstWhere(
+        return CygnusURLProtectionSpaceAuthenticationMethod.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -124,15 +131,15 @@ class URLProtectionSpaceAuthenticationMethod {
     return null;
   }
 
-  /// Gets a possible [URLProtectionSpaceAuthenticationMethod] instance value with name [name].
+  /// Gets a possible [CygnusURLProtectionSpaceAuthenticationMethod] instance value with name [name].
   ///
-  /// Goes through [URLProtectionSpaceAuthenticationMethod.values] looking for a value with
-  /// name [name], as reported by [URLProtectionSpaceAuthenticationMethod.name].
+  /// Goes through [CygnusURLProtectionSpaceAuthenticationMethod.values] looking for a value with
+  /// name [name], as reported by [CygnusURLProtectionSpaceAuthenticationMethod.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static URLProtectionSpaceAuthenticationMethod? byName(String? name) {
+  static CygnusURLProtectionSpaceAuthenticationMethod? byName(String? name) {
     if (name != null) {
       try {
-        return URLProtectionSpaceAuthenticationMethod.values.firstWhere(
+        return CygnusURLProtectionSpaceAuthenticationMethod.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -142,7 +149,7 @@ class URLProtectionSpaceAuthenticationMethod {
     return null;
   }
 
-  /// Creates a map from the names of [URLProtectionSpaceAuthenticationMethod] values to the values.
+  /// Creates a map from the names of [CygnusURLProtectionSpaceAuthenticationMethod] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -150,11 +157,11 @@ class URLProtectionSpaceAuthenticationMethod {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, URLProtectionSpaceAuthenticationMethod> asNameMap() =>
-      <String, URLProtectionSpaceAuthenticationMethod>{
-        for (final value in URLProtectionSpaceAuthenticationMethod.values)
-          value.name(): value,
-      };
+  static Map<String, CygnusURLProtectionSpaceAuthenticationMethod>
+  asNameMap() => <String, CygnusURLProtectionSpaceAuthenticationMethod>{
+    for (final value in CygnusURLProtectionSpaceAuthenticationMethod.values)
+      value.name(): value,
+  };
 
   ///Gets [String] value.
   String toValue() => _value;
@@ -202,124 +209,109 @@ class URLProtectionSpaceAuthenticationMethod {
   }
 }
 
-///An iOS-specific Class that represents the constants describing known values of the [URLProtectionSpace.authenticationMethod] property.
-///Use [URLProtectionSpaceAuthenticationMethod] instead.
-@Deprecated('Use URLProtectionSpaceAuthenticationMethod instead')
-class IOSNSURLProtectionSpaceAuthenticationMethod {
+///An iOS-specific Class that represents the constants describing known values of the [CygnusURLProtectionSpace.authenticationMethod] property.
+///Use [CygnusURLProtectionSpaceAuthenticationMethod] instead.
+@Deprecated('Use CygnusURLProtectionSpaceAuthenticationMethod instead')
+class CygnusIOSNSURLProtectionSpaceAuthenticationMethod {
   final String _value;
   final String? _nativeValue;
-  const IOSNSURLProtectionSpaceAuthenticationMethod._internal(
+  const CygnusIOSNSURLProtectionSpaceAuthenticationMethod._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory IOSNSURLProtectionSpaceAuthenticationMethod._internalMultiPlatform(
+  factory CygnusIOSNSURLProtectionSpaceAuthenticationMethod._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => IOSNSURLProtectionSpaceAuthenticationMethod._internal(
+  ) => CygnusIOSNSURLProtectionSpaceAuthenticationMethod._internal(
     value,
     nativeValue(),
   );
 
   ///Use client certificate authentication for this protection space.
   static const NSURL_AUTHENTICATION_METHOD_CLIENT_CERTIFICATE =
-      IOSNSURLProtectionSpaceAuthenticationMethod._internal(
+      CygnusIOSNSURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodClientCertificate',
         'NSURLAuthenticationMethodClientCertificate',
       );
 
   ///Use the default authentication method for a protocol.
   static const NSURL_AUTHENTICATION_METHOD_DEFAULT =
-      IOSNSURLProtectionSpaceAuthenticationMethod._internal(
+      CygnusIOSNSURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodDefault',
         'NSURLAuthenticationMethodDefault',
       );
 
   ///Use HTML form authentication for this protection space.
   static const NSURL_AUTHENTICATION_METHOD_HTML_FORM =
-      IOSNSURLProtectionSpaceAuthenticationMethod._internal(
+      CygnusIOSNSURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodHTMLForm',
         'NSURLAuthenticationMethodHTMLForm',
       );
 
   ///Use HTTP basic authentication for this protection space.
   static const NSURL_AUTHENTICATION_METHOD_HTTP_BASIC =
-      IOSNSURLProtectionSpaceAuthenticationMethod._internal(
+      CygnusIOSNSURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodHTTPBasic',
         'NSURLAuthenticationMethodHTTPBasic',
       );
 
   ///Use HTTP digest authentication for this protection space.
   static const NSURL_AUTHENTICATION_METHOD_HTTP_DIGEST =
-      IOSNSURLProtectionSpaceAuthenticationMethod._internal(
+      CygnusIOSNSURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodHTTPDigest',
         'NSURLAuthenticationMethodHTTPDigest',
       );
 
   ///Negotiate whether to use Kerberos or NTLM authentication for this protection space.
   static const NSURL_AUTHENTICATION_METHOD_NEGOTIATE =
-      IOSNSURLProtectionSpaceAuthenticationMethod._internal(
+      CygnusIOSNSURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodNegotiate',
         'NSURLAuthenticationMethodNegotiate',
       );
 
   ///Use NTLM authentication for this protection space.
   static const NSURL_AUTHENTICATION_METHOD_NTLM =
-      IOSNSURLProtectionSpaceAuthenticationMethod._internal(
+      CygnusIOSNSURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodNTLM',
         'NSURLAuthenticationMethodNTLM',
       );
 
   ///Perform server trust authentication (certificate validation) for this protection space.
   static const NSURL_AUTHENTICATION_METHOD_SERVER_TRUST =
-      IOSNSURLProtectionSpaceAuthenticationMethod._internal(
+      CygnusIOSNSURLProtectionSpaceAuthenticationMethod._internal(
         'NSURLAuthenticationMethodServerTrust',
         'NSURLAuthenticationMethodServerTrust',
       );
 
-  ///Set of all values of [IOSNSURLProtectionSpaceAuthenticationMethod].
-  static final Set<IOSNSURLProtectionSpaceAuthenticationMethod> values = [
-    IOSNSURLProtectionSpaceAuthenticationMethod
+  ///Set of all values of [CygnusIOSNSURLProtectionSpaceAuthenticationMethod].
+  static final Set<CygnusIOSNSURLProtectionSpaceAuthenticationMethod> values = [
+    CygnusIOSNSURLProtectionSpaceAuthenticationMethod
         .NSURL_AUTHENTICATION_METHOD_CLIENT_CERTIFICATE,
-    IOSNSURLProtectionSpaceAuthenticationMethod
+    CygnusIOSNSURLProtectionSpaceAuthenticationMethod
         .NSURL_AUTHENTICATION_METHOD_DEFAULT,
-    IOSNSURLProtectionSpaceAuthenticationMethod
+    CygnusIOSNSURLProtectionSpaceAuthenticationMethod
         .NSURL_AUTHENTICATION_METHOD_HTML_FORM,
-    IOSNSURLProtectionSpaceAuthenticationMethod
+    CygnusIOSNSURLProtectionSpaceAuthenticationMethod
         .NSURL_AUTHENTICATION_METHOD_HTTP_BASIC,
-    IOSNSURLProtectionSpaceAuthenticationMethod
+    CygnusIOSNSURLProtectionSpaceAuthenticationMethod
         .NSURL_AUTHENTICATION_METHOD_HTTP_DIGEST,
-    IOSNSURLProtectionSpaceAuthenticationMethod
+    CygnusIOSNSURLProtectionSpaceAuthenticationMethod
         .NSURL_AUTHENTICATION_METHOD_NEGOTIATE,
-    IOSNSURLProtectionSpaceAuthenticationMethod
+    CygnusIOSNSURLProtectionSpaceAuthenticationMethod
         .NSURL_AUTHENTICATION_METHOD_NTLM,
-    IOSNSURLProtectionSpaceAuthenticationMethod
+    CygnusIOSNSURLProtectionSpaceAuthenticationMethod
         .NSURL_AUTHENTICATION_METHOD_SERVER_TRUST,
   ].toSet();
 
-  ///Gets a possible [IOSNSURLProtectionSpaceAuthenticationMethod] instance from [String] value.
-  static IOSNSURLProtectionSpaceAuthenticationMethod? fromValue(String? value) {
-    if (value != null) {
-      try {
-        return IOSNSURLProtectionSpaceAuthenticationMethod.values.firstWhere(
-          (element) => element.toValue() == value,
-        );
-      } catch (e) {
-        return null;
-      }
-    }
-    return null;
-  }
-
-  ///Gets a possible [IOSNSURLProtectionSpaceAuthenticationMethod] instance from a native value.
-  static IOSNSURLProtectionSpaceAuthenticationMethod? fromNativeValue(
+  ///Gets a possible [CygnusIOSNSURLProtectionSpaceAuthenticationMethod] instance from [String] value.
+  static CygnusIOSNSURLProtectionSpaceAuthenticationMethod? fromValue(
     String? value,
   ) {
     if (value != null) {
       try {
-        return IOSNSURLProtectionSpaceAuthenticationMethod.values.firstWhere(
-          (element) => element.toNativeValue() == value,
-        );
+        return CygnusIOSNSURLProtectionSpaceAuthenticationMethod.values
+            .firstWhere((element) => element.toValue() == value);
       } catch (e) {
         return null;
       }
@@ -327,17 +319,33 @@ class IOSNSURLProtectionSpaceAuthenticationMethod {
     return null;
   }
 
-  /// Gets a possible [IOSNSURLProtectionSpaceAuthenticationMethod] instance value with name [name].
+  ///Gets a possible [CygnusIOSNSURLProtectionSpaceAuthenticationMethod] instance from a native value.
+  static CygnusIOSNSURLProtectionSpaceAuthenticationMethod? fromNativeValue(
+    String? value,
+  ) {
+    if (value != null) {
+      try {
+        return CygnusIOSNSURLProtectionSpaceAuthenticationMethod.values
+            .firstWhere((element) => element.toNativeValue() == value);
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
+  /// Gets a possible [CygnusIOSNSURLProtectionSpaceAuthenticationMethod] instance value with name [name].
   ///
-  /// Goes through [IOSNSURLProtectionSpaceAuthenticationMethod.values] looking for a value with
-  /// name [name], as reported by [IOSNSURLProtectionSpaceAuthenticationMethod.name].
+  /// Goes through [CygnusIOSNSURLProtectionSpaceAuthenticationMethod.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSNSURLProtectionSpaceAuthenticationMethod.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSNSURLProtectionSpaceAuthenticationMethod? byName(String? name) {
+  static CygnusIOSNSURLProtectionSpaceAuthenticationMethod? byName(
+    String? name,
+  ) {
     if (name != null) {
       try {
-        return IOSNSURLProtectionSpaceAuthenticationMethod.values.firstWhere(
-          (element) => element.name() == name,
-        );
+        return CygnusIOSNSURLProtectionSpaceAuthenticationMethod.values
+            .firstWhere((element) => element.name() == name);
       } catch (e) {
         return null;
       }
@@ -345,7 +353,7 @@ class IOSNSURLProtectionSpaceAuthenticationMethod {
     return null;
   }
 
-  /// Creates a map from the names of [IOSNSURLProtectionSpaceAuthenticationMethod] values to the values.
+  /// Creates a map from the names of [CygnusIOSNSURLProtectionSpaceAuthenticationMethod] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -353,11 +361,12 @@ class IOSNSURLProtectionSpaceAuthenticationMethod {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSNSURLProtectionSpaceAuthenticationMethod> asNameMap() =>
-      <String, IOSNSURLProtectionSpaceAuthenticationMethod>{
-        for (final value in IOSNSURLProtectionSpaceAuthenticationMethod.values)
-          value.name(): value,
-      };
+  static Map<String, CygnusIOSNSURLProtectionSpaceAuthenticationMethod>
+  asNameMap() => <String, CygnusIOSNSURLProtectionSpaceAuthenticationMethod>{
+    for (final value
+        in CygnusIOSNSURLProtectionSpaceAuthenticationMethod.values)
+      value.name(): value,
+  };
 
   ///Gets [String] value.
   String toValue() => _value;

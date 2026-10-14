@@ -7,36 +7,38 @@ part of 'force_dark.dart';
 // **************************************************************************
 
 ///Class used to indicate the force dark mode.
-class ForceDark {
+class CygnusForceDark {
   final int _value;
   final int? _nativeValue;
-  const ForceDark._internal(this._value, this._nativeValue);
+  const CygnusForceDark._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory ForceDark._internalMultiPlatform(int value, Function nativeValue) =>
-      ForceDark._internal(value, nativeValue());
+  factory CygnusForceDark._internalMultiPlatform(
+    int value,
+    Function nativeValue,
+  ) => CygnusForceDark._internal(value, nativeValue());
 
   ///Enable force dark dependent on the state of the WebView parent view.
-  static const AUTO = ForceDark._internal(1, 1);
+  static const AUTO = CygnusForceDark._internal(1, 1);
 
   ///Disable force dark, irrespective of the force dark mode of the WebView parent.
   ///In this mode, WebView content will always be rendered as-is, regardless of whether native views are being automatically darkened.
-  static const OFF = ForceDark._internal(0, 0);
+  static const OFF = CygnusForceDark._internal(0, 0);
 
   ///Unconditionally enable force dark. In this mode WebView content will always be rendered so as to emulate a dark theme.
-  static const ON = ForceDark._internal(2, 2);
+  static const ON = CygnusForceDark._internal(2, 2);
 
-  ///Set of all values of [ForceDark].
-  static final Set<ForceDark> values = [
-    ForceDark.AUTO,
-    ForceDark.OFF,
-    ForceDark.ON,
+  ///Set of all values of [CygnusForceDark].
+  static final Set<CygnusForceDark> values = [
+    CygnusForceDark.AUTO,
+    CygnusForceDark.OFF,
+    CygnusForceDark.ON,
   ].toSet();
 
-  ///Gets a possible [ForceDark] instance from [int] value.
-  static ForceDark? fromValue(int? value) {
+  ///Gets a possible [CygnusForceDark] instance from [int] value.
+  static CygnusForceDark? fromValue(int? value) {
     if (value != null) {
       try {
-        return ForceDark.values.firstWhere(
+        return CygnusForceDark.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -46,11 +48,11 @@ class ForceDark {
     return null;
   }
 
-  ///Gets a possible [ForceDark] instance from a native value.
-  static ForceDark? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusForceDark] instance from a native value.
+  static CygnusForceDark? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return ForceDark.values.firstWhere(
+        return CygnusForceDark.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -60,15 +62,17 @@ class ForceDark {
     return null;
   }
 
-  /// Gets a possible [ForceDark] instance value with name [name].
+  /// Gets a possible [CygnusForceDark] instance value with name [name].
   ///
-  /// Goes through [ForceDark.values] looking for a value with
-  /// name [name], as reported by [ForceDark.name].
+  /// Goes through [CygnusForceDark.values] looking for a value with
+  /// name [name], as reported by [CygnusForceDark.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ForceDark? byName(String? name) {
+  static CygnusForceDark? byName(String? name) {
     if (name != null) {
       try {
-        return ForceDark.values.firstWhere((element) => element.name() == name);
+        return CygnusForceDark.values.firstWhere(
+          (element) => element.name() == name,
+        );
       } catch (e) {
         return null;
       }
@@ -76,7 +80,7 @@ class ForceDark {
     return null;
   }
 
-  /// Creates a map from the names of [ForceDark] values to the values.
+  /// Creates a map from the names of [CygnusForceDark] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -84,8 +88,8 @@ class ForceDark {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ForceDark> asNameMap() => <String, ForceDark>{
-    for (final value in ForceDark.values) value.name(): value,
+  static Map<String, CygnusForceDark> asNameMap() => <String, CygnusForceDark>{
+    for (final value in CygnusForceDark.values) value.name(): value,
   };
 
   ///Gets [int] value.
@@ -128,40 +132,40 @@ class ForceDark {
 ///
 ///**NOTE**: available on Android 29+.
 ///
-///Use [ForceDark] instead.
-@Deprecated('Use ForceDark instead')
-class AndroidForceDark {
+///Use [CygnusForceDark] instead.
+@Deprecated('Use CygnusForceDark instead')
+class CygnusAndroidForceDark {
   final int _value;
   final int? _nativeValue;
-  const AndroidForceDark._internal(this._value, this._nativeValue);
+  const CygnusAndroidForceDark._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory AndroidForceDark._internalMultiPlatform(
+  factory CygnusAndroidForceDark._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => AndroidForceDark._internal(value, nativeValue());
+  ) => CygnusAndroidForceDark._internal(value, nativeValue());
 
   ///Enable force dark dependent on the state of the WebView parent view.
-  static const FORCE_DARK_AUTO = AndroidForceDark._internal(1, 1);
+  static const FORCE_DARK_AUTO = CygnusAndroidForceDark._internal(1, 1);
 
   ///Disable force dark, irrespective of the force dark mode of the WebView parent.
   ///In this mode, WebView content will always be rendered as-is, regardless of whether native views are being automatically darkened.
-  static const FORCE_DARK_OFF = AndroidForceDark._internal(0, 0);
+  static const FORCE_DARK_OFF = CygnusAndroidForceDark._internal(0, 0);
 
   ///Unconditionally enable force dark. In this mode WebView content will always be rendered so as to emulate a dark theme.
-  static const FORCE_DARK_ON = AndroidForceDark._internal(2, 2);
+  static const FORCE_DARK_ON = CygnusAndroidForceDark._internal(2, 2);
 
-  ///Set of all values of [AndroidForceDark].
-  static final Set<AndroidForceDark> values = [
-    AndroidForceDark.FORCE_DARK_AUTO,
-    AndroidForceDark.FORCE_DARK_OFF,
-    AndroidForceDark.FORCE_DARK_ON,
+  ///Set of all values of [CygnusAndroidForceDark].
+  static final Set<CygnusAndroidForceDark> values = [
+    CygnusAndroidForceDark.FORCE_DARK_AUTO,
+    CygnusAndroidForceDark.FORCE_DARK_OFF,
+    CygnusAndroidForceDark.FORCE_DARK_ON,
   ].toSet();
 
-  ///Gets a possible [AndroidForceDark] instance from [int] value.
-  static AndroidForceDark? fromValue(int? value) {
+  ///Gets a possible [CygnusAndroidForceDark] instance from [int] value.
+  static CygnusAndroidForceDark? fromValue(int? value) {
     if (value != null) {
       try {
-        return AndroidForceDark.values.firstWhere(
+        return CygnusAndroidForceDark.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -171,11 +175,11 @@ class AndroidForceDark {
     return null;
   }
 
-  ///Gets a possible [AndroidForceDark] instance from a native value.
-  static AndroidForceDark? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusAndroidForceDark] instance from a native value.
+  static CygnusAndroidForceDark? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return AndroidForceDark.values.firstWhere(
+        return CygnusAndroidForceDark.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -185,15 +189,15 @@ class AndroidForceDark {
     return null;
   }
 
-  /// Gets a possible [AndroidForceDark] instance value with name [name].
+  /// Gets a possible [CygnusAndroidForceDark] instance value with name [name].
   ///
-  /// Goes through [AndroidForceDark.values] looking for a value with
-  /// name [name], as reported by [AndroidForceDark.name].
+  /// Goes through [CygnusAndroidForceDark.values] looking for a value with
+  /// name [name], as reported by [CygnusAndroidForceDark.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static AndroidForceDark? byName(String? name) {
+  static CygnusAndroidForceDark? byName(String? name) {
     if (name != null) {
       try {
-        return AndroidForceDark.values.firstWhere(
+        return CygnusAndroidForceDark.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -203,7 +207,7 @@ class AndroidForceDark {
     return null;
   }
 
-  /// Creates a map from the names of [AndroidForceDark] values to the values.
+  /// Creates a map from the names of [CygnusAndroidForceDark] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -211,9 +215,9 @@ class AndroidForceDark {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, AndroidForceDark> asNameMap() =>
-      <String, AndroidForceDark>{
-        for (final value in AndroidForceDark.values) value.name(): value,
+  static Map<String, CygnusAndroidForceDark> asNameMap() =>
+      <String, CygnusAndroidForceDark>{
+        for (final value in CygnusAndroidForceDark.values) value.name(): value,
       };
 
   ///Gets [int] value.

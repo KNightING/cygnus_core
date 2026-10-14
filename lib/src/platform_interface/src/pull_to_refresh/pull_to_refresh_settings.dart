@@ -10,10 +10,10 @@ import 'platform_pull_to_refresh_controller.dart';
 
 part 'pull_to_refresh_settings.g.dart';
 
-///Pull-To-Refresh Settings for [PlatformPullToRefreshController].
+///Pull-To-Refresh Settings for [CygnusPlatformPullToRefreshController].
 @SupportedPlatforms(platforms: [AndroidPlatform(), IOSPlatform()])
 @ExchangeableObject(copyMethod: true)
-class PullToRefreshSettings_ {
+class CygnusPullToRefreshSettings_ {
   ///Sets whether the pull-to-refresh feature is enabled or not.
   ///The default value is `true`.
   @SupportedPlatforms(platforms: [AndroidPlatform(), IOSPlatform()])
@@ -37,13 +37,13 @@ class PullToRefreshSettings_ {
 
   ///The size of the refresh indicator.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
-  PullToRefreshSize_? size;
+  CygnusPullToRefreshSize_? size;
 
   ///The title text to display in the refresh control.
   @SupportedPlatforms(platforms: [IOSPlatform()])
-  AttributedString_? attributedTitle;
+  CygnusAttributedString_? attributedTitle;
 
-  PullToRefreshSettings_({
+  CygnusPullToRefreshSettings_({
     this.enabled = true,
     this.color,
     this.backgroundColor,
@@ -55,17 +55,17 @@ class PullToRefreshSettings_ {
 
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   static bool isPropertySupported(
-    PullToRefreshSettingsProperty property, {
+    CygnusPullToRefreshSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _PullToRefreshSettingsPropertySupported.isPropertySupported(
+  }) => _CygnusPullToRefreshSettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 }
 
-///Use [PullToRefreshSettings] instead.
-@Deprecated("Use PullToRefreshSettings instead")
-class PullToRefreshOptions {
+///Use [CygnusPullToRefreshSettings] instead.
+@Deprecated("Use CygnusPullToRefreshSettings instead")
+class CygnusPullToRefreshOptions {
   ///Sets whether the pull-to-refresh feature is enabled or not.
   bool enabled;
 
@@ -88,14 +88,14 @@ class PullToRefreshOptions {
   ///The size of the refresh indicator.
   ///
   ///**NOTE**: Available only on Android.
-  AndroidPullToRefreshSize? size;
+  CygnusAndroidPullToRefreshSize? size;
 
   ///The title text to display in the refresh control.
   ///
   ///**NOTE**: Available only on iOS.
-  IOSNSAttributedString? attributedTitle;
+  CygnusIOSNSAttributedString? attributedTitle;
 
-  PullToRefreshOptions({
+  CygnusPullToRefreshOptions({
     this.enabled = true,
     this.color,
     this.backgroundColor,

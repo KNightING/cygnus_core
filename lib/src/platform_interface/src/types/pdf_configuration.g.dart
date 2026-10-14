@@ -7,7 +7,7 @@ part of 'pdf_configuration.dart';
 // **************************************************************************
 
 ///Class that represents the configuration data to use when generating a PDF representation of a web view's contents.
-class PDFConfiguration {
+class CygnusPDFConfiguration {
   ///The portion of your web view to capture, specified as a rectangle in the view's coordinate system.
   ///The default value of this property is `null`, which captures everything in the view's bounds rectangle.
   ///If you specify a custom rectangle, it must lie within the bounds rectangle of the `WebView` object.
@@ -15,7 +15,7 @@ class PDFConfiguration {
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
-  InAppWebViewRect? rect;
+  CygnusWebViewRect? rect;
 
   ///The print settings to use when generating the PDF.
   ///These settings control page size, orientation, margins, and other printing options.
@@ -23,23 +23,23 @@ class PDFConfiguration {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  PrintJobSettings? settings;
-  PDFConfiguration({this.rect, this.settings});
+  CygnusPrintJobSettings? settings;
+  CygnusPDFConfiguration({this.rect, this.settings});
 
-  ///Gets a possible [PDFConfiguration] instance from a [Map] value.
-  static PDFConfiguration? fromMap(
+  ///Gets a possible [CygnusPDFConfiguration] instance from a [Map] value.
+  static CygnusPDFConfiguration? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = PDFConfiguration(
-      rect: InAppWebViewRect.fromMap(
+    final instance = CygnusPDFConfiguration(
+      rect: CygnusWebViewRect.fromMap(
         map['rect']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
-      settings: PrintJobSettings.fromMap(
+      settings: CygnusPrintJobSettings.fromMap(
         map['settings']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -48,7 +48,7 @@ class PDFConfiguration {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "rect": rect?.toMap(enumMethod: enumMethod),
       "settings": settings?.toMap(enumMethod: enumMethod),
@@ -62,7 +62,7 @@ class PDFConfiguration {
 
   @override
   String toString() {
-    return 'PDFConfiguration{rect: $rect, settings: $settings}';
+    return 'CygnusPDFConfiguration{rect: $rect, settings: $settings}';
   }
 }
 
@@ -70,25 +70,25 @@ class PDFConfiguration {
 ///
 ///**NOTE**: available on iOS 14.0+.
 ///
-///Use [PDFConfiguration] instead.
-@Deprecated('Use PDFConfiguration instead')
-class IOSWKPDFConfiguration {
+///Use [CygnusPDFConfiguration] instead.
+@Deprecated('Use CygnusPDFConfiguration instead')
+class CygnusIOSWKPDFConfiguration {
   ///The portion of your web view to capture, specified as a rectangle in the view’s coordinate system.
   ///The default value of this property is `null`, which captures everything in the view’s bounds rectangle.
   ///If you specify a custom rectangle, it must lie within the bounds rectangle of the `WebView` object.
-  InAppWebViewRect? rect;
-  IOSWKPDFConfiguration({this.rect});
+  CygnusWebViewRect? rect;
+  CygnusIOSWKPDFConfiguration({this.rect});
 
-  ///Gets a possible [IOSWKPDFConfiguration] instance from a [Map] value.
-  static IOSWKPDFConfiguration? fromMap(
+  ///Gets a possible [CygnusIOSWKPDFConfiguration] instance from a [Map] value.
+  static CygnusIOSWKPDFConfiguration? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = IOSWKPDFConfiguration(
-      rect: InAppWebViewRect.fromMap(
+    final instance = CygnusIOSWKPDFConfiguration(
+      rect: CygnusWebViewRect.fromMap(
         map['rect']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -97,7 +97,7 @@ class IOSWKPDFConfiguration {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"rect": rect?.toMap(enumMethod: enumMethod)};
   }
 
@@ -108,6 +108,6 @@ class IOSWKPDFConfiguration {
 
   @override
   String toString() {
-    return 'IOSWKPDFConfiguration{rect: $rect}';
+    return 'CygnusIOSWKPDFConfiguration{rect: $rect}';
   }
 }

@@ -1,26 +1,26 @@
 part of 'main.dart';
 
 void webArchive() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.saveWebArchive,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.saveWebArchive,
   );
 
   skippableGroup('web archive', () {
-    final shouldSkipTest1 = !InAppWebViewController.isMethodSupported(
-      PlatformInAppWebViewControllerMethod.createWebArchiveData,
+    final shouldSkipTest1 = !CygnusWebViewController.isMethodSupported(
+      CygnusPlatformWebViewControllerMethod.createWebArchiveData,
     );
 
     skippableTestWidgets('create data', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+            initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -31,7 +31,7 @@ void webArchive() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoaded.future;
 
@@ -39,16 +39,16 @@ void webArchive() {
     }, skip: shouldSkipTest1);
 
     skippableTestWidgets('save', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_URL_1),
+            initialUrlRequest: CygnusURLRequest(url: TEST_URL_1),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -61,7 +61,7 @@ void webArchive() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoaded.future;
 
@@ -71,10 +71,10 @@ void webArchive() {
       var supportDir = await getApplicationSupportDirectory();
 
       var fileName = "flutter-website.";
-      if (WebArchiveFormat.MHT.isSupported()) {
-        fileName = fileName + WebArchiveFormat.MHT.toValue();
+      if (CygnusWebArchiveFormat.MHT.isSupported()) {
+        fileName = fileName + CygnusWebArchiveFormat.MHT.toValue();
       } else {
-        fileName = fileName + WebArchiveFormat.WEBARCHIVE.toValue();
+        fileName = fileName + CygnusWebArchiveFormat.WEBARCHIVE.toValue();
       }
 
       var fullPath = supportDir.path + Platform.pathSeparator + fileName;

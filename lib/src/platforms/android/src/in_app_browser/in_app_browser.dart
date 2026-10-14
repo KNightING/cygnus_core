@@ -12,10 +12,10 @@ import '../pull_to_refresh/pull_to_refresh_controller.dart';
 /// Object specifying creation parameters for creating a [AndroidInAppBrowser].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformInAppBrowserCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformBrowserCreationParams] for
 /// more information.
 class AndroidInAppBrowserCreationParams
-    extends PlatformInAppBrowserCreationParams {
+    extends CygnusPlatformBrowserCreationParams {
   /// Creates a new [AndroidInAppBrowserCreationParams] instance.
   AndroidInAppBrowserCreationParams({
     super.contextMenu,
@@ -25,11 +25,11 @@ class AndroidInAppBrowserCreationParams
     super.windowId,
   });
 
-  /// Creates a [AndroidInAppBrowserCreationParams] instance based on [PlatformInAppBrowserCreationParams].
+  /// Creates a [AndroidInAppBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
   factory AndroidInAppBrowserCreationParams.fromPlatformInAppBrowserCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformInAppBrowserCreationParams params,
+    CygnusPlatformBrowserCreationParams params,
   ) {
     return AndroidInAppBrowserCreationParams(
       contextMenu: params.contextMenu,
@@ -49,13 +49,13 @@ class AndroidInAppBrowserCreationParams
   final AndroidPullToRefreshController? pullToRefreshController;
 }
 
-///{@macro cygnus_core.PlatformInAppBrowser}
-class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
+///{@macro cygnus_core.CygnusPlatformBrowser}
+class AndroidInAppBrowser extends CygnusPlatformBrowser with ChannelController {
   @override
   final String id = IdGenerator.generate();
 
   /// Constructs a [AndroidInAppBrowser].
-  AndroidInAppBrowser(PlatformInAppBrowserCreationParams params)
+  AndroidInAppBrowser(CygnusPlatformBrowserCreationParams params)
     : super.implementation(
         params is AndroidInAppBrowserCreationParams
             ? params
@@ -82,12 +82,12 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
     'com.pichillilorenzo/flutter_inappbrowser',
   );
 
-  ContextMenu? _contextMenu;
+  CygnusContextMenu? _contextMenu;
 
   @override
-  ContextMenu? get contextMenu => _contextMenu;
+  CygnusContextMenu? get contextMenu => _contextMenu;
 
-  Map<int, InAppBrowserMenuItem> _menuItems = HashMap();
+  Map<int, CygnusBrowserMenuItem> _menuItems = HashMap();
   bool _isOpened = false;
   AndroidInAppWebViewController? _webViewController;
 
@@ -115,7 +115,7 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
     debugLog(
       className: this.runtimeType.toString(),
       id: id,
-      debugLoggingSettings: PlatformInAppBrowser.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformBrowser.debugLoggingSettings,
       method: method,
       args: args,
     );
@@ -149,8 +149,8 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
   }
 
   Map<String, dynamic> _prepareOpenRequest({
-    @Deprecated('Use settings instead') InAppBrowserClassOptions? options,
-    InAppBrowserClassSettings? settings,
+    @Deprecated('Use settings instead') CygnusBrowserClassOptions? options,
+    CygnusBrowserClassSettings? settings,
   }) {
     assert(!_isOpened, 'The browser is already opened.');
     _isOpened = true;
@@ -159,12 +159,12 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
     var initialSettings =
         settings?.toMap() ??
         options?.toMap() ??
-        InAppBrowserClassSettings().toMap();
+        CygnusBrowserClassSettings().toMap();
 
     Map<String, dynamic> pullToRefreshSettings =
         pullToRefreshController?.settings.toMap() ??
         pullToRefreshController?.options.toMap() ??
-        PullToRefreshSettings(enabled: false).toMap();
+        CygnusPullToRefreshSettings(enabled: false).toMap();
 
     List<Map<String, dynamic>> menuItemList = [];
     _menuItems.forEach((key, value) {
@@ -187,10 +187,10 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
 
   @override
   Future<void> openUrlRequest({
-    required URLRequest urlRequest,
+    required CygnusURLRequest urlRequest,
     // ignore: deprecated_member_use_from_same_package
-    @Deprecated('Use settings instead') InAppBrowserClassOptions? options,
-    InAppBrowserClassSettings? settings,
+    @Deprecated('Use settings instead') CygnusBrowserClassOptions? options,
+    CygnusBrowserClassSettings? settings,
   }) async {
     assert(urlRequest.url != null && urlRequest.url.toString().isNotEmpty);
 
@@ -206,8 +206,8 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
   Future<void> openFile({
     required String assetFilePath,
     // ignore: deprecated_member_use_from_same_package
-    @Deprecated('Use settings instead') InAppBrowserClassOptions? options,
-    InAppBrowserClassSettings? settings,
+    @Deprecated('Use settings instead') CygnusBrowserClassOptions? options,
+    CygnusBrowserClassSettings? settings,
   }) async {
     assert(assetFilePath.isNotEmpty);
 
@@ -224,12 +224,12 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
     required String data,
     String mimeType = "text/html",
     String encoding = "utf8",
-    WebUri? baseUrl,
+    CygnusWebUri? baseUrl,
     @Deprecated("Use historyUrl instead") Uri? androidHistoryUrl,
-    WebUri? historyUrl,
+    CygnusWebUri? historyUrl,
     // ignore: deprecated_member_use_from_same_package
-    @Deprecated('Use settings instead') InAppBrowserClassOptions? options,
-    InAppBrowserClassSettings? settings,
+    @Deprecated('Use settings instead') CygnusBrowserClassOptions? options,
+    CygnusBrowserClassSettings? settings,
   }) async {
     Map<String, dynamic> args = _prepareOpenRequest(
       options: options,
@@ -247,7 +247,7 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
   }
 
   @override
-  Future<void> openWithSystemBrowser({required WebUri url}) async {
+  Future<void> openWithSystemBrowser({required CygnusWebUri url}) async {
     assert(url.toString().isNotEmpty);
 
     Map<String, dynamic> args = <String, dynamic>{};
@@ -256,24 +256,24 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
   }
 
   @override
-  void addMenuItem(InAppBrowserMenuItem menuItem) {
+  void addMenuItem(CygnusBrowserMenuItem menuItem) {
     _menuItems[menuItem.id] = menuItem;
   }
 
   @override
-  void addMenuItems(List<InAppBrowserMenuItem> menuItems) {
+  void addMenuItems(List<CygnusBrowserMenuItem> menuItems) {
     menuItems.forEach((menuItem) {
       _menuItems[menuItem.id] = menuItem;
     });
   }
 
   @override
-  bool removeMenuItem(InAppBrowserMenuItem menuItem) {
+  bool removeMenuItem(CygnusBrowserMenuItem menuItem) {
     return _menuItems.remove(menuItem.id) != null;
   }
 
   @override
-  void removeMenuItems(List<InAppBrowserMenuItem> menuItems) {
+  void removeMenuItems(List<CygnusBrowserMenuItem> menuItems) {
     for (final menuItem in menuItems) {
       removeMenuItem(menuItem);
     }
@@ -285,7 +285,7 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
   }
 
   @override
-  bool hasMenuItem(InAppBrowserMenuItem menuItem) {
+  bool hasMenuItem(CygnusBrowserMenuItem menuItem) {
     return _menuItems.containsKey(menuItem.id);
   }
 
@@ -323,7 +323,7 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
 
   @override
   @Deprecated('Use setSettings instead')
-  Future<void> setOptions({required InAppBrowserClassOptions options}) async {
+  Future<void> setOptions({required CygnusBrowserClassOptions options}) async {
     assert(_isOpened, 'The browser is not opened.');
 
     Map<String, dynamic> args = <String, dynamic>{};
@@ -333,7 +333,7 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
 
   @override
   @Deprecated('Use getSettings instead')
-  Future<InAppBrowserClassOptions?> getOptions() async {
+  Future<CygnusBrowserClassOptions?> getOptions() async {
     assert(_isOpened, 'The browser is not opened.');
     Map<String, dynamic> args = <String, dynamic>{};
 
@@ -343,7 +343,7 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
     );
     if (options != null) {
       options = options.cast<String, dynamic>();
-      return InAppBrowserClassOptions.fromMap(options as Map<String, dynamic>);
+      return CygnusBrowserClassOptions.fromMap(options as Map<String, dynamic>);
     }
 
     return null;
@@ -351,7 +351,7 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
 
   @override
   Future<void> setSettings({
-    required InAppBrowserClassSettings settings,
+    required CygnusBrowserClassSettings settings,
   }) async {
     assert(_isOpened, 'The browser is not opened.');
 
@@ -361,7 +361,7 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
   }
 
   @override
-  Future<InAppBrowserClassSettings?> getSettings() async {
+  Future<CygnusBrowserClassSettings?> getSettings() async {
     assert(_isOpened, 'The browser is not opened.');
 
     Map<String, dynamic> args = <String, dynamic>{};
@@ -372,7 +372,7 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
     );
     if (settings != null) {
       settings = settings.cast<String, dynamic>();
-      return InAppBrowserClassSettings.fromMap(
+      return CygnusBrowserClassSettings.fromMap(
         settings as Map<String, dynamic>,
       );
     }
@@ -398,7 +398,7 @@ class AndroidInAppBrowser extends PlatformInAppBrowser with ChannelController {
 }
 
 extension InternalInAppBrowser on AndroidInAppBrowser {
-  void setContextMenu(ContextMenu? contextMenu) {
+  void setContextMenu(CygnusContextMenu? contextMenu) {
     _contextMenu = contextMenu;
   }
 }

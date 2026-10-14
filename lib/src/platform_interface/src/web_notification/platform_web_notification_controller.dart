@@ -9,139 +9,139 @@ import '../types/web_notification.dart';
 // ignore: uri_has_not_been_generated
 part 'platform_web_notification_controller.g.dart';
 
-///{@template cygnus_core.PlatformWebNotificationControllerCreationParams}
-/// Object specifying creation parameters for creating a [PlatformWebNotificationController].
+///{@template cygnus_core.CygnusPlatformWebNotificationControllerCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformWebNotificationController].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformWebNotificationControllerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.supported_platforms}
 @SupportedPlatforms(platforms: [WindowsPlatform()])
 @immutable
-class PlatformWebNotificationControllerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformWebNotificationController].
-  const PlatformWebNotificationControllerCreationParams({
+class CygnusPlatformWebNotificationControllerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformWebNotificationController].
+  const CygnusPlatformWebNotificationControllerCreationParams({
     required this.id,
     required this.notification,
   });
 
-  ///{@template cygnus_core.PlatformWebNotificationControllerCreationParams.id}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.id}
   ///Web notification ID.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationControllerCreationParams.id.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.id.supported_platforms}
   @SupportedPlatforms(platforms: [WindowsPlatform()])
   final String id;
 
-  ///{@template cygnus_core.PlatformWebNotificationControllerCreationParams.notification}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.notification}
   ///The notification data.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationControllerCreationParams.notification.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.notification.supported_platforms}
   @SupportedPlatforms(platforms: [WindowsPlatform()])
-  final WebNotification notification;
+  final CygnusWebNotification notification;
 
-  ///{@template cygnus_core.PlatformWebNotificationControllerCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformWebNotificationControllerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformWebNotificationControllerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformWebNotificationControllerCreationParams.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformWebNotificationControllerCreationParamsProperty property, {
+    CygnusPlatformWebNotificationControllerCreationParamsProperty property, {
     TargetPlatform? platform,
   }) =>
-      _PlatformWebNotificationControllerCreationParamsPropertySupported.isPropertySupported(
+      _CygnusPlatformWebNotificationControllerCreationParamsPropertySupported.isPropertySupported(
         property,
         platform: platform,
       );
 }
 
-///A completion handler for the [PlatformWebNotificationController.onClose] event.
-typedef WebNotificationCloseHandler = Future<void> Function()?;
+///A completion handler for the [CygnusPlatformWebNotificationController.onClose] event.
+typedef CygnusWebNotificationCloseHandler = Future<void> Function()?;
 
-///{@template cygnus_core.PlatformWebNotificationController}
+///{@template cygnus_core.CygnusPlatformWebNotificationController}
 ///Class representing a web notification controller.
 ///
 ///This class provides methods to report the notification has been displayed, clicked, or closed
 ///as required by the [ICoreWebView2Notification](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2notification?view=webview2-1.0.3595.46) interface.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformWebNotificationController.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebNotificationController.supported_platforms}
 @SupportedPlatforms(platforms: [WindowsPlatform()])
-abstract class PlatformWebNotificationController extends PlatformInterface
-    implements Disposable {
-  /// Creates a new [PlatformWebNotificationController]
-  factory PlatformWebNotificationController(
-    PlatformWebNotificationControllerCreationParams params,
+abstract class CygnusPlatformWebNotificationController extends PlatformInterface
+    implements CygnusDisposable {
+  /// Creates a new [CygnusPlatformWebNotificationController]
+  factory CygnusPlatformWebNotificationController(
+    CygnusPlatformWebNotificationControllerCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformWebNotificationController webNotificationController =
-        InAppWebViewPlatform.instance!.createPlatformWebNotificationController(
+    final CygnusPlatformWebNotificationController webNotificationController =
+        CygnusWebViewPlatform.instance!.createPlatformWebNotificationController(
           params,
         );
     PlatformInterface.verify(webNotificationController, _token);
     return webNotificationController;
   }
 
-  /// Creates a new empty [PlatformWebNotificationController] to access static methods.
-  factory PlatformWebNotificationController.static() {
+  /// Creates a new empty [CygnusPlatformWebNotificationController] to access static methods.
+  factory CygnusPlatformWebNotificationController.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformWebNotificationController webNotificationControllerStatic =
-        InAppWebViewPlatform.instance!
+    final CygnusPlatformWebNotificationController webNotificationControllerStatic =
+        CygnusWebViewPlatform.instance!
             .createPlatformWebNotificationControllerStatic();
     PlatformInterface.verify(webNotificationControllerStatic, _token);
     return webNotificationControllerStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformWebNotificationController].
+  /// Used by the platform implementation to create a new [CygnusPlatformWebNotificationController].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformWebNotificationController.implementation(this.params)
+  CygnusPlatformWebNotificationController.implementation(this.params)
     : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformWebNotificationController].
-  final PlatformWebNotificationControllerCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformWebNotificationController].
+  final CygnusPlatformWebNotificationControllerCreationParams params;
 
-  ///{@macro cygnus_core.PlatformWebNotificationControllerCreationParams.id}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.id}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationControllerCreationParams.id.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.id.supported_platforms}
   String get id => params.id;
 
-  ///{@macro cygnus_core.PlatformWebNotificationControllerCreationParams.notification}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.notification}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationControllerCreationParams.notification.supported_platforms}
-  WebNotification get notification => params.notification;
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.notification.supported_platforms}
+  CygnusWebNotification get notification => params.notification;
 
-  ///{@template cygnus_core.PlatformWebNotificationController.onClose}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationController.onClose}
   ///Event fired when the notification is closed by the web code, such as through `notification.close()`.
   ///
   ///You don't need to call [reportClosed] since this is coming from the web code.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationController.onClose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.onClose.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -151,9 +151,9 @@ abstract class PlatformWebNotificationController extends PlatformInterface
       ),
     ],
   )
-  WebNotificationCloseHandler? onClose;
+  CygnusWebNotificationCloseHandler? onClose;
 
-  ///{@template cygnus_core.PlatformWebNotificationController.reportShown}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationController.reportShown}
   ///The host may run this to report the notification has been displayed
   ///and it will cause the [show](https://developer.mozilla.org/docs/Web/API/Notification/show_event) event
   ///to be raised for non-persistent notifications.
@@ -162,7 +162,7 @@ abstract class PlatformWebNotificationController extends PlatformInterface
   ///Returns `HRESULT_FROM_WIN32(ERROR_INVALID_STATE)` if `handled` is `false` when this is called.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationController.reportShown.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.reportShown.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -178,7 +178,7 @@ abstract class PlatformWebNotificationController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebNotificationController.reportClicked}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationController.reportClicked}
   ///The host may run this to report the notification has been clicked,
   ///and it will cause the [click](https://developer.mozilla.org/docs/Web/API/Notification/click_event) event
   ///to be raised for non-persistent notifications and the
@@ -189,7 +189,7 @@ abstract class PlatformWebNotificationController extends PlatformInterface
   ///Returns `HRESULT_FROM_WIN32(ERROR_INVALID_STATE)` if `handled` is `false` or [reportShown] has not been run when this is called.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationController.reportClicked.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.reportClicked.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -205,7 +205,7 @@ abstract class PlatformWebNotificationController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebNotificationController.reportClosed}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationController.reportClosed}
   ///The host may run this to report the notification was dismissed,
   ///and it will cause the [close](https://developer.mozilla.org/docs/Web/API/Notification/close_event) event
   ///to be raised for non-persistent notifications and the
@@ -216,7 +216,7 @@ abstract class PlatformWebNotificationController extends PlatformInterface
   ///Returns `HRESULT_FROM_WIN32(ERROR_INVALID_STATE)` if `handled` is `false` or [reportShown] has not been run when this is called.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationController.reportClosed.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.reportClosed.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -232,11 +232,11 @@ abstract class PlatformWebNotificationController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebNotificationController.dispose}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationController.dispose}
   ///Disposes the web notification controller.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationController.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.dispose.supported_platforms}
   @SupportedPlatforms(platforms: [WindowsPlatform()])
   @override
   void dispose() {
@@ -245,29 +245,29 @@ abstract class PlatformWebNotificationController extends PlatformInterface
     );
   }
 
-  ///{@macro cygnus_core.PlatformWebNotificationControllerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
       params.isClassSupported(platform: platform);
 
-  ///{@template cygnus_core.PlatformWebNotificationController.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationController.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
-  ///The property should be one of the [PlatformWebNotificationControllerProperty] or [PlatformWebNotificationControllerCreationParamsProperty] values.
+  ///The property should be one of the [CygnusPlatformWebNotificationControllerProperty] or [CygnusPlatformWebNotificationControllerCreationParamsProperty] values.
   ///{@endtemplate}
   bool isPropertySupported(dynamic property, {TargetPlatform? platform}) =>
-      property is PlatformWebNotificationControllerCreationParamsProperty
+      property is CygnusPlatformWebNotificationControllerCreationParamsProperty
       ? params.isPropertySupported(property, platform: platform)
-      : _PlatformWebNotificationControllerPropertySupported.isPropertySupported(
+      : _CygnusPlatformWebNotificationControllerPropertySupported.isPropertySupported(
           property,
           platform: platform,
         );
 
-  ///{@template cygnus_core.PlatformWebNotificationController.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationController.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformWebNotificationControllerMethod method, {
+    CygnusPlatformWebNotificationControllerMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformWebNotificationControllerMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformWebNotificationControllerMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );

@@ -20,21 +20,21 @@ getEnvironmentSettingDefinitions() {
             'Path to the folder containing the WebView2 browser executable',
         type: EnvironmentSettingType.string,
         hint: 'C:\\Program Files (x86)\\Microsoft\\Edge WebView2\\...',
-        property: WebViewEnvironmentSettingsProperty.browserExecutableFolder,
+        property: CygnusWebViewEnvironmentSettingsProperty.browserExecutableFolder,
       ),
       EnvironmentSettingDefinition(
         name: 'User Data Folder',
         description: 'Path to the user data folder for WebView2 profile',
         type: EnvironmentSettingType.string,
         hint: 'C:\\Users\\...\\AppData\\Local\\...',
-        property: WebViewEnvironmentSettingsProperty.userDataFolder,
+        property: CygnusWebViewEnvironmentSettingsProperty.userDataFolder,
       ),
       EnvironmentSettingDefinition(
         name: 'Additional Browser Arguments',
         description: 'Additional command line arguments for the browser',
         type: EnvironmentSettingType.string,
         hint: '--disable-gpu --enable-logging',
-        property: WebViewEnvironmentSettingsProperty.additionalBrowserArguments,
+        property: CygnusWebViewEnvironmentSettingsProperty.additionalBrowserArguments,
       ),
       EnvironmentSettingDefinition(
         name: 'Target Compatible Browser Version',
@@ -42,7 +42,7 @@ getEnvironmentSettingDefinitions() {
         type: EnvironmentSettingType.string,
         hint: '100.0.0.0',
         property:
-            WebViewEnvironmentSettingsProperty.targetCompatibleBrowserVersion,
+            CygnusWebViewEnvironmentSettingsProperty.targetCompatibleBrowserVersion,
       ),
     ],
     'Release Channel': [
@@ -50,15 +50,15 @@ getEnvironmentSettingDefinitions() {
         name: 'Channel Search Kind',
         description: 'How to search for WebView2 runtime',
         type: EnvironmentSettingType.enumeration,
-        enumValues: _safeEnumValues(() => EnvironmentChannelSearchKind.values),
-        property: WebViewEnvironmentSettingsProperty.channelSearchKind,
+        enumValues: _safeEnumValues(() => CygnusEnvironmentChannelSearchKind.values),
+        property: CygnusWebViewEnvironmentSettingsProperty.channelSearchKind,
       ),
       EnvironmentSettingDefinition(
         name: 'Release Channels',
         description: 'Which release channels to consider',
         type: EnvironmentSettingType.enumeration,
-        enumValues: _safeEnumValues(() => EnvironmentReleaseChannels.values),
-        property: WebViewEnvironmentSettingsProperty.releaseChannels,
+        enumValues: _safeEnumValues(() => CygnusEnvironmentReleaseChannels.values),
+        property: CygnusWebViewEnvironmentSettingsProperty.releaseChannels,
       ),
     ],
     'Localization': [
@@ -67,21 +67,21 @@ getEnvironmentSettingDefinitions() {
         description: 'Default language for the WebView',
         type: EnvironmentSettingType.string,
         hint: 'en-US',
-        property: WebViewEnvironmentSettingsProperty.language,
+        property: CygnusWebViewEnvironmentSettingsProperty.language,
       ),
       EnvironmentSettingDefinition(
         name: 'Preferred Languages',
         description: 'List of preferred languages',
         type: EnvironmentSettingType.stringList,
         hint: 'en-US, fr-FR, de-DE',
-        property: WebViewEnvironmentSettingsProperty.preferredLanguages,
+        property: CygnusWebViewEnvironmentSettingsProperty.preferredLanguages,
       ),
       EnvironmentSettingDefinition(
         name: 'Time Zone Override',
         description: 'Override the default time zone',
         type: EnvironmentSettingType.string,
         hint: 'America/New_York',
-        property: WebViewEnvironmentSettingsProperty.timeZoneOverride,
+        property: CygnusWebViewEnvironmentSettingsProperty.timeZoneOverride,
       ),
     ],
     'Spellcheck': [
@@ -90,14 +90,14 @@ getEnvironmentSettingDefinitions() {
         description: 'Enable spell checking',
         type: EnvironmentSettingType.boolean,
         defaultValue: false,
-        property: WebViewEnvironmentSettingsProperty.spellCheckingEnabled,
+        property: CygnusWebViewEnvironmentSettingsProperty.spellCheckingEnabled,
       ),
       EnvironmentSettingDefinition(
         name: 'Spell Checking Languages',
         description: 'Languages for spell checking',
         type: EnvironmentSettingType.stringList,
         hint: 'en_US, fr_FR',
-        property: WebViewEnvironmentSettingsProperty.spellCheckingLanguages,
+        property: CygnusWebViewEnvironmentSettingsProperty.spellCheckingLanguages,
       ),
     ],
     'Extensions': [
@@ -107,7 +107,7 @@ getEnvironmentSettingDefinitions() {
         type: EnvironmentSettingType.boolean,
         defaultValue: false,
         property:
-            WebViewEnvironmentSettingsProperty.areBrowserExtensionsEnabled,
+            CygnusWebViewEnvironmentSettingsProperty.areBrowserExtensionsEnabled,
       ),
       EnvironmentSettingDefinition(
         name: 'Web Process Extensions Directory',
@@ -115,7 +115,7 @@ getEnvironmentSettingDefinitions() {
         type: EnvironmentSettingType.string,
         hint: '/path/to/extensions',
         property:
-            WebViewEnvironmentSettingsProperty.webProcessExtensionsDirectory,
+            CygnusWebViewEnvironmentSettingsProperty.webProcessExtensionsDirectory,
       ),
     ],
     'Security & Privacy': [
@@ -124,7 +124,7 @@ getEnvironmentSettingDefinitions() {
         description: 'Allow single sign-on using the OS primary account (AAD)',
         type: EnvironmentSettingType.boolean,
         defaultValue: false,
-        property: WebViewEnvironmentSettingsProperty
+        property: CygnusWebViewEnvironmentSettingsProperty
             .allowSingleSignOnUsingOSPrimaryAccount,
       ),
       EnvironmentSettingDefinition(
@@ -132,7 +132,7 @@ getEnvironmentSettingDefinitions() {
         description: 'Enable tracking prevention features',
         type: EnvironmentSettingType.boolean,
         defaultValue: true,
-        property: WebViewEnvironmentSettingsProperty.enableTrackingPrevention,
+        property: CygnusWebViewEnvironmentSettingsProperty.enableTrackingPrevention,
       ),
       EnvironmentSettingDefinition(
         name: 'Exclusive User Data Folder Access',
@@ -140,14 +140,14 @@ getEnvironmentSettingDefinitions() {
         type: EnvironmentSettingType.boolean,
         defaultValue: false,
         property:
-            WebViewEnvironmentSettingsProperty.exclusiveUserDataFolderAccess,
+            CygnusWebViewEnvironmentSettingsProperty.exclusiveUserDataFolderAccess,
       ),
       EnvironmentSettingDefinition(
-        name: 'Sandbox Paths',
+        name: 'CygnusSandbox Paths',
         description: 'Paths for sandbox isolation',
         type: EnvironmentSettingType.stringList,
         hint: '/path/to/sandbox',
-        property: WebViewEnvironmentSettingsProperty.sandboxPaths,
+        property: CygnusWebViewEnvironmentSettingsProperty.sandboxPaths,
       ),
     ],
     'Automation & Debugging': [
@@ -156,7 +156,7 @@ getEnvironmentSettingDefinitions() {
         description: 'Allow WebDriver automation',
         type: EnvironmentSettingType.boolean,
         defaultValue: false,
-        property: WebViewEnvironmentSettingsProperty.automationAllowed,
+        property: CygnusWebViewEnvironmentSettingsProperty.automationAllowed,
       ),
       EnvironmentSettingDefinition(
         name: 'Custom Crash Reporting',
@@ -164,7 +164,7 @@ getEnvironmentSettingDefinitions() {
         type: EnvironmentSettingType.boolean,
         defaultValue: false,
         property:
-            WebViewEnvironmentSettingsProperty.isCustomCrashReportingEnabled,
+            CygnusWebViewEnvironmentSettingsProperty.isCustomCrashReportingEnabled,
       ),
     ],
     'Appearance': [
@@ -172,8 +172,8 @@ getEnvironmentSettingDefinitions() {
         name: 'Scrollbar Style',
         description: 'Style of scrollbars in the WebView',
         type: EnvironmentSettingType.enumeration,
-        enumValues: _safeEnumValues(() => EnvironmentScrollbarStyle.values),
-        property: WebViewEnvironmentSettingsProperty.scrollbarStyle,
+        enumValues: _safeEnumValues(() => CygnusEnvironmentScrollbarStyle.values),
+        property: CygnusWebViewEnvironmentSettingsProperty.scrollbarStyle,
       ),
     ],
     'Cache': [
@@ -181,8 +181,8 @@ getEnvironmentSettingDefinitions() {
         name: 'Cache Model',
         description: 'Caching strategy for the WebView',
         type: EnvironmentSettingType.enumeration,
-        enumValues: _safeEnumValues(() => CacheModel.values),
-        property: WebViewEnvironmentSettingsProperty.cacheModel,
+        enumValues: _safeEnumValues(() => CygnusCacheModel.values),
+        property: CygnusWebViewEnvironmentSettingsProperty.cacheModel,
       ),
     ],
     'Custom Schemes': [
@@ -190,7 +190,7 @@ getEnvironmentSettingDefinitions() {
         name: 'Custom Scheme Registrations',
         description: 'Register custom URL schemes',
         type: EnvironmentSettingType.customSchemeRegistrations,
-        property: WebViewEnvironmentSettingsProperty.customSchemeRegistrations,
+        property: CygnusWebViewEnvironmentSettingsProperty.customSchemeRegistrations,
       ),
     ],
   };

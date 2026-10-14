@@ -6,22 +6,22 @@ part of 'browser_process_kind.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Indicates the process type used in the [BrowserProcessInfo] interface.
-class BrowserProcessKind {
+///Indicates the process type used in the [CygnusBrowserProcessInfo] interface.
+class CygnusBrowserProcessKind {
   final int _value;
   final int? _nativeValue;
-  const BrowserProcessKind._internal(this._value, this._nativeValue);
+  const CygnusBrowserProcessKind._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory BrowserProcessKind._internalMultiPlatform(
+  factory CygnusBrowserProcessKind._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => BrowserProcessKind._internal(value, nativeValue());
+  ) => CygnusBrowserProcessKind._internal(value, nativeValue());
 
   ///Indicates the browser process kind.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final BROWSER = BrowserProcessKind._internalMultiPlatform(0, () {
+  static final BROWSER = CygnusBrowserProcessKind._internalMultiPlatform(0, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.windows:
         return 0;
@@ -35,7 +35,7 @@ class BrowserProcessKind {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final GPU = BrowserProcessKind._internalMultiPlatform(4, () {
+  static final GPU = CygnusBrowserProcessKind._internalMultiPlatform(4, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.windows:
         return 4;
@@ -49,49 +49,58 @@ class BrowserProcessKind {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final PPAPI_BROKER = BrowserProcessKind._internalMultiPlatform(6, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.windows:
-        return 6;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final PPAPI_BROKER = CygnusBrowserProcessKind._internalMultiPlatform(
+    6,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.windows:
+          return 6;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
   ///Indicates the PPAPI plugin process kind.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final PPAPI_PLUGIN = BrowserProcessKind._internalMultiPlatform(5, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.windows:
-        return 5;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final PPAPI_PLUGIN = CygnusBrowserProcessKind._internalMultiPlatform(
+    5,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.windows:
+          return 5;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
   ///Indicates the render process kind.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final RENDERER = BrowserProcessKind._internalMultiPlatform(1, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.windows:
-        return 1;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final RENDERER = CygnusBrowserProcessKind._internalMultiPlatform(
+    1,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.windows:
+          return 1;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
   ///Indicates the sandbox helper process kind.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final SANDBOX_HELPER = BrowserProcessKind._internalMultiPlatform(
+  static final SANDBOX_HELPER = CygnusBrowserProcessKind._internalMultiPlatform(
     3,
     () {
       switch (defaultTargetPlatform) {
@@ -108,7 +117,7 @@ class BrowserProcessKind {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final UTILITY = BrowserProcessKind._internalMultiPlatform(2, () {
+  static final UTILITY = CygnusBrowserProcessKind._internalMultiPlatform(2, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.windows:
         return 2;
@@ -118,36 +127,36 @@ class BrowserProcessKind {
     return null;
   });
 
-  ///Set of all values of [BrowserProcessKind].
-  static final Set<BrowserProcessKind> values = [
-    BrowserProcessKind.BROWSER,
-    BrowserProcessKind.GPU,
-    BrowserProcessKind.PPAPI_BROKER,
-    BrowserProcessKind.PPAPI_PLUGIN,
-    BrowserProcessKind.RENDERER,
-    BrowserProcessKind.SANDBOX_HELPER,
-    BrowserProcessKind.UTILITY,
+  ///Set of all values of [CygnusBrowserProcessKind].
+  static final Set<CygnusBrowserProcessKind> values = [
+    CygnusBrowserProcessKind.BROWSER,
+    CygnusBrowserProcessKind.GPU,
+    CygnusBrowserProcessKind.PPAPI_BROKER,
+    CygnusBrowserProcessKind.PPAPI_PLUGIN,
+    CygnusBrowserProcessKind.RENDERER,
+    CygnusBrowserProcessKind.SANDBOX_HELPER,
+    CygnusBrowserProcessKind.UTILITY,
   ].toSet();
 
-  ///Gets a possible [BrowserProcessKind] instance from [int] value.
-  static BrowserProcessKind? fromValue(int? value) {
+  ///Gets a possible [CygnusBrowserProcessKind] instance from [int] value.
+  static CygnusBrowserProcessKind? fromValue(int? value) {
     if (value != null) {
       try {
-        return BrowserProcessKind.values.firstWhere(
+        return CygnusBrowserProcessKind.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
-        return BrowserProcessKind._internal(value, value);
+        return CygnusBrowserProcessKind._internal(value, value);
       }
     }
     return null;
   }
 
-  ///Gets a possible [BrowserProcessKind] instance from a native value.
-  static BrowserProcessKind? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusBrowserProcessKind] instance from a native value.
+  static CygnusBrowserProcessKind? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return BrowserProcessKind.values.firstWhere(
+        return CygnusBrowserProcessKind.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -157,15 +166,15 @@ class BrowserProcessKind {
     return null;
   }
 
-  /// Gets a possible [BrowserProcessKind] instance value with name [name].
+  /// Gets a possible [CygnusBrowserProcessKind] instance value with name [name].
   ///
-  /// Goes through [BrowserProcessKind.values] looking for a value with
-  /// name [name], as reported by [BrowserProcessKind.name].
+  /// Goes through [CygnusBrowserProcessKind.values] looking for a value with
+  /// name [name], as reported by [CygnusBrowserProcessKind.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static BrowserProcessKind? byName(String? name) {
+  static CygnusBrowserProcessKind? byName(String? name) {
     if (name != null) {
       try {
-        return BrowserProcessKind.values.firstWhere(
+        return CygnusBrowserProcessKind.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -175,7 +184,7 @@ class BrowserProcessKind {
     return null;
   }
 
-  /// Creates a map from the names of [BrowserProcessKind] values to the values.
+  /// Creates a map from the names of [CygnusBrowserProcessKind] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -183,9 +192,10 @@ class BrowserProcessKind {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, BrowserProcessKind> asNameMap() =>
-      <String, BrowserProcessKind>{
-        for (final value in BrowserProcessKind.values) value.name(): value,
+  static Map<String, CygnusBrowserProcessKind> asNameMap() =>
+      <String, CygnusBrowserProcessKind>{
+        for (final value in CygnusBrowserProcessKind.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.
@@ -221,8 +231,8 @@ class BrowserProcessKind {
   @override
   bool operator ==(value) => value == _value;
 
-  BrowserProcessKind operator |(BrowserProcessKind value) =>
-      BrowserProcessKind._internal(
+  CygnusBrowserProcessKind operator |(CygnusBrowserProcessKind value) =>
+      CygnusBrowserProcessKind._internal(
         value.toValue() | _value,
         value.toNativeValue() != null && _nativeValue != null
             ? value.toNativeValue()! | _nativeValue!

@@ -15,20 +15,20 @@ import 'web_storage/web_storage.dart';
 import 'web_storage/web_storage_manager.dart';
 import 'webview_environment/webview_environment.dart';
 
-/// Implementation of [InAppWebViewPlatform] using WPE WebKit.
-class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
-  /// Registers this class as the default instance of [InAppWebViewPlatform].
+/// Implementation of [CygnusWebViewPlatform] using WPE WebKit.
+class LinuxInAppWebViewPlatform extends CygnusWebViewPlatform {
+  /// Registers this class as the default instance of [CygnusWebViewPlatform].
   static void registerWith() {
-    InAppWebViewPlatform.instance = LinuxInAppWebViewPlatform();
+    CygnusWebViewPlatform.instance = LinuxInAppWebViewPlatform();
   }
 
   /// Creates a new [LinuxInAppWebViewController].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [InAppWebViewController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
   @override
   LinuxInAppWebViewController createPlatformInAppWebViewController(
-    PlatformInAppWebViewControllerCreationParams params,
+    CygnusPlatformWebViewControllerCreationParams params,
   ) {
     return LinuxInAppWebViewController(params);
   }
@@ -36,7 +36,7 @@ class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new empty [LinuxInAppWebViewController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [InAppWebViewController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
   @override
   LinuxInAppWebViewController createPlatformInAppWebViewControllerStatic() {
     return LinuxInAppWebViewController.static();
@@ -45,10 +45,10 @@ class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new [LinuxInAppWebViewWidget].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [InAppWebView] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
   @override
   LinuxInAppWebViewWidget createPlatformInAppWebViewWidget(
-    PlatformInAppWebViewWidgetCreationParams params,
+    CygnusPlatformWebViewWidgetCreationParams params,
   ) {
     return LinuxInAppWebViewWidget(params);
   }
@@ -56,36 +56,36 @@ class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new empty [LinuxInAppWebViewWidget] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [InAppWebView] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
   @override
   LinuxInAppWebViewWidget createPlatformInAppWebViewWidgetStatic() {
     return LinuxInAppWebViewWidget.static();
   }
 
-  /// Creates a new empty [PlatformCookieManager] to access static methods.
+  /// Creates a new empty [CygnusPlatformCookieManager] to access static methods.
   @override
-  PlatformCookieManager createPlatformCookieManagerStatic() {
+  CygnusPlatformCookieManager createPlatformCookieManagerStatic() {
     return LinuxCookieManager.static();
   }
 
   /// Creates a new [LinuxCookieManager].
   @override
   LinuxCookieManager createPlatformCookieManager(
-    PlatformCookieManagerCreationParams params,
+    CygnusPlatformCookieManagerCreationParams params,
   ) {
     return LinuxCookieManager(params);
   }
 
-  /// Creates a new empty [PlatformWebViewEnvironment] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebViewEnvironment] to access static methods.
   @override
-  PlatformWebViewEnvironment createPlatformWebViewEnvironmentStatic() {
+  CygnusPlatformWebViewEnvironment createPlatformWebViewEnvironmentStatic() {
     return LinuxWebViewEnvironment.static();
   }
 
   /// Creates a new [LinuxWebViewEnvironment].
   @override
   LinuxWebViewEnvironment createPlatformWebViewEnvironment(
-    PlatformWebViewEnvironmentCreationParams params,
+    CygnusPlatformWebViewEnvironmentCreationParams params,
   ) {
     return LinuxWebViewEnvironment(params);
   }
@@ -97,16 +97,16 @@ class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
   // exception.                                                               //
   // ************************************************************************ //
 
-  /// Creates a new empty [PlatformChromeSafariBrowser] to access static methods.
+  /// Creates a new empty [CygnusPlatformChromeSafariBrowser] to access static methods.
   @override
-  PlatformChromeSafariBrowser createPlatformChromeSafariBrowserStatic() {
+  CygnusPlatformChromeSafariBrowser createPlatformChromeSafariBrowserStatic() {
     return _PlatformChromeSafariBrowser.static();
   }
 
   /// Creates a new [LinuxHttpAuthCredentialDatabase].
   @override
   LinuxHttpAuthCredentialDatabase createPlatformHttpAuthCredentialDatabase(
-    PlatformHttpAuthCredentialDatabaseCreationParams params,
+    CygnusPlatformHttpAuthCredentialDatabaseCreationParams params,
   ) {
     return LinuxHttpAuthCredentialDatabase(params);
   }
@@ -127,61 +127,61 @@ class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new [LinuxInAppBrowser].
   @override
   LinuxInAppBrowser createPlatformInAppBrowser(
-    PlatformInAppBrowserCreationParams params,
+    CygnusPlatformBrowserCreationParams params,
   ) {
     return LinuxInAppBrowser(params);
   }
 
-  /// Creates a new empty [PlatformHeadlessInAppWebView] to access static methods.
+  /// Creates a new empty [CygnusPlatformHeadlessWebView] to access static methods.
   @override
-  PlatformHeadlessInAppWebView createPlatformHeadlessInAppWebViewStatic() {
+  CygnusPlatformHeadlessWebView createPlatformHeadlessInAppWebViewStatic() {
     return LinuxHeadlessInAppWebView.static();
   }
 
   /// Creates a new [LinuxHeadlessInAppWebView].
   @override
   LinuxHeadlessInAppWebView createPlatformHeadlessInAppWebView(
-    PlatformHeadlessInAppWebViewCreationParams params,
+    CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
     return LinuxHeadlessInAppWebView(params);
   }
 
-  /// Creates a new empty [PlatformProcessGlobalConfig] to access static methods.
+  /// Creates a new empty [CygnusPlatformProcessGlobalConfig] to access static methods.
   @override
-  PlatformProcessGlobalConfig createPlatformProcessGlobalConfigStatic() {
+  CygnusPlatformProcessGlobalConfig createPlatformProcessGlobalConfigStatic() {
     return _PlatformProcessGlobalConfig.static();
   }
 
-  /// Creates a new empty [PlatformProxyController] to access static methods.
+  /// Creates a new empty [CygnusPlatformProxyController] to access static methods.
   @override
-  PlatformProxyController createPlatformProxyControllerStatic() {
+  CygnusPlatformProxyController createPlatformProxyControllerStatic() {
     return LinuxProxyController.static();
   }
 
   /// Creates a new [LinuxProxyController].
   @override
   LinuxProxyController createPlatformProxyController(
-    PlatformProxyControllerCreationParams params,
+    CygnusPlatformProxyControllerCreationParams params,
   ) {
     return LinuxProxyController(params);
   }
 
-  /// Creates a new empty [PlatformServiceWorkerController] to access static methods.
+  /// Creates a new empty [CygnusPlatformServiceWorkerController] to access static methods.
   @override
-  PlatformServiceWorkerController
+  CygnusPlatformServiceWorkerController
   createPlatformServiceWorkerControllerStatic() {
     return _PlatformServiceWorkerController.static();
   }
 
-  /// Creates a new empty [PlatformTracingController] to access static methods.
+  /// Creates a new empty [CygnusPlatformTracingController] to access static methods.
   @override
-  PlatformTracingController createPlatformTracingControllerStatic() {
+  CygnusPlatformTracingController createPlatformTracingControllerStatic() {
     return _PlatformTracingController.static();
   }
 
-  /// Creates a new empty [PlatformFindInteractionController] to access static methods.
+  /// Creates a new empty [CygnusPlatformFindInteractionController] to access static methods.
   @override
-  PlatformFindInteractionController
+  CygnusPlatformFindInteractionController
   createPlatformFindInteractionControllerStatic() {
     return LinuxFindInteractionController.static();
   }
@@ -189,34 +189,34 @@ class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new [LinuxFindInteractionController].
   @override
   LinuxFindInteractionController createPlatformFindInteractionController(
-    PlatformFindInteractionControllerCreationParams params,
+    CygnusPlatformFindInteractionControllerCreationParams params,
   ) {
     return LinuxFindInteractionController(params);
   }
 
-  /// Creates a new empty [PlatformPrintJobController] to access static methods.
+  /// Creates a new empty [CygnusPlatformPrintJobController] to access static methods.
   @override
-  PlatformPrintJobController createPlatformPrintJobControllerStatic() {
+  CygnusPlatformPrintJobController createPlatformPrintJobControllerStatic() {
     return _PlatformPrintJobController.static();
   }
 
-  /// Creates a new empty [PlatformPullToRefreshController] to access static methods.
+  /// Creates a new empty [CygnusPlatformPullToRefreshController] to access static methods.
   @override
-  PlatformPullToRefreshController
+  CygnusPlatformPullToRefreshController
   createPlatformPullToRefreshControllerStatic() {
     return _PlatformPullToRefreshController.static();
   }
 
-  /// Creates a new empty [PlatformWebAuthenticationSession] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebAuthenticationSession] to access static methods.
   @override
-  PlatformWebAuthenticationSession
+  CygnusPlatformWebAuthenticationSession
   createPlatformWebAuthenticationSessionStatic() {
     return _PlatformWebAuthenticationSession.static();
   }
 
-  /// Creates a new empty [PlatformWebNotificationController] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebNotificationController] to access static methods.
   @override
-  PlatformWebNotificationController
+  CygnusPlatformWebNotificationController
   createPlatformWebNotificationControllerStatic() {
     return _PlatformWebNotificationController.static();
   }
@@ -230,7 +230,7 @@ class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new [LinuxWebMessageChannel].
   @override
   LinuxWebMessageChannel createPlatformWebMessageChannel(
-    PlatformWebMessageChannelCreationParams params,
+    CygnusPlatformWebMessageChannelCreationParams params,
   ) {
     return LinuxWebMessageChannel(params);
   }
@@ -238,21 +238,21 @@ class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new [LinuxWebMessagePort].
   @override
   LinuxWebMessagePort createPlatformWebMessagePort(
-    PlatformWebMessagePortCreationParams params,
+    CygnusPlatformWebMessagePortCreationParams params,
   ) {
     return LinuxWebMessagePort(params);
   }
 
-  /// Creates a new empty [PlatformWebMessageListener] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebMessageListener] to access static methods.
   @override
-  PlatformWebMessageListener createPlatformWebMessageListenerStatic() {
+  CygnusPlatformWebMessageListener createPlatformWebMessageListenerStatic() {
     return LinuxWebMessageListener.static();
   }
 
   /// Creates a new [LinuxWebMessageListener].
   @override
   LinuxWebMessageListener createPlatformWebMessageListener(
-    PlatformWebMessageListenerCreationParams params,
+    CygnusPlatformWebMessageListenerCreationParams params,
   ) {
     return LinuxWebMessageListener(params);
   }
@@ -260,10 +260,10 @@ class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new [LinuxWebStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebStorage] in `flutter_inappwebview` instead.
   @override
   LinuxWebStorage createPlatformWebStorage(
-    PlatformWebStorageCreationParams params,
+    CygnusPlatformWebStorageCreationParams params,
   ) {
     return LinuxWebStorage(params);
   }
@@ -271,7 +271,7 @@ class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new empty [LinuxWebStorage] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebStorage] in `flutter_inappwebview` instead.
   @override
   LinuxWebStorage createPlatformWebStorageStatic() {
     return LinuxWebStorage(
@@ -285,10 +285,10 @@ class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new [LinuxLocalStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [LocalStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusLocalStorage] in `flutter_inappwebview` instead.
   @override
   LinuxLocalStorage createPlatformLocalStorage(
-    PlatformLocalStorageCreationParams params,
+    CygnusPlatformLocalStorageCreationParams params,
   ) {
     return LinuxLocalStorage(params);
   }
@@ -296,7 +296,7 @@ class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new empty [LinuxLocalStorage] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [LocalStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusLocalStorage] in `flutter_inappwebview` instead.
   @override
   LinuxLocalStorage createPlatformLocalStorageStatic() {
     return LinuxLocalStorage.defaultStorage(controller: null);
@@ -305,10 +305,10 @@ class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new [LinuxSessionStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [SessionStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusSessionStorage] in `flutter_inappwebview` instead.
   @override
   LinuxSessionStorage createPlatformSessionStorage(
-    PlatformSessionStorageCreationParams params,
+    CygnusPlatformSessionStorageCreationParams params,
   ) {
     return LinuxSessionStorage(params);
   }
@@ -316,215 +316,215 @@ class LinuxInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new empty [LinuxSessionStorage] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [SessionStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusSessionStorage] in `flutter_inappwebview` instead.
   @override
   LinuxSessionStorage createPlatformSessionStorageStatic() {
     return LinuxSessionStorage.defaultStorage(controller: null);
   }
 
-  /// Creates a new empty [PlatformWebStorageManager] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebStorageManager] to access static methods.
   @override
-  PlatformWebStorageManager createPlatformWebStorageManagerStatic() {
+  CygnusPlatformWebStorageManager createPlatformWebStorageManagerStatic() {
     return LinuxWebStorageManager.static();
   }
 
   /// Creates a new [LinuxWebStorageManager].
   @override
   LinuxWebStorageManager createPlatformWebStorageManager(
-    PlatformWebStorageManagerCreationParams params,
+    CygnusPlatformWebStorageManagerCreationParams params,
   ) {
     return LinuxWebStorageManager(params);
   }
 
-  /// Creates a new empty [PlatformAssetsPathHandler] to access static methods.
+  /// Creates a new empty [CygnusPlatformAssetsPathHandler] to access static methods.
   @override
-  PlatformAssetsPathHandler createPlatformAssetsPathHandlerStatic() {
+  CygnusPlatformAssetsPathHandler createPlatformAssetsPathHandlerStatic() {
     return _PlatformAssetsPathHandler.static();
   }
 
-  /// Creates a new empty [PlatformResourcesPathHandler] to access static methods.
+  /// Creates a new empty [CygnusPlatformResourcesPathHandler] to access static methods.
   @override
-  PlatformResourcesPathHandler createPlatformResourcesPathHandlerStatic() {
+  CygnusPlatformResourcesPathHandler createPlatformResourcesPathHandlerStatic() {
     return _PlatformResourcesPathHandler.static();
   }
 
-  /// Creates a new empty [PlatformInternalStoragePathHandler] to access static methods.
+  /// Creates a new empty [CygnusPlatformInternalStoragePathHandler] to access static methods.
   @override
-  PlatformInternalStoragePathHandler
+  CygnusPlatformInternalStoragePathHandler
   createPlatformInternalStoragePathHandlerStatic() {
     return _PlatformInternalStoragePathHandler.static();
   }
 
-  /// Creates a new empty [PlatformCustomPathHandler] to access static methods.
+  /// Creates a new empty [CygnusPlatformCustomPathHandler] to access static methods.
   @override
-  PlatformCustomPathHandler createPlatformCustomPathHandlerStatic() {
+  CygnusPlatformCustomPathHandler createPlatformCustomPathHandlerStatic() {
     return _PlatformCustomPathHandler.static();
   }
 
-  /// Creates a new [DefaultInAppLocalhostServer].
+  /// Creates a new [CygnusDefaultLocalhostServer].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [InAppLocalhostServer] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusLocalhostServer] in `flutter_inappwebview` instead.
   @override
-  DefaultInAppLocalhostServer createPlatformInAppLocalhostServer(
-    PlatformInAppLocalhostServerCreationParams params,
+  CygnusDefaultLocalhostServer createPlatformInAppLocalhostServer(
+    CygnusPlatformLocalhostServerCreationParams params,
   ) {
-    return DefaultInAppLocalhostServer(params);
+    return CygnusDefaultLocalhostServer(params);
   }
 
-  /// Creates a new empty [DefaultInAppLocalhostServer] to access static methods.
+  /// Creates a new empty [CygnusDefaultLocalhostServer] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [InAppLocalhostServer] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusLocalhostServer] in `flutter_inappwebview` instead.
   @override
-  DefaultInAppLocalhostServer createPlatformInAppLocalhostServerStatic() {
-    return DefaultInAppLocalhostServer.static();
+  CygnusDefaultLocalhostServer createPlatformInAppLocalhostServerStatic() {
+    return CygnusDefaultLocalhostServer.static();
   }
 
-  /// Creates a new empty [PlatformWebViewFeature] to access static methods.
+  /// Creates a new empty [CygnusPlatformWebViewFeature] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [WebViewFeature] in `flutter_inappwebview` instead
+  /// Look at using [CygnusWebViewFeature] in `flutter_inappwebview` instead
   @override
-  PlatformWebViewFeature createPlatformWebViewFeatureStatic() {
+  CygnusPlatformWebViewFeature createPlatformWebViewFeatureStatic() {
     return _PlatformWebViewFeature.static();
   }
 }
 
 // Stub implementations for unsupported classes
 
-class _PlatformChromeSafariBrowser extends PlatformChromeSafariBrowser {
-  _PlatformChromeSafariBrowser(PlatformChromeSafariBrowserCreationParams params)
+class _PlatformChromeSafariBrowser extends CygnusPlatformChromeSafariBrowser {
+  _PlatformChromeSafariBrowser(CygnusPlatformChromeSafariBrowserCreationParams params)
     : super.implementation(params);
   static final _PlatformChromeSafariBrowser _staticValue =
       _PlatformChromeSafariBrowser(
-        const PlatformChromeSafariBrowserCreationParams(),
+        const CygnusPlatformChromeSafariBrowserCreationParams(),
       );
 
   factory _PlatformChromeSafariBrowser.static() => _staticValue;
 }
 
-class _PlatformProcessGlobalConfig extends PlatformProcessGlobalConfig {
-  _PlatformProcessGlobalConfig(PlatformProcessGlobalConfigCreationParams params)
+class _PlatformProcessGlobalConfig extends CygnusPlatformProcessGlobalConfig {
+  _PlatformProcessGlobalConfig(CygnusPlatformProcessGlobalConfigCreationParams params)
     : super.implementation(params);
   static final _PlatformProcessGlobalConfig _staticValue =
       _PlatformProcessGlobalConfig(
-        const PlatformProcessGlobalConfigCreationParams(),
+        const CygnusPlatformProcessGlobalConfigCreationParams(),
       );
 
   factory _PlatformProcessGlobalConfig.static() => _staticValue;
 }
 
-class _PlatformServiceWorkerController extends PlatformServiceWorkerController {
+class _PlatformServiceWorkerController extends CygnusPlatformServiceWorkerController {
   _PlatformServiceWorkerController(
-    PlatformServiceWorkerControllerCreationParams params,
+    CygnusPlatformServiceWorkerControllerCreationParams params,
   ) : super.implementation(params);
   static final _PlatformServiceWorkerController _staticValue =
       _PlatformServiceWorkerController(
-        const PlatformServiceWorkerControllerCreationParams(),
+        const CygnusPlatformServiceWorkerControllerCreationParams(),
       );
 
   factory _PlatformServiceWorkerController.static() => _staticValue;
 
   @override
-  ServiceWorkerClient? get serviceWorkerClient => throw UnimplementedError();
+  CygnusServiceWorkerClient? get serviceWorkerClient => throw UnimplementedError();
 }
 
-class _PlatformTracingController extends PlatformTracingController {
-  _PlatformTracingController(PlatformTracingControllerCreationParams params)
+class _PlatformTracingController extends CygnusPlatformTracingController {
+  _PlatformTracingController(CygnusPlatformTracingControllerCreationParams params)
     : super.implementation(params);
   static final _PlatformTracingController _staticValue =
       _PlatformTracingController(
-        const PlatformTracingControllerCreationParams(),
+        const CygnusPlatformTracingControllerCreationParams(),
       );
 
   factory _PlatformTracingController.static() => _staticValue;
 }
 
-class _PlatformPrintJobController extends PlatformPrintJobController {
-  _PlatformPrintJobController(PlatformPrintJobControllerCreationParams params)
+class _PlatformPrintJobController extends CygnusPlatformPrintJobController {
+  _PlatformPrintJobController(CygnusPlatformPrintJobControllerCreationParams params)
     : super.implementation(params);
 
   static final _PlatformPrintJobController _staticValue =
       _PlatformPrintJobController(
-        const PlatformPrintJobControllerCreationParams(id: ''),
+        const CygnusPlatformPrintJobControllerCreationParams(id: ''),
       );
 
   factory _PlatformPrintJobController.static() => _staticValue;
 }
 
-class _PlatformPullToRefreshController extends PlatformPullToRefreshController {
+class _PlatformPullToRefreshController extends CygnusPlatformPullToRefreshController {
   _PlatformPullToRefreshController(
-    PlatformPullToRefreshControllerCreationParams params,
+    CygnusPlatformPullToRefreshControllerCreationParams params,
   ) : super.implementation(params);
 
   static final _PlatformPullToRefreshController _staticValue =
       _PlatformPullToRefreshController(
-        PlatformPullToRefreshControllerCreationParams(),
+        CygnusPlatformPullToRefreshControllerCreationParams(),
       );
 
   factory _PlatformPullToRefreshController.static() => _staticValue;
 }
 
 class _PlatformWebAuthenticationSession
-    extends PlatformWebAuthenticationSession {
+    extends CygnusPlatformWebAuthenticationSession {
   _PlatformWebAuthenticationSession(
-    PlatformWebAuthenticationSessionCreationParams params,
+    CygnusPlatformWebAuthenticationSessionCreationParams params,
   ) : super.implementation(params);
 
   static final _PlatformWebAuthenticationSession _staticValue =
       _PlatformWebAuthenticationSession(
-        const PlatformWebAuthenticationSessionCreationParams(),
+        const CygnusPlatformWebAuthenticationSessionCreationParams(),
       );
 
   factory _PlatformWebAuthenticationSession.static() => _staticValue;
 }
 
 class _PlatformWebNotificationController
-    extends PlatformWebNotificationController {
+    extends CygnusPlatformWebNotificationController {
   _PlatformWebNotificationController(
-    PlatformWebNotificationControllerCreationParams params,
+    CygnusPlatformWebNotificationControllerCreationParams params,
   ) : super.implementation(params);
 
   static final _PlatformWebNotificationController _staticValue =
       _PlatformWebNotificationController(
-        PlatformWebNotificationControllerCreationParams(
+        CygnusPlatformWebNotificationControllerCreationParams(
           id: '',
-          notification: WebNotification(),
+          notification: CygnusWebNotification(),
         ),
       );
 
   factory _PlatformWebNotificationController.static() => _staticValue;
 }
 
-class _PlatformWebViewFeature extends PlatformWebViewFeature {
-  _PlatformWebViewFeature(PlatformWebViewFeatureCreationParams params)
+class _PlatformWebViewFeature extends CygnusPlatformWebViewFeature {
+  _PlatformWebViewFeature(CygnusPlatformWebViewFeatureCreationParams params)
     : super.implementation(params);
 
   static final _PlatformWebViewFeature _staticValue = _PlatformWebViewFeature(
-    PlatformWebViewFeatureCreationParams(),
+    CygnusPlatformWebViewFeatureCreationParams(),
   );
   factory _PlatformWebViewFeature.static() => _staticValue;
 }
 
-class _PlatformAssetsPathHandler extends PlatformAssetsPathHandler {
-  _PlatformAssetsPathHandler(PlatformAssetsPathHandlerCreationParams params)
+class _PlatformAssetsPathHandler extends CygnusPlatformAssetsPathHandler {
+  _PlatformAssetsPathHandler(CygnusPlatformAssetsPathHandlerCreationParams params)
     : super.implementation(params);
 
   static final _PlatformAssetsPathHandler _staticValue =
       _PlatformAssetsPathHandler(
-        PlatformAssetsPathHandlerCreationParams(
-          PlatformPathHandlerCreationParams(path: ''),
+        CygnusPlatformAssetsPathHandlerCreationParams(
+          CygnusPlatformPathHandlerCreationParams(path: ''),
         ),
       );
 
   factory _PlatformAssetsPathHandler.static() => _staticValue;
 
   @override
-  PlatformPathHandlerEvents? eventHandler;
+  CygnusPlatformPathHandlerEvents? eventHandler;
 
   @override
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) => {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) => {
     "path": path,
     "type": type,
   };
@@ -533,25 +533,25 @@ class _PlatformAssetsPathHandler extends PlatformAssetsPathHandler {
   Map<String, dynamic> toJson() => toMap();
 }
 
-class _PlatformResourcesPathHandler extends PlatformResourcesPathHandler {
+class _PlatformResourcesPathHandler extends CygnusPlatformResourcesPathHandler {
   _PlatformResourcesPathHandler(
-    PlatformResourcesPathHandlerCreationParams params,
+    CygnusPlatformResourcesPathHandlerCreationParams params,
   ) : super.implementation(params);
 
   static final _PlatformResourcesPathHandler _staticValue =
       _PlatformResourcesPathHandler(
-        PlatformResourcesPathHandlerCreationParams(
-          PlatformPathHandlerCreationParams(path: ''),
+        CygnusPlatformResourcesPathHandlerCreationParams(
+          CygnusPlatformPathHandlerCreationParams(path: ''),
         ),
       );
 
   factory _PlatformResourcesPathHandler.static() => _staticValue;
 
   @override
-  PlatformPathHandlerEvents? eventHandler;
+  CygnusPlatformPathHandlerEvents? eventHandler;
 
   @override
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) => {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) => {
     "path": path,
     "type": type,
   };
@@ -561,15 +561,15 @@ class _PlatformResourcesPathHandler extends PlatformResourcesPathHandler {
 }
 
 class _PlatformInternalStoragePathHandler
-    extends PlatformInternalStoragePathHandler {
+    extends CygnusPlatformInternalStoragePathHandler {
   _PlatformInternalStoragePathHandler(
-    PlatformInternalStoragePathHandlerCreationParams params,
+    CygnusPlatformInternalStoragePathHandlerCreationParams params,
   ) : super.implementation(params);
 
   static final _PlatformInternalStoragePathHandler _staticValue =
       _PlatformInternalStoragePathHandler(
-        PlatformInternalStoragePathHandlerCreationParams(
-          PlatformPathHandlerCreationParams(path: ''),
+        CygnusPlatformInternalStoragePathHandlerCreationParams(
+          CygnusPlatformPathHandlerCreationParams(path: ''),
           directory: '',
         ),
       );
@@ -577,10 +577,10 @@ class _PlatformInternalStoragePathHandler
   factory _PlatformInternalStoragePathHandler.static() => _staticValue;
 
   @override
-  PlatformPathHandlerEvents? eventHandler;
+  CygnusPlatformPathHandlerEvents? eventHandler;
 
   @override
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) => {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) => {
     "path": path,
     "type": type,
   };
@@ -589,24 +589,24 @@ class _PlatformInternalStoragePathHandler
   Map<String, dynamic> toJson() => toMap();
 }
 
-class _PlatformCustomPathHandler extends PlatformCustomPathHandler {
-  _PlatformCustomPathHandler(PlatformCustomPathHandlerCreationParams params)
+class _PlatformCustomPathHandler extends CygnusPlatformCustomPathHandler {
+  _PlatformCustomPathHandler(CygnusPlatformCustomPathHandlerCreationParams params)
     : super.implementation(params);
 
   static final _PlatformCustomPathHandler _staticValue =
       _PlatformCustomPathHandler(
-        PlatformCustomPathHandlerCreationParams(
-          PlatformPathHandlerCreationParams(path: ''),
+        CygnusPlatformCustomPathHandlerCreationParams(
+          CygnusPlatformPathHandlerCreationParams(path: ''),
         ),
       );
 
   factory _PlatformCustomPathHandler.static() => _staticValue;
 
   @override
-  PlatformPathHandlerEvents? eventHandler;
+  CygnusPlatformPathHandlerEvents? eventHandler;
 
   @override
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) => {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) => {
     "path": path,
     "type": type,
   };

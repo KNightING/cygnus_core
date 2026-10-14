@@ -5,13 +5,13 @@ import '../web_message/platform_web_message_listener.dart';
 import 'platform_inappwebview_widget.dart';
 import 'platform_inappwebview_controller.dart';
 
-///Class used to keep alive a [PlatformInAppWebViewWidget].
-class InAppWebViewKeepAlive {
+///Class used to keep alive a [CygnusPlatformWebViewWidget].
+class CygnusWebViewKeepAlive {
   String _id = IdGenerator.generate();
 }
 
 ///Used internally
-extension InternalInAppWebViewKeepAlive on InAppWebViewKeepAlive {
+extension InternalInAppWebViewKeepAlive on CygnusWebViewKeepAlive {
   String get id => _id;
 
   set id(String id) {
@@ -19,18 +19,18 @@ extension InternalInAppWebViewKeepAlive on InAppWebViewKeepAlive {
   }
 }
 
-///Used internally to save and restore [PlatformInAppWebViewController] properties
+///Used internally to save and restore [CygnusPlatformWebViewController] properties
 ///for the keep alive feature.
-class InAppWebViewControllerKeepAliveProps {
+class CygnusWebViewControllerKeepAliveProps {
   Map<String, Function> javaScriptHandlersMap;
-  Map<UserScriptInjectionTime, List<UserScript>> userScripts;
+  Map<CygnusUserScriptInjectionTime, List<CygnusUserScript>> userScripts;
   Set<String> webMessageListenerObjNames;
-  Map<String, ScriptHtmlTagAttributes> injectedScriptsFromURL;
-  Set<PlatformWebMessageChannel> webMessageChannels = Set();
-  Set<PlatformWebMessageListener> webMessageListeners = Set();
+  Map<String, CygnusScriptHtmlTagAttributes> injectedScriptsFromURL;
+  Set<CygnusPlatformWebMessageChannel> webMessageChannels = Set();
+  Set<CygnusPlatformWebMessageListener> webMessageListeners = Set();
   Map<String, Function(dynamic data)> devToolsProtocolEventListenerMap;
 
-  InAppWebViewControllerKeepAliveProps({
+  CygnusWebViewControllerKeepAliveProps({
     this.javaScriptHandlersMap = const {},
     this.userScripts = const {},
     this.webMessageListenerObjNames = const {},

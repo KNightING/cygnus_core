@@ -1,7 +1,7 @@
 part of 'main.dart';
 
 void customMenuItems() {
-  final shouldSkip = !InAppBrowser.isClassSupported();
+  final shouldSkip = !CygnusBrowser.isClassSupported();
 
   skippableTest('custom menu items', () async {
     var inAppBrowser = new MyInAppBrowser();
@@ -11,7 +11,7 @@ void customMenuItems() {
     )).buffer.asUint8List();
 
     inAppBrowser.addMenuItem(
-      InAppBrowserMenuItem(
+      CygnusBrowserMenuItem(
         id: 0,
         title: 'Menu Item 0',
         iconColor: Colors.black,
@@ -22,7 +22,7 @@ void customMenuItems() {
       ),
     );
     inAppBrowser.addMenuItem(
-      InAppBrowserMenuItem(
+      CygnusBrowserMenuItem(
         id: 1,
         title: 'Menu Item 1',
         icon: data,
@@ -39,15 +39,15 @@ void customMenuItems() {
       TargetPlatform.iOS,
       TargetPlatform.macOS,
     ].contains(defaultTargetPlatform)) {
-      icon = UIImage(systemName: 'ellipsis.circle');
+      icon = CygnusUIImage(systemName: 'ellipsis.circle');
     } else if (defaultTargetPlatform == TargetPlatform.android) {
-      icon = AndroidResource.drawable(
+      icon = CygnusAndroidResource.drawable(
         name: 'ic_menu_edit',
         defPackage: 'android',
       );
     }
     inAppBrowser.addMenuItem(
-      InAppBrowserMenuItem(
+      CygnusBrowserMenuItem(
         id: 2,
         title: 'Menu Item 2',
         icon: icon,
@@ -61,9 +61,9 @@ void customMenuItems() {
     );
 
     await inAppBrowser.openUrlRequest(
-      urlRequest: URLRequest(url: TEST_URL_1),
-      settings: InAppBrowserClassSettings(
-        browserSettings: InAppBrowserSettings(hideDefaultMenuItems: true),
+      urlRequest: CygnusURLRequest(url: TEST_URL_1),
+      settings: CygnusBrowserClassSettings(
+        browserSettings: CygnusBrowserSettings(hideDefaultMenuItems: true),
       ),
     );
     await inAppBrowser.browserCreated.future;

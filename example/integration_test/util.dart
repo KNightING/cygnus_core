@@ -99,14 +99,14 @@ class Foo {
   }
 }
 
-class MyInAppBrowser extends InAppBrowser {
+class MyInAppBrowser extends CygnusBrowser {
   final Completer<void> browserCreated = Completer<void>();
   final Completer<void> firstPageLoaded = Completer<void>();
   final Completer<void> browserClosed = Completer<void>();
 
   MyInAppBrowser({
     int? windowId,
-    UnmodifiableListView<UserScript>? initialUserScripts,
+    UnmodifiableListView<CygnusUserScript>? initialUserScripts,
   }) : super(windowId: windowId, initialUserScripts: initialUserScripts);
 
   @override
@@ -115,7 +115,7 @@ class MyInAppBrowser extends InAppBrowser {
   }
 
   @override
-  void onLoadStop(WebUri? url) {
+  void onLoadStop(CygnusWebUri? url) {
     super.onLoadStop(url);
 
     if (!firstPageLoaded.isCompleted) {
@@ -131,13 +131,13 @@ class MyInAppBrowser extends InAppBrowser {
   }
 }
 
-class MyChromeSafariBrowser extends ChromeSafariBrowser {
+class MyChromeSafariBrowser extends CygnusChromeSafariBrowser {
   final Completer<void> serviceConnected = Completer<void>();
   final Completer<void> opened = Completer<void>();
   final Completer<bool?> firstPageLoaded = Completer<bool?>();
   final Completer<void> closed = Completer<void>();
-  final Completer<CustomTabsNavigationEventType?> navigationEvent =
-      Completer<CustomTabsNavigationEventType?>();
+  final Completer<CygnusCustomTabsNavigationEventType?> navigationEvent =
+      Completer<CygnusCustomTabsNavigationEventType?>();
   final Completer<void> navigationFinished = Completer<void>();
   final Completer<void> messageChannelReady = Completer<void>();
   final Completer<String> postMessageReceived = Completer<String>();
@@ -159,12 +159,12 @@ class MyChromeSafariBrowser extends ChromeSafariBrowser {
   }
 
   @override
-  void onNavigationEvent(CustomTabsNavigationEventType? type) {
+  void onNavigationEvent(CygnusCustomTabsNavigationEventType? type) {
     if (!navigationEvent.isCompleted) {
       navigationEvent.complete(type);
     }
     if (!navigationFinished.isCompleted &&
-        type == CustomTabsNavigationEventType.FINISHED) {
+        type == CygnusCustomTabsNavigationEventType.FINISHED) {
       navigationFinished.complete();
     }
   }
@@ -185,7 +185,7 @@ class MyChromeSafariBrowser extends ChromeSafariBrowser {
 
   @override
   void onRelationshipValidationResult(
-    CustomTabsRelationType? relation,
+    CygnusCustomTabsRelationType? relation,
     Uri? requestedOrigin,
     bool result,
   ) {

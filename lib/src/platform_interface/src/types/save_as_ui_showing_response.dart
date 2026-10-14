@@ -5,9 +5,9 @@ import 'enum_method.dart';
 
 part 'save_as_ui_showing_response.g.dart';
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onSaveAsUIShowing] event.
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onSaveAsUIShowing] event.
 @ExchangeableObject()
-class SaveAsUIShowingResponse_ {
+class CygnusSaveAsUIShowingResponse_ {
   ///Whether to cancel the Save As action.
   bool? cancel;
 
@@ -21,9 +21,9 @@ class SaveAsUIShowingResponse_ {
   bool? allowReplace;
 
   ///The save-as kind for the operation.
-  SaveAsKind_? kind;
+  CygnusSaveAsKind_? kind;
 
-  SaveAsUIShowingResponse_({
+  CygnusSaveAsUIShowingResponse_({
     this.cancel,
     this.suppressDefaultDialog,
     this.saveAsFilePath,

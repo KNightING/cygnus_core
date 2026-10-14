@@ -6,24 +6,24 @@ part of 'print_job_state.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class representing the state of a [PlatformPrintJobController].
-class PrintJobState {
+///Class representing the state of a [CygnusPlatformPrintJobController].
+class CygnusPrintJobState {
   final int _value;
   final int? _nativeValue;
-  const PrintJobState._internal(this._value, this._nativeValue);
+  const CygnusPrintJobState._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory PrintJobState._internalMultiPlatform(
+  factory CygnusPrintJobState._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => PrintJobState._internal(value, nativeValue());
+  ) => CygnusPrintJobState._internal(value, nativeValue());
 
   ///Print job state: The print job is blocked.
   ///
   ///Next valid states: [FAILED], [CANCELED], [STARTED].
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - PrintJobInfo.STATE_BLOCKED](https://developer.android.com/reference/android/print/PrintJobInfo#STATE_BLOCKED))
-  static final BLOCKED = PrintJobState._internalMultiPlatform(4, () {
+  ///- Android WebView ([Official API - CygnusPrintJobInfo.STATE_BLOCKED](https://developer.android.com/reference/android/print/CygnusPrintJobInfo#STATE_BLOCKED))
+  static final BLOCKED = CygnusPrintJobState._internalMultiPlatform(4, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return 4;
@@ -38,10 +38,10 @@ class PrintJobState {
   ///Next valid states: None.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - PrintJobInfo.STATE_CANCELED](https://developer.android.com/reference/android/print/PrintJobInfo#STATE_CANCELED))
+  ///- Android WebView ([Official API - CygnusPrintJobInfo.STATE_CANCELED](https://developer.android.com/reference/android/print/CygnusPrintJobInfo#STATE_CANCELED))
   ///- iOS WKWebView
   ///- macOS WKWebView
-  static final CANCELED = PrintJobState._internalMultiPlatform(7, () {
+  static final CANCELED = CygnusPrintJobState._internalMultiPlatform(7, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return 7;
@@ -60,10 +60,10 @@ class PrintJobState {
   ///Next valid states: None.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - PrintJobInfo.STATE_COMPLETED](https://developer.android.com/reference/android/print/PrintJobInfo#STATE_COMPLETED))
+  ///- Android WebView ([Official API - CygnusPrintJobInfo.STATE_COMPLETED](https://developer.android.com/reference/android/print/CygnusPrintJobInfo#STATE_COMPLETED))
   ///- iOS WKWebView
   ///- macOS WKWebView
-  static final COMPLETED = PrintJobState._internalMultiPlatform(5, () {
+  static final COMPLETED = CygnusPrintJobState._internalMultiPlatform(5, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return 5;
@@ -82,10 +82,10 @@ class PrintJobState {
   ///Next valid states: [QUEUED].
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - PrintJobInfo.STATE_CREATED](https://developer.android.com/reference/android/print/PrintJobInfo#STATE_CREATED))
+  ///- Android WebView ([Official API - CygnusPrintJobInfo.STATE_CREATED](https://developer.android.com/reference/android/print/CygnusPrintJobInfo#STATE_CREATED))
   ///- iOS WKWebView
   ///- macOS WKWebView
-  static final CREATED = PrintJobState._internalMultiPlatform(1, () {
+  static final CREATED = CygnusPrintJobState._internalMultiPlatform(1, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return 1;
@@ -104,9 +104,9 @@ class PrintJobState {
   ///Next valid states: None.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - PrintJobInfo.STATE_FAILED](https://developer.android.com/reference/android/print/PrintJobInfo#STATE_FAILED))
+  ///- Android WebView ([Official API - CygnusPrintJobInfo.STATE_FAILED](https://developer.android.com/reference/android/print/CygnusPrintJobInfo#STATE_FAILED))
   ///- iOS WKWebView
-  static final FAILED = PrintJobState._internalMultiPlatform(6, () {
+  static final FAILED = CygnusPrintJobState._internalMultiPlatform(6, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return 6;
@@ -123,8 +123,8 @@ class PrintJobState {
   ///Next valid states: [STARTED], [FAILED], [CANCELED].
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - PrintJobInfo.STATE_QUEUED](https://developer.android.com/reference/android/print/PrintJobInfo#STATE_QUEUED))
-  static final QUEUED = PrintJobState._internalMultiPlatform(2, () {
+  ///- Android WebView ([Official API - CygnusPrintJobInfo.STATE_QUEUED](https://developer.android.com/reference/android/print/CygnusPrintJobInfo#STATE_QUEUED))
+  static final QUEUED = CygnusPrintJobState._internalMultiPlatform(2, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return 2;
@@ -139,10 +139,10 @@ class PrintJobState {
   ///Next valid states: [COMPLETED], [FAILED], [CANCELED], [BLOCKED].
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - PrintJobInfo.STATE_STARTED](https://developer.android.com/reference/android/print/PrintJobInfo#STATE_STARTED))
+  ///- Android WebView ([Official API - CygnusPrintJobInfo.STATE_STARTED](https://developer.android.com/reference/android/print/CygnusPrintJobInfo#STATE_STARTED))
   ///- iOS WKWebView
   ///- macOS WKWebView
-  static final STARTED = PrintJobState._internalMultiPlatform(3, () {
+  static final STARTED = CygnusPrintJobState._internalMultiPlatform(3, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return 3;
@@ -156,22 +156,22 @@ class PrintJobState {
     return null;
   });
 
-  ///Set of all values of [PrintJobState].
-  static final Set<PrintJobState> values = [
-    PrintJobState.BLOCKED,
-    PrintJobState.CANCELED,
-    PrintJobState.COMPLETED,
-    PrintJobState.CREATED,
-    PrintJobState.FAILED,
-    PrintJobState.QUEUED,
-    PrintJobState.STARTED,
+  ///Set of all values of [CygnusPrintJobState].
+  static final Set<CygnusPrintJobState> values = [
+    CygnusPrintJobState.BLOCKED,
+    CygnusPrintJobState.CANCELED,
+    CygnusPrintJobState.COMPLETED,
+    CygnusPrintJobState.CREATED,
+    CygnusPrintJobState.FAILED,
+    CygnusPrintJobState.QUEUED,
+    CygnusPrintJobState.STARTED,
   ].toSet();
 
-  ///Gets a possible [PrintJobState] instance from [int] value.
-  static PrintJobState? fromValue(int? value) {
+  ///Gets a possible [CygnusPrintJobState] instance from [int] value.
+  static CygnusPrintJobState? fromValue(int? value) {
     if (value != null) {
       try {
-        return PrintJobState.values.firstWhere(
+        return CygnusPrintJobState.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -181,11 +181,11 @@ class PrintJobState {
     return null;
   }
 
-  ///Gets a possible [PrintJobState] instance from a native value.
-  static PrintJobState? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusPrintJobState] instance from a native value.
+  static CygnusPrintJobState? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return PrintJobState.values.firstWhere(
+        return CygnusPrintJobState.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -195,15 +195,15 @@ class PrintJobState {
     return null;
   }
 
-  /// Gets a possible [PrintJobState] instance value with name [name].
+  /// Gets a possible [CygnusPrintJobState] instance value with name [name].
   ///
-  /// Goes through [PrintJobState.values] looking for a value with
-  /// name [name], as reported by [PrintJobState.name].
+  /// Goes through [CygnusPrintJobState.values] looking for a value with
+  /// name [name], as reported by [CygnusPrintJobState.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static PrintJobState? byName(String? name) {
+  static CygnusPrintJobState? byName(String? name) {
     if (name != null) {
       try {
-        return PrintJobState.values.firstWhere(
+        return CygnusPrintJobState.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -213,7 +213,7 @@ class PrintJobState {
     return null;
   }
 
-  /// Creates a map from the names of [PrintJobState] values to the values.
+  /// Creates a map from the names of [CygnusPrintJobState] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -221,9 +221,10 @@ class PrintJobState {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, PrintJobState> asNameMap() => <String, PrintJobState>{
-    for (final value in PrintJobState.values) value.name(): value,
-  };
+  static Map<String, CygnusPrintJobState> asNameMap() =>
+      <String, CygnusPrintJobState>{
+        for (final value in CygnusPrintJobState.values) value.name(): value,
+      };
 
   ///Gets [int] value.
   int toValue() => _value;

@@ -7,14 +7,14 @@ import 'enum_method.dart';
 
 part 'favicon_changed_request.g.dart';
 
-///Class that represents the request used by the [PlatformWebViewCreationParams.onFaviconChanged] event.
+///Class that represents the request used by the [CygnusPlatformWebViewCreationParams.onFaviconChanged] event.
 @ExchangeableObject()
-class FaviconChangedRequest_ {
+class CygnusFaviconChangedRequest_ {
   ///The favicon URL for the current page, if available.
-  WebUri? url;
+  CygnusWebUri? url;
 
   ///The favicon bytes for the current page, if available.
   Uint8List? icon;
 
-  FaviconChangedRequest_({this.url, this.icon});
+  CygnusFaviconChangedRequest_({this.url, this.icon});
 }

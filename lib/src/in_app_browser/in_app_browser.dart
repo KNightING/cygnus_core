@@ -13,24 +13,24 @@ import '../pull_to_refresh/main.dart';
 import '../in_app_webview/in_app_webview_controller.dart';
 import '../webview_environment/webview_environment.dart';
 
-///{@macro cygnus_core.PlatformInAppBrowser}
+///{@macro cygnus_core.CygnusPlatformBrowser}
 ///
-///{@macro cygnus_core.PlatformInAppBrowser.supported_platforms}
-class InAppBrowser implements PlatformInAppBrowserEvents {
-  ///Constructs a [InAppBrowser].
+///{@macro cygnus_core.CygnusPlatformBrowser.supported_platforms}
+class CygnusBrowser implements CygnusPlatformBrowserEvents {
+  ///Constructs a [CygnusBrowser].
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser}
+  ///{@macro cygnus_core.CygnusPlatformBrowser}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.supported_platforms}
-  InAppBrowser({
-    ContextMenu? contextMenu,
-    PullToRefreshController? pullToRefreshController,
-    FindInteractionController? findInteractionController,
-    UnmodifiableListView<UserScript>? initialUserScripts,
+  ///{@macro cygnus_core.CygnusPlatformBrowser.supported_platforms}
+  CygnusBrowser({
+    CygnusContextMenu? contextMenu,
+    CygnusPullToRefreshController? pullToRefreshController,
+    CygnusFindInteractionController? findInteractionController,
+    UnmodifiableListView<CygnusUserScript>? initialUserScripts,
     int? windowId,
-    WebViewEnvironment? webViewEnvironment,
+    CygnusWebViewEnvironment? webViewEnvironment,
   }) : this.fromPlatformCreationParams(
-         PlatformInAppBrowserCreationParams(
+         CygnusPlatformBrowserCreationParams(
            contextMenu: contextMenu,
            pullToRefreshController: pullToRefreshController?.platform,
            findInteractionController: findInteractionController?.platform,
@@ -40,89 +40,89 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
          ),
        );
 
-  /// Constructs a [InAppBrowser] from creation params for a specific
+  /// Constructs a [CygnusBrowser] from creation params for a specific
   /// platform.
-  InAppBrowser.fromPlatformCreationParams(
-    PlatformInAppBrowserCreationParams params,
-  ) : this.fromPlatform(PlatformInAppBrowser(params));
+  CygnusBrowser.fromPlatformCreationParams(
+    CygnusPlatformBrowserCreationParams params,
+  ) : this.fromPlatform(CygnusPlatformBrowser(params));
 
-  /// Constructs a [InAppBrowser] from a specific platform
+  /// Constructs a [CygnusBrowser] from a specific platform
   /// implementation.
-  InAppBrowser.fromPlatform(this.platform) {
+  CygnusBrowser.fromPlatform(this.platform) {
     this.platform.eventHandler = this;
   }
 
-  /// Implementation of [PlatformInAppBrowser] for the current platform.
-  final PlatformInAppBrowser platform;
+  /// Implementation of [CygnusPlatformBrowser] for the current platform.
+  final CygnusPlatformBrowser platform;
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.id}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.id}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.id.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.id.supported_platforms}
   String get id => platform.id;
 
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.contextMenu}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.contextMenu}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.contextMenu.supported_platforms}
-  ContextMenu? get contextMenu => platform.contextMenu;
+  ///{@macro cygnus_core.CygnusPlatformBrowser.contextMenu.supported_platforms}
+  CygnusContextMenu? get contextMenu => platform.contextMenu;
 
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.pullToRefreshController}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.pullToRefreshController}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.pullToRefreshController.supported_platforms}
-  PullToRefreshController? get pullToRefreshController {
+  ///{@macro cygnus_core.CygnusPlatformBrowser.pullToRefreshController.supported_platforms}
+  CygnusPullToRefreshController? get pullToRefreshController {
     final pullToRefreshControllerPlatform = platform.pullToRefreshController;
     if (pullToRefreshControllerPlatform == null) {
       return null;
     }
-    return PullToRefreshController.fromPlatform(
+    return CygnusPullToRefreshController.fromPlatform(
       platform: pullToRefreshControllerPlatform,
     );
   }
 
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.findInteractionController}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.findInteractionController}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.findInteractionController.supported_platforms}
-  FindInteractionController? get findInteractionController {
+  ///{@macro cygnus_core.CygnusPlatformBrowser.findInteractionController.supported_platforms}
+  CygnusFindInteractionController? get findInteractionController {
     final findInteractionControllerPlatform =
         platform.findInteractionController;
     if (findInteractionControllerPlatform == null) {
       return null;
     }
-    return FindInteractionController.fromPlatform(
+    return CygnusFindInteractionController.fromPlatform(
       platform: findInteractionControllerPlatform,
     );
   }
 
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.initialUserScripts}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.initialUserScripts}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.initialUserScripts.supported_platforms}
-  UnmodifiableListView<UserScript>? get initialUserScripts =>
+  ///{@macro cygnus_core.CygnusPlatformBrowser.initialUserScripts.supported_platforms}
+  UnmodifiableListView<CygnusUserScript>? get initialUserScripts =>
       platform.initialUserScripts;
 
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.windowId}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.windowId}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.windowId.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.windowId.supported_platforms}
   int? get windowId => platform.windowId;
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.webViewController}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.webViewController}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.webViewController.supported_platforms}
-  InAppWebViewController? get webViewController {
+  ///{@macro cygnus_core.CygnusPlatformBrowser.webViewController.supported_platforms}
+  CygnusWebViewController? get webViewController {
     final webViewControllerPlatform = platform.webViewController;
     if (webViewControllerPlatform == null) {
       return null;
     }
-    return InAppWebViewController.fromPlatform(
+    return CygnusWebViewController.fromPlatform(
       platform: webViewControllerPlatform,
     );
   }
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.openUrlRequest}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.openUrlRequest}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.openUrlRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.openUrlRequest.supported_platforms}
   Future<void> openUrlRequest({
-    required URLRequest urlRequest,
-    @Deprecated('Use settings instead') InAppBrowserClassOptions? options,
-    InAppBrowserClassSettings? settings,
+    required CygnusURLRequest urlRequest,
+    @Deprecated('Use settings instead') CygnusBrowserClassOptions? options,
+    CygnusBrowserClassSettings? settings,
   }) {
     this.platform.eventHandler = this;
     return platform.openUrlRequest(
@@ -132,13 +132,13 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
     );
   }
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.openFile}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.openFile}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.openFile.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.openFile.supported_platforms}
   Future<void> openFile({
     required String assetFilePath,
-    @Deprecated('Use settings instead') InAppBrowserClassOptions? options,
-    InAppBrowserClassSettings? settings,
+    @Deprecated('Use settings instead') CygnusBrowserClassOptions? options,
+    CygnusBrowserClassSettings? settings,
   }) {
     this.platform.eventHandler = this;
     return platform.openFile(
@@ -148,18 +148,18 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
     );
   }
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.openData}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.openData}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.openData.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.openData.supported_platforms}
   Future<void> openData({
     required String data,
     String mimeType = "text/html",
     String encoding = "utf8",
-    WebUri? baseUrl,
+    CygnusWebUri? baseUrl,
     @Deprecated("Use historyUrl instead") Uri? androidHistoryUrl,
-    WebUri? historyUrl,
-    @Deprecated('Use settings instead') InAppBrowserClassOptions? options,
-    InAppBrowserClassSettings? settings,
+    CygnusWebUri? historyUrl,
+    @Deprecated('Use settings instead') CygnusBrowserClassOptions? options,
+    CygnusBrowserClassSettings? settings,
   }) {
     this.platform.eventHandler = this;
     return platform.openData(
@@ -174,106 +174,106 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
     );
   }
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.openWithSystemBrowser}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.openWithSystemBrowser}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.openWithSystemBrowser.supported_platforms}
-  static Future<void> openWithSystemBrowser({required WebUri url}) =>
-      PlatformInAppBrowser.static().openWithSystemBrowser(url: url);
+  ///{@macro cygnus_core.CygnusPlatformBrowser.openWithSystemBrowser.supported_platforms}
+  static Future<void> openWithSystemBrowser({required CygnusWebUri url}) =>
+      CygnusPlatformBrowser.static().openWithSystemBrowser(url: url);
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.addMenuItem}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.addMenuItem}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.addMenuItem.supported_platforms}
-  void addMenuItem(InAppBrowserMenuItem menuItem) =>
+  ///{@macro cygnus_core.CygnusPlatformBrowser.addMenuItem.supported_platforms}
+  void addMenuItem(CygnusBrowserMenuItem menuItem) =>
       platform.addMenuItem(menuItem);
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.addMenuItems}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.addMenuItems}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.addMenuItems.supported_platforms}
-  void addMenuItems(List<InAppBrowserMenuItem> menuItems) =>
+  ///{@macro cygnus_core.CygnusPlatformBrowser.addMenuItems.supported_platforms}
+  void addMenuItems(List<CygnusBrowserMenuItem> menuItems) =>
       platform.addMenuItems(menuItems);
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.removeMenuItem}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.removeMenuItem}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.removeMenuItem.supported_platforms}
-  bool removeMenuItem(InAppBrowserMenuItem menuItem) =>
+  ///{@macro cygnus_core.CygnusPlatformBrowser.removeMenuItem.supported_platforms}
+  bool removeMenuItem(CygnusBrowserMenuItem menuItem) =>
       platform.removeMenuItem(menuItem);
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.removeMenuItems}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.removeMenuItems}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.removeMenuItems.supported_platforms}
-  void removeMenuItems(List<InAppBrowserMenuItem> menuItems) =>
+  ///{@macro cygnus_core.CygnusPlatformBrowser.removeMenuItems.supported_platforms}
+  void removeMenuItems(List<CygnusBrowserMenuItem> menuItems) =>
       platform.removeMenuItems(menuItems);
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.removeAllMenuItem}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.removeAllMenuItem}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.removeAllMenuItem.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.removeAllMenuItem.supported_platforms}
   void removeAllMenuItem() => platform.removeAllMenuItem();
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.hasMenuItem}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.hasMenuItem}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.hasMenuItem.supported_platforms}
-  bool hasMenuItem(InAppBrowserMenuItem menuItem) =>
+  ///{@macro cygnus_core.CygnusPlatformBrowser.hasMenuItem.supported_platforms}
+  bool hasMenuItem(CygnusBrowserMenuItem menuItem) =>
       platform.hasMenuItem(menuItem);
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.show}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.show}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.show.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.show.supported_platforms}
   Future<void> show() => platform.show();
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.hide}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.hide}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.hide.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.hide.supported_platforms}
   Future<void> hide() => platform.hide();
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.close}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.close}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.close.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.close.supported_platforms}
   Future<void> close() => platform.close();
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.isHidden}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.isHidden}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.isHidden.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.isHidden.supported_platforms}
   Future<bool> isHidden() => platform.isHidden();
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.setOptions}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.setOptions}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.setOptions.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.setOptions.supported_platforms}
   @Deprecated('Use setSettings instead')
-  Future<void> setOptions({required InAppBrowserClassOptions options}) =>
+  Future<void> setOptions({required CygnusBrowserClassOptions options}) =>
       platform.setOptions(options: options);
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.getOptions}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.getOptions}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.getOptions.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.getOptions.supported_platforms}
   @Deprecated('Use getSettings instead')
-  Future<InAppBrowserClassOptions?> getOptions() => platform.getOptions();
+  Future<CygnusBrowserClassOptions?> getOptions() => platform.getOptions();
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.setSettings}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.setSettings}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.setSettings.supported_platforms}
-  Future<void> setSettings({required InAppBrowserClassSettings settings}) =>
+  ///{@macro cygnus_core.CygnusPlatformBrowser.setSettings.supported_platforms}
+  Future<void> setSettings({required CygnusBrowserClassSettings settings}) =>
       platform.setSettings(settings: settings);
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.getSettings}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.getSettings}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.getSettings.supported_platforms}
-  Future<InAppBrowserClassSettings?> getSettings() => platform.getSettings();
+  ///{@macro cygnus_core.CygnusPlatformBrowser.getSettings.supported_platforms}
+  Future<CygnusBrowserClassSettings?> getSettings() => platform.getSettings();
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.isOpened}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.isOpened}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.isOpened.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.isOpened.supported_platforms}
   bool isOpened() => platform.isOpened();
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.dispose}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.dispose}
   ///
-  ///{@macro cygnus_core.PlatformInAppBrowser.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.dispose.supported_platforms}
   @mustCallSuper
   void dispose() => platform.dispose();
 
   ///Use [onFormResubmission] instead.
   @Deprecated('Use onFormResubmission instead')
   @override
-  FutureOr<FormResubmissionAction?>? androidOnFormResubmission(Uri? url) {
+  FutureOr<CygnusFormResubmissionAction?>? androidOnFormResubmission(Uri? url) {
     return null;
   }
 
@@ -285,7 +285,7 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   ///Use [onGeolocationPermissionsShowPrompt] instead.
   @Deprecated("Use onGeolocationPermissionsShowPrompt instead")
   @override
-  FutureOr<GeolocationPermissionShowPromptResponse?>?
+  FutureOr<CygnusGeolocationPermissionShowPromptResponse?>?
   androidOnGeolocationPermissionsShowPrompt(String origin) {
     return null;
   }
@@ -293,8 +293,8 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   ///Use [onJsBeforeUnload] instead.
   @Deprecated('Use onJsBeforeUnload instead')
   @override
-  FutureOr<JsBeforeUnloadResponse?>? androidOnJsBeforeUnload(
-    JsBeforeUnloadRequest jsBeforeUnloadRequest,
+  FutureOr<CygnusJsBeforeUnloadResponse?>? androidOnJsBeforeUnload(
+    CygnusJsBeforeUnloadRequest jsBeforeUnloadRequest,
   ) {
     return null;
   }
@@ -302,7 +302,7 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   ///Use [onPermissionRequest] instead.
   @Deprecated("Use onPermissionRequest instead")
   @override
-  FutureOr<PermissionRequestResponse?>? androidOnPermissionRequest(
+  FutureOr<CygnusPermissionRequestResponse?>? androidOnPermissionRequest(
     String origin,
     List<String> resources,
   ) {
@@ -317,7 +317,7 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   ///Use [onReceivedLoginRequest] instead.
   @Deprecated('Use onReceivedLoginRequest instead')
   @override
-  void androidOnReceivedLoginRequest(LoginRequest loginRequest) {}
+  void androidOnReceivedLoginRequest(CygnusLoginRequest loginRequest) {}
 
   ///Use [onReceivedTouchIconUrl] instead.
   @Deprecated('Use onReceivedTouchIconUrl instead')
@@ -327,12 +327,12 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   ///Use [onRenderProcessGone] instead.
   @Deprecated("Use onRenderProcessGone instead")
   @override
-  void androidOnRenderProcessGone(RenderProcessGoneDetail detail) {}
+  void androidOnRenderProcessGone(CygnusRenderProcessGoneDetail detail) {}
 
   ///Use [onRenderProcessResponsive] instead.
   @Deprecated("Use onRenderProcessResponsive instead")
   @override
-  FutureOr<WebViewRenderProcessAction?>? androidOnRenderProcessResponsive(
+  FutureOr<CygnusWebViewRenderProcessAction?>? androidOnRenderProcessResponsive(
     Uri? url,
   ) {
     return null;
@@ -341,7 +341,7 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   ///Use [onRenderProcessUnresponsive] instead.
   @Deprecated("Use onRenderProcessUnresponsive instead")
   @override
-  FutureOr<WebViewRenderProcessAction?>? androidOnRenderProcessUnresponsive(
+  FutureOr<CygnusWebViewRenderProcessAction?>? androidOnRenderProcessUnresponsive(
     Uri? url,
   ) {
     return null;
@@ -350,9 +350,9 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   ///Use [onSafeBrowsingHit] instead.
   @Deprecated("Use onSafeBrowsingHit instead")
   @override
-  FutureOr<SafeBrowsingResponse?>? androidOnSafeBrowsingHit(
+  FutureOr<CygnusSafeBrowsingResponse?>? androidOnSafeBrowsingHit(
     Uri url,
-    SafeBrowsingThreat? threatType,
+    CygnusSafeBrowsingThreat? threatType,
   ) {
     return null;
   }
@@ -365,8 +365,8 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   ///Use [shouldInterceptRequest] instead.
   @Deprecated("Use shouldInterceptRequest instead")
   @override
-  FutureOr<WebResourceResponse?>? androidShouldInterceptRequest(
-    WebResourceRequest request,
+  FutureOr<CygnusWebResourceResponse?>? androidShouldInterceptRequest(
+    CygnusWebResourceRequest request,
   ) {
     return null;
   }
@@ -379,8 +379,8 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   ///Use [onNavigationResponse] instead.
   @Deprecated('Use onNavigationResponse instead')
   @override
-  FutureOr<IOSNavigationResponseAction?>? iosOnNavigationResponse(
-    IOSWKNavigationResponse navigationResponse,
+  FutureOr<CygnusIOSNavigationResponseAction?>? iosOnNavigationResponse(
+    CygnusIOSWKNavigationResponse navigationResponse,
   ) {
     return null;
   }
@@ -393,20 +393,20 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   ///Use [shouldAllowDeprecatedTLS] instead.
   @Deprecated('Use shouldAllowDeprecatedTLS instead')
   @override
-  FutureOr<IOSShouldAllowDeprecatedTLSAction?>? iosShouldAllowDeprecatedTLS(
-    URLAuthenticationChallenge challenge,
+  FutureOr<CygnusIOSShouldAllowDeprecatedTLSAction?>? iosShouldAllowDeprecatedTLS(
+    CygnusURLAuthenticationChallenge challenge,
   ) {
     return null;
   }
 
   @override
-  FutureOr<AjaxRequestAction?>? onAjaxProgress(AjaxRequest ajaxRequest) {
+  FutureOr<CygnusAjaxRequestAction?>? onAjaxProgress(CygnusAjaxRequest ajaxRequest) {
     return null;
   }
 
   @override
-  FutureOr<AjaxRequestAction?>? onAjaxReadyStateChange(
-    AjaxRequest ajaxRequest,
+  FutureOr<CygnusAjaxRequestAction?>? onAjaxReadyStateChange(
+    CygnusAjaxRequest ajaxRequest,
   ) {
     return null;
   }
@@ -416,21 +416,21 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
 
   @override
   void onCameraCaptureStateChanged(
-    MediaCaptureState? oldState,
-    MediaCaptureState? newState,
+    CygnusMediaCaptureState? oldState,
+    CygnusMediaCaptureState? newState,
   ) {}
 
   @override
   void onCloseWindow() {}
 
   @override
-  void onConsoleMessage(ConsoleMessage consoleMessage) {}
+  void onConsoleMessage(CygnusConsoleMessage consoleMessage) {}
 
   @override
   void onContentSizeChanged(Size oldContentSize, Size newContentSize) {}
 
   @override
-  FutureOr<bool?>? onCreateWindow(CreateWindowAction createWindowAction) {
+  FutureOr<bool?>? onCreateWindow(CygnusCreateWindowAction createWindowAction) {
     return null;
   }
 
@@ -445,11 +445,11 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   ///Use [onDownloadStarting] instead
   @Deprecated('Use onDownloadStarting instead')
   @override
-  void onDownloadStartRequest(DownloadStartRequest downloadStartRequest) {}
+  void onDownloadStartRequest(CygnusDownloadStartRequest downloadStartRequest) {}
 
   @override
-  FutureOr<DownloadStartResponse?>? onDownloadStarting(
-    DownloadStartRequest downloadStartRequest,
+  FutureOr<CygnusDownloadStartResponse?>? onDownloadStarting(
+    CygnusDownloadStartRequest downloadStartRequest,
   ) {
     return null;
   }
@@ -464,13 +464,13 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   void onExitFullscreen() {}
 
   @override
-  void onContentLoading(WebUri? url) {}
+  void onContentLoading(CygnusWebUri? url) {}
 
   @override
-  void onDOMContentLoaded(WebUri? url) {}
+  void onDOMContentLoaded(CygnusWebUri? url) {}
 
-  ///Use [FindInteractionController.onFindResultReceived] instead.
-  @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+  ///Use [CygnusFindInteractionController.onFindResultReceived] instead.
+  @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
   @override
   void onFindResultReceived(
     int activeMatchOrdinal,
@@ -479,7 +479,7 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   ) {}
 
   @override
-  FutureOr<FormResubmissionAction?>? onFormResubmission(WebUri? url) {
+  FutureOr<CygnusFormResubmissionAction?>? onFormResubmission(CygnusWebUri? url) {
     return null;
   }
 
@@ -487,30 +487,30 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   void onGeolocationPermissionsHidePrompt() {}
 
   @override
-  FutureOr<GeolocationPermissionShowPromptResponse?>?
+  FutureOr<CygnusGeolocationPermissionShowPromptResponse?>?
   onGeolocationPermissionsShowPrompt(String origin) {
     return null;
   }
 
   @override
-  FutureOr<JsAlertResponse?>? onJsAlert(JsAlertRequest jsAlertRequest) {
+  FutureOr<CygnusJsAlertResponse?>? onJsAlert(CygnusJsAlertRequest jsAlertRequest) {
     return null;
   }
 
   @override
-  FutureOr<JsBeforeUnloadResponse?>? onJsBeforeUnload(
-    JsBeforeUnloadRequest jsBeforeUnloadRequest,
+  FutureOr<CygnusJsBeforeUnloadResponse?>? onJsBeforeUnload(
+    CygnusJsBeforeUnloadRequest jsBeforeUnloadRequest,
   ) {
     return null;
   }
 
   @override
-  FutureOr<JsConfirmResponse?>? onJsConfirm(JsConfirmRequest jsConfirmRequest) {
+  FutureOr<CygnusJsConfirmResponse?>? onJsConfirm(CygnusJsConfirmRequest jsConfirmRequest) {
     return null;
   }
 
   @override
-  FutureOr<JsPromptResponse?>? onJsPrompt(JsPromptRequest jsPromptRequest) {
+  FutureOr<CygnusJsPromptResponse?>? onJsPrompt(CygnusJsPromptRequest jsPromptRequest) {
     return null;
   }
 
@@ -525,40 +525,40 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   void onLoadHttpError(Uri? url, int statusCode, String description) {}
 
   @override
-  void onLoadResource(LoadedResource resource) {}
+  void onLoadResource(CygnusLoadedResource resource) {}
 
   ///Use [onLoadResourceWithCustomScheme] instead.
   @Deprecated('Use onLoadResourceWithCustomScheme instead')
   @override
-  FutureOr<CustomSchemeResponse?>? onLoadResourceCustomScheme(Uri url) {
+  FutureOr<CygnusCustomSchemeResponse?>? onLoadResourceCustomScheme(Uri url) {
     return null;
   }
 
   @override
-  FutureOr<CustomSchemeResponse?>? onLoadResourceWithCustomScheme(
-    WebResourceRequest request,
+  FutureOr<CygnusCustomSchemeResponse?>? onLoadResourceWithCustomScheme(
+    CygnusWebResourceRequest request,
   ) {
     return null;
   }
 
   @override
-  void onLoadStart(WebUri? url) {}
+  void onLoadStart(CygnusWebUri? url) {}
 
   @override
-  void onLoadStop(WebUri? url) {}
+  void onLoadStop(CygnusWebUri? url) {}
 
   @override
-  void onLongPressHitTestResult(InAppWebViewHitTestResult hitTestResult) {}
+  void onLongPressHitTestResult(CygnusWebViewHitTestResult hitTestResult) {}
 
   @override
   void onMicrophoneCaptureStateChanged(
-    MediaCaptureState? oldState,
-    MediaCaptureState? newState,
+    CygnusMediaCaptureState? oldState,
+    CygnusMediaCaptureState? newState,
   ) {}
 
   @override
-  FutureOr<NavigationResponseAction?>? onNavigationResponse(
-    NavigationResponse navigationResponse,
+  FutureOr<CygnusNavigationResponseAction?>? onNavigationResponse(
+    CygnusNavigationResponse navigationResponse,
   ) {
     return null;
   }
@@ -567,17 +567,17 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   void onOverScrolled(int x, int y, bool clampedX, bool clampedY) {}
 
   @override
-  void onPageCommitVisible(WebUri? url) {}
+  void onPageCommitVisible(CygnusWebUri? url) {}
 
   @override
-  FutureOr<PermissionResponse?>? onPermissionRequest(
-    PermissionRequest permissionRequest,
+  FutureOr<CygnusPermissionResponse?>? onPermissionRequest(
+    CygnusPermissionRequest permissionRequest,
   ) {
     return null;
   }
 
   @override
-  void onPermissionRequestCanceled(PermissionRequest permissionRequest) {}
+  void onPermissionRequestCanceled(CygnusPermissionRequest permissionRequest) {}
 
   ///Use [onPrintRequest] instead
   @Deprecated("Use onPrintRequest instead")
@@ -586,8 +586,8 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
 
   @override
   FutureOr<bool?>? onPrintRequest(
-    WebUri? url,
-    PlatformPrintJobController? printJobController,
+    CygnusWebUri? url,
+    CygnusPlatformPrintJobController? printJobController,
   ) {
     return null;
   }
@@ -596,26 +596,26 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   void onProgressChanged(int progress) {}
 
   @override
-  FutureOr<ClientCertResponse?>? onReceivedClientCertRequest(
-    ClientCertChallenge challenge,
+  FutureOr<CygnusClientCertResponse?>? onReceivedClientCertRequest(
+    CygnusClientCertChallenge challenge,
   ) {
     return null;
   }
 
   @override
-  void onReceivedError(WebResourceRequest request, WebResourceError error) {}
+  void onReceivedError(CygnusWebResourceRequest request, CygnusWebResourceError error) {}
 
   @override
-  FutureOr<HttpAuthResponse?>? onReceivedHttpAuthRequest(
-    HttpAuthenticationChallenge challenge,
+  FutureOr<CygnusHttpAuthResponse?>? onReceivedHttpAuthRequest(
+    CygnusHttpAuthenticationChallenge challenge,
   ) {
     return null;
   }
 
   @override
   void onReceivedHttpError(
-    WebResourceRequest request,
-    WebResourceResponse errorResponse,
+    CygnusWebResourceRequest request,
+    CygnusWebResourceResponse errorResponse,
   ) {}
 
   ///Use [onFaviconChanged] instead.
@@ -624,70 +624,70 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   void onReceivedIcon(Uint8List icon) {}
 
   @override
-  void onFaviconChanged(FaviconChangedRequest faviconChangedRequest) {}
+  void onFaviconChanged(CygnusFaviconChangedRequest faviconChangedRequest) {}
 
   @override
-  void onReceivedLoginRequest(LoginRequest loginRequest) {}
+  void onReceivedLoginRequest(CygnusLoginRequest loginRequest) {}
 
   @override
-  FutureOr<ServerTrustAuthResponse?>? onReceivedServerTrustAuthRequest(
-    ServerTrustChallenge challenge,
+  FutureOr<CygnusServerTrustAuthResponse?>? onReceivedServerTrustAuthRequest(
+    CygnusServerTrustChallenge challenge,
   ) {
     return null;
   }
 
   @override
-  void onReceivedTouchIconUrl(WebUri url, bool precomposed) {}
+  void onReceivedTouchIconUrl(CygnusWebUri url, bool precomposed) {}
 
   @override
-  FutureOr<NotificationReceivedResponse?>? onNotificationReceived(
-    NotificationReceivedRequest request,
+  FutureOr<CygnusNotificationReceivedResponse?>? onNotificationReceived(
+    CygnusNotificationReceivedRequest request,
   ) {
     return null;
   }
 
   @override
-  FutureOr<SaveAsUIShowingResponse?>? onSaveAsUIShowing(
-    SaveAsUIShowingRequest request,
+  FutureOr<CygnusSaveAsUIShowingResponse?>? onSaveAsUIShowing(
+    CygnusSaveAsUIShowingRequest request,
   ) {
     return null;
   }
 
   @override
-  FutureOr<SaveFileSecurityCheckStartingResponse?>?
+  FutureOr<CygnusSaveFileSecurityCheckStartingResponse?>?
   onSaveFileSecurityCheckStarting(
-    SaveFileSecurityCheckStartingRequest request,
+    CygnusSaveFileSecurityCheckStartingRequest request,
   ) {
     return null;
   }
 
   @override
-  FutureOr<ScreenCaptureStartingResponse?>? onScreenCaptureStarting(
-    ScreenCaptureStartingRequest request,
+  FutureOr<CygnusScreenCaptureStartingResponse?>? onScreenCaptureStarting(
+    CygnusScreenCaptureStartingRequest request,
   ) {
     return null;
   }
 
   @override
-  FutureOr<LaunchingExternalUriSchemeResponse?>? onLaunchingExternalUriScheme(
-    LaunchingExternalUriSchemeRequest request,
+  FutureOr<CygnusLaunchingExternalUriSchemeResponse?>? onLaunchingExternalUriScheme(
+    CygnusLaunchingExternalUriSchemeRequest request,
   ) {
     return null;
   }
 
   @override
-  void onRenderProcessGone(RenderProcessGoneDetail detail) {}
+  void onRenderProcessGone(CygnusRenderProcessGoneDetail detail) {}
 
   @override
-  FutureOr<WebViewRenderProcessAction?>? onRenderProcessResponsive(
-    WebUri? url,
+  FutureOr<CygnusWebViewRenderProcessAction?>? onRenderProcessResponsive(
+    CygnusWebUri? url,
   ) {
     return null;
   }
 
   @override
-  FutureOr<WebViewRenderProcessAction?>? onRenderProcessUnresponsive(
-    WebUri? url,
+  FutureOr<CygnusWebViewRenderProcessAction?>? onRenderProcessUnresponsive(
+    CygnusWebUri? url,
   ) {
     return null;
   }
@@ -696,9 +696,9 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   void onRequestFocus() {}
 
   @override
-  FutureOr<SafeBrowsingResponse?>? onSafeBrowsingHit(
-    WebUri url,
-    SafeBrowsingThreat? threatType,
+  FutureOr<CygnusSafeBrowsingResponse?>? onSafeBrowsingHit(
+    CygnusWebUri url,
+    CygnusSafeBrowsingThreat? threatType,
   ) {
     return null;
   }
@@ -710,7 +710,7 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   void onTitleChanged(String? title) {}
 
   @override
-  void onUpdateVisitedHistory(WebUri? url, bool? isReload) {}
+  void onUpdateVisitedHistory(CygnusWebUri? url, bool? isReload) {}
 
   @override
   void onWebContentProcessDidTerminate() {}
@@ -725,34 +725,34 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   void onZoomScaleChanged(double oldScale, double newScale) {}
 
   @override
-  FutureOr<ShouldAllowDeprecatedTLSAction?>? shouldAllowDeprecatedTLS(
-    URLAuthenticationChallenge challenge,
+  FutureOr<CygnusShouldAllowDeprecatedTLSAction?>? shouldAllowDeprecatedTLS(
+    CygnusURLAuthenticationChallenge challenge,
   ) {
     return null;
   }
 
   @override
-  FutureOr<AjaxRequest?>? shouldInterceptAjaxRequest(AjaxRequest ajaxRequest) {
+  FutureOr<CygnusAjaxRequest?>? shouldInterceptAjaxRequest(CygnusAjaxRequest ajaxRequest) {
     return null;
   }
 
   @override
-  FutureOr<FetchRequest?>? shouldInterceptFetchRequest(
-    FetchRequest fetchRequest,
+  FutureOr<CygnusFetchRequest?>? shouldInterceptFetchRequest(
+    CygnusFetchRequest fetchRequest,
   ) {
     return null;
   }
 
   @override
-  FutureOr<WebResourceResponse?>? shouldInterceptRequest(
-    WebResourceRequest request,
+  FutureOr<CygnusWebResourceResponse?>? shouldInterceptRequest(
+    CygnusWebResourceRequest request,
   ) {
     return null;
   }
 
   @override
-  FutureOr<NavigationActionPolicy?>? shouldOverrideUrlLoading(
-    NavigationAction navigationAction,
+  FutureOr<CygnusNavigationActionPolicy?>? shouldOverrideUrlLoading(
+    CygnusNavigationAction navigationAction,
   ) {
     return null;
   }
@@ -761,44 +761,44 @@ class InAppBrowser implements PlatformInAppBrowserEvents {
   void onMainWindowWillClose() {}
 
   @override
-  void onProcessFailed(ProcessFailedDetail detail) {}
+  void onProcessFailed(CygnusProcessFailedDetail detail) {}
 
   @override
-  void onAcceleratorKeyPressed(AcceleratorKeyPressedDetail detail) {}
+  void onAcceleratorKeyPressed(CygnusAcceleratorKeyPressedDetail detail) {}
 
   @override
-  FutureOr<ShowFileChooserResponse?> onShowFileChooser(
-    ShowFileChooserRequest request,
+  FutureOr<CygnusShowFileChooserResponse?> onShowFileChooser(
+    CygnusShowFileChooserRequest request,
   ) {
     return null;
   }
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.isClassSupported}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformInAppBrowser.static().isClassSupported(platform: platform);
+      CygnusPlatformBrowser.static().isClassSupported(platform: platform);
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.isPropertySupported}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.isPropertySupported}
   static bool isPropertySupported(
-    PlatformInAppBrowserProperty property, {
+    CygnusPlatformBrowserProperty property, {
     TargetPlatform? platform,
-  }) => PlatformInAppBrowser.static().isPropertySupported(
+  }) => CygnusPlatformBrowser.static().isPropertySupported(
     property,
     platform: platform,
   );
 
-  ///{@macro cygnus_core.PlatformInAppBrowser.isMethodSupported}
+  ///{@macro cygnus_core.CygnusPlatformBrowser.isMethodSupported}
   static bool isMethodSupported(
-    PlatformInAppBrowserMethod property, {
+    CygnusPlatformBrowserMethod property, {
     TargetPlatform? platform,
-  }) => PlatformInAppBrowser.static().isMethodSupported(
+  }) => CygnusPlatformBrowser.static().isMethodSupported(
     property,
     platform: platform,
   );
 
-  ///{@macro cygnus_core.PlatformInAppBrowserEvents.isMethodSupported}
+  ///{@macro cygnus_core.CygnusPlatformBrowserEvents.isMethodSupported}
   static bool isEventMethodSupported(
-    PlatformInAppBrowserEventsMethod method, {
+    CygnusPlatformBrowserEventsMethod method, {
     TargetPlatform? platform,
   }) =>
-      PlatformInAppBrowserEvents.isMethodSupported(method, platform: platform);
+      CygnusPlatformBrowserEvents.isMethodSupported(method, platform: platform);
 }

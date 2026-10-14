@@ -46,7 +46,7 @@ enum StaticMethodType {
   // Process global config methods
   apply,
 
-  // Cookie methods
+  // CygnusCookie methods
   // instance - already defined above, reused
 
   // HTTP auth credential database methods
@@ -59,47 +59,47 @@ enum StaticMethodType {
 /// Enum representing static method class types
 enum StaticClassType {
   inAppWebViewController(
-    InAppWebViewController,
+    CygnusWebViewController,
     'Static methods for WebView controller',
     Icons.web,
   ),
   inAppBrowser(
-    InAppBrowser,
+    CygnusBrowser,
     'Static methods for in-app browser',
     Icons.open_in_browser,
   ),
   chromeSafariBrowser(
-    ChromeSafariBrowser,
+    CygnusChromeSafariBrowser,
     'Static methods for Chrome Custom Tabs / SFSafariViewController',
     Icons.tab,
   ),
   webAuthenticationSession(
-    WebAuthenticationSession,
+    CygnusWebAuthenticationSession,
     'Static methods for web authentication',
     Icons.security,
   ),
   serviceWorkerController(
-    ServiceWorkerController,
+    CygnusServiceWorkerController,
     'Static methods for service worker control',
     Icons.work,
   ),
   webViewFeature(
-    WebViewFeature,
+    CygnusWebViewFeature,
     'Check WebView feature support (Android)',
     Icons.check_circle,
   ),
   processGlobalConfig(
-    ProcessGlobalConfig,
+    CygnusProcessGlobalConfig,
     'Process-level configuration (Android)',
     Icons.settings_applications,
   ),
-  cookieManager(CookieManager, 'Cookie management methods', Icons.cookie),
+  cookieManager(CygnusCookieManager, 'CygnusCookie management methods', Icons.cookie),
   httpAuthCredentialDatabase(
-    HttpAuthCredentialDatabase,
+    CygnusHttpAuthCredentialDatabase,
     'HTTP authentication credential storage',
     Icons.lock,
   ),
-  webStorageManager(WebStorageManager, 'Web storage management', Icons.storage);
+  webStorageManager(CygnusWebStorageManager, 'Web storage management', Icons.storage);
 
   final Type apiType;
   final String description;
@@ -198,41 +198,41 @@ class _StaticMethodTesterWidgetState extends State<StaticMethodTesterWidget> {
           StaticMethodEntry(
             methodType: StaticMethodType.getDefaultUserAgent,
             description: 'Gets the default User-Agent string',
-            classType: InAppWebViewController,
+            classType: CygnusWebViewController,
             execute: (params) async {
-              return await InAppWebViewController.getDefaultUserAgent();
+              return await CygnusWebViewController.getDefaultUserAgent();
             },
           ),
           StaticMethodEntry(
             methodType: StaticMethodType.clearClientCertPreferences,
             description: 'Clears the client certificate preferences',
-            classType: InAppWebViewController,
+            classType: CygnusWebViewController,
             execute: (params) async {
-              await InAppWebViewController.clearClientCertPreferences();
+              await CygnusWebViewController.clearClientCertPreferences();
               return 'Client cert preferences cleared';
             },
           ),
           StaticMethodEntry(
             methodType: StaticMethodType.getSafeBrowsingPrivacyPolicyUrl,
             description: 'Gets the Safe Browsing privacy policy URL',
-            classType: InAppWebViewController,
+            classType: CygnusWebViewController,
             execute: (params) async {
               final url =
-                  await InAppWebViewController.getSafeBrowsingPrivacyPolicyUrl();
+                  await CygnusWebViewController.getSafeBrowsingPrivacyPolicyUrl();
               return url?.toString() ?? 'No URL available';
             },
           ),
           StaticMethodEntry(
             methodType: StaticMethodType.setSafeBrowsingAllowlist,
             description: 'Sets the Safe Browsing allowlist',
-            classType: InAppWebViewController,
+            classType: CygnusWebViewController,
             parameters: {'hosts': 'example.com,test.com'},
             requiredParameters: ['hosts'],
             execute: (params) async {
               final hostsStr = params['hosts']?.toString() ?? '';
               final hosts = hostsStr.split(',').map((h) => h.trim()).toList();
               final result =
-                  await InAppWebViewController.setSafeBrowsingAllowlist(
+                  await CygnusWebViewController.setSafeBrowsingAllowlist(
                     hosts: hosts,
                   );
               return result
@@ -243,10 +243,10 @@ class _StaticMethodTesterWidgetState extends State<StaticMethodTesterWidget> {
           StaticMethodEntry(
             methodType: StaticMethodType.getCurrentWebViewPackage,
             description: 'Gets the current WebView package info',
-            classType: InAppWebViewController,
+            classType: CygnusWebViewController,
             execute: (params) async {
               final pkg =
-                  await InAppWebViewController.getCurrentWebViewPackage();
+                  await CygnusWebViewController.getCurrentWebViewPackage();
               if (pkg == null) return 'No WebView package info';
               return 'Package: ${pkg.packageName}\nVersion: ${pkg.versionName}';
             },
@@ -254,12 +254,12 @@ class _StaticMethodTesterWidgetState extends State<StaticMethodTesterWidget> {
           StaticMethodEntry(
             methodType: StaticMethodType.setWebContentsDebuggingEnabled,
             description: 'Enables or disables WebView debugging',
-            classType: InAppWebViewController,
+            classType: CygnusWebViewController,
             parameters: {'debuggingEnabled': true},
             requiredParameters: ['debuggingEnabled'],
             execute: (params) async {
               final enabled = params['debuggingEnabled'] as bool? ?? true;
-              await InAppWebViewController.setWebContentsDebuggingEnabled(
+              await CygnusWebViewController.setWebContentsDebuggingEnabled(
                 enabled,
               );
               return 'Debugging ${enabled ? "enabled" : "disabled"}';
@@ -268,49 +268,49 @@ class _StaticMethodTesterWidgetState extends State<StaticMethodTesterWidget> {
           StaticMethodEntry(
             methodType: StaticMethodType.getVariationsHeader,
             description: 'Gets the variations header',
-            classType: InAppWebViewController,
+            classType: CygnusWebViewController,
             execute: (params) async {
-              final header = await InAppWebViewController.getVariationsHeader();
+              final header = await CygnusWebViewController.getVariationsHeader();
               return header ?? 'No variations header';
             },
           ),
           StaticMethodEntry(
             methodType: StaticMethodType.isMultiProcessEnabled,
             description: 'Checks if multi-process is enabled',
-            classType: InAppWebViewController,
+            classType: CygnusWebViewController,
             execute: (params) async {
-              return await InAppWebViewController.isMultiProcessEnabled();
+              return await CygnusWebViewController.isMultiProcessEnabled();
             },
           ),
           StaticMethodEntry(
             methodType: StaticMethodType.disableWebView,
             description: 'Disables the WebView',
-            classType: InAppWebViewController,
+            classType: CygnusWebViewController,
             execute: (params) async {
-              await InAppWebViewController.disableWebView();
+              await CygnusWebViewController.disableWebView();
               return 'WebView disabled';
             },
           ),
           StaticMethodEntry(
             methodType: StaticMethodType.handlesURLScheme,
             description: 'Checks if WebView handles a URL scheme',
-            classType: InAppWebViewController,
+            classType: CygnusWebViewController,
             parameters: {'urlScheme': 'https'},
             requiredParameters: ['urlScheme'],
             execute: (params) async {
               final scheme = params['urlScheme']?.toString() ?? 'https';
-              return await InAppWebViewController.handlesURLScheme(scheme);
+              return await CygnusWebViewController.handlesURLScheme(scheme);
             },
           ),
           StaticMethodEntry(
             methodType: StaticMethodType.clearAllCache,
             description: 'Clears all WebView caches',
-            classType: InAppWebViewController,
+            classType: CygnusWebViewController,
             parameters: {'includeDiskFiles': true},
             execute: (params) async {
               final includeDiskFiles =
                   params['includeDiskFiles'] as bool? ?? true;
-              await InAppWebViewController.clearAllCache(
+              await CygnusWebViewController.clearAllCache(
                 includeDiskFiles: includeDiskFiles,
               );
               return 'Cache cleared';
@@ -319,9 +319,9 @@ class _StaticMethodTesterWidgetState extends State<StaticMethodTesterWidget> {
           StaticMethodEntry(
             methodType: StaticMethodType.tRexRunnerHtml,
             description: 'Gets the T-Rex Runner game HTML',
-            classType: InAppWebViewController,
+            classType: CygnusWebViewController,
             execute: (params) async {
-              final html = await InAppWebViewController.tRexRunnerHtml;
+              final html = await CygnusWebViewController.tRexRunnerHtml;
               if (html.length > 200) {
                 return '${html.substring(0, 200)}... (${html.length} chars total)';
               }
@@ -331,9 +331,9 @@ class _StaticMethodTesterWidgetState extends State<StaticMethodTesterWidget> {
           StaticMethodEntry(
             methodType: StaticMethodType.tRexRunnerCss,
             description: 'Gets the T-Rex Runner game CSS',
-            classType: InAppWebViewController,
+            classType: CygnusWebViewController,
             execute: (params) async {
-              final css = await InAppWebViewController.tRexRunnerCss;
+              final css = await CygnusWebViewController.tRexRunnerCss;
               if (css.length > 200) {
                 return '${css.substring(0, 200)}... (${css.length} chars total)';
               }
@@ -350,12 +350,12 @@ class _StaticMethodTesterWidgetState extends State<StaticMethodTesterWidget> {
           StaticMethodEntry(
             methodType: StaticMethodType.openWithSystemBrowser,
             description: 'Opens a URL in the system browser',
-            classType: InAppBrowser,
+            classType: CygnusBrowser,
             parameters: {'url': 'https://flutter.dev'},
             requiredParameters: ['url'],
             execute: (params) async {
               final url = params['url']?.toString() ?? 'https://flutter.dev';
-              await InAppBrowser.openWithSystemBrowser(url: WebUri(url));
+              await CygnusBrowser.openWithSystemBrowser(url: CygnusWebUri(url));
               return 'Opened in system browser';
             },
           ),
@@ -370,50 +370,50 @@ class _StaticMethodTesterWidgetState extends State<StaticMethodTesterWidget> {
             methodType: StaticMethodType.isAvailable,
             description:
                 'Checks if Chrome Custom Tabs / SFSafariViewController is available',
-            classType: ChromeSafariBrowser,
+            classType: CygnusChromeSafariBrowser,
             execute: (params) async {
-              return await ChromeSafariBrowser.isAvailable();
+              return await CygnusChromeSafariBrowser.isAvailable();
             },
           ),
           StaticMethodEntry(
             methodType: StaticMethodType.getMaxToolbarItems,
             description: 'Gets the maximum toolbar items (Android only)',
-            classType: ChromeSafariBrowser,
+            classType: CygnusChromeSafariBrowser,
             execute: (params) async {
-              return await ChromeSafariBrowser.getMaxToolbarItems();
+              return await CygnusChromeSafariBrowser.getMaxToolbarItems();
             },
           ),
           StaticMethodEntry(
             methodType: StaticMethodType.getPackageName,
             description: 'Gets the package name for Custom Tabs (Android only)',
-            classType: ChromeSafariBrowser,
+            classType: CygnusChromeSafariBrowser,
             execute: (params) async {
-              final packageName = await ChromeSafariBrowser.getPackageName();
+              final packageName = await CygnusChromeSafariBrowser.getPackageName();
               return packageName ?? 'No package available';
             },
           ),
           StaticMethodEntry(
             methodType: StaticMethodType.clearWebsiteData,
             description: 'Clears website data (Android only)',
-            classType: ChromeSafariBrowser,
+            classType: CygnusChromeSafariBrowser,
             execute: (params) async {
-              await ChromeSafariBrowser.clearWebsiteData();
+              await CygnusChromeSafariBrowser.clearWebsiteData();
               return 'Website data cleared';
             },
           ),
           StaticMethodEntry(
             methodType: StaticMethodType.prewarmConnections,
             description: 'Prewarms connections (iOS only)',
-            classType: ChromeSafariBrowser,
+            classType: CygnusChromeSafariBrowser,
             parameters: {'urls': 'https://flutter.dev,https://dart.dev'},
             requiredParameters: ['urls'],
             execute: (params) async {
               final urlsStr = params['urls']?.toString() ?? '';
               final urls = urlsStr
                   .split(',')
-                  .map((u) => WebUri(u.trim()))
+                  .map((u) => CygnusWebUri(u.trim()))
                   .toList();
-              final token = await ChromeSafariBrowser.prewarmConnections(urls);
+              final token = await CygnusChromeSafariBrowser.prewarmConnections(urls);
               return token != null
                   ? 'Prewarming token: ${token.hashCode}'
                   : 'Prewarming failed';
@@ -422,64 +422,64 @@ class _StaticMethodTesterWidgetState extends State<StaticMethodTesterWidget> {
         ],
       ),
 
-      // WebAuthenticationSession static methods
+      // CygnusWebAuthenticationSession static methods
       StaticMethodClass(
         classType: StaticClassType.webAuthenticationSession,
         methods: [
           StaticMethodEntry(
             methodType: StaticMethodType.isAvailable,
             description: 'Checks if web authentication is available',
-            classType: WebAuthenticationSession,
+            classType: CygnusWebAuthenticationSession,
             execute: (params) async {
-              return await WebAuthenticationSession.isAvailable();
+              return await CygnusWebAuthenticationSession.isAvailable();
             },
           ),
         ],
       ),
 
-      // ServiceWorkerController static methods
+      // CygnusServiceWorkerController static methods
       StaticMethodClass(
         classType: StaticClassType.serviceWorkerController,
         methods: [
           StaticMethodEntry(
             methodType: StaticMethodType.instance,
             description: 'Gets the singleton instance',
-            classType: ServiceWorkerController,
+            classType: CygnusServiceWorkerController,
             execute: (params) async {
-              final controller = ServiceWorkerController.instance();
-              return '${ServiceWorkerController} instance: ${controller.hashCode}';
+              final controller = CygnusServiceWorkerController.instance();
+              return '${CygnusServiceWorkerController} instance: ${controller.hashCode}';
             },
           ),
         ],
       ),
 
-      // WebViewFeature static methods
+      // CygnusWebViewFeature static methods
       StaticMethodClass(
         classType: StaticClassType.webViewFeature,
         methods: [
           StaticMethodEntry(
             methodType: StaticMethodType.isFeatureSupported,
             description: 'Checks if a WebView feature is supported',
-            classType: WebViewFeature,
-            parameters: {'feature': WebViewFeature.WEB_MESSAGE_LISTENER.name()},
+            classType: CygnusWebViewFeature,
+            parameters: {'feature': CygnusWebViewFeature.WEB_MESSAGE_LISTENER.name()},
             requiredParameters: ['feature'],
             execute: (params) async {
               final featureName =
                   params['feature']?.toString() ??
-                  WebViewFeature.WEB_MESSAGE_LISTENER.name();
-              final feature = WebViewFeature.values.firstWhere(
+                  CygnusWebViewFeature.WEB_MESSAGE_LISTENER.name();
+              final feature = CygnusWebViewFeature.values.firstWhere(
                 (f) => f.name().toUpperCase() == featureName.toUpperCase(),
-                orElse: () => WebViewFeature.WEB_MESSAGE_LISTENER,
+                orElse: () => CygnusWebViewFeature.WEB_MESSAGE_LISTENER,
               );
-              return await WebViewFeature.isFeatureSupported(feature);
+              return await CygnusWebViewFeature.isFeatureSupported(feature);
             },
           ),
           StaticMethodEntry(
             methodType: StaticMethodType.isStartupFeatureSupported,
             description: 'Checks if a startup feature is supported',
-            classType: WebViewFeature,
+            classType: CygnusWebViewFeature,
             parameters: {
-              'feature': WebViewFeature
+              'feature': CygnusWebViewFeature
                   .STARTUP_FEATURE_SET_DATA_DIRECTORY_SUFFIX
                   .name(),
             },
@@ -487,32 +487,32 @@ class _StaticMethodTesterWidgetState extends State<StaticMethodTesterWidget> {
             execute: (params) async {
               final featureName =
                   params['feature']?.toString() ??
-                  WebViewFeature.STARTUP_FEATURE_SET_DATA_DIRECTORY_SUFFIX
+                  CygnusWebViewFeature.STARTUP_FEATURE_SET_DATA_DIRECTORY_SUFFIX
                       .name();
-              final feature = WebViewFeature.values.firstWhere(
+              final feature = CygnusWebViewFeature.values.firstWhere(
                 (f) => f.name().toUpperCase() == featureName.toUpperCase(),
                 orElse: () =>
-                    WebViewFeature.STARTUP_FEATURE_SET_DATA_DIRECTORY_SUFFIX,
+                    CygnusWebViewFeature.STARTUP_FEATURE_SET_DATA_DIRECTORY_SUFFIX,
               );
-              return await WebViewFeature.isStartupFeatureSupported(feature);
+              return await CygnusWebViewFeature.isStartupFeatureSupported(feature);
             },
           ),
         ],
       ),
 
-      // ProcessGlobalConfig static methods
+      // CygnusProcessGlobalConfig static methods
       StaticMethodClass(
         classType: StaticClassType.processGlobalConfig,
         methods: [
           StaticMethodEntry(
             methodType: StaticMethodType.apply,
             description: 'Applies process global config',
-            classType: ProcessGlobalConfig,
+            classType: CygnusProcessGlobalConfig,
             parameters: {'dataDirectorySuffix': ''},
             execute: (params) async {
               final suffix = params['dataDirectorySuffix']?.toString();
-              await ProcessGlobalConfig.instance().apply(
-                settings: ProcessGlobalConfigSettings(
+              await CygnusProcessGlobalConfig.instance().apply(
+                settings: CygnusProcessGlobalConfigSettings(
                   dataDirectorySuffix: suffix?.isNotEmpty == true
                       ? suffix
                       : null,
@@ -524,49 +524,49 @@ class _StaticMethodTesterWidgetState extends State<StaticMethodTesterWidget> {
         ],
       ),
 
-      // CookieManager static methods
+      // CygnusCookieManager static methods
       StaticMethodClass(
         classType: StaticClassType.cookieManager,
         methods: [
           StaticMethodEntry(
             methodType: StaticMethodType.instance,
             description: 'Gets the singleton instance',
-            classType: CookieManager,
+            classType: CygnusCookieManager,
             execute: (params) async {
-              final manager = CookieManager.instance();
-              return '${CookieManager} instance: ${manager.hashCode}';
+              final manager = CygnusCookieManager.instance();
+              return '${CygnusCookieManager} instance: ${manager.hashCode}';
             },
           ),
         ],
       ),
 
-      // HttpAuthCredentialDatabase static methods
+      // CygnusHttpAuthCredentialDatabase static methods
       StaticMethodClass(
         classType: StaticClassType.httpAuthCredentialDatabase,
         methods: [
           StaticMethodEntry(
             methodType: StaticMethodType.instance,
             description: 'Gets the singleton instance',
-            classType: HttpAuthCredentialDatabase,
+            classType: CygnusHttpAuthCredentialDatabase,
             execute: (params) async {
-              final db = HttpAuthCredentialDatabase.instance();
-              return '${HttpAuthCredentialDatabase} instance: ${db.hashCode}';
+              final db = CygnusHttpAuthCredentialDatabase.instance();
+              return '${CygnusHttpAuthCredentialDatabase} instance: ${db.hashCode}';
             },
           ),
         ],
       ),
 
-      // WebStorageManager static methods
+      // CygnusWebStorageManager static methods
       StaticMethodClass(
         classType: StaticClassType.webStorageManager,
         methods: [
           StaticMethodEntry(
             methodType: StaticMethodType.instance,
             description: 'Gets the singleton instance',
-            classType: WebStorageManager,
+            classType: CygnusWebStorageManager,
             execute: (params) async {
-              final manager = WebStorageManager.instance();
-              return '${WebStorageManager} instance: ${manager.hashCode}';
+              final manager = CygnusWebStorageManager.instance();
+              return '${CygnusWebStorageManager} instance: ${manager.hashCode}';
             },
           ),
         ],

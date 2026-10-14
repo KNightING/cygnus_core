@@ -6,41 +6,41 @@ part of 'navigation_action_policy.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class that is used by [PlatformWebViewCreationParams.shouldOverrideUrlLoading] event.
+///Class that is used by [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading] event.
 ///It represents the policy to pass back to the decision handler.
-class NavigationActionPolicy {
+class CygnusNavigationActionPolicy {
   final int _value;
   final int? _nativeValue;
-  const NavigationActionPolicy._internal(this._value, this._nativeValue);
+  const CygnusNavigationActionPolicy._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory NavigationActionPolicy._internalMultiPlatform(
+  factory CygnusNavigationActionPolicy._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => NavigationActionPolicy._internal(value, nativeValue());
+  ) => CygnusNavigationActionPolicy._internal(value, nativeValue());
 
   ///Allow the navigation to continue.
-  static const ALLOW = NavigationActionPolicy._internal(1, 1);
+  static const ALLOW = CygnusNavigationActionPolicy._internal(1, 1);
 
   ///Cancel the navigation.
-  static const CANCEL = NavigationActionPolicy._internal(0, 0);
+  static const CANCEL = CygnusNavigationActionPolicy._internal(0, 0);
 
   ///Turn the navigation into a download.
   ///
   ///**NOTE**: available only on iOS 14.5+. It will fallback to [CANCEL].
-  static const DOWNLOAD = NavigationActionPolicy._internal(2, 2);
+  static const DOWNLOAD = CygnusNavigationActionPolicy._internal(2, 2);
 
-  ///Set of all values of [NavigationActionPolicy].
-  static final Set<NavigationActionPolicy> values = [
-    NavigationActionPolicy.ALLOW,
-    NavigationActionPolicy.CANCEL,
-    NavigationActionPolicy.DOWNLOAD,
+  ///Set of all values of [CygnusNavigationActionPolicy].
+  static final Set<CygnusNavigationActionPolicy> values = [
+    CygnusNavigationActionPolicy.ALLOW,
+    CygnusNavigationActionPolicy.CANCEL,
+    CygnusNavigationActionPolicy.DOWNLOAD,
   ].toSet();
 
-  ///Gets a possible [NavigationActionPolicy] instance from [int] value.
-  static NavigationActionPolicy? fromValue(int? value) {
+  ///Gets a possible [CygnusNavigationActionPolicy] instance from [int] value.
+  static CygnusNavigationActionPolicy? fromValue(int? value) {
     if (value != null) {
       try {
-        return NavigationActionPolicy.values.firstWhere(
+        return CygnusNavigationActionPolicy.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -50,11 +50,11 @@ class NavigationActionPolicy {
     return null;
   }
 
-  ///Gets a possible [NavigationActionPolicy] instance from a native value.
-  static NavigationActionPolicy? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusNavigationActionPolicy] instance from a native value.
+  static CygnusNavigationActionPolicy? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return NavigationActionPolicy.values.firstWhere(
+        return CygnusNavigationActionPolicy.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -64,15 +64,15 @@ class NavigationActionPolicy {
     return null;
   }
 
-  /// Gets a possible [NavigationActionPolicy] instance value with name [name].
+  /// Gets a possible [CygnusNavigationActionPolicy] instance value with name [name].
   ///
-  /// Goes through [NavigationActionPolicy.values] looking for a value with
-  /// name [name], as reported by [NavigationActionPolicy.name].
+  /// Goes through [CygnusNavigationActionPolicy.values] looking for a value with
+  /// name [name], as reported by [CygnusNavigationActionPolicy.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static NavigationActionPolicy? byName(String? name) {
+  static CygnusNavigationActionPolicy? byName(String? name) {
     if (name != null) {
       try {
-        return NavigationActionPolicy.values.firstWhere(
+        return CygnusNavigationActionPolicy.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -82,7 +82,7 @@ class NavigationActionPolicy {
     return null;
   }
 
-  /// Creates a map from the names of [NavigationActionPolicy] values to the values.
+  /// Creates a map from the names of [CygnusNavigationActionPolicy] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -90,9 +90,10 @@ class NavigationActionPolicy {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, NavigationActionPolicy> asNameMap() =>
-      <String, NavigationActionPolicy>{
-        for (final value in NavigationActionPolicy.values) value.name(): value,
+  static Map<String, CygnusNavigationActionPolicy> asNameMap() =>
+      <String, CygnusNavigationActionPolicy>{
+        for (final value in CygnusNavigationActionPolicy.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

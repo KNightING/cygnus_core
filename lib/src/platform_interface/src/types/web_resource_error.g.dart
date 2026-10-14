@@ -7,43 +7,44 @@ part of 'web_resource_error.dart';
 // **************************************************************************
 
 ///Encapsulates information about errors occurred during loading of web resources.
-class WebResourceError {
+class CygnusWebResourceError {
   ///The string describing the error.
   String description;
 
   ///The type of the error.
-  WebResourceErrorType type;
-  WebResourceError({required this.description, required this.type});
+  CygnusWebResourceErrorType type;
+  CygnusWebResourceError({required this.description, required this.type});
 
-  ///Gets a possible [WebResourceError] instance from a [Map] value.
-  static WebResourceError? fromMap(
+  ///Gets a possible [CygnusWebResourceError] instance from a [Map] value.
+  static CygnusWebResourceError? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = WebResourceError(
+    final instance = CygnusWebResourceError(
       description: map['description'],
-      type: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => WebResourceErrorType.fromNativeValue(
+      type: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusWebResourceErrorType.fromNativeValue(map['type']),
+        CygnusEnumMethod.value => CygnusWebResourceErrorType.fromValue(
           map['type'],
         ),
-        EnumMethod.value => WebResourceErrorType.fromValue(map['type']),
-        EnumMethod.name => WebResourceErrorType.byName(map['type']),
+        CygnusEnumMethod.name => CygnusWebResourceErrorType.byName(map['type']),
       }!,
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "description": description,
-      "type": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => type.toNativeValue(),
-        EnumMethod.value => type.toValue(),
-        EnumMethod.name => type.name(),
+      "type": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => type.toNativeValue(),
+        CygnusEnumMethod.value => type.toValue(),
+        CygnusEnumMethod.name => type.name(),
       },
     };
   }
@@ -55,6 +56,6 @@ class WebResourceError {
 
   @override
   String toString() {
-    return 'WebResourceError{description: $description, type: $type}';
+    return 'CygnusWebResourceError{description: $description, type: $type}';
   }
 }

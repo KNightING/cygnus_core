@@ -8,11 +8,11 @@ import 'in_app_webview_controller.dart';
 /// Object specifying creation parameters for creating a [WebPlatformHeadlessInAppWebView].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformHeadlessInAppWebViewCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformHeadlessWebViewCreationParams] for
 /// more information.
 @immutable
 class WebPlatformHeadlessInAppWebViewCreationParams
-    extends PlatformHeadlessInAppWebViewCreationParams {
+    extends CygnusPlatformHeadlessWebViewCreationParams {
   /// Creates a new [WebPlatformHeadlessInAppWebViewCreationParams] instance.
   WebPlatformHeadlessInAppWebViewCreationParams({
     super.controllerFromPlatform,
@@ -44,7 +44,7 @@ class WebPlatformHeadlessInAppWebViewCreationParams
     super.onReceivedHttpAuthRequest,
     super.onReceivedServerTrustAuthRequest,
     super.onReceivedClientCertRequest,
-    @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+    @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
     super.onFindResultReceived,
     super.shouldInterceptAjaxRequest,
     super.onAjaxReadyStateChange,
@@ -129,9 +129,9 @@ class WebPlatformHeadlessInAppWebViewCreationParams
     super.findInteractionController,
   });
 
-  /// Creates a [WebPlatformHeadlessInAppWebViewCreationParams] instance based on [PlatformHeadlessInAppWebViewCreationParams].
+  /// Creates a [WebPlatformHeadlessInAppWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
   WebPlatformHeadlessInAppWebViewCreationParams.fromPlatformHeadlessInAppWebViewCreationParams(
-    PlatformHeadlessInAppWebViewCreationParams params,
+    CygnusPlatformHeadlessWebViewCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
         initialSize: params.initialSize,
@@ -240,8 +240,8 @@ class WebPlatformHeadlessInAppWebViewCreationParams
       );
 }
 
-///{@macro cygnus_core.PlatformHeadlessInAppWebView}
-class WebPlatformHeadlessInAppWebView extends PlatformHeadlessInAppWebView
+///{@macro cygnus_core.CygnusPlatformHeadlessWebView}
+class WebPlatformHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     with ChannelController {
   @override
   late final String id;
@@ -257,7 +257,7 @@ class WebPlatformHeadlessInAppWebView extends PlatformHeadlessInAppWebView
 
   /// Constructs a [WebPlatformHeadlessInAppWebView].
   WebPlatformHeadlessInAppWebView(
-    PlatformHeadlessInAppWebViewCreationParams params,
+    CygnusPlatformHeadlessWebViewCreationParams params,
   ) : super.implementation(
         params is WebPlatformHeadlessInAppWebViewCreationParams
             ? params
@@ -323,7 +323,7 @@ class WebPlatformHeadlessInAppWebView extends PlatformHeadlessInAppWebView
     _started = true;
     _init();
 
-    final initialSettings = params.initialSettings ?? InAppWebViewSettings();
+    final initialSettings = params.initialSettings ?? CygnusWebViewSettings();
     _inferInitialSettings(initialSettings);
 
     Map<String, dynamic> settingsMap =
@@ -334,7 +334,7 @@ class WebPlatformHeadlessInAppWebView extends PlatformHeadlessInAppWebView
     Map<String, dynamic> pullToRefreshSettings =
         _macosParams.pullToRefreshController?.params.settings.toMap() ??
         _macosParams.pullToRefreshController?.params.options.toMap() ??
-        PullToRefreshSettings(enabled: false).toMap();
+        CygnusPullToRefreshSettings(enabled: false).toMap();
 
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('id', () => id);
@@ -357,7 +357,7 @@ class WebPlatformHeadlessInAppWebView extends PlatformHeadlessInAppWebView
     _running = true;
   }
 
-  void _inferInitialSettings(InAppWebViewSettings settings) {
+  void _inferInitialSettings(CygnusWebViewSettings settings) {
     if (params.shouldOverrideUrlLoading != null &&
         settings.useShouldOverrideUrlLoading == null) {
       settings.useShouldOverrideUrlLoading = true;

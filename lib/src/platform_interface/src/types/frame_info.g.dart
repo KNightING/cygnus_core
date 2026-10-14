@@ -7,8 +7,8 @@ part of 'frame_info.dart';
 // **************************************************************************
 
 ///An object that contains information about a frame on a webpage.
-class FrameInfo {
-  ///The unique identifier of the frame associated with the current [FrameInfo].
+class CygnusFrameInfo {
+  ///The unique identifier of the frame associated with the current [CygnusFrameInfo].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
@@ -26,7 +26,7 @@ class FrameInfo {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  FrameKind? kind;
+  CygnusFrameKind? kind;
 
   ///Gets the name attribute of the frame, as in <iframe name="frame-name">...</iframe>.
   ///
@@ -40,7 +40,7 @@ class FrameInfo {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  URLRequest? request;
+  CygnusURLRequest? request;
 
   ///The frame’s security origin.
   ///
@@ -48,8 +48,8 @@ class FrameInfo {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  SecurityOrigin? securityOrigin;
-  FrameInfo({
+  CygnusSecurityOrigin? securityOrigin;
+  CygnusFrameInfo({
     this.frameId,
     required this.isMainFrame,
     this.kind,
@@ -58,28 +58,30 @@ class FrameInfo {
     this.securityOrigin,
   });
 
-  ///Gets a possible [FrameInfo] instance from a [Map] value.
-  static FrameInfo? fromMap(
+  ///Gets a possible [CygnusFrameInfo] instance from a [Map] value.
+  static CygnusFrameInfo? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = FrameInfo(
+    final instance = CygnusFrameInfo(
       frameId: map['frameId'],
       isMainFrame: map['isMainFrame'],
-      kind: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => FrameKind.fromNativeValue(map['kind']),
-        EnumMethod.value => FrameKind.fromValue(map['kind']),
-        EnumMethod.name => FrameKind.byName(map['kind']),
+      kind: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusFrameKind.fromNativeValue(
+          map['kind'],
+        ),
+        CygnusEnumMethod.value => CygnusFrameKind.fromValue(map['kind']),
+        CygnusEnumMethod.name => CygnusFrameKind.byName(map['kind']),
       },
       name: map['name'],
-      request: URLRequest.fromMap(
+      request: CygnusURLRequest.fromMap(
         map['request']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
-      securityOrigin: SecurityOrigin.fromMap(
+      securityOrigin: CygnusSecurityOrigin.fromMap(
         map['securityOrigin']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -88,14 +90,14 @@ class FrameInfo {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "frameId": frameId,
       "isMainFrame": isMainFrame,
-      "kind": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => kind?.toNativeValue(),
-        EnumMethod.value => kind?.toValue(),
-        EnumMethod.name => kind?.name(),
+      "kind": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => kind?.toNativeValue(),
+        CygnusEnumMethod.value => kind?.toValue(),
+        CygnusEnumMethod.name => kind?.name(),
       },
       "name": name,
       "request": request?.toMap(enumMethod: enumMethod),
@@ -110,7 +112,7 @@ class FrameInfo {
 
   @override
   String toString() {
-    return 'FrameInfo{frameId: $frameId, isMainFrame: $isMainFrame, kind: $kind, name: $name, request: $request, securityOrigin: $securityOrigin}';
+    return 'CygnusFrameInfo{frameId: $frameId, isMainFrame: $isMainFrame, kind: $kind, name: $name, request: $request, securityOrigin: $securityOrigin}';
   }
 }
 
@@ -118,38 +120,38 @@ class FrameInfo {
 ///
 ///**NOTE**: available only on iOS.
 ///
-///Use [FrameInfo] instead.
-@Deprecated('Use FrameInfo instead')
-class IOSWKFrameInfo {
+///Use [CygnusFrameInfo] instead.
+@Deprecated('Use CygnusFrameInfo instead')
+class CygnusIOSWKFrameInfo {
   ///A Boolean value indicating whether the frame is the web site's main frame or a subframe.
   bool isMainFrame;
 
   ///The frame’s current request.
-  URLRequest? request;
+  CygnusURLRequest? request;
 
   ///The frame’s security origin.
-  IOSWKSecurityOrigin? securityOrigin;
-  IOSWKFrameInfo({
+  CygnusIOSWKSecurityOrigin? securityOrigin;
+  CygnusIOSWKFrameInfo({
     required this.isMainFrame,
     this.request,
     this.securityOrigin,
   });
 
-  ///Gets a possible [IOSWKFrameInfo] instance from a [Map] value.
-  static IOSWKFrameInfo? fromMap(
+  ///Gets a possible [CygnusIOSWKFrameInfo] instance from a [Map] value.
+  static CygnusIOSWKFrameInfo? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = IOSWKFrameInfo(
+    final instance = CygnusIOSWKFrameInfo(
       isMainFrame: map['isMainFrame'],
-      request: URLRequest.fromMap(
+      request: CygnusURLRequest.fromMap(
         map['request']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
-      securityOrigin: IOSWKSecurityOrigin.fromMap(
+      securityOrigin: CygnusIOSWKSecurityOrigin.fromMap(
         map['securityOrigin']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -158,7 +160,7 @@ class IOSWKFrameInfo {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "isMainFrame": isMainFrame,
       "request": request?.toMap(enumMethod: enumMethod),
@@ -173,6 +175,6 @@ class IOSWKFrameInfo {
 
   @override
   String toString() {
-    return 'IOSWKFrameInfo{isMainFrame: $isMainFrame, request: $request, securityOrigin: $securityOrigin}';
+    return 'CygnusIOSWKFrameInfo{isMainFrame: $isMainFrame, request: $request, securityOrigin: $securityOrigin}';
   }
 }

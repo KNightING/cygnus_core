@@ -5,11 +5,11 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 /// Object specifying creation parameters for creating a [WindowsWebMessageListener].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebMessageListenerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebMessageListenerCreationParams] for
 /// more information.
 @immutable
 class WindowsWebMessageListenerCreationParams
-    extends PlatformWebMessageListenerCreationParams {
+    extends CygnusPlatformWebMessageListenerCreationParams {
   /// Creates a new [WindowsWebMessageListenerCreationParams] instance.
   const WindowsWebMessageListenerCreationParams({
     required this.allowedOriginRules,
@@ -17,9 +17,9 @@ class WindowsWebMessageListenerCreationParams
     super.onPostMessage,
   });
 
-  /// Creates a [WindowsWebMessageListenerCreationParams] instance based on [PlatformWebMessageListenerCreationParams].
+  /// Creates a [WindowsWebMessageListenerCreationParams] instance based on [CygnusPlatformWebMessageListenerCreationParams].
   factory WindowsWebMessageListenerCreationParams.fromPlatformWebMessageListenerCreationParams(
-    PlatformWebMessageListenerCreationParams params,
+    CygnusPlatformWebMessageListenerCreationParams params,
   ) {
     return WindowsWebMessageListenerCreationParams(
       allowedOriginRules: params.allowedOriginRules ?? Set.from(["*"]),
@@ -37,11 +37,11 @@ class WindowsWebMessageListenerCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformWebMessageListener}
-class WindowsWebMessageListener extends PlatformWebMessageListener
+///{@macro cygnus_core.CygnusPlatformWebMessageListener}
+class WindowsWebMessageListener extends CygnusPlatformWebMessageListener
     with ChannelController {
   /// Constructs a [WindowsWebMessageListener].
-  WindowsWebMessageListener(PlatformWebMessageListenerCreationParams params)
+  WindowsWebMessageListener(CygnusPlatformWebMessageListenerCreationParams params)
     : super.implementation(
         params is WindowsWebMessageListenerCreationParams
             ? params
@@ -86,19 +86,19 @@ class WindowsWebMessageListener extends PlatformWebMessageListener
       case "onPostMessage":
         if (_replyProxy == null) {
           _replyProxy = WindowsJavaScriptReplyProxy(
-            PlatformJavaScriptReplyProxyCreationParams(
+            CygnusPlatformJavaScriptReplyProxyCreationParams(
               webMessageListener: this,
             ),
           );
         }
         if (onPostMessage != null) {
-          WebMessage? message = call.arguments["message"] != null
-              ? WebMessage.fromMap(
+          CygnusWebMessage? message = call.arguments["message"] != null
+              ? CygnusWebMessage.fromMap(
                   call.arguments["message"].cast<String, dynamic>(),
                 )
               : null;
-          WebUri? sourceOrigin = call.arguments["sourceOrigin"] != null
-              ? WebUri(call.arguments["sourceOrigin"])
+          CygnusWebUri? sourceOrigin = call.arguments["sourceOrigin"] != null
+              ? CygnusWebUri(call.arguments["sourceOrigin"])
               : null;
           bool isMainFrame = call.arguments["isMainFrame"];
           onPostMessage!(message, sourceOrigin, isMainFrame, _replyProxy!);
@@ -138,19 +138,19 @@ class WindowsWebMessageListener extends PlatformWebMessageListener
 /// Object specifying creation parameters for creating a [WindowsJavaScriptReplyProxy].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformJavaScriptReplyProxyCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformJavaScriptReplyProxyCreationParams] for
 /// more information.
 @immutable
 class WindowsJavaScriptReplyProxyCreationParams
-    extends PlatformJavaScriptReplyProxyCreationParams {
+    extends CygnusPlatformJavaScriptReplyProxyCreationParams {
   /// Creates a new [WindowsJavaScriptReplyProxyCreationParams] instance.
   const WindowsJavaScriptReplyProxyCreationParams({
     required super.webMessageListener,
   });
 
-  /// Creates a [WindowsJavaScriptReplyProxyCreationParams] instance based on [PlatformJavaScriptReplyProxyCreationParams].
+  /// Creates a [WindowsJavaScriptReplyProxyCreationParams] instance based on [CygnusPlatformJavaScriptReplyProxyCreationParams].
   factory WindowsJavaScriptReplyProxyCreationParams.fromPlatformJavaScriptReplyProxyCreationParams(
-    PlatformJavaScriptReplyProxyCreationParams params,
+    CygnusPlatformJavaScriptReplyProxyCreationParams params,
   ) {
     return WindowsJavaScriptReplyProxyCreationParams(
       webMessageListener: params.webMessageListener,
@@ -158,10 +158,10 @@ class WindowsJavaScriptReplyProxyCreationParams
   }
 }
 
-///{@macro cygnus_core.JavaScriptReplyProxy}
-class WindowsJavaScriptReplyProxy extends PlatformJavaScriptReplyProxy {
+///{@macro cygnus_core.CygnusJavaScriptReplyProxy}
+class WindowsJavaScriptReplyProxy extends CygnusPlatformJavaScriptReplyProxy {
   /// Constructs a [WindowsWebMessageListener].
-  WindowsJavaScriptReplyProxy(PlatformJavaScriptReplyProxyCreationParams params)
+  WindowsJavaScriptReplyProxy(CygnusPlatformJavaScriptReplyProxyCreationParams params)
     : super.implementation(
         params is WindowsJavaScriptReplyProxyCreationParams
             ? params
@@ -174,7 +174,7 @@ class WindowsJavaScriptReplyProxy extends PlatformJavaScriptReplyProxy {
       params.webMessageListener as WindowsWebMessageListener;
 
   @override
-  Future<void> postMessage(WebMessage message) async {
+  Future<void> postMessage(CygnusWebMessage message) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('message', () => message.toMap());
     await _windowsWebMessageListener.channel?.invokeMethod('postMessage', args);

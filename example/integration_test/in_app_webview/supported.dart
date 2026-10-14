@@ -3,22 +3,22 @@ part of 'main.dart';
 void supported() {
   skippableGroup('supported', () {
     skippableTestWidgets('basic', (WidgetTester tester) async {
-      expect(InAppWebViewController.isClassSupported(), true);
+      expect(CygnusWebViewController.isClassSupported(), true);
       expect(
-        InAppWebViewController.isPropertySupported(
-          PlatformInAppWebViewControllerProperty.webStorage,
+        CygnusWebViewController.isPropertySupported(
+          CygnusPlatformWebViewControllerProperty.webStorage,
         ),
         true,
       );
       expect(
-        InAppWebViewController.isMethodSupported(
-          PlatformInAppWebViewControllerMethod.startSafeBrowsing,
+        CygnusWebViewController.isMethodSupported(
+          CygnusPlatformWebViewControllerMethod.startSafeBrowsing,
         ),
         defaultTargetPlatform == TargetPlatform.android,
       );
       expect(
-        InAppWebViewController.isMethodSupported(
-          PlatformInAppWebViewControllerMethod.createPdf,
+        CygnusWebViewController.isMethodSupported(
+          CygnusPlatformWebViewControllerMethod.createPdf,
         ),
         [
           TargetPlatform.iOS,
@@ -26,8 +26,8 @@ void supported() {
         ].contains(defaultTargetPlatform),
       );
       expect(
-        InAppWebViewController.isMethodSupported(
-          PlatformInAppWebViewControllerMethod.clearSslPreferences,
+        CygnusWebViewController.isMethodSupported(
+          CygnusPlatformWebViewControllerMethod.clearSslPreferences,
         ),
         [
           TargetPlatform.android,
@@ -35,34 +35,34 @@ void supported() {
         ].contains(defaultTargetPlatform),
       );
       expect(
-        InAppWebViewController.isMethodSupported(
-          PlatformInAppWebViewControllerMethod.openDevTools,
+        CygnusWebViewController.isMethodSupported(
+          CygnusPlatformWebViewControllerMethod.openDevTools,
         ),
         defaultTargetPlatform == TargetPlatform.windows,
       );
 
-      expect(InAppWebView.isClassSupported(), true);
+      expect(CygnusWebView.isClassSupported(), true);
       expect(
-        InAppWebView.isPropertySupported(
-          PlatformWebViewCreationParamsProperty.initialSettings,
+        CygnusWebView.isPropertySupported(
+          CygnusPlatformWebViewCreationParamsProperty.initialSettings,
         ),
         true,
       );
       expect(
-        InAppWebView.isPropertySupported(
-          PlatformWebViewCreationParamsProperty.windowId,
+        CygnusWebView.isPropertySupported(
+          CygnusPlatformWebViewCreationParamsProperty.windowId,
         ),
         true,
       );
       expect(
-        InAppWebView.isPropertySupported(
-          PlatformInAppWebViewWidgetCreationParamsProperty.preventGestureDelay,
+        CygnusWebView.isPropertySupported(
+          CygnusPlatformWebViewWidgetCreationParamsProperty.preventGestureDelay,
         ),
         defaultTargetPlatform == TargetPlatform.iOS,
       );
       expect(
-        InAppWebView.isPropertySupported(
-          PlatformWebViewCreationParamsProperty.onWebContentProcessDidTerminate,
+        CygnusWebView.isPropertySupported(
+          CygnusPlatformWebViewCreationParamsProperty.onWebContentProcessDidTerminate,
         ),
         [
           TargetPlatform.iOS,
@@ -71,21 +71,21 @@ void supported() {
         ].contains(defaultTargetPlatform),
       );
       expect(
-        InAppWebView.isPropertySupported(
-          PlatformWebViewCreationParamsProperty.onAcceleratorKeyPressed,
+        CygnusWebView.isPropertySupported(
+          CygnusPlatformWebViewCreationParamsProperty.onAcceleratorKeyPressed,
         ),
         defaultTargetPlatform == TargetPlatform.windows,
       );
 
       expect(
-        InAppWebViewSettings.isPropertySupported(
-          InAppWebViewSettingsProperty.algorithmicDarkeningAllowed,
+        CygnusWebViewSettings.isPropertySupported(
+          CygnusWebViewSettingsProperty.algorithmicDarkeningAllowed,
         ),
         defaultTargetPlatform == TargetPlatform.android,
       );
       expect(
-        InAppWebViewSettings.isPropertySupported(
-          InAppWebViewSettingsProperty.allowsBackForwardNavigationGestures,
+        CygnusWebViewSettings.isPropertySupported(
+          CygnusWebViewSettingsProperty.allowsBackForwardNavigationGestures,
         ),
         [
           TargetPlatform.iOS,
@@ -94,8 +94,8 @@ void supported() {
         ].contains(defaultTargetPlatform),
       );
       expect(
-        InAppWebViewSettings.isPropertySupported(
-          InAppWebViewSettingsProperty.handleAcceleratorKeyPressed,
+        CygnusWebViewSettings.isPropertySupported(
+          CygnusWebViewSettingsProperty.handleAcceleratorKeyPressed,
         ),
         defaultTargetPlatform == TargetPlatform.windows,
       );

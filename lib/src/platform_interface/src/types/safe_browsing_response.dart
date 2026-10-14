@@ -7,18 +7,18 @@ import 'enum_method.dart';
 
 part 'safe_browsing_response.g.dart';
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onSafeBrowsingHit] event.
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onSafeBrowsingHit] event.
 ///It is used to indicate an action to take when hitting a malicious URL.
 @ExchangeableObject()
-class SafeBrowsingResponse_ {
-  ///If reporting is enabled, all reports will be sent according to the privacy policy referenced by [PlatformInAppWebViewController.getSafeBrowsingPrivacyPolicyUrl].
+class CygnusSafeBrowsingResponse_ {
+  ///If reporting is enabled, all reports will be sent according to the privacy policy referenced by [CygnusPlatformWebViewController.getSafeBrowsingPrivacyPolicyUrl].
   bool report;
 
-  ///Indicate the [SafeBrowsingResponseAction] to take when hitting a malicious URL.
-  SafeBrowsingResponseAction_? action;
+  ///Indicate the [CygnusSafeBrowsingResponseAction] to take when hitting a malicious URL.
+  CygnusSafeBrowsingResponseAction_? action;
 
-  SafeBrowsingResponse_({
+  CygnusSafeBrowsingResponse_({
     this.report = true,
-    this.action = SafeBrowsingResponseAction_.SHOW_INTERSTITIAL,
+    this.action = CygnusSafeBrowsingResponseAction_.SHOW_INTERSTITIAL,
   });
 }

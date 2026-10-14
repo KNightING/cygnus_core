@@ -11,8 +11,8 @@ part 'load_asset_file.dart';
 void main() {
   final shouldSkip = kIsWeb;
 
-  skippableGroup('InAppLocalhostServer', () {
-    final InAppLocalhostServer localhostServer = InAppLocalhostServer();
+  skippableGroup('CygnusLocalhostServer', () {
+    final CygnusLocalhostServer localhostServer = CygnusLocalhostServer();
 
     setUpAll(() async {
       await localhostServer.start();

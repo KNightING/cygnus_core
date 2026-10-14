@@ -6,27 +6,28 @@ part of 'fetch_request_credential_default.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the default credentials used by an [FetchRequest].
-class FetchRequestCredentialDefault extends FetchRequestCredential {
+///Class that represents the default credentials used by an [CygnusFetchRequest].
+class CygnusFetchRequestCredentialDefault extends CygnusFetchRequestCredential {
   ///The value of the credentials.
   String? value;
-  FetchRequestCredentialDefault({this.value, String? type}) : super(type: type);
+  CygnusFetchRequestCredentialDefault({this.value, String? type})
+    : super(type: type);
 
-  ///Gets a possible [FetchRequestCredentialDefault] instance from a [Map] value.
-  static FetchRequestCredentialDefault? fromMap(
+  ///Gets a possible [CygnusFetchRequestCredentialDefault] instance from a [Map] value.
+  static CygnusFetchRequestCredentialDefault? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = FetchRequestCredentialDefault(value: map['value']);
+    final instance = CygnusFetchRequestCredentialDefault(value: map['value']);
     instance.type = map['type'];
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"type": type, "value": value};
   }
 
@@ -37,6 +38,6 @@ class FetchRequestCredentialDefault extends FetchRequestCredential {
 
   @override
   String toString() {
-    return 'FetchRequestCredentialDefault{type: $type, value: $value}';
+    return 'CygnusFetchRequestCredentialDefault{type: $type, value: $value}';
   }
 }

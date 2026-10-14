@@ -7,18 +7,18 @@ part of 'custom_tabs_post_message_result_type.dart';
 // **************************************************************************
 
 ///Custom Tabs postMessage result type.
-class CustomTabsPostMessageResultType {
+class CygnusCustomTabsPostMessageResultType {
   final int _value;
   final int? _nativeValue;
-  const CustomTabsPostMessageResultType._internal(
+  const CygnusCustomTabsPostMessageResultType._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory CustomTabsPostMessageResultType._internalMultiPlatform(
+  factory CygnusCustomTabsPostMessageResultType._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => CustomTabsPostMessageResultType._internal(value, nativeValue());
+  ) => CygnusCustomTabsPostMessageResultType._internal(value, nativeValue());
 
   ///Indicates that the postMessage request was not allowed due to a bad argument
   ///or requesting at a disallowed time like when in background.
@@ -26,7 +26,7 @@ class CustomTabsPostMessageResultType {
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   static final FAILURE_DISALLOWED =
-      CustomTabsPostMessageResultType._internalMultiPlatform(-1, () {
+      CygnusCustomTabsPostMessageResultType._internalMultiPlatform(-1, () {
         switch (defaultTargetPlatform) {
           case TargetPlatform.android:
             return -1;
@@ -41,7 +41,7 @@ class CustomTabsPostMessageResultType {
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   static final FAILURE_MESSAGING_ERROR =
-      CustomTabsPostMessageResultType._internalMultiPlatform(-3, () {
+      CygnusCustomTabsPostMessageResultType._internalMultiPlatform(-3, () {
         switch (defaultTargetPlatform) {
           case TargetPlatform.android:
             return -3;
@@ -56,7 +56,7 @@ class CustomTabsPostMessageResultType {
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   static final FAILURE_REMOTE_ERROR =
-      CustomTabsPostMessageResultType._internalMultiPlatform(-2, () {
+      CygnusCustomTabsPostMessageResultType._internalMultiPlatform(-2, () {
         switch (defaultTargetPlatform) {
           case TargetPlatform.android:
             return -2;
@@ -70,32 +70,30 @@ class CustomTabsPostMessageResultType {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  static final SUCCESS = CustomTabsPostMessageResultType._internalMultiPlatform(
-    0,
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.android:
-          return 0;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final SUCCESS =
+      CygnusCustomTabsPostMessageResultType._internalMultiPlatform(0, () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.android:
+            return 0;
+          default:
+            break;
+        }
+        return null;
+      });
 
-  ///Set of all values of [CustomTabsPostMessageResultType].
-  static final Set<CustomTabsPostMessageResultType> values = [
-    CustomTabsPostMessageResultType.FAILURE_DISALLOWED,
-    CustomTabsPostMessageResultType.FAILURE_MESSAGING_ERROR,
-    CustomTabsPostMessageResultType.FAILURE_REMOTE_ERROR,
-    CustomTabsPostMessageResultType.SUCCESS,
+  ///Set of all values of [CygnusCustomTabsPostMessageResultType].
+  static final Set<CygnusCustomTabsPostMessageResultType> values = [
+    CygnusCustomTabsPostMessageResultType.FAILURE_DISALLOWED,
+    CygnusCustomTabsPostMessageResultType.FAILURE_MESSAGING_ERROR,
+    CygnusCustomTabsPostMessageResultType.FAILURE_REMOTE_ERROR,
+    CygnusCustomTabsPostMessageResultType.SUCCESS,
   ].toSet();
 
-  ///Gets a possible [CustomTabsPostMessageResultType] instance from [int] value.
-  static CustomTabsPostMessageResultType? fromValue(int? value) {
+  ///Gets a possible [CygnusCustomTabsPostMessageResultType] instance from [int] value.
+  static CygnusCustomTabsPostMessageResultType? fromValue(int? value) {
     if (value != null) {
       try {
-        return CustomTabsPostMessageResultType.values.firstWhere(
+        return CygnusCustomTabsPostMessageResultType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -105,11 +103,11 @@ class CustomTabsPostMessageResultType {
     return null;
   }
 
-  ///Gets a possible [CustomTabsPostMessageResultType] instance from a native value.
-  static CustomTabsPostMessageResultType? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusCustomTabsPostMessageResultType] instance from a native value.
+  static CygnusCustomTabsPostMessageResultType? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return CustomTabsPostMessageResultType.values.firstWhere(
+        return CygnusCustomTabsPostMessageResultType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -119,15 +117,15 @@ class CustomTabsPostMessageResultType {
     return null;
   }
 
-  /// Gets a possible [CustomTabsPostMessageResultType] instance value with name [name].
+  /// Gets a possible [CygnusCustomTabsPostMessageResultType] instance value with name [name].
   ///
-  /// Goes through [CustomTabsPostMessageResultType.values] looking for a value with
-  /// name [name], as reported by [CustomTabsPostMessageResultType.name].
+  /// Goes through [CygnusCustomTabsPostMessageResultType.values] looking for a value with
+  /// name [name], as reported by [CygnusCustomTabsPostMessageResultType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static CustomTabsPostMessageResultType? byName(String? name) {
+  static CygnusCustomTabsPostMessageResultType? byName(String? name) {
     if (name != null) {
       try {
-        return CustomTabsPostMessageResultType.values.firstWhere(
+        return CygnusCustomTabsPostMessageResultType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -137,7 +135,7 @@ class CustomTabsPostMessageResultType {
     return null;
   }
 
-  /// Creates a map from the names of [CustomTabsPostMessageResultType] values to the values.
+  /// Creates a map from the names of [CygnusCustomTabsPostMessageResultType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -145,9 +143,9 @@ class CustomTabsPostMessageResultType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, CustomTabsPostMessageResultType> asNameMap() =>
-      <String, CustomTabsPostMessageResultType>{
-        for (final value in CustomTabsPostMessageResultType.values)
+  static Map<String, CygnusCustomTabsPostMessageResultType> asNameMap() =>
+      <String, CygnusCustomTabsPostMessageResultType>{
+        for (final value in CygnusCustomTabsPostMessageResultType.values)
           value.name(): value,
       };
 

@@ -10,9 +10,9 @@ import 'enum_method.dart';
 
 part 'create_window_action.g.dart';
 
-///Class that represents the navigation request used by the [PlatformWebViewCreationParams.onCreateWindow] event.
+///Class that represents the navigation request used by the [CygnusPlatformWebViewCreationParams.onCreateWindow] event.
 @ExchangeableObject()
-class CreateWindowAction_ extends NavigationAction_ {
+class CygnusCreateWindowAction_ extends CygnusNavigationAction_ {
   ///The window id. Used by `WebView` to create a new WebView.
   int windowId;
 
@@ -26,7 +26,7 @@ class CreateWindowAction_ extends NavigationAction_ {
 
   ///Use [windowFeatures] instead.
   @Deprecated("Use windowFeatures instead")
-  IOSWKWindowFeatures_? iosWindowFeatures;
+  CygnusIOSWKWindowFeatures_? iosWindowFeatures;
 
   ///Window features requested by the webpage.
   @SupportedPlatforms(
@@ -48,15 +48,15 @@ class CreateWindowAction_ extends NavigationAction_ {
       ),
     ],
   )
-  WindowFeatures_? windowFeatures;
+  CygnusWindowFeatures_? windowFeatures;
 
-  CreateWindowAction_({
+  CygnusCreateWindowAction_({
     required this.windowId,
     @Deprecated('Use isDialog instead') this.androidIsDialog,
     this.isDialog,
     @Deprecated('Use windowFeatures instead') this.iosWindowFeatures,
     this.windowFeatures,
-    required URLRequest_ request,
+    required CygnusURLRequest_ request,
     required bool isForMainFrame,
     @Deprecated('Use hasGesture instead') bool? androidHasGesture,
     @Deprecated('Use isRedirect instead') bool? androidIsRedirect,
@@ -64,16 +64,16 @@ class CreateWindowAction_ extends NavigationAction_ {
     bool? isRedirect,
     @Deprecated('Use navigationType instead')
     // ignore: deprecated_member_use_from_same_package
-    IOSWKNavigationType_? iosWKNavigationType,
-    NavigationType_? navigationType,
+    CygnusIOSWKNavigationType_? iosWKNavigationType,
+    CygnusNavigationType_? navigationType,
     @Deprecated('Use sourceFrame instead')
     // ignore: deprecated_member_use_from_same_package
-    IOSWKFrameInfo_? iosSourceFrame,
-    FrameInfo_? sourceFrame,
+    CygnusIOSWKFrameInfo_? iosSourceFrame,
+    CygnusFrameInfo_? sourceFrame,
     @Deprecated('Use targetFrame instead')
     // ignore: deprecated_member_use_from_same_package
-    IOSWKFrameInfo_? iosTargetFrame,
-    FrameInfo_? targetFrame,
+    CygnusIOSWKFrameInfo_? iosTargetFrame,
+    CygnusFrameInfo_? targetFrame,
   }) : super(
          request: request,
          isForMainFrame: isForMainFrame,

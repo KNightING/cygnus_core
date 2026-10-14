@@ -6,8 +6,8 @@ part of 'printer.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class representing the printer used by a [PlatformPrintJobController].
-class Printer {
+///Class representing the printer used by a [CygnusPlatformPrintJobController].
+class CygnusPrinter {
   ///The unique id of the printer.
   ///
   ///**Officially Supported Platforms/Implementations**:
@@ -32,14 +32,17 @@ class Printer {
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
   String? type;
-  Printer({this.id, this.languageLevel, this.name, this.type});
+  CygnusPrinter({this.id, this.languageLevel, this.name, this.type});
 
-  ///Gets a possible [Printer] instance from a [Map] value.
-  static Printer? fromMap(Map<String, dynamic>? map, {EnumMethod? enumMethod}) {
+  ///Gets a possible [CygnusPrinter] instance from a [Map] value.
+  static CygnusPrinter? fromMap(
+    Map<String, dynamic>? map, {
+    CygnusEnumMethod? enumMethod,
+  }) {
     if (map == null) {
       return null;
     }
-    final instance = Printer(
+    final instance = CygnusPrinter(
       id: map['id'],
       languageLevel: map['languageLevel'],
       name: map['name'],
@@ -49,7 +52,7 @@ class Printer {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "id": id,
       "languageLevel": languageLevel,
@@ -65,6 +68,6 @@ class Printer {
 
   @override
   String toString() {
-    return 'Printer{id: $id, languageLevel: $languageLevel, name: $name, type: $type}';
+    return 'CygnusPrinter{id: $id, languageLevel: $languageLevel, name: $name, type: $type}';
   }
 }

@@ -7,39 +7,39 @@ part of 'url_request_attribution.dart';
 // **************************************************************************
 
 ///Class that represents the constants used to indicate the entities that can make a network request.
-class URLRequestAttribution {
+class CygnusURLRequestAttribution {
   final int _value;
   final int? _nativeValue;
-  const URLRequestAttribution._internal(this._value, this._nativeValue);
+  const CygnusURLRequestAttribution._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory URLRequestAttribution._internalMultiPlatform(
+  factory CygnusURLRequestAttribution._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => URLRequestAttribution._internal(value, nativeValue());
+  ) => CygnusURLRequestAttribution._internal(value, nativeValue());
 
   ///A developer-initiated network request.
   ///
-  ///Use this value for the attribution parameter of a [URLRequest] that your app makes for any purpose other than when the user explicitly accesses a link.
+  ///Use this value for the attribution parameter of a [CygnusURLRequest] that your app makes for any purpose other than when the user explicitly accesses a link.
   ///This includes requests that your app makes to get user data. This is the default value.
   ///
-  ///For cases where the user enters a URL, like in the navigation bar of a web browser, or taps or clicks a URL to load the content it represents, use the [URLRequestAttribution.USER] value instead.
-  static const DEVELOPER = URLRequestAttribution._internal(0, 0);
+  ///For cases where the user enters a URL, like in the navigation bar of a web browser, or taps or clicks a URL to load the content it represents, use the [CygnusURLRequestAttribution.USER] value instead.
+  static const DEVELOPER = CygnusURLRequestAttribution._internal(0, 0);
 
-  ///Use this value for the attribution parameter of a [URLRequest] that satisfies a user request to access an explicit, unmodified URL.
-  ///In all other cases, use the [URLRequestAttribution.DEVELOPER] value instead.
-  static const USER = URLRequestAttribution._internal(1, 1);
+  ///Use this value for the attribution parameter of a [CygnusURLRequest] that satisfies a user request to access an explicit, unmodified URL.
+  ///In all other cases, use the [CygnusURLRequestAttribution.DEVELOPER] value instead.
+  static const USER = CygnusURLRequestAttribution._internal(1, 1);
 
-  ///Set of all values of [URLRequestAttribution].
-  static final Set<URLRequestAttribution> values = [
-    URLRequestAttribution.DEVELOPER,
-    URLRequestAttribution.USER,
+  ///Set of all values of [CygnusURLRequestAttribution].
+  static final Set<CygnusURLRequestAttribution> values = [
+    CygnusURLRequestAttribution.DEVELOPER,
+    CygnusURLRequestAttribution.USER,
   ].toSet();
 
-  ///Gets a possible [URLRequestAttribution] instance from [int] value.
-  static URLRequestAttribution? fromValue(int? value) {
+  ///Gets a possible [CygnusURLRequestAttribution] instance from [int] value.
+  static CygnusURLRequestAttribution? fromValue(int? value) {
     if (value != null) {
       try {
-        return URLRequestAttribution.values.firstWhere(
+        return CygnusURLRequestAttribution.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -49,11 +49,11 @@ class URLRequestAttribution {
     return null;
   }
 
-  ///Gets a possible [URLRequestAttribution] instance from a native value.
-  static URLRequestAttribution? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusURLRequestAttribution] instance from a native value.
+  static CygnusURLRequestAttribution? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return URLRequestAttribution.values.firstWhere(
+        return CygnusURLRequestAttribution.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -63,15 +63,15 @@ class URLRequestAttribution {
     return null;
   }
 
-  /// Gets a possible [URLRequestAttribution] instance value with name [name].
+  /// Gets a possible [CygnusURLRequestAttribution] instance value with name [name].
   ///
-  /// Goes through [URLRequestAttribution.values] looking for a value with
-  /// name [name], as reported by [URLRequestAttribution.name].
+  /// Goes through [CygnusURLRequestAttribution.values] looking for a value with
+  /// name [name], as reported by [CygnusURLRequestAttribution.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static URLRequestAttribution? byName(String? name) {
+  static CygnusURLRequestAttribution? byName(String? name) {
     if (name != null) {
       try {
-        return URLRequestAttribution.values.firstWhere(
+        return CygnusURLRequestAttribution.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -81,7 +81,7 @@ class URLRequestAttribution {
     return null;
   }
 
-  /// Creates a map from the names of [URLRequestAttribution] values to the values.
+  /// Creates a map from the names of [CygnusURLRequestAttribution] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -89,9 +89,10 @@ class URLRequestAttribution {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, URLRequestAttribution> asNameMap() =>
-      <String, URLRequestAttribution>{
-        for (final value in URLRequestAttribution.values) value.name(): value,
+  static Map<String, CygnusURLRequestAttribution> asNameMap() =>
+      <String, CygnusURLRequestAttribution>{
+        for (final value in CygnusURLRequestAttribution.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

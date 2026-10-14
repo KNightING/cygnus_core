@@ -8,13 +8,13 @@ part 'trusted_web_activity_default_display_mode.g.dart';
 ///Class that represents the default display mode of a Trusted Web Activity.
 ///The system UI (status bar, navigation bar) is shown, and the browser toolbar is hidden while the user is on a verified origin.
 @ExchangeableObject(fromMapFactory: false)
-class TrustedWebActivityDefaultDisplayMode_
-    implements TrustedWebActivityDisplayMode_ {
+class CygnusTrustedWebActivityDefaultDisplayMode_
+    implements CygnusTrustedWebActivityDisplayMode_ {
   static final _type = "DEFAULT_MODE";
 
   @ExchangeableObjectMethod(toMapMergeWith: true)
   // ignore: unused_element
-  Map<String, dynamic> _toMapMergeWith({EnumMethod? enumMethod}) {
+  Map<String, dynamic> _toMapMergeWith({CygnusEnumMethod? enumMethod}) {
     return {"type": _type};
   }
 

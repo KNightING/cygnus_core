@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-/// Model for saving/loading InAppWebViewSettings profiles
+/// Model for saving/loading CygnusWebViewSettings profiles
 class SettingsProfile {
   final String id;
   final String name;

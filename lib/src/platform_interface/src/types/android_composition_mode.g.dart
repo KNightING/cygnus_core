@@ -7,20 +7,20 @@ part of 'android_composition_mode.dart';
 // **************************************************************************
 
 ///Class that represents how the Android WebView is composited with the Flutter UI,
-///used by `InAppWebViewSettings.androidCompositionMode`.
+///used by `CygnusWebViewSettings.androidCompositionMode`.
 ///
 ///Leaving that setting unset picks a mode automatically: [HYBRID_COMPOSITION_PLUS_PLUS] where
 ///it is available, [TEXTURE_LAYER_HYBRID_COMPOSITION] everywhere else. These members exist to
 ///pin one mode explicitly.
-class AndroidCompositionMode {
+class CygnusAndroidCompositionMode {
   final int _value;
   final int? _nativeValue;
-  const AndroidCompositionMode._internal(this._value, this._nativeValue);
+  const CygnusAndroidCompositionMode._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory AndroidCompositionMode._internalMultiPlatform(
+  factory CygnusAndroidCompositionMode._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => AndroidCompositionMode._internal(value, nativeValue());
+  ) => CygnusAndroidCompositionMode._internal(value, nativeValue());
 
   ///Hybrid Composition: the WebView is placed in the real Android view hierarchy and Flutter
   ///draws its own content into `FlutterImageView`s above it. Full native fidelity, but Flutter
@@ -30,7 +30,7 @@ class AndroidCompositionMode {
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   static final HYBRID_COMPOSITION =
-      AndroidCompositionMode._internalMultiPlatform(1, () {
+      CygnusAndroidCompositionMode._internalMultiPlatform(1, () {
         switch (defaultTargetPlatform) {
           case TargetPlatform.android:
             return 1;
@@ -59,7 +59,7 @@ class AndroidCompositionMode {
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 34+
   static final HYBRID_COMPOSITION_PLUS_PLUS =
-      AndroidCompositionMode._internalMultiPlatform(2, () {
+      CygnusAndroidCompositionMode._internalMultiPlatform(2, () {
         switch (defaultTargetPlatform) {
           case TargetPlatform.android:
             return 2;
@@ -76,7 +76,7 @@ class AndroidCompositionMode {
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   static final TEXTURE_LAYER_HYBRID_COMPOSITION =
-      AndroidCompositionMode._internalMultiPlatform(0, () {
+      CygnusAndroidCompositionMode._internalMultiPlatform(0, () {
         switch (defaultTargetPlatform) {
           case TargetPlatform.android:
             return 0;
@@ -86,18 +86,18 @@ class AndroidCompositionMode {
         return null;
       });
 
-  ///Set of all values of [AndroidCompositionMode].
-  static final Set<AndroidCompositionMode> values = [
-    AndroidCompositionMode.HYBRID_COMPOSITION,
-    AndroidCompositionMode.HYBRID_COMPOSITION_PLUS_PLUS,
-    AndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION,
+  ///Set of all values of [CygnusAndroidCompositionMode].
+  static final Set<CygnusAndroidCompositionMode> values = [
+    CygnusAndroidCompositionMode.HYBRID_COMPOSITION,
+    CygnusAndroidCompositionMode.HYBRID_COMPOSITION_PLUS_PLUS,
+    CygnusAndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION,
   ].toSet();
 
-  ///Gets a possible [AndroidCompositionMode] instance from [int] value.
-  static AndroidCompositionMode? fromValue(int? value) {
+  ///Gets a possible [CygnusAndroidCompositionMode] instance from [int] value.
+  static CygnusAndroidCompositionMode? fromValue(int? value) {
     if (value != null) {
       try {
-        return AndroidCompositionMode.values.firstWhere(
+        return CygnusAndroidCompositionMode.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -107,11 +107,11 @@ class AndroidCompositionMode {
     return null;
   }
 
-  ///Gets a possible [AndroidCompositionMode] instance from a native value.
-  static AndroidCompositionMode? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusAndroidCompositionMode] instance from a native value.
+  static CygnusAndroidCompositionMode? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return AndroidCompositionMode.values.firstWhere(
+        return CygnusAndroidCompositionMode.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -121,15 +121,15 @@ class AndroidCompositionMode {
     return null;
   }
 
-  /// Gets a possible [AndroidCompositionMode] instance value with name [name].
+  /// Gets a possible [CygnusAndroidCompositionMode] instance value with name [name].
   ///
-  /// Goes through [AndroidCompositionMode.values] looking for a value with
-  /// name [name], as reported by [AndroidCompositionMode.name].
+  /// Goes through [CygnusAndroidCompositionMode.values] looking for a value with
+  /// name [name], as reported by [CygnusAndroidCompositionMode.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static AndroidCompositionMode? byName(String? name) {
+  static CygnusAndroidCompositionMode? byName(String? name) {
     if (name != null) {
       try {
-        return AndroidCompositionMode.values.firstWhere(
+        return CygnusAndroidCompositionMode.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -139,7 +139,7 @@ class AndroidCompositionMode {
     return null;
   }
 
-  /// Creates a map from the names of [AndroidCompositionMode] values to the values.
+  /// Creates a map from the names of [CygnusAndroidCompositionMode] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -147,9 +147,10 @@ class AndroidCompositionMode {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, AndroidCompositionMode> asNameMap() =>
-      <String, AndroidCompositionMode>{
-        for (final value in AndroidCompositionMode.values) value.name(): value,
+  static Map<String, CygnusAndroidCompositionMode> asNameMap() =>
+      <String, CygnusAndroidCompositionMode>{
+        for (final value in CygnusAndroidCompositionMode.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

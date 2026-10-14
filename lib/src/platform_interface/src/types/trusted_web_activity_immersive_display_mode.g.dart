@@ -8,64 +8,67 @@ part of 'trusted_web_activity_immersive_display_mode.dart';
 
 ///Class that represents the default display mode of a Trusted Web Activity.
 ///The system UI (status bar, navigation bar) is shown, and the browser toolbar is hidden while the user is on a verified origin.
-class TrustedWebActivityImmersiveDisplayMode
-    implements TrustedWebActivityDisplayMode {
+class CygnusTrustedWebActivityImmersiveDisplayMode
+    implements CygnusTrustedWebActivityDisplayMode {
   static final String _type = "IMMERSIVE_MODE";
 
   ///The constant defining how to deal with display cutouts.
-  LayoutInDisplayCutoutMode displayCutoutMode;
+  CygnusLayoutInDisplayCutoutMode displayCutoutMode;
 
   ///Whether the Trusted Web Activity should be in sticky immersive mode.
   bool isSticky;
 
   ///Use [displayCutoutMode] instead.
   @Deprecated('Use displayCutoutMode instead')
-  AndroidLayoutInDisplayCutoutMode? layoutInDisplayCutoutMode;
-  TrustedWebActivityImmersiveDisplayMode({
+  CygnusAndroidLayoutInDisplayCutoutMode? layoutInDisplayCutoutMode;
+  CygnusTrustedWebActivityImmersiveDisplayMode({
     required this.isSticky,
-    this.displayCutoutMode = LayoutInDisplayCutoutMode.DEFAULT,
+    this.displayCutoutMode = CygnusLayoutInDisplayCutoutMode.DEFAULT,
     this.layoutInDisplayCutoutMode,
   }) {
     this.displayCutoutMode = this.layoutInDisplayCutoutMode != null
-        ? LayoutInDisplayCutoutMode.fromNativeValue(
+        ? CygnusLayoutInDisplayCutoutMode.fromNativeValue(
             layoutInDisplayCutoutMode?.toNativeValue(),
           )!
         : this.displayCutoutMode;
   }
 
-  ///Gets a possible [TrustedWebActivityImmersiveDisplayMode] instance from a [Map] value.
-  static TrustedWebActivityImmersiveDisplayMode? fromMap(
+  ///Gets a possible [CygnusTrustedWebActivityImmersiveDisplayMode] instance from a [Map] value.
+  static CygnusTrustedWebActivityImmersiveDisplayMode? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = TrustedWebActivityImmersiveDisplayMode(
+    final instance = CygnusTrustedWebActivityImmersiveDisplayMode(
       isSticky: map['isSticky'],
-      layoutInDisplayCutoutMode: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue =>
-          AndroidLayoutInDisplayCutoutMode.fromNativeValue(
+      layoutInDisplayCutoutMode: switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusAndroidLayoutInDisplayCutoutMode.fromNativeValue(
             map['displayCutoutMode'],
           ),
-        EnumMethod.value => AndroidLayoutInDisplayCutoutMode.fromValue(
-          map['displayCutoutMode'],
-        ),
-        EnumMethod.name => AndroidLayoutInDisplayCutoutMode.byName(
+        CygnusEnumMethod.value =>
+          CygnusAndroidLayoutInDisplayCutoutMode.fromValue(
+            map['displayCutoutMode'],
+          ),
+        CygnusEnumMethod.name => CygnusAndroidLayoutInDisplayCutoutMode.byName(
           map['displayCutoutMode'],
         ),
       },
     );
     if (map['displayCutoutMode'] != null) {
       instance.displayCutoutMode = switch (enumMethod ??
-          EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => LayoutInDisplayCutoutMode.fromNativeValue(
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusLayoutInDisplayCutoutMode.fromNativeValue(
+            map['displayCutoutMode'],
+          ),
+        CygnusEnumMethod.value => CygnusLayoutInDisplayCutoutMode.fromValue(
           map['displayCutoutMode'],
         ),
-        EnumMethod.value => LayoutInDisplayCutoutMode.fromValue(
-          map['displayCutoutMode'],
-        ),
-        EnumMethod.name => LayoutInDisplayCutoutMode.byName(
+        CygnusEnumMethod.name => CygnusLayoutInDisplayCutoutMode.byName(
           map['displayCutoutMode'],
         ),
       }!;
@@ -74,17 +77,17 @@ class TrustedWebActivityImmersiveDisplayMode
   }
 
   @ExchangeableObjectMethod(toMapMergeWith: true)
-  Map<String, dynamic> _toMapMergeWith({EnumMethod? enumMethod}) {
+  Map<String, dynamic> _toMapMergeWith({CygnusEnumMethod? enumMethod}) {
     return {"type": _type};
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "displayCutoutMode": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => displayCutoutMode.toNativeValue(),
-        EnumMethod.value => displayCutoutMode.toValue(),
-        EnumMethod.name => displayCutoutMode.name(),
+      "displayCutoutMode": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => displayCutoutMode.toNativeValue(),
+        CygnusEnumMethod.value => displayCutoutMode.toValue(),
+        CygnusEnumMethod.name => displayCutoutMode.name(),
       },
       "isSticky": isSticky,
       ..._toMapMergeWith(enumMethod: enumMethod),
@@ -98,6 +101,6 @@ class TrustedWebActivityImmersiveDisplayMode
 
   @override
   String toString() {
-    return 'TrustedWebActivityImmersiveDisplayMode{displayCutoutMode: $displayCutoutMode, isSticky: $isSticky}';
+    return 'CygnusTrustedWebActivityImmersiveDisplayMode{displayCutoutMode: $displayCutoutMode, isSticky: $isSticky}';
   }
 }

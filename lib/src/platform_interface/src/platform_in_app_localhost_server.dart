@@ -8,14 +8,14 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 part 'platform_in_app_localhost_server.g.dart';
 
-///{@template cygnus_core.PlatformInAppLocalhostServerCreationParams}
-/// Object specifying creation parameters for creating a [PlatformInAppLocalhostServer].
+///{@template cygnus_core.CygnusPlatformLocalhostServerCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformLocalhostServer].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformInAppLocalhostServerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformLocalhostServerCreationParams.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -26,9 +26,9 @@ part 'platform_in_app_localhost_server.g.dart';
   ],
 )
 @immutable
-class PlatformInAppLocalhostServerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformInAppLocalhostServer].
-  const PlatformInAppLocalhostServerCreationParams({
+class CygnusPlatformLocalhostServerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformLocalhostServer].
+  const CygnusPlatformLocalhostServerCreationParams({
     this.port = 8080,
     this.directoryIndex = 'index.html',
     this.documentRoot = './',
@@ -36,37 +36,37 @@ class PlatformInAppLocalhostServerCreationParams {
     this.onData = null,
   });
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.port}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.port}
   final int port;
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.directoryIndex}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.directoryIndex}
   final String directoryIndex;
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.documentRoot}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.documentRoot}
   final String documentRoot;
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.shared}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.shared}
   final bool shared;
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.onData}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.onData}
   final Future<bool> Function(HttpRequest request)? onData;
 
-  ///{@template cygnus_core.PlatformInAppLocalhostServerCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformLocalhostServerCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformInAppLocalhostServerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformLocalhostServerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformInAppLocalhostServer}
+///{@template cygnus_core.CygnusPlatformLocalhostServer}
 ///This class allows you to create a simple server on `http://localhost:[port]/`
 ///in order to be able to load your assets file on a local server.
 ///The default `port` value is `8080`.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformInAppLocalhostServer.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformLocalhostServer.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -76,72 +76,72 @@ class PlatformInAppLocalhostServerCreationParams {
     LinuxPlatform(),
   ],
 )
-abstract class PlatformInAppLocalhostServer extends PlatformInterface {
-  /// Creates a new [PlatformInAppLocalhostServer]
-  factory PlatformInAppLocalhostServer(
-    PlatformInAppLocalhostServerCreationParams params,
+abstract class CygnusPlatformLocalhostServer extends PlatformInterface {
+  /// Creates a new [CygnusPlatformLocalhostServer]
+  factory CygnusPlatformLocalhostServer(
+    CygnusPlatformLocalhostServerCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformInAppLocalhostServer inAppLocalhostServer =
-        InAppWebViewPlatform.instance!.createPlatformInAppLocalhostServer(
+    final CygnusPlatformLocalhostServer inAppLocalhostServer =
+        CygnusWebViewPlatform.instance!.createPlatformInAppLocalhostServer(
           params,
         );
     PlatformInterface.verify(inAppLocalhostServer, _token);
     return inAppLocalhostServer;
   }
 
-  /// Creates a new empty [PlatformInAppLocalhostServer] to access static methods.
-  factory PlatformInAppLocalhostServer.static() {
+  /// Creates a new empty [CygnusPlatformLocalhostServer] to access static methods.
+  factory CygnusPlatformLocalhostServer.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformInAppLocalhostServer inAppLocalhostServerStatic =
-        InAppWebViewPlatform.instance!
+    final CygnusPlatformLocalhostServer inAppLocalhostServerStatic =
+        CygnusWebViewPlatform.instance!
             .createPlatformInAppLocalhostServerStatic();
     PlatformInterface.verify(inAppLocalhostServerStatic, _token);
     return inAppLocalhostServerStatic;
   }
 
   /// Used by the platform implementation to create a new
-  /// [PlatformInAppLocalhostServer].
+  /// [CygnusPlatformLocalhostServer].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformInAppLocalhostServer.implementation(this.params)
+  CygnusPlatformLocalhostServer.implementation(this.params)
     : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformInAppLocalhostServer].
-  final PlatformInAppLocalhostServerCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformLocalhostServer].
+  final CygnusPlatformLocalhostServerCreationParams params;
 
-  ///{@template cygnus_core.PlatformInAppLocalhostServer.port}
+  ///{@template cygnus_core.CygnusPlatformLocalhostServer.port}
   ///Represents the port of the server. The default value is `8080`.
   ///{@endtemplate}
   int get port => params.port;
 
-  ///{@template cygnus_core.PlatformInAppLocalhostServer.directoryIndex}
+  ///{@template cygnus_core.CygnusPlatformLocalhostServer.directoryIndex}
   ///represents the index file to use. The default value is `index.html`.
   ///{@endtemplate}
   String get directoryIndex => params.directoryIndex;
 
-  ///{@template cygnus_core.PlatformInAppLocalhostServer.documentRoot}
+  ///{@template cygnus_core.CygnusPlatformLocalhostServer.documentRoot}
   ///Represents the document root path to serve. The default value is `./`.
   ///{@endtemplate}
   String get documentRoot => params.documentRoot;
 
-  ///{@template cygnus_core.PlatformInAppLocalhostServer.shared}
+  ///{@template cygnus_core.CygnusPlatformLocalhostServer.shared}
   ///Specifies whether additional `HttpServer`
   /// objects can bind to the same combination of `address`, `port` and `v6Only`.
   /// If `shared` is `true` and more `HttpServer`s from this isolate or other
@@ -151,7 +151,7 @@ abstract class PlatformInAppLocalhostServer extends PlatformInterface {
   ///{@endtemplate}
   bool get shared => params.shared;
 
-  ///{@template cygnus_core.PlatformInAppLocalhostServer.onData}
+  ///{@template cygnus_core.CygnusPlatformLocalhostServer.onData}
   ///A custom callback that is called when a new request is received by the server
   ///that can be used to send or modify the response, for example adding custom headers.
   ///If this callback returns `true`, it means that the request has been handled by this callback.
@@ -159,7 +159,7 @@ abstract class PlatformInAppLocalhostServer extends PlatformInterface {
   ///{@endtemplate}
   Future<bool> Function(HttpRequest request)? get onData => params.onData;
 
-  ///{@template cygnus_core.PlatformInAppLocalhostServer.start}
+  ///{@template cygnus_core.CygnusPlatformLocalhostServer.start}
   ///Starts the server on `http://localhost:[port]/`.
   ///
   ///**NOTE for iOS**: For the iOS Platform, you need to add the `NSAllowsLocalNetworking` key with `true` in the `Info.plist` file
@@ -174,7 +174,7 @@ abstract class PlatformInAppLocalhostServer extends PlatformInterface {
   ///The `NSAllowsLocalNetworking` key is available since **iOS 10**.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.start.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.start.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -190,11 +190,11 @@ abstract class PlatformInAppLocalhostServer extends PlatformInterface {
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppLocalhostServer.close}
+  ///{@template cygnus_core.CygnusPlatformLocalhostServer.close}
   ///Closes the server.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.close.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.close.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -210,11 +210,11 @@ abstract class PlatformInAppLocalhostServer extends PlatformInterface {
     );
   }
 
-  ///{@template cygnus_core.PlatformInAppLocalhostServer.isRunning}
+  ///{@template cygnus_core.CygnusPlatformLocalhostServer.isRunning}
   ///Indicates if the server is running or not.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformInAppLocalhostServer.isRunning.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServer.isRunning.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -230,17 +230,17 @@ abstract class PlatformInAppLocalhostServer extends PlatformInterface {
     );
   }
 
-  ///{@macro cygnus_core.PlatformInAppLocalhostServerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformLocalhostServerCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
       params.isClassSupported(platform: platform);
 
-  ///{@template cygnus_core.PlatformInAppLocalhostServer.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformLocalhostServer.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformInAppLocalhostServerMethod method, {
+    CygnusPlatformLocalhostServerMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformInAppLocalhostServerMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformLocalhostServerMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );

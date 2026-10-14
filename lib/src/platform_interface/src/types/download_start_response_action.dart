@@ -5,16 +5,16 @@ import 'download_start_response.dart';
 
 part 'download_start_response_action.g.dart';
 
-///Class representing the action of a [DownloadStartResponse].
+///Class representing the action of a [CygnusDownloadStartResponse].
 @ExchangeableEnum()
-class DownloadStartResponseAction_ {
+class CygnusDownloadStartResponseAction_ {
   // ignore: unused_field
   final int _value;
-  const DownloadStartResponseAction_._internal(this._value);
+  const CygnusDownloadStartResponseAction_._internal(this._value);
 
   ///Cancel the download.
   @EnumSupportedPlatforms(
     platforms: [EnumWindowsPlatform(value: 0), EnumLinuxPlatform(value: 0)],
   )
-  static const CANCEL = const DownloadStartResponseAction_._internal(0);
+  static const CANCEL = const CygnusDownloadStartResponseAction_._internal(0);
 }

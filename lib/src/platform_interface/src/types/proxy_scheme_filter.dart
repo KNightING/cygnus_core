@@ -4,19 +4,19 @@ import '../platform_proxy_controller.dart';
 
 part 'proxy_scheme_filter.g.dart';
 
-///Class that represent scheme filters used by [PlatformProxyController].
+///Class that represent scheme filters used by [CygnusPlatformProxyController].
 @ExchangeableEnum()
-class ProxySchemeFilter_ {
+class CygnusProxySchemeFilter_ {
   // ignore: unused_field
   final String _value;
-  const ProxySchemeFilter_._internal(this._value);
+  const CygnusProxySchemeFilter_._internal(this._value);
 
   ///Matches all schemes.
-  static const MATCH_ALL_SCHEMES = const ProxySchemeFilter_._internal("*");
+  static const MATCH_ALL_SCHEMES = const CygnusProxySchemeFilter_._internal("*");
 
   ///HTTP scheme.
-  static const MATCH_HTTP = const ProxySchemeFilter_._internal("http");
+  static const MATCH_HTTP = const CygnusProxySchemeFilter_._internal("http");
 
   ///HTTPS scheme.
-  static const MATCH_HTTPS = const ProxySchemeFilter_._internal("https");
+  static const MATCH_HTTPS = const CygnusProxySchemeFilter_._internal("https");
 }

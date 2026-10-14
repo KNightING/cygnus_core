@@ -7,7 +7,7 @@ part 'proxy_rule.g.dart';
 
 ///Class that holds a scheme filter and a proxy URL.
 @ExchangeableObject()
-class ProxyRule_ {
+class CygnusProxyRule_ {
   ///Represents the scheme filter.
   @SupportedPlatforms(
     platforms: [
@@ -21,7 +21,7 @@ class ProxyRule_ {
       ),
     ],
   )
-  ProxySchemeFilter_? schemeFilter;
+  CygnusProxySchemeFilter_? schemeFilter;
 
   ///Represents the proxy URL.
   @SupportedPlatforms(
@@ -57,7 +57,7 @@ class ProxyRule_ {
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
   List<String>? matchDomains;
 
-  ProxyRule_({
+  CygnusProxyRule_({
     required this.url,
     this.schemeFilter,
     this.allowFailover,

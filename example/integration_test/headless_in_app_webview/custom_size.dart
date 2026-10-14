@@ -1,16 +1,16 @@
 part of 'main.dart';
 
 void customSize() {
-  final shouldSkip = !HeadlessInAppWebView.isMethodSupported(
-    PlatformHeadlessInAppWebViewMethod.getSize,
+  final shouldSkip = !CygnusHeadlessWebView.isMethodSupported(
+    CygnusPlatformHeadlessWebViewMethod.getSize,
   );
 
   skippableTest('set and get custom size', () async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
 
-    var headlessWebView = new HeadlessInAppWebView(
-      initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+    var headlessWebView = new CygnusHeadlessWebView(
+      initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
       initialSize: Size(600, 800),
       onWebViewCreated: (controller) {
         controllerCompleter.complete(controller);

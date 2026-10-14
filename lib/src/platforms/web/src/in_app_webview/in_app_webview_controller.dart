@@ -14,22 +14,22 @@ import 'headless_in_app_webview.dart';
 /// Object specifying creation parameters for creating a [WebPlatformInAppWebViewController].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformInAppWebViewControllerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebViewControllerCreationParams] for
 /// more information.
 @immutable
 class WebPlatformInAppWebViewControllerCreationParams
-    extends PlatformInAppWebViewControllerCreationParams {
+    extends CygnusPlatformWebViewControllerCreationParams {
   /// Creates a new [WebPlatformInAppWebViewControllerCreationParams] instance.
   const WebPlatformInAppWebViewControllerCreationParams({
     required super.id,
     super.webviewParams,
   });
 
-  /// Creates a [WebPlatformInAppWebViewControllerCreationParams] instance based on [PlatformInAppWebViewControllerCreationParams].
+  /// Creates a [WebPlatformInAppWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
   factory WebPlatformInAppWebViewControllerCreationParams.fromPlatformInAppWebViewControllerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformInAppWebViewControllerCreationParams params,
+    CygnusPlatformWebViewControllerCreationParams params,
   ) {
     return WebPlatformInAppWebViewControllerCreationParams(
       id: params.id,
@@ -38,21 +38,21 @@ class WebPlatformInAppWebViewControllerCreationParams
   }
 }
 
-///Controls a WebView, such as an [InAppWebView] widget instance, a [WebPlatformHeadlessInAppWebView] instance or [WebPlatformInAppBrowser] WebView instance.
+///Controls a WebView, such as an [CygnusWebView] widget instance, a [WebPlatformHeadlessInAppWebView] instance or [WebPlatformInAppBrowser] WebView instance.
 ///
-///If you are using the [InAppWebView] widget, an [InAppWebViewController] instance can be obtained by setting the [InAppWebView.onWebViewCreated]
+///If you are using the [CygnusWebView] widget, an [CygnusWebViewController] instance can be obtained by setting the [CygnusWebView.onWebViewCreated]
 ///callback. Instead, if you are using an [WebPlatformInAppBrowser] instance, you can get it through the [WebPlatformInAppBrowser.webViewController] attribute.
-class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
+class WebPlatformInAppWebViewController extends CygnusPlatformWebViewController
     with ChannelController {
   // ignore: unused_field
   static final MethodChannel _staticChannel = IN_APP_WEBVIEW_STATIC_CHANNEL;
 
-  Map<UserScriptInjectionTime, List<UserScript>> _userScripts = {
-    UserScriptInjectionTime.AT_DOCUMENT_START: <UserScript>[],
-    UserScriptInjectionTime.AT_DOCUMENT_END: <UserScript>[],
+  Map<CygnusUserScriptInjectionTime, List<CygnusUserScript>> _userScripts = {
+    CygnusUserScriptInjectionTime.AT_DOCUMENT_START: <CygnusUserScript>[],
+    CygnusUserScriptInjectionTime.AT_DOCUMENT_END: <CygnusUserScript>[],
   };
   Map<String, Function> _javaScriptHandlersMap = HashMap<String, Function>();
-  Map<String, ScriptHtmlTagAttributes> _injectedScriptsFromURL = {};
+  Map<String, CygnusScriptHtmlTagAttributes> _injectedScriptsFromURL = {};
 
   dynamic _controllerFromPlatform;
 
@@ -60,7 +60,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
   late WebPlatformWebStorage webStorage;
 
   WebPlatformInAppWebViewController(
-    PlatformInAppWebViewControllerCreationParams params,
+    CygnusPlatformWebViewControllerCreationParams params,
   ) : super.implementation(
         params is WebPlatformInAppWebViewControllerCreationParams
             ? params
@@ -84,7 +84,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
     return _staticValue;
   }
 
-  void _init(PlatformInAppWebViewControllerCreationParams params) {
+  void _init(CygnusPlatformWebViewControllerCreationParams params) {
     _controllerFromPlatform =
         params.webviewParams?.controllerFromPlatform?.call(this) ?? this;
 
@@ -103,14 +103,14 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
       className: this.runtimeType.toString(),
       name: "WebView",
       id: getViewId().toString(),
-      debugLoggingSettings: PlatformInAppWebViewController.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformWebViewController.debugLoggingSettings,
       method: method,
       args: args,
     );
   }
 
   Future<dynamic> _handleMethod(MethodCall call) async {
-    if (PlatformInAppWebViewController.debugLoggingSettings.enabled &&
+    if (CygnusPlatformWebViewController.debugLoggingSettings.enabled &&
         call.method != "onCallJsHandler") {
       _debugLog(call.method, call.arguments);
     }
@@ -120,14 +120,14 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
         _injectedScriptsFromURL.clear();
         if ((webviewParams != null && webviewParams!.onLoadStart != null)) {
           String? url = call.arguments["url"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           webviewParams!.onLoadStart!(_controllerFromPlatform, uri);
         }
         break;
       case "onLoadStop":
         if ((webviewParams != null && webviewParams!.onLoadStop != null)) {
           String? url = call.arguments["url"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           webviewParams!.onLoadStop!(_controllerFromPlatform, uri);
         }
         break;
@@ -136,7 +136,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
             webviewParams!.onConsoleMessage != null)) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          ConsoleMessage consoleMessage = ConsoleMessage.fromMap(arguments)!;
+          CygnusConsoleMessage consoleMessage = CygnusConsoleMessage.fromMap(arguments)!;
           webviewParams!.onConsoleMessage!(
             _controllerFromPlatform,
             consoleMessage,
@@ -154,7 +154,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
         if ((webviewParams != null && webviewParams!.onCreateWindow != null)) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          CreateWindowAction createWindowAction = CreateWindowAction.fromMap(
+          CygnusCreateWindowAction createWindowAction = CygnusCreateWindowAction.fromMap(
             arguments,
           )!;
 
@@ -204,7 +204,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
             webviewParams!.onUpdateVisitedHistory != null)) {
           String? url = call.arguments["url"];
           bool? isReload = call.arguments["isReload"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
           webviewParams!.onUpdateVisitedHistory!(
             _controllerFromPlatform,
             uri,
@@ -234,7 +234,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
                 // ignore: deprecated_member_use_from_same_package
                 webviewParams!.onPrint != null))) {
           String? url = call.arguments["url"];
-          WebUri? uri = url != null ? WebUri(url) : null;
+          CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
 
           if (webviewParams!.onPrintRequest != null)
             return await webviewParams!.onPrintRequest!(
@@ -269,7 +269,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
             .cast<String, dynamic>();
         // decode args to json
         handlerDataMap["args"] = jsonDecode(handlerDataMap["args"]);
-        final handlerData = JavaScriptHandlerFunctionData.fromMap(
+        final handlerData = CygnusJavaScriptHandlerFunctionData.fromMap(
           handlerDataMap,
         )!;
 
@@ -280,15 +280,15 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
           try {
             var jsHandlerResult = null;
             if (_javaScriptHandlersMap[handlerName]
-                is JavaScriptHandlerCallback) {
+                is CygnusJavaScriptHandlerCallback) {
               jsHandlerResult =
                   await (_javaScriptHandlersMap[handlerName]
-                      as JavaScriptHandlerCallback)(handlerData.args);
+                      as CygnusJavaScriptHandlerCallback)(handlerData.args);
             } else if (_javaScriptHandlersMap[handlerName]
-                is JavaScriptHandlerFunction) {
+                is CygnusJavaScriptHandlerFunction) {
               jsHandlerResult =
                   await (_javaScriptHandlersMap[handlerName]
-                      as JavaScriptHandlerFunction)(handlerData);
+                      as CygnusJavaScriptHandlerFunction)(handlerData);
             } else {
               jsHandlerResult = await _javaScriptHandlersMap[handlerName]!();
             }
@@ -309,10 +309,10 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<WebUri?> getUrl() async {
+  Future<CygnusWebUri?> getUrl() async {
     Map<String, dynamic> args = <String, dynamic>{};
     String? url = await channel?.invokeMethod<String?>('getUrl', args);
-    return url != null ? WebUri(url) : null;
+    return url != null ? CygnusWebUri(url) : null;
   }
 
   @override
@@ -325,7 +325,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
   Future<String?> getHtml() async {
     String? html;
 
-    InAppWebViewSettings? settings = await getSettings();
+    CygnusWebViewSettings? settings = await getSettings();
     if (settings != null && settings.javaScriptEnabled == true) {
       html = await evaluateJavascript(
         source: "window.document.getElementsByTagName('html')[0].outerHTML;",
@@ -351,8 +351,8 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<List<Favicon>> getFavicons() async {
-    List<Favicon> favicons = [];
+  Future<List<CygnusFavicon>> getFavicons() async {
+    List<CygnusFavicon> favicons = [];
 
     var webviewUrl = await getUrl();
 
@@ -373,7 +373,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
       assetPathBase = assetPathSplit[0] + "/flutter_assets/";
     }
 
-    InAppWebViewSettings? settings = await getSettings();
+    CygnusWebViewSettings? settings = await getSettings();
     if (settings != null && settings.javaScriptEnabled == true) {
       List<Map<dynamic, dynamic>> links =
           (await evaluateJavascript(
@@ -441,15 +441,15 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
     return url.startsWith("http://") || url.startsWith("https://");
   }
 
-  List<Favicon> _createFavicons(
-    WebUri url,
+  List<CygnusFavicon> _createFavicons(
+    CygnusWebUri url,
     String? assetPathBase,
     String urlIcon,
     String? rel,
     String? sizes,
     bool isManifest,
   ) {
-    List<Favicon> favicons = [];
+    List<CygnusFavicon> favicons = [];
 
     List<String> urlSplit = urlIcon.split("/");
     if (!_isUrlAbsolute(urlIcon)) {
@@ -476,12 +476,12 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
         int width = int.parse(size.split("x")[0]);
         int height = int.parse(size.split("x")[1]);
         favicons.add(
-          Favicon(url: WebUri(urlIcon), rel: rel, width: width, height: height),
+          CygnusFavicon(url: CygnusWebUri(urlIcon), rel: rel, width: width, height: height),
         );
       }
     } else {
       favicons.add(
-        Favicon(url: WebUri(urlIcon), rel: rel, width: null, height: null),
+        CygnusFavicon(url: CygnusWebUri(urlIcon), rel: rel, width: null, height: null),
       );
     }
 
@@ -490,10 +490,10 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> loadUrl({
-    required URLRequest urlRequest,
+    required CygnusURLRequest urlRequest,
     @Deprecated('Use allowingReadAccessTo instead')
     Uri? iosAllowingReadAccessTo,
-    WebUri? allowingReadAccessTo,
+    CygnusWebUri? allowingReadAccessTo,
   }) async {
     assert(urlRequest.url != null && urlRequest.url.toString().isNotEmpty);
     assert(
@@ -517,7 +517,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> postUrl({
-    required WebUri url,
+    required CygnusWebUri url,
     required Uint8List postData,
   }) async {
     assert(url.toString().isNotEmpty);
@@ -532,12 +532,12 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
     required String data,
     String mimeType = "text/html",
     String encoding = "utf8",
-    WebUri? baseUrl,
+    CygnusWebUri? baseUrl,
     @Deprecated('Use historyUrl instead') Uri? androidHistoryUrl,
-    WebUri? historyUrl,
+    CygnusWebUri? historyUrl,
     @Deprecated('Use allowingReadAccessTo instead')
     Uri? iosAllowingReadAccessTo,
-    WebUri? allowingReadAccessTo,
+    CygnusWebUri? allowingReadAccessTo,
   }) async {
     assert(
       allowingReadAccessTo == null || allowingReadAccessTo.isScheme("file"),
@@ -616,7 +616,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
   @override
   Future<dynamic> evaluateJavascript({
     required String source,
-    ContentWorld? contentWorld,
+    CygnusContentWorld? contentWorld,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('source', () => source);
@@ -634,8 +634,8 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> injectJavascriptFileFromUrl({
-    required WebUri urlFile,
-    ScriptHtmlTagAttributes? scriptHtmlTagAttributes,
+    required CygnusWebUri urlFile,
+    CygnusScriptHtmlTagAttributes? scriptHtmlTagAttributes,
   }) async {
     assert(urlFile.toString().isNotEmpty);
     var id = scriptHtmlTagAttributes?.id;
@@ -668,8 +668,8 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> injectCSSFileFromUrl({
-    required WebUri urlFile,
-    CSSLinkHtmlTagAttributes? cssLinkHtmlTagAttributes,
+    required CygnusWebUri urlFile,
+    CygnusCSSLinkHtmlTagAttributes? cssLinkHtmlTagAttributes,
   }) async {
     assert(urlFile.toString().isNotEmpty);
     Map<String, dynamic> args = <String, dynamic>{};
@@ -689,28 +689,28 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   @Deprecated('Use setSettings instead')
-  Future<void> setOptions({required InAppWebViewGroupOptions options}) async {
-    InAppWebViewSettings settings =
-        InAppWebViewSettings.fromMap(options.toMap()) ?? InAppWebViewSettings();
+  Future<void> setOptions({required CygnusWebViewGroupOptions options}) async {
+    CygnusWebViewSettings settings =
+        CygnusWebViewSettings.fromMap(options.toMap()) ?? CygnusWebViewSettings();
     await setSettings(settings: settings);
   }
 
   @override
   @Deprecated('Use getSettings instead')
-  Future<InAppWebViewGroupOptions?> getOptions() async {
-    InAppWebViewSettings? settings = await getSettings();
+  Future<CygnusWebViewGroupOptions?> getOptions() async {
+    CygnusWebViewSettings? settings = await getSettings();
 
     Map<dynamic, dynamic>? options = settings?.toMap();
     if (options != null) {
       options = options.cast<String, dynamic>();
-      return InAppWebViewGroupOptions.fromMap(options as Map<String, dynamic>);
+      return CygnusWebViewGroupOptions.fromMap(options as Map<String, dynamic>);
     }
 
     return null;
   }
 
   @override
-  Future<void> setSettings({required InAppWebViewSettings settings}) async {
+  Future<void> setSettings({required CygnusWebViewSettings settings}) async {
     Map<String, dynamic> args = <String, dynamic>{};
 
     args.putIfAbsent('settings', () => settings.toMap());
@@ -718,7 +718,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<InAppWebViewSettings?> getSettings() async {
+  Future<CygnusWebViewSettings?> getSettings() async {
     Map<String, dynamic> args = <String, dynamic>{};
 
     Map<dynamic, dynamic>? settings = await channel?.invokeMethod(
@@ -727,7 +727,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
     );
     if (settings != null) {
       settings = settings.cast<String, dynamic>();
-      return InAppWebViewSettings.fromMap(settings as Map<String, dynamic>);
+      return CygnusWebViewSettings.fromMap(settings as Map<String, dynamic>);
     }
 
     return null;
@@ -772,8 +772,8 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<PlatformPrintJobController?> printCurrentPage({
-    PrintJobSettings? settings,
+  Future<CygnusPlatformPrintJobController?> printCurrentPage({
+    CygnusPrintJobSettings? settings,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("settings", () => settings?.toMap());
@@ -814,10 +814,10 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<WebUri?> getOriginalUrl() async {
+  Future<CygnusWebUri?> getOriginalUrl() async {
     Map<String, dynamic> args = <String, dynamic>{};
     String? url = await channel?.invokeMethod<String?>('getOriginalUrl', args);
-    return url != null ? WebUri(url) : null;
+    return url != null ? CygnusWebUri(url) : null;
   }
 
   @override
@@ -827,8 +827,8 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<List<MetaTag>> getMetaTags() async {
-    List<MetaTag> metaTags = [];
+  Future<List<CygnusMetaTag>> getMetaTags() async {
+    List<CygnusMetaTag> metaTags = [];
 
     List<Map<dynamic, dynamic>>? metaTagList = (await evaluateJavascript(
       source: """
@@ -873,11 +873,11 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
     }
 
     for (var metaTag in metaTagList) {
-      var attrs = <MetaTagAttribute>[];
+      var attrs = <CygnusMetaTagAttribute>[];
 
       for (var metaTagAttr in metaTag["attrs"]) {
         attrs.add(
-          MetaTagAttribute(
+          CygnusMetaTagAttribute(
             name: metaTagAttr["name"],
             value: metaTagAttr["value"],
           ),
@@ -885,7 +885,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
       }
 
       metaTags.add(
-        MetaTag(
+        CygnusMetaTag(
           name: metaTag["name"],
           content: metaTag["content"],
           attrs: attrs,
@@ -912,7 +912,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
 
     // try using javascript
     var metaTags = await getMetaTags();
-    MetaTag? metaTagThemeColor;
+    CygnusMetaTag? metaTagThemeColor;
 
     for (var metaTag in metaTags) {
       if (metaTag.name == "theme-color") {
@@ -989,7 +989,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<void> addUserScript({required UserScript userScript}) async {
+  Future<void> addUserScript({required CygnusUserScript userScript}) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('userScript', () => userScript.toMap());
     if (!(_userScripts[userScript.injectionTime]?.contains(userScript) ??
@@ -1000,14 +1000,14 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
   }
 
   @override
-  Future<void> addUserScripts({required List<UserScript> userScripts}) async {
+  Future<void> addUserScripts({required List<CygnusUserScript> userScripts}) async {
     for (var i = 0; i < userScripts.length; i++) {
       await addUserScript(userScript: userScripts[i]);
     }
   }
 
   @override
-  Future<bool> removeUserScript({required UserScript userScript}) async {
+  Future<bool> removeUserScript({required CygnusUserScript userScript}) async {
     var index = _userScripts[userScript.injectionTime]?.indexOf(userScript);
     if (index == null || index == -1) {
       return false;
@@ -1024,8 +1024,8 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> removeUserScriptsByGroupName({required String groupName}) async {
-    final List<UserScript> userScriptsAtDocumentStart = List.from(
-      _userScripts[UserScriptInjectionTime.AT_DOCUMENT_START] ?? [],
+    final List<CygnusUserScript> userScriptsAtDocumentStart = List.from(
+      _userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_START] ?? [],
     );
     for (final userScript in userScriptsAtDocumentStart) {
       if (userScript.groupName == groupName) {
@@ -1033,8 +1033,8 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
       }
     }
 
-    final List<UserScript> userScriptsAtDocumentEnd = List.from(
-      _userScripts[UserScriptInjectionTime.AT_DOCUMENT_END] ?? [],
+    final List<CygnusUserScript> userScriptsAtDocumentEnd = List.from(
+      _userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_END] ?? [],
     );
     for (final userScript in userScriptsAtDocumentEnd) {
       if (userScript.groupName == groupName) {
@@ -1049,7 +1049,7 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> removeUserScripts({
-    required List<UserScript> userScripts,
+    required List<CygnusUserScript> userScripts,
   }) async {
     for (final userScript in userScripts) {
       await removeUserScript(userScript: userScript);
@@ -1058,15 +1058,15 @@ class WebPlatformInAppWebViewController extends PlatformInAppWebViewController
 
   @override
   Future<void> removeAllUserScripts() async {
-    _userScripts[UserScriptInjectionTime.AT_DOCUMENT_START]?.clear();
-    _userScripts[UserScriptInjectionTime.AT_DOCUMENT_END]?.clear();
+    _userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_START]?.clear();
+    _userScripts[CygnusUserScriptInjectionTime.AT_DOCUMENT_END]?.clear();
 
     Map<String, dynamic> args = <String, dynamic>{};
     await channel?.invokeMethod('removeAllUserScripts', args);
   }
 
   @override
-  bool hasUserScript({required UserScript userScript}) {
+  bool hasUserScript({required CygnusUserScript userScript}) {
     return _userScripts[userScript.injectionTime]?.contains(userScript) ??
         false;
   }

@@ -7,7 +7,7 @@ part of 'in_app_webview_rect.dart';
 // **************************************************************************
 
 ///A class that represents a structure that contains the location and dimensions of a rectangle.
-class InAppWebViewRect {
+class CygnusWebViewRect {
   ///rect height
   double height;
 
@@ -19,7 +19,7 @@ class InAppWebViewRect {
 
   ///y position
   double y;
-  InAppWebViewRect({
+  CygnusWebViewRect({
     required this.x,
     required this.y,
     required this.width,
@@ -28,15 +28,15 @@ class InAppWebViewRect {
     assert(this.width >= 0 && this.height >= 0);
   }
 
-  ///Gets a possible [InAppWebViewRect] instance from a [Map] value.
-  static InAppWebViewRect? fromMap(
+  ///Gets a possible [CygnusWebViewRect] instance from a [Map] value.
+  static CygnusWebViewRect? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = InAppWebViewRect(
+    final instance = CygnusWebViewRect(
       height: map['height'],
       width: map['width'],
       x: map['x'],
@@ -46,7 +46,7 @@ class InAppWebViewRect {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"height": height, "width": width, "x": x, "y": y};
   }
 
@@ -57,6 +57,6 @@ class InAppWebViewRect {
 
   @override
   String toString() {
-    return 'InAppWebViewRect{height: $height, width: $width, x: $x, y: $y}';
+    return 'CygnusWebViewRect{height: $height, width: $width, x: $x, y: $y}';
   }
 }

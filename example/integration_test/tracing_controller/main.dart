@@ -11,7 +11,7 @@ import '../util.dart';
 part 'start_and_stop.dart';
 
 void main() {
-  final shouldSkip = !TracingController.isClassSupported();
+  final shouldSkip = !CygnusTracingController.isClassSupported();
 
   skippableGroup('Tracing Controller', () {
     startAndStop();

@@ -1,27 +1,27 @@
 part of 'main.dart';
 
 void webMessage() {
-  final shouldSkip = !WebMessageChannel.isClassSupported();
+  final shouldSkip = !CygnusWebMessageChannel.isClassSupported();
 
-  skippableGroup('WebMessage', () {
-    skippableTestWidgets('WebMessageChannel post String', (
+  skippableGroup('CygnusWebMessage', () {
+    skippableTestWidgets('CygnusWebMessageChannel post String', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer webMessageCompleter = Completer<String>();
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialData: InAppWebViewInitialData(
+            initialData: CygnusWebViewInitialData(
               data: """
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebMessageChannel Test</title>
+    <title>CygnusWebMessageChannel Test</title>
 </head>
 <body>
     <button id="button" onclick="port.postMessage(input.value);" />Send</button>
@@ -59,12 +59,12 @@ void webMessage() {
 
               await port1.setWebMessageCallback((message) async {
                 await port1.postMessage(
-                  WebMessage(data: message!.data + " and back"),
+                  CygnusWebMessage(data: message!.data + " and back"),
                 );
               });
               await controller.postWebMessage(
-                message: WebMessage(data: "capturePort", ports: [port2]),
-                targetOrigin: WebUri("*"),
+                message: CygnusWebMessage(data: "capturePort", ports: [port2]),
+                targetOrigin: CygnusWebUri("*"),
               );
               await controller.evaluateJavascript(
                 source: "document.getElementById('button').click();",
@@ -79,24 +79,24 @@ void webMessage() {
       expect(message, 'JavaScript To Native and back');
     });
 
-    skippableTestWidgets('WebMessageChannel post ArrayBuffer', (
+    skippableTestWidgets('CygnusWebMessageChannel post ArrayBuffer', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer webMessageCompleter = Completer<String>();
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialData: InAppWebViewInitialData(
+            initialData: CygnusWebViewInitialData(
               data: """
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebMessageChannel Test</title>
+    <title>CygnusWebMessageChannel Test</title>
 </head>
 <body>
     <button id="button" onclick="port.postMessage(stringToBuffer(input.value));" />Send</button>
@@ -147,19 +147,19 @@ void webMessage() {
 
               await port1.setWebMessageCallback((message) async {
                 await port1.postMessage(
-                  WebMessage(
+                  CygnusWebMessage(
                     data: utf8.encode(utf8.decode(message!.data) + " and back"),
-                    type: WebMessageType.ARRAY_BUFFER,
+                    type: CygnusWebMessageType.ARRAY_BUFFER,
                   ),
                 );
               });
               await controller.postWebMessage(
-                message: WebMessage(
+                message: CygnusWebMessage(
                   data: utf8.encode("capturePort"),
-                  type: WebMessageType.ARRAY_BUFFER,
+                  type: CygnusWebMessageType.ARRAY_BUFFER,
                   ports: [port2],
                 ),
-                targetOrigin: WebUri("*"),
+                targetOrigin: CygnusWebUri("*"),
               );
               await controller.evaluateJavascript(
                 source: "document.getElementById('button').click();",
@@ -174,21 +174,21 @@ void webMessage() {
       expect(message, 'JavaScript To Native and back');
     });
 
-    skippableTestWidgets('WebMessageListener post String', (
+    skippableTestWidgets('CygnusWebMessageListener post String', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
       final Completer webMessageCompleter = Completer<String>();
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
             onWebViewCreated: (controller) async {
               await controller.addWebMessageListener(
-                WebMessageListener(
+                CygnusWebMessageListener(
                   jsObjectName: "myTestObj",
                   allowedOriginRules: Set.from(["https://*.example.com"]),
                   onPostMessage:
@@ -197,10 +197,10 @@ void webMessage() {
                             (sourceOrigin.toString() + '/') ==
                                 TEST_URL_EXAMPLE.toString()) {
                           replyProxy.postMessage(
-                            WebMessage(data: message!.data + " and back"),
+                            CygnusWebMessage(data: message!.data + " and back"),
                           );
                         } else {
-                          replyProxy.postMessage(WebMessage(data: "Nope"));
+                          replyProxy.postMessage(CygnusWebMessage(data: "Nope"));
                         }
                       },
                 ),
@@ -219,7 +219,7 @@ void webMessage() {
         ),
       );
       final controller = await controllerCompleter.future;
-      await controller.loadUrl(urlRequest: URLRequest(url: TEST_URL_EXAMPLE));
+      await controller.loadUrl(urlRequest: CygnusURLRequest(url: TEST_URL_EXAMPLE));
       await pageLoaded.future;
 
       await controller.evaluateJavascript(
@@ -235,21 +235,21 @@ void webMessage() {
       expect(message, 'JavaScript To Native and back');
     });
 
-    skippableTestWidgets('WebMessageListener post ArrayBuffer', (
+    skippableTestWidgets('CygnusWebMessageListener post ArrayBuffer', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
       final Completer webMessageCompleter = Completer<String>();
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
             onWebViewCreated: (controller) async {
               await controller.addWebMessageListener(
-                WebMessageListener(
+                CygnusWebMessageListener(
                   jsObjectName: "myTestObj",
                   allowedOriginRules: Set.from(["https://*.example.com"]),
                   onPostMessage:
@@ -258,18 +258,18 @@ void webMessage() {
                             (sourceOrigin.toString() + '/') ==
                                 TEST_URL_EXAMPLE.toString()) {
                           replyProxy.postMessage(
-                            WebMessage(
+                            CygnusWebMessage(
                               data: utf8.encode(
                                 utf8.decode(message!.data) + " and back",
                               ),
-                              type: WebMessageType.ARRAY_BUFFER,
+                              type: CygnusWebMessageType.ARRAY_BUFFER,
                             ),
                           );
                         } else {
                           replyProxy.postMessage(
-                            WebMessage(
+                            CygnusWebMessage(
                               data: utf8.encode("Nope"),
-                              type: WebMessageType.ARRAY_BUFFER,
+                              type: CygnusWebMessageType.ARRAY_BUFFER,
                             ),
                           );
                         }
@@ -290,7 +290,7 @@ void webMessage() {
         ),
       );
       final controller = await controllerCompleter.future;
-      await controller.loadUrl(urlRequest: URLRequest(url: TEST_URL_EXAMPLE));
+      await controller.loadUrl(urlRequest: CygnusURLRequest(url: TEST_URL_EXAMPLE));
       await pageLoaded.future;
 
       await controller.evaluateJavascript(

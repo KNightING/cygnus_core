@@ -11,30 +11,30 @@ import 'platform_util.dart';
 /// Object specifying creation parameters for creating a [IOSCookieManager].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformCookieManagerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformCookieManagerCreationParams] for
 /// more information.
 @immutable
 class IOSCookieManagerCreationParams
-    extends PlatformCookieManagerCreationParams {
+    extends CygnusPlatformCookieManagerCreationParams {
   /// Creates a new [IOSCookieManagerCreationParams] instance.
   const IOSCookieManagerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformCookieManagerCreationParams params,
+    CygnusPlatformCookieManagerCreationParams params,
   ) : super();
 
-  /// Creates a [IOSCookieManagerCreationParams] instance based on [PlatformCookieManagerCreationParams].
+  /// Creates a [IOSCookieManagerCreationParams] instance based on [CygnusPlatformCookieManagerCreationParams].
   factory IOSCookieManagerCreationParams.fromPlatformCookieManagerCreationParams(
-    PlatformCookieManagerCreationParams params,
+    CygnusPlatformCookieManagerCreationParams params,
   ) {
     return IOSCookieManagerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformCookieManager}
-class IOSCookieManager extends PlatformCookieManager with ChannelController {
+///{@macro cygnus_core.CygnusPlatformCookieManager}
+class IOSCookieManager extends CygnusPlatformCookieManager with ChannelController {
   /// Creates a new [IOSCookieManager].
-  IOSCookieManager(PlatformCookieManagerCreationParams params)
+  IOSCookieManager(CygnusPlatformCookieManagerCreationParams params)
     : super.implementation(
         params is IOSCookieManagerCreationParams
             ? params
@@ -50,7 +50,7 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
   }
 
   static final IOSCookieManager _staticValue = IOSCookieManager(
-    IOSCookieManagerCreationParams(PlatformCookieManagerCreationParams()),
+    IOSCookieManagerCreationParams(CygnusPlatformCookieManagerCreationParams()),
   );
 
   factory IOSCookieManager.static() {
@@ -67,7 +67,7 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
   static IOSCookieManager _init() {
     _instance = IOSCookieManager(
       IOSCookieManagerCreationParams(
-        const PlatformCookieManagerCreationParams(),
+        const CygnusPlatformCookieManagerCreationParams(),
       ),
     );
     return _instance!;
@@ -77,7 +77,7 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
 
   @override
   Future<bool> setCookie({
-    required WebUri url,
+    required CygnusWebUri url,
     required String name,
     required String value,
     String path = "/",
@@ -86,10 +86,10 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
     int? maxAge,
     bool? isSecure,
     bool? isHttpOnly,
-    HTTPCookieSameSitePolicy? sameSite,
+    CygnusHTTPCookieSameSitePolicy? sameSite,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     webViewController = webViewController ?? iosBelow11WebViewController;
 
@@ -129,7 +129,7 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
   }
 
   Future<void> _setCookieWithJavaScript({
-    required WebUri url,
+    required CygnusWebUri url,
     required String name,
     required String value,
     String path = "/",
@@ -137,8 +137,8 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
     int? expiresDate,
     int? maxAge,
     bool? isSecure,
-    HTTPCookieSameSitePolicy? sameSite,
-    PlatformInAppWebViewController? webViewController,
+    CygnusHTTPCookieSameSitePolicy? sameSite,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     var cookieValue = name + "=" + value + "; Path=" + path;
 
@@ -170,7 +170,7 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
     final setCookieCompleter = Completer<void>();
     final headlessWebView = IOSHeadlessInAppWebView(
       IOSHeadlessInAppWebViewCreationParams(
-        initialUrlRequest: URLRequest(url: url),
+        initialUrlRequest: CygnusURLRequest(url: url),
         onLoadStop: (controller, url) async {
           await controller.evaluateJavascript(
             source: 'document.cookie="$cookieValue"',
@@ -185,11 +185,11 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
   }
 
   @override
-  Future<List<Cookie>> getCookies({
-    required WebUri url,
+  Future<List<CygnusCookie>> getCookies({
+    required CygnusWebUri url,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
 
@@ -202,7 +202,7 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
       );
     }
 
-    List<Cookie> cookies = [];
+    List<CygnusCookie> cookies = [];
 
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('url', () => url.toString());
@@ -212,13 +212,13 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
 
     cookieListMap.forEach((cookieMap) {
       cookies.add(
-        Cookie(
+        CygnusCookie(
           name: cookieMap["name"],
           value: cookieMap["value"],
           expiresDate: cookieMap["expiresDate"],
           isSessionOnly: cookieMap["isSessionOnly"],
           domain: cookieMap["domain"],
-          sameSite: HTTPCookieSameSitePolicy.fromNativeValue(
+          sameSite: CygnusHTTPCookieSameSitePolicy.fromNativeValue(
             cookieMap["sameSite"],
           ),
           isSecure: cookieMap["isSecure"],
@@ -230,13 +230,13 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
     return cookies;
   }
 
-  Future<List<Cookie>> _getCookiesWithJavaScript({
-    required WebUri url,
-    PlatformInAppWebViewController? webViewController,
+  Future<List<CygnusCookie>> _getCookiesWithJavaScript({
+    required CygnusWebUri url,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
 
-    List<Cookie> cookies = [];
+    List<CygnusCookie> cookies = [];
 
     if (webViewController != null) {
       final javaScriptEnabled =
@@ -253,7 +253,7 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
         documentCookies.forEach((documentCookie) {
           List<String> cookie = documentCookie.split('=');
           if (cookie.length > 1) {
-            cookies.add(Cookie(name: cookie[0], value: cookie[1]));
+            cookies.add(CygnusCookie(name: cookie[0], value: cookie[1]));
           }
         });
         return cookies;
@@ -263,7 +263,7 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
     final pageLoaded = Completer<void>();
     final headlessWebView = IOSHeadlessInAppWebView(
       IOSHeadlessInAppWebViewCreationParams(
-        initialUrlRequest: URLRequest(url: url),
+        initialUrlRequest: CygnusURLRequest(url: url),
         onLoadStop: (controller, url) async {
           pageLoaded.complete();
         },
@@ -283,7 +283,7 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
     documentCookies.forEach((documentCookie) {
       List<String> cookie = documentCookie.split('=');
       if (cookie.length > 1) {
-        cookies.add(Cookie(name: cookie[0], value: cookie[1]));
+        cookies.add(CygnusCookie(name: cookie[0], value: cookie[1]));
       }
     });
     await headlessWebView.dispose();
@@ -291,12 +291,12 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
   }
 
   @override
-  Future<Cookie?> getCookie({
-    required WebUri url,
+  Future<CygnusCookie?> getCookie({
+    required CygnusWebUri url,
     required String name,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
     assert(name.isNotEmpty);
@@ -304,11 +304,11 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
     webViewController = webViewController ?? iosBelow11WebViewController;
 
     if (await _shouldUseJavascript()) {
-      List<Cookie> cookies = await _getCookiesWithJavaScript(
+      List<CygnusCookie> cookies = await _getCookiesWithJavaScript(
         url: url,
         webViewController: webViewController,
       );
-      return cookies.cast<Cookie?>().firstWhere(
+      return cookies.cast<CygnusCookie?>().firstWhere(
         (cookie) => cookie!.name == name,
         orElse: () => null,
       );
@@ -322,13 +322,13 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
     for (var i = 0; i < cookies.length; i++) {
       cookies[i] = cookies[i].cast<String, dynamic>();
       if (cookies[i]["name"] == name)
-        return Cookie(
+        return CygnusCookie(
           name: cookies[i]["name"],
           value: cookies[i]["value"],
           expiresDate: cookies[i]["expiresDate"],
           isSessionOnly: cookies[i]["isSessionOnly"],
           domain: cookies[i]["domain"],
-          sameSite: HTTPCookieSameSitePolicy.fromNativeValue(
+          sameSite: CygnusHTTPCookieSameSitePolicy.fromNativeValue(
             cookies[i]["sameSite"],
           ),
           isSecure: cookies[i]["isSecure"],
@@ -341,13 +341,13 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
 
   @override
   Future<bool> deleteCookie({
-    required WebUri url,
+    required CygnusWebUri url,
     required String name,
     String path = "/",
     String? domain,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
     assert(name.isNotEmpty);
@@ -377,19 +377,19 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
 
   @override
   Future<bool> deleteCookies({
-    required WebUri url,
+    required CygnusWebUri url,
     String path = "/",
     String? domain,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
 
     webViewController = webViewController ?? iosBelow11WebViewController;
 
     if (await _shouldUseJavascript()) {
-      List<Cookie> cookies = await _getCookiesWithJavaScript(
+      List<CygnusCookie> cookies = await _getCookiesWithJavaScript(
         url: url,
         webViewController: webViewController,
       );
@@ -421,8 +421,8 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
   }
 
   @override
-  Future<List<Cookie>> getAllCookies() async {
-    List<Cookie> cookies = [];
+  Future<List<CygnusCookie>> getAllCookies() async {
+    List<CygnusCookie> cookies = [];
 
     Map<String, dynamic> args = <String, dynamic>{};
     List<dynamic> cookieListMap =
@@ -431,13 +431,13 @@ class IOSCookieManager extends PlatformCookieManager with ChannelController {
 
     cookieListMap.forEach((cookieMap) {
       cookies.add(
-        Cookie(
+        CygnusCookie(
           name: cookieMap["name"],
           value: cookieMap["value"],
           expiresDate: cookieMap["expiresDate"],
           isSessionOnly: cookieMap["isSessionOnly"],
           domain: cookieMap["domain"],
-          sameSite: HTTPCookieSameSitePolicy.fromNativeValue(
+          sameSite: CygnusHTTPCookieSameSitePolicy.fromNativeValue(
             cookieMap["sameSite"],
           ),
           isSecure: cookieMap["isSecure"],

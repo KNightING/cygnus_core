@@ -25,13 +25,13 @@ class ServiceControllersScreen extends StatefulWidget {
 class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
   bool _isLoading = false;
 
-  // ServiceWorkerController state
+  // CygnusServiceWorkerController state
   bool _allowContentAccess = true;
   bool _allowFileAccess = true;
   bool _blockNetworkLoads = false;
-  CacheMode? _cacheMode = CacheMode.LOAD_DEFAULT;
+  CygnusCacheMode? _cacheMode = CygnusCacheMode.LOAD_DEFAULT;
 
-  // ProxyController state
+  // CygnusProxyController state
   final TextEditingController _proxyHostController = TextEditingController(
     text: '127.0.0.1',
   );
@@ -40,15 +40,15 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
   );
   final TextEditingController _bypassListController = TextEditingController();
 
-  // TracingController state
+  // CygnusTracingController state
   bool _isTracing = false;
 
-  // WebViewEnvironment state
+  // CygnusWebViewEnvironment state
   String? _availableVersion;
-  List<BrowserProcessInfo> _processInfos = [];
+  List<CygnusBrowserProcessInfo> _processInfos = [];
   int _lastEnvironmentRevision = -1;
 
-  // ProcessGlobalConfig state
+  // CygnusProcessGlobalConfig state
   final TextEditingController _dataDirSuffixController = TextEditingController(
     text: 'test_suffix',
   );
@@ -65,47 +65,47 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
   }
 
   Set<SupportedPlatform> _serviceWorkerPlatforms(
-    PlatformServiceWorkerControllerMethod method,
+    CygnusPlatformServiceWorkerControllerMethod method,
   ) {
     return SupportCheckHelper.supportedPlatformsForMethod(
       method: method,
-      checker: ServiceWorkerController.isMethodSupported,
+      checker: CygnusServiceWorkerController.isMethodSupported,
     );
   }
 
   Set<SupportedPlatform> _proxyControllerPlatforms(
-    PlatformProxyControllerMethod method,
+    CygnusPlatformProxyControllerMethod method,
   ) {
     return SupportCheckHelper.supportedPlatformsForMethod(
       method: method,
-      checker: ProxyController.isMethodSupported,
+      checker: CygnusProxyController.isMethodSupported,
     );
   }
 
   Set<SupportedPlatform> _tracingControllerPlatforms(
-    PlatformTracingControllerMethod method,
+    CygnusPlatformTracingControllerMethod method,
   ) {
     return SupportCheckHelper.supportedPlatformsForMethod(
       method: method,
-      checker: TracingController.isMethodSupported,
+      checker: CygnusTracingController.isMethodSupported,
     );
   }
 
   Set<SupportedPlatform> _webViewEnvironmentPlatforms(
-    PlatformWebViewEnvironmentMethod method,
+    CygnusPlatformWebViewEnvironmentMethod method,
   ) {
     return SupportCheckHelper.supportedPlatformsForMethod(
       method: method,
-      checker: WebViewEnvironment.isMethodSupported,
+      checker: CygnusWebViewEnvironment.isMethodSupported,
     );
   }
 
   Set<SupportedPlatform> _processGlobalConfigPlatforms(
-    PlatformProcessGlobalConfigMethod method,
+    CygnusPlatformProcessGlobalConfigMethod method,
   ) {
     return SupportCheckHelper.supportedPlatformsForMethod(
       method: method,
-      checker: ProcessGlobalConfig.isMethodSupported,
+      checker: CygnusProcessGlobalConfig.isMethodSupported,
     );
   }
 
@@ -184,48 +184,48 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
     );
   }
 
-  TracingMode _parseTracingMode(String? value) {
+  CygnusTracingMode _parseTracingMode(String? value) {
     if (value == null || value.isEmpty) {
-      return TracingMode.RECORD_CONTINUOUSLY;
+      return CygnusTracingMode.RECORD_CONTINUOUSLY;
     }
-    return TracingMode.values.firstWhere(
+    return CygnusTracingMode.values.firstWhere(
       (mode) => mode.name().toLowerCase() == value.toLowerCase(),
-      orElse: () => TracingMode.RECORD_CONTINUOUSLY,
+      orElse: () => CygnusTracingMode.RECORD_CONTINUOUSLY,
     );
   }
 
-  List<TracingCategory> _parseTracingCategories(dynamic raw) {
+  List<CygnusTracingCategory> _parseTracingCategories(dynamic raw) {
     if (raw is! List) {
-      return [TracingCategory.CATEGORIES_WEB_DEVELOPER];
+      return [CygnusTracingCategory.CATEGORIES_WEB_DEVELOPER];
     }
-    final categories = <TracingCategory>[];
+    final categories = <CygnusTracingCategory>[];
     for (final entry in raw) {
       final name = entry.toString().toLowerCase();
-      final matched = TracingCategory.values.firstWhere(
+      final matched = CygnusTracingCategory.values.firstWhere(
         (category) => category.name().toLowerCase() == name,
-        orElse: () => TracingCategory.CATEGORIES_WEB_DEVELOPER,
+        orElse: () => CygnusTracingCategory.CATEGORIES_WEB_DEVELOPER,
       );
       categories.add(matched);
     }
     return categories.isEmpty
-        ? [TracingCategory.CATEGORIES_WEB_DEVELOPER]
+        ? [CygnusTracingCategory.CATEGORIES_WEB_DEVELOPER]
         : categories;
   }
 
-  // ServiceWorkerController methods
+  // CygnusServiceWorkerController methods
   Future<void> _getAllowContentAccess() async {
     setState(() => _isLoading = true);
     try {
-      final value = await ServiceWorkerController.getAllowContentAccess();
+      final value = await CygnusServiceWorkerController.getAllowContentAccess();
       setState(() => _allowContentAccess = value);
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.getAllowContentAccess.name,
+        CygnusPlatformServiceWorkerControllerMethod.getAllowContentAccess.name,
         'Allow content access: $value',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.getAllowContentAccess.name,
+        CygnusPlatformServiceWorkerControllerMethod.getAllowContentAccess.name,
         'Error: $e',
         isError: true,
       );
@@ -237,16 +237,16 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
   Future<void> _setAllowContentAccess(bool value) async {
     setState(() => _isLoading = true);
     try {
-      await ServiceWorkerController.setAllowContentAccess(value);
+      await CygnusServiceWorkerController.setAllowContentAccess(value);
       setState(() => _allowContentAccess = value);
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.setAllowContentAccess.name,
+        CygnusPlatformServiceWorkerControllerMethod.setAllowContentAccess.name,
         'Allow content access set to: $value',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.setAllowContentAccess.name,
+        CygnusPlatformServiceWorkerControllerMethod.setAllowContentAccess.name,
         'Error: $e',
         isError: true,
       );
@@ -258,16 +258,16 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
   Future<void> _getAllowFileAccess() async {
     setState(() => _isLoading = true);
     try {
-      final value = await ServiceWorkerController.getAllowFileAccess();
+      final value = await CygnusServiceWorkerController.getAllowFileAccess();
       setState(() => _allowFileAccess = value);
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.getAllowFileAccess.name,
+        CygnusPlatformServiceWorkerControllerMethod.getAllowFileAccess.name,
         'Allow file access: $value',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.getAllowFileAccess.name,
+        CygnusPlatformServiceWorkerControllerMethod.getAllowFileAccess.name,
         'Error: $e',
         isError: true,
       );
@@ -279,16 +279,16 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
   Future<void> _setAllowFileAccess(bool value) async {
     setState(() => _isLoading = true);
     try {
-      await ServiceWorkerController.setAllowFileAccess(value);
+      await CygnusServiceWorkerController.setAllowFileAccess(value);
       setState(() => _allowFileAccess = value);
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.setAllowFileAccess.name,
+        CygnusPlatformServiceWorkerControllerMethod.setAllowFileAccess.name,
         'Allow file access set to: $value',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.setAllowFileAccess.name,
+        CygnusPlatformServiceWorkerControllerMethod.setAllowFileAccess.name,
         'Error: $e',
         isError: true,
       );
@@ -300,16 +300,16 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
   Future<void> _getBlockNetworkLoads() async {
     setState(() => _isLoading = true);
     try {
-      final value = await ServiceWorkerController.getBlockNetworkLoads();
+      final value = await CygnusServiceWorkerController.getBlockNetworkLoads();
       setState(() => _blockNetworkLoads = value);
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.getBlockNetworkLoads.name,
+        CygnusPlatformServiceWorkerControllerMethod.getBlockNetworkLoads.name,
         'Block network loads: $value',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.getBlockNetworkLoads.name,
+        CygnusPlatformServiceWorkerControllerMethod.getBlockNetworkLoads.name,
         'Error: $e',
         isError: true,
       );
@@ -321,16 +321,16 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
   Future<void> _setBlockNetworkLoads(bool value) async {
     setState(() => _isLoading = true);
     try {
-      await ServiceWorkerController.setBlockNetworkLoads(value);
+      await CygnusServiceWorkerController.setBlockNetworkLoads(value);
       setState(() => _blockNetworkLoads = value);
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.setBlockNetworkLoads.name,
+        CygnusPlatformServiceWorkerControllerMethod.setBlockNetworkLoads.name,
         'Block network loads set to: $value',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.setBlockNetworkLoads.name,
+        CygnusPlatformServiceWorkerControllerMethod.setBlockNetworkLoads.name,
         'Error: $e',
         isError: true,
       );
@@ -342,16 +342,16 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
   Future<void> _getCacheMode() async {
     setState(() => _isLoading = true);
     try {
-      final value = await ServiceWorkerController.getCacheMode();
+      final value = await CygnusServiceWorkerController.getCacheMode();
       setState(() => _cacheMode = value);
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.getCacheMode.name,
+        CygnusPlatformServiceWorkerControllerMethod.getCacheMode.name,
         'Cache mode: ${value?.name}',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.getCacheMode.name,
+        CygnusPlatformServiceWorkerControllerMethod.getCacheMode.name,
         'Error: $e',
         isError: true,
       );
@@ -360,19 +360,19 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
     }
   }
 
-  Future<void> _setCacheMode(CacheMode mode) async {
+  Future<void> _setCacheMode(CygnusCacheMode mode) async {
     setState(() => _isLoading = true);
     try {
-      await ServiceWorkerController.setCacheMode(mode);
+      await CygnusServiceWorkerController.setCacheMode(mode);
       setState(() => _cacheMode = mode);
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.setCacheMode.name,
+        CygnusPlatformServiceWorkerControllerMethod.setCacheMode.name,
         'Cache mode set to: ${mode.name}',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformServiceWorkerControllerMethod.setCacheMode.name,
+        CygnusPlatformServiceWorkerControllerMethod.setCacheMode.name,
         'Error: $e',
         isError: true,
       );
@@ -381,7 +381,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
     }
   }
 
-  // ProxyController methods
+  // CygnusProxyController methods
   Future<void> _setProxyOverride() async {
     final params = await showParameterDialog(
       context: context,
@@ -414,14 +414,14 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
 
     setState(() => _isLoading = true);
     try {
-      await ProxyController.instance().setProxyOverride(
-        settings: ProxySettings(
-          proxyRules: [ProxyRule(url: '$host:$port')],
+      await CygnusProxyController.instance().setProxyOverride(
+        settings: CygnusProxySettings(
+          proxyRules: [CygnusProxyRule(url: '$host:$port')],
           bypassRules: bypassList,
         ),
       );
       _recordMethodResult(
-        PlatformProxyControllerMethod.setProxyOverride.name,
+        CygnusPlatformProxyControllerMethod.setProxyOverride.name,
         'Proxy override set',
         isError: false,
       );
@@ -432,7 +432,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformProxyControllerMethod.setProxyOverride.name,
+        CygnusPlatformProxyControllerMethod.setProxyOverride.name,
         'Error: $e',
         isError: true,
       );
@@ -444,16 +444,16 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
   Future<void> _clearProxyOverride() async {
     setState(() => _isLoading = true);
     try {
-      await ProxyController.instance().clearProxyOverride();
+      await CygnusProxyController.instance().clearProxyOverride();
       _recordMethodResult(
-        PlatformProxyControllerMethod.clearProxyOverride.name,
+        CygnusPlatformProxyControllerMethod.clearProxyOverride.name,
         'Proxy override cleared',
         isError: false,
       );
       _logEvent(EventType.network, 'Proxy cleared');
     } catch (e) {
       _recordMethodResult(
-        PlatformProxyControllerMethod.clearProxyOverride.name,
+        CygnusPlatformProxyControllerMethod.clearProxyOverride.name,
         'Error: $e',
         isError: true,
       );
@@ -462,7 +462,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
     }
   }
 
-  // TracingController methods
+  // CygnusTracingController methods
   Future<void> _startTracing() async {
     final params = await showParameterDialog(
       context: context,
@@ -480,22 +480,22 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
 
     setState(() => _isLoading = true);
     try {
-      await TracingController.instance().start(
-        settings: TracingSettings(
+      await CygnusTracingController.instance().start(
+        settings: CygnusTracingSettings(
           tracingMode: tracingMode,
           categories: categories,
         ),
       );
       setState(() => _isTracing = true);
       _recordMethodResult(
-        PlatformTracingControllerMethod.start.name,
+        CygnusPlatformTracingControllerMethod.start.name,
         'Tracing started',
         isError: false,
       );
       _logEvent(EventType.performance, 'Tracing started');
     } catch (e) {
       _recordMethodResult(
-        PlatformTracingControllerMethod.start.name,
+        CygnusPlatformTracingControllerMethod.start.name,
         'Error: $e',
         isError: true,
       );
@@ -507,10 +507,10 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
   Future<void> _stopTracing() async {
     setState(() => _isLoading = true);
     try {
-      final result = await TracingController.instance().stop();
+      final result = await CygnusTracingController.instance().stop();
       setState(() => _isTracing = false);
       _recordMethodResult(
-        PlatformTracingControllerMethod.stop.name,
+        CygnusPlatformTracingControllerMethod.stop.name,
         'Tracing stopped: $result',
         isError: false,
       );
@@ -521,7 +521,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformTracingControllerMethod.stop.name,
+        CygnusPlatformTracingControllerMethod.stop.name,
         'Error: $e',
         isError: true,
       );
@@ -533,16 +533,16 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
   Future<void> _checkIsTracing() async {
     setState(() => _isLoading = true);
     try {
-      final tracing = await TracingController.instance().isTracing();
+      final tracing = await CygnusTracingController.instance().isTracing();
       setState(() => _isTracing = tracing);
       _recordMethodResult(
-        PlatformTracingControllerMethod.isTracing.name,
+        CygnusPlatformTracingControllerMethod.isTracing.name,
         'Is tracing: $tracing',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformTracingControllerMethod.isTracing.name,
+        CygnusPlatformTracingControllerMethod.isTracing.name,
         'Error: $e',
         isError: true,
       );
@@ -551,20 +551,20 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
     }
   }
 
-  // WebViewEnvironment methods
+  // CygnusWebViewEnvironment methods
   Future<void> _createWebViewEnvironment() async {
     setState(() => _isLoading = true);
     try {
       await context.read<SettingsManager>().recreateEnvironment();
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.create.name,
-        '$WebViewEnvironment created',
+        CygnusPlatformWebViewEnvironmentMethod.create.name,
+        '$CygnusWebViewEnvironment created',
         isError: false,
       );
-      _logEvent(EventType.ui, '$WebViewEnvironment created');
+      _logEvent(EventType.ui, '$CygnusWebViewEnvironment created');
     } catch (e) {
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.create.name,
+        CygnusPlatformWebViewEnvironmentMethod.create.name,
         'Error: $e',
         isError: true,
       );
@@ -576,16 +576,16 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
   Future<void> _getAvailableVersion() async {
     setState(() => _isLoading = true);
     try {
-      final version = await WebViewEnvironment.getAvailableVersion();
+      final version = await CygnusWebViewEnvironment.getAvailableVersion();
       setState(() => _availableVersion = version);
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.getAvailableVersion.name,
+        CygnusPlatformWebViewEnvironmentMethod.getAvailableVersion.name,
         'Available version: $version',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.getAvailableVersion.name,
+        CygnusPlatformWebViewEnvironmentMethod.getAvailableVersion.name,
         'Error: $e',
         isError: true,
       );
@@ -607,7 +607,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
     final version2 = params['version2']?.toString() ?? '';
     if (version1.isEmpty || version2.isEmpty) {
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.compareBrowserVersions.name,
+        CygnusPlatformWebViewEnvironmentMethod.compareBrowserVersions.name,
         'Both versions are required',
         isError: true,
       );
@@ -616,18 +616,18 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
 
     setState(() => _isLoading = true);
     try {
-      final result = await WebViewEnvironment.compareBrowserVersions(
+      final result = await CygnusWebViewEnvironment.compareBrowserVersions(
         version1: version1,
         version2: version2,
       );
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.compareBrowserVersions.name,
+        CygnusPlatformWebViewEnvironmentMethod.compareBrowserVersions.name,
         'Compare versions: $result (positive = v1 > v2, negative = v1 < v2)',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.compareBrowserVersions.name,
+        CygnusPlatformWebViewEnvironmentMethod.compareBrowserVersions.name,
         'Error: $e',
         isError: true,
       );
@@ -640,8 +640,8 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
     final environment = context.read<SettingsManager>().webViewEnvironment;
     if (environment == null) {
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.getProcessInfos.name,
-        'Create or select $WebViewEnvironment first',
+        CygnusPlatformWebViewEnvironmentMethod.getProcessInfos.name,
+        'Create or select $CygnusWebViewEnvironment first',
         isError: true,
       );
       return;
@@ -652,13 +652,13 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
       final infos = await environment.getProcessInfos();
       setState(() => _processInfos = infos);
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.getProcessInfos.name,
+        CygnusPlatformWebViewEnvironmentMethod.getProcessInfos.name,
         'Found ${infos.length} processes',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.getProcessInfos.name,
+        CygnusPlatformWebViewEnvironmentMethod.getProcessInfos.name,
         'Error: $e',
         isError: true,
       );
@@ -671,8 +671,8 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
     final environment = context.read<SettingsManager>().webViewEnvironment;
     if (environment == null) {
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.getFailureReportFolderPath.name,
-        'Create or select $WebViewEnvironment first',
+        CygnusPlatformWebViewEnvironmentMethod.getFailureReportFolderPath.name,
+        'Create or select $CygnusWebViewEnvironment first',
         isError: true,
       );
       return;
@@ -682,13 +682,13 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
     try {
       final path = await environment.getFailureReportFolderPath();
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.getFailureReportFolderPath.name,
+        CygnusPlatformWebViewEnvironmentMethod.getFailureReportFolderPath.name,
         'Failure report folder: $path',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.getFailureReportFolderPath.name,
+        CygnusPlatformWebViewEnvironmentMethod.getFailureReportFolderPath.name,
         'Error: $e',
         isError: true,
       );
@@ -703,13 +703,13 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
       await context.read<SettingsManager>().disposeEnvironment();
       setState(() => _processInfos = []);
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.dispose.name,
-        '$WebViewEnvironment disposed',
+        CygnusPlatformWebViewEnvironmentMethod.dispose.name,
+        '$CygnusWebViewEnvironment disposed',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformWebViewEnvironmentMethod.dispose.name,
+        CygnusPlatformWebViewEnvironmentMethod.dispose.name,
         'Error: $e',
         isError: true,
       );
@@ -718,7 +718,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
     }
   }
 
-  // ProcessGlobalConfig methods
+  // CygnusProcessGlobalConfig methods
   Future<void> _applyProcessGlobalConfig() async {
     final params = await showParameterDialog(
       context: context,
@@ -731,7 +731,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
     final suffix = params['dataDirectorySuffix']?.toString() ?? '';
     if (suffix.isEmpty) {
       _recordMethodResult(
-        PlatformProcessGlobalConfigMethod.apply.name,
+        CygnusPlatformProcessGlobalConfigMethod.apply.name,
         'Please enter a data directory suffix',
         isError: true,
       );
@@ -741,22 +741,22 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
 
     setState(() => _isLoading = true);
     try {
-      await ProcessGlobalConfig.instance().apply(
-        settings: ProcessGlobalConfigSettings(dataDirectorySuffix: suffix),
+      await CygnusProcessGlobalConfig.instance().apply(
+        settings: CygnusProcessGlobalConfigSettings(dataDirectorySuffix: suffix),
       );
       _recordMethodResult(
-        PlatformProcessGlobalConfigMethod.apply.name,
-        '$ProcessGlobalConfig applied',
+        CygnusPlatformProcessGlobalConfigMethod.apply.name,
+        '$CygnusProcessGlobalConfig applied',
         isError: false,
       );
       _logEvent(
         EventType.ui,
-        '$ProcessGlobalConfig applied',
+        '$CygnusProcessGlobalConfig applied',
         data: {'dataDirectorySuffix': suffix},
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformProcessGlobalConfigMethod.apply.name,
+        CygnusPlatformProcessGlobalConfigMethod.apply.name,
         'Error: $e',
         isError: true,
       );
@@ -819,7 +819,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
 
   Widget _buildServiceWorkerSection() {
     final supportedPlatforms = SupportChecker.getSupportedPlatformsForClass(
-      '$ServiceWorkerController',
+      '$CygnusServiceWorkerController',
     );
 
     return Card(
@@ -827,7 +827,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
         title: Row(
           children: [
             Text(
-              '$ServiceWorkerController',
+              '$CygnusServiceWorkerController',
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(width: 8),
@@ -855,18 +855,18 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
                   _getAllowContentAccess,
                   _mergePlatforms(
                     _serviceWorkerPlatforms(
-                      PlatformServiceWorkerControllerMethod
+                      CygnusPlatformServiceWorkerControllerMethod
                           .getAllowContentAccess,
                     ),
                     _serviceWorkerPlatforms(
-                      PlatformServiceWorkerControllerMethod
+                      CygnusPlatformServiceWorkerControllerMethod
                           .setAllowContentAccess,
                     ),
                   ),
-                  getMethodName: PlatformServiceWorkerControllerMethod
+                  getMethodName: CygnusPlatformServiceWorkerControllerMethod
                       .getAllowContentAccess
                       .name,
-                  setMethodName: PlatformServiceWorkerControllerMethod
+                  setMethodName: CygnusPlatformServiceWorkerControllerMethod
                       .setAllowContentAccess
                       .name,
                 ),
@@ -877,16 +877,16 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
                   _getAllowFileAccess,
                   _mergePlatforms(
                     _serviceWorkerPlatforms(
-                      PlatformServiceWorkerControllerMethod.getAllowFileAccess,
+                      CygnusPlatformServiceWorkerControllerMethod.getAllowFileAccess,
                     ),
                     _serviceWorkerPlatforms(
-                      PlatformServiceWorkerControllerMethod.setAllowFileAccess,
+                      CygnusPlatformServiceWorkerControllerMethod.setAllowFileAccess,
                     ),
                   ),
-                  getMethodName: PlatformServiceWorkerControllerMethod
+                  getMethodName: CygnusPlatformServiceWorkerControllerMethod
                       .getAllowFileAccess
                       .name,
-                  setMethodName: PlatformServiceWorkerControllerMethod
+                  setMethodName: CygnusPlatformServiceWorkerControllerMethod
                       .setAllowFileAccess
                       .name,
                 ),
@@ -897,18 +897,18 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
                   _getBlockNetworkLoads,
                   _mergePlatforms(
                     _serviceWorkerPlatforms(
-                      PlatformServiceWorkerControllerMethod
+                      CygnusPlatformServiceWorkerControllerMethod
                           .getBlockNetworkLoads,
                     ),
                     _serviceWorkerPlatforms(
-                      PlatformServiceWorkerControllerMethod
+                      CygnusPlatformServiceWorkerControllerMethod
                           .setBlockNetworkLoads,
                     ),
                   ),
-                  getMethodName: PlatformServiceWorkerControllerMethod
+                  getMethodName: CygnusPlatformServiceWorkerControllerMethod
                       .getBlockNetworkLoads
                       .name,
-                  setMethodName: PlatformServiceWorkerControllerMethod
+                  setMethodName: CygnusPlatformServiceWorkerControllerMethod
                       .setBlockNetworkLoads
                       .name,
                 ),
@@ -920,10 +920,10 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
                     const Text('Cache Mode:'),
                     const SizedBox(width: 16),
                     Expanded(
-                      child: DropdownButton<CacheMode>(
+                      child: DropdownButton<CygnusCacheMode>(
                         value: _cacheMode,
                         isExpanded: true,
-                        items: CacheMode.values
+                        items: CygnusCacheMode.values
                             .map(
                               (mode) => DropdownMenuItem(
                                 value: mode,
@@ -952,24 +952,24 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
                 SupportBadgesRow(
                   supportedPlatforms: _mergePlatforms(
                     _serviceWorkerPlatforms(
-                      PlatformServiceWorkerControllerMethod.getCacheMode,
+                      CygnusPlatformServiceWorkerControllerMethod.getCacheMode,
                     ),
                     _serviceWorkerPlatforms(
-                      PlatformServiceWorkerControllerMethod.setCacheMode,
+                      CygnusPlatformServiceWorkerControllerMethod.setCacheMode,
                     ),
                   ),
                   compact: true,
                 ),
                 const SizedBox(height: 6),
                 _buildMethodHistory(
-                  PlatformServiceWorkerControllerMethod.getCacheMode.name,
+                  CygnusPlatformServiceWorkerControllerMethod.getCacheMode.name,
                   title:
-                      PlatformServiceWorkerControllerMethod.getCacheMode.name,
+                      CygnusPlatformServiceWorkerControllerMethod.getCacheMode.name,
                 ),
                 _buildMethodHistory(
-                  PlatformServiceWorkerControllerMethod.setCacheMode.name,
+                  CygnusPlatformServiceWorkerControllerMethod.setCacheMode.name,
                   title:
-                      PlatformServiceWorkerControllerMethod.setCacheMode.name,
+                      CygnusPlatformServiceWorkerControllerMethod.setCacheMode.name,
                 ),
               ],
             ),
@@ -1030,7 +1030,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
 
   Widget _buildProxyControllerSection() {
     final supportedPlatforms = SupportChecker.getSupportedPlatformsForClass(
-      '$ProxyController',
+      '$CygnusProxyController',
     );
 
     return Card(
@@ -1038,7 +1038,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
         title: Row(
           children: [
             Text(
-              '$ProxyController',
+              '$CygnusProxyController',
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(width: 8),
@@ -1116,19 +1116,19 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
                       'Set Proxy',
                       _setProxyOverride,
                       supportedPlatforms: _proxyControllerPlatforms(
-                        PlatformProxyControllerMethod.setProxyOverride,
+                        CygnusPlatformProxyControllerMethod.setProxyOverride,
                       ),
                       methodName:
-                          PlatformProxyControllerMethod.setProxyOverride.name,
+                          CygnusPlatformProxyControllerMethod.setProxyOverride.name,
                     );
                     final clearButton = _buildMethodButton(
                       'Clear Proxy',
                       _clearProxyOverride,
                       supportedPlatforms: _proxyControllerPlatforms(
-                        PlatformProxyControllerMethod.clearProxyOverride,
+                        CygnusPlatformProxyControllerMethod.clearProxyOverride,
                       ),
                       methodName:
-                          PlatformProxyControllerMethod.clearProxyOverride.name,
+                          CygnusPlatformProxyControllerMethod.clearProxyOverride.name,
                     );
 
                     return ResponsiveRow(
@@ -1152,7 +1152,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
 
   Widget _buildTracingControllerSection() {
     final supportedPlatforms = SupportChecker.getSupportedPlatformsForClass(
-      '$TracingController',
+      '$CygnusTracingController',
     );
 
     return Card(
@@ -1160,7 +1160,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
         title: Row(
           children: [
             Text(
-              '$TracingController',
+              '$CygnusTracingController',
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(width: 8),
@@ -1219,26 +1219,26 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
                       'Start',
                       !_isTracing ? _startTracing : null,
                       supportedPlatforms: _tracingControllerPlatforms(
-                        PlatformTracingControllerMethod.start,
+                        CygnusPlatformTracingControllerMethod.start,
                       ),
-                      methodName: PlatformTracingControllerMethod.start.name,
+                      methodName: CygnusPlatformTracingControllerMethod.start.name,
                     );
                     final stopButton = _buildMethodButton(
                       'Stop',
                       _isTracing ? _stopTracing : null,
                       supportedPlatforms: _tracingControllerPlatforms(
-                        PlatformTracingControllerMethod.stop,
+                        CygnusPlatformTracingControllerMethod.stop,
                       ),
-                      methodName: PlatformTracingControllerMethod.stop.name,
+                      methodName: CygnusPlatformTracingControllerMethod.stop.name,
                     );
                     final statusButton = _buildMethodButton(
                       'Is Tracing',
                       _checkIsTracing,
                       supportedPlatforms: _tracingControllerPlatforms(
-                        PlatformTracingControllerMethod.isTracing,
+                        CygnusPlatformTracingControllerMethod.isTracing,
                       ),
                       methodName:
-                          PlatformTracingControllerMethod.isTracing.name,
+                          CygnusPlatformTracingControllerMethod.isTracing.name,
                     );
 
                     return ResponsiveRow(
@@ -1265,7 +1265,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
     final settingsManager = context.watch<SettingsManager>();
     final environment = settingsManager.webViewEnvironment;
     final supportedPlatforms = SupportChecker.getSupportedPlatformsForClass(
-      '$WebViewEnvironment',
+      '$CygnusWebViewEnvironment',
     );
 
     return Card(
@@ -1273,7 +1273,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
         title: Row(
           children: [
             Text(
-              '$WebViewEnvironment',
+              '$CygnusWebViewEnvironment',
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(width: 8),
@@ -1357,17 +1357,17 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
                       'Create',
                       environment == null ? _createWebViewEnvironment : null,
                       supportedPlatforms: _webViewEnvironmentPlatforms(
-                        PlatformWebViewEnvironmentMethod.create,
+                        CygnusPlatformWebViewEnvironmentMethod.create,
                       ),
-                      methodName: PlatformWebViewEnvironmentMethod.create.name,
+                      methodName: CygnusPlatformWebViewEnvironmentMethod.create.name,
                     );
                     final disposeButton = _buildMethodButton(
                       'Dispose',
                       environment != null ? _disposeWebViewEnvironment : null,
                       supportedPlatforms: _webViewEnvironmentPlatforms(
-                        PlatformWebViewEnvironmentMethod.dispose,
+                        CygnusPlatformWebViewEnvironmentMethod.dispose,
                       ),
-                      methodName: PlatformWebViewEnvironmentMethod.dispose.name,
+                      methodName: CygnusPlatformWebViewEnvironmentMethod.dispose.name,
                     );
 
                     return ResponsiveRow(
@@ -1395,9 +1395,9 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
                       'Get Version',
                       _getAvailableVersion,
                       supportedPlatforms: _webViewEnvironmentPlatforms(
-                        PlatformWebViewEnvironmentMethod.getAvailableVersion,
+                        CygnusPlatformWebViewEnvironmentMethod.getAvailableVersion,
                       ),
-                      methodName: PlatformWebViewEnvironmentMethod
+                      methodName: CygnusPlatformWebViewEnvironmentMethod
                           .getAvailableVersion
                           .name,
                     );
@@ -1405,9 +1405,9 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
                       'Compare Versions',
                       _compareBrowserVersions,
                       supportedPlatforms: _webViewEnvironmentPlatforms(
-                        PlatformWebViewEnvironmentMethod.compareBrowserVersions,
+                        CygnusPlatformWebViewEnvironmentMethod.compareBrowserVersions,
                       ),
-                      methodName: PlatformWebViewEnvironmentMethod
+                      methodName: CygnusPlatformWebViewEnvironmentMethod
                           .compareBrowserVersions
                           .name,
                     );
@@ -1439,19 +1439,19 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
                       'Get Processes',
                       environment != null ? _getProcessInfos : null,
                       supportedPlatforms: _webViewEnvironmentPlatforms(
-                        PlatformWebViewEnvironmentMethod.getProcessInfos,
+                        CygnusPlatformWebViewEnvironmentMethod.getProcessInfos,
                       ),
                       methodName:
-                          PlatformWebViewEnvironmentMethod.getProcessInfos.name,
+                          CygnusPlatformWebViewEnvironmentMethod.getProcessInfos.name,
                     );
                     final failureButton = _buildMethodButton(
                       'Failure Folder',
                       environment != null ? _getFailureReportFolderPath : null,
                       supportedPlatforms: _webViewEnvironmentPlatforms(
-                        PlatformWebViewEnvironmentMethod
+                        CygnusPlatformWebViewEnvironmentMethod
                             .getFailureReportFolderPath,
                       ),
-                      methodName: PlatformWebViewEnvironmentMethod
+                      methodName: CygnusPlatformWebViewEnvironmentMethod
                           .getFailureReportFolderPath
                           .name,
                     );
@@ -1509,7 +1509,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
 
   Widget _buildProcessGlobalConfigSection() {
     final supportedPlatforms = SupportChecker.getSupportedPlatformsForClass(
-      '$ProcessGlobalConfig',
+      '$CygnusProcessGlobalConfig',
     );
 
     return Card(
@@ -1517,7 +1517,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
         title: Row(
           children: [
             Text(
-              '$ProcessGlobalConfig',
+              '$CygnusProcessGlobalConfig',
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(width: 8),
@@ -1550,7 +1550,7 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
                         constraints.maxWidth,
                       );
                       final noteText = Text(
-                        'Note: $ProcessGlobalConfig can only be applied once, before any WebView is created.',
+                        'Note: $CygnusProcessGlobalConfig can only be applied once, before any WebView is created.',
                         style: const TextStyle(fontSize: 12),
                       );
 
@@ -1586,9 +1586,9 @@ class _ServiceControllersScreenState extends State<ServiceControllersScreen> {
                     'Apply Config',
                     _applyProcessGlobalConfig,
                     supportedPlatforms: _processGlobalConfigPlatforms(
-                      PlatformProcessGlobalConfigMethod.apply,
+                      CygnusPlatformProcessGlobalConfigMethod.apply,
                     ),
-                    methodName: PlatformProcessGlobalConfigMethod.apply.name,
+                    methodName: CygnusPlatformProcessGlobalConfigMethod.apply.name,
                   ),
                 ),
               ],

@@ -6,10 +6,10 @@ import 'enum_method.dart';
 
 part 'server_trust_challenge.g.dart';
 
-///Class that represents the challenge of the [PlatformWebViewCreationParams.onReceivedServerTrustAuthRequest] event.
+///Class that represents the challenge of the [CygnusPlatformWebViewCreationParams.onReceivedServerTrustAuthRequest] event.
 ///It provides all the information about the challenge.
 @ExchangeableObject()
-class ServerTrustChallenge_ extends URLAuthenticationChallenge_ {
-  ServerTrustChallenge_({required URLProtectionSpace_ protectionSpace})
+class CygnusServerTrustChallenge_ extends CygnusURLAuthenticationChallenge_ {
+  CygnusServerTrustChallenge_({required CygnusURLProtectionSpace_ protectionSpace})
     : super(protectionSpace: protectionSpace);
 }

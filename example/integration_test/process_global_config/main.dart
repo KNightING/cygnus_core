@@ -6,7 +6,7 @@ import '../util.dart';
 part 'apply.dart';
 
 void main() {
-  final shouldSkip = !ProcessGlobalConfig.isClassSupported();
+  final shouldSkip = !CygnusProcessGlobalConfig.isClassSupported();
 
   skippableGroup('Process Global Config', () {
     apply();

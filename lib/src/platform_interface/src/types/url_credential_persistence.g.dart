@@ -7,42 +7,45 @@ part of 'url_credential_persistence.dart';
 // **************************************************************************
 
 ///Class that represents the constants that specify how long the credential will be kept.
-class URLCredentialPersistence {
+class CygnusURLCredentialPersistence {
   final int _value;
   final int? _nativeValue;
-  const URLCredentialPersistence._internal(this._value, this._nativeValue);
+  const CygnusURLCredentialPersistence._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory URLCredentialPersistence._internalMultiPlatform(
+  factory CygnusURLCredentialPersistence._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => URLCredentialPersistence._internal(value, nativeValue());
+  ) => CygnusURLCredentialPersistence._internal(value, nativeValue());
 
   ///The credential should be stored only for this session
-  static const FOR_SESSION = URLCredentialPersistence._internal(1, 1);
+  static const FOR_SESSION = CygnusURLCredentialPersistence._internal(1, 1);
 
   ///The credential should not be stored.
-  static const NONE = URLCredentialPersistence._internal(0, 0);
+  static const NONE = CygnusURLCredentialPersistence._internal(0, 0);
 
   ///The credential should be stored in the keychain.
-  static const PERMANENT = URLCredentialPersistence._internal(2, 2);
+  static const PERMANENT = CygnusURLCredentialPersistence._internal(2, 2);
 
   ///The credential should be stored permanently in the keychain,
   ///and in addition should be distributed to other devices based on the owning Apple ID.
-  static const SYNCHRONIZABLE = URLCredentialPersistence._internal(3, 3);
+  static const SYNCHRONIZABLE = CygnusURLCredentialPersistence._internal(3, 3);
 
-  ///Set of all values of [URLCredentialPersistence].
-  static final Set<URLCredentialPersistence> values = [
-    URLCredentialPersistence.FOR_SESSION,
-    URLCredentialPersistence.NONE,
-    URLCredentialPersistence.PERMANENT,
-    URLCredentialPersistence.SYNCHRONIZABLE,
+  ///Set of all values of [CygnusURLCredentialPersistence].
+  static final Set<CygnusURLCredentialPersistence> values = [
+    CygnusURLCredentialPersistence.FOR_SESSION,
+    CygnusURLCredentialPersistence.NONE,
+    CygnusURLCredentialPersistence.PERMANENT,
+    CygnusURLCredentialPersistence.SYNCHRONIZABLE,
   ].toSet();
 
-  ///Gets a possible [URLCredentialPersistence] instance from [int] value.
-  static URLCredentialPersistence? fromValue(int? value) {
+  ///Gets a possible [CygnusURLCredentialPersistence] instance from [int] value.
+  static CygnusURLCredentialPersistence? fromValue(int? value) {
     if (value != null) {
       try {
-        return URLCredentialPersistence.values.firstWhere(
+        return CygnusURLCredentialPersistence.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -52,11 +55,11 @@ class URLCredentialPersistence {
     return null;
   }
 
-  ///Gets a possible [URLCredentialPersistence] instance from a native value.
-  static URLCredentialPersistence? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusURLCredentialPersistence] instance from a native value.
+  static CygnusURLCredentialPersistence? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return URLCredentialPersistence.values.firstWhere(
+        return CygnusURLCredentialPersistence.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -66,15 +69,15 @@ class URLCredentialPersistence {
     return null;
   }
 
-  /// Gets a possible [URLCredentialPersistence] instance value with name [name].
+  /// Gets a possible [CygnusURLCredentialPersistence] instance value with name [name].
   ///
-  /// Goes through [URLCredentialPersistence.values] looking for a value with
-  /// name [name], as reported by [URLCredentialPersistence.name].
+  /// Goes through [CygnusURLCredentialPersistence.values] looking for a value with
+  /// name [name], as reported by [CygnusURLCredentialPersistence.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static URLCredentialPersistence? byName(String? name) {
+  static CygnusURLCredentialPersistence? byName(String? name) {
     if (name != null) {
       try {
-        return URLCredentialPersistence.values.firstWhere(
+        return CygnusURLCredentialPersistence.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -84,7 +87,7 @@ class URLCredentialPersistence {
     return null;
   }
 
-  /// Creates a map from the names of [URLCredentialPersistence] values to the values.
+  /// Creates a map from the names of [CygnusURLCredentialPersistence] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -92,9 +95,9 @@ class URLCredentialPersistence {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, URLCredentialPersistence> asNameMap() =>
-      <String, URLCredentialPersistence>{
-        for (final value in URLCredentialPersistence.values)
+  static Map<String, CygnusURLCredentialPersistence> asNameMap() =>
+      <String, CygnusURLCredentialPersistence>{
+        for (final value in CygnusURLCredentialPersistence.values)
           value.name(): value,
       };
 
@@ -137,44 +140,50 @@ class URLCredentialPersistence {
 }
 
 ///An iOS-specific class that represents the constants that specify how long the credential will be kept.
-///Use [URLCredentialPersistence] instead.
-@Deprecated('Use URLCredentialPersistence instead')
-class IOSURLCredentialPersistence {
+///Use [CygnusURLCredentialPersistence] instead.
+@Deprecated('Use CygnusURLCredentialPersistence instead')
+class CygnusIOSURLCredentialPersistence {
   final int _value;
   final int? _nativeValue;
-  const IOSURLCredentialPersistence._internal(this._value, this._nativeValue);
+  const CygnusIOSURLCredentialPersistence._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory IOSURLCredentialPersistence._internalMultiPlatform(
+  factory CygnusIOSURLCredentialPersistence._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => IOSURLCredentialPersistence._internal(value, nativeValue());
+  ) => CygnusIOSURLCredentialPersistence._internal(value, nativeValue());
 
   ///The credential should be stored only for this session
-  static const FOR_SESSION = IOSURLCredentialPersistence._internal(1, 1);
+  static const FOR_SESSION = CygnusIOSURLCredentialPersistence._internal(1, 1);
 
   ///The credential should not be stored.
-  static const NONE = IOSURLCredentialPersistence._internal(0, 0);
+  static const NONE = CygnusIOSURLCredentialPersistence._internal(0, 0);
 
   ///The credential should be stored in the keychain.
-  static const PERMANENT = IOSURLCredentialPersistence._internal(2, 2);
+  static const PERMANENT = CygnusIOSURLCredentialPersistence._internal(2, 2);
 
   ///The credential should be stored permanently in the keychain,
   ///and in addition should be distributed to other devices based on the owning Apple ID.
-  static const SYNCHRONIZABLE = IOSURLCredentialPersistence._internal(3, 3);
+  static const SYNCHRONIZABLE = CygnusIOSURLCredentialPersistence._internal(
+    3,
+    3,
+  );
 
-  ///Set of all values of [IOSURLCredentialPersistence].
-  static final Set<IOSURLCredentialPersistence> values = [
-    IOSURLCredentialPersistence.FOR_SESSION,
-    IOSURLCredentialPersistence.NONE,
-    IOSURLCredentialPersistence.PERMANENT,
-    IOSURLCredentialPersistence.SYNCHRONIZABLE,
+  ///Set of all values of [CygnusIOSURLCredentialPersistence].
+  static final Set<CygnusIOSURLCredentialPersistence> values = [
+    CygnusIOSURLCredentialPersistence.FOR_SESSION,
+    CygnusIOSURLCredentialPersistence.NONE,
+    CygnusIOSURLCredentialPersistence.PERMANENT,
+    CygnusIOSURLCredentialPersistence.SYNCHRONIZABLE,
   ].toSet();
 
-  ///Gets a possible [IOSURLCredentialPersistence] instance from [int] value.
-  static IOSURLCredentialPersistence? fromValue(int? value) {
+  ///Gets a possible [CygnusIOSURLCredentialPersistence] instance from [int] value.
+  static CygnusIOSURLCredentialPersistence? fromValue(int? value) {
     if (value != null) {
       try {
-        return IOSURLCredentialPersistence.values.firstWhere(
+        return CygnusIOSURLCredentialPersistence.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -184,11 +193,11 @@ class IOSURLCredentialPersistence {
     return null;
   }
 
-  ///Gets a possible [IOSURLCredentialPersistence] instance from a native value.
-  static IOSURLCredentialPersistence? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusIOSURLCredentialPersistence] instance from a native value.
+  static CygnusIOSURLCredentialPersistence? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return IOSURLCredentialPersistence.values.firstWhere(
+        return CygnusIOSURLCredentialPersistence.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -198,15 +207,15 @@ class IOSURLCredentialPersistence {
     return null;
   }
 
-  /// Gets a possible [IOSURLCredentialPersistence] instance value with name [name].
+  /// Gets a possible [CygnusIOSURLCredentialPersistence] instance value with name [name].
   ///
-  /// Goes through [IOSURLCredentialPersistence.values] looking for a value with
-  /// name [name], as reported by [IOSURLCredentialPersistence.name].
+  /// Goes through [CygnusIOSURLCredentialPersistence.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSURLCredentialPersistence.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSURLCredentialPersistence? byName(String? name) {
+  static CygnusIOSURLCredentialPersistence? byName(String? name) {
     if (name != null) {
       try {
-        return IOSURLCredentialPersistence.values.firstWhere(
+        return CygnusIOSURLCredentialPersistence.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -216,7 +225,7 @@ class IOSURLCredentialPersistence {
     return null;
   }
 
-  /// Creates a map from the names of [IOSURLCredentialPersistence] values to the values.
+  /// Creates a map from the names of [CygnusIOSURLCredentialPersistence] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -224,9 +233,9 @@ class IOSURLCredentialPersistence {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSURLCredentialPersistence> asNameMap() =>
-      <String, IOSURLCredentialPersistence>{
-        for (final value in IOSURLCredentialPersistence.values)
+  static Map<String, CygnusIOSURLCredentialPersistence> asNameMap() =>
+      <String, CygnusIOSURLCredentialPersistence>{
+        for (final value in CygnusIOSURLCredentialPersistence.values)
           value.name(): value,
       };
 

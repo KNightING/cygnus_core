@@ -6,35 +6,35 @@ part of 'chrome_safari_browser_menu_item.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents a custom menu item for a [PlatformChromeSafariBrowser] instance.
+///Class that represents a custom menu item for a [CygnusPlatformChromeSafariBrowser] instance.
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- Android WebView:
 ///    - Not available in an Android Trusted Web Activity.
 ///- iOS WKWebView
-class ChromeSafariBrowserMenuItem {
+class CygnusChromeSafariBrowserMenuItem {
   ///Use onClick instead.
   @Deprecated('Use onClick instead')
   void Function(String, String)? action;
 
-  ///The menu item id. It should be different from [ChromeSafariBrowserActionButton.id].
+  ///The menu item id. It should be different from [CygnusChromeSafariBrowserActionButton.id].
   int id;
 
   ///Item image.
-  UIImage? image;
+  CygnusUIImage? image;
 
   ///The label of the menu item.
   String label;
 
   ///Callback function to be invoked when the menu item is clicked
-  void Function(WebUri?, String)? onClick;
+  void Function(CygnusWebUri?, String)? onClick;
 
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
   ///    - Not available in an Android Trusted Web Activity.
   ///- iOS WKWebView
-  ChromeSafariBrowserMenuItem({
+  CygnusChromeSafariBrowserMenuItem({
     required this.id,
     required this.label,
     this.image,
@@ -42,17 +42,17 @@ class ChromeSafariBrowserMenuItem {
     this.onClick,
   });
 
-  ///Gets a possible [ChromeSafariBrowserMenuItem] instance from a [Map] value.
-  static ChromeSafariBrowserMenuItem? fromMap(
+  ///Gets a possible [CygnusChromeSafariBrowserMenuItem] instance from a [Map] value.
+  static CygnusChromeSafariBrowserMenuItem? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ChromeSafariBrowserMenuItem(
+    final instance = CygnusChromeSafariBrowserMenuItem(
       id: map['id'],
-      image: UIImage.fromMap(
+      image: CygnusUIImage.fromMap(
         map['image']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -62,7 +62,7 @@ class ChromeSafariBrowserMenuItem {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "id": id,
       "image": image?.toMap(enumMethod: enumMethod),
@@ -77,6 +77,6 @@ class ChromeSafariBrowserMenuItem {
 
   @override
   String toString() {
-    return 'ChromeSafariBrowserMenuItem{id: $id, image: $image, label: $label}';
+    return 'CygnusChromeSafariBrowserMenuItem{id: $id, image: $image, label: $label}';
   }
 }

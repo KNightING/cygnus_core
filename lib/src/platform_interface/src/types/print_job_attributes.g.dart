@@ -6,15 +6,15 @@ part of 'print_job_attributes.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class representing the attributes of a [PlatformPrintJobController].
+///Class representing the attributes of a [CygnusPlatformPrintJobController].
 ///These attributes describe how the printed content should be laid out.
-class PrintJobAttributes {
+class CygnusPrintJobAttributes {
   ///The color mode.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- macOS WKWebView
-  PrintJobColorMode? colorMode;
+  CygnusPrintJobColorMode? colorMode;
 
   ///If `true`, produce detailed reports when an error occurs.
   ///
@@ -28,7 +28,7 @@ class PrintJobAttributes {
   ///- Android WebView 23+
   ///- iOS WKWebView
   ///- macOS WKWebView
-  PrintJobDuplexMode? duplex;
+  CygnusPrintJobDuplexMode? duplex;
 
   ///A fax number.
   ///
@@ -64,7 +64,7 @@ class PrintJobAttributes {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
-  PrintJobPaginationMode? horizontalPagination;
+  CygnusPrintJobPaginationMode? horizontalPagination;
 
   ///Indicates whether the image is centered horizontally.
   ///
@@ -88,13 +88,13 @@ class PrintJobAttributes {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
-  PrintJobDisposition? jobDisposition;
+  CygnusPrintJobDisposition? jobDisposition;
 
-  ///An URL containing the location to which the job file will be saved when the [jobDisposition] is [PrintJobDisposition.SAVE].
+  ///An URL containing the location to which the job file will be saved when the [jobDisposition] is [CygnusPrintJobDisposition.SAVE].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
-  WebUri? jobSavingURL;
+  CygnusWebUri? jobSavingURL;
 
   ///The human-readable name of the currently selected paper size, suitable for presentation in user interfaces.
   ///
@@ -136,7 +136,7 @@ class PrintJobAttributes {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  PrintJobMediaSize? mediaSize;
+  CygnusPrintJobMediaSize? mediaSize;
 
   ///If `true`, collates output.
   ///
@@ -150,7 +150,7 @@ class PrintJobAttributes {
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
-  PrintJobOrientation? orientation;
+  CygnusPrintJobOrientation? orientation;
 
   ///The number of logical pages to be tiled horizontally on a physical sheet of paper.
   ///
@@ -178,7 +178,7 @@ class PrintJobAttributes {
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
-  InAppWebViewRect? paperRect;
+  CygnusWebViewRect? paperRect;
 
   ///The area in which printing can occur.
   ///
@@ -188,13 +188,13 @@ class PrintJobAttributes {
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
-  InAppWebViewRect? printableRect;
+  CygnusWebViewRect? printableRect;
 
   ///The supported resolution in DPI (dots per inch).
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  PrintJobResolution? resolution;
+  CygnusPrintJobResolution? resolution;
 
   ///The current scaling factor.
   ///
@@ -212,8 +212,8 @@ class PrintJobAttributes {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
-  PrintJobPaginationMode? verticalPagination;
-  PrintJobAttributes({
+  CygnusPrintJobPaginationMode? verticalPagination;
+  CygnusPrintJobAttributes({
     this.colorMode,
     this.detailedErrorReporting,
     this.duplex,
@@ -245,101 +245,113 @@ class PrintJobAttributes {
     this.verticalPagination,
   });
 
-  ///Gets a possible [PrintJobAttributes] instance from a [Map] value.
-  static PrintJobAttributes? fromMap(
+  ///Gets a possible [CygnusPrintJobAttributes] instance from a [Map] value.
+  static CygnusPrintJobAttributes? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = PrintJobAttributes(
-      colorMode: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobColorMode.fromNativeValue(
+    final instance = CygnusPrintJobAttributes(
+      colorMode: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusPrintJobColorMode.fromNativeValue(
           map['colorMode'],
         ),
-        EnumMethod.value => PrintJobColorMode.fromValue(map['colorMode']),
-        EnumMethod.name => PrintJobColorMode.byName(map['colorMode']),
+        CygnusEnumMethod.value => CygnusPrintJobColorMode.fromValue(
+          map['colorMode'],
+        ),
+        CygnusEnumMethod.name => CygnusPrintJobColorMode.byName(
+          map['colorMode'],
+        ),
       },
       detailedErrorReporting: map['detailedErrorReporting'],
-      duplex: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobDuplexMode.fromNativeValue(
+      duplex: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusPrintJobDuplexMode.fromNativeValue(map['duplex']),
+        CygnusEnumMethod.value => CygnusPrintJobDuplexMode.fromValue(
           map['duplex'],
         ),
-        EnumMethod.value => PrintJobDuplexMode.fromValue(map['duplex']),
-        EnumMethod.name => PrintJobDuplexMode.byName(map['duplex']),
+        CygnusEnumMethod.name => CygnusPrintJobDuplexMode.byName(map['duplex']),
       },
       faxNumber: map['faxNumber'],
       footerHeight: map['footerHeight'],
       headerAndFooter: map['headerAndFooter'],
       headerHeight: map['headerHeight'],
-      horizontalPagination: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobPaginationMode.fromNativeValue(
+      horizontalPagination: switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusPrintJobPaginationMode.fromNativeValue(
+            map['horizontalPagination'],
+          ),
+        CygnusEnumMethod.value => CygnusPrintJobPaginationMode.fromValue(
           map['horizontalPagination'],
         ),
-        EnumMethod.value => PrintJobPaginationMode.fromValue(
-          map['horizontalPagination'],
-        ),
-        EnumMethod.name => PrintJobPaginationMode.byName(
+        CygnusEnumMethod.name => CygnusPrintJobPaginationMode.byName(
           map['horizontalPagination'],
         ),
       },
       isHorizontallyCentered: map['isHorizontallyCentered'],
       isSelectionOnly: map['isSelectionOnly'],
       isVerticallyCentered: map['isVerticallyCentered'],
-      jobDisposition: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobDisposition.fromNativeValue(
+      jobDisposition: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusPrintJobDisposition.fromNativeValue(map['jobDisposition']),
+        CygnusEnumMethod.value => CygnusPrintJobDisposition.fromValue(
           map['jobDisposition'],
         ),
-        EnumMethod.value => PrintJobDisposition.fromValue(
+        CygnusEnumMethod.name => CygnusPrintJobDisposition.byName(
           map['jobDisposition'],
         ),
-        EnumMethod.name => PrintJobDisposition.byName(map['jobDisposition']),
       },
       jobSavingURL: map['jobSavingURL'] != null
-          ? WebUri(map['jobSavingURL'])
+          ? CygnusWebUri(map['jobSavingURL'])
           : null,
       localizedPaperName: map['localizedPaperName'],
       margins: MapEdgeInsets.fromMap(map['margins']?.cast<String, dynamic>()),
       maximumContentHeight: map['maximumContentHeight'],
       maximumContentWidth: map['maximumContentWidth'],
-      mediaSize: PrintJobMediaSize.fromMap(
+      mediaSize: CygnusPrintJobMediaSize.fromMap(
         map['mediaSize']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
       mustCollate: map['mustCollate'],
-      orientation: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobOrientation.fromNativeValue(
+      orientation: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusPrintJobOrientation.fromNativeValue(map['orientation']),
+        CygnusEnumMethod.value => CygnusPrintJobOrientation.fromValue(
           map['orientation'],
         ),
-        EnumMethod.value => PrintJobOrientation.fromValue(map['orientation']),
-        EnumMethod.name => PrintJobOrientation.byName(map['orientation']),
+        CygnusEnumMethod.name => CygnusPrintJobOrientation.byName(
+          map['orientation'],
+        ),
       },
       pagesAcross: map['pagesAcross'],
       pagesDown: map['pagesDown'],
       paperName: map['paperName'],
-      paperRect: InAppWebViewRect.fromMap(
+      paperRect: CygnusWebViewRect.fromMap(
         map['paperRect']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
-      printableRect: InAppWebViewRect.fromMap(
+      printableRect: CygnusWebViewRect.fromMap(
         map['printableRect']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
-      resolution: PrintJobResolution.fromMap(
+      resolution: CygnusPrintJobResolution.fromMap(
         map['resolution']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
       scalingFactor: map['scalingFactor'],
       time: map['time'],
-      verticalPagination: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobPaginationMode.fromNativeValue(
+      verticalPagination: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusPrintJobPaginationMode.fromNativeValue(
+            map['verticalPagination'],
+          ),
+        CygnusEnumMethod.value => CygnusPrintJobPaginationMode.fromValue(
           map['verticalPagination'],
         ),
-        EnumMethod.value => PrintJobPaginationMode.fromValue(
-          map['verticalPagination'],
-        ),
-        EnumMethod.name => PrintJobPaginationMode.byName(
+        CygnusEnumMethod.name => CygnusPrintJobPaginationMode.byName(
           map['verticalPagination'],
         ),
       },
@@ -348,35 +360,36 @@ class PrintJobAttributes {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "colorMode": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => colorMode?.toNativeValue(),
-        EnumMethod.value => colorMode?.toValue(),
-        EnumMethod.name => colorMode?.name(),
+      "colorMode": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => colorMode?.toNativeValue(),
+        CygnusEnumMethod.value => colorMode?.toValue(),
+        CygnusEnumMethod.name => colorMode?.name(),
       },
       "detailedErrorReporting": detailedErrorReporting,
-      "duplex": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => duplex?.toNativeValue(),
-        EnumMethod.value => duplex?.toValue(),
-        EnumMethod.name => duplex?.name(),
+      "duplex": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => duplex?.toNativeValue(),
+        CygnusEnumMethod.value => duplex?.toValue(),
+        CygnusEnumMethod.name => duplex?.name(),
       },
       "faxNumber": faxNumber,
       "footerHeight": footerHeight,
       "headerAndFooter": headerAndFooter,
       "headerHeight": headerHeight,
-      "horizontalPagination": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => horizontalPagination?.toNativeValue(),
-        EnumMethod.value => horizontalPagination?.toValue(),
-        EnumMethod.name => horizontalPagination?.name(),
+      "horizontalPagination": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => horizontalPagination?.toNativeValue(),
+        CygnusEnumMethod.value => horizontalPagination?.toValue(),
+        CygnusEnumMethod.name => horizontalPagination?.name(),
       },
       "isHorizontallyCentered": isHorizontallyCentered,
       "isSelectionOnly": isSelectionOnly,
       "isVerticallyCentered": isVerticallyCentered,
-      "jobDisposition": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => jobDisposition?.toNativeValue(),
-        EnumMethod.value => jobDisposition?.toValue(),
-        EnumMethod.name => jobDisposition?.name(),
+      "jobDisposition": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => jobDisposition?.toNativeValue(),
+        CygnusEnumMethod.value => jobDisposition?.toValue(),
+        CygnusEnumMethod.name => jobDisposition?.name(),
       },
       "jobSavingURL": jobSavingURL?.toString(),
       "localizedPaperName": localizedPaperName,
@@ -385,10 +398,10 @@ class PrintJobAttributes {
       "maximumContentWidth": maximumContentWidth,
       "mediaSize": mediaSize?.toMap(enumMethod: enumMethod),
       "mustCollate": mustCollate,
-      "orientation": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => orientation?.toNativeValue(),
-        EnumMethod.value => orientation?.toValue(),
-        EnumMethod.name => orientation?.name(),
+      "orientation": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => orientation?.toNativeValue(),
+        CygnusEnumMethod.value => orientation?.toValue(),
+        CygnusEnumMethod.name => orientation?.name(),
       },
       "pagesAcross": pagesAcross,
       "pagesDown": pagesDown,
@@ -398,10 +411,11 @@ class PrintJobAttributes {
       "resolution": resolution?.toMap(enumMethod: enumMethod),
       "scalingFactor": scalingFactor,
       "time": time,
-      "verticalPagination": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => verticalPagination?.toNativeValue(),
-        EnumMethod.value => verticalPagination?.toValue(),
-        EnumMethod.name => verticalPagination?.name(),
+      "verticalPagination": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => verticalPagination?.toNativeValue(),
+        CygnusEnumMethod.value => verticalPagination?.toValue(),
+        CygnusEnumMethod.name => verticalPagination?.name(),
       },
     };
   }
@@ -413,6 +427,6 @@ class PrintJobAttributes {
 
   @override
   String toString() {
-    return 'PrintJobAttributes{colorMode: $colorMode, detailedErrorReporting: $detailedErrorReporting, duplex: $duplex, faxNumber: $faxNumber, footerHeight: $footerHeight, headerAndFooter: $headerAndFooter, headerHeight: $headerHeight, horizontalPagination: $horizontalPagination, isHorizontallyCentered: $isHorizontallyCentered, isSelectionOnly: $isSelectionOnly, isVerticallyCentered: $isVerticallyCentered, jobDisposition: $jobDisposition, jobSavingURL: $jobSavingURL, localizedPaperName: $localizedPaperName, margins: $margins, maximumContentHeight: $maximumContentHeight, maximumContentWidth: $maximumContentWidth, mediaSize: $mediaSize, mustCollate: $mustCollate, orientation: $orientation, pagesAcross: $pagesAcross, pagesDown: $pagesDown, paperName: $paperName, paperRect: $paperRect, printableRect: $printableRect, resolution: $resolution, scalingFactor: $scalingFactor, time: $time, verticalPagination: $verticalPagination}';
+    return 'CygnusPrintJobAttributes{colorMode: $colorMode, detailedErrorReporting: $detailedErrorReporting, duplex: $duplex, faxNumber: $faxNumber, footerHeight: $footerHeight, headerAndFooter: $headerAndFooter, headerHeight: $headerHeight, horizontalPagination: $horizontalPagination, isHorizontallyCentered: $isHorizontallyCentered, isSelectionOnly: $isSelectionOnly, isVerticallyCentered: $isVerticallyCentered, jobDisposition: $jobDisposition, jobSavingURL: $jobSavingURL, localizedPaperName: $localizedPaperName, margins: $margins, maximumContentHeight: $maximumContentHeight, maximumContentWidth: $maximumContentWidth, mediaSize: $mediaSize, mustCollate: $mustCollate, orientation: $orientation, pagesAcross: $pagesAcross, pagesDown: $pagesDown, paperName: $paperName, paperRect: $paperRect, printableRect: $printableRect, resolution: $resolution, scalingFactor: $scalingFactor, time: $time, verticalPagination: $verticalPagination}';
   }
 }

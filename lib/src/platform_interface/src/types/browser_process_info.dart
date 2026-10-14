@@ -7,21 +7,21 @@ import 'enum_method.dart';
 
 part 'browser_process_info.g.dart';
 
-///An object that contains information for a process in the [PlatformWebViewEnvironment].
+///An object that contains information for a process in the [CygnusPlatformWebViewEnvironment].
 @ExchangeableObject()
-class BrowserProcessInfo_ {
+class CygnusBrowserProcessInfo_ {
   ///The kind of the process.
   @SupportedPlatforms(platforms: [WindowsPlatform()])
-  BrowserProcessKind_ kind;
+  CygnusBrowserProcessKind_ kind;
 
   ///The process id of the process.
   @SupportedPlatforms(platforms: [WindowsPlatform()])
   int? processId;
 
-  ///A list of associated [FrameInfo]s which are actively running
+  ///A list of associated [CygnusFrameInfo]s which are actively running
   ///(showing or hiding UI elements) in the renderer process.
   @SupportedPlatforms(platforms: [WindowsPlatform(available: '1.0.2210.55')])
-  List<FrameInfo_>? frameInfos;
+  List<CygnusFrameInfo_>? frameInfos;
 
-  BrowserProcessInfo_({required this.kind, this.processId, this.frameInfos});
+  CygnusBrowserProcessInfo_({required this.kind, this.processId, this.frameInfos});
 }

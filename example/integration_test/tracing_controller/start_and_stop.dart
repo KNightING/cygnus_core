@@ -2,30 +2,30 @@ part of 'main.dart';
 
 void startAndStop() {
   final shouldSkip =
-      !TracingController.isMethodSupported(
-        PlatformTracingControllerMethod.start,
+      !CygnusTracingController.isMethodSupported(
+        CygnusPlatformTracingControllerMethod.start,
       ) ||
-      !TracingController.isMethodSupported(
-        PlatformTracingControllerMethod.stop,
+      !CygnusTracingController.isMethodSupported(
+        CygnusPlatformTracingControllerMethod.stop,
       );
 
   skippableTestWidgets('start and stop', (WidgetTester tester) async {
     final Completer<void> pageLoaded = Completer<void>();
 
-    final tracingAvailable = await WebViewFeature.isFeatureSupported(
-      WebViewFeature.TRACING_CONTROLLER_BASIC_USAGE,
+    final tracingAvailable = await CygnusWebViewFeature.isFeatureSupported(
+      CygnusWebViewFeature.TRACING_CONTROLLER_BASIC_USAGE,
     );
 
     if (!tracingAvailable) {
       return;
     }
 
-    final tracingController = TracingController.instance();
+    final tracingController = CygnusTracingController.instance();
     expect(await tracingController.isTracing(), false);
     await tracingController.start(
-      settings: TracingSettings(
-        tracingMode: TracingMode.RECORD_CONTINUOUSLY,
-        categories: [TracingCategory.CATEGORIES_ANDROID_WEBVIEW, "blink*"],
+      settings: CygnusTracingSettings(
+        tracingMode: CygnusTracingMode.RECORD_CONTINUOUSLY,
+        categories: [CygnusTracingCategory.CATEGORIES_ANDROID_WEBVIEW, "blink*"],
       ),
     );
     expect(await tracingController.isTracing(), true);
@@ -33,9 +33,9 @@ void startAndStop() {
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+          initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
           onLoadStop: (controller, url) {
             if (!pageLoaded.isCompleted) {
               pageLoaded.complete();

@@ -6,29 +6,32 @@ part of 'meta_tag_attribute.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents an attribute of a `<meta>` HTML tag. It is used by the [MetaTag] class.
-class MetaTagAttribute {
+///Class that represents an attribute of a `<meta>` HTML tag. It is used by the [CygnusMetaTag] class.
+class CygnusMetaTagAttribute {
   ///The attribute name.
   String? name;
 
   ///The attribute value.
   String? value;
-  MetaTagAttribute({this.name, this.value});
+  CygnusMetaTagAttribute({this.name, this.value});
 
-  ///Gets a possible [MetaTagAttribute] instance from a [Map] value.
-  static MetaTagAttribute? fromMap(
+  ///Gets a possible [CygnusMetaTagAttribute] instance from a [Map] value.
+  static CygnusMetaTagAttribute? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = MetaTagAttribute(name: map['name'], value: map['value']);
+    final instance = CygnusMetaTagAttribute(
+      name: map['name'],
+      value: map['value'],
+    );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"name": name, "value": value};
   }
 
@@ -39,6 +42,6 @@ class MetaTagAttribute {
 
   @override
   String toString() {
-    return 'MetaTagAttribute{name: $name, value: $value}';
+    return 'CygnusMetaTagAttribute{name: $name, value: $value}';
   }
 }

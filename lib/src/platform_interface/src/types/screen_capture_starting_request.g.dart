@@ -6,29 +6,29 @@ part of 'screen_capture_starting_request.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the request used by the [PlatformWebViewCreationParams.onScreenCaptureStarting] event.
-class ScreenCaptureStartingRequest {
+///Class that represents the request used by the [CygnusPlatformWebViewCreationParams.onScreenCaptureStarting] event.
+class CygnusScreenCaptureStartingRequest {
   ///Whether to cancel the screen capture.
   bool? cancel;
 
   ///The frame that requests screen capture.
-  FrameInfo? frame;
+  CygnusFrameInfo? frame;
 
   ///Whether the event has been handled.
   bool? handled;
-  ScreenCaptureStartingRequest({this.cancel, this.frame, this.handled});
+  CygnusScreenCaptureStartingRequest({this.cancel, this.frame, this.handled});
 
-  ///Gets a possible [ScreenCaptureStartingRequest] instance from a [Map] value.
-  static ScreenCaptureStartingRequest? fromMap(
+  ///Gets a possible [CygnusScreenCaptureStartingRequest] instance from a [Map] value.
+  static CygnusScreenCaptureStartingRequest? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ScreenCaptureStartingRequest(
+    final instance = CygnusScreenCaptureStartingRequest(
       cancel: map['cancel'],
-      frame: FrameInfo.fromMap(
+      frame: CygnusFrameInfo.fromMap(
         map['frame']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -38,7 +38,7 @@ class ScreenCaptureStartingRequest {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "cancel": cancel,
       "frame": frame?.toMap(enumMethod: enumMethod),
@@ -53,6 +53,6 @@ class ScreenCaptureStartingRequest {
 
   @override
   String toString() {
-    return 'ScreenCaptureStartingRequest{cancel: $cancel, frame: $frame, handled: $handled}';
+    return 'CygnusScreenCaptureStartingRequest{cancel: $cancel, frame: $frame, handled: $handled}';
   }
 }

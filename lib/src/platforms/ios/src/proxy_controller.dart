@@ -7,31 +7,31 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 /// Object specifying creation parameters for creating a [IOSProxyController].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformProxyControllerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformProxyControllerCreationParams] for
 /// more information.
 @immutable
 class IOSProxyControllerCreationParams
-    extends PlatformProxyControllerCreationParams {
+    extends CygnusPlatformProxyControllerCreationParams {
   /// Creates a new [IOSProxyControllerCreationParams] instance.
   const IOSProxyControllerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformProxyControllerCreationParams params,
+    CygnusPlatformProxyControllerCreationParams params,
   ) : super();
 
-  /// Creates a [IOSProxyControllerCreationParams] instance based on [PlatformProxyControllerCreationParams].
+  /// Creates a [IOSProxyControllerCreationParams] instance based on [CygnusPlatformProxyControllerCreationParams].
   factory IOSProxyControllerCreationParams.fromPlatformProxyControllerCreationParams(
-    PlatformProxyControllerCreationParams params,
+    CygnusPlatformProxyControllerCreationParams params,
   ) {
     return IOSProxyControllerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformProxyController}
-class IOSProxyController extends PlatformProxyController
+///{@macro cygnus_core.CygnusPlatformProxyController}
+class IOSProxyController extends CygnusPlatformProxyController
     with ChannelController {
   /// Creates a new [IOSProxyController].
-  IOSProxyController(PlatformProxyControllerCreationParams params)
+  IOSProxyController(CygnusPlatformProxyControllerCreationParams params)
     : super.implementation(
         params is IOSProxyControllerCreationParams
             ? params
@@ -56,7 +56,7 @@ class IOSProxyController extends PlatformProxyController
   static IOSProxyController _init() {
     _instance = IOSProxyController(
       IOSProxyControllerCreationParams(
-        const PlatformProxyControllerCreationParams(),
+        const CygnusPlatformProxyControllerCreationParams(),
       ),
     );
     return _instance!;
@@ -64,7 +64,7 @@ class IOSProxyController extends PlatformProxyController
 
   static final IOSProxyController _staticValue = IOSProxyController(
     IOSProxyControllerCreationParams(
-      const PlatformProxyControllerCreationParams(),
+      const CygnusPlatformProxyControllerCreationParams(),
     ),
   );
 
@@ -76,7 +76,7 @@ class IOSProxyController extends PlatformProxyController
   Future<dynamic> _handleMethod(MethodCall call) async {}
 
   @override
-  Future<void> setProxyOverride({required ProxySettings settings}) async {
+  Future<void> setProxyOverride({required CygnusProxySettings settings}) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("settings", () => settings.toMap());
     await channel?.invokeMethod('setProxyOverride', args);

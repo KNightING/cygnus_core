@@ -10,41 +10,41 @@ part 'web_message.g.dart';
 ///The Dart representation of the HTML5 PostMessage event.
 ///See https://html.spec.whatwg.org/multipage/comms.html#the-messageevent-interfaces for definition of a MessageEvent in HTML5.
 @ExchangeableObject(fromMapForceAllInline: true)
-class WebMessage_ {
+class CygnusWebMessage_ {
   ///The data of the message.
   dynamic data;
 
   ///The payload type of the message.
-  WebMessageType_ type;
+  CygnusWebMessageType_ type;
 
   ///The ports that are sent with the message.
-  List<IWebMessagePort>? ports;
+  List<CygnusIWebMessagePort>? ports;
 
   @ExchangeableObjectConstructor()
-  WebMessage_({this.data, this.type = WebMessageType_.STRING, this.ports}) {
+  CygnusWebMessage_({this.data, this.type = CygnusWebMessageType_.STRING, this.ports}) {
     assert(
       ((this.data == null || this.data is String) &&
-              this.type == WebMessageType_.STRING) ||
+              this.type == CygnusWebMessageType_.STRING) ||
           (this.data != null &&
               this.data is Uint8List &&
-              this.type == WebMessageType_.ARRAY_BUFFER),
+              this.type == CygnusWebMessageType_.ARRAY_BUFFER),
     );
   }
 }
 
-///The type corresponding to the [WebMessage].
+///The type corresponding to the [CygnusWebMessage].
 @ExchangeableEnum()
-class WebMessageType_ {
+class CygnusWebMessageType_ {
   // ignore: unused_field
   final int _value;
 
-  const WebMessageType_._internal(this._value);
+  const CygnusWebMessageType_._internal(this._value);
 
   ///Indicates the payload of WebMessageCompat is String.
-  static const STRING = const WebMessageType_._internal(0);
+  static const STRING = const CygnusWebMessageType_._internal(0);
 
   ///Indicates the payload of WebMessageCompat is JavaScript ArrayBuffer.
   ///
-  ///**NOTE**: available only if [WebViewFeature.WEB_MESSAGE_ARRAY_BUFFER] feature is supported.
-  static const ARRAY_BUFFER = const WebMessageType_._internal(1);
+  ///**NOTE**: available only if [CygnusWebViewFeature.WEB_MESSAGE_ARRAY_BUFFER] feature is supported.
+  static const ARRAY_BUFFER = const CygnusWebMessageType_._internal(1);
 }

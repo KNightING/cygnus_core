@@ -6,31 +6,31 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 /// Object specifying creation parameters for creating a [AndroidWebViewFeature].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebViewFeatureCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebViewFeatureCreationParams] for
 /// more information.
 @immutable
 class AndroidWebViewFeatureCreationParams
-    extends PlatformWebViewFeatureCreationParams {
+    extends CygnusPlatformWebViewFeatureCreationParams {
   /// Creates a new [AndroidWebViewFeatureCreationParams] instance.
   const AndroidWebViewFeatureCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebViewFeatureCreationParams params,
+    CygnusPlatformWebViewFeatureCreationParams params,
   ) : super();
 
-  /// Creates a [AndroidWebViewFeatureCreationParams] instance based on [PlatformWebViewFeatureCreationParams].
+  /// Creates a [AndroidWebViewFeatureCreationParams] instance based on [CygnusPlatformWebViewFeatureCreationParams].
   factory AndroidWebViewFeatureCreationParams.fromPlatformWebViewFeatureCreationParams(
-    PlatformWebViewFeatureCreationParams params,
+    CygnusPlatformWebViewFeatureCreationParams params,
   ) {
     return AndroidWebViewFeatureCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformWebViewFeature}
-class AndroidWebViewFeature extends PlatformWebViewFeature
+///{@macro cygnus_core.CygnusPlatformWebViewFeature}
+class AndroidWebViewFeature extends CygnusPlatformWebViewFeature
     with ChannelController {
   /// Creates a new [AndroidWebViewFeature].
-  AndroidWebViewFeature(PlatformWebViewFeatureCreationParams params)
+  AndroidWebViewFeature(CygnusPlatformWebViewFeatureCreationParams params)
     : super.implementation(
         params is AndroidWebViewFeatureCreationParams
             ? params
@@ -59,7 +59,7 @@ class AndroidWebViewFeature extends PlatformWebViewFeature
   static AndroidWebViewFeature _init() {
     _instance = AndroidWebViewFeature(
       AndroidWebViewFeatureCreationParams(
-        const PlatformWebViewFeatureCreationParams(),
+        const CygnusPlatformWebViewFeatureCreationParams(),
       ),
     );
     return _instance!;
@@ -68,7 +68,7 @@ class AndroidWebViewFeature extends PlatformWebViewFeature
   Future<dynamic> _handleMethod(MethodCall call) async {}
 
   @override
-  Future<bool> isFeatureSupported(WebViewFeature feature) async {
+  Future<bool> isFeatureSupported(CygnusWebViewFeature feature) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("feature", () => feature.toNativeValue());
     return await channel?.invokeMethod<bool>('isFeatureSupported', args) ??
@@ -76,7 +76,7 @@ class AndroidWebViewFeature extends PlatformWebViewFeature
   }
 
   @override
-  Future<bool> isStartupFeatureSupported(WebViewFeature startupFeature) async {
+  Future<bool> isStartupFeatureSupported(CygnusWebViewFeature startupFeature) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("startupFeature", () => startupFeature.toNativeValue());
     return await channel?.invokeMethod<bool>(

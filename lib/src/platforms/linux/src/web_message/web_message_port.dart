@@ -6,19 +6,19 @@ import 'web_message_channel.dart';
 /// Object specifying creation parameters for creating a [LinuxWebMessagePort].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebMessagePortCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebMessagePortCreationParams] for
 /// more information.
 @immutable
 class LinuxWebMessagePortCreationParams
-    extends PlatformWebMessagePortCreationParams {
+    extends CygnusPlatformWebMessagePortCreationParams {
   /// Creates a new [LinuxWebMessagePortCreationParams] instance.
   const LinuxWebMessagePortCreationParams({required super.index});
 
-  /// Creates a [LinuxWebMessagePortCreationParams] instance based on [PlatformWebMessagePortCreationParams].
+  /// Creates a [LinuxWebMessagePortCreationParams] instance based on [CygnusPlatformWebMessagePortCreationParams].
   factory LinuxWebMessagePortCreationParams.fromPlatformWebMessagePortCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebMessagePortCreationParams params,
+    CygnusPlatformWebMessagePortCreationParams params,
   ) {
     return LinuxWebMessagePortCreationParams(index: params.index);
   }
@@ -29,13 +29,13 @@ class LinuxWebMessagePortCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformWebMessagePort}
-class LinuxWebMessagePort extends PlatformWebMessagePort {
-  WebMessageCallback? _onMessage;
+///{@macro cygnus_core.CygnusPlatformWebMessagePort}
+class LinuxWebMessagePort extends CygnusPlatformWebMessagePort {
+  CygnusWebMessageCallback? _onMessage;
   late LinuxWebMessageChannel _webMessageChannel;
 
   /// Constructs a [LinuxWebMessagePort].
-  LinuxWebMessagePort(PlatformWebMessagePortCreationParams params)
+  LinuxWebMessagePort(CygnusPlatformWebMessagePortCreationParams params)
     : super.implementation(
         params is LinuxWebMessagePortCreationParams
             ? params
@@ -45,7 +45,7 @@ class LinuxWebMessagePort extends PlatformWebMessagePort {
       );
 
   @override
-  Future<void> setWebMessageCallback(WebMessageCallback? onMessage) async {
+  Future<void> setWebMessageCallback(CygnusWebMessageCallback? onMessage) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('index', () => params.index);
     await _webMessageChannel.internalChannel?.invokeMethod(
@@ -56,7 +56,7 @@ class LinuxWebMessagePort extends PlatformWebMessagePort {
   }
 
   @override
-  Future<void> postMessage(WebMessage message) async {
+  Future<void> postMessage(CygnusWebMessage message) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('index', () => params.index);
     args.putIfAbsent('message', () => message.toMap());
@@ -71,7 +71,7 @@ class LinuxWebMessagePort extends PlatformWebMessagePort {
   }
 
   @override
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "index": params.index,
       "webMessageChannelId": _webMessageChannel.params.id,
@@ -90,8 +90,8 @@ class LinuxWebMessagePort extends PlatformWebMessagePort {
 }
 
 extension InternalWebMessagePort on LinuxWebMessagePort {
-  WebMessageCallback? get onMessage => _onMessage;
-  set onMessage(WebMessageCallback? value) => _onMessage = value;
+  CygnusWebMessageCallback? get onMessage => _onMessage;
+  set onMessage(CygnusWebMessageCallback? value) => _onMessage = value;
 
   LinuxWebMessageChannel get webMessageChannel => _webMessageChannel;
   set webMessageChannel(LinuxWebMessageChannel value) =>

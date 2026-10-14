@@ -27,9 +27,9 @@ class _ControllersScreenState extends State<ControllersScreen> {
   final TextEditingController _searchController = TextEditingController();
   final TextEditingController _messageController = TextEditingController();
 
-  InAppWebViewController? _webViewController;
-  FindInteractionController? _findInteractionController;
-  PullToRefreshController? _pullToRefreshController;
+  CygnusWebViewController? _webViewController;
+  CygnusFindInteractionController? _findInteractionController;
+  CygnusPullToRefreshController? _pullToRefreshController;
   bool _webViewReady = false;
   bool _isLoading = false;
   double _webViewHeight = 180;
@@ -47,7 +47,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Color _pullToRefreshColor = Colors.blue;
 
   // Web message channel state
-  WebMessageChannel? _webMessageChannel;
+  CygnusWebMessageChannel? _webMessageChannel;
   final List<String> _receivedMessages = [];
 
   final Map<String, List<MethodResultEntry>> _methodHistory = {};
@@ -65,20 +65,20 @@ class _ControllersScreenState extends State<ControllersScreen> {
   }
 
   Set<SupportedPlatform> _getFindSupportedPlatforms(
-    PlatformFindInteractionControllerMethod method,
+    CygnusPlatformFindInteractionControllerMethod method,
   ) {
     return SupportCheckHelper.supportedPlatformsForMethod(
       method: method,
-      checker: FindInteractionController.isMethodSupported,
+      checker: CygnusFindInteractionController.isMethodSupported,
     );
   }
 
   Set<SupportedPlatform> _getPullToRefreshSupportedPlatforms(
-    PlatformPullToRefreshControllerMethod method,
+    CygnusPlatformPullToRefreshControllerMethod method,
   ) {
     return SupportCheckHelper.supportedPlatformsForMethod(
       method: method,
-      checker: PullToRefreshController.isMethodSupported,
+      checker: CygnusPullToRefreshController.isMethodSupported,
     );
   }
 
@@ -90,7 +90,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
 
   void _initControllers() {
     try {
-      _findInteractionController = FindInteractionController(
+      _findInteractionController = CygnusFindInteractionController(
         onFindResultReceived:
             (controller, activeMatchOrdinal, numberOfMatches, isDoneCounting) {
               setState(() {
@@ -99,7 +99,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
               });
               _logEvent(
                 EventType.ui,
-                PlatformFindInteractionControllerCreationParamsProperty
+                CygnusPlatformFindInteractionControllerCreationParamsProperty
                     .onFindResultReceived
                     .name,
                 data: {
@@ -111,15 +111,15 @@ class _ControllersScreenState extends State<ControllersScreen> {
             },
       );
 
-      _pullToRefreshController = PullToRefreshController(
-        settings: PullToRefreshSettings(
+      _pullToRefreshController = CygnusPullToRefreshController(
+        settings: CygnusPullToRefreshSettings(
           enabled: _pullToRefreshEnabled,
           color: _pullToRefreshColor,
         ),
         onRefresh: () async {
           _logEvent(
             EventType.ui,
-            PlatformPullToRefreshControllerCreationParamsProperty
+            CygnusPlatformPullToRefreshControllerCreationParamsProperty
                 .onRefresh
                 .name,
           );
@@ -226,7 +226,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
     final query = params['find']?.toString() ?? '';
     if (query.isEmpty) {
       _recordMethodResult(
-        PlatformFindInteractionControllerMethod.findAll.name,
+        CygnusPlatformFindInteractionControllerMethod.findAll.name,
         'Please enter search text',
         isError: true,
       );
@@ -235,7 +235,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
     _searchController.text = query;
     await _findInteractionController?.findAll(find: query);
     _recordMethodResult(
-      PlatformFindInteractionControllerMethod.findAll.name,
+      CygnusPlatformFindInteractionControllerMethod.findAll.name,
       'Searching for: $query',
       isError: false,
     );
@@ -244,7 +244,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Future<void> _findNext() async {
     await _findInteractionController?.findNext(forward: true);
     _recordMethodResult(
-      PlatformFindInteractionControllerMethod.findNext.name,
+      CygnusPlatformFindInteractionControllerMethod.findNext.name,
       'Moved to next match',
       isError: false,
     );
@@ -253,7 +253,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Future<void> _findPrevious() async {
     await _findInteractionController?.findNext(forward: false);
     _recordMethodResult(
-      '${PlatformFindInteractionControllerMethod.findNext.name} (previous)',
+      '${CygnusPlatformFindInteractionControllerMethod.findNext.name} (previous)',
       'Moved to previous match',
       isError: false,
     );
@@ -266,7 +266,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
       _currentMatch = 0;
     });
     _recordMethodResult(
-      PlatformFindInteractionControllerMethod.clearMatches.name,
+      CygnusPlatformFindInteractionControllerMethod.clearMatches.name,
       'Matches cleared',
       isError: false,
     );
@@ -284,7 +284,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
     final text = params['searchText']?.toString() ?? '';
     if (text.isEmpty) {
       _recordMethodResult(
-        PlatformFindInteractionControllerMethod.setSearchText.name,
+        CygnusPlatformFindInteractionControllerMethod.setSearchText.name,
         'Please enter search text',
         isError: true,
       );
@@ -293,7 +293,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
     _searchController.text = text;
     await _findInteractionController?.setSearchText(text);
     _recordMethodResult(
-      PlatformFindInteractionControllerMethod.setSearchText.name,
+      CygnusPlatformFindInteractionControllerMethod.setSearchText.name,
       'Search text set',
       isError: false,
     );
@@ -302,7 +302,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Future<void> _getSearchText() async {
     final text = await _findInteractionController?.getSearchText();
     _recordMethodResult(
-      PlatformFindInteractionControllerMethod.getSearchText.name,
+      CygnusPlatformFindInteractionControllerMethod.getSearchText.name,
       'Search text: $text',
       isError: false,
     );
@@ -311,7 +311,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Future<void> _presentFindNavigator() async {
     await _findInteractionController?.presentFindNavigator();
     _recordMethodResult(
-      PlatformFindInteractionControllerMethod.presentFindNavigator.name,
+      CygnusPlatformFindInteractionControllerMethod.presentFindNavigator.name,
       'Find navigator presented',
       isError: false,
     );
@@ -320,7 +320,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Future<void> _dismissFindNavigator() async {
     await _findInteractionController?.dismissFindNavigator();
     _recordMethodResult(
-      PlatformFindInteractionControllerMethod.dismissFindNavigator.name,
+      CygnusPlatformFindInteractionControllerMethod.dismissFindNavigator.name,
       'Find navigator dismissed',
       isError: false,
     );
@@ -329,7 +329,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Future<void> _isFindNavigatorVisible() async {
     final visible = await _findInteractionController?.isFindNavigatorVisible();
     _recordMethodResult(
-      PlatformFindInteractionControllerMethod.isFindNavigatorVisible.name,
+      CygnusPlatformFindInteractionControllerMethod.isFindNavigatorVisible.name,
       'Find navigator visible: $visible',
       isError: false,
     );
@@ -338,7 +338,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Future<void> _getActiveFindSession() async {
     final session = await _findInteractionController?.getActiveFindSession();
     _recordMethodResult(
-      PlatformFindInteractionControllerMethod.getActiveFindSession.name,
+      CygnusPlatformFindInteractionControllerMethod.getActiveFindSession.name,
       'Active session: ${session?.resultCount ?? 0} results, highlight index: ${session?.highlightedResultIndex ?? -1}',
       isError: false,
     );
@@ -349,7 +349,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
     await _pullToRefreshController?.setEnabled(enabled);
     setState(() => _pullToRefreshEnabled = enabled);
     _recordMethodResult(
-      PlatformPullToRefreshControllerMethod.setEnabled.name,
+      CygnusPlatformPullToRefreshControllerMethod.setEnabled.name,
       'Pull to refresh ${enabled ? "enabled" : "disabled"}',
       isError: false,
     );
@@ -358,7 +358,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Future<void> _isEnabled() async {
     final enabled = await _pullToRefreshController?.isEnabled();
     _recordMethodResult(
-      PlatformPullToRefreshControllerMethod.isEnabled.name,
+      CygnusPlatformPullToRefreshControllerMethod.isEnabled.name,
       'Pull to refresh enabled: $enabled',
       isError: false,
     );
@@ -367,7 +367,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Future<void> _beginRefreshing() async {
     await _pullToRefreshController?.beginRefreshing();
     _recordMethodResult(
-      PlatformPullToRefreshControllerMethod.beginRefreshing.name,
+      CygnusPlatformPullToRefreshControllerMethod.beginRefreshing.name,
       'Refreshing started',
       isError: false,
     );
@@ -376,7 +376,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Future<void> _endRefreshing() async {
     await _pullToRefreshController?.endRefreshing();
     _recordMethodResult(
-      PlatformPullToRefreshControllerMethod.endRefreshing.name,
+      CygnusPlatformPullToRefreshControllerMethod.endRefreshing.name,
       'Refreshing ended',
       isError: false,
     );
@@ -385,7 +385,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Future<void> _isRefreshing() async {
     final refreshing = await _pullToRefreshController?.isRefreshing();
     _recordMethodResult(
-      PlatformPullToRefreshControllerMethod.isRefreshing.name,
+      CygnusPlatformPullToRefreshControllerMethod.isRefreshing.name,
       'Is refreshing: $refreshing',
       isError: false,
     );
@@ -395,7 +395,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
     await _pullToRefreshController?.setColor(color);
     setState(() => _pullToRefreshColor = color);
     _recordMethodResult(
-      PlatformPullToRefreshControllerMethod.setColor.name,
+      CygnusPlatformPullToRefreshControllerMethod.setColor.name,
       'Color set',
       isError: false,
     );
@@ -404,7 +404,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Future<void> _setBackgroundColor(Color color) async {
     await _pullToRefreshController?.setBackgroundColor(color);
     _recordMethodResult(
-      PlatformPullToRefreshControllerMethod.setBackgroundColor.name,
+      CygnusPlatformPullToRefreshControllerMethod.setBackgroundColor.name,
       'Background color set',
       isError: false,
     );
@@ -422,7 +422,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
     final color = params['color'] as Color?;
     if (color == null) {
       _recordMethodResult(
-        PlatformPullToRefreshControllerMethod.setColor.name,
+        CygnusPlatformPullToRefreshControllerMethod.setColor.name,
         'Please pick a color',
         isError: true,
       );
@@ -443,7 +443,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
     final color = params['color'] as Color?;
     if (color == null) {
       _recordMethodResult(
-        PlatformPullToRefreshControllerMethod.setBackgroundColor.name,
+        CygnusPlatformPullToRefreshControllerMethod.setBackgroundColor.name,
         'Please pick a color',
         isError: true,
       );
@@ -456,7 +456,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
     final distance = await _pullToRefreshController
         ?.getDefaultSlingshotDistance();
     _recordMethodResult(
-      PlatformPullToRefreshControllerMethod.getDefaultSlingshotDistance.name,
+      CygnusPlatformPullToRefreshControllerMethod.getDefaultSlingshotDistance.name,
       'Default slingshot distance: $distance',
       isError: false,
     );
@@ -466,7 +466,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Future<void> _createWebMessageChannel() async {
     if (_webViewController == null) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.createWebMessageChannel.name,
+        CygnusPlatformWebViewControllerMethod.createWebMessageChannel.name,
         'WebView not ready',
         isError: true,
       );
@@ -487,14 +487,14 @@ class _ControllersScreenState extends State<ControllersScreen> {
           );
         });
         _recordMethodResult(
-          PlatformInAppWebViewControllerMethod.createWebMessageChannel.name,
+          CygnusPlatformWebViewControllerMethod.createWebMessageChannel.name,
           'Web message channel created',
           isError: false,
         );
       }
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.createWebMessageChannel.name,
+        CygnusPlatformWebViewControllerMethod.createWebMessageChannel.name,
         'Error creating channel: $e',
         isError: true,
       );
@@ -504,7 +504,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
   Future<void> _postWebMessage() async {
     if (_webMessageChannel == null) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.postWebMessage.name,
+        CygnusPlatformWebViewControllerMethod.postWebMessage.name,
         'Create a channel first',
         isError: true,
       );
@@ -522,7 +522,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
     final message = params['message']?.toString() ?? '';
     if (message.isEmpty) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.postWebMessage.name,
+        CygnusPlatformWebViewControllerMethod.postWebMessage.name,
         'Please enter a message',
         isError: true,
       );
@@ -531,15 +531,15 @@ class _ControllersScreenState extends State<ControllersScreen> {
     _messageController.text = message;
 
     try {
-      await _webMessageChannel!.port1.postMessage(WebMessage(data: message));
+      await _webMessageChannel!.port1.postMessage(CygnusWebMessage(data: message));
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.postWebMessage.name,
+        CygnusPlatformWebViewControllerMethod.postWebMessage.name,
         'Message sent',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.postWebMessage.name,
+        CygnusPlatformWebViewControllerMethod.postWebMessage.name,
         'Error sending message: $e',
         isError: true,
       );
@@ -553,7 +553,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
       _receivedMessages.clear();
     });
     _recordMethodResult(
-      '$WebMessageChannel.${PlatformWebMessageChannelMethod.dispose.name}',
+      '$CygnusWebMessageChannel.${CygnusPlatformWebMessageChannelMethod.dispose.name}',
       'Channel closed',
       isError: false,
     );
@@ -675,9 +675,9 @@ class _ControllersScreenState extends State<ControllersScreen> {
       ),
       child: Stack(
         children: [
-          InAppWebView(
-            initialUrlRequest: URLRequest(url: WebUri('https://flutter.dev')),
-            initialSettings: InAppWebViewSettings(javaScriptEnabled: true),
+          CygnusWebView(
+            initialUrlRequest: CygnusURLRequest(url: CygnusWebUri('https://flutter.dev')),
+            initialSettings: CygnusWebViewSettings(javaScriptEnabled: true),
             findInteractionController: _findInteractionController,
             pullToRefreshController: _pullToRefreshController,
             onWebViewCreated: (controller) {
@@ -713,7 +713,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
 
   Widget _buildFindInteractionSection() {
     final supportedPlatforms = SupportChecker.getSupportedPlatformsForClass(
-      '$FindInteractionController',
+      '$CygnusFindInteractionController',
     );
 
     return Card(
@@ -721,7 +721,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
         title: Row(
           children: [
             Text(
-              '$FindInteractionController',
+              '$CygnusFindInteractionController',
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(width: 8),
@@ -763,7 +763,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
                 ),
                 const SizedBox(height: 8),
                 _buildMethodHistory(
-                  PlatformFindInteractionControllerMethod.findAll.name,
+                  CygnusPlatformFindInteractionControllerMethod.findAll.name,
                 ),
                 const SizedBox(height: 12),
 
@@ -810,59 +810,59 @@ class _ControllersScreenState extends State<ControllersScreen> {
                   runSpacing: 8,
                   children: [
                     _buildMethodChip(
-                      PlatformFindInteractionControllerMethod
+                      CygnusPlatformFindInteractionControllerMethod
                           .setSearchText
                           .name,
                       _getFindSupportedPlatforms(
-                        PlatformFindInteractionControllerMethod.setSearchText,
+                        CygnusPlatformFindInteractionControllerMethod.setSearchText,
                       ),
                       _webViewReady ? _setSearchText : null,
                     ),
                     _buildMethodChip(
-                      PlatformFindInteractionControllerMethod
+                      CygnusPlatformFindInteractionControllerMethod
                           .getSearchText
                           .name,
                       _getFindSupportedPlatforms(
-                        PlatformFindInteractionControllerMethod.getSearchText,
+                        CygnusPlatformFindInteractionControllerMethod.getSearchText,
                       ),
                       _webViewReady ? _getSearchText : null,
                     ),
                     _buildMethodChip(
-                      PlatformFindInteractionControllerMethod
+                      CygnusPlatformFindInteractionControllerMethod
                           .presentFindNavigator
                           .name,
                       _getFindSupportedPlatforms(
-                        PlatformFindInteractionControllerMethod
+                        CygnusPlatformFindInteractionControllerMethod
                             .presentFindNavigator,
                       ),
                       _webViewReady ? _presentFindNavigator : null,
                     ),
                     _buildMethodChip(
-                      PlatformFindInteractionControllerMethod
+                      CygnusPlatformFindInteractionControllerMethod
                           .dismissFindNavigator
                           .name,
                       _getFindSupportedPlatforms(
-                        PlatformFindInteractionControllerMethod
+                        CygnusPlatformFindInteractionControllerMethod
                             .dismissFindNavigator,
                       ),
                       _webViewReady ? _dismissFindNavigator : null,
                     ),
                     _buildMethodChip(
-                      PlatformFindInteractionControllerMethod
+                      CygnusPlatformFindInteractionControllerMethod
                           .isFindNavigatorVisible
                           .name,
                       _getFindSupportedPlatforms(
-                        PlatformFindInteractionControllerMethod
+                        CygnusPlatformFindInteractionControllerMethod
                             .isFindNavigatorVisible,
                       ),
                       _webViewReady ? _isFindNavigatorVisible : null,
                     ),
                     _buildMethodChip(
-                      PlatformFindInteractionControllerMethod
+                      CygnusPlatformFindInteractionControllerMethod
                           .getActiveFindSession
                           .name,
                       _getFindSupportedPlatforms(
-                        PlatformFindInteractionControllerMethod
+                        CygnusPlatformFindInteractionControllerMethod
                             .getActiveFindSession,
                       ),
                       _webViewReady ? _getActiveFindSession : null,
@@ -879,7 +879,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
 
   Widget _buildPullToRefreshSection() {
     final supportedPlatforms = SupportChecker.getSupportedPlatformsForClass(
-      '$PullToRefreshController',
+      '$CygnusPullToRefreshController',
     );
 
     return Card(
@@ -887,7 +887,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
         title: Row(
           children: [
             Text(
-              '$PullToRefreshController',
+              '$CygnusPullToRefreshController',
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(width: 8),
@@ -914,7 +914,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
                   onChanged: _webViewReady ? _setEnabled : null,
                 ),
                 _buildMethodHistory(
-                  PlatformPullToRefreshControllerMethod.setEnabled.name,
+                  CygnusPlatformPullToRefreshControllerMethod.setEnabled.name,
                 ),
                 const Divider(),
 
@@ -941,7 +941,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
                 ),
                 const SizedBox(height: 8),
                 _buildMethodHistory(
-                  PlatformPullToRefreshControllerMethod.setColor.name,
+                  CygnusPlatformPullToRefreshControllerMethod.setColor.name,
                 ),
                 const SizedBox(height: 16),
 
@@ -951,51 +951,51 @@ class _ControllersScreenState extends State<ControllersScreen> {
                   runSpacing: 8,
                   children: [
                     _buildMethodChip(
-                      PlatformPullToRefreshControllerMethod.isEnabled.name,
+                      CygnusPlatformPullToRefreshControllerMethod.isEnabled.name,
                       _getPullToRefreshSupportedPlatforms(
-                        PlatformPullToRefreshControllerMethod.isEnabled,
+                        CygnusPlatformPullToRefreshControllerMethod.isEnabled,
                       ),
                       _webViewReady ? _isEnabled : null,
                     ),
                     _buildMethodChip(
-                      PlatformPullToRefreshControllerMethod
+                      CygnusPlatformPullToRefreshControllerMethod
                           .beginRefreshing
                           .name,
                       _getPullToRefreshSupportedPlatforms(
-                        PlatformPullToRefreshControllerMethod.beginRefreshing,
+                        CygnusPlatformPullToRefreshControllerMethod.beginRefreshing,
                       ),
                       _webViewReady ? _beginRefreshing : null,
                     ),
                     _buildMethodChip(
-                      PlatformPullToRefreshControllerMethod.endRefreshing.name,
+                      CygnusPlatformPullToRefreshControllerMethod.endRefreshing.name,
                       _getPullToRefreshSupportedPlatforms(
-                        PlatformPullToRefreshControllerMethod.endRefreshing,
+                        CygnusPlatformPullToRefreshControllerMethod.endRefreshing,
                       ),
                       _webViewReady ? _endRefreshing : null,
                     ),
                     _buildMethodChip(
-                      PlatformPullToRefreshControllerMethod.isRefreshing.name,
+                      CygnusPlatformPullToRefreshControllerMethod.isRefreshing.name,
                       _getPullToRefreshSupportedPlatforms(
-                        PlatformPullToRefreshControllerMethod.isRefreshing,
+                        CygnusPlatformPullToRefreshControllerMethod.isRefreshing,
                       ),
                       _webViewReady ? _isRefreshing : null,
                     ),
                     _buildMethodChip(
-                      PlatformPullToRefreshControllerMethod
+                      CygnusPlatformPullToRefreshControllerMethod
                           .setBackgroundColor
                           .name,
                       _getPullToRefreshSupportedPlatforms(
-                        PlatformPullToRefreshControllerMethod
+                        CygnusPlatformPullToRefreshControllerMethod
                             .setBackgroundColor,
                       ),
                       _webViewReady ? _promptSetBackgroundColor : null,
                     ),
                     _buildMethodChip(
-                      PlatformPullToRefreshControllerMethod
+                      CygnusPlatformPullToRefreshControllerMethod
                           .getDefaultSlingshotDistance
                           .name,
                       _getPullToRefreshSupportedPlatforms(
-                        PlatformPullToRefreshControllerMethod
+                        CygnusPlatformPullToRefreshControllerMethod
                             .getDefaultSlingshotDistance,
                       ),
                       _webViewReady ? _getDefaultSlingshotDistance : null,
@@ -1012,7 +1012,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
 
   Widget _buildWebMessageChannelSection() {
     final supportedPlatforms = SupportChecker.getSupportedPlatformsForClass(
-      '$WebMessageChannel',
+      '$CygnusWebMessageChannel',
     );
 
     return Card(
@@ -1020,7 +1020,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
         title: Row(
           children: [
             Text(
-              '$WebMessageChannel',
+              '$CygnusWebMessageChannel',
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(width: 8),
@@ -1105,12 +1105,12 @@ class _ControllersScreenState extends State<ControllersScreen> {
                 ),
                 const SizedBox(height: 8),
                 _buildMethodHistory(
-                  PlatformInAppWebViewControllerMethod
+                  CygnusPlatformWebViewControllerMethod
                       .createWebMessageChannel
                       .name,
                 ),
                 _buildMethodHistory(
-                  '$WebMessageChannel.${PlatformWebMessageChannelMethod.dispose.name}',
+                  '$CygnusWebMessageChannel.${CygnusPlatformWebMessageChannelMethod.dispose.name}',
                 ),
                 const SizedBox(height: 12),
 
@@ -1138,7 +1138,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
                 ),
                 const SizedBox(height: 8),
                 _buildMethodHistory(
-                  PlatformInAppWebViewControllerMethod.postWebMessage.name,
+                  CygnusPlatformWebViewControllerMethod.postWebMessage.name,
                 ),
                 const SizedBox(height: 12),
 
@@ -1184,7 +1184,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
 
   Widget _buildPrintJobSection() {
     final supportedPlatforms = SupportChecker.getSupportedPlatformsForClass(
-      '$PrintJobController',
+      '$CygnusPrintJobController',
     );
 
     return Card(
@@ -1192,7 +1192,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
         title: Row(
           children: [
             Text(
-              '$PrintJobController',
+              '$CygnusPrintJobController',
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(width: 8),
@@ -1214,7 +1214,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '$PrintJobController is obtained from onPrintRequest callback when printing.',
+                  '$CygnusPrintJobController is obtained from onPrintRequest callback when printing.',
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                 ),
                 const SizedBox(height: 12),
@@ -1230,7 +1230,7 @@ class _ControllersScreenState extends State<ControllersScreen> {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  'Available methods when $PrintJobController is obtained:',
+                  'Available methods when $CygnusPrintJobController is obtained:',
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
@@ -1242,37 +1242,37 @@ class _ControllersScreenState extends State<ControllersScreen> {
                   runSpacing: 8,
                   children: [
                     _buildMethodChip(
-                      PlatformPrintJobControllerMethod.cancel.name,
+                      CygnusPlatformPrintJobControllerMethod.cancel.name,
                       SupportCheckHelper.supportedPlatformsForMethod(
-                        method: PlatformPrintJobControllerMethod.cancel,
-                        checker: PrintJobController.isMethodSupported,
+                        method: CygnusPlatformPrintJobControllerMethod.cancel,
+                        checker: CygnusPrintJobController.isMethodSupported,
                       ),
                       null,
                       enabled: false,
                     ),
                     _buildMethodChip(
-                      PlatformPrintJobControllerMethod.restart.name,
+                      CygnusPlatformPrintJobControllerMethod.restart.name,
                       SupportCheckHelper.supportedPlatformsForMethod(
-                        method: PlatformPrintJobControllerMethod.restart,
-                        checker: PrintJobController.isMethodSupported,
+                        method: CygnusPlatformPrintJobControllerMethod.restart,
+                        checker: CygnusPrintJobController.isMethodSupported,
                       ),
                       null,
                       enabled: false,
                     ),
                     _buildMethodChip(
-                      PlatformPrintJobControllerMethod.dismiss.name,
+                      CygnusPlatformPrintJobControllerMethod.dismiss.name,
                       SupportCheckHelper.supportedPlatformsForMethod(
-                        method: PlatformPrintJobControllerMethod.dismiss,
-                        checker: PrintJobController.isMethodSupported,
+                        method: CygnusPlatformPrintJobControllerMethod.dismiss,
+                        checker: CygnusPrintJobController.isMethodSupported,
                       ),
                       null,
                       enabled: false,
                     ),
                     _buildMethodChip(
-                      PlatformPrintJobControllerMethod.getInfo.name,
+                      CygnusPlatformPrintJobControllerMethod.getInfo.name,
                       SupportCheckHelper.supportedPlatformsForMethod(
-                        method: PlatformPrintJobControllerMethod.getInfo,
-                        checker: PrintJobController.isMethodSupported,
+                        method: CygnusPlatformPrintJobControllerMethod.getInfo,
+                        checker: CygnusPrintJobController.isMethodSupported,
                       ),
                       null,
                       enabled: false,

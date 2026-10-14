@@ -11,7 +11,7 @@ import '../pull_to_refresh/pull_to_refresh_controller.dart';
 import 'headless_in_app_webview.dart';
 import 'in_app_webview_controller.dart';
 
-/// Object specifying creation parameters for creating a [PlatformInAppWebViewWidget].
+/// Object specifying creation parameters for creating a [CygnusPlatformWebViewWidget].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
@@ -33,7 +33,7 @@ Future<bool>? _hcppProbe;
 /// Safe to call repeatedly: concurrent calls share one in-flight check, and once the answer is
 /// `true` it is returned without asking again.
 ///
-/// Await this before building the first [InAppWebView] if that WebView must get HCPP: the
+/// Await this before building the first [CygnusWebView] if that WebView must get HCPP: the
 /// platform view factory has to choose a mode synchronously, so a WebView built before any check
 /// has succeeded falls back to Texture Layer Hybrid Composition.
 Future<bool> precacheHybridCompositionPlusPlusSupport() {
@@ -71,7 +71,7 @@ Future<bool> _autoCompositionModeSupport() =>
     _autoModeProbe ??= precacheHybridCompositionPlusPlusSupport();
 
 class AndroidInAppWebViewWidgetCreationParams
-    extends PlatformInAppWebViewWidgetCreationParams {
+    extends CygnusPlatformWebViewWidgetCreationParams {
   AndroidInAppWebViewWidgetCreationParams({
     super.controllerFromPlatform,
     super.key,
@@ -107,7 +107,7 @@ class AndroidInAppWebViewWidgetCreationParams
     super.onReceivedHttpAuthRequest,
     super.onReceivedServerTrustAuthRequest,
     super.onReceivedClientCertRequest,
-    @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+    @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
     super.onFindResultReceived,
     super.shouldInterceptAjaxRequest,
     super.onAjaxReadyStateChange,
@@ -194,9 +194,9 @@ class AndroidInAppWebViewWidgetCreationParams
   });
 
   /// Constructs a [AndroidInAppWebViewWidgetCreationParams] using a
-  /// [PlatformInAppWebViewWidgetCreationParams].
+  /// [CygnusPlatformWebViewWidgetCreationParams].
   AndroidInAppWebViewWidgetCreationParams.fromPlatformInAppWebViewWidgetCreationParams(
-    PlatformInAppWebViewWidgetCreationParams params,
+    CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
         key: params.key,
@@ -320,12 +320,12 @@ class AndroidInAppWebViewWidgetCreationParams
   final AndroidPullToRefreshController? pullToRefreshController;
 }
 
-///{@macro cygnus_core.PlatformInAppWebViewWidget}
-class AndroidInAppWebViewWidget extends PlatformInAppWebViewWidget {
+///{@macro cygnus_core.CygnusPlatformWebViewWidget}
+class AndroidInAppWebViewWidget extends CygnusPlatformWebViewWidget {
   /// Constructs a [AndroidInAppWebViewWidget].
   ///
-  ///{@macro cygnus_core.PlatformInAppWebViewWidget}
-  AndroidInAppWebViewWidget(PlatformInAppWebViewWidgetCreationParams params)
+  ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
+  AndroidInAppWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
     : super.implementation(
         params is AndroidInAppWebViewWidgetCreationParams
             ? params
@@ -351,7 +351,7 @@ class AndroidInAppWebViewWidget extends PlatformInAppWebViewWidget {
 
   @override
   Widget build(BuildContext context) {
-    final initialSettings = params.initialSettings ?? InAppWebViewSettings();
+    final initialSettings = params.initialSettings ?? CygnusWebViewSettings();
     _inferInitialSettings(initialSettings);
 
     Map<String, dynamic> settingsMap =
@@ -364,7 +364,7 @@ class AndroidInAppWebViewWidget extends PlatformInAppWebViewWidget {
         params.pullToRefreshController?.params.settings.toMap() ??
         // ignore: deprecated_member_use_from_same_package
         params.pullToRefreshController?.params.options.toMap() ??
-        PullToRefreshSettings(enabled: false).toMap();
+        CygnusPullToRefreshSettings(enabled: false).toMap();
 
     if ((params.headlessWebView?.isRunning() ?? false) &&
         params.keepAlive != null) {
@@ -417,7 +417,7 @@ class AndroidInAppWebViewWidget extends PlatformInAppWebViewWidget {
   ///
   /// The deprecated `useHybridComposition: true` still counts as a choice, so existing code that
   /// asked for Hybrid Composition keeps getting it.
-  bool _isAutoCompositionMode(InAppWebViewSettings initialSettings) {
+  bool _isAutoCompositionMode(CygnusWebViewSettings initialSettings) {
     final explicit = params.initialSettings != null
         ? initialSettings.androidCompositionMode
         : null;
@@ -435,7 +435,7 @@ class AndroidInAppWebViewWidget extends PlatformInAppWebViewWidget {
 
   Widget _buildPlatformView({
     required BuildContext context,
-    required InAppWebViewSettings initialSettings,
+    required CygnusWebViewSettings initialSettings,
     required Map<String, dynamic> settingsMap,
     required Map<String, dynamic> pullToRefreshSettings,
     required bool hcppSupported,
@@ -449,7 +449,7 @@ class AndroidInAppWebViewWidget extends PlatformInAppWebViewWidget {
     // view hierarchy?". HCPP is, exactly like Hybrid Composition, so both report true.
     settingsMap['useHybridComposition'] =
         compositionMode !=
-        AndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION;
+        CygnusAndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION;
 
     return PlatformViewLink(
       key: params.key,
@@ -506,20 +506,20 @@ class AndroidInAppWebViewWidget extends PlatformInAppWebViewWidget {
 
   /// Which composition mode this WebView ends up with.
   ///
-  /// [InAppWebViewSettings.androidCompositionMode] wins when set; otherwise the deprecated
-  /// [InAppWebViewSettings.useHybridComposition] still decides, so existing code keeps its
+  /// [CygnusWebViewSettings.androidCompositionMode] wins when set; otherwise the deprecated
+  /// [CygnusWebViewSettings.useHybridComposition] still decides, so existing code keeps its
   /// behaviour. With neither set the mode is chosen automatically: HCPP where it works, Texture
   /// Layer Hybrid Composition everywhere else.
   ///
   /// A request for HCPP -- automatic or explicit -- is downgraded to Texture Layer Hybrid
   /// Composition unless the device and application actually support it.
-  AndroidCompositionMode _resolveCompositionMode(
-    InAppWebViewSettings initialSettings, {
+  CygnusAndroidCompositionMode _resolveCompositionMode(
+    CygnusWebViewSettings initialSettings, {
     required bool hcppSupported,
   }) {
     final auto = hcppSupported
-        ? AndroidCompositionMode.HYBRID_COMPOSITION_PLUS_PLUS
-        : AndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION;
+        ? CygnusAndroidCompositionMode.HYBRID_COMPOSITION_PLUS_PLUS
+        : CygnusAndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION;
 
     final requested =
         (params.initialSettings != null
@@ -530,25 +530,25 @@ class AndroidInAppWebViewWidget extends PlatformInAppWebViewWidget {
                     // ignore: deprecated_member_use_from_same_package
                     : params.initialOptions?.android.useHybridComposition) ??
                 false
-            ? AndroidCompositionMode.HYBRID_COMPOSITION
+            ? CygnusAndroidCompositionMode.HYBRID_COMPOSITION
             : auto);
 
-    if (requested == AndroidCompositionMode.HYBRID_COMPOSITION_PLUS_PLUS &&
+    if (requested == CygnusAndroidCompositionMode.HYBRID_COMPOSITION_PLUS_PLUS &&
         !hcppSupported) {
-      return AndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION;
+      return CygnusAndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION;
     }
     return requested;
   }
 
   AndroidViewController _createAndroidViewController({
-    required AndroidCompositionMode compositionMode,
+    required CygnusAndroidCompositionMode compositionMode,
     required int id,
     required String viewType,
     required TextDirection layoutDirection,
     required Map<String, dynamic> creationParams,
   }) {
     if (compositionMode ==
-        AndroidCompositionMode.HYBRID_COMPOSITION_PLUS_PLUS) {
+        CygnusAndroidCompositionMode.HYBRID_COMPOSITION_PLUS_PLUS) {
       return PlatformViewsService.initHybridAndroidView(
         id: id,
         viewType: viewType,
@@ -557,7 +557,7 @@ class AndroidInAppWebViewWidget extends PlatformInAppWebViewWidget {
         creationParamsCodec: const StandardMessageCodec(),
       );
     }
-    if (compositionMode == AndroidCompositionMode.HYBRID_COMPOSITION) {
+    if (compositionMode == CygnusAndroidCompositionMode.HYBRID_COMPOSITION) {
       return PlatformViewsService.initExpensiveAndroidView(
         id: id,
         viewType: viewType,
@@ -583,7 +583,7 @@ class AndroidInAppWebViewWidget extends PlatformInAppWebViewWidget {
     viewId = params.keepAlive?.id ?? viewId ?? id;
     _androidHeadlessInAppWebView?.internalDispose();
     _controller = AndroidInAppWebViewController(
-      PlatformInAppWebViewControllerCreationParams(
+      CygnusPlatformWebViewControllerCreationParams(
         id: viewId,
         webviewParams: params,
       ),
@@ -609,7 +609,7 @@ class AndroidInAppWebViewWidget extends PlatformInAppWebViewWidget {
     debugLog(
       className: runtimeType.toString(),
       id: viewId?.toString(),
-      debugLoggingSettings: PlatformInAppWebViewController.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformWebViewController.debugLoggingSettings,
       method: "onWebViewCreated",
       args: [],
     );
@@ -620,7 +620,7 @@ class AndroidInAppWebViewWidget extends PlatformInAppWebViewWidget {
     }
   }
 
-  void _inferInitialSettings(InAppWebViewSettings settings) {
+  void _inferInitialSettings(CygnusWebViewSettings settings) {
     if (params.shouldOverrideUrlLoading != null &&
         settings.useShouldOverrideUrlLoading == null) {
       settings.useShouldOverrideUrlLoading = true;
@@ -675,7 +675,7 @@ class AndroidInAppWebViewWidget extends PlatformInAppWebViewWidget {
     debugLog(
       className: runtimeType.toString(),
       id: viewId?.toString(),
-      debugLoggingSettings: PlatformInAppWebViewController.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformWebViewController.debugLoggingSettings,
       method: "dispose",
       args: [],
     );
@@ -687,7 +687,7 @@ class AndroidInAppWebViewWidget extends PlatformInAppWebViewWidget {
   }
 
   @override
-  T controllerFromPlatform<T>(PlatformInAppWebViewController controller) {
+  T controllerFromPlatform<T>(CygnusPlatformWebViewController controller) {
     // unused
     throw UnimplementedError();
   }

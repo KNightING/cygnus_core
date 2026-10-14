@@ -6,34 +6,34 @@ part of 'favicon_changed_request.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the request used by the [PlatformWebViewCreationParams.onFaviconChanged] event.
-class FaviconChangedRequest {
+///Class that represents the request used by the [CygnusPlatformWebViewCreationParams.onFaviconChanged] event.
+class CygnusFaviconChangedRequest {
   ///The favicon bytes for the current page, if available.
   Uint8List? icon;
 
   ///The favicon URL for the current page, if available.
-  WebUri? url;
-  FaviconChangedRequest({this.icon, this.url});
+  CygnusWebUri? url;
+  CygnusFaviconChangedRequest({this.icon, this.url});
 
-  ///Gets a possible [FaviconChangedRequest] instance from a [Map] value.
-  static FaviconChangedRequest? fromMap(
+  ///Gets a possible [CygnusFaviconChangedRequest] instance from a [Map] value.
+  static CygnusFaviconChangedRequest? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = FaviconChangedRequest(
+    final instance = CygnusFaviconChangedRequest(
       icon: map['icon'] != null
           ? Uint8List.fromList(map['icon'].cast<int>())
           : null,
-      url: map['url'] != null ? WebUri(map['url']) : null,
+      url: map['url'] != null ? CygnusWebUri(map['url']) : null,
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"icon": icon, "url": url?.toString()};
   }
 
@@ -44,6 +44,6 @@ class FaviconChangedRequest {
 
   @override
   String toString() {
-    return 'FaviconChangedRequest{icon: $icon, url: $url}';
+    return 'CygnusFaviconChangedRequest{icon: $icon, url: $url}';
   }
 }

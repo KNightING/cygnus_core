@@ -14,15 +14,15 @@ part 'activity_button.g.dart';
 ///**Officially Supported Platforms/Implementations**:
 ///- iOS
 @ExchangeableObject()
-class ActivityButton_ {
+class CygnusActivityButton_ {
   ///The name of the image asset or file.
-  UIImage_ templateImage;
+  CygnusUIImage_ templateImage;
 
   ///The name of the App or Share Extension to be called.
   String extensionIdentifier;
 
   @ExchangeableObjectConstructor()
-  ActivityButton_({
+  CygnusActivityButton_({
     required this.templateImage,
     required this.extensionIdentifier,
   });

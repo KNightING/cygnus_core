@@ -1,22 +1,22 @@
 part of 'main.dart';
 
 void onReceivedTouchIconUrl() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onReceivedTouchIconUrl,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onReceivedTouchIconUrl,
   );
 
   skippableTestWidgets('onReceivedTouchIconUrl', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<String> onReceivedTouchIconUrlCompleter =
         Completer<String>();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialData: InAppWebViewInitialData(
+          initialData: CygnusWebViewInitialData(
             data: """
 <!doctype html>
 <html lang="en">

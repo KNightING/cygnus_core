@@ -166,7 +166,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
       case TestCategory.content:
         return 'Content';
       case TestCategory.storage:
-        return 'Storage & Cookies';
+        return 'CygnusStorage & Cookies';
       case TestCategory.advanced:
         return 'Advanced Features';
       case TestCategory.browsers:

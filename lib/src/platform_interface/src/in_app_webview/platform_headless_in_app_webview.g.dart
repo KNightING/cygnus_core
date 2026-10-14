@@ -6,9 +6,9 @@ part of 'platform_headless_in_app_webview.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformHeadlessInAppWebViewCreationParamsClassSupported
-    on PlatformHeadlessInAppWebViewCreationParams {
-  ///{@template cygnus_core.PlatformHeadlessInAppWebViewCreationParams.supported_platforms}
+extension _CygnusPlatformHeadlessWebViewCreationParamsClassSupported
+    on CygnusPlatformHeadlessWebViewCreationParams {
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebViewCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -18,7 +18,7 @@ extension _PlatformHeadlessInAppWebViewCreationParamsClassSupported
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformHeadlessInAppWebViewCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformHeadlessWebViewCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return kIsWeb && platform == null
@@ -34,11 +34,11 @@ extension _PlatformHeadlessInAppWebViewCreationParamsClassSupported
   }
 }
 
-///List of [PlatformHeadlessInAppWebViewCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformHeadlessInAppWebViewCreationParamsProperty {
-  ///Can be used to check if the [PlatformHeadlessInAppWebViewCreationParams.initialSize] property is supported at runtime.
+///List of [CygnusPlatformHeadlessWebViewCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformHeadlessWebViewCreationParamsProperty {
+  ///Can be used to check if the [CygnusPlatformHeadlessWebViewCreationParams.initialSize] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformHeadlessInAppWebViewCreationParams.initialSize.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebViewCreationParams.initialSize.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
@@ -49,31 +49,31 @@ enum PlatformHeadlessInAppWebViewCreationParamsProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformHeadlessInAppWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformHeadlessWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   initialSize,
 
-  ///Can be used to check if the [PlatformHeadlessInAppWebViewCreationParams.webViewEnvironment] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformHeadlessWebViewCreationParams.webViewEnvironment] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformHeadlessInAppWebViewCreationParams.webViewEnvironment.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebViewCreationParams.webViewEnvironment.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///- Linux WPE WebKit ([Official API - WebKitWebContext](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/class.WebContext.html))
   ///
-  ///Use the [PlatformHeadlessInAppWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformHeadlessWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   webViewEnvironment,
 }
 
-extension _PlatformHeadlessInAppWebViewCreationParamsPropertySupported
-    on PlatformHeadlessInAppWebViewCreationParams {
+extension _CygnusPlatformHeadlessWebViewCreationParamsPropertySupported
+    on CygnusPlatformHeadlessWebViewCreationParams {
   static bool isPropertySupported(
-    PlatformHeadlessInAppWebViewCreationParamsProperty property, {
+    CygnusPlatformHeadlessWebViewCreationParamsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformHeadlessInAppWebViewCreationParamsProperty.initialSize:
+      case CygnusPlatformHeadlessWebViewCreationParamsProperty.initialSize:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -84,7 +84,7 @@ extension _PlatformHeadlessInAppWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformHeadlessInAppWebViewCreationParamsProperty
+      case CygnusPlatformHeadlessWebViewCreationParamsProperty
           .webViewEnvironment:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
@@ -95,9 +95,9 @@ extension _PlatformHeadlessInAppWebViewCreationParamsPropertySupported
   }
 }
 
-extension _PlatformHeadlessInAppWebViewClassSupported
-    on PlatformHeadlessInAppWebView {
-  ///{@template cygnus_core.PlatformHeadlessInAppWebView.supported_platforms}
+extension _CygnusPlatformHeadlessWebViewClassSupported
+    on CygnusPlatformHeadlessWebView {
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebView.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -107,7 +107,7 @@ extension _PlatformHeadlessInAppWebViewClassSupported
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformHeadlessInAppWebView.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformHeadlessWebView.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return kIsWeb && platform == null
@@ -123,11 +123,11 @@ extension _PlatformHeadlessInAppWebViewClassSupported
   }
 }
 
-///List of [PlatformHeadlessInAppWebView]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformHeadlessInAppWebViewMethod {
-  ///Can be used to check if the [PlatformHeadlessInAppWebView.dispose] method is supported at runtime.
+///List of [CygnusPlatformHeadlessWebView]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformHeadlessWebViewMethod {
+  ///Can be used to check if the [CygnusPlatformHeadlessWebView.dispose] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformHeadlessInAppWebView.dispose.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebView.dispose.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -137,13 +137,13 @@ enum PlatformHeadlessInAppWebViewMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformHeadlessInAppWebView.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformHeadlessWebView.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   dispose,
 
-  ///Can be used to check if the [PlatformHeadlessInAppWebView.getSize] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformHeadlessWebView.getSize] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformHeadlessInAppWebView.getSize.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebView.getSize.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -152,13 +152,13 @@ enum PlatformHeadlessInAppWebViewMethod {
   ///- Web \<iframe\>
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformHeadlessInAppWebView.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformHeadlessWebView.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getSize,
 
-  ///Can be used to check if the [PlatformHeadlessInAppWebView.isRunning] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformHeadlessWebView.isRunning] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformHeadlessInAppWebView.isRunning.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebView.isRunning.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -168,13 +168,13 @@ enum PlatformHeadlessInAppWebViewMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformHeadlessInAppWebView.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformHeadlessWebView.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isRunning,
 
-  ///Can be used to check if the [PlatformHeadlessInAppWebView.run] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformHeadlessWebView.run] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformHeadlessInAppWebView.run.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebView.run.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -185,13 +185,13 @@ enum PlatformHeadlessInAppWebViewMethod {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformHeadlessInAppWebView.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformHeadlessWebView.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   run,
 
-  ///Can be used to check if the [PlatformHeadlessInAppWebView.setSize] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformHeadlessWebView.setSize] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformHeadlessInAppWebView.setSize.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformHeadlessWebView.setSize.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
@@ -204,19 +204,19 @@ enum PlatformHeadlessInAppWebViewMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [size]: all platforms
   ///
-  ///Use the [PlatformHeadlessInAppWebView.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformHeadlessWebView.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setSize,
 }
 
-extension _PlatformHeadlessInAppWebViewMethodSupported
-    on PlatformHeadlessInAppWebView {
+extension _CygnusPlatformHeadlessWebViewMethodSupported
+    on CygnusPlatformHeadlessWebView {
   static bool isMethodSupported(
-    PlatformHeadlessInAppWebViewMethod method, {
+    CygnusPlatformHeadlessWebViewMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformHeadlessInAppWebViewMethod.dispose:
+      case CygnusPlatformHeadlessWebViewMethod.dispose:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -227,7 +227,7 @@ extension _PlatformHeadlessInAppWebViewMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformHeadlessInAppWebViewMethod.getSize:
+      case CygnusPlatformHeadlessWebViewMethod.getSize:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -237,18 +237,7 @@ extension _PlatformHeadlessInAppWebViewMethodSupported
                     TargetPlatform.macOS,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformHeadlessInAppWebViewMethod.isRunning:
-        return kIsWeb && platform == null
-            ? true
-            : ((kIsWeb && platform != null) || !kIsWeb) &&
-                  [
-                    TargetPlatform.android,
-                    TargetPlatform.iOS,
-                    TargetPlatform.macOS,
-                    TargetPlatform.windows,
-                    TargetPlatform.linux,
-                  ].contains(platform ?? defaultTargetPlatform);
-      case PlatformHeadlessInAppWebViewMethod.run:
+      case CygnusPlatformHeadlessWebViewMethod.isRunning:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -259,7 +248,18 @@ extension _PlatformHeadlessInAppWebViewMethodSupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformHeadlessInAppWebViewMethod.setSize:
+      case CygnusPlatformHeadlessWebViewMethod.run:
+        return kIsWeb && platform == null
+            ? true
+            : ((kIsWeb && platform != null) || !kIsWeb) &&
+                  [
+                    TargetPlatform.android,
+                    TargetPlatform.iOS,
+                    TargetPlatform.macOS,
+                    TargetPlatform.windows,
+                    TargetPlatform.linux,
+                  ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformHeadlessWebViewMethod.setSize:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&

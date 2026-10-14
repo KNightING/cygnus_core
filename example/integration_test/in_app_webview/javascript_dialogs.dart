@@ -1,25 +1,25 @@
 part of 'main.dart';
 
 void javascriptDialogs() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onJsAlert,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onJsAlert,
   );
 
   skippableTestWidgets('javascript dialogs', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<void> pageLoaded = Completer<void>();
-    final Completer<JsAlertRequest> alertCompleter =
-        Completer<JsAlertRequest>();
+    final Completer<CygnusJsAlertRequest> alertCompleter =
+        Completer<CygnusJsAlertRequest>();
     final Completer<bool> confirmCompleter = Completer<bool>();
     final Completer<String> promptCompleter = Completer<String>();
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
           initialFile: "test_assets/in_app_webview_on_js_dialog_test.html",
-          initialSettings: InAppWebViewSettings(clearCache: true),
+          initialSettings: CygnusWebViewSettings(clearCache: true),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
 
@@ -41,17 +41,17 @@ void javascriptDialogs() {
             pageLoaded.complete();
           },
           onJsAlert: (controller, jsAlertRequest) async {
-            JsAlertResponseAction action = JsAlertResponseAction.CONFIRM;
+            CygnusJsAlertResponseAction action = CygnusJsAlertResponseAction.CONFIRM;
             alertCompleter.complete(jsAlertRequest);
-            return JsAlertResponse(handledByClient: true, action: action);
+            return CygnusJsAlertResponse(handledByClient: true, action: action);
           },
           onJsConfirm: (controller, jsConfirmRequest) async {
-            JsConfirmResponseAction action = JsConfirmResponseAction.CONFIRM;
-            return JsConfirmResponse(handledByClient: true, action: action);
+            CygnusJsConfirmResponseAction action = CygnusJsConfirmResponseAction.CONFIRM;
+            return CygnusJsConfirmResponse(handledByClient: true, action: action);
           },
           onJsPrompt: (controller, jsPromptRequest) async {
-            JsPromptResponseAction action = JsPromptResponseAction.CONFIRM;
-            return JsPromptResponse(
+            CygnusJsPromptResponseAction action = CygnusJsPromptResponseAction.CONFIRM;
+            return CygnusJsPromptResponse(
               handledByClient: true,
               action: action,
               value: 'new value',
@@ -63,7 +63,7 @@ void javascriptDialogs() {
 
     await pageLoaded.future;
 
-    final JsAlertRequest jsAlertRequest = await alertCompleter.future;
+    final CygnusJsAlertRequest jsAlertRequest = await alertCompleter.future;
     expect(jsAlertRequest.message, 'alert message');
 
     final bool onJsConfirmValue = await confirmCompleter.future;

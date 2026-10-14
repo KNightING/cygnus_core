@@ -7,41 +7,41 @@ part of 'media_playback_state.dart';
 // **************************************************************************
 
 ///Class that describes whether an audio or video presentation is playing, paused, or suspended.
-class MediaPlaybackState {
+class CygnusMediaPlaybackState {
   final int _value;
   final int? _nativeValue;
-  const MediaPlaybackState._internal(this._value, this._nativeValue);
+  const CygnusMediaPlaybackState._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory MediaPlaybackState._internalMultiPlatform(
+  factory CygnusMediaPlaybackState._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => MediaPlaybackState._internal(value, nativeValue());
+  ) => CygnusMediaPlaybackState._internal(value, nativeValue());
 
   ///There is no media to play back.
-  static const NONE = MediaPlaybackState._internal(0, 0);
+  static const NONE = CygnusMediaPlaybackState._internal(0, 0);
 
   ///The media playback is paused.
-  static const PAUSED = MediaPlaybackState._internal(2, 2);
+  static const PAUSED = CygnusMediaPlaybackState._internal(2, 2);
 
   ///The media is playing.
-  static const PLAYING = MediaPlaybackState._internal(1, 1);
+  static const PLAYING = CygnusMediaPlaybackState._internal(1, 1);
 
   ///The media is not playing, and cannot be resumed until the user revokes the suspension.
-  static const SUSPENDED = MediaPlaybackState._internal(3, 3);
+  static const SUSPENDED = CygnusMediaPlaybackState._internal(3, 3);
 
-  ///Set of all values of [MediaPlaybackState].
-  static final Set<MediaPlaybackState> values = [
-    MediaPlaybackState.NONE,
-    MediaPlaybackState.PAUSED,
-    MediaPlaybackState.PLAYING,
-    MediaPlaybackState.SUSPENDED,
+  ///Set of all values of [CygnusMediaPlaybackState].
+  static final Set<CygnusMediaPlaybackState> values = [
+    CygnusMediaPlaybackState.NONE,
+    CygnusMediaPlaybackState.PAUSED,
+    CygnusMediaPlaybackState.PLAYING,
+    CygnusMediaPlaybackState.SUSPENDED,
   ].toSet();
 
-  ///Gets a possible [MediaPlaybackState] instance from [int] value.
-  static MediaPlaybackState? fromValue(int? value) {
+  ///Gets a possible [CygnusMediaPlaybackState] instance from [int] value.
+  static CygnusMediaPlaybackState? fromValue(int? value) {
     if (value != null) {
       try {
-        return MediaPlaybackState.values.firstWhere(
+        return CygnusMediaPlaybackState.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -51,11 +51,11 @@ class MediaPlaybackState {
     return null;
   }
 
-  ///Gets a possible [MediaPlaybackState] instance from a native value.
-  static MediaPlaybackState? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusMediaPlaybackState] instance from a native value.
+  static CygnusMediaPlaybackState? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return MediaPlaybackState.values.firstWhere(
+        return CygnusMediaPlaybackState.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -65,15 +65,15 @@ class MediaPlaybackState {
     return null;
   }
 
-  /// Gets a possible [MediaPlaybackState] instance value with name [name].
+  /// Gets a possible [CygnusMediaPlaybackState] instance value with name [name].
   ///
-  /// Goes through [MediaPlaybackState.values] looking for a value with
-  /// name [name], as reported by [MediaPlaybackState.name].
+  /// Goes through [CygnusMediaPlaybackState.values] looking for a value with
+  /// name [name], as reported by [CygnusMediaPlaybackState.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static MediaPlaybackState? byName(String? name) {
+  static CygnusMediaPlaybackState? byName(String? name) {
     if (name != null) {
       try {
-        return MediaPlaybackState.values.firstWhere(
+        return CygnusMediaPlaybackState.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -83,7 +83,7 @@ class MediaPlaybackState {
     return null;
   }
 
-  /// Creates a map from the names of [MediaPlaybackState] values to the values.
+  /// Creates a map from the names of [CygnusMediaPlaybackState] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -91,9 +91,10 @@ class MediaPlaybackState {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, MediaPlaybackState> asNameMap() =>
-      <String, MediaPlaybackState>{
-        for (final value in MediaPlaybackState.values) value.name(): value,
+  static Map<String, CygnusMediaPlaybackState> asNameMap() =>
+      <String, CygnusMediaPlaybackState>{
+        for (final value in CygnusMediaPlaybackState.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

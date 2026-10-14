@@ -6,31 +6,31 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 /// Object specifying creation parameters for creating a [AndroidTracingController].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformTracingControllerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformTracingControllerCreationParams] for
 /// more information.
 @immutable
 class AndroidTracingControllerCreationParams
-    extends PlatformTracingControllerCreationParams {
+    extends CygnusPlatformTracingControllerCreationParams {
   /// Creates a new [AndroidTracingControllerCreationParams] instance.
   const AndroidTracingControllerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformTracingControllerCreationParams params,
+    CygnusPlatformTracingControllerCreationParams params,
   ) : super();
 
-  /// Creates a [AndroidTracingControllerCreationParams] instance based on [PlatformTracingControllerCreationParams].
+  /// Creates a [AndroidTracingControllerCreationParams] instance based on [CygnusPlatformTracingControllerCreationParams].
   factory AndroidTracingControllerCreationParams.fromPlatformTracingControllerCreationParams(
-    PlatformTracingControllerCreationParams params,
+    CygnusPlatformTracingControllerCreationParams params,
   ) {
     return AndroidTracingControllerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformTracingController}
-class AndroidTracingController extends PlatformTracingController
+///{@macro cygnus_core.CygnusPlatformTracingController}
+class AndroidTracingController extends CygnusPlatformTracingController
     with ChannelController {
   /// Creates a new [AndroidTracingController].
-  AndroidTracingController(PlatformTracingControllerCreationParams params)
+  AndroidTracingController(CygnusPlatformTracingControllerCreationParams params)
     : super.implementation(
         params is AndroidTracingControllerCreationParams
             ? params
@@ -55,7 +55,7 @@ class AndroidTracingController extends PlatformTracingController
   static AndroidTracingController _init() {
     _instance = AndroidTracingController(
       AndroidTracingControllerCreationParams(
-        const PlatformTracingControllerCreationParams(),
+        const CygnusPlatformTracingControllerCreationParams(),
       ),
     );
     return _instance!;
@@ -63,7 +63,7 @@ class AndroidTracingController extends PlatformTracingController
 
   static final AndroidTracingController _staticValue = AndroidTracingController(
     AndroidTracingControllerCreationParams(
-      const PlatformTracingControllerCreationParams(),
+      const CygnusPlatformTracingControllerCreationParams(),
     ),
   );
 
@@ -75,7 +75,7 @@ class AndroidTracingController extends PlatformTracingController
   Future<dynamic> _handleMethod(MethodCall call) async {}
 
   @override
-  Future<void> start({required TracingSettings settings}) async {
+  Future<void> start({required CygnusTracingSettings settings}) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("settings", () => settings.toMap());
     await channel?.invokeMethod('start', args);

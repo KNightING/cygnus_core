@@ -29,10 +29,10 @@ class TestRunner extends ChangeNotifier {
   TestWebViewType _webViewType = TestWebViewType.inAppWebView;
 
   /// Headless WebView instance (when using headless mode)
-  HeadlessInAppWebView? _headlessWebView;
+  CygnusHeadlessWebView? _headlessWebView;
 
   /// Controller for WebView (both headless and visible)
-  InAppWebViewController? _webViewController;
+  CygnusWebViewController? _webViewController;
 
   /// Whether the WebView is ready
   bool _webViewReady = false;
@@ -44,13 +44,13 @@ class TestRunner extends ChangeNotifier {
   String _initialUrl = 'about:blank';
 
   // Event StreamControllers for listening to WebView events
-  final _onLoadStopController = StreamController<WebUri?>.broadcast();
-  final _onLoadStartController = StreamController<WebUri?>.broadcast();
+  final _onLoadStopController = StreamController<CygnusWebUri?>.broadcast();
+  final _onLoadStartController = StreamController<CygnusWebUri?>.broadcast();
   final _onProgressChangedController = StreamController<int>.broadcast();
-  final _onPageCommitVisibleController = StreamController<WebUri?>.broadcast();
+  final _onPageCommitVisibleController = StreamController<CygnusWebUri?>.broadcast();
   final _onTitleChangedController = StreamController<String?>.broadcast();
   final _onUpdateVisitedHistoryController =
-      StreamController<WebUri?>.broadcast();
+      StreamController<CygnusWebUri?>.broadcast();
 
   // Store target progress for onProgressChanged event filtering
   int _targetProgress = 100;
@@ -70,8 +70,8 @@ class TestRunner extends ChangeNotifier {
   TestConfiguration? get currentConfiguration => _currentConfiguration;
   TestWebViewType get webViewType => _webViewType;
   bool get isUsingHeadless => _webViewType == TestWebViewType.headless;
-  HeadlessInAppWebView? get headlessWebView => _headlessWebView;
-  InAppWebViewController? get webViewController => _webViewController;
+  CygnusHeadlessWebView? get headlessWebView => _headlessWebView;
+  CygnusWebViewController? get webViewController => _webViewController;
   bool get webViewReady => _webViewReady;
   Key get webViewKey => _webViewKey;
 
@@ -125,15 +125,15 @@ class TestRunner extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Build the InAppWebView widget for visible mode
+  /// Build the CygnusWebView widget for visible mode
   /// This should be used by the UI to display the WebView
   Widget buildInAppWebView({double? width, double? height}) {
-    return InAppWebView(
+    return CygnusWebView(
       key: _webViewKey,
-      initialUrlRequest: URLRequest(
-        url: WebUri(_currentConfiguration?.initialUrl ?? _initialUrl),
+      initialUrlRequest: CygnusURLRequest(
+        url: CygnusWebUri(_currentConfiguration?.initialUrl ?? _initialUrl),
       ),
-      initialSettings: InAppWebViewSettings(javaScriptEnabled: true),
+      initialSettings: CygnusWebViewSettings(javaScriptEnabled: true),
       onWebViewCreated: (controller) {
         _webViewController = controller;
         notifyListeners();
@@ -175,8 +175,8 @@ class TestRunner extends ChangeNotifier {
 
     final completer = Completer<void>();
 
-    _headlessWebView = HeadlessInAppWebView(
-      initialUrlRequest: URLRequest(url: WebUri(initialUrl ?? _initialUrl)),
+    _headlessWebView = CygnusHeadlessWebView(
+      initialUrlRequest: CygnusURLRequest(url: CygnusWebUri(initialUrl ?? _initialUrl)),
       initialSize: Size(width ?? 1920, height ?? 1080),
       onWebViewCreated: (controller) {
         _webViewController = controller;
@@ -269,7 +269,7 @@ class TestRunner extends ChangeNotifier {
   /// Run custom test steps
   Future<void> _runCustomSteps(
     List<CustomTestStep> steps,
-    InAppWebViewController? controller, {
+    CygnusWebViewController? controller, {
     bool append = false,
   }) async {
     if (_status == TestStatus.running) return;
@@ -337,7 +337,7 @@ class TestRunner extends ChangeNotifier {
   /// Execute a single custom test step
   Future<ExtendedTestResult> _executeCustomStep(
     CustomTestStep step,
-    InAppWebViewController? controller,
+    CygnusWebViewController? controller,
   ) async {
     final stopwatch = Stopwatch()..start();
 
@@ -353,7 +353,7 @@ class TestRunner extends ChangeNotifier {
           final targetPlatform = _getCurrentTargetPlatform();
 
           if (methodEntry != null &&
-              !InAppWebViewController.isMethodSupported(
+              !CygnusWebViewController.isMethodSupported(
                 methodEntry.methodEnum,
                 platform: targetPlatform,
               )) {
@@ -384,7 +384,7 @@ class TestRunner extends ChangeNotifier {
         case CustomTestActionType.loadUrl:
           if (controller == null) throw Exception('Controller not available');
           await controller.loadUrl(
-            urlRequest: URLRequest(url: WebUri(step.action.url ?? '')),
+            urlRequest: CygnusURLRequest(url: CygnusWebUri(step.action.url ?? '')),
           );
           result = 'URL loaded';
           break;
@@ -542,7 +542,7 @@ class TestRunner extends ChangeNotifier {
   /// Execute a controller method action
   Future<dynamic> _executeControllerMethod(
     CustomTestAction action,
-    InAppWebViewController? controller,
+    CygnusWebViewController? controller,
   ) async {
     if (controller == null) {
       throw Exception('Controller not available');
@@ -575,7 +575,7 @@ class TestRunner extends ChangeNotifier {
   /// Execute a wait for navigation event action
   Future<String> _executeWaitForNavigationEvent(
     CustomTestAction action,
-    InAppWebViewController? controller,
+    CygnusWebViewController? controller,
   ) async {
     if (controller == null) {
       throw Exception('Controller not available');

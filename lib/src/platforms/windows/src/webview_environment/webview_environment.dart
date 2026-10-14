@@ -8,15 +8,15 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 /// this class.
 @immutable
 class WindowsWebViewEnvironmentCreationParams
-    extends PlatformWebViewEnvironmentCreationParams {
+    extends CygnusPlatformWebViewEnvironmentCreationParams {
   /// Creates a new [WindowsInAppWebViewControllerCreationParams] instance.
   const WindowsWebViewEnvironmentCreationParams({super.settings});
 
-  /// Creates a [WindowsInAppWebViewControllerCreationParams] instance based on [PlatformInAppWebViewControllerCreationParams].
+  /// Creates a [WindowsInAppWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
   factory WindowsWebViewEnvironmentCreationParams.fromPlatformWebViewEnvironmentCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebViewEnvironmentCreationParams params,
+    CygnusPlatformWebViewEnvironmentCreationParams params,
   ) {
     return WindowsWebViewEnvironmentCreationParams(settings: params.settings);
   }
@@ -26,7 +26,7 @@ class WindowsWebViewEnvironmentCreationParams
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- Windows
-class WindowsWebViewEnvironment extends PlatformWebViewEnvironment
+class WindowsWebViewEnvironment extends CygnusPlatformWebViewEnvironment
     with ChannelController {
   static final MethodChannel _staticChannel = MethodChannel(
     'com.pichillilorenzo/flutter_webview_environment',
@@ -35,7 +35,7 @@ class WindowsWebViewEnvironment extends PlatformWebViewEnvironment
   @override
   final String id = IdGenerator.generate();
 
-  WindowsWebViewEnvironment(PlatformWebViewEnvironmentCreationParams params)
+  WindowsWebViewEnvironment(CygnusPlatformWebViewEnvironmentCreationParams params)
     : super.implementation(
         params is WindowsWebViewEnvironmentCreationParams
             ? params
@@ -55,14 +55,14 @@ class WindowsWebViewEnvironment extends PlatformWebViewEnvironment
     debugLog(
       className: this.runtimeType.toString(),
       id: id,
-      debugLoggingSettings: PlatformWebViewEnvironment.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformWebViewEnvironment.debugLoggingSettings,
       method: method,
       args: args,
     );
   }
 
   Future<dynamic> _handleMethod(MethodCall call) async {
-    if (PlatformWebViewEnvironment.debugLoggingSettings.enabled) {
+    if (CygnusPlatformWebViewEnvironment.debugLoggingSettings.enabled) {
       _debugLog(call.method, call.arguments);
     }
 
@@ -76,7 +76,7 @@ class WindowsWebViewEnvironment extends PlatformWebViewEnvironment
         if (onBrowserProcessExited != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          final detail = BrowserProcessExitedDetail.fromMap(arguments)!;
+          final detail = CygnusBrowserProcessExitedDetail.fromMap(arguments)!;
           onBrowserProcessExited?.call(detail);
         }
         break;
@@ -84,7 +84,7 @@ class WindowsWebViewEnvironment extends PlatformWebViewEnvironment
         if (onProcessInfosChanged != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          final detail = BrowserProcessInfosChangedDetail.fromMap(arguments)!;
+          final detail = CygnusBrowserProcessInfosChangedDetail.fromMap(arguments)!;
           onProcessInfosChanged?.call(detail);
         }
       default:
@@ -94,7 +94,7 @@ class WindowsWebViewEnvironment extends PlatformWebViewEnvironment
   }
 
   @override
-  Future<bool> isInterfaceSupported(WebViewInterface interface) async {
+  Future<bool> isInterfaceSupported(CygnusWebViewInterface interface) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('interface', () => interface.toNativeValue());
     return await channel?.invokeMethod<bool>('isInterfaceSupported', args) ??
@@ -102,15 +102,15 @@ class WindowsWebViewEnvironment extends PlatformWebViewEnvironment
   }
 
   @override
-  Future<List<BrowserProcessInfo>> getProcessInfos() async {
+  Future<List<CygnusBrowserProcessInfo>> getProcessInfos() async {
     Map<String, dynamic> args = <String, dynamic>{};
     final result = await channel?.invokeMethod<List<dynamic>>(
       'getProcessInfos',
       args,
     );
     return result
-            ?.map((e) => BrowserProcessInfo.fromMap(e.cast<String, dynamic>()))
-            .whereType<BrowserProcessInfo>()
+            ?.map((e) => CygnusBrowserProcessInfo.fromMap(e.cast<String, dynamic>()))
+            .whereType<CygnusBrowserProcessInfo>()
             .toList() ??
         [];
   }
@@ -126,7 +126,7 @@ class WindowsWebViewEnvironment extends PlatformWebViewEnvironment
 
   @override
   Future<WindowsWebViewEnvironment> create({
-    WebViewEnvironmentSettings? settings,
+    CygnusWebViewEnvironmentSettings? settings,
   }) async {
     final env = WindowsWebViewEnvironment(
       WindowsWebViewEnvironmentCreationParams(settings: settings),

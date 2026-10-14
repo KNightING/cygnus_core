@@ -19,7 +19,7 @@ void main() {
 
     test('ControllerMethodEntry.toJson serializes hint and bytes', () {
       final entry = ControllerMethodEntry(
-        methodEnum: PlatformInAppWebViewControllerMethod.loadUrl,
+        methodEnum: CygnusPlatformWebViewControllerMethod.loadUrl,
         description: 'test',
         parameters: {
           'count': const ParameterValueHint<int>(3, ParameterValueType.number),

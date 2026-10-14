@@ -7,15 +7,15 @@ part of 'force_dark_strategy.dart';
 // **************************************************************************
 
 ///Class used to indicate how `WebView` content should be darkened.
-class ForceDarkStrategy {
+class CygnusForceDarkStrategy {
   final int _value;
   final int? _nativeValue;
-  const ForceDarkStrategy._internal(this._value, this._nativeValue);
+  const CygnusForceDarkStrategy._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory ForceDarkStrategy._internalMultiPlatform(
+  factory CygnusForceDarkStrategy._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => ForceDarkStrategy._internal(value, nativeValue());
+  ) => CygnusForceDarkStrategy._internal(value, nativeValue());
 
   ///In this mode `WebView` content will be darkened by a user agent unless web page supports dark theme.
   ///`WebView` determines whether web pages supports dark theme by the presence of `color-scheme` metadata containing `"dark"` value.
@@ -24,32 +24,38 @@ class ForceDarkStrategy {
   ///
   ///See [specification](https://drafts.csswg.org/css-color-adjust-1/) for more information.
   static const PREFER_WEB_THEME_OVER_USER_AGENT_DARKENING =
-      ForceDarkStrategy._internal(2, 2);
+      CygnusForceDarkStrategy._internal(2, 2);
 
   ///In this mode `WebView` content will be darkened by a user agent and it will ignore the web page's dark theme if it exists.
   ///To avoid mixing two different darkening strategies, the `prefers-color-scheme` media query will evaluate to light.
   ///
   ///See [specification](https://drafts.csswg.org/css-color-adjust-1/) for more information.
-  static const USER_AGENT_DARKENING_ONLY = ForceDarkStrategy._internal(0, 0);
+  static const USER_AGENT_DARKENING_ONLY = CygnusForceDarkStrategy._internal(
+    0,
+    0,
+  );
 
   ///In this mode `WebView` content will always be darkened using dark theme provided by web page.
   ///If web page does not provide dark theme support `WebView` content will be rendered with a default theme.
   ///
   ///See [specification](https://drafts.csswg.org/css-color-adjust-1/) for more information.
-  static const WEB_THEME_DARKENING_ONLY = ForceDarkStrategy._internal(1, 1);
+  static const WEB_THEME_DARKENING_ONLY = CygnusForceDarkStrategy._internal(
+    1,
+    1,
+  );
 
-  ///Set of all values of [ForceDarkStrategy].
-  static final Set<ForceDarkStrategy> values = [
-    ForceDarkStrategy.PREFER_WEB_THEME_OVER_USER_AGENT_DARKENING,
-    ForceDarkStrategy.USER_AGENT_DARKENING_ONLY,
-    ForceDarkStrategy.WEB_THEME_DARKENING_ONLY,
+  ///Set of all values of [CygnusForceDarkStrategy].
+  static final Set<CygnusForceDarkStrategy> values = [
+    CygnusForceDarkStrategy.PREFER_WEB_THEME_OVER_USER_AGENT_DARKENING,
+    CygnusForceDarkStrategy.USER_AGENT_DARKENING_ONLY,
+    CygnusForceDarkStrategy.WEB_THEME_DARKENING_ONLY,
   ].toSet();
 
-  ///Gets a possible [ForceDarkStrategy] instance from [int] value.
-  static ForceDarkStrategy? fromValue(int? value) {
+  ///Gets a possible [CygnusForceDarkStrategy] instance from [int] value.
+  static CygnusForceDarkStrategy? fromValue(int? value) {
     if (value != null) {
       try {
-        return ForceDarkStrategy.values.firstWhere(
+        return CygnusForceDarkStrategy.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -59,11 +65,11 @@ class ForceDarkStrategy {
     return null;
   }
 
-  ///Gets a possible [ForceDarkStrategy] instance from a native value.
-  static ForceDarkStrategy? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusForceDarkStrategy] instance from a native value.
+  static CygnusForceDarkStrategy? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return ForceDarkStrategy.values.firstWhere(
+        return CygnusForceDarkStrategy.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -73,15 +79,15 @@ class ForceDarkStrategy {
     return null;
   }
 
-  /// Gets a possible [ForceDarkStrategy] instance value with name [name].
+  /// Gets a possible [CygnusForceDarkStrategy] instance value with name [name].
   ///
-  /// Goes through [ForceDarkStrategy.values] looking for a value with
-  /// name [name], as reported by [ForceDarkStrategy.name].
+  /// Goes through [CygnusForceDarkStrategy.values] looking for a value with
+  /// name [name], as reported by [CygnusForceDarkStrategy.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ForceDarkStrategy? byName(String? name) {
+  static CygnusForceDarkStrategy? byName(String? name) {
     if (name != null) {
       try {
-        return ForceDarkStrategy.values.firstWhere(
+        return CygnusForceDarkStrategy.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -91,7 +97,7 @@ class ForceDarkStrategy {
     return null;
   }
 
-  /// Creates a map from the names of [ForceDarkStrategy] values to the values.
+  /// Creates a map from the names of [CygnusForceDarkStrategy] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -99,9 +105,9 @@ class ForceDarkStrategy {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ForceDarkStrategy> asNameMap() =>
-      <String, ForceDarkStrategy>{
-        for (final value in ForceDarkStrategy.values) value.name(): value,
+  static Map<String, CygnusForceDarkStrategy> asNameMap() =>
+      <String, CygnusForceDarkStrategy>{
+        for (final value in CygnusForceDarkStrategy.values) value.name(): value,
       };
 
   ///Gets [int] value.

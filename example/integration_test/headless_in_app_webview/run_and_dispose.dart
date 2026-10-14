@@ -1,17 +1,17 @@
 part of 'main.dart';
 
 void runAndDispose() {
-  final shouldSkip = !HeadlessInAppWebView.isMethodSupported(
-    PlatformHeadlessInAppWebViewMethod.run,
+  final shouldSkip = !CygnusHeadlessWebView.isMethodSupported(
+    CygnusPlatformHeadlessWebViewMethod.run,
   );
 
   skippableTest('run and dispose', () async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<void> pageLoaded = Completer<void>();
 
-    var headlessWebView = new HeadlessInAppWebView(
-      initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+    var headlessWebView = new CygnusHeadlessWebView(
+      initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
       onWebViewCreated: (controller) {
         controllerCompleter.complete(controller);
       },
@@ -23,7 +23,7 @@ void runAndDispose() {
     await headlessWebView.run();
     expect(headlessWebView.isRunning(), true);
 
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
     await pageLoaded.future;
 
     final String? url = (await controller.getUrl())?.toString();

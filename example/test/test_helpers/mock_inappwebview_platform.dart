@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-/// A mock InAppWebViewPlatform for testing purposes.
+/// A mock CygnusWebViewPlatform for testing purposes.
 /// This allows widget tests to run without requiring a real platform implementation.
-class MockInAppWebViewPlatform extends InAppWebViewPlatform
+class MockInAppWebViewPlatform extends CygnusWebViewPlatform
     with MockPlatformInterfaceMixin {
   static final MockInAppWebViewPlatform _instance =
       MockInAppWebViewPlatform._();
@@ -15,7 +15,7 @@ class MockInAppWebViewPlatform extends InAppWebViewPlatform
   /// Initialize the mock platform for testing.
   /// Call this in setUp() or at the start of your tests.
   static void initialize() {
-    InAppWebViewPlatform.instance = _instance;
+    CygnusWebViewPlatform.instance = _instance;
   }
 
   /// Reset the platform instance.
@@ -26,165 +26,165 @@ class MockInAppWebViewPlatform extends InAppWebViewPlatform
   }
 
   @override
-  PlatformInAppWebViewController createPlatformInAppWebViewControllerStatic() {
+  CygnusPlatformWebViewController createPlatformInAppWebViewControllerStatic() {
     return MockPlatformInAppWebViewControllerStatic(
-      const PlatformInAppWebViewControllerCreationParams(id: 'mock_controller'),
+      const CygnusPlatformWebViewControllerCreationParams(id: 'mock_controller'),
     );
   }
 
   @override
-  PlatformCookieManager createPlatformCookieManagerStatic() {
+  CygnusPlatformCookieManager createPlatformCookieManagerStatic() {
     return MockPlatformCookieManagerStatic(
-      PlatformCookieManagerCreationParams(),
+      CygnusPlatformCookieManagerCreationParams(),
     );
   }
 
   @override
-  PlatformCookieManager createPlatformCookieManager(
-    PlatformCookieManagerCreationParams params,
+  CygnusPlatformCookieManager createPlatformCookieManager(
+    CygnusPlatformCookieManagerCreationParams params,
   ) {
     return MockPlatformCookieManager(params);
   }
 
   @override
-  PlatformInAppWebViewWidget createPlatformInAppWebViewWidget(
-    PlatformInAppWebViewWidgetCreationParams params,
+  CygnusPlatformWebViewWidget createPlatformInAppWebViewWidget(
+    CygnusPlatformWebViewWidgetCreationParams params,
   ) {
     return MockPlatformInAppWebViewWidget(params);
   }
 
   @override
-  PlatformInAppWebViewWidget createPlatformInAppWebViewWidgetStatic() {
+  CygnusPlatformWebViewWidget createPlatformInAppWebViewWidgetStatic() {
     return MockPlatformInAppWebViewWidget(
-      PlatformInAppWebViewWidgetCreationParams(),
+      CygnusPlatformWebViewWidgetCreationParams(),
     );
   }
 
   @override
-  PlatformInAppWebViewController createPlatformInAppWebViewController(
-    PlatformInAppWebViewControllerCreationParams params,
+  CygnusPlatformWebViewController createPlatformInAppWebViewController(
+    CygnusPlatformWebViewControllerCreationParams params,
   ) {
     return MockPlatformInAppWebViewController(params);
   }
 
   @override
-  PlatformServiceWorkerController createPlatformServiceWorkerController(
-    PlatformServiceWorkerControllerCreationParams params,
+  CygnusPlatformServiceWorkerController createPlatformServiceWorkerController(
+    CygnusPlatformServiceWorkerControllerCreationParams params,
   ) {
     return MockPlatformServiceWorkerController(params);
   }
 
   @override
-  PlatformServiceWorkerController
+  CygnusPlatformServiceWorkerController
   createPlatformServiceWorkerControllerStatic() {
     return MockPlatformServiceWorkerController(
-      const PlatformServiceWorkerControllerCreationParams(),
+      const CygnusPlatformServiceWorkerControllerCreationParams(),
     );
   }
 
   @override
-  PlatformProxyController createPlatformProxyController(
-    PlatformProxyControllerCreationParams params,
+  CygnusPlatformProxyController createPlatformProxyController(
+    CygnusPlatformProxyControllerCreationParams params,
   ) {
     return MockPlatformProxyController(params);
   }
 
   @override
-  PlatformProxyController createPlatformProxyControllerStatic() {
+  CygnusPlatformProxyController createPlatformProxyControllerStatic() {
     return MockPlatformProxyController(
-      const PlatformProxyControllerCreationParams(),
+      const CygnusPlatformProxyControllerCreationParams(),
     );
   }
 
   @override
-  PlatformTracingController createPlatformTracingController(
-    PlatformTracingControllerCreationParams params,
+  CygnusPlatformTracingController createPlatformTracingController(
+    CygnusPlatformTracingControllerCreationParams params,
   ) {
     return MockPlatformTracingController(params);
   }
 
   @override
-  PlatformTracingController createPlatformTracingControllerStatic() {
+  CygnusPlatformTracingController createPlatformTracingControllerStatic() {
     return MockPlatformTracingController(
-      const PlatformTracingControllerCreationParams(),
+      const CygnusPlatformTracingControllerCreationParams(),
     );
   }
 
   @override
-  PlatformWebViewEnvironment createPlatformWebViewEnvironment(
-    PlatformWebViewEnvironmentCreationParams params,
+  CygnusPlatformWebViewEnvironment createPlatformWebViewEnvironment(
+    CygnusPlatformWebViewEnvironmentCreationParams params,
   ) {
     return MockPlatformWebViewEnvironment(params);
   }
 
   @override
-  PlatformWebViewEnvironment createPlatformWebViewEnvironmentStatic() {
+  CygnusPlatformWebViewEnvironment createPlatformWebViewEnvironmentStatic() {
     return MockPlatformWebViewEnvironment(
-      const PlatformWebViewEnvironmentCreationParams(),
+      const CygnusPlatformWebViewEnvironmentCreationParams(),
     );
   }
 
   @override
-  PlatformProcessGlobalConfig createPlatformProcessGlobalConfig(
-    PlatformProcessGlobalConfigCreationParams params,
+  CygnusPlatformProcessGlobalConfig createPlatformProcessGlobalConfig(
+    CygnusPlatformProcessGlobalConfigCreationParams params,
   ) {
     return MockPlatformProcessGlobalConfig(params);
   }
 
   @override
-  PlatformProcessGlobalConfig createPlatformProcessGlobalConfigStatic() {
+  CygnusPlatformProcessGlobalConfig createPlatformProcessGlobalConfigStatic() {
     return MockPlatformProcessGlobalConfig(
-      const PlatformProcessGlobalConfigCreationParams(),
+      const CygnusPlatformProcessGlobalConfigCreationParams(),
     );
   }
 
   @override
-  PlatformFindInteractionController createPlatformFindInteractionController(
-    PlatformFindInteractionControllerCreationParams params,
+  CygnusPlatformFindInteractionController createPlatformFindInteractionController(
+    CygnusPlatformFindInteractionControllerCreationParams params,
   ) {
     return MockPlatformFindInteractionController(params);
   }
 
   @override
-  PlatformFindInteractionController
+  CygnusPlatformFindInteractionController
   createPlatformFindInteractionControllerStatic() {
     return MockPlatformFindInteractionController(
-      const PlatformFindInteractionControllerCreationParams(),
+      const CygnusPlatformFindInteractionControllerCreationParams(),
     );
   }
 
   @override
-  PlatformPullToRefreshController createPlatformPullToRefreshController(
-    PlatformPullToRefreshControllerCreationParams params,
+  CygnusPlatformPullToRefreshController createPlatformPullToRefreshController(
+    CygnusPlatformPullToRefreshControllerCreationParams params,
   ) {
     return MockPlatformPullToRefreshController(params);
   }
 
   @override
-  PlatformPullToRefreshController
+  CygnusPlatformPullToRefreshController
   createPlatformPullToRefreshControllerStatic() {
     return MockPlatformPullToRefreshController(
-      PlatformPullToRefreshControllerCreationParams(),
+      CygnusPlatformPullToRefreshControllerCreationParams(),
     );
   }
 
   @override
-  PlatformWebMessageChannel createPlatformWebMessageChannel(
-    PlatformWebMessageChannelCreationParams params,
+  CygnusPlatformWebMessageChannel createPlatformWebMessageChannel(
+    CygnusPlatformWebMessageChannelCreationParams params,
   ) {
     return MockPlatformWebMessageChannel(params);
   }
 
   @override
-  PlatformWebMessageChannel createPlatformWebMessageChannelStatic() {
+  CygnusPlatformWebMessageChannel createPlatformWebMessageChannelStatic() {
     final port1 = MockPlatformWebMessagePort(
-      const PlatformWebMessagePortCreationParams(index: 0),
+      const CygnusPlatformWebMessagePortCreationParams(index: 0),
     );
     final port2 = MockPlatformWebMessagePort(
-      const PlatformWebMessagePortCreationParams(index: 1),
+      const CygnusPlatformWebMessagePortCreationParams(index: 1),
     );
     return MockPlatformWebMessageChannel(
-      PlatformWebMessageChannelCreationParams(
+      CygnusPlatformWebMessageChannelCreationParams(
         id: 'mock_channel',
         port1: port1,
         port2: port2,
@@ -193,116 +193,116 @@ class MockInAppWebViewPlatform extends InAppWebViewPlatform
   }
 
   @override
-  PlatformHeadlessInAppWebView createPlatformHeadlessInAppWebView(
-    PlatformHeadlessInAppWebViewCreationParams params,
+  CygnusPlatformHeadlessWebView createPlatformHeadlessInAppWebView(
+    CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
     return MockPlatformHeadlessInAppWebView(params);
   }
 
   @override
-  PlatformHeadlessInAppWebView createPlatformHeadlessInAppWebViewStatic() {
+  CygnusPlatformHeadlessWebView createPlatformHeadlessInAppWebViewStatic() {
     return MockPlatformHeadlessInAppWebView(
-      const PlatformHeadlessInAppWebViewCreationParams(),
+      const CygnusPlatformHeadlessWebViewCreationParams(),
     );
   }
 
   @override
-  PlatformInAppBrowser createPlatformInAppBrowser(
-    PlatformInAppBrowserCreationParams params,
+  CygnusPlatformBrowser createPlatformInAppBrowser(
+    CygnusPlatformBrowserCreationParams params,
   ) {
     return MockPlatformInAppBrowser(params);
   }
 
   @override
-  PlatformInAppBrowser createPlatformInAppBrowserStatic() {
-    return MockPlatformInAppBrowser(const PlatformInAppBrowserCreationParams());
+  CygnusPlatformBrowser createPlatformInAppBrowserStatic() {
+    return MockPlatformInAppBrowser(const CygnusPlatformBrowserCreationParams());
   }
 
   @override
-  PlatformChromeSafariBrowser createPlatformChromeSafariBrowser(
-    PlatformChromeSafariBrowserCreationParams params,
+  CygnusPlatformChromeSafariBrowser createPlatformChromeSafariBrowser(
+    CygnusPlatformChromeSafariBrowserCreationParams params,
   ) {
     return MockPlatformChromeSafariBrowser(params);
   }
 
   @override
-  PlatformChromeSafariBrowser createPlatformChromeSafariBrowserStatic() {
+  CygnusPlatformChromeSafariBrowser createPlatformChromeSafariBrowserStatic() {
     return MockPlatformChromeSafariBrowser(
-      const PlatformChromeSafariBrowserCreationParams(),
+      const CygnusPlatformChromeSafariBrowserCreationParams(),
     );
   }
 
   @override
-  PlatformPrintJobController createPlatformPrintJobController(
-    PlatformPrintJobControllerCreationParams params,
+  CygnusPlatformPrintJobController createPlatformPrintJobController(
+    CygnusPlatformPrintJobControllerCreationParams params,
   ) {
     return MockPlatformPrintJobController(params);
   }
 
   @override
-  PlatformPrintJobController createPlatformPrintJobControllerStatic() {
+  CygnusPlatformPrintJobController createPlatformPrintJobControllerStatic() {
     return MockPlatformPrintJobController(
-      const PlatformPrintJobControllerCreationParams(id: 'mock_print_job'),
+      const CygnusPlatformPrintJobControllerCreationParams(id: 'mock_print_job'),
     );
   }
 
   @override
-  PlatformWebAuthenticationSession createPlatformWebAuthenticationSession(
-    PlatformWebAuthenticationSessionCreationParams params,
+  CygnusPlatformWebAuthenticationSession createPlatformWebAuthenticationSession(
+    CygnusPlatformWebAuthenticationSessionCreationParams params,
   ) {
     return MockPlatformWebAuthenticationSession(params);
   }
 
   @override
-  PlatformWebAuthenticationSession
+  CygnusPlatformWebAuthenticationSession
   createPlatformWebAuthenticationSessionStatic() {
     return MockPlatformWebAuthenticationSession(
-      const PlatformWebAuthenticationSessionCreationParams(),
+      const CygnusPlatformWebAuthenticationSessionCreationParams(),
     );
   }
 
   @override
-  PlatformHttpAuthCredentialDatabase createPlatformHttpAuthCredentialDatabase(
-    PlatformHttpAuthCredentialDatabaseCreationParams params,
+  CygnusPlatformHttpAuthCredentialDatabase createPlatformHttpAuthCredentialDatabase(
+    CygnusPlatformHttpAuthCredentialDatabaseCreationParams params,
   ) {
     return MockPlatformHttpAuthCredentialDatabase(params);
   }
 
   @override
-  PlatformHttpAuthCredentialDatabase
+  CygnusPlatformHttpAuthCredentialDatabase
   createPlatformHttpAuthCredentialDatabaseStatic() {
     return MockPlatformHttpAuthCredentialDatabase(
-      const PlatformHttpAuthCredentialDatabaseCreationParams(),
+      const CygnusPlatformHttpAuthCredentialDatabaseCreationParams(),
     );
   }
 
   @override
-  PlatformWebStorage createPlatformWebStorage(
-    PlatformWebStorageCreationParams params,
+  CygnusPlatformWebStorage createPlatformWebStorage(
+    CygnusPlatformWebStorageCreationParams params,
   ) {
     return MockPlatformWebStorage(params);
   }
 
   @override
-  PlatformWebStorage createPlatformWebStorageStatic() {
+  CygnusPlatformWebStorage createPlatformWebStorageStatic() {
     final localStorage = MockPlatformLocalStorage(
-      PlatformLocalStorageCreationParams(
-        const PlatformStorageCreationParams(
+      CygnusPlatformLocalStorageCreationParams(
+        const CygnusPlatformStorageCreationParams(
           controller: null,
-          webStorageType: WebStorageType.LOCAL_STORAGE,
+          webStorageType: CygnusWebStorageType.LOCAL_STORAGE,
         ),
       ),
     );
     final sessionStorage = MockPlatformSessionStorage(
-      PlatformSessionStorageCreationParams(
-        const PlatformStorageCreationParams(
+      CygnusPlatformSessionStorageCreationParams(
+        const CygnusPlatformStorageCreationParams(
           controller: null,
-          webStorageType: WebStorageType.SESSION_STORAGE,
+          webStorageType: CygnusWebStorageType.SESSION_STORAGE,
         ),
       ),
     );
     return MockPlatformWebStorage(
-      PlatformWebStorageCreationParams(
+      CygnusPlatformWebStorageCreationParams(
         localStorage: localStorage,
         sessionStorage: sessionStorage,
       ),
@@ -310,38 +310,38 @@ class MockInAppWebViewPlatform extends InAppWebViewPlatform
   }
 
   @override
-  PlatformLocalStorage createPlatformLocalStorage(
-    PlatformLocalStorageCreationParams params,
+  CygnusPlatformLocalStorage createPlatformLocalStorage(
+    CygnusPlatformLocalStorageCreationParams params,
   ) {
     return MockPlatformLocalStorage(params);
   }
 
   @override
-  PlatformLocalStorage createPlatformLocalStorageStatic() {
+  CygnusPlatformLocalStorage createPlatformLocalStorageStatic() {
     return MockPlatformLocalStorage(
-      PlatformLocalStorageCreationParams(
-        const PlatformStorageCreationParams(
+      CygnusPlatformLocalStorageCreationParams(
+        const CygnusPlatformStorageCreationParams(
           controller: null,
-          webStorageType: WebStorageType.LOCAL_STORAGE,
+          webStorageType: CygnusWebStorageType.LOCAL_STORAGE,
         ),
       ),
     );
   }
 
   @override
-  PlatformSessionStorage createPlatformSessionStorage(
-    PlatformSessionStorageCreationParams params,
+  CygnusPlatformSessionStorage createPlatformSessionStorage(
+    CygnusPlatformSessionStorageCreationParams params,
   ) {
     return MockPlatformSessionStorage(params);
   }
 
   @override
-  PlatformSessionStorage createPlatformSessionStorageStatic() {
+  CygnusPlatformSessionStorage createPlatformSessionStorageStatic() {
     return MockPlatformSessionStorage(
-      PlatformSessionStorageCreationParams(
-        const PlatformStorageCreationParams(
+      CygnusPlatformSessionStorageCreationParams(
+        const CygnusPlatformStorageCreationParams(
           controller: null,
-          webStorageType: WebStorageType.SESSION_STORAGE,
+          webStorageType: CygnusWebStorageType.SESSION_STORAGE,
         ),
       ),
     );
@@ -350,14 +350,14 @@ class MockInAppWebViewPlatform extends InAppWebViewPlatform
 
 /// Mock static controller for testing
 class MockPlatformInAppWebViewControllerStatic
-    extends PlatformInAppWebViewController
+    extends CygnusPlatformWebViewController
     with MockPlatformInterfaceMixin {
   MockPlatformInAppWebViewControllerStatic(super.params)
     : super.implementation();
 
   @override
   bool isMethodSupported(
-    PlatformInAppWebViewControllerMethod method, {
+    CygnusPlatformWebViewControllerMethod method, {
     TargetPlatform? platform,
   }) {
     // Return true for all methods in tests
@@ -365,22 +365,22 @@ class MockPlatformInAppWebViewControllerStatic
   }
 }
 
-class MockPlatformInAppWebViewController extends PlatformInAppWebViewController
+class MockPlatformInAppWebViewController extends CygnusPlatformWebViewController
     with MockPlatformInterfaceMixin {
   MockPlatformInAppWebViewController(super.params) : super.implementation();
 
   @override
   bool isMethodSupported(
-    PlatformInAppWebViewControllerMethod method, {
+    CygnusPlatformWebViewControllerMethod method, {
     TargetPlatform? platform,
   }) => true;
 
   @override
   Future<void> loadUrl({
-    required URLRequest urlRequest,
+    required CygnusURLRequest urlRequest,
     @Deprecated('Use allowingReadAccessTo instead')
     Uri? iosAllowingReadAccessTo,
-    WebUri? allowingReadAccessTo,
+    CygnusWebUri? allowingReadAccessTo,
   }) async {}
 
   @override
@@ -410,32 +410,32 @@ class MockPlatformInAppWebViewController extends PlatformInAppWebViewController
   @override
   Future<dynamic> evaluateJavascript({
     required String source,
-    ContentWorld? contentWorld,
+    CygnusContentWorld? contentWorld,
   }) async => null;
 
   @override
-  Future<CallAsyncJavaScriptResult?> callAsyncJavaScript({
+  Future<CygnusCallAsyncJavaScriptResult?> callAsyncJavaScript({
     required String functionBody,
     Map<String, dynamic>? arguments,
-    ContentWorld? contentWorld,
+    CygnusContentWorld? contentWorld,
   }) async => null;
 
   @override
-  Future<void> addUserScript({required UserScript userScript}) async {}
+  Future<void> addUserScript({required CygnusUserScript userScript}) async {}
 
   @override
-  Future<bool> removeUserScript({required UserScript userScript}) async => true;
+  Future<bool> removeUserScript({required CygnusUserScript userScript}) async => true;
 
   @override
-  Future<PlatformWebMessageChannel?> createWebMessageChannel() async {
+  Future<CygnusPlatformWebMessageChannel?> createWebMessageChannel() async {
     final port1 = MockPlatformWebMessagePort(
-      const PlatformWebMessagePortCreationParams(index: 0),
+      const CygnusPlatformWebMessagePortCreationParams(index: 0),
     );
     final port2 = MockPlatformWebMessagePort(
-      const PlatformWebMessagePortCreationParams(index: 1),
+      const CygnusPlatformWebMessagePortCreationParams(index: 1),
     );
     return MockPlatformWebMessageChannel(
-      PlatformWebMessageChannelCreationParams(
+      CygnusPlatformWebMessageChannelCreationParams(
         id: 'controller_channel',
         port1: port1,
         port2: port2,
@@ -444,12 +444,12 @@ class MockPlatformInAppWebViewController extends PlatformInAppWebViewController
   }
 }
 
-class MockPlatformInAppWebViewWidget extends PlatformInAppWebViewWidget
+class MockPlatformInAppWebViewWidget extends CygnusPlatformWebViewWidget
     with MockPlatformInterfaceMixin {
   MockPlatformInAppWebViewWidget(super.params) : super.implementation();
 
   @override
-  T controllerFromPlatform<T>(PlatformInAppWebViewController controller) {
+  T controllerFromPlatform<T>(CygnusPlatformWebViewController controller) {
     return controller as T;
   }
 
@@ -463,38 +463,38 @@ class MockPlatformInAppWebViewWidget extends PlatformInAppWebViewWidget
 }
 
 /// Mock static cookie manager for testing
-class MockPlatformCookieManagerStatic extends PlatformCookieManager
+class MockPlatformCookieManagerStatic extends CygnusPlatformCookieManager
     with MockPlatformInterfaceMixin {
   MockPlatformCookieManagerStatic(super.params) : super.implementation();
 
   @override
   bool isMethodSupported(
-    PlatformCookieManagerMethod method, {
+    CygnusPlatformCookieManagerMethod method, {
     TargetPlatform? platform,
   }) {
     return true;
   }
 }
 
-class MockPlatformCookieManager extends PlatformCookieManager
+class MockPlatformCookieManager extends CygnusPlatformCookieManager
     with MockPlatformInterfaceMixin {
   MockPlatformCookieManager(super.params) : super.implementation();
 
   @override
   bool isMethodSupported(
-    PlatformCookieManagerMethod method, {
+    CygnusPlatformCookieManagerMethod method, {
     TargetPlatform? platform,
   }) => true;
 }
 
 class MockPlatformServiceWorkerController
-    extends PlatformServiceWorkerController
+    extends CygnusPlatformServiceWorkerController
     with MockPlatformInterfaceMixin {
   MockPlatformServiceWorkerController(super.params) : super.implementation();
 
   @override
   bool isMethodSupported(
-    PlatformServiceWorkerControllerMethod method, {
+    CygnusPlatformServiceWorkerControllerMethod method, {
     TargetPlatform? platform,
   }) => true;
 
@@ -508,7 +508,7 @@ class MockPlatformServiceWorkerController
   Future<bool> getBlockNetworkLoads() async => false;
 
   @override
-  Future<CacheMode?> getCacheMode() async => CacheMode.LOAD_DEFAULT;
+  Future<CygnusCacheMode?> getCacheMode() async => CygnusCacheMode.LOAD_DEFAULT;
 
   @override
   Future<void> setAllowContentAccess(bool value) async {}
@@ -520,53 +520,53 @@ class MockPlatformServiceWorkerController
   Future<void> setBlockNetworkLoads(bool value) async {}
 
   @override
-  Future<void> setCacheMode(CacheMode? mode) async {}
+  Future<void> setCacheMode(CygnusCacheMode? mode) async {}
 
   @override
-  ServiceWorkerClient? get serviceWorkerClient => null;
+  CygnusServiceWorkerClient? get serviceWorkerClient => null;
 }
 
-class MockPlatformProxyController extends PlatformProxyController
+class MockPlatformProxyController extends CygnusPlatformProxyController
     with MockPlatformInterfaceMixin {
   MockPlatformProxyController(super.params) : super.implementation();
 
   @override
   bool isMethodSupported(
-    PlatformProxyControllerMethod method, {
+    CygnusPlatformProxyControllerMethod method, {
     TargetPlatform? platform,
   }) => true;
 
   @override
-  Future<void> setProxyOverride({required ProxySettings settings}) async {}
+  Future<void> setProxyOverride({required CygnusProxySettings settings}) async {}
 
   @override
   Future<void> clearProxyOverride() async {}
 }
 
-class MockPlatformTracingController extends PlatformTracingController
+class MockPlatformTracingController extends CygnusPlatformTracingController
     with MockPlatformInterfaceMixin {
   MockPlatformTracingController(super.params) : super.implementation();
 
   @override
   bool isMethodSupported(
-    PlatformTracingControllerMethod method, {
+    CygnusPlatformTracingControllerMethod method, {
     TargetPlatform? platform,
   }) => true;
 
   @override
-  Future<void> start({required TracingSettings settings}) async {}
+  Future<void> start({required CygnusTracingSettings settings}) async {}
 
   @override
   Future<bool> stop({String? filePath}) async => true;
 }
 
-class MockPlatformWebViewEnvironment extends PlatformWebViewEnvironment
+class MockPlatformWebViewEnvironment extends CygnusPlatformWebViewEnvironment
     with MockPlatformInterfaceMixin {
   MockPlatformWebViewEnvironment(super.params) : super.implementation();
 
   @override
   bool isMethodSupported(
-    PlatformWebViewEnvironmentMethod method, {
+    CygnusPlatformWebViewEnvironmentMethod method, {
     TargetPlatform? platform,
   }) => true;
 
@@ -576,16 +576,16 @@ class MockPlatformWebViewEnvironment extends PlatformWebViewEnvironment
   }) async => null;
 
   @override
-  Future<List<BrowserProcessInfo>> getBrowserProcessInfo() async => [];
+  Future<List<CygnusBrowserProcessInfo>> getBrowserProcessInfo() async => [];
 }
 
-class MockPlatformProcessGlobalConfig extends PlatformProcessGlobalConfig
+class MockPlatformProcessGlobalConfig extends CygnusPlatformProcessGlobalConfig
     with MockPlatformInterfaceMixin {
   MockPlatformProcessGlobalConfig(super.params) : super.implementation();
 
   @override
   bool isMethodSupported(
-    PlatformProcessGlobalConfigMethod method, {
+    CygnusPlatformProcessGlobalConfigMethod method, {
     TargetPlatform? platform,
   }) => true;
 
@@ -594,13 +594,13 @@ class MockPlatformProcessGlobalConfig extends PlatformProcessGlobalConfig
 }
 
 class MockPlatformFindInteractionController
-    extends PlatformFindInteractionController
+    extends CygnusPlatformFindInteractionController
     with MockPlatformInterfaceMixin {
   MockPlatformFindInteractionController(super.params) : super.implementation();
 
   @override
   bool isMethodSupported(
-    PlatformFindInteractionControllerMethod method, {
+    CygnusPlatformFindInteractionControllerMethod method, {
     TargetPlatform? platform,
   }) => true;
 
@@ -629,14 +629,14 @@ class MockPlatformFindInteractionController
   Future<bool?> isFindNavigatorVisible() async => false;
 
   @override
-  Future<FindSession?> getActiveFindSession() async => null;
+  Future<CygnusFindSession?> getActiveFindSession() async => null;
 
   @override
   void dispose({bool isKeepAlive = false}) {}
 }
 
 class MockPlatformPullToRefreshController
-    extends PlatformPullToRefreshController
+    extends CygnusPlatformPullToRefreshController
     with MockPlatformInterfaceMixin {
   bool _enabled = true;
 
@@ -644,7 +644,7 @@ class MockPlatformPullToRefreshController
 
   @override
   bool isMethodSupported(
-    PlatformPullToRefreshControllerMethod method, {
+    CygnusPlatformPullToRefreshControllerMethod method, {
     TargetPlatform? platform,
   }) => true;
 
@@ -678,41 +678,41 @@ class MockPlatformPullToRefreshController
   void dispose({bool isKeepAlive = false}) {}
 }
 
-class MockPlatformWebMessageChannel extends PlatformWebMessageChannel
+class MockPlatformWebMessageChannel extends CygnusPlatformWebMessageChannel
     with MockPlatformInterfaceMixin {
   MockPlatformWebMessageChannel(super.params) : super.implementation();
 
   @override
-  PlatformWebMessagePort get port1 => params.port1;
+  CygnusPlatformWebMessagePort get port1 => params.port1;
 
   @override
-  PlatformWebMessagePort get port2 => params.port2;
+  CygnusPlatformWebMessagePort get port2 => params.port2;
 
   @override
   Future<void> dispose() async {}
 }
 
-class MockPlatformWebMessagePort extends PlatformWebMessagePort
+class MockPlatformWebMessagePort extends CygnusPlatformWebMessagePort
     with MockPlatformInterfaceMixin {
   MockPlatformWebMessagePort(super.params) : super.implementation();
 
   @override
-  Future<void> setWebMessageCallback(WebMessageCallback? onMessage) async {}
+  Future<void> setWebMessageCallback(CygnusWebMessageCallback? onMessage) async {}
 
   @override
-  Future<void> postMessage(WebMessage message) async {}
+  Future<void> postMessage(CygnusWebMessage message) async {}
 
   @override
   Future<void> close() async {}
 
   @override
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) => {};
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) => {};
 
   @override
   Map<String, dynamic> toJson() => toMap();
 }
 
-class MockPlatformHeadlessInAppWebView extends PlatformHeadlessInAppWebView
+class MockPlatformHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     with MockPlatformInterfaceMixin {
   MockPlatformHeadlessInAppWebView(super.params) : super.implementation();
 
@@ -720,9 +720,9 @@ class MockPlatformHeadlessInAppWebView extends PlatformHeadlessInAppWebView
   String get id => 'mock_headless';
 
   @override
-  PlatformInAppWebViewController? get webViewController =>
+  CygnusPlatformWebViewController? get webViewController =>
       MockPlatformInAppWebViewController(
-        const PlatformInAppWebViewControllerCreationParams(
+        const CygnusPlatformWebViewControllerCreationParams(
           id: 'mock_headless_controller',
         ),
       );
@@ -743,7 +743,7 @@ class MockPlatformHeadlessInAppWebView extends PlatformHeadlessInAppWebView
   Future<void> dispose() async {}
 }
 
-class MockPlatformInAppBrowser extends PlatformInAppBrowser
+class MockPlatformInAppBrowser extends CygnusPlatformBrowser
     with MockPlatformInterfaceMixin {
   MockPlatformInAppBrowser(super.params) : super.implementation();
 
@@ -751,25 +751,25 @@ class MockPlatformInAppBrowser extends PlatformInAppBrowser
   String get id => 'mock_inapp_browser';
 
   @override
-  PlatformInAppWebViewController? get webViewController =>
+  CygnusPlatformWebViewController? get webViewController =>
       MockPlatformInAppWebViewController(
-        const PlatformInAppWebViewControllerCreationParams(
+        const CygnusPlatformWebViewControllerCreationParams(
           id: 'mock_inapp_browser_controller',
         ),
       );
 
   @override
   Future<void> openUrlRequest({
-    required URLRequest urlRequest,
-    @Deprecated('Use settings instead') InAppBrowserClassOptions? options,
-    InAppBrowserClassSettings? settings,
+    required CygnusURLRequest urlRequest,
+    @Deprecated('Use settings instead') CygnusBrowserClassOptions? options,
+    CygnusBrowserClassSettings? settings,
   }) async {}
 
   @override
   Future<void> openFile({
     required String assetFilePath,
-    @Deprecated('Use settings instead') InAppBrowserClassOptions? options,
-    InAppBrowserClassSettings? settings,
+    @Deprecated('Use settings instead') CygnusBrowserClassOptions? options,
+    CygnusBrowserClassSettings? settings,
   }) async {}
 
   @override
@@ -777,11 +777,11 @@ class MockPlatformInAppBrowser extends PlatformInAppBrowser
     required String data,
     String mimeType = 'text/html',
     String encoding = 'utf8',
-    WebUri? baseUrl,
+    CygnusWebUri? baseUrl,
     @Deprecated('Use historyUrl instead') Uri? androidHistoryUrl,
-    WebUri? historyUrl,
-    @Deprecated('Use settings instead') InAppBrowserClassOptions? options,
-    InAppBrowserClassSettings? settings,
+    CygnusWebUri? historyUrl,
+    @Deprecated('Use settings instead') CygnusBrowserClassOptions? options,
+    CygnusBrowserClassSettings? settings,
   }) async {}
 
   @override
@@ -798,12 +798,12 @@ class MockPlatformInAppBrowser extends PlatformInAppBrowser
 
   @override
   Future<void> setSettings({
-    required InAppBrowserClassSettings settings,
+    required CygnusBrowserClassSettings settings,
   }) async {}
 
   @override
-  Future<InAppBrowserClassSettings?> getSettings() async =>
-      InAppBrowserClassSettings();
+  Future<CygnusBrowserClassSettings?> getSettings() async =>
+      CygnusBrowserClassSettings();
 
   @override
   bool isOpened() => true;
@@ -814,7 +814,7 @@ class MockPlatformInAppBrowser extends PlatformInAppBrowser
   }
 }
 
-class MockPlatformChromeSafariBrowser extends PlatformChromeSafariBrowser
+class MockPlatformChromeSafariBrowser extends CygnusPlatformChromeSafariBrowser
     with MockPlatformInterfaceMixin {
   MockPlatformChromeSafariBrowser(super.params) : super.implementation();
 
@@ -823,33 +823,33 @@ class MockPlatformChromeSafariBrowser extends PlatformChromeSafariBrowser
 
   @override
   Future<void> open({
-    WebUri? url,
+    CygnusWebUri? url,
     Map<String, String>? headers,
-    List<WebUri>? otherLikelyURLs,
-    WebUri? referrer,
+    List<CygnusWebUri>? otherLikelyURLs,
+    CygnusWebUri? referrer,
     @Deprecated('Use settings instead')
-    ChromeSafariBrowserClassOptions? options,
-    ChromeSafariBrowserSettings? settings,
+    CygnusChromeSafariBrowserClassOptions? options,
+    CygnusChromeSafariBrowserSettings? settings,
   }) async {}
 
   @override
   Future<void> launchUrl({
-    required WebUri url,
+    required CygnusWebUri url,
     Map<String, String>? headers,
-    List<WebUri>? otherLikelyURLs,
-    WebUri? referrer,
+    List<CygnusWebUri>? otherLikelyURLs,
+    CygnusWebUri? referrer,
   }) async {}
 
   @override
   Future<bool> mayLaunchUrl({
-    WebUri? url,
-    List<WebUri>? otherLikelyURLs,
+    CygnusWebUri? url,
+    List<CygnusWebUri>? otherLikelyURLs,
   }) async => true;
 
   @override
   Future<bool> validateRelationship({
-    required CustomTabsRelationType relation,
-    required WebUri origin,
+    required CygnusCustomTabsRelationType relation,
+    required CygnusWebUri origin,
   }) async => true;
 
   @override
@@ -861,7 +861,7 @@ class MockPlatformChromeSafariBrowser extends PlatformChromeSafariBrowser
   }
 }
 
-class MockPlatformPrintJobController extends PlatformPrintJobController
+class MockPlatformPrintJobController extends CygnusPlatformPrintJobController
     with MockPlatformInterfaceMixin {
   MockPlatformPrintJobController(super.params) : super.implementation();
 
@@ -875,71 +875,71 @@ class MockPlatformPrintJobController extends PlatformPrintJobController
   Future<void> dismiss({bool animated = true}) async {}
 
   @override
-  Future<PrintJobInfo?> getInfo() async => null;
+  Future<CygnusPrintJobInfo?> getInfo() async => null;
 
   @override
   void dispose() {}
 }
 
 class MockPlatformWebAuthenticationSession
-    extends PlatformWebAuthenticationSession
+    extends CygnusPlatformWebAuthenticationSession
     with MockPlatformInterfaceMixin {
   MockPlatformWebAuthenticationSession(super.params) : super.implementation();
 
   @override
   bool isMethodSupported(
-    PlatformWebAuthenticationSessionMethod method, {
+    CygnusPlatformWebAuthenticationSessionMethod method, {
     TargetPlatform? platform,
   }) => true;
 }
 
 class MockPlatformHttpAuthCredentialDatabase
-    extends PlatformHttpAuthCredentialDatabase
+    extends CygnusPlatformHttpAuthCredentialDatabase
     with MockPlatformInterfaceMixin {
   MockPlatformHttpAuthCredentialDatabase(super.params) : super.implementation();
 
   @override
   bool isMethodSupported(
-    PlatformHttpAuthCredentialDatabaseMethod method, {
+    CygnusPlatformHttpAuthCredentialDatabaseMethod method, {
     TargetPlatform? platform,
   }) => true;
 }
 
-class MockPlatformWebStorage extends PlatformWebStorage
+class MockPlatformWebStorage extends CygnusPlatformWebStorage
     with MockPlatformInterfaceMixin {
   MockPlatformWebStorage(super.params) : super.implementation();
 
   @override
-  PlatformLocalStorage get localStorage => params.localStorage;
+  CygnusPlatformLocalStorage get localStorage => params.localStorage;
 
   @override
-  PlatformSessionStorage get sessionStorage => params.sessionStorage;
+  CygnusPlatformSessionStorage get sessionStorage => params.sessionStorage;
 }
 
-class MockPlatformLocalStorage extends PlatformLocalStorage
+class MockPlatformLocalStorage extends CygnusPlatformLocalStorage
     with MockPlatformInterfaceMixin {
   MockPlatformLocalStorage(super.params) : super.implementation();
 
   @override
-  PlatformInAppWebViewController? get controller => params.controller;
+  CygnusPlatformWebViewController? get controller => params.controller;
 
   @override
   bool isMethodSupported(
-    PlatformLocalStorageMethod method, {
+    CygnusPlatformLocalStorageMethod method, {
     TargetPlatform? platform,
   }) => true;
 }
 
-class MockPlatformSessionStorage extends PlatformSessionStorage
+class MockPlatformSessionStorage extends CygnusPlatformSessionStorage
     with MockPlatformInterfaceMixin {
   MockPlatformSessionStorage(super.params) : super.implementation();
 
   @override
-  PlatformInAppWebViewController? get controller => params.controller;
+  CygnusPlatformWebViewController? get controller => params.controller;
 
   @override
   bool isMethodSupported(
-    PlatformSessionStorageMethod method, {
+    CygnusPlatformSessionStorageMethod method, {
     TargetPlatform? platform,
   }) => true;
 }

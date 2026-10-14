@@ -15,267 +15,267 @@ import '../webview_environment/webview_environment.dart';
 import 'headless_in_app_webview.dart';
 import 'in_app_webview_controller.dart';
 
-///{@macro cygnus_core.PlatformInAppWebViewWidget}
+///{@macro cygnus_core.CygnusPlatformWebViewWidget}
 ///
-///{@macro cygnus_core.PlatformWebViewCreationParams.supported_platforms}
-class InAppWebView extends StatefulWidget {
-  /// Constructs a [InAppWebView].
+///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.supported_platforms}
+class CygnusWebView extends StatefulWidget {
+  /// Constructs a [CygnusWebView].
   ///
-  /// See [InAppWebView.fromPlatformCreationParams] for setting parameters for
+  /// See [CygnusWebView.fromPlatformCreationParams] for setting parameters for
   /// a specific platform.
-  InAppWebView.fromPlatformCreationParams({
+  CygnusWebView.fromPlatformCreationParams({
     Key? key,
-    required PlatformInAppWebViewWidgetCreationParams params,
+    required CygnusPlatformWebViewWidgetCreationParams params,
   }) : this.fromPlatform(
          key: key,
-         platform: PlatformInAppWebViewWidget(params),
+         platform: CygnusPlatformWebViewWidget(params),
        );
 
-  /// Constructs a [InAppWebView] from a specific platform implementation.
-  InAppWebView.fromPlatform({super.key, required this.platform});
+  /// Constructs a [CygnusWebView] from a specific platform implementation.
+  CygnusWebView.fromPlatform({super.key, required this.platform});
 
   /// Implementation of [PlatformInAppWebView] for the current platform.
-  final PlatformInAppWebViewWidget platform;
+  final CygnusPlatformWebViewWidget platform;
 
-  ///{@macro cygnus_core.PlatformInAppWebViewWidget}
+  ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.supported_platforms}
-  InAppWebView({
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.supported_platforms}
+  CygnusWebView({
     Key? key,
     Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers,
     int? windowId,
-    HeadlessInAppWebView? headlessWebView,
-    InAppWebViewKeepAlive? keepAlive,
+    CygnusHeadlessWebView? headlessWebView,
+    CygnusWebViewKeepAlive? keepAlive,
     bool? preventGestureDelay,
     TextDirection? layoutDirection,
-    WebViewEnvironment? webViewEnvironment,
+    CygnusWebViewEnvironment? webViewEnvironment,
     @Deprecated('Use onGeolocationPermissionsHidePrompt instead')
-    void Function(InAppWebViewController controller)?
+    void Function(CygnusWebViewController controller)?
     androidOnGeolocationPermissionsHidePrompt,
     @Deprecated('Use onGeolocationPermissionsShowPrompt instead')
-    FutureOr<GeolocationPermissionShowPromptResponse?> Function(
-      InAppWebViewController controller,
+    FutureOr<CygnusGeolocationPermissionShowPromptResponse?> Function(
+      CygnusWebViewController controller,
       String origin,
     )?
     androidOnGeolocationPermissionsShowPrompt,
     @Deprecated('Use onPermissionRequest instead')
-    FutureOr<PermissionRequestResponse?> Function(
-      InAppWebViewController controller,
+    FutureOr<CygnusPermissionRequestResponse?> Function(
+      CygnusWebViewController controller,
       String origin,
       List<String> resources,
     )?
     androidOnPermissionRequest,
     @Deprecated('Use onSafeBrowsingHit instead')
-    FutureOr<SafeBrowsingResponse?> Function(
-      InAppWebViewController controller,
+    FutureOr<CygnusSafeBrowsingResponse?> Function(
+      CygnusWebViewController controller,
       Uri url,
-      SafeBrowsingThreat? threatType,
+      CygnusSafeBrowsingThreat? threatType,
     )?
     androidOnSafeBrowsingHit,
-    InAppWebViewInitialData? initialData,
+    CygnusWebViewInitialData? initialData,
     String? initialFile,
     @Deprecated('Use initialSettings instead')
-    InAppWebViewGroupOptions? initialOptions,
-    InAppWebViewSettings? initialSettings,
-    URLRequest? initialUrlRequest,
-    UnmodifiableListView<UserScript>? initialUserScripts,
-    PullToRefreshController? pullToRefreshController,
-    FindInteractionController? findInteractionController,
-    ContextMenu? contextMenu,
-    void Function(InAppWebViewController controller, WebUri? url)?
+    CygnusWebViewGroupOptions? initialOptions,
+    CygnusWebViewSettings? initialSettings,
+    CygnusURLRequest? initialUrlRequest,
+    UnmodifiableListView<CygnusUserScript>? initialUserScripts,
+    CygnusPullToRefreshController? pullToRefreshController,
+    CygnusFindInteractionController? findInteractionController,
+    CygnusContextMenu? contextMenu,
+    void Function(CygnusWebViewController controller, CygnusWebUri? url)?
     onContentLoading,
-    void Function(InAppWebViewController controller, WebUri? url)?
+    void Function(CygnusWebViewController controller, CygnusWebUri? url)?
     onDOMContentLoaded,
-    void Function(InAppWebViewController controller, WebUri? url)?
+    void Function(CygnusWebViewController controller, CygnusWebUri? url)?
     onPageCommitVisible,
-    void Function(InAppWebViewController controller, String? title)?
+    void Function(CygnusWebViewController controller, String? title)?
     onTitleChanged,
     @Deprecated(
       'Use onDidReceiveServerRedirectForProvisionalNavigation instead',
     )
-    void Function(InAppWebViewController controller)?
+    void Function(CygnusWebViewController controller)?
     iosOnDidReceiveServerRedirectForProvisionalNavigation,
     @Deprecated('Use onWebContentProcessDidTerminate instead')
-    void Function(InAppWebViewController controller)?
+    void Function(CygnusWebViewController controller)?
     iosOnWebContentProcessDidTerminate,
     @Deprecated('Use onNavigationResponse instead')
-    FutureOr<IOSNavigationResponseAction?> Function(
-      InAppWebViewController controller,
-      IOSWKNavigationResponse navigationResponse,
+    FutureOr<CygnusIOSNavigationResponseAction?> Function(
+      CygnusWebViewController controller,
+      CygnusIOSWKNavigationResponse navigationResponse,
     )?
     iosOnNavigationResponse,
     @Deprecated('Use shouldAllowDeprecatedTLS instead')
-    FutureOr<IOSShouldAllowDeprecatedTLSAction?> Function(
-      InAppWebViewController controller,
-      URLAuthenticationChallenge challenge,
+    FutureOr<CygnusIOSShouldAllowDeprecatedTLSAction?> Function(
+      CygnusWebViewController controller,
+      CygnusURLAuthenticationChallenge challenge,
     )?
     iosShouldAllowDeprecatedTLS,
-    FutureOr<AjaxRequestAction?> Function(
-      InAppWebViewController controller,
-      AjaxRequest ajaxRequest,
+    FutureOr<CygnusAjaxRequestAction?> Function(
+      CygnusWebViewController controller,
+      CygnusAjaxRequest ajaxRequest,
     )?
     onAjaxProgress,
-    FutureOr<AjaxRequestAction?> Function(
-      InAppWebViewController controller,
-      AjaxRequest ajaxRequest,
+    FutureOr<CygnusAjaxRequestAction?> Function(
+      CygnusWebViewController controller,
+      CygnusAjaxRequest ajaxRequest,
     )?
     onAjaxReadyStateChange,
     void Function(
-      InAppWebViewController controller,
-      ConsoleMessage consoleMessage,
+      CygnusWebViewController controller,
+      CygnusConsoleMessage consoleMessage,
     )?
     onConsoleMessage,
     FutureOr<bool?> Function(
-      InAppWebViewController controller,
-      CreateWindowAction createWindowAction,
+      CygnusWebViewController controller,
+      CygnusCreateWindowAction createWindowAction,
     )?
     onCreateWindow,
-    void Function(InAppWebViewController controller)? onCloseWindow,
-    void Function(InAppWebViewController controller)? onWindowFocus,
-    void Function(InAppWebViewController controller)? onWindowBlur,
+    void Function(CygnusWebViewController controller)? onCloseWindow,
+    void Function(CygnusWebViewController controller)? onWindowFocus,
+    void Function(CygnusWebViewController controller)? onWindowBlur,
     @Deprecated('Use onReceivedIcon instead')
-    void Function(InAppWebViewController controller, Uint8List icon)?
+    void Function(CygnusWebViewController controller, Uint8List icon)?
     androidOnReceivedIcon,
     @Deprecated('Use onReceivedTouchIconUrl instead')
-    void Function(InAppWebViewController controller, Uri url, bool precomposed)?
+    void Function(CygnusWebViewController controller, Uri url, bool precomposed)?
     androidOnReceivedTouchIconUrl,
     @Deprecated('Use onDownloadStarting instead')
-    void Function(InAppWebViewController controller, Uri url)? onDownloadStart,
+    void Function(CygnusWebViewController controller, Uri url)? onDownloadStart,
     @Deprecated('Use onDownloadStarting instead')
     void Function(
-      InAppWebViewController controller,
-      DownloadStartRequest downloadStartRequest,
+      CygnusWebViewController controller,
+      CygnusDownloadStartRequest downloadStartRequest,
     )?
     onDownloadStartRequest,
-    FutureOr<DownloadStartResponse?> Function(
-      InAppWebViewController controller,
-      DownloadStartRequest downloadStartRequest,
+    FutureOr<CygnusDownloadStartResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusDownloadStartRequest downloadStartRequest,
     )?
     onDownloadStarting,
-    @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+    @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
     void Function(
-      InAppWebViewController controller,
+      CygnusWebViewController controller,
       int activeMatchOrdinal,
       int numberOfMatches,
       bool isDoneCounting,
     )?
     onFindResultReceived,
-    FutureOr<JsAlertResponse?> Function(
-      InAppWebViewController controller,
-      JsAlertRequest jsAlertRequest,
+    FutureOr<CygnusJsAlertResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusJsAlertRequest jsAlertRequest,
     )?
     onJsAlert,
-    FutureOr<JsConfirmResponse?> Function(
-      InAppWebViewController controller,
-      JsConfirmRequest jsConfirmRequest,
+    FutureOr<CygnusJsConfirmResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusJsConfirmRequest jsConfirmRequest,
     )?
     onJsConfirm,
-    FutureOr<JsPromptResponse?> Function(
-      InAppWebViewController controller,
-      JsPromptRequest jsPromptRequest,
+    FutureOr<CygnusJsPromptResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusJsPromptRequest jsPromptRequest,
     )?
     onJsPrompt,
     @Deprecated("Use onReceivedError instead")
     void Function(
-      InAppWebViewController controller,
+      CygnusWebViewController controller,
       Uri? url,
       int code,
       String message,
     )?
     onLoadError,
     void Function(
-      InAppWebViewController controller,
-      WebResourceRequest request,
-      WebResourceError error,
+      CygnusWebViewController controller,
+      CygnusWebResourceRequest request,
+      CygnusWebResourceError error,
     )?
     onReceivedError,
     @Deprecated("Use onReceivedHttpError instead")
     void Function(
-      InAppWebViewController controller,
+      CygnusWebViewController controller,
       Uri? url,
       int statusCode,
       String description,
     )?
     onLoadHttpError,
     void Function(
-      InAppWebViewController controller,
-      WebResourceRequest request,
-      WebResourceResponse errorResponse,
+      CygnusWebViewController controller,
+      CygnusWebResourceRequest request,
+      CygnusWebResourceResponse errorResponse,
     )?
     onReceivedHttpError,
-    void Function(InAppWebViewController controller, LoadedResource resource)?
+    void Function(CygnusWebViewController controller, CygnusLoadedResource resource)?
     onLoadResource,
     @Deprecated('Use onLoadResourceWithCustomScheme instead')
-    FutureOr<CustomSchemeResponse?> Function(
-      InAppWebViewController controller,
+    FutureOr<CygnusCustomSchemeResponse?> Function(
+      CygnusWebViewController controller,
       Uri url,
     )?
     onLoadResourceCustomScheme,
-    FutureOr<CustomSchemeResponse?> Function(
-      InAppWebViewController controller,
-      WebResourceRequest request,
+    FutureOr<CygnusCustomSchemeResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusWebResourceRequest request,
     )?
     onLoadResourceWithCustomScheme,
-    void Function(InAppWebViewController controller, WebUri? url)? onLoadStart,
-    void Function(InAppWebViewController controller, WebUri? url)? onLoadStop,
+    void Function(CygnusWebViewController controller, CygnusWebUri? url)? onLoadStart,
+    void Function(CygnusWebViewController controller, CygnusWebUri? url)? onLoadStop,
     void Function(
-      InAppWebViewController controller,
-      InAppWebViewHitTestResult hitTestResult,
+      CygnusWebViewController controller,
+      CygnusWebViewHitTestResult hitTestResult,
     )?
     onLongPressHitTestResult,
     @Deprecated("Use onPrintRequest instead")
-    void Function(InAppWebViewController controller, Uri? url)? onPrint,
+    void Function(CygnusWebViewController controller, Uri? url)? onPrint,
     FutureOr<bool?> Function(
-      InAppWebViewController controller,
-      WebUri? url,
-      PlatformPrintJobController? printJobController,
+      CygnusWebViewController controller,
+      CygnusWebUri? url,
+      CygnusPlatformPrintJobController? printJobController,
     )?
     onPrintRequest,
-    void Function(InAppWebViewController controller, int progress)?
+    void Function(CygnusWebViewController controller, int progress)?
     onProgressChanged,
-    FutureOr<ClientCertResponse?> Function(
-      InAppWebViewController controller,
-      ClientCertChallenge challenge,
+    FutureOr<CygnusClientCertResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusClientCertChallenge challenge,
     )?
     onReceivedClientCertRequest,
-    FutureOr<HttpAuthResponse?> Function(
-      InAppWebViewController controller,
-      HttpAuthenticationChallenge challenge,
+    FutureOr<CygnusHttpAuthResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusHttpAuthenticationChallenge challenge,
     )?
     onReceivedHttpAuthRequest,
-    FutureOr<ServerTrustAuthResponse?> Function(
-      InAppWebViewController controller,
-      ServerTrustChallenge challenge,
+    FutureOr<CygnusServerTrustAuthResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusServerTrustChallenge challenge,
     )?
     onReceivedServerTrustAuthRequest,
-    void Function(InAppWebViewController controller, int x, int y)?
+    void Function(CygnusWebViewController controller, int x, int y)?
     onScrollChanged,
     void Function(
-      InAppWebViewController controller,
-      WebUri? url,
+      CygnusWebViewController controller,
+      CygnusWebUri? url,
       bool? isReload,
     )?
     onUpdateVisitedHistory,
-    void Function(InAppWebViewController controller)? onWebViewCreated,
-    FutureOr<AjaxRequest?> Function(
-      InAppWebViewController controller,
-      AjaxRequest ajaxRequest,
+    void Function(CygnusWebViewController controller)? onWebViewCreated,
+    FutureOr<CygnusAjaxRequest?> Function(
+      CygnusWebViewController controller,
+      CygnusAjaxRequest ajaxRequest,
     )?
     shouldInterceptAjaxRequest,
-    FutureOr<FetchRequest?> Function(
-      InAppWebViewController controller,
-      FetchRequest fetchRequest,
+    FutureOr<CygnusFetchRequest?> Function(
+      CygnusWebViewController controller,
+      CygnusFetchRequest fetchRequest,
     )?
     shouldInterceptFetchRequest,
-    FutureOr<NavigationActionPolicy?> Function(
-      InAppWebViewController controller,
-      NavigationAction navigationAction,
+    FutureOr<CygnusNavigationActionPolicy?> Function(
+      CygnusWebViewController controller,
+      CygnusNavigationAction navigationAction,
     )?
     shouldOverrideUrlLoading,
-    void Function(InAppWebViewController controller)? onEnterFullscreen,
-    void Function(InAppWebViewController controller)? onExitFullscreen,
+    void Function(CygnusWebViewController controller)? onEnterFullscreen,
+    void Function(CygnusWebViewController controller)? onExitFullscreen,
     void Function(
-      InAppWebViewController controller,
+      CygnusWebViewController controller,
       int x,
       int y,
       bool clampedX,
@@ -283,205 +283,205 @@ class InAppWebView extends StatefulWidget {
     )?
     onOverScrolled,
     void Function(
-      InAppWebViewController controller,
+      CygnusWebViewController controller,
       double oldScale,
       double newScale,
     )?
     onZoomScaleChanged,
     @Deprecated('Use shouldInterceptRequest instead')
-    FutureOr<WebResourceResponse?> Function(
-      InAppWebViewController controller,
-      WebResourceRequest request,
+    FutureOr<CygnusWebResourceResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusWebResourceRequest request,
     )?
     androidShouldInterceptRequest,
     @Deprecated('Use onRenderProcessUnresponsive instead')
-    FutureOr<WebViewRenderProcessAction?> Function(
-      InAppWebViewController controller,
+    FutureOr<CygnusWebViewRenderProcessAction?> Function(
+      CygnusWebViewController controller,
       Uri? url,
     )?
     androidOnRenderProcessUnresponsive,
     @Deprecated('Use onRenderProcessResponsive instead')
-    FutureOr<WebViewRenderProcessAction?> Function(
-      InAppWebViewController controller,
+    FutureOr<CygnusWebViewRenderProcessAction?> Function(
+      CygnusWebViewController controller,
       Uri? url,
     )?
     androidOnRenderProcessResponsive,
     @Deprecated('Use onRenderProcessGone instead')
     void Function(
-      InAppWebViewController controller,
-      RenderProcessGoneDetail detail,
+      CygnusWebViewController controller,
+      CygnusRenderProcessGoneDetail detail,
     )?
     androidOnRenderProcessGone,
     @Deprecated('Use onFormResubmission instead')
-    FutureOr<FormResubmissionAction?> Function(
-      InAppWebViewController controller,
+    FutureOr<CygnusFormResubmissionAction?> Function(
+      CygnusWebViewController controller,
       Uri? url,
     )?
     androidOnFormResubmission,
     @Deprecated('Use onZoomScaleChanged instead')
     void Function(
-      InAppWebViewController controller,
+      CygnusWebViewController controller,
       double oldScale,
       double newScale,
     )?
     androidOnScaleChanged,
     @Deprecated('Use onJsBeforeUnload instead')
-    FutureOr<JsBeforeUnloadResponse?> Function(
-      InAppWebViewController controller,
-      JsBeforeUnloadRequest jsBeforeUnloadRequest,
+    FutureOr<CygnusJsBeforeUnloadResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusJsBeforeUnloadRequest jsBeforeUnloadRequest,
     )?
     androidOnJsBeforeUnload,
     @Deprecated('Use onReceivedLoginRequest instead')
-    void Function(InAppWebViewController controller, LoginRequest loginRequest)?
+    void Function(CygnusWebViewController controller, CygnusLoginRequest loginRequest)?
     androidOnReceivedLoginRequest,
-    void Function(InAppWebViewController controller)?
+    void Function(CygnusWebViewController controller)?
     onDidReceiveServerRedirectForProvisionalNavigation,
-    FutureOr<FormResubmissionAction?> Function(
-      InAppWebViewController controller,
-      WebUri? url,
+    FutureOr<CygnusFormResubmissionAction?> Function(
+      CygnusWebViewController controller,
+      CygnusWebUri? url,
     )?
     onFormResubmission,
-    void Function(InAppWebViewController controller)?
+    void Function(CygnusWebViewController controller)?
     onGeolocationPermissionsHidePrompt,
-    FutureOr<GeolocationPermissionShowPromptResponse?> Function(
-      InAppWebViewController controller,
+    FutureOr<CygnusGeolocationPermissionShowPromptResponse?> Function(
+      CygnusWebViewController controller,
       String origin,
     )?
     onGeolocationPermissionsShowPrompt,
-    FutureOr<JsBeforeUnloadResponse?> Function(
-      InAppWebViewController controller,
-      JsBeforeUnloadRequest jsBeforeUnloadRequest,
+    FutureOr<CygnusJsBeforeUnloadResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusJsBeforeUnloadRequest jsBeforeUnloadRequest,
     )?
     onJsBeforeUnload,
-    FutureOr<NavigationResponseAction?> Function(
-      InAppWebViewController controller,
-      NavigationResponse navigationResponse,
+    FutureOr<CygnusNavigationResponseAction?> Function(
+      CygnusWebViewController controller,
+      CygnusNavigationResponse navigationResponse,
     )?
     onNavigationResponse,
-    FutureOr<PermissionResponse?> Function(
-      InAppWebViewController controller,
-      PermissionRequest permissionRequest,
+    FutureOr<CygnusPermissionResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusPermissionRequest permissionRequest,
     )?
     onPermissionRequest,
     @Deprecated('Use onFaviconChanged instead')
-    void Function(InAppWebViewController controller, Uint8List icon)?
+    void Function(CygnusWebViewController controller, Uint8List icon)?
     onReceivedIcon,
     void Function(
-      InAppWebViewController controller,
-      FaviconChangedRequest faviconChangedRequest,
+      CygnusWebViewController controller,
+      CygnusFaviconChangedRequest faviconChangedRequest,
     )?
     onFaviconChanged,
-    void Function(InAppWebViewController controller, LoginRequest loginRequest)?
+    void Function(CygnusWebViewController controller, CygnusLoginRequest loginRequest)?
     onReceivedLoginRequest,
     void Function(
-      InAppWebViewController controller,
-      PermissionRequest permissionRequest,
+      CygnusWebViewController controller,
+      CygnusPermissionRequest permissionRequest,
     )?
     onPermissionRequestCanceled,
-    void Function(InAppWebViewController controller)? onRequestFocus,
+    void Function(CygnusWebViewController controller)? onRequestFocus,
     void Function(
-      InAppWebViewController controller,
-      WebUri url,
+      CygnusWebViewController controller,
+      CygnusWebUri url,
       bool precomposed,
     )?
     onReceivedTouchIconUrl,
     void Function(
-      InAppWebViewController controller,
-      RenderProcessGoneDetail detail,
+      CygnusWebViewController controller,
+      CygnusRenderProcessGoneDetail detail,
     )?
     onRenderProcessGone,
-    FutureOr<WebViewRenderProcessAction?> Function(
-      InAppWebViewController controller,
-      WebUri? url,
+    FutureOr<CygnusWebViewRenderProcessAction?> Function(
+      CygnusWebViewController controller,
+      CygnusWebUri? url,
     )?
     onRenderProcessResponsive,
-    FutureOr<WebViewRenderProcessAction?> Function(
-      InAppWebViewController controller,
-      WebUri? url,
+    FutureOr<CygnusWebViewRenderProcessAction?> Function(
+      CygnusWebViewController controller,
+      CygnusWebUri? url,
     )?
     onRenderProcessUnresponsive,
-    FutureOr<SafeBrowsingResponse?> Function(
-      InAppWebViewController controller,
-      WebUri url,
-      SafeBrowsingThreat? threatType,
+    FutureOr<CygnusSafeBrowsingResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusWebUri url,
+      CygnusSafeBrowsingThreat? threatType,
     )?
     onSafeBrowsingHit,
-    void Function(InAppWebViewController controller)?
+    void Function(CygnusWebViewController controller)?
     onWebContentProcessDidTerminate,
-    FutureOr<ShouldAllowDeprecatedTLSAction?> Function(
-      InAppWebViewController controller,
-      URLAuthenticationChallenge challenge,
+    FutureOr<CygnusShouldAllowDeprecatedTLSAction?> Function(
+      CygnusWebViewController controller,
+      CygnusURLAuthenticationChallenge challenge,
     )?
     shouldAllowDeprecatedTLS,
-    FutureOr<WebResourceResponse?> Function(
-      InAppWebViewController controller,
-      WebResourceRequest request,
+    FutureOr<CygnusWebResourceResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusWebResourceRequest request,
     )?
     shouldInterceptRequest,
     FutureOr<void> Function(
-      InAppWebViewController controller,
-      MediaCaptureState? oldState,
-      MediaCaptureState? newState,
+      CygnusWebViewController controller,
+      CygnusMediaCaptureState? oldState,
+      CygnusMediaCaptureState? newState,
     )?
     onCameraCaptureStateChanged,
     FutureOr<void> Function(
-      InAppWebViewController controller,
-      MediaCaptureState? oldState,
-      MediaCaptureState? newState,
+      CygnusWebViewController controller,
+      CygnusMediaCaptureState? oldState,
+      CygnusMediaCaptureState? newState,
     )?
     onMicrophoneCaptureStateChanged,
     void Function(
-      InAppWebViewController controller,
+      CygnusWebViewController controller,
       Size oldContentSize,
       Size newContentSize,
     )?
     onContentSizeChanged,
     void Function(
-      InAppWebViewController controller,
-      ProcessFailedDetail detail,
+      CygnusWebViewController controller,
+      CygnusProcessFailedDetail detail,
     )?
     onProcessFailed,
-    FutureOr<NotificationReceivedResponse?> Function(
-      InAppWebViewController controller,
-      NotificationReceivedRequest request,
+    FutureOr<CygnusNotificationReceivedResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusNotificationReceivedRequest request,
     )?
     onNotificationReceived,
-    FutureOr<SaveAsUIShowingResponse?> Function(
-      InAppWebViewController controller,
-      SaveAsUIShowingRequest request,
+    FutureOr<CygnusSaveAsUIShowingResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusSaveAsUIShowingRequest request,
     )?
     onSaveAsUIShowing,
-    FutureOr<SaveFileSecurityCheckStartingResponse?> Function(
-      InAppWebViewController controller,
-      SaveFileSecurityCheckStartingRequest request,
+    FutureOr<CygnusSaveFileSecurityCheckStartingResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusSaveFileSecurityCheckStartingRequest request,
     )?
     onSaveFileSecurityCheckStarting,
-    FutureOr<ScreenCaptureStartingResponse?> Function(
-      InAppWebViewController controller,
-      ScreenCaptureStartingRequest request,
+    FutureOr<CygnusScreenCaptureStartingResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusScreenCaptureStartingRequest request,
     )?
     onScreenCaptureStarting,
     void Function(
-      InAppWebViewController controller,
-      AcceleratorKeyPressedDetail detail,
+      CygnusWebViewController controller,
+      CygnusAcceleratorKeyPressedDetail detail,
     )?
     onAcceleratorKeyPressed,
-    FutureOr<ShowFileChooserResponse?> Function(
-      InAppWebViewController controller,
-      ShowFileChooserRequest request,
+    FutureOr<CygnusShowFileChooserResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusShowFileChooserRequest request,
     )?
     onShowFileChooser,
-    FutureOr<LaunchingExternalUriSchemeResponse?> Function(
-      InAppWebViewController controller,
-      LaunchingExternalUriSchemeRequest request,
+    FutureOr<CygnusLaunchingExternalUriSchemeResponse?> Function(
+      CygnusWebViewController controller,
+      CygnusLaunchingExternalUriSchemeRequest request,
     )?
     onLaunchingExternalUriScheme,
   }) : this.fromPlatformCreationParams(
          key: key,
-         params: PlatformInAppWebViewWidgetCreationParams(
+         params: CygnusPlatformWebViewWidgetCreationParams(
            controllerFromPlatform:
-               (PlatformInAppWebViewController controller) =>
-                   InAppWebViewController.fromPlatform(platform: controller),
+               (CygnusPlatformWebViewController controller) =>
+                   CygnusWebViewController.fromPlatform(platform: controller),
            windowId: windowId,
            keepAlive: keepAlive,
            initialUrlRequest: initialUrlRequest,
@@ -896,21 +896,21 @@ class InAppWebView extends StatefulWidget {
   @override
   _InAppWebViewState createState() => _InAppWebViewState();
 
-  ///{@macro cygnus_core.PlatformInAppWebViewWidgetCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformWebViewWidgetCreationParams.isClassSupported}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformInAppWebViewWidget.static().isClassSupported(platform: platform);
+      CygnusPlatformWebViewWidget.static().isClassSupported(platform: platform);
 
-  ///{@macro cygnus_core.PlatformInAppWebViewWidgetCreationParams.isPropertySupported}
+  ///{@macro cygnus_core.CygnusPlatformWebViewWidgetCreationParams.isPropertySupported}
   static bool isPropertySupported(
     dynamic property, {
     TargetPlatform? platform,
-  }) => PlatformInAppWebViewWidget.static().isPropertySupported(
+  }) => CygnusPlatformWebViewWidget.static().isPropertySupported(
     property,
     platform: platform,
   );
 }
 
-class _InAppWebViewState extends State<InAppWebView> {
+class _InAppWebViewState extends State<CygnusWebView> {
   @override
   Widget build(BuildContext context) {
     return widget.platform.build(context);

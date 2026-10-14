@@ -6,15 +6,15 @@ part of 'cookie.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents a cookie returned by the [PlatformCookieManager].
-class Cookie {
+///Class that represents a cookie returned by the [CygnusPlatformCookieManager].
+class CygnusCookie {
   ///The cookie domain.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Android WebView:
-  ///    - available on Android only if [WebViewFeature.GET_COOKIE_INFO] feature is supported.
+  ///    - available on Android only if [CygnusWebViewFeature.GET_COOKIE_INFO] feature is supported.
   ///- Windows WebView2
   String? domain;
 
@@ -24,7 +24,7 @@ class Cookie {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Android WebView:
-  ///    - available on Android only if [WebViewFeature.GET_COOKIE_INFO] feature is supported.
+  ///    - available on Android only if [CygnusWebViewFeature.GET_COOKIE_INFO] feature is supported.
   ///- Windows WebView2
   int? expiresDate;
 
@@ -34,7 +34,7 @@ class Cookie {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Android WebView:
-  ///    - available on Android only if [WebViewFeature.GET_COOKIE_INFO] feature is supported.
+  ///    - available on Android only if [CygnusWebViewFeature.GET_COOKIE_INFO] feature is supported.
   ///- Windows WebView2
   bool? isHttpOnly;
 
@@ -44,7 +44,7 @@ class Cookie {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Android WebView:
-  ///    - available on Android only if [WebViewFeature.GET_COOKIE_INFO] feature is supported.
+  ///    - available on Android only if [CygnusWebViewFeature.GET_COOKIE_INFO] feature is supported.
   ///- Windows WebView2
   bool? isSecure;
 
@@ -72,7 +72,7 @@ class Cookie {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Android WebView:
-  ///    - available on Android only if [WebViewFeature.GET_COOKIE_INFO] feature is supported.
+  ///    - available on Android only if [CygnusWebViewFeature.GET_COOKIE_INFO] feature is supported.
   ///- Windows WebView2
   String? path;
 
@@ -82,9 +82,9 @@ class Cookie {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Android WebView:
-  ///    - available on Android only if [WebViewFeature.GET_COOKIE_INFO] feature is supported.
+  ///    - available on Android only if [CygnusWebViewFeature.GET_COOKIE_INFO] feature is supported.
   ///- Windows WebView2
-  HTTPCookieSameSitePolicy? sameSite;
+  CygnusHTTPCookieSameSitePolicy? sameSite;
 
   ///The cookie value.
   ///
@@ -95,7 +95,7 @@ class Cookie {
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   dynamic value;
-  Cookie({
+  CygnusCookie({
     this.domain,
     this.expiresDate,
     this.isHttpOnly,
@@ -107,12 +107,15 @@ class Cookie {
     this.value,
   });
 
-  ///Gets a possible [Cookie] instance from a [Map] value.
-  static Cookie? fromMap(Map<String, dynamic>? map, {EnumMethod? enumMethod}) {
+  ///Gets a possible [CygnusCookie] instance from a [Map] value.
+  static CygnusCookie? fromMap(
+    Map<String, dynamic>? map, {
+    CygnusEnumMethod? enumMethod,
+  }) {
     if (map == null) {
       return null;
     }
-    final instance = Cookie(
+    final instance = CygnusCookie(
       domain: map['domain'],
       expiresDate: map['expiresDate'],
       isHttpOnly: map['isHttpOnly'],
@@ -120,12 +123,15 @@ class Cookie {
       isSessionOnly: map['isSessionOnly'],
       name: map['name'],
       path: map['path'],
-      sameSite: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => HTTPCookieSameSitePolicy.fromNativeValue(
+      sameSite: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusHTTPCookieSameSitePolicy.fromNativeValue(map['sameSite']),
+        CygnusEnumMethod.value => CygnusHTTPCookieSameSitePolicy.fromValue(
           map['sameSite'],
         ),
-        EnumMethod.value => HTTPCookieSameSitePolicy.fromValue(map['sameSite']),
-        EnumMethod.name => HTTPCookieSameSitePolicy.byName(map['sameSite']),
+        CygnusEnumMethod.name => CygnusHTTPCookieSameSitePolicy.byName(
+          map['sameSite'],
+        ),
       },
       value: map['value'],
     );
@@ -133,7 +139,7 @@ class Cookie {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "domain": domain,
       "expiresDate": expiresDate,
@@ -142,10 +148,10 @@ class Cookie {
       "isSessionOnly": isSessionOnly,
       "name": name,
       "path": path,
-      "sameSite": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => sameSite?.toNativeValue(),
-        EnumMethod.value => sameSite?.toValue(),
-        EnumMethod.name => sameSite?.name(),
+      "sameSite": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => sameSite?.toNativeValue(),
+        CygnusEnumMethod.value => sameSite?.toValue(),
+        CygnusEnumMethod.name => sameSite?.name(),
       },
       "value": value,
     };
@@ -158,6 +164,6 @@ class Cookie {
 
   @override
   String toString() {
-    return 'Cookie{domain: $domain, expiresDate: $expiresDate, isHttpOnly: $isHttpOnly, isSecure: $isSecure, isSessionOnly: $isSessionOnly, name: $name, path: $path, sameSite: $sameSite, value: $value}';
+    return 'CygnusCookie{domain: $domain, expiresDate: $expiresDate, isHttpOnly: $isHttpOnly, isSecure: $isSecure, isSessionOnly: $isSessionOnly, name: $name, path: $path, sameSite: $sameSite, value: $value}';
   }
 }

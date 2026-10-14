@@ -10,7 +10,7 @@ import 'package:flutter_inappwebview_example/widgets/common/method_result_histor
 import 'package:flutter_inappwebview_example/utils/responsive_utils.dart';
 import 'package:flutter_inappwebview_example/widgets/common/responsive_row.dart';
 
-/// Screen for testing CookieManager functionality
+/// Screen for testing CygnusCookieManager functionality
 class CookieManagerScreen extends StatefulWidget {
   const CookieManagerScreen({super.key});
 
@@ -19,13 +19,13 @@ class CookieManagerScreen extends StatefulWidget {
 }
 
 class _CookieManagerScreenState extends State<CookieManagerScreen> {
-  final CookieManager _cookieManager = CookieManager.instance();
+  final CygnusCookieManager _cookieManager = CygnusCookieManager.instance();
   final TextEditingController _urlController = TextEditingController(
     text: 'https://example.com',
   );
   final TextEditingController _searchController = TextEditingController();
 
-  List<Cookie> _cookies = [];
+  List<CygnusCookie> _cookies = [];
   bool _isLoading = false;
 
   // Sorting state
@@ -43,7 +43,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     final url = _urlController.text.trim();
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.getCookies.name,
+        CygnusPlatformCookieManagerMethod.getCookies.name,
         'Please enter a URL',
         isError: true,
       );
@@ -52,16 +52,16 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
 
     setState(() => _isLoading = true);
     try {
-      final cookies = await _cookieManager.getCookies(url: WebUri(url));
+      final cookies = await _cookieManager.getCookies(url: CygnusWebUri(url));
       setState(() => _cookies = cookies);
       _recordMethodResult(
-        PlatformCookieManagerMethod.getCookies.name,
+        CygnusPlatformCookieManagerMethod.getCookies.name,
         'Found ${cookies.length} cookies',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.getCookies.name,
+        CygnusPlatformCookieManagerMethod.getCookies.name,
         'Error getting cookies: $e',
         isError: true,
       );
@@ -76,13 +76,13 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
       final cookies = await _cookieManager.getAllCookies();
       setState(() => _cookies = cookies);
       _recordMethodResult(
-        PlatformCookieManagerMethod.getAllCookies.name,
+        CygnusPlatformCookieManagerMethod.getAllCookies.name,
         'Found ${cookies.length} cookies',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.getAllCookies.name,
+        CygnusPlatformCookieManagerMethod.getAllCookies.name,
         'Error getting all cookies: $e',
         isError: true,
       );
@@ -95,26 +95,26 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     setState(() => _isLoading = true);
     try {
       final cookie = await _cookieManager.getCookie(
-        url: WebUri(url),
+        url: CygnusWebUri(url),
         name: name,
       );
       if (cookie != null) {
         _showCookieDetailsDialog(cookie);
         _recordMethodResult(
-          PlatformCookieManagerMethod.getCookie.name,
-          'Cookie found for "$name"',
+          CygnusPlatformCookieManagerMethod.getCookie.name,
+          'CygnusCookie found for "$name"',
           isError: false,
         );
       } else {
         _recordMethodResult(
-          PlatformCookieManagerMethod.getCookie.name,
-          'Cookie not found',
+          CygnusPlatformCookieManagerMethod.getCookie.name,
+          'CygnusCookie not found',
           isError: true,
         );
       }
     } catch (e) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.getCookie.name,
+        CygnusPlatformCookieManagerMethod.getCookie.name,
         'Error getting cookie: $e',
         isError: true,
       );
@@ -126,7 +126,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
   Future<void> _setCookie() async {
     final params = await showParameterDialog(
       context: context,
-      title: PlatformCookieManagerMethod.setCookie.name,
+      title: CygnusPlatformCookieManagerMethod.setCookie.name,
       parameters: {
         'url': _urlController.text.trim(),
         'name': '',
@@ -150,7 +150,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     final url = params['url']?.toString() ?? '';
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.setCookie.name,
+        CygnusPlatformCookieManagerMethod.setCookie.name,
         'Please enter a URL',
         isError: true,
       );
@@ -158,11 +158,11 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     }
 
     final sameSiteValue = params['sameSite']?.toString();
-    HTTPCookieSameSitePolicy? sameSite;
+    CygnusHTTPCookieSameSitePolicy? sameSite;
     if (sameSiteValue != null && sameSiteValue.trim().isNotEmpty) {
-      sameSite = HTTPCookieSameSitePolicy.values.firstWhere(
+      sameSite = CygnusHTTPCookieSameSitePolicy.values.firstWhere(
         (policy) => policy.name().toLowerCase() == sameSiteValue.toLowerCase(),
-        orElse: () => HTTPCookieSameSitePolicy.LAX,
+        orElse: () => CygnusHTTPCookieSameSitePolicy.LAX,
       );
     }
 
@@ -170,7 +170,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     try {
       final path = params['path']?.toString();
       final result = await _cookieManager.setCookie(
-        url: WebUri(url),
+        url: CygnusWebUri(url),
         name: params['name']?.toString() ?? '',
         value: params['value']?.toString() ?? '',
         path: path?.isNotEmpty == true ? path! : '/',
@@ -186,21 +186,21 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
       );
       if (result) {
         _recordMethodResult(
-          PlatformCookieManagerMethod.setCookie.name,
-          'Cookie set successfully',
+          CygnusPlatformCookieManagerMethod.setCookie.name,
+          'CygnusCookie set successfully',
           isError: false,
         );
         await _getCookies();
       } else {
         _recordMethodResult(
-          PlatformCookieManagerMethod.setCookie.name,
+          CygnusPlatformCookieManagerMethod.setCookie.name,
           'Failed to set cookie',
           isError: true,
         );
       }
     } catch (e) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.setCookie.name,
+        CygnusPlatformCookieManagerMethod.setCookie.name,
         'Error setting cookie: $e',
         isError: true,
       );
@@ -209,11 +209,11 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     }
   }
 
-  Future<void> _deleteCookie(Cookie cookie, {String? urlOverride}) async {
+  Future<void> _deleteCookie(CygnusCookie cookie, {String? urlOverride}) async {
     final url = urlOverride ?? _urlController.text.trim();
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.deleteCookie.name,
+        CygnusPlatformCookieManagerMethod.deleteCookie.name,
         'Please enter a URL',
         isError: true,
       );
@@ -222,15 +222,15 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     setState(() => _isLoading = true);
     try {
       final result = await _cookieManager.deleteCookie(
-        url: WebUri(url),
+        url: CygnusWebUri(url),
         name: cookie.name,
         path: cookie.path ?? '/',
         domain: cookie.domain,
       );
       if (result) {
         _recordMethodResult(
-          PlatformCookieManagerMethod.deleteCookie.name,
-          'Cookie "${cookie.name}" deleted',
+          CygnusPlatformCookieManagerMethod.deleteCookie.name,
+          'CygnusCookie "${cookie.name}" deleted',
           isError: false,
         );
         // Remove the cookie from local list
@@ -244,14 +244,14 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
         });
       } else {
         _recordMethodResult(
-          PlatformCookieManagerMethod.deleteCookie.name,
+          CygnusPlatformCookieManagerMethod.deleteCookie.name,
           'Failed to delete cookie',
           isError: true,
         );
       }
     } catch (e) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.deleteCookie.name,
+        CygnusPlatformCookieManagerMethod.deleteCookie.name,
         'Error deleting cookie: $e',
         isError: true,
       );
@@ -260,12 +260,12 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     }
   }
 
-  Future<void> _confirmAndDeleteCookie(Cookie cookie) async {
+  Future<void> _confirmAndDeleteCookie(CygnusCookie cookie) async {
     final confirmed =
         await showDialog<bool>(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text(PlatformCookieManagerMethod.deleteCookie.name),
+            title: Text(CygnusPlatformCookieManagerMethod.deleteCookie.name),
             content: Text(
               'Are you sure you want to delete the cookie "${cookie.name}"?',
             ),
@@ -299,7 +299,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
 
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.deleteCookie.name,
+        CygnusPlatformCookieManagerMethod.deleteCookie.name,
         'Cannot delete cookie: No URL provided and cookie has no domain',
         isError: true,
       );
@@ -318,28 +318,28 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     setState(() => _isLoading = true);
     try {
       final result = await _cookieManager.deleteCookie(
-        url: WebUri(url),
+        url: CygnusWebUri(url),
         name: name,
         path: path ?? '/',
         domain: domain,
       );
       if (result) {
         _recordMethodResult(
-          PlatformCookieManagerMethod.deleteCookie.name,
-          'Cookie deleted',
+          CygnusPlatformCookieManagerMethod.deleteCookie.name,
+          'CygnusCookie deleted',
           isError: false,
         );
         await _getCookies();
       } else {
         _recordMethodResult(
-          PlatformCookieManagerMethod.deleteCookie.name,
+          CygnusPlatformCookieManagerMethod.deleteCookie.name,
           'Failed to delete cookie',
           isError: true,
         );
       }
     } catch (e) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.deleteCookie.name,
+        CygnusPlatformCookieManagerMethod.deleteCookie.name,
         'Error deleting cookie: $e',
         isError: true,
       );
@@ -351,7 +351,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
   Future<void> _promptGetCookie() async {
     final params = await showParameterDialog(
       context: context,
-      title: PlatformCookieManagerMethod.getCookie.name,
+      title: CygnusPlatformCookieManagerMethod.getCookie.name,
       parameters: {'url': _urlController.text.trim(), 'name': ''},
       requiredPaths: ['url', 'name'],
     );
@@ -361,7 +361,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     final name = params['name']?.toString() ?? '';
     if (url.isEmpty || name.isEmpty) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.getCookie.name,
+        CygnusPlatformCookieManagerMethod.getCookie.name,
         'URL and name are required',
         isError: true,
       );
@@ -374,7 +374,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
   Future<void> _promptDeleteCookie() async {
     final params = await showParameterDialog(
       context: context,
-      title: PlatformCookieManagerMethod.deleteCookie.name,
+      title: CygnusPlatformCookieManagerMethod.deleteCookie.name,
       parameters: {
         'url': _urlController.text.trim(),
         'name': '',
@@ -389,7 +389,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     final name = params['name']?.toString() ?? '';
     if (url.isEmpty || name.isEmpty) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.deleteCookie.name,
+        CygnusPlatformCookieManagerMethod.deleteCookie.name,
         'URL and name are required',
         isError: true,
       );
@@ -412,7 +412,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     final url = _urlController.text.trim();
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.deleteCookies.name,
+        CygnusPlatformCookieManagerMethod.deleteCookies.name,
         'Please enter a URL',
         isError: true,
       );
@@ -420,31 +420,31 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     }
 
     final confirmed = await _showConfirmDialog(
-      PlatformCookieManagerMethod.deleteCookies.name,
+      CygnusPlatformCookieManagerMethod.deleteCookies.name,
       'Are you sure you want to delete all cookies for this URL?',
     );
     if (!confirmed) return;
 
     setState(() => _isLoading = true);
     try {
-      final result = await _cookieManager.deleteCookies(url: WebUri(url));
+      final result = await _cookieManager.deleteCookies(url: CygnusWebUri(url));
       if (result) {
         _recordMethodResult(
-          PlatformCookieManagerMethod.deleteCookies.name,
+          CygnusPlatformCookieManagerMethod.deleteCookies.name,
           'Cookies deleted for URL',
           isError: false,
         );
         setState(() => _cookies = []);
       } else {
         _recordMethodResult(
-          PlatformCookieManagerMethod.deleteCookies.name,
+          CygnusPlatformCookieManagerMethod.deleteCookies.name,
           'Failed to delete cookies',
           isError: true,
         );
       }
     } catch (e) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.deleteCookies.name,
+        CygnusPlatformCookieManagerMethod.deleteCookies.name,
         'Error deleting cookies: $e',
         isError: true,
       );
@@ -455,7 +455,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
 
   Future<void> _deleteAllCookies() async {
     final confirmed = await _showConfirmDialog(
-      PlatformCookieManagerMethod.deleteAllCookies.name,
+      CygnusPlatformCookieManagerMethod.deleteAllCookies.name,
       'Are you sure you want to delete ALL cookies?',
     );
     if (!confirmed) return;
@@ -465,21 +465,21 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
       final result = await _cookieManager.deleteAllCookies();
       if (result) {
         _recordMethodResult(
-          PlatformCookieManagerMethod.deleteAllCookies.name,
+          CygnusPlatformCookieManagerMethod.deleteAllCookies.name,
           'All cookies deleted',
           isError: false,
         );
         setState(() => _cookies = []);
       } else {
         _recordMethodResult(
-          PlatformCookieManagerMethod.deleteAllCookies.name,
+          CygnusPlatformCookieManagerMethod.deleteAllCookies.name,
           'Failed to delete all cookies',
           isError: true,
         );
       }
     } catch (e) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.deleteAllCookies.name,
+        CygnusPlatformCookieManagerMethod.deleteAllCookies.name,
         'Error deleting all cookies: $e',
         isError: true,
       );
@@ -493,13 +493,13 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     try {
       final result = await _cookieManager.removeSessionCookies();
       _recordMethodResult(
-        PlatformCookieManagerMethod.removeSessionCookies.name,
+        CygnusPlatformCookieManagerMethod.removeSessionCookies.name,
         result ? 'Session cookies removed' : 'No session cookies to remove',
         isError: !result,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.removeSessionCookies.name,
+        CygnusPlatformCookieManagerMethod.removeSessionCookies.name,
         'Error removing session cookies: $e',
         isError: true,
       );
@@ -513,13 +513,13 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
     try {
       await _cookieManager.flush();
       _recordMethodResult(
-        PlatformCookieManagerMethod.flush.name,
+        CygnusPlatformCookieManagerMethod.flush.name,
         'Cookies flushed to persistent storage',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformCookieManagerMethod.flush.name,
+        CygnusPlatformCookieManagerMethod.flush.name,
         'Error flushing cookies: $e',
         isError: true,
       );
@@ -577,7 +577,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
         false;
   }
 
-  void _showCookieDetailsDialog(Cookie cookie) {
+  void _showCookieDetailsDialog(CygnusCookie cookie) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -647,7 +647,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cookie Manager'),
+        title: const Text('CygnusCookie Manager'),
         actions: [AppBarLoadingIndicator(isLoading: _isLoading)],
       ),
       drawer: AppDrawer(),
@@ -659,47 +659,47 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
               padding: const EdgeInsets.all(16),
               children: [
                 _buildMethodSection(
-                  PlatformCookieManagerMethod.setCookie,
+                  CygnusPlatformCookieManagerMethod.setCookie,
                   'Set a cookie for the given URL',
                   _setCookie,
                 ),
                 _buildMethodSection(
-                  PlatformCookieManagerMethod.getCookies,
+                  CygnusPlatformCookieManagerMethod.getCookies,
                   'Get all cookies for the given URL',
                   _getCookies,
                 ),
                 _buildMethodSection(
-                  PlatformCookieManagerMethod.getCookie,
+                  CygnusPlatformCookieManagerMethod.getCookie,
                   'Get a specific cookie by name (requires cookie list)',
                   _promptGetCookie,
                 ),
                 _buildMethodSection(
-                  PlatformCookieManagerMethod.deleteCookie,
+                  CygnusPlatformCookieManagerMethod.deleteCookie,
                   'Delete a specific cookie (select from list)',
                   _promptDeleteCookie,
                 ),
                 _buildMethodSection(
-                  PlatformCookieManagerMethod.deleteCookies,
+                  CygnusPlatformCookieManagerMethod.deleteCookies,
                   'Delete all cookies for the URL',
                   _deleteCookies,
                 ),
                 _buildMethodSection(
-                  PlatformCookieManagerMethod.deleteAllCookies,
+                  CygnusPlatformCookieManagerMethod.deleteAllCookies,
                   'Delete all cookies',
                   _deleteAllCookies,
                 ),
                 _buildMethodSection(
-                  PlatformCookieManagerMethod.getAllCookies,
+                  CygnusPlatformCookieManagerMethod.getAllCookies,
                   'Get all cookies',
                   _getAllCookies,
                 ),
                 _buildMethodSection(
-                  PlatformCookieManagerMethod.removeSessionCookies,
+                  CygnusPlatformCookieManagerMethod.removeSessionCookies,
                   'Remove session cookies',
                   _removeSessionCookies,
                 ),
                 _buildMethodSection(
-                  PlatformCookieManagerMethod.flush,
+                  CygnusPlatformCookieManagerMethod.flush,
                   'Flush cookies to persistent storage',
                   _flush,
                 ),
@@ -746,7 +746,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
                 width: isMobile ? double.infinity : null,
                 child: ElevatedButton(
                   onPressed: _isLoading ? null : _getCookies,
-                  child: Text(PlatformCookieManagerMethod.getCookies.name),
+                  child: Text(CygnusPlatformCookieManagerMethod.getCookies.name),
                 ),
               ),
             ],
@@ -757,14 +757,14 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
   }
 
   Widget _buildMethodSection(
-    PlatformCookieManagerMethod method,
+    CygnusPlatformCookieManagerMethod method,
     String description,
     VoidCallback? onPressed,
   ) {
     final methodName = method.name;
     final supportedPlatforms = SupportCheckHelper.supportedPlatformsForMethod(
       method: method,
-      checker: CookieManager.isMethodSupported,
+      checker: CygnusCookieManager.isMethodSupported,
     );
 
     return MethodTile(
@@ -786,7 +786,7 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
         icon: Icons.cookie_outlined,
         title: 'No cookies found',
         description:
-            'Enter a URL and click "${PlatformCookieManagerMethod.getCookies.name}" to fetch cookies',
+            'Enter a URL and click "${CygnusPlatformCookieManagerMethod.getCookies.name}" to fetch cookies',
       );
     }
 
@@ -1060,8 +1060,8 @@ class _CookieManagerScreenState extends State<CookieManagerScreen> {
   }
 
   /// Get filtered and sorted cookies
-  List<Cookie> get _filteredAndSortedCookies {
-    var result = List<Cookie>.from(_cookies);
+  List<CygnusCookie> get _filteredAndSortedCookies {
+    var result = List<CygnusCookie>.from(_cookies);
 
     // Apply search filter
     if (_searchQuery.isNotEmpty) {

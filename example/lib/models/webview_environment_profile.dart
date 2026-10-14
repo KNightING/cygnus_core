@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-/// Model for saving/loading WebViewEnvironmentSettings profiles
+/// Model for saving/loading CygnusWebViewEnvironmentSettings profiles
 class WebViewEnvironmentProfile {
   final String id;
   final String name;

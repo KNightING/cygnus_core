@@ -10,16 +10,16 @@ final _contentWorldNameRegExp = RegExp(r'[\s]');
 ///to the webpage's content that contains only the inline `<script>` HTML elements in order to define a new scope of execution for JavaScript code.
 ///Unfortunately, there isn't any other way to do it.
 ///There are some limitations:
-///- for any [ContentWorld], except [ContentWorld.PAGE] (that is the webpage itself), if you need to access to the `window` or `document` global Object,
+///- for any [CygnusContentWorld], except [CygnusContentWorld.PAGE] (that is the webpage itself), if you need to access to the `window` or `document` global Object,
 ///you need to use `window.top` and `window.top.document` because the code runs inside an `<iframe>`;
 ///- also, the execution of the inline `<script>` could be blocked by the `Content-Security-Policy` header.
-class ContentWorld {
+class CygnusContentWorld {
   ///The name of a custom content world.
   ///It cannot contain space characters.
   final String name;
 
   ///Returns the custom content world with the specified name.
-  ContentWorld.world({required this.name}) {
+  CygnusContentWorld.world({required this.name}) {
     // WINDOW-ID- is used internally by the plugin!
     assert(
       !this.name.startsWith("WINDOW-ID-") &&
@@ -28,7 +28,7 @@ class ContentWorld {
   }
 
   ///The default world for clients.
-  static final ContentWorld DEFAULT_CLIENT = ContentWorld.world(
+  static final CygnusContentWorld DEFAULT_CLIENT = CygnusContentWorld.world(
     name: "defaultClient",
   );
 
@@ -36,21 +36,21 @@ class ContentWorld {
   ///This property contains the content world for scripts that the current webpage executes.
   ///Be careful when manipulating variables in this content world.
   ///If you modify a variable with the same name as one the webpage uses, you may unintentionally disrupt the normal operation of that page.
-  static final ContentWorld PAGE = ContentWorld.world(name: "page");
+  static final CygnusContentWorld PAGE = CygnusContentWorld.world(name: "page");
 
-  ///Gets a possible [ContentWorld] instance from a [Map] value.
-  static ContentWorld? fromMap(
+  ///Gets a possible [CygnusContentWorld] instance from a [Map] value.
+  static CygnusContentWorld? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    return ContentWorld.world(name: map["name"]);
+    return CygnusContentWorld.world(name: map["name"]);
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"name": name};
   }
 

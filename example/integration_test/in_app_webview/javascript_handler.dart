@@ -1,13 +1,13 @@
 part of 'main.dart';
 
 void javascriptHandler() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.addJavaScriptHandler,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.addJavaScriptHandler,
   );
 
   skippableTestWidgets('JavaScript Handler', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<void> pageStarted = Completer<void>();
     final Completer<void> pageLoaded = Completer<void>();
     final Completer<void> handlerFoo = Completer<void>();
@@ -16,7 +16,7 @@ void javascriptHandler() {
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
           initialFile:
               "test_assets/in_app_webview_javascript_handler_test.html",
@@ -47,7 +47,7 @@ void javascriptHandler() {
               },
             );
           },
-          initialSettings: InAppWebViewSettings(javaScriptEnabled: true),
+          initialSettings: CygnusWebViewSettings(javaScriptEnabled: true),
           onLoadStart: (controller, url) {
             pageStarted.complete();
           },

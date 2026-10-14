@@ -7,83 +7,86 @@ part of 'data_detector_types.dart';
 // **************************************************************************
 
 ///Class used to specify a `dataDetectoryTypes` value that adds interactivity to web content that matches the value.
-class DataDetectorTypes {
+class CygnusDataDetectorTypes {
   final String _value;
   final String? _nativeValue;
-  const DataDetectorTypes._internal(this._value, this._nativeValue);
+  const CygnusDataDetectorTypes._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory DataDetectorTypes._internalMultiPlatform(
+  factory CygnusDataDetectorTypes._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => DataDetectorTypes._internal(value, nativeValue());
+  ) => CygnusDataDetectorTypes._internal(value, nativeValue());
 
   ///Addresses are detected and turned into links.
-  static const ADDRESS = DataDetectorTypes._internal('ADDRESS', 'ADDRESS');
+  static const ADDRESS = CygnusDataDetectorTypes._internal(
+    'ADDRESS',
+    'ADDRESS',
+  );
 
   ///All of the above data types are turned into links when detected. Choosing this value will automatically include any new detection type that is added.
-  static const ALL = DataDetectorTypes._internal('ALL', 'ALL');
+  static const ALL = CygnusDataDetectorTypes._internal('ALL', 'ALL');
 
   ///Dates and times that are in the future are detected and turned into links.
-  static const CALENDAR_EVENT = DataDetectorTypes._internal(
+  static const CALENDAR_EVENT = CygnusDataDetectorTypes._internal(
     'CALENDAR_EVENT',
     'CALENDAR_EVENT',
   );
 
   ///Flight numbers are detected and turned into links.
-  static const FLIGHT_NUMBER = DataDetectorTypes._internal(
+  static const FLIGHT_NUMBER = CygnusDataDetectorTypes._internal(
     'FLIGHT_NUMBER',
     'FLIGHT_NUMBER',
   );
 
   ///URLs in text are detected and turned into links.
-  static const LINK = DataDetectorTypes._internal('LINK', 'LINK');
+  static const LINK = CygnusDataDetectorTypes._internal('LINK', 'LINK');
 
   ///Lookup suggestions are detected and turned into links.
-  static const LOOKUP_SUGGESTION = DataDetectorTypes._internal(
+  static const LOOKUP_SUGGESTION = CygnusDataDetectorTypes._internal(
     'LOOKUP_SUGGESTION',
     'LOOKUP_SUGGESTION',
   );
 
   ///No detection is performed.
-  static const NONE = DataDetectorTypes._internal('NONE', 'NONE');
+  static const NONE = CygnusDataDetectorTypes._internal('NONE', 'NONE');
 
   ///Phone numbers are detected and turned into links.
-  static const PHONE_NUMBER = DataDetectorTypes._internal(
+  static const PHONE_NUMBER = CygnusDataDetectorTypes._internal(
     'PHONE_NUMBER',
     'PHONE_NUMBER',
   );
 
   ///Spotlight suggestions are detected and turned into links.
-  static const SPOTLIGHT_SUGGESTION = DataDetectorTypes._internal(
+  static const SPOTLIGHT_SUGGESTION = CygnusDataDetectorTypes._internal(
     'SPOTLIGHT_SUGGESTION',
     'SPOTLIGHT_SUGGESTION',
   );
 
   ///Tracking numbers are detected and turned into links.
-  static const TRACKING_NUMBER = DataDetectorTypes._internal(
+  static const TRACKING_NUMBER = CygnusDataDetectorTypes._internal(
     'TRACKING_NUMBER',
     'TRACKING_NUMBER',
   );
 
-  ///Set of all values of [DataDetectorTypes].
-  static final Set<DataDetectorTypes> values = [
-    DataDetectorTypes.ADDRESS,
-    DataDetectorTypes.ALL,
-    DataDetectorTypes.CALENDAR_EVENT,
-    DataDetectorTypes.FLIGHT_NUMBER,
-    DataDetectorTypes.LINK,
-    DataDetectorTypes.LOOKUP_SUGGESTION,
-    DataDetectorTypes.NONE,
-    DataDetectorTypes.PHONE_NUMBER,
-    DataDetectorTypes.SPOTLIGHT_SUGGESTION,
-    DataDetectorTypes.TRACKING_NUMBER,
+  ///Set of all values of [CygnusDataDetectorTypes].
+  static final Set<CygnusDataDetectorTypes> values = [
+    CygnusDataDetectorTypes.ADDRESS,
+    CygnusDataDetectorTypes.ALL,
+    CygnusDataDetectorTypes.CALENDAR_EVENT,
+    CygnusDataDetectorTypes.FLIGHT_NUMBER,
+    CygnusDataDetectorTypes.LINK,
+    CygnusDataDetectorTypes.LOOKUP_SUGGESTION,
+    CygnusDataDetectorTypes.NONE,
+    CygnusDataDetectorTypes.PHONE_NUMBER,
+    CygnusDataDetectorTypes.SPOTLIGHT_SUGGESTION,
+    CygnusDataDetectorTypes.TRACKING_NUMBER,
   ].toSet();
 
-  ///Gets a possible [DataDetectorTypes] instance from [String] value.
-  static DataDetectorTypes? fromValue(String? value) {
+  ///Gets a possible [CygnusDataDetectorTypes] instance from [String] value.
+  static CygnusDataDetectorTypes? fromValue(String? value) {
     if (value != null) {
       try {
-        return DataDetectorTypes.values.firstWhere(
+        return CygnusDataDetectorTypes.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -93,11 +96,11 @@ class DataDetectorTypes {
     return null;
   }
 
-  ///Gets a possible [DataDetectorTypes] instance from a native value.
-  static DataDetectorTypes? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusDataDetectorTypes] instance from a native value.
+  static CygnusDataDetectorTypes? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return DataDetectorTypes.values.firstWhere(
+        return CygnusDataDetectorTypes.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -107,15 +110,15 @@ class DataDetectorTypes {
     return null;
   }
 
-  /// Gets a possible [DataDetectorTypes] instance value with name [name].
+  /// Gets a possible [CygnusDataDetectorTypes] instance value with name [name].
   ///
-  /// Goes through [DataDetectorTypes.values] looking for a value with
-  /// name [name], as reported by [DataDetectorTypes.name].
+  /// Goes through [CygnusDataDetectorTypes.values] looking for a value with
+  /// name [name], as reported by [CygnusDataDetectorTypes.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static DataDetectorTypes? byName(String? name) {
+  static CygnusDataDetectorTypes? byName(String? name) {
     if (name != null) {
       try {
-        return DataDetectorTypes.values.firstWhere(
+        return CygnusDataDetectorTypes.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -125,7 +128,7 @@ class DataDetectorTypes {
     return null;
   }
 
-  /// Creates a map from the names of [DataDetectorTypes] values to the values.
+  /// Creates a map from the names of [CygnusDataDetectorTypes] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -133,9 +136,9 @@ class DataDetectorTypes {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, DataDetectorTypes> asNameMap() =>
-      <String, DataDetectorTypes>{
-        for (final value in DataDetectorTypes.values) value.name(): value,
+  static Map<String, CygnusDataDetectorTypes> asNameMap() =>
+      <String, CygnusDataDetectorTypes>{
+        for (final value in CygnusDataDetectorTypes.values) value.name(): value,
       };
 
   ///Gets [String] value.
@@ -192,85 +195,88 @@ class DataDetectorTypes {
 ///
 ///**NOTE**: available on iOS 10.0+.
 ///
-///Use [DataDetectorTypes] instead.
-@Deprecated('Use DataDetectorTypes instead')
-class IOSWKDataDetectorTypes {
+///Use [CygnusDataDetectorTypes] instead.
+@Deprecated('Use CygnusDataDetectorTypes instead')
+class CygnusIOSWKDataDetectorTypes {
   final String _value;
   final String? _nativeValue;
-  const IOSWKDataDetectorTypes._internal(this._value, this._nativeValue);
+  const CygnusIOSWKDataDetectorTypes._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory IOSWKDataDetectorTypes._internalMultiPlatform(
+  factory CygnusIOSWKDataDetectorTypes._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => IOSWKDataDetectorTypes._internal(value, nativeValue());
+  ) => CygnusIOSWKDataDetectorTypes._internal(value, nativeValue());
 
   ///Addresses are detected and turned into links.
-  static const ADDRESS = IOSWKDataDetectorTypes._internal('ADDRESS', 'ADDRESS');
+  static const ADDRESS = CygnusIOSWKDataDetectorTypes._internal(
+    'ADDRESS',
+    'ADDRESS',
+  );
 
   ///All of the above data types are turned into links when detected. Choosing this value will automatically include any new detection type that is added.
-  static const ALL = IOSWKDataDetectorTypes._internal('ALL', 'ALL');
+  static const ALL = CygnusIOSWKDataDetectorTypes._internal('ALL', 'ALL');
 
   ///Dates and times that are in the future are detected and turned into links.
-  static const CALENDAR_EVENT = IOSWKDataDetectorTypes._internal(
+  static const CALENDAR_EVENT = CygnusIOSWKDataDetectorTypes._internal(
     'CALENDAR_EVENT',
     'CALENDAR_EVENT',
   );
 
   ///Flight numbers are detected and turned into links.
-  static const FLIGHT_NUMBER = IOSWKDataDetectorTypes._internal(
+  static const FLIGHT_NUMBER = CygnusIOSWKDataDetectorTypes._internal(
     'FLIGHT_NUMBER',
     'FLIGHT_NUMBER',
   );
 
   ///URLs in text are detected and turned into links.
-  static const LINK = IOSWKDataDetectorTypes._internal('LINK', 'LINK');
+  static const LINK = CygnusIOSWKDataDetectorTypes._internal('LINK', 'LINK');
 
   ///Lookup suggestions are detected and turned into links.
-  static const LOOKUP_SUGGESTION = IOSWKDataDetectorTypes._internal(
+  static const LOOKUP_SUGGESTION = CygnusIOSWKDataDetectorTypes._internal(
     'LOOKUP_SUGGESTION',
     'LOOKUP_SUGGESTION',
   );
 
   ///No detection is performed.
-  static const NONE = IOSWKDataDetectorTypes._internal('NONE', 'NONE');
+  static const NONE = CygnusIOSWKDataDetectorTypes._internal('NONE', 'NONE');
 
   ///Phone numbers are detected and turned into links.
-  static const PHONE_NUMBER = IOSWKDataDetectorTypes._internal(
+  static const PHONE_NUMBER = CygnusIOSWKDataDetectorTypes._internal(
     'PHONE_NUMBER',
     'PHONE_NUMBER',
   );
 
   ///Spotlight suggestions are detected and turned into links.
-  static const SPOTLIGHT_SUGGESTION = IOSWKDataDetectorTypes._internal(
+  static const SPOTLIGHT_SUGGESTION = CygnusIOSWKDataDetectorTypes._internal(
     'SPOTLIGHT_SUGGESTION',
     'SPOTLIGHT_SUGGESTION',
   );
 
   ///Tracking numbers are detected and turned into links.
-  static const TRACKING_NUMBER = IOSWKDataDetectorTypes._internal(
+  static const TRACKING_NUMBER = CygnusIOSWKDataDetectorTypes._internal(
     'TRACKING_NUMBER',
     'TRACKING_NUMBER',
   );
 
-  ///Set of all values of [IOSWKDataDetectorTypes].
-  static final Set<IOSWKDataDetectorTypes> values = [
-    IOSWKDataDetectorTypes.ADDRESS,
-    IOSWKDataDetectorTypes.ALL,
-    IOSWKDataDetectorTypes.CALENDAR_EVENT,
-    IOSWKDataDetectorTypes.FLIGHT_NUMBER,
-    IOSWKDataDetectorTypes.LINK,
-    IOSWKDataDetectorTypes.LOOKUP_SUGGESTION,
-    IOSWKDataDetectorTypes.NONE,
-    IOSWKDataDetectorTypes.PHONE_NUMBER,
-    IOSWKDataDetectorTypes.SPOTLIGHT_SUGGESTION,
-    IOSWKDataDetectorTypes.TRACKING_NUMBER,
+  ///Set of all values of [CygnusIOSWKDataDetectorTypes].
+  static final Set<CygnusIOSWKDataDetectorTypes> values = [
+    CygnusIOSWKDataDetectorTypes.ADDRESS,
+    CygnusIOSWKDataDetectorTypes.ALL,
+    CygnusIOSWKDataDetectorTypes.CALENDAR_EVENT,
+    CygnusIOSWKDataDetectorTypes.FLIGHT_NUMBER,
+    CygnusIOSWKDataDetectorTypes.LINK,
+    CygnusIOSWKDataDetectorTypes.LOOKUP_SUGGESTION,
+    CygnusIOSWKDataDetectorTypes.NONE,
+    CygnusIOSWKDataDetectorTypes.PHONE_NUMBER,
+    CygnusIOSWKDataDetectorTypes.SPOTLIGHT_SUGGESTION,
+    CygnusIOSWKDataDetectorTypes.TRACKING_NUMBER,
   ].toSet();
 
-  ///Gets a possible [IOSWKDataDetectorTypes] instance from [String] value.
-  static IOSWKDataDetectorTypes? fromValue(String? value) {
+  ///Gets a possible [CygnusIOSWKDataDetectorTypes] instance from [String] value.
+  static CygnusIOSWKDataDetectorTypes? fromValue(String? value) {
     if (value != null) {
       try {
-        return IOSWKDataDetectorTypes.values.firstWhere(
+        return CygnusIOSWKDataDetectorTypes.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -280,11 +286,11 @@ class IOSWKDataDetectorTypes {
     return null;
   }
 
-  ///Gets a possible [IOSWKDataDetectorTypes] instance from a native value.
-  static IOSWKDataDetectorTypes? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusIOSWKDataDetectorTypes] instance from a native value.
+  static CygnusIOSWKDataDetectorTypes? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return IOSWKDataDetectorTypes.values.firstWhere(
+        return CygnusIOSWKDataDetectorTypes.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -294,15 +300,15 @@ class IOSWKDataDetectorTypes {
     return null;
   }
 
-  /// Gets a possible [IOSWKDataDetectorTypes] instance value with name [name].
+  /// Gets a possible [CygnusIOSWKDataDetectorTypes] instance value with name [name].
   ///
-  /// Goes through [IOSWKDataDetectorTypes.values] looking for a value with
-  /// name [name], as reported by [IOSWKDataDetectorTypes.name].
+  /// Goes through [CygnusIOSWKDataDetectorTypes.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSWKDataDetectorTypes.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSWKDataDetectorTypes? byName(String? name) {
+  static CygnusIOSWKDataDetectorTypes? byName(String? name) {
     if (name != null) {
       try {
-        return IOSWKDataDetectorTypes.values.firstWhere(
+        return CygnusIOSWKDataDetectorTypes.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -312,7 +318,7 @@ class IOSWKDataDetectorTypes {
     return null;
   }
 
-  /// Creates a map from the names of [IOSWKDataDetectorTypes] values to the values.
+  /// Creates a map from the names of [CygnusIOSWKDataDetectorTypes] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -320,9 +326,10 @@ class IOSWKDataDetectorTypes {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSWKDataDetectorTypes> asNameMap() =>
-      <String, IOSWKDataDetectorTypes>{
-        for (final value in IOSWKDataDetectorTypes.values) value.name(): value,
+  static Map<String, CygnusIOSWKDataDetectorTypes> asNameMap() =>
+      <String, CygnusIOSWKDataDetectorTypes>{
+        for (final value in CygnusIOSWKDataDetectorTypes.values)
+          value.name(): value,
       };
 
   ///Gets [String] value.

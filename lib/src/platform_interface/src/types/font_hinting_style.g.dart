@@ -7,41 +7,41 @@ part of 'font_hinting_style.dart';
 // **************************************************************************
 
 ///Font hinting style used for text rendering on Linux.
-class FontHintingStyle {
+class CygnusFontHintingStyle {
   final int _value;
   final int? _nativeValue;
-  const FontHintingStyle._internal(this._value, this._nativeValue);
+  const CygnusFontHintingStyle._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory FontHintingStyle._internalMultiPlatform(
+  factory CygnusFontHintingStyle._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => FontHintingStyle._internal(value, nativeValue());
+  ) => CygnusFontHintingStyle._internal(value, nativeValue());
 
   ///Full hinting. Maximum hinting is applied for crispest text.
-  static const FULL = FontHintingStyle._internal(3, 3);
+  static const FULL = CygnusFontHintingStyle._internal(3, 3);
 
   ///Medium hinting. A moderate amount of hinting is applied.
-  static const MEDIUM = FontHintingStyle._internal(2, 2);
+  static const MEDIUM = CygnusFontHintingStyle._internal(2, 2);
 
   ///No hinting. Text is rendered without any hinting.
-  static const NONE = FontHintingStyle._internal(0, 0);
+  static const NONE = CygnusFontHintingStyle._internal(0, 0);
 
   ///Slight hinting. A minimal amount of hinting is applied.
-  static const SLIGHT = FontHintingStyle._internal(1, 1);
+  static const SLIGHT = CygnusFontHintingStyle._internal(1, 1);
 
-  ///Set of all values of [FontHintingStyle].
-  static final Set<FontHintingStyle> values = [
-    FontHintingStyle.FULL,
-    FontHintingStyle.MEDIUM,
-    FontHintingStyle.NONE,
-    FontHintingStyle.SLIGHT,
+  ///Set of all values of [CygnusFontHintingStyle].
+  static final Set<CygnusFontHintingStyle> values = [
+    CygnusFontHintingStyle.FULL,
+    CygnusFontHintingStyle.MEDIUM,
+    CygnusFontHintingStyle.NONE,
+    CygnusFontHintingStyle.SLIGHT,
   ].toSet();
 
-  ///Gets a possible [FontHintingStyle] instance from [int] value.
-  static FontHintingStyle? fromValue(int? value) {
+  ///Gets a possible [CygnusFontHintingStyle] instance from [int] value.
+  static CygnusFontHintingStyle? fromValue(int? value) {
     if (value != null) {
       try {
-        return FontHintingStyle.values.firstWhere(
+        return CygnusFontHintingStyle.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -51,11 +51,11 @@ class FontHintingStyle {
     return null;
   }
 
-  ///Gets a possible [FontHintingStyle] instance from a native value.
-  static FontHintingStyle? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusFontHintingStyle] instance from a native value.
+  static CygnusFontHintingStyle? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return FontHintingStyle.values.firstWhere(
+        return CygnusFontHintingStyle.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -65,15 +65,15 @@ class FontHintingStyle {
     return null;
   }
 
-  /// Gets a possible [FontHintingStyle] instance value with name [name].
+  /// Gets a possible [CygnusFontHintingStyle] instance value with name [name].
   ///
-  /// Goes through [FontHintingStyle.values] looking for a value with
-  /// name [name], as reported by [FontHintingStyle.name].
+  /// Goes through [CygnusFontHintingStyle.values] looking for a value with
+  /// name [name], as reported by [CygnusFontHintingStyle.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static FontHintingStyle? byName(String? name) {
+  static CygnusFontHintingStyle? byName(String? name) {
     if (name != null) {
       try {
-        return FontHintingStyle.values.firstWhere(
+        return CygnusFontHintingStyle.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -83,7 +83,7 @@ class FontHintingStyle {
     return null;
   }
 
-  /// Creates a map from the names of [FontHintingStyle] values to the values.
+  /// Creates a map from the names of [CygnusFontHintingStyle] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -91,9 +91,9 @@ class FontHintingStyle {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, FontHintingStyle> asNameMap() =>
-      <String, FontHintingStyle>{
-        for (final value in FontHintingStyle.values) value.name(): value,
+  static Map<String, CygnusFontHintingStyle> asNameMap() =>
+      <String, CygnusFontHintingStyle>{
+        for (final value in CygnusFontHintingStyle.values) value.name(): value,
       };
 
   ///Gets [int] value.

@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void onProgressChanged() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onProgressChanged,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onProgressChanged,
   );
 
   skippableTestWidgets('onProgressChanged', (WidgetTester tester) async {
@@ -10,10 +10,10 @@ void onProgressChanged() {
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_URL_1),
-          initialSettings: InAppWebViewSettings(clearCache: true),
+          initialUrlRequest: CygnusURLRequest(url: TEST_URL_1),
+          initialSettings: CygnusWebViewSettings(clearCache: true),
           onProgressChanged: (controller, progress) {
             if (progress == 100 && !onProgressChangedCompleter.isCompleted) {
               onProgressChangedCompleter.complete();

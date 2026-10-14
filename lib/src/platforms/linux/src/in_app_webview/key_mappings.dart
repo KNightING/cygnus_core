@@ -139,7 +139,7 @@ const _specialKeyToKeysym = <int, int>{
 
   // Misc
   0x20: 0x0020, // Space
-  0x100000505: 0xff67, // ContextMenu (XK_Menu)
+  0x100000505: 0xff67, // CygnusContextMenu (XK_Menu)
   0x100000509: 0xff13, // Pause (XK_Pause)
   0x100000608: 0xff61, // PrintScreen (XK_Print)
 };

@@ -6,8 +6,8 @@ part of 'ssl_certificate_dname.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Distinguished name helper class. Used by [SslCertificate].
-class SslCertificateDName {
+///Distinguished name helper class. Used by [CygnusSslCertificate].
+class CygnusSslCertificateDName {
   ///Common-name (CN) component of the name
   String? CName;
 
@@ -19,22 +19,22 @@ class SslCertificateDName {
 
   ///Organizational Unit (OU) component of the name
   String? UName;
-  SslCertificateDName({
+  CygnusSslCertificateDName({
     this.CName = "",
     this.DName = "",
     this.OName = "",
     this.UName = "",
   });
 
-  ///Gets a possible [SslCertificateDName] instance from a [Map] value.
-  static SslCertificateDName? fromMap(
+  ///Gets a possible [CygnusSslCertificateDName] instance from a [Map] value.
+  static CygnusSslCertificateDName? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = SslCertificateDName();
+    final instance = CygnusSslCertificateDName();
     instance.CName = map['CName'];
     instance.DName = map['DName'];
     instance.OName = map['OName'];
@@ -43,7 +43,7 @@ class SslCertificateDName {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"CName": CName, "DName": DName, "OName": OName, "UName": UName};
   }
 
@@ -54,6 +54,6 @@ class SslCertificateDName {
 
   @override
   String toString() {
-    return 'SslCertificateDName{CName: $CName, DName: $DName, OName: $OName, UName: $UName}';
+    return 'CygnusSslCertificateDName{CName: $CName, DName: $DName, OName: $OName, UName: $UName}';
   }
 }

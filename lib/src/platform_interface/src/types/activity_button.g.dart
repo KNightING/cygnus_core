@@ -14,28 +14,28 @@ part of 'activity_button.dart';
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- iOS
-class ActivityButton {
+class CygnusActivityButton {
   ///The name of the App or Share Extension to be called.
   String extensionIdentifier;
 
   ///The name of the image asset or file.
-  UIImage templateImage;
-  ActivityButton({
+  CygnusUIImage templateImage;
+  CygnusActivityButton({
     required this.templateImage,
     required this.extensionIdentifier,
   });
 
-  ///Gets a possible [ActivityButton] instance from a [Map] value.
-  static ActivityButton? fromMap(
+  ///Gets a possible [CygnusActivityButton] instance from a [Map] value.
+  static CygnusActivityButton? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ActivityButton(
+    final instance = CygnusActivityButton(
       extensionIdentifier: map['extensionIdentifier'],
-      templateImage: UIImage.fromMap(
+      templateImage: CygnusUIImage.fromMap(
         map['templateImage']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       )!,
@@ -44,7 +44,7 @@ class ActivityButton {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "extensionIdentifier": extensionIdentifier,
       "templateImage": templateImage.toMap(enumMethod: enumMethod),
@@ -58,6 +58,6 @@ class ActivityButton {
 
   @override
   String toString() {
-    return 'ActivityButton{extensionIdentifier: $extensionIdentifier, templateImage: $templateImage}';
+    return 'CygnusActivityButton{extensionIdentifier: $extensionIdentifier, templateImage: $templateImage}';
   }
 }

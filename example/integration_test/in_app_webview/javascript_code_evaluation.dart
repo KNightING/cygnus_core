@@ -1,26 +1,26 @@
 part of 'main.dart';
 
 void javascriptCodeEvaluation() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.evaluateJavascript,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.evaluateJavascript,
   );
 
   skippableGroup('javascript code evaluation', () {
-    final shouldSkipTest1 = !InAppWebViewController.isMethodSupported(
-      PlatformInAppWebViewControllerMethod.evaluateJavascript,
+    final shouldSkipTest1 = !CygnusWebViewController.isMethodSupported(
+      CygnusPlatformWebViewControllerMethod.evaluateJavascript,
     );
 
     skippableTestWidgets('evaluateJavascript', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_URL_ABOUT_BLANK),
+            initialUrlRequest: CygnusURLRequest(url: TEST_URL_ABOUT_BLANK),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -30,7 +30,7 @@ void javascriptCodeEvaluation() {
           ),
         ),
       );
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await tester.pump();
       await pageLoaded.future;
@@ -52,23 +52,23 @@ void javascriptCodeEvaluation() {
 
     final shouldSkipTest2 =
         kIsWeb ||
-        !InAppWebViewController.isMethodSupported(
-          PlatformInAppWebViewControllerMethod.evaluateJavascript,
+        !CygnusWebViewController.isMethodSupported(
+          CygnusPlatformWebViewControllerMethod.evaluateJavascript,
         );
 
     skippableTestWidgets('evaluateJavascript with content world', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_URL_ABOUT_BLANK),
+            initialUrlRequest: CygnusURLRequest(url: TEST_URL_ABOUT_BLANK),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -78,39 +78,39 @@ void javascriptCodeEvaluation() {
           ),
         ),
       );
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoaded.future;
 
       await controller.evaluateJavascript(
         source: "var foo = 49;",
-        contentWorld: ContentWorld.world(name: "custom-world"),
+        contentWorld: CygnusContentWorld.world(name: "custom-world"),
       );
       var result = await controller.evaluateJavascript(source: "foo");
       expect(result, isNull);
 
       result = await controller.evaluateJavascript(
         source: "foo",
-        contentWorld: ContentWorld.world(name: "custom-world"),
+        contentWorld: CygnusContentWorld.world(name: "custom-world"),
       );
       expect(result, 49);
     }, skip: shouldSkipTest2);
 
-    final shouldSkipTest3 = !InAppWebViewController.isMethodSupported(
-      PlatformInAppWebViewControllerMethod.callAsyncJavaScript,
+    final shouldSkipTest3 = !CygnusWebViewController.isMethodSupported(
+      CygnusPlatformWebViewControllerMethod.callAsyncJavaScript,
     );
 
     skippableTestWidgets('callAsyncJavaScript', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_URL_ABOUT_BLANK),
+            initialUrlRequest: CygnusURLRequest(url: TEST_URL_ABOUT_BLANK),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -120,7 +120,7 @@ void javascriptCodeEvaluation() {
           ),
         ),
       );
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoaded.future;
 
@@ -155,23 +155,23 @@ void javascriptCodeEvaluation() {
       expect(result.error, 'error message');
     }, skip: shouldSkipTest3);
 
-    final shouldSkipTest4 = !InAppWebViewController.isMethodSupported(
-      PlatformInAppWebViewControllerMethod.callAsyncJavaScript,
+    final shouldSkipTest4 = !CygnusWebViewController.isMethodSupported(
+      CygnusPlatformWebViewControllerMethod.callAsyncJavaScript,
     );
 
     skippableTestWidgets('callAsyncJavaScript with content world', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_URL_ABOUT_BLANK),
+            initialUrlRequest: CygnusURLRequest(url: TEST_URL_ABOUT_BLANK),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -181,13 +181,13 @@ void javascriptCodeEvaluation() {
           ),
         ),
       );
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoaded.future;
 
       await controller.callAsyncJavaScript(
         functionBody: "window.foo = 49;",
-        contentWorld: ContentWorld.world(name: "custom-world"),
+        contentWorld: CygnusContentWorld.world(name: "custom-world"),
       );
       var result = await controller.callAsyncJavaScript(
         functionBody: "return window.foo;",
@@ -198,7 +198,7 @@ void javascriptCodeEvaluation() {
 
       result = await controller.callAsyncJavaScript(
         functionBody: "return window.foo;",
-        contentWorld: ContentWorld.world(name: "custom-world"),
+        contentWorld: CygnusContentWorld.world(name: "custom-world"),
       );
       expect(result, isNotNull);
       expect(result!.error, isNull);

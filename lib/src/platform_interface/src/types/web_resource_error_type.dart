@@ -5,13 +5,13 @@ part 'web_resource_error_type.g.dart';
 
 ///Class that represents the error types returned by URL loading APIs.
 @ExchangeableEnum()
-class WebResourceErrorType_ {
+class CygnusWebResourceErrorType_ {
   // ignore: unused_field
   final String _value;
   // ignore: unused_field
   final int? _nativeValue = null;
 
-  const WebResourceErrorType_._internal(this._value);
+  const CygnusWebResourceErrorType_._internal(this._value);
 
   ///User authentication failed on server.
   @EnumSupportedPlatforms(
@@ -24,7 +24,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const USER_AUTHENTICATION_FAILED = WebResourceErrorType_._internal(
+  static const USER_AUTHENTICATION_FAILED = CygnusWebResourceErrorType_._internal(
     "USER_AUTHENTICATION_FAILED",
   );
 
@@ -51,7 +51,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const BAD_URL = WebResourceErrorType_._internal("BAD_URL");
+  static const BAD_URL = CygnusWebResourceErrorType_._internal("BAD_URL");
 
   ///Failed to connect to the server.
   @EnumSupportedPlatforms(
@@ -88,7 +88,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANNOT_CONNECT_TO_HOST = WebResourceErrorType_._internal(
+  static const CANNOT_CONNECT_TO_HOST = CygnusWebResourceErrorType_._internal(
     "CANNOT_CONNECT_TO_HOST",
   );
 
@@ -103,7 +103,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const FAILED_SSL_HANDSHAKE = WebResourceErrorType_._internal(
+  static const FAILED_SSL_HANDSHAKE = CygnusWebResourceErrorType_._internal(
     "FAILED_SSL_HANDSHAKE",
   );
 
@@ -118,7 +118,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const GENERIC_FILE_ERROR = WebResourceErrorType_._internal(
+  static const GENERIC_FILE_ERROR = CygnusWebResourceErrorType_._internal(
     "GENERIC_FILE_ERROR",
   );
 
@@ -151,7 +151,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const FILE_NOT_FOUND = WebResourceErrorType_._internal(
+  static const FILE_NOT_FOUND = CygnusWebResourceErrorType_._internal(
     "FILE_NOT_FOUND",
   );
 
@@ -184,7 +184,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const HOST_LOOKUP = WebResourceErrorType_._internal("HOST_LOOKUP");
+  static const HOST_LOOKUP = CygnusWebResourceErrorType_._internal("HOST_LOOKUP");
 
   ///Failed to read or write to the server.
   @EnumSupportedPlatforms(
@@ -197,7 +197,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const IO = WebResourceErrorType_._internal("IO");
+  static const IO = CygnusWebResourceErrorType_._internal("IO");
 
   ///User authentication failed on proxy.
   @EnumSupportedPlatforms(
@@ -210,7 +210,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const PROXY_AUTHENTICATION = WebResourceErrorType_._internal(
+  static const PROXY_AUTHENTICATION = CygnusWebResourceErrorType_._internal(
     "PROXY_AUTHENTICATION",
   );
 
@@ -237,7 +237,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const TOO_MANY_REDIRECTS = WebResourceErrorType_._internal(
+  static const TOO_MANY_REDIRECTS = CygnusWebResourceErrorType_._internal(
     "TOO_MANY_REDIRECTS",
   );
 
@@ -270,7 +270,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const TIMEOUT = WebResourceErrorType_._internal("TIMEOUT");
+  static const TIMEOUT = CygnusWebResourceErrorType_._internal("TIMEOUT");
 
   ///Too many requests during this load.
   @EnumSupportedPlatforms(
@@ -283,7 +283,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const TOO_MANY_REQUESTS = WebResourceErrorType_._internal(
+  static const TOO_MANY_REQUESTS = CygnusWebResourceErrorType_._internal(
     "TOO_MANY_REQUESTS",
   );
 
@@ -322,7 +322,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const UNKNOWN = WebResourceErrorType_._internal("UNKNOWN");
+  static const UNKNOWN = CygnusWebResourceErrorType_._internal("UNKNOWN");
 
   ///Resource load was canceled by Safe Browsing.
   @EnumSupportedPlatforms(
@@ -335,7 +335,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const UNSAFE_RESOURCE = WebResourceErrorType_._internal(
+  static const UNSAFE_RESOURCE = CygnusWebResourceErrorType_._internal(
     "UNSAFE_RESOURCE",
   );
 
@@ -350,7 +350,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const UNSUPPORTED_AUTH_SCHEME = WebResourceErrorType_._internal(
+  static const UNSUPPORTED_AUTH_SCHEME = CygnusWebResourceErrorType_._internal(
     "UNSUPPORTED_AUTH_SCHEME",
   );
 
@@ -384,7 +384,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const UNSUPPORTED_SCHEME = WebResourceErrorType_._internal(
+  static const UNSUPPORTED_SCHEME = CygnusWebResourceErrorType_._internal(
     "UNSUPPORTED_SCHEME",
   );
 
@@ -417,7 +417,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANCELLED = WebResourceErrorType_._internal("CANCELLED");
+  static const CANCELLED = CygnusWebResourceErrorType_._internal("CANCELLED");
 
   ///A client or server connection was severed in the middle of an in-progress load.
   @EnumSupportedPlatforms(
@@ -442,7 +442,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const NETWORK_CONNECTION_LOST = WebResourceErrorType_._internal(
+  static const NETWORK_CONNECTION_LOST = CygnusWebResourceErrorType_._internal(
     "NETWORK_CONNECTION_LOST",
   );
 
@@ -464,7 +464,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const RESOURCE_UNAVAILABLE = WebResourceErrorType_._internal(
+  static const RESOURCE_UNAVAILABLE = CygnusWebResourceErrorType_._internal(
     "RESOURCE_UNAVAILABLE",
   );
 
@@ -485,7 +485,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const NOT_CONNECTED_TO_INTERNET = WebResourceErrorType_._internal(
+  static const NOT_CONNECTED_TO_INTERNET = CygnusWebResourceErrorType_._internal(
     "NOT_CONNECTED_TO_INTERNET",
   );
 
@@ -507,7 +507,7 @@ class WebResourceErrorType_ {
     ],
   )
   static const REDIRECT_TO_NON_EXISTENT_LOCATION =
-      WebResourceErrorType_._internal("REDIRECT_TO_NON_EXISTENT_LOCATION");
+      CygnusWebResourceErrorType_._internal("REDIRECT_TO_NON_EXISTENT_LOCATION");
 
   ///The URL Loading System received bad data from the server.
   @EnumSupportedPlatforms(
@@ -533,7 +533,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const BAD_SERVER_RESPONSE = WebResourceErrorType_._internal(
+  static const BAD_SERVER_RESPONSE = CygnusWebResourceErrorType_._internal(
     "BAD_SERVER_RESPONSE",
   );
 
@@ -555,7 +555,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const USER_CANCELLED_AUTHENTICATION = WebResourceErrorType_._internal(
+  static const USER_CANCELLED_AUTHENTICATION = CygnusWebResourceErrorType_._internal(
     "USER_CANCELLED_AUTHENTICATION",
   );
 
@@ -583,7 +583,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const USER_AUTHENTICATION_REQUIRED = WebResourceErrorType_._internal(
+  static const USER_AUTHENTICATION_REQUIRED = CygnusWebResourceErrorType_._internal(
     "USER_AUTHENTICATION_REQUIRED",
   );
 
@@ -604,7 +604,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const ZERO_BYTE_RESOURCE = WebResourceErrorType_._internal(
+  static const ZERO_BYTE_RESOURCE = CygnusWebResourceErrorType_._internal(
     "ZERO_BYTE_RESOURCE",
   );
 
@@ -625,7 +625,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANNOT_DECODE_RAW_DATA = WebResourceErrorType_._internal(
+  static const CANNOT_DECODE_RAW_DATA = CygnusWebResourceErrorType_._internal(
     "CANNOT_DECODE_RAW_DATA",
   );
 
@@ -646,7 +646,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANNOT_DECODE_CONTENT_DATA = WebResourceErrorType_._internal(
+  static const CANNOT_DECODE_CONTENT_DATA = CygnusWebResourceErrorType_._internal(
     "CANNOT_DECODE_CONTENT_DATA",
   );
 
@@ -667,7 +667,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANNOT_PARSE_RESPONSE = WebResourceErrorType_._internal(
+  static const CANNOT_PARSE_RESPONSE = CygnusWebResourceErrorType_._internal(
     "CANNOT_PARSE_RESPONSE",
   );
 
@@ -689,7 +689,7 @@ class WebResourceErrorType_ {
     ],
   )
   static const APP_TRANSPORT_SECURITY_REQUIRES_SECURE_CONNECTION =
-      WebResourceErrorType_._internal(
+      CygnusWebResourceErrorType_._internal(
         "APP_TRANSPORT_SECURITY_REQUIRES_SECURE_CONNECTION",
       );
 
@@ -710,7 +710,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const FILE_IS_DIRECTORY = WebResourceErrorType_._internal(
+  static const FILE_IS_DIRECTORY = CygnusWebResourceErrorType_._internal(
     "FILE_IS_DIRECTORY",
   );
 
@@ -731,7 +731,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const NO_PERMISSIONS_TO_READ_FILE = WebResourceErrorType_._internal(
+  static const NO_PERMISSIONS_TO_READ_FILE = CygnusWebResourceErrorType_._internal(
     "NO_PERMISSIONS_TO_READ_FILE",
   );
 
@@ -752,7 +752,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const DATA_LENGTH_EXCEEDS_MAXIMUM = WebResourceErrorType_._internal(
+  static const DATA_LENGTH_EXCEEDS_MAXIMUM = CygnusWebResourceErrorType_._internal(
     "DATA_LENGTH_EXCEEDS_MAXIMUM",
   );
 
@@ -778,7 +778,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const SECURE_CONNECTION_FAILED = WebResourceErrorType_._internal(
+  static const SECURE_CONNECTION_FAILED = CygnusWebResourceErrorType_._internal(
     "SECURE_CONNECTION_FAILED",
   );
 
@@ -805,7 +805,7 @@ class WebResourceErrorType_ {
     ],
   )
   static const SERVER_CERTIFICATE_HAS_BAD_DATE =
-      WebResourceErrorType_._internal("SERVER_CERTIFICATE_HAS_BAD_DATE");
+      CygnusWebResourceErrorType_._internal("SERVER_CERTIFICATE_HAS_BAD_DATE");
 
   ///A server certificate was signed by a root server that isn’t trusted.
   @EnumSupportedPlatforms(
@@ -829,7 +829,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const SERVER_CERTIFICATE_UNTRUSTED = WebResourceErrorType_._internal(
+  static const SERVER_CERTIFICATE_UNTRUSTED = CygnusWebResourceErrorType_._internal(
     "SERVER_CERTIFICATE_UNTRUSTED",
   );
 
@@ -851,7 +851,7 @@ class WebResourceErrorType_ {
     ],
   )
   static const SERVER_CERTIFICATE_HAS_UNKNOWN_ROOT =
-      WebResourceErrorType_._internal("SERVER_CERTIFICATE_HAS_UNKNOWN_ROOT");
+      CygnusWebResourceErrorType_._internal("SERVER_CERTIFICATE_HAS_UNKNOWN_ROOT");
 
   ///A server certificate is not yet valid.
   @EnumSupportedPlatforms(
@@ -876,7 +876,7 @@ class WebResourceErrorType_ {
     ],
   )
   static const SERVER_CERTIFICATE_NOT_YET_VALID =
-      WebResourceErrorType_._internal("SERVER_CERTIFICATE_NOT_YET_VALID");
+      CygnusWebResourceErrorType_._internal("SERVER_CERTIFICATE_NOT_YET_VALID");
 
   ///A server certificate was rejected.
   @EnumSupportedPlatforms(
@@ -895,7 +895,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CLIENT_CERTIFICATE_REJECTED = WebResourceErrorType_._internal(
+  static const CLIENT_CERTIFICATE_REJECTED = CygnusWebResourceErrorType_._internal(
     "CLIENT_CERTIFICATE_REJECTED",
   );
 
@@ -916,7 +916,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CLIENT_CERTIFICATE_REQUIRED = WebResourceErrorType_._internal(
+  static const CLIENT_CERTIFICATE_REQUIRED = CygnusWebResourceErrorType_._internal(
     "CLIENT_CERTIFICATE_REQUIRED",
   );
 
@@ -937,7 +937,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANNOT_LOAD_FROM_NETWORK = WebResourceErrorType_._internal(
+  static const CANNOT_LOAD_FROM_NETWORK = CygnusWebResourceErrorType_._internal(
     "CANNOT_LOAD_FROM_NETWORK",
   );
 
@@ -958,7 +958,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANNOT_CREATE_FILE = WebResourceErrorType_._internal(
+  static const CANNOT_CREATE_FILE = CygnusWebResourceErrorType_._internal(
     "CANNOT_CREATE_FILE",
   );
 
@@ -979,7 +979,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANNOT_OPEN_FILE = WebResourceErrorType_._internal(
+  static const CANNOT_OPEN_FILE = CygnusWebResourceErrorType_._internal(
     "CANNOT_OPEN_FILE",
   );
 
@@ -1000,7 +1000,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANNOT_CLOSE_FILE = WebResourceErrorType_._internal(
+  static const CANNOT_CLOSE_FILE = CygnusWebResourceErrorType_._internal(
     "CANNOT_CLOSE_FILE",
   );
 
@@ -1021,7 +1021,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANNOT_WRITE_TO_FILE = WebResourceErrorType_._internal(
+  static const CANNOT_WRITE_TO_FILE = CygnusWebResourceErrorType_._internal(
     "CANNOT_WRITE_TO_FILE",
   );
 
@@ -1042,7 +1042,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANNOT_REMOVE_FILE = WebResourceErrorType_._internal(
+  static const CANNOT_REMOVE_FILE = CygnusWebResourceErrorType_._internal(
     "CANNOT_REMOVE_FILE",
   );
 
@@ -1063,7 +1063,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANNOT_MOVE_FILE = WebResourceErrorType_._internal(
+  static const CANNOT_MOVE_FILE = CygnusWebResourceErrorType_._internal(
     "CANNOT_MOVE_FILE",
   );
 
@@ -1085,7 +1085,7 @@ class WebResourceErrorType_ {
     ],
   )
   static const DOWNLOAD_DECODING_FAILED_MID_STREAM =
-      WebResourceErrorType_._internal("DOWNLOAD_DECODING_FAILED_MID_STREAM");
+      CygnusWebResourceErrorType_._internal("DOWNLOAD_DECODING_FAILED_MID_STREAM");
 
   ///A download task failed to decode an encoded file after downloading.
   @EnumSupportedPlatforms(
@@ -1105,7 +1105,7 @@ class WebResourceErrorType_ {
     ],
   )
   static const DOWNLOAD_DECODING_FAILED_TO_COMPLETE =
-      WebResourceErrorType_._internal("DOWNLOAD_DECODING_FAILED_TO_COMPLETE");
+      CygnusWebResourceErrorType_._internal("DOWNLOAD_DECODING_FAILED_TO_COMPLETE");
 
   ///The attempted connection required activating a data context while roaming, but international roaming is disabled.
   @EnumSupportedPlatforms(
@@ -1124,7 +1124,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const INTERNATIONAL_ROAMING_OFF = WebResourceErrorType_._internal(
+  static const INTERNATIONAL_ROAMING_OFF = CygnusWebResourceErrorType_._internal(
     "INTERNATIONAL_ROAMING_OFF",
   );
 
@@ -1145,7 +1145,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CALL_IS_ACTIVE = WebResourceErrorType_._internal(
+  static const CALL_IS_ACTIVE = CygnusWebResourceErrorType_._internal(
     "CALL_IS_ACTIVE",
   );
 
@@ -1166,7 +1166,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const DATA_NOT_ALLOWED = WebResourceErrorType_._internal(
+  static const DATA_NOT_ALLOWED = CygnusWebResourceErrorType_._internal(
     "DATA_NOT_ALLOWED",
   );
 
@@ -1187,7 +1187,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const REQUEST_BODY_STREAM_EXHAUSTED = WebResourceErrorType_._internal(
+  static const REQUEST_BODY_STREAM_EXHAUSTED = CygnusWebResourceErrorType_._internal(
     "REQUEST_BODY_STREAM_EXHAUSTED",
   );
 
@@ -1209,7 +1209,7 @@ class WebResourceErrorType_ {
     ],
   )
   static const BACKGROUND_SESSION_REQUIRES_SHARED_CONTAINER =
-      WebResourceErrorType_._internal(
+      CygnusWebResourceErrorType_._internal(
         "BACKGROUND_SESSION_REQUIRES_SHARED_CONTAINER",
       );
 
@@ -1231,7 +1231,7 @@ class WebResourceErrorType_ {
     ],
   )
   static const BACKGROUND_SESSION_IN_USE_BY_ANOTHER_PROCESS =
-      WebResourceErrorType_._internal(
+      CygnusWebResourceErrorType_._internal(
         "BACKGROUND_SESSION_IN_USE_BY_ANOTHER_PROCESS",
       );
 
@@ -1253,7 +1253,7 @@ class WebResourceErrorType_ {
     ],
   )
   static const BACKGROUND_SESSION_WAS_DISCONNECTED =
-      WebResourceErrorType_._internal("BACKGROUND_SESSION_WAS_DISCONNECTED");
+      CygnusWebResourceErrorType_._internal("BACKGROUND_SESSION_WAS_DISCONNECTED");
 
   ///Indicates that the host is unreachable.
   @EnumSupportedPlatforms(
@@ -1266,7 +1266,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const SERVER_UNREACHABLE = WebResourceErrorType_._internal(
+  static const SERVER_UNREACHABLE = CygnusWebResourceErrorType_._internal(
     "SERVER_UNREACHABLE",
   );
 
@@ -1281,7 +1281,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CONNECTION_ABORTED = WebResourceErrorType_._internal(
+  static const CONNECTION_ABORTED = CygnusWebResourceErrorType_._internal(
     "CONNECTION_ABORTED",
   );
 
@@ -1296,7 +1296,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const RESET = WebResourceErrorType_._internal("RESET");
+  static const RESET = CygnusWebResourceErrorType_._internal("RESET");
 
   ///Indicates that the request redirect failed.
   @EnumSupportedPlatforms(
@@ -1309,7 +1309,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const REDIRECT_FAILED = WebResourceErrorType_._internal(
+  static const REDIRECT_FAILED = CygnusWebResourceErrorType_._internal(
     "REDIRECT_FAILED",
   );
 
@@ -1324,7 +1324,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const UNEXPECTED_ERROR = WebResourceErrorType_._internal(
+  static const UNEXPECTED_ERROR = CygnusWebResourceErrorType_._internal(
     "UNEXPECTED_ERROR",
   );
 
@@ -1341,7 +1341,7 @@ class WebResourceErrorType_ {
     ],
   )
   static const VALID_PROXY_AUTHENTICATION_REQUIRED =
-      WebResourceErrorType_._internal("VALID_PROXY_AUTHENTICATION_REQUIRED");
+      CygnusWebResourceErrorType_._internal("VALID_PROXY_AUTHENTICATION_REQUIRED");
 
   ///Generic policy error.
   @EnumSupportedPlatforms(
@@ -1354,7 +1354,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const POLICY_FAILED = WebResourceErrorType_._internal("POLICY_FAILED");
+  static const POLICY_FAILED = CygnusWebResourceErrorType_._internal("POLICY_FAILED");
 
   ///The MIME type of the resource is not supported.
   @EnumSupportedPlatforms(
@@ -1367,7 +1367,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANNOT_SHOW_MIME_TYPE = WebResourceErrorType_._internal(
+  static const CANNOT_SHOW_MIME_TYPE = CygnusWebResourceErrorType_._internal(
     "CANNOT_SHOW_MIME_TYPE",
   );
 
@@ -1382,7 +1382,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANNOT_SHOW_URI = WebResourceErrorType_._internal(
+  static const CANNOT_SHOW_URI = CygnusWebResourceErrorType_._internal(
     "CANNOT_SHOW_URI",
   );
 
@@ -1398,7 +1398,7 @@ class WebResourceErrorType_ {
     ],
   )
   static const FRAME_LOAD_INTERRUPTED_BY_POLICY_CHANGE =
-      WebResourceErrorType_._internal(
+      CygnusWebResourceErrorType_._internal(
         "FRAME_LOAD_INTERRUPTED_BY_POLICY_CHANGE",
       );
 
@@ -1413,7 +1413,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const CANNOT_USE_RESTRICTED_PORT = WebResourceErrorType_._internal(
+  static const CANNOT_USE_RESTRICTED_PORT = CygnusWebResourceErrorType_._internal(
     "CANNOT_USE_RESTRICTED_PORT",
   );
 
@@ -1428,7 +1428,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const DOWNLOAD_NETWORK_FAILED = WebResourceErrorType_._internal(
+  static const DOWNLOAD_NETWORK_FAILED = CygnusWebResourceErrorType_._internal(
     "DOWNLOAD_NETWORK_FAILED",
   );
 
@@ -1443,7 +1443,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const DOWNLOAD_CANCELLED_BY_USER = WebResourceErrorType_._internal(
+  static const DOWNLOAD_CANCELLED_BY_USER = CygnusWebResourceErrorType_._internal(
     "DOWNLOAD_CANCELLED_BY_USER",
   );
 
@@ -1458,7 +1458,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const DOWNLOAD_DESTINATION_FAILED = WebResourceErrorType_._internal(
+  static const DOWNLOAD_DESTINATION_FAILED = CygnusWebResourceErrorType_._internal(
     "DOWNLOAD_DESTINATION_FAILED",
   );
 
@@ -1473,7 +1473,7 @@ class WebResourceErrorType_ {
     ],
   )
   static const SERVER_CERTIFICATE_BAD_IDENTITY =
-      WebResourceErrorType_._internal("SERVER_CERTIFICATE_BAD_IDENTITY");
+      CygnusWebResourceErrorType_._internal("SERVER_CERTIFICATE_BAD_IDENTITY");
 
   ///The certificate has been revoked.
   @EnumSupportedPlatforms(
@@ -1485,7 +1485,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const SERVER_CERTIFICATE_REVOKED = WebResourceErrorType_._internal(
+  static const SERVER_CERTIFICATE_REVOKED = CygnusWebResourceErrorType_._internal(
     "SERVER_CERTIFICATE_REVOKED",
   );
 
@@ -1499,7 +1499,7 @@ class WebResourceErrorType_ {
       ),
     ],
   )
-  static const TLS_CERTIFICATE_GENERIC_ERROR = WebResourceErrorType_._internal(
+  static const TLS_CERTIFICATE_GENERIC_ERROR = CygnusWebResourceErrorType_._internal(
     "TLS_CERTIFICATE_GENERIC_ERROR",
   );
 }

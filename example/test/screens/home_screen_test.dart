@@ -30,7 +30,7 @@ void main() {
     testWidgets('renders app title in AppBar', (WidgetTester tester) async {
       await tester.pumpWidget(createTestWidget());
 
-      expect(find.text('InAppWebView Test Suite'), findsOneWidget);
+      expect(find.text('CygnusWebView Test Suite'), findsOneWidget);
     });
 
     testWidgets('displays 6 category cards', (WidgetTester tester) async {
@@ -40,7 +40,7 @@ void main() {
       expect(find.text('Navigation'), findsOneWidget);
       expect(find.text('JavaScript'), findsOneWidget);
       expect(find.text('Content'), findsOneWidget);
-      expect(find.text('Storage & Cookies'), findsOneWidget);
+      expect(find.text('CygnusStorage & Cookies'), findsOneWidget);
       expect(find.text('Advanced Features'), findsOneWidget);
       expect(find.text('Browsers'), findsOneWidget);
     });
@@ -93,7 +93,7 @@ void main() {
       expect(find.byIcon(Icons.code), findsOneWidget);
       // Content icon
       expect(find.byIcon(Icons.article), findsOneWidget);
-      // Storage icon
+      // CygnusStorage icon
       expect(find.byIcon(Icons.storage), findsOneWidget);
       // Advanced icon
       expect(find.byIcon(Icons.settings), findsOneWidget);

@@ -6,8 +6,8 @@ part of 'download_start_request.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class representing a download request of the WebView used by the event [PlatformWebViewCreationParams.onDownloadStartRequest].
-class DownloadStartRequest {
+///Class representing a download request of the WebView used by the event [CygnusPlatformWebViewCreationParams.onDownloadStartRequest].
+class CygnusDownloadStartRequest {
   ///Content-disposition http header, if present.
   ///
   ///**Officially Supported Platforms/Implementations**:
@@ -57,14 +57,14 @@ class DownloadStartRequest {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  WebUri url;
+  CygnusWebUri url;
 
   ///the user agent to be used for the download.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   String? userAgent;
-  DownloadStartRequest({
+  CygnusDownloadStartRequest({
     this.contentDisposition,
     required this.contentLength,
     this.mimeType,
@@ -74,28 +74,28 @@ class DownloadStartRequest {
     this.userAgent,
   });
 
-  ///Gets a possible [DownloadStartRequest] instance from a [Map] value.
-  static DownloadStartRequest? fromMap(
+  ///Gets a possible [CygnusDownloadStartRequest] instance from a [Map] value.
+  static CygnusDownloadStartRequest? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = DownloadStartRequest(
+    final instance = CygnusDownloadStartRequest(
       contentDisposition: map['contentDisposition'],
       contentLength: map['contentLength'],
       mimeType: map['mimeType'],
       suggestedFilename: map['suggestedFilename'],
       textEncodingName: map['textEncodingName'],
-      url: WebUri(map['url']),
+      url: CygnusWebUri(map['url']),
       userAgent: map['userAgent'],
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "contentDisposition": contentDisposition,
       "contentLength": contentLength,
@@ -114,6 +114,6 @@ class DownloadStartRequest {
 
   @override
   String toString() {
-    return 'DownloadStartRequest{contentDisposition: $contentDisposition, contentLength: $contentLength, mimeType: $mimeType, suggestedFilename: $suggestedFilename, textEncodingName: $textEncodingName, url: $url, userAgent: $userAgent}';
+    return 'CygnusDownloadStartRequest{contentDisposition: $contentDisposition, contentLength: $contentLength, mimeType: $mimeType, suggestedFilename: $suggestedFilename, textEncodingName: $textEncodingName, url: $url, userAgent: $userAgent}';
   }
 }

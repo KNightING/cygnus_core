@@ -7,15 +7,15 @@ part of 'compress_format.dart';
 // **************************************************************************
 
 ///Class that represents the known formats a bitmap can be compressed into.
-class CompressFormat {
+class CygnusCompressFormat {
   final String _value;
   final String? _nativeValue;
-  const CompressFormat._internal(this._value, this._nativeValue);
+  const CygnusCompressFormat._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory CompressFormat._internalMultiPlatform(
+  factory CygnusCompressFormat._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => CompressFormat._internal(value, nativeValue());
+  ) => CygnusCompressFormat._internal(value, nativeValue());
 
   ///Compress to the `JPEG` format.
   ///Quality of `0` means compress for the smallest size.
@@ -26,7 +26,7 @@ class CompressFormat {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  static final JPEG = CompressFormat._internalMultiPlatform('JPEG', () {
+  static final JPEG = CygnusCompressFormat._internalMultiPlatform('JPEG', () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return 'JPEG';
@@ -50,7 +50,7 @@ class CompressFormat {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  static final PNG = CompressFormat._internalMultiPlatform('PNG', () {
+  static final PNG = CygnusCompressFormat._internalMultiPlatform('PNG', () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return 'PNG';
@@ -73,7 +73,7 @@ class CompressFormat {
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- Windows WebView2
-  static final WEBP = CompressFormat._internalMultiPlatform('WEBP', () {
+  static final WEBP = CygnusCompressFormat._internalMultiPlatform('WEBP', () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return 'WEBP';
@@ -92,7 +92,7 @@ class CompressFormat {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 30+
-  static final WEBP_LOSSLESS = CompressFormat._internalMultiPlatform(
+  static final WEBP_LOSSLESS = CygnusCompressFormat._internalMultiPlatform(
     'WEBP_LOSSLESS',
     () {
       switch (defaultTargetPlatform) {
@@ -111,7 +111,7 @@ class CompressFormat {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 30+
-  static final WEBP_LOSSY = CompressFormat._internalMultiPlatform(
+  static final WEBP_LOSSY = CygnusCompressFormat._internalMultiPlatform(
     'WEBP_LOSSY',
     () {
       switch (defaultTargetPlatform) {
@@ -124,20 +124,20 @@ class CompressFormat {
     },
   );
 
-  ///Set of all values of [CompressFormat].
-  static final Set<CompressFormat> values = [
-    CompressFormat.JPEG,
-    CompressFormat.PNG,
-    CompressFormat.WEBP,
-    CompressFormat.WEBP_LOSSLESS,
-    CompressFormat.WEBP_LOSSY,
+  ///Set of all values of [CygnusCompressFormat].
+  static final Set<CygnusCompressFormat> values = [
+    CygnusCompressFormat.JPEG,
+    CygnusCompressFormat.PNG,
+    CygnusCompressFormat.WEBP,
+    CygnusCompressFormat.WEBP_LOSSLESS,
+    CygnusCompressFormat.WEBP_LOSSY,
   ].toSet();
 
-  ///Gets a possible [CompressFormat] instance from [String] value.
-  static CompressFormat? fromValue(String? value) {
+  ///Gets a possible [CygnusCompressFormat] instance from [String] value.
+  static CygnusCompressFormat? fromValue(String? value) {
     if (value != null) {
       try {
-        return CompressFormat.values.firstWhere(
+        return CygnusCompressFormat.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -147,11 +147,11 @@ class CompressFormat {
     return null;
   }
 
-  ///Gets a possible [CompressFormat] instance from a native value.
-  static CompressFormat? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusCompressFormat] instance from a native value.
+  static CygnusCompressFormat? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return CompressFormat.values.firstWhere(
+        return CygnusCompressFormat.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -161,15 +161,15 @@ class CompressFormat {
     return null;
   }
 
-  /// Gets a possible [CompressFormat] instance value with name [name].
+  /// Gets a possible [CygnusCompressFormat] instance value with name [name].
   ///
-  /// Goes through [CompressFormat.values] looking for a value with
-  /// name [name], as reported by [CompressFormat.name].
+  /// Goes through [CygnusCompressFormat.values] looking for a value with
+  /// name [name], as reported by [CygnusCompressFormat.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static CompressFormat? byName(String? name) {
+  static CygnusCompressFormat? byName(String? name) {
     if (name != null) {
       try {
-        return CompressFormat.values.firstWhere(
+        return CygnusCompressFormat.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -179,7 +179,7 @@ class CompressFormat {
     return null;
   }
 
-  /// Creates a map from the names of [CompressFormat] values to the values.
+  /// Creates a map from the names of [CygnusCompressFormat] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -187,9 +187,10 @@ class CompressFormat {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, CompressFormat> asNameMap() => <String, CompressFormat>{
-    for (final value in CompressFormat.values) value.name(): value,
-  };
+  static Map<String, CygnusCompressFormat> asNameMap() =>
+      <String, CygnusCompressFormat>{
+        for (final value in CygnusCompressFormat.values) value.name(): value,
+      };
 
   ///Gets [String] value.
   String toValue() => _value;

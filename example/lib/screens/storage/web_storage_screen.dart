@@ -9,7 +9,7 @@ import 'package:flutter_inappwebview_example/utils/support_checker.dart';
 import 'package:flutter_inappwebview_example/widgets/common/parameter_dialog.dart';
 import 'package:flutter_inappwebview_example/widgets/common/method_result_history.dart';
 
-/// Screen for testing WebStorage (localStorage and sessionStorage) functionality
+/// Screen for testing CygnusWebStorage (localStorage and sessionStorage) functionality
 class WebStorageScreen extends StatefulWidget {
   const WebStorageScreen({super.key});
 
@@ -20,7 +20,7 @@ class WebStorageScreen extends StatefulWidget {
 class _WebStorageScreenState extends State<WebStorageScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  InAppWebViewController? _webViewController;
+  CygnusWebViewController? _webViewController;
   bool _isLoading = false;
   bool _webViewReady = false;
   double _webViewHeight = 140;
@@ -28,18 +28,18 @@ class _WebStorageScreenState extends State<WebStorageScreen>
   static const double _minContentHeight = 260;
   static const double _dividerHeight = 6;
 
-  // LocalStorage state
-  List<WebStorageItem> _localStorageItems = [];
+  // CygnusLocalStorage state
+  List<CygnusWebStorageItem> _localStorageItems = [];
   int? _localStorageLength;
 
-  // SessionStorage state
-  List<WebStorageItem> _sessionStorageItems = [];
+  // CygnusSessionStorage state
+  List<CygnusWebStorageItem> _sessionStorageItems = [];
   int? _sessionStorageLength;
 
-  // WebStorageManager state
-  final WebStorageManager _webStorageManager = WebStorageManager.instance();
-  List<WebStorageOrigin> _webStorageOrigins = [];
-  List<WebsiteDataRecord> _dataRecords = [];
+  // CygnusWebStorageManager state
+  final CygnusWebStorageManager _webStorageManager = CygnusWebStorageManager.instance();
+  List<CygnusWebStorageOrigin> _webStorageOrigins = [];
+  List<CygnusWebsiteDataRecord> _dataRecords = [];
 
   final TextEditingController _urlController = TextEditingController(
     text: 'https://example.com',
@@ -67,21 +67,21 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     super.dispose();
   }
 
-  WebStorage? get _webStorage => _webViewController?.webStorage;
-  LocalStorage? get _localStorage => _webStorage?.localStorage;
-  SessionStorage? get _sessionStorage => _webStorage?.sessionStorage;
+  CygnusWebStorage? get _webStorage => _webViewController?.webStorage;
+  CygnusLocalStorage? get _localStorage => _webStorage?.localStorage;
+  CygnusSessionStorage? get _sessionStorage => _webStorage?.sessionStorage;
 
   bool get _isLocalStorageTab => _tabController.index == 0;
 
   String get _activeStorageTypeName =>
-      _isLocalStorageTab ? '$LocalStorage' : '$SessionStorage';
+      _isLocalStorageTab ? '$CygnusLocalStorage' : '$CygnusSessionStorage';
 
   String _storageMethodKey(String methodName) {
     return '$_activeStorageTypeName.$methodName';
   }
 
-  String _managerMethodKey(PlatformWebStorageManagerMethod method) {
-    return '$WebStorageManager.${method.name}';
+  String _managerMethodKey(CygnusPlatformWebStorageManagerMethod method) {
+    return '$CygnusWebStorageManager.${method.name}';
   }
 
   Set<SupportedPlatform> _getStorageMethodPlatforms(
@@ -89,21 +89,21 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     required bool isLocal,
   }) {
     if (isLocal) {
-      final method = PlatformLocalStorageMethod.values.firstWhere(
+      final method = CygnusPlatformLocalStorageMethod.values.firstWhere(
         (m) => m.name == methodName,
       );
       return SupportCheckHelper.supportedPlatformsForMethod(
         method: method,
-        checker: LocalStorage.isMethodSupported,
+        checker: CygnusLocalStorage.isMethodSupported,
       );
     }
 
-    final method = PlatformSessionStorageMethod.values.firstWhere(
+    final method = CygnusPlatformSessionStorageMethod.values.firstWhere(
       (m) => m.name == methodName,
     );
     return SupportCheckHelper.supportedPlatformsForMethod(
       method: method,
-      checker: SessionStorage.isMethodSupported,
+      checker: CygnusSessionStorage.isMethodSupported,
     );
   }
 
@@ -111,7 +111,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     final url = _urlController.text.trim();
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.loadUrl.name,
+        CygnusPlatformWebViewControllerMethod.loadUrl.name,
         'Please enter a URL',
         isError: true,
       );
@@ -120,11 +120,11 @@ class _WebStorageScreenState extends State<WebStorageScreen>
 
     try {
       await _webViewController?.loadUrl(
-        urlRequest: URLRequest(url: WebUri(url)),
+        urlRequest: CygnusURLRequest(url: CygnusWebUri(url)),
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.loadUrl.name,
+        CygnusPlatformWebViewControllerMethod.loadUrl.name,
         'Error loading URL: $e',
         isError: true,
       );
@@ -134,7 +134,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
   Future<void> _getLength() async {
     if (!_webViewReady) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.length.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.length.name),
         'WebView not ready. Load a page first.',
         isError: true,
       );
@@ -154,13 +154,13 @@ class _WebStorageScreenState extends State<WebStorageScreen>
         }
       });
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.length.name),
-        'Storage length: $length',
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.length.name),
+        'CygnusStorage length: $length',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.length.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.length.name),
         'Error getting length: $e',
         isError: true,
       );
@@ -172,7 +172,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
   Future<void> _getItems() async {
     if (!_webViewReady) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.getItems.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.getItems.name),
         'WebView not ready. Load a page first.',
         isError: true,
       );
@@ -194,13 +194,13 @@ class _WebStorageScreenState extends State<WebStorageScreen>
         }
       });
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.getItems.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.getItems.name),
         'Found ${items.length} items',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.getItems.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.getItems.name),
         'Error getting items: $e',
         isError: true,
       );
@@ -212,7 +212,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
   Future<void> _getItem(String key) async {
     if (!_webViewReady) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.getItem.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.getItem.name),
         'WebView not ready. Load a page first.',
         isError: true,
       );
@@ -224,13 +224,13 @@ class _WebStorageScreenState extends State<WebStorageScreen>
       final storage = _isLocalStorageTab ? _localStorage : _sessionStorage;
       final value = await storage?.getItem(key: key);
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.getItem.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.getItem.name),
         'Value for "$key": ${value ?? "null"}',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.getItem.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.getItem.name),
         'Error getting item: $e',
         isError: true,
       );
@@ -242,7 +242,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
   Future<void> _setItem() async {
     if (!_webViewReady) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.setItem.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.setItem.name),
         'WebView not ready. Load a page first.',
         isError: true,
       );
@@ -255,7 +255,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
   Future<void> _removeItem(String key) async {
     if (!_webViewReady) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.removeItem.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.removeItem.name),
         'WebView not ready. Load a page first.',
         isError: true,
       );
@@ -267,14 +267,14 @@ class _WebStorageScreenState extends State<WebStorageScreen>
       final storage = _isLocalStorageTab ? _localStorage : _sessionStorage;
       await storage?.removeItem(key: key);
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.removeItem.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.removeItem.name),
         'Item "$key" removed',
         isError: false,
       );
       await _getItems();
     } catch (e) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.removeItem.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.removeItem.name),
         'Error removing item: $e',
         isError: true,
       );
@@ -295,7 +295,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     final key = params['key']?.toString() ?? '';
     if (key.isEmpty) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.removeItem.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.removeItem.name),
         'Please enter a key',
         isError: true,
       );
@@ -307,7 +307,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
   Future<void> _clear() async {
     if (!_webViewReady) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.clear.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.clear.name),
         'WebView not ready. Load a page first.',
         isError: true,
       );
@@ -315,7 +315,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     }
 
     final confirmed = await _showConfirmDialog(
-      'Clear Storage',
+      'Clear CygnusStorage',
       'Are you sure you want to clear all $_activeStorageTypeName items?',
     );
     if (!confirmed) return;
@@ -334,13 +334,13 @@ class _WebStorageScreenState extends State<WebStorageScreen>
         }
       });
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.clear.name),
-        'Storage cleared',
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.clear.name),
+        'CygnusStorage cleared',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.clear.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.clear.name),
         'Error clearing storage: $e',
         isError: true,
       );
@@ -352,7 +352,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
   Future<void> _key(int index) async {
     if (!_webViewReady) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.key.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.key.name),
         'WebView not ready. Load a page first.',
         isError: true,
       );
@@ -364,13 +364,13 @@ class _WebStorageScreenState extends State<WebStorageScreen>
       final storage = _isLocalStorageTab ? _localStorage : _sessionStorage;
       final keyName = await storage?.key(index: index);
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.key.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.key.name),
         'Key at index $index: ${keyName ?? "null"}',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.key.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.key.name),
         'Error getting key: $e',
         isError: true,
       );
@@ -441,7 +441,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     final value = params['value']?.toString() ?? '';
     if (key.isEmpty || value.isEmpty) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.setItem.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.setItem.name),
         'Key and Value are required',
         isError: true,
       );
@@ -453,14 +453,14 @@ class _WebStorageScreenState extends State<WebStorageScreen>
       final storage = _isLocalStorageTab ? _localStorage : _sessionStorage;
       await storage?.setItem(key: key, value: value);
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.setItem.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.setItem.name),
         'Item set successfully',
         isError: false,
       );
       await _getItems();
     } catch (e) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.setItem.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.setItem.name),
         'Error setting item: $e',
         isError: true,
       );
@@ -481,7 +481,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     final index = (params['index'] as num?)?.toInt();
     if (index == null || index < 0) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.key.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.key.name),
         'Please enter a valid index',
         isError: true,
       );
@@ -502,7 +502,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     final key = params['key']?.toString() ?? '';
     if (key.isEmpty) {
       _recordMethodResult(
-        _storageMethodKey(PlatformLocalStorageMethod.getItem.name),
+        _storageMethodKey(CygnusPlatformLocalStorageMethod.getItem.name),
         'Please enter a key',
         isError: true,
       );
@@ -530,14 +530,14 @@ class _WebStorageScreenState extends State<WebStorageScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Web Storage'),
+        title: const Text('Web CygnusStorage'),
         actions: [AppBarLoadingIndicator(isLoading: _isLoading)],
         bottom: TabBar(
           controller: _tabController,
           tabs: [
             const Tab(text: 'Manager'),
-            Tab(text: '$LocalStorage'),
-            Tab(text: '$SessionStorage'),
+            Tab(text: '$CygnusLocalStorage'),
+            Tab(text: '$CygnusSessionStorage'),
           ],
           indicatorColor: Colors.white,
         ),
@@ -621,17 +621,17 @@ class _WebStorageScreenState extends State<WebStorageScreen>
           ),
           const SizedBox(height: 8),
           _buildMethodHistory(
-            PlatformInAppWebViewControllerMethod.loadUrl.name,
+            CygnusPlatformWebViewControllerMethod.loadUrl.name,
           ),
           const SizedBox(height: 8),
           Expanded(
             child: Stack(
               children: [
-                InAppWebView(
-                  initialUrlRequest: URLRequest(
-                    url: WebUri(_urlController.text),
+                CygnusWebView(
+                  initialUrlRequest: CygnusURLRequest(
+                    url: CygnusWebUri(_urlController.text),
                   ),
-                  initialSettings: InAppWebViewSettings(
+                  initialSettings: CygnusWebViewSettings(
                     javaScriptEnabled: true,
                   ),
                   onWebViewCreated: (controller) {
@@ -642,7 +642,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
                   },
                   onLoadError: (controller, url, code, message) {
                     _recordMethodResult(
-                      PlatformInAppWebViewControllerMethod.loadUrl.name,
+                      CygnusPlatformWebViewControllerMethod.loadUrl.name,
                       'Load error: $message',
                       isError: true,
                     );
@@ -687,7 +687,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      '$WebStorage requires a loaded WebView. Load a page to enable storage methods.',
+                      '$CygnusWebStorage requires a loaded WebView. Load a page to enable storage methods.',
                       style: const TextStyle(fontSize: 12),
                     ),
                   ),
@@ -700,7 +700,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
   }
 
   Widget _buildStorageView({
-    required List<WebStorageItem> items,
+    required List<CygnusWebStorageItem> items,
     required int? length,
     required bool isLocal,
   }) {
@@ -708,64 +708,64 @@ class _WebStorageScreenState extends State<WebStorageScreen>
       padding: const EdgeInsets.all(16),
       children: [
         _buildMethodSection(
-          PlatformLocalStorageMethod.length.name,
+          CygnusPlatformLocalStorageMethod.length.name,
           'Get number of items in storage',
           _getStorageMethodPlatforms(
-            PlatformLocalStorageMethod.length.name,
+            CygnusPlatformLocalStorageMethod.length.name,
             isLocal: isLocal,
           ),
           _getLength,
         ),
         _buildMethodSection(
-          PlatformLocalStorageMethod.setItem.name,
+          CygnusPlatformLocalStorageMethod.setItem.name,
           'Set a key-value pair',
           _getStorageMethodPlatforms(
-            PlatformLocalStorageMethod.setItem.name,
+            CygnusPlatformLocalStorageMethod.setItem.name,
             isLocal: isLocal,
           ),
           _setItem,
         ),
         _buildMethodSection(
-          PlatformLocalStorageMethod.getItem.name,
+          CygnusPlatformLocalStorageMethod.getItem.name,
           'Get value by key',
           _getStorageMethodPlatforms(
-            PlatformLocalStorageMethod.getItem.name,
+            CygnusPlatformLocalStorageMethod.getItem.name,
             isLocal: isLocal,
           ),
           _promptGetItem,
         ),
         _buildMethodSection(
-          PlatformLocalStorageMethod.removeItem.name,
+          CygnusPlatformLocalStorageMethod.removeItem.name,
           'Remove item by key (select from list)',
           _getStorageMethodPlatforms(
-            PlatformLocalStorageMethod.removeItem.name,
+            CygnusPlatformLocalStorageMethod.removeItem.name,
             isLocal: isLocal,
           ),
           _promptRemoveItem,
         ),
         _buildMethodSection(
-          PlatformLocalStorageMethod.getItems.name,
+          CygnusPlatformLocalStorageMethod.getItems.name,
           'Get all items',
           _getStorageMethodPlatforms(
-            PlatformLocalStorageMethod.getItems.name,
+            CygnusPlatformLocalStorageMethod.getItems.name,
             isLocal: isLocal,
           ),
           _getItems,
         ),
         _buildMethodSection(
-          PlatformLocalStorageMethod.clear.name,
+          CygnusPlatformLocalStorageMethod.clear.name,
           'Clear all items',
           _getStorageMethodPlatforms(
-            PlatformLocalStorageMethod.clear.name,
+            CygnusPlatformLocalStorageMethod.clear.name,
             isLocal: isLocal,
           ),
           _clear,
         ),
         _buildMethodSection(
-          PlatformLocalStorageMethod.key.name,
+          CygnusPlatformLocalStorageMethod.key.name,
           'Get key at index',
           _getStorageMethodPlatforms(
-            PlatformLocalStorageMethod.key.name,
+            CygnusPlatformLocalStorageMethod.key.name,
             isLocal: isLocal,
           ),
           _promptKeyIndex,
@@ -796,7 +796,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     );
   }
 
-  Widget _buildItemsList(List<WebStorageItem> items, int? length) {
+  Widget _buildItemsList(List<CygnusWebStorageItem> items, int? length) {
     final storageName = _activeStorageTypeName;
 
     if (items.isEmpty) {
@@ -804,7 +804,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
         icon: Icons.storage_outlined,
         title: 'No $storageName items found',
         description: _webViewReady
-            ? 'Click "${_isLocalStorageTab ? PlatformLocalStorageMethod.getItems.name : PlatformSessionStorageMethod.getItems.name}" to fetch storage contents'
+            ? 'Click "${_isLocalStorageTab ? CygnusPlatformLocalStorageMethod.getItems.name : CygnusPlatformSessionStorageMethod.getItems.name}" to fetch storage contents'
             : 'Load a page first, then fetch items',
       );
     }
@@ -879,16 +879,16 @@ class _WebStorageScreenState extends State<WebStorageScreen>
       ),
     );
   }
-  // ============ WebStorageManager Methods ============
+  // ============ CygnusWebStorageManager Methods ============
 
   Set<SupportedPlatform> _getManagerMethodPlatforms(String methodName) {
-    final method = PlatformWebStorageManagerMethod.values.firstWhere(
+    final method = CygnusPlatformWebStorageManagerMethod.values.firstWhere(
       (m) => m.name == methodName,
-      orElse: () => PlatformWebStorageManagerMethod.deleteAllData,
+      orElse: () => CygnusPlatformWebStorageManagerMethod.deleteAllData,
     );
     return SupportCheckHelper.supportedPlatformsForMethod(
       method: method,
-      checker: WebStorageManager.isMethodSupported,
+      checker: CygnusWebStorageManager.isMethodSupported,
     );
   }
 
@@ -898,14 +898,14 @@ class _WebStorageScreenState extends State<WebStorageScreen>
       final origins = await _webStorageManager.getOrigins();
       setState(() => _webStorageOrigins = origins);
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.getOrigins),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.getOrigins),
         'Found ${origins.length} origins',
         isError: false,
         value: origins.map((o) => o.toMap()).toList(),
       );
     } catch (e) {
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.getOrigins),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.getOrigins),
         'Error getting origins: $e',
         isError: true,
       );
@@ -926,13 +926,13 @@ class _WebStorageScreenState extends State<WebStorageScreen>
       await _webStorageManager.deleteAllData();
       setState(() => _webStorageOrigins = []);
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.deleteAllData),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.deleteAllData),
         'All web storage data deleted',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.deleteAllData),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.deleteAllData),
         'Error deleting all data: $e',
         isError: true,
       );
@@ -946,14 +946,14 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     try {
       await _webStorageManager.deleteOrigin(origin: origin);
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.deleteOrigin),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.deleteOrigin),
         'Deleted origin: $origin',
         isError: false,
       );
       await _getOrigins();
     } catch (e) {
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.deleteOrigin),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.deleteOrigin),
         'Error deleting origin: $e',
         isError: true,
       );
@@ -974,7 +974,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     final origin = params['origin']?.toString() ?? '';
     if (origin.isEmpty) {
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.deleteOrigin),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.deleteOrigin),
         'Please enter an origin',
         isError: true,
       );
@@ -995,7 +995,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     final origin = params['origin']?.toString() ?? '';
     if (origin.isEmpty) {
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.getQuotaForOrigin),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.getQuotaForOrigin),
         'Please enter an origin',
         isError: true,
       );
@@ -1006,14 +1006,14 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     try {
       final quota = await _webStorageManager.getQuotaForOrigin(origin: origin);
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.getQuotaForOrigin),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.getQuotaForOrigin),
         'Quota for "$origin": $quota bytes',
         isError: false,
         value: quota,
       );
     } catch (e) {
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.getQuotaForOrigin),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.getQuotaForOrigin),
         'Error getting quota: $e',
         isError: true,
       );
@@ -1034,7 +1034,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     final origin = params['origin']?.toString() ?? '';
     if (origin.isEmpty) {
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.getUsageForOrigin),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.getUsageForOrigin),
         'Please enter an origin',
         isError: true,
       );
@@ -1045,14 +1045,14 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     try {
       final usage = await _webStorageManager.getUsageForOrigin(origin: origin);
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.getUsageForOrigin),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.getUsageForOrigin),
         'Usage for "$origin": $usage bytes',
         isError: false,
         value: usage,
       );
     } catch (e) {
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.getUsageForOrigin),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.getUsageForOrigin),
         'Error getting usage: $e',
         isError: true,
       );
@@ -1065,18 +1065,18 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     setState(() => _isLoading = true);
     try {
       final records = await _webStorageManager.fetchDataRecords(
-        dataTypes: WebsiteDataType.ALL,
+        dataTypes: CygnusWebsiteDataType.ALL,
       );
       setState(() => _dataRecords = records);
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.fetchDataRecords),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.fetchDataRecords),
         'Found ${records.length} data records',
         isError: false,
         value: records.map((r) => r.toMap()).toList(),
       );
     } catch (e) {
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.fetchDataRecords),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.fetchDataRecords),
         'Error fetching data records: $e',
         isError: true,
       );
@@ -1106,13 +1106,13 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     setState(() => _isLoading = true);
     try {
       await _webStorageManager.removeDataModifiedSince(
-        dataTypes: WebsiteDataType.ALL,
+        dataTypes: CygnusWebsiteDataType.ALL,
         date: date,
       );
       setState(() => _dataRecords = []);
       _recordMethodResult(
         _managerMethodKey(
-          PlatformWebStorageManagerMethod.removeDataModifiedSince,
+          CygnusPlatformWebStorageManagerMethod.removeDataModifiedSince,
         ),
         'Data removed since ${date.toIso8601String()}',
         isError: false,
@@ -1120,7 +1120,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     } catch (e) {
       _recordMethodResult(
         _managerMethodKey(
-          PlatformWebStorageManagerMethod.removeDataModifiedSince,
+          CygnusPlatformWebStorageManagerMethod.removeDataModifiedSince,
         ),
         'Error removing data: $e',
         isError: true,
@@ -1130,22 +1130,22 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     }
   }
 
-  Future<void> _removeDataForRecord(WebsiteDataRecord record) async {
+  Future<void> _removeDataForRecord(CygnusWebsiteDataRecord record) async {
     setState(() => _isLoading = true);
     try {
       await _webStorageManager.removeDataFor(
-        dataTypes: record.dataTypes ?? WebsiteDataType.ALL,
+        dataTypes: record.dataTypes ?? CygnusWebsiteDataType.ALL,
         dataRecords: [record],
       );
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.removeDataFor),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.removeDataFor),
         'Removed data for ${record.displayName}',
         isError: false,
       );
       await _fetchDataRecords();
     } catch (e) {
       _recordMethodResult(
-        _managerMethodKey(PlatformWebStorageManagerMethod.removeDataFor),
+        _managerMethodKey(CygnusPlatformWebStorageManagerMethod.removeDataFor),
         'Error removing data: $e',
         isError: true,
       );
@@ -1169,7 +1169,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    '$WebStorageManager provides platform-level storage management. '
+                    '$CygnusWebStorageManager provides platform-level storage management. '
                     'Methods have different platform availability - check the support badges.',
                     style: TextStyle(fontSize: 12, color: Colors.blue.shade700),
                   ),
@@ -1180,58 +1180,58 @@ class _WebStorageScreenState extends State<WebStorageScreen>
         ),
         const SizedBox(height: 16),
         _buildManagerMethodSection(
-          PlatformWebStorageManagerMethod.getOrigins.name,
+          CygnusPlatformWebStorageManagerMethod.getOrigins.name,
           'Get origins using Application Cache or Web SQL Database',
           _getManagerMethodPlatforms(
-            PlatformWebStorageManagerMethod.getOrigins.name,
+            CygnusPlatformWebStorageManagerMethod.getOrigins.name,
           ),
           _getOrigins,
         ),
         _buildManagerMethodSection(
-          PlatformWebStorageManagerMethod.deleteAllData.name,
-          'Clear all storage (App Cache, Web SQL, HTML5 Storage)',
+          CygnusPlatformWebStorageManagerMethod.deleteAllData.name,
+          'Clear all storage (App Cache, Web SQL, HTML5 CygnusStorage)',
           _getManagerMethodPlatforms(
-            PlatformWebStorageManagerMethod.deleteAllData.name,
+            CygnusPlatformWebStorageManagerMethod.deleteAllData.name,
           ),
           _deleteAllData,
         ),
         _buildManagerMethodSection(
-          PlatformWebStorageManagerMethod.deleteOrigin.name,
+          CygnusPlatformWebStorageManagerMethod.deleteOrigin.name,
           'Clear storage for a specific origin',
           _getManagerMethodPlatforms(
-            PlatformWebStorageManagerMethod.deleteOrigin.name,
+            CygnusPlatformWebStorageManagerMethod.deleteOrigin.name,
           ),
           _promptDeleteOrigin,
         ),
         _buildManagerMethodSection(
-          PlatformWebStorageManagerMethod.getQuotaForOrigin.name,
+          CygnusPlatformWebStorageManagerMethod.getQuotaForOrigin.name,
           'Get storage quota for an origin (bytes)',
           _getManagerMethodPlatforms(
-            PlatformWebStorageManagerMethod.getQuotaForOrigin.name,
+            CygnusPlatformWebStorageManagerMethod.getQuotaForOrigin.name,
           ),
           _getQuotaForOrigin,
         ),
         _buildManagerMethodSection(
-          PlatformWebStorageManagerMethod.getUsageForOrigin.name,
+          CygnusPlatformWebStorageManagerMethod.getUsageForOrigin.name,
           'Get storage usage for an origin (bytes)',
           _getManagerMethodPlatforms(
-            PlatformWebStorageManagerMethod.getUsageForOrigin.name,
+            CygnusPlatformWebStorageManagerMethod.getUsageForOrigin.name,
           ),
           _getUsageForOrigin,
         ),
         _buildManagerMethodSection(
-          PlatformWebStorageManagerMethod.fetchDataRecords.name,
+          CygnusPlatformWebStorageManagerMethod.fetchDataRecords.name,
           'Fetch website data records',
           _getManagerMethodPlatforms(
-            PlatformWebStorageManagerMethod.fetchDataRecords.name,
+            CygnusPlatformWebStorageManagerMethod.fetchDataRecords.name,
           ),
           _fetchDataRecords,
         ),
         _buildManagerMethodSection(
-          PlatformWebStorageManagerMethod.removeDataModifiedSince.name,
+          CygnusPlatformWebStorageManagerMethod.removeDataModifiedSince.name,
           'Remove data modified since a date',
           _getManagerMethodPlatforms(
-            PlatformWebStorageManagerMethod.removeDataModifiedSince.name,
+            CygnusPlatformWebStorageManagerMethod.removeDataModifiedSince.name,
           ),
           _removeDataModifiedSince,
         ),
@@ -1249,7 +1249,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
     Set<SupportedPlatform> supportedPlatforms,
     VoidCallback? onPressed,
   ) {
-    final historyKey = '$WebStorageManager.$methodName';
+    final historyKey = '$CygnusWebStorageManager.$methodName';
     return MethodTile(
       methodName: methodName,
       description: description,
@@ -1269,7 +1269,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
         icon: Icons.public_outlined,
         title: 'No origins fetched',
         description:
-            'Click "${PlatformWebStorageManagerMethod.getOrigins.name}" to fetch storage origins',
+            'Click "${CygnusPlatformWebStorageManagerMethod.getOrigins.name}" to fetch storage origins',
         iconSize: 48,
       );
     }
@@ -1335,7 +1335,7 @@ class _WebStorageScreenState extends State<WebStorageScreen>
         icon: Icons.folder_outlined,
         title: 'No data records fetched',
         description:
-            'Click "${PlatformWebStorageManagerMethod.fetchDataRecords.name}" to fetch website data records',
+            'Click "${CygnusPlatformWebStorageManagerMethod.fetchDataRecords.name}" to fetch website data records',
         iconSize: 48,
       );
     }

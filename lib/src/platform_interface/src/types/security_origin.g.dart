@@ -7,7 +7,7 @@ part of 'security_origin.dart';
 // **************************************************************************
 
 ///An object that identifies the origin of a particular resource.
-class SecurityOrigin {
+class CygnusSecurityOrigin {
   ///The security origin’s host.
   String host;
 
@@ -16,21 +16,21 @@ class SecurityOrigin {
 
   ///The security origin's protocol.
   String protocol;
-  SecurityOrigin({
+  CygnusSecurityOrigin({
     required this.host,
     required this.port,
     required this.protocol,
   });
 
-  ///Gets a possible [SecurityOrigin] instance from a [Map] value.
-  static SecurityOrigin? fromMap(
+  ///Gets a possible [CygnusSecurityOrigin] instance from a [Map] value.
+  static CygnusSecurityOrigin? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = SecurityOrigin(
+    final instance = CygnusSecurityOrigin(
       host: map['host'],
       port: map['port'],
       protocol: map['protocol'],
@@ -39,7 +39,7 @@ class SecurityOrigin {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"host": host, "port": port, "protocol": protocol};
   }
 
@@ -50,7 +50,7 @@ class SecurityOrigin {
 
   @override
   String toString() {
-    return 'SecurityOrigin{host: $host, port: $port, protocol: $protocol}';
+    return 'CygnusSecurityOrigin{host: $host, port: $port, protocol: $protocol}';
   }
 }
 
@@ -58,9 +58,9 @@ class SecurityOrigin {
 ///
 ///**NOTE**: available only on iOS 9.0+.
 ///
-///Use [SecurityOrigin] instead.
-@Deprecated('Use SecurityOrigin instead')
-class IOSWKSecurityOrigin {
+///Use [CygnusSecurityOrigin] instead.
+@Deprecated('Use CygnusSecurityOrigin instead')
+class CygnusIOSWKSecurityOrigin {
   ///The security origin’s host.
   String host;
 
@@ -69,21 +69,21 @@ class IOSWKSecurityOrigin {
 
   ///The security origin's protocol.
   String protocol;
-  IOSWKSecurityOrigin({
+  CygnusIOSWKSecurityOrigin({
     required this.host,
     required this.port,
     required this.protocol,
   });
 
-  ///Gets a possible [IOSWKSecurityOrigin] instance from a [Map] value.
-  static IOSWKSecurityOrigin? fromMap(
+  ///Gets a possible [CygnusIOSWKSecurityOrigin] instance from a [Map] value.
+  static CygnusIOSWKSecurityOrigin? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = IOSWKSecurityOrigin(
+    final instance = CygnusIOSWKSecurityOrigin(
       host: map['host'],
       port: map['port'],
       protocol: map['protocol'],
@@ -92,7 +92,7 @@ class IOSWKSecurityOrigin {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"host": host, "port": port, "protocol": protocol};
   }
 
@@ -103,6 +103,6 @@ class IOSWKSecurityOrigin {
 
   @override
   String toString() {
-    return 'IOSWKSecurityOrigin{host: $host, port: $port, protocol: $protocol}';
+    return 'CygnusIOSWKSecurityOrigin{host: $host, port: $port, protocol: $protocol}';
   }
 }

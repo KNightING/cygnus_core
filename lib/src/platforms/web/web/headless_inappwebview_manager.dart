@@ -62,15 +62,15 @@ class HeadlessInAppWebViewManager extends ChannelController {
     Map<String, dynamic> initialSettings = params["initialSettings"]
         .cast<String, dynamic>();
     if (initialSettings.isEmpty) {
-      webView.initialSettings = InAppWebViewSettings();
+      webView.initialSettings = CygnusWebViewSettings();
     } else {
-      webView.initialSettings = InAppWebViewSettings.fromMap(initialSettings);
+      webView.initialSettings = CygnusWebViewSettings.fromMap(initialSettings);
     }
-    webView.initialUrlRequest = URLRequest.fromMap(
+    webView.initialUrlRequest = CygnusURLRequest.fromMap(
       params["initialUrlRequest"]?.cast<String, dynamic>(),
     );
     webView.initialFile = params["initialFile"];
-    webView.initialData = InAppWebViewInitialData.fromMap(
+    webView.initialData = CygnusWebViewInitialData.fromMap(
       params["initialData"]?.cast<String, dynamic>(),
     );
     webView.initialUserScripts = params["initialUserScripts"];

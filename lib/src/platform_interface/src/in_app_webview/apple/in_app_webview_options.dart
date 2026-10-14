@@ -5,12 +5,12 @@ import '../../in_app_browser/in_app_browser_settings.dart';
 import '../in_app_webview_settings.dart';
 import '../platform_inappwebview_controller.dart';
 
-class IosOptions {}
+class CygnusIosOptions {}
 
-///Use [InAppWebViewSettings] instead.
-@Deprecated('Use InAppWebViewSettings instead')
-class IOSInAppWebViewOptions
-    implements WebViewOptions, BrowserOptions, IosOptions {
+///Use [CygnusWebViewSettings] instead.
+@Deprecated('Use CygnusWebViewSettings instead')
+class CygnusIOSWebViewOptions
+    implements CygnusWebViewOptions, CygnusBrowserOptions, CygnusIosOptions {
   ///Set to `true` to disable the bouncing of the WebView when the scrolling has reached an edge of the content. The default value is `false`.
   bool disallowOverScroll;
 
@@ -52,15 +52,15 @@ class IOSInAppWebViewOptions
   bool isFraudulentWebsiteWarningEnabled;
 
   ///The level of granularity with which the user can interactively select content in the web view.
-  ///The default value is [IOSWKSelectionGranularity.DYNAMIC]
-  IOSWKSelectionGranularity selectionGranularity;
+  ///The default value is [CygnusIOSWKSelectionGranularity.DYNAMIC]
+  CygnusIOSWKSelectionGranularity selectionGranularity;
 
   ///Specifying a dataDetectoryTypes value adds interactivity to web content that matches the value.
-  ///For example, Safari adds a link to “apple.com” in the text “Visit apple.com” if the dataDetectorTypes property is set to [IOSWKDataDetectorTypes.LINK].
-  ///The default value is [IOSWKDataDetectorTypes.NONE].
+  ///For example, Safari adds a link to “apple.com” in the text “Visit apple.com” if the dataDetectorTypes property is set to [CygnusIOSWKDataDetectorTypes.LINK].
+  ///The default value is [CygnusIOSWKDataDetectorTypes.NONE].
   ///
   ///**NOTE**: available on iOS 10.0+.
-  List<IOSWKDataDetectorTypes> dataDetectorTypes;
+  List<CygnusIOSWKDataDetectorTypes> dataDetectorTypes;
 
   ///Set `true` if shared cookies from `HTTPCookieStorage.shared` should used for every load request in the WebView.
   ///The default value is `false`.
@@ -80,18 +80,18 @@ class IOSInAppWebViewOptions
   ///**NOTE**: available on iOS 11.0+.
   bool accessibilityIgnoresInvertColors;
 
-  ///A [IOSUIScrollViewDecelerationRate] value that determines the rate of deceleration after the user lifts their finger.
-  ///The default value is [IOSUIScrollViewDecelerationRate.NORMAL].
-  IOSUIScrollViewDecelerationRate decelerationRate;
+  ///A [CygnusIOSUIScrollViewDecelerationRate] value that determines the rate of deceleration after the user lifts their finger.
+  ///The default value is [CygnusIOSUIScrollViewDecelerationRate.NORMAL].
+  CygnusIOSUIScrollViewDecelerationRate decelerationRate;
 
   ///A Boolean value that determines whether bouncing always occurs when vertical scrolling reaches the end of the content.
-  ///If this property is set to `true` and [IOSInAppWebViewOptions.disallowOverScroll] is `false`,
+  ///If this property is set to `true` and [CygnusIOSWebViewOptions.disallowOverScroll] is `false`,
   ///vertical dragging is allowed even if the content is smaller than the bounds of the scroll view.
   ///The default value is `false`.
   bool alwaysBounceVertical;
 
   ///A Boolean value that determines whether bouncing always occurs when horizontal scrolling reaches the end of the content view.
-  ///If this property is set to `true` and [IOSInAppWebViewOptions.disallowOverScroll] is `false`,
+  ///If this property is set to `true` and [CygnusIOSWebViewOptions.disallowOverScroll] is `false`,
   ///horizontal dragging is allowed even if the content is smaller than the bounds of the scroll view.
   ///The default value is `false`.
   bool alwaysBounceHorizontal;
@@ -119,8 +119,8 @@ class IOSInAppWebViewOptions
   double minimumZoomScale;
 
   ///Configures how safe area insets are added to the adjusted content inset.
-  ///The default value is [IOSUIScrollViewContentInsetAdjustmentBehavior.NEVER].
-  IOSUIScrollViewContentInsetAdjustmentBehavior contentInsetAdjustmentBehavior;
+  ///The default value is [CygnusIOSUIScrollViewContentInsetAdjustmentBehavior.NEVER].
+  CygnusIOSUIScrollViewContentInsetAdjustmentBehavior contentInsetAdjustmentBehavior;
 
   ///A Boolean value that determines whether scrolling is disabled in a particular direction.
   ///If this property is `false`, scrolling is permitted in both horizontal and vertical directions.
@@ -152,69 +152,69 @@ class IOSInAppWebViewOptions
   ///**NOTE**: available on iOS 14.0+.
   bool limitsNavigationsToAppBoundDomains;
 
-  ///Set to `true` to be able to listen to the [PlatformWebViewCreationParams.iosOnNavigationResponse] event. The default value is `false`.
+  ///Set to `true` to be able to listen to the [CygnusPlatformWebViewCreationParams.iosOnNavigationResponse] event. The default value is `false`.
   bool useOnNavigationResponse;
 
-  ///Set to `true` to enable Apple Pay API for the `WebView` at its first page load or on the next page load (using [PlatformInAppWebViewController.setOptions]). The default value is `false`.
+  ///Set to `true` to enable Apple Pay API for the `WebView` at its first page load or on the next page load (using [CygnusPlatformWebViewController.setOptions]). The default value is `false`.
   ///
   ///**IMPORTANT NOTE**: As written in the official [Safari 13 Release Notes](https://developer.apple.com/documentation/safari-release-notes/safari-13-release-notes#Payment-Request-API),
-  ///it won't work if any script injection APIs are used (such as [PlatformInAppWebViewController.evaluateJavascript] or [UserScript]).
+  ///it won't work if any script injection APIs are used (such as [CygnusPlatformWebViewController.evaluateJavascript] or [CygnusUserScript]).
   ///So, when this attribute is `true`, all the methods, options, and events implemented using JavaScript won't be called or won't do anything and the result will always be `null`.
   ///
   ///Methods affected:
-  ///- [PlatformInAppWebViewController.addUserScript]
-  ///- [PlatformInAppWebViewController.addUserScripts]
-  ///- [PlatformInAppWebViewController.removeUserScript]
-  ///- [PlatformInAppWebViewController.removeUserScripts]
-  ///- [PlatformInAppWebViewController.removeAllUserScripts]
-  ///- [PlatformInAppWebViewController.evaluateJavascript]
-  ///- [PlatformInAppWebViewController.callAsyncJavaScript]
-  ///- [PlatformInAppWebViewController.injectJavascriptFileFromUrl]
-  ///- [PlatformInAppWebViewController.injectJavascriptFileFromAsset]
-  ///- [PlatformInAppWebViewController.injectCSSCode]
-  ///- [PlatformInAppWebViewController.injectCSSFileFromUrl]
-  ///- [PlatformInAppWebViewController.injectCSSFileFromAsset]
-  ///- [PlatformInAppWebViewController.findAllAsync]
-  ///- [PlatformInAppWebViewController.findNext]
-  ///- [PlatformInAppWebViewController.clearMatches]
-  ///- [PlatformInAppWebViewController.pauseTimers]
-  ///- [PlatformInAppWebViewController.getSelectedText]
-  ///- [PlatformInAppWebViewController.getHitTestResult]
-  ///- [PlatformInAppWebViewController.requestFocusNodeHref]
-  ///- [PlatformInAppWebViewController.requestImageRef]
-  ///- [PlatformInAppWebViewController.postWebMessage]
-  ///- [PlatformInAppWebViewController.createWebMessageChannel]
-  ///- [PlatformInAppWebViewController.addWebMessageListener]
+  ///- [CygnusPlatformWebViewController.addUserScript]
+  ///- [CygnusPlatformWebViewController.addUserScripts]
+  ///- [CygnusPlatformWebViewController.removeUserScript]
+  ///- [CygnusPlatformWebViewController.removeUserScripts]
+  ///- [CygnusPlatformWebViewController.removeAllUserScripts]
+  ///- [CygnusPlatformWebViewController.evaluateJavascript]
+  ///- [CygnusPlatformWebViewController.callAsyncJavaScript]
+  ///- [CygnusPlatformWebViewController.injectJavascriptFileFromUrl]
+  ///- [CygnusPlatformWebViewController.injectJavascriptFileFromAsset]
+  ///- [CygnusPlatformWebViewController.injectCSSCode]
+  ///- [CygnusPlatformWebViewController.injectCSSFileFromUrl]
+  ///- [CygnusPlatformWebViewController.injectCSSFileFromAsset]
+  ///- [CygnusPlatformWebViewController.findAllAsync]
+  ///- [CygnusPlatformWebViewController.findNext]
+  ///- [CygnusPlatformWebViewController.clearMatches]
+  ///- [CygnusPlatformWebViewController.pauseTimers]
+  ///- [CygnusPlatformWebViewController.getSelectedText]
+  ///- [CygnusPlatformWebViewController.getHitTestResult]
+  ///- [CygnusPlatformWebViewController.requestFocusNodeHref]
+  ///- [CygnusPlatformWebViewController.requestImageRef]
+  ///- [CygnusPlatformWebViewController.postWebMessage]
+  ///- [CygnusPlatformWebViewController.createWebMessageChannel]
+  ///- [CygnusPlatformWebViewController.addWebMessageListener]
   ///
   ///Options affected:
-  ///- [PlatformWebViewCreationParams.initialUserScripts]
-  ///- [InAppWebViewOptions.supportZoom]
-  ///- [InAppWebViewOptions.useOnLoadResource]
-  ///- [InAppWebViewOptions.useShouldInterceptAjaxRequest]
-  ///- [InAppWebViewOptions.useShouldInterceptFetchRequest]
-  ///- [IOSInAppWebViewOptions.enableViewportScale]
+  ///- [CygnusPlatformWebViewCreationParams.initialUserScripts]
+  ///- [CygnusInAppWebViewOptions.supportZoom]
+  ///- [CygnusInAppWebViewOptions.useOnLoadResource]
+  ///- [CygnusInAppWebViewOptions.useShouldInterceptAjaxRequest]
+  ///- [CygnusInAppWebViewOptions.useShouldInterceptFetchRequest]
+  ///- [CygnusIOSWebViewOptions.enableViewportScale]
   ///
   ///Events affected:
-  ///- the `hitTestResult` argument of [PlatformWebViewCreationParams.onLongPressHitTestResult] will be empty
-  ///- the `hitTestResult` argument of [ContextMenu.onCreateContextMenu] will be empty
-  ///- [PlatformWebViewCreationParams.onLoadResource]
-  ///- [PlatformWebViewCreationParams.shouldInterceptAjaxRequest]
-  ///- [PlatformWebViewCreationParams.onAjaxReadyStateChange]
-  ///- [PlatformWebViewCreationParams.onAjaxProgress]
-  ///- [PlatformWebViewCreationParams.shouldInterceptFetchRequest]
-  ///- [PlatformWebViewCreationParams.onConsoleMessage]
-  ///- [PlatformWebViewCreationParams.onPrint]
-  ///- [PlatformWebViewCreationParams.onWindowFocus]
-  ///- [PlatformWebViewCreationParams.onWindowBlur]
-  ///- [PlatformWebViewCreationParams.onFindResultReceived]
+  ///- the `hitTestResult` argument of [CygnusPlatformWebViewCreationParams.onLongPressHitTestResult] will be empty
+  ///- the `hitTestResult` argument of [CygnusContextMenu.onCreateContextMenu] will be empty
+  ///- [CygnusPlatformWebViewCreationParams.onLoadResource]
+  ///- [CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest]
+  ///- [CygnusPlatformWebViewCreationParams.onAjaxReadyStateChange]
+  ///- [CygnusPlatformWebViewCreationParams.onAjaxProgress]
+  ///- [CygnusPlatformWebViewCreationParams.shouldInterceptFetchRequest]
+  ///- [CygnusPlatformWebViewCreationParams.onConsoleMessage]
+  ///- [CygnusPlatformWebViewCreationParams.onPrint]
+  ///- [CygnusPlatformWebViewCreationParams.onWindowFocus]
+  ///- [CygnusPlatformWebViewCreationParams.onWindowBlur]
+  ///- [CygnusPlatformWebViewCreationParams.onFindResultReceived]
   ///
   ///**NOTE**: available on iOS 13.0+.
   bool applePayAPIEnabled;
 
-  ///Used in combination with [PlatformWebViewCreationParams.initialUrlRequest] or [PlatformWebViewCreationParams.initialData] (using the `file://` scheme), it represents the URL from which to read the web content.
+  ///Used in combination with [CygnusPlatformWebViewCreationParams.initialUrlRequest] or [CygnusPlatformWebViewCreationParams.initialData] (using the `file://` scheme), it represents the URL from which to read the web content.
   ///This URL must be a file-based URL (using the `file://` scheme).
-  ///Specify the same value as the [URLRequest.url] if you are using it with the [PlatformWebViewCreationParams.initialUrlRequest] parameter or
-  ///the [InAppWebViewInitialData.baseUrl] if you are using it with the [PlatformWebViewCreationParams.initialData] parameter to prevent WebView from reading any other content.
+  ///Specify the same value as the [CygnusURLRequest.url] if you are using it with the [CygnusPlatformWebViewCreationParams.initialUrlRequest] parameter or
+  ///the [CygnusWebViewInitialData.baseUrl] if you are using it with the [CygnusPlatformWebViewCreationParams.initialData] parameter to prevent WebView from reading any other content.
   ///Specify a directory to give WebView permission to read additional files in the specified directory.
   Uri? allowingReadAccessTo;
 
@@ -227,7 +227,7 @@ class IOSInAppWebViewOptions
   ///The default value is `false`.
   bool disableInputAccessoryView;
 
-  IOSInAppWebViewOptions({
+  CygnusIOSWebViewOptions({
     this.disallowOverScroll = false,
     this.enableViewportScale = false,
     this.suppressesIncrementalRendering = false,
@@ -238,12 +238,12 @@ class IOSInAppWebViewOptions
     this.allowsInlineMediaPlayback = false,
     this.allowsPictureInPictureMediaPlayback = true,
     this.isFraudulentWebsiteWarningEnabled = true,
-    this.selectionGranularity = IOSWKSelectionGranularity.DYNAMIC,
-    this.dataDetectorTypes = const [IOSWKDataDetectorTypes.NONE],
+    this.selectionGranularity = CygnusIOSWKSelectionGranularity.DYNAMIC,
+    this.dataDetectorTypes = const [CygnusIOSWKDataDetectorTypes.NONE],
     this.sharedCookiesEnabled = false,
     this.automaticallyAdjustsScrollIndicatorInsets = false,
     this.accessibilityIgnoresInvertColors = false,
-    this.decelerationRate = IOSUIScrollViewDecelerationRate.NORMAL,
+    this.decelerationRate = CygnusIOSUIScrollViewDecelerationRate.NORMAL,
     this.alwaysBounceVertical = false,
     this.alwaysBounceHorizontal = false,
     this.scrollsToTop = true,
@@ -251,7 +251,7 @@ class IOSInAppWebViewOptions
     this.maximumZoomScale = 1.0,
     this.minimumZoomScale = 1.0,
     this.contentInsetAdjustmentBehavior =
-        IOSUIScrollViewContentInsetAdjustmentBehavior.NEVER,
+        CygnusIOSUIScrollViewContentInsetAdjustmentBehavior.NEVER,
     this.isDirectionalLockEnabled = false,
     this.mediaType,
     this.pageZoom = 1.0,
@@ -316,13 +316,13 @@ class IOSInAppWebViewOptions
     };
   }
 
-  static IOSInAppWebViewOptions fromMap(Map<String, dynamic> map) {
-    List<IOSWKDataDetectorTypes> dataDetectorTypes = [];
+  static CygnusIOSWebViewOptions fromMap(Map<String, dynamic> map) {
+    List<CygnusIOSWKDataDetectorTypes> dataDetectorTypes = [];
     List<String> dataDetectorTypesList = List<String>.from(
       map["dataDetectorTypes"] ?? [],
     );
     dataDetectorTypesList.forEach((dataDetectorTypeValue) {
-      var dataDetectorType = IOSWKDataDetectorTypes.fromNativeValue(
+      var dataDetectorType = CygnusIOSWKDataDetectorTypes.fromNativeValue(
         dataDetectorTypeValue,
       );
       if (dataDetectorType != null) {
@@ -330,7 +330,7 @@ class IOSInAppWebViewOptions
       }
     });
 
-    var instance = IOSInAppWebViewOptions();
+    var instance = CygnusIOSWebViewOptions();
     instance.disallowOverScroll = map["disallowOverScroll"];
     instance.enableViewportScale = map["enableViewportScale"];
     instance.suppressesIncrementalRendering =
@@ -346,7 +346,7 @@ class IOSInAppWebViewOptions
         map["allowsPictureInPictureMediaPlayback"];
     instance.isFraudulentWebsiteWarningEnabled =
         map["isFraudulentWebsiteWarningEnabled"];
-    instance.selectionGranularity = IOSWKSelectionGranularity.fromNativeValue(
+    instance.selectionGranularity = CygnusIOSWKSelectionGranularity.fromNativeValue(
       map["selectionGranularity"],
     )!;
     instance.dataDetectorTypes = dataDetectorTypes;
@@ -355,7 +355,7 @@ class IOSInAppWebViewOptions
         map["automaticallyAdjustsScrollIndicatorInsets"];
     instance.accessibilityIgnoresInvertColors =
         map["accessibilityIgnoresInvertColors"];
-    instance.decelerationRate = IOSUIScrollViewDecelerationRate.fromNativeValue(
+    instance.decelerationRate = CygnusIOSUIScrollViewDecelerationRate.fromNativeValue(
       map["decelerationRate"],
     )!;
     instance.alwaysBounceVertical = map["alwaysBounceVertical"];
@@ -365,7 +365,7 @@ class IOSInAppWebViewOptions
     instance.maximumZoomScale = map["maximumZoomScale"];
     instance.minimumZoomScale = map["minimumZoomScale"];
     instance.contentInsetAdjustmentBehavior =
-        IOSUIScrollViewContentInsetAdjustmentBehavior.fromNativeValue(
+        CygnusIOSUIScrollViewContentInsetAdjustmentBehavior.fromNativeValue(
           map["contentInsetAdjustmentBehavior"],
         )!;
     instance.isDirectionalLockEnabled = map["isDirectionalLockEnabled"];
@@ -395,7 +395,7 @@ class IOSInAppWebViewOptions
   }
 
   @override
-  IOSInAppWebViewOptions copy() {
-    return IOSInAppWebViewOptions.fromMap(this.toMap());
+  CygnusIOSWebViewOptions copy() {
+    return CygnusIOSWebViewOptions.fromMap(this.toMap());
   }
 }

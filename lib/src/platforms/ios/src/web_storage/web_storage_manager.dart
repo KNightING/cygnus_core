@@ -7,31 +7,31 @@ import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform
 /// Object specifying creation parameters for creating a [IOSWebStorageManager].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebStorageManagerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebStorageManagerCreationParams] for
 /// more information.
 @immutable
 class IOSWebStorageManagerCreationParams
-    extends PlatformWebStorageManagerCreationParams {
+    extends CygnusPlatformWebStorageManagerCreationParams {
   /// Creates a new [IOSWebStorageManagerCreationParams] instance.
   const IOSWebStorageManagerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebStorageManagerCreationParams params,
+    CygnusPlatformWebStorageManagerCreationParams params,
   ) : super();
 
-  /// Creates a [IOSWebStorageManagerCreationParams] instance based on [PlatformWebStorageManagerCreationParams].
+  /// Creates a [IOSWebStorageManagerCreationParams] instance based on [CygnusPlatformWebStorageManagerCreationParams].
   factory IOSWebStorageManagerCreationParams.fromPlatformWebStorageManagerCreationParams(
-    PlatformWebStorageManagerCreationParams params,
+    CygnusPlatformWebStorageManagerCreationParams params,
   ) {
     return IOSWebStorageManagerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformWebStorageManager}
-class IOSWebStorageManager extends PlatformWebStorageManager
+///{@macro cygnus_core.CygnusPlatformWebStorageManager}
+class IOSWebStorageManager extends CygnusPlatformWebStorageManager
     with ChannelController {
   /// Creates a new [IOSWebStorageManager].
-  IOSWebStorageManager(PlatformWebStorageManagerCreationParams params)
+  IOSWebStorageManager(CygnusPlatformWebStorageManagerCreationParams params)
     : super.implementation(
         params is IOSWebStorageManagerCreationParams
             ? params
@@ -48,7 +48,7 @@ class IOSWebStorageManager extends PlatformWebStorageManager
 
   static IOSWebStorageManager? _instance;
 
-  ///Gets the WebStorage manager shared instance.
+  ///Gets the CygnusWebStorage manager shared instance.
   static IOSWebStorageManager instance() {
     return (_instance != null) ? _instance! : _init();
   }
@@ -56,7 +56,7 @@ class IOSWebStorageManager extends PlatformWebStorageManager
   static IOSWebStorageManager _init() {
     _instance = IOSWebStorageManager(
       IOSWebStorageManagerCreationParams(
-        const PlatformWebStorageManagerCreationParams(),
+        const CygnusPlatformWebStorageManagerCreationParams(),
       ),
     );
     return _instance!;
@@ -68,7 +68,7 @@ class IOSWebStorageManager extends PlatformWebStorageManager
   factory IOSWebStorageManager.static() {
     _static ??= IOSWebStorageManager(
       IOSWebStorageManagerCreationParams(
-        const PlatformWebStorageManagerCreationParams(),
+        const CygnusPlatformWebStorageManagerCreationParams(),
       ),
     );
     return _static!;
@@ -77,10 +77,10 @@ class IOSWebStorageManager extends PlatformWebStorageManager
   Future<dynamic> _handleMethod(MethodCall call) async {}
 
   @override
-  Future<List<WebsiteDataRecord>> fetchDataRecords({
-    required Set<WebsiteDataType> dataTypes,
+  Future<List<CygnusWebsiteDataRecord>> fetchDataRecords({
+    required Set<CygnusWebsiteDataType> dataTypes,
   }) async {
-    List<WebsiteDataRecord> recordList = [];
+    List<CygnusWebsiteDataRecord> recordList = [];
     List<String> dataTypesList = [];
     for (var dataType in dataTypes) {
       if (dataType.isSupported()) {
@@ -97,15 +97,15 @@ class IOSWebStorageManager extends PlatformWebStorageManager
         [];
     for (var record in records) {
       List<String> dataTypesString = record["dataTypes"].cast<String>();
-      Set<WebsiteDataType> dataTypes = Set();
+      Set<CygnusWebsiteDataType> dataTypes = Set();
       for (var dataTypeValue in dataTypesString) {
-        var dataType = WebsiteDataType.fromNativeValue(dataTypeValue);
+        var dataType = CygnusWebsiteDataType.fromNativeValue(dataTypeValue);
         if (dataType != null) {
           dataTypes.add(dataType);
         }
       }
       recordList.add(
-        WebsiteDataRecord(
+        CygnusWebsiteDataRecord(
           displayName: record["displayName"],
           dataTypes: dataTypes,
         ),
@@ -116,8 +116,8 @@ class IOSWebStorageManager extends PlatformWebStorageManager
 
   @override
   Future<void> removeDataFor({
-    required Set<WebsiteDataType> dataTypes,
-    required List<WebsiteDataRecord> dataRecords,
+    required Set<CygnusWebsiteDataType> dataTypes,
+    required List<CygnusWebsiteDataRecord> dataRecords,
   }) async {
     List<String> dataTypesList = [];
     for (var dataType in dataTypes) {
@@ -139,7 +139,7 @@ class IOSWebStorageManager extends PlatformWebStorageManager
 
   @override
   Future<void> removeDataModifiedSince({
-    required Set<WebsiteDataType> dataTypes,
+    required Set<CygnusWebsiteDataType> dataTypes,
     required DateTime date,
   }) async {
     List<String> dataTypesList = [];

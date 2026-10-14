@@ -7,12 +7,12 @@ part of 'ssl_certificate.dart';
 // **************************************************************************
 
 ///SSL certificate info (certificate details) class.
-class SslCertificate {
+class CygnusSslCertificate {
   ///Name of the entity this certificate is issued by.
-  SslCertificateDName? issuedBy;
+  CygnusSslCertificateDName? issuedBy;
 
   ///Name of the entity this certificate is issued to.
-  SslCertificateDName? issuedTo;
+  CygnusSslCertificateDName? issuedTo;
 
   ///Not-after date from the validity period.
   DateTime? validNotAfterDate;
@@ -21,8 +21,8 @@ class SslCertificate {
   DateTime? validNotBeforeDate;
 
   ///The original source certificate, if available.
-  X509Certificate? x509Certificate;
-  SslCertificate({
+  CygnusX509Certificate? x509Certificate;
+  CygnusSslCertificate({
     this.issuedBy,
     this.issuedTo,
     this.validNotAfterDate,
@@ -30,61 +30,67 @@ class SslCertificate {
     this.x509Certificate,
   });
 
-  ///Gets a possible [SslCertificate] instance from a [Map] value.
-  static SslCertificate? fromMap(
+  ///Gets a possible [CygnusSslCertificate] instance from a [Map] value.
+  static CygnusSslCertificate? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    X509Certificate? x509Certificate;
+    CygnusX509Certificate? x509Certificate;
     try {
-      x509Certificate = X509Certificate.fromData(data: map["x509Certificate"]);
+      x509Certificate = CygnusX509Certificate.fromData(
+        data: map["x509Certificate"],
+      );
     } catch (e, stacktrace) {
       print(e);
       print(stacktrace);
     }
-    SslCertificateDName? issuedBy = SslCertificateDName.fromMap(
+    CygnusSslCertificateDName? issuedBy = CygnusSslCertificateDName.fromMap(
       map["issuedBy"]?.cast<String, dynamic>(),
       enumMethod: enumMethod,
     );
     if (issuedBy == null && x509Certificate != null) {
-      issuedBy = SslCertificateDName(
+      issuedBy = CygnusSslCertificateDName(
         CName:
-            x509Certificate.issuer(dn: ASN1DistinguishedNames.COMMON_NAME) ??
+            x509Certificate.issuer(
+              dn: CygnusASN1DistinguishedNames.COMMON_NAME,
+            ) ??
             "",
         DName: x509Certificate.issuerDistinguishedName ?? "",
         OName:
             x509Certificate.issuer(
-              dn: ASN1DistinguishedNames.ORGANIZATION_NAME,
+              dn: CygnusASN1DistinguishedNames.ORGANIZATION_NAME,
             ) ??
             "",
         UName:
             x509Certificate.issuer(
-              dn: ASN1DistinguishedNames.ORGANIZATIONAL_UNIT_NAME,
+              dn: CygnusASN1DistinguishedNames.ORGANIZATIONAL_UNIT_NAME,
             ) ??
             "",
       );
     }
-    SslCertificateDName? issuedTo = SslCertificateDName.fromMap(
+    CygnusSslCertificateDName? issuedTo = CygnusSslCertificateDName.fromMap(
       map["issuedTo"]?.cast<String, dynamic>(),
       enumMethod: enumMethod,
     );
     if (issuedTo == null && x509Certificate != null) {
-      issuedTo = SslCertificateDName(
+      issuedTo = CygnusSslCertificateDName(
         CName:
-            x509Certificate.subject(dn: ASN1DistinguishedNames.COMMON_NAME) ??
+            x509Certificate.subject(
+              dn: CygnusASN1DistinguishedNames.COMMON_NAME,
+            ) ??
             "",
         DName: x509Certificate.subjectDistinguishedName ?? "",
         OName:
             x509Certificate.subject(
-              dn: ASN1DistinguishedNames.ORGANIZATION_NAME,
+              dn: CygnusASN1DistinguishedNames.ORGANIZATION_NAME,
             ) ??
             "",
         UName:
             x509Certificate.subject(
-              dn: ASN1DistinguishedNames.ORGANIZATIONAL_UNIT_NAME,
+              dn: CygnusASN1DistinguishedNames.ORGANIZATIONAL_UNIT_NAME,
             ) ??
             "",
       );
@@ -95,7 +101,7 @@ class SslCertificate {
     DateTime? validNotBeforeDate = map["validNotBeforeDate"] != null
         ? DateTime.fromMillisecondsSinceEpoch(map["validNotBeforeDate"])
         : x509Certificate?.notBefore;
-    return SslCertificate(
+    return CygnusSslCertificate(
       issuedBy: issuedBy,
       issuedTo: issuedTo,
       validNotAfterDate: validNotAfterDate,
@@ -105,7 +111,7 @@ class SslCertificate {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "issuedBy": issuedBy?.toMap(enumMethod: enumMethod),
       "issuedTo": issuedTo?.toMap(enumMethod: enumMethod),
@@ -122,6 +128,6 @@ class SslCertificate {
 
   @override
   String toString() {
-    return 'SslCertificate{issuedBy: $issuedBy, issuedTo: $issuedTo, validNotAfterDate: $validNotAfterDate, validNotBeforeDate: $validNotBeforeDate, x509Certificate: $x509Certificate}';
+    return 'CygnusSslCertificate{issuedBy: $issuedBy, issuedTo: $issuedTo, validNotAfterDate: $validNotAfterDate, validNotBeforeDate: $validNotBeforeDate, x509Certificate: $x509Certificate}';
   }
 }

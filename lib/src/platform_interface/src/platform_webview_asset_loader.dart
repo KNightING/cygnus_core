@@ -8,7 +8,7 @@ import 'types/web_resource_response.dart';
 
 part 'platform_webview_asset_loader.g.dart';
 
-///{@template cygnus_core.WebViewAssetLoader}
+///{@template cygnus_core.CygnusWebViewAssetLoader}
 ///Helper class to load local files including application's static assets and resources using http(s):// URLs inside a `WebView` class.
 ///Loading local files using web-like URLs instead of `file://` is desirable as it is compatible with the Same-Origin policy.
 ///
@@ -20,10 +20,10 @@ part 'platform_webview_asset_loader.g.dart';
 ///(at paths reserved for this purpose) or the default domain reserved for this: `appassets.androidplatform.net`.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.WebViewAssetLoader.supported_platforms}
+///{@macro cygnus_core.CygnusWebViewAssetLoader.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform()])
 @ExchangeableObject(copyMethod: true)
-class WebViewAssetLoader_ {
+class CygnusWebViewAssetLoader_ {
   ///An unused domain reserved for Android applications to intercept requests for app assets.
   ///
   ///It is used by default unless the user specified a different domain.
@@ -37,61 +37,61 @@ class WebViewAssetLoader_ {
 
   ///List of registered path handlers.
   ///
-  ///[WebViewAssetLoader] will try Path Handlers in the order they're registered,
+  ///[CygnusWebViewAssetLoader] will try Path Handlers in the order they're registered,
   ///and will use whichever is the first to return a non-null.
-  List<PlatformPathHandler>? pathHandlers;
+  List<CygnusPlatformPathHandler>? pathHandlers;
 
-  WebViewAssetLoader_({this.domain, this.httpAllowed, this.pathHandlers});
+  CygnusWebViewAssetLoader_({this.domain, this.httpAllowed, this.pathHandlers});
 }
 
-///{@template cygnus_core.PlatformPathHandlerCreationParams}
-/// Object specifying creation parameters for creating a [PlatformPathHandler].
+///{@template cygnus_core.CygnusPlatformPathHandlerCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformPathHandler].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformPathHandlerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformPathHandlerCreationParams.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform()])
 @immutable
-class PlatformPathHandlerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformPathHandler].
-  const PlatformPathHandlerCreationParams({required this.path});
+class CygnusPlatformPathHandlerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformPathHandler].
+  const CygnusPlatformPathHandlerCreationParams({required this.path});
 
-  ///{@template cygnus_core.PlatformPathHandlerCreationParams.path}
-  ///{@macro cygnus_core.PlatformPathHandler.path}
+  ///{@template cygnus_core.CygnusPlatformPathHandlerCreationParams.path}
+  ///{@macro cygnus_core.CygnusPlatformPathHandler.path}
   ///{@endtemplate}
   final String path;
 
-  ///{@template cygnus_core.PlatformPathHandlerCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformPathHandlerCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformPathHandlerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformPathHandlerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformPathHandler}
+///{@template cygnus_core.CygnusPlatformPathHandler}
 ///A handler that produces responses for a registered path.
 ///
 ///Implement this interface to handle other use-cases according to your app's needs.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformPathHandler.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformPathHandler.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform()])
-abstract class PlatformPathHandler {
-  /// Event handler object that handles the [PlatformPathHandler] events.
-  late final PlatformPathHandlerEvents? eventHandler;
+abstract class CygnusPlatformPathHandler {
+  /// Event handler object that handles the [CygnusPlatformPathHandler] events.
+  late final CygnusPlatformPathHandlerEvents? eventHandler;
 
-  ///{@template cygnus_core.PlatformPathHandler.type}
+  ///{@template cygnus_core.CygnusPlatformPathHandler.type}
   ///The path handler type.
   ///{@endtemplate}
   String get type {
     throw UnimplementedError('type is not implemented on the current platform');
   }
 
-  ///{@template cygnus_core.PlatformPathHandler.path}
+  ///{@template cygnus_core.CygnusPlatformPathHandler.path}
   ///The suffix path to be handled.
   ///
   ///The path should start and end with a `"/"` and it shouldn't collide with a real web path.
@@ -100,7 +100,7 @@ abstract class PlatformPathHandler {
     throw UnimplementedError('path is not implemented on the current platform');
   }
 
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     throw UnimplementedError(
       'toMap is not implemented on the current platform',
     );
@@ -113,75 +113,75 @@ abstract class PlatformPathHandler {
   }
 }
 
-///{@template cygnus_core.PlatformPathHandlerEvents}
+///{@template cygnus_core.CygnusPlatformPathHandlerEvents}
 ///Interface path handler events.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformPathHandlerEvents.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformPathHandlerEvents.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform()])
-abstract class PlatformPathHandlerEvents {
-  ///{@template cygnus_core.PlatformPathHandler.handle}
+abstract class CygnusPlatformPathHandlerEvents {
+  ///{@template cygnus_core.CygnusPlatformPathHandler.handle}
   ///Handles the requested URL by returning the appropriate response.
   ///
   ///Returning a `null` value means that the handler decided not to handle this path.
-  ///In this case, [WebViewAssetLoader] will try the next handler registered on this path or pass to `WebView` that will fall back to network to try to resolve the URL.
+  ///In this case, [CygnusWebViewAssetLoader] will try the next handler registered on this path or pass to `WebView` that will fall back to network to try to resolve the URL.
   ///
   ///However, if the handler wants to save unnecessary processing either by another handler or by falling back to network,
-  ///in cases like a file cannot be found, it may return a `WebResourceResponse(data: null)`
+  ///in cases like a file cannot be found, it may return a `CygnusWebResourceResponse(data: null)`
   ///which is received as an HTTP response with status code `404` and no body.
   ///{@endtemplate}
-  Future<WebResourceResponse?> handle(String path) {
+  Future<CygnusWebResourceResponse?> handle(String path) {
     throw UnimplementedError(
       'handle is not implemented on the current platform',
     );
   }
 }
 
-///{@template cygnus_core.PlatformAssetsPathHandlerCreationParams}
-/// Object specifying creation parameters for creating a [PlatformAssetsPathHandler].
+///{@template cygnus_core.CygnusPlatformAssetsPathHandlerCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformAssetsPathHandler].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformAssetsPathHandlerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformAssetsPathHandlerCreationParams.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform()])
 @immutable
-class PlatformAssetsPathHandlerCreationParams
-    extends PlatformPathHandlerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformAssetsPathHandler].
-  PlatformAssetsPathHandlerCreationParams(
+class CygnusPlatformAssetsPathHandlerCreationParams
+    extends CygnusPlatformPathHandlerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformAssetsPathHandler].
+  CygnusPlatformAssetsPathHandlerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformPathHandlerCreationParams params,
+    CygnusPlatformPathHandlerCreationParams params,
   ) : super(path: params.path);
 
-  /// Creates a [PlatformAssetsPathHandlerCreationParams] instance based on [PlatformPathHandlerCreationParams].
-  factory PlatformAssetsPathHandlerCreationParams.fromPlatformPathHandlerCreationParams(
-    PlatformPathHandlerCreationParams params,
+  /// Creates a [CygnusPlatformAssetsPathHandlerCreationParams] instance based on [CygnusPlatformPathHandlerCreationParams].
+  factory CygnusPlatformAssetsPathHandlerCreationParams.fromPlatformPathHandlerCreationParams(
+    CygnusPlatformPathHandlerCreationParams params,
   ) {
-    return PlatformAssetsPathHandlerCreationParams(params);
+    return CygnusPlatformAssetsPathHandlerCreationParams(params);
   }
 
-  ///{@template cygnus_core.PlatformAssetsPathHandlerCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformAssetsPathHandlerCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   @override
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformAssetsPathHandlerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformAssetsPathHandlerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformAssetsPathHandler}
+///{@template cygnus_core.CygnusPlatformAssetsPathHandler}
 ///Handler class to open a file from assets directory in the application APK.
 ///
 ///Opens the requested file from the application's assets directory.
 ///
 ///The matched prefix path used shouldn't be a prefix of a real web path.
-///Thus, if the requested file cannot be found a [WebResourceResponse] object with a `null` data will be returned instead of `null`.
+///Thus, if the requested file cannot be found a [CygnusWebResourceResponse] object with a `null` data will be returned instead of `null`.
 ///This saves the time of falling back to network and trying to resolve a path that doesn't exist.
-///A [WebResourceResponse] with `null` data will be received as an HTTP response with status code `404` and no body.
+///A [CygnusWebResourceResponse] with `null` data will be received as an HTTP response with status code `404` and no body.
 ///
 ///The MIME type for the file will be determined from the file's extension using
 ///[guessContentTypeFromName](https://developer.android.com/reference/java/net/URLConnection.html#guessContentTypeFromName-java.lang.String-).
@@ -189,111 +189,111 @@ class PlatformAssetsPathHandlerCreationParams
 ///If the file does not have a recognised extension, `text/plain` will be used by default.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformAssetsPathHandler.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformAssetsPathHandler.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform()])
-abstract class PlatformAssetsPathHandler extends PlatformInterface
-    implements PlatformPathHandler {
-  /// Creates a new [PlatformAssetsPathHandler]
-  factory PlatformAssetsPathHandler(
-    PlatformAssetsPathHandlerCreationParams params,
+abstract class CygnusPlatformAssetsPathHandler extends PlatformInterface
+    implements CygnusPlatformPathHandler {
+  /// Creates a new [CygnusPlatformAssetsPathHandler]
+  factory CygnusPlatformAssetsPathHandler(
+    CygnusPlatformAssetsPathHandlerCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformAssetsPathHandler assetsPathHandler = InAppWebViewPlatform
+    final CygnusPlatformAssetsPathHandler assetsPathHandler = CygnusWebViewPlatform
         .instance!
         .createPlatformAssetsPathHandler(params);
     PlatformInterface.verify(assetsPathHandler, _token);
     return assetsPathHandler;
   }
 
-  /// Creates a new empty [PlatformAssetsPathHandler] to access static methods.
-  factory PlatformAssetsPathHandler.static() {
+  /// Creates a new empty [CygnusPlatformAssetsPathHandler] to access static methods.
+  factory CygnusPlatformAssetsPathHandler.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformAssetsPathHandler assetsPathHandlerStatic =
-        InAppWebViewPlatform.instance!.createPlatformAssetsPathHandlerStatic();
+    final CygnusPlatformAssetsPathHandler assetsPathHandlerStatic =
+        CygnusWebViewPlatform.instance!.createPlatformAssetsPathHandlerStatic();
     PlatformInterface.verify(assetsPathHandlerStatic, _token);
     return assetsPathHandlerStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformAssetsPathHandler].
+  /// Used by the platform implementation to create a new [CygnusPlatformAssetsPathHandler].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformAssetsPathHandler.implementation(this.params) : super(token: _token);
+  CygnusPlatformAssetsPathHandler.implementation(this.params) : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformAssetsPathHandler].
-  final PlatformAssetsPathHandlerCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformAssetsPathHandler].
+  final CygnusPlatformAssetsPathHandlerCreationParams params;
 
   @override
-  String get type => 'AssetsPathHandler';
+  String get type => 'CygnusAssetsPathHandler';
 
   @override
   String get path => params.path;
 
-  ///{@macro cygnus_core.PlatformAssetsPathHandlerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformAssetsPathHandlerCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
       params.isClassSupported(platform: platform);
 }
 
-///{@template cygnus_core.PlatformResourcesPathHandlerCreationParams}
-/// Object specifying creation parameters for creating a [PlatformResourcesPathHandler].
+///{@template cygnus_core.CygnusPlatformResourcesPathHandlerCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformResourcesPathHandler].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformResourcesPathHandlerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformResourcesPathHandlerCreationParams.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform()])
 @immutable
-class PlatformResourcesPathHandlerCreationParams
-    extends PlatformPathHandlerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformResourcesPathHandler].
-  PlatformResourcesPathHandlerCreationParams(
+class CygnusPlatformResourcesPathHandlerCreationParams
+    extends CygnusPlatformPathHandlerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformResourcesPathHandler].
+  CygnusPlatformResourcesPathHandlerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformPathHandlerCreationParams params,
+    CygnusPlatformPathHandlerCreationParams params,
   ) : super(path: params.path);
 
-  /// Creates a [PlatformResourcesPathHandlerCreationParams] instance based on [PlatformPathHandlerCreationParams].
-  factory PlatformResourcesPathHandlerCreationParams.fromPlatformPathHandlerCreationParams(
-    PlatformPathHandlerCreationParams params,
+  /// Creates a [CygnusPlatformResourcesPathHandlerCreationParams] instance based on [CygnusPlatformPathHandlerCreationParams].
+  factory CygnusPlatformResourcesPathHandlerCreationParams.fromPlatformPathHandlerCreationParams(
+    CygnusPlatformPathHandlerCreationParams params,
   ) {
-    return PlatformResourcesPathHandlerCreationParams(params);
+    return CygnusPlatformResourcesPathHandlerCreationParams(params);
   }
 
-  ///{@template cygnus_core.PlatformResourcesPathHandlerCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformResourcesPathHandlerCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   @override
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformResourcesPathHandlerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformResourcesPathHandlerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformResourcesPathHandler}
+///{@template cygnus_core.CygnusPlatformResourcesPathHandler}
 ///Handler class to open a file from resources directory in the application APK.
 ///
 ///Opens the requested file from application's resources directory.
 ///
 ///The matched prefix path used shouldn't be a prefix of a real web path.
-///Thus, if the requested file cannot be found a [WebResourceResponse] object with a `null` data will be returned instead of `null`.
+///Thus, if the requested file cannot be found a [CygnusWebResourceResponse] object with a `null` data will be returned instead of `null`.
 ///This saves the time of falling back to network and trying to resolve a path that doesn't exist.
-///A [WebResourceResponse] with `null` data will be received as an HTTP response with status code `404` and no body.
+///A [CygnusWebResourceResponse] with `null` data will be received as an HTTP response with status code `404` and no body.
 ///
 ///The MIME type for the file will be determined from the file's extension using
 ///[guessContentTypeFromName](https://developer.android.com/reference/java/net/URLConnection.html#guessContentTypeFromName-java.lang.String-).
@@ -301,116 +301,116 @@ class PlatformResourcesPathHandlerCreationParams
 ///If the file does not have a recognised extension, `text/plain` will be used by default.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformResourcesPathHandler.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformResourcesPathHandler.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform()])
-abstract class PlatformResourcesPathHandler extends PlatformInterface
-    implements PlatformPathHandler {
-  /// Creates a new [PlatformResourcesPathHandler]
-  factory PlatformResourcesPathHandler(
-    PlatformResourcesPathHandlerCreationParams params,
+abstract class CygnusPlatformResourcesPathHandler extends PlatformInterface
+    implements CygnusPlatformPathHandler {
+  /// Creates a new [CygnusPlatformResourcesPathHandler]
+  factory CygnusPlatformResourcesPathHandler(
+    CygnusPlatformResourcesPathHandlerCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformResourcesPathHandler resourcesPathHandler =
-        InAppWebViewPlatform.instance!.createPlatformResourcesPathHandler(
+    final CygnusPlatformResourcesPathHandler resourcesPathHandler =
+        CygnusWebViewPlatform.instance!.createPlatformResourcesPathHandler(
           params,
         );
     PlatformInterface.verify(resourcesPathHandler, _token);
     return resourcesPathHandler;
   }
 
-  /// Creates a new empty [PlatformResourcesPathHandler] to access static methods.
-  factory PlatformResourcesPathHandler.static() {
+  /// Creates a new empty [CygnusPlatformResourcesPathHandler] to access static methods.
+  factory CygnusPlatformResourcesPathHandler.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformResourcesPathHandler resourcesPathHandlerStatic =
-        InAppWebViewPlatform.instance!
+    final CygnusPlatformResourcesPathHandler resourcesPathHandlerStatic =
+        CygnusWebViewPlatform.instance!
             .createPlatformResourcesPathHandlerStatic();
     PlatformInterface.verify(resourcesPathHandlerStatic, _token);
     return resourcesPathHandlerStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformResourcesPathHandler].
+  /// Used by the platform implementation to create a new [CygnusPlatformResourcesPathHandler].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformResourcesPathHandler.implementation(this.params)
+  CygnusPlatformResourcesPathHandler.implementation(this.params)
     : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformResourcesPathHandler].
-  final PlatformResourcesPathHandlerCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformResourcesPathHandler].
+  final CygnusPlatformResourcesPathHandlerCreationParams params;
 
   @override
-  String get type => 'ResourcesPathHandler';
+  String get type => 'CygnusResourcesPathHandler';
 
   @override
   String get path => params.path;
 
-  ///{@macro cygnus_core.PlatformResourcesPathHandlerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformResourcesPathHandlerCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
       params.isClassSupported(platform: platform);
 }
 
-///{@template cygnus_core.PlatformInternalStoragePathHandlerCreationParams}
-/// Object specifying creation parameters for creating a [PlatformInternalStoragePathHandler].
+///{@template cygnus_core.CygnusPlatformInternalStoragePathHandlerCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformInternalStoragePathHandler].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformInternalStoragePathHandlerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformInternalStoragePathHandlerCreationParams.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform()])
 @immutable
-class PlatformInternalStoragePathHandlerCreationParams
-    extends PlatformPathHandlerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformInternalStoragePathHandler].
-  PlatformInternalStoragePathHandlerCreationParams(
+class CygnusPlatformInternalStoragePathHandlerCreationParams
+    extends CygnusPlatformPathHandlerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformInternalStoragePathHandler].
+  CygnusPlatformInternalStoragePathHandlerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformPathHandlerCreationParams params, {
+    CygnusPlatformPathHandlerCreationParams params, {
     required this.directory,
   }) : super(path: params.path);
 
-  /// Creates a [PlatformInternalStoragePathHandlerCreationParams] instance based on [PlatformPathHandlerCreationParams].
-  factory PlatformInternalStoragePathHandlerCreationParams.fromPlatformPathHandlerCreationParams(
-    PlatformPathHandlerCreationParams params, {
+  /// Creates a [CygnusPlatformInternalStoragePathHandlerCreationParams] instance based on [CygnusPlatformPathHandlerCreationParams].
+  factory CygnusPlatformInternalStoragePathHandlerCreationParams.fromPlatformPathHandlerCreationParams(
+    CygnusPlatformPathHandlerCreationParams params, {
     required String directory,
   }) {
-    return PlatformInternalStoragePathHandlerCreationParams(
+    return CygnusPlatformInternalStoragePathHandlerCreationParams(
       params,
       directory: directory,
     );
   }
 
-  ///{@template cygnus_core.PlatformInternalStoragePathHandlerCreationParams.directory}
+  ///{@template cygnus_core.CygnusPlatformInternalStoragePathHandlerCreationParams.directory}
   ///The directory for which files should be served.
   ///{@endtemplate}
   final String directory;
 
-  ///{@template cygnus_core.PlatformInternalStoragePathHandlerCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformInternalStoragePathHandlerCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   @override
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformInternalStoragePathHandlerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformInternalStoragePathHandlerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformInternalStoragePathHandler}
+///{@template cygnus_core.CygnusPlatformInternalStoragePathHandler}
 ///Handler class to open files from application internal storage.
 ///For more information about android storage please refer to
 ///[Android Developers Docs: Data and file storage overview](https://developer.android.com/guide/topics/data/data-storage).
@@ -421,9 +421,9 @@ class PlatformInternalStoragePathHandlerCreationParams
 ///Opens the requested file from the exposed data directory.
 ///
 ///The matched prefix path used shouldn't be a prefix of a real web path.
-///Thus, if the requested file cannot be found a [WebResourceResponse] object with a `null` data will be returned instead of `null`.
+///Thus, if the requested file cannot be found a [CygnusWebResourceResponse] object with a `null` data will be returned instead of `null`.
 ///This saves the time of falling back to network and trying to resolve a path that doesn't exist.
-///A [WebResourceResponse] with `null` data will be received as an HTTP response with status code `404` and no body.
+///A [CygnusWebResourceResponse] with `null` data will be received as an HTTP response with status code `404` and no body.
 ///
 ///The MIME type for the file will be determined from the file's extension using
 ///[guessContentTypeFromName](https://developer.android.com/reference/java/net/URLConnection.html#guessContentTypeFromName-java.lang.String-).
@@ -431,115 +431,115 @@ class PlatformInternalStoragePathHandlerCreationParams
 ///If the file does not have a recognised extension, `text/plain` will be used by default.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformInternalStoragePathHandler.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformInternalStoragePathHandler.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform()])
-abstract class PlatformInternalStoragePathHandler extends PlatformInterface
-    implements PlatformPathHandler {
-  /// Creates a new [PlatformInternalStoragePathHandler]
-  factory PlatformInternalStoragePathHandler(
-    PlatformInternalStoragePathHandlerCreationParams params,
+abstract class CygnusPlatformInternalStoragePathHandler extends PlatformInterface
+    implements CygnusPlatformPathHandler {
+  /// Creates a new [CygnusPlatformInternalStoragePathHandler]
+  factory CygnusPlatformInternalStoragePathHandler(
+    CygnusPlatformInternalStoragePathHandlerCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformInternalStoragePathHandler internalStoragePathHandler =
-        InAppWebViewPlatform.instance!.createPlatformInternalStoragePathHandler(
+    final CygnusPlatformInternalStoragePathHandler internalStoragePathHandler =
+        CygnusWebViewPlatform.instance!.createPlatformInternalStoragePathHandler(
           params,
         );
     PlatformInterface.verify(internalStoragePathHandler, _token);
     return internalStoragePathHandler;
   }
 
-  /// Creates a new empty [PlatformInternalStoragePathHandler] to access static methods.
-  factory PlatformInternalStoragePathHandler.static() {
+  /// Creates a new empty [CygnusPlatformInternalStoragePathHandler] to access static methods.
+  factory CygnusPlatformInternalStoragePathHandler.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformInternalStoragePathHandler internalStoragePathHandlerStatic =
-        InAppWebViewPlatform.instance!
+    final CygnusPlatformInternalStoragePathHandler internalStoragePathHandlerStatic =
+        CygnusWebViewPlatform.instance!
             .createPlatformInternalStoragePathHandlerStatic();
     PlatformInterface.verify(internalStoragePathHandlerStatic, _token);
     return internalStoragePathHandlerStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformInternalStoragePathHandler].
+  /// Used by the platform implementation to create a new [CygnusPlatformInternalStoragePathHandler].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformInternalStoragePathHandler.implementation(this.params)
+  CygnusPlatformInternalStoragePathHandler.implementation(this.params)
     : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformInternalStoragePathHandler].
-  final PlatformInternalStoragePathHandlerCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformInternalStoragePathHandler].
+  final CygnusPlatformInternalStoragePathHandlerCreationParams params;
 
   @override
-  String get type => 'InternalStoragePathHandler';
+  String get type => 'CygnusInternalStoragePathHandler';
 
   @override
   String get path => params.path;
 
-  ///{@macro cygnus_core.PlatformInternalStoragePathHandlerCreationParams.directory}
+  ///{@macro cygnus_core.CygnusPlatformInternalStoragePathHandlerCreationParams.directory}
   String get directory => params.directory;
 
-  ///{@macro cygnus_core.PlatformInternalStoragePathHandlerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformInternalStoragePathHandlerCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
       params.isClassSupported(platform: platform);
 }
 
-///{@template cygnus_core.PlatformCustomPathHandlerCreationParams}
-/// Object specifying creation parameters for creating a [PlatformCustomPathHandler].
+///{@template cygnus_core.CygnusPlatformCustomPathHandlerCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformCustomPathHandler].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformCustomPathHandlerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformCustomPathHandlerCreationParams.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform()])
 @immutable
-class PlatformCustomPathHandlerCreationParams
-    extends PlatformPathHandlerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformCustomPathHandler].
-  PlatformCustomPathHandlerCreationParams(
+class CygnusPlatformCustomPathHandlerCreationParams
+    extends CygnusPlatformPathHandlerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformCustomPathHandler].
+  CygnusPlatformCustomPathHandlerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformPathHandlerCreationParams params,
+    CygnusPlatformPathHandlerCreationParams params,
   ) : super(path: params.path);
 
-  /// Creates a [PlatformCustomPathHandlerCreationParams] instance based on [PlatformPathHandlerCreationParams].
-  factory PlatformCustomPathHandlerCreationParams.fromPlatformPathHandlerCreationParams(
-    PlatformPathHandlerCreationParams params,
+  /// Creates a [CygnusPlatformCustomPathHandlerCreationParams] instance based on [CygnusPlatformPathHandlerCreationParams].
+  factory CygnusPlatformCustomPathHandlerCreationParams.fromPlatformPathHandlerCreationParams(
+    CygnusPlatformPathHandlerCreationParams params,
   ) {
-    return PlatformCustomPathHandlerCreationParams(params);
+    return CygnusPlatformCustomPathHandlerCreationParams(params);
   }
 
-  ///{@template cygnus_core.PlatformCustomPathHandlerCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformCustomPathHandlerCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   @override
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformCustomPathHandlerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformCustomPathHandlerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformCustomPathHandler}
+///{@template cygnus_core.CygnusPlatformCustomPathHandler}
 ///Custom handler class used to implement a custom logic to open a file.
 ///
 ///The matched prefix path used shouldn't be a prefix of a real web path.
-///Thus, if the requested file cannot be found a [WebResourceResponse] object with a `null` data will be returned instead of `null`.
+///Thus, if the requested file cannot be found a [CygnusWebResourceResponse] object with a `null` data will be returned instead of `null`.
 ///This saves the time of falling back to network and trying to resolve a path that doesn't exist.
-///A [WebResourceResponse] with `null` data will be received as an HTTP response with status code `404` and no body.
+///A [CygnusWebResourceResponse] with `null` data will be received as an HTTP response with status code `404` and no body.
 ///
 ///The MIME type for the file will be determined from the file's extension using
 ///[guessContentTypeFromName](https://developer.android.com/reference/java/net/URLConnection.html#guessContentTypeFromName-java.lang.String-).
@@ -547,62 +547,62 @@ class PlatformCustomPathHandlerCreationParams
 ///If the file does not have a recognised extension, `text/plain` will be used by default.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformCustomPathHandler.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformCustomPathHandler.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform()])
-abstract class PlatformCustomPathHandler extends PlatformInterface
-    implements PlatformPathHandler {
-  /// Creates a new [PlatformCustomPathHandler]
-  factory PlatformCustomPathHandler(
-    PlatformCustomPathHandlerCreationParams params,
+abstract class CygnusPlatformCustomPathHandler extends PlatformInterface
+    implements CygnusPlatformPathHandler {
+  /// Creates a new [CygnusPlatformCustomPathHandler]
+  factory CygnusPlatformCustomPathHandler(
+    CygnusPlatformCustomPathHandlerCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformCustomPathHandler customPathHandler = InAppWebViewPlatform
+    final CygnusPlatformCustomPathHandler customPathHandler = CygnusWebViewPlatform
         .instance!
         .createPlatformCustomPathHandler(params);
     PlatformInterface.verify(customPathHandler, _token);
     return customPathHandler;
   }
 
-  /// Creates a new empty [PlatformCustomPathHandler] to access static methods.
-  factory PlatformCustomPathHandler.static() {
+  /// Creates a new empty [CygnusPlatformCustomPathHandler] to access static methods.
+  factory CygnusPlatformCustomPathHandler.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformCustomPathHandler customPathHandlerStatic =
-        InAppWebViewPlatform.instance!.createPlatformCustomPathHandlerStatic();
+    final CygnusPlatformCustomPathHandler customPathHandlerStatic =
+        CygnusWebViewPlatform.instance!.createPlatformCustomPathHandlerStatic();
     PlatformInterface.verify(customPathHandlerStatic, _token);
     return customPathHandlerStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformCustomPathHandler].
+  /// Used by the platform implementation to create a new [CygnusPlatformCustomPathHandler].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformCustomPathHandler.implementation(this.params) : super(token: _token);
+  CygnusPlatformCustomPathHandler.implementation(this.params) : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformCustomPathHandler].
-  final PlatformCustomPathHandlerCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformCustomPathHandler].
+  final CygnusPlatformCustomPathHandlerCreationParams params;
 
   @override
-  String get type => 'CustomPathHandler';
+  String get type => 'CygnusCustomPathHandler';
 
   @override
   String get path => params.path;
 
-  ///{@macro cygnus_core.PlatformCustomPathHandlerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformCustomPathHandlerCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
       params.isClassSupported(platform: platform);
 }

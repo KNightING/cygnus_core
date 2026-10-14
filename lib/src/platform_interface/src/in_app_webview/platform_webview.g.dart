@@ -6,9 +6,9 @@ part of 'platform_webview.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformWebViewCreationParamsClassSupported
-    on PlatformWebViewCreationParams {
-  ///{@template cygnus_core.PlatformWebViewCreationParams.supported_platforms}
+extension _CygnusPlatformWebViewCreationParamsClassSupported
+    on CygnusPlatformWebViewCreationParams {
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -18,7 +18,7 @@ extension _PlatformWebViewCreationParamsClassSupported
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformWebViewCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return kIsWeb && platform == null
@@ -34,11 +34,11 @@ extension _PlatformWebViewCreationParamsClassSupported
   }
 }
 
-///List of [PlatformWebViewCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformWebViewCreationParamsProperty {
-  ///Can be used to check if the [PlatformWebViewCreationParams.androidOnFormResubmission] property is supported at runtime.
+///List of [CygnusPlatformWebViewCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformWebViewCreationParamsProperty {
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.androidOnFormResubmission] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnFormResubmission.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnFormResubmission.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -46,26 +46,26 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onFormResubmission instead')
   androidOnFormResubmission,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.androidOnGeolocationPermissionsHidePrompt] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.androidOnGeolocationPermissionsHidePrompt] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnGeolocationPermissionsHidePrompt.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnGeolocationPermissionsHidePrompt.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onGeolocationPermissionsHidePrompt instead')
   androidOnGeolocationPermissionsHidePrompt,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.androidOnGeolocationPermissionsShowPrompt] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.androidOnGeolocationPermissionsShowPrompt] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnGeolocationPermissionsShowPrompt.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnGeolocationPermissionsShowPrompt.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -73,14 +73,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [origin]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onGeolocationPermissionsShowPrompt instead')
   androidOnGeolocationPermissionsShowPrompt,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.androidOnJsBeforeUnload] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.androidOnJsBeforeUnload] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnJsBeforeUnload.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnJsBeforeUnload.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -88,14 +88,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [jsBeforeUnloadRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onJsBeforeUnload instead')
   androidOnJsBeforeUnload,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.androidOnPermissionRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.androidOnPermissionRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnPermissionRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnPermissionRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -104,14 +104,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [origin]: all platforms
   ///- [resources]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onPermissionRequest instead')
   androidOnPermissionRequest,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.androidOnReceivedIcon] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.androidOnReceivedIcon] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnReceivedIcon.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnReceivedIcon.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -119,14 +119,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [icon]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onReceivedIcon instead')
   androidOnReceivedIcon,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.androidOnReceivedLoginRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.androidOnReceivedLoginRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnReceivedLoginRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnReceivedLoginRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -134,14 +134,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [loginRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onReceivedLoginRequest instead')
   androidOnReceivedLoginRequest,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.androidOnReceivedTouchIconUrl] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.androidOnReceivedTouchIconUrl] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnReceivedTouchIconUrl.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnReceivedTouchIconUrl.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -150,14 +150,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [url]: all platforms
   ///- [precomposed]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onReceivedTouchIconUrl instead')
   androidOnReceivedTouchIconUrl,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.androidOnRenderProcessGone] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.androidOnRenderProcessGone] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnRenderProcessGone.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnRenderProcessGone.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -165,14 +165,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [detail]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onRenderProcessGone instead')
   androidOnRenderProcessGone,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.androidOnRenderProcessResponsive] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.androidOnRenderProcessResponsive] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnRenderProcessResponsive.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnRenderProcessResponsive.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -180,14 +180,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onRenderProcessResponsive instead')
   androidOnRenderProcessResponsive,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.androidOnRenderProcessUnresponsive] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.androidOnRenderProcessUnresponsive] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnRenderProcessUnresponsive.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnRenderProcessUnresponsive.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -195,14 +195,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onRenderProcessUnresponsive instead')
   androidOnRenderProcessUnresponsive,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.androidOnSafeBrowsingHit] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.androidOnSafeBrowsingHit] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnSafeBrowsingHit.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnSafeBrowsingHit.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -211,14 +211,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [url]: all platforms
   ///- [threatType]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onSafeBrowsingHit instead')
   androidOnSafeBrowsingHit,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.androidOnScaleChanged] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.androidOnScaleChanged] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnScaleChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnScaleChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -227,14 +227,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [oldScale]: all platforms
   ///- [newScale]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onZoomScaleChanged instead')
   androidOnScaleChanged,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.androidShouldInterceptRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.androidShouldInterceptRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidShouldInterceptRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidShouldInterceptRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -242,26 +242,26 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use shouldInterceptRequest instead')
   androidShouldInterceptRequest,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.contextMenu] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.contextMenu] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.contextMenu.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.contextMenu.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   contextMenu,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.findInteractionController] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.findInteractionController] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.findInteractionController.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.findInteractionController.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -270,13 +270,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit ([Official API - WebKitFindController](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/class.FindController.html))
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   findInteractionController,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.initialData] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.initialData] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.initialData.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.initialData.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -286,13 +286,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   initialData,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.initialFile] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.initialFile] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.initialFile.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.initialFile.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -302,26 +302,26 @@ enum PlatformWebViewCreationParamsProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   initialFile,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.initialOptions] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.initialOptions] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.initialOptions.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.initialOptions.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use initialSettings instead')
   initialOptions,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.initialSettings] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.initialSettings] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.initialSettings.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.initialSettings.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -331,13 +331,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   initialSettings,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.initialUrlRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.initialUrlRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.initialUrlRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.initialUrlRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
@@ -348,43 +348,43 @@ enum PlatformWebViewCreationParamsProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   initialUrlRequest,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.initialUserScripts] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.initialUserScripts] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.initialUserScripts.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.initialUserScripts.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView:
-  ///    - This property will be ignored if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to iOS window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This property will be ignored if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to iOS window WebViews. This is a limitation of the native WebKit APIs.
   ///- macOS WKWebView:
-  ///    - This property will be ignored if the [PlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to iOS window WebViews. This is a limitation of the native WebKit APIs.
+  ///    - This property will be ignored if the [CygnusPlatformWebViewCreationParams.windowId] has been set. There isn't any way to add/remove user scripts specific to iOS window WebViews. This is a limitation of the native WebKit APIs.
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///- Linux WPE WebKit ([Official API - WebKitUserContentManager](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/class.UserContentManager.html))
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   initialUserScripts,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.iosOnDidReceiveServerRedirectForProvisionalNavigation] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.iosOnDidReceiveServerRedirectForProvisionalNavigation] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.iosOnDidReceiveServerRedirectForProvisionalNavigation.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.iosOnDidReceiveServerRedirectForProvisionalNavigation.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onDidReceiveServerRedirectForProvisionalNavigation instead')
   iosOnDidReceiveServerRedirectForProvisionalNavigation,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.iosOnNavigationResponse] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.iosOnNavigationResponse] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.iosOnNavigationResponse.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.iosOnNavigationResponse.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
@@ -392,26 +392,26 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [navigationResponse]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onNavigationResponse instead')
   iosOnNavigationResponse,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.iosOnWebContentProcessDidTerminate] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.iosOnWebContentProcessDidTerminate] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.iosOnWebContentProcessDidTerminate.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.iosOnWebContentProcessDidTerminate.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onWebContentProcessDidTerminate instead')
   iosOnWebContentProcessDidTerminate,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.iosShouldAllowDeprecatedTLS] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.iosShouldAllowDeprecatedTLS] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.iosShouldAllowDeprecatedTLS.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.iosShouldAllowDeprecatedTLS.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
@@ -419,14 +419,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [challenge]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use shouldAllowDeprecatedTLS instead')
   iosShouldAllowDeprecatedTLS,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onAcceleratorKeyPressed] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onAcceleratorKeyPressed] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onAcceleratorKeyPressed.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onAcceleratorKeyPressed.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2Controller.add_AcceleratorKeyPressed](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2controller?view=webview2-1.0.2849.39#add_acceleratorkeypressed))
@@ -434,51 +434,51 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [detail]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onAcceleratorKeyPressed,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onAjaxProgress] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onAjaxProgress] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onAjaxProgress.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onAjaxProgress.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - In order to be able to listen this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] and [InAppWebViewSettings.useOnAjaxProgress] settings documentation. Also, on Android that doesn't support the [WebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
+  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] and [CygnusWebViewSettings.useOnAjaxProgress] settings documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Linux WPE WebKit:
-  ///    - This event is implemented using JavaScript. In order to be able to listen to this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] and [InAppWebViewSettings.useOnAjaxProgress] settings documentation.
+  ///    - This event is implemented using JavaScript. In order to be able to listen to this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] and [CygnusWebViewSettings.useOnAjaxProgress] settings documentation.
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [ajaxRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onAjaxProgress,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onAjaxReadyStateChange] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onAjaxReadyStateChange] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onAjaxReadyStateChange.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onAjaxReadyStateChange.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - In order to be able to listen this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] and [InAppWebViewSettings.useOnAjaxReadyStateChange] settings documentation. Also, on Android that doesn't support the [WebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
+  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] and [CygnusWebViewSettings.useOnAjaxReadyStateChange] settings documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Linux WPE WebKit:
-  ///    - This event is implemented using JavaScript. In order to be able to listen to this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] and [InAppWebViewSettings.useOnAjaxReadyStateChange] settings documentation.
+  ///    - This event is implemented using JavaScript. In order to be able to listen to this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] and [CygnusWebViewSettings.useOnAjaxReadyStateChange] settings documentation.
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [ajaxRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onAjaxReadyStateChange,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onCameraCaptureStateChanged] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onCameraCaptureStateChanged] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onCameraCaptureStateChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onCameraCaptureStateChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+
@@ -490,13 +490,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [oldState]: all platforms
   ///- [newState]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onCameraCaptureStateChanged,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onCloseWindow] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onCloseWindow] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onCloseWindow.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onCloseWindow.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onCloseWindow](https://developer.android.com/reference/android/webkit/WebChromeClient#onCloseWindow(android.webkit.WebView)))
@@ -506,16 +506,16 @@ enum PlatformWebViewCreationParamsProperty {
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_WindowCloseRequested](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#add_windowcloserequested))
   ///- Linux WPE WebKit ([Official API - WebKitWebView::close](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/signal.WebView.close.html))
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onCloseWindow,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onConsoleMessage] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onConsoleMessage] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onConsoleMessage.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onConsoleMessage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebChromeClient.onConsoleMessage](https://developer.android.com/reference/android/webkit/WebChromeClient#onConsoleMessage(android.webkit.ConsoleMessage)))
+  ///- Android WebView ([Official API - WebChromeClient.onConsoleMessage](https://developer.android.com/reference/android/webkit/WebChromeClient#onConsoleMessage(android.webkit.CygnusConsoleMessage)))
   ///- iOS WKWebView:
   ///    - This event is implemented using JavaScript.
   ///- macOS WKWebView:
@@ -528,13 +528,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [consoleMessage]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onConsoleMessage,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onContentLoading] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onContentLoading] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onContentLoading.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onContentLoading.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_ContentLoading](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#add_contentloading))
@@ -542,13 +542,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onContentLoading,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onContentSizeChanged] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onContentSizeChanged] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onContentSizeChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onContentSizeChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
@@ -559,37 +559,37 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [oldContentSize]: all platforms
   ///- [newContentSize]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onContentSizeChanged,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onCreateWindow] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onCreateWindow] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onCreateWindow.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onCreateWindow.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onCreateWindow](https://developer.android.com/reference/android/webkit/WebChromeClient#onCreateWindow(android.webkit.WebView,%20boolean,%20boolean,%20android.os.Message))):
-  ///    - You need to set [InAppWebViewSettings.supportMultipleWindows] setting to `true`. Also, if the request has been created using JavaScript (`window.open()`), then there are some limitation: check the [NavigationAction] class.
+  ///    - You need to set [CygnusWebViewSettings.supportMultipleWindows] setting to `true`. Also, if the request has been created using JavaScript (`window.open()`), then there are some limitation: check the [CygnusNavigationAction] class.
   ///- iOS WKWebView ([Official API - WKUIDelegate.webView](https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview)):
-  ///    - Setting these initial settings [InAppWebViewSettings.supportZoom], [InAppWebViewSettings.useOnLoadResource], [InAppWebViewSettings.useShouldInterceptAjaxRequest], [InAppWebViewSettings.useShouldInterceptFetchRequest], [InAppWebViewSettings.applicationNameForUserAgent], [InAppWebViewSettings.javaScriptCanOpenWindowsAutomatically], [InAppWebViewSettings.javaScriptEnabled], [InAppWebViewSettings.minimumFontSize], [InAppWebViewSettings.preferredContentMode], [InAppWebViewSettings.incognito], [InAppWebViewSettings.cacheEnabled], [InAppWebViewSettings.mediaPlaybackRequiresUserGesture], [InAppWebViewSettings.resourceCustomSchemes], [InAppWebViewSettings.sharedCookiesEnabled], [InAppWebViewSettings.enableViewportScale], [InAppWebViewSettings.allowsAirPlayForMediaPlayback], [InAppWebViewSettings.allowsPictureInPictureMediaPlayback], [InAppWebViewSettings.isFraudulentWebsiteWarningEnabled], [InAppWebViewSettings.allowsInlineMediaPlayback], [InAppWebViewSettings.suppressesIncrementalRendering], [InAppWebViewSettings.selectionGranularity], [InAppWebViewSettings.ignoresViewportScaleLimits], [InAppWebViewSettings.limitsNavigationsToAppBoundDomains], [InAppWebViewSettings.upgradeKnownHostsToHTTPS], will have no effect due to a `WKWebView` limitation when creating the new window WebView: it's impossible to return the new `WKWebView` with a different `WKWebViewConfiguration` instance (see https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview). So, these options will be inherited from the caller WebView. Also, note that calling [InAppWebViewController.setSettings] method using the controller of the new created WebView, it will update also the WebView options of the caller WebView.
+  ///    - Setting these initial settings [CygnusWebViewSettings.supportZoom], [CygnusWebViewSettings.useOnLoadResource], [CygnusWebViewSettings.useShouldInterceptAjaxRequest], [CygnusWebViewSettings.useShouldInterceptFetchRequest], [CygnusWebViewSettings.applicationNameForUserAgent], [CygnusWebViewSettings.javaScriptCanOpenWindowsAutomatically], [CygnusWebViewSettings.javaScriptEnabled], [CygnusWebViewSettings.minimumFontSize], [CygnusWebViewSettings.preferredContentMode], [CygnusWebViewSettings.incognito], [CygnusWebViewSettings.cacheEnabled], [CygnusWebViewSettings.mediaPlaybackRequiresUserGesture], [CygnusWebViewSettings.resourceCustomSchemes], [CygnusWebViewSettings.sharedCookiesEnabled], [CygnusWebViewSettings.enableViewportScale], [CygnusWebViewSettings.allowsAirPlayForMediaPlayback], [CygnusWebViewSettings.allowsPictureInPictureMediaPlayback], [CygnusWebViewSettings.isFraudulentWebsiteWarningEnabled], [CygnusWebViewSettings.allowsInlineMediaPlayback], [CygnusWebViewSettings.suppressesIncrementalRendering], [CygnusWebViewSettings.selectionGranularity], [CygnusWebViewSettings.ignoresViewportScaleLimits], [CygnusWebViewSettings.limitsNavigationsToAppBoundDomains], [CygnusWebViewSettings.upgradeKnownHostsToHTTPS], will have no effect due to a `WKWebView` limitation when creating the new window WebView: it's impossible to return the new `WKWebView` with a different `WKWebViewConfiguration` instance (see https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview). So, these options will be inherited from the caller WebView. Also, note that calling [CygnusWebViewController.setSettings] method using the controller of the new created WebView, it will update also the WebView options of the caller WebView.
   ///- macOS WKWebView ([Official API - WKUIDelegate.webView](https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview)):
-  ///    - Setting these initial settings [InAppWebViewSettings.supportZoom], [InAppWebViewSettings.useOnLoadResource], [InAppWebViewSettings.useShouldInterceptAjaxRequest], [InAppWebViewSettings.useShouldInterceptFetchRequest], [InAppWebViewSettings.applicationNameForUserAgent], [InAppWebViewSettings.javaScriptCanOpenWindowsAutomatically], [InAppWebViewSettings.javaScriptEnabled], [InAppWebViewSettings.minimumFontSize], [InAppWebViewSettings.preferredContentMode], [InAppWebViewSettings.incognito], [InAppWebViewSettings.cacheEnabled], [InAppWebViewSettings.mediaPlaybackRequiresUserGesture], [InAppWebViewSettings.resourceCustomSchemes], [InAppWebViewSettings.sharedCookiesEnabled], [InAppWebViewSettings.enableViewportScale], [InAppWebViewSettings.allowsAirPlayForMediaPlayback], [InAppWebViewSettings.allowsPictureInPictureMediaPlayback], [InAppWebViewSettings.isFraudulentWebsiteWarningEnabled], [InAppWebViewSettings.allowsInlineMediaPlayback], [InAppWebViewSettings.suppressesIncrementalRendering], [InAppWebViewSettings.selectionGranularity], [InAppWebViewSettings.ignoresViewportScaleLimits], [InAppWebViewSettings.limitsNavigationsToAppBoundDomains], [InAppWebViewSettings.upgradeKnownHostsToHTTPS], will have no effect due to a `WKWebView` limitation when creating the new window WebView: it's impossible to return the new `WKWebView` with a different `WKWebViewConfiguration` instance (see https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview). So, these options will be inherited from the caller WebView. Also, note that calling [InAppWebViewController.setSettings] method using the controller of the new created WebView, it will update also the WebView options of the caller WebView.
+  ///    - Setting these initial settings [CygnusWebViewSettings.supportZoom], [CygnusWebViewSettings.useOnLoadResource], [CygnusWebViewSettings.useShouldInterceptAjaxRequest], [CygnusWebViewSettings.useShouldInterceptFetchRequest], [CygnusWebViewSettings.applicationNameForUserAgent], [CygnusWebViewSettings.javaScriptCanOpenWindowsAutomatically], [CygnusWebViewSettings.javaScriptEnabled], [CygnusWebViewSettings.minimumFontSize], [CygnusWebViewSettings.preferredContentMode], [CygnusWebViewSettings.incognito], [CygnusWebViewSettings.cacheEnabled], [CygnusWebViewSettings.mediaPlaybackRequiresUserGesture], [CygnusWebViewSettings.resourceCustomSchemes], [CygnusWebViewSettings.sharedCookiesEnabled], [CygnusWebViewSettings.enableViewportScale], [CygnusWebViewSettings.allowsAirPlayForMediaPlayback], [CygnusWebViewSettings.allowsPictureInPictureMediaPlayback], [CygnusWebViewSettings.isFraudulentWebsiteWarningEnabled], [CygnusWebViewSettings.allowsInlineMediaPlayback], [CygnusWebViewSettings.suppressesIncrementalRendering], [CygnusWebViewSettings.selectionGranularity], [CygnusWebViewSettings.ignoresViewportScaleLimits], [CygnusWebViewSettings.limitsNavigationsToAppBoundDomains], [CygnusWebViewSettings.upgradeKnownHostsToHTTPS], will have no effect due to a `WKWebView` limitation when creating the new window WebView: it's impossible to return the new `WKWebView` with a different `WKWebViewConfiguration` instance (see https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview). So, these options will be inherited from the caller WebView. Also, note that calling [CygnusWebViewController.setSettings] method using the controller of the new created WebView, it will update also the WebView options of the caller WebView.
   ///- Web \<iframe\> but requires same origin:
   ///    - It works only for `window.open()` javascript calls. Also, there is no way to block the opening the window in a synchronous way, so returning `true` will just close it quickly.
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_NewWindowRequested](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#add_newwindowrequested))
   ///- Linux WPE WebKit ([Official API - WebKitWebView::create](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/signal.WebView.create.html)):
-  ///    - Creates a new InAppWebView with related-view for multi-window support.
+  ///    - Creates a new CygnusWebView with related-view for multi-window support.
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [createWindowAction]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onCreateWindow,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onDOMContentLoaded] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onDOMContentLoaded] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onDOMContentLoaded.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onDOMContentLoaded.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_2.add_DOMContentLoaded](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_2?view=webview2-1.0.2210.55#add_domcontentloaded))
@@ -597,25 +597,25 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onDOMContentLoaded,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onDidReceiveServerRedirectForProvisionalNavigation] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onDidReceiveServerRedirectForProvisionalNavigation] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onDidReceiveServerRedirectForProvisionalNavigation.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onDidReceiveServerRedirectForProvisionalNavigation.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455627-webview))
   ///- macOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455627-webview))
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onDidReceiveServerRedirectForProvisionalNavigation,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onDownloadStart] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onDownloadStart] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onDownloadStart.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onDownloadStart.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -624,14 +624,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onDownloadStarting instead')
   onDownloadStart,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onDownloadStartRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onDownloadStartRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onDownloadStartRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onDownloadStartRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -641,14 +641,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [downloadStartRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onDownloadStarting instead')
   onDownloadStartRequest,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onDownloadStarting] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onDownloadStarting] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onDownloadStarting.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onDownloadStarting.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.setDownloadListener]((https://developer.android.com/reference/android/webkit/WebView#setDownloadListener(android.webkit.DownloadListener)))
@@ -661,13 +661,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [downloadStartRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onDownloadStarting,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onEnterFullscreen] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onEnterFullscreen] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onEnterFullscreen.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onEnterFullscreen.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onShowCustomView](https://developer.android.com/reference/android/webkit/WebChromeClient#onShowCustomView(android.view.View,%20android.webkit.WebChromeClient.CustomViewCallback)))
@@ -677,13 +677,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_ContainsFullScreenElementChanged](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#add_containsfullscreenelementchanged))
   ///- Linux WPE WebKit ([Official API - WebKitWebView::enter-fullscreen](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/signal.WebView.enter-fullscreen.html))
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onEnterFullscreen,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onExitFullscreen] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onExitFullscreen] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onExitFullscreen.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onExitFullscreen.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onHideCustomView](https://developer.android.com/reference/android/webkit/WebChromeClient#onHideCustomView()))
@@ -693,13 +693,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_ContainsFullScreenElementChanged](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#add_containsfullscreenelementchanged))
   ///- Linux WPE WebKit ([Official API - WebKitWebView::leave-fullscreen](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/signal.WebView.leave-fullscreen.html))
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onExitFullscreen,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onFaviconChanged] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onFaviconChanged] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onFaviconChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onFaviconChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onReceivedIcon](https://developer.android.com/reference/android/webkit/WebChromeClient#onReceivedIcon(android.webkit.WebView,%20android.graphics.Bitmap)))
@@ -708,13 +708,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [faviconChangedRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onFaviconChanged,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onFindResultReceived] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onFindResultReceived] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onFindResultReceived.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onFindResultReceived.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -726,14 +726,16 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [numberOfMatches]: all platforms
   ///- [isDoneCounting]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
-  @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+  @Deprecated(
+    'Use CygnusFindInteractionController.onFindResultReceived instead',
+  )
   onFindResultReceived,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onFormResubmission] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onFormResubmission] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onFormResubmission.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onFormResubmission.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onFormResubmission](https://developer.android.com/reference/android/webkit/WebViewClient#onFormResubmission(android.webkit.WebView,%20android.os.Message,%20android.os.Message)))
@@ -741,24 +743,24 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onFormResubmission,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onGeolocationPermissionsHidePrompt] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onGeolocationPermissionsHidePrompt] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onGeolocationPermissionsHidePrompt.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onGeolocationPermissionsHidePrompt.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onGeolocationPermissionsHidePrompt](https://developer.android.com/reference/android/webkit/WebChromeClient#onGeolocationPermissionsHidePrompt()))
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onGeolocationPermissionsHidePrompt,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onGeolocationPermissionsShowPrompt](https://developer.android.com/reference/android/webkit/WebChromeClient#onGeolocationPermissionsShowPrompt(java.lang.String,%20android.webkit.GeolocationPermissions.Callback)))
@@ -766,13 +768,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [origin]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onGeolocationPermissionsShowPrompt,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onJsAlert] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onJsAlert] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onJsAlert.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onJsAlert.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onJsAlert](https://developer.android.com/reference/android/webkit/WebChromeClient#onJsAlert(android.webkit.WebView,%20java.lang.String,%20java.lang.String,%20android.webkit.JsResult)))
@@ -784,13 +786,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [jsAlertRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onJsAlert,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onJsBeforeUnload] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onJsBeforeUnload] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onJsBeforeUnload.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onJsBeforeUnload.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onJsBeforeUnload](https://developer.android.com/reference/android/webkit/WebChromeClient#onJsBeforeUnload(android.webkit.WebView,%20java.lang.String,%20java.lang.String,%20android.webkit.JsResult)))
@@ -800,13 +802,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [jsBeforeUnloadRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onJsBeforeUnload,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onJsConfirm] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onJsConfirm] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onJsConfirm.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onJsConfirm.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onJsConfirm](https://developer.android.com/reference/android/webkit/WebChromeClient#onJsConfirm(android.webkit.WebView,%20java.lang.String,%20java.lang.String,%20android.webkit.JsResult)))
@@ -818,13 +820,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [jsConfirmRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onJsConfirm,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onJsPrompt] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onJsPrompt] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onJsPrompt.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onJsPrompt.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onJsPrompt](https://developer.android.com/reference/android/webkit/WebChromeClient#onJsPrompt(android.webkit.WebView,%20java.lang.String,%20java.lang.String,%20java.lang.String,%20android.webkit.JsPromptResult)))
@@ -836,13 +838,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [jsPromptRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onJsPrompt,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onLaunchingExternalUriScheme] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onLaunchingExternalUriScheme] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLaunchingExternalUriScheme.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLaunchingExternalUriScheme.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_18.add_LaunchingExternalUriScheme](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_18?view=webview2-1.0.2849.39#add_launchingexternalurischeme))
@@ -850,13 +852,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onLaunchingExternalUriScheme,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onLoadError] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onLoadError] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLoadError.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLoadError.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -868,14 +870,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [code]: all platforms
   ///- [message]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onReceivedError instead')
   onLoadError,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onLoadHttpError] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onLoadHttpError] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLoadHttpError.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLoadHttpError.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -887,14 +889,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [statusCode]: all platforms
   ///- [description]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onReceivedHttpError instead')
   onLoadHttpError,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onLoadResource] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onLoadResource] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLoadResource.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLoadResource.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
@@ -909,13 +911,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [resource]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onLoadResource,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onLoadResourceCustomScheme] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onLoadResourceCustomScheme] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLoadResourceCustomScheme.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLoadResourceCustomScheme.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -925,14 +927,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onLoadResourceWithCustomScheme instead')
   onLoadResourceCustomScheme,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onLoadResourceWithCustomScheme] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onLoadResourceWithCustomScheme] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLoadResourceWithCustomScheme.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLoadResourceWithCustomScheme.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -944,13 +946,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onLoadResourceWithCustomScheme,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onLoadStart] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onLoadStart] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLoadStart.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLoadStart.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onPageStarted](https://developer.android.com/reference/android/webkit/WebViewClient#onPageStarted(android.webkit.WebView,%20java.lang.String,%20android.graphics.Bitmap)))
@@ -965,13 +967,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onLoadStart,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onLoadStop] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onLoadStop] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLoadStop.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLoadStop.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onPageFinished](https://developer.android.com/reference/android/webkit/WebViewClient#onPageFinished(android.webkit.WebView,%20java.lang.String)))
@@ -986,13 +988,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onLoadStop,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onLongPressHitTestResult] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onLongPressHitTestResult] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLongPressHitTestResult.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLongPressHitTestResult.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.setOnLongClickListener](https://developer.android.com/reference/android/view/View#setOnLongClickListener(android.view.View.OnLongClickListener)))
@@ -1001,13 +1003,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [hitTestResult]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onLongPressHitTestResult,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onMicrophoneCaptureStateChanged] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onMicrophoneCaptureStateChanged] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onMicrophoneCaptureStateChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onMicrophoneCaptureStateChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+
@@ -1019,13 +1021,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [oldState]: all platforms
   ///- [newState]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onMicrophoneCaptureStateChanged,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onNavigationResponse] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onNavigationResponse] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onNavigationResponse.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onNavigationResponse.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455643-webview))
@@ -1035,13 +1037,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [navigationResponse]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onNavigationResponse,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onNotificationReceived] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onNotificationReceived] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onNotificationReceived.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onNotificationReceived.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_24.add_NotificationReceived](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_24?view=webview2-1.0.2849.39#add_notificationreceived))
@@ -1049,13 +1051,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onNotificationReceived,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onOverScrolled] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onOverScrolled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onOverScrolled.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onOverScrolled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.onOverScrolled](https://developer.android.com/reference/android/webkit/WebView#onOverScrolled(int,%20int,%20boolean,%20boolean)))
@@ -1067,13 +1069,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [clampedX]: all platforms
   ///- [clampedY]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onOverScrolled,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onPageCommitVisible] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onPageCommitVisible] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onPageCommitVisible.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onPageCommitVisible.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onPageCommitVisible](https://developer.android.com/reference/android/webkit/WebViewClient#onPageCommitVisible(android.webkit.WebView,%20java.lang.String)))
@@ -1085,47 +1087,47 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onPageCommitVisible,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onPermissionRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onPermissionRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onPermissionRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onPermissionRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView 21+ ([Official API - WebChromeClient.onPermissionRequest](https://developer.android.com/reference/android/webkit/WebChromeClient#onPermissionRequest(android.webkit.PermissionRequest)))
+  ///- Android WebView 21+ ([Official API - WebChromeClient.onPermissionRequest](https://developer.android.com/reference/android/webkit/WebChromeClient#onPermissionRequest(android.webkit.CygnusPermissionRequest)))
   ///- iOS WKWebView 15.0+:
-  ///    - The default [PermissionResponse.action] is [PermissionResponseAction.PROMPT].
+  ///    - The default [CygnusPermissionResponse.action] is [CygnusPermissionResponseAction.PROMPT].
   ///- macOS WKWebView 12.0+:
-  ///    - The default [PermissionResponse.action] is [PermissionResponseAction.PROMPT].
+  ///    - The default [CygnusPermissionResponse.action] is [CygnusPermissionResponseAction.PROMPT].
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_PermissionRequested](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2210.55#add_permissionrequested))
   ///- Linux WPE WebKit ([Official API - WebKitWebView::permission-request](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/signal.WebView.permission-request.html))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [permissionRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onPermissionRequest,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onPermissionRequestCanceled] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onPermissionRequestCanceled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onPermissionRequestCanceled.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onPermissionRequestCanceled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView 21+ ([Official API - WebChromeClient.onPermissionRequestCanceled](https://developer.android.com/reference/android/webkit/WebChromeClient#onPermissionRequestCanceled(android.webkit.PermissionRequest)))
+  ///- Android WebView 21+ ([Official API - WebChromeClient.onPermissionRequestCanceled](https://developer.android.com/reference/android/webkit/WebChromeClient#onPermissionRequestCanceled(android.webkit.CygnusPermissionRequest)))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [permissionRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onPermissionRequestCanceled,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onPrint] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onPrint] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onPrint.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onPrint.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1134,14 +1136,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onPrintRequest instead')
   onPrint,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onPrintRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onPrintRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onPrintRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onPrintRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1158,13 +1160,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///    - iOS WKWebView
   ///    - macOS WKWebView
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onPrintRequest,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onProcessFailed] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onProcessFailed] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onProcessFailed.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onProcessFailed.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_ProcessFailed](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2849.39#add_processfailed))
@@ -1172,13 +1174,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [detail]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onProcessFailed,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onProgressChanged] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onProgressChanged] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onProgressChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onProgressChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onProgressChanged](https://developer.android.com/reference/android/webkit/WebChromeClient#onProgressChanged(android.webkit.WebView,%20int)))
@@ -1190,13 +1192,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [progress]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onProgressChanged,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onReceivedClientCertRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onReceivedClientCertRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedClientCertRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedClientCertRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onReceivedClientCertRequest](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedClientCertRequest(android.webkit.WebView,%20android.webkit.ClientCertRequest)))
@@ -1209,16 +1211,16 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [challenge]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onReceivedClientCertRequest,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onReceivedError] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onReceivedError] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedError.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedError.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebViewClient.onReceivedError](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedError(android.webkit.WebView,%20android.webkit.WebResourceRequest,%20android.webkit.WebResourceError)))
+  ///- Android WebView ([Official API - WebViewClient.onReceivedError](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedError(android.webkit.WebView,%20android.webkit.CygnusWebResourceRequest,%20android.webkit.CygnusWebResourceError)))
   ///- iOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455623-webview))
   ///- macOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455623-webview))
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_NavigationCompleted](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/iwebview2webview?view=webview2-0.8.355#add_navigationcompleted))
@@ -1228,13 +1230,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [request]: all platforms
   ///- [error]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onReceivedError,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onReceivedHttpAuthRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onReceivedHttpAuthRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedHttpAuthRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedHttpAuthRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onReceivedHttpAuthRequest](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedHttpAuthRequest(android.webkit.WebView,%20android.webkit.HttpAuthHandler,%20java.lang.String,%20java.lang.String)))
@@ -1246,16 +1248,16 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [challenge]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onReceivedHttpAuthRequest,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onReceivedHttpError] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onReceivedHttpError] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedHttpError.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedHttpError.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView 23+ ([Official API - WebViewClient.onReceivedHttpError](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedHttpError(android.webkit.WebView,%20android.webkit.WebResourceRequest,%20android.webkit.WebResourceResponse)))
+  ///- Android WebView 23+ ([Official API - WebViewClient.onReceivedHttpError](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedHttpError(android.webkit.WebView,%20android.webkit.CygnusWebResourceRequest,%20android.webkit.CygnusWebResourceResponse)))
   ///- iOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455643-webview))
   ///- macOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455643-webview))
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_NavigationCompleted](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/iwebview2webview?view=webview2-0.8.355#add_navigationcompleted))
@@ -1266,13 +1268,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [request]: all platforms
   ///- [errorResponse]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onReceivedHttpError,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onReceivedIcon] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onReceivedIcon] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedIcon.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedIcon.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onReceivedIcon](https://developer.android.com/reference/android/webkit/WebChromeClient#onReceivedIcon(android.webkit.WebView,%20android.graphics.Bitmap)))
@@ -1280,14 +1282,14 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [icon]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use onFaviconChanged instead')
   onReceivedIcon,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onReceivedLoginRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onReceivedLoginRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedLoginRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedLoginRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onReceivedLoginRequest](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedLoginRequest(android.webkit.WebView,%20java.lang.String,%20java.lang.String,%20java.lang.String)))
@@ -1295,16 +1297,16 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [loginRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onReceivedLoginRequest,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onReceivedServerTrustAuthRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onReceivedServerTrustAuthRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedServerTrustAuthRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedServerTrustAuthRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebViewClient.onReceivedSslError](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedSslError(android.webkit.WebView,%20android.webkit.SslErrorHandler,%20android.net.http.SslError)))
+  ///- Android WebView ([Official API - WebViewClient.onReceivedSslError](https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedSslError(android.webkit.WebView,%20android.webkit.SslErrorHandler,%20android.net.http.CygnusSslError)))
   ///- iOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455638-webview)):
   ///    - To override the certificate verification logic, you have to provide ATS (App Transport Security) exceptions in your iOS/macOS `Info.plist`. See `NSAppTransportSecurity` in the [Information Property List Key Reference](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW1) for details.
   ///- macOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455638-webview)):
@@ -1316,13 +1318,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [challenge]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onReceivedServerTrustAuthRequest,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onReceivedTouchIconUrl] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onReceivedTouchIconUrl] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedTouchIconUrl.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedTouchIconUrl.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onReceivedTouchIconUrl](https://developer.android.com/reference/android/webkit/WebChromeClient#onReceivedTouchIconUrl(android.webkit.WebView,%20java.lang.String,%20boolean)))
@@ -1331,29 +1333,29 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [url]: all platforms
   ///- [precomposed]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onReceivedTouchIconUrl,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onRenderProcessGone] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onRenderProcessGone] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onRenderProcessGone.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onRenderProcessGone.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView 26+ ([Official API - WebViewClient.onRenderProcessGone](https://developer.android.com/reference/android/webkit/WebViewClient#onRenderProcessGone(android.webkit.WebView,%20android.webkit.RenderProcessGoneDetail)))
+  ///- Android WebView 26+ ([Official API - WebViewClient.onRenderProcessGone](https://developer.android.com/reference/android/webkit/WebViewClient#onRenderProcessGone(android.webkit.WebView,%20android.webkit.CygnusRenderProcessGoneDetail)))
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_ProcessFailed](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2849.39#add_processfailed))
   ///- Linux WPE WebKit ([Official API - WebView.web-process-terminated](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/WebKitWebView.html#WebKitWebView-web-process-terminated))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [detail]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onRenderProcessGone,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onRenderProcessResponsive] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onRenderProcessResponsive] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onRenderProcessResponsive.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onRenderProcessResponsive.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 29+ ([Official API - WebViewRenderProcessClient.onRenderProcessResponsive](https://developer.android.com/reference/android/webkit/WebViewRenderProcessClient#onRenderProcessResponsive(android.webkit.WebView,%20android.webkit.WebViewRenderProcess)))
@@ -1361,13 +1363,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onRenderProcessResponsive,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onRenderProcessUnresponsive] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onRenderProcessUnresponsive] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onRenderProcessUnresponsive.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onRenderProcessUnresponsive.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 29+ ([Official API - WebViewRenderProcessClient.onRenderProcessUnresponsive](https://developer.android.com/reference/android/webkit/WebViewRenderProcessClient#onRenderProcessUnresponsive(android.webkit.WebView,%20android.webkit.WebViewRenderProcess)))
@@ -1376,39 +1378,39 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onRenderProcessUnresponsive,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onRequestFocus] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onRequestFocus] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onRequestFocus.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onRequestFocus.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onRequestFocus](https://developer.android.com/reference/android/webkit/WebChromeClient#onRequestFocus(android.webkit.WebView)))
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onRequestFocus,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onSafeBrowsingHit] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onSafeBrowsingHit] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onSafeBrowsingHit.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onSafeBrowsingHit.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView 27+ ([Official API - WebViewClient.onSafeBrowsingHit](https://developer.android.com/reference/android/webkit/WebViewClient#onSafeBrowsingHit(android.webkit.WebView,%20android.webkit.WebResourceRequest,%20int,%20android.webkit.SafeBrowsingResponse)))
+  ///- Android WebView 27+ ([Official API - WebViewClient.onSafeBrowsingHit](https://developer.android.com/reference/android/webkit/WebViewClient#onSafeBrowsingHit(android.webkit.WebView,%20android.webkit.CygnusWebResourceRequest,%20int,%20android.webkit.CygnusSafeBrowsingResponse)))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///- [threatType]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onSafeBrowsingHit,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onSaveAsUIShowing] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onSaveAsUIShowing] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onSaveAsUIShowing.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onSaveAsUIShowing.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_25.add_SaveAsUIShowing](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_25?view=webview2-1.0.2849.39#add_saveasuishowing))
@@ -1416,13 +1418,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onSaveAsUIShowing,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onSaveFileSecurityCheckStarting] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onSaveFileSecurityCheckStarting] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onSaveFileSecurityCheckStarting.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onSaveFileSecurityCheckStarting.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_26.add_SaveFileSecurityCheckStarting](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_26?view=webview2-1.0.2849.39#add_savefilesecuritycheckstarting))
@@ -1430,13 +1432,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onSaveFileSecurityCheckStarting,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onScreenCaptureStarting] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onScreenCaptureStarting] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onScreenCaptureStarting.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onScreenCaptureStarting.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2_27.add_ScreenCaptureStarting](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2_27?view=webview2-1.0.2849.39#add_screencapturestarting))
@@ -1444,13 +1446,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onScreenCaptureStarting,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onScrollChanged] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onScrollChanged] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onScrollChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onScrollChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.onScrollChanged](https://developer.android.com/reference/android/webkit/WebView#onScrollChanged(int,%20int,%20int,%20int)))
@@ -1465,13 +1467,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [x]: all platforms
   ///- [y]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onScrollChanged,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onShowFileChooser] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onShowFileChooser] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onShowFileChooser.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onShowFileChooser.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onShowFileChooser](https://developer.android.com/reference/android/webkit/WebChromeClient#onShowFileChooser(android.webkit.WebView,%20android.webkit.ValueCallback%3Candroid.net.Uri[]%3E,%20android.webkit.WebChromeClient.FileChooserParams)))
@@ -1480,13 +1482,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onShowFileChooser,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onTitleChanged] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onTitleChanged] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onTitleChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onTitleChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebChromeClient.onReceivedTitle](https://developer.android.com/reference/android/webkit/WebChromeClient#onReceivedTitle(android.webkit.WebView,%20java.lang.String)))
@@ -1499,13 +1501,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [title]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onTitleChanged,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onUpdateVisitedHistory] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onUpdateVisitedHistory] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onUpdateVisitedHistory.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onUpdateVisitedHistory.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.doUpdateVisitedHistory](https://developer.android.com/reference/android/webkit/WebViewClient#doUpdateVisitedHistory(android.webkit.WebView,%20java.lang.String,%20boolean)))
@@ -1521,26 +1523,26 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [isReload]:
   ///    - Android WebView
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onUpdateVisitedHistory,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onWebContentProcessDidTerminate] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onWebContentProcessDidTerminate] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onWebContentProcessDidTerminate.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onWebContentProcessDidTerminate.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKNavigationDelegate.webViewWebContentProcessDidTerminate](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455639-webviewwebcontentprocessdidtermi))
   ///- macOS WKWebView ([Official API - WKNavigationDelegate.webViewWebContentProcessDidTerminate](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455639-webviewwebcontentprocessdidtermi))
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_ProcessFailed](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2849.39#add_processfailed))
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onWebContentProcessDidTerminate,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onWebViewCreated] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onWebViewCreated] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onWebViewCreated.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onWebViewCreated.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1550,13 +1552,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///- Windows WebView2
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onWebViewCreated,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onWindowBlur] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onWindowBlur] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onWindowBlur.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onWindowBlur.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1564,13 +1566,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///- macOS WKWebView
   ///- Web \<iframe\> but requires same origin ([Official API - Window.onblur](https://developer.mozilla.org/en-US/docs/Web/API/Window/blur_event))
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onWindowBlur,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onWindowFocus] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onWindowFocus] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onWindowFocus.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onWindowFocus.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1578,13 +1580,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///- macOS WKWebView
   ///- Web \<iframe\> but requires same origin ([Official API - Window.onfocus](https://developer.mozilla.org/en-US/docs/Web/API/Window/focus_event))
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onWindowFocus,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.onZoomScaleChanged] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.onZoomScaleChanged] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onZoomScaleChanged.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onZoomScaleChanged.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.onScaleChanged](https://developer.android.com/reference/android/webkit/WebViewClient#onScaleChanged(android.webkit.WebView,%20float,%20float)))
@@ -1597,26 +1599,26 @@ enum PlatformWebViewCreationParamsProperty {
   ///- [oldScale]: all platforms
   ///- [newScale]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onZoomScaleChanged,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.pullToRefreshController] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.pullToRefreshController] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.pullToRefreshController.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.pullToRefreshController.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - To be able to use the "pull-to-refresh" feature, [InAppWebViewSettings.useHybridComposition] must be `true`.
+  ///    - To be able to use the "pull-to-refresh" feature, [CygnusWebViewSettings.useHybridComposition] must be `true`.
   ///- iOS WKWebView
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   pullToRefreshController,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.shouldAllowDeprecatedTLS] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.shouldAllowDeprecatedTLS] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.shouldAllowDeprecatedTLS.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.shouldAllowDeprecatedTLS.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 14.0+ ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/3601237-webview))
@@ -1625,54 +1627,54 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [challenge]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   shouldAllowDeprecatedTLS,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.shouldInterceptAjaxRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.shouldInterceptAjaxRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - In order to be able to listen this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] setting documentation. Also, on Android that doesn't support the [WebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
+  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] setting documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Linux WPE WebKit:
-  ///    - This event is implemented using JavaScript. In order to be able to listen to this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] setting documentation.
+  ///    - This event is implemented using JavaScript. In order to be able to listen to this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] setting documentation.
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [ajaxRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   shouldInterceptAjaxRequest,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.shouldInterceptFetchRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.shouldInterceptFetchRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.shouldInterceptFetchRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.shouldInterceptFetchRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - In order to be able to listen this event, check the [InAppWebViewSettings.useShouldInterceptFetchRequest] setting documentation. Also, on Android that doesn't support the [WebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
+  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptFetchRequest] setting documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Linux WPE WebKit:
-  ///    - This event is implemented using JavaScript. In order to be able to listen to this event, check the [InAppWebViewSettings.useShouldInterceptFetchRequest] setting documentation.
+  ///    - This event is implemented using JavaScript. In order to be able to listen to this event, check the [CygnusWebViewSettings.useShouldInterceptFetchRequest] setting documentation.
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [fetchRequest]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   shouldInterceptFetchRequest,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.shouldInterceptRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.shouldInterceptRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.shouldInterceptRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.shouldInterceptRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebViewClient.shouldInterceptRequest](https://developer.android.com/reference/android/webkit/WebViewClient#shouldInterceptRequest(android.webkit.WebView,%20android.webkit.WebResourceRequest)))
+  ///- Android WebView ([Official API - WebViewClient.shouldInterceptRequest](https://developer.android.com/reference/android/webkit/WebViewClient#shouldInterceptRequest(android.webkit.WebView,%20android.webkit.CygnusWebResourceRequest)))
   ///- Windows WebView2 ([Official API - ICoreWebView2.add_WebResourceRequested](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.2478.35#add_webresourcerequested))
   ///- Linux WPE WebKit ([Official API - webkit_web_context_register_uri_scheme](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebContext.register_uri_scheme.html)):
   ///    - Request interception is implemented via custom URI scheme handlers.
@@ -1680,17 +1682,17 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [request]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   shouldInterceptRequest,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.shouldOverrideUrlLoading] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.shouldOverrideUrlLoading.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebViewClient.shouldOverrideUrlLoading](https://developer.android.com/reference/android/webkit/WebViewClient#shouldOverrideUrlLoading(android.webkit.WebView,%20java.lang.String))):
-  ///    - There isn't any way to load an URL for a frame that is not the main frame, so if the request is not for the main frame, the navigation is allowed by default. However, if you want to cancel requests for subframes, you can use the [InAppWebViewSettings.regexToCancelSubFramesLoading] setting to write a Regular Expression that, if the url request of a subframe matches, then the request of that subframe is canceled. Instead, the [InAppWebViewSettings.regexToAllowSyncUrlLoading] setting could be used to allow navigation requests synchronously, as this event is synchronous on native side and the current plugin implementation will always cancel the current request and load a new request if this event returns [NavigationActionPolicy.ALLOW] because Flutter method channels work only asynchronously. Also, this event is not called for POST requests and is not called on the first page load.
+  ///    - There isn't any way to load an URL for a frame that is not the main frame, so if the request is not for the main frame, the navigation is allowed by default. However, if you want to cancel requests for subframes, you can use the [CygnusWebViewSettings.regexToCancelSubFramesLoading] setting to write a Regular Expression that, if the url request of a subframe matches, then the request of that subframe is canceled. Instead, the [CygnusWebViewSettings.regexToAllowSyncUrlLoading] setting could be used to allow navigation requests synchronously, as this event is synchronous on native side and the current plugin implementation will always cancel the current request and load a new request if this event returns [CygnusNavigationActionPolicy.ALLOW] because Flutter method channels work only asynchronously. Also, this event is not called for POST requests and is not called on the first page load.
   ///- iOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455641-webview))
   ///- macOS WKWebView ([Official API - WKNavigationDelegate.webView](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455641-webview))
   ///- Windows WebView2
@@ -1699,13 +1701,13 @@ enum PlatformWebViewCreationParamsProperty {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [navigationAction]: all platforms
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   shouldOverrideUrlLoading,
 
-  ///Can be used to check if the [PlatformWebViewCreationParams.windowId] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebViewCreationParams.windowId] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebViewCreationParams.windowId.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.windowId.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1714,99 +1716,106 @@ enum PlatformWebViewCreationParamsProperty {
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2
   ///
-  ///Use the [PlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebViewCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   windowId,
 }
 
-extension _PlatformWebViewCreationParamsPropertySupported
-    on PlatformWebViewCreationParams {
+extension _CygnusPlatformWebViewCreationParamsPropertySupported
+    on CygnusPlatformWebViewCreationParams {
   static bool isPropertySupported(
-    PlatformWebViewCreationParamsProperty property, {
+    CygnusPlatformWebViewCreationParamsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformWebViewCreationParamsProperty.androidOnFormResubmission:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .androidOnFormResubmission:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty
+      case CygnusPlatformWebViewCreationParamsProperty
           .androidOnGeolocationPermissionsHidePrompt:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty
+      case CygnusPlatformWebViewCreationParamsProperty
           .androidOnGeolocationPermissionsShowPrompt:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.androidOnJsBeforeUnload:
+      case CygnusPlatformWebViewCreationParamsProperty.androidOnJsBeforeUnload:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.androidOnPermissionRequest:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .androidOnPermissionRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.androidOnReceivedIcon:
+      case CygnusPlatformWebViewCreationParamsProperty.androidOnReceivedIcon:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.androidOnReceivedLoginRequest:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .androidOnReceivedLoginRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.androidOnReceivedTouchIconUrl:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .androidOnReceivedTouchIconUrl:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.androidOnRenderProcessGone:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .androidOnRenderProcessGone:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty
+      case CygnusPlatformWebViewCreationParamsProperty
           .androidOnRenderProcessResponsive:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty
+      case CygnusPlatformWebViewCreationParamsProperty
           .androidOnRenderProcessUnresponsive:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.androidOnSafeBrowsingHit:
+      case CygnusPlatformWebViewCreationParamsProperty.androidOnSafeBrowsingHit:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.androidOnScaleChanged:
+      case CygnusPlatformWebViewCreationParamsProperty.androidOnScaleChanged:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.androidShouldInterceptRequest:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .androidShouldInterceptRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.contextMenu:
+      case CygnusPlatformWebViewCreationParamsProperty.contextMenu:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.findInteractionController:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .findInteractionController:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -1815,7 +1824,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.initialData:
+      case CygnusPlatformWebViewCreationParamsProperty.initialData:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -1826,7 +1835,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.initialFile:
+      case CygnusPlatformWebViewCreationParamsProperty.initialFile:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -1837,13 +1846,13 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.initialOptions:
+      case CygnusPlatformWebViewCreationParamsProperty.initialOptions:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.initialSettings:
+      case CygnusPlatformWebViewCreationParamsProperty.initialSettings:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -1854,7 +1863,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.initialUrlRequest:
+      case CygnusPlatformWebViewCreationParamsProperty.initialUrlRequest:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -1865,7 +1874,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.initialUserScripts:
+      case CygnusPlatformWebViewCreationParamsProperty.initialUserScripts:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -1876,26 +1885,27 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty
+      case CygnusPlatformWebViewCreationParamsProperty
           .iosOnDidReceiveServerRedirectForProvisionalNavigation:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.iosOnNavigationResponse:
+      case CygnusPlatformWebViewCreationParamsProperty.iosOnNavigationResponse:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty
+      case CygnusPlatformWebViewCreationParamsProperty
           .iosOnWebContentProcessDidTerminate:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.iosShouldAllowDeprecatedTLS:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .iosShouldAllowDeprecatedTLS:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onAcceleratorKeyPressed:
+      case CygnusPlatformWebViewCreationParamsProperty.onAcceleratorKeyPressed:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onAjaxProgress:
+      case CygnusPlatformWebViewCreationParamsProperty.onAjaxProgress:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -1903,7 +1913,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onAjaxReadyStateChange:
+      case CygnusPlatformWebViewCreationParamsProperty.onAjaxReadyStateChange:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -1911,14 +1921,15 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onCameraCaptureStateChanged:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .onCameraCaptureStateChanged:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onCloseWindow:
+      case CygnusPlatformWebViewCreationParamsProperty.onCloseWindow:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -1929,7 +1940,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onConsoleMessage:
+      case CygnusPlatformWebViewCreationParamsProperty.onConsoleMessage:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -1940,18 +1951,18 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onContentLoading:
+      case CygnusPlatformWebViewCreationParamsProperty.onContentLoading:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onContentSizeChanged:
+      case CygnusPlatformWebViewCreationParamsProperty.onContentSizeChanged:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onCreateWindow:
+      case CygnusPlatformWebViewCreationParamsProperty.onCreateWindow:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -1962,32 +1973,32 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onDOMContentLoaded:
+      case CygnusPlatformWebViewCreationParamsProperty.onDOMContentLoaded:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty
+      case CygnusPlatformWebViewCreationParamsProperty
           .onDidReceiveServerRedirectForProvisionalNavigation:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onDownloadStart:
+      case CygnusPlatformWebViewCreationParamsProperty.onDownloadStart:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onDownloadStartRequest:
+      case CygnusPlatformWebViewCreationParamsProperty.onDownloadStartRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onDownloadStarting:
+      case CygnusPlatformWebViewCreationParamsProperty.onDownloadStarting:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -1996,7 +2007,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onEnterFullscreen:
+      case CygnusPlatformWebViewCreationParamsProperty.onEnterFullscreen:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2007,7 +2018,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onExitFullscreen:
+      case CygnusPlatformWebViewCreationParamsProperty.onExitFullscreen:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2018,37 +2029,37 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onFaviconChanged:
+      case CygnusPlatformWebViewCreationParamsProperty.onFaviconChanged:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onFindResultReceived:
+      case CygnusPlatformWebViewCreationParamsProperty.onFindResultReceived:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onFormResubmission:
+      case CygnusPlatformWebViewCreationParamsProperty.onFormResubmission:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty
+      case CygnusPlatformWebViewCreationParamsProperty
           .onGeolocationPermissionsHidePrompt:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty
+      case CygnusPlatformWebViewCreationParamsProperty
           .onGeolocationPermissionsShowPrompt:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onJsAlert:
+      case CygnusPlatformWebViewCreationParamsProperty.onJsAlert:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2056,21 +2067,13 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onJsBeforeUnload:
+      case CygnusPlatformWebViewCreationParamsProperty.onJsBeforeUnload:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onJsConfirm:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-              TargetPlatform.linux,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onJsPrompt:
+      case CygnusPlatformWebViewCreationParamsProperty.onJsConfirm:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2078,26 +2081,35 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onLaunchingExternalUriScheme:
+      case CygnusPlatformWebViewCreationParamsProperty.onJsPrompt:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+              TargetPlatform.linux,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewCreationParamsProperty
+          .onLaunchingExternalUriScheme:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onLoadError:
+      case CygnusPlatformWebViewCreationParamsProperty.onLoadError:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onLoadHttpError:
+      case CygnusPlatformWebViewCreationParamsProperty.onLoadHttpError:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onLoadResource:
+      case CygnusPlatformWebViewCreationParamsProperty.onLoadResource:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2105,14 +2117,16 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onLoadResourceCustomScheme:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .onLoadResourceCustomScheme:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onLoadResourceWithCustomScheme:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .onLoadResourceWithCustomScheme:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2121,7 +2135,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onLoadStart:
+      case CygnusPlatformWebViewCreationParamsProperty.onLoadStart:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2132,7 +2146,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onLoadStop:
+      case CygnusPlatformWebViewCreationParamsProperty.onLoadStop:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2143,13 +2157,13 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onLongPressHitTestResult:
+      case CygnusPlatformWebViewCreationParamsProperty.onLongPressHitTestResult:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty
+      case CygnusPlatformWebViewCreationParamsProperty
           .onMicrophoneCaptureStateChanged:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
@@ -2157,25 +2171,25 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onNavigationResponse:
+      case CygnusPlatformWebViewCreationParamsProperty.onNavigationResponse:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onNotificationReceived:
+      case CygnusPlatformWebViewCreationParamsProperty.onNotificationReceived:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onOverScrolled:
+      case CygnusPlatformWebViewCreationParamsProperty.onOverScrolled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onPageCommitVisible:
+      case CygnusPlatformWebViewCreationParamsProperty.onPageCommitVisible:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2183,7 +2197,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onPermissionRequest:
+      case CygnusPlatformWebViewCreationParamsProperty.onPermissionRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2192,18 +2206,19 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onPermissionRequestCanceled:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .onPermissionRequestCanceled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onPrint:
+      case CygnusPlatformWebViewCreationParamsProperty.onPrint:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onPrintRequest:
+      case CygnusPlatformWebViewCreationParamsProperty.onPrintRequest:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2213,12 +2228,12 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.macOS,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onProcessFailed:
+      case CygnusPlatformWebViewCreationParamsProperty.onProcessFailed:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onProgressChanged:
+      case CygnusPlatformWebViewCreationParamsProperty.onProgressChanged:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2227,7 +2242,8 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onReceivedClientCertRequest:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .onReceivedClientCertRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2236,7 +2252,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onReceivedError:
+      case CygnusPlatformWebViewCreationParamsProperty.onReceivedError:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2245,7 +2261,8 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onReceivedHttpAuthRequest:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .onReceivedHttpAuthRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2254,7 +2271,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onReceivedHttpError:
+      case CygnusPlatformWebViewCreationParamsProperty.onReceivedHttpError:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2263,17 +2280,17 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onReceivedIcon:
+      case CygnusPlatformWebViewCreationParamsProperty.onReceivedIcon:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onReceivedLoginRequest:
+      case CygnusPlatformWebViewCreationParamsProperty.onReceivedLoginRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty
+      case CygnusPlatformWebViewCreationParamsProperty
           .onReceivedServerTrustAuthRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
@@ -2283,56 +2300,58 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onReceivedTouchIconUrl:
+      case CygnusPlatformWebViewCreationParamsProperty.onReceivedTouchIconUrl:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onRenderProcessGone:
+      case CygnusPlatformWebViewCreationParamsProperty.onRenderProcessGone:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onRenderProcessResponsive:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .onRenderProcessResponsive:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onRenderProcessUnresponsive:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .onRenderProcessUnresponsive:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onRequestFocus:
+      case CygnusPlatformWebViewCreationParamsProperty.onRequestFocus:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onSafeBrowsingHit:
+      case CygnusPlatformWebViewCreationParamsProperty.onSafeBrowsingHit:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onSaveAsUIShowing:
+      case CygnusPlatformWebViewCreationParamsProperty.onSaveAsUIShowing:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty
+      case CygnusPlatformWebViewCreationParamsProperty
           .onSaveFileSecurityCheckStarting:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onScreenCaptureStarting:
+      case CygnusPlatformWebViewCreationParamsProperty.onScreenCaptureStarting:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onScrollChanged:
+      case CygnusPlatformWebViewCreationParamsProperty.onScrollChanged:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2342,13 +2361,13 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.macOS,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onShowFileChooser:
+      case CygnusPlatformWebViewCreationParamsProperty.onShowFileChooser:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onTitleChanged:
+      case CygnusPlatformWebViewCreationParamsProperty.onTitleChanged:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2359,7 +2378,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onUpdateVisitedHistory:
+      case CygnusPlatformWebViewCreationParamsProperty.onUpdateVisitedHistory:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2370,7 +2389,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty
+      case CygnusPlatformWebViewCreationParamsProperty
           .onWebContentProcessDidTerminate:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
@@ -2378,7 +2397,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onWebViewCreated:
+      case CygnusPlatformWebViewCreationParamsProperty.onWebViewCreated:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2389,7 +2408,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onWindowBlur:
+      case CygnusPlatformWebViewCreationParamsProperty.onWindowBlur:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2398,7 +2417,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.iOS,
                     TargetPlatform.macOS,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onWindowFocus:
+      case CygnusPlatformWebViewCreationParamsProperty.onWindowFocus:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2407,7 +2426,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.iOS,
                     TargetPlatform.macOS,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.onZoomScaleChanged:
+      case CygnusPlatformWebViewCreationParamsProperty.onZoomScaleChanged:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -2417,27 +2436,20 @@ extension _PlatformWebViewCreationParamsPropertySupported
                     TargetPlatform.windows,
                     TargetPlatform.linux,
                   ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.pullToRefreshController:
+      case CygnusPlatformWebViewCreationParamsProperty.pullToRefreshController:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.shouldAllowDeprecatedTLS:
+      case CygnusPlatformWebViewCreationParamsProperty.shouldAllowDeprecatedTLS:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.shouldInterceptAjaxRequest:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-              TargetPlatform.linux,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.shouldInterceptFetchRequest:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .shouldInterceptAjaxRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2445,14 +2457,23 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.shouldInterceptRequest:
+      case CygnusPlatformWebViewCreationParamsProperty
+          .shouldInterceptFetchRequest:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+              TargetPlatform.linux,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformWebViewCreationParamsProperty.shouldInterceptRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.shouldOverrideUrlLoading:
+      case CygnusPlatformWebViewCreationParamsProperty.shouldOverrideUrlLoading:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -2461,7 +2482,7 @@ extension _PlatformWebViewCreationParamsPropertySupported
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebViewCreationParamsProperty.windowId:
+      case CygnusPlatformWebViewCreationParamsProperty.windowId:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&

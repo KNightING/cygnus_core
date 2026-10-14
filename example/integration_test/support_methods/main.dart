@@ -6,441 +6,441 @@ import '../util.dart';
 
 void main() {
   skippableGroup('Support methods', () {
-    skippableTest('WebMessageChannel support methods are callable', () {
+    skippableTest('CygnusWebMessageChannel support methods are callable', () {
       expect(
         () =>
-            WebMessageChannel.isClassSupported(platform: defaultTargetPlatform),
+            CygnusWebMessageChannel.isClassSupported(platform: defaultTargetPlatform),
         returnsNormally,
       );
       expect(
-        () => WebMessageChannel.isMethodSupported(
-          PlatformWebMessageChannelMethod.values.first,
+        () => CygnusWebMessageChannel.isMethodSupported(
+          CygnusPlatformWebMessageChannelMethod.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => WebMessageChannel.isPropertySupported(
-          PlatformWebMessageChannelCreationParamsProperty.values.first,
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-    });
-
-    skippableTest('WebMessageListener support methods are callable', () {
-      expect(
-        () => WebMessageListener.isClassSupported(
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-      expect(
-        () => WebMessageListener.isMethodSupported(
-          PlatformWebMessageListenerMethod.values.first,
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-      expect(
-        () => WebMessageListener.isPropertySupported(
-          PlatformWebMessageListenerCreationParamsProperty.values.first,
+        () => CygnusWebMessageChannel.isPropertySupported(
+          CygnusPlatformWebMessageChannelCreationParamsProperty.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
     });
 
-    skippableTest('WebViewEnvironment support methods are callable', () {
+    skippableTest('CygnusWebMessageListener support methods are callable', () {
       expect(
-        () => WebViewEnvironment.isClassSupported(
+        () => CygnusWebMessageListener.isClassSupported(
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => WebViewEnvironment.isMethodSupported(
-          PlatformWebViewEnvironmentMethod.values.first,
+        () => CygnusWebMessageListener.isMethodSupported(
+          CygnusPlatformWebMessageListenerMethod.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => WebViewEnvironment.isPropertySupported(
-          PlatformWebViewEnvironmentCreationParamsProperty.values.first,
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-    });
-
-    skippableTest('HeadlessInAppWebView support methods are callable', () {
-      expect(
-        () => HeadlessInAppWebView.isClassSupported(
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-      expect(
-        () => HeadlessInAppWebView.isMethodSupported(
-          PlatformHeadlessInAppWebViewMethod.values.first,
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-      expect(
-        () => HeadlessInAppWebView.isPropertySupported(
-          PlatformHeadlessInAppWebViewCreationParamsProperty.values.first,
+        () => CygnusWebMessageListener.isPropertySupported(
+          CygnusPlatformWebMessageListenerCreationParamsProperty.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
     });
 
-    skippableTest('WebStorage support methods are callable', () {
+    skippableTest('CygnusWebViewEnvironment support methods are callable', () {
       expect(
-        () => WebStorage.isClassSupported(platform: defaultTargetPlatform),
-        returnsNormally,
-      );
-      expect(
-        () => WebStorage.isMethodSupported(
-          PlatformWebStorageMethod.values.first,
+        () => CygnusWebViewEnvironment.isClassSupported(
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => WebStorage.isPropertySupported(
-          PlatformWebStorageCreationParamsProperty.values.first,
+        () => CygnusWebViewEnvironment.isMethodSupported(
+          CygnusPlatformWebViewEnvironmentMethod.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => WebStorage.isPropertySupported(
-          PlatformWebStorageProperty.values.first,
+        () => CygnusWebViewEnvironment.isPropertySupported(
+          CygnusPlatformWebViewEnvironmentCreationParamsProperty.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
     });
 
-    skippableTest('LocalStorage support methods are callable', () {
+    skippableTest('CygnusHeadlessWebView support methods are callable', () {
       expect(
-        () => LocalStorage.isClassSupported(platform: defaultTargetPlatform),
-        returnsNormally,
-      );
-      expect(
-        () => LocalStorage.isMethodSupported(
-          PlatformLocalStorageMethod.values.first,
+        () => CygnusHeadlessWebView.isClassSupported(
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => LocalStorage.isPropertySupported(
-          PlatformStorageCreationParamsProperty.values.first,
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-    });
-
-    skippableTest('SessionStorage support methods are callable', () {
-      expect(
-        () => SessionStorage.isClassSupported(platform: defaultTargetPlatform),
-        returnsNormally,
-      );
-      expect(
-        () => SessionStorage.isMethodSupported(
-          PlatformSessionStorageMethod.values.first,
+        () => CygnusHeadlessWebView.isMethodSupported(
+          CygnusPlatformHeadlessWebViewMethod.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => SessionStorage.isPropertySupported(
-          PlatformStorageCreationParamsProperty.values.first,
+        () => CygnusHeadlessWebView.isPropertySupported(
+          CygnusPlatformHeadlessWebViewCreationParamsProperty.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
     });
 
-    skippableTest('WebStorageManager support methods are callable', () {
+    skippableTest('CygnusWebStorage support methods are callable', () {
+      expect(
+        () => CygnusWebStorage.isClassSupported(platform: defaultTargetPlatform),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusWebStorage.isMethodSupported(
+          CygnusPlatformWebStorageMethod.values.first,
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusWebStorage.isPropertySupported(
+          CygnusPlatformWebStorageCreationParamsProperty.values.first,
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusWebStorage.isPropertySupported(
+          CygnusPlatformWebStorageProperty.values.first,
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+    });
+
+    skippableTest('CygnusLocalStorage support methods are callable', () {
+      expect(
+        () => CygnusLocalStorage.isClassSupported(platform: defaultTargetPlatform),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusLocalStorage.isMethodSupported(
+          CygnusPlatformLocalStorageMethod.values.first,
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusLocalStorage.isPropertySupported(
+          CygnusPlatformStorageCreationParamsProperty.values.first,
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+    });
+
+    skippableTest('CygnusSessionStorage support methods are callable', () {
+      expect(
+        () => CygnusSessionStorage.isClassSupported(platform: defaultTargetPlatform),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusSessionStorage.isMethodSupported(
+          CygnusPlatformSessionStorageMethod.values.first,
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusSessionStorage.isPropertySupported(
+          CygnusPlatformStorageCreationParamsProperty.values.first,
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+    });
+
+    skippableTest('CygnusWebStorageManager support methods are callable', () {
       expect(
         () =>
-            WebStorageManager.isClassSupported(platform: defaultTargetPlatform),
+            CygnusWebStorageManager.isClassSupported(platform: defaultTargetPlatform),
         returnsNormally,
       );
       expect(
-        () => WebStorageManager.isMethodSupported(
-          PlatformWebStorageManagerMethod.values.first,
+        () => CygnusWebStorageManager.isMethodSupported(
+          CygnusPlatformWebStorageManagerMethod.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
     });
 
-    skippableTest('PullToRefreshController support methods are callable', () {
+    skippableTest('CygnusPullToRefreshController support methods are callable', () {
       expect(
-        () => PullToRefreshController.isClassSupported(
+        () => CygnusPullToRefreshController.isClassSupported(
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => PullToRefreshController.isMethodSupported(
-          PlatformPullToRefreshControllerMethod.values.first,
+        () => CygnusPullToRefreshController.isMethodSupported(
+          CygnusPlatformPullToRefreshControllerMethod.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => PullToRefreshController.isPropertySupported(
-          PlatformPullToRefreshControllerCreationParamsProperty.values.first,
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-    });
-
-    skippableTest('InAppWebView support methods are callable', () {
-      expect(
-        () => InAppWebView.isClassSupported(platform: defaultTargetPlatform),
-        returnsNormally,
-      );
-      expect(
-        () => InAppWebView.isPropertySupported(
-          PlatformInAppWebViewWidgetCreationParamsProperty.values.first,
+        () => CygnusPullToRefreshController.isPropertySupported(
+          CygnusPlatformPullToRefreshControllerCreationParamsProperty.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
     });
 
-    skippableTest('InAppWebViewSettings support methods are callable', () {
+    skippableTest('CygnusWebView support methods are callable', () {
       expect(
-        () => InAppWebViewSettings.isPropertySupported(
-          InAppWebViewSettingsProperty.values.first,
+        () => CygnusWebView.isClassSupported(platform: defaultTargetPlatform),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusWebView.isPropertySupported(
+          CygnusPlatformWebViewWidgetCreationParamsProperty.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
     });
 
-    skippableTest('InAppWebViewController support methods are callable', () {
+    skippableTest('CygnusWebViewSettings support methods are callable', () {
       expect(
-        () => InAppWebViewController.isClassSupported(
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-      expect(
-        () => InAppWebViewController.isMethodSupported(
-          PlatformInAppWebViewControllerMethod.values.first,
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-      expect(
-        () => InAppWebViewController.isPropertySupported(
-          PlatformInAppWebViewControllerProperty.values.first,
+        () => CygnusWebViewSettings.isPropertySupported(
+          CygnusWebViewSettingsProperty.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
     });
 
-    skippableTest('InAppBrowser support methods are callable', () {
+    skippableTest('CygnusWebViewController support methods are callable', () {
       expect(
-        () => InAppBrowser.isClassSupported(platform: defaultTargetPlatform),
-        returnsNormally,
-      );
-      expect(
-        () => InAppBrowser.isMethodSupported(
-          PlatformInAppBrowserMethod.values.first,
+        () => CygnusWebViewController.isClassSupported(
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => InAppBrowser.isPropertySupported(
-          PlatformInAppBrowserProperty.values.first,
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-    });
-
-    skippableTest('ChromeSafariBrowser support methods are callable', () {
-      expect(
-        () => ChromeSafariBrowser.isClassSupported(
+        () => CygnusWebViewController.isMethodSupported(
+          CygnusPlatformWebViewControllerMethod.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => ChromeSafariBrowser.isMethodSupported(
-          PlatformChromeSafariBrowserMethod.values.first,
+        () => CygnusWebViewController.isPropertySupported(
+          CygnusPlatformWebViewControllerProperty.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
     });
 
-    skippableTest('WebAuthenticationSession support methods are callable', () {
+    skippableTest('CygnusBrowser support methods are callable', () {
       expect(
-        () => WebAuthenticationSession.isClassSupported(
+        () => CygnusBrowser.isClassSupported(platform: defaultTargetPlatform),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusBrowser.isMethodSupported(
+          CygnusPlatformBrowserMethod.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => WebAuthenticationSession.isMethodSupported(
-          PlatformWebAuthenticationSessionMethod.values.first,
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-      expect(
-        () => WebAuthenticationSession.isPropertySupported(
-          PlatformWebAuthenticationSessionProperty.values.first,
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-    });
-
-    skippableTest('CookieManager support methods are callable', () {
-      expect(
-        () => CookieManager.isClassSupported(platform: defaultTargetPlatform),
-        returnsNormally,
-      );
-      expect(
-        () => CookieManager.isMethodSupported(
-          PlatformCookieManagerMethod.values.first,
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-      expect(
-        () => CookieManager.isPropertySupported(
-          PlatformCookieManagerCreationParamsProperty.values.first,
+        () => CygnusBrowser.isPropertySupported(
+          CygnusPlatformBrowserProperty.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
     });
 
-    skippableTest('ProcessGlobalConfig support methods are callable', () {
+    skippableTest('CygnusChromeSafariBrowser support methods are callable', () {
       expect(
-        () => ProcessGlobalConfig.isClassSupported(
+        () => CygnusChromeSafariBrowser.isClassSupported(
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => ProcessGlobalConfig.isMethodSupported(
-          PlatformProcessGlobalConfigMethod.values.first,
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-    });
-
-    skippableTest('ServiceWorkerController support methods are callable', () {
-      expect(
-        () => ServiceWorkerController.isClassSupported(
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-      expect(
-        () => ServiceWorkerController.isMethodSupported(
-          PlatformServiceWorkerControllerMethod.values.first,
+        () => CygnusChromeSafariBrowser.isMethodSupported(
+          CygnusPlatformChromeSafariBrowserMethod.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
     });
 
-    skippableTest('ProxyController support methods are callable', () {
+    skippableTest('CygnusWebAuthenticationSession support methods are callable', () {
       expect(
-        () => ProxyController.isClassSupported(platform: defaultTargetPlatform),
+        () => CygnusWebAuthenticationSession.isClassSupported(
+          platform: defaultTargetPlatform,
+        ),
         returnsNormally,
       );
       expect(
-        () => ProxyController.isMethodSupported(
-          PlatformProxyControllerMethod.values.first,
+        () => CygnusWebAuthenticationSession.isMethodSupported(
+          CygnusPlatformWebAuthenticationSessionMethod.values.first,
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusWebAuthenticationSession.isPropertySupported(
+          CygnusPlatformWebAuthenticationSessionProperty.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
     });
 
-    skippableTest('PrintJobController support methods are callable', () {
+    skippableTest('CygnusCookieManager support methods are callable', () {
       expect(
-        () => PrintJobController.isClassSupported(
+        () => CygnusCookieManager.isClassSupported(platform: defaultTargetPlatform),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusCookieManager.isMethodSupported(
+          CygnusPlatformCookieManagerMethod.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => PrintJobController.isMethodSupported(
-          PlatformPrintJobControllerMethod.values.first,
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-      expect(
-        () => PrintJobController.isPropertySupported(
-          PlatformPrintJobControllerCreationParamsProperty.values.first,
-          platform: defaultTargetPlatform,
-        ),
-        returnsNormally,
-      );
-      expect(
-        () => PrintJobController.isPropertySupported(
-          PlatformPrintJobControllerProperty.values.first,
+        () => CygnusCookieManager.isPropertySupported(
+          CygnusPlatformCookieManagerCreationParamsProperty.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
     });
 
-    skippableTest('TracingController support methods are callable', () {
+    skippableTest('CygnusProcessGlobalConfig support methods are callable', () {
+      expect(
+        () => CygnusProcessGlobalConfig.isClassSupported(
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusProcessGlobalConfig.isMethodSupported(
+          CygnusPlatformProcessGlobalConfigMethod.values.first,
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+    });
+
+    skippableTest('CygnusServiceWorkerController support methods are callable', () {
+      expect(
+        () => CygnusServiceWorkerController.isClassSupported(
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusServiceWorkerController.isMethodSupported(
+          CygnusPlatformServiceWorkerControllerMethod.values.first,
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+    });
+
+    skippableTest('CygnusProxyController support methods are callable', () {
+      expect(
+        () => CygnusProxyController.isClassSupported(platform: defaultTargetPlatform),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusProxyController.isMethodSupported(
+          CygnusPlatformProxyControllerMethod.values.first,
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+    });
+
+    skippableTest('CygnusPrintJobController support methods are callable', () {
+      expect(
+        () => CygnusPrintJobController.isClassSupported(
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusPrintJobController.isMethodSupported(
+          CygnusPlatformPrintJobControllerMethod.values.first,
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusPrintJobController.isPropertySupported(
+          CygnusPlatformPrintJobControllerCreationParamsProperty.values.first,
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+      expect(
+        () => CygnusPrintJobController.isPropertySupported(
+          CygnusPlatformPrintJobControllerProperty.values.first,
+          platform: defaultTargetPlatform,
+        ),
+        returnsNormally,
+      );
+    });
+
+    skippableTest('CygnusTracingController support methods are callable', () {
       expect(
         () =>
-            TracingController.isClassSupported(platform: defaultTargetPlatform),
+            CygnusTracingController.isClassSupported(platform: defaultTargetPlatform),
         returnsNormally,
       );
       expect(
-        () => TracingController.isMethodSupported(
-          PlatformTracingControllerMethod.values.first,
+        () => CygnusTracingController.isMethodSupported(
+          CygnusPlatformTracingControllerMethod.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
     });
 
-    skippableTest('FindInteractionController support methods are callable', () {
+    skippableTest('CygnusFindInteractionController support methods are callable', () {
       expect(
-        () => FindInteractionController.isClassSupported(
+        () => CygnusFindInteractionController.isClassSupported(
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => FindInteractionController.isMethodSupported(
-          PlatformFindInteractionControllerMethod.values.first,
+        () => CygnusFindInteractionController.isMethodSupported(
+          CygnusPlatformFindInteractionControllerMethod.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
       );
       expect(
-        () => FindInteractionController.isPropertySupported(
-          PlatformFindInteractionControllerCreationParamsProperty.values.first,
+        () => CygnusFindInteractionController.isPropertySupported(
+          CygnusPlatformFindInteractionControllerCreationParamsProperty.values.first,
           platform: defaultTargetPlatform,
         ),
         returnsNormally,
@@ -448,17 +448,17 @@ void main() {
     });
 
     skippableTest(
-      'HttpAuthCredentialDatabase support methods are callable',
+      'CygnusHttpAuthCredentialDatabase support methods are callable',
       () {
         expect(
-          () => HttpAuthCredentialDatabase.isClassSupported(
+          () => CygnusHttpAuthCredentialDatabase.isClassSupported(
             platform: defaultTargetPlatform,
           ),
           returnsNormally,
         );
         expect(
-          () => HttpAuthCredentialDatabase.isMethodSupported(
-            PlatformHttpAuthCredentialDatabaseMethod.values.first,
+          () => CygnusHttpAuthCredentialDatabase.isMethodSupported(
+            CygnusPlatformHttpAuthCredentialDatabaseMethod.values.first,
             platform: defaultTargetPlatform,
           ),
           returnsNormally,

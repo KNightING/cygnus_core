@@ -1,4 +1,4 @@
-class MimeTypeResolver {
+class CygnusMimeTypeResolver {
   /*
     Extension map generated from http://svn.apache.org/viewvc/httpd/httpd/trunk/docs/conf/mime.types?view=markup
     using this JavaScript code:

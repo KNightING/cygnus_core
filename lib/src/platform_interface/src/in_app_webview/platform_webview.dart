@@ -21,12 +21,12 @@ import '../in_app_browser/platform_in_app_browser.dart';
 
 part 'platform_webview.g.dart';
 
-///{@template cygnus_core.PlatformWebViewCreationParams}
-///Class that represents a WebView. Used by [PlatformInAppWebViewWidget],
-///[PlatformHeadlessInAppWebView] and the WebView of [PlatformInAppBrowser].
+///{@template cygnus_core.CygnusPlatformWebViewCreationParams}
+///Class that represents a WebView. Used by [CygnusPlatformWebViewWidget],
+///[CygnusPlatformHeadlessWebView] and the WebView of [CygnusPlatformBrowser].
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformWebViewCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.supported_platforms}
 @SupportedPlatforms(
   ignoreParameterNames: ['controller'],
   platforms: [
@@ -38,15 +38,15 @@ part 'platform_webview.g.dart';
     LinuxPlatform(),
   ],
 )
-class PlatformWebViewCreationParams<T> {
-  final T Function(PlatformInAppWebViewController controller)?
+class CygnusPlatformWebViewCreationParams<T> {
+  final T Function(CygnusPlatformWebViewController controller)?
   controllerFromPlatform;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.windowId}
-  ///The window id of a [CreateWindowAction.windowId].
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.windowId}
+  ///The window id of a [CygnusCreateWindowAction.windowId].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.windowId.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.windowId.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -58,11 +58,11 @@ class PlatformWebViewCreationParams<T> {
   )
   final int? windowId;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onWebViewCreated}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onWebViewCreated}
   ///Event fired when the `WebView` is created.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onWebViewCreated.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onWebViewCreated.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -75,11 +75,11 @@ class PlatformWebViewCreationParams<T> {
   )
   final void Function(T controller)? onWebViewCreated;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLoadStart}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLoadStart}
   ///Event fired when the `WebView` starts to load an [url].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onLoadStart.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onLoadStart.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -114,13 +114,13 @@ class PlatformWebViewCreationParams<T> {
       ),
     ],
   )
-  final void Function(T controller, WebUri? url)? onLoadStart;
+  final void Function(T controller, CygnusWebUri? url)? onLoadStart;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLoadStop}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLoadStop}
   ///Event fired when the `WebView` finishes loading an [url].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onLoadStop.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onLoadStop.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -158,9 +158,9 @@ class PlatformWebViewCreationParams<T> {
       ),
     ],
   )
-  final void Function(T controller, WebUri? url)? onLoadStop;
+  final void Function(T controller, CygnusWebUri? url)? onLoadStop;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onContentLoading}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onContentLoading}
   ///Called when the `WebView` is about to load content for the current
   ///navigation.
   ///
@@ -175,7 +175,7 @@ class PlatformWebViewCreationParams<T> {
   ///triggered this callback.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onContentLoading.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onContentLoading.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -185,16 +185,16 @@ class PlatformWebViewCreationParams<T> {
       ),
     ],
   )
-  final void Function(T controller, WebUri? url)? onContentLoading;
+  final void Function(T controller, CygnusWebUri? url)? onContentLoading;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onDOMContentLoaded}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onDOMContentLoaded}
   ///Called when the HTML document has been parsed and the DOM is ready.
   ///
   ///[url] represents the URL corresponding to the page navigation that
   ///triggered this callback.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onDOMContentLoaded.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onDOMContentLoaded.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -204,13 +204,13 @@ class PlatformWebViewCreationParams<T> {
       ),
     ],
   )
-  final void Function(T controller, WebUri? url)? onDOMContentLoaded;
+  final void Function(T controller, CygnusWebUri? url)? onDOMContentLoaded;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLoadError}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLoadError}
   ///Use [onReceivedError] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onLoadError.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onLoadError.supported_platforms}
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
@@ -218,17 +218,17 @@ class PlatformWebViewCreationParams<T> {
   final void Function(T controller, Uri? url, int code, String message)?
   onLoadError;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedError}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedError}
   ///Event fired when the `WebView` encounters an [error] loading a [request].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onReceivedError.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedError.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         apiName: 'WebViewClient.onReceivedError',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedError(android.webkit.WebView,%20android.webkit.WebResourceRequest,%20android.webkit.WebResourceError)',
+            'https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedError(android.webkit.WebView,%20android.webkit.CygnusWebResourceRequest,%20android.webkit.CygnusWebResourceError)',
       ),
       IOSPlatform(
         apiName: 'WKNavigationDelegate.webView',
@@ -254,16 +254,16 @@ class PlatformWebViewCreationParams<T> {
   )
   final void Function(
     T controller,
-    WebResourceRequest request,
-    WebResourceError error,
+    CygnusWebResourceRequest request,
+    CygnusWebResourceError error,
   )?
   onReceivedError;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLoadHttpError}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLoadHttpError}
   ///Use [onReceivedHttpError] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onLoadHttpError.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onLoadHttpError.supported_platforms}
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
@@ -276,7 +276,7 @@ class PlatformWebViewCreationParams<T> {
   )?
   onLoadHttpError;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedHttpError}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedHttpError}
   ///Event fired when the `WebView` receives an HTTP error.
   ///
   ///[request] represents the originating request.
@@ -284,13 +284,13 @@ class PlatformWebViewCreationParams<T> {
   ///[errorResponse] represents the information about the error occurred.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onReceivedHttpError.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedHttpError.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         apiName: 'WebViewClient.onReceivedHttpError',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedHttpError(android.webkit.WebView,%20android.webkit.WebResourceRequest,%20android.webkit.WebResourceResponse)',
+            'https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedHttpError(android.webkit.WebView,%20android.webkit.CygnusWebResourceRequest,%20android.webkit.CygnusWebResourceResponse)',
         available: '23',
       ),
       IOSPlatform(
@@ -319,16 +319,16 @@ class PlatformWebViewCreationParams<T> {
   )
   final void Function(
     T controller,
-    WebResourceRequest request,
-    WebResourceResponse errorResponse,
+    CygnusWebResourceRequest request,
+    CygnusWebResourceResponse errorResponse,
   )?
   onReceivedHttpError;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onProgressChanged}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onProgressChanged}
   ///Event fired when the current [progress] of loading a page is changed.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onProgressChanged.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onProgressChanged.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -348,17 +348,17 @@ class PlatformWebViewCreationParams<T> {
   )
   final void Function(T controller, int progress)? onProgressChanged;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onConsoleMessage}
-  ///Event fired when the `WebView` receives a [ConsoleMessage].
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onConsoleMessage}
+  ///Event fired when the `WebView` receives a [CygnusConsoleMessage].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onConsoleMessage.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onConsoleMessage.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         apiName: 'WebChromeClient.onConsoleMessage',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/WebChromeClient#onConsoleMessage(android.webkit.ConsoleMessage)',
+            'https://developer.android.com/reference/android/webkit/WebChromeClient#onConsoleMessage(android.webkit.CygnusConsoleMessage)',
       ),
       IOSPlatform(note: 'This event is implemented using JavaScript.'),
       MacOSPlatform(note: 'This event is implemented using JavaScript.'),
@@ -367,18 +367,18 @@ class PlatformWebViewCreationParams<T> {
       LinuxPlatform(note: 'This event is implemented using JavaScript.'),
     ],
   )
-  final void Function(T controller, ConsoleMessage consoleMessage)?
+  final void Function(T controller, CygnusConsoleMessage consoleMessage)?
   onConsoleMessage;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.shouldOverrideUrlLoading}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading}
   ///Give the host application a chance to take control when a URL is about to be loaded in the current WebView.
   ///
   ///[navigationAction] represents an object that contains information about an action that causes navigation to occur.
   ///
-  ///**NOTE**: In order to be able to listen this event, check the [InAppWebViewSettings.useShouldOverrideUrlLoading] setting documentation.
+  ///**NOTE**: In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldOverrideUrlLoading] setting documentation.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.shouldOverrideUrlLoading.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -387,12 +387,12 @@ class PlatformWebViewCreationParams<T> {
             'https://developer.android.com/reference/android/webkit/WebViewClient#shouldOverrideUrlLoading(android.webkit.WebView,%20java.lang.String)',
         note:
             """There isn't any way to load an URL for a frame that is not the main frame, so if the request is not for the main frame, the navigation is allowed by default.
-However, if you want to cancel requests for subframes, you can use the [InAppWebViewSettings.regexToCancelSubFramesLoading] setting
+However, if you want to cancel requests for subframes, you can use the [CygnusWebViewSettings.regexToCancelSubFramesLoading] setting
 to write a Regular Expression that, if the url request of a subframe matches, then the request of that subframe is canceled.
-Instead, the [InAppWebViewSettings.regexToAllowSyncUrlLoading] setting could
+Instead, the [CygnusWebViewSettings.regexToAllowSyncUrlLoading] setting could
 be used to allow navigation requests synchronously, as this event is synchronous on native side
 and the current plugin implementation will always cancel the current request and load a new request if
-this event returns [NavigationActionPolicy.ALLOW] because Flutter method channels work only asynchronously.
+this event returns [CygnusNavigationActionPolicy.ALLOW] because Flutter method channels work only asynchronously.
 Also, this event is not called for POST requests and is not called on the first page load.""",
       ),
       IOSPlatform(
@@ -413,17 +413,17 @@ Also, this event is not called for POST requests and is not called on the first 
       ),
     ],
   )
-  final FutureOr<NavigationActionPolicy?> Function(
+  final FutureOr<CygnusNavigationActionPolicy?> Function(
     T controller,
-    NavigationAction navigationAction,
+    CygnusNavigationAction navigationAction,
   )?
   shouldOverrideUrlLoading;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLaunchingExternalUriScheme}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLaunchingExternalUriScheme}
   ///Event fired when an external URI scheme is about to be launched.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onLaunchingExternalUriScheme.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onLaunchingExternalUriScheme.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -433,19 +433,19 @@ Also, this event is not called for POST requests and is not called on the first 
       ),
     ],
   )
-  final FutureOr<LaunchingExternalUriSchemeResponse?> Function(
+  final FutureOr<CygnusLaunchingExternalUriSchemeResponse?> Function(
     T controller,
-    LaunchingExternalUriSchemeRequest request,
+    CygnusLaunchingExternalUriSchemeRequest request,
   )?
   onLaunchingExternalUriScheme;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLoadResource}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLoadResource}
   ///Event fired when the `WebView` loads a resource.
   ///
-  ///**NOTE**: In order to be able to listen this event, check the [InAppWebViewSettings.useOnLoadResource] setting documentation.
+  ///**NOTE**: In order to be able to listen this event, check the [CygnusWebViewSettings.useOnLoadResource] setting documentation.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onLoadResource.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onLoadResource.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(note: 'This event is implemented using JavaScript.'),
@@ -454,9 +454,9 @@ Also, this event is not called for POST requests and is not called on the first 
       LinuxPlatform(note: 'This event is implemented using JavaScript.'),
     ],
   )
-  final void Function(T controller, LoadedResource resource)? onLoadResource;
+  final void Function(T controller, CygnusLoadedResource resource)? onLoadResource;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onScrollChanged}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onScrollChanged}
   ///Event fired when the `WebView` scrolls.
   ///
   ///[x] represents the current horizontal scroll origin in pixels.
@@ -464,7 +464,7 @@ Also, this event is not called for POST requests and is not called on the first 
   ///[y] represents the current vertical scroll origin in pixels.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onScrollChanged.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onScrollChanged.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -488,37 +488,37 @@ Also, this event is not called for POST requests and is not called on the first 
   )
   final void Function(T controller, int x, int y)? onScrollChanged;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onDownloadStart}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onDownloadStart}
   ///Use [onDownloadStarting] instead
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onDownloadStart.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onDownloadStart.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform(), IOSPlatform()])
   @Deprecated('Use onDownloadStarting instead')
   final void Function(T controller, Uri url)? onDownloadStart;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onDownloadStartRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onDownloadStartRequest}
   ///Use [onDownloadStarting] instead
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onDownloadStartRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onDownloadStartRequest.supported_platforms}
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
   @Deprecated('Use onDownloadStarting instead')
-  final void Function(T controller, DownloadStartRequest downloadStartRequest)?
+  final void Function(T controller, CygnusDownloadStartRequest downloadStartRequest)?
   onDownloadStartRequest;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onDownloadStarting}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onDownloadStarting}
   ///Event fired when `WebView` recognizes a downloadable file.
   ///To download the file, you can use the [flutter_downloader](https://pub.dev/packages/flutter_downloader) plugin.
   ///
   ///[downloadStartRequest] represents the request of the file to download.
   ///
-  ///**NOTE**: In order to be able to listen this event, check the [InAppWebViewSettings.useOnDownloadStart] setting documentation.
+  ///**NOTE**: In order to be able to listen this event, check the [CygnusWebViewSettings.useOnDownloadStart] setting documentation.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onDownloadStarting.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onDownloadStarting.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -542,30 +542,30 @@ Also, this event is not called for POST requests and is not called on the first 
       ),
     ],
   )
-  final FutureOr<DownloadStartResponse?> Function(
+  final FutureOr<CygnusDownloadStartResponse?> Function(
     T controller,
-    DownloadStartRequest downloadStartRequest,
+    CygnusDownloadStartRequest downloadStartRequest,
   )?
   onDownloadStarting;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLoadResourceCustomScheme}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLoadResourceCustomScheme}
   ///Use [onLoadResourceWithCustomScheme] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onLoadResourceCustomScheme.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onLoadResourceCustomScheme.supported_platforms}
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
   @Deprecated('Use onLoadResourceWithCustomScheme instead')
-  final FutureOr<CustomSchemeResponse?> Function(T controller, Uri url)?
+  final FutureOr<CygnusCustomSchemeResponse?> Function(T controller, Uri url)?
   onLoadResourceCustomScheme;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLoadResourceWithCustomScheme}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLoadResourceWithCustomScheme}
   ///Event fired when the `WebView` finds the `custom-scheme` while loading a resource.
-  ///Here you can handle the url [request] and return a [CustomSchemeResponse] to load a specific resource encoded to `base64`.
+  ///Here you can handle the url [request] and return a [CygnusCustomSchemeResponse] to load a specific resource encoded to `base64`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onLoadResourceWithCustomScheme.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onLoadResourceWithCustomScheme.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -587,13 +587,13 @@ Also, this event is not called for POST requests and is not called on the first 
       ),
     ],
   )
-  final FutureOr<CustomSchemeResponse?> Function(
+  final FutureOr<CygnusCustomSchemeResponse?> Function(
     T controller,
-    WebResourceRequest request,
+    CygnusWebResourceRequest request,
   )?
   onLoadResourceWithCustomScheme;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onCreateWindow}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onCreateWindow}
   ///Event fired when the `WebView` requests the host application to create a new window,
   ///for example when trying to open a link with `target="_blank"` or when `window.open()` is called by JavaScript side.
   ///If the host application chooses to honor this request, it should return `true` from this method, create a new WebView to host the window.
@@ -602,10 +602,10 @@ Also, this event is not called for POST requests and is not called on the first 
   ///
   ///- [createWindowAction] represents the request.
   ///
-  ///**NOTE**: to allow JavaScript to open windows, you need to set [InAppWebViewSettings.javaScriptCanOpenWindowsAutomatically] setting to `true`.
+  ///**NOTE**: to allow JavaScript to open windows, you need to set [CygnusWebViewSettings.javaScriptCanOpenWindowsAutomatically] setting to `true`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onCreateWindow.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onCreateWindow.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -613,27 +613,27 @@ Also, this event is not called for POST requests and is not called on the first 
         apiUrl:
             'https://developer.android.com/reference/android/webkit/WebChromeClient#onCreateWindow(android.webkit.WebView,%20boolean,%20boolean,%20android.os.Message)',
         note:
-            'You need to set [InAppWebViewSettings.supportMultipleWindows] setting to `true`. Also, if the request has been created using JavaScript (`window.open()`), then there are some limitation: check the [NavigationAction] class.',
+            'You need to set [CygnusWebViewSettings.supportMultipleWindows] setting to `true`. Also, if the request has been created using JavaScript (`window.open()`), then there are some limitation: check the [CygnusNavigationAction] class.',
       ),
       IOSPlatform(
         apiName: 'WKUIDelegate.webView',
         apiUrl:
             'https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview',
         note:
-            """Setting these initial settings [InAppWebViewSettings.supportZoom], [InAppWebViewSettings.useOnLoadResource], [InAppWebViewSettings.useShouldInterceptAjaxRequest],
-[InAppWebViewSettings.useShouldInterceptFetchRequest], [InAppWebViewSettings.applicationNameForUserAgent], [InAppWebViewSettings.javaScriptCanOpenWindowsAutomatically],
-[InAppWebViewSettings.javaScriptEnabled], [InAppWebViewSettings.minimumFontSize], [InAppWebViewSettings.preferredContentMode], [InAppWebViewSettings.incognito],
-[InAppWebViewSettings.cacheEnabled], [InAppWebViewSettings.mediaPlaybackRequiresUserGesture],
-[InAppWebViewSettings.resourceCustomSchemes], [InAppWebViewSettings.sharedCookiesEnabled],
-[InAppWebViewSettings.enableViewportScale], [InAppWebViewSettings.allowsAirPlayForMediaPlayback],
-[InAppWebViewSettings.allowsPictureInPictureMediaPlayback], [InAppWebViewSettings.isFraudulentWebsiteWarningEnabled],
-[InAppWebViewSettings.allowsInlineMediaPlayback], [InAppWebViewSettings.suppressesIncrementalRendering], [InAppWebViewSettings.selectionGranularity],
-[InAppWebViewSettings.ignoresViewportScaleLimits], [InAppWebViewSettings.limitsNavigationsToAppBoundDomains],
-[InAppWebViewSettings.upgradeKnownHostsToHTTPS],
+            """Setting these initial settings [CygnusWebViewSettings.supportZoom], [CygnusWebViewSettings.useOnLoadResource], [CygnusWebViewSettings.useShouldInterceptAjaxRequest],
+[CygnusWebViewSettings.useShouldInterceptFetchRequest], [CygnusWebViewSettings.applicationNameForUserAgent], [CygnusWebViewSettings.javaScriptCanOpenWindowsAutomatically],
+[CygnusWebViewSettings.javaScriptEnabled], [CygnusWebViewSettings.minimumFontSize], [CygnusWebViewSettings.preferredContentMode], [CygnusWebViewSettings.incognito],
+[CygnusWebViewSettings.cacheEnabled], [CygnusWebViewSettings.mediaPlaybackRequiresUserGesture],
+[CygnusWebViewSettings.resourceCustomSchemes], [CygnusWebViewSettings.sharedCookiesEnabled],
+[CygnusWebViewSettings.enableViewportScale], [CygnusWebViewSettings.allowsAirPlayForMediaPlayback],
+[CygnusWebViewSettings.allowsPictureInPictureMediaPlayback], [CygnusWebViewSettings.isFraudulentWebsiteWarningEnabled],
+[CygnusWebViewSettings.allowsInlineMediaPlayback], [CygnusWebViewSettings.suppressesIncrementalRendering], [CygnusWebViewSettings.selectionGranularity],
+[CygnusWebViewSettings.ignoresViewportScaleLimits], [CygnusWebViewSettings.limitsNavigationsToAppBoundDomains],
+[CygnusWebViewSettings.upgradeKnownHostsToHTTPS],
 will have no effect due to a `WKWebView` limitation when creating the new window WebView: it's impossible to return the new `WKWebView`
 with a different `WKWebViewConfiguration` instance (see https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview).
 So, these options will be inherited from the caller WebView.
-Also, note that calling [InAppWebViewController.setSettings] method using the controller of the new created WebView,
+Also, note that calling [CygnusWebViewController.setSettings] method using the controller of the new created WebView,
 it will update also the WebView options of the caller WebView.""",
       ),
       MacOSPlatform(
@@ -641,20 +641,20 @@ it will update also the WebView options of the caller WebView.""",
         apiUrl:
             'https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview',
         note:
-            """Setting these initial settings [InAppWebViewSettings.supportZoom], [InAppWebViewSettings.useOnLoadResource], [InAppWebViewSettings.useShouldInterceptAjaxRequest],
-[InAppWebViewSettings.useShouldInterceptFetchRequest], [InAppWebViewSettings.applicationNameForUserAgent], [InAppWebViewSettings.javaScriptCanOpenWindowsAutomatically],
-[InAppWebViewSettings.javaScriptEnabled], [InAppWebViewSettings.minimumFontSize], [InAppWebViewSettings.preferredContentMode], [InAppWebViewSettings.incognito],
-[InAppWebViewSettings.cacheEnabled], [InAppWebViewSettings.mediaPlaybackRequiresUserGesture],
-[InAppWebViewSettings.resourceCustomSchemes], [InAppWebViewSettings.sharedCookiesEnabled],
-[InAppWebViewSettings.enableViewportScale], [InAppWebViewSettings.allowsAirPlayForMediaPlayback],
-[InAppWebViewSettings.allowsPictureInPictureMediaPlayback], [InAppWebViewSettings.isFraudulentWebsiteWarningEnabled],
-[InAppWebViewSettings.allowsInlineMediaPlayback], [InAppWebViewSettings.suppressesIncrementalRendering], [InAppWebViewSettings.selectionGranularity],
-[InAppWebViewSettings.ignoresViewportScaleLimits], [InAppWebViewSettings.limitsNavigationsToAppBoundDomains],
-[InAppWebViewSettings.upgradeKnownHostsToHTTPS],
+            """Setting these initial settings [CygnusWebViewSettings.supportZoom], [CygnusWebViewSettings.useOnLoadResource], [CygnusWebViewSettings.useShouldInterceptAjaxRequest],
+[CygnusWebViewSettings.useShouldInterceptFetchRequest], [CygnusWebViewSettings.applicationNameForUserAgent], [CygnusWebViewSettings.javaScriptCanOpenWindowsAutomatically],
+[CygnusWebViewSettings.javaScriptEnabled], [CygnusWebViewSettings.minimumFontSize], [CygnusWebViewSettings.preferredContentMode], [CygnusWebViewSettings.incognito],
+[CygnusWebViewSettings.cacheEnabled], [CygnusWebViewSettings.mediaPlaybackRequiresUserGesture],
+[CygnusWebViewSettings.resourceCustomSchemes], [CygnusWebViewSettings.sharedCookiesEnabled],
+[CygnusWebViewSettings.enableViewportScale], [CygnusWebViewSettings.allowsAirPlayForMediaPlayback],
+[CygnusWebViewSettings.allowsPictureInPictureMediaPlayback], [CygnusWebViewSettings.isFraudulentWebsiteWarningEnabled],
+[CygnusWebViewSettings.allowsInlineMediaPlayback], [CygnusWebViewSettings.suppressesIncrementalRendering], [CygnusWebViewSettings.selectionGranularity],
+[CygnusWebViewSettings.ignoresViewportScaleLimits], [CygnusWebViewSettings.limitsNavigationsToAppBoundDomains],
+[CygnusWebViewSettings.upgradeKnownHostsToHTTPS],
 will have no effect due to a `WKWebView` limitation when creating the new window WebView: it's impossible to return the new `WKWebView`
 with a different `WKWebViewConfiguration` instance (see https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview).
 So, these options will be inherited from the caller WebView.
-Also, note that calling [InAppWebViewController.setSettings] method using the controller of the new created WebView,
+Also, note that calling [CygnusWebViewController.setSettings] method using the controller of the new created WebView,
 it will update also the WebView options of the caller WebView.""",
       ),
       WebPlatform(
@@ -671,22 +671,22 @@ it will update also the WebView options of the caller WebView.""",
         apiUrl:
             'https://wpewebkit.org/reference/stable/wpe-webkit-2.0/signal.WebView.create.html',
         note:
-            'Creates a new InAppWebView with related-view for multi-window support.',
+            'Creates a new CygnusWebView with related-view for multi-window support.',
       ),
     ],
   )
   final FutureOr<bool?> Function(
     T controller,
-    CreateWindowAction createWindowAction,
+    CygnusCreateWindowAction createWindowAction,
   )?
   onCreateWindow;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onCloseWindow}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onCloseWindow}
   ///Event fired when the host application should close the given WebView and remove it from the view system if necessary.
   ///At this point, WebCore has stopped any loading in this window and has removed any cross-scripting ability in javascript.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onCloseWindow.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onCloseWindow.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -719,12 +719,12 @@ it will update also the WebView options of the caller WebView.""",
   )
   final void Function(T controller)? onCloseWindow;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onWindowFocus}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onWindowFocus}
   ///Event fired when the JavaScript `window` object of the WebView has received focus.
   ///This is the result of the `focus` JavaScript event applied to the `window` object.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onWindowFocus.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onWindowFocus.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -739,12 +739,12 @@ it will update also the WebView options of the caller WebView.""",
   )
   final void Function(T controller)? onWindowFocus;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onWindowBlur}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onWindowBlur}
   ///Event fired when the JavaScript `window` object of the WebView has lost focus.
   ///This is the result of the `blur` JavaScript event applied to the `window` object.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onWindowBlur.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onWindowBlur.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -759,14 +759,14 @@ it will update also the WebView options of the caller WebView.""",
   )
   final void Function(T controller)? onWindowBlur;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onJsAlert}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onJsAlert}
   ///Event fired when javascript calls the `alert()` method to display an alert dialog.
-  ///If [JsAlertResponse.handledByClient] is `true`, the webview will assume that the client will handle the dialog.
+  ///If [CygnusJsAlertResponse.handledByClient] is `true`, the webview will assume that the client will handle the dialog.
   ///
   ///[jsAlertRequest] contains the message to be displayed in the alert dialog and the of the page requesting the dialog.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onJsAlert.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onJsAlert.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -792,20 +792,20 @@ it will update also the WebView options of the caller WebView.""",
       ),
     ],
   )
-  final FutureOr<JsAlertResponse?> Function(
+  final FutureOr<CygnusJsAlertResponse?> Function(
     T controller,
-    JsAlertRequest jsAlertRequest,
+    CygnusJsAlertRequest jsAlertRequest,
   )?
   onJsAlert;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onJsConfirm}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onJsConfirm}
   ///Event fired when javascript calls the `confirm()` method to display a confirm dialog.
-  ///If [JsConfirmResponse.handledByClient] is `true`, the webview will assume that the client will handle the dialog.
+  ///If [CygnusJsConfirmResponse.handledByClient] is `true`, the webview will assume that the client will handle the dialog.
   ///
   ///[jsConfirmRequest] contains the message to be displayed in the confirm dialog and the of the page requesting the dialog.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onJsConfirm.onJsConfirm}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onJsConfirm.onJsConfirm}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -831,20 +831,20 @@ it will update also the WebView options of the caller WebView.""",
       ),
     ],
   )
-  final FutureOr<JsConfirmResponse?> Function(
+  final FutureOr<CygnusJsConfirmResponse?> Function(
     T controller,
-    JsConfirmRequest jsConfirmRequest,
+    CygnusJsConfirmRequest jsConfirmRequest,
   )?
   onJsConfirm;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onJsPrompt}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onJsPrompt}
   ///Event fired when javascript calls the `prompt()` method to display a prompt dialog.
-  ///If [JsPromptResponse.handledByClient] is `true`, the webview will assume that the client will handle the dialog.
+  ///If [CygnusJsPromptResponse.handledByClient] is `true`, the webview will assume that the client will handle the dialog.
   ///
   ///[jsPromptRequest] contains the message to be displayed in the prompt dialog, the default value displayed in the prompt dialog, and the of the page requesting the dialog.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onJsPrompt.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onJsPrompt.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -870,19 +870,19 @@ it will update also the WebView options of the caller WebView.""",
       ),
     ],
   )
-  final FutureOr<JsPromptResponse?> Function(
+  final FutureOr<CygnusJsPromptResponse?> Function(
     T controller,
-    JsPromptRequest jsPromptRequest,
+    CygnusJsPromptRequest jsPromptRequest,
   )?
   onJsPrompt;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedHttpAuthRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedHttpAuthRequest}
   ///Event fired when the WebView received an HTTP authentication request. The default behavior is to cancel the request.
   ///
-  ///[challenge] contains data about host, port, protocol, realm, etc. as specified in the [URLAuthenticationChallenge].
+  ///[challenge] contains data about host, port, protocol, realm, etc. as specified in the [CygnusURLAuthenticationChallenge].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onReceivedHttpAuthRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedHttpAuthRequest.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -912,26 +912,26 @@ it will update also the WebView options of the caller WebView.""",
       ),
     ],
   )
-  final FutureOr<HttpAuthResponse?> Function(
+  final FutureOr<CygnusHttpAuthResponse?> Function(
     T controller,
-    HttpAuthenticationChallenge challenge,
+    CygnusHttpAuthenticationChallenge challenge,
   )?
   onReceivedHttpAuthRequest;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedServerTrustAuthRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedServerTrustAuthRequest}
   ///Event fired when the WebView need to perform server trust authentication (certificate validation).
-  ///The host application must return either [ServerTrustAuthResponse] instance with [ServerTrustAuthResponseAction.CANCEL] or [ServerTrustAuthResponseAction.PROCEED].
+  ///The host application must return either [CygnusServerTrustAuthResponse] instance with [CygnusServerTrustAuthResponseAction.CANCEL] or [CygnusServerTrustAuthResponseAction.PROCEED].
   ///
-  ///[challenge] contains data about host, port, protocol, realm, etc. as specified in the [ServerTrustChallenge].
+  ///[challenge] contains data about host, port, protocol, realm, etc. as specified in the [CygnusServerTrustChallenge].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onReceivedServerTrustAuthRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedServerTrustAuthRequest.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         apiName: 'WebViewClient.onReceivedSslError',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedSslError(android.webkit.WebView,%20android.webkit.SslErrorHandler,%20android.net.http.SslError)',
+            'https://developer.android.com/reference/android/webkit/WebViewClient#onReceivedSslError(android.webkit.WebView,%20android.webkit.SslErrorHandler,%20android.net.http.CygnusSslError)',
       ),
       IOSPlatform(
         apiName: 'WKNavigationDelegate.webView',
@@ -963,22 +963,22 @@ See `NSAppTransportSecurity` in the [Information Property List Key Reference](ht
       ),
     ],
   )
-  final FutureOr<ServerTrustAuthResponse?> Function(
+  final FutureOr<CygnusServerTrustAuthResponse?> Function(
     T controller,
-    ServerTrustChallenge challenge,
+    CygnusServerTrustChallenge challenge,
   )?
   onReceivedServerTrustAuthRequest;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedClientCertRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedClientCertRequest}
   ///Notify the host application to handle an SSL client certificate request.
-  ///Webview stores the response in memory (for the life of the application) if [ClientCertResponseAction.PROCEED] or [ClientCertResponseAction.CANCEL]
+  ///Webview stores the response in memory (for the life of the application) if [CygnusClientCertResponseAction.PROCEED] or [CygnusClientCertResponseAction.CANCEL]
   ///is called and does not call [onReceivedClientCertRequest] again for the same host and port pair.
   ///Note that, multiple layers in chromium network stack might be caching the responses.
   ///
-  ///[challenge] contains data about host, port, protocol, realm, etc. as specified in the [ClientCertChallenge].
+  ///[challenge] contains data about host, port, protocol, realm, etc. as specified in the [CygnusClientCertChallenge].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onReceivedClientCertRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedClientCertRequest.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1013,21 +1013,21 @@ See `NSAppTransportSecurity` in the [Information Property List Key Reference](ht
       ),
     ],
   )
-  final FutureOr<ClientCertResponse?> Function(
+  final FutureOr<CygnusClientCertResponse?> Function(
     T controller,
-    ClientCertChallenge challenge,
+    CygnusClientCertChallenge challenge,
   )?
   onReceivedClientCertRequest;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onFindResultReceived}
-  ///Use [FindInteractionController.onFindResultReceived] instead.
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onFindResultReceived}
+  ///Use [CygnusFindInteractionController.onFindResultReceived] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onFindResultReceived.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onFindResultReceived.supported_platforms}
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), IOSPlatform(), MacOSPlatform()],
   )
-  @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+  @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
   final void Function(
     T controller,
     int activeMatchOrdinal,
@@ -1036,26 +1036,26 @@ See `NSAppTransportSecurity` in the [Information Property List Key Reference](ht
   )?
   onFindResultReceived;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.shouldInterceptAjaxRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest}
   ///Event fired when an `XMLHttpRequest` is sent to a server.
   ///It gives the host application a chance to take control over the request before sending it.
   ///This event is implemented using JavaScript under the hood.
   ///
-  ///Due to the async nature of this event implementation, it will intercept only async `XMLHttpRequest`s ([AjaxRequest.isAsync] with `true`).
-  ///To be able to intercept sync `XMLHttpRequest`s, use [InAppWebViewSettings.interceptOnlyAsyncAjaxRequests] to `false`.
-  ///If necessary, you should implement your own logic using for example an [UserScript] overriding the
+  ///Due to the async nature of this event implementation, it will intercept only async `XMLHttpRequest`s ([CygnusAjaxRequest.isAsync] with `true`).
+  ///To be able to intercept sync `XMLHttpRequest`s, use [CygnusWebViewSettings.interceptOnlyAsyncAjaxRequests] to `false`.
+  ///If necessary, you should implement your own logic using for example an [CygnusUserScript] overriding the
   ///[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) JavaScript object.
   ///
   ///[ajaxRequest] represents the `XMLHttpRequest`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.shouldInterceptAjaxRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         note:
-            """In order to be able to listen this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] setting documentation.
-Also, on Android that doesn't support the [WebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that
+            """In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] setting documentation.
+Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that
 can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code
 used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS.
 In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.""",
@@ -1064,33 +1064,33 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       MacOSPlatform(),
       LinuxPlatform(
         note:
-            'This event is implemented using JavaScript. In order to be able to listen to this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] setting documentation.',
+            'This event is implemented using JavaScript. In order to be able to listen to this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] setting documentation.',
       ),
     ],
   )
-  final FutureOr<AjaxRequest?> Function(T controller, AjaxRequest ajaxRequest)?
+  final FutureOr<CygnusAjaxRequest?> Function(T controller, CygnusAjaxRequest ajaxRequest)?
   shouldInterceptAjaxRequest;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onAjaxReadyStateChange}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onAjaxReadyStateChange}
   ///Event fired whenever the `readyState` attribute of an `XMLHttpRequest` changes.
   ///It gives the host application a chance to abort the request.
   ///This event is implemented using JavaScript under the hood.
   ///
   ///Due to the async nature of this event implementation,
   ///using it could cause some issues, so, be careful when using it.
-  ///In this case, you should implement your own logic using for example an [UserScript] overriding the
+  ///In this case, you should implement your own logic using for example an [CygnusUserScript] overriding the
   ///[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) JavaScript object.
   ///
   ///[ajaxRequest] represents the [XMLHttpRequest].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onAjaxReadyStateChange.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onAjaxReadyStateChange.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         note:
-            """In order to be able to listen this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] and [InAppWebViewSettings.useOnAjaxReadyStateChange] settings documentation.
-Also, on Android that doesn't support the [WebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that
+            """In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] and [CygnusWebViewSettings.useOnAjaxReadyStateChange] settings documentation.
+Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that
 can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code
 used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS.
 In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.""",
@@ -1099,17 +1099,17 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       MacOSPlatform(),
       LinuxPlatform(
         note:
-            'This event is implemented using JavaScript. In order to be able to listen to this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] and [InAppWebViewSettings.useOnAjaxReadyStateChange] settings documentation.',
+            'This event is implemented using JavaScript. In order to be able to listen to this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] and [CygnusWebViewSettings.useOnAjaxReadyStateChange] settings documentation.',
       ),
     ],
   )
-  final FutureOr<AjaxRequestAction?> Function(
+  final FutureOr<CygnusAjaxRequestAction?> Function(
     T controller,
-    AjaxRequest ajaxRequest,
+    CygnusAjaxRequest ajaxRequest,
   )?
   onAjaxReadyStateChange;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onAjaxProgress}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onAjaxProgress}
   ///Event fired as an `XMLHttpRequest` progress.
   ///It gives the host application a chance to abort the request.
   ///This event is implemented using JavaScript under the hood.
@@ -1117,13 +1117,13 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///[ajaxRequest] represents the [XMLHttpRequest].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onAjaxProgress.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onAjaxProgress.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         note:
-            """In order to be able to listen this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] and [InAppWebViewSettings.useOnAjaxProgress] settings documentation.
-Also, on Android that doesn't support the [WebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that
+            """In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] and [CygnusWebViewSettings.useOnAjaxProgress] settings documentation.
+Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that
 can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code
 used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS.
 In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.""",
@@ -1132,17 +1132,17 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       MacOSPlatform(),
       LinuxPlatform(
         note:
-            'This event is implemented using JavaScript. In order to be able to listen to this event, check the [InAppWebViewSettings.useShouldInterceptAjaxRequest] and [InAppWebViewSettings.useOnAjaxProgress] settings documentation.',
+            'This event is implemented using JavaScript. In order to be able to listen to this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] and [CygnusWebViewSettings.useOnAjaxProgress] settings documentation.',
       ),
     ],
   )
-  final FutureOr<AjaxRequestAction?> Function(
+  final FutureOr<CygnusAjaxRequestAction?> Function(
     T controller,
-    AjaxRequest ajaxRequest,
+    CygnusAjaxRequest ajaxRequest,
   )?
   onAjaxProgress;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.shouldInterceptFetchRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.shouldInterceptFetchRequest}
   ///Event fired when a request is sent to a server through [Fetch API](https://developer.mozilla.org/it/docs/Web/API/Fetch_API).
   ///It gives the host application a chance to take control over the request before sending it.
   ///This event is implemented using JavaScript under the hood.
@@ -1150,13 +1150,13 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///[fetchRequest] represents a resource request.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.shouldInterceptFetchRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.shouldInterceptFetchRequest.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         note:
-            """In order to be able to listen this event, check the [InAppWebViewSettings.useShouldInterceptFetchRequest] setting documentation.
-Also, on Android that doesn't support the [WebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that
+            """In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptFetchRequest] setting documentation.
+Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that
 can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code
 used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS.
 In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.""",
@@ -1165,17 +1165,17 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       MacOSPlatform(),
       LinuxPlatform(
         note:
-            'This event is implemented using JavaScript. In order to be able to listen to this event, check the [InAppWebViewSettings.useShouldInterceptFetchRequest] setting documentation.',
+            'This event is implemented using JavaScript. In order to be able to listen to this event, check the [CygnusWebViewSettings.useShouldInterceptFetchRequest] setting documentation.',
       ),
     ],
   )
-  final FutureOr<FetchRequest?> Function(
+  final FutureOr<CygnusFetchRequest?> Function(
     T controller,
-    FetchRequest fetchRequest,
+    CygnusFetchRequest fetchRequest,
   )?
   shouldInterceptFetchRequest;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onUpdateVisitedHistory}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onUpdateVisitedHistory}
   ///Event fired when the host application updates its visited links database.
   ///This event is also fired when the navigation state of the `WebView` changes through the usage of
   ///javascript **[History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)** functions (`pushState()`, `replaceState()`) and `onpopstate` event
@@ -1186,7 +1186,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///[isReload] indicates if this url is being reloaded.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onUpdateVisitedHistory.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onUpdateVisitedHistory.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1211,29 +1211,29 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       'isReload': [AndroidPlatform()],
     },
   )
-  final void Function(T controller, WebUri? url, bool? isReload)?
+  final void Function(T controller, CygnusWebUri? url, bool? isReload)?
   onUpdateVisitedHistory;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onPrint}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onPrint}
   ///Use [onPrintRequest] instead
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onPrint.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onPrint.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform(), IOSPlatform()])
   @Deprecated("Use onPrintRequest instead")
   final void Function(T controller, Uri? url)? onPrint;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onPrintRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onPrintRequest}
   ///Event fired when `window.print()` is called from JavaScript side.
   ///Return `true` if you want to handle the print job.
-  ///Otherwise return `false`, so the [PlatformPrintJobController] will be handled and disposed automatically by the system.
+  ///Otherwise return `false`, so the [CygnusPlatformPrintJobController] will be handled and disposed automatically by the system.
   ///
   ///[url] represents the url on which is called.
   ///
   ///[printJobController] represents the controller of the print job created.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onPrintRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onPrintRequest.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -1250,18 +1250,18 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   )
   final FutureOr<bool?> Function(
     T controller,
-    WebUri? url,
-    PlatformPrintJobController? printJobController,
+    CygnusWebUri? url,
+    CygnusPlatformPrintJobController? printJobController,
   )?
   onPrintRequest;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onLongPressHitTestResult}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onLongPressHitTestResult}
   ///Event fired when an HTML element of the webview has been clicked and held.
   ///
   ///[hitTestResult] represents the hit result for hitting an HTML elements.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onLongPressHitTestResult.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onLongPressHitTestResult.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1276,14 +1276,14 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final void Function(T controller, InAppWebViewHitTestResult hitTestResult)?
+  final void Function(T controller, CygnusWebViewHitTestResult hitTestResult)?
   onLongPressHitTestResult;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onEnterFullscreen}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onEnterFullscreen}
   ///Event fired when the current page has entered full screen mode.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onEnterFullscreen.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onEnterFullscreen.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1320,11 +1320,11 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   )
   final void Function(T controller)? onEnterFullscreen;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onExitFullscreen}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onExitFullscreen}
   ///Event fired when the current page has exited full screen mode.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onExitFullscreen.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onExitFullscreen.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1361,7 +1361,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   )
   final void Function(T controller)? onExitFullscreen;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onPageCommitVisible}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onPageCommitVisible}
   ///Called when the web view begins to receive web content.
   ///
   ///This event occurs early in the document loading process, and as such
@@ -1370,7 +1370,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///[url] represents the URL corresponding to the page navigation that triggered this callback.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onPageCommitVisible.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onPageCommitVisible.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1396,15 +1396,15 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final void Function(T controller, WebUri? url)? onPageCommitVisible;
+  final void Function(T controller, CygnusWebUri? url)? onPageCommitVisible;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onTitleChanged}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onTitleChanged}
   ///Event fired when a change in the document title occurred.
   ///
   ///[title] represents the string containing the new title of the document.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onTitleChanged.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onTitleChanged.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1429,7 +1429,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   )
   final void Function(T controller, String? title)? onTitleChanged;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onOverScrolled}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onOverScrolled}
   ///Event fired to respond to the results of an over-scroll operation.
   ///
   ///[x] represents the new X scroll value in pixels.
@@ -1441,7 +1441,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///[clampedY] is `true` if [y] was clamped to an over-scroll boundary.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onOverScrolled.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onOverScrolled.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1455,7 +1455,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   final void Function(T controller, int x, int y, bool clampedX, bool clampedY)?
   onOverScrolled;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onZoomScaleChanged}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onZoomScaleChanged}
   ///Event fired when the zoom scale of the WebView has changed.
   ///
   ///[oldScale] The old zoom scale factor.
@@ -1463,7 +1463,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///[newScale] The new zoom scale factor.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onZoomScaleChanged.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onZoomScaleChanged.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1492,86 +1492,86 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   final void Function(T controller, double oldScale, double newScale)?
   onZoomScaleChanged;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnSafeBrowsingHit}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnSafeBrowsingHit}
   ///Use [onSafeBrowsingHit] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.androidOnSafeBrowsingHit.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.androidOnSafeBrowsingHit.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated("Use onSafeBrowsingHit instead")
-  final FutureOr<SafeBrowsingResponse?> Function(
+  final FutureOr<CygnusSafeBrowsingResponse?> Function(
     T controller,
     Uri url,
-    SafeBrowsingThreat? threatType,
+    CygnusSafeBrowsingThreat? threatType,
   )?
   androidOnSafeBrowsingHit;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onSafeBrowsingHit}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onSafeBrowsingHit}
   ///Event fired when the webview notifies that a loading URL has been flagged by Safe Browsing.
   ///The default behavior is to show an interstitial to the user, with the reporting checkbox visible.
   ///
   ///[url] represents the url of the request.
   ///
-  ///[threatType] represents the reason the resource was caught by Safe Browsing, corresponding to a [SafeBrowsingThreat].
+  ///[threatType] represents the reason the resource was caught by Safe Browsing, corresponding to a [CygnusSafeBrowsingThreat].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onSafeBrowsingHit.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onSafeBrowsingHit.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         apiName: 'WebViewClient.onSafeBrowsingHit',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/WebViewClient#onSafeBrowsingHit(android.webkit.WebView,%20android.webkit.WebResourceRequest,%20int,%20android.webkit.SafeBrowsingResponse)',
+            'https://developer.android.com/reference/android/webkit/WebViewClient#onSafeBrowsingHit(android.webkit.WebView,%20android.webkit.CygnusWebResourceRequest,%20int,%20android.webkit.CygnusSafeBrowsingResponse)',
         available: '27',
       ),
     ],
   )
-  final FutureOr<SafeBrowsingResponse?> Function(
+  final FutureOr<CygnusSafeBrowsingResponse?> Function(
     T controller,
-    WebUri url,
-    SafeBrowsingThreat? threatType,
+    CygnusWebUri url,
+    CygnusSafeBrowsingThreat? threatType,
   )?
   onSafeBrowsingHit;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnPermissionRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnPermissionRequest}
   ///Use [onPermissionRequest] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.androidOnPermissionRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.androidOnPermissionRequest.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated("Use onPermissionRequest instead")
-  final FutureOr<PermissionRequestResponse?> Function(
+  final FutureOr<CygnusPermissionRequestResponse?> Function(
     T controller,
     String origin,
     List<String> resources,
   )?
   androidOnPermissionRequest;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onPermissionRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onPermissionRequest}
   ///Event fired when the WebView is requesting permission to access the specified resources and the permission currently isn't granted or denied.
   ///
   ///[permissionRequest] represents the permission request with an array of resources the web content wants to access
   ///and the origin of the web page which is trying to access the restricted resources.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onPermissionRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onPermissionRequest.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         apiName: 'WebChromeClient.onPermissionRequest',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/WebChromeClient#onPermissionRequest(android.webkit.PermissionRequest)',
+            'https://developer.android.com/reference/android/webkit/WebChromeClient#onPermissionRequest(android.webkit.CygnusPermissionRequest)',
         available: '21',
       ),
       IOSPlatform(
         available: '15.0',
         note:
-            'The default [PermissionResponse.action] is [PermissionResponseAction.PROMPT].',
+            'The default [CygnusPermissionResponse.action] is [CygnusPermissionResponseAction.PROMPT].',
       ),
       MacOSPlatform(
         available: '12.0',
         note:
-            'The default [PermissionResponse.action] is [PermissionResponseAction.PROMPT].',
+            'The default [CygnusPermissionResponse.action] is [CygnusPermissionResponseAction.PROMPT].',
       ),
       WindowsPlatform(
         apiName: 'ICoreWebView2.add_PermissionRequested',
@@ -1585,26 +1585,26 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final FutureOr<PermissionResponse?> Function(
+  final FutureOr<CygnusPermissionResponse?> Function(
     T controller,
-    PermissionRequest permissionRequest,
+    CygnusPermissionRequest permissionRequest,
   )?
   onPermissionRequest;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnGeolocationPermissionsShowPrompt}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnGeolocationPermissionsShowPrompt}
   ///Use [onGeolocationPermissionsShowPrompt] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.androidOnGeolocationPermissionsShowPrompt.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.androidOnGeolocationPermissionsShowPrompt.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated("Use onGeolocationPermissionsShowPrompt instead")
-  final FutureOr<GeolocationPermissionShowPromptResponse?> Function(
+  final FutureOr<CygnusGeolocationPermissionShowPromptResponse?> Function(
     T controller,
     String origin,
   )?
   androidOnGeolocationPermissionsShowPrompt;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt}
   ///Event that notifies the host application that web content from the specified origin is attempting to use the Geolocation API, but no permission state is currently set for that origin.
   ///Note that for applications targeting Android N and later SDKs (API level > `Build.VERSION_CODES.M`) this method is only called for requests originating from secure origins such as https.
   ///On non-secure origins geolocation requests are automatically denied.
@@ -1612,7 +1612,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///[origin] represents the origin of the web content attempting to use the Geolocation API.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1622,27 +1622,27 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final FutureOr<GeolocationPermissionShowPromptResponse?> Function(
+  final FutureOr<CygnusGeolocationPermissionShowPromptResponse?> Function(
     T controller,
     String origin,
   )?
   onGeolocationPermissionsShowPrompt;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnGeolocationPermissionsHidePrompt}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnGeolocationPermissionsHidePrompt}
   ///Use [onGeolocationPermissionsHidePrompt] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.androidOnGeolocationPermissionsHidePrompt.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.androidOnGeolocationPermissionsHidePrompt.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated("Use onGeolocationPermissionsHidePrompt instead")
   final void Function(T controller)? androidOnGeolocationPermissionsHidePrompt;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onGeolocationPermissionsHidePrompt}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onGeolocationPermissionsHidePrompt}
   ///Notify the host application that a request for Geolocation permissions, made with a previous call to [onGeolocationPermissionsShowPrompt] has been canceled.
   ///Any related UI should therefore be hidden.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onGeolocationPermissionsHidePrompt.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onGeolocationPermissionsHidePrompt.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1654,20 +1654,20 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   )
   final void Function(T controller)? onGeolocationPermissionsHidePrompt;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidShouldInterceptRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidShouldInterceptRequest}
   ///Use [shouldInterceptRequest] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.androidShouldInterceptRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.androidShouldInterceptRequest.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated("Use shouldInterceptRequest instead")
-  final FutureOr<WebResourceResponse?> Function(
+  final FutureOr<CygnusWebResourceResponse?> Function(
     T controller,
-    WebResourceRequest request,
+    CygnusWebResourceRequest request,
   )?
   androidShouldInterceptRequest;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.shouldInterceptRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.shouldInterceptRequest}
   ///Notify the host application of a resource request and allow the application to return the data.
   ///If the return value is `null`, the WebView will continue to load the resource as usual.
   ///Otherwise, the return response and data will be used.
@@ -1680,16 +1680,16 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///
   ///[request] Object containing the details of the request.
   ///
-  ///**NOTE**: In order to be able to listen this event, check the [InAppWebViewSettings.useShouldInterceptRequest] setting documentation.
+  ///**NOTE**: In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptRequest] setting documentation.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.shouldInterceptRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.shouldInterceptRequest.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         apiName: 'WebViewClient.shouldInterceptRequest',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/WebViewClient#shouldInterceptRequest(android.webkit.WebView,%20android.webkit.WebResourceRequest)',
+            'https://developer.android.com/reference/android/webkit/WebViewClient#shouldInterceptRequest(android.webkit.WebView,%20android.webkit.CygnusWebResourceRequest)',
       ),
       WindowsPlatform(
         apiName: 'ICoreWebView2.add_WebResourceRequested',
@@ -1705,23 +1705,23 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final FutureOr<WebResourceResponse?> Function(
+  final FutureOr<CygnusWebResourceResponse?> Function(
     T controller,
-    WebResourceRequest request,
+    CygnusWebResourceRequest request,
   )?
   shouldInterceptRequest;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnRenderProcessUnresponsive}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnRenderProcessUnresponsive}
   ///Use [onRenderProcessUnresponsive] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.androidOnRenderProcessUnresponsive.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.androidOnRenderProcessUnresponsive.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated("Use onRenderProcessUnresponsive instead")
-  final FutureOr<WebViewRenderProcessAction?> Function(T controller, Uri? url)?
+  final FutureOr<CygnusWebViewRenderProcessAction?> Function(T controller, Uri? url)?
   androidOnRenderProcessUnresponsive;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onRenderProcessUnresponsive}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onRenderProcessUnresponsive}
   ///Event called when the renderer currently associated with the WebView becomes unresponsive as a result of a long running blocking task such as the execution of JavaScript.
   ///
   ///If a WebView fails to process an input event, or successfully navigate to a new URL within a reasonable time frame, the renderer is considered to be unresponsive, and this callback will be called.
@@ -1738,7 +1738,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///and all other WebViews associated with the same renderer. Failure to do so will result in application termination.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onRenderProcessUnresponsive.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onRenderProcessUnresponsive.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1754,23 +1754,23 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final FutureOr<WebViewRenderProcessAction?> Function(
+  final FutureOr<CygnusWebViewRenderProcessAction?> Function(
     T controller,
-    WebUri? url,
+    CygnusWebUri? url,
   )?
   onRenderProcessUnresponsive;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnRenderProcessResponsive}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnRenderProcessResponsive}
   ///Use [onRenderProcessResponsive] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.androidOnRenderProcessResponsive.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.androidOnRenderProcessResponsive.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated("Use onRenderProcessResponsive instead")
-  final FutureOr<WebViewRenderProcessAction?> Function(T controller, Uri? url)?
+  final FutureOr<CygnusWebViewRenderProcessAction?> Function(T controller, Uri? url)?
   androidOnRenderProcessResponsive;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onRenderProcessResponsive}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onRenderProcessResponsive}
   ///Event called once when an unresponsive renderer currently associated with the WebView becomes responsive.
   ///
   ///After a WebView renderer becomes unresponsive, which is notified to the application by [onRenderProcessUnresponsive],
@@ -1780,7 +1780,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///No action is taken by WebView as a result of this method call.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onRenderProcessResponsive.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onRenderProcessResponsive.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1791,23 +1791,23 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final FutureOr<WebViewRenderProcessAction?> Function(
+  final FutureOr<CygnusWebViewRenderProcessAction?> Function(
     T controller,
-    WebUri? url,
+    CygnusWebUri? url,
   )?
   onRenderProcessResponsive;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnRenderProcessGone}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnRenderProcessGone}
   ///Use [onRenderProcessGone] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.androidOnRenderProcessGone.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.androidOnRenderProcessGone.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated("Use onRenderProcessGone instead")
-  final void Function(T controller, RenderProcessGoneDetail detail)?
+  final void Function(T controller, CygnusRenderProcessGoneDetail detail)?
   androidOnRenderProcessGone;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onRenderProcessGone}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onRenderProcessGone}
   ///Event fired when the given WebView's render process has exited.
   ///The application's implementation of this callback should only attempt to clean up the WebView.
   ///The WebView should be removed from the view hierarchy, all references to it should be cleaned up.
@@ -1818,13 +1818,13 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///[detail] the reason why it exited.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onRenderProcessGone.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onRenderProcessGone.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         apiName: 'WebViewClient.onRenderProcessGone',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/WebViewClient#onRenderProcessGone(android.webkit.WebView,%20android.webkit.RenderProcessGoneDetail)',
+            'https://developer.android.com/reference/android/webkit/WebViewClient#onRenderProcessGone(android.webkit.WebView,%20android.webkit.CygnusRenderProcessGoneDetail)',
         available: '26',
       ),
       WindowsPlatform(
@@ -1839,24 +1839,24 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final void Function(T controller, RenderProcessGoneDetail detail)?
+  final void Function(T controller, CygnusRenderProcessGoneDetail detail)?
   onRenderProcessGone;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnFormResubmission}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnFormResubmission}
   ///Use [onFormResubmission] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.androidOnFormResubmission.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.androidOnFormResubmission.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated('Use onFormResubmission instead')
-  final FutureOr<FormResubmissionAction?> Function(T controller, Uri? url)?
+  final FutureOr<CygnusFormResubmissionAction?> Function(T controller, Uri? url)?
   androidOnFormResubmission;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onFormResubmission}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onFormResubmission}
   ///As the host application if the browser should resend data as the requested page was a result of a POST. The default is to not resend the data.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onFormResubmission.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onFormResubmission.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1866,29 +1866,29 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final FutureOr<FormResubmissionAction?> Function(T controller, WebUri? url)?
+  final FutureOr<CygnusFormResubmissionAction?> Function(T controller, CygnusWebUri? url)?
   onFormResubmission;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnScaleChanged}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnScaleChanged}
   ///Use [onZoomScaleChanged] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.androidOnScaleChanged.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.androidOnScaleChanged.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated('Use onZoomScaleChanged instead')
   final void Function(T controller, double oldScale, double newScale)?
   androidOnScaleChanged;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnReceivedIcon}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnReceivedIcon}
   ///Use [onReceivedIcon] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.androidOnReceivedIcon.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.androidOnReceivedIcon.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated('Use onReceivedIcon instead')
   final void Function(T controller, Uint8List icon)? androidOnReceivedIcon;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedIcon}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedIcon}
   ///Event fired when there is new favicon for the current page.
   ///
   ///[icon] represents the favicon for the current page.
@@ -1896,7 +1896,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///Deprecated: use [onFaviconChanged] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onReceivedIcon.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedIcon.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1909,13 +1909,13 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   @Deprecated('Use onFaviconChanged instead')
   final void Function(T controller, Uint8List icon)? onReceivedIcon;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onFaviconChanged}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onFaviconChanged}
   ///Event fired when the favicon for the current page changes.
   ///
   ///[faviconChangedRequest] contains the favicon URL and/or icon bytes, if available.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onFaviconChanged.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onFaviconChanged.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1932,21 +1932,21 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   )
   final void Function(
     T controller,
-    FaviconChangedRequest faviconChangedRequest,
+    CygnusFaviconChangedRequest faviconChangedRequest,
   )?
   onFaviconChanged;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnReceivedTouchIconUrl}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnReceivedTouchIconUrl}
   ///Use [onReceivedTouchIconUrl] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.androidOnReceivedTouchIconUrl.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.androidOnReceivedTouchIconUrl.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated('Use onReceivedTouchIconUrl instead')
   final void Function(T controller, Uri url, bool precomposed)?
   androidOnReceivedTouchIconUrl;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedTouchIconUrl}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedTouchIconUrl}
   ///Event fired when there is an url for an apple-touch-icon.
   ///
   ///[url] represents the icon url.
@@ -1954,7 +1954,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///[precomposed] is `true` if the url is for a precomposed touch icon.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onReceivedTouchIconUrl.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedTouchIconUrl.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -1964,35 +1964,35 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final void Function(T controller, WebUri url, bool precomposed)?
+  final void Function(T controller, CygnusWebUri url, bool precomposed)?
   onReceivedTouchIconUrl;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnJsBeforeUnload}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnJsBeforeUnload}
   ///Use [onJsBeforeUnload] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.androidOnJsBeforeUnload.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.androidOnJsBeforeUnload.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated('Use onJsBeforeUnload instead')
-  final FutureOr<JsBeforeUnloadResponse?> Function(
+  final FutureOr<CygnusJsBeforeUnloadResponse?> Function(
     T controller,
-    JsBeforeUnloadRequest jsBeforeUnloadRequest,
+    CygnusJsBeforeUnloadRequest jsBeforeUnloadRequest,
   )?
   androidOnJsBeforeUnload;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onJsBeforeUnload}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onJsBeforeUnload}
   ///Event fired when the client should display a dialog to confirm navigation away from the current page.
   ///This is the result of the `onbeforeunload` javascript event.
-  ///If [JsBeforeUnloadResponse.handledByClient] is `true`, WebView will assume that the client will handle the confirm dialog.
-  ///If [JsBeforeUnloadResponse.handledByClient] is `false`, a default value of `true` will be returned to javascript to accept navigation away from the current page.
+  ///If [CygnusJsBeforeUnloadResponse.handledByClient] is `true`, WebView will assume that the client will handle the confirm dialog.
+  ///If [CygnusJsBeforeUnloadResponse.handledByClient] is `false`, a default value of `true` will be returned to javascript to accept navigation away from the current page.
   ///The default behavior is to return `false`.
-  ///Setting the [JsBeforeUnloadResponse.action] to [JsBeforeUnloadResponseAction.CONFIRM] will navigate away from the current page,
-  ///[JsBeforeUnloadResponseAction.CANCEL] will cancel the navigation.
+  ///Setting the [CygnusJsBeforeUnloadResponse.action] to [CygnusJsBeforeUnloadResponseAction.CONFIRM] will navigate away from the current page,
+  ///[CygnusJsBeforeUnloadResponseAction.CANCEL] will cancel the navigation.
   ///
   ///[jsBeforeUnloadRequest] contains the message to be displayed in the alert dialog and the of the page requesting the dialog.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onJsBeforeUnload.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onJsBeforeUnload.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2008,29 +2008,29 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final FutureOr<JsBeforeUnloadResponse?> Function(
+  final FutureOr<CygnusJsBeforeUnloadResponse?> Function(
     T controller,
-    JsBeforeUnloadRequest jsBeforeUnloadRequest,
+    CygnusJsBeforeUnloadRequest jsBeforeUnloadRequest,
   )?
   onJsBeforeUnload;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.androidOnReceivedLoginRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.androidOnReceivedLoginRequest}
   ///Use [onReceivedLoginRequest] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.androidOnReceivedLoginRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.androidOnReceivedLoginRequest.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform()])
   @Deprecated('Use onReceivedLoginRequest instead')
-  final void Function(T controller, LoginRequest loginRequest)?
+  final void Function(T controller, CygnusLoginRequest loginRequest)?
   androidOnReceivedLoginRequest;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onReceivedLoginRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedLoginRequest}
   ///Event fired when a request to automatically log in the user has been processed.
   ///
   ///[loginRequest] contains the realm, account and args of the login request.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onReceivedLoginRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onReceivedLoginRequest.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2040,10 +2040,10 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final void Function(T controller, LoginRequest loginRequest)?
+  final void Function(T controller, CygnusLoginRequest loginRequest)?
   onReceivedLoginRequest;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onPermissionRequestCanceled}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onPermissionRequestCanceled}
   ///Notify the host application that the given permission request has been canceled. Any related UI should therefore be hidden.
   ///
   ///[permissionRequest] represents the permission request that needs be canceled
@@ -2051,21 +2051,21 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///and the origin of the web page which is trying to access the restricted resources.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onPermissionRequestCanceled.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onPermissionRequestCanceled.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         apiName: 'WebChromeClient.onPermissionRequestCanceled',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/WebChromeClient#onPermissionRequestCanceled(android.webkit.PermissionRequest)',
+            'https://developer.android.com/reference/android/webkit/WebChromeClient#onPermissionRequestCanceled(android.webkit.CygnusPermissionRequest)',
         available: '21',
       ),
     ],
   )
-  final void Function(T controller, PermissionRequest permissionRequest)?
+  final void Function(T controller, CygnusPermissionRequest permissionRequest)?
   onPermissionRequestCanceled;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onRequestFocus}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onRequestFocus}
   ///Request display and focus for this WebView.
   ///This may happen due to another WebView opening a link in this WebView and requesting that this WebView be displayed.
   ///
@@ -2073,7 +2073,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///- Android native WebView ([Official API - WebChromeClient.onRequestFocus](https://developer.android.com/reference/android/webkit/WebChromeClient#onRequestFocus(android.webkit.WebView)))
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onRequestFocus.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onRequestFocus.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2085,21 +2085,21 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   )
   final void Function(T controller)? onRequestFocus;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.iosOnWebContentProcessDidTerminate}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.iosOnWebContentProcessDidTerminate}
   ///Use [onWebContentProcessDidTerminate] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.iosOnWebContentProcessDidTerminate.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.iosOnWebContentProcessDidTerminate.supported_platforms}
   @SupportedPlatforms(platforms: [IOSPlatform()])
   @Deprecated('Use onWebContentProcessDidTerminate instead')
   final void Function(T controller)? iosOnWebContentProcessDidTerminate;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onWebContentProcessDidTerminate}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onWebContentProcessDidTerminate}
   ///Invoked when the web view's web content process is terminated.
   ///Reloading the page will start a new render process if needed.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onWebContentProcessDidTerminate.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onWebContentProcessDidTerminate.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -2121,21 +2121,21 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   )
   final void Function(T controller)? onWebContentProcessDidTerminate;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.iosOnDidReceiveServerRedirectForProvisionalNavigation}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.iosOnDidReceiveServerRedirectForProvisionalNavigation}
   ///Use [onDidReceiveServerRedirectForProvisionalNavigation] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.iosOnDidReceiveServerRedirectForProvisionalNavigation.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.iosOnDidReceiveServerRedirectForProvisionalNavigation.supported_platforms}
   @SupportedPlatforms(platforms: [IOSPlatform()])
   @Deprecated('Use onDidReceiveServerRedirectForProvisionalNavigation instead')
   final void Function(T controller)?
   iosOnDidReceiveServerRedirectForProvisionalNavigation;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onDidReceiveServerRedirectForProvisionalNavigation}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onDidReceiveServerRedirectForProvisionalNavigation}
   ///Called when a web view receives a server redirect.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onDidReceiveServerRedirectForProvisionalNavigation.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onDidReceiveServerRedirectForProvisionalNavigation.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -2153,28 +2153,28 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   final void Function(T controller)?
   onDidReceiveServerRedirectForProvisionalNavigation;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.iosOnNavigationResponse}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.iosOnNavigationResponse}
   ///Use [onNavigationResponse] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.iosOnNavigationResponse.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.iosOnNavigationResponse.supported_platforms}
   @SupportedPlatforms(platforms: [IOSPlatform()])
   @Deprecated('Use onNavigationResponse instead')
-  final FutureOr<IOSNavigationResponseAction?> Function(
+  final FutureOr<CygnusIOSNavigationResponseAction?> Function(
     T controller,
-    IOSWKNavigationResponse navigationResponse,
+    CygnusIOSWKNavigationResponse navigationResponse,
   )?
   iosOnNavigationResponse;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onNavigationResponse}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onNavigationResponse}
   ///Called when a web view asks for permission to navigate to new content after the response to the navigation request is known.
   ///
   ///[navigationResponse] represents the navigation response.
   ///
-  ///**NOTE**: In order to be able to listen this event, check the [InAppWebViewSettings.useOnNavigationResponse] setting documentation.
+  ///**NOTE**: In order to be able to listen this event, check the [CygnusWebViewSettings.useOnNavigationResponse] setting documentation.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onNavigationResponse.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onNavigationResponse.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -2194,32 +2194,32 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final FutureOr<NavigationResponseAction?> Function(
+  final FutureOr<CygnusNavigationResponseAction?> Function(
     T controller,
-    NavigationResponse navigationResponse,
+    CygnusNavigationResponse navigationResponse,
   )?
   onNavigationResponse;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.iosShouldAllowDeprecatedTLS}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.iosShouldAllowDeprecatedTLS}
   ///Use [shouldAllowDeprecatedTLS] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.iosShouldAllowDeprecatedTLS.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.iosShouldAllowDeprecatedTLS.supported_platforms}
   @SupportedPlatforms(platforms: [IOSPlatform()])
   @Deprecated('Use shouldAllowDeprecatedTLS instead')
-  final FutureOr<IOSShouldAllowDeprecatedTLSAction?> Function(
+  final FutureOr<CygnusIOSShouldAllowDeprecatedTLSAction?> Function(
     T controller,
-    URLAuthenticationChallenge challenge,
+    CygnusURLAuthenticationChallenge challenge,
   )?
   iosShouldAllowDeprecatedTLS;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.shouldAllowDeprecatedTLS}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.shouldAllowDeprecatedTLS}
   ///Called when a web view asks whether to continue with a connection that uses a deprecated version of TLS (v1.0 and v1.1).
   ///
   ///[challenge] represents the authentication challenge.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.shouldAllowDeprecatedTLS.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.shouldAllowDeprecatedTLS.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -2236,17 +2236,17 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final FutureOr<ShouldAllowDeprecatedTLSAction?> Function(
+  final FutureOr<CygnusShouldAllowDeprecatedTLSAction?> Function(
     T controller,
-    URLAuthenticationChallenge challenge,
+    CygnusURLAuthenticationChallenge challenge,
   )?
   shouldAllowDeprecatedTLS;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onCameraCaptureStateChanged}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onCameraCaptureStateChanged}
   ///Event fired when a change in the camera capture state occurred.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onCameraCaptureStateChanged.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onCameraCaptureStateChanged.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(available: '15.0'),
@@ -2261,16 +2261,16 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   )
   final FutureOr<void> Function(
     T controller,
-    MediaCaptureState? oldState,
-    MediaCaptureState? newState,
+    CygnusMediaCaptureState? oldState,
+    CygnusMediaCaptureState? newState,
   )?
   onCameraCaptureStateChanged;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onMicrophoneCaptureStateChanged}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onMicrophoneCaptureStateChanged}
   ///Event fired when a change in the microphone capture state occurred.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onMicrophoneCaptureStateChanged.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onMicrophoneCaptureStateChanged.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(available: '15.0'),
@@ -2285,12 +2285,12 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   )
   final FutureOr<void> Function(
     T controller,
-    MediaCaptureState? oldState,
-    MediaCaptureState? newState,
+    CygnusMediaCaptureState? oldState,
+    CygnusMediaCaptureState? newState,
   )?
   onMicrophoneCaptureStateChanged;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onContentSizeChanged}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onContentSizeChanged}
   ///Event fired when the content size of the `WebView` changes.
   ///
   ///[oldContentSize] represents the old content size value.
@@ -2298,7 +2298,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///[newContentSize] represents the new content size value.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onContentSizeChanged.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onContentSizeChanged.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(),
@@ -2308,7 +2308,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   final void Function(T controller, Size oldContentSize, Size newContentSize)?
   onContentSizeChanged;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onProcessFailed}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onProcessFailed}
   ///Invoked when any of the processes in the WebView Process Group encounters one of the following conditions:
   ///- Unexpected exit: The process indicated by the event args has exited unexpectedly (usually due to a crash).
   ///The failure might or might not be recoverable and some failures are auto-recoverable.
@@ -2316,7 +2316,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///This is only reported for renderer processes, and will run every few seconds until the process becomes responsive again.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onProcessFailed.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onProcessFailed.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -2326,19 +2326,19 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final void Function(T controller, ProcessFailedDetail detail)?
+  final void Function(T controller, CygnusProcessFailedDetail detail)?
   onProcessFailed;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onNotificationReceived}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onNotificationReceived}
   ///Event fired when a web notification is received.
   ///
-  ///The [request] contains the [NotificationReceivedRequest.senderOrigin] (the origin of the web content
-  ///that sends the notification) and the [NotificationReceivedRequest.notificationController] which provides
+  ///The [request] contains the [CygnusNotificationReceivedRequest.senderOrigin] (the origin of the web content
+  ///that sends the notification) and the [CygnusNotificationReceivedRequest.notificationController] which provides
   ///methods to report the notification status (shown, clicked, closed) back to the web content,
   ///as well as listen for the close event when the notification is closed by web code.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onNotificationReceived.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onNotificationReceived.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -2348,17 +2348,17 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final FutureOr<NotificationReceivedResponse?> Function(
+  final FutureOr<CygnusNotificationReceivedResponse?> Function(
     T controller,
-    NotificationReceivedRequest request,
+    CygnusNotificationReceivedRequest request,
   )?
   onNotificationReceived;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onSaveAsUIShowing}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onSaveAsUIShowing}
   ///Event fired when Save As UI is showing.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onSaveAsUIShowing.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onSaveAsUIShowing.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -2368,17 +2368,17 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final FutureOr<SaveAsUIShowingResponse?> Function(
+  final FutureOr<CygnusSaveAsUIShowingResponse?> Function(
     T controller,
-    SaveAsUIShowingRequest request,
+    CygnusSaveAsUIShowingRequest request,
   )?
   onSaveAsUIShowing;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onSaveFileSecurityCheckStarting}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onSaveFileSecurityCheckStarting}
   ///Event fired when a save file security check is starting.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onSaveFileSecurityCheckStarting.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onSaveFileSecurityCheckStarting.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -2388,17 +2388,17 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final FutureOr<SaveFileSecurityCheckStartingResponse?> Function(
+  final FutureOr<CygnusSaveFileSecurityCheckStartingResponse?> Function(
     T controller,
-    SaveFileSecurityCheckStartingRequest request,
+    CygnusSaveFileSecurityCheckStartingRequest request,
   )?
   onSaveFileSecurityCheckStarting;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onScreenCaptureStarting}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onScreenCaptureStarting}
   ///Event fired when screen capture is starting.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onScreenCaptureStarting.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onScreenCaptureStarting.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -2408,16 +2408,16 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final FutureOr<ScreenCaptureStartingResponse?> Function(
+  final FutureOr<CygnusScreenCaptureStartingResponse?> Function(
     T controller,
-    ScreenCaptureStartingRequest request,
+    CygnusScreenCaptureStartingRequest request,
   )?
   onScreenCaptureStarting;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onAcceleratorKeyPressed}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onAcceleratorKeyPressed}
   ///This event runs when an accelerator key or key combo is pressed or
   ///released while the WebView is focused.
-  ///To listen this event, [InAppWebViewSettings.handleAcceleratorKeyPressed] must be `true`.
+  ///To listen this event, [CygnusWebViewSettings.handleAcceleratorKeyPressed] must be `true`.
   ///
   ///A key is considered an accelerator if either of the following conditions are `true`:
   ///- `Ctrl` or `Alt` is currently being held.
@@ -2427,10 +2427,10 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///The `Escape` key is always considered an accelerator.
   ///
   ///Auto-repeated key events caused by holding the key down also triggers this event.
-  ///Filter out the auto-repeated key events by verifying the [AcceleratorKeyPressedDetail.physicalKeyStatus] property.
+  ///Filter out the auto-repeated key events by verifying the [CygnusAcceleratorKeyPressedDetail.physicalKeyStatus] property.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onAcceleratorKeyPressed.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onAcceleratorKeyPressed.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -2440,14 +2440,14 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final void Function(T controller, AcceleratorKeyPressedDetail detail)?
+  final void Function(T controller, CygnusAcceleratorKeyPressedDetail detail)?
   onAcceleratorKeyPressed;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.onShowFileChooser}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.onShowFileChooser}
   ///Tell the client to show a file chooser.
   ///This is called to handle HTML forms with 'file' input type,
   ///in response to the user pressing the "Select File" button.
-  ///To cancel the request, return a [ShowFileChooserResponse] with [ShowFileChooserResponse.filePaths] to `null`.
+  ///To cancel the request, return a [CygnusShowFileChooserResponse] with [CygnusShowFileChooserResponse.filePaths] to `null`.
   ///
   ///Note that the WebView does not enforce any restrictions on the chosen file(s).
   ///WebView can access all files that your app can access.
@@ -2456,7 +2456,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   ///to.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.onShowFileChooser.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.onShowFileChooser.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2471,17 +2471,17 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       ),
     ],
   )
-  final FutureOr<ShowFileChooserResponse?> Function(
+  final FutureOr<CygnusShowFileChooserResponse?> Function(
     T controller,
-    ShowFileChooserRequest request,
+    CygnusShowFileChooserRequest request,
   )?
   onShowFileChooser;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.initialUrlRequest}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.initialUrlRequest}
   ///Initial url request that will be loaded.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.initialUrlRequest.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.initialUrlRequest.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -2495,13 +2495,13 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       LinuxPlatform(),
     ],
   )
-  final URLRequest? initialUrlRequest;
+  final CygnusURLRequest? initialUrlRequest;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.initialFile}
-  ///Initial asset file that will be loaded. See [InAppWebViewController.loadFile] for explanation.
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.initialFile}
+  ///Initial asset file that will be loaded. See [CygnusWebViewController.loadFile] for explanation.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.initialFile.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.initialFile.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -2514,11 +2514,11 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
   )
   final String? initialFile;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.initialData}
-  ///Initial [InAppWebViewInitialData] that will be loaded.
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.initialData}
+  ///Initial [CygnusWebViewInitialData] that will be loaded.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.initialData.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.initialData.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -2529,22 +2529,22 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       LinuxPlatform(),
     ],
   )
-  final InAppWebViewInitialData? initialData;
+  final CygnusWebViewInitialData? initialData;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.initialOptions}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.initialOptions}
   ///Use [initialSettings] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.initialOptions.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.initialOptions.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform(), IOSPlatform()])
   @Deprecated('Use initialSettings instead')
-  final InAppWebViewGroupOptions? initialOptions;
+  final CygnusWebViewGroupOptions? initialOptions;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.initialSettings}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.initialSettings}
   ///Initial settings that will be used.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.initialSettings.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.initialSettings.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -2555,35 +2555,35 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
       LinuxPlatform(),
     ],
   )
-  final InAppWebViewSettings? initialSettings;
+  final CygnusWebViewSettings? initialSettings;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.contextMenu}
-  ///Context menu which contains custom menu items to be shown when [ContextMenu] is presented.
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.contextMenu}
+  ///Context menu which contains custom menu items to be shown when [CygnusContextMenu] is presented.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.contextMenu.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.contextMenu.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform(), IOSPlatform()])
-  final ContextMenu? contextMenu;
+  final CygnusContextMenu? contextMenu;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.initialUserScripts}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.initialUserScripts}
   ///Initial list of user scripts to be loaded at start or end of a page loading.
-  ///To add or remove user scripts, you have to use the [InAppWebViewController]'s methods such as [InAppWebViewController.addUserScript],
-  ///[InAppWebViewController.removeUserScript], [InAppWebViewController.removeAllUserScripts], etc.
+  ///To add or remove user scripts, you have to use the [CygnusWebViewController]'s methods such as [CygnusWebViewController.addUserScript],
+  ///[CygnusWebViewController.removeUserScript], [CygnusWebViewController.removeAllUserScripts], etc.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.initialUserScripts.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.initialUserScripts.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
       IOSPlatform(
         note:
-            """This property will be ignored if the [PlatformWebViewCreationParams.windowId] has been set.
+            """This property will be ignored if the [CygnusPlatformWebViewCreationParams.windowId] has been set.
 There isn't any way to add/remove user scripts specific to iOS window WebViews.
 This is a limitation of the native WebKit APIs.""",
       ),
       MacOSPlatform(
         note:
-            """This property will be ignored if the [PlatformWebViewCreationParams.windowId] has been set.
+            """This property will be ignored if the [CygnusPlatformWebViewCreationParams.windowId] has been set.
 There isn't any way to add/remove user scripts specific to iOS window WebViews.
 This is a limitation of the native WebKit APIs.""",
       ),
@@ -2596,29 +2596,29 @@ This is a limitation of the native WebKit APIs.""",
       ),
     ],
   )
-  final UnmodifiableListView<UserScript>? initialUserScripts;
+  final UnmodifiableListView<CygnusUserScript>? initialUserScripts;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.pullToRefreshController}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.pullToRefreshController}
   ///Represents the pull-to-refresh feature controller.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.pullToRefreshController.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.pullToRefreshController.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         note:
-            'To be able to use the "pull-to-refresh" feature, [InAppWebViewSettings.useHybridComposition] must be `true`.',
+            'To be able to use the "pull-to-refresh" feature, [CygnusWebViewSettings.useHybridComposition] must be `true`.',
       ),
       IOSPlatform(),
     ],
   )
-  final PlatformPullToRefreshController? pullToRefreshController;
+  final CygnusPlatformPullToRefreshController? pullToRefreshController;
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.findInteractionController}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.findInteractionController}
   ///Represents the find interaction feature controller.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.findInteractionController.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.findInteractionController.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -2632,12 +2632,12 @@ This is a limitation of the native WebKit APIs.""",
       ),
     ],
   )
-  final PlatformFindInteractionController? findInteractionController;
+  final CygnusPlatformFindInteractionController? findInteractionController;
 
-  ///{@macro cygnus_core.PlatformWebViewCreationParams}
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams}
   ///
-  ///{@macro cygnus_core.PlatformWebViewCreationParams.supported_platforms}
-  const PlatformWebViewCreationParams({
+  ///{@macro cygnus_core.CygnusPlatformWebViewCreationParams.supported_platforms}
+  const CygnusPlatformWebViewCreationParams({
     this.controllerFromPlatform,
     this.windowId,
     this.onWebViewCreated,
@@ -2669,7 +2669,7 @@ This is a limitation of the native WebKit APIs.""",
     this.onReceivedHttpAuthRequest,
     this.onReceivedServerTrustAuthRequest,
     this.onReceivedClientCertRequest,
-    @Deprecated('Use FindInteractionController.onFindResultReceived instead')
+    @Deprecated('Use CygnusFindInteractionController.onFindResultReceived instead')
     this.onFindResultReceived,
     this.shouldInterceptAjaxRequest,
     this.onAjaxReadyStateChange,
@@ -2762,21 +2762,21 @@ This is a limitation of the native WebKit APIs.""",
     this.findInteractionController,
   });
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformWebViewCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformWebViewCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformWebViewCreationParams.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformWebViewCreationParams.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformWebViewCreationParamsProperty property, {
+    CygnusPlatformWebViewCreationParamsProperty property, {
     TargetPlatform? platform,
-  }) => _PlatformWebViewCreationParamsPropertySupported.isPropertySupported(
+  }) => _CygnusPlatformWebViewCreationParamsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );

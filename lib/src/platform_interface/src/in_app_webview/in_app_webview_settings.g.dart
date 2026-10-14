@@ -6,7 +6,7 @@ part of 'in_app_webview_settings.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///{@template cygnus_core.InAppWebViewSettings}
+///{@template cygnus_core.CygnusWebViewSettings}
 ///This class represents all the WebView settings available.
 ///{@endtemplate}
 ///
@@ -16,7 +16,7 @@ part of 'in_app_webview_settings.dart';
 ///- macOS WKWebView
 ///- Web \<iframe\>
 ///- Windows WebView2
-class InAppWebViewSettings {
+class CygnusWebViewSettings {
   ///A Boolean value indicating whether the WebView ignores an accessibility request to invert its colors.
   ///The default value is `false`.
   ///
@@ -38,12 +38,12 @@ class InAppWebViewSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 29+ ([Official API - WebSettingsCompat.setAlgorithmicDarkeningAllowed](https://developer.android.com/reference/androidx/webkit/WebSettingsCompat#setAlgorithmicDarkeningAllowed(android.webkit.WebSettings,boolean))):
-  ///    - available on Android only if [WebViewFeature.ALGORITHMIC_DARKENING] feature is supported.
+  ///    - available on Android only if [CygnusWebViewFeature.ALGORITHMIC_DARKENING] feature is supported.
   bool? algorithmicDarkeningAllowed;
 
   ///Set to `true` to allow audio playing when the app goes in background or the screen is locked or another app is opened.
   ///However, there will be no controls in the notification bar or on the lockscreen.
-  ///Also, make sure to not call [PlatformInAppWebViewController.pause], otherwise it will stop audio playing.
+  ///Also, make sure to not call [CygnusPlatformWebViewController.pause], otherwise it will stop audio playing.
   ///The default value is `false`.
   ///
   ///**IMPORTANT NOTE**: if you use this setting, your app could be rejected by the Google Play Store.
@@ -119,16 +119,16 @@ class InAppWebViewSettings {
   ///- Linux WPE WebKit 2.14+ ([Official API - WebKitSettings.allow-universal-access-from-file-urls](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.allow-universal-access-from-file-urls.html))
   bool? allowUniversalAccessFromFileURLs;
 
-  ///Used in combination with [PlatformWebViewCreationParams.initialUrlRequest] or [PlatformWebViewCreationParams.initialData] (using the `file://` scheme), it represents the URL from which to read the web content.
+  ///Used in combination with [CygnusPlatformWebViewCreationParams.initialUrlRequest] or [CygnusPlatformWebViewCreationParams.initialData] (using the `file://` scheme), it represents the URL from which to read the web content.
   ///This URL must be a file-based URL (using the `file://` scheme).
-  ///Specify the same value as the [URLRequest.url] if you are using it with the [PlatformWebViewCreationParams.initialUrlRequest] parameter or
-  ///the [InAppWebViewInitialData.baseUrl] if you are using it with the [PlatformWebViewCreationParams.initialData] parameter to prevent WebView from reading any other content.
+  ///Specify the same value as the [CygnusURLRequest.url] if you are using it with the [CygnusPlatformWebViewCreationParams.initialUrlRequest] parameter or
+  ///the [CygnusWebViewInitialData.baseUrl] if you are using it with the [CygnusPlatformWebViewCreationParams.initialData] parameter to prevent WebView from reading any other content.
   ///Specify a directory to give WebView permission to read additional files in the specified directory.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
-  WebUri? allowingReadAccessTo;
+  CygnusWebUri? allowingReadAccessTo;
 
   ///Set to `true` to allow AirPlay. The default value is `true`.
   ///
@@ -142,7 +142,7 @@ class InAppWebViewSettings {
   ///**NOTE for Windows**: Swiping down to refresh is off by default and not exposed via API currently,
   ///it requires the "--pull-to-refresh" option to be included in
   ///the additional browser arguments to be configured.
-  ///(See [WebViewEnvironmentSettings.additionalBrowserArguments].).
+  ///(See [CygnusWebViewEnvironmentSettings.additionalBrowserArguments].).
   ///When set to `false`, the end user cannot swipe to navigate or pull to refresh.
   ///This API only affects the overscrolling navigation functionality and has
   ///no effect on the scrolling interaction used to explore the web content shown in WebView2.
@@ -187,7 +187,7 @@ class InAppWebViewSettings {
   double? alpha;
 
   ///A Boolean value that determines whether bouncing always occurs when horizontal scrolling reaches the end of the content view.
-  ///If this property is set to `true` and [InAppWebViewSettings.disallowOverScroll] is `false`,
+  ///If this property is set to `true` and [CygnusWebViewSettings.disallowOverScroll] is `false`,
   ///horizontal dragging is allowed even if the content is smaller than the bounds of the scroll view.
   ///The default value is `false`.
   ///
@@ -196,7 +196,7 @@ class InAppWebViewSettings {
   bool? alwaysBounceHorizontal;
 
   ///A Boolean value that determines whether bouncing always occurs when vertical scrolling reaches the end of the content.
-  ///If this property is set to `true` and [InAppWebViewSettings.disallowOverScroll] is `false`,
+  ///If this property is set to `true` and [CygnusWebViewSettings.disallowOverScroll] is `false`,
   ///vertical dragging is allowed even if the content is smaller than the bounds of the scroll view.
   ///The default value is `false`.
   ///
@@ -208,12 +208,12 @@ class InAppWebViewSettings {
   ///
   ///**Leaving this unset picks the mode automatically**: Hybrid Composition++ wherever it is
   ///actually available, Texture Layer Hybrid Composition everywhere else. Set it explicitly to
-  ///pin one mode -- [AndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION] is the way to opt
+  ///pin one mode -- [CygnusAndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION] is the way to opt
   ///out of HCPP.
   ///
   ///This supersedes the deprecated [useHybridComposition]. When this is non-null it wins;
   ///when it is null and [useHybridComposition] is `true` the WebView still gets
-  ///[AndroidCompositionMode.HYBRID_COMPOSITION], so existing code keeps its behaviour.
+  ///[CygnusAndroidCompositionMode.HYBRID_COMPOSITION], so existing code keeps its behaviour.
   ///
   ///Because the composition mode is fixed when the platform view is created, the automatic
   ///choice waits for the one-off support check to answer before creating the WebView. That
@@ -221,8 +221,8 @@ class InAppWebViewSettings {
   ///subsequent ones use the cached answer and are not delayed. Pinning a mode explicitly skips
   ///the wait entirely.
   ///
-  ///Only applies to the [PlatformInAppWebViewWidget] — [PlatformInAppBrowser] and
-  ///[PlatformHeadlessInAppWebView] do not go through a platform view, so composition mode
+  ///Only applies to the [CygnusPlatformWebViewWidget] — [CygnusPlatformBrowser] and
+  ///[CygnusPlatformHeadlessWebView] do not go through a platform view, so composition mode
   ///has no meaning for them.
   ///
   ///Can only be set through the initial settings: the composition mode is fixed when the
@@ -230,8 +230,8 @@ class InAppWebViewSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - [AndroidCompositionMode.HYBRID_COMPOSITION_PLUS_PLUS] additionally requires API 34+, Impeller running on Vulkan, and the embedding application to opt in -- a plugin cannot turn it on for the application. Apps opt in with the `io.flutter.embedding.android.EnableHcpp` manifest meta-data (used by release builds) or `flutter run --enable-hcpp` during development. When any requirement is missing it falls back to [AndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION].
-  AndroidCompositionMode? androidCompositionMode;
+  ///    - [CygnusAndroidCompositionMode.HYBRID_COMPOSITION_PLUS_PLUS] additionally requires API 34+, Impeller running on Vulkan, and the embedding application to opt in -- a plugin cannot turn it on for the application. Apps opt in with the `io.flutter.embedding.android.EnableHcpp` manifest meta-data (used by release builds) or `flutter run --enable-hcpp` during development. When any requirement is missing it falls back to [CygnusAndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION].
+  CygnusAndroidCompositionMode? androidCompositionMode;
 
   ///Sets the path to the Application Caches files. In order for the Application Caches API to be enabled, this option must be set a path to which the application can write.
   ///This option is used one time: repeated calls are ignored.
@@ -240,59 +240,59 @@ class InAppWebViewSettings {
   ///- Android WebView (Official API - WebSettings.setAppCachePath)
   String? appCachePath;
 
-  ///Set to `true` to enable Apple Pay API for the `WebView` at its first page load or on the next page load (using [PlatformInAppWebViewController.setOptions]). The default value is `false`.
+  ///Set to `true` to enable Apple Pay API for the `WebView` at its first page load or on the next page load (using [CygnusPlatformWebViewController.setOptions]). The default value is `false`.
   ///
   ///**IMPORTANT NOTE**: As written in the official [Safari 13 Release Notes](https://developer.apple.com/documentation/safari-release-notes/safari-13-release-notes#Payment-Request-API),
-  ///it won't work if any script injection APIs are used (such as [PlatformInAppWebViewController.evaluateJavascript] or [UserScript]).
+  ///it won't work if any script injection APIs are used (such as [CygnusPlatformWebViewController.evaluateJavascript] or [CygnusUserScript]).
   ///So, when this attribute is `true`, all the methods, options, and events implemented using JavaScript won't be called or won't do anything and the result will always be `null`.
   ///
   ///Methods affected:
-  ///- [PlatformInAppWebViewController.addUserScript]
-  ///- [PlatformInAppWebViewController.addUserScripts]
-  ///- [PlatformInAppWebViewController.removeUserScript]
-  ///- [PlatformInAppWebViewController.removeUserScripts]
-  ///- [PlatformInAppWebViewController.removeAllUserScripts]
-  ///- [PlatformInAppWebViewController.evaluateJavascript]
-  ///- [PlatformInAppWebViewController.callAsyncJavaScript]
-  ///- [PlatformInAppWebViewController.injectJavascriptFileFromUrl]
-  ///- [PlatformInAppWebViewController.injectJavascriptFileFromAsset]
-  ///- [PlatformInAppWebViewController.injectCSSCode]
-  ///- [PlatformInAppWebViewController.injectCSSFileFromUrl]
-  ///- [PlatformInAppWebViewController.injectCSSFileFromAsset]
-  ///- [PlatformInAppWebViewController.findAllAsync]
-  ///- [PlatformInAppWebViewController.findNext]
-  ///- [PlatformInAppWebViewController.clearMatches]
-  ///- [PlatformInAppWebViewController.pauseTimers]
-  ///- [PlatformInAppWebViewController.getSelectedText]
-  ///- [PlatformInAppWebViewController.getHitTestResult]
-  ///- [PlatformInAppWebViewController.requestFocusNodeHref]
-  ///- [PlatformInAppWebViewController.requestImageRef]
-  ///- [PlatformInAppWebViewController.postWebMessage]
-  ///- [PlatformInAppWebViewController.createWebMessageChannel]
-  ///- [PlatformInAppWebViewController.addWebMessageListener]
+  ///- [CygnusPlatformWebViewController.addUserScript]
+  ///- [CygnusPlatformWebViewController.addUserScripts]
+  ///- [CygnusPlatformWebViewController.removeUserScript]
+  ///- [CygnusPlatformWebViewController.removeUserScripts]
+  ///- [CygnusPlatformWebViewController.removeAllUserScripts]
+  ///- [CygnusPlatformWebViewController.evaluateJavascript]
+  ///- [CygnusPlatformWebViewController.callAsyncJavaScript]
+  ///- [CygnusPlatformWebViewController.injectJavascriptFileFromUrl]
+  ///- [CygnusPlatformWebViewController.injectJavascriptFileFromAsset]
+  ///- [CygnusPlatformWebViewController.injectCSSCode]
+  ///- [CygnusPlatformWebViewController.injectCSSFileFromUrl]
+  ///- [CygnusPlatformWebViewController.injectCSSFileFromAsset]
+  ///- [CygnusPlatformWebViewController.findAllAsync]
+  ///- [CygnusPlatformWebViewController.findNext]
+  ///- [CygnusPlatformWebViewController.clearMatches]
+  ///- [CygnusPlatformWebViewController.pauseTimers]
+  ///- [CygnusPlatformWebViewController.getSelectedText]
+  ///- [CygnusPlatformWebViewController.getHitTestResult]
+  ///- [CygnusPlatformWebViewController.requestFocusNodeHref]
+  ///- [CygnusPlatformWebViewController.requestImageRef]
+  ///- [CygnusPlatformWebViewController.postWebMessage]
+  ///- [CygnusPlatformWebViewController.createWebMessageChannel]
+  ///- [CygnusPlatformWebViewController.addWebMessageListener]
   ///
   ///Settings affected:
-  ///- [PlatformWebViewCreationParams.initialUserScripts]
-  ///- [InAppWebViewSettings.supportZoom]
-  ///- [InAppWebViewSettings.useOnLoadResource]
-  ///- [InAppWebViewSettings.useShouldInterceptAjaxRequest]
-  ///- [InAppWebViewSettings.useShouldInterceptFetchRequest]
-  ///- [InAppWebViewSettings.enableViewportScale]
+  ///- [CygnusPlatformWebViewCreationParams.initialUserScripts]
+  ///- [CygnusWebViewSettings.supportZoom]
+  ///- [CygnusWebViewSettings.useOnLoadResource]
+  ///- [CygnusWebViewSettings.useShouldInterceptAjaxRequest]
+  ///- [CygnusWebViewSettings.useShouldInterceptFetchRequest]
+  ///- [CygnusWebViewSettings.enableViewportScale]
   ///
   ///Events affected:
-  ///- the `hitTestResult` argument of [PlatformWebViewCreationParams.onLongPressHitTestResult] will be empty
-  ///- the `hitTestResult` argument of [ContextMenu.onCreateContextMenu] will be empty
-  ///- [PlatformWebViewCreationParams.onLoadResource]
-  ///- [PlatformWebViewCreationParams.shouldInterceptAjaxRequest]
-  ///- [PlatformWebViewCreationParams.onAjaxReadyStateChange]
-  ///- [PlatformWebViewCreationParams.onAjaxProgress]
-  ///- [PlatformWebViewCreationParams.shouldInterceptFetchRequest]
-  ///- [PlatformWebViewCreationParams.onConsoleMessage]
-  ///- [PlatformWebViewCreationParams.onPrintRequest]
-  ///- [PlatformWebViewCreationParams.onWindowFocus]
-  ///- [PlatformWebViewCreationParams.onWindowBlur]
-  ///- [PlatformWebViewCreationParams.onFindResultReceived]
-  ///- [FindInteractionController.onFindResultReceived]
+  ///- the `hitTestResult` argument of [CygnusPlatformWebViewCreationParams.onLongPressHitTestResult] will be empty
+  ///- the `hitTestResult` argument of [CygnusContextMenu.onCreateContextMenu] will be empty
+  ///- [CygnusPlatformWebViewCreationParams.onLoadResource]
+  ///- [CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest]
+  ///- [CygnusPlatformWebViewCreationParams.onAjaxReadyStateChange]
+  ///- [CygnusPlatformWebViewCreationParams.onAjaxProgress]
+  ///- [CygnusPlatformWebViewCreationParams.shouldInterceptFetchRequest]
+  ///- [CygnusPlatformWebViewCreationParams.onConsoleMessage]
+  ///- [CygnusPlatformWebViewCreationParams.onPrintRequest]
+  ///- [CygnusPlatformWebViewCreationParams.onWindowFocus]
+  ///- [CygnusPlatformWebViewCreationParams.onWindowBlur]
+  ///- [CygnusPlatformWebViewCreationParams.onFindResultReceived]
+  ///- [CygnusFindInteractionController.onFindResultReceived]
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 13.0+
@@ -360,43 +360,44 @@ class InAppWebViewSettings {
   bool? cacheEnabled;
 
   ///Overrides the way the cache is used. The way the cache is used is based on the navigation type. For a normal page load, the cache is checked and content is re-validated as needed.
-  ///When navigating back, content is not revalidated, instead the content is just retrieved from the cache. The default value is [CacheMode.LOAD_DEFAULT].
+  ///When navigating back, content is not revalidated, instead the content is just retrieved from the cache. The default value is [CygnusCacheMode.LOAD_DEFAULT].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setCacheMode](https://developer.android.com/reference/android/webkit/WebSettings#setCacheMode(int)))
-  CacheMode? cacheMode;
+  CygnusCacheMode? cacheMode;
 
-  ///Use [PlatformInAppWebViewController.clearAllCache] instead.
+  ///Use [CygnusPlatformWebViewController.clearAllCache] instead.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
-  @Deprecated('Use InAppWebViewController.clearAllCache instead')
+  @Deprecated('Use CygnusWebViewController.clearAllCache instead')
   bool? clearCache;
 
-  ///Use [PlatformCookieManager.removeSessionCookies] instead.
+  ///Use [CygnusPlatformCookieManager.removeSessionCookies] instead.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  @Deprecated('Use CookieManager.removeSessionCookies instead')
+  @Deprecated('Use CygnusCookieManager.removeSessionCookies instead')
   bool? clearSessionCache;
 
-  ///List of [ContentBlocker] that are a set of rules used to block content in the browser window.
+  ///List of [CygnusContentBlocker] that are a set of rules used to block content in the browser window.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView 11.0+
   ///- macOS WKWebView 10.13+
   ///- Linux WPE WebKit ([Official API - WebKitUserContentFilter](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/class.UserContentFilter.html))
-  List<ContentBlocker>? contentBlockers;
+  List<CygnusContentBlocker>? contentBlockers;
 
   ///Configures how safe area insets are added to the adjusted content inset.
-  ///The default value is [ScrollViewContentInsetAdjustmentBehavior.NEVER].
+  ///The default value is [CygnusScrollViewContentInsetAdjustmentBehavior.NEVER].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 11.0+ ([Official API - UIScrollView.contentInsetAdjustmentBehavior](https://developer.apple.com/documentation/uikit/uiscrollview/2902261-contentinsetadjustmentbehavior))
-  ScrollViewContentInsetAdjustmentBehavior? contentInsetAdjustmentBehavior;
+  CygnusScrollViewContentInsetAdjustmentBehavior?
+  contentInsetAdjustmentBehavior;
 
   ///Sets the CORS allowlist for this WebView.
   ///
@@ -453,12 +454,12 @@ class InAppWebViewSettings {
   bool? darkMode;
 
   ///Specifying a dataDetectoryTypes value adds interactivity to web content that matches the value.
-  ///For example, Safari adds a link to “apple.com” in the text “Visit apple.com” if the dataDetectorTypes property is set to [DataDetectorTypes.LINK].
-  ///The default value is [DataDetectorTypes.NONE].
+  ///For example, Safari adds a link to “apple.com” in the text “Visit apple.com” if the dataDetectorTypes property is set to [CygnusDataDetectorTypes.LINK].
+  ///The default value is [CygnusDataDetectorTypes.NONE].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 10+ ([Official API - WKWebViewConfiguration.dataDetectorTypes](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1641937-datadetectortypes))
-  List<DataDetectorTypes>? dataDetectorTypes;
+  List<CygnusDataDetectorTypes>? dataDetectorTypes;
 
   ///Set to `true` if you want the database storage API is enabled. The default value is `true`.
   ///
@@ -467,12 +468,12 @@ class InAppWebViewSettings {
   ///- Linux WPE WebKit ([Official API - WebKitSettings.enable-html5-database](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-html5-database.html))
   bool? databaseEnabled;
 
-  ///A [ScrollViewDecelerationRate] value that determines the rate of deceleration after the user lifts their finger.
-  ///The default value is [ScrollViewDecelerationRate.NORMAL].
+  ///A [CygnusScrollViewDecelerationRate] value that determines the rate of deceleration after the user lifts their finger.
+  ///The default value is [CygnusScrollViewDecelerationRate.NORMAL].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - UIScrollView.decelerationRate](https://developer.apple.com/documentation/uikit/uiscrollview/1619438-decelerationrate))
-  ScrollViewDecelerationRate? decelerationRate;
+  CygnusScrollViewDecelerationRate? decelerationRate;
 
   ///Sets the default fixed font size. The default value is `16`.
   ///
@@ -580,7 +581,7 @@ class InAppWebViewSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 24+ ([Official API - WebSettings.setDisabledActionModeMenuItems](https://developer.android.com/reference/android/webkit/WebSettings#setDisabledActionModeMenuItems(int)))
-  ActionModeMenuItem? disabledActionModeMenuItems;
+  CygnusActionModeMenuItem? disabledActionModeMenuItems;
 
   ///Set to `true` to disable the bouncing of the WebView when the scrolling has reached an edge of the content. The default value is `false`.
   ///
@@ -801,7 +802,7 @@ class InAppWebViewSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - available on Android only if [WebViewFeature.ENTERPRISE_AUTHENTICATION_APP_LINK_POLICY] feature is supported.
+  ///    - available on Android only if [CygnusWebViewFeature.ENTERPRISE_AUTHENTICATION_APP_LINK_POLICY] feature is supported.
   bool? enterpriseAuthenticationAppLinkPolicyEnabled;
 
   ///Sets the fantasy font family name. The default value is `"fantasy"`.
@@ -852,7 +853,7 @@ class InAppWebViewSettings {
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WPESettings.font-hinting-style](https://wpewebkit.org/reference/stable/wpe-platform-2.0/class.Settings.html)):
   ///    - This is a WPE Platform display-level setting for font rendering.
-  FontHintingStyle? fontHintingStyle;
+  CygnusFontHintingStyle? fontHintingStyle;
 
   ///Sets the font subpixel layout for LCD rendering.
   ///This determines how subpixel rendering is performed based on the
@@ -865,11 +866,11 @@ class InAppWebViewSettings {
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WPESettings.font-subpixel-layout](https://wpewebkit.org/reference/stable/wpe-platform-2.0/class.Settings.html)):
   ///    - This is a WPE Platform display-level setting for font rendering.
-  FontSubpixelLayout? fontSubpixelLayout;
+  CygnusFontSubpixelLayout? fontSubpixelLayout;
 
   ///Use [algorithmicDarkeningAllowed] instead.
   ///
-  ///Set the force dark mode for this WebView. The default value is [ForceDark.OFF].
+  ///Set the force dark mode for this WebView. The default value is [CygnusForceDark.OFF].
   ///
   ///Deprecated - The "force dark" model previously implemented by WebView was complex and didn't
   ///interoperate well with current Web standards for `prefers-color-scheme` and `color-scheme`.
@@ -880,12 +881,12 @@ class InAppWebViewSettings {
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 29+ ([Official API - WebSettings.setForceDark](https://developer.android.com/reference/android/webkit/WebSettings#setForceDark(int)))
   @Deprecated('Use algorithmicDarkeningAllowed instead')
-  ForceDark? forceDark;
+  CygnusForceDark? forceDark;
 
   ///Use [algorithmicDarkeningAllowed] instead.
   ///
   ///Set how WebView content should be darkened.
-  ///The default value is [ForceDarkStrategy.PREFER_WEB_THEME_OVER_USER_AGENT_DARKENING].
+  ///The default value is [CygnusForceDarkStrategy.PREFER_WEB_THEME_OVER_USER_AGENT_DARKENING].
   ///
   ///Deprecated - The "force dark" model previously implemented by WebView was complex and didn't
   ///interoperate well with current Web standards for `prefers-color-scheme` and `color-scheme`.
@@ -895,9 +896,9 @@ class InAppWebViewSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettingsCompat.setForceDarkStrategy](https://developer.android.com/reference/androidx/webkit/WebSettingsCompat#setForceDarkStrategy(android.webkit.WebSettings,int))):
-  ///    - it will take effect only if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.FORCE_DARK_STRATEGY].
+  ///    - it will take effect only if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.FORCE_DARK_STRATEGY].
   @Deprecated('Use algorithmicDarkeningAllowed instead')
-  ForceDarkStrategy? forceDarkStrategy;
+  CygnusForceDarkStrategy? forceDarkStrategy;
 
   ///Specifies whether autofill for information like names, street and email addresses, phone numbers, and arbitrary input is enabled.
   ///
@@ -917,11 +918,11 @@ class InAppWebViewSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setGeolocationEnabled](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setGeolocationEnabled(boolean))):
-  ///    - Please note that in order for the Geolocation API to be usable by a page in the WebView, the following requirements must be met: - an application must have permission to access the device location, see [Manifest.permission.ACCESS_COARSE_LOCATION](https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION), [Manifest.permission.ACCESS_FINE_LOCATION](https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION); - an application must provide an implementation of the [PlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt] callback to receive notifications that a page is requesting access to location via the JavaScript Geolocation API.
+  ///    - Please note that in order for the Geolocation API to be usable by a page in the WebView, the following requirements must be met: - an application must have permission to access the device location, see [Manifest.permission.ACCESS_COARSE_LOCATION](https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION), [Manifest.permission.ACCESS_FINE_LOCATION](https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION); - an application must provide an implementation of the [CygnusPlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt] callback to receive notifications that a page is requesting access to location via the JavaScript Geolocation API.
   bool? geolocationEnabled;
 
   ///A Boolean value that determines whether to listen and handle the
-  ///[PlatformWebViewCreationParams.onAcceleratorKeyPressed] event.
+  ///[CygnusPlatformWebViewCreationParams.onAcceleratorKeyPressed] event.
   ///
   ///The default value is `false`.
   ///
@@ -938,13 +939,13 @@ class InAppWebViewSettings {
 
   ///This property is used to customize the PDF toolbar items.
   ///
-  ///By default, it is [PdfToolbarItems.NONE] and so it displays all of the items.
+  ///By default, it is [CygnusPdfToolbarItems.NONE] and so it displays all of the items.
   ///Changes to this property apply to all CoreWebView2s in the same environment and using the same profile.
   ///Changes to this setting apply only after the next navigation.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.1185.39+ ([Official API - ICoreWebView2Settings7.put_HiddenPdfToolbarItems](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings7?view=webview2-1.0.2849.39#put_hiddenpdftoolbaritems))
-  PdfToolbarItems? hiddenPdfToolbarItems;
+  CygnusPdfToolbarItems? hiddenPdfToolbarItems;
 
   ///Define whether the horizontal scrollbar should be drawn or not. The default value is `true`.
   ///
@@ -1003,7 +1004,7 @@ class InAppWebViewSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Web \<iframe\> ([Official API - iframe.referrerpolicy](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-referrerpolicy))
-  ReferrerPolicy? iframeReferrerPolicy;
+  CygnusReferrerPolicy? iframeReferrerPolicy;
 
   ///A string that reflects the `role` HTML attribute, containing a WAI-ARIA role for the element.
   ///
@@ -1015,7 +1016,7 @@ class InAppWebViewSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Web \<iframe\> ([Official API - iframe.sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-sandbox))
-  Set<Sandbox>? iframeSandbox;
+  Set<CygnusSandbox>? iframeSandbox;
 
   ///Set to `true` if you want that the WebView should always allow scaling of the webpage, regardless of the author's intent.
   ///The ignoresViewportScaleLimits property overrides the `user-scalable` HTML property in a webpage. The default value is `false`.
@@ -1047,7 +1048,7 @@ class InAppWebViewSettings {
   int? initialScale;
 
   ///Set to `false` to be able to listen to also sync `XMLHttpRequest`s at the
-  ///[PlatformWebViewCreationParams.shouldInterceptAjaxRequest] event.
+  ///[CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest] event.
   ///
   ///**NOTE**: Using `false` will cause the `XMLHttpRequest.send()` method for sync
   ///requests to not wait on the JavaScript code the response synchronously,
@@ -1161,11 +1162,11 @@ class InAppWebViewSettings {
   bool? itpEnabled;
 
   ///Set to `false` to disable the JavaScript Bridge completely.
-  ///This will affect also all the internal plugin [UserScript]s
+  ///This will affect also all the internal plugin [CygnusUserScript]s
   ///that are using the JavaScript Bridge to work.
   ///
   ///**NOTE**: setting or changing this value after the WebView has been created won't have any effect.
-  ///It should be set when initializing the WebView through [PlatformWebViewCreationParams.initialSettings] parameter.
+  ///It should be set when initializing the WebView through [CygnusPlatformWebViewCreationParams.initialSettings] parameter.
   ///
   ///The default value is `true`.
   ///
@@ -1182,7 +1183,7 @@ class InAppWebViewSettings {
   ///it only for the JavaScript Bridge internal plugin.
   ///
   ///**NOTE**: setting or changing this value after the WebView has been created won't have any effect.
-  ///It should be set when initializing the WebView through [PlatformWebViewCreationParams.initialSettings] parameter.
+  ///It should be set when initializing the WebView through [CygnusPlatformWebViewCreationParams.initialSettings] parameter.
   ///
   ///The default value is `false`.
   ///
@@ -1203,9 +1204,9 @@ class InAppWebViewSettings {
   ///as it was set to `false`.
   ///
   ///**NOTE**: setting or changing this value after the WebView has been created won't have any effect.
-  ///It should be set when initializing the WebView through [PlatformWebViewCreationParams.initialSettings] parameter.
+  ///It should be set when initializing the WebView through [CygnusPlatformWebViewCreationParams.initialSettings] parameter.
   ///
-  ///**NOTE for Android**: each origin pattern MUST follow the table rule of [PlatformInAppWebViewController.addWebMessageListener].
+  ///**NOTE for Android**: each origin pattern MUST follow the table rule of [CygnusPlatformWebViewController.addWebMessageListener].
   ///
   ///**NOTE for iOS, macOS, Windows**: each origin pattern will be used as a
   ///Regular Expression Pattern that will be used on JavaScript side using [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).
@@ -1394,8 +1395,8 @@ class InAppWebViewSettings {
   ///Sets the underlying layout algorithm. This will cause a re-layout of the WebView.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebSettings.setLayoutAlgorithm](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setLayoutAlgorithm(android.webkit.WebSettings.LayoutAlgorithm)))
-  LayoutAlgorithm? layoutAlgorithm;
+  ///- Android WebView ([Official API - WebSettings.setLayoutAlgorithm](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setLayoutAlgorithm(android.webkit.WebSettings.CygnusLayoutAlgorithm)))
+  CygnusLayoutAlgorithm? layoutAlgorithm;
 
   ///A Boolean value that indicates whether the web view limits navigation to pages within the app’s domain.
   ///Check [App-Bound Domains](https://webkit.org/blog/10882/app-bound-domains/) for more details.
@@ -1500,7 +1501,7 @@ class InAppWebViewSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 21+ ([Official API - WebSettings.setMixedContentMode](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setMixedContentMode(int)))
-  MixedContentMode? mixedContentMode;
+  CygnusMixedContentMode? mixedContentMode;
 
   ///Tells the WebView whether it needs to set a node. The default value is `true`.
   ///
@@ -1544,11 +1545,11 @@ class InAppWebViewSettings {
 
   ///Sets the WebView's over-scroll mode.
   ///Setting the over-scroll mode of a WebView will have an effect only if the WebView is capable of scrolling.
-  ///The default value is [OverScrollMode.IF_CONTENT_SCROLLS].
+  ///The default value is [CygnusOverScrollMode.IF_CONTENT_SCROLLS].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.setOverScrollMode](https://developer.android.com/reference/android/view/View#setOverScrollMode(int)))
-  OverScrollMode? overScrollMode;
+  CygnusOverScrollMode? overScrollMode;
 
   ///The scale factor by which the web view scales content relative to its bounds.
   ///The default value of this property is `1.0`, which displays the content without any scaling.
@@ -1604,11 +1605,11 @@ class InAppWebViewSettings {
   ///- Windows WebView2 1.0.902.49+ ([Official API - ICoreWebView2Settings5.put_IsPinchZoomEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings5?view=webview2-1.0.2849.39#put_ispinchzoomenabled))
   bool? pinchZoomEnabled;
 
-  ///Set to `true` to allow internal plugin [UserScript]s only on the main frame.
+  ///Set to `true` to allow internal plugin [CygnusUserScript]s only on the main frame.
   ///
   ///**NOTE**: If [javaScriptBridgeForMainFrameOnly] is not present, this value will affect also the JavaScript Bridge internal plugin.
   ///Also, setting or changing this value after the WebView has been created won't have any effect.
-  ///It should be set when initializing the WebView through [PlatformWebViewCreationParams.initialSettings] parameter.
+  ///It should be set when initializing the WebView through [CygnusPlatformWebViewCreationParams.initialSettings] parameter.
   ///
   ///The default value is `false`.
   ///
@@ -1620,15 +1621,15 @@ class InAppWebViewSettings {
   bool? pluginScriptsForMainFrameOnly;
 
   ///A [Set] of patterns that will be used to match the allowed origins
-  ///that are able to load all the internal plugin [UserScript]s used by the plugin itself.
+  ///that are able to load all the internal plugin [CygnusUserScript]s used by the plugin itself.
   ///Adding `'*'` as an allowed origin or setting this to `null`, it means it will allow every origin.
   ///Instead, an empty [Set] will block every origin.
   ///
   ///**NOTE**: If [javaScriptBridgeOriginAllowList] is not present, this value will affect also the JavaScript Bridge internal plugin.
   ///Also, setting or changing this value after the WebView has been created won't have any effect.
-  ///It should be set when initializing the WebView through [PlatformWebViewCreationParams.initialSettings] parameter.
+  ///It should be set when initializing the WebView through [CygnusPlatformWebViewCreationParams.initialSettings] parameter.
   ///
-  ///**NOTE for Android**: each origin pattern MUST follow the table rule of [PlatformInAppWebViewController.addWebMessageListener].
+  ///**NOTE for Android**: each origin pattern MUST follow the table rule of [CygnusPlatformWebViewController.addWebMessageListener].
   ///
   ///**NOTE for iOS, macOS, Windows**: each origin pattern will be used as a
   ///Regular Expression Pattern that will be used on JavaScript side using [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).
@@ -1642,24 +1643,24 @@ class InAppWebViewSettings {
   ///- Windows WebView2
   Set<String>? pluginScriptsOriginAllowList;
 
-  ///Sets the content mode that the WebView needs to use when loading and rendering a webpage. The default value is [UserPreferredContentMode.RECOMMENDED].
+  ///Sets the content mode that the WebView needs to use when loading and rendering a webpage. The default value is [CygnusUserPreferredContentMode.RECOMMENDED].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView 13.0+ ([Official API - WKWebpagePreferences.preferredContentMode](https://developer.apple.com/documentation/webkit/wkwebpagepreferences/3194426-preferredcontentmode/))
   ///- macOS WKWebView 10.15+ ([Official API - WKWebpagePreferences.preferredContentMode](https://developer.apple.com/documentation/webkit/wkwebpagepreferences/3194426-preferredcontentmode/))
-  UserPreferredContentMode? preferredContentMode;
+  CygnusUserPreferredContentMode? preferredContentMode;
 
-  ///Regular expression used on native side by the [PlatformWebViewCreationParams.shouldOverrideUrlLoading]
+  ///Regular expression used on native side by the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading]
   ///event to allow navigation requests synchronously.
   ///If the url request match the regular expression, then the request is allowed automatically,
-  ///and the [PlatformWebViewCreationParams.shouldOverrideUrlLoading] event will not be fired.
+  ///and the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading] event will not be fired.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   String? regexToAllowSyncUrlLoading;
 
-  ///Regular expression used on native side by the [PlatformWebViewCreationParams.shouldOverrideUrlLoading]
+  ///Regular expression used on native side by the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading]
   ///event to cancel navigation requests for frames that are not the main frame.
   ///If the url request of a sub-frame matches the regular expression, then the request of that sub-frame is canceled.
   ///
@@ -1671,7 +1672,7 @@ class InAppWebViewSettings {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.setRendererPriorityPolicy](https://developer.android.com/reference/android/webkit/WebView#setRendererPriorityPolicy(int,%20boolean)))
-  RendererPriorityPolicy? rendererPriorityPolicy;
+  CygnusRendererPriorityPolicy? rendererPriorityPolicy;
 
   ///[reputationCheckingRequired] is used to control whether SmartScreen enabled or not.
   ///
@@ -1695,20 +1696,20 @@ class InAppWebViewSettings {
   ///- Windows WebView2 1.0.1722.45+ ([Official API - ICoreWebView2Settings8.put_IsReputationCheckingRequired](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings8?view=webview2-1.0.2849.39#put_isreputationcheckingrequired))
   bool? reputationCheckingRequired;
 
-  ///Set an allow-list of origins to receive the X-Requested-With HTTP header from the WebView owning the passed [InAppWebViewSettings].
+  ///Set an allow-list of origins to receive the X-Requested-With HTTP header from the WebView owning the passed [CygnusWebViewSettings].
   ///
   ///Historically, this header was sent on all requests from WebView, containing the app package name of the embedding app. Depending on the version of installed WebView, this may no longer be the case, as the header was deprecated in late 2022, and its use discontinued.
   ///
   ///Apps can use this method to restore the legacy behavior for servers that still rely on the deprecated header, but it should not be used to identify the webview to first-party servers under the control of the app developer.
   ///
-  ///The format of the strings in the allow-list follows the origin rules of [PlatformInAppWebViewController.addWebMessageListener].
+  ///The format of the strings in the allow-list follows the origin rules of [CygnusPlatformWebViewController.addWebMessageListener].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettingsCompat.setRequestedWithHeaderOriginAllowList](https://developer.android.com/reference/androidx/webkit/WebSettingsCompat#setRequestedWithHeaderOriginAllowList(android.webkit.WebSettings,java.util.Set%3Cjava.lang.String%3E))):
-  ///    - available on Android only if [WebViewFeature.REQUESTED_WITH_HEADER_ALLOW_LIST] feature is supported.
+  ///    - available on Android only if [CygnusWebViewFeature.REQUESTED_WITH_HEADER_ALLOW_LIST] feature is supported.
   Set<String>? requestedWithHeaderOriginAllowList;
 
-  ///List of custom schemes that the WebView must handle. Use the [PlatformWebViewCreationParams.onLoadResourceWithCustomScheme] event to intercept resource requests with custom scheme.
+  ///List of custom schemes that the WebView must handle. Use the [CygnusPlatformWebViewCreationParams.onLoadResourceWithCustomScheme] event to intercept resource requests with custom scheme.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1756,11 +1757,11 @@ class InAppWebViewSettings {
   ///For example, if a view has a background drawable and you want to draw the scrollbars inside the padding specified by the drawable,
   ///you can use SCROLLBARS_INSIDE_OVERLAY or SCROLLBARS_INSIDE_INSET. If you want them to appear at the edge of the view, ignoring the padding,
   ///then you can use SCROLLBARS_OUTSIDE_OVERLAY or SCROLLBARS_OUTSIDE_INSET.
-  ///The default value is [ScrollBarStyle.SCROLLBARS_INSIDE_OVERLAY].
+  ///The default value is [CygnusScrollBarStyle.SCROLLBARS_INSIDE_OVERLAY].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.setScrollBarStyle](https://developer.android.com/reference/android/webkit/WebView#setScrollBarStyle(int)))
-  ScrollBarStyle? scrollBarStyle;
+  CygnusScrollBarStyle? scrollBarStyle;
 
   ///The multiplier applied to the scroll amount for the WebView.
   ///
@@ -1795,11 +1796,11 @@ class InAppWebViewSettings {
   bool? scrollsToTop;
 
   ///The level of granularity with which the user can interactively select content in the web view.
-  ///The default value is [SelectionGranularity.DYNAMIC].
+  ///The default value is [CygnusSelectionGranularity.DYNAMIC].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKWebViewConfiguration.selectionGranularity](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614756-selectiongranularity))
-  SelectionGranularity? selectionGranularity;
+  CygnusSelectionGranularity? selectionGranularity;
 
   ///Sets the serif font family name. The default value is `"sans-serif"`.
   ///
@@ -1845,7 +1846,7 @@ class InAppWebViewSettings {
   bool? statusBarEnabled;
 
   ///Sets whether the WebView supports multiple windows.
-  ///If set to `true`, [PlatformWebViewCreationParams.onCreateWindow] event must be implemented by the host application. The default value is `false`.
+  ///If set to `true`, [CygnusPlatformWebViewCreationParams.onCreateWindow] event must be implemented by the host application. The default value is `false`.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setSupportMultipleWindows](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setSupportMultipleWindows(boolean)))
@@ -1878,7 +1879,7 @@ class InAppWebViewSettings {
   ///The default value is `true`.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView 21+ ([Official API - CookieManager.setAcceptThirdPartyCookies](https://developer.android.com/reference/android/webkit/CookieManager#setAcceptThirdPartyCookies(android.webkit.WebView,%20boolean)))
+  ///- Android WebView 21+ ([Official API - CygnusCookieManager.setAcceptThirdPartyCookies](https://developer.android.com/reference/android/webkit/CygnusCookieManager#setAcceptThirdPartyCookies(android.webkit.WebView,%20boolean)))
   bool? thirdPartyCookiesEnabled;
 
   ///Set to `true` to make the background of the WebView transparent. If your app has a dark theme, this can prevent a white flash on initialization. The default value is `false`.
@@ -1922,17 +1923,17 @@ class InAppWebViewSettings {
   @Deprecated('Use androidCompositionMode instead')
   bool? useHybridComposition;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.onAjaxProgress] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.onAjaxProgress] event.
   ///Also, [useShouldInterceptAjaxRequest] must be set to `true` to take effect.
   ///
-  ///Due to the async nature of [PlatformWebViewCreationParams.onAjaxProgress] event implementation,
+  ///Due to the async nature of [CygnusPlatformWebViewCreationParams.onAjaxProgress] event implementation,
   ///using it could cause some issues, so, be careful when using it.
-  ///In this case, you should implement your own logic using for example an [UserScript] overriding the
+  ///In this case, you should implement your own logic using for example an [CygnusUserScript] overriding the
   ///[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) JavaScript object.
   ///
-  ///If the [PlatformWebViewCreationParams.onAjaxProgress] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.onAjaxProgress] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1940,17 +1941,17 @@ class InAppWebViewSettings {
   ///- macOS WKWebView
   bool? useOnAjaxProgress;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.onAjaxReadyStateChange] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.onAjaxReadyStateChange] event.
   ///Also, [useShouldInterceptAjaxRequest] must be set to `true` to take effect.
   ///
-  ///Due to the async nature of [PlatformWebViewCreationParams.onAjaxReadyStateChange] event implementation,
+  ///Due to the async nature of [CygnusPlatformWebViewCreationParams.onAjaxReadyStateChange] event implementation,
   ///using it could cause some issues, so, be careful when using it.
-  ///In this case, you should implement your own logic using for example an [UserScript] overriding the
+  ///In this case, you should implement your own logic using for example an [CygnusUserScript] overriding the
   ///[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) JavaScript object.
   ///
-  ///If the [PlatformWebViewCreationParams.onAjaxReadyStateChange] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.onAjaxReadyStateChange] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1958,11 +1959,11 @@ class InAppWebViewSettings {
   ///- macOS WKWebView
   bool? useOnAjaxReadyStateChange;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.onDownloadStartRequest] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.onDownloadStartRequest] event.
   ///
-  ///If the [PlatformWebViewCreationParams.onDownloadStartRequest] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.onDownloadStartRequest] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1970,11 +1971,11 @@ class InAppWebViewSettings {
   ///- macOS WKWebView
   bool? useOnDownloadStart;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.onLoadResource] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.onLoadResource] event.
   ///
-  ///If the [PlatformWebViewCreationParams.onLoadResource] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.onLoadResource] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -1983,48 +1984,48 @@ class InAppWebViewSettings {
   ///- Linux WPE WebKit
   bool? useOnLoadResource;
 
-  ///Set to `true` to be able to listen to the [PlatformWebViewCreationParams.onNavigationResponse] event.
+  ///Set to `true` to be able to listen to the [CygnusPlatformWebViewCreationParams.onNavigationResponse] event.
   ///
-  ///If the [PlatformWebViewCreationParams.onNavigationResponse] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.onNavigationResponse] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
   bool? useOnNavigationResponse;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.onRenderProcessGone] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.onRenderProcessGone] event.
   ///
-  ///If the [PlatformWebViewCreationParams.onRenderProcessGone] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.onRenderProcessGone] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   bool? useOnRenderProcessGone;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.onShowFileChooser] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.onShowFileChooser] event.
   ///
-  ///If the [PlatformWebViewCreationParams.onShowFileChooser] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.onShowFileChooser] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   bool? useOnShowFileChooser;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.shouldInterceptAjaxRequest] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest] event.
   ///
-  ///Due to the async nature of [PlatformWebViewCreationParams.shouldInterceptAjaxRequest] event implementation,
-  ///it will intercept only async `XMLHttpRequest`s ([AjaxRequest.isAsync] with `true`).
-  ///To be able to intercept sync `XMLHttpRequest`s, use [InAppWebViewSettings.interceptOnlyAsyncAjaxRequests] to `false`.
-  ///If necessary, you should implement your own logic using for example an [UserScript] overriding the
+  ///Due to the async nature of [CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest] event implementation,
+  ///it will intercept only async `XMLHttpRequest`s ([CygnusAjaxRequest.isAsync] with `true`).
+  ///To be able to intercept sync `XMLHttpRequest`s, use [CygnusWebViewSettings.interceptOnlyAsyncAjaxRequests] to `false`.
+  ///If necessary, you should implement your own logic using for example an [CygnusUserScript] overriding the
   ///[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) JavaScript object.
   ///
-  ///If the [PlatformWebViewCreationParams.shouldInterceptAjaxRequest] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.shouldInterceptAjaxRequest] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -2032,11 +2033,11 @@ class InAppWebViewSettings {
   ///- macOS WKWebView
   bool? useShouldInterceptAjaxRequest;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.shouldInterceptFetchRequest] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.shouldInterceptFetchRequest] event.
   ///
-  ///If the [PlatformWebViewCreationParams.shouldInterceptFetchRequest] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.shouldInterceptFetchRequest] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -2044,21 +2045,21 @@ class InAppWebViewSettings {
   ///- macOS WKWebView
   bool? useShouldInterceptFetchRequest;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.shouldInterceptRequest] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.shouldInterceptRequest] event.
   ///
-  ///If the [PlatformWebViewCreationParams.shouldInterceptRequest] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.shouldInterceptRequest] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   bool? useShouldInterceptRequest;
 
-  ///Set to `true` to be able to listen at the [PlatformWebViewCreationParams.shouldOverrideUrlLoading] event.
+  ///Set to `true` to be able to listen at the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading] event.
   ///
-  ///If the [PlatformWebViewCreationParams.shouldOverrideUrlLoading] event is implemented and this value is `null`,
+  ///If the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading] event is implemented and this value is `null`,
   ///it will be automatically inferred as `true`, otherwise, the default value is `false`.
-  ///This logic will not be applied for [PlatformInAppBrowser], where you must set the value manually.
+  ///This logic will not be applied for [CygnusPlatformBrowser], where you must set the value manually.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -2095,11 +2096,11 @@ class InAppWebViewSettings {
   bool? verticalScrollBarEnabled;
 
   ///Sets the position of the vertical scroll bar.
-  ///The default value is [VerticalScrollbarPosition.SCROLLBAR_POSITION_DEFAULT].
+  ///The default value is [CygnusVerticalScrollbarPosition.SCROLLBAR_POSITION_DEFAULT].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.setVerticalScrollbarPosition](https://developer.android.com/reference/android/view/View#setVerticalScrollbarPosition(int)))
-  VerticalScrollbarPosition? verticalScrollbarPosition;
+  CygnusVerticalScrollbarPosition? verticalScrollbarPosition;
 
   ///Sets the vertical scrollbar thumb color.
   ///
@@ -2124,12 +2125,12 @@ class InAppWebViewSettings {
   ///    - Requires WPE WebKit 2.48 or later. Format: 'minPort:maxPort'
   String? webRTCUdpPortsRange;
 
-  ///Use a [WebViewAssetLoader] instance to load local files including application's static assets and resources using http(s):// URLs.
+  ///Use a [CygnusWebViewAssetLoader] instance to load local files including application's static assets and resources using http(s):// URLs.
   ///Loading local files using web-like URLs instead of `file://` is desirable as it is compatible with the Same-Origin policy.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  WebViewAssetLoader? webViewAssetLoader;
+  CygnusWebViewAssetLoader? webViewAssetLoader;
 
   ///
   ///**Officially Supported Platforms/Implementations**:
@@ -2138,11 +2139,11 @@ class InAppWebViewSettings {
   ///- macOS WKWebView
   ///- Web \<iframe\>
   ///- Windows WebView2
-  InAppWebViewSettings({
+  CygnusWebViewSettings({
     this.useShouldOverrideUrlLoading,
     this.useOnLoadResource,
     this.useOnDownloadStart,
-    @Deprecated("Use InAppWebViewController.clearAllCache instead")
+    @Deprecated("Use CygnusWebViewController.clearAllCache instead")
     this.clearCache = false,
     this.userAgent = "",
     this.applicationNameForUserAgent = "",
@@ -2154,7 +2155,7 @@ class InAppWebViewSettings {
     this.horizontalScrollBarEnabled = true,
     this.resourceCustomSchemes = const [],
     this.contentBlockers = const [],
-    this.preferredContentMode = UserPreferredContentMode.RECOMMENDED,
+    this.preferredContentMode = CygnusUserPreferredContentMode.RECOMMENDED,
     this.useShouldInterceptAjaxRequest,
     this.useOnAjaxReadyStateChange,
     this.useOnAjaxProgress,
@@ -2170,7 +2171,7 @@ class InAppWebViewSettings {
     this.allowFileAccessFromFileURLs = false,
     this.allowUniversalAccessFromFileURLs = false,
     this.textZoom,
-    @Deprecated("Use CookieManager.removeSessionCookies instead")
+    @Deprecated("Use CygnusCookieManager.removeSessionCookies instead")
     this.clearSessionCache = false,
     this.builtInZoomControls = true,
     this.displayZoomControls = false,
@@ -2184,7 +2185,7 @@ class InAppWebViewSettings {
     this.appCachePath,
     this.blockNetworkImage = false,
     this.blockNetworkLoads = false,
-    this.cacheMode = CacheMode.LOAD_DEFAULT,
+    this.cacheMode = CygnusCacheMode.LOAD_DEFAULT,
     this.cursiveFontFamily = "cursive",
     this.defaultFixedFontSize = 16,
     this.defaultFontSize = 16,
@@ -2217,11 +2218,11 @@ class InAppWebViewSettings {
     this.keyboardAvoidance = true,
     this.useShouldInterceptRequest,
     this.useOnRenderProcessGone,
-    this.overScrollMode = OverScrollMode.IF_CONTENT_SCROLLS,
+    this.overScrollMode = CygnusOverScrollMode.IF_CONTENT_SCROLLS,
     this.networkAvailable,
-    this.scrollBarStyle = ScrollBarStyle.SCROLLBARS_INSIDE_OVERLAY,
+    this.scrollBarStyle = CygnusScrollBarStyle.SCROLLBARS_INSIDE_OVERLAY,
     this.verticalScrollbarPosition =
-        VerticalScrollbarPosition.SCROLLBAR_POSITION_DEFAULT,
+        CygnusVerticalScrollbarPosition.SCROLLBAR_POSITION_DEFAULT,
     this.scrollBarDefaultDelayBeforeFade,
     this.scrollbarFadingEnabled = true,
     this.scrollBarFadeDuration,
@@ -2245,12 +2246,12 @@ class InAppWebViewSettings {
     this.allowsInlineMediaPlayback = false,
     this.allowsPictureInPictureMediaPlayback = true,
     this.isFraudulentWebsiteWarningEnabled = true,
-    this.selectionGranularity = SelectionGranularity.DYNAMIC,
-    this.dataDetectorTypes = const [DataDetectorTypes.NONE],
+    this.selectionGranularity = CygnusSelectionGranularity.DYNAMIC,
+    this.dataDetectorTypes = const [CygnusDataDetectorTypes.NONE],
     this.sharedCookiesEnabled = false,
     this.automaticallyAdjustsScrollIndicatorInsets = false,
     this.accessibilityIgnoresInvertColors = false,
-    this.decelerationRate = ScrollViewDecelerationRate.NORMAL,
+    this.decelerationRate = CygnusScrollViewDecelerationRate.NORMAL,
     this.alwaysBounceVertical = false,
     this.alwaysBounceHorizontal = false,
     this.scrollsToTop = true,
@@ -2258,7 +2259,7 @@ class InAppWebViewSettings {
     this.maximumZoomScale = 1.0,
     this.minimumZoomScale = 1.0,
     this.contentInsetAdjustmentBehavior =
-        ScrollViewContentInsetAdjustmentBehavior.NEVER,
+        CygnusScrollViewContentInsetAdjustmentBehavior.NEVER,
     this.isDirectionalLockEnabled = false,
     this.mediaType,
     this.pageZoom = 1.0,
@@ -2293,7 +2294,7 @@ class InAppWebViewSettings {
     this.generalAutofillEnabled = true,
     this.passwordAutosaveEnabled = false,
     this.pinchZoomEnabled = true,
-    this.hiddenPdfToolbarItems = PdfToolbarItems.NONE,
+    this.hiddenPdfToolbarItems = CygnusPdfToolbarItems.NONE,
     this.reputationCheckingRequired = true,
     this.nonClientRegionSupportEnabled = false,
     this.isUserInteractionEnabled = true,
@@ -2370,27 +2371,29 @@ class InAppWebViewSettings {
     );
   }
 
-  ///Gets a possible [InAppWebViewSettings] instance from a [Map] value.
-  static InAppWebViewSettings? fromMap(
+  ///Gets a possible [CygnusWebViewSettings] instance from a [Map] value.
+  static CygnusWebViewSettings? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = InAppWebViewSettings(
+    final instance = CygnusWebViewSettings(
       allowingReadAccessTo: map['allowingReadAccessTo'] != null
-          ? WebUri(map['allowingReadAccessTo'])
+          ? CygnusWebUri(map['allowingReadAccessTo'])
           : null,
       alpha: map['alpha'],
-      androidCompositionMode: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => AndroidCompositionMode.fromNativeValue(
+      androidCompositionMode: switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusAndroidCompositionMode.fromNativeValue(
+            map['androidCompositionMode'],
+          ),
+        CygnusEnumMethod.value => CygnusAndroidCompositionMode.fromValue(
           map['androidCompositionMode'],
         ),
-        EnumMethod.value => AndroidCompositionMode.fromValue(
-          map['androidCompositionMode'],
-        ),
-        EnumMethod.name => AndroidCompositionMode.byName(
+        CygnusEnumMethod.name => CygnusAndroidCompositionMode.byName(
           map['androidCompositionMode'],
         ),
       },
@@ -2405,14 +2408,15 @@ class InAppWebViewSettings {
           : null,
       disableAnimations: map['disableAnimations'],
       disabledActionModeMenuItems: switch (enumMethod ??
-          EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => ActionModeMenuItem.fromNativeValue(
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusActionModeMenuItem.fromNativeValue(
+            map['disabledActionModeMenuItems'],
+          ),
+        CygnusEnumMethod.value => CygnusActionModeMenuItem.fromValue(
           map['disabledActionModeMenuItems'],
         ),
-        EnumMethod.value => ActionModeMenuItem.fromValue(
-          map['disabledActionModeMenuItems'],
-        ),
-        EnumMethod.name => ActionModeMenuItem.byName(
+        CygnusEnumMethod.name => CygnusActionModeMenuItem.byName(
           map['disabledActionModeMenuItems'],
         ),
       },
@@ -2421,35 +2425,44 @@ class InAppWebViewSettings {
       dragThreshold: map['dragThreshold'],
       fontAntialias: map['fontAntialias'],
       fontDPI: map['fontDPI'],
-      fontHintingStyle: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => FontHintingStyle.fromNativeValue(
+      fontHintingStyle: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusFontHintingStyle.fromNativeValue(
           map['fontHintingStyle'],
         ),
-        EnumMethod.value => FontHintingStyle.fromValue(map['fontHintingStyle']),
-        EnumMethod.name => FontHintingStyle.byName(map['fontHintingStyle']),
+        CygnusEnumMethod.value => CygnusFontHintingStyle.fromValue(
+          map['fontHintingStyle'],
+        ),
+        CygnusEnumMethod.name => CygnusFontHintingStyle.byName(
+          map['fontHintingStyle'],
+        ),
       },
-      fontSubpixelLayout: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => FontSubpixelLayout.fromNativeValue(
+      fontSubpixelLayout: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusFontSubpixelLayout.fromNativeValue(map['fontSubpixelLayout']),
+        CygnusEnumMethod.value => CygnusFontSubpixelLayout.fromValue(
           map['fontSubpixelLayout'],
         ),
-        EnumMethod.value => FontSubpixelLayout.fromValue(
+        CygnusEnumMethod.name => CygnusFontSubpixelLayout.byName(
           map['fontSubpixelLayout'],
         ),
-        EnumMethod.name => FontSubpixelLayout.byName(map['fontSubpixelLayout']),
       },
-      forceDark: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => ForceDark.fromNativeValue(map['forceDark']),
-        EnumMethod.value => ForceDark.fromValue(map['forceDark']),
-        EnumMethod.name => ForceDark.byName(map['forceDark']),
+      forceDark: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusForceDark.fromNativeValue(
+          map['forceDark'],
+        ),
+        CygnusEnumMethod.value => CygnusForceDark.fromValue(map['forceDark']),
+        CygnusEnumMethod.name => CygnusForceDark.byName(map['forceDark']),
       },
-      forceDarkStrategy: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => ForceDarkStrategy.fromNativeValue(
+      forceDarkStrategy: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusForceDarkStrategy.fromNativeValue(
           map['forceDarkStrategy'],
         ),
-        EnumMethod.value => ForceDarkStrategy.fromValue(
+        CygnusEnumMethod.value => CygnusForceDarkStrategy.fromValue(
           map['forceDarkStrategy'],
         ),
-        EnumMethod.name => ForceDarkStrategy.byName(map['forceDarkStrategy']),
+        CygnusEnumMethod.name => CygnusForceDarkStrategy.byName(
+          map['forceDarkStrategy'],
+        ),
       },
       horizontalScrollbarThumbColor:
           map['horizontalScrollbarThumbColor'] != null
@@ -2468,23 +2481,28 @@ class InAppWebViewSettings {
       iframeAriaHidden: map['iframeAriaHidden'],
       iframeCsp: map['iframeCsp'],
       iframeName: map['iframeName'],
-      iframeReferrerPolicy: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => ReferrerPolicy.fromNativeValue(
+      iframeReferrerPolicy: switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusReferrerPolicy.fromNativeValue(
           map['iframeReferrerPolicy'],
         ),
-        EnumMethod.value => ReferrerPolicy.fromValue(
+        CygnusEnumMethod.value => CygnusReferrerPolicy.fromValue(
           map['iframeReferrerPolicy'],
         ),
-        EnumMethod.name => ReferrerPolicy.byName(map['iframeReferrerPolicy']),
+        CygnusEnumMethod.name => CygnusReferrerPolicy.byName(
+          map['iframeReferrerPolicy'],
+        ),
       },
       iframeRole: map['iframeRole'],
       iframeSandbox: map['iframeSandbox'] != null
-          ? Set<Sandbox>.from(
+          ? Set<CygnusSandbox>.from(
               map['iframeSandbox'].map(
-                (e) => switch (enumMethod ?? EnumMethod.nativeValue) {
-                  EnumMethod.nativeValue => Sandbox.fromNativeValue(e),
-                  EnumMethod.value => Sandbox.fromValue(e),
-                  EnumMethod.name => Sandbox.byName(e),
+                (e) => switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+                  CygnusEnumMethod.nativeValue => CygnusSandbox.fromNativeValue(
+                    e,
+                  ),
+                  CygnusEnumMethod.value => CygnusSandbox.fromValue(e),
+                  CygnusEnumMethod.name => CygnusSandbox.byName(e),
                 }!,
               ),
             )
@@ -2506,12 +2524,16 @@ class InAppWebViewSettings {
           : null,
       keyRepeatDelay: map['keyRepeatDelay'],
       keyRepeatInterval: map['keyRepeatInterval'],
-      layoutAlgorithm: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => LayoutAlgorithm.fromNativeValue(
+      layoutAlgorithm: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusLayoutAlgorithm.fromNativeValue(
           map['layoutAlgorithm'],
         ),
-        EnumMethod.value => LayoutAlgorithm.fromValue(map['layoutAlgorithm']),
-        EnumMethod.name => LayoutAlgorithm.byName(map['layoutAlgorithm']),
+        CygnusEnumMethod.value => CygnusLayoutAlgorithm.fromValue(
+          map['layoutAlgorithm'],
+        ),
+        CygnusEnumMethod.name => CygnusLayoutAlgorithm.byName(
+          map['layoutAlgorithm'],
+        ),
       },
       maximumViewportInset: MapEdgeInsets.fromMap(
         map['maximumViewportInset']?.cast<String, dynamic>(),
@@ -2523,12 +2545,16 @@ class InAppWebViewSettings {
       minimumViewportInset: MapEdgeInsets.fromMap(
         map['minimumViewportInset']?.cast<String, dynamic>(),
       ),
-      mixedContentMode: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => MixedContentMode.fromNativeValue(
+      mixedContentMode: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusMixedContentMode.fromNativeValue(
           map['mixedContentMode'],
         ),
-        EnumMethod.value => MixedContentMode.fromValue(map['mixedContentMode']),
-        EnumMethod.name => MixedContentMode.byName(map['mixedContentMode']),
+        CygnusEnumMethod.value => CygnusMixedContentMode.fromValue(
+          map['mixedContentMode'],
+        ),
+        CygnusEnumMethod.name => CygnusMixedContentMode.byName(
+          map['mixedContentMode'],
+        ),
       },
       networkAvailable: map['networkAvailable'],
       pictographFontFamily: map['pictographFontFamily'],
@@ -2539,7 +2565,7 @@ class InAppWebViewSettings {
           : null,
       regexToAllowSyncUrlLoading: map['regexToAllowSyncUrlLoading'],
       regexToCancelSubFramesLoading: map['regexToCancelSubFramesLoading'],
-      rendererPriorityPolicy: RendererPriorityPolicy.fromMap(
+      rendererPriorityPolicy: CygnusRendererPriorityPolicy.fromMap(
         map['rendererPriorityPolicy']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -2577,7 +2603,7 @@ class InAppWebViewSettings {
             )
           : null,
       webRTCUdpPortsRange: map['webRTCUdpPortsRange'],
-      webViewAssetLoader: WebViewAssetLoader.fromMap(
+      webViewAssetLoader: CygnusWebViewAssetLoader.fromMap(
         map['webViewAssetLoader']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -2613,10 +2639,12 @@ class InAppWebViewSettings {
         map['browserAcceleratorKeysEnabled'];
     instance.builtInZoomControls = map['builtInZoomControls'];
     instance.cacheEnabled = map['cacheEnabled'];
-    instance.cacheMode = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => CacheMode.fromNativeValue(map['cacheMode']),
-      EnumMethod.value => CacheMode.fromValue(map['cacheMode']),
-      EnumMethod.name => CacheMode.byName(map['cacheMode']),
+    instance.cacheMode = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue => CygnusCacheMode.fromNativeValue(
+        map['cacheMode'],
+      ),
+      CygnusEnumMethod.value => CygnusCacheMode.fromValue(map['cacheMode']),
+      CygnusEnumMethod.name => CygnusCacheMode.byName(map['cacheMode']),
     };
     instance.clearCache = map['clearCache'];
     instance.clearSessionCache = map['clearSessionCache'];
@@ -2625,39 +2653,44 @@ class InAppWebViewSettings {
       enumMethod: enumMethod,
     );
     instance.contentInsetAdjustmentBehavior = switch (enumMethod ??
-        EnumMethod.nativeValue) {
-      EnumMethod.nativeValue =>
-        ScrollViewContentInsetAdjustmentBehavior.fromNativeValue(
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusScrollViewContentInsetAdjustmentBehavior.fromNativeValue(
           map['contentInsetAdjustmentBehavior'],
         ),
-      EnumMethod.value => ScrollViewContentInsetAdjustmentBehavior.fromValue(
-        map['contentInsetAdjustmentBehavior'],
-      ),
-      EnumMethod.name => ScrollViewContentInsetAdjustmentBehavior.byName(
-        map['contentInsetAdjustmentBehavior'],
-      ),
+      CygnusEnumMethod.value =>
+        CygnusScrollViewContentInsetAdjustmentBehavior.fromValue(
+          map['contentInsetAdjustmentBehavior'],
+        ),
+      CygnusEnumMethod.name =>
+        CygnusScrollViewContentInsetAdjustmentBehavior.byName(
+          map['contentInsetAdjustmentBehavior'],
+        ),
     };
     instance.cursiveFontFamily = map['cursiveFontFamily'];
     instance.dataDetectorTypes = map['dataDetectorTypes'] != null
-        ? List<DataDetectorTypes>.from(
+        ? List<CygnusDataDetectorTypes>.from(
             map['dataDetectorTypes'].map(
-              (e) => switch (enumMethod ?? EnumMethod.nativeValue) {
-                EnumMethod.nativeValue => DataDetectorTypes.fromNativeValue(e),
-                EnumMethod.value => DataDetectorTypes.fromValue(e),
-                EnumMethod.name => DataDetectorTypes.byName(e),
+              (e) => switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+                CygnusEnumMethod.nativeValue =>
+                  CygnusDataDetectorTypes.fromNativeValue(e),
+                CygnusEnumMethod.value => CygnusDataDetectorTypes.fromValue(e),
+                CygnusEnumMethod.name => CygnusDataDetectorTypes.byName(e),
               }!,
             ),
           )
         : null;
     instance.databaseEnabled = map['databaseEnabled'];
-    instance.decelerationRate = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => ScrollViewDecelerationRate.fromNativeValue(
+    instance.decelerationRate = switch (enumMethod ??
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusScrollViewDecelerationRate.fromNativeValue(
+          map['decelerationRate'],
+        ),
+      CygnusEnumMethod.value => CygnusScrollViewDecelerationRate.fromValue(
         map['decelerationRate'],
       ),
-      EnumMethod.value => ScrollViewDecelerationRate.fromValue(
-        map['decelerationRate'],
-      ),
-      EnumMethod.name => ScrollViewDecelerationRate.byName(
+      CygnusEnumMethod.name => CygnusScrollViewDecelerationRate.byName(
         map['decelerationRate'],
       ),
     };
@@ -2701,14 +2734,16 @@ class InAppWebViewSettings {
     instance.handleAcceleratorKeyPressed = map['handleAcceleratorKeyPressed'];
     instance.hardwareAcceleration = map['hardwareAcceleration'];
     instance.hiddenPdfToolbarItems = switch (enumMethod ??
-        EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => PdfToolbarItems.fromNativeValue(
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue => CygnusPdfToolbarItems.fromNativeValue(
         map['hiddenPdfToolbarItems'],
       ),
-      EnumMethod.value => PdfToolbarItems.fromValue(
+      CygnusEnumMethod.value => CygnusPdfToolbarItems.fromValue(
         map['hiddenPdfToolbarItems'],
       ),
-      EnumMethod.name => PdfToolbarItems.byName(map['hiddenPdfToolbarItems']),
+      CygnusEnumMethod.name => CygnusPdfToolbarItems.byName(
+        map['hiddenPdfToolbarItems'],
+      ),
     };
     instance.horizontalScrollBarEnabled = map['horizontalScrollBarEnabled'];
     instance.ignoresViewportScaleLimits = map['ignoresViewportScaleLimits'];
@@ -2747,12 +2782,17 @@ class InAppWebViewSettings {
     instance.nonClientRegionSupportEnabled =
         map['nonClientRegionSupportEnabled'];
     instance.offscreenPreRaster = map['offscreenPreRaster'];
-    instance.overScrollMode = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => OverScrollMode.fromNativeValue(
+    instance.overScrollMode = switch (enumMethod ??
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue => CygnusOverScrollMode.fromNativeValue(
         map['overScrollMode'],
       ),
-      EnumMethod.value => OverScrollMode.fromValue(map['overScrollMode']),
-      EnumMethod.name => OverScrollMode.byName(map['overScrollMode']),
+      CygnusEnumMethod.value => CygnusOverScrollMode.fromValue(
+        map['overScrollMode'],
+      ),
+      CygnusEnumMethod.name => CygnusOverScrollMode.byName(
+        map['overScrollMode'],
+      ),
     };
     instance.pageZoom = map['pageZoom'];
     instance.passwordAutosaveEnabled = map['passwordAutosaveEnabled'];
@@ -2760,14 +2800,15 @@ class InAppWebViewSettings {
     instance.pluginScriptsForMainFrameOnly =
         map['pluginScriptsForMainFrameOnly'];
     instance.preferredContentMode = switch (enumMethod ??
-        EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => UserPreferredContentMode.fromNativeValue(
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusUserPreferredContentMode.fromNativeValue(
+          map['preferredContentMode'],
+        ),
+      CygnusEnumMethod.value => CygnusUserPreferredContentMode.fromValue(
         map['preferredContentMode'],
       ),
-      EnumMethod.value => UserPreferredContentMode.fromValue(
-        map['preferredContentMode'],
-      ),
-      EnumMethod.name => UserPreferredContentMode.byName(
+      CygnusEnumMethod.name => CygnusUserPreferredContentMode.byName(
         map['preferredContentMode'],
       ),
     };
@@ -2778,25 +2819,29 @@ class InAppWebViewSettings {
     instance.safeBrowsingEnabled = map['safeBrowsingEnabled'];
     instance.sansSerifFontFamily = map['sansSerifFontFamily'];
     instance.saveFormData = map['saveFormData'];
-    instance.scrollBarStyle = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => ScrollBarStyle.fromNativeValue(
+    instance.scrollBarStyle = switch (enumMethod ??
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue => CygnusScrollBarStyle.fromNativeValue(
         map['scrollBarStyle'],
       ),
-      EnumMethod.value => ScrollBarStyle.fromValue(map['scrollBarStyle']),
-      EnumMethod.name => ScrollBarStyle.byName(map['scrollBarStyle']),
+      CygnusEnumMethod.value => CygnusScrollBarStyle.fromValue(
+        map['scrollBarStyle'],
+      ),
+      CygnusEnumMethod.name => CygnusScrollBarStyle.byName(
+        map['scrollBarStyle'],
+      ),
     };
     instance.scrollMultiplier = map['scrollMultiplier'];
     instance.scrollbarFadingEnabled = map['scrollbarFadingEnabled'];
     instance.scrollsToTop = map['scrollsToTop'];
     instance.selectionGranularity = switch (enumMethod ??
-        EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => SelectionGranularity.fromNativeValue(
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusSelectionGranularity.fromNativeValue(map['selectionGranularity']),
+      CygnusEnumMethod.value => CygnusSelectionGranularity.fromValue(
         map['selectionGranularity'],
       ),
-      EnumMethod.value => SelectionGranularity.fromValue(
-        map['selectionGranularity'],
-      ),
-      EnumMethod.name => SelectionGranularity.byName(
+      CygnusEnumMethod.name => CygnusSelectionGranularity.byName(
         map['selectionGranularity'],
       ),
     };
@@ -2817,14 +2862,15 @@ class InAppWebViewSettings {
     instance.userAgent = map['userAgent'];
     instance.verticalScrollBarEnabled = map['verticalScrollBarEnabled'];
     instance.verticalScrollbarPosition = switch (enumMethod ??
-        EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => VerticalScrollbarPosition.fromNativeValue(
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusVerticalScrollbarPosition.fromNativeValue(
+          map['verticalScrollbarPosition'],
+        ),
+      CygnusEnumMethod.value => CygnusVerticalScrollbarPosition.fromValue(
         map['verticalScrollbarPosition'],
       ),
-      EnumMethod.value => VerticalScrollbarPosition.fromValue(
-        map['verticalScrollbarPosition'],
-      ),
-      EnumMethod.name => VerticalScrollbarPosition.byName(
+      CygnusEnumMethod.name => CygnusVerticalScrollbarPosition.byName(
         map['verticalScrollbarPosition'],
       ),
     };
@@ -2833,15 +2879,15 @@ class InAppWebViewSettings {
 
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   static bool isPropertySupported(
-    InAppWebViewSettingsProperty property, {
+    CygnusWebViewSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _InAppWebViewSettingsPropertySupported.isPropertySupported(
+  }) => _CygnusWebViewSettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "accessibilityIgnoresInvertColors": accessibilityIgnoresInvertColors,
       "algorithmicDarkeningAllowed": algorithmicDarkeningAllowed,
@@ -2863,10 +2909,11 @@ class InAppWebViewSettings {
       "alpha": alpha,
       "alwaysBounceHorizontal": alwaysBounceHorizontal,
       "alwaysBounceVertical": alwaysBounceVertical,
-      "androidCompositionMode": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => androidCompositionMode?.toNativeValue(),
-        EnumMethod.value => androidCompositionMode?.toValue(),
-        EnumMethod.name => androidCompositionMode?.name(),
+      "androidCompositionMode": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => androidCompositionMode?.toNativeValue(),
+        CygnusEnumMethod.value => androidCompositionMode?.toValue(),
+        CygnusEnumMethod.name => androidCompositionMode?.name(),
       },
       "appCachePath": appCachePath,
       "applePayAPIEnabled": applePayAPIEnabled,
@@ -2878,10 +2925,10 @@ class InAppWebViewSettings {
       "browserAcceleratorKeysEnabled": browserAcceleratorKeysEnabled,
       "builtInZoomControls": builtInZoomControls,
       "cacheEnabled": cacheEnabled,
-      "cacheMode": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => cacheMode?.toNativeValue(),
-        EnumMethod.value => cacheMode?.toValue(),
-        EnumMethod.name => cacheMode?.name(),
+      "cacheMode": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => cacheMode?.toNativeValue(),
+        CygnusEnumMethod.value => cacheMode?.toValue(),
+        CygnusEnumMethod.name => cacheMode?.name(),
       },
       "clearCache": clearCache,
       "clearSessionCache": clearSessionCache,
@@ -2889,11 +2936,11 @@ class InAppWebViewSettings {
           ?.map((e) => e.toMap(enumMethod: enumMethod))
           .toList(),
       "contentInsetAdjustmentBehavior": switch (enumMethod ??
-          EnumMethod.nativeValue) {
-        EnumMethod.nativeValue =>
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
           contentInsetAdjustmentBehavior?.toNativeValue(),
-        EnumMethod.value => contentInsetAdjustmentBehavior?.toValue(),
-        EnumMethod.name => contentInsetAdjustmentBehavior?.name(),
+        CygnusEnumMethod.value => contentInsetAdjustmentBehavior?.toValue(),
+        CygnusEnumMethod.name => contentInsetAdjustmentBehavior?.name(),
       },
       "corsAllowlist": corsAllowlist,
       "cursiveFontFamily": cursiveFontFamily,
@@ -2901,18 +2948,18 @@ class InAppWebViewSettings {
       "darkMode": darkMode,
       "dataDetectorTypes": dataDetectorTypes
           ?.map(
-            (e) => switch (enumMethod ?? EnumMethod.nativeValue) {
-              EnumMethod.nativeValue => e.toNativeValue(),
-              EnumMethod.value => e.toValue(),
-              EnumMethod.name => e.name(),
+            (e) => switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+              CygnusEnumMethod.nativeValue => e.toNativeValue(),
+              CygnusEnumMethod.value => e.toValue(),
+              CygnusEnumMethod.name => e.name(),
             },
           )
           .toList(),
       "databaseEnabled": databaseEnabled,
-      "decelerationRate": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => decelerationRate?.toNativeValue(),
-        EnumMethod.value => decelerationRate?.toValue(),
-        EnumMethod.name => decelerationRate?.name(),
+      "decelerationRate": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => decelerationRate?.toNativeValue(),
+        CygnusEnumMethod.value => decelerationRate?.toValue(),
+        CygnusEnumMethod.name => decelerationRate?.name(),
       },
       "defaultFixedFontSize": defaultFixedFontSize,
       "defaultFontSize": defaultFontSize,
@@ -2927,10 +2974,11 @@ class InAppWebViewSettings {
       "disableVerticalScroll": disableVerticalScroll,
       "disableWebSecurity": disableWebSecurity,
       "disabledActionModeMenuItems": switch (enumMethod ??
-          EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => disabledActionModeMenuItems?.toNativeValue(),
-        EnumMethod.value => disabledActionModeMenuItems?.toValue(),
-        EnumMethod.name => disabledActionModeMenuItems?.name(),
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          disabledActionModeMenuItems?.toNativeValue(),
+        CygnusEnumMethod.value => disabledActionModeMenuItems?.toValue(),
+        CygnusEnumMethod.name => disabledActionModeMenuItems?.name(),
       },
       "disallowOverScroll": disallowOverScroll,
       "displayZoomControls": displayZoomControls,
@@ -2960,34 +3008,36 @@ class InAppWebViewSettings {
       "fixedFontFamily": fixedFontFamily,
       "fontAntialias": fontAntialias,
       "fontDPI": fontDPI,
-      "fontHintingStyle": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => fontHintingStyle?.toNativeValue(),
-        EnumMethod.value => fontHintingStyle?.toValue(),
-        EnumMethod.name => fontHintingStyle?.name(),
+      "fontHintingStyle": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => fontHintingStyle?.toNativeValue(),
+        CygnusEnumMethod.value => fontHintingStyle?.toValue(),
+        CygnusEnumMethod.name => fontHintingStyle?.name(),
       },
-      "fontSubpixelLayout": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => fontSubpixelLayout?.toNativeValue(),
-        EnumMethod.value => fontSubpixelLayout?.toValue(),
-        EnumMethod.name => fontSubpixelLayout?.name(),
+      "fontSubpixelLayout": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => fontSubpixelLayout?.toNativeValue(),
+        CygnusEnumMethod.value => fontSubpixelLayout?.toValue(),
+        CygnusEnumMethod.name => fontSubpixelLayout?.name(),
       },
-      "forceDark": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => forceDark?.toNativeValue(),
-        EnumMethod.value => forceDark?.toValue(),
-        EnumMethod.name => forceDark?.name(),
+      "forceDark": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => forceDark?.toNativeValue(),
+        CygnusEnumMethod.value => forceDark?.toValue(),
+        CygnusEnumMethod.name => forceDark?.name(),
       },
-      "forceDarkStrategy": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => forceDarkStrategy?.toNativeValue(),
-        EnumMethod.value => forceDarkStrategy?.toValue(),
-        EnumMethod.name => forceDarkStrategy?.name(),
+      "forceDarkStrategy": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => forceDarkStrategy?.toNativeValue(),
+        CygnusEnumMethod.value => forceDarkStrategy?.toValue(),
+        CygnusEnumMethod.name => forceDarkStrategy?.name(),
       },
       "generalAutofillEnabled": generalAutofillEnabled,
       "geolocationEnabled": geolocationEnabled,
       "handleAcceleratorKeyPressed": handleAcceleratorKeyPressed,
       "hardwareAcceleration": hardwareAcceleration,
-      "hiddenPdfToolbarItems": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => hiddenPdfToolbarItems?.toNativeValue(),
-        EnumMethod.value => hiddenPdfToolbarItems?.toValue(),
-        EnumMethod.name => hiddenPdfToolbarItems?.name(),
+      "hiddenPdfToolbarItems": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => hiddenPdfToolbarItems?.toNativeValue(),
+        CygnusEnumMethod.value => hiddenPdfToolbarItems?.toValue(),
+        CygnusEnumMethod.name => hiddenPdfToolbarItems?.name(),
       },
       "horizontalScrollBarEnabled": horizontalScrollBarEnabled,
       "horizontalScrollbarThumbColor": horizontalScrollbarThumbColor?.toHex(),
@@ -2997,18 +3047,19 @@ class InAppWebViewSettings {
       "iframeAriaHidden": iframeAriaHidden,
       "iframeCsp": iframeCsp,
       "iframeName": iframeName,
-      "iframeReferrerPolicy": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => iframeReferrerPolicy?.toNativeValue(),
-        EnumMethod.value => iframeReferrerPolicy?.toValue(),
-        EnumMethod.name => iframeReferrerPolicy?.name(),
+      "iframeReferrerPolicy": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => iframeReferrerPolicy?.toNativeValue(),
+        CygnusEnumMethod.value => iframeReferrerPolicy?.toValue(),
+        CygnusEnumMethod.name => iframeReferrerPolicy?.name(),
       },
       "iframeRole": iframeRole,
       "iframeSandbox": iframeSandbox
           ?.map(
-            (e) => switch (enumMethod ?? EnumMethod.nativeValue) {
-              EnumMethod.nativeValue => e.toNativeValue(),
-              EnumMethod.value => e.toValue(),
-              EnumMethod.name => e.name(),
+            (e) => switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+              CygnusEnumMethod.nativeValue => e.toNativeValue(),
+              CygnusEnumMethod.value => e.toValue(),
+              CygnusEnumMethod.name => e.name(),
             },
           )
           .toList(),
@@ -3040,10 +3091,10 @@ class InAppWebViewSettings {
       "keyRepeatDelay": keyRepeatDelay,
       "keyRepeatInterval": keyRepeatInterval,
       "keyboardAvoidance": keyboardAvoidance,
-      "layoutAlgorithm": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => layoutAlgorithm?.toNativeValue(),
-        EnumMethod.value => layoutAlgorithm?.toValue(),
-        EnumMethod.name => layoutAlgorithm?.name(),
+      "layoutAlgorithm": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => layoutAlgorithm?.toNativeValue(),
+        CygnusEnumMethod.value => layoutAlgorithm?.toValue(),
+        CygnusEnumMethod.name => layoutAlgorithm?.name(),
       },
       "limitsNavigationsToAppBoundDomains": limitsNavigationsToAppBoundDomains,
       "loadWithOverviewMode": loadWithOverviewMode,
@@ -3058,19 +3109,19 @@ class InAppWebViewSettings {
       "minimumLogicalFontSize": minimumLogicalFontSize,
       "minimumViewportInset": minimumViewportInset?.toMap(),
       "minimumZoomScale": minimumZoomScale,
-      "mixedContentMode": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => mixedContentMode?.toNativeValue(),
-        EnumMethod.value => mixedContentMode?.toValue(),
-        EnumMethod.name => mixedContentMode?.name(),
+      "mixedContentMode": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => mixedContentMode?.toNativeValue(),
+        CygnusEnumMethod.value => mixedContentMode?.toValue(),
+        CygnusEnumMethod.name => mixedContentMode?.name(),
       },
       "needInitialFocus": needInitialFocus,
       "networkAvailable": networkAvailable,
       "nonClientRegionSupportEnabled": nonClientRegionSupportEnabled,
       "offscreenPreRaster": offscreenPreRaster,
-      "overScrollMode": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => overScrollMode?.toNativeValue(),
-        EnumMethod.value => overScrollMode?.toValue(),
-        EnumMethod.name => overScrollMode?.name(),
+      "overScrollMode": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => overScrollMode?.toNativeValue(),
+        CygnusEnumMethod.value => overScrollMode?.toValue(),
+        CygnusEnumMethod.name => overScrollMode?.name(),
       },
       "pageZoom": pageZoom,
       "passwordAutosaveEnabled": passwordAutosaveEnabled,
@@ -3078,10 +3129,11 @@ class InAppWebViewSettings {
       "pinchZoomEnabled": pinchZoomEnabled,
       "pluginScriptsForMainFrameOnly": pluginScriptsForMainFrameOnly,
       "pluginScriptsOriginAllowList": pluginScriptsOriginAllowList?.toList(),
-      "preferredContentMode": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => preferredContentMode?.toNativeValue(),
-        EnumMethod.value => preferredContentMode?.toValue(),
-        EnumMethod.name => preferredContentMode?.name(),
+      "preferredContentMode": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => preferredContentMode?.toNativeValue(),
+        CygnusEnumMethod.value => preferredContentMode?.toValue(),
+        CygnusEnumMethod.name => preferredContentMode?.name(),
       },
       "regexToAllowSyncUrlLoading": regexToAllowSyncUrlLoading,
       "regexToCancelSubFramesLoading": regexToCancelSubFramesLoading,
@@ -3097,18 +3149,19 @@ class InAppWebViewSettings {
       "saveFormData": saveFormData,
       "scrollBarDefaultDelayBeforeFade": scrollBarDefaultDelayBeforeFade,
       "scrollBarFadeDuration": scrollBarFadeDuration,
-      "scrollBarStyle": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => scrollBarStyle?.toNativeValue(),
-        EnumMethod.value => scrollBarStyle?.toValue(),
-        EnumMethod.name => scrollBarStyle?.name(),
+      "scrollBarStyle": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => scrollBarStyle?.toNativeValue(),
+        CygnusEnumMethod.value => scrollBarStyle?.toValue(),
+        CygnusEnumMethod.name => scrollBarStyle?.name(),
       },
       "scrollMultiplier": scrollMultiplier,
       "scrollbarFadingEnabled": scrollbarFadingEnabled,
       "scrollsToTop": scrollsToTop,
-      "selectionGranularity": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => selectionGranularity?.toNativeValue(),
-        EnumMethod.value => selectionGranularity?.toValue(),
-        EnumMethod.name => selectionGranularity?.name(),
+      "selectionGranularity": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => selectionGranularity?.toNativeValue(),
+        CygnusEnumMethod.value => selectionGranularity?.toValue(),
+        CygnusEnumMethod.name => selectionGranularity?.name(),
       },
       "serifFontFamily": serifFontFamily,
       "sharedCookiesEnabled": sharedCookiesEnabled,
@@ -3139,10 +3192,11 @@ class InAppWebViewSettings {
       "userAgent": userAgent,
       "verticalScrollBarEnabled": verticalScrollBarEnabled,
       "verticalScrollbarPosition": switch (enumMethod ??
-          EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => verticalScrollbarPosition?.toNativeValue(),
-        EnumMethod.value => verticalScrollbarPosition?.toValue(),
-        EnumMethod.name => verticalScrollbarPosition?.name(),
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          verticalScrollbarPosition?.toNativeValue(),
+        CygnusEnumMethod.value => verticalScrollbarPosition?.toValue(),
+        CygnusEnumMethod.name => verticalScrollbarPosition?.name(),
       },
       "verticalScrollbarThumbColor": verticalScrollbarThumbColor?.toHex(),
       "verticalScrollbarTrackColor": verticalScrollbarTrackColor?.toHex(),
@@ -3156,14 +3210,14 @@ class InAppWebViewSettings {
     return toMap();
   }
 
-  ///Returns a copy of InAppWebViewSettings.
-  InAppWebViewSettings copy() {
-    return InAppWebViewSettings.fromMap(toMap()) ?? InAppWebViewSettings();
+  ///Returns a copy of CygnusWebViewSettings.
+  CygnusWebViewSettings copy() {
+    return CygnusWebViewSettings.fromMap(toMap()) ?? CygnusWebViewSettings();
   }
 
   @override
   String toString() {
-    return 'InAppWebViewSettings{accessibilityIgnoresInvertColors: $accessibilityIgnoresInvertColors, algorithmicDarkeningAllowed: $algorithmicDarkeningAllowed, allowBackgroundAudioPlaying: $allowBackgroundAudioPlaying, allowContentAccess: $allowContentAccess, allowFileAccess: $allowFileAccess, allowFileAccessFromFileURLs: $allowFileAccessFromFileURLs, allowModalDialogs: $allowModalDialogs, allowTopNavigationToDataUrls: $allowTopNavigationToDataUrls, allowUniversalAccessFromFileURLs: $allowUniversalAccessFromFileURLs, allowingReadAccessTo: $allowingReadAccessTo, allowsAirPlayForMediaPlayback: $allowsAirPlayForMediaPlayback, allowsBackForwardNavigationGestures: $allowsBackForwardNavigationGestures, allowsInlineMediaPlayback: $allowsInlineMediaPlayback, allowsLinkPreview: $allowsLinkPreview, allowsPictureInPictureMediaPlayback: $allowsPictureInPictureMediaPlayback, alpha: $alpha, alwaysBounceHorizontal: $alwaysBounceHorizontal, alwaysBounceVertical: $alwaysBounceVertical, androidCompositionMode: $androidCompositionMode, appCachePath: $appCachePath, applePayAPIEnabled: $applePayAPIEnabled, applicationNameForUserAgent: $applicationNameForUserAgent, automaticallyAdjustsScrollIndicatorInsets: $automaticallyAdjustsScrollIndicatorInsets, blockNetworkImage: $blockNetworkImage, blockNetworkLoads: $blockNetworkLoads, browserAcceleratorKeysEnabled: $browserAcceleratorKeysEnabled, builtInZoomControls: $builtInZoomControls, cacheEnabled: $cacheEnabled, cacheMode: $cacheMode, contentBlockers: $contentBlockers, contentInsetAdjustmentBehavior: $contentInsetAdjustmentBehavior, corsAllowlist: $corsAllowlist, cursiveFontFamily: $cursiveFontFamily, cursorBlinkTime: $cursorBlinkTime, darkMode: $darkMode, dataDetectorTypes: $dataDetectorTypes, databaseEnabled: $databaseEnabled, decelerationRate: $decelerationRate, defaultFixedFontSize: $defaultFixedFontSize, defaultFontSize: $defaultFontSize, defaultTextEncodingName: $defaultTextEncodingName, defaultVideoPoster: $defaultVideoPoster, disableAnimations: $disableAnimations, disableContextMenu: $disableContextMenu, disableDefaultErrorPage: $disableDefaultErrorPage, disableHorizontalScroll: $disableHorizontalScroll, disableInputAccessoryView: $disableInputAccessoryView, disableLongPressContextMenuOnLinks: $disableLongPressContextMenuOnLinks, disableVerticalScroll: $disableVerticalScroll, disableWebSecurity: $disableWebSecurity, disabledActionModeMenuItems: $disabledActionModeMenuItems, disallowOverScroll: $disallowOverScroll, displayZoomControls: $displayZoomControls, domStorageEnabled: $domStorageEnabled, doubleClickDistance: $doubleClickDistance, doubleClickTime: $doubleClickTime, dragThreshold: $dragThreshold, drawCompositingIndicators: $drawCompositingIndicators, enable2DCanvasAcceleration: $enable2DCanvasAcceleration, enableCaretBrowsing: $enableCaretBrowsing, enableEncryptedMedia: $enableEncryptedMedia, enableJavaScriptMarkup: $enableJavaScriptMarkup, enableMedia: $enableMedia, enableMediaCapabilities: $enableMediaCapabilities, enableMockCaptureDevices: $enableMockCaptureDevices, enablePageCache: $enablePageCache, enableResizableTextAreas: $enableResizableTextAreas, enableSmoothScrolling: $enableSmoothScrolling, enableSpatialNavigation: $enableSpatialNavigation, enableTabsToLinks: $enableTabsToLinks, enableViewportScale: $enableViewportScale, enableWebRTC: $enableWebRTC, enableWriteConsoleMessagesToStdout: $enableWriteConsoleMessagesToStdout, enterpriseAuthenticationAppLinkPolicyEnabled: $enterpriseAuthenticationAppLinkPolicyEnabled, fantasyFontFamily: $fantasyFontFamily, fixedFontFamily: $fixedFontFamily, fontAntialias: $fontAntialias, fontDPI: $fontDPI, fontHintingStyle: $fontHintingStyle, fontSubpixelLayout: $fontSubpixelLayout, generalAutofillEnabled: $generalAutofillEnabled, geolocationEnabled: $geolocationEnabled, handleAcceleratorKeyPressed: $handleAcceleratorKeyPressed, hardwareAcceleration: $hardwareAcceleration, hiddenPdfToolbarItems: $hiddenPdfToolbarItems, horizontalScrollBarEnabled: $horizontalScrollBarEnabled, horizontalScrollbarThumbColor: $horizontalScrollbarThumbColor, horizontalScrollbarTrackColor: $horizontalScrollbarTrackColor, iframeAllow: $iframeAllow, iframeAllowFullscreen: $iframeAllowFullscreen, iframeAriaHidden: $iframeAriaHidden, iframeCsp: $iframeCsp, iframeName: $iframeName, iframeReferrerPolicy: $iframeReferrerPolicy, iframeRole: $iframeRole, iframeSandbox: $iframeSandbox, ignoresViewportScaleLimits: $ignoresViewportScaleLimits, incognito: $incognito, initialScale: $initialScale, interceptOnlyAsyncAjaxRequests: $interceptOnlyAsyncAjaxRequests, isDirectionalLockEnabled: $isDirectionalLockEnabled, isElementFullscreenEnabled: $isElementFullscreenEnabled, isFindInteractionEnabled: $isFindInteractionEnabled, isFraudulentWebsiteWarningEnabled: $isFraudulentWebsiteWarningEnabled, isInspectable: $isInspectable, isPagingEnabled: $isPagingEnabled, isSiteSpecificQuirksModeEnabled: $isSiteSpecificQuirksModeEnabled, isTextInteractionEnabled: $isTextInteractionEnabled, isUserInteractionEnabled: $isUserInteractionEnabled, itpEnabled: $itpEnabled, javaScriptBridgeEnabled: $javaScriptBridgeEnabled, javaScriptBridgeForMainFrameOnly: $javaScriptBridgeForMainFrameOnly, javaScriptBridgeOriginAllowList: $javaScriptBridgeOriginAllowList, javaScriptCanAccessClipboard: $javaScriptCanAccessClipboard, javaScriptCanOpenWindowsAutomatically: $javaScriptCanOpenWindowsAutomatically, javaScriptEnabled: $javaScriptEnabled, javaScriptHandlersForMainFrameOnly: $javaScriptHandlersForMainFrameOnly, javaScriptHandlersOriginAllowList: $javaScriptHandlersOriginAllowList, keyRepeatDelay: $keyRepeatDelay, keyRepeatInterval: $keyRepeatInterval, keyboardAvoidance: $keyboardAvoidance, layoutAlgorithm: $layoutAlgorithm, limitsNavigationsToAppBoundDomains: $limitsNavigationsToAppBoundDomains, loadWithOverviewMode: $loadWithOverviewMode, loadsImagesAutomatically: $loadsImagesAutomatically, maximumViewportInset: $maximumViewportInset, maximumZoomScale: $maximumZoomScale, mediaContentTypesRequiringHardwareSupport: $mediaContentTypesRequiringHardwareSupport, mediaPlaybackRequiresUserGesture: $mediaPlaybackRequiresUserGesture, mediaType: $mediaType, minimumFontSize: $minimumFontSize, minimumLogicalFontSize: $minimumLogicalFontSize, minimumViewportInset: $minimumViewportInset, minimumZoomScale: $minimumZoomScale, mixedContentMode: $mixedContentMode, needInitialFocus: $needInitialFocus, networkAvailable: $networkAvailable, nonClientRegionSupportEnabled: $nonClientRegionSupportEnabled, offscreenPreRaster: $offscreenPreRaster, overScrollMode: $overScrollMode, pageZoom: $pageZoom, passwordAutosaveEnabled: $passwordAutosaveEnabled, pictographFontFamily: $pictographFontFamily, pinchZoomEnabled: $pinchZoomEnabled, pluginScriptsForMainFrameOnly: $pluginScriptsForMainFrameOnly, pluginScriptsOriginAllowList: $pluginScriptsOriginAllowList, preferredContentMode: $preferredContentMode, regexToAllowSyncUrlLoading: $regexToAllowSyncUrlLoading, regexToCancelSubFramesLoading: $regexToCancelSubFramesLoading, rendererPriorityPolicy: $rendererPriorityPolicy, reputationCheckingRequired: $reputationCheckingRequired, requestedWithHeaderOriginAllowList: $requestedWithHeaderOriginAllowList, resourceCustomSchemes: $resourceCustomSchemes, safeBrowsingEnabled: $safeBrowsingEnabled, sansSerifFontFamily: $sansSerifFontFamily, scrollBarDefaultDelayBeforeFade: $scrollBarDefaultDelayBeforeFade, scrollBarFadeDuration: $scrollBarFadeDuration, scrollBarStyle: $scrollBarStyle, scrollMultiplier: $scrollMultiplier, scrollbarFadingEnabled: $scrollbarFadingEnabled, scrollsToTop: $scrollsToTop, selectionGranularity: $selectionGranularity, serifFontFamily: $serifFontFamily, sharedCookiesEnabled: $sharedCookiesEnabled, shouldPrintBackgrounds: $shouldPrintBackgrounds, standardFontFamily: $standardFontFamily, statusBarEnabled: $statusBarEnabled, supportMultipleWindows: $supportMultipleWindows, supportZoom: $supportZoom, suppressesIncrementalRendering: $suppressesIncrementalRendering, textZoom: $textZoom, thirdPartyCookiesEnabled: $thirdPartyCookiesEnabled, transparentBackground: $transparentBackground, underPageBackgroundColor: $underPageBackgroundColor, upgradeKnownHostsToHTTPS: $upgradeKnownHostsToHTTPS, useOnAjaxProgress: $useOnAjaxProgress, useOnAjaxReadyStateChange: $useOnAjaxReadyStateChange, useOnDownloadStart: $useOnDownloadStart, useOnLoadResource: $useOnLoadResource, useOnNavigationResponse: $useOnNavigationResponse, useOnRenderProcessGone: $useOnRenderProcessGone, useOnShowFileChooser: $useOnShowFileChooser, useShouldInterceptAjaxRequest: $useShouldInterceptAjaxRequest, useShouldInterceptFetchRequest: $useShouldInterceptFetchRequest, useShouldInterceptRequest: $useShouldInterceptRequest, useShouldOverrideUrlLoading: $useShouldOverrideUrlLoading, useWideViewPort: $useWideViewPort, userAgent: $userAgent, verticalScrollBarEnabled: $verticalScrollBarEnabled, verticalScrollbarPosition: $verticalScrollbarPosition, verticalScrollbarThumbColor: $verticalScrollbarThumbColor, verticalScrollbarTrackColor: $verticalScrollbarTrackColor, webRTCUdpPortsRange: $webRTCUdpPortsRange, webViewAssetLoader: $webViewAssetLoader}';
+    return 'CygnusWebViewSettings{accessibilityIgnoresInvertColors: $accessibilityIgnoresInvertColors, algorithmicDarkeningAllowed: $algorithmicDarkeningAllowed, allowBackgroundAudioPlaying: $allowBackgroundAudioPlaying, allowContentAccess: $allowContentAccess, allowFileAccess: $allowFileAccess, allowFileAccessFromFileURLs: $allowFileAccessFromFileURLs, allowModalDialogs: $allowModalDialogs, allowTopNavigationToDataUrls: $allowTopNavigationToDataUrls, allowUniversalAccessFromFileURLs: $allowUniversalAccessFromFileURLs, allowingReadAccessTo: $allowingReadAccessTo, allowsAirPlayForMediaPlayback: $allowsAirPlayForMediaPlayback, allowsBackForwardNavigationGestures: $allowsBackForwardNavigationGestures, allowsInlineMediaPlayback: $allowsInlineMediaPlayback, allowsLinkPreview: $allowsLinkPreview, allowsPictureInPictureMediaPlayback: $allowsPictureInPictureMediaPlayback, alpha: $alpha, alwaysBounceHorizontal: $alwaysBounceHorizontal, alwaysBounceVertical: $alwaysBounceVertical, androidCompositionMode: $androidCompositionMode, appCachePath: $appCachePath, applePayAPIEnabled: $applePayAPIEnabled, applicationNameForUserAgent: $applicationNameForUserAgent, automaticallyAdjustsScrollIndicatorInsets: $automaticallyAdjustsScrollIndicatorInsets, blockNetworkImage: $blockNetworkImage, blockNetworkLoads: $blockNetworkLoads, browserAcceleratorKeysEnabled: $browserAcceleratorKeysEnabled, builtInZoomControls: $builtInZoomControls, cacheEnabled: $cacheEnabled, cacheMode: $cacheMode, contentBlockers: $contentBlockers, contentInsetAdjustmentBehavior: $contentInsetAdjustmentBehavior, corsAllowlist: $corsAllowlist, cursiveFontFamily: $cursiveFontFamily, cursorBlinkTime: $cursorBlinkTime, darkMode: $darkMode, dataDetectorTypes: $dataDetectorTypes, databaseEnabled: $databaseEnabled, decelerationRate: $decelerationRate, defaultFixedFontSize: $defaultFixedFontSize, defaultFontSize: $defaultFontSize, defaultTextEncodingName: $defaultTextEncodingName, defaultVideoPoster: $defaultVideoPoster, disableAnimations: $disableAnimations, disableContextMenu: $disableContextMenu, disableDefaultErrorPage: $disableDefaultErrorPage, disableHorizontalScroll: $disableHorizontalScroll, disableInputAccessoryView: $disableInputAccessoryView, disableLongPressContextMenuOnLinks: $disableLongPressContextMenuOnLinks, disableVerticalScroll: $disableVerticalScroll, disableWebSecurity: $disableWebSecurity, disabledActionModeMenuItems: $disabledActionModeMenuItems, disallowOverScroll: $disallowOverScroll, displayZoomControls: $displayZoomControls, domStorageEnabled: $domStorageEnabled, doubleClickDistance: $doubleClickDistance, doubleClickTime: $doubleClickTime, dragThreshold: $dragThreshold, drawCompositingIndicators: $drawCompositingIndicators, enable2DCanvasAcceleration: $enable2DCanvasAcceleration, enableCaretBrowsing: $enableCaretBrowsing, enableEncryptedMedia: $enableEncryptedMedia, enableJavaScriptMarkup: $enableJavaScriptMarkup, enableMedia: $enableMedia, enableMediaCapabilities: $enableMediaCapabilities, enableMockCaptureDevices: $enableMockCaptureDevices, enablePageCache: $enablePageCache, enableResizableTextAreas: $enableResizableTextAreas, enableSmoothScrolling: $enableSmoothScrolling, enableSpatialNavigation: $enableSpatialNavigation, enableTabsToLinks: $enableTabsToLinks, enableViewportScale: $enableViewportScale, enableWebRTC: $enableWebRTC, enableWriteConsoleMessagesToStdout: $enableWriteConsoleMessagesToStdout, enterpriseAuthenticationAppLinkPolicyEnabled: $enterpriseAuthenticationAppLinkPolicyEnabled, fantasyFontFamily: $fantasyFontFamily, fixedFontFamily: $fixedFontFamily, fontAntialias: $fontAntialias, fontDPI: $fontDPI, fontHintingStyle: $fontHintingStyle, fontSubpixelLayout: $fontSubpixelLayout, generalAutofillEnabled: $generalAutofillEnabled, geolocationEnabled: $geolocationEnabled, handleAcceleratorKeyPressed: $handleAcceleratorKeyPressed, hardwareAcceleration: $hardwareAcceleration, hiddenPdfToolbarItems: $hiddenPdfToolbarItems, horizontalScrollBarEnabled: $horizontalScrollBarEnabled, horizontalScrollbarThumbColor: $horizontalScrollbarThumbColor, horizontalScrollbarTrackColor: $horizontalScrollbarTrackColor, iframeAllow: $iframeAllow, iframeAllowFullscreen: $iframeAllowFullscreen, iframeAriaHidden: $iframeAriaHidden, iframeCsp: $iframeCsp, iframeName: $iframeName, iframeReferrerPolicy: $iframeReferrerPolicy, iframeRole: $iframeRole, iframeSandbox: $iframeSandbox, ignoresViewportScaleLimits: $ignoresViewportScaleLimits, incognito: $incognito, initialScale: $initialScale, interceptOnlyAsyncAjaxRequests: $interceptOnlyAsyncAjaxRequests, isDirectionalLockEnabled: $isDirectionalLockEnabled, isElementFullscreenEnabled: $isElementFullscreenEnabled, isFindInteractionEnabled: $isFindInteractionEnabled, isFraudulentWebsiteWarningEnabled: $isFraudulentWebsiteWarningEnabled, isInspectable: $isInspectable, isPagingEnabled: $isPagingEnabled, isSiteSpecificQuirksModeEnabled: $isSiteSpecificQuirksModeEnabled, isTextInteractionEnabled: $isTextInteractionEnabled, isUserInteractionEnabled: $isUserInteractionEnabled, itpEnabled: $itpEnabled, javaScriptBridgeEnabled: $javaScriptBridgeEnabled, javaScriptBridgeForMainFrameOnly: $javaScriptBridgeForMainFrameOnly, javaScriptBridgeOriginAllowList: $javaScriptBridgeOriginAllowList, javaScriptCanAccessClipboard: $javaScriptCanAccessClipboard, javaScriptCanOpenWindowsAutomatically: $javaScriptCanOpenWindowsAutomatically, javaScriptEnabled: $javaScriptEnabled, javaScriptHandlersForMainFrameOnly: $javaScriptHandlersForMainFrameOnly, javaScriptHandlersOriginAllowList: $javaScriptHandlersOriginAllowList, keyRepeatDelay: $keyRepeatDelay, keyRepeatInterval: $keyRepeatInterval, keyboardAvoidance: $keyboardAvoidance, layoutAlgorithm: $layoutAlgorithm, limitsNavigationsToAppBoundDomains: $limitsNavigationsToAppBoundDomains, loadWithOverviewMode: $loadWithOverviewMode, loadsImagesAutomatically: $loadsImagesAutomatically, maximumViewportInset: $maximumViewportInset, maximumZoomScale: $maximumZoomScale, mediaContentTypesRequiringHardwareSupport: $mediaContentTypesRequiringHardwareSupport, mediaPlaybackRequiresUserGesture: $mediaPlaybackRequiresUserGesture, mediaType: $mediaType, minimumFontSize: $minimumFontSize, minimumLogicalFontSize: $minimumLogicalFontSize, minimumViewportInset: $minimumViewportInset, minimumZoomScale: $minimumZoomScale, mixedContentMode: $mixedContentMode, needInitialFocus: $needInitialFocus, networkAvailable: $networkAvailable, nonClientRegionSupportEnabled: $nonClientRegionSupportEnabled, offscreenPreRaster: $offscreenPreRaster, overScrollMode: $overScrollMode, pageZoom: $pageZoom, passwordAutosaveEnabled: $passwordAutosaveEnabled, pictographFontFamily: $pictographFontFamily, pinchZoomEnabled: $pinchZoomEnabled, pluginScriptsForMainFrameOnly: $pluginScriptsForMainFrameOnly, pluginScriptsOriginAllowList: $pluginScriptsOriginAllowList, preferredContentMode: $preferredContentMode, regexToAllowSyncUrlLoading: $regexToAllowSyncUrlLoading, regexToCancelSubFramesLoading: $regexToCancelSubFramesLoading, rendererPriorityPolicy: $rendererPriorityPolicy, reputationCheckingRequired: $reputationCheckingRequired, requestedWithHeaderOriginAllowList: $requestedWithHeaderOriginAllowList, resourceCustomSchemes: $resourceCustomSchemes, safeBrowsingEnabled: $safeBrowsingEnabled, sansSerifFontFamily: $sansSerifFontFamily, scrollBarDefaultDelayBeforeFade: $scrollBarDefaultDelayBeforeFade, scrollBarFadeDuration: $scrollBarFadeDuration, scrollBarStyle: $scrollBarStyle, scrollMultiplier: $scrollMultiplier, scrollbarFadingEnabled: $scrollbarFadingEnabled, scrollsToTop: $scrollsToTop, selectionGranularity: $selectionGranularity, serifFontFamily: $serifFontFamily, sharedCookiesEnabled: $sharedCookiesEnabled, shouldPrintBackgrounds: $shouldPrintBackgrounds, standardFontFamily: $standardFontFamily, statusBarEnabled: $statusBarEnabled, supportMultipleWindows: $supportMultipleWindows, supportZoom: $supportZoom, suppressesIncrementalRendering: $suppressesIncrementalRendering, textZoom: $textZoom, thirdPartyCookiesEnabled: $thirdPartyCookiesEnabled, transparentBackground: $transparentBackground, underPageBackgroundColor: $underPageBackgroundColor, upgradeKnownHostsToHTTPS: $upgradeKnownHostsToHTTPS, useOnAjaxProgress: $useOnAjaxProgress, useOnAjaxReadyStateChange: $useOnAjaxReadyStateChange, useOnDownloadStart: $useOnDownloadStart, useOnLoadResource: $useOnLoadResource, useOnNavigationResponse: $useOnNavigationResponse, useOnRenderProcessGone: $useOnRenderProcessGone, useOnShowFileChooser: $useOnShowFileChooser, useShouldInterceptAjaxRequest: $useShouldInterceptAjaxRequest, useShouldInterceptFetchRequest: $useShouldInterceptFetchRequest, useShouldInterceptRequest: $useShouldInterceptRequest, useShouldOverrideUrlLoading: $useShouldOverrideUrlLoading, useWideViewPort: $useWideViewPort, userAgent: $userAgent, verticalScrollBarEnabled: $verticalScrollBarEnabled, verticalScrollbarPosition: $verticalScrollbarPosition, verticalScrollbarThumbColor: $verticalScrollbarThumbColor, verticalScrollbarTrackColor: $verticalScrollbarTrackColor, webRTCUdpPortsRange: $webRTCUdpPortsRange, webViewAssetLoader: $webViewAssetLoader}';
   }
 }
 
@@ -3171,67 +3225,67 @@ class InAppWebViewSettings {
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-///List of [InAppWebViewSettings]'s properties that can be used to check i they are supported or not by the current platform.
-enum InAppWebViewSettingsProperty {
-  ///Can be used to check if the [InAppWebViewSettings.accessibilityIgnoresInvertColors] property is supported at runtime.
+///List of [CygnusWebViewSettings]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusWebViewSettingsProperty {
+  ///Can be used to check if the [CygnusWebViewSettings.accessibilityIgnoresInvertColors] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.accessibilityIgnoresInvertColors.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.accessibilityIgnoresInvertColors.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 11.0+ ([Official API - UIView.accessibilityIgnoresInvertColors](https://developer.apple.com/documentation/uikit/uiview/2865843-accessibilityignoresinvertcolors))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   accessibilityIgnoresInvertColors,
 
-  ///Can be used to check if the [InAppWebViewSettings.algorithmicDarkeningAllowed] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.algorithmicDarkeningAllowed] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.algorithmicDarkeningAllowed.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.algorithmicDarkeningAllowed.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 29+ ([Official API - WebSettingsCompat.setAlgorithmicDarkeningAllowed](https://developer.android.com/reference/androidx/webkit/WebSettingsCompat#setAlgorithmicDarkeningAllowed(android.webkit.WebSettings,boolean))):
-  ///    - available on Android only if [WebViewFeature.ALGORITHMIC_DARKENING] feature is supported.
+  ///    - available on Android only if [CygnusWebViewFeature.ALGORITHMIC_DARKENING] feature is supported.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   algorithmicDarkeningAllowed,
 
-  ///Can be used to check if the [InAppWebViewSettings.allowBackgroundAudioPlaying] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.allowBackgroundAudioPlaying] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.allowBackgroundAudioPlaying.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.allowBackgroundAudioPlaying.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowBackgroundAudioPlaying,
 
-  ///Can be used to check if the [InAppWebViewSettings.allowContentAccess] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.allowContentAccess] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.allowContentAccess.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.allowContentAccess.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setAllowContentAccess](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setAllowContentAccess(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowContentAccess,
 
-  ///Can be used to check if the [InAppWebViewSettings.allowFileAccess] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.allowFileAccess] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.allowFileAccess.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.allowFileAccess.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setAllowFileAccess](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setAllowFileAccess(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowFileAccess,
 
-  ///Can be used to check if the [InAppWebViewSettings.allowFileAccessFromFileURLs] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.allowFileAccessFromFileURLs] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.allowFileAccessFromFileURLs.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.allowFileAccessFromFileURLs.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setAllowFileAccessFromFileURLs](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setAllowFileAccessFromFileURLs(boolean)))
@@ -3239,36 +3293,36 @@ enum InAppWebViewSettingsProperty {
   ///- macOS WKWebView
   ///- Linux WPE WebKit 2.10+ ([Official API - WebKitSettings.allow-file-access-from-file-urls](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.allow-file-access-from-file-urls.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowFileAccessFromFileURLs,
 
-  ///Can be used to check if the [InAppWebViewSettings.allowModalDialogs] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.allowModalDialogs] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.allowModalDialogs.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.allowModalDialogs.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WebKitSettings.allow-modal-dialogs](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.allow-modal-dialogs.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowModalDialogs,
 
-  ///Can be used to check if the [InAppWebViewSettings.allowTopNavigationToDataUrls] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.allowTopNavigationToDataUrls] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.allowTopNavigationToDataUrls.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.allowTopNavigationToDataUrls.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.28+ ([Official API - WebKitSettings.allow-top-navigation-to-data-urls](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.allow-top-navigation-to-data-urls.html)):
   ///    - Requires WPE WebKit 2.28 or later
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowTopNavigationToDataUrls,
 
-  ///Can be used to check if the [InAppWebViewSettings.allowUniversalAccessFromFileURLs] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.allowUniversalAccessFromFileURLs] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.allowUniversalAccessFromFileURLs.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.allowUniversalAccessFromFileURLs.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setAllowUniversalAccessFromFileURLs](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setAllowUniversalAccessFromFileURLs(boolean)))
@@ -3276,272 +3330,272 @@ enum InAppWebViewSettingsProperty {
   ///- macOS WKWebView
   ///- Linux WPE WebKit 2.14+ ([Official API - WebKitSettings.allow-universal-access-from-file-urls](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.allow-universal-access-from-file-urls.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowUniversalAccessFromFileURLs,
 
-  ///Can be used to check if the [InAppWebViewSettings.allowingReadAccessTo] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.allowingReadAccessTo] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.allowingReadAccessTo.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.allowingReadAccessTo.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowingReadAccessTo,
 
-  ///Can be used to check if the [InAppWebViewSettings.allowsAirPlayForMediaPlayback] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.allowsAirPlayForMediaPlayback] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.allowsAirPlayForMediaPlayback.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.allowsAirPlayForMediaPlayback.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKWebViewConfiguration.allowsAirPlayForMediaPlayback](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395673-allowsairplayformediaplayback))
   ///- macOS WKWebView ([Official API - WKWebViewConfiguration.allowsAirPlayForMediaPlayback](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395673-allowsairplayformediaplayback))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowsAirPlayForMediaPlayback,
 
-  ///Can be used to check if the [InAppWebViewSettings.allowsBackForwardNavigationGestures] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.allowsBackForwardNavigationGestures] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.allowsBackForwardNavigationGestures.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.allowsBackForwardNavigationGestures.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKWebView.allowsBackForwardNavigationGestures](https://developer.apple.com/documentation/webkit/wkwebview/1414995-allowsbackforwardnavigationgestu))
   ///- macOS WKWebView ([Official API - WKWebView.allowsBackForwardNavigationGestures](https://developer.apple.com/documentation/webkit/wkwebview/1414995-allowsbackforwardnavigationgestu))
   ///- Windows WebView2 1.0.992.28+ ([Official API - ICoreWebView2Settings6.put_IsSwipeNavigationEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings6?view=webview2-1.0.2849.39#put_isswipenavigationenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowsBackForwardNavigationGestures,
 
-  ///Can be used to check if the [InAppWebViewSettings.allowsInlineMediaPlayback] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.allowsInlineMediaPlayback] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.allowsInlineMediaPlayback.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.allowsInlineMediaPlayback.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKWebViewConfiguration.allowsInlineMediaPlayback](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614793-allowsinlinemediaplayback))
   ///- Linux WPE WebKit ([Official API - WebKitSettings.media-playback-allows-inline](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.media-playback-allows-inline.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowsInlineMediaPlayback,
 
-  ///Can be used to check if the [InAppWebViewSettings.allowsLinkPreview] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.allowsLinkPreview] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.allowsLinkPreview.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.allowsLinkPreview.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKWebView.allowsLinkPreview](https://developer.apple.com/documentation/webkit/wkwebview/1415000-allowslinkpreview))
   ///- macOS WKWebView ([Official API - WKWebView.allowsLinkPreview](https://developer.apple.com/documentation/webkit/wkwebview/1415000-allowslinkpreview))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowsLinkPreview,
 
-  ///Can be used to check if the [InAppWebViewSettings.allowsPictureInPictureMediaPlayback] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.allowsPictureInPictureMediaPlayback] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.allowsPictureInPictureMediaPlayback.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.allowsPictureInPictureMediaPlayback.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKWebViewConfiguration.allowsPictureInPictureMediaPlayback](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614792-allowspictureinpicturemediaplayb))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   allowsPictureInPictureMediaPlayback,
 
-  ///Can be used to check if the [InAppWebViewSettings.alpha] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.alpha] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.alpha.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.alpha.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.setAlpha](https://developer.android.com/reference/android/view/View#setAlpha(float)))
   ///- iOS WKWebView ([Official API - UIView.alpha](https://developer.apple.com/documentation/uikit/uiview/1622417-alpha))
   ///- macOS WKWebView ([Official API - NSView.alphaValue](https://developer.apple.com/documentation/appkit/nsview/1483560-alphavalue))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   alpha,
 
-  ///Can be used to check if the [InAppWebViewSettings.alwaysBounceHorizontal] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.alwaysBounceHorizontal] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.alwaysBounceHorizontal.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.alwaysBounceHorizontal.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - UIScrollView.alwaysBounceHorizontal](https://developer.apple.com/documentation/uikit/uiscrollview/1619393-alwaysbouncehorizontal))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   alwaysBounceHorizontal,
 
-  ///Can be used to check if the [InAppWebViewSettings.alwaysBounceVertical] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.alwaysBounceVertical] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.alwaysBounceVertical.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.alwaysBounceVertical.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - UIScrollView.alwaysBounceVertical](https://developer.apple.com/documentation/uikit/uiscrollview/1619383-alwaysbouncevertical))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   alwaysBounceVertical,
 
-  ///Can be used to check if the [InAppWebViewSettings.androidCompositionMode] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.androidCompositionMode] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.androidCompositionMode.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.androidCompositionMode.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - [AndroidCompositionMode.HYBRID_COMPOSITION_PLUS_PLUS] additionally requires API 34+, Impeller running on Vulkan, and the embedding application to opt in -- a plugin cannot turn it on for the application. Apps opt in with the `io.flutter.embedding.android.EnableHcpp` manifest meta-data (used by release builds) or `flutter run --enable-hcpp` during development. When any requirement is missing it falls back to [AndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION].
+  ///    - [CygnusAndroidCompositionMode.HYBRID_COMPOSITION_PLUS_PLUS] additionally requires API 34+, Impeller running on Vulkan, and the embedding application to opt in -- a plugin cannot turn it on for the application. Apps opt in with the `io.flutter.embedding.android.EnableHcpp` manifest meta-data (used by release builds) or `flutter run --enable-hcpp` during development. When any requirement is missing it falls back to [CygnusAndroidCompositionMode.TEXTURE_LAYER_HYBRID_COMPOSITION].
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   androidCompositionMode,
 
-  ///Can be used to check if the [InAppWebViewSettings.appCachePath] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.appCachePath] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.appCachePath.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.appCachePath.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView (Official API - WebSettings.setAppCachePath)
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   appCachePath,
 
-  ///Can be used to check if the [InAppWebViewSettings.applePayAPIEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.applePayAPIEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.applePayAPIEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.applePayAPIEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 13.0+
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   applePayAPIEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.applicationNameForUserAgent] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.applicationNameForUserAgent] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.applicationNameForUserAgent.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.applicationNameForUserAgent.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView ([Official API - WKWebViewConfiguration.applicationNameForUserAgent](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395665-applicationnameforuseragent))
   ///- macOS WKWebView ([Official API - WKWebViewConfiguration.applicationNameForUserAgent](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395665-applicationnameforuseragent))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   applicationNameForUserAgent,
 
-  ///Can be used to check if the [InAppWebViewSettings.automaticallyAdjustsScrollIndicatorInsets] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.automaticallyAdjustsScrollIndicatorInsets] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.automaticallyAdjustsScrollIndicatorInsets.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.automaticallyAdjustsScrollIndicatorInsets.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 13.0+ ([Official API - UIScrollView.automaticallyAdjustsScrollIndicatorInsets](https://developer.apple.com/documentation/uikit/uiscrollview/3198043-automaticallyadjustsscrollindica))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   automaticallyAdjustsScrollIndicatorInsets,
 
-  ///Can be used to check if the [InAppWebViewSettings.blockNetworkImage] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.blockNetworkImage] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.blockNetworkImage.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.blockNetworkImage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setBlockNetworkImage](https://developer.android.com/reference/android/webkit/WebSettings#setBlockNetworkImage(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   blockNetworkImage,
 
-  ///Can be used to check if the [InAppWebViewSettings.blockNetworkLoads] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.blockNetworkLoads] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.blockNetworkLoads.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.blockNetworkLoads.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setBlockNetworkLoads](https://developer.android.com/reference/android/webkit/WebSettings#setBlockNetworkLoads(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   blockNetworkLoads,
 
-  ///Can be used to check if the [InAppWebViewSettings.browserAcceleratorKeysEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.browserAcceleratorKeysEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.browserAcceleratorKeysEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.browserAcceleratorKeysEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.864.35+ ([Official API - ICoreWebView2Settings3.put_IsBuiltInErrorPageEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings3?view=webview2-1.0.2849.39#put_arebrowseracceleratorkeysenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   browserAcceleratorKeysEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.builtInZoomControls] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.builtInZoomControls] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.builtInZoomControls.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.builtInZoomControls.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setBuiltInZoomControls](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setBuiltInZoomControls(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   builtInZoomControls,
 
-  ///Can be used to check if the [InAppWebViewSettings.cacheEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.cacheEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.cacheEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.cacheEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   cacheEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.cacheMode] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.cacheMode] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.cacheMode.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.cacheMode.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setCacheMode](https://developer.android.com/reference/android/webkit/WebSettings#setCacheMode(int)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   cacheMode,
 
-  ///Can be used to check if the [InAppWebViewSettings.clearCache] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.clearCache] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.clearCache.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.clearCache.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
-  @Deprecated('Use InAppWebViewController.clearAllCache instead')
+  @Deprecated('Use CygnusWebViewController.clearAllCache instead')
   clearCache,
 
-  ///Can be used to check if the [InAppWebViewSettings.clearSessionCache] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.clearSessionCache] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.clearSessionCache.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.clearSessionCache.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
-  @Deprecated('Use CookieManager.removeSessionCookies instead')
+  @Deprecated('Use CygnusCookieManager.removeSessionCookies instead')
   clearSessionCache,
 
-  ///Can be used to check if the [InAppWebViewSettings.contentBlockers] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.contentBlockers] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.contentBlockers.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.contentBlockers.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -3549,165 +3603,165 @@ enum InAppWebViewSettingsProperty {
   ///- macOS WKWebView 10.13+
   ///- Linux WPE WebKit ([Official API - WebKitUserContentFilter](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/class.UserContentFilter.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   contentBlockers,
 
-  ///Can be used to check if the [InAppWebViewSettings.contentInsetAdjustmentBehavior] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.contentInsetAdjustmentBehavior] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.contentInsetAdjustmentBehavior.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.contentInsetAdjustmentBehavior.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 11.0+ ([Official API - UIScrollView.contentInsetAdjustmentBehavior](https://developer.apple.com/documentation/uikit/uiscrollview/2902261-contentinsetadjustmentbehavior))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   contentInsetAdjustmentBehavior,
 
-  ///Can be used to check if the [InAppWebViewSettings.corsAllowlist] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.corsAllowlist] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.corsAllowlist.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.corsAllowlist.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.34+ ([Official API - webkit_web_view_set_cors_allowlist](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.WebView.set_cors_allowlist.html)):
   ///    - Pattern format: [protocol]://[host]:[port]. All three components are required.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   corsAllowlist,
 
-  ///Can be used to check if the [InAppWebViewSettings.cursiveFontFamily] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.cursiveFontFamily] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.cursiveFontFamily.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.cursiveFontFamily.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setCursiveFontFamily](https://developer.android.com/reference/android/webkit/WebSettings#setCursiveFontFamily(java.lang.String)))
   ///- Linux WPE WebKit ([Official API - WebKitSettings.cursive-font-family](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.cursive-font-family.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   cursiveFontFamily,
 
-  ///Can be used to check if the [InAppWebViewSettings.cursorBlinkTime] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.cursorBlinkTime] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.cursorBlinkTime.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.cursorBlinkTime.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WPESettings.cursor-blink-time](https://wpewebkit.org/reference/stable/wpe-platform-2.0/class.Settings.html)):
   ///    - This is a WPE Platform display-level setting. Value is in milliseconds.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   cursorBlinkTime,
 
-  ///Can be used to check if the [InAppWebViewSettings.darkMode] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.darkMode] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.darkMode.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.darkMode.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WPESettings.dark-mode](https://wpewebkit.org/reference/stable/wpe-platform-2.0/class.Settings.html)):
   ///    - This is a WPE Platform display-level setting that affects all WebViews.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   darkMode,
 
-  ///Can be used to check if the [InAppWebViewSettings.dataDetectorTypes] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.dataDetectorTypes] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.dataDetectorTypes.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.dataDetectorTypes.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 10+ ([Official API - WKWebViewConfiguration.dataDetectorTypes](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1641937-datadetectortypes))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   dataDetectorTypes,
 
-  ///Can be used to check if the [InAppWebViewSettings.databaseEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.databaseEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.databaseEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.databaseEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setDatabaseEnabled](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setDatabaseEnabled(boolean)))
   ///- Linux WPE WebKit ([Official API - WebKitSettings.enable-html5-database](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-html5-database.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   databaseEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.decelerationRate] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.decelerationRate] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.decelerationRate.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.decelerationRate.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - UIScrollView.decelerationRate](https://developer.apple.com/documentation/uikit/uiscrollview/1619438-decelerationrate))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   decelerationRate,
 
-  ///Can be used to check if the [InAppWebViewSettings.defaultFixedFontSize] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.defaultFixedFontSize] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.defaultFixedFontSize.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.defaultFixedFontSize.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setDefaultFixedFontSize](https://developer.android.com/reference/android/webkit/WebSettings#setDefaultFixedFontSize(int)))
   ///- Linux WPE WebKit ([Official API - WebKitSettings.default-monospace-font-size](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.default-monospace-font-size.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   defaultFixedFontSize,
 
-  ///Can be used to check if the [InAppWebViewSettings.defaultFontSize] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.defaultFontSize] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.defaultFontSize.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.defaultFontSize.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setDefaultFontSize](https://developer.android.com/reference/android/webkit/WebSettings#setDefaultFontSize(int)))
   ///- Linux WPE WebKit ([Official API - WebKitSettings.default-font-size](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.default-font-size.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   defaultFontSize,
 
-  ///Can be used to check if the [InAppWebViewSettings.defaultTextEncodingName] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.defaultTextEncodingName] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.defaultTextEncodingName.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.defaultTextEncodingName.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setDefaultTextEncodingName](https://developer.android.com/reference/android/webkit/WebSettings#setDefaultTextEncodingName(java.lang.String)))
   ///- Linux WPE WebKit ([Official API - WebKitSettings.default-charset](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.default-charset.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   defaultTextEncodingName,
 
-  ///Can be used to check if the [InAppWebViewSettings.defaultVideoPoster] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.defaultVideoPoster] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.defaultVideoPoster.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.defaultVideoPoster.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   defaultVideoPoster,
 
-  ///Can be used to check if the [InAppWebViewSettings.disableAnimations] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.disableAnimations] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.disableAnimations.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.disableAnimations.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WPESettings.disable-animations](https://wpewebkit.org/reference/stable/wpe-platform-2.0/class.Settings.html)):
   ///    - This is a WPE Platform display-level setting for accessibility.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   disableAnimations,
 
-  ///Can be used to check if the [InAppWebViewSettings.disableContextMenu] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.disableContextMenu] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.disableContextMenu.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.disableContextMenu.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -3715,515 +3769,515 @@ enum InAppWebViewSettingsProperty {
   ///- Web \<iframe\> but requires same origin
   ///- Windows WebView2 ([Official API - ICoreWebView2Settings.put_AreDefaultContextMenusEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings?view=webview2-1.0.2210.55#put_aredefaultcontextmenusenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   disableContextMenu,
 
-  ///Can be used to check if the [InAppWebViewSettings.disableDefaultErrorPage] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.disableDefaultErrorPage] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.disableDefaultErrorPage.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.disableDefaultErrorPage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- Windows WebView2 ([Official API - ICoreWebView2Settings.put_IsBuiltInErrorPageEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings?view=webview2-1.0.2849.39#put_isbuiltinerrorpageenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   disableDefaultErrorPage,
 
-  ///Can be used to check if the [InAppWebViewSettings.disableHorizontalScroll] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.disableHorizontalScroll] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.disableHorizontalScroll.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.disableHorizontalScroll.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- Web \<iframe\> but requires same origin
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   disableHorizontalScroll,
 
-  ///Can be used to check if the [InAppWebViewSettings.disableInputAccessoryView] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.disableInputAccessoryView] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.disableInputAccessoryView.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.disableInputAccessoryView.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   disableInputAccessoryView,
 
-  ///Can be used to check if the [InAppWebViewSettings.disableLongPressContextMenuOnLinks] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.disableLongPressContextMenuOnLinks] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.disableLongPressContextMenuOnLinks.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.disableLongPressContextMenuOnLinks.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   disableLongPressContextMenuOnLinks,
 
-  ///Can be used to check if the [InAppWebViewSettings.disableVerticalScroll] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.disableVerticalScroll] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.disableVerticalScroll.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.disableVerticalScroll.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- Web \<iframe\> but requires same origin
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   disableVerticalScroll,
 
-  ///Can be used to check if the [InAppWebViewSettings.disableWebSecurity] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.disableWebSecurity] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.disableWebSecurity.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.disableWebSecurity.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.40+ ([Official API - WebKitSettings.disable-web-security](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.disable-web-security.html)):
   ///    - Requires WPE WebKit 2.40 or later
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   disableWebSecurity,
 
-  ///Can be used to check if the [InAppWebViewSettings.disabledActionModeMenuItems] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.disabledActionModeMenuItems] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.disabledActionModeMenuItems.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.disabledActionModeMenuItems.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 24+ ([Official API - WebSettings.setDisabledActionModeMenuItems](https://developer.android.com/reference/android/webkit/WebSettings#setDisabledActionModeMenuItems(int)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   disabledActionModeMenuItems,
 
-  ///Can be used to check if the [InAppWebViewSettings.disallowOverScroll] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.disallowOverScroll] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.disallowOverScroll.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.disallowOverScroll.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   disallowOverScroll,
 
-  ///Can be used to check if the [InAppWebViewSettings.displayZoomControls] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.displayZoomControls] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.displayZoomControls.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.displayZoomControls.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setDisplayZoomControls](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setDisplayZoomControls(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   displayZoomControls,
 
-  ///Can be used to check if the [InAppWebViewSettings.domStorageEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.domStorageEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.domStorageEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.domStorageEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setDomStorageEnabled](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setDomStorageEnabled(boolean)))
   ///- Linux WPE WebKit ([Official API - WebKitSettings.enable-html5-local-storage](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-html5-local-storage.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   domStorageEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.doubleClickDistance] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.doubleClickDistance] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.doubleClickDistance.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.doubleClickDistance.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WPESettings.double-click-distance](https://wpewebkit.org/reference/stable/wpe-platform-2.0/class.Settings.html)):
   ///    - This is a WPE Platform display-level setting. Value is in pixels.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   doubleClickDistance,
 
-  ///Can be used to check if the [InAppWebViewSettings.doubleClickTime] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.doubleClickTime] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.doubleClickTime.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.doubleClickTime.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WPESettings.double-click-time](https://wpewebkit.org/reference/stable/wpe-platform-2.0/class.Settings.html)):
   ///    - This is a WPE Platform display-level setting. Value is in milliseconds.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   doubleClickTime,
 
-  ///Can be used to check if the [InAppWebViewSettings.dragThreshold] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.dragThreshold] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.dragThreshold.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.dragThreshold.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WPESettings.drag-threshold](https://wpewebkit.org/reference/stable/wpe-platform-2.0/class.Settings.html)):
   ///    - This is a WPE Platform display-level setting. Value is in pixels.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   dragThreshold,
 
-  ///Can be used to check if the [InAppWebViewSettings.drawCompositingIndicators] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.drawCompositingIndicators] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.drawCompositingIndicators.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.drawCompositingIndicators.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WebKitSettings.draw-compositing-indicators](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.draw-compositing-indicators.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   drawCompositingIndicators,
 
-  ///Can be used to check if the [InAppWebViewSettings.enable2DCanvasAcceleration] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enable2DCanvasAcceleration] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enable2DCanvasAcceleration.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enable2DCanvasAcceleration.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.46+ ([Official API - WebKitSettings.enable-2d-canvas-acceleration](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-2d-canvas-acceleration.html)):
   ///    - Requires WPE WebKit 2.46 or later
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enable2DCanvasAcceleration,
 
-  ///Can be used to check if the [InAppWebViewSettings.enableCaretBrowsing] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enableCaretBrowsing] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enableCaretBrowsing.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enableCaretBrowsing.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WebKitSettings.enable-caret-browsing](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-caret-browsing.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableCaretBrowsing,
 
-  ///Can be used to check if the [InAppWebViewSettings.enableEncryptedMedia] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enableEncryptedMedia] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enableEncryptedMedia.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enableEncryptedMedia.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.20+ ([Official API - WebKitSettings.enable-encrypted-media](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-encrypted-media.html)):
   ///    - Requires WPE WebKit 2.20 or later
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableEncryptedMedia,
 
-  ///Can be used to check if the [InAppWebViewSettings.enableJavaScriptMarkup] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enableJavaScriptMarkup] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enableJavaScriptMarkup.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enableJavaScriptMarkup.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.24+ ([Official API - WebKitSettings.enable-javascript-markup](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-javascript-markup.html)):
   ///    - Requires WPE WebKit 2.24 or later
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableJavaScriptMarkup,
 
-  ///Can be used to check if the [InAppWebViewSettings.enableMedia] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enableMedia] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enableMedia.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enableMedia.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.26+ ([Official API - WebKitSettings.enable-media](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-media.html)):
   ///    - Requires WPE WebKit 2.26 or later
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableMedia,
 
-  ///Can be used to check if the [InAppWebViewSettings.enableMediaCapabilities] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enableMediaCapabilities] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enableMediaCapabilities.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enableMediaCapabilities.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.22+ ([Official API - WebKitSettings.enable-media-capabilities](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-media-capabilities.html)):
   ///    - Requires WPE WebKit 2.22 or later
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableMediaCapabilities,
 
-  ///Can be used to check if the [InAppWebViewSettings.enableMockCaptureDevices] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enableMockCaptureDevices] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enableMockCaptureDevices.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enableMockCaptureDevices.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.24+ ([Official API - WebKitSettings.enable-mock-capture-devices](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-mock-capture-devices.html)):
   ///    - Requires WPE WebKit 2.24 or later
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableMockCaptureDevices,
 
-  ///Can be used to check if the [InAppWebViewSettings.enablePageCache] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enablePageCache] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enablePageCache.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enablePageCache.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WebKitSettings.enable-page-cache](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-page-cache.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enablePageCache,
 
-  ///Can be used to check if the [InAppWebViewSettings.enableResizableTextAreas] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enableResizableTextAreas] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enableResizableTextAreas.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enableResizableTextAreas.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WebKitSettings.enable-resizable-text-areas](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-resizable-text-areas.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableResizableTextAreas,
 
-  ///Can be used to check if the [InAppWebViewSettings.enableSmoothScrolling] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enableSmoothScrolling] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enableSmoothScrolling.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enableSmoothScrolling.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WebKitSettings.enable-smooth-scrolling](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-smooth-scrolling.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableSmoothScrolling,
 
-  ///Can be used to check if the [InAppWebViewSettings.enableSpatialNavigation] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enableSpatialNavigation] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enableSpatialNavigation.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enableSpatialNavigation.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WebKitSettings.enable-spatial-navigation](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-spatial-navigation.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableSpatialNavigation,
 
-  ///Can be used to check if the [InAppWebViewSettings.enableTabsToLinks] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enableTabsToLinks] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enableTabsToLinks.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enableTabsToLinks.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WebKitSettings.enable-tabs-to-links](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-tabs-to-links.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableTabsToLinks,
 
-  ///Can be used to check if the [InAppWebViewSettings.enableViewportScale] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enableViewportScale] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enableViewportScale.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enableViewportScale.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableViewportScale,
 
-  ///Can be used to check if the [InAppWebViewSettings.enableWebRTC] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enableWebRTC] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enableWebRTC.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enableWebRTC.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.38+ ([Official API - WebKitSettings.enable-webrtc](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-webrtc.html)):
   ///    - Requires WPE WebKit 2.38 or later
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableWebRTC,
 
-  ///Can be used to check if the [InAppWebViewSettings.enableWriteConsoleMessagesToStdout] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enableWriteConsoleMessagesToStdout] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enableWriteConsoleMessagesToStdout.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enableWriteConsoleMessagesToStdout.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WebKitSettings.enable-write-console-messages-to-stdout](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-write-console-messages-to-stdout.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableWriteConsoleMessagesToStdout,
 
-  ///Can be used to check if the [InAppWebViewSettings.enterpriseAuthenticationAppLinkPolicyEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.enterpriseAuthenticationAppLinkPolicyEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.enterpriseAuthenticationAppLinkPolicyEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.enterpriseAuthenticationAppLinkPolicyEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - available on Android only if [WebViewFeature.ENTERPRISE_AUTHENTICATION_APP_LINK_POLICY] feature is supported.
+  ///    - available on Android only if [CygnusWebViewFeature.ENTERPRISE_AUTHENTICATION_APP_LINK_POLICY] feature is supported.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enterpriseAuthenticationAppLinkPolicyEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.fantasyFontFamily] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.fantasyFontFamily] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.fantasyFontFamily.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.fantasyFontFamily.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setFantasyFontFamily](https://developer.android.com/reference/android/webkit/WebSettings#setFantasyFontFamily(java.lang.String)))
   ///- Linux WPE WebKit ([Official API - WebKitSettings.fantasy-font-family](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.fantasy-font-family.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   fantasyFontFamily,
 
-  ///Can be used to check if the [InAppWebViewSettings.fixedFontFamily] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.fixedFontFamily] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.fixedFontFamily.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.fixedFontFamily.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setFixedFontFamily](https://developer.android.com/reference/android/webkit/WebSettings#setFixedFontFamily(java.lang.String)))
   ///- Linux WPE WebKit ([Official API - WebKitSettings.monospace-font-family](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.monospace-font-family.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   fixedFontFamily,
 
-  ///Can be used to check if the [InAppWebViewSettings.fontAntialias] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.fontAntialias] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.fontAntialias.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.fontAntialias.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WPESettings.font-antialias](https://wpewebkit.org/reference/stable/wpe-platform-2.0/class.Settings.html)):
   ///    - This is a WPE Platform display-level setting for font rendering.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   fontAntialias,
 
-  ///Can be used to check if the [InAppWebViewSettings.fontDPI] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.fontDPI] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.fontDPI.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.fontDPI.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WPESettings.font-dpi](https://wpewebkit.org/reference/stable/wpe-platform-2.0/class.Settings.html)):
   ///    - This is a WPE Platform display-level setting. Default is typically 96.0 DPI.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   fontDPI,
 
-  ///Can be used to check if the [InAppWebViewSettings.fontHintingStyle] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.fontHintingStyle] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.fontHintingStyle.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.fontHintingStyle.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WPESettings.font-hinting-style](https://wpewebkit.org/reference/stable/wpe-platform-2.0/class.Settings.html)):
   ///    - This is a WPE Platform display-level setting for font rendering.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   fontHintingStyle,
 
-  ///Can be used to check if the [InAppWebViewSettings.fontSubpixelLayout] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.fontSubpixelLayout] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.fontSubpixelLayout.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.fontSubpixelLayout.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WPESettings.font-subpixel-layout](https://wpewebkit.org/reference/stable/wpe-platform-2.0/class.Settings.html)):
   ///    - This is a WPE Platform display-level setting for font rendering.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   fontSubpixelLayout,
 
-  ///Can be used to check if the [InAppWebViewSettings.forceDark] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.forceDark] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.forceDark.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.forceDark.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 29+ ([Official API - WebSettings.setForceDark](https://developer.android.com/reference/android/webkit/WebSettings#setForceDark(int)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use algorithmicDarkeningAllowed instead')
   forceDark,
 
-  ///Can be used to check if the [InAppWebViewSettings.forceDarkStrategy] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.forceDarkStrategy] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.forceDarkStrategy.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.forceDarkStrategy.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettingsCompat.setForceDarkStrategy](https://developer.android.com/reference/androidx/webkit/WebSettingsCompat#setForceDarkStrategy(android.webkit.WebSettings,int))):
-  ///    - it will take effect only if [WebViewFeature.isFeatureSupported] returns `true` for [WebViewFeature.FORCE_DARK_STRATEGY].
+  ///    - it will take effect only if [CygnusWebViewFeature.isFeatureSupported] returns `true` for [CygnusWebViewFeature.FORCE_DARK_STRATEGY].
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use algorithmicDarkeningAllowed instead')
   forceDarkStrategy,
 
-  ///Can be used to check if the [InAppWebViewSettings.generalAutofillEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.generalAutofillEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.generalAutofillEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.generalAutofillEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.902.49+ ([Official API - ICoreWebView2Settings4.put_IsGeneralAutofillEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings4?view=webview2-1.0.2849.39#put_isgeneralautofillenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   generalAutofillEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.geolocationEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.geolocationEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.geolocationEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.geolocationEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setGeolocationEnabled](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setGeolocationEnabled(boolean))):
-  ///    - Please note that in order for the Geolocation API to be usable by a page in the WebView, the following requirements must be met: - an application must have permission to access the device location, see [Manifest.permission.ACCESS_COARSE_LOCATION](https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION), [Manifest.permission.ACCESS_FINE_LOCATION](https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION); - an application must provide an implementation of the [PlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt] callback to receive notifications that a page is requesting access to location via the JavaScript Geolocation API.
+  ///    - Please note that in order for the Geolocation API to be usable by a page in the WebView, the following requirements must be met: - an application must have permission to access the device location, see [Manifest.permission.ACCESS_COARSE_LOCATION](https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION), [Manifest.permission.ACCESS_FINE_LOCATION](https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION); - an application must provide an implementation of the [CygnusPlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt] callback to receive notifications that a page is requesting access to location via the JavaScript Geolocation API.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   geolocationEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.handleAcceleratorKeyPressed] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.handleAcceleratorKeyPressed] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.handleAcceleratorKeyPressed.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.handleAcceleratorKeyPressed.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   handleAcceleratorKeyPressed,
 
-  ///Can be used to check if the [InAppWebViewSettings.hardwareAcceleration] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.hardwareAcceleration] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.hardwareAcceleration.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.hardwareAcceleration.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.setLayerType](https://developer.android.com/reference/android/webkit/WebView#setLayerType(int,%20android.graphics.Paint)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   hardwareAcceleration,
 
-  ///Can be used to check if the [InAppWebViewSettings.hiddenPdfToolbarItems] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.hiddenPdfToolbarItems] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.hiddenPdfToolbarItems.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.hiddenPdfToolbarItems.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.1185.39+ ([Official API - ICoreWebView2Settings7.put_HiddenPdfToolbarItems](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings7?view=webview2-1.0.2849.39#put_hiddenpdftoolbaritems))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   hiddenPdfToolbarItems,
 
-  ///Can be used to check if the [InAppWebViewSettings.horizontalScrollBarEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.horizontalScrollBarEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.horizontalScrollBarEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.horizontalScrollBarEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.setHorizontalScrollBarEnabled](https://developer.android.com/reference/android/view/View#setHorizontalScrollBarEnabled(boolean)))
@@ -4231,134 +4285,134 @@ enum InAppWebViewSettingsProperty {
   ///- Web \<iframe\> but requires same origin:
   ///    - It must have the same value of [verticalScrollBarEnabled] to take effect.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   horizontalScrollBarEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.horizontalScrollbarThumbColor] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.horizontalScrollbarThumbColor] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.horizontalScrollbarThumbColor.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.horizontalScrollbarThumbColor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 29+ ([Official API - View.setHorizontalScrollbarThumbDrawable](https://developer.android.com/reference/android/view/View#setHorizontalScrollbarThumbDrawable(android.graphics.drawable.Drawable)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   horizontalScrollbarThumbColor,
 
-  ///Can be used to check if the [InAppWebViewSettings.horizontalScrollbarTrackColor] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.horizontalScrollbarTrackColor] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.horizontalScrollbarTrackColor.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.horizontalScrollbarTrackColor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 29+ ([Official API - View.setHorizontalScrollbarTrackDrawable](https://developer.android.com/reference/android/view/View#setHorizontalScrollbarTrackDrawable(android.graphics.drawable.Drawable)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   horizontalScrollbarTrackColor,
 
-  ///Can be used to check if the [InAppWebViewSettings.iframeAllow] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.iframeAllow] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.iframeAllow.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.iframeAllow.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Web \<iframe\> ([Official API - iframe.allow](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-allow))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   iframeAllow,
 
-  ///Can be used to check if the [InAppWebViewSettings.iframeAllowFullscreen] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.iframeAllowFullscreen] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.iframeAllowFullscreen.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.iframeAllowFullscreen.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Web \<iframe\> ([Official API - iframe.allowfullscreen](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-allowfullscreen))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   iframeAllowFullscreen,
 
-  ///Can be used to check if the [InAppWebViewSettings.iframeAriaHidden] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.iframeAriaHidden] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.iframeAriaHidden.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.iframeAriaHidden.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Web \<iframe\> ([Official API - iframe.ariaHidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   iframeAriaHidden,
 
-  ///Can be used to check if the [InAppWebViewSettings.iframeCsp] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.iframeCsp] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.iframeCsp.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.iframeCsp.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Web \<iframe\> ([Official API - iframe.csp](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-csp))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   iframeCsp,
 
-  ///Can be used to check if the [InAppWebViewSettings.iframeName] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.iframeName] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.iframeName.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.iframeName.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Web \<iframe\> ([Official API - iframe.name](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-name))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   iframeName,
 
-  ///Can be used to check if the [InAppWebViewSettings.iframeReferrerPolicy] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.iframeReferrerPolicy] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.iframeReferrerPolicy.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.iframeReferrerPolicy.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Web \<iframe\> ([Official API - iframe.referrerpolicy](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-referrerpolicy))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   iframeReferrerPolicy,
 
-  ///Can be used to check if the [InAppWebViewSettings.iframeRole] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.iframeRole] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.iframeRole.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.iframeRole.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Web \<iframe\> ([Official API - iframe.role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   iframeRole,
 
-  ///Can be used to check if the [InAppWebViewSettings.iframeSandbox] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.iframeSandbox] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.iframeSandbox.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.iframeSandbox.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Web \<iframe\> ([Official API - iframe.sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-sandbox))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   iframeSandbox,
 
-  ///Can be used to check if the [InAppWebViewSettings.ignoresViewportScaleLimits] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.ignoresViewportScaleLimits] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.ignoresViewportScaleLimits.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.ignoresViewportScaleLimits.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKWebViewConfiguration.ignoresViewportScaleLimits](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2274633-ignoresviewportscalelimits))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   ignoresViewportScaleLimits,
 
-  ///Can be used to check if the [InAppWebViewSettings.incognito] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.incognito] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.incognito.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.incognito.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
@@ -4368,156 +4422,156 @@ enum InAppWebViewSettingsProperty {
   ///- Windows WebView2 ([Official API - ICoreWebView2ControllerOptions.put_IsInPrivateModeEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2controlleroptions?view=webview2-1.0.2792.45#put_isinprivatemodeenabled))
   ///- Linux WPE WebKit ([Official API - webkit_network_session_new_ephemeral](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/ctor.NetworkSession.new_ephemeral.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   incognito,
 
-  ///Can be used to check if the [InAppWebViewSettings.initialScale] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.initialScale] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.initialScale.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.initialScale.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.setInitialScale](https://developer.android.com/reference/android/webkit/WebView#setInitialScale(int)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   initialScale,
 
-  ///Can be used to check if the [InAppWebViewSettings.interceptOnlyAsyncAjaxRequests] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.interceptOnlyAsyncAjaxRequests] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.interceptOnlyAsyncAjaxRequests.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.interceptOnlyAsyncAjaxRequests.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   interceptOnlyAsyncAjaxRequests,
 
-  ///Can be used to check if the [InAppWebViewSettings.isDirectionalLockEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.isDirectionalLockEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.isDirectionalLockEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.isDirectionalLockEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - UIScrollView.isDirectionalLockEnabled](https://developer.apple.com/documentation/uikit/uiscrollview/1619390-isdirectionallockenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   isDirectionalLockEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.isElementFullscreenEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.isElementFullscreenEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.isElementFullscreenEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.isElementFullscreenEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.4+ ([Official API - WKPreferences.isElementFullscreenEnabled](https://developer.apple.com/documentation/webkit/wkpreferences/3917769-iselementfullscreenenabled))
   ///- macOS WKWebView 12.3+ ([Official API - WKPreferences.isElementFullscreenEnabled](https://developer.apple.com/documentation/webkit/wkpreferences/3917769-iselementfullscreenenabled))
   ///- Linux WPE WebKit ([Official API - WebKitSettings.enable-fullscreen](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.enable-fullscreen.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   isElementFullscreenEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.isFindInteractionEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.isFindInteractionEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.isFindInteractionEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.isFindInteractionEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 16.0+ ([Official API - WKWebView.isFindInteractionEnabled](https://developer.apple.com/documentation/webkit/wkwebview/4002044-isfindinteractionenabled/))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   isFindInteractionEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.isFraudulentWebsiteWarningEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.isFraudulentWebsiteWarningEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.isFraudulentWebsiteWarningEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.isFraudulentWebsiteWarningEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 13.0+ ([Official API - WKPreferences.isFraudulentWebsiteWarningEnabled](https://developer.apple.com/documentation/webkit/wkpreferences/3335219-isfraudulentwebsitewarningenable))
   ///- macOS WKWebView 10.15+ ([Official API - WKPreferences.isFraudulentWebsiteWarningEnabled](https://developer.apple.com/documentation/webkit/wkpreferences/3335219-isfraudulentwebsitewarningenable))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   isFraudulentWebsiteWarningEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.isInspectable] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.isInspectable] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.isInspectable.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.isInspectable.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 16.4+ ([Official API - WKWebView.isInspectable](https://developer.apple.com/documentation/webkit/wkwebview/4111163-isinspectable))
   ///- macOS WKWebView 13.3+ ([Official API - WKWebView.isInspectable](https://developer.apple.com/documentation/webkit/wkwebview/4111163-isinspectable))
   ///- Windows WebView2 ([Official API - ICoreWebView2Settings.put_AreDevToolsEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings?view=webview2-1.0.2210.55#put_aredevtoolsenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   isInspectable,
 
-  ///Can be used to check if the [InAppWebViewSettings.isPagingEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.isPagingEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.isPagingEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.isPagingEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - UIScrollView.isPagingEnabled](https://developer.apple.com/documentation/uikit/uiscrollview/1619432-ispagingenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   isPagingEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.isSiteSpecificQuirksModeEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.isSiteSpecificQuirksModeEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.isSiteSpecificQuirksModeEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.isSiteSpecificQuirksModeEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.4+ ([Official API - WKPreferences.isSiteSpecificQuirksModeEnabled](https://developer.apple.com/documentation/webkit/wkpreferences/3916069-issitespecificquirksmodeenabled))
   ///- macOS WKWebView 12.3+ ([Official API - WKPreferences.isSiteSpecificQuirksModeEnabled](https://developer.apple.com/documentation/webkit/wkpreferences/3916069-issitespecificquirksmodeenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   isSiteSpecificQuirksModeEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.isTextInteractionEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.isTextInteractionEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.isTextInteractionEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.isTextInteractionEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+ ([Official API - WKPreferences.isTextInteractionEnabled](https://developer.apple.com/documentation/webkit/wkpreferences/3727362-istextinteractionenabled))
   ///- macOS WKWebView 11.3+ ([Official API - WKPreferences.isTextInteractionEnabled](https://developer.apple.com/documentation/webkit/wkpreferences/3727362-istextinteractionenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   isTextInteractionEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.isUserInteractionEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.isUserInteractionEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.isUserInteractionEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.isUserInteractionEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView ([Official API - UIView.isUserInteractionEnabled](https://developer.apple.com/documentation/uikit/uiview/1622577-isuserinteractionenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   isUserInteractionEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.itpEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.itpEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.itpEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.itpEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.40+ ([Official API - webkit_network_session_set_itp_enabled](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.NetworkSession.set_itp_enabled.html)):
   ///    - This is a session-level setting. When enabled, ACCEPT_NO_THIRD_PARTY cookie policy is overridden to ACCEPT_ALWAYS.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   itpEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.javaScriptBridgeEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.javaScriptBridgeEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.javaScriptBridgeEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.javaScriptBridgeEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -4526,13 +4580,13 @@ enum InAppWebViewSettingsProperty {
   ///- Windows WebView2
   ///- Web \<iframe\> but requires same origin
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   javaScriptBridgeEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.javaScriptBridgeForMainFrameOnly] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.javaScriptBridgeForMainFrameOnly] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.javaScriptBridgeForMainFrameOnly.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.javaScriptBridgeForMainFrameOnly.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -4540,13 +4594,13 @@ enum InAppWebViewSettingsProperty {
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   javaScriptBridgeForMainFrameOnly,
 
-  ///Can be used to check if the [InAppWebViewSettings.javaScriptBridgeOriginAllowList] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.javaScriptBridgeOriginAllowList] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.javaScriptBridgeOriginAllowList.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.javaScriptBridgeOriginAllowList.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -4555,24 +4609,24 @@ enum InAppWebViewSettingsProperty {
   ///- Windows WebView2
   ///- Web \<iframe\> but requires same origin
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   javaScriptBridgeOriginAllowList,
 
-  ///Can be used to check if the [InAppWebViewSettings.javaScriptCanAccessClipboard] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.javaScriptCanAccessClipboard] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.javaScriptCanAccessClipboard.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.javaScriptCanAccessClipboard.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WebKitSettings.javascript-can-access-clipboard](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.javascript-can-access-clipboard.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   javaScriptCanAccessClipboard,
 
-  ///Can be used to check if the [InAppWebViewSettings.javaScriptCanOpenWindowsAutomatically] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.javaScriptCanOpenWindowsAutomatically] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.javaScriptCanOpenWindowsAutomatically.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.javaScriptCanOpenWindowsAutomatically.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setJavaScriptCanOpenWindowsAutomatically](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setJavaScriptCanOpenWindowsAutomatically(boolean)))
@@ -4580,13 +4634,13 @@ enum InAppWebViewSettingsProperty {
   ///- macOS WKWebView ([Official API - WKPreferences.javaScriptCanOpenWindowsAutomatically](https://developer.apple.com/documentation/webkit/wkpreferences/1536573-javascriptcanopenwindowsautomati/))
   ///- Web \<iframe\> but requires same origin
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   javaScriptCanOpenWindowsAutomatically,
 
-  ///Can be used to check if the [InAppWebViewSettings.javaScriptEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.javaScriptEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.javaScriptEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.javaScriptEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setJavaScriptEnabled](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setJavaScriptEnabled(boolean)))
@@ -4595,13 +4649,13 @@ enum InAppWebViewSettingsProperty {
   ///- Web \<iframe\>
   ///- Windows WebView2 ([Official API - ICoreWebView2Settings.put_IsScriptEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings?view=webview2-1.0.2210.55#put_isscriptenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   javaScriptEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.javaScriptHandlersForMainFrameOnly] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.javaScriptHandlersForMainFrameOnly] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.javaScriptHandlersForMainFrameOnly.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.javaScriptHandlersForMainFrameOnly.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -4609,13 +4663,13 @@ enum InAppWebViewSettingsProperty {
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   javaScriptHandlersForMainFrameOnly,
 
-  ///Can be used to check if the [InAppWebViewSettings.javaScriptHandlersOriginAllowList] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.javaScriptHandlersOriginAllowList] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.javaScriptHandlersOriginAllowList.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.javaScriptHandlersOriginAllowList.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -4624,311 +4678,311 @@ enum InAppWebViewSettingsProperty {
   ///- Windows WebView2
   ///- Web \<iframe\> but requires same origin
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   javaScriptHandlersOriginAllowList,
 
-  ///Can be used to check if the [InAppWebViewSettings.keyRepeatDelay] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.keyRepeatDelay] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.keyRepeatDelay.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.keyRepeatDelay.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WPESettings.key-repeat-delay](https://wpewebkit.org/reference/stable/wpe-platform-2.0/class.Settings.html)):
   ///    - This is a WPE Platform display-level setting. Value is in milliseconds.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   keyRepeatDelay,
 
-  ///Can be used to check if the [InAppWebViewSettings.keyRepeatInterval] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.keyRepeatInterval] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.keyRepeatInterval.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.keyRepeatInterval.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WPESettings.key-repeat-interval](https://wpewebkit.org/reference/stable/wpe-platform-2.0/class.Settings.html)):
   ///    - This is a WPE Platform display-level setting. Value is in milliseconds.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   keyRepeatInterval,
 
-  ///Can be used to check if the [InAppWebViewSettings.keyboardAvoidance] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.keyboardAvoidance] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.keyboardAvoidance.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.keyboardAvoidance.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   keyboardAvoidance,
 
-  ///Can be used to check if the [InAppWebViewSettings.layoutAlgorithm] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.layoutAlgorithm] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.layoutAlgorithm.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.layoutAlgorithm.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - WebSettings.setLayoutAlgorithm](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setLayoutAlgorithm(android.webkit.WebSettings.LayoutAlgorithm)))
+  ///- Android WebView ([Official API - WebSettings.setLayoutAlgorithm](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setLayoutAlgorithm(android.webkit.WebSettings.CygnusLayoutAlgorithm)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   layoutAlgorithm,
 
-  ///Can be used to check if the [InAppWebViewSettings.limitsNavigationsToAppBoundDomains] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.limitsNavigationsToAppBoundDomains] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.limitsNavigationsToAppBoundDomains.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.limitsNavigationsToAppBoundDomains.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 14.0+ ([Official API - WKWebViewConfiguration.limitsNavigationsToAppBoundDomains](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3585117-limitsnavigationstoappbounddomai))
   ///- macOS WKWebView 11.0+ ([Official API - WKWebViewConfiguration.limitsNavigationsToAppBoundDomains](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3585117-limitsnavigationstoappbounddomai))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   limitsNavigationsToAppBoundDomains,
 
-  ///Can be used to check if the [InAppWebViewSettings.loadWithOverviewMode] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.loadWithOverviewMode] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.loadWithOverviewMode.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.loadWithOverviewMode.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setLoadWithOverviewMode](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setLoadWithOverviewMode(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   loadWithOverviewMode,
 
-  ///Can be used to check if the [InAppWebViewSettings.loadsImagesAutomatically] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.loadsImagesAutomatically] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.loadsImagesAutomatically.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.loadsImagesAutomatically.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setLoadsImagesAutomatically](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setLoadsImagesAutomatically(boolean)))
   ///- Linux WPE WebKit ([Official API - WebKitSettings.auto-load-images](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.auto-load-images.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   loadsImagesAutomatically,
 
-  ///Can be used to check if the [InAppWebViewSettings.maximumViewportInset] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.maximumViewportInset] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.maximumViewportInset.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.maximumViewportInset.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.5+ ([Official API - WKWebView.setMinimumViewportInset](https://developer.apple.com/documentation/webkit/wkwebview/3974127-setminimumviewportinset/))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   maximumViewportInset,
 
-  ///Can be used to check if the [InAppWebViewSettings.maximumZoomScale] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.maximumZoomScale] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.maximumZoomScale.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.maximumZoomScale.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - UIScrollView.maximumZoomScale](https://developer.apple.com/documentation/uikit/uiscrollview/1619408-maximumzoomscale))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   maximumZoomScale,
 
-  ///Can be used to check if the [InAppWebViewSettings.mediaContentTypesRequiringHardwareSupport] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.mediaContentTypesRequiringHardwareSupport] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.mediaContentTypesRequiringHardwareSupport.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.mediaContentTypesRequiringHardwareSupport.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.30+ ([Official API - WebKitSettings.media-content-types-requiring-hardware-support](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.media-content-types-requiring-hardware-support.html)):
   ///    - Requires WPE WebKit 2.30 or later
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   mediaContentTypesRequiringHardwareSupport,
 
-  ///Can be used to check if the [InAppWebViewSettings.mediaPlaybackRequiresUserGesture] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.mediaPlaybackRequiresUserGesture] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.mediaPlaybackRequiresUserGesture.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.mediaPlaybackRequiresUserGesture.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setMediaPlaybackRequiresUserGesture](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setMediaPlaybackRequiresUserGesture(boolean)))
   ///- iOS WKWebView ([Official API - WKWebViewConfiguration.mediaTypesRequiringUserActionForPlayback](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1851524-mediatypesrequiringuseractionfor))
   ///- macOS WKWebView 10.12+ ([Official API - WKWebViewConfiguration.mediaTypesRequiringUserActionForPlayback](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1851524-mediatypesrequiringuseractionfor))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   mediaPlaybackRequiresUserGesture,
 
-  ///Can be used to check if the [InAppWebViewSettings.mediaType] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.mediaType] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.mediaType.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.mediaType.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 14.0+ ([Official API - WKWebView.mediaType](https://developer.apple.com/documentation/webkit/wkwebview/3516410-mediatype))
   ///- macOS WKWebView 11.0+ ([Official API - WKWebView.mediaType](https://developer.apple.com/documentation/webkit/wkwebview/3516410-mediatype))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   mediaType,
 
-  ///Can be used to check if the [InAppWebViewSettings.minimumFontSize] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.minimumFontSize] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.minimumFontSize.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.minimumFontSize.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setMinimumFontSize](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setMinimumFontSize(int)))
   ///- iOS WKWebView ([Official API - WKPreferences.minimumFontSize](https://developer.apple.com/documentation/webkit/wkpreferences/1537155-minimumfontsize/))
   ///- macOS WKWebView ([Official API - WKPreferences.minimumFontSize](https://developer.apple.com/documentation/webkit/wkpreferences/1537155-minimumfontsize/))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   minimumFontSize,
 
-  ///Can be used to check if the [InAppWebViewSettings.minimumLogicalFontSize] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.minimumLogicalFontSize] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.minimumLogicalFontSize.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.minimumLogicalFontSize.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setMinimumLogicalFontSize](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setMinimumLogicalFontSize(int)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   minimumLogicalFontSize,
 
-  ///Can be used to check if the [InAppWebViewSettings.minimumViewportInset] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.minimumViewportInset] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.minimumViewportInset.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.minimumViewportInset.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.5+ ([Official API - WKWebView.setMinimumViewportInset](https://developer.apple.com/documentation/webkit/wkwebview/3974127-setminimumviewportinset/))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   minimumViewportInset,
 
-  ///Can be used to check if the [InAppWebViewSettings.minimumZoomScale] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.minimumZoomScale] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.minimumZoomScale.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.minimumZoomScale.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - UIScrollView.minimumZoomScale](https://developer.apple.com/documentation/uikit/uiscrollview/1619428-minimumzoomscale))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   minimumZoomScale,
 
-  ///Can be used to check if the [InAppWebViewSettings.mixedContentMode] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.mixedContentMode] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.mixedContentMode.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.mixedContentMode.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 21+ ([Official API - WebSettings.setMixedContentMode](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setMixedContentMode(int)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   mixedContentMode,
 
-  ///Can be used to check if the [InAppWebViewSettings.needInitialFocus] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.needInitialFocus] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.needInitialFocus.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.needInitialFocus.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setNeedInitialFocus](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setNeedInitialFocus(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   needInitialFocus,
 
-  ///Can be used to check if the [InAppWebViewSettings.networkAvailable] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.networkAvailable] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.networkAvailable.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.networkAvailable.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.setNetworkAvailable](https://developer.android.com/reference/android/webkit/WebView#setNetworkAvailable(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   networkAvailable,
 
-  ///Can be used to check if the [InAppWebViewSettings.nonClientRegionSupportEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.nonClientRegionSupportEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.nonClientRegionSupportEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.nonClientRegionSupportEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.2420.47+ ([Official API - ICoreWebView2Settings9.put_IsNonClientRegionSupportEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings9?view=webview2-1.0.2849.39#put_isnonclientregionsupportenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   nonClientRegionSupportEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.offscreenPreRaster] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.offscreenPreRaster] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.offscreenPreRaster.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.offscreenPreRaster.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 23+ ([Official API - WebSettings.setOffscreenPreRaster](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setOffscreenPreRaster(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   offscreenPreRaster,
 
-  ///Can be used to check if the [InAppWebViewSettings.overScrollMode] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.overScrollMode] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.overScrollMode.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.overScrollMode.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.setOverScrollMode](https://developer.android.com/reference/android/view/View#setOverScrollMode(int)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   overScrollMode,
 
-  ///Can be used to check if the [InAppWebViewSettings.pageZoom] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.pageZoom] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.pageZoom.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.pageZoom.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 14.0+ ([Official API - WKWebView.pageZoom](https://developer.apple.com/documentation/webkit/wkwebview/3516411-pagezoom))
   ///- macOS WKWebView 11.0+ ([Official API - WKWebView.pageZoom](https://developer.apple.com/documentation/webkit/wkwebview/3516411-pagezoom))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   pageZoom,
 
-  ///Can be used to check if the [InAppWebViewSettings.passwordAutosaveEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.passwordAutosaveEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.passwordAutosaveEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.passwordAutosaveEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.902.49+ ([Official API - ICoreWebView2Settings4.put_IsPasswordAutosaveEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings4?view=webview2-1.0.2849.39#put_ispasswordautosaveenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   passwordAutosaveEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.pictographFontFamily] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.pictographFontFamily] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.pictographFontFamily.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.pictographFontFamily.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit ([Official API - WebKitSettings.pictograph-font-family](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.pictograph-font-family.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   pictographFontFamily,
 
-  ///Can be used to check if the [InAppWebViewSettings.pinchZoomEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.pinchZoomEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.pinchZoomEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.pinchZoomEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.902.49+ ([Official API - ICoreWebView2Settings5.put_IsPinchZoomEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings5?view=webview2-1.0.2849.39#put_ispinchzoomenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   pinchZoomEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.pluginScriptsForMainFrameOnly] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.pluginScriptsForMainFrameOnly] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.pluginScriptsForMainFrameOnly.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.pluginScriptsForMainFrameOnly.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -4936,13 +4990,13 @@ enum InAppWebViewSettingsProperty {
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   pluginScriptsForMainFrameOnly,
 
-  ///Can be used to check if the [InAppWebViewSettings.pluginScriptsOriginAllowList] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.pluginScriptsOriginAllowList] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.pluginScriptsOriginAllowList.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.pluginScriptsOriginAllowList.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -4950,277 +5004,277 @@ enum InAppWebViewSettingsProperty {
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   pluginScriptsOriginAllowList,
 
-  ///Can be used to check if the [InAppWebViewSettings.preferredContentMode] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.preferredContentMode] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.preferredContentMode.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.preferredContentMode.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView 13.0+ ([Official API - WKWebpagePreferences.preferredContentMode](https://developer.apple.com/documentation/webkit/wkwebpagepreferences/3194426-preferredcontentmode/))
   ///- macOS WKWebView 10.15+ ([Official API - WKWebpagePreferences.preferredContentMode](https://developer.apple.com/documentation/webkit/wkwebpagepreferences/3194426-preferredcontentmode/))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   preferredContentMode,
 
-  ///Can be used to check if the [InAppWebViewSettings.regexToAllowSyncUrlLoading] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.regexToAllowSyncUrlLoading] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.regexToAllowSyncUrlLoading.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.regexToAllowSyncUrlLoading.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   regexToAllowSyncUrlLoading,
 
-  ///Can be used to check if the [InAppWebViewSettings.regexToCancelSubFramesLoading] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.regexToCancelSubFramesLoading] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.regexToCancelSubFramesLoading.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.regexToCancelSubFramesLoading.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   regexToCancelSubFramesLoading,
 
-  ///Can be used to check if the [InAppWebViewSettings.rendererPriorityPolicy] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.rendererPriorityPolicy] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.rendererPriorityPolicy.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.rendererPriorityPolicy.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.setRendererPriorityPolicy](https://developer.android.com/reference/android/webkit/WebView#setRendererPriorityPolicy(int,%20boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   rendererPriorityPolicy,
 
-  ///Can be used to check if the [InAppWebViewSettings.reputationCheckingRequired] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.reputationCheckingRequired] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.reputationCheckingRequired.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.reputationCheckingRequired.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.1722.45+ ([Official API - ICoreWebView2Settings8.put_IsReputationCheckingRequired](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings8?view=webview2-1.0.2849.39#put_isreputationcheckingrequired))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   reputationCheckingRequired,
 
-  ///Can be used to check if the [InAppWebViewSettings.requestedWithHeaderOriginAllowList] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.requestedWithHeaderOriginAllowList] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.requestedWithHeaderOriginAllowList.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.requestedWithHeaderOriginAllowList.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettingsCompat.setRequestedWithHeaderOriginAllowList](https://developer.android.com/reference/androidx/webkit/WebSettingsCompat#setRequestedWithHeaderOriginAllowList(android.webkit.WebSettings,java.util.Set%3Cjava.lang.String%3E))):
-  ///    - available on Android only if [WebViewFeature.REQUESTED_WITH_HEADER_ALLOW_LIST] feature is supported.
+  ///    - available on Android only if [CygnusWebViewFeature.REQUESTED_WITH_HEADER_ALLOW_LIST] feature is supported.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   requestedWithHeaderOriginAllowList,
 
-  ///Can be used to check if the [InAppWebViewSettings.resourceCustomSchemes] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.resourceCustomSchemes] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.resourceCustomSchemes.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.resourceCustomSchemes.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView 11.0+
   ///- macOS WKWebView 10.13+
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   resourceCustomSchemes,
 
-  ///Can be used to check if the [InAppWebViewSettings.safeBrowsingEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.safeBrowsingEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.safeBrowsingEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.safeBrowsingEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 26+ ([Official API - WebSettings.setSafeBrowsingEnabled](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setSafeBrowsingEnabled(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   safeBrowsingEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.sansSerifFontFamily] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.sansSerifFontFamily] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.sansSerifFontFamily.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.sansSerifFontFamily.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setSansSerifFontFamily](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setSansSerifFontFamily(java.lang.String)))
   ///- Linux WPE WebKit ([Official API - WebKitSettings.sans-serif-font-family](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.sans-serif-font-family.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   sansSerifFontFamily,
 
-  ///Can be used to check if the [InAppWebViewSettings.saveFormData] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.saveFormData] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.saveFormData.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.saveFormData.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setSaveFormData](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setSaveFormData(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('')
   saveFormData,
 
-  ///Can be used to check if the [InAppWebViewSettings.scrollBarDefaultDelayBeforeFade] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.scrollBarDefaultDelayBeforeFade] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.scrollBarDefaultDelayBeforeFade.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.scrollBarDefaultDelayBeforeFade.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.setScrollBarDefaultDelayBeforeFade](https://developer.android.com/reference/android/view/View#setScrollBarDefaultDelayBeforeFade(int)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   scrollBarDefaultDelayBeforeFade,
 
-  ///Can be used to check if the [InAppWebViewSettings.scrollBarFadeDuration] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.scrollBarFadeDuration] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.scrollBarFadeDuration.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.scrollBarFadeDuration.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.setScrollBarFadeDuration](https://developer.android.com/reference/android/view/View#setScrollBarFadeDuration(int)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   scrollBarFadeDuration,
 
-  ///Can be used to check if the [InAppWebViewSettings.scrollBarStyle] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.scrollBarStyle] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.scrollBarStyle.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.scrollBarStyle.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebView.setScrollBarStyle](https://developer.android.com/reference/android/webkit/WebView#setScrollBarStyle(int)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   scrollBarStyle,
 
-  ///Can be used to check if the [InAppWebViewSettings.scrollMultiplier] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.scrollMultiplier] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.scrollMultiplier.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.scrollMultiplier.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   scrollMultiplier,
 
-  ///Can be used to check if the [InAppWebViewSettings.scrollbarFadingEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.scrollbarFadingEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.scrollbarFadingEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.scrollbarFadingEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.setScrollbarFadingEnabled](https://developer.android.com/reference/android/view/View#setScrollbarFadingEnabled(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   scrollbarFadingEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.scrollsToTop] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.scrollsToTop] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.scrollsToTop.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.scrollsToTop.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - UIScrollView.scrollsToTop](https://developer.apple.com/documentation/uikit/uiscrollview/1619421-scrollstotop))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   scrollsToTop,
 
-  ///Can be used to check if the [InAppWebViewSettings.selectionGranularity] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.selectionGranularity] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.selectionGranularity.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.selectionGranularity.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKWebViewConfiguration.selectionGranularity](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614756-selectiongranularity))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   selectionGranularity,
 
-  ///Can be used to check if the [InAppWebViewSettings.serifFontFamily] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.serifFontFamily] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.serifFontFamily.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.serifFontFamily.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setSerifFontFamily](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setSerifFontFamily(java.lang.String)))
   ///- Linux WPE WebKit ([Official API - WebKitSettings.serif-font-family](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.serif-font-family.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   serifFontFamily,
 
-  ///Can be used to check if the [InAppWebViewSettings.sharedCookiesEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.sharedCookiesEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.sharedCookiesEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.sharedCookiesEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 11.0+
   ///- macOS WKWebView 10.13+
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   sharedCookiesEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.shouldPrintBackgrounds] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.shouldPrintBackgrounds] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.shouldPrintBackgrounds.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.shouldPrintBackgrounds.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 16.4+ ([Official API - WKWebView.shouldPrintBackgrounds](https://developer.apple.com/documentation/webkit/wkpreferences/4104043-shouldprintbackgrounds))
   ///- macOS WKWebView 13.3+ ([Official API - WKWebView.shouldPrintBackgrounds](https://developer.apple.com/documentation/webkit/wkpreferences/4104043-shouldprintbackgrounds))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   shouldPrintBackgrounds,
 
-  ///Can be used to check if the [InAppWebViewSettings.standardFontFamily] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.standardFontFamily] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.standardFontFamily.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.standardFontFamily.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setStandardFontFamily](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setStandardFontFamily(java.lang.String)))
   ///- Linux WPE WebKit ([Official API - WebKitSettings.default-font-family](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.default-font-family.html))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   standardFontFamily,
 
-  ///Can be used to check if the [InAppWebViewSettings.statusBarEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.statusBarEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.statusBarEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.statusBarEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2Settings.put_IsStatusBarEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings?view=webview2-1.0.2849.39#put_isstatusbarenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   statusBarEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.supportMultipleWindows] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.supportMultipleWindows] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.supportMultipleWindows.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.supportMultipleWindows.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setSupportMultipleWindows](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setSupportMultipleWindows(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   supportMultipleWindows,
 
-  ///Can be used to check if the [InAppWebViewSettings.supportZoom] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.supportZoom] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.supportZoom.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.supportZoom.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setSupportZoom](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setSupportZoom(boolean)))
@@ -5228,47 +5282,47 @@ enum InAppWebViewSettingsProperty {
   ///- macOS WKWebView
   ///- Windows WebView2 ([Official API - ICoreWebView2Settings.put_IsZoomControlEnabled](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings?view=webview2-1.0.2210.55#put_iszoomcontrolenabled))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   supportZoom,
 
-  ///Can be used to check if the [InAppWebViewSettings.suppressesIncrementalRendering] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.suppressesIncrementalRendering] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.suppressesIncrementalRendering.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.suppressesIncrementalRendering.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - WKWebViewConfiguration.suppressesIncrementalRendering](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395663-suppressesincrementalrendering))
   ///- macOS WKWebView ([Official API - WKWebViewConfiguration.suppressesIncrementalRendering](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395663-suppressesincrementalrendering))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   suppressesIncrementalRendering,
 
-  ///Can be used to check if the [InAppWebViewSettings.textZoom] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.textZoom] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.textZoom.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.textZoom.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setTextZoom](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setTextZoom(int)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   textZoom,
 
-  ///Can be used to check if the [InAppWebViewSettings.thirdPartyCookiesEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.thirdPartyCookiesEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.thirdPartyCookiesEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.thirdPartyCookiesEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView 21+ ([Official API - CookieManager.setAcceptThirdPartyCookies](https://developer.android.com/reference/android/webkit/CookieManager#setAcceptThirdPartyCookies(android.webkit.WebView,%20boolean)))
+  ///- Android WebView 21+ ([Official API - CygnusCookieManager.setAcceptThirdPartyCookies](https://developer.android.com/reference/android/webkit/CygnusCookieManager#setAcceptThirdPartyCookies(android.webkit.WebView,%20boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   thirdPartyCookiesEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.transparentBackground] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.transparentBackground] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.transparentBackground.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.transparentBackground.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -5276,89 +5330,89 @@ enum InAppWebViewSettingsProperty {
   ///- macOS WKWebView 12.0+
   ///- Windows WebView2 1.0.774.44+ ([Official API - ICoreWebView2Controller2.put_DefaultBackgroundColor](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2controller2?view=webview2-1.0.2210.55#put_defaultbackgroundcolor))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   transparentBackground,
 
-  ///Can be used to check if the [InAppWebViewSettings.underPageBackgroundColor] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.underPageBackgroundColor] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.underPageBackgroundColor.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.underPageBackgroundColor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+ ([Official API - WKWebView.underPageBackgroundColor](https://developer.apple.com/documentation/webkit/wkwebview/3850574-underpagebackgroundcolor))
   ///- macOS WKWebView 12.0+ ([Official API - WKWebView.underPageBackgroundColor](https://developer.apple.com/documentation/webkit/wkwebview/3850574-underpagebackgroundcolor))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   underPageBackgroundColor,
 
-  ///Can be used to check if the [InAppWebViewSettings.upgradeKnownHostsToHTTPS] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.upgradeKnownHostsToHTTPS] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.upgradeKnownHostsToHTTPS.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.upgradeKnownHostsToHTTPS.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 15.0+ ([Official API - WKWebViewConfiguration.upgradeKnownHostsToHTTPS](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3752243-upgradeknownhoststohttps))
   ///- macOS WKWebView 11.3+ ([Official API - WKWebViewConfiguration.upgradeKnownHostsToHTTPS](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3752243-upgradeknownhoststohttps))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   upgradeKnownHostsToHTTPS,
 
-  ///Can be used to check if the [InAppWebViewSettings.useHybridComposition] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.useHybridComposition] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.useHybridComposition.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.useHybridComposition.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
   ///    - It is recommended to use Hybrid Composition only on Android 10+ for a release app, as it can cause framerate drops on animations in Android 9 and lower (see [Hybrid-Composition#performance](https://github.com/flutter/flutter/wiki/Hybrid-Composition#performance)).
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   @Deprecated('Use androidCompositionMode instead')
   useHybridComposition,
 
-  ///Can be used to check if the [InAppWebViewSettings.useOnAjaxProgress] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.useOnAjaxProgress] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.useOnAjaxProgress.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.useOnAjaxProgress.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   useOnAjaxProgress,
 
-  ///Can be used to check if the [InAppWebViewSettings.useOnAjaxReadyStateChange] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.useOnAjaxReadyStateChange] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.useOnAjaxReadyStateChange.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.useOnAjaxReadyStateChange.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   useOnAjaxReadyStateChange,
 
-  ///Can be used to check if the [InAppWebViewSettings.useOnDownloadStart] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.useOnDownloadStart] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.useOnDownloadStart.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.useOnDownloadStart.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   useOnDownloadStart,
 
-  ///Can be used to check if the [InAppWebViewSettings.useOnLoadResource] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.useOnLoadResource] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.useOnLoadResource.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.useOnLoadResource.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -5366,84 +5420,84 @@ enum InAppWebViewSettingsProperty {
   ///- macOS WKWebView
   ///- Linux WPE WebKit
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   useOnLoadResource,
 
-  ///Can be used to check if the [InAppWebViewSettings.useOnNavigationResponse] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.useOnNavigationResponse] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.useOnNavigationResponse.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.useOnNavigationResponse.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   useOnNavigationResponse,
 
-  ///Can be used to check if the [InAppWebViewSettings.useOnRenderProcessGone] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.useOnRenderProcessGone] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.useOnRenderProcessGone.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.useOnRenderProcessGone.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   useOnRenderProcessGone,
 
-  ///Can be used to check if the [InAppWebViewSettings.useOnShowFileChooser] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.useOnShowFileChooser] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.useOnShowFileChooser.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.useOnShowFileChooser.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   useOnShowFileChooser,
 
-  ///Can be used to check if the [InAppWebViewSettings.useShouldInterceptAjaxRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.useShouldInterceptAjaxRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.useShouldInterceptAjaxRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   useShouldInterceptAjaxRequest,
 
-  ///Can be used to check if the [InAppWebViewSettings.useShouldInterceptFetchRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.useShouldInterceptFetchRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.useShouldInterceptFetchRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.useShouldInterceptFetchRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   useShouldInterceptFetchRequest,
 
-  ///Can be used to check if the [InAppWebViewSettings.useShouldInterceptRequest] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.useShouldInterceptRequest] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.useShouldInterceptRequest.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.useShouldInterceptRequest.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   useShouldInterceptRequest,
 
-  ///Can be used to check if the [InAppWebViewSettings.useShouldOverrideUrlLoading] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.useShouldOverrideUrlLoading] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.useShouldOverrideUrlLoading.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.useShouldOverrideUrlLoading.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -5451,24 +5505,24 @@ enum InAppWebViewSettingsProperty {
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   useShouldOverrideUrlLoading,
 
-  ///Can be used to check if the [InAppWebViewSettings.useWideViewPort] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.useWideViewPort] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.useWideViewPort.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.useWideViewPort.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setUseWideViewPort](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setUseWideViewPort(boolean)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   useWideViewPort,
 
-  ///Can be used to check if the [InAppWebViewSettings.userAgent] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.userAgent] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.userAgent.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.userAgent.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - WebSettings.setUserAgentString](https://developer.android.com/reference/android/webkit/WebSettings?hl=en#setUserAgentString(java.lang.String)))
@@ -5476,13 +5530,13 @@ enum InAppWebViewSettingsProperty {
   ///- macOS WKWebView ([Official API - WKWebView.customUserAgent](https://developer.apple.com/documentation/webkit/wkwebview/1414950-customuseragent))
   ///- Windows WebView2 ([Official API - ICoreWebView2Settings2.put_UserAgent](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2settings2?view=webview2-1.0.2210.55#put_useragent))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   userAgent,
 
-  ///Can be used to check if the [InAppWebViewSettings.verticalScrollBarEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.verticalScrollBarEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.verticalScrollBarEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.verticalScrollBarEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.setVerticalScrollBarEnabled](https://developer.android.com/reference/android/view/View#setVerticalScrollBarEnabled(boolean)))
@@ -5490,111 +5544,97 @@ enum InAppWebViewSettingsProperty {
   ///- Web \<iframe\> but requires same origin:
   ///    - It must have the same value of [horizontalScrollBarEnabled] to take effect.
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   verticalScrollBarEnabled,
 
-  ///Can be used to check if the [InAppWebViewSettings.verticalScrollbarPosition] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.verticalScrollbarPosition] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.verticalScrollbarPosition.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.verticalScrollbarPosition.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - View.setVerticalScrollbarPosition](https://developer.android.com/reference/android/view/View#setVerticalScrollbarPosition(int)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   verticalScrollbarPosition,
 
-  ///Can be used to check if the [InAppWebViewSettings.verticalScrollbarThumbColor] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.verticalScrollbarThumbColor] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.verticalScrollbarThumbColor.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.verticalScrollbarThumbColor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 29+ ([Official API - View.setVerticalScrollbarThumbDrawable](https://developer.android.com/reference/android/view/View#setVerticalScrollbarThumbDrawable(android.graphics.drawable.Drawable)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   verticalScrollbarThumbColor,
 
-  ///Can be used to check if the [InAppWebViewSettings.verticalScrollbarTrackColor] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.verticalScrollbarTrackColor] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.verticalScrollbarTrackColor.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.verticalScrollbarTrackColor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView 29+ ([Official API - View.setVerticalScrollbarTrackDrawable](https://developer.android.com/reference/android/view/View#setVerticalScrollbarTrackDrawable(android.graphics.drawable.Drawable)))
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   verticalScrollbarTrackColor,
 
-  ///Can be used to check if the [InAppWebViewSettings.webRTCUdpPortsRange] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.webRTCUdpPortsRange] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.webRTCUdpPortsRange.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.webRTCUdpPortsRange.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Linux WPE WebKit 2.48+ ([Official API - WebKitSettings.webrtc-udp-ports-range](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/property.Settings.webrtc-udp-ports-range.html)):
   ///    - Requires WPE WebKit 2.48 or later. Format: 'minPort:maxPort'
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   webRTCUdpPortsRange,
 
-  ///Can be used to check if the [InAppWebViewSettings.webViewAssetLoader] property is supported at runtime.
+  ///Can be used to check if the [CygnusWebViewSettings.webViewAssetLoader] property is supported at runtime.
   ///
-  ///{@template cygnus_core.InAppWebViewSettings.webViewAssetLoader.supported_platforms}
+  ///{@template cygnus_core.CygnusWebViewSettings.webViewAssetLoader.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [InAppWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusWebViewSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   webViewAssetLoader,
 }
 
-extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
+extension _CygnusWebViewSettingsPropertySupported on CygnusWebViewSettings {
   static bool isPropertySupported(
-    InAppWebViewSettingsProperty property, {
+    CygnusWebViewSettingsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case InAppWebViewSettingsProperty.accessibilityIgnoresInvertColors:
+      case CygnusWebViewSettingsProperty.accessibilityIgnoresInvertColors:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.algorithmicDarkeningAllowed:
+      case CygnusWebViewSettingsProperty.algorithmicDarkeningAllowed:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.allowBackgroundAudioPlaying:
+      case CygnusWebViewSettingsProperty.allowBackgroundAudioPlaying:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.allowContentAccess:
+      case CygnusWebViewSettingsProperty.allowContentAccess:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.allowFileAccess:
+      case CygnusWebViewSettingsProperty.allowFileAccess:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.allowFileAccessFromFileURLs:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-              TargetPlatform.linux,
-            ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.allowModalDialogs:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.allowTopNavigationToDataUrls:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.allowUniversalAccessFromFileURLs:
+      case CygnusWebViewSettingsProperty.allowFileAccessFromFileURLs:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -5602,122 +5642,136 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.allowingReadAccessTo:
+      case CygnusWebViewSettingsProperty.allowModalDialogs:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.allowTopNavigationToDataUrls:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.allowUniversalAccessFromFileURLs:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+              TargetPlatform.linux,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.allowingReadAccessTo:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.allowsAirPlayForMediaPlayback:
+      case CygnusWebViewSettingsProperty.allowsAirPlayForMediaPlayback:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.allowsBackForwardNavigationGestures:
+      case CygnusWebViewSettingsProperty.allowsBackForwardNavigationGestures:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.allowsInlineMediaPlayback:
+      case CygnusWebViewSettingsProperty.allowsInlineMediaPlayback:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.allowsLinkPreview:
+      case CygnusWebViewSettingsProperty.allowsLinkPreview:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.allowsPictureInPictureMediaPlayback:
+      case CygnusWebViewSettingsProperty.allowsPictureInPictureMediaPlayback:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.alpha:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.alwaysBounceHorizontal:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.alwaysBounceVertical:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.androidCompositionMode:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.appCachePath:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.applePayAPIEnabled:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.applicationNameForUserAgent:
+      case CygnusWebViewSettingsProperty.alpha:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty
+      case CygnusWebViewSettingsProperty.alwaysBounceHorizontal:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.alwaysBounceVertical:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.androidCompositionMode:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.appCachePath:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.applePayAPIEnabled:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.applicationNameForUserAgent:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty
           .automaticallyAdjustsScrollIndicatorInsets:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.blockNetworkImage:
+      case CygnusWebViewSettingsProperty.blockNetworkImage:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.blockNetworkLoads:
+      case CygnusWebViewSettingsProperty.blockNetworkLoads:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.browserAcceleratorKeysEnabled:
+      case CygnusWebViewSettingsProperty.browserAcceleratorKeysEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.builtInZoomControls:
+      case CygnusWebViewSettingsProperty.builtInZoomControls:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.cacheEnabled:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.cacheMode:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.clearCache:
+      case CygnusWebViewSettingsProperty.cacheEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.clearSessionCache:
+      case CygnusWebViewSettingsProperty.cacheMode:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.contentBlockers:
+      case CygnusWebViewSettingsProperty.clearCache:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.clearSessionCache:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.contentBlockers:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -5725,63 +5779,63 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.contentInsetAdjustmentBehavior:
+      case CygnusWebViewSettingsProperty.contentInsetAdjustmentBehavior:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.corsAllowlist:
+      case CygnusWebViewSettingsProperty.corsAllowlist:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.cursiveFontFamily:
+      case CygnusWebViewSettingsProperty.cursiveFontFamily:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.cursorBlinkTime:
+      case CygnusWebViewSettingsProperty.cursorBlinkTime:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.darkMode:
+      case CygnusWebViewSettingsProperty.darkMode:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.dataDetectorTypes:
+      case CygnusWebViewSettingsProperty.dataDetectorTypes:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.databaseEnabled:
+      case CygnusWebViewSettingsProperty.databaseEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.decelerationRate:
+      case CygnusWebViewSettingsProperty.decelerationRate:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.defaultFixedFontSize:
+      case CygnusWebViewSettingsProperty.defaultFixedFontSize:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.defaultFontSize:
+      case CygnusWebViewSettingsProperty.defaultFontSize:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.defaultTextEncodingName:
+      case CygnusWebViewSettingsProperty.defaultTextEncodingName:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.defaultVideoPoster:
+      case CygnusWebViewSettingsProperty.defaultVideoPoster:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.disableAnimations:
+      case CygnusWebViewSettingsProperty.disableAnimations:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.disableContextMenu:
+      case CygnusWebViewSettingsProperty.disableContextMenu:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -5790,13 +5844,13 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
                     TargetPlatform.iOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.disableDefaultErrorPage:
+      case CygnusWebViewSettingsProperty.disableDefaultErrorPage:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.disableHorizontalScroll:
+      case CygnusWebViewSettingsProperty.disableHorizontalScroll:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -5804,13 +5858,13 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
                     TargetPlatform.android,
                     TargetPlatform.iOS,
                   ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.disableInputAccessoryView:
+      case CygnusWebViewSettingsProperty.disableInputAccessoryView:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.disableLongPressContextMenuOnLinks:
+      case CygnusWebViewSettingsProperty.disableLongPressContextMenuOnLinks:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.disableVerticalScroll:
+      case CygnusWebViewSettingsProperty.disableVerticalScroll:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -5818,154 +5872,154 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
                     TargetPlatform.android,
                     TargetPlatform.iOS,
                   ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.disableWebSecurity:
+      case CygnusWebViewSettingsProperty.disableWebSecurity:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.disabledActionModeMenuItems:
+      case CygnusWebViewSettingsProperty.disabledActionModeMenuItems:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.disallowOverScroll:
+      case CygnusWebViewSettingsProperty.disallowOverScroll:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.displayZoomControls:
+      case CygnusWebViewSettingsProperty.displayZoomControls:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.domStorageEnabled:
+      case CygnusWebViewSettingsProperty.domStorageEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.doubleClickDistance:
+      case CygnusWebViewSettingsProperty.doubleClickDistance:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.doubleClickTime:
+      case CygnusWebViewSettingsProperty.doubleClickTime:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.dragThreshold:
+      case CygnusWebViewSettingsProperty.dragThreshold:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.drawCompositingIndicators:
+      case CygnusWebViewSettingsProperty.drawCompositingIndicators:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enable2DCanvasAcceleration:
+      case CygnusWebViewSettingsProperty.enable2DCanvasAcceleration:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enableCaretBrowsing:
+      case CygnusWebViewSettingsProperty.enableCaretBrowsing:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enableEncryptedMedia:
+      case CygnusWebViewSettingsProperty.enableEncryptedMedia:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enableJavaScriptMarkup:
+      case CygnusWebViewSettingsProperty.enableJavaScriptMarkup:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enableMedia:
+      case CygnusWebViewSettingsProperty.enableMedia:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enableMediaCapabilities:
+      case CygnusWebViewSettingsProperty.enableMediaCapabilities:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enableMockCaptureDevices:
+      case CygnusWebViewSettingsProperty.enableMockCaptureDevices:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enablePageCache:
+      case CygnusWebViewSettingsProperty.enablePageCache:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enableResizableTextAreas:
+      case CygnusWebViewSettingsProperty.enableResizableTextAreas:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enableSmoothScrolling:
+      case CygnusWebViewSettingsProperty.enableSmoothScrolling:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enableSpatialNavigation:
+      case CygnusWebViewSettingsProperty.enableSpatialNavigation:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enableTabsToLinks:
+      case CygnusWebViewSettingsProperty.enableTabsToLinks:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enableViewportScale:
+      case CygnusWebViewSettingsProperty.enableViewportScale:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enableWebRTC:
+      case CygnusWebViewSettingsProperty.enableWebRTC:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.enableWriteConsoleMessagesToStdout:
+      case CygnusWebViewSettingsProperty.enableWriteConsoleMessagesToStdout:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty
+      case CygnusWebViewSettingsProperty
           .enterpriseAuthenticationAppLinkPolicyEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.fantasyFontFamily:
+      case CygnusWebViewSettingsProperty.fantasyFontFamily:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.fixedFontFamily:
+      case CygnusWebViewSettingsProperty.fixedFontFamily:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.fontAntialias:
+      case CygnusWebViewSettingsProperty.fontAntialias:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.fontDPI:
+      case CygnusWebViewSettingsProperty.fontDPI:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.fontHintingStyle:
+      case CygnusWebViewSettingsProperty.fontHintingStyle:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.fontSubpixelLayout:
+      case CygnusWebViewSettingsProperty.fontSubpixelLayout:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.forceDark:
+      case CygnusWebViewSettingsProperty.forceDark:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.forceDarkStrategy:
+      case CygnusWebViewSettingsProperty.forceDarkStrategy:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.generalAutofillEnabled:
+      case CygnusWebViewSettingsProperty.generalAutofillEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.geolocationEnabled:
+      case CygnusWebViewSettingsProperty.geolocationEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.handleAcceleratorKeyPressed:
+      case CygnusWebViewSettingsProperty.handleAcceleratorKeyPressed:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.hardwareAcceleration:
+      case CygnusWebViewSettingsProperty.hardwareAcceleration:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.hiddenPdfToolbarItems:
+      case CygnusWebViewSettingsProperty.hiddenPdfToolbarItems:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.horizontalScrollBarEnabled:
+      case CygnusWebViewSettingsProperty.horizontalScrollBarEnabled:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -5973,60 +6027,60 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
                     TargetPlatform.android,
                     TargetPlatform.iOS,
                   ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.horizontalScrollbarThumbColor:
+      case CygnusWebViewSettingsProperty.horizontalScrollbarThumbColor:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.horizontalScrollbarTrackColor:
+      case CygnusWebViewSettingsProperty.horizontalScrollbarTrackColor:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.iframeAllow:
+      case CygnusWebViewSettingsProperty.iframeAllow:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
                   [].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.iframeAllowFullscreen:
+      case CygnusWebViewSettingsProperty.iframeAllowFullscreen:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
                   [].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.iframeAriaHidden:
+      case CygnusWebViewSettingsProperty.iframeAriaHidden:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
                   [].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.iframeCsp:
+      case CygnusWebViewSettingsProperty.iframeCsp:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
                   [].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.iframeName:
+      case CygnusWebViewSettingsProperty.iframeName:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
                   [].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.iframeReferrerPolicy:
+      case CygnusWebViewSettingsProperty.iframeReferrerPolicy:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
                   [].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.iframeRole:
+      case CygnusWebViewSettingsProperty.iframeRole:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
                   [].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.iframeSandbox:
+      case CygnusWebViewSettingsProperty.iframeSandbox:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
                   [].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.ignoresViewportScaleLimits:
+      case CygnusWebViewSettingsProperty.ignoresViewportScaleLimits:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.incognito:
+      case CygnusWebViewSettingsProperty.incognito:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -6035,69 +6089,69 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
               TargetPlatform.windows,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.initialScale:
+      case CygnusWebViewSettingsProperty.initialScale:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.interceptOnlyAsyncAjaxRequests:
+      case CygnusWebViewSettingsProperty.interceptOnlyAsyncAjaxRequests:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.isDirectionalLockEnabled:
+      case CygnusWebViewSettingsProperty.isDirectionalLockEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.isElementFullscreenEnabled:
+      case CygnusWebViewSettingsProperty.isElementFullscreenEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.isFindInteractionEnabled:
+      case CygnusWebViewSettingsProperty.isFindInteractionEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.isFraudulentWebsiteWarningEnabled:
+      case CygnusWebViewSettingsProperty.isFraudulentWebsiteWarningEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.isInspectable:
+      case CygnusWebViewSettingsProperty.isInspectable:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.isPagingEnabled:
+      case CygnusWebViewSettingsProperty.isPagingEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.isSiteSpecificQuirksModeEnabled:
+      case CygnusWebViewSettingsProperty.isSiteSpecificQuirksModeEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.isTextInteractionEnabled:
+      case CygnusWebViewSettingsProperty.isTextInteractionEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.isUserInteractionEnabled:
+      case CygnusWebViewSettingsProperty.isUserInteractionEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.itpEnabled:
+      case CygnusWebViewSettingsProperty.itpEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.javaScriptBridgeEnabled:
+      case CygnusWebViewSettingsProperty.javaScriptBridgeEnabled:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -6107,7 +6161,7 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.javaScriptBridgeForMainFrameOnly:
+      case CygnusWebViewSettingsProperty.javaScriptBridgeForMainFrameOnly:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -6115,7 +6169,7 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.javaScriptBridgeOriginAllowList:
+      case CygnusWebViewSettingsProperty.javaScriptBridgeOriginAllowList:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -6125,10 +6179,10 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.javaScriptCanAccessClipboard:
+      case CygnusWebViewSettingsProperty.javaScriptCanAccessClipboard:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.javaScriptCanOpenWindowsAutomatically:
+      case CygnusWebViewSettingsProperty.javaScriptCanOpenWindowsAutomatically:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -6137,7 +6191,7 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
                     TargetPlatform.iOS,
                     TargetPlatform.macOS,
                   ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.javaScriptEnabled:
+      case CygnusWebViewSettingsProperty.javaScriptEnabled:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -6147,7 +6201,7 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.javaScriptHandlersForMainFrameOnly:
+      case CygnusWebViewSettingsProperty.javaScriptHandlersForMainFrameOnly:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -6155,7 +6209,7 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.javaScriptHandlersOriginAllowList:
+      case CygnusWebViewSettingsProperty.javaScriptHandlersOriginAllowList:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -6165,131 +6219,131 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
                     TargetPlatform.macOS,
                     TargetPlatform.windows,
                   ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.keyRepeatDelay:
+      case CygnusWebViewSettingsProperty.keyRepeatDelay:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.keyRepeatInterval:
+      case CygnusWebViewSettingsProperty.keyRepeatInterval:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.keyboardAvoidance:
+      case CygnusWebViewSettingsProperty.keyboardAvoidance:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.layoutAlgorithm:
+      case CygnusWebViewSettingsProperty.layoutAlgorithm:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.limitsNavigationsToAppBoundDomains:
+      case CygnusWebViewSettingsProperty.limitsNavigationsToAppBoundDomains:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.loadWithOverviewMode:
+      case CygnusWebViewSettingsProperty.loadWithOverviewMode:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.loadsImagesAutomatically:
+      case CygnusWebViewSettingsProperty.loadsImagesAutomatically:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.maximumViewportInset:
+      case CygnusWebViewSettingsProperty.maximumViewportInset:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.maximumZoomScale:
+      case CygnusWebViewSettingsProperty.maximumZoomScale:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty
+      case CygnusWebViewSettingsProperty
           .mediaContentTypesRequiringHardwareSupport:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.mediaPlaybackRequiresUserGesture:
+      case CygnusWebViewSettingsProperty.mediaPlaybackRequiresUserGesture:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.mediaType:
+      case CygnusWebViewSettingsProperty.mediaType:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.minimumFontSize:
+      case CygnusWebViewSettingsProperty.minimumFontSize:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.minimumLogicalFontSize:
+      case CygnusWebViewSettingsProperty.minimumLogicalFontSize:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.minimumViewportInset:
+      case CygnusWebViewSettingsProperty.minimumViewportInset:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.minimumZoomScale:
+      case CygnusWebViewSettingsProperty.minimumZoomScale:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.mixedContentMode:
+      case CygnusWebViewSettingsProperty.mixedContentMode:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.needInitialFocus:
+      case CygnusWebViewSettingsProperty.needInitialFocus:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.networkAvailable:
+      case CygnusWebViewSettingsProperty.networkAvailable:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.nonClientRegionSupportEnabled:
+      case CygnusWebViewSettingsProperty.nonClientRegionSupportEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.offscreenPreRaster:
+      case CygnusWebViewSettingsProperty.offscreenPreRaster:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.overScrollMode:
+      case CygnusWebViewSettingsProperty.overScrollMode:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.pageZoom:
+      case CygnusWebViewSettingsProperty.pageZoom:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.passwordAutosaveEnabled:
+      case CygnusWebViewSettingsProperty.passwordAutosaveEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.pictographFontFamily:
+      case CygnusWebViewSettingsProperty.pictographFontFamily:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.pinchZoomEnabled:
+      case CygnusWebViewSettingsProperty.pinchZoomEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.pluginScriptsForMainFrameOnly:
+      case CygnusWebViewSettingsProperty.pluginScriptsForMainFrameOnly:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -6297,7 +6351,7 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.pluginScriptsOriginAllowList:
+      case CygnusWebViewSettingsProperty.pluginScriptsOriginAllowList:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -6305,151 +6359,127 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.preferredContentMode:
+      case CygnusWebViewSettingsProperty.preferredContentMode:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.regexToAllowSyncUrlLoading:
+      case CygnusWebViewSettingsProperty.regexToAllowSyncUrlLoading:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.regexToCancelSubFramesLoading:
+      case CygnusWebViewSettingsProperty.regexToCancelSubFramesLoading:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.rendererPriorityPolicy:
+      case CygnusWebViewSettingsProperty.rendererPriorityPolicy:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.reputationCheckingRequired:
+      case CygnusWebViewSettingsProperty.reputationCheckingRequired:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.requestedWithHeaderOriginAllowList:
+      case CygnusWebViewSettingsProperty.requestedWithHeaderOriginAllowList:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.resourceCustomSchemes:
+      case CygnusWebViewSettingsProperty.resourceCustomSchemes:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.safeBrowsingEnabled:
+      case CygnusWebViewSettingsProperty.safeBrowsingEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.sansSerifFontFamily:
+      case CygnusWebViewSettingsProperty.sansSerifFontFamily:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.saveFormData:
+      case CygnusWebViewSettingsProperty.saveFormData:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.scrollBarDefaultDelayBeforeFade:
+      case CygnusWebViewSettingsProperty.scrollBarDefaultDelayBeforeFade:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.scrollBarFadeDuration:
+      case CygnusWebViewSettingsProperty.scrollBarFadeDuration:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.scrollBarStyle:
+      case CygnusWebViewSettingsProperty.scrollBarStyle:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.scrollMultiplier:
+      case CygnusWebViewSettingsProperty.scrollMultiplier:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.scrollbarFadingEnabled:
+      case CygnusWebViewSettingsProperty.scrollbarFadingEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.scrollsToTop:
+      case CygnusWebViewSettingsProperty.scrollsToTop:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.selectionGranularity:
+      case CygnusWebViewSettingsProperty.selectionGranularity:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.serifFontFamily:
+      case CygnusWebViewSettingsProperty.serifFontFamily:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.sharedCookiesEnabled:
+      case CygnusWebViewSettingsProperty.sharedCookiesEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.shouldPrintBackgrounds:
+      case CygnusWebViewSettingsProperty.shouldPrintBackgrounds:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.standardFontFamily:
+      case CygnusWebViewSettingsProperty.standardFontFamily:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.statusBarEnabled:
+      case CygnusWebViewSettingsProperty.statusBarEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.supportMultipleWindows:
+      case CygnusWebViewSettingsProperty.supportMultipleWindows:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.supportZoom:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-              TargetPlatform.windows,
-            ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.suppressesIncrementalRendering:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.textZoom:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.thirdPartyCookiesEnabled:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.transparentBackground:
+      case CygnusWebViewSettingsProperty.supportZoom:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -6457,45 +6487,69 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.underPageBackgroundColor:
+      case CygnusWebViewSettingsProperty.suppressesIncrementalRendering:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.upgradeKnownHostsToHTTPS:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.useHybridComposition:
+      case CygnusWebViewSettingsProperty.textZoom:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.useOnAjaxProgress:
+      case CygnusWebViewSettingsProperty.thirdPartyCookiesEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.useOnAjaxReadyStateChange:
+      case CygnusWebViewSettingsProperty.transparentBackground:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
+              TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.useOnDownloadStart:
+      case CygnusWebViewSettingsProperty.underPageBackgroundColor:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.upgradeKnownHostsToHTTPS:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.useHybridComposition:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.useOnAjaxProgress:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.useOnLoadResource:
+      case CygnusWebViewSettingsProperty.useOnAjaxReadyStateChange:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.useOnDownloadStart:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.useOnLoadResource:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -6503,55 +6557,42 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.useOnNavigationResponse:
+      case CygnusWebViewSettingsProperty.useOnNavigationResponse:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.useOnRenderProcessGone:
+      case CygnusWebViewSettingsProperty.useOnRenderProcessGone:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.useOnShowFileChooser:
+      case CygnusWebViewSettingsProperty.useOnShowFileChooser:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.useShouldInterceptAjaxRequest:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-              TargetPlatform.macOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.useShouldInterceptFetchRequest:
+      case CygnusWebViewSettingsProperty.useShouldInterceptAjaxRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.useShouldInterceptRequest:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.useShouldOverrideUrlLoading:
+      case CygnusWebViewSettingsProperty.useShouldInterceptFetchRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
               TargetPlatform.macOS,
-              TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.useWideViewPort:
+      case CygnusWebViewSettingsProperty.useShouldInterceptRequest:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.userAgent:
+      case CygnusWebViewSettingsProperty.useShouldOverrideUrlLoading:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -6559,7 +6600,20 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.verticalScrollBarEnabled:
+      case CygnusWebViewSettingsProperty.useWideViewPort:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.userAgent:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+              TargetPlatform.macOS,
+              TargetPlatform.windows,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusWebViewSettingsProperty.verticalScrollBarEnabled:
         return kIsWeb && platform == null
             ? true
             : ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -6567,25 +6621,25 @@ extension _InAppWebViewSettingsPropertySupported on InAppWebViewSettings {
                     TargetPlatform.android,
                     TargetPlatform.iOS,
                   ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.verticalScrollbarPosition:
+      case CygnusWebViewSettingsProperty.verticalScrollbarPosition:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.verticalScrollbarThumbColor:
+      case CygnusWebViewSettingsProperty.verticalScrollbarThumbColor:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.verticalScrollbarTrackColor:
+      case CygnusWebViewSettingsProperty.verticalScrollbarTrackColor:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.webRTCUdpPortsRange:
+      case CygnusWebViewSettingsProperty.webRTCUdpPortsRange:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.linux].contains(platform ?? defaultTargetPlatform);
-      case InAppWebViewSettingsProperty.webViewAssetLoader:
+      case CygnusWebViewSettingsProperty.webViewAssetLoader:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,

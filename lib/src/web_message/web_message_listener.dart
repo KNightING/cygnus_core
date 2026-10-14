@@ -1,84 +1,84 @@
 import 'package:flutter/foundation.dart';
 import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
 
-///{@macro cygnus_core.PlatformWebMessageListener}
+///{@macro cygnus_core.CygnusPlatformWebMessageListener}
 ///
-///{@macro cygnus_core.PlatformWebMessageListener.supported_platforms}
-class WebMessageListener {
-  ///{@macro cygnus_core.PlatformWebMessageListener}
-  WebMessageListener({
+///{@macro cygnus_core.CygnusPlatformWebMessageListener.supported_platforms}
+class CygnusWebMessageListener {
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListener}
+  CygnusWebMessageListener({
     required String jsObjectName,
     Set<String>? allowedOriginRules,
-    OnPostMessageCallback? onPostMessage,
+    CygnusOnPostMessageCallback? onPostMessage,
   }) : this.fromPlatformCreationParams(
-         params: PlatformWebMessageListenerCreationParams(
+         params: CygnusPlatformWebMessageListenerCreationParams(
            jsObjectName: jsObjectName,
            allowedOriginRules: allowedOriginRules,
            onPostMessage: onPostMessage,
          ),
        );
 
-  /// Constructs a [WebMessageListener].
+  /// Constructs a [CygnusWebMessageListener].
   ///
-  /// See [WebMessageListener.fromPlatformCreationParams] for setting parameters for
+  /// See [CygnusWebMessageListener.fromPlatformCreationParams] for setting parameters for
   /// a specific platform.
-  WebMessageListener.fromPlatformCreationParams({
-    required PlatformWebMessageListenerCreationParams params,
-  }) : this.fromPlatform(platform: PlatformWebMessageListener(params));
+  CygnusWebMessageListener.fromPlatformCreationParams({
+    required CygnusPlatformWebMessageListenerCreationParams params,
+  }) : this.fromPlatform(platform: CygnusPlatformWebMessageListener(params));
 
-  /// Constructs a [WebMessageListener] from a specific platform implementation.
-  WebMessageListener.fromPlatform({required this.platform});
+  /// Constructs a [CygnusWebMessageListener] from a specific platform implementation.
+  CygnusWebMessageListener.fromPlatform({required this.platform});
 
-  /// Implementation of [PlatformWebMessageListener] for the current platform.
-  final PlatformWebMessageListener platform;
+  /// Implementation of [CygnusPlatformWebMessageListener] for the current platform.
+  final CygnusPlatformWebMessageListener platform;
 
   /// Provide static access.
-  static WebMessageListener static() {
-    return WebMessageListener.fromPlatform(
-      platform: PlatformWebMessageListener.static(),
+  static CygnusWebMessageListener static() {
+    return CygnusWebMessageListener.fromPlatform(
+      platform: CygnusPlatformWebMessageListener.static(),
     );
   }
 
-  ///{@macro cygnus_core.PlatformWebMessageListenerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListenerCreationParams.isClassSupported}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformWebMessageListener.static().isClassSupported(platform: platform);
+      CygnusPlatformWebMessageListener.static().isClassSupported(platform: platform);
 
-  ///{@macro cygnus_core.PlatformWebMessageListener.isPropertySupported}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListener.isPropertySupported}
   static bool isPropertySupported(
-    PlatformWebMessageListenerCreationParamsProperty property, {
+    CygnusPlatformWebMessageListenerCreationParamsProperty property, {
     TargetPlatform? platform,
-  }) => PlatformWebMessageListener.static().isPropertySupported(
+  }) => CygnusPlatformWebMessageListener.static().isPropertySupported(
     property,
     platform: platform,
   );
 
-  ///{@macro cygnus_core.PlatformWebMessageListener.isMethodSupported}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListener.isMethodSupported}
   static bool isMethodSupported(
-    PlatformWebMessageListenerMethod method, {
+    CygnusPlatformWebMessageListenerMethod method, {
     TargetPlatform? platform,
-  }) => PlatformWebMessageListener.static().isMethodSupported(
+  }) => CygnusPlatformWebMessageListener.static().isMethodSupported(
     method,
     platform: platform,
   );
 
-  ///{@macro cygnus_core.PlatformWebMessageListener.jsObjectName}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListener.jsObjectName}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageListener.jsObjectName.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListener.jsObjectName.supported_platforms}
   String get jsObjectName => platform.jsObjectName;
 
-  ///{@macro cygnus_core.PlatformWebMessageListener.allowedOriginRules}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListener.allowedOriginRules}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageListener.allowedOriginRules.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListener.allowedOriginRules.supported_platforms}
   Set<String>? get allowedOriginRules => platform.allowedOriginRules;
 
-  ///{@macro cygnus_core.PlatformWebMessageListener.onPostMessage}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListener.onPostMessage}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageListener.onPostMessage.supported_platforms}
-  OnPostMessageCallback? get onPostMessage => platform.onPostMessage;
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListener.onPostMessage.supported_platforms}
+  CygnusOnPostMessageCallback? get onPostMessage => platform.onPostMessage;
 
-  ///{@macro cygnus_core.PlatformWebMessageListener.dispose}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListener.dispose}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageListener.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListener.dispose.supported_platforms}
   void dispose() => platform.dispose();
 
   Map<String, dynamic> toMap() => platform.toMap();
@@ -89,39 +89,39 @@ class WebMessageListener {
   String toString() => platform.toString();
 }
 
-///{@macro cygnus_core.PlatformJavaScriptReplyProxy}
+///{@macro cygnus_core.CygnusPlatformJavaScriptReplyProxy}
 ///
-///{@macro cygnus_core.PlatformJavaScriptReplyProxy.supported_platforms}
-class JavaScriptReplyProxy {
-  ///{@macro cygnus_core.PlatformJavaScriptReplyProxy}
-  JavaScriptReplyProxy({required PlatformWebMessageListener webMessageListener})
+///{@macro cygnus_core.CygnusPlatformJavaScriptReplyProxy.supported_platforms}
+class CygnusJavaScriptReplyProxy {
+  ///{@macro cygnus_core.CygnusPlatformJavaScriptReplyProxy}
+  CygnusJavaScriptReplyProxy({required CygnusPlatformWebMessageListener webMessageListener})
     : this.fromPlatformCreationParams(
-        params: PlatformJavaScriptReplyProxyCreationParams(
+        params: CygnusPlatformJavaScriptReplyProxyCreationParams(
           webMessageListener: webMessageListener,
         ),
       );
 
-  /// Constructs a [JavaScriptReplyProxy].
+  /// Constructs a [CygnusJavaScriptReplyProxy].
   ///
-  /// See [JavaScriptReplyProxy.fromPlatformCreationParams] for setting parameters for
+  /// See [CygnusJavaScriptReplyProxy.fromPlatformCreationParams] for setting parameters for
   /// a specific platform.
-  JavaScriptReplyProxy.fromPlatformCreationParams({
-    required PlatformJavaScriptReplyProxyCreationParams params,
-  }) : this.fromPlatform(platform: PlatformJavaScriptReplyProxy(params));
+  CygnusJavaScriptReplyProxy.fromPlatformCreationParams({
+    required CygnusPlatformJavaScriptReplyProxyCreationParams params,
+  }) : this.fromPlatform(platform: CygnusPlatformJavaScriptReplyProxy(params));
 
-  /// Constructs a [JavaScriptReplyProxy] from a specific platform implementation.
-  JavaScriptReplyProxy.fromPlatform({required this.platform});
+  /// Constructs a [CygnusJavaScriptReplyProxy] from a specific platform implementation.
+  CygnusJavaScriptReplyProxy.fromPlatform({required this.platform});
 
-  /// Implementation of [PlatformJavaScriptReplyProxy] for the current platform.
-  final PlatformJavaScriptReplyProxy platform;
+  /// Implementation of [CygnusPlatformJavaScriptReplyProxy] for the current platform.
+  final CygnusPlatformJavaScriptReplyProxy platform;
 
-  ///{@macro cygnus_core.PlatformJavaScriptReplyProxy.postMessage}
+  ///{@macro cygnus_core.CygnusPlatformJavaScriptReplyProxy.postMessage}
   ///
-  ///{@macro cygnus_core.PlatformJavaScriptReplyProxy.postMessage.supported_platforms}
-  Future<void> postMessage(WebMessage message) => platform.postMessage(message);
+  ///{@macro cygnus_core.CygnusPlatformJavaScriptReplyProxy.postMessage.supported_platforms}
+  Future<void> postMessage(CygnusWebMessage message) => platform.postMessage(message);
 
   @override
   String toString() {
-    return 'JavaScriptReplyProxy{}';
+    return 'CygnusJavaScriptReplyProxy{}';
   }
 }

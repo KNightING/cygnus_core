@@ -9,37 +9,37 @@ part of 'notification_direction.dart';
 ///Constants that describe the text direction.
 ///
 ///This corresponds to [COREWEBVIEW2_TEXT_DIRECTION_KIND](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.3595.46#corewebview2_text_direction_kind).
-class TextDirectionKind {
+class CygnusTextDirectionKind {
   final int _value;
   final int? _nativeValue;
-  const TextDirectionKind._internal(this._value, this._nativeValue);
+  const CygnusTextDirectionKind._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory TextDirectionKind._internalMultiPlatform(
+  factory CygnusTextDirectionKind._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => TextDirectionKind._internal(value, nativeValue());
+  ) => CygnusTextDirectionKind._internal(value, nativeValue());
 
   ///Default text direction.
-  static const DEFAULT = TextDirectionKind._internal(0, 0);
+  static const DEFAULT = CygnusTextDirectionKind._internal(0, 0);
 
   ///Left-to-right text direction.
-  static const LEFT_TO_RIGHT = TextDirectionKind._internal(1, 1);
+  static const LEFT_TO_RIGHT = CygnusTextDirectionKind._internal(1, 1);
 
   ///Right-to-left text direction.
-  static const RIGHT_TO_LEFT = TextDirectionKind._internal(2, 2);
+  static const RIGHT_TO_LEFT = CygnusTextDirectionKind._internal(2, 2);
 
-  ///Set of all values of [TextDirectionKind].
-  static final Set<TextDirectionKind> values = [
-    TextDirectionKind.DEFAULT,
-    TextDirectionKind.LEFT_TO_RIGHT,
-    TextDirectionKind.RIGHT_TO_LEFT,
+  ///Set of all values of [CygnusTextDirectionKind].
+  static final Set<CygnusTextDirectionKind> values = [
+    CygnusTextDirectionKind.DEFAULT,
+    CygnusTextDirectionKind.LEFT_TO_RIGHT,
+    CygnusTextDirectionKind.RIGHT_TO_LEFT,
   ].toSet();
 
-  ///Gets a possible [TextDirectionKind] instance from [int] value.
-  static TextDirectionKind? fromValue(int? value) {
+  ///Gets a possible [CygnusTextDirectionKind] instance from [int] value.
+  static CygnusTextDirectionKind? fromValue(int? value) {
     if (value != null) {
       try {
-        return TextDirectionKind.values.firstWhere(
+        return CygnusTextDirectionKind.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -49,11 +49,11 @@ class TextDirectionKind {
     return null;
   }
 
-  ///Gets a possible [TextDirectionKind] instance from a native value.
-  static TextDirectionKind? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusTextDirectionKind] instance from a native value.
+  static CygnusTextDirectionKind? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return TextDirectionKind.values.firstWhere(
+        return CygnusTextDirectionKind.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -63,15 +63,15 @@ class TextDirectionKind {
     return null;
   }
 
-  /// Gets a possible [TextDirectionKind] instance value with name [name].
+  /// Gets a possible [CygnusTextDirectionKind] instance value with name [name].
   ///
-  /// Goes through [TextDirectionKind.values] looking for a value with
-  /// name [name], as reported by [TextDirectionKind.name].
+  /// Goes through [CygnusTextDirectionKind.values] looking for a value with
+  /// name [name], as reported by [CygnusTextDirectionKind.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static TextDirectionKind? byName(String? name) {
+  static CygnusTextDirectionKind? byName(String? name) {
     if (name != null) {
       try {
-        return TextDirectionKind.values.firstWhere(
+        return CygnusTextDirectionKind.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -81,7 +81,7 @@ class TextDirectionKind {
     return null;
   }
 
-  /// Creates a map from the names of [TextDirectionKind] values to the values.
+  /// Creates a map from the names of [CygnusTextDirectionKind] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -89,9 +89,9 @@ class TextDirectionKind {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, TextDirectionKind> asNameMap() =>
-      <String, TextDirectionKind>{
-        for (final value in TextDirectionKind.values) value.name(): value,
+  static Map<String, CygnusTextDirectionKind> asNameMap() =>
+      <String, CygnusTextDirectionKind>{
+        for (final value in CygnusTextDirectionKind.values) value.name(): value,
       };
 
   ///Gets [int] value.

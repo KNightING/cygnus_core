@@ -7,39 +7,37 @@ part of 'ssl_error_type.dart';
 // **************************************************************************
 
 ///Class that represents the SSL Primary error associated to the server SSL certificate.
-///Used by the [ServerTrustChallenge] class.
-class SslErrorType {
+///Used by the [CygnusServerTrustChallenge] class.
+class CygnusSslErrorType {
   final String _value;
   final int? _nativeValue;
-  const SslErrorType._internal(this._value, this._nativeValue);
+  const CygnusSslErrorType._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory SslErrorType._internalMultiPlatform(
+  factory CygnusSslErrorType._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => SslErrorType._internal(value, nativeValue());
+  ) => CygnusSslErrorType._internal(value, nativeValue());
 
   ///Indicates that the SSL certificate common name does not match the web address.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_WEB_ERROR_STATUS_CERTIFICATE_COMMON_NAME_IS_INCORRECT](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_web_error_status))
-  static final COMMON_NAME_IS_INCORRECT = SslErrorType._internalMultiPlatform(
-    'COMMON_NAME_IS_INCORRECT',
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.windows:
-          return 1;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final COMMON_NAME_IS_INCORRECT =
+      CygnusSslErrorType._internalMultiPlatform('COMMON_NAME_IS_INCORRECT', () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.windows:
+            return 1;
+          default:
+            break;
+        }
+        return null;
+      });
 
   ///The date of the certificate is invalid.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - SslError.DATE_INVALID](https://developer.android.com/reference/android/net/http/SslError#SSL_DATE_INVALID))
-  static final DATE_INVALID = SslErrorType._internalMultiPlatform(
+  ///- Android WebView ([Official API - CygnusSslError.DATE_INVALID](https://developer.android.com/reference/android/net/http/CygnusSslError#SSL_DATE_INVALID))
+  static final DATE_INVALID = CygnusSslErrorType._internalMultiPlatform(
     'DATE_INVALID',
     () {
       switch (defaultTargetPlatform) {
@@ -62,7 +60,7 @@ class SslErrorType {
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - SecTrustResultType.deny](https://developer.apple.com/documentation/security/sectrustresulttype/deny))
   ///- macOS WKWebView ([Official API - SecTrustResultType.deny](https://developer.apple.com/documentation/security/sectrustresulttype/deny))
-  static final DENY = SslErrorType._internalMultiPlatform('DENY', () {
+  static final DENY = CygnusSslErrorType._internalMultiPlatform('DENY', () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.iOS:
         return 3;
@@ -77,19 +75,22 @@ class SslErrorType {
   ///The certificate has expired.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - SslError.SSL_EXPIRED](https://developer.android.com/reference/android/net/http/SslError#SSL_EXPIRED))
+  ///- Android WebView ([Official API - CygnusSslError.SSL_EXPIRED](https://developer.android.com/reference/android/net/http/CygnusSslError#SSL_EXPIRED))
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_WEB_ERROR_STATUS_CERTIFICATE_EXPIRED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_web_error_status))
-  static final EXPIRED = SslErrorType._internalMultiPlatform('EXPIRED', () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.android:
-        return 1;
-      case TargetPlatform.windows:
-        return 2;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final EXPIRED = CygnusSslErrorType._internalMultiPlatform(
+    'EXPIRED',
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.android:
+          return 1;
+        case TargetPlatform.windows:
+          return 2;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
   ///Trust is denied and no simple fix is available.
   ///
@@ -101,7 +102,7 @@ class SslErrorType {
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - SecTrustResultType.fatalTrustFailure](https://developer.apple.com/documentation/security/sectrustresulttype/fataltrustfailure))
   ///- macOS WKWebView ([Official API - SecTrustResultType.fatalTrustFailure](https://developer.apple.com/documentation/security/sectrustresulttype/fataltrustfailure))
-  static final FATAL_TRUST_FAILURE = SslErrorType._internalMultiPlatform(
+  static final FATAL_TRUST_FAILURE = CygnusSslErrorType._internalMultiPlatform(
     'FATAL_TRUST_FAILURE',
     () {
       switch (defaultTargetPlatform) {
@@ -119,8 +120,8 @@ class SslErrorType {
   ///Hostname mismatch.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - SslError.SSL_IDMISMATCH](https://developer.android.com/reference/android/net/http/SslError#SSL_IDMISMATCH))
-  static final IDMISMATCH = SslErrorType._internalMultiPlatform(
+  ///- Android WebView ([Official API - CygnusSslError.SSL_IDMISMATCH](https://developer.android.com/reference/android/net/http/CygnusSslError#SSL_IDMISMATCH))
+  static final IDMISMATCH = CygnusSslErrorType._internalMultiPlatform(
     'IDMISMATCH',
     () {
       switch (defaultTargetPlatform) {
@@ -136,31 +137,34 @@ class SslErrorType {
   ///Indicates an invalid setting or result. A generic error occurred.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - SslError.SSL_INVALID](https://developer.android.com/reference/android/net/http/SslError#SSL_INVALID))
+  ///- Android WebView ([Official API - CygnusSslError.SSL_INVALID](https://developer.android.com/reference/android/net/http/CygnusSslError#SSL_INVALID))
   ///- iOS WKWebView ([Official API - SecTrustResultType.invalid](https://developer.apple.com/documentation/security/sectrustresulttype/invalid))
   ///- macOS WKWebView ([Official API - SecTrustResultType.invalid](https://developer.apple.com/documentation/security/sectrustresulttype/invalid))
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_WEB_ERROR_STATUS_CERTIFICATE_IS_INVALID](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_web_error_status))
-  static final INVALID = SslErrorType._internalMultiPlatform('INVALID', () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.android:
-        return 5;
-      case TargetPlatform.iOS:
-        return 0;
-      case TargetPlatform.macOS:
-        return 0;
-      case TargetPlatform.windows:
-        return 5;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final INVALID = CygnusSslErrorType._internalMultiPlatform(
+    'INVALID',
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.android:
+          return 5;
+        case TargetPlatform.iOS:
+          return 0;
+        case TargetPlatform.macOS:
+          return 0;
+        case TargetPlatform.windows:
+          return 5;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
   ///The certificate is not yet valid.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - SslError.SSL_NOTYETVALID](https://developer.android.com/reference/android/net/http/SslError#SSL_NOTYETVALID))
-  static final NOT_YET_VALID = SslErrorType._internalMultiPlatform(
+  ///- Android WebView ([Official API - CygnusSslError.SSL_NOTYETVALID](https://developer.android.com/reference/android/net/http/CygnusSslError#SSL_NOTYETVALID))
+  static final NOT_YET_VALID = CygnusSslErrorType._internalMultiPlatform(
     'NOT_YET_VALID',
     () {
       switch (defaultTargetPlatform) {
@@ -184,7 +188,7 @@ class SslErrorType {
   ///- iOS WKWebView ([Official API - SecTrustResultType.otherError](https://developer.apple.com/documentation/security/sectrustresulttype/othererror))
   ///- macOS WKWebView ([Official API - SecTrustResultType.otherError](https://developer.apple.com/documentation/security/sectrustresulttype/othererror))
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_WEB_ERROR_STATUS_CLIENT_CERTIFICATE_CONTAINS_ERRORS](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_web_error_status))
-  static final OTHER_ERROR = SslErrorType._internalMultiPlatform(
+  static final OTHER_ERROR = CygnusSslErrorType._internalMultiPlatform(
     'OTHER_ERROR',
     () {
       switch (defaultTargetPlatform) {
@@ -214,34 +218,38 @@ class SslErrorType {
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - SecTrustResultType.recoverableTrustFailure](https://developer.apple.com/documentation/security/sectrustresulttype/recoverabletrustfailure))
   ///- macOS WKWebView ([Official API - SecTrustResultType.recoverableTrustFailure](https://developer.apple.com/documentation/security/sectrustresulttype/recoverabletrustfailure))
-  static final RECOVERABLE_TRUST_FAILURE = SslErrorType._internalMultiPlatform(
-    'RECOVERABLE_TRUST_FAILURE',
+  static final RECOVERABLE_TRUST_FAILURE =
+      CygnusSslErrorType._internalMultiPlatform(
+        'RECOVERABLE_TRUST_FAILURE',
+        () {
+          switch (defaultTargetPlatform) {
+            case TargetPlatform.iOS:
+              return 5;
+            case TargetPlatform.macOS:
+              return 5;
+            default:
+              break;
+          }
+          return null;
+        },
+      );
+
+  ///Indicates that the SSL certificate has been revoked.
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- Windows WebView2 ([Official API - COREWEBVIEW2_WEB_ERROR_STATUS_CERTIFICATE_REVOKED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_web_error_status))
+  static final REVOKED = CygnusSslErrorType._internalMultiPlatform(
+    'REVOKED',
     () {
       switch (defaultTargetPlatform) {
-        case TargetPlatform.iOS:
-          return 5;
-        case TargetPlatform.macOS:
-          return 5;
+        case TargetPlatform.windows:
+          return 4;
         default:
           break;
       }
       return null;
     },
   );
-
-  ///Indicates that the SSL certificate has been revoked.
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- Windows WebView2 ([Official API - COREWEBVIEW2_WEB_ERROR_STATUS_CERTIFICATE_REVOKED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_web_error_status))
-  static final REVOKED = SslErrorType._internalMultiPlatform('REVOKED', () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.windows:
-        return 4;
-      default:
-        break;
-    }
-    return null;
-  });
 
   ///Indicates the evaluation succeeded and the certificate is implicitly trusted, but user intent was not explicitly specified.
   ///
@@ -255,7 +263,7 @@ class SslErrorType {
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - SecTrustResultType.unspecified](https://developer.apple.com/documentation/security/sectrustresulttype/unspecified))
   ///- macOS WKWebView ([Official API - SecTrustResultType.unspecified](https://developer.apple.com/documentation/security/sectrustresulttype/unspecified))
-  static final UNSPECIFIED = SslErrorType._internalMultiPlatform(
+  static final UNSPECIFIED = CygnusSslErrorType._internalMultiPlatform(
     'UNSPECIFIED',
     () {
       switch (defaultTargetPlatform) {
@@ -273,39 +281,42 @@ class SslErrorType {
   ///The certificate authority is not trusted.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - SslError.SSL_UNTRUSTED](https://developer.android.com/reference/android/net/http/SslError#SSL_UNTRUSTED))
-  static final UNTRUSTED = SslErrorType._internalMultiPlatform('UNTRUSTED', () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.android:
-        return 3;
-      default:
-        break;
-    }
-    return null;
-  });
+  ///- Android WebView ([Official API - CygnusSslError.SSL_UNTRUSTED](https://developer.android.com/reference/android/net/http/CygnusSslError#SSL_UNTRUSTED))
+  static final UNTRUSTED = CygnusSslErrorType._internalMultiPlatform(
+    'UNTRUSTED',
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.android:
+          return 3;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
-  ///Set of all values of [SslErrorType].
-  static final Set<SslErrorType> values = [
-    SslErrorType.COMMON_NAME_IS_INCORRECT,
-    SslErrorType.DATE_INVALID,
-    SslErrorType.DENY,
-    SslErrorType.EXPIRED,
-    SslErrorType.FATAL_TRUST_FAILURE,
-    SslErrorType.IDMISMATCH,
-    SslErrorType.INVALID,
-    SslErrorType.NOT_YET_VALID,
-    SslErrorType.OTHER_ERROR,
-    SslErrorType.RECOVERABLE_TRUST_FAILURE,
-    SslErrorType.REVOKED,
-    SslErrorType.UNSPECIFIED,
-    SslErrorType.UNTRUSTED,
+  ///Set of all values of [CygnusSslErrorType].
+  static final Set<CygnusSslErrorType> values = [
+    CygnusSslErrorType.COMMON_NAME_IS_INCORRECT,
+    CygnusSslErrorType.DATE_INVALID,
+    CygnusSslErrorType.DENY,
+    CygnusSslErrorType.EXPIRED,
+    CygnusSslErrorType.FATAL_TRUST_FAILURE,
+    CygnusSslErrorType.IDMISMATCH,
+    CygnusSslErrorType.INVALID,
+    CygnusSslErrorType.NOT_YET_VALID,
+    CygnusSslErrorType.OTHER_ERROR,
+    CygnusSslErrorType.RECOVERABLE_TRUST_FAILURE,
+    CygnusSslErrorType.REVOKED,
+    CygnusSslErrorType.UNSPECIFIED,
+    CygnusSslErrorType.UNTRUSTED,
   ].toSet();
 
-  ///Gets a possible [SslErrorType] instance from [String] value.
-  static SslErrorType? fromValue(String? value) {
+  ///Gets a possible [CygnusSslErrorType] instance from [String] value.
+  static CygnusSslErrorType? fromValue(String? value) {
     if (value != null) {
       try {
-        return SslErrorType.values.firstWhere(
+        return CygnusSslErrorType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -315,11 +326,11 @@ class SslErrorType {
     return null;
   }
 
-  ///Gets a possible [SslErrorType] instance from a native value.
-  static SslErrorType? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusSslErrorType] instance from a native value.
+  static CygnusSslErrorType? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return SslErrorType.values.firstWhere(
+        return CygnusSslErrorType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -329,15 +340,15 @@ class SslErrorType {
     return null;
   }
 
-  /// Gets a possible [SslErrorType] instance value with name [name].
+  /// Gets a possible [CygnusSslErrorType] instance value with name [name].
   ///
-  /// Goes through [SslErrorType.values] looking for a value with
-  /// name [name], as reported by [SslErrorType.name].
+  /// Goes through [CygnusSslErrorType.values] looking for a value with
+  /// name [name], as reported by [CygnusSslErrorType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static SslErrorType? byName(String? name) {
+  static CygnusSslErrorType? byName(String? name) {
     if (name != null) {
       try {
-        return SslErrorType.values.firstWhere(
+        return CygnusSslErrorType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -347,7 +358,7 @@ class SslErrorType {
     return null;
   }
 
-  /// Creates a map from the names of [SslErrorType] values to the values.
+  /// Creates a map from the names of [CygnusSslErrorType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -355,9 +366,10 @@ class SslErrorType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, SslErrorType> asNameMap() => <String, SslErrorType>{
-    for (final value in SslErrorType.values) value.name(): value,
-  };
+  static Map<String, CygnusSslErrorType> asNameMap() =>
+      <String, CygnusSslErrorType>{
+        for (final value in CygnusSslErrorType.values) value.name(): value,
+      };
 
   ///Gets [String] value.
   String toValue() => _value;
@@ -416,52 +428,52 @@ class SslErrorType {
 }
 
 ///Class that represents the Android-specific primary error associated to the server SSL certificate.
-///Used by the [ServerTrustChallenge] class.
-///Use [SslErrorType] instead.
-@Deprecated('Use SslErrorType instead')
-class AndroidSslError {
+///Used by the [CygnusServerTrustChallenge] class.
+///Use [CygnusSslErrorType] instead.
+@Deprecated('Use CygnusSslErrorType instead')
+class CygnusAndroidSslError {
   final int _value;
   final int? _nativeValue;
-  const AndroidSslError._internal(this._value, this._nativeValue);
+  const CygnusAndroidSslError._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory AndroidSslError._internalMultiPlatform(
+  factory CygnusAndroidSslError._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => AndroidSslError._internal(value, nativeValue());
+  ) => CygnusAndroidSslError._internal(value, nativeValue());
 
   ///The date of the certificate is invalid
-  static const SSL_DATE_INVALID = AndroidSslError._internal(4, 4);
+  static const SSL_DATE_INVALID = CygnusAndroidSslError._internal(4, 4);
 
   ///The certificate has expired
-  static const SSL_EXPIRED = AndroidSslError._internal(1, 1);
+  static const SSL_EXPIRED = CygnusAndroidSslError._internal(1, 1);
 
   ///Hostname mismatch
-  static const SSL_IDMISMATCH = AndroidSslError._internal(2, 2);
+  static const SSL_IDMISMATCH = CygnusAndroidSslError._internal(2, 2);
 
   ///A generic error occurred
-  static const SSL_INVALID = AndroidSslError._internal(5, 5);
+  static const SSL_INVALID = CygnusAndroidSslError._internal(5, 5);
 
   ///The certificate is not yet valid
-  static const SSL_NOTYETVALID = AndroidSslError._internal(0, 0);
+  static const SSL_NOTYETVALID = CygnusAndroidSslError._internal(0, 0);
 
   ///The certificate authority is not trusted
-  static const SSL_UNTRUSTED = AndroidSslError._internal(3, 3);
+  static const SSL_UNTRUSTED = CygnusAndroidSslError._internal(3, 3);
 
-  ///Set of all values of [AndroidSslError].
-  static final Set<AndroidSslError> values = [
-    AndroidSslError.SSL_DATE_INVALID,
-    AndroidSslError.SSL_EXPIRED,
-    AndroidSslError.SSL_IDMISMATCH,
-    AndroidSslError.SSL_INVALID,
-    AndroidSslError.SSL_NOTYETVALID,
-    AndroidSslError.SSL_UNTRUSTED,
+  ///Set of all values of [CygnusAndroidSslError].
+  static final Set<CygnusAndroidSslError> values = [
+    CygnusAndroidSslError.SSL_DATE_INVALID,
+    CygnusAndroidSslError.SSL_EXPIRED,
+    CygnusAndroidSslError.SSL_IDMISMATCH,
+    CygnusAndroidSslError.SSL_INVALID,
+    CygnusAndroidSslError.SSL_NOTYETVALID,
+    CygnusAndroidSslError.SSL_UNTRUSTED,
   ].toSet();
 
-  ///Gets a possible [AndroidSslError] instance from [int] value.
-  static AndroidSslError? fromValue(int? value) {
+  ///Gets a possible [CygnusAndroidSslError] instance from [int] value.
+  static CygnusAndroidSslError? fromValue(int? value) {
     if (value != null) {
       try {
-        return AndroidSslError.values.firstWhere(
+        return CygnusAndroidSslError.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -471,11 +483,11 @@ class AndroidSslError {
     return null;
   }
 
-  ///Gets a possible [AndroidSslError] instance from a native value.
-  static AndroidSslError? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusAndroidSslError] instance from a native value.
+  static CygnusAndroidSslError? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return AndroidSslError.values.firstWhere(
+        return CygnusAndroidSslError.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -485,15 +497,15 @@ class AndroidSslError {
     return null;
   }
 
-  /// Gets a possible [AndroidSslError] instance value with name [name].
+  /// Gets a possible [CygnusAndroidSslError] instance value with name [name].
   ///
-  /// Goes through [AndroidSslError.values] looking for a value with
-  /// name [name], as reported by [AndroidSslError.name].
+  /// Goes through [CygnusAndroidSslError.values] looking for a value with
+  /// name [name], as reported by [CygnusAndroidSslError.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static AndroidSslError? byName(String? name) {
+  static CygnusAndroidSslError? byName(String? name) {
     if (name != null) {
       try {
-        return AndroidSslError.values.firstWhere(
+        return CygnusAndroidSslError.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -503,7 +515,7 @@ class AndroidSslError {
     return null;
   }
 
-  /// Creates a map from the names of [AndroidSslError] values to the values.
+  /// Creates a map from the names of [CygnusAndroidSslError] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -511,9 +523,10 @@ class AndroidSslError {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, AndroidSslError> asNameMap() => <String, AndroidSslError>{
-    for (final value in AndroidSslError.values) value.name(): value,
-  };
+  static Map<String, CygnusAndroidSslError> asNameMap() =>
+      <String, CygnusAndroidSslError>{
+        for (final value in CygnusAndroidSslError.values) value.name(): value,
+      };
 
   ///Gets [int] value.
   int toValue() => _value;
@@ -558,50 +571,52 @@ class AndroidSslError {
 }
 
 ///Class that represents the iOS-specific primary error associated to the server SSL certificate.
-///Used by the [ServerTrustChallenge] class.
-///Use [SslErrorType] instead.
-@Deprecated('Use SslErrorType instead')
-class IOSSslError {
+///Used by the [CygnusServerTrustChallenge] class.
+///Use [CygnusSslErrorType] instead.
+@Deprecated('Use CygnusSslErrorType instead')
+class CygnusIOSSslError {
   final int _value;
   final int? _nativeValue;
-  const IOSSslError._internal(this._value, this._nativeValue);
+  const CygnusIOSSslError._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory IOSSslError._internalMultiPlatform(int value, Function nativeValue) =>
-      IOSSslError._internal(value, nativeValue());
+  factory CygnusIOSSslError._internalMultiPlatform(
+    int value,
+    Function nativeValue,
+  ) => CygnusIOSSslError._internal(value, nativeValue());
 
   ///Indicates a user-configured deny; do not proceed.
-  static const DENY = IOSSslError._internal(3, 3);
+  static const DENY = CygnusIOSSslError._internal(3, 3);
 
   ///Indicates a trust failure which cannot be overridden by the user.
-  static const FATAL_TRUST_FAILURE = IOSSslError._internal(6, 6);
+  static const FATAL_TRUST_FAILURE = CygnusIOSSslError._internal(6, 6);
 
   ///Indicates an invalid setting or result.
-  static const INVALID = IOSSslError._internal(0, 0);
+  static const INVALID = CygnusIOSSslError._internal(0, 0);
 
   ///Indicates a failure other than that of trust evaluation.
-  static const OTHER_ERROR = IOSSslError._internal(7, 7);
+  static const OTHER_ERROR = CygnusIOSSslError._internal(7, 7);
 
   ///Indicates a trust policy failure which can be overridden by the user.
-  static const RECOVERABLE_TRUST_FAILURE = IOSSslError._internal(5, 5);
+  static const RECOVERABLE_TRUST_FAILURE = CygnusIOSSslError._internal(5, 5);
 
   ///Indicates the evaluation succeeded and the certificate is implicitly trusted, but user intent was not explicitly specified.
-  static const UNSPECIFIED = IOSSslError._internal(4, 4);
+  static const UNSPECIFIED = CygnusIOSSslError._internal(4, 4);
 
-  ///Set of all values of [IOSSslError].
-  static final Set<IOSSslError> values = [
-    IOSSslError.DENY,
-    IOSSslError.FATAL_TRUST_FAILURE,
-    IOSSslError.INVALID,
-    IOSSslError.OTHER_ERROR,
-    IOSSslError.RECOVERABLE_TRUST_FAILURE,
-    IOSSslError.UNSPECIFIED,
+  ///Set of all values of [CygnusIOSSslError].
+  static final Set<CygnusIOSSslError> values = [
+    CygnusIOSSslError.DENY,
+    CygnusIOSSslError.FATAL_TRUST_FAILURE,
+    CygnusIOSSslError.INVALID,
+    CygnusIOSSslError.OTHER_ERROR,
+    CygnusIOSSslError.RECOVERABLE_TRUST_FAILURE,
+    CygnusIOSSslError.UNSPECIFIED,
   ].toSet();
 
-  ///Gets a possible [IOSSslError] instance from [int] value.
-  static IOSSslError? fromValue(int? value) {
+  ///Gets a possible [CygnusIOSSslError] instance from [int] value.
+  static CygnusIOSSslError? fromValue(int? value) {
     if (value != null) {
       try {
-        return IOSSslError.values.firstWhere(
+        return CygnusIOSSslError.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -611,11 +626,11 @@ class IOSSslError {
     return null;
   }
 
-  ///Gets a possible [IOSSslError] instance from a native value.
-  static IOSSslError? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusIOSSslError] instance from a native value.
+  static CygnusIOSSslError? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return IOSSslError.values.firstWhere(
+        return CygnusIOSSslError.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -625,15 +640,15 @@ class IOSSslError {
     return null;
   }
 
-  /// Gets a possible [IOSSslError] instance value with name [name].
+  /// Gets a possible [CygnusIOSSslError] instance value with name [name].
   ///
-  /// Goes through [IOSSslError.values] looking for a value with
-  /// name [name], as reported by [IOSSslError.name].
+  /// Goes through [CygnusIOSSslError.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSSslError.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSSslError? byName(String? name) {
+  static CygnusIOSSslError? byName(String? name) {
     if (name != null) {
       try {
-        return IOSSslError.values.firstWhere(
+        return CygnusIOSSslError.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -643,7 +658,7 @@ class IOSSslError {
     return null;
   }
 
-  /// Creates a map from the names of [IOSSslError] values to the values.
+  /// Creates a map from the names of [CygnusIOSSslError] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -651,9 +666,10 @@ class IOSSslError {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSSslError> asNameMap() => <String, IOSSslError>{
-    for (final value in IOSSslError.values) value.name(): value,
-  };
+  static Map<String, CygnusIOSSslError> asNameMap() =>
+      <String, CygnusIOSSslError>{
+        for (final value in CygnusIOSSslError.values) value.name(): value,
+      };
 
   ///Gets [int] value.
   int toValue() => _value;

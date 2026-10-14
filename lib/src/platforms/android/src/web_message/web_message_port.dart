@@ -6,19 +6,19 @@ import 'web_message_channel.dart';
 /// Object specifying creation parameters for creating a [AndroidWebMessagePort].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebMessagePortCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebMessagePortCreationParams] for
 /// more information.
 @immutable
 class AndroidWebMessagePortCreationParams
-    extends PlatformWebMessagePortCreationParams {
+    extends CygnusPlatformWebMessagePortCreationParams {
   /// Creates a new [AndroidWebMessagePortCreationParams] instance.
   const AndroidWebMessagePortCreationParams({required super.index});
 
-  /// Creates a [AndroidWebMessagePortCreationParams] instance based on [PlatformWebMessagePortCreationParams].
+  /// Creates a [AndroidWebMessagePortCreationParams] instance based on [CygnusPlatformWebMessagePortCreationParams].
   factory AndroidWebMessagePortCreationParams.fromPlatformWebMessagePortCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebMessagePortCreationParams params,
+    CygnusPlatformWebMessagePortCreationParams params,
   ) {
     return AndroidWebMessagePortCreationParams(index: params.index);
   }
@@ -29,13 +29,13 @@ class AndroidWebMessagePortCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformWebMessagePort}
-class AndroidWebMessagePort extends PlatformWebMessagePort {
-  WebMessageCallback? _onMessage;
+///{@macro cygnus_core.CygnusPlatformWebMessagePort}
+class AndroidWebMessagePort extends CygnusPlatformWebMessagePort {
+  CygnusWebMessageCallback? _onMessage;
   late AndroidWebMessageChannel _webMessageChannel;
 
   /// Constructs a [AndroidWebMessagePort].
-  AndroidWebMessagePort(PlatformWebMessagePortCreationParams params)
+  AndroidWebMessagePort(CygnusPlatformWebMessagePortCreationParams params)
     : super.implementation(
         params is AndroidWebMessagePortCreationParams
             ? params
@@ -45,7 +45,7 @@ class AndroidWebMessagePort extends PlatformWebMessagePort {
       );
 
   @override
-  Future<void> setWebMessageCallback(WebMessageCallback? onMessage) async {
+  Future<void> setWebMessageCallback(CygnusWebMessageCallback? onMessage) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('index', () => params.index);
     await _webMessageChannel.internalChannel?.invokeMethod(
@@ -56,7 +56,7 @@ class AndroidWebMessagePort extends PlatformWebMessagePort {
   }
 
   @override
-  Future<void> postMessage(WebMessage message) async {
+  Future<void> postMessage(CygnusWebMessage message) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('index', () => params.index);
     args.putIfAbsent('message', () => message.toMap());
@@ -71,7 +71,7 @@ class AndroidWebMessagePort extends PlatformWebMessagePort {
   }
 
   @override
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "index": params.index,
       "webMessageChannelId": this._webMessageChannel.params.id,
@@ -90,8 +90,8 @@ class AndroidWebMessagePort extends PlatformWebMessagePort {
 }
 
 extension InternalWebMessagePort on AndroidWebMessagePort {
-  WebMessageCallback? get onMessage => _onMessage;
-  void set onMessage(WebMessageCallback? value) => _onMessage = value;
+  CygnusWebMessageCallback? get onMessage => _onMessage;
+  void set onMessage(CygnusWebMessageCallback? value) => _onMessage = value;
 
   AndroidWebMessageChannel get webMessageChannel => _webMessageChannel;
   void set webMessageChannel(AndroidWebMessageChannel value) =>

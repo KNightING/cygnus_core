@@ -7,71 +7,77 @@ part of 'browser_process_exit_kind.dart';
 // **************************************************************************
 
 ///The kind of browser process exit that has occurred.
-class BrowserProcessExitKind {
+class CygnusBrowserProcessExitKind {
   final int _value;
   final int? _nativeValue;
-  const BrowserProcessExitKind._internal(this._value, this._nativeValue);
+  const CygnusBrowserProcessExitKind._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory BrowserProcessExitKind._internalMultiPlatform(
+  factory CygnusBrowserProcessExitKind._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => BrowserProcessExitKind._internal(value, nativeValue());
+  ) => CygnusBrowserProcessExitKind._internal(value, nativeValue());
 
   ///Indicates that the browser process ended unexpectedly.
-  ///A [PlatformWebViewCreationParams.onProcessFailed] event will also be
-  ///raised to listening WebViews from the [PlatformWebViewEnvironment] associated to the failed process.
+  ///A [CygnusPlatformWebViewCreationParams.onProcessFailed] event will also be
+  ///raised to listening WebViews from the [CygnusPlatformWebViewEnvironment] associated to the failed process.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final FAILED = BrowserProcessExitKind._internalMultiPlatform(1, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.windows:
-        return 1;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final FAILED = CygnusBrowserProcessExitKind._internalMultiPlatform(
+    1,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.windows:
+          return 1;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
   ///Indicates that the browser process ended normally.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final NORMAL = BrowserProcessExitKind._internalMultiPlatform(0, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.windows:
-        return 0;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final NORMAL = CygnusBrowserProcessExitKind._internalMultiPlatform(
+    0,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.windows:
+          return 0;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
-  ///Set of all values of [BrowserProcessExitKind].
-  static final Set<BrowserProcessExitKind> values = [
-    BrowserProcessExitKind.FAILED,
-    BrowserProcessExitKind.NORMAL,
+  ///Set of all values of [CygnusBrowserProcessExitKind].
+  static final Set<CygnusBrowserProcessExitKind> values = [
+    CygnusBrowserProcessExitKind.FAILED,
+    CygnusBrowserProcessExitKind.NORMAL,
   ].toSet();
 
-  ///Gets a possible [BrowserProcessExitKind] instance from [int] value.
-  static BrowserProcessExitKind? fromValue(int? value) {
+  ///Gets a possible [CygnusBrowserProcessExitKind] instance from [int] value.
+  static CygnusBrowserProcessExitKind? fromValue(int? value) {
     if (value != null) {
       try {
-        return BrowserProcessExitKind.values.firstWhere(
+        return CygnusBrowserProcessExitKind.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
-        return BrowserProcessExitKind._internal(value, value);
+        return CygnusBrowserProcessExitKind._internal(value, value);
       }
     }
     return null;
   }
 
-  ///Gets a possible [BrowserProcessExitKind] instance from a native value.
-  static BrowserProcessExitKind? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusBrowserProcessExitKind] instance from a native value.
+  static CygnusBrowserProcessExitKind? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return BrowserProcessExitKind.values.firstWhere(
+        return CygnusBrowserProcessExitKind.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -81,15 +87,15 @@ class BrowserProcessExitKind {
     return null;
   }
 
-  /// Gets a possible [BrowserProcessExitKind] instance value with name [name].
+  /// Gets a possible [CygnusBrowserProcessExitKind] instance value with name [name].
   ///
-  /// Goes through [BrowserProcessExitKind.values] looking for a value with
-  /// name [name], as reported by [BrowserProcessExitKind.name].
+  /// Goes through [CygnusBrowserProcessExitKind.values] looking for a value with
+  /// name [name], as reported by [CygnusBrowserProcessExitKind.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static BrowserProcessExitKind? byName(String? name) {
+  static CygnusBrowserProcessExitKind? byName(String? name) {
     if (name != null) {
       try {
-        return BrowserProcessExitKind.values.firstWhere(
+        return CygnusBrowserProcessExitKind.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -99,7 +105,7 @@ class BrowserProcessExitKind {
     return null;
   }
 
-  /// Creates a map from the names of [BrowserProcessExitKind] values to the values.
+  /// Creates a map from the names of [CygnusBrowserProcessExitKind] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -107,9 +113,10 @@ class BrowserProcessExitKind {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, BrowserProcessExitKind> asNameMap() =>
-      <String, BrowserProcessExitKind>{
-        for (final value in BrowserProcessExitKind.values) value.name(): value,
+  static Map<String, CygnusBrowserProcessExitKind> asNameMap() =>
+      <String, CygnusBrowserProcessExitKind>{
+        for (final value in CygnusBrowserProcessExitKind.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.
@@ -135,8 +142,8 @@ class BrowserProcessExitKind {
   @override
   bool operator ==(value) => value == _value;
 
-  BrowserProcessExitKind operator |(BrowserProcessExitKind value) =>
-      BrowserProcessExitKind._internal(
+  CygnusBrowserProcessExitKind operator |(CygnusBrowserProcessExitKind value) =>
+      CygnusBrowserProcessExitKind._internal(
         value.toValue() | _value,
         value.toNativeValue() != null && _nativeValue != null
             ? value.toNativeValue()! | _nativeValue!

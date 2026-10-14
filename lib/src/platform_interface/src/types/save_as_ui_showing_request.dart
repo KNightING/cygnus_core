@@ -5,9 +5,9 @@ import 'enum_method.dart';
 
 part 'save_as_ui_showing_request.g.dart';
 
-///Class that represents the request used by the [PlatformWebViewCreationParams.onSaveAsUIShowing] event.
+///Class that represents the request used by the [CygnusPlatformWebViewCreationParams.onSaveAsUIShowing] event.
 @ExchangeableObject()
-class SaveAsUIShowingRequest_ {
+class CygnusSaveAsUIShowingRequest_ {
   ///The MIME type of content to be saved.
   String? contentMimeType;
 
@@ -24,9 +24,9 @@ class SaveAsUIShowingRequest_ {
   bool? allowReplace;
 
   ///The save-as kind for the operation.
-  SaveAsKind_? kind;
+  CygnusSaveAsKind_? kind;
 
-  SaveAsUIShowingRequest_({
+  CygnusSaveAsUIShowingRequest_({
     this.contentMimeType,
     this.cancel,
     this.suppressDefaultDialog,

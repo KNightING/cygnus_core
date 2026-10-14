@@ -7,11 +7,11 @@ import 'enum_method.dart';
 
 part 'fetch_request_credential.g.dart';
 
-///Class that is an interface for [FetchRequestCredentialDefault], [FetchRequestFederatedCredential] and [FetchRequestPasswordCredential] classes.
+///Class that is an interface for [CygnusFetchRequestCredentialDefault], [CygnusFetchRequestFederatedCredential] and [CygnusFetchRequestPasswordCredential] classes.
 @ExchangeableObject()
-class FetchRequestCredential_ {
+class CygnusFetchRequestCredential_ {
   ///Type of credentials.
   String? type;
 
-  FetchRequestCredential_({this.type});
+  CygnusFetchRequestCredential_({this.type});
 }

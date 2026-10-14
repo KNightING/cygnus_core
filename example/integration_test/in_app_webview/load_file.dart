@@ -1,22 +1,22 @@
 part of 'main.dart';
 
 void loadFile() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.loadFile,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.loadFile,
   );
 
   skippableTestWidgets('loadFile', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final StreamController<String> pageLoads =
         StreamController<String>.broadcast();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_URL_ABOUT_BLANK),
+          initialUrlRequest: CygnusURLRequest(url: TEST_URL_ABOUT_BLANK),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
           },
@@ -27,7 +27,7 @@ void loadFile() {
       ),
     );
 
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
     // do not wait for pump to not miss the load event
     tester.pump();
     await pageLoads.stream.first;

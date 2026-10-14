@@ -5,7 +5,7 @@ import 'package:web/web.dart';
 
 class InAppWebViewManager extends ChannelController {
   static final Map<dynamic, dynamic> webViews = {};
-  static final Map<int, CreateWindowAction?> windowActions = {};
+  static final Map<int, CygnusCreateWindowAction?> windowActions = {};
   static int windowAutoincrementId = 0;
   static String javaScriptBridgeName = "flutter_inappwebview";
   late BinaryMessenger _messenger;

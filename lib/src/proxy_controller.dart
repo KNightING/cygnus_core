@@ -3,59 +3,59 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
 
-///{@macro cygnus_core.PlatformProxyController}
+///{@macro cygnus_core.CygnusPlatformProxyController}
 ///
-///{@macro cygnus_core.PlatformProxyController.supported_platforms}
-class ProxyController {
-  ///{@macro cygnus_core.PlatformProxyController}
-  ProxyController()
+///{@macro cygnus_core.CygnusPlatformProxyController.supported_platforms}
+class CygnusProxyController {
+  ///{@macro cygnus_core.CygnusPlatformProxyController}
+  CygnusProxyController()
     : this.fromPlatformCreationParams(
-        const PlatformProxyControllerCreationParams(),
+        const CygnusPlatformProxyControllerCreationParams(),
       );
 
-  /// Constructs a [ProxyController] from creation params for a specific
+  /// Constructs a [CygnusProxyController] from creation params for a specific
   /// platform.
-  ProxyController.fromPlatformCreationParams(
-    PlatformProxyControllerCreationParams params,
-  ) : this.fromPlatform(PlatformProxyController(params));
+  CygnusProxyController.fromPlatformCreationParams(
+    CygnusPlatformProxyControllerCreationParams params,
+  ) : this.fromPlatform(CygnusPlatformProxyController(params));
 
-  /// Constructs a [ProxyController] from a specific platform
+  /// Constructs a [CygnusProxyController] from a specific platform
   /// implementation.
-  ProxyController.fromPlatform(this.platform);
+  CygnusProxyController.fromPlatform(this.platform);
 
-  /// Implementation of [PlatformProxyController] for the current platform.
-  final PlatformProxyController platform;
+  /// Implementation of [CygnusPlatformProxyController] for the current platform.
+  final CygnusPlatformProxyController platform;
 
-  static ProxyController? _instance;
+  static CygnusProxyController? _instance;
 
-  ///Gets the [ProxyController] shared instance.
-  static ProxyController instance() {
+  ///Gets the [CygnusProxyController] shared instance.
+  static CygnusProxyController instance() {
     if (_instance == null) {
-      _instance = ProxyController();
+      _instance = CygnusProxyController();
     }
     return _instance!;
   }
 
-  ///{@macro cygnus_core.PlatformProxyController.setProxyOverride}
+  ///{@macro cygnus_core.CygnusPlatformProxyController.setProxyOverride}
   ///
-  ///{@macro cygnus_core.PlatformProxyController.setProxyOverride.supported_platforms}
-  Future<void> setProxyOverride({required ProxySettings settings}) =>
+  ///{@macro cygnus_core.CygnusPlatformProxyController.setProxyOverride.supported_platforms}
+  Future<void> setProxyOverride({required CygnusProxySettings settings}) =>
       platform.setProxyOverride(settings: settings);
 
-  ///{@macro cygnus_core.PlatformProxyController.clearProxyOverride}
+  ///{@macro cygnus_core.CygnusPlatformProxyController.clearProxyOverride}
   ///
-  ///{@macro cygnus_core.PlatformProxyController.clearProxyOverride.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformProxyController.clearProxyOverride.supported_platforms}
   Future<void> clearProxyOverride() => platform.clearProxyOverride();
 
-  ///{@macro cygnus_core.PlatformProxyControllerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformProxyControllerCreationParams.isClassSupported}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformProxyController.static().isClassSupported(platform: platform);
+      CygnusPlatformProxyController.static().isClassSupported(platform: platform);
 
-  ///{@macro cygnus_core.PlatformProxyController.isMethodSupported}
+  ///{@macro cygnus_core.CygnusPlatformProxyController.isMethodSupported}
   static bool isMethodSupported(
-    PlatformProxyControllerMethod method, {
+    CygnusPlatformProxyControllerMethod method, {
     TargetPlatform? platform,
-  }) => PlatformProxyController.static().isMethodSupported(
+  }) => CygnusPlatformProxyController.static().isMethodSupported(
     method,
     platform: platform,
   );

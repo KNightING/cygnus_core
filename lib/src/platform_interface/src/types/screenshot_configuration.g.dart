@@ -6,8 +6,8 @@ part of 'screenshot_configuration.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the configuration data to use when generating an image from a web view’s contents using [PlatformInAppWebViewController.takeScreenshot].
-class ScreenshotConfiguration {
+///Class that represents the configuration data to use when generating an image from a web view’s contents using [CygnusPlatformWebViewController.takeScreenshot].
+class CygnusScreenshotConfiguration {
   ///A Boolean value that indicates whether to take the snapshot after incorporating any pending screen updates.
   ///The default value of this property is `true`, which causes the web view to incorporate any recent changes to the view’s content and then generate the snapshot.
   ///If you change the value to `false`, the `WebView` takes the snapshot immediately, and before incorporating any new changes.
@@ -18,21 +18,21 @@ class ScreenshotConfiguration {
   bool afterScreenUpdates;
 
   ///The compression format of the captured image.
-  ///The default value is [CompressFormat.PNG].
+  ///The default value is [CygnusCompressFormat.PNG].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  CompressFormat compressFormat;
+  CygnusCompressFormat compressFormat;
 
   ///Use [afterScreenUpdates] instead.
   @Deprecated('Use afterScreenUpdates instead')
   bool? iosAfterScreenUpdates;
 
-  ///Hint to the compressor, `0-100`. The value is interpreted differently depending on the [CompressFormat].
-  ///[CompressFormat.PNG] is lossless, so this value is ignored.
+  ///Hint to the compressor, `0-100`. The value is interpreted differently depending on the [CygnusCompressFormat].
+  ///[CygnusCompressFormat.PNG] is lossless, so this value is ignored.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -50,7 +50,7 @@ class ScreenshotConfiguration {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  InAppWebViewRect? rect;
+  CygnusWebViewRect? rect;
 
   ///The width of the captured image, in points.
   ///Use this property to scale the generated image to the specified width.
@@ -63,31 +63,31 @@ class ScreenshotConfiguration {
   ///- iOS WKWebView
   ///- macOS WKWebView
   double? snapshotWidth;
-  ScreenshotConfiguration({
+  CygnusScreenshotConfiguration({
     this.rect,
     this.snapshotWidth,
-    CompressFormat? compressFormat,
+    CygnusCompressFormat? compressFormat,
     this.quality = 100,
     @Deprecated("Use afterScreenUpdates instead") this.iosAfterScreenUpdates,
     this.afterScreenUpdates = true,
-  }) : compressFormat = compressFormat ?? CompressFormat.PNG {
+  }) : compressFormat = compressFormat ?? CygnusCompressFormat.PNG {
     assert(this.quality >= 0);
     this.afterScreenUpdates = this.iosAfterScreenUpdates != null
         ? this.iosAfterScreenUpdates!
         : this.afterScreenUpdates;
   }
 
-  ///Gets a possible [ScreenshotConfiguration] instance from a [Map] value.
-  static ScreenshotConfiguration? fromMap(
+  ///Gets a possible [CygnusScreenshotConfiguration] instance from a [Map] value.
+  static CygnusScreenshotConfiguration? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ScreenshotConfiguration(
+    final instance = CygnusScreenshotConfiguration(
       iosAfterScreenUpdates: map['afterScreenUpdates'],
-      rect: InAppWebViewRect.fromMap(
+      rect: CygnusWebViewRect.fromMap(
         map['rect']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -97,12 +97,17 @@ class ScreenshotConfiguration {
       instance.afterScreenUpdates = map['afterScreenUpdates'];
     }
     if (map['compressFormat'] != null) {
-      instance.compressFormat = switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => CompressFormat.fromNativeValue(
+      instance.compressFormat = switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusCompressFormat.fromNativeValue(
           map['compressFormat'],
         ),
-        EnumMethod.value => CompressFormat.fromValue(map['compressFormat']),
-        EnumMethod.name => CompressFormat.byName(map['compressFormat']),
+        CygnusEnumMethod.value => CygnusCompressFormat.fromValue(
+          map['compressFormat'],
+        ),
+        CygnusEnumMethod.name => CygnusCompressFormat.byName(
+          map['compressFormat'],
+        ),
       }!;
     }
     if (map['quality'] != null) {
@@ -112,13 +117,13 @@ class ScreenshotConfiguration {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "afterScreenUpdates": afterScreenUpdates,
-      "compressFormat": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => compressFormat.toNativeValue(),
-        EnumMethod.value => compressFormat.toValue(),
-        EnumMethod.name => compressFormat.name(),
+      "compressFormat": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => compressFormat.toNativeValue(),
+        CygnusEnumMethod.value => compressFormat.toValue(),
+        CygnusEnumMethod.name => compressFormat.name(),
       },
       "quality": quality,
       "rect": rect?.toMap(enumMethod: enumMethod),
@@ -133,6 +138,6 @@ class ScreenshotConfiguration {
 
   @override
   String toString() {
-    return 'ScreenshotConfiguration{afterScreenUpdates: $afterScreenUpdates, compressFormat: $compressFormat, quality: $quality, rect: $rect, snapshotWidth: $snapshotWidth}';
+    return 'CygnusScreenshotConfiguration{afterScreenUpdates: $afterScreenUpdates, compressFormat: $compressFormat, quality: $quality, rect: $rect, snapshotWidth: $snapshotWidth}';
   }
 }
