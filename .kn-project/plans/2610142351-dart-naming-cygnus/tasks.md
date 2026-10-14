@@ -6,13 +6,13 @@
 - [x] 將「優化候選」整理成清單回報給使用者（只收集，不修改）
 
 ## Phase 2 — 產生器與型別改名
-- [ ] 更新 `dev_packages/generators/lib/src/exchangeable_object_generator.dart` 中 `WebUri`、`EnumMethod` 的字串比對與輸出
-- [ ] 以腳本對 `lib/**`、`example/**` 的 Dart 檔套用對照表（`lib/src/platforms/**` 排除 7 個同名實作類別；`web_support/**`、原生程式碼不動）
-- [ ] 來源類別 `X_` 改為 `CygnusX_`；`export`／`hide` 清單同步
-- [ ] 重新執行 build_runner 產生 `*.g.dart`
-- [ ] 等價性驗證：把舊產生檔套用對照表，與新產生檔逐檔比對，必須完全一致
+- [x] 更新 `dev_packages/generators/lib/src/exchangeable_object_generator.dart` 中 `WebUri`、`EnumMethod` 的字串比對與輸出
+- [x] 以腳本對 `lib/**`、`example/**` 的 Dart 檔套用對照表（`lib/src/platforms/**` 排除 7 個同名實作類別；`web_support/**`、原生程式碼不動）
+- [x] 來源類別 `X_` 改為 `CygnusX_`；`export`／`hide` 清單同步
+- [x] 重新執行 build_runner 產生 `*.g.dart`
+- [x] 等價性驗證：把舊產生檔套用對照表，與新產生檔逐檔比對，必須完全一致
 
-- [ ] （Q5）小寫識別字（41 種、993 處）移除 `InApp`：先產生對照並檢查撞名，再以腳本替換；不得動到字串字面值（channel／JS 名稱）
+- [x] （Q5）小寫識別字（41 種、993 處）移除 `InApp`：先產生對照並檢查撞名，再以腳本替換；不得動到字串字面值（channel／JS 名稱）
 ## Phase 3 — 檔案與目錄路徑
 - [ ] 以 `git mv` 去掉 96 個路徑中的 `in_app_`
 - [ ] 同步更新 `import`／`export`／`part`／`part of` 路徑；確認沒有舊路徑殘留
