@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void openAndClose() {
-  final shouldSkip = !ChromeSafariBrowser.isMethodSupported(
-    PlatformChromeSafariBrowserMethod.open,
+  final shouldSkip = !CygnusChromeSafariBrowser.isMethodSupported(
+    CygnusPlatformChromeSafariBrowserMethod.open,
   );
 
   skippableTest('open and close', () async {
@@ -11,33 +11,33 @@ void openAndClose() {
 
     await chromeSafariBrowser.open(
       url: TEST_URL_1,
-      settings: ChromeSafariBrowserSettings(
-        shareState: CustomTabsShareState.SHARE_STATE_OFF,
+      settings: CygnusChromeSafariBrowserSettings(
+        shareState: CygnusCustomTabsShareState.SHARE_STATE_OFF,
         startAnimations: [
-          AndroidResource.anim(name: "slide_in_left", defPackage: "android"),
-          AndroidResource.anim(name: "slide_out_right", defPackage: "android"),
+          CygnusAndroidResource.anim(name: "slide_in_left", defPackage: "android"),
+          CygnusAndroidResource.anim(name: "slide_out_right", defPackage: "android"),
         ],
         exitAnimations: [
-          AndroidResource.anim(
+          CygnusAndroidResource.anim(
             name: "abc_slide_in_top",
             defPackage: "com.pichillilorenzo.flutter_inappwebviewexample",
           ),
-          AndroidResource.anim(
+          CygnusAndroidResource.anim(
             name: "abc_slide_out_top",
             defPackage: "com.pichillilorenzo.flutter_inappwebviewexample",
           ),
         ],
         keepAliveEnabled: true,
-        dismissButtonStyle: DismissButtonStyle.CLOSE,
-        presentationStyle: ModalPresentationStyle.OVER_FULL_SCREEN,
-        eventAttribution: UIEventAttribution(
+        dismissButtonStyle: CygnusDismissButtonStyle.CLOSE,
+        presentationStyle: CygnusModalPresentationStyle.OVER_FULL_SCREEN,
+        eventAttribution: CygnusUIEventAttribution(
           sourceIdentifier: 4,
-          destinationURL: WebUri("https://shop.example/test.html"),
+          destinationURL: CygnusWebUri("https://shop.example/test.html"),
           sourceDescription: "Banner ad for Test.",
           purchaser: "Shop Example, Inc.",
         ),
-        activityButton: ActivityButton(
-          templateImage: UIImage(systemName: "sun.max"),
+        activityButton: CygnusActivityButton(
+          templateImage: CygnusUIImage(systemName: "sun.max"),
           extensionIdentifier:
               "com.pichillilorenzo.flutterinappwebview-ios-example5.test",
         ),

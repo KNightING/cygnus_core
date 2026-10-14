@@ -13,11 +13,11 @@ void main() {
   });
 
   test('default settings map matches constructor defaults', () {
-    final defaults = defaultInAppWebViewSettings().toMap(
-      enumMethod: EnumMethod.nativeValue,
+    final defaults = defaultWebViewSettings().toMap(
+      enumMethod: CygnusEnumMethod.nativeValue,
     );
-    final expected = InAppWebViewSettings().toMap(
-      enumMethod: EnumMethod.nativeValue,
+    final expected = CygnusWebViewSettings().toMap(
+      enumMethod: CygnusEnumMethod.nativeValue,
     );
 
     expect(defaults, expected);
@@ -25,10 +25,10 @@ void main() {
 
   test('default environment settings map matches constructor defaults', () {
     final defaults = defaultWebViewEnvironmentSettings().toMap(
-      enumMethod: EnumMethod.nativeValue,
+      enumMethod: CygnusEnumMethod.nativeValue,
     );
-    final expected = WebViewEnvironmentSettings().toMap(
-      enumMethod: EnumMethod.nativeValue,
+    final expected = CygnusWebViewEnvironmentSettings().toMap(
+      enumMethod: CygnusEnumMethod.nativeValue,
     );
 
     expect(defaults, expected);

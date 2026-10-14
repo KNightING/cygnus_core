@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void loadFileUrl() {
-  final shouldSkip = !InAppWebViewSettings.isPropertySupported(
-    InAppWebViewSettingsProperty.allowingReadAccessTo,
+  final shouldSkip = !CygnusWebViewSettings.isPropertySupported(
+    CygnusWebViewSettingsProperty.allowingReadAccessTo,
   );
 
   skippableGroup('load file URL', () {
@@ -46,15 +46,15 @@ void loadFileUrl() {
     skippableTestWidgets(
       'initialUrl with file:// scheme and allowingReadAccessTo',
       (WidgetTester tester) async {
-        final Completer<ConsoleMessage?> consoleMessageShouldNotComplete =
-            Completer<ConsoleMessage?>();
+        final Completer<CygnusConsoleMessage?> consoleMessageShouldNotComplete =
+            Completer<CygnusConsoleMessage?>();
         await tester.pumpWidget(
           Directionality(
             textDirection: TextDirection.ltr,
-            child: InAppWebView(
+            child: CygnusWebView(
               key: GlobalKey(),
-              initialUrlRequest: URLRequest(
-                url: WebUri('file://${fileHtml.path}'),
+              initialUrlRequest: CygnusURLRequest(
+                url: CygnusWebUri('file://${fileHtml.path}'),
               ),
               onConsoleMessage: (controller, consoleMessage) {
                 consoleMessageShouldNotComplete.complete(consoleMessage);
@@ -68,18 +68,18 @@ void loadFileUrl() {
         );
         expect(result, null);
 
-        final Completer<ConsoleMessage> consoleMessageCompleter =
-            Completer<ConsoleMessage>();
+        final Completer<CygnusConsoleMessage> consoleMessageCompleter =
+            Completer<CygnusConsoleMessage>();
         await tester.pumpWidget(
           Directionality(
             textDirection: TextDirection.ltr,
-            child: InAppWebView(
+            child: CygnusWebView(
               key: GlobalKey(),
-              initialUrlRequest: URLRequest(
-                url: WebUri('file://${fileHtml.path}'),
+              initialUrlRequest: CygnusURLRequest(
+                url: CygnusWebUri('file://${fileHtml.path}'),
               ),
-              initialSettings: InAppWebViewSettings(
-                allowingReadAccessTo: WebUri('file://${appSupportDir.path}/'),
+              initialSettings: CygnusWebViewSettings(
+                allowingReadAccessTo: CygnusWebUri('file://${appSupportDir.path}/'),
               ),
               onConsoleMessage: (controller, consoleMessage) {
                 consoleMessageCompleter.complete(consoleMessage);
@@ -87,9 +87,9 @@ void loadFileUrl() {
             ),
           ),
         );
-        final ConsoleMessage consoleMessage =
+        final CygnusConsoleMessage consoleMessage =
             await consoleMessageCompleter.future;
-        expect(consoleMessage.messageLevel, ConsoleMessageLevel.LOG);
+        expect(consoleMessage.messageLevel, CygnusConsoleMessageLevel.LOG);
         expect(consoleMessage.message, 'message');
       },
     );
@@ -97,17 +97,17 @@ void loadFileUrl() {
     skippableTestWidgets(
       'loadUrl with file:// scheme and allowingReadAccessTo argument',
       (WidgetTester tester) async {
-        final Completer<ConsoleMessage?> consoleMessageShouldNotComplete =
-            Completer<ConsoleMessage?>();
+        final Completer<CygnusConsoleMessage?> consoleMessageShouldNotComplete =
+            Completer<CygnusConsoleMessage?>();
         await tester.pumpWidget(
           Directionality(
             textDirection: TextDirection.ltr,
-            child: InAppWebView(
+            child: CygnusWebView(
               key: GlobalKey(),
               onWebViewCreated: (controller) {
                 controller.loadUrl(
-                  urlRequest: URLRequest(
-                    url: WebUri('file://${fileHtml.path}'),
+                  urlRequest: CygnusURLRequest(
+                    url: CygnusWebUri('file://${fileHtml.path}'),
                   ),
                 );
               },
@@ -123,19 +123,19 @@ void loadFileUrl() {
         );
         expect(result, null);
 
-        final Completer<ConsoleMessage> consoleMessageCompleter =
-            Completer<ConsoleMessage>();
+        final Completer<CygnusConsoleMessage> consoleMessageCompleter =
+            Completer<CygnusConsoleMessage>();
         await tester.pumpWidget(
           Directionality(
             textDirection: TextDirection.ltr,
-            child: InAppWebView(
+            child: CygnusWebView(
               key: GlobalKey(),
               onWebViewCreated: (controller) {
                 controller.loadUrl(
-                  urlRequest: URLRequest(
-                    url: WebUri('file://${fileHtml.path}'),
+                  urlRequest: CygnusURLRequest(
+                    url: CygnusWebUri('file://${fileHtml.path}'),
                   ),
-                  allowingReadAccessTo: WebUri('file://${appSupportDir.path}/'),
+                  allowingReadAccessTo: CygnusWebUri('file://${appSupportDir.path}/'),
                 );
               },
               onConsoleMessage: (controller, consoleMessage) {
@@ -144,9 +144,9 @@ void loadFileUrl() {
             ),
           ),
         );
-        final ConsoleMessage consoleMessage =
+        final CygnusConsoleMessage consoleMessage =
             await consoleMessageCompleter.future;
-        expect(consoleMessage.messageLevel, ConsoleMessageLevel.LOG);
+        expect(consoleMessage.messageLevel, CygnusConsoleMessageLevel.LOG);
         expect(consoleMessage.message, 'message');
       },
     );

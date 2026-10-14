@@ -13,7 +13,7 @@ part of 'proxy_relay_hop.dart';
 ///Otherwise, if [http2RelayEndpoint] is not null, it sreates a configuration for a secure relay accessible only using HTTP/2.
 ///
 ///At least one of [http3RelayEndpoint] or [http2RelayEndpoint] must be non-null.
-class ProxyRelayHop {
+class CygnusProxyRelayHop {
   ///A dictionary of additional HTTP headers to send as part of CONNECT requests to the relay.
   ///
   ///**Officially Supported Platforms/Implementations**:
@@ -34,7 +34,7 @@ class ProxyRelayHop {
   ///- iOS WKWebView
   ///- macOS WKWebView
   String? http3RelayEndpoint;
-  ProxyRelayHop({
+  CygnusProxyRelayHop({
     this.http3RelayEndpoint,
     this.http2RelayEndpoint,
     this.additionalHTTPHeaders,
@@ -45,15 +45,15 @@ class ProxyRelayHop {
     );
   }
 
-  ///Gets a possible [ProxyRelayHop] instance from a [Map] value.
-  static ProxyRelayHop? fromMap(
+  ///Gets a possible [CygnusProxyRelayHop] instance from a [Map] value.
+  static CygnusProxyRelayHop? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ProxyRelayHop(
+    final instance = CygnusProxyRelayHop(
       additionalHTTPHeaders: map['additionalHTTPHeaders']
           ?.cast<String, String>(),
       http2RelayEndpoint: map['http2RelayEndpoint'],
@@ -63,7 +63,7 @@ class ProxyRelayHop {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "additionalHTTPHeaders": additionalHTTPHeaders,
       "http2RelayEndpoint": http2RelayEndpoint,
@@ -78,6 +78,6 @@ class ProxyRelayHop {
 
   @override
   String toString() {
-    return 'ProxyRelayHop{additionalHTTPHeaders: $additionalHTTPHeaders, http2RelayEndpoint: $http2RelayEndpoint, http3RelayEndpoint: $http3RelayEndpoint}';
+    return 'CygnusProxyRelayHop{additionalHTTPHeaders: $additionalHTTPHeaders, http2RelayEndpoint: $http2RelayEndpoint, http3RelayEndpoint: $http3RelayEndpoint}';
   }
 }

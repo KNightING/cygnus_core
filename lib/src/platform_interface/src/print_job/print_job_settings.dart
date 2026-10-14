@@ -20,7 +20,7 @@ import 'platform_print_job_controller.dart';
 
 part 'print_job_settings.g.dart';
 
-///Class that represents the settings of a [PlatformPrintJobController].
+///Class that represents the settings of a [CygnusPlatformPrintJobController].
 @ExchangeableObject(copyMethod: true)
 @SupportedPlatforms(
   platforms: [
@@ -30,8 +30,8 @@ part 'print_job_settings.g.dart';
     WindowsPlatform(),
   ],
 )
-class PrintJobSettings_ {
-  ///Set this to `true` to handle the [PlatformPrintJobController].
+class CygnusPrintJobSettings_ {
+  ///Set this to `true` to handle the [CygnusPlatformPrintJobController].
   ///Otherwise, it will be handled and disposed automatically by the system.
   ///The default value is `false`.
   @SupportedPlatforms(
@@ -57,9 +57,9 @@ class PrintJobSettings_ {
   bool? showUI;
 
   ///The print dialog kind to show when [showUI] is `true`.
-  ///The default value is [PrintJobDialogKind.BROWSER].
+  ///The default value is [CygnusPrintJobDialogKind.BROWSER].
   @SupportedPlatforms(platforms: [WindowsPlatform()])
-  PrintJobDialogKind_? printDialogKind;
+  CygnusPrintJobDialogKind_? printDialogKind;
 
   ///The orientation of the printed content, portrait or landscape.
   @SupportedPlatforms(
@@ -70,7 +70,7 @@ class PrintJobSettings_ {
       WindowsPlatform(),
     ],
   )
-  PrintJobOrientation_? orientation;
+  CygnusPrintJobOrientation_? orientation;
 
   ///The number of pages to render.
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
@@ -78,7 +78,7 @@ class PrintJobSettings_ {
 
   ///Force rendering quality.
   @SupportedPlatforms(platforms: [IOSPlatform(available: '14.5')])
-  PrintJobRenderingQuality_? forceRenderingQuality;
+  CygnusPrintJobRenderingQuality_? forceRenderingQuality;
 
   ///The margins for each printed page.
   ///Margins define the white space around the content where the left margin defines
@@ -90,13 +90,13 @@ class PrintJobSettings_ {
 
   ///The media size.
   @SupportedPlatforms(platforms: [AndroidPlatform(), WindowsPlatform()])
-  PrintJobMediaSize_? mediaSize;
+  CygnusPrintJobMediaSize_? mediaSize;
 
   ///The color mode.
   @SupportedPlatforms(
     platforms: [AndroidPlatform(), MacOSPlatform(), WindowsPlatform()],
   )
-  PrintJobColorMode_? colorMode;
+  CygnusPrintJobColorMode_? colorMode;
 
   ///The duplex mode to use for the print job.
   @SupportedPlatforms(
@@ -106,15 +106,15 @@ class PrintJobSettings_ {
       WindowsPlatform(),
     ],
   )
-  PrintJobDuplexMode_? duplexMode;
+  CygnusPrintJobDuplexMode_? duplexMode;
 
   ///The kind of printable content.
   @SupportedPlatforms(platforms: [IOSPlatform()])
-  PrintJobOutputType_? outputType;
+  CygnusPrintJobOutputType_? outputType;
 
   ///The supported resolution in DPI (dots per inch).
   @SupportedPlatforms(platforms: [AndroidPlatform()])
-  PrintJobResolution_? resolution;
+  CygnusPrintJobResolution_? resolution;
 
   ///A Boolean value that determines whether the printing options include the number of copies.
   ///The default value is `true`.
@@ -282,11 +282,11 @@ class PrintJobSettings_ {
 
   ///The action specified for the job.
   @SupportedPlatforms(platforms: [MacOSPlatform()])
-  PrintJobDisposition_? jobDisposition;
+  CygnusPrintJobDisposition_? jobDisposition;
 
-  ///An URL containing the location to which the job file will be saved when the [jobDisposition] is [PrintJobDisposition.SAVE].
+  ///An URL containing the location to which the job file will be saved when the [jobDisposition] is [CygnusPrintJobDisposition.SAVE].
   @SupportedPlatforms(platforms: [MacOSPlatform()])
-  WebUri? jobSavingURL;
+  CygnusWebUri? jobSavingURL;
 
   ///The name of the currently selected paper size.
   @SupportedPlatforms(platforms: [MacOSPlatform()])
@@ -294,11 +294,11 @@ class PrintJobSettings_ {
 
   ///The horizontal pagination mode.
   @SupportedPlatforms(platforms: [MacOSPlatform()])
-  PrintJobPaginationMode_? horizontalPagination;
+  CygnusPrintJobPaginationMode_? horizontalPagination;
 
   ///The vertical pagination to the specified mode.
   @SupportedPlatforms(platforms: [MacOSPlatform()])
-  PrintJobPaginationMode_? verticalPagination;
+  CygnusPrintJobPaginationMode_? verticalPagination;
 
   ///Indicates whether the image is centered horizontally.
   ///The default value is `true`.
@@ -312,7 +312,7 @@ class PrintJobSettings_ {
 
   ///The print order for the pages of the operation.
   @SupportedPlatforms(platforms: [MacOSPlatform()])
-  PrintJobPageOrder_? pageOrder;
+  CygnusPrintJobPageOrder_? pageOrder;
 
   ///Whether the print operation should spawn a separate thread in which to run itself.
   ///The default value is `true`.
@@ -362,12 +362,12 @@ class PrintJobSettings_ {
   @SupportedPlatforms(platforms: [MacOSPlatform()])
   int? time;
 
-  PrintJobSettings_({
+  CygnusPrintJobSettings_({
     this.handledByClient = false,
     this.jobName,
     this.animated = true,
     this.showUI = true,
-    this.printDialogKind = PrintJobDialogKind_.BROWSER,
+    this.printDialogKind = CygnusPrintJobDialogKind_.BROWSER,
     this.orientation,
     this.numberOfPages,
     this.forceRenderingQuality,
@@ -427,9 +427,9 @@ class PrintJobSettings_ {
 
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   static bool isPropertySupported(
-    PrintJobSettingsProperty property, {
+    CygnusPrintJobSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _PrintJobSettingsPropertySupported.isPropertySupported(
+  }) => _CygnusPrintJobSettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );

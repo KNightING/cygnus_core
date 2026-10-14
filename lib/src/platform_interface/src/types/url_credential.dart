@@ -7,16 +7,16 @@ import 'enum_method.dart';
 
 part 'url_credential.g.dart';
 
-List<X509Certificate>? _certificatesDeserializer(
+List<CygnusX509Certificate>? _certificatesDeserializer(
   dynamic value, {
-  EnumMethod? enumMethod,
+  CygnusEnumMethod? enumMethod,
 }) {
-  List<X509Certificate>? certificates;
+  List<CygnusX509Certificate>? certificates;
   if (value != null) {
-    certificates = <X509Certificate>[];
+    certificates = <CygnusX509Certificate>[];
     (value.cast<Uint8List>() as List<Uint8List>).forEach((data) {
       try {
-        certificates!.add(X509Certificate.fromData(data: data));
+        certificates!.add(CygnusX509Certificate.fromData(data: data));
       } catch (e, stacktrace) {
         print(e);
         print(stacktrace);
@@ -29,7 +29,7 @@ List<X509Certificate>? _certificatesDeserializer(
 ///Class that represents an authentication credential consisting of information
 ///specific to the type of credential and the type of persistent storage to use, if any.
 @ExchangeableObject()
-class URLCredential_ {
+class CygnusURLCredential_ {
   ///The credential’s user name.
   String? username;
 
@@ -39,22 +39,22 @@ class URLCredential_ {
   ///Use [certificates] instead.
   @Deprecated("Use certificates instead")
   @ExchangeableObjectProperty(deserializer: _certificatesDeserializer)
-  List<X509Certificate>? iosCertificates;
+  List<CygnusX509Certificate>? iosCertificates;
 
   ///The intermediate certificates of the credential, if it is a client certificate credential.
   @ExchangeableObjectProperty(deserializer: _certificatesDeserializer)
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
-  List<X509Certificate>? certificates;
+  List<CygnusX509Certificate>? certificates;
 
   ///Use [persistence] instead.
   @Deprecated("Use persistence instead")
-  IOSURLCredentialPersistence_? iosPersistence;
+  CygnusIOSURLCredentialPersistence_? iosPersistence;
 
   ///The credential’s persistence setting.
   @SupportedPlatforms(platforms: [IOSPlatform(), MacOSPlatform()])
-  URLCredentialPersistence_? persistence;
+  CygnusURLCredentialPersistence_? persistence;
 
-  URLCredential_({
+  CygnusURLCredential_({
     this.username,
     this.password,
     @Deprecated("Use certificates instead") this.iosPersistence,

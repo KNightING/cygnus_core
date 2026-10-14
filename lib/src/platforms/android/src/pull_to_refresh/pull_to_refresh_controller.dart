@@ -1,15 +1,15 @@
 import 'dart:ui';
 
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [AndroidPullToRefreshController].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformPullToRefreshControllerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformPullToRefreshControllerCreationParams] for
 /// more information.
 class AndroidPullToRefreshControllerCreationParams
-    extends PlatformPullToRefreshControllerCreationParams {
+    extends CygnusPlatformPullToRefreshControllerCreationParams {
   /// Creates a new [AndroidPullToRefreshControllerCreationParams] instance.
   AndroidPullToRefreshControllerCreationParams({
     super.onRefresh,
@@ -17,11 +17,11 @@ class AndroidPullToRefreshControllerCreationParams
     super.settings,
   });
 
-  /// Creates a [AndroidPullToRefreshControllerCreationParams] instance based on [PlatformPullToRefreshControllerCreationParams].
+  /// Creates a [AndroidPullToRefreshControllerCreationParams] instance based on [CygnusPlatformPullToRefreshControllerCreationParams].
   factory AndroidPullToRefreshControllerCreationParams.fromPlatformPullToRefreshControllerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformPullToRefreshControllerCreationParams params,
+    CygnusPlatformPullToRefreshControllerCreationParams params,
   ) {
     return AndroidPullToRefreshControllerCreationParams(
       onRefresh: params.onRefresh,
@@ -31,12 +31,12 @@ class AndroidPullToRefreshControllerCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformPullToRefreshController}
-class AndroidPullToRefreshController extends PlatformPullToRefreshController
+///{@macro cygnus_core.CygnusPlatformPullToRefreshController}
+class AndroidPullToRefreshController extends CygnusPlatformPullToRefreshController
     with ChannelController {
   /// Constructs a [AndroidPullToRefreshController].
   AndroidPullToRefreshController(
-    PlatformPullToRefreshControllerCreationParams params,
+    CygnusPlatformPullToRefreshControllerCreationParams params,
   ) : super.implementation(
         params is AndroidPullToRefreshControllerCreationParams
             ? params
@@ -59,7 +59,7 @@ class AndroidPullToRefreshController extends PlatformPullToRefreshController
     debugLog(
       className: this.runtimeType.toString(),
       debugLoggingSettings:
-          PlatformPullToRefreshController.debugLoggingSettings,
+          CygnusPlatformPullToRefreshController.debugLoggingSettings,
       method: method,
       args: args,
     );
@@ -153,14 +153,14 @@ class AndroidPullToRefreshController extends PlatformPullToRefreshController
 
   @Deprecated("Use setIndicatorSize instead")
   @override
-  Future<void> setSize(AndroidPullToRefreshSize size) async {
+  Future<void> setSize(CygnusAndroidPullToRefreshSize size) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('size', () => size.toNativeValue());
     await channel?.invokeMethod('setSize', args);
   }
 
   @override
-  Future<void> setIndicatorSize(PullToRefreshSize size) async {
+  Future<void> setIndicatorSize(CygnusPullToRefreshSize size) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('size', () => size.toNativeValue());
     await channel?.invokeMethod('setSize', args);

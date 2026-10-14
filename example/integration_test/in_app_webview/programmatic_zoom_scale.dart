@@ -1,26 +1,26 @@
 part of 'main.dart';
 
 void programmaticZoomScale() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onZoomScaleChanged,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onZoomScaleChanged,
   );
 
   skippableGroup('programmatic zoom scale', () {
-    final shouldSkipTest1 = !InAppWebViewController.isMethodSupported(
-      PlatformInAppWebViewControllerMethod.zoomIn,
+    final shouldSkipTest1 = !CygnusWebViewController.isMethodSupported(
+      CygnusPlatformWebViewControllerMethod.zoomIn,
     );
 
     skippableTestWidgets('zoomIn/zoomOut', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+            initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -31,7 +31,7 @@ void programmaticZoomScale() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoaded.future;
       expect(await controller.zoomIn(), true);
@@ -40,8 +40,8 @@ void programmaticZoomScale() {
     }, skip: shouldSkipTest1);
 
     skippableTestWidgets('onZoomScaleChanged', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
       final Completer<void> onZoomScaleChangedCompleter = Completer<void>();
 
@@ -50,9 +50,9 @@ void programmaticZoomScale() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_URL_1),
+            initialUrlRequest: CygnusURLRequest(url: TEST_URL_1),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -70,7 +70,7 @@ void programmaticZoomScale() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoaded.future;
       listenForScaleChange = true;
@@ -81,16 +81,16 @@ void programmaticZoomScale() {
     });
 
     skippableTestWidgets('zoomBy', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: WebUri('https://flutter.dev')),
+            initialUrlRequest: CygnusURLRequest(url: CygnusWebUri('https://flutter.dev')),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -101,7 +101,7 @@ void programmaticZoomScale() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoaded.future;
 
@@ -112,16 +112,16 @@ void programmaticZoomScale() {
     });
 
     skippableTestWidgets('getZoomScale', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: WebUri('https://flutter.dev')),
+            initialUrlRequest: CygnusURLRequest(url: CygnusWebUri('https://flutter.dev')),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -132,7 +132,7 @@ void programmaticZoomScale() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoaded.future;
 

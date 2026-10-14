@@ -1,65 +1,65 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
-import 'in_app_webview/in_app_webview_controller.dart';
+import 'webview/webview_controller.dart';
 import 'webview_environment/webview_environment.dart';
 
-///{@macro cygnus_core.PlatformCookieManager}
+///{@macro cygnus_core.CygnusPlatformCookieManager}
 ///
-///{@macro cygnus_core.PlatformCookieManager.supported_platforms}
-class CookieManager {
-  ///{@macro cygnus_core.PlatformCookieManager}
+///{@macro cygnus_core.CygnusPlatformCookieManager.supported_platforms}
+class CygnusCookieManager {
+  ///{@macro cygnus_core.CygnusPlatformCookieManager}
   ///
-  ///{@macro cygnus_core.PlatformCookieManager.supported_platforms}
-  CookieManager()
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.supported_platforms}
+  CygnusCookieManager()
     : this.fromPlatformCreationParams(
-        const PlatformCookieManagerCreationParams(),
+        const CygnusPlatformCookieManagerCreationParams(),
       );
 
-  /// Constructs a [CookieManager] from creation params for a specific
+  /// Constructs a [CygnusCookieManager] from creation params for a specific
   /// platform.
-  CookieManager.fromPlatformCreationParams(
-    PlatformCookieManagerCreationParams params,
-  ) : this.fromPlatform(PlatformCookieManager(params));
+  CygnusCookieManager.fromPlatformCreationParams(
+    CygnusPlatformCookieManagerCreationParams params,
+  ) : this.fromPlatform(CygnusPlatformCookieManager(params));
 
-  /// Constructs a [CookieManager] from a specific platform
+  /// Constructs a [CygnusCookieManager] from a specific platform
   /// implementation.
-  CookieManager.fromPlatform(this.platform);
+  CygnusCookieManager.fromPlatform(this.platform);
 
-  /// Implementation of [PlatformCookieManager] for the current platform.
-  final PlatformCookieManager platform;
+  /// Implementation of [CygnusPlatformCookieManager] for the current platform.
+  final CygnusPlatformCookieManager platform;
 
-  ///Use [CookieManager] instead.
-  @Deprecated("Use CookieManager instead")
-  IOSCookieManager ios = IOSCookieManager.instance();
+  ///Use [CygnusCookieManager] instead.
+  @Deprecated("Use CygnusCookieManager instead")
+  CygnusIOSCookieManager ios = CygnusIOSCookieManager.instance();
 
-  static CookieManager? _instance;
+  static CygnusCookieManager? _instance;
 
-  ///Gets the [CookieManager] shared instance.
+  ///Gets the [CygnusCookieManager] shared instance.
   ///
-  ///[webViewEnvironment] (Supported only on Windows) - Used to create the [CookieManager] using the specified environment.
-  static CookieManager instance({WebViewEnvironment? webViewEnvironment}) {
+  ///[webViewEnvironment] (Supported only on Windows) - Used to create the [CygnusCookieManager] using the specified environment.
+  static CygnusCookieManager instance({CygnusWebViewEnvironment? webViewEnvironment}) {
     if (webViewEnvironment == null) {
       if (_instance == null) {
-        _instance = CookieManager();
+        _instance = CygnusCookieManager();
       }
       return _instance!;
     } else {
-      return CookieManager.fromPlatformCreationParams(
-        PlatformCookieManagerCreationParams(
+      return CygnusCookieManager.fromPlatformCreationParams(
+        CygnusPlatformCookieManagerCreationParams(
           webViewEnvironment: webViewEnvironment.platform,
         ),
       );
     }
   }
 
-  ///{@macro cygnus_core.PlatformCookieManager.setCookie}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.setCookie}
   ///
-  ///{@macro cygnus_core.PlatformCookieManager.setCookie.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.setCookie.supported_platforms}
   Future<bool> setCookie({
-    required WebUri url,
+    required CygnusWebUri url,
     required String name,
     required String value,
     String path = "/",
@@ -68,10 +68,10 @@ class CookieManager {
     int? maxAge,
     bool? isSecure,
     bool? isHttpOnly,
-    HTTPCookieSameSitePolicy? sameSite,
+    CygnusHTTPCookieSameSitePolicy? sameSite,
     @Deprecated("Use webViewController instead")
-    InAppWebViewController? iosBelow11WebViewController,
-    InAppWebViewController? webViewController,
+    CygnusWebViewController? iosBelow11WebViewController,
+    CygnusWebViewController? webViewController,
   }) => platform.setCookie(
     url: url,
     name: name,
@@ -87,29 +87,29 @@ class CookieManager {
     webViewController: webViewController?.platform,
   );
 
-  ///{@macro cygnus_core.PlatformCookieManager.getCookies}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.getCookies}
   ///
-  ///{@macro cygnus_core.PlatformCookieManager.getCookies.supported_platforms}
-  Future<List<Cookie>> getCookies({
-    required WebUri url,
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.getCookies.supported_platforms}
+  Future<List<CygnusCookie>> getCookies({
+    required CygnusWebUri url,
     @Deprecated("Use webViewController instead")
-    InAppWebViewController? iosBelow11WebViewController,
-    InAppWebViewController? webViewController,
+    CygnusWebViewController? iosBelow11WebViewController,
+    CygnusWebViewController? webViewController,
   }) => platform.getCookies(
     url: url,
     iosBelow11WebViewController: iosBelow11WebViewController?.platform,
     webViewController: webViewController?.platform,
   );
 
-  ///{@macro cygnus_core.PlatformCookieManager.getCookie}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.getCookie}
   ///
-  ///{@macro cygnus_core.PlatformCookieManager.getCookie.supported_platforms}
-  Future<Cookie?> getCookie({
-    required WebUri url,
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.getCookie.supported_platforms}
+  Future<CygnusCookie?> getCookie({
+    required CygnusWebUri url,
     required String name,
     @Deprecated("Use webViewController instead")
-    InAppWebViewController? iosBelow11WebViewController,
-    InAppWebViewController? webViewController,
+    CygnusWebViewController? iosBelow11WebViewController,
+    CygnusWebViewController? webViewController,
   }) => platform.getCookie(
     url: url,
     name: name,
@@ -117,17 +117,17 @@ class CookieManager {
     webViewController: webViewController?.platform,
   );
 
-  ///{@macro cygnus_core.PlatformCookieManager.deleteCookie}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.deleteCookie}
   ///
-  ///{@macro cygnus_core.PlatformCookieManager.deleteCookie.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.deleteCookie.supported_platforms}
   Future<bool> deleteCookie({
-    required WebUri url,
+    required CygnusWebUri url,
     required String name,
     String path = "/",
     String? domain,
     @Deprecated("Use webViewController instead")
-    InAppWebViewController? iosBelow11WebViewController,
-    InAppWebViewController? webViewController,
+    CygnusWebViewController? iosBelow11WebViewController,
+    CygnusWebViewController? webViewController,
   }) => platform.deleteCookie(
     url: url,
     name: name,
@@ -137,16 +137,16 @@ class CookieManager {
     webViewController: webViewController?.platform,
   );
 
-  ///{@macro cygnus_core.PlatformCookieManager.deleteCookies}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.deleteCookies}
   ///
-  ///{@macro cygnus_core.PlatformCookieManager.deleteCookies.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.deleteCookies.supported_platforms}
   Future<bool> deleteCookies({
-    required WebUri url,
+    required CygnusWebUri url,
     String path = "/",
     String? domain,
     @Deprecated("Use webViewController instead")
-    InAppWebViewController? iosBelow11WebViewController,
-    InAppWebViewController? webViewController,
+    CygnusWebViewController? iosBelow11WebViewController,
+    CygnusWebViewController? webViewController,
   }) => platform.deleteCookies(
     url: url,
     path: path,
@@ -155,64 +155,64 @@ class CookieManager {
     webViewController: webViewController?.platform,
   );
 
-  ///{@macro cygnus_core.PlatformCookieManager.deleteAllCookies}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.deleteAllCookies}
   ///
-  ///{@macro cygnus_core.PlatformCookieManager.deleteAllCookies.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.deleteAllCookies.supported_platforms}
   Future<bool> deleteAllCookies() => platform.deleteAllCookies();
 
-  ///{@macro cygnus_core.PlatformCookieManager.getAllCookies}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.getAllCookies}
   ///
-  ///{@macro cygnus_core.PlatformCookieManager.getAllCookies.supported_platforms}
-  Future<List<Cookie>> getAllCookies() => platform.getAllCookies();
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.getAllCookies.supported_platforms}
+  Future<List<CygnusCookie>> getAllCookies() => platform.getAllCookies();
 
-  ///{@macro cygnus_core.PlatformCookieManager.removeSessionCookies}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.removeSessionCookies}
   ///
-  ///{@macro cygnus_core.PlatformCookieManager.removeSessionCookies.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.removeSessionCookies.supported_platforms}
   Future<bool> removeSessionCookies() => platform.removeSessionCookies();
 
-  ///{@macro cygnus_core.PlatformCookieManager.flush}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.flush}
   ///
-  ///{@macro cygnus_core.PlatformCookieManager.flush.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.flush.supported_platforms}
   Future<void> flush() => platform.flush();
 
-  ///{@macro cygnus_core.PlatformCookieManagerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformCookieManagerCreationParams.isClassSupported}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformCookieManager.static().isClassSupported(platform: platform);
+      CygnusPlatformCookieManager.static().isClassSupported(platform: platform);
 
-  ///{@macro cygnus_core.PlatformCookieManagerCreationParams.isPropertySupported}
+  ///{@macro cygnus_core.CygnusPlatformCookieManagerCreationParams.isPropertySupported}
   static bool isPropertySupported(
-    PlatformCookieManagerCreationParamsProperty property, {
+    CygnusPlatformCookieManagerCreationParamsProperty property, {
     TargetPlatform? platform,
-  }) => PlatformCookieManager.static().isPropertySupported(
+  }) => CygnusPlatformCookieManager.static().isPropertySupported(
     property,
     platform: platform,
   );
 
-  ///{@macro cygnus_core.PlatformCookieManager.isMethodSupported}
+  ///{@macro cygnus_core.CygnusPlatformCookieManager.isMethodSupported}
   static bool isMethodSupported(
-    PlatformCookieManagerMethod method, {
+    CygnusPlatformCookieManagerMethod method, {
     TargetPlatform? platform,
-  }) => PlatformCookieManager.static().isMethodSupported(
+  }) => CygnusPlatformCookieManager.static().isMethodSupported(
     method,
     platform: platform,
   );
 }
 
-///Class that contains only iOS-specific methods of [CookieManager].
-///Use [CookieManager] instead.
-@Deprecated("Use CookieManager instead")
-class IOSCookieManager {
-  static IOSCookieManager? _instance;
+///Class that contains only iOS-specific methods of [CygnusCookieManager].
+///Use [CygnusCookieManager] instead.
+@Deprecated("Use CygnusCookieManager instead")
+class CygnusIOSCookieManager {
+  static CygnusIOSCookieManager? _instance;
 
-  ///Gets the [IOSCookieManager] shared instance.
-  static IOSCookieManager instance() {
+  ///Gets the [CygnusIOSCookieManager] shared instance.
+  static CygnusIOSCookieManager instance() {
     return (_instance != null) ? _instance! : _init();
   }
 
-  IOSCookieManager._();
+  CygnusIOSCookieManager._();
 
-  static IOSCookieManager _init() {
-    _instance = IOSCookieManager._();
+  static CygnusIOSCookieManager _init() {
+    _instance = CygnusIOSCookieManager._();
     return _instance!;
   }
 
@@ -221,7 +221,7 @@ class IOSCookieManager {
   ///**NOTE**: available on iOS 11.0+.
   ///
   ///**Official iOS API**: https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882005-getallcookies
-  Future<List<Cookie>> getAllCookies() async {
-    return CookieManager.instance().getAllCookies();
+  Future<List<CygnusCookie>> getAllCookies() async {
+    return CygnusCookieManager.instance().getAllCookies();
   }
 }

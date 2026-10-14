@@ -6,28 +6,31 @@ part of 'meta_tag.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents a `<meta>` HTML tag. It is used by the [PlatformInAppWebViewController.getMetaTags] method.
-class MetaTag {
+///Class that represents a `<meta>` HTML tag. It is used by the [CygnusPlatformWebViewController.getMetaTags] method.
+class CygnusMetaTag {
   ///The meta tag attributes list.
-  List<MetaTagAttribute>? attrs;
+  List<CygnusMetaTagAttribute>? attrs;
 
   ///The meta tag content value.
   String? content;
 
   ///The meta tag name value.
   String? name;
-  MetaTag({this.attrs, this.content, this.name});
+  CygnusMetaTag({this.attrs, this.content, this.name});
 
-  ///Gets a possible [MetaTag] instance from a [Map] value.
-  static MetaTag? fromMap(Map<String, dynamic>? map, {EnumMethod? enumMethod}) {
+  ///Gets a possible [CygnusMetaTag] instance from a [Map] value.
+  static CygnusMetaTag? fromMap(
+    Map<String, dynamic>? map, {
+    CygnusEnumMethod? enumMethod,
+  }) {
     if (map == null) {
       return null;
     }
-    final instance = MetaTag(
+    final instance = CygnusMetaTag(
       attrs: map['attrs'] != null
-          ? List<MetaTagAttribute>.from(
+          ? List<CygnusMetaTagAttribute>.from(
               map['attrs'].map(
-                (e) => MetaTagAttribute.fromMap(
+                (e) => CygnusMetaTagAttribute.fromMap(
                   e?.cast<String, dynamic>(),
                   enumMethod: enumMethod,
                 )!,
@@ -41,7 +44,7 @@ class MetaTag {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "attrs": attrs?.map((e) => e.toMap(enumMethod: enumMethod)).toList(),
       "content": content,
@@ -56,6 +59,6 @@ class MetaTag {
 
   @override
   String toString() {
-    return 'MetaTag{attrs: $attrs, content: $content, name: $name}';
+    return 'CygnusMetaTag{attrs: $attrs, content: $content, name: $name}';
   }
 }

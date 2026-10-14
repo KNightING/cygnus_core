@@ -18,21 +18,21 @@ import 'support_methods/main.dart' as support_methods_tests;
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  PlatformInAppWebViewController.debugLoggingSettings.usePrint = true;
-  PlatformInAppWebViewController.debugLoggingSettings.maxLogMessageLength =
+  CygnusPlatformWebViewController.debugLoggingSettings.usePrint = true;
+  CygnusPlatformWebViewController.debugLoggingSettings.maxLogMessageLength =
       7000;
-  PlatformInAppBrowser.debugLoggingSettings.usePrint = true;
-  PlatformInAppBrowser.debugLoggingSettings.maxLogMessageLength = 7000;
-  PlatformChromeSafariBrowser.debugLoggingSettings.usePrint = true;
-  PlatformChromeSafariBrowser.debugLoggingSettings.maxLogMessageLength = 7000;
-  PlatformWebAuthenticationSession.debugLoggingSettings.usePrint = true;
-  PlatformWebAuthenticationSession.debugLoggingSettings.maxLogMessageLength =
+  CygnusPlatformBrowser.debugLoggingSettings.usePrint = true;
+  CygnusPlatformBrowser.debugLoggingSettings.maxLogMessageLength = 7000;
+  CygnusPlatformChromeSafariBrowser.debugLoggingSettings.usePrint = true;
+  CygnusPlatformChromeSafariBrowser.debugLoggingSettings.maxLogMessageLength = 7000;
+  CygnusPlatformWebAuthenticationSession.debugLoggingSettings.usePrint = true;
+  CygnusPlatformWebAuthenticationSession.debugLoggingSettings.maxLogMessageLength =
       7000;
-  PlatformPullToRefreshController.debugLoggingSettings.usePrint = true;
-  PlatformPullToRefreshController.debugLoggingSettings.maxLogMessageLength =
+  CygnusPlatformPullToRefreshController.debugLoggingSettings.usePrint = true;
+  CygnusPlatformPullToRefreshController.debugLoggingSettings.maxLogMessageLength =
       7000;
-  PlatformFindInteractionController.debugLoggingSettings.usePrint = true;
-  PlatformFindInteractionController.debugLoggingSettings.maxLogMessageLength =
+  CygnusPlatformFindInteractionController.debugLoggingSettings.usePrint = true;
+  CygnusPlatformFindInteractionController.debugLoggingSettings.maxLogMessageLength =
       7000;
 
   process_global_config_tests.main();

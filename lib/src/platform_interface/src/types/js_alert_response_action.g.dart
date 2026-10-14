@@ -6,30 +6,30 @@ part of 'js_alert_response_action.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class used by [JsAlertResponse] class.
-class JsAlertResponseAction {
+///Class used by [CygnusJsAlertResponse] class.
+class CygnusJsAlertResponseAction {
   final int _value;
   final int? _nativeValue;
-  const JsAlertResponseAction._internal(this._value, this._nativeValue);
+  const CygnusJsAlertResponseAction._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory JsAlertResponseAction._internalMultiPlatform(
+  factory CygnusJsAlertResponseAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => JsAlertResponseAction._internal(value, nativeValue());
+  ) => CygnusJsAlertResponseAction._internal(value, nativeValue());
 
   ///Confirm that the user hit confirm button.
-  static const CONFIRM = JsAlertResponseAction._internal(0, 0);
+  static const CONFIRM = CygnusJsAlertResponseAction._internal(0, 0);
 
-  ///Set of all values of [JsAlertResponseAction].
-  static final Set<JsAlertResponseAction> values = [
-    JsAlertResponseAction.CONFIRM,
+  ///Set of all values of [CygnusJsAlertResponseAction].
+  static final Set<CygnusJsAlertResponseAction> values = [
+    CygnusJsAlertResponseAction.CONFIRM,
   ].toSet();
 
-  ///Gets a possible [JsAlertResponseAction] instance from [int] value.
-  static JsAlertResponseAction? fromValue(int? value) {
+  ///Gets a possible [CygnusJsAlertResponseAction] instance from [int] value.
+  static CygnusJsAlertResponseAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return JsAlertResponseAction.values.firstWhere(
+        return CygnusJsAlertResponseAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -39,11 +39,11 @@ class JsAlertResponseAction {
     return null;
   }
 
-  ///Gets a possible [JsAlertResponseAction] instance from a native value.
-  static JsAlertResponseAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusJsAlertResponseAction] instance from a native value.
+  static CygnusJsAlertResponseAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return JsAlertResponseAction.values.firstWhere(
+        return CygnusJsAlertResponseAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -53,15 +53,15 @@ class JsAlertResponseAction {
     return null;
   }
 
-  /// Gets a possible [JsAlertResponseAction] instance value with name [name].
+  /// Gets a possible [CygnusJsAlertResponseAction] instance value with name [name].
   ///
-  /// Goes through [JsAlertResponseAction.values] looking for a value with
-  /// name [name], as reported by [JsAlertResponseAction.name].
+  /// Goes through [CygnusJsAlertResponseAction.values] looking for a value with
+  /// name [name], as reported by [CygnusJsAlertResponseAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static JsAlertResponseAction? byName(String? name) {
+  static CygnusJsAlertResponseAction? byName(String? name) {
     if (name != null) {
       try {
-        return JsAlertResponseAction.values.firstWhere(
+        return CygnusJsAlertResponseAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -71,7 +71,7 @@ class JsAlertResponseAction {
     return null;
   }
 
-  /// Creates a map from the names of [JsAlertResponseAction] values to the values.
+  /// Creates a map from the names of [CygnusJsAlertResponseAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -79,9 +79,10 @@ class JsAlertResponseAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, JsAlertResponseAction> asNameMap() =>
-      <String, JsAlertResponseAction>{
-        for (final value in JsAlertResponseAction.values) value.name(): value,
+  static Map<String, CygnusJsAlertResponseAction> asNameMap() =>
+      <String, CygnusJsAlertResponseAction>{
+        for (final value in CygnusJsAlertResponseAction.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

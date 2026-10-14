@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void trustedWebActivity() {
-  final shouldSkip = !ChromeSafariBrowser.isMethodSupported(
-    PlatformChromeSafariBrowserMethod.validateRelationship,
+  final shouldSkip = !CygnusChromeSafariBrowser.isMethodSupported(
+    CygnusPlatformChromeSafariBrowserMethod.validateRelationship,
   );
 
   skippableGroup('Trusted Web Activity', () {
@@ -12,7 +12,7 @@ void trustedWebActivity() {
 
       await chromeSafariBrowser.open(
         url: TEST_TWA_URL,
-        settings: ChromeSafariBrowserSettings(isTrustedWebActivity: true),
+        settings: CygnusChromeSafariBrowserSettings(isTrustedWebActivity: true),
       );
       await chromeSafariBrowser.opened.future;
       expect(chromeSafariBrowser.isOpened(), true);
@@ -32,7 +32,7 @@ void trustedWebActivity() {
 
       await chromeSafariBrowser.open(
         url: TEST_TWA_URL,
-        settings: ChromeSafariBrowserSettings(
+        settings: CygnusChromeSafariBrowserSettings(
           isTrustedWebActivity: true,
           isSingleInstance: true,
         ),
@@ -54,12 +54,12 @@ void trustedWebActivity() {
       expect(chromeSafariBrowser.isOpened(), false);
 
       await chromeSafariBrowser.open(
-        settings: ChromeSafariBrowserSettings(isTrustedWebActivity: true),
+        settings: CygnusChromeSafariBrowserSettings(isTrustedWebActivity: true),
       );
       await chromeSafariBrowser.serviceConnected.future;
       expect(
         await chromeSafariBrowser.validateRelationship(
-          relation: CustomTabsRelationType.USE_AS_ORIGIN,
+          relation: CygnusCustomTabsRelationType.USE_AS_ORIGIN,
           origin: TEST_TWA_URL,
         ),
         true,

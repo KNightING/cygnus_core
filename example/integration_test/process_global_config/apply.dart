@@ -1,25 +1,25 @@
 part of 'main.dart';
 
 void apply() {
-  final shouldSkip = !ProcessGlobalConfig.isMethodSupported(
-    PlatformProcessGlobalConfigMethod.apply,
+  final shouldSkip = !CygnusProcessGlobalConfig.isMethodSupported(
+    CygnusPlatformProcessGlobalConfigMethod.apply,
   );
 
   skippableTestWidgets('apply', (WidgetTester tester) async {
     await expectLater(
-      ProcessGlobalConfig.instance().apply(
-        settings: ProcessGlobalConfigSettings(
+      CygnusProcessGlobalConfig.instance().apply(
+        settings: CygnusProcessGlobalConfigSettings(
           dataDirectorySuffix:
-              (await WebViewFeature.isStartupFeatureSupported(
-                WebViewFeature.STARTUP_FEATURE_SET_DATA_DIRECTORY_SUFFIX,
+              (await CygnusWebViewFeature.isStartupFeatureSupported(
+                CygnusWebViewFeature.STARTUP_FEATURE_SET_DATA_DIRECTORY_SUFFIX,
               ))
               ? 'suffix_inappwebviewexample'
               : null,
           directoryBasePaths:
-              (await WebViewFeature.isStartupFeatureSupported(
-                WebViewFeature.STARTUP_FEATURE_SET_DIRECTORY_BASE_PATHS,
+              (await CygnusWebViewFeature.isStartupFeatureSupported(
+                CygnusWebViewFeature.STARTUP_FEATURE_SET_DIRECTORY_BASE_PATHS,
               ))
-              ? ProcessGlobalConfigDirectoryBasePaths(
+              ? CygnusProcessGlobalConfigDirectoryBasePaths(
                   cacheDirectoryBasePath:
                       (await getApplicationDocumentsDirectory()).absolute.path +
                       '/inappwebviewexample/cache',

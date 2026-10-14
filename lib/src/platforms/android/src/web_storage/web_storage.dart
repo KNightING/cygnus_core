@@ -1,26 +1,26 @@
 import 'dart:convert';
 
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
-import '../in_app_webview/in_app_webview_controller.dart';
+import '../webview/webview_controller.dart';
 
 /// Object specifying creation parameters for creating a [AndroidWebStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebStorageCreationParams] for
 /// more information.
-class AndroidWebStorageCreationParams extends PlatformWebStorageCreationParams {
+class AndroidWebStorageCreationParams extends CygnusPlatformWebStorageCreationParams {
   /// Creates a new [AndroidWebStorageCreationParams] instance.
   AndroidWebStorageCreationParams({
     required super.localStorage,
     required super.sessionStorage,
   });
 
-  /// Creates a [AndroidWebStorageCreationParams] instance based on [PlatformWebStorageCreationParams].
+  /// Creates a [AndroidWebStorageCreationParams] instance based on [CygnusPlatformWebStorageCreationParams].
   factory AndroidWebStorageCreationParams.fromPlatformWebStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebStorageCreationParams params,
+    CygnusPlatformWebStorageCreationParams params,
   ) {
     return AndroidWebStorageCreationParams(
       localStorage: params.localStorage,
@@ -29,10 +29,10 @@ class AndroidWebStorageCreationParams extends PlatformWebStorageCreationParams {
   }
 }
 
-///{@macro cygnus_core.PlatformWebStorage}
-class AndroidWebStorage extends PlatformWebStorage {
+///{@macro cygnus_core.CygnusPlatformWebStorage}
+class AndroidWebStorage extends CygnusPlatformWebStorage {
   /// Constructs a [AndroidWebStorage].
-  AndroidWebStorage(PlatformWebStorageCreationParams params)
+  AndroidWebStorage(CygnusPlatformWebStorageCreationParams params)
     : super.implementation(
         params is AndroidWebStorageCreationParams
             ? params
@@ -42,10 +42,10 @@ class AndroidWebStorage extends PlatformWebStorage {
       );
 
   @override
-  PlatformLocalStorage get localStorage => params.localStorage;
+  CygnusPlatformLocalStorage get localStorage => params.localStorage;
 
   @override
-  PlatformSessionStorage get sessionStorage => params.sessionStorage;
+  CygnusPlatformSessionStorage get sessionStorage => params.sessionStorage;
 
   @override
   void dispose() {
@@ -57,20 +57,20 @@ class AndroidWebStorage extends PlatformWebStorage {
 /// Object specifying creation parameters for creating a [AndroidStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformStorageCreationParams] for
 /// more information.
-class AndroidStorageCreationParams extends PlatformStorageCreationParams {
+class AndroidStorageCreationParams extends CygnusPlatformStorageCreationParams {
   /// Creates a new [AndroidStorageCreationParams] instance.
   AndroidStorageCreationParams({
     required super.controller,
     required super.webStorageType,
   });
 
-  /// Creates a [AndroidStorageCreationParams] instance based on [PlatformStorageCreationParams].
+  /// Creates a [AndroidStorageCreationParams] instance based on [CygnusPlatformStorageCreationParams].
   factory AndroidStorageCreationParams.fromPlatformStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformStorageCreationParams params,
+    CygnusPlatformStorageCreationParams params,
   ) {
     return AndroidStorageCreationParams(
       controller: params.controller,
@@ -79,8 +79,8 @@ class AndroidStorageCreationParams extends PlatformStorageCreationParams {
   }
 }
 
-///{@macro cygnus_core.PlatformStorage}
-abstract mixin class AndroidStorage implements PlatformStorage {
+///{@macro cygnus_core.CygnusPlatformStorage}
+abstract mixin class AndroidStorage implements CygnusPlatformStorage {
   @override
   AndroidInAppWebViewController? controller;
 
@@ -137,8 +137,8 @@ abstract mixin class AndroidStorage implements PlatformStorage {
   }
 
   @override
-  Future<List<WebStorageItem>> getItems() async {
-    var webStorageItems = <WebStorageItem>[];
+  Future<List<CygnusWebStorageItem>> getItems() async {
+    var webStorageItems = <CygnusWebStorageItem>[];
 
     List<Map<dynamic, dynamic>>? items = (await controller?.evaluateJavascript(
       source:
@@ -165,7 +165,7 @@ abstract mixin class AndroidStorage implements PlatformStorage {
 
     for (var item in items) {
       webStorageItems.add(
-        WebStorageItem(key: item["key"], value: item["value"]),
+        CygnusWebStorageItem(key: item["key"], value: item["value"]),
       );
     }
 
@@ -202,27 +202,27 @@ abstract mixin class AndroidStorage implements PlatformStorage {
 /// Object specifying creation parameters for creating a [AndroidLocalStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformLocalStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformLocalStorageCreationParams] for
 /// more information.
 class AndroidLocalStorageCreationParams
-    extends PlatformLocalStorageCreationParams {
+    extends CygnusPlatformLocalStorageCreationParams {
   /// Creates a new [AndroidLocalStorageCreationParams] instance.
   AndroidLocalStorageCreationParams(super.params);
 
-  /// Creates a [AndroidLocalStorageCreationParams] instance based on [PlatformLocalStorageCreationParams].
+  /// Creates a [AndroidLocalStorageCreationParams] instance based on [CygnusPlatformLocalStorageCreationParams].
   factory AndroidLocalStorageCreationParams.fromPlatformLocalStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformLocalStorageCreationParams params,
+    CygnusPlatformLocalStorageCreationParams params,
   ) {
     return AndroidLocalStorageCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformLocalStorage}
-class AndroidLocalStorage extends PlatformLocalStorage with AndroidStorage {
+///{@macro cygnus_core.CygnusPlatformLocalStorage}
+class AndroidLocalStorage extends CygnusPlatformLocalStorage with AndroidStorage {
   /// Constructs a [AndroidLocalStorage].
-  AndroidLocalStorage(PlatformLocalStorageCreationParams params)
+  AndroidLocalStorage(CygnusPlatformLocalStorageCreationParams params)
     : super.implementation(
         params is AndroidLocalStorageCreationParams
             ? params
@@ -233,14 +233,14 @@ class AndroidLocalStorage extends PlatformLocalStorage with AndroidStorage {
 
   /// Default storage
   factory AndroidLocalStorage.defaultStorage({
-    required PlatformInAppWebViewController? controller,
+    required CygnusPlatformWebViewController? controller,
   }) {
     return AndroidLocalStorage(
       AndroidLocalStorageCreationParams(
-        PlatformLocalStorageCreationParams(
-          PlatformStorageCreationParams(
+        CygnusPlatformLocalStorageCreationParams(
+          CygnusPlatformStorageCreationParams(
             controller: controller,
-            webStorageType: WebStorageType.LOCAL_STORAGE,
+            webStorageType: CygnusWebStorageType.LOCAL_STORAGE,
           ),
         ),
       ),
@@ -255,27 +255,27 @@ class AndroidLocalStorage extends PlatformLocalStorage with AndroidStorage {
 /// Object specifying creation parameters for creating a [AndroidSessionStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformSessionStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformSessionStorageCreationParams] for
 /// more information.
 class AndroidSessionStorageCreationParams
-    extends PlatformSessionStorageCreationParams {
+    extends CygnusPlatformSessionStorageCreationParams {
   /// Creates a new [AndroidSessionStorageCreationParams] instance.
   AndroidSessionStorageCreationParams(super.params);
 
-  /// Creates a [AndroidSessionStorageCreationParams] instance based on [PlatformSessionStorageCreationParams].
+  /// Creates a [AndroidSessionStorageCreationParams] instance based on [CygnusPlatformSessionStorageCreationParams].
   factory AndroidSessionStorageCreationParams.fromPlatformSessionStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformSessionStorageCreationParams params,
+    CygnusPlatformSessionStorageCreationParams params,
   ) {
     return AndroidSessionStorageCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformSessionStorage}
-class AndroidSessionStorage extends PlatformSessionStorage with AndroidStorage {
+///{@macro cygnus_core.CygnusPlatformSessionStorage}
+class AndroidSessionStorage extends CygnusPlatformSessionStorage with AndroidStorage {
   /// Constructs a [AndroidSessionStorage].
-  AndroidSessionStorage(PlatformSessionStorageCreationParams params)
+  AndroidSessionStorage(CygnusPlatformSessionStorageCreationParams params)
     : super.implementation(
         params is AndroidSessionStorageCreationParams
             ? params
@@ -286,14 +286,14 @@ class AndroidSessionStorage extends PlatformSessionStorage with AndroidStorage {
 
   /// Default storage
   factory AndroidSessionStorage.defaultStorage({
-    required PlatformInAppWebViewController? controller,
+    required CygnusPlatformWebViewController? controller,
   }) {
     return AndroidSessionStorage(
       AndroidSessionStorageCreationParams(
-        PlatformSessionStorageCreationParams(
-          PlatformStorageCreationParams(
+        CygnusPlatformSessionStorageCreationParams(
+          CygnusPlatformStorageCreationParams(
             controller: controller,
-            webStorageType: WebStorageType.SESSION_STORAGE,
+            webStorageType: CygnusWebStorageType.SESSION_STORAGE,
           ),
         ),
       ),

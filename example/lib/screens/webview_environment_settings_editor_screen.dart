@@ -12,7 +12,7 @@ import 'package:flutter_inappwebview_example/widgets/common/support_badge.dart';
 
 import '../utils/support_checker.dart';
 
-/// Comprehensive settings editor for WebViewEnvironmentSettings
+/// Comprehensive settings editor for CygnusWebViewEnvironmentSettings
 /// Used to configure WebView2 (Windows) and WPE WebKit (Linux) environments
 class WebViewEnvironmentSettingsEditorScreen extends StatefulWidget {
   const WebViewEnvironmentSettingsEditorScreen({super.key});
@@ -688,7 +688,7 @@ class _WebViewEnvironmentSettingsEditorScreenState
 
   bool _isBitmaskEnumSetting(EnvironmentSettingDefinition setting) {
     return setting.property ==
-        WebViewEnvironmentSettingsProperty.releaseChannels;
+        CygnusWebViewEnvironmentSettingsProperty.releaseChannels;
   }
 
   int _resolveBitmaskValue(dynamic currentValue) {
@@ -811,7 +811,7 @@ class _WebViewEnvironmentSettingsEditorScreenState
         await settingsManager.recreateEnvironment();
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('$WebViewEnvironment recreated')),
+            SnackBar(content: Text('$CygnusWebViewEnvironment recreated')),
           );
         }
       },
@@ -917,7 +917,7 @@ class _WebViewEnvironmentSettingsEditorScreenState
       builder: (context) => AlertDialog(
         title: const Text('Clear Environment'),
         content: Text(
-          'This will dispose the current $WebViewEnvironment and clear the selection. '
+          'This will dispose the current $CygnusWebViewEnvironment and clear the selection. '
           'Any WebViews using this environment will need to be recreated.',
         ),
         actions: [

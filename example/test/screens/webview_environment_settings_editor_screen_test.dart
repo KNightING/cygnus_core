@@ -55,7 +55,7 @@ void main() {
       await tester.pumpAndSettle();
 
       final stableLabel = EnvironmentSettingDefinition.enumDisplayName(
-        EnvironmentReleaseChannels.STABLE,
+        CygnusEnvironmentReleaseChannels.STABLE,
       );
 
       expect(find.widgetWithText(FilterChip, stableLabel), findsOneWidget);

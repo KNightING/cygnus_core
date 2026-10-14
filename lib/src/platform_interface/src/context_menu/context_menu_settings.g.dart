@@ -6,21 +6,21 @@ part of 'context_menu_settings.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents available settings used by [ContextMenu].
-class ContextMenuSettings {
+///Class that represents available settings used by [CygnusContextMenu].
+class CygnusContextMenuSettings {
   ///Whether all the default system context menu items should be hidden or not. The default value is `false`.
   bool hideDefaultSystemContextMenuItems;
-  ContextMenuSettings({this.hideDefaultSystemContextMenuItems = false});
+  CygnusContextMenuSettings({this.hideDefaultSystemContextMenuItems = false});
 
-  ///Gets a possible [ContextMenuSettings] instance from a [Map] value.
-  static ContextMenuSettings? fromMap(
+  ///Gets a possible [CygnusContextMenuSettings] instance from a [Map] value.
+  static CygnusContextMenuSettings? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ContextMenuSettings();
+    final instance = CygnusContextMenuSettings();
     if (map['hideDefaultSystemContextMenuItems'] != null) {
       instance.hideDefaultSystemContextMenuItems =
           map['hideDefaultSystemContextMenuItems'];
@@ -29,7 +29,7 @@ class ContextMenuSettings {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "hideDefaultSystemContextMenuItems": hideDefaultSystemContextMenuItems,
     };
@@ -40,33 +40,34 @@ class ContextMenuSettings {
     return toMap();
   }
 
-  ///Returns a copy of ContextMenuSettings.
-  ContextMenuSettings copy() {
-    return ContextMenuSettings.fromMap(toMap()) ?? ContextMenuSettings();
+  ///Returns a copy of CygnusContextMenuSettings.
+  CygnusContextMenuSettings copy() {
+    return CygnusContextMenuSettings.fromMap(toMap()) ??
+        CygnusContextMenuSettings();
   }
 
   @override
   String toString() {
-    return 'ContextMenuSettings{hideDefaultSystemContextMenuItems: $hideDefaultSystemContextMenuItems}';
+    return 'CygnusContextMenuSettings{hideDefaultSystemContextMenuItems: $hideDefaultSystemContextMenuItems}';
   }
 }
 
-///Use [ContextMenuSettings] instead.
-@Deprecated('Use ContextMenuSettings instead')
-class ContextMenuOptions {
+///Use [CygnusContextMenuSettings] instead.
+@Deprecated('Use CygnusContextMenuSettings instead')
+class CygnusContextMenuOptions {
   ///Whether all the default system context menu items should be hidden or not. The default value is `false`.
   bool hideDefaultSystemContextMenuItems;
-  ContextMenuOptions({this.hideDefaultSystemContextMenuItems = false});
+  CygnusContextMenuOptions({this.hideDefaultSystemContextMenuItems = false});
 
-  ///Gets a possible [ContextMenuOptions] instance from a [Map] value.
-  static ContextMenuOptions? fromMap(
+  ///Gets a possible [CygnusContextMenuOptions] instance from a [Map] value.
+  static CygnusContextMenuOptions? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ContextMenuOptions();
+    final instance = CygnusContextMenuOptions();
     if (map['hideDefaultSystemContextMenuItems'] != null) {
       instance.hideDefaultSystemContextMenuItems =
           map['hideDefaultSystemContextMenuItems'];
@@ -75,7 +76,7 @@ class ContextMenuOptions {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "hideDefaultSystemContextMenuItems": hideDefaultSystemContextMenuItems,
     };
@@ -86,13 +87,14 @@ class ContextMenuOptions {
     return toMap();
   }
 
-  ///Returns a copy of ContextMenuOptions.
-  ContextMenuOptions copy() {
-    return ContextMenuOptions.fromMap(toMap()) ?? ContextMenuOptions();
+  ///Returns a copy of CygnusContextMenuOptions.
+  CygnusContextMenuOptions copy() {
+    return CygnusContextMenuOptions.fromMap(toMap()) ??
+        CygnusContextMenuOptions();
   }
 
   @override
   String toString() {
-    return 'ContextMenuOptions{hideDefaultSystemContextMenuItems: $hideDefaultSystemContextMenuItems}';
+    return 'CygnusContextMenuOptions{hideDefaultSystemContextMenuItems: $hideDefaultSystemContextMenuItems}';
   }
 }

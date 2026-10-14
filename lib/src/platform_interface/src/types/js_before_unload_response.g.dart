@@ -6,10 +6,10 @@ part of 'js_before_unload_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onJsBeforeUnload] event to control a JavaScript alert dialog.
-class JsBeforeUnloadResponse {
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onJsBeforeUnload] event to control a JavaScript alert dialog.
+class CygnusJsBeforeUnloadResponse {
   ///Action used to confirm that the user hit confirm or cancel button.
-  JsBeforeUnloadResponseAction? action;
+  CygnusJsBeforeUnloadResponseAction? action;
 
   ///Title of the cancel button.
   String cancelButtonTitle;
@@ -22,29 +22,32 @@ class JsBeforeUnloadResponse {
 
   ///Message to be displayed in the window.
   String message;
-  JsBeforeUnloadResponse({
-    JsBeforeUnloadResponseAction? action,
+  CygnusJsBeforeUnloadResponse({
+    CygnusJsBeforeUnloadResponseAction? action,
     this.cancelButtonTitle = "",
     this.confirmButtonTitle = "",
     this.handledByClient = false,
     this.message = "",
-  }) : action = action ?? JsBeforeUnloadResponseAction.CONFIRM;
+  }) : action = action ?? CygnusJsBeforeUnloadResponseAction.CONFIRM;
 
-  ///Gets a possible [JsBeforeUnloadResponse] instance from a [Map] value.
-  static JsBeforeUnloadResponse? fromMap(
+  ///Gets a possible [CygnusJsBeforeUnloadResponse] instance from a [Map] value.
+  static CygnusJsBeforeUnloadResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = JsBeforeUnloadResponse();
-    instance.action = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => JsBeforeUnloadResponseAction.fromNativeValue(
+    final instance = CygnusJsBeforeUnloadResponse();
+    instance.action = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusJsBeforeUnloadResponseAction.fromNativeValue(map['action']),
+      CygnusEnumMethod.value => CygnusJsBeforeUnloadResponseAction.fromValue(
         map['action'],
       ),
-      EnumMethod.value => JsBeforeUnloadResponseAction.fromValue(map['action']),
-      EnumMethod.name => JsBeforeUnloadResponseAction.byName(map['action']),
+      CygnusEnumMethod.name => CygnusJsBeforeUnloadResponseAction.byName(
+        map['action'],
+      ),
     };
     if (map['cancelButtonTitle'] != null) {
       instance.cancelButtonTitle = map['cancelButtonTitle'];
@@ -62,12 +65,12 @@ class JsBeforeUnloadResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "action": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => action?.toNativeValue(),
-        EnumMethod.value => action?.toValue(),
-        EnumMethod.name => action?.name(),
+      "action": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => action?.toNativeValue(),
+        CygnusEnumMethod.value => action?.toValue(),
+        CygnusEnumMethod.name => action?.name(),
       },
       "cancelButtonTitle": cancelButtonTitle,
       "confirmButtonTitle": confirmButtonTitle,
@@ -83,6 +86,6 @@ class JsBeforeUnloadResponse {
 
   @override
   String toString() {
-    return 'JsBeforeUnloadResponse{action: $action, cancelButtonTitle: $cancelButtonTitle, confirmButtonTitle: $confirmButtonTitle, handledByClient: $handledByClient, message: $message}';
+    return 'CygnusJsBeforeUnloadResponse{action: $action, cancelButtonTitle: $cancelButtonTitle, confirmButtonTitle: $confirmButtonTitle, handledByClient: $handledByClient, message: $message}';
   }
 }

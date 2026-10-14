@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void onReceivedHttpError() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onReceivedHttpError,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onReceivedHttpError,
   );
 
   skippableTestWidgets('onReceivedHttpError', (WidgetTester tester) async {
@@ -12,9 +12,9 @@ void onReceivedHttpError() {
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_URL_404),
+          initialUrlRequest: CygnusURLRequest(url: TEST_URL_404),
           onReceivedHttpError: (controller, request, errorResponse) async {
             errorUrlCompleter.complete(request.url.toString());
             statusCodeCompleter.complete(errorResponse.statusCode);

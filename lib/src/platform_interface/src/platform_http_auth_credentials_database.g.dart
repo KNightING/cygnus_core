@@ -6,9 +6,9 @@ part of 'platform_http_auth_credentials_database.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformHttpAuthCredentialDatabaseCreationParamsClassSupported
-    on PlatformHttpAuthCredentialDatabaseCreationParams {
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabaseCreationParams.supported_platforms}
+extension _CygnusPlatformHttpAuthCredentialDatabaseCreationParamsClassSupported
+    on CygnusPlatformHttpAuthCredentialDatabaseCreationParams {
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabaseCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -16,7 +16,7 @@ extension _PlatformHttpAuthCredentialDatabaseCreationParamsClassSupported
   ///- macOS WKWebView
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformHttpAuthCredentialDatabaseCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformHttpAuthCredentialDatabaseCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -29,9 +29,9 @@ extension _PlatformHttpAuthCredentialDatabaseCreationParamsClassSupported
   }
 }
 
-extension _PlatformHttpAuthCredentialDatabaseClassSupported
-    on PlatformHttpAuthCredentialDatabase {
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabase.supported_platforms}
+extension _CygnusPlatformHttpAuthCredentialDatabaseClassSupported
+    on CygnusPlatformHttpAuthCredentialDatabase {
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
@@ -43,7 +43,7 @@ extension _PlatformHttpAuthCredentialDatabaseClassSupported
   ///- Linux WPE WebKit:
   ///    - Implemented using libsecret for secure credential storage in the system keyring (gnome-keyring, KDE Wallet, etc.).
   ///
-  ///Use the [PlatformHttpAuthCredentialDatabase.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformHttpAuthCredentialDatabase.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -56,11 +56,11 @@ extension _PlatformHttpAuthCredentialDatabaseClassSupported
   }
 }
 
-///List of [PlatformHttpAuthCredentialDatabase]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformHttpAuthCredentialDatabaseMethod {
-  ///Can be used to check if the [PlatformHttpAuthCredentialDatabase.clearAllAuthCredentials] method is supported at runtime.
+///List of [CygnusPlatformHttpAuthCredentialDatabase]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformHttpAuthCredentialDatabaseMethod {
+  ///Can be used to check if the [CygnusPlatformHttpAuthCredentialDatabase.clearAllAuthCredentials] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabase.clearAllAuthCredentials.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.clearAllAuthCredentials.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -68,13 +68,13 @@ enum PlatformHttpAuthCredentialDatabaseMethod {
   ///- macOS WKWebView
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformHttpAuthCredentialDatabase.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformHttpAuthCredentialDatabase.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   clearAllAuthCredentials,
 
-  ///Can be used to check if the [PlatformHttpAuthCredentialDatabase.getAllAuthCredentials] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformHttpAuthCredentialDatabase.getAllAuthCredentials] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabase.getAllAuthCredentials.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.getAllAuthCredentials.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -83,13 +83,13 @@ enum PlatformHttpAuthCredentialDatabaseMethod {
   ///- Linux WPE WebKit:
   ///    - Implemented using libsecret for secure storage.
   ///
-  ///Use the [PlatformHttpAuthCredentialDatabase.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformHttpAuthCredentialDatabase.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getAllAuthCredentials,
 
-  ///Can be used to check if the [PlatformHttpAuthCredentialDatabase.getHttpAuthCredentials] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformHttpAuthCredentialDatabase.getHttpAuthCredentials] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabase.getHttpAuthCredentials.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.getHttpAuthCredentials.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -100,13 +100,13 @@ enum PlatformHttpAuthCredentialDatabaseMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [protectionSpace]: all platforms
   ///
-  ///Use the [PlatformHttpAuthCredentialDatabase.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformHttpAuthCredentialDatabase.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getHttpAuthCredentials,
 
-  ///Can be used to check if the [PlatformHttpAuthCredentialDatabase.removeHttpAuthCredential] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformHttpAuthCredentialDatabase.removeHttpAuthCredential] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabase.removeHttpAuthCredential.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.removeHttpAuthCredential.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -119,13 +119,13 @@ enum PlatformHttpAuthCredentialDatabaseMethod {
   ///- [protectionSpace]: all platforms
   ///- [credential]: all platforms
   ///
-  ///Use the [PlatformHttpAuthCredentialDatabase.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformHttpAuthCredentialDatabase.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeHttpAuthCredential,
 
-  ///Can be used to check if the [PlatformHttpAuthCredentialDatabase.removeHttpAuthCredentials] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformHttpAuthCredentialDatabase.removeHttpAuthCredentials] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabase.removeHttpAuthCredentials.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.removeHttpAuthCredentials.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -136,13 +136,13 @@ enum PlatformHttpAuthCredentialDatabaseMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [protectionSpace]: all platforms
   ///
-  ///Use the [PlatformHttpAuthCredentialDatabase.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformHttpAuthCredentialDatabase.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   removeHttpAuthCredentials,
 
-  ///Can be used to check if the [PlatformHttpAuthCredentialDatabase.setHttpAuthCredential] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformHttpAuthCredentialDatabase.setHttpAuthCredential] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformHttpAuthCredentialDatabase.setHttpAuthCredential.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformHttpAuthCredentialDatabase.setHttpAuthCredential.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -155,19 +155,20 @@ enum PlatformHttpAuthCredentialDatabaseMethod {
   ///- [protectionSpace]: all platforms
   ///- [credential]: all platforms
   ///
-  ///Use the [PlatformHttpAuthCredentialDatabase.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformHttpAuthCredentialDatabase.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setHttpAuthCredential,
 }
 
-extension _PlatformHttpAuthCredentialDatabaseMethodSupported
-    on PlatformHttpAuthCredentialDatabase {
+extension _CygnusPlatformHttpAuthCredentialDatabaseMethodSupported
+    on CygnusPlatformHttpAuthCredentialDatabase {
   static bool isMethodSupported(
-    PlatformHttpAuthCredentialDatabaseMethod method, {
+    CygnusPlatformHttpAuthCredentialDatabaseMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformHttpAuthCredentialDatabaseMethod.clearAllAuthCredentials:
+      case CygnusPlatformHttpAuthCredentialDatabaseMethod
+          .clearAllAuthCredentials:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -175,7 +176,7 @@ extension _PlatformHttpAuthCredentialDatabaseMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformHttpAuthCredentialDatabaseMethod.getAllAuthCredentials:
+      case CygnusPlatformHttpAuthCredentialDatabaseMethod.getAllAuthCredentials:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -183,7 +184,8 @@ extension _PlatformHttpAuthCredentialDatabaseMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformHttpAuthCredentialDatabaseMethod.getHttpAuthCredentials:
+      case CygnusPlatformHttpAuthCredentialDatabaseMethod
+          .getHttpAuthCredentials:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -191,7 +193,8 @@ extension _PlatformHttpAuthCredentialDatabaseMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredential:
+      case CygnusPlatformHttpAuthCredentialDatabaseMethod
+          .removeHttpAuthCredential:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -199,7 +202,8 @@ extension _PlatformHttpAuthCredentialDatabaseMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformHttpAuthCredentialDatabaseMethod.removeHttpAuthCredentials:
+      case CygnusPlatformHttpAuthCredentialDatabaseMethod
+          .removeHttpAuthCredentials:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -207,7 +211,7 @@ extension _PlatformHttpAuthCredentialDatabaseMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformHttpAuthCredentialDatabaseMethod.setHttpAuthCredential:
+      case CygnusPlatformHttpAuthCredentialDatabaseMethod.setHttpAuthCredential:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,

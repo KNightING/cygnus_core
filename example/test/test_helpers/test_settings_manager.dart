@@ -13,16 +13,16 @@ class TestSettingsManager extends SettingsManager {
   Future<void> init() async {}
 
   @override
-  InAppWebViewSettings buildSettings() => InAppWebViewSettings();
+  CygnusWebViewSettings buildSettings() => CygnusWebViewSettings();
 
   @override
-  WebViewEnvironmentSettings buildEnvironmentSettings() =>
-      WebViewEnvironmentSettings(
-        releaseChannels: EnvironmentReleaseChannels.STABLE,
+  CygnusWebViewEnvironmentSettings buildEnvironmentSettings() =>
+      CygnusWebViewEnvironmentSettings(
+        releaseChannels: CygnusEnvironmentReleaseChannels.STABLE,
       );
 
   @override
-  WebViewEnvironment? get webViewEnvironment => null;
+  CygnusWebViewEnvironment? get webViewEnvironment => null;
 
   @override
   int get environmentRevision => 0;

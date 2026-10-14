@@ -7,9 +7,9 @@ part of 'fetch_request.dart';
 // **************************************************************************
 
 ///Class that represents a HTTP request created with JavaScript using the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
-class FetchRequest {
-  ///Indicates the [FetchRequestAction] that can be used to control the request.
-  FetchRequestAction? action;
+class CygnusFetchRequest {
+  ///Indicates the [CygnusFetchRequestAction] that can be used to control the request.
+  CygnusFetchRequestAction? action;
 
   ///Body of the request.
   dynamic body;
@@ -18,7 +18,7 @@ class FetchRequest {
   String? cache;
 
   ///The request credentials used by the request.
-  FetchRequestCredential? credentials;
+  CygnusFetchRequestCredential? credentials;
 
   ///The HTTP request headers.
   Map<String, dynamic>? headers;
@@ -42,12 +42,12 @@ class FetchRequest {
   String? referrer;
 
   ///The value of the referer HTTP header.
-  ReferrerPolicy? referrerPolicy;
+  CygnusReferrerPolicy? referrerPolicy;
 
   ///The URL of the request.
-  WebUri? url;
-  FetchRequest({
-    FetchRequestAction? action,
+  CygnusWebUri? url;
+  CygnusFetchRequest({
+    CygnusFetchRequestAction? action,
     this.body,
     this.cache,
     this.credentials,
@@ -60,17 +60,17 @@ class FetchRequest {
     this.referrer,
     this.referrerPolicy,
     this.url,
-  }) : action = action ?? FetchRequestAction.PROCEED;
+  }) : action = action ?? CygnusFetchRequestAction.PROCEED;
 
-  ///Gets a possible [FetchRequest] instance from a [Map] value.
-  static FetchRequest? fromMap(
+  ///Gets a possible [CygnusFetchRequest] instance from a [Map] value.
+  static CygnusFetchRequest? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = FetchRequest(
+    final instance = CygnusFetchRequest(
       body: map['body'],
       cache: map['cache'],
       credentials: _fetchRequestCredentialDeserializer(
@@ -84,32 +84,38 @@ class FetchRequest {
       mode: map['mode'],
       redirect: map['redirect'],
       referrer: map['referrer'],
-      referrerPolicy: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => ReferrerPolicy.fromNativeValue(
+      referrerPolicy: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusReferrerPolicy.fromNativeValue(
           map['referrerPolicy'],
         ),
-        EnumMethod.value => ReferrerPolicy.fromValue(map['referrerPolicy']),
-        EnumMethod.name => ReferrerPolicy.byName(map['referrerPolicy']),
+        CygnusEnumMethod.value => CygnusReferrerPolicy.fromValue(
+          map['referrerPolicy'],
+        ),
+        CygnusEnumMethod.name => CygnusReferrerPolicy.byName(
+          map['referrerPolicy'],
+        ),
       },
-      url: map['url'] != null ? WebUri(map['url']) : null,
+      url: map['url'] != null ? CygnusWebUri(map['url']) : null,
     );
-    instance.action = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => FetchRequestAction.fromNativeValue(
+    instance.action = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue => CygnusFetchRequestAction.fromNativeValue(
         map['action'],
       ),
-      EnumMethod.value => FetchRequestAction.fromValue(map['action']),
-      EnumMethod.name => FetchRequestAction.byName(map['action']),
+      CygnusEnumMethod.value => CygnusFetchRequestAction.fromValue(
+        map['action'],
+      ),
+      CygnusEnumMethod.name => CygnusFetchRequestAction.byName(map['action']),
     };
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "action": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => action?.toNativeValue(),
-        EnumMethod.value => action?.toValue(),
-        EnumMethod.name => action?.name(),
+      "action": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => action?.toNativeValue(),
+        CygnusEnumMethod.value => action?.toValue(),
+        CygnusEnumMethod.name => action?.name(),
       },
       "body": body,
       "cache": cache,
@@ -121,10 +127,10 @@ class FetchRequest {
       "mode": mode,
       "redirect": redirect,
       "referrer": referrer,
-      "referrerPolicy": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => referrerPolicy?.toNativeValue(),
-        EnumMethod.value => referrerPolicy?.toValue(),
-        EnumMethod.name => referrerPolicy?.name(),
+      "referrerPolicy": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => referrerPolicy?.toNativeValue(),
+        CygnusEnumMethod.value => referrerPolicy?.toValue(),
+        CygnusEnumMethod.name => referrerPolicy?.name(),
       },
       "url": url?.toString(),
     };
@@ -137,6 +143,6 @@ class FetchRequest {
 
   @override
   String toString() {
-    return 'FetchRequest{action: $action, body: $body, cache: $cache, credentials: $credentials, headers: $headers, integrity: $integrity, keepalive: $keepalive, method: $method, mode: $mode, redirect: $redirect, referrer: $referrer, referrerPolicy: $referrerPolicy, url: $url}';
+    return 'CygnusFetchRequest{action: $action, body: $body, cache: $cache, credentials: $credentials, headers: $headers, integrity: $integrity, keepalive: $keepalive, method: $method, mode: $mode, redirect: $redirect, referrer: $referrer, referrerPolicy: $referrerPolicy, url: $url}';
   }
 }

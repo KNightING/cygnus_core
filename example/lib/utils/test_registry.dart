@@ -58,7 +58,7 @@ class TestRegistry {
         category: TestCategory.navigation,
         complexity: TestComplexity.quick,
         supportedPlatforms: _getPlatformsForMethod(
-          PlatformInAppWebViewControllerMethod.loadUrl.name,
+          CygnusPlatformWebViewControllerMethod.loadUrl.name,
         ),
         execute: () async {
           try {
@@ -87,7 +87,7 @@ class TestRegistry {
         category: TestCategory.navigation,
         complexity: TestComplexity.quick,
         supportedPlatforms: _getPlatformsForMethod(
-          PlatformInAppWebViewControllerMethod.getUrl.name,
+          CygnusPlatformWebViewControllerMethod.getUrl.name,
         ),
         execute: () async {
           try {
@@ -115,7 +115,7 @@ class TestRegistry {
         category: TestCategory.navigation,
         complexity: TestComplexity.quick,
         supportedPlatforms: _getPlatformsForMethod(
-          PlatformInAppWebViewControllerMethod.goBack.name,
+          CygnusPlatformWebViewControllerMethod.goBack.name,
         ),
         execute: () async {
           try {
@@ -143,7 +143,7 @@ class TestRegistry {
         category: TestCategory.navigation,
         complexity: TestComplexity.quick,
         supportedPlatforms: _getPlatformsForMethod(
-          PlatformInAppWebViewControllerMethod.reload.name,
+          CygnusPlatformWebViewControllerMethod.reload.name,
         ),
         execute: () async {
           try {
@@ -172,7 +172,7 @@ class TestRegistry {
         category: TestCategory.javascript,
         complexity: TestComplexity.quick,
         supportedPlatforms: _getPlatformsForMethod(
-          PlatformInAppWebViewControllerMethod.evaluateJavascript.name,
+          CygnusPlatformWebViewControllerMethod.evaluateJavascript.name,
         ),
         execute: () async {
           try {
@@ -200,7 +200,7 @@ class TestRegistry {
         category: TestCategory.javascript,
         complexity: TestComplexity.medium,
         supportedPlatforms: _getPlatformsForMethod(
-          PlatformInAppWebViewControllerMethod.addJavaScriptHandler.name,
+          CygnusPlatformWebViewControllerMethod.addJavaScriptHandler.name,
         ),
         execute: () async {
           try {
@@ -229,7 +229,7 @@ class TestRegistry {
         category: TestCategory.content,
         complexity: TestComplexity.quick,
         supportedPlatforms: _getPlatformsForMethod(
-          PlatformInAppWebViewControllerMethod.getTitle.name,
+          CygnusPlatformWebViewControllerMethod.getTitle.name,
         ),
         execute: () async {
           try {
@@ -257,7 +257,7 @@ class TestRegistry {
         category: TestCategory.content,
         complexity: TestComplexity.medium,
         supportedPlatforms: _getPlatformsForMethod(
-          PlatformInAppWebViewControllerMethod.getHtml.name,
+          CygnusPlatformWebViewControllerMethod.getHtml.name,
         ),
         execute: () async {
           try {
@@ -277,26 +277,26 @@ class TestRegistry {
       ),
     );
 
-    // Storage Tests
+    // CygnusStorage Tests
     register(
       TestCase(
         id: 'storage_set_cookie',
-        title: 'Set Cookie',
+        title: 'Set CygnusCookie',
         description: 'Set a cookie for a URL',
         category: TestCategory.storage,
         complexity: TestComplexity.quick,
-        supportedPlatforms: _getPlatformsForClass(CookieManager),
+        supportedPlatforms: _getPlatformsForClass(CygnusCookieManager),
         execute: () async {
           try {
-            await CookieManager.instance().setCookie(
-              url: WebUri('https://flutter.dev'),
+            await CygnusCookieManager.instance().setCookie(
+              url: CygnusWebUri('https://flutter.dev'),
               name: 'test_cookie',
               value: 'test_value',
             );
             return TestResult(
               duration: const Duration(milliseconds: 100),
               passed: true,
-              message: 'Cookie set successfully',
+              message: 'CygnusCookie set successfully',
             );
           } catch (e) {
             return TestResult(
@@ -316,11 +316,11 @@ class TestRegistry {
         description: 'Retrieve cookies for a URL',
         category: TestCategory.storage,
         complexity: TestComplexity.quick,
-        supportedPlatforms: _getPlatformsForClass(CookieManager),
+        supportedPlatforms: _getPlatformsForClass(CygnusCookieManager),
         execute: () async {
           try {
-            final cookies = await CookieManager.instance().getCookies(
-              url: WebUri('https://flutter.dev'),
+            final cookies = await CygnusCookieManager.instance().getCookies(
+              url: CygnusWebUri('https://flutter.dev'),
             );
             return TestResult(
               duration: const Duration(milliseconds: 100),
@@ -347,7 +347,7 @@ class TestRegistry {
         category: TestCategory.advanced,
         complexity: TestComplexity.medium,
         supportedPlatforms: _getPlatformsForMethod(
-          PlatformInAppWebViewControllerMethod.takeScreenshot.name,
+          CygnusPlatformWebViewControllerMethod.takeScreenshot.name,
         ),
         execute: () async {
           try {
@@ -375,7 +375,7 @@ class TestRegistry {
         category: TestCategory.advanced,
         complexity: TestComplexity.long,
         supportedPlatforms: _getPlatformsForMethod(
-          PlatformInAppWebViewControllerMethod.printCurrentPage.name,
+          CygnusPlatformWebViewControllerMethod.printCurrentPage.name,
         ),
         execute: () async {
           try {
@@ -399,17 +399,17 @@ class TestRegistry {
     register(
       TestCase(
         id: 'browser_open_inapp',
-        title: 'Open ${InAppBrowser}',
-        description: 'Open URL in ${InAppBrowser}',
+        title: 'Open ${CygnusBrowser}',
+        description: 'Open URL in ${CygnusBrowser}',
         category: TestCategory.browsers,
         complexity: TestComplexity.medium,
-        supportedPlatforms: _getPlatformsForClass(InAppBrowser),
+        supportedPlatforms: _getPlatformsForClass(CygnusBrowser),
         execute: () async {
           try {
             return TestResult(
               duration: const Duration(milliseconds: 100),
               passed: true,
-              message: '${InAppBrowser} opened',
+              message: '${CygnusBrowser} opened',
             );
           } catch (e) {
             return TestResult(
@@ -426,10 +426,10 @@ class TestRegistry {
       TestCase(
         id: 'browser_chrome_safari',
         title: 'Open Chrome/Safari Browser',
-        description: 'Open URL in ${ChromeSafariBrowser}',
+        description: 'Open URL in ${CygnusChromeSafariBrowser}',
         category: TestCategory.browsers,
         complexity: TestComplexity.medium,
-        supportedPlatforms: _getPlatformsForClass(ChromeSafariBrowser),
+        supportedPlatforms: _getPlatformsForClass(CygnusChromeSafariBrowser),
         execute: () async {
           try {
             return TestResult(
@@ -452,7 +452,7 @@ class TestRegistry {
   /// Helper to get supported platforms for a method.
   static List<String> _getPlatformsForMethod(String methodName) {
     return SupportChecker.getSupportedPlatformsForMethod(
-      SupportChecker.classNameOf(InAppWebViewController),
+      SupportChecker.classNameOf(CygnusWebViewController),
       methodName,
     ).map((p) => p.name).toList();
   }

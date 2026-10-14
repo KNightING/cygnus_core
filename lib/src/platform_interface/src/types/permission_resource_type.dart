@@ -5,20 +5,20 @@ part 'permission_resource_type.g.dart';
 
 ///Class that represents a type of resource used to ask user's permission.
 @ExchangeableEnum()
-class PermissionResourceType_ {
+class CygnusPermissionResourceType_ {
   // ignore: unused_field
   final String _value;
   // ignore: unused_field
   final dynamic _nativeValue = null;
-  const PermissionResourceType_._internal(this._value);
+  const CygnusPermissionResourceType_._internal(this._value);
 
   ///Resource belongs to audio capture device, like microphone.
   @EnumSupportedPlatforms(
     platforms: [
       EnumAndroidPlatform(
-        apiName: 'PermissionRequest.RESOURCE_AUDIO_CAPTURE',
+        apiName: 'CygnusPermissionRequest.RESOURCE_AUDIO_CAPTURE',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/PermissionRequest#RESOURCE_AUDIO_CAPTURE',
+            'https://developer.android.com/reference/android/webkit/CygnusPermissionRequest#RESOURCE_AUDIO_CAPTURE',
         value: 'android.webkit.resource.AUDIO_CAPTURE',
       ),
       EnumIOSPlatform(
@@ -43,7 +43,7 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const MICROPHONE = PermissionResourceType_._internal('MICROPHONE');
+  static const MICROPHONE = CygnusPermissionResourceType_._internal('MICROPHONE');
 
   ///Resource will allow sysex messages to be sent to or received from MIDI devices.
   ///These messages are privileged operations, e.g. modifying sound libraries and sampling data, or even updating the MIDI device's firmware.
@@ -51,9 +51,9 @@ class PermissionResourceType_ {
   @EnumSupportedPlatforms(
     platforms: [
       EnumAndroidPlatform(
-        apiName: 'PermissionRequest.RESOURCE_MIDI_SYSEX',
+        apiName: 'CygnusPermissionRequest.RESOURCE_MIDI_SYSEX',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/PermissionRequest#RESOURCE_MIDI_SYSEX',
+            'https://developer.android.com/reference/android/webkit/CygnusPermissionRequest#RESOURCE_MIDI_SYSEX',
         value: 'android.webkit.resource.MIDI_SYSEX',
       ),
       EnumWindowsPlatform(
@@ -64,15 +64,15 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const MIDI_SYSEX = PermissionResourceType_._internal('MIDI_SYSEX');
+  static const MIDI_SYSEX = CygnusPermissionResourceType_._internal('MIDI_SYSEX');
 
   ///Resource belongs to protected media identifier. After the user grants this resource, the origin can use EME APIs to generate the license requests.
   @EnumSupportedPlatforms(
     platforms: [
       EnumAndroidPlatform(
-        apiName: 'PermissionRequest.RESOURCE_PROTECTED_MEDIA_ID',
+        apiName: 'CygnusPermissionRequest.RESOURCE_PROTECTED_MEDIA_ID',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/PermissionRequest#RESOURCE_PROTECTED_MEDIA_ID',
+            'https://developer.android.com/reference/android/webkit/CygnusPermissionRequest#RESOURCE_PROTECTED_MEDIA_ID',
         value: 'android.webkit.resource.PROTECTED_MEDIA_ID',
       ),
       EnumLinuxPlatform(
@@ -82,7 +82,7 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const PROTECTED_MEDIA_ID = PermissionResourceType_._internal(
+  static const PROTECTED_MEDIA_ID = CygnusPermissionResourceType_._internal(
     'PROTECTED_MEDIA_ID',
   );
 
@@ -90,9 +90,9 @@ class PermissionResourceType_ {
   @EnumSupportedPlatforms(
     platforms: [
       EnumAndroidPlatform(
-        apiName: 'PermissionRequest.RESOURCE_VIDEO_CAPTURE',
+        apiName: 'CygnusPermissionRequest.RESOURCE_VIDEO_CAPTURE',
         apiUrl:
-            'https://developer.android.com/reference/android/webkit/PermissionRequest#RESOURCE_VIDEO_CAPTURE',
+            'https://developer.android.com/reference/android/webkit/CygnusPermissionRequest#RESOURCE_VIDEO_CAPTURE',
         value: 'android.webkit.resource.VIDEO_CAPTURE',
       ),
       EnumIOSPlatform(
@@ -117,7 +117,7 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const CAMERA = PermissionResourceType_._internal('CAMERA');
+  static const CAMERA = CygnusPermissionResourceType_._internal('CAMERA');
 
   ///A media device or devices that can capture audio and video.
   @EnumSupportedPlatforms(
@@ -138,7 +138,7 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const CAMERA_AND_MICROPHONE = PermissionResourceType_._internal(
+  static const CAMERA_AND_MICROPHONE = CygnusPermissionResourceType_._internal(
     'CAMERA_AND_MICROPHONE',
   );
 
@@ -150,7 +150,7 @@ class PermissionResourceType_ {
     ],
   )
   static const DEVICE_ORIENTATION_AND_MOTION =
-      PermissionResourceType_._internal('DEVICE_ORIENTATION_AND_MOTION');
+      CygnusPermissionResourceType_._internal('DEVICE_ORIENTATION_AND_MOTION');
 
   ///Indicates an unknown permission.
   @EnumSupportedPlatforms(
@@ -163,7 +163,7 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const UNKNOWN = PermissionResourceType_._internal('UNKNOWN');
+  static const UNKNOWN = CygnusPermissionResourceType_._internal('UNKNOWN');
 
   ///Indicates permission to access geolocation.
   @EnumSupportedPlatforms(
@@ -176,7 +176,7 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const GEOLOCATION = PermissionResourceType_._internal('GEOLOCATION');
+  static const GEOLOCATION = CygnusPermissionResourceType_._internal('GEOLOCATION');
 
   ///Indicates permission to send web notifications.
   @EnumSupportedPlatforms(
@@ -189,7 +189,7 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const NOTIFICATIONS = PermissionResourceType_._internal(
+  static const NOTIFICATIONS = CygnusPermissionResourceType_._internal(
     'NOTIFICATIONS',
   );
 
@@ -204,7 +204,7 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const OTHER_SENSORS = PermissionResourceType_._internal(
+  static const OTHER_SENSORS = CygnusPermissionResourceType_._internal(
     'OTHER_SENSORS',
   );
 
@@ -219,7 +219,7 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const CLIPBOARD_READ = PermissionResourceType_._internal(
+  static const CLIPBOARD_READ = CygnusPermissionResourceType_._internal(
     'CLIPBOARD_READ',
   );
 
@@ -235,7 +235,7 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const MULTIPLE_AUTOMATIC_DOWNLOADS = PermissionResourceType_._internal(
+  static const MULTIPLE_AUTOMATIC_DOWNLOADS = CygnusPermissionResourceType_._internal(
     'MULTIPLE_AUTOMATIC_DOWNLOADS',
   );
 
@@ -253,7 +253,7 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const FILE_READ_WRITE = PermissionResourceType_._internal(
+  static const FILE_READ_WRITE = CygnusPermissionResourceType_._internal(
     'FILE_READ_WRITE',
   );
 
@@ -272,7 +272,7 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const AUTOPLAY = PermissionResourceType_._internal('AUTOPLAY');
+  static const AUTOPLAY = CygnusPermissionResourceType_._internal('AUTOPLAY');
 
   ///Indicates permission to use fonts on the device.
   ///Permission is requested when developers use the [Local Font Access API](https://wicg.github.io/local-font-access/)
@@ -287,7 +287,7 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const LOCAL_FONTS = PermissionResourceType_._internal('LOCAL_FONTS');
+  static const LOCAL_FONTS = CygnusPermissionResourceType_._internal('LOCAL_FONTS');
 
   ///Indicates permission to open and place windows on the screen.
   ///Permission is requested when developers use the [Multi-Screen Window Placement API](https://www.w3.org/TR/window-placement/)
@@ -302,7 +302,7 @@ class PermissionResourceType_ {
       ),
     ],
   )
-  static const WINDOW_MANAGEMENT = PermissionResourceType_._internal(
+  static const WINDOW_MANAGEMENT = CygnusPermissionResourceType_._internal(
     'WINDOW_MANAGEMENT',
   );
 }

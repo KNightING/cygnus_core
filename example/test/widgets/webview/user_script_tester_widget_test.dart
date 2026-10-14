@@ -35,7 +35,7 @@ void main() {
 
       expect(find.text('Injection Time'), findsOneWidget);
       expect(
-        find.byType(DropdownButton<UserScriptInjectionTime>),
+        find.byType(DropdownButton<CygnusUserScriptInjectionTime>),
         findsOneWidget,
       );
     });
@@ -98,7 +98,7 @@ void main() {
     });
 
     testWidgets('calls onAddScript when add button is pressed', (tester) async {
-      UserScript? addedScript;
+      CygnusUserScript? addedScript;
 
       await tester.pumpWidget(
         MaterialApp(
@@ -124,7 +124,7 @@ void main() {
     });
 
     testWidgets('displays list of added scripts', (tester) async {
-      final scripts = <UserScript>[];
+      final scripts = <CygnusUserScript>[];
 
       await tester.pumpWidget(
         MaterialApp(
@@ -150,9 +150,9 @@ void main() {
     });
 
     testWidgets('shows remove button for each script', (tester) async {
-      final script = UserScript(
+      final script = CygnusUserScript(
         source: 'console.log("test")',
-        injectionTime: UserScriptInjectionTime.AT_DOCUMENT_START,
+        injectionTime: CygnusUserScriptInjectionTime.AT_DOCUMENT_START,
       );
 
       await tester.pumpWidget(
@@ -173,12 +173,12 @@ void main() {
     testWidgets('calls onRemoveScript when remove button is pressed', (
       tester,
     ) async {
-      final script = UserScript(
+      final script = CygnusUserScript(
         source: 'console.log("test")',
-        injectionTime: UserScriptInjectionTime.AT_DOCUMENT_START,
+        injectionTime: CygnusUserScriptInjectionTime.AT_DOCUMENT_START,
       );
 
-      UserScript? removedScript;
+      CygnusUserScript? removedScript;
 
       await tester.pumpWidget(
         MaterialApp(
@@ -222,9 +222,9 @@ void main() {
     });
 
     testWidgets('displays script injection time', (tester) async {
-      final script = UserScript(
+      final script = CygnusUserScript(
         source: 'console.log("test")',
-        injectionTime: UserScriptInjectionTime.AT_DOCUMENT_END,
+        injectionTime: CygnusUserScriptInjectionTime.AT_DOCUMENT_END,
       );
 
       await tester.pumpWidget(
@@ -243,9 +243,9 @@ void main() {
     });
 
     testWidgets('displays forMainFrameOnly status', (tester) async {
-      final script = UserScript(
+      final script = CygnusUserScript(
         source: 'console.log("test")',
-        injectionTime: UserScriptInjectionTime.AT_DOCUMENT_START,
+        injectionTime: CygnusUserScriptInjectionTime.AT_DOCUMENT_START,
         forMainFrameOnly: true,
       );
 
@@ -293,7 +293,7 @@ void main() {
       );
 
       // Open dropdown
-      await tester.tap(find.byType(DropdownButton<UserScriptInjectionTime>));
+      await tester.tap(find.byType(DropdownButton<CygnusUserScriptInjectionTime>));
       await tester.pumpAndSettle();
 
       // Should show both options

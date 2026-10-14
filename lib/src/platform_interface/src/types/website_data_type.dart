@@ -4,78 +4,78 @@ part 'website_data_type.g.dart';
 
 ///Class that represents a website data type.
 @ExchangeableEnum()
-class WebsiteDataType_ {
+class CygnusWebsiteDataType_ {
   // ignore: unused_field
   final String _value;
-  const WebsiteDataType_._internal(this._value);
+  const CygnusWebsiteDataType_._internal(this._value);
 
   ///On-disk Fetch caches.
   ///
   ///**NOTE**: available on iOS 11.3+.
-  static const WKWebsiteDataTypeFetchCache = const WebsiteDataType_._internal(
+  static const WKWebsiteDataTypeFetchCache = const CygnusWebsiteDataType_._internal(
     "WKWebsiteDataTypeFetchCache",
   );
 
   ///On-disk caches.
-  static const WKWebsiteDataTypeDiskCache = const WebsiteDataType_._internal(
+  static const WKWebsiteDataTypeDiskCache = const CygnusWebsiteDataType_._internal(
     "WKWebsiteDataTypeDiskCache",
   );
 
   ///In-memory caches.
-  static const WKWebsiteDataTypeMemoryCache = const WebsiteDataType_._internal(
+  static const WKWebsiteDataTypeMemoryCache = const CygnusWebsiteDataType_._internal(
     "WKWebsiteDataTypeMemoryCache",
   );
 
   ///HTML offline web application caches.
   static const WKWebsiteDataTypeOfflineWebApplicationCache =
-      const WebsiteDataType_._internal(
+      const CygnusWebsiteDataType_._internal(
         "WKWebsiteDataTypeOfflineWebApplicationCache",
       );
 
   ///Cookies.
-  static const WKWebsiteDataTypeCookies = const WebsiteDataType_._internal(
+  static const WKWebsiteDataTypeCookies = const CygnusWebsiteDataType_._internal(
     "WKWebsiteDataTypeCookies",
   );
 
   ///HTML session storage.
   static const WKWebsiteDataTypeSessionStorage =
-      const WebsiteDataType_._internal("WKWebsiteDataTypeSessionStorage");
+      const CygnusWebsiteDataType_._internal("WKWebsiteDataTypeSessionStorage");
 
   ///HTML local storage.
-  static const WKWebsiteDataTypeLocalStorage = const WebsiteDataType_._internal(
+  static const WKWebsiteDataTypeLocalStorage = const CygnusWebsiteDataType_._internal(
     "WKWebsiteDataTypeLocalStorage",
   );
 
   ///WebSQL databases.
   static const WKWebsiteDataTypeWebSQLDatabases =
-      const WebsiteDataType_._internal("WKWebsiteDataTypeWebSQLDatabases");
+      const CygnusWebsiteDataType_._internal("WKWebsiteDataTypeWebSQLDatabases");
 
   ///IndexedDB databases.
   static const WKWebsiteDataTypeIndexedDBDatabases =
-      const WebsiteDataType_._internal("WKWebsiteDataTypeIndexedDBDatabases");
+      const CygnusWebsiteDataType_._internal("WKWebsiteDataTypeIndexedDBDatabases");
 
   ///Service worker registrations.
   ///
   ///**NOTE**: available on iOS 11.3+.
   static const WKWebsiteDataTypeServiceWorkerRegistrations =
-      const WebsiteDataType_._internal(
+      const CygnusWebsiteDataType_._internal(
         "WKWebsiteDataTypeServiceWorkerRegistrations",
       );
 
   ///Returns a set of all available website data types.
   @ExchangeableEnumCustomValue()
   // ignore: non_constant_identifier_names
-  static final Set<WebsiteDataType_> ALL = [
-    WebsiteDataType_.WKWebsiteDataTypeFetchCache,
-    WebsiteDataType_.WKWebsiteDataTypeDiskCache,
-    WebsiteDataType_.WKWebsiteDataTypeMemoryCache,
-    WebsiteDataType_.WKWebsiteDataTypeOfflineWebApplicationCache,
-    WebsiteDataType_.WKWebsiteDataTypeCookies,
-    WebsiteDataType_.WKWebsiteDataTypeSessionStorage,
-    WebsiteDataType_.WKWebsiteDataTypeLocalStorage,
-    WebsiteDataType_.WKWebsiteDataTypeWebSQLDatabases,
-    WebsiteDataType_.WKWebsiteDataTypeIndexedDBDatabases,
-    WebsiteDataType_.WKWebsiteDataTypeServiceWorkerRegistrations,
+  static final Set<CygnusWebsiteDataType_> ALL = [
+    CygnusWebsiteDataType_.WKWebsiteDataTypeFetchCache,
+    CygnusWebsiteDataType_.WKWebsiteDataTypeDiskCache,
+    CygnusWebsiteDataType_.WKWebsiteDataTypeMemoryCache,
+    CygnusWebsiteDataType_.WKWebsiteDataTypeOfflineWebApplicationCache,
+    CygnusWebsiteDataType_.WKWebsiteDataTypeCookies,
+    CygnusWebsiteDataType_.WKWebsiteDataTypeSessionStorage,
+    CygnusWebsiteDataType_.WKWebsiteDataTypeLocalStorage,
+    CygnusWebsiteDataType_.WKWebsiteDataTypeWebSQLDatabases,
+    CygnusWebsiteDataType_.WKWebsiteDataTypeIndexedDBDatabases,
+    CygnusWebsiteDataType_.WKWebsiteDataTypeServiceWorkerRegistrations,
   ].toSet();
 }
 
@@ -83,54 +83,54 @@ class WebsiteDataType_ {
 ///
 ///**NOTE**: available on iOS 9.0+.
 ///
-///Use [WebsiteDataType] instead.
-@Deprecated("Use WebsiteDataType instead")
+///Use [CygnusWebsiteDataType] instead.
+@Deprecated("Use CygnusWebsiteDataType instead")
 @ExchangeableEnum()
-class IOSWKWebsiteDataType_ {
+class CygnusIOSWKWebsiteDataType_ {
   // ignore: unused_field
   final String _value;
-  const IOSWKWebsiteDataType_._internal(this._value);
+  const CygnusIOSWKWebsiteDataType_._internal(this._value);
 
   ///On-disk Fetch caches.
   ///
   ///**NOTE**: available on iOS 11.3+.
   static const WKWebsiteDataTypeFetchCache =
-      const IOSWKWebsiteDataType_._internal("WKWebsiteDataTypeFetchCache");
+      const CygnusIOSWKWebsiteDataType_._internal("WKWebsiteDataTypeFetchCache");
 
   ///On-disk caches.
   static const WKWebsiteDataTypeDiskCache =
-      const IOSWKWebsiteDataType_._internal("WKWebsiteDataTypeDiskCache");
+      const CygnusIOSWKWebsiteDataType_._internal("WKWebsiteDataTypeDiskCache");
 
   ///In-memory caches.
   static const WKWebsiteDataTypeMemoryCache =
-      const IOSWKWebsiteDataType_._internal("WKWebsiteDataTypeMemoryCache");
+      const CygnusIOSWKWebsiteDataType_._internal("WKWebsiteDataTypeMemoryCache");
 
   ///HTML offline web application caches.
   static const WKWebsiteDataTypeOfflineWebApplicationCache =
-      const IOSWKWebsiteDataType_._internal(
+      const CygnusIOSWKWebsiteDataType_._internal(
         "WKWebsiteDataTypeOfflineWebApplicationCache",
       );
 
   ///Cookies.
-  static const WKWebsiteDataTypeCookies = const IOSWKWebsiteDataType_._internal(
+  static const WKWebsiteDataTypeCookies = const CygnusIOSWKWebsiteDataType_._internal(
     "WKWebsiteDataTypeCookies",
   );
 
   ///HTML session storage.
   static const WKWebsiteDataTypeSessionStorage =
-      const IOSWKWebsiteDataType_._internal("WKWebsiteDataTypeSessionStorage");
+      const CygnusIOSWKWebsiteDataType_._internal("WKWebsiteDataTypeSessionStorage");
 
   ///HTML local storage.
   static const WKWebsiteDataTypeLocalStorage =
-      const IOSWKWebsiteDataType_._internal("WKWebsiteDataTypeLocalStorage");
+      const CygnusIOSWKWebsiteDataType_._internal("WKWebsiteDataTypeLocalStorage");
 
   ///WebSQL databases.
   static const WKWebsiteDataTypeWebSQLDatabases =
-      const IOSWKWebsiteDataType_._internal("WKWebsiteDataTypeWebSQLDatabases");
+      const CygnusIOSWKWebsiteDataType_._internal("WKWebsiteDataTypeWebSQLDatabases");
 
   ///IndexedDB databases.
   static const WKWebsiteDataTypeIndexedDBDatabases =
-      const IOSWKWebsiteDataType_._internal(
+      const CygnusIOSWKWebsiteDataType_._internal(
         "WKWebsiteDataTypeIndexedDBDatabases",
       );
 
@@ -138,23 +138,23 @@ class IOSWKWebsiteDataType_ {
   ///
   ///**NOTE**: available on iOS 11.3+.
   static const WKWebsiteDataTypeServiceWorkerRegistrations =
-      const IOSWKWebsiteDataType_._internal(
+      const CygnusIOSWKWebsiteDataType_._internal(
         "WKWebsiteDataTypeServiceWorkerRegistrations",
       );
 
   ///Returns a set of all available website data types.
   @ExchangeableEnumCustomValue()
   // ignore: non_constant_identifier_names
-  static final Set<IOSWKWebsiteDataType_> ALL = [
-    IOSWKWebsiteDataType_.WKWebsiteDataTypeFetchCache,
-    IOSWKWebsiteDataType_.WKWebsiteDataTypeDiskCache,
-    IOSWKWebsiteDataType_.WKWebsiteDataTypeMemoryCache,
-    IOSWKWebsiteDataType_.WKWebsiteDataTypeOfflineWebApplicationCache,
-    IOSWKWebsiteDataType_.WKWebsiteDataTypeCookies,
-    IOSWKWebsiteDataType_.WKWebsiteDataTypeSessionStorage,
-    IOSWKWebsiteDataType_.WKWebsiteDataTypeLocalStorage,
-    IOSWKWebsiteDataType_.WKWebsiteDataTypeWebSQLDatabases,
-    IOSWKWebsiteDataType_.WKWebsiteDataTypeIndexedDBDatabases,
-    IOSWKWebsiteDataType_.WKWebsiteDataTypeServiceWorkerRegistrations,
+  static final Set<CygnusIOSWKWebsiteDataType_> ALL = [
+    CygnusIOSWKWebsiteDataType_.WKWebsiteDataTypeFetchCache,
+    CygnusIOSWKWebsiteDataType_.WKWebsiteDataTypeDiskCache,
+    CygnusIOSWKWebsiteDataType_.WKWebsiteDataTypeMemoryCache,
+    CygnusIOSWKWebsiteDataType_.WKWebsiteDataTypeOfflineWebApplicationCache,
+    CygnusIOSWKWebsiteDataType_.WKWebsiteDataTypeCookies,
+    CygnusIOSWKWebsiteDataType_.WKWebsiteDataTypeSessionStorage,
+    CygnusIOSWKWebsiteDataType_.WKWebsiteDataTypeLocalStorage,
+    CygnusIOSWKWebsiteDataType_.WKWebsiteDataTypeWebSQLDatabases,
+    CygnusIOSWKWebsiteDataType_.WKWebsiteDataTypeIndexedDBDatabases,
+    CygnusIOSWKWebsiteDataType_.WKWebsiteDataTypeServiceWorkerRegistrations,
   ].toSet();
 }

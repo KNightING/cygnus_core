@@ -11,7 +11,7 @@ import 'package:flutter_inappwebview_example/widgets/common/support_badge.dart';
 import 'package:flutter_inappwebview_example/widgets/common/app_drawer.dart';
 import 'package:flutter_inappwebview_example/widgets/settings/responsive_setting_tile.dart';
 
-/// Comprehensive settings editor for InAppWebViewSettings
+/// Comprehensive settings editor for CygnusWebViewSettings
 class SettingsEditorScreen extends StatefulWidget {
   const SettingsEditorScreen({super.key});
 

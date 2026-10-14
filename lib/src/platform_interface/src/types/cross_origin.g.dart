@@ -7,38 +7,41 @@ part of 'cross_origin.dart';
 // **************************************************************************
 
 ///Class that represents the `crossorigin` content attribute on media elements, which is a CORS settings attribute.
-///It could be used with [ScriptHtmlTagAttributes] and [CSSLinkHtmlTagAttributes]
+///It could be used with [CygnusScriptHtmlTagAttributes] and [CygnusCSSLinkHtmlTagAttributes]
 ///when fetching a resource `<link>` or a `<script>` (or resources fetched by the `<script>`).
-class CrossOrigin {
+class CygnusCrossOrigin {
   final String _value;
   final String? _nativeValue;
-  const CrossOrigin._internal(this._value, this._nativeValue);
+  const CygnusCrossOrigin._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory CrossOrigin._internalMultiPlatform(
+  factory CygnusCrossOrigin._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => CrossOrigin._internal(value, nativeValue());
+  ) => CygnusCrossOrigin._internal(value, nativeValue());
 
   ///CORS requests for this element will have the credentials flag set to 'same-origin'.
-  static const ANONYMOUS = CrossOrigin._internal('anonymous', 'anonymous');
+  static const ANONYMOUS = CygnusCrossOrigin._internal(
+    'anonymous',
+    'anonymous',
+  );
 
   ///CORS requests for this element will have the credentials flag set to 'include'.
-  static const USE_CREDENTIALS = CrossOrigin._internal(
+  static const USE_CREDENTIALS = CygnusCrossOrigin._internal(
     'use-credentials',
     'use-credentials',
   );
 
-  ///Set of all values of [CrossOrigin].
-  static final Set<CrossOrigin> values = [
-    CrossOrigin.ANONYMOUS,
-    CrossOrigin.USE_CREDENTIALS,
+  ///Set of all values of [CygnusCrossOrigin].
+  static final Set<CygnusCrossOrigin> values = [
+    CygnusCrossOrigin.ANONYMOUS,
+    CygnusCrossOrigin.USE_CREDENTIALS,
   ].toSet();
 
-  ///Gets a possible [CrossOrigin] instance from [String] value.
-  static CrossOrigin? fromValue(String? value) {
+  ///Gets a possible [CygnusCrossOrigin] instance from [String] value.
+  static CygnusCrossOrigin? fromValue(String? value) {
     if (value != null) {
       try {
-        return CrossOrigin.values.firstWhere(
+        return CygnusCrossOrigin.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -48,11 +51,11 @@ class CrossOrigin {
     return null;
   }
 
-  ///Gets a possible [CrossOrigin] instance from a native value.
-  static CrossOrigin? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusCrossOrigin] instance from a native value.
+  static CygnusCrossOrigin? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return CrossOrigin.values.firstWhere(
+        return CygnusCrossOrigin.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -62,15 +65,15 @@ class CrossOrigin {
     return null;
   }
 
-  /// Gets a possible [CrossOrigin] instance value with name [name].
+  /// Gets a possible [CygnusCrossOrigin] instance value with name [name].
   ///
-  /// Goes through [CrossOrigin.values] looking for a value with
-  /// name [name], as reported by [CrossOrigin.name].
+  /// Goes through [CygnusCrossOrigin.values] looking for a value with
+  /// name [name], as reported by [CygnusCrossOrigin.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static CrossOrigin? byName(String? name) {
+  static CygnusCrossOrigin? byName(String? name) {
     if (name != null) {
       try {
-        return CrossOrigin.values.firstWhere(
+        return CygnusCrossOrigin.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -80,7 +83,7 @@ class CrossOrigin {
     return null;
   }
 
-  /// Creates a map from the names of [CrossOrigin] values to the values.
+  /// Creates a map from the names of [CygnusCrossOrigin] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -88,9 +91,10 @@ class CrossOrigin {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, CrossOrigin> asNameMap() => <String, CrossOrigin>{
-    for (final value in CrossOrigin.values) value.name(): value,
-  };
+  static Map<String, CygnusCrossOrigin> asNameMap() =>
+      <String, CygnusCrossOrigin>{
+        for (final value in CygnusCrossOrigin.values) value.name(): value,
+      };
 
   ///Gets [String] value.
   String toValue() => _value;

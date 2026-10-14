@@ -1,31 +1,31 @@
 part of 'main.dart';
 
 void webViewWindows() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onCreateWindow,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onCreateWindow,
   );
 
   skippableGroup('WebView Windows', () {
     final shouldSkipTest1 =
         kIsWeb ||
-        !InAppWebView.isPropertySupported(
-          PlatformWebViewCreationParamsProperty.onCreateWindow,
+        !CygnusWebView.isPropertySupported(
+          CygnusPlatformWebViewCreationParamsProperty.onCreateWindow,
         );
 
     skippableTestWidgets('onCreateWindow return false', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
             initialFile:
                 "test_assets/in_app_webview_on_create_window_test.html",
-            initialSettings: InAppWebViewSettings(
+            initialSettings: CygnusWebViewSettings(
               clearCache: true,
               javaScriptCanOpenWindowsAutomatically: true,
             ),
@@ -50,24 +50,24 @@ void webViewWindows() {
 
     final shouldSkipTest2 =
         kIsWeb ||
-        !InAppWebView.isPropertySupported(
-          PlatformWebViewCreationParamsProperty.windowId,
+        !CygnusWebView.isPropertySupported(
+          CygnusPlatformWebViewCreationParamsProperty.windowId,
         );
 
     skippableTestWidgets('onCreateWindow return true', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<int> onCreateWindowCompleter = Completer<int>();
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
             initialFile:
                 "test_assets/in_app_webview_on_create_window_test.html",
-            initialSettings: InAppWebViewSettings(
+            initialSettings: CygnusWebViewSettings(
               clearCache: true,
               javaScriptCanOpenWindowsAutomatically: true,
               supportMultipleWindows: true,
@@ -88,17 +88,17 @@ void webViewWindows() {
       var windowId = await onCreateWindowCompleter.future;
 
       final Completer windowControllerCompleter =
-          Completer<InAppWebViewController>();
+          Completer<CygnusWebViewController>();
       final Completer<String> windowPageLoaded = Completer<String>();
       final Completer<void> onCloseWindowCompleter = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
             windowId: windowId,
-            initialSettings: InAppWebViewSettings(clearCache: true),
+            initialSettings: CygnusWebViewSettings(clearCache: true),
             onWebViewCreated: (controller) {
               windowControllerCompleter.complete(controller);
             },
@@ -125,27 +125,27 @@ void webViewWindows() {
 
     final shouldSkipTest3 =
         kIsWeb ||
-        !InAppWebView.isPropertySupported(
-          PlatformWebViewCreationParamsProperty.onCreateWindow,
+        !CygnusWebView.isPropertySupported(
+          CygnusPlatformWebViewCreationParamsProperty.onCreateWindow,
         );
 
     skippableTestWidgets(
       'window.open() with target _blank opens in same window',
       (WidgetTester tester) async {
-        final Completer<InAppWebViewController> controllerCompleter =
-            Completer<InAppWebViewController>();
+        final Completer<CygnusWebViewController> controllerCompleter =
+            Completer<CygnusWebViewController>();
         final StreamController<String> pageLoads =
             StreamController<String>.broadcast();
         await tester.pumpWidget(
           Directionality(
             textDirection: TextDirection.ltr,
-            child: InAppWebView(
+            child: CygnusWebView(
               key: GlobalKey(),
               onWebViewCreated: (controller) {
                 controllerCompleter.complete(controller);
               },
-              initialUrlRequest: URLRequest(url: TEST_URL_ABOUT_BLANK),
-              initialSettings: InAppWebViewSettings(
+              initialUrlRequest: CygnusURLRequest(url: TEST_URL_ABOUT_BLANK),
+              initialSettings: CygnusWebViewSettings(
                 javaScriptEnabled: true,
                 javaScriptCanOpenWindowsAutomatically: true,
               ),
@@ -156,7 +156,7 @@ void webViewWindows() {
           ),
         );
         await pageLoads.stream.first;
-        final InAppWebViewController controller =
+        final CygnusWebViewController controller =
             await controllerCompleter.future;
 
         await controller.evaluateJavascript(
@@ -177,21 +177,21 @@ void webViewWindows() {
     skippableTestWidgets('can open new window and go back', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final StreamController<String> pageLoads =
           StreamController<String>.broadcast();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+            initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
-            initialSettings: InAppWebViewSettings(
+            initialSettings: CygnusWebViewSettings(
               javaScriptEnabled: true,
               javaScriptCanOpenWindowsAutomatically: true,
             ),
@@ -204,7 +204,7 @@ void webViewWindows() {
 
       await tester.pump();
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
 
       Future<String> waitForUrl(String expectedUrl) async {
@@ -271,24 +271,24 @@ void webViewWindows() {
       final String openWindowTestBase64 = base64Encode(
         const Utf8Encoder().convert(openWindowTest),
       );
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoadCompleter = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(
-              url: WebUri(
+            initialUrlRequest: CygnusURLRequest(
+              url: CygnusWebUri(
                 'data:text/html;charset=utf-8;base64,$openWindowTestBase64',
               ),
             ),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
-            initialSettings: InAppWebViewSettings(
+            initialSettings: CygnusWebViewSettings(
               javaScriptEnabled: true,
               javaScriptCanOpenWindowsAutomatically: true,
             ),
@@ -299,7 +299,7 @@ void webViewWindows() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoadCompleter.future;
 
@@ -321,16 +321,16 @@ void webViewWindows() {
     skippableTestWidgets('onCreateWindow called on Web', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<String> onCreateWindowCalled = Completer<String>();
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_WEB_PLATFORM_URL_1),
-            initialSettings: InAppWebViewSettings(
+            initialUrlRequest: CygnusURLRequest(url: TEST_WEB_PLATFORM_URL_1),
+            initialSettings: CygnusWebViewSettings(
               clearCache: true,
               javaScriptCanOpenWindowsAutomatically: true,
             ),
@@ -347,7 +347,7 @@ void webViewWindows() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await controller.evaluateJavascript(
         source: "window.open('$TEST_CROSS_PLATFORM_URL_1');",

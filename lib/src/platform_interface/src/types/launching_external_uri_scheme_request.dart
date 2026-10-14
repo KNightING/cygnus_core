@@ -5,19 +5,19 @@ import 'enum_method.dart';
 
 part 'launching_external_uri_scheme_request.g.dart';
 
-///Class that represents the request used by the [PlatformWebViewCreationParams.onLaunchingExternalUriScheme] event.
+///Class that represents the request used by the [CygnusPlatformWebViewCreationParams.onLaunchingExternalUriScheme] event.
 @ExchangeableObject()
-class LaunchingExternalUriSchemeRequest_ {
+class CygnusLaunchingExternalUriSchemeRequest_ {
   ///The URI with the external URI scheme to be launched.
-  WebUri uri;
+  CygnusWebUri uri;
 
   ///The origin initiating the external URI scheme launch.
-  WebUri? initiatingOrigin;
+  CygnusWebUri? initiatingOrigin;
 
   ///Whether the external URI scheme request was initiated through a user gesture.
   bool? isUserInitiated;
 
-  LaunchingExternalUriSchemeRequest_({
+  CygnusLaunchingExternalUriSchemeRequest_({
     required this.uri,
     this.initiatingOrigin,
     this.isUserInitiated,

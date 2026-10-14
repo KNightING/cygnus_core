@@ -9,15 +9,15 @@ import '../types/enum_method.dart';
 
 part 'chrome_safari_action_button.g.dart';
 
-///Class that represents a custom action button for a [PlatformChromeSafariBrowser] instance.
+///Class that represents a custom action button for a [CygnusPlatformChromeSafariBrowser] instance.
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(note: 'Not available in an Android Trusted Web Activity.'),
   ],
 )
 @ExchangeableObject()
-class ChromeSafariBrowserActionButton_ {
-  ///The action button id. It should be different from the [ChromeSafariBrowserMenuItem.id].
+class CygnusChromeSafariBrowserActionButton_ {
+  ///The action button id. It should be different from the [CygnusChromeSafariBrowserMenuItem.id].
   int id;
 
   ///The icon byte data.
@@ -34,10 +34,10 @@ class ChromeSafariBrowserActionButton_ {
   void Function(String url, String title)? action;
 
   ///Callback function to be invoked when the action button is clicked
-  void Function(WebUri? url, String title)? onClick;
+  void Function(CygnusWebUri? url, String title)? onClick;
 
   @ExchangeableObjectConstructor()
-  ChromeSafariBrowserActionButton_({
+  CygnusChromeSafariBrowserActionButton_({
     required this.id,
     required this.icon,
     required this.description,

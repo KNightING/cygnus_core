@@ -249,7 +249,7 @@ void main() {
 
   group('TestConfiguration Integration', () {
     test('TestWebViewType enum values', () {
-      expect(TestWebViewType.values, contains(TestWebViewType.inAppWebView));
+      expect(TestWebViewType.values, contains(TestWebViewType.webView));
       expect(TestWebViewType.values, contains(TestWebViewType.headless));
     });
 

@@ -1,17 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
-import '../in_app_webview/platform_webview.dart';
+import '../webview/platform_webview.dart';
 part 'navigation_type.g.dart';
 
-///Class that represents the type of action triggering a navigation for the [PlatformWebViewCreationParams.shouldOverrideUrlLoading] event.
+///Class that represents the type of action triggering a navigation for the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading] event.
 @ExchangeableEnum()
-class NavigationType_ {
+class CygnusNavigationType_ {
   // ignore: unused_field
   final String _value;
   // ignore: unused_field
   final int? _nativeValue = null;
 
-  const NavigationType_._internal(this._value);
+  const CygnusNavigationType_._internal(this._value);
 
   ///A link with an href attribute was activated by the user.
   @EnumSupportedPlatforms(
@@ -31,7 +31,7 @@ class NavigationType_ {
       EnumWindowsPlatform(value: 0),
     ],
   )
-  static const LINK_ACTIVATED = const NavigationType_._internal(
+  static const LINK_ACTIVATED = const CygnusNavigationType_._internal(
     'LINK_ACTIVATED',
   );
 
@@ -52,7 +52,7 @@ class NavigationType_ {
       ),
     ],
   )
-  static const FORM_SUBMITTED = const NavigationType_._internal(
+  static const FORM_SUBMITTED = const CygnusNavigationType_._internal(
     'FORM_SUBMITTED',
   );
 
@@ -79,7 +79,7 @@ class NavigationType_ {
       ),
     ],
   )
-  static const BACK_FORWARD = const NavigationType_._internal('BACK_FORWARD');
+  static const BACK_FORWARD = const CygnusNavigationType_._internal('BACK_FORWARD');
 
   ///The webpage was reloaded.
   @EnumSupportedPlatforms(
@@ -104,7 +104,7 @@ class NavigationType_ {
       ),
     ],
   )
-  static const RELOAD = const NavigationType_._internal('RELOAD');
+  static const RELOAD = const CygnusNavigationType_._internal('RELOAD');
 
   ///A form was resubmitted (for example by going back, going forward, or reloading).
   @EnumSupportedPlatforms(
@@ -123,7 +123,7 @@ class NavigationType_ {
       ),
     ],
   )
-  static const FORM_RESUBMITTED = const NavigationType_._internal(
+  static const FORM_RESUBMITTED = const CygnusNavigationType_._internal(
     'FORM_RESUBMITTED',
   );
 
@@ -145,33 +145,33 @@ class NavigationType_ {
       EnumWindowsPlatform(value: 3),
     ],
   )
-  static const OTHER = const NavigationType_._internal('OTHER');
+  static const OTHER = const CygnusNavigationType_._internal('OTHER');
 }
 
-///Class that represents the type of action triggering a navigation on iOS for the [PlatformWebViewCreationParams.shouldOverrideUrlLoading] event.
-///Use [NavigationType] instead.
-@Deprecated("Use NavigationType instead")
+///Class that represents the type of action triggering a navigation on iOS for the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading] event.
+///Use [CygnusNavigationType] instead.
+@Deprecated("Use CygnusNavigationType instead")
 @ExchangeableEnum()
-class IOSWKNavigationType_ {
+class CygnusIOSWKNavigationType_ {
   // ignore: unused_field
   final int _value;
-  const IOSWKNavigationType_._internal(this._value);
+  const CygnusIOSWKNavigationType_._internal(this._value);
 
   ///A link with an href attribute was activated by the user.
-  static const LINK_ACTIVATED = const IOSWKNavigationType_._internal(0);
+  static const LINK_ACTIVATED = const CygnusIOSWKNavigationType_._internal(0);
 
   ///A form was submitted.
-  static const FORM_SUBMITTED = const IOSWKNavigationType_._internal(1);
+  static const FORM_SUBMITTED = const CygnusIOSWKNavigationType_._internal(1);
 
   ///An item from the back-forward list was requested.
-  static const BACK_FORWARD = const IOSWKNavigationType_._internal(2);
+  static const BACK_FORWARD = const CygnusIOSWKNavigationType_._internal(2);
 
   ///The webpage was reloaded.
-  static const RELOAD = const IOSWKNavigationType_._internal(3);
+  static const RELOAD = const CygnusIOSWKNavigationType_._internal(3);
 
   ///A form was resubmitted (for example by going back, going forward, or reloading).
-  static const FORM_RESUBMITTED = const IOSWKNavigationType_._internal(4);
+  static const FORM_RESUBMITTED = const CygnusIOSWKNavigationType_._internal(4);
 
   ///Navigation is taking place for some other reason.
-  static const OTHER = const IOSWKNavigationType_._internal(-1);
+  static const OTHER = const CygnusIOSWKNavigationType_._internal(-1);
 }

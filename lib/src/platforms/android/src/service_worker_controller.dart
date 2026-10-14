@@ -1,37 +1,37 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [AndroidServiceWorkerController].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformServiceWorkerControllerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformServiceWorkerControllerCreationParams] for
 /// more information.
 @immutable
 class AndroidServiceWorkerControllerCreationParams
-    extends PlatformServiceWorkerControllerCreationParams {
+    extends CygnusPlatformServiceWorkerControllerCreationParams {
   /// Creates a new [AndroidServiceWorkerControllerCreationParams] instance.
   const AndroidServiceWorkerControllerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformServiceWorkerControllerCreationParams params,
+    CygnusPlatformServiceWorkerControllerCreationParams params,
   ) : super();
 
-  /// Creates a [AndroidServiceWorkerControllerCreationParams] instance based on [PlatformServiceWorkerControllerCreationParams].
+  /// Creates a [AndroidServiceWorkerControllerCreationParams] instance based on [CygnusPlatformServiceWorkerControllerCreationParams].
   factory AndroidServiceWorkerControllerCreationParams.fromPlatformServiceWorkerControllerCreationParams(
-    PlatformServiceWorkerControllerCreationParams params,
+    CygnusPlatformServiceWorkerControllerCreationParams params,
   ) {
     return AndroidServiceWorkerControllerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformServiceWorkerController}
-class AndroidServiceWorkerController extends PlatformServiceWorkerController
+///{@macro cygnus_core.CygnusPlatformServiceWorkerController}
+class AndroidServiceWorkerController extends CygnusPlatformServiceWorkerController
     with ChannelController {
   /// Creates a new [AndroidServiceWorkerController].
   AndroidServiceWorkerController(
-    PlatformServiceWorkerControllerCreationParams params,
+    CygnusPlatformServiceWorkerControllerCreationParams params,
   ) : super.implementation(
         params is AndroidServiceWorkerControllerCreationParams
             ? params
@@ -60,19 +60,19 @@ class AndroidServiceWorkerController extends PlatformServiceWorkerController
   static AndroidServiceWorkerController _init() {
     _instance = AndroidServiceWorkerController(
       AndroidServiceWorkerControllerCreationParams(
-        const PlatformServiceWorkerControllerCreationParams(),
+        const CygnusPlatformServiceWorkerControllerCreationParams(),
       ),
     );
     return _instance!;
   }
 
-  ServiceWorkerClient? _serviceWorkerClient;
+  CygnusServiceWorkerClient? _serviceWorkerClient;
 
   @override
-  ServiceWorkerClient? get serviceWorkerClient => _serviceWorkerClient;
+  CygnusServiceWorkerClient? get serviceWorkerClient => _serviceWorkerClient;
 
   @override
-  Future<void> setServiceWorkerClient(ServiceWorkerClient? value) async {
+  Future<void> setServiceWorkerClient(CygnusServiceWorkerClient? value) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('isNull', () => value == null);
     await channel?.invokeMethod("setServiceWorkerClient", args);
@@ -86,7 +86,7 @@ class AndroidServiceWorkerController extends PlatformServiceWorkerController
             serviceWorkerClient!.shouldInterceptRequest != null) {
           Map<String, dynamic> arguments = call.arguments
               .cast<String, dynamic>();
-          WebResourceRequest request = WebResourceRequest.fromMap(arguments)!;
+          CygnusWebResourceRequest request = CygnusWebResourceRequest.fromMap(arguments)!;
 
           return (await serviceWorkerClient!.shouldInterceptRequest!(
             request,
@@ -122,9 +122,9 @@ class AndroidServiceWorkerController extends PlatformServiceWorkerController
   }
 
   @override
-  Future<CacheMode?> getCacheMode() async {
+  Future<CygnusCacheMode?> getCacheMode() async {
     Map<String, dynamic> args = <String, dynamic>{};
-    return CacheMode.fromNativeValue(
+    return CygnusCacheMode.fromNativeValue(
       await channel?.invokeMethod<int?>('getCacheMode', args),
     );
   }
@@ -151,7 +151,7 @@ class AndroidServiceWorkerController extends PlatformServiceWorkerController
   }
 
   @override
-  Future<void> setCacheMode(CacheMode mode) async {
+  Future<void> setCacheMode(CygnusCacheMode mode) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("mode", () => mode.toNativeValue());
     await channel?.invokeMethod('setCacheMode', args);

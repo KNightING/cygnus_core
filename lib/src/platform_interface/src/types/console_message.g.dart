@@ -9,48 +9,54 @@ part of 'console_message.dart';
 ///Class representing a JavaScript console message from WebCore.
 ///This could be a issued by a call to one of the console logging functions (e.g. console.log('...')) or a JavaScript error on the page.
 ///
-///To receive notifications of these messages, use the [PlatformWebViewCreationParams.onConsoleMessage] event.
-class ConsoleMessage {
+///To receive notifications of these messages, use the [CygnusPlatformWebViewCreationParams.onConsoleMessage] event.
+class CygnusConsoleMessage {
   ///Console message
   String message;
 
   ///Console message level
-  ConsoleMessageLevel messageLevel;
-  ConsoleMessage({this.message = "", ConsoleMessageLevel? messageLevel})
-    : messageLevel = messageLevel ?? ConsoleMessageLevel.LOG;
+  CygnusConsoleMessageLevel messageLevel;
+  CygnusConsoleMessage({
+    this.message = "",
+    CygnusConsoleMessageLevel? messageLevel,
+  }) : messageLevel = messageLevel ?? CygnusConsoleMessageLevel.LOG;
 
-  ///Gets a possible [ConsoleMessage] instance from a [Map] value.
-  static ConsoleMessage? fromMap(
+  ///Gets a possible [CygnusConsoleMessage] instance from a [Map] value.
+  static CygnusConsoleMessage? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ConsoleMessage();
+    final instance = CygnusConsoleMessage();
     if (map['message'] != null) {
       instance.message = map['message'];
     }
     if (map['messageLevel'] != null) {
-      instance.messageLevel = switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => ConsoleMessageLevel.fromNativeValue(
+      instance.messageLevel = switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusConsoleMessageLevel.fromNativeValue(map['messageLevel']),
+        CygnusEnumMethod.value => CygnusConsoleMessageLevel.fromValue(
           map['messageLevel'],
         ),
-        EnumMethod.value => ConsoleMessageLevel.fromValue(map['messageLevel']),
-        EnumMethod.name => ConsoleMessageLevel.byName(map['messageLevel']),
+        CygnusEnumMethod.name => CygnusConsoleMessageLevel.byName(
+          map['messageLevel'],
+        ),
       }!;
     }
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "message": message,
-      "messageLevel": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => messageLevel.toNativeValue(),
-        EnumMethod.value => messageLevel.toValue(),
-        EnumMethod.name => messageLevel.name(),
+      "messageLevel": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => messageLevel.toNativeValue(),
+        CygnusEnumMethod.value => messageLevel.toValue(),
+        CygnusEnumMethod.name => messageLevel.name(),
       },
     };
   }
@@ -62,6 +68,6 @@ class ConsoleMessage {
 
   @override
   String toString() {
-    return 'ConsoleMessage{message: $message, messageLevel: $messageLevel}';
+    return 'CygnusConsoleMessage{message: $message, messageLevel: $messageLevel}';
   }
 }

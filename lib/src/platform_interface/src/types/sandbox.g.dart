@@ -7,113 +7,127 @@ part of 'sandbox.dart';
 // **************************************************************************
 
 ///Class that describes what to allow in the iframe.
-class Sandbox {
+class CygnusSandbox {
   final String? _value;
   final String? _nativeValue;
-  const Sandbox._internal(this._value, this._nativeValue);
+  const CygnusSandbox._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory Sandbox._internalMultiPlatform(String? value, Function nativeValue) =>
-      Sandbox._internal(value, nativeValue());
+  factory CygnusSandbox._internalMultiPlatform(
+    String? value,
+    Function nativeValue,
+  ) => CygnusSandbox._internal(value, nativeValue());
 
   ///Allow all.
   static const ALLOW_ALL = const [_ALL];
 
   ///Allows for downloads to occur with a gesture from the user.
-  static const ALLOW_DOWNLOADS = Sandbox._internal(
+  static const ALLOW_DOWNLOADS = CygnusSandbox._internal(
     'allow-downloads',
     'allow-downloads',
   );
 
   ///Allows the resource to submit forms. If this keyword is not used, form submission is blocked.
-  static const ALLOW_FORMS = Sandbox._internal('allow-forms', 'allow-forms');
+  static const ALLOW_FORMS = CygnusSandbox._internal(
+    'allow-forms',
+    'allow-forms',
+  );
 
   ///Lets the resource open modal windows.
-  static const ALLOW_MODALS = Sandbox._internal('allow-modals', 'allow-modals');
+  static const ALLOW_MODALS = CygnusSandbox._internal(
+    'allow-modals',
+    'allow-modals',
+  );
 
   ///Allow none.
   static const ALLOW_NONE = const [_NONE];
 
   ///Lets the resource lock the screen orientation.
-  static const ALLOW_ORIENTATION_LOCK = Sandbox._internal(
+  static const ALLOW_ORIENTATION_LOCK = CygnusSandbox._internal(
     'allow-orientation-lock',
     'allow-orientation-lock',
   );
 
   ///Lets the resource use the Pointer Lock API.
-  static const ALLOW_POINTER_LOCK = Sandbox._internal(
+  static const ALLOW_POINTER_LOCK = CygnusSandbox._internal(
     'allow-pointer-lock',
     'allow-pointer-lock',
   );
 
   ///Allows popups (such as `window.open()`, `target="_blank"`, or `showModalDialog()`).
   ///If this keyword is not used, the popup will silently fail to open.
-  static const ALLOW_POPUPS = Sandbox._internal('allow-popups', 'allow-popups');
+  static const ALLOW_POPUPS = CygnusSandbox._internal(
+    'allow-popups',
+    'allow-popups',
+  );
 
   ///Lets the sandboxed document open new windows without those windows inheriting the sandboxing.
   ///For example, this can safely sandbox an advertisement without forcing the same restrictions upon the page the ad links to.
-  static const ALLOW_POPUPS_TO_ESCAPE_SANDBOX = Sandbox._internal(
+  static const ALLOW_POPUPS_TO_ESCAPE_SANDBOX = CygnusSandbox._internal(
     'allow-popups-to-escape-sandbox',
     'allow-popups-to-escape-sandbox',
   );
 
   ///Lets the resource start a presentation session.
-  static const ALLOW_PRESENTATION = Sandbox._internal(
+  static const ALLOW_PRESENTATION = CygnusSandbox._internal(
     'allow-presentation',
     'allow-presentation',
   );
 
   ///If this token is not used, the resource is treated as being from a special origin that always fails the
   ///same-origin policy (potentially preventing access to data storage/cookies and some JavaScript APIs).
-  static const ALLOW_SAME_ORIGIN = Sandbox._internal(
+  static const ALLOW_SAME_ORIGIN = CygnusSandbox._internal(
     'allow-same-origin',
     'allow-same-origin',
   );
 
   ///Lets the resource run scripts (but not create popup windows).
-  static const ALLOW_SCRIPTS = Sandbox._internal(
+  static const ALLOW_SCRIPTS = CygnusSandbox._internal(
     'allow-scripts',
     'allow-scripts',
   );
 
   ///Lets the resource navigate the top-level browsing context (the one named `_top`).
-  static const ALLOW_TOP_NAVIGATION = Sandbox._internal(
+  static const ALLOW_TOP_NAVIGATION = CygnusSandbox._internal(
     'allow-top-navigation',
     'allow-top-navigation',
   );
 
   ///Lets the resource navigate the top-level browsing context, but only if initiated by a user gesture.
-  static const ALLOW_TOP_NAVIGATION_BY_USER_ACTIVATION = Sandbox._internal(
-    'allow-top-navigation-by-user-activation',
-    'allow-top-navigation-by-user-activation',
-  );
-  static const _ALL = Sandbox._internal(null, null);
-  static const _NONE = Sandbox._internal('', '');
+  static const ALLOW_TOP_NAVIGATION_BY_USER_ACTIVATION =
+      CygnusSandbox._internal(
+        'allow-top-navigation-by-user-activation',
+        'allow-top-navigation-by-user-activation',
+      );
+  static const _ALL = CygnusSandbox._internal(null, null);
+  static const _NONE = CygnusSandbox._internal('', '');
 
-  ///Set of all values of [Sandbox].
-  static final Set<Sandbox> values = [
-    Sandbox.ALLOW_DOWNLOADS,
-    Sandbox.ALLOW_FORMS,
-    Sandbox.ALLOW_MODALS,
-    Sandbox.ALLOW_ORIENTATION_LOCK,
-    Sandbox.ALLOW_POINTER_LOCK,
-    Sandbox.ALLOW_POPUPS,
-    Sandbox.ALLOW_POPUPS_TO_ESCAPE_SANDBOX,
-    Sandbox.ALLOW_PRESENTATION,
-    Sandbox.ALLOW_SAME_ORIGIN,
-    Sandbox.ALLOW_SCRIPTS,
-    Sandbox.ALLOW_TOP_NAVIGATION,
-    Sandbox.ALLOW_TOP_NAVIGATION_BY_USER_ACTIVATION,
+  ///Set of all values of [CygnusSandbox].
+  static final Set<CygnusSandbox> values = [
+    CygnusSandbox.ALLOW_DOWNLOADS,
+    CygnusSandbox.ALLOW_FORMS,
+    CygnusSandbox.ALLOW_MODALS,
+    CygnusSandbox.ALLOW_ORIENTATION_LOCK,
+    CygnusSandbox.ALLOW_POINTER_LOCK,
+    CygnusSandbox.ALLOW_POPUPS,
+    CygnusSandbox.ALLOW_POPUPS_TO_ESCAPE_SANDBOX,
+    CygnusSandbox.ALLOW_PRESENTATION,
+    CygnusSandbox.ALLOW_SAME_ORIGIN,
+    CygnusSandbox.ALLOW_SCRIPTS,
+    CygnusSandbox.ALLOW_TOP_NAVIGATION,
+    CygnusSandbox.ALLOW_TOP_NAVIGATION_BY_USER_ACTIVATION,
   ].toSet();
 
-  /// Gets a possible [Sandbox] instance value with name [name].
+  /// Gets a possible [CygnusSandbox] instance value with name [name].
   ///
-  /// Goes through [Sandbox.values] looking for a value with
-  /// name [name], as reported by [Sandbox.name].
+  /// Goes through [CygnusSandbox.values] looking for a value with
+  /// name [name], as reported by [CygnusSandbox.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static Sandbox? byName(String? name) {
+  static CygnusSandbox? byName(String? name) {
     if (name != null) {
       try {
-        return Sandbox.values.firstWhere((element) => element.name() == name);
+        return CygnusSandbox.values.firstWhere(
+          (element) => element.name() == name,
+        );
       } catch (e) {
         return null;
       }
@@ -121,7 +135,7 @@ class Sandbox {
     return null;
   }
 
-  /// Creates a map from the names of [Sandbox] values to the values.
+  /// Creates a map from the names of [CygnusSandbox] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -129,19 +143,19 @@ class Sandbox {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, Sandbox> asNameMap() => <String, Sandbox>{
-    for (final value in Sandbox.values) value.name(): value,
+  static Map<String, CygnusSandbox> asNameMap() => <String, CygnusSandbox>{
+    for (final value in CygnusSandbox.values) value.name(): value,
   };
 
-  ///Gets a possible [Sandbox] instance from a native value.
-  static Sandbox? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusSandbox] instance from a native value.
+  static CygnusSandbox? fromNativeValue(String? value) {
     if (value == null) {
-      return Sandbox._ALL;
+      return CygnusSandbox._ALL;
     } else if (value == "") {
-      return Sandbox._NONE;
+      return CygnusSandbox._NONE;
     }
     try {
-      return Sandbox.values.firstWhere(
+      return CygnusSandbox.values.firstWhere(
         (element) => element.toNativeValue() == value,
       );
     } catch (e) {
@@ -149,15 +163,17 @@ class Sandbox {
     }
   }
 
-  ///Gets a possible [Sandbox] instance from a [String] value.
-  static Sandbox? fromValue(String? value) {
+  ///Gets a possible [CygnusSandbox] instance from a [String] value.
+  static CygnusSandbox? fromValue(String? value) {
     if (value == null) {
-      return Sandbox._ALL;
+      return CygnusSandbox._ALL;
     } else if (value == "") {
-      return Sandbox._NONE;
+      return CygnusSandbox._NONE;
     }
     try {
-      return Sandbox.values.firstWhere((element) => element.toValue() == value);
+      return CygnusSandbox.values.firstWhere(
+        (element) => element.toValue() == value,
+      );
     } catch (e) {
       return null;
     }

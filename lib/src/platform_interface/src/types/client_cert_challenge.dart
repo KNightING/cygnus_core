@@ -2,16 +2,16 @@ import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_i
 
 import 'url_authentication_challenge.dart';
 import 'url_protection_space.dart';
-import '../in_app_webview/platform_webview.dart';
+import '../webview/platform_webview.dart';
 import '../types/ssl_certificate.dart';
 import 'enum_method.dart';
 
 part 'client_cert_challenge.g.dart';
 
-///Class that represents the challenge of the [PlatformWebViewCreationParams.onReceivedClientCertRequest] event.
+///Class that represents the challenge of the [CygnusPlatformWebViewCreationParams.onReceivedClientCertRequest] event.
 ///It provides all the information about the challenge.
 @ExchangeableObject()
-class ClientCertChallenge_ extends URLAuthenticationChallenge_ {
+class CygnusClientCertChallenge_ extends CygnusURLAuthenticationChallenge_ {
   ///Use [principals] instead.
   @Deprecated('Use principals instead')
   List<String>? androidPrincipals;
@@ -57,10 +57,10 @@ class ClientCertChallenge_ extends URLAuthenticationChallenge_ {
 
   ///The collection contains mutually trusted CA certificates.
   @SupportedPlatforms(platforms: [WindowsPlatform()])
-  List<SslCertificate_>? mutuallyTrustedCertificates;
+  List<CygnusSslCertificate_>? mutuallyTrustedCertificates;
 
-  ClientCertChallenge_({
-    required URLProtectionSpace_ protectionSpace,
+  CygnusClientCertChallenge_({
+    required CygnusURLProtectionSpace_ protectionSpace,
     @Deprecated('Use principals instead') this.androidPrincipals,
     this.principals,
     @Deprecated('Use keyTypes instead') this.androidKeyTypes,

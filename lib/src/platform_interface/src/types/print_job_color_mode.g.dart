@@ -6,16 +6,16 @@ part of 'print_job_color_mode.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class representing how the printed content of a [PlatformPrintJobController] should be laid out.
-class PrintJobColorMode {
+///Class representing how the printed content of a [CygnusPlatformPrintJobController] should be laid out.
+class CygnusPrintJobColorMode {
   final int _value;
   final dynamic _nativeValue;
-  const PrintJobColorMode._internal(this._value, this._nativeValue);
+  const CygnusPrintJobColorMode._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory PrintJobColorMode._internalMultiPlatform(
+  factory CygnusPrintJobColorMode._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => PrintJobColorMode._internal(value, nativeValue());
+  ) => CygnusPrintJobColorMode._internal(value, nativeValue());
 
   ///Color color scheme, for example many colors are used.
   ///
@@ -23,7 +23,7 @@ class PrintJobColorMode {
   ///- Android WebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  static final COLOR = PrintJobColorMode._internalMultiPlatform(2, () {
+  static final COLOR = CygnusPrintJobColorMode._internalMultiPlatform(2, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return 2;
@@ -42,7 +42,7 @@ class PrintJobColorMode {
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- Windows WebView2
-  static final DEFAULT = PrintJobColorMode._internalMultiPlatform(0, () {
+  static final DEFAULT = CygnusPrintJobColorMode._internalMultiPlatform(0, () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return 0;
@@ -60,32 +60,35 @@ class PrintJobColorMode {
   ///- Android WebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  static final MONOCHROME = PrintJobColorMode._internalMultiPlatform(1, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.android:
-        return 1;
-      case TargetPlatform.macOS:
-        return 'Gray';
-      case TargetPlatform.windows:
-        return 2;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final MONOCHROME = CygnusPrintJobColorMode._internalMultiPlatform(
+    1,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.android:
+          return 1;
+        case TargetPlatform.macOS:
+          return 'Gray';
+        case TargetPlatform.windows:
+          return 2;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
-  ///Set of all values of [PrintJobColorMode].
-  static final Set<PrintJobColorMode> values = [
-    PrintJobColorMode.COLOR,
-    PrintJobColorMode.DEFAULT,
-    PrintJobColorMode.MONOCHROME,
+  ///Set of all values of [CygnusPrintJobColorMode].
+  static final Set<CygnusPrintJobColorMode> values = [
+    CygnusPrintJobColorMode.COLOR,
+    CygnusPrintJobColorMode.DEFAULT,
+    CygnusPrintJobColorMode.MONOCHROME,
   ].toSet();
 
-  ///Gets a possible [PrintJobColorMode] instance from [int] value.
-  static PrintJobColorMode? fromValue(int? value) {
+  ///Gets a possible [CygnusPrintJobColorMode] instance from [int] value.
+  static CygnusPrintJobColorMode? fromValue(int? value) {
     if (value != null) {
       try {
-        return PrintJobColorMode.values.firstWhere(
+        return CygnusPrintJobColorMode.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -95,11 +98,11 @@ class PrintJobColorMode {
     return null;
   }
 
-  ///Gets a possible [PrintJobColorMode] instance from a native value.
-  static PrintJobColorMode? fromNativeValue(dynamic value) {
+  ///Gets a possible [CygnusPrintJobColorMode] instance from a native value.
+  static CygnusPrintJobColorMode? fromNativeValue(dynamic value) {
     if (value != null) {
       try {
-        return PrintJobColorMode.values.firstWhere(
+        return CygnusPrintJobColorMode.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -109,15 +112,15 @@ class PrintJobColorMode {
     return null;
   }
 
-  /// Gets a possible [PrintJobColorMode] instance value with name [name].
+  /// Gets a possible [CygnusPrintJobColorMode] instance value with name [name].
   ///
-  /// Goes through [PrintJobColorMode.values] looking for a value with
-  /// name [name], as reported by [PrintJobColorMode.name].
+  /// Goes through [CygnusPrintJobColorMode.values] looking for a value with
+  /// name [name], as reported by [CygnusPrintJobColorMode.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static PrintJobColorMode? byName(String? name) {
+  static CygnusPrintJobColorMode? byName(String? name) {
     if (name != null) {
       try {
-        return PrintJobColorMode.values.firstWhere(
+        return CygnusPrintJobColorMode.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -127,7 +130,7 @@ class PrintJobColorMode {
     return null;
   }
 
-  /// Creates a map from the names of [PrintJobColorMode] values to the values.
+  /// Creates a map from the names of [CygnusPrintJobColorMode] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -135,9 +138,9 @@ class PrintJobColorMode {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, PrintJobColorMode> asNameMap() =>
-      <String, PrintJobColorMode>{
-        for (final value in PrintJobColorMode.values) value.name(): value,
+  static Map<String, CygnusPrintJobColorMode> asNameMap() =>
+      <String, CygnusPrintJobColorMode>{
+        for (final value in CygnusPrintJobColorMode.values) value.name(): value,
       };
 
   ///Gets [int] value.

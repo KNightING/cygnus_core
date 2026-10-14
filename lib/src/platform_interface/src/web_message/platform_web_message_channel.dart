@@ -2,20 +2,20 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 import 'package:cygnus_core/src/platform_interface/src/types/disposable.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import '../inappwebview_platform.dart';
+import '../webview_platform.dart';
 import 'platform_web_message_port.dart';
 
 // ignore: uri_has_not_been_generated
 part 'platform_web_message_channel.g.dart';
 
-///{@template cygnus_core.PlatformWebMessageChannelCreationParams}
-/// Object specifying creation parameters for creating a [PlatformWebMessageChannel].
+///{@template cygnus_core.CygnusPlatformWebMessageChannelCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformWebMessageChannel].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformWebMessageChannelCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebMessageChannelCreationParams.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -26,19 +26,19 @@ part 'platform_web_message_channel.g.dart';
   ],
 )
 @immutable
-class PlatformWebMessageChannelCreationParams {
-  /// Used by the platform implementation to create a new [PlatformWebMessageChannel].
-  const PlatformWebMessageChannelCreationParams({
+class CygnusPlatformWebMessageChannelCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformWebMessageChannel].
+  const CygnusPlatformWebMessageChannelCreationParams({
     required this.id,
     required this.port1,
     required this.port2,
   });
 
-  ///{@template cygnus_core.PlatformWebMessageChannelCreationParams.id}
+  ///{@template cygnus_core.CygnusPlatformWebMessageChannelCreationParams.id}
   ///Message Channel ID used internally.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageChannelCreationParams.id.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageChannelCreationParams.id.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -50,11 +50,11 @@ class PlatformWebMessageChannelCreationParams {
   )
   final String id;
 
-  ///{@template cygnus_core.PlatformWebMessageChannelCreationParams.port1}
-  ///The first [PlatformWebMessagePort] object of the channel.
+  ///{@template cygnus_core.CygnusPlatformWebMessageChannelCreationParams.port1}
+  ///The first [CygnusPlatformWebMessagePort] object of the channel.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageChannelCreationParams.port1.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageChannelCreationParams.port1.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -64,13 +64,13 @@ class PlatformWebMessageChannelCreationParams {
       WindowsPlatform(note: 'Implemented via JavaScript MessageChannel API.'),
     ],
   )
-  final PlatformWebMessagePort port1;
+  final CygnusPlatformWebMessagePort port1;
 
-  ///{@template cygnus_core.PlatformWebMessageChannelCreationParams.port2}
-  ///The second [PlatformWebMessagePort] object of the channel.
+  ///{@template cygnus_core.CygnusPlatformWebMessageChannelCreationParams.port2}
+  ///The second [CygnusPlatformWebMessagePort] object of the channel.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageChannelCreationParams.port2.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageChannelCreationParams.port2.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -80,39 +80,39 @@ class PlatformWebMessageChannelCreationParams {
       WindowsPlatform(note: 'Implemented via JavaScript MessageChannel API.'),
     ],
   )
-  final PlatformWebMessagePort port2;
+  final CygnusPlatformWebMessagePort port2;
 
-  ///{@template cygnus_core.PlatformWebMessageChannelCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformWebMessageChannelCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformWebMessageChannelCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformWebMessageChannelCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformWebMessageChannelCreationParams.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformWebMessageChannelCreationParams.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformWebMessageChannelCreationParamsProperty property, {
+    CygnusPlatformWebMessageChannelCreationParamsProperty property, {
     TargetPlatform? platform,
   }) =>
-      _PlatformWebMessageChannelCreationParamsPropertySupported.isPropertySupported(
+      _CygnusPlatformWebMessageChannelCreationParamsPropertySupported.isPropertySupported(
         property,
         platform: platform,
       );
 
   @override
   String toString() {
-    return 'PlatformWebMessageChannelCreationParams{id: $id, port1: $port1, port2: $port2}';
+    return 'CygnusPlatformWebMessageChannelCreationParams{id: $id, port1: $port1, port2: $port2}';
   }
 }
 
-///{@template cygnus_core.PlatformWebMessageChannel}
+///{@template cygnus_core.CygnusPlatformWebMessageChannel}
 ///The representation of the [HTML5 message channels](https://html.spec.whatwg.org/multipage/web-messaging.html#message-channels).
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformWebMessageChannel.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebMessageChannel.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -122,79 +122,79 @@ class PlatformWebMessageChannelCreationParams {
     WindowsPlatform(note: 'Implemented via JavaScript MessageChannel API.'),
   ],
 )
-abstract class PlatformWebMessageChannel extends PlatformInterface
-    implements Disposable {
-  /// Creates a new [PlatformWebMessageChannel]
-  factory PlatformWebMessageChannel(
-    PlatformWebMessageChannelCreationParams params,
+abstract class CygnusPlatformWebMessageChannel extends PlatformInterface
+    implements CygnusDisposable {
+  /// Creates a new [CygnusPlatformWebMessageChannel]
+  factory CygnusPlatformWebMessageChannel(
+    CygnusPlatformWebMessageChannelCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformWebMessageChannel webMessageChannel = InAppWebViewPlatform
+    final CygnusPlatformWebMessageChannel webMessageChannel = CygnusWebViewPlatform
         .instance!
         .createPlatformWebMessageChannel(params);
     PlatformInterface.verify(webMessageChannel, _token);
     return webMessageChannel;
   }
 
-  /// Creates a new [PlatformWebMessageChannel] to access static methods.
-  factory PlatformWebMessageChannel.static() {
+  /// Creates a new [CygnusPlatformWebMessageChannel] to access static methods.
+  factory CygnusPlatformWebMessageChannel.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformWebMessageChannel webMessageChannelStatic =
-        InAppWebViewPlatform.instance!.createPlatformWebMessageChannelStatic();
+    final CygnusPlatformWebMessageChannel webMessageChannelStatic =
+        CygnusWebViewPlatform.instance!.createPlatformWebMessageChannelStatic();
     PlatformInterface.verify(webMessageChannelStatic, _token);
     return webMessageChannelStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformWebMessageChannel].
+  /// Used by the platform implementation to create a new [CygnusPlatformWebMessageChannel].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformWebMessageChannel.implementation(this.params) : super(token: _token);
+  CygnusPlatformWebMessageChannel.implementation(this.params) : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformWebMessageChannel].
-  final PlatformWebMessageChannelCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformWebMessageChannel].
+  final CygnusPlatformWebMessageChannelCreationParams params;
 
-  ///{@macro cygnus_core.PlatformWebMessageChannelCreationParams.id}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageChannelCreationParams.id}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageChannelCreationParams.id.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageChannelCreationParams.id.supported_platforms}
   String get id => params.id;
 
-  ///{@macro cygnus_core.PlatformWebMessageChannelCreationParams.port1}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageChannelCreationParams.port1}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageChannelCreationParams.port1.supported_platforms}
-  PlatformWebMessagePort get port1 => params.port1;
+  ///{@macro cygnus_core.CygnusPlatformWebMessageChannelCreationParams.port1.supported_platforms}
+  CygnusPlatformWebMessagePort get port1 => params.port1;
 
-  ///{@macro cygnus_core.PlatformWebMessageChannelCreationParams.port2}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageChannelCreationParams.port2}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageChannelCreationParams.port2.supported_platforms}
-  PlatformWebMessagePort get port2 => params.port2;
+  ///{@macro cygnus_core.CygnusPlatformWebMessageChannelCreationParams.port2.supported_platforms}
+  CygnusPlatformWebMessagePort get port2 => params.port2;
 
-  PlatformWebMessageChannel? fromMap(Map<String, dynamic>? map) {
+  CygnusPlatformWebMessageChannel? fromMap(Map<String, dynamic>? map) {
     throw UnimplementedError(
       'fromMap is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformWebMessageChannel.dispose}
+  ///{@template cygnus_core.CygnusPlatformWebMessageChannel.dispose}
   ///Disposes the web message channel.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageChannel.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageChannel.dispose.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -211,33 +211,33 @@ abstract class PlatformWebMessageChannel extends PlatformInterface
     );
   }
 
-  ///{@macro cygnus_core.PlatformWebMessageChannelCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageChannelCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformWebMessageChannelClassSupported.isClassSupported(
+      _CygnusPlatformWebMessageChannelClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformWebMessageChannel.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformWebMessageChannel.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformWebMessageChannelCreationParamsProperty property, {
+    CygnusPlatformWebMessageChannelCreationParamsProperty property, {
     TargetPlatform? platform,
   }) => params.isPropertySupported(property, platform: platform);
 
-  ///{@template cygnus_core.PlatformWebMessageChannel.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformWebMessageChannel.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformWebMessageChannelMethod method, {
+    CygnusPlatformWebMessageChannelMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformWebMessageChannelMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformWebMessageChannelMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );
 
   @override
   String toString() {
-    return 'PlatformWebMessageChannel{id: $id, port1: $port1, port2: $port2}';
+    return 'CygnusPlatformWebMessageChannel{id: $id, port1: $port1, port2: $port2}';
   }
 }

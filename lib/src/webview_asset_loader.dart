@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
-///{@macro cygnus_core.PlatformPathHandler}
+///{@macro cygnus_core.CygnusPlatformPathHandler}
 ///
-///{@macro cygnus_core.PlatformPathHandler.supported_platforms}
-abstract class PathHandler
-    implements PlatformPathHandler, PlatformPathHandlerEvents {
-  /// Constructs a [PathHandler] from a specific platform implementation.
-  PathHandler.fromPlatform({required this.platform}) {
+///{@macro cygnus_core.CygnusPlatformPathHandler.supported_platforms}
+abstract class CygnusPathHandler
+    implements CygnusPlatformPathHandler, CygnusPlatformPathHandlerEvents {
+  /// Constructs a [CygnusPathHandler] from a specific platform implementation.
+  CygnusPathHandler.fromPlatform({required this.platform}) {
     this.platform.eventHandler = this;
   }
 
@@ -15,15 +15,15 @@ abstract class PathHandler
   ///
   /// Use [platform] to check support for a specific platform.
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformPathHandlerCreationParams(
+      CygnusPlatformPathHandlerCreationParams(
         path: '',
       ).isClassSupported(platform: platform);
 
   @override
-  late final PlatformPathHandlerEvents? eventHandler;
+  late final CygnusPlatformPathHandlerEvents? eventHandler;
 
-  /// Implementation of [PlatformPathHandler] for the current platform.
-  final PlatformPathHandler platform;
+  /// Implementation of [CygnusPlatformPathHandler] for the current platform.
+  final CygnusPlatformPathHandler platform;
 
   @override
   String get type => platform.type;
@@ -32,123 +32,123 @@ abstract class PathHandler
   String get path => platform.path;
 
   @override
-  Future<WebResourceResponse?> handle(String path) async {
+  Future<CygnusWebResourceResponse?> handle(String path) async {
     return null;
   }
 
   @override
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) =>
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) =>
       platform.toMap(enumMethod: enumMethod);
 
   @override
   Map<String, dynamic> toJson() => platform.toJson();
 }
 
-///{@macro cygnus_core.PlatformAssetsPathHandler}
+///{@macro cygnus_core.CygnusPlatformAssetsPathHandler}
 ///
-///{@macro cygnus_core.PlatformAssetsPathHandler.supported_platforms}
-class AssetsPathHandler extends PathHandler {
-  ///{@macro cygnus_core.PlatformAssetsPathHandler}
+///{@macro cygnus_core.CygnusPlatformAssetsPathHandler.supported_platforms}
+class CygnusAssetsPathHandler extends CygnusPathHandler {
+  ///{@macro cygnus_core.CygnusPlatformAssetsPathHandler}
   ///
-  ///{@macro cygnus_core.PlatformAssetsPathHandler.supported_platforms}
-  AssetsPathHandler({required String path})
+  ///{@macro cygnus_core.CygnusPlatformAssetsPathHandler.supported_platforms}
+  CygnusAssetsPathHandler({required String path})
     : this.fromPlatformCreationParams(
-        params: PlatformAssetsPathHandlerCreationParams(
-          PlatformPathHandlerCreationParams(path: path),
+        params: CygnusPlatformAssetsPathHandlerCreationParams(
+          CygnusPlatformPathHandlerCreationParams(path: path),
         ),
       );
 
-  /// Constructs a [AssetsPathHandler].
+  /// Constructs a [CygnusAssetsPathHandler].
   ///
-  /// See [AssetsPathHandler.fromPlatformCreationParams] for setting parameters for
+  /// See [CygnusAssetsPathHandler.fromPlatformCreationParams] for setting parameters for
   /// a specific platform.
-  AssetsPathHandler.fromPlatformCreationParams({
-    required PlatformAssetsPathHandlerCreationParams params,
-  }) : this.fromPlatform(platform: PlatformAssetsPathHandler(params));
+  CygnusAssetsPathHandler.fromPlatformCreationParams({
+    required CygnusPlatformAssetsPathHandlerCreationParams params,
+  }) : this.fromPlatform(platform: CygnusPlatformAssetsPathHandler(params));
 
-  /// Constructs a [AssetsPathHandler] from a specific platform implementation.
-  AssetsPathHandler.fromPlatform({required this.platform})
+  /// Constructs a [CygnusAssetsPathHandler] from a specific platform implementation.
+  CygnusAssetsPathHandler.fromPlatform({required this.platform})
     : super.fromPlatform(platform: platform);
 
-  /// Implementation of [PlatformAssetsPathHandler] for the current platform.
-  final PlatformAssetsPathHandler platform;
+  /// Implementation of [CygnusPlatformAssetsPathHandler] for the current platform.
+  final CygnusPlatformAssetsPathHandler platform;
 
   /// Returns whether this class is supported on the current platform.
   ///
   /// Use [platform] to check support for a specific platform.
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformPathHandlerCreationParams(
+      CygnusPlatformPathHandlerCreationParams(
         path: '',
       ).isClassSupported(platform: platform);
 }
 
-///{@macro cygnus_core.PlatformResourcesPathHandler}
+///{@macro cygnus_core.CygnusPlatformResourcesPathHandler}
 ///
-///{@macro cygnus_core.PlatformResourcesPathHandler.supported_platforms}
-class ResourcesPathHandler extends PathHandler {
-  ///{@macro cygnus_core.PlatformResourcesPathHandler}
+///{@macro cygnus_core.CygnusPlatformResourcesPathHandler.supported_platforms}
+class CygnusResourcesPathHandler extends CygnusPathHandler {
+  ///{@macro cygnus_core.CygnusPlatformResourcesPathHandler}
   ///
-  ///{@macro cygnus_core.PlatformResourcesPathHandler.supported_platforms}
-  ResourcesPathHandler({required String path})
+  ///{@macro cygnus_core.CygnusPlatformResourcesPathHandler.supported_platforms}
+  CygnusResourcesPathHandler({required String path})
     : this.fromPlatformCreationParams(
-        params: PlatformResourcesPathHandlerCreationParams(
-          PlatformPathHandlerCreationParams(path: path),
+        params: CygnusPlatformResourcesPathHandlerCreationParams(
+          CygnusPlatformPathHandlerCreationParams(path: path),
         ),
       );
 
-  /// Constructs a [ResourcesPathHandler].
+  /// Constructs a [CygnusResourcesPathHandler].
   ///
-  /// See [ResourcesPathHandler.fromPlatformCreationParams] for setting parameters for
+  /// See [CygnusResourcesPathHandler.fromPlatformCreationParams] for setting parameters for
   /// a specific platform.
-  ResourcesPathHandler.fromPlatformCreationParams({
-    required PlatformResourcesPathHandlerCreationParams params,
-  }) : this.fromPlatform(platform: PlatformResourcesPathHandler(params));
+  CygnusResourcesPathHandler.fromPlatformCreationParams({
+    required CygnusPlatformResourcesPathHandlerCreationParams params,
+  }) : this.fromPlatform(platform: CygnusPlatformResourcesPathHandler(params));
 
-  /// Constructs a [ResourcesPathHandler] from a specific platform implementation.
-  ResourcesPathHandler.fromPlatform({required this.platform})
+  /// Constructs a [CygnusResourcesPathHandler] from a specific platform implementation.
+  CygnusResourcesPathHandler.fromPlatform({required this.platform})
     : super.fromPlatform(platform: platform);
 
-  /// Implementation of [PlatformResourcesPathHandler] for the current platform.
-  final PlatformResourcesPathHandler platform;
+  /// Implementation of [CygnusPlatformResourcesPathHandler] for the current platform.
+  final CygnusPlatformResourcesPathHandler platform;
 
   /// Returns whether this class is supported on the current platform.
   ///
   /// Use [platform] to check support for a specific platform.
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformPathHandlerCreationParams(
+      CygnusPlatformPathHandlerCreationParams(
         path: '',
       ).isClassSupported(platform: platform);
 }
 
-///{@macro cygnus_core.PlatformInternalStoragePathHandler}
+///{@macro cygnus_core.CygnusPlatformInternalStoragePathHandler}
 ///
-///{@macro cygnus_core.PlatformInternalStoragePathHandler.supported_platforms}
-class InternalStoragePathHandler extends PathHandler {
-  ///{@macro cygnus_core.PlatformInternalStoragePathHandler}
+///{@macro cygnus_core.CygnusPlatformInternalStoragePathHandler.supported_platforms}
+class CygnusInternalStoragePathHandler extends CygnusPathHandler {
+  ///{@macro cygnus_core.CygnusPlatformInternalStoragePathHandler}
   ///
-  ///{@macro cygnus_core.PlatformInternalStoragePathHandler.supported_platforms}
-  InternalStoragePathHandler({required String path, required String directory})
+  ///{@macro cygnus_core.CygnusPlatformInternalStoragePathHandler.supported_platforms}
+  CygnusInternalStoragePathHandler({required String path, required String directory})
     : this.fromPlatformCreationParams(
-        params: PlatformInternalStoragePathHandlerCreationParams(
-          PlatformPathHandlerCreationParams(path: path),
+        params: CygnusPlatformInternalStoragePathHandlerCreationParams(
+          CygnusPlatformPathHandlerCreationParams(path: path),
           directory: directory,
         ),
       );
 
-  /// Constructs a [InternalStoragePathHandler].
+  /// Constructs a [CygnusInternalStoragePathHandler].
   ///
-  /// See [InternalStoragePathHandler.fromPlatformCreationParams] for setting parameters for
+  /// See [CygnusInternalStoragePathHandler.fromPlatformCreationParams] for setting parameters for
   /// a specific platform.
-  InternalStoragePathHandler.fromPlatformCreationParams({
-    required PlatformInternalStoragePathHandlerCreationParams params,
-  }) : this.fromPlatform(platform: PlatformInternalStoragePathHandler(params));
+  CygnusInternalStoragePathHandler.fromPlatformCreationParams({
+    required CygnusPlatformInternalStoragePathHandlerCreationParams params,
+  }) : this.fromPlatform(platform: CygnusPlatformInternalStoragePathHandler(params));
 
-  /// Constructs a [InternalStoragePathHandler] from a specific platform implementation.
-  InternalStoragePathHandler.fromPlatform({required this.platform})
+  /// Constructs a [CygnusInternalStoragePathHandler] from a specific platform implementation.
+  CygnusInternalStoragePathHandler.fromPlatform({required this.platform})
     : super.fromPlatform(platform: platform);
 
-  /// Implementation of [PlatformInternalStoragePathHandler] for the current platform.
-  final PlatformInternalStoragePathHandler platform;
+  /// Implementation of [CygnusPlatformInternalStoragePathHandler] for the current platform.
+  final CygnusPlatformInternalStoragePathHandler platform;
 
   String get directory => platform.directory;
 
@@ -156,45 +156,45 @@ class InternalStoragePathHandler extends PathHandler {
   ///
   /// Use [platform] to check support for a specific platform.
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformPathHandlerCreationParams(
+      CygnusPlatformPathHandlerCreationParams(
         path: '',
       ).isClassSupported(platform: platform);
 }
 
-///{@macro cygnus_core.PlatformCustomPathHandler}
+///{@macro cygnus_core.CygnusPlatformCustomPathHandler}
 ///
-///{@macro cygnus_core.PlatformCustomPathHandler.supported_platforms}
-abstract class CustomPathHandler extends PathHandler {
-  ///{@macro cygnus_core.PlatformCustomPathHandler}
+///{@macro cygnus_core.CygnusPlatformCustomPathHandler.supported_platforms}
+abstract class CygnusCustomPathHandler extends CygnusPathHandler {
+  ///{@macro cygnus_core.CygnusPlatformCustomPathHandler}
   ///
-  ///{@macro cygnus_core.PlatformCustomPathHandler.supported_platforms}
-  CustomPathHandler({required String path})
+  ///{@macro cygnus_core.CygnusPlatformCustomPathHandler.supported_platforms}
+  CygnusCustomPathHandler({required String path})
     : this.fromPlatformCreationParams(
-        params: PlatformCustomPathHandlerCreationParams(
-          PlatformPathHandlerCreationParams(path: path),
+        params: CygnusPlatformCustomPathHandlerCreationParams(
+          CygnusPlatformPathHandlerCreationParams(path: path),
         ),
       );
 
-  /// Constructs a [CustomPathHandler].
+  /// Constructs a [CygnusCustomPathHandler].
   ///
-  /// See [CustomPathHandler.fromPlatformCreationParams] for setting parameters for
+  /// See [CygnusCustomPathHandler.fromPlatformCreationParams] for setting parameters for
   /// a specific platform.
-  CustomPathHandler.fromPlatformCreationParams({
-    required PlatformCustomPathHandlerCreationParams params,
-  }) : this.fromPlatform(platform: PlatformCustomPathHandler(params));
+  CygnusCustomPathHandler.fromPlatformCreationParams({
+    required CygnusPlatformCustomPathHandlerCreationParams params,
+  }) : this.fromPlatform(platform: CygnusPlatformCustomPathHandler(params));
 
-  /// Constructs a [CustomPathHandler] from a specific platform implementation.
-  CustomPathHandler.fromPlatform({required this.platform})
+  /// Constructs a [CygnusCustomPathHandler] from a specific platform implementation.
+  CygnusCustomPathHandler.fromPlatform({required this.platform})
     : super.fromPlatform(platform: platform);
 
-  /// Implementation of [PlatformCustomPathHandler] for the current platform.
-  final PlatformCustomPathHandler platform;
+  /// Implementation of [CygnusPlatformCustomPathHandler] for the current platform.
+  final CygnusPlatformCustomPathHandler platform;
 
   /// Returns whether this class is supported on the current platform.
   ///
   /// Use [platform] to check support for a specific platform.
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformPathHandlerCreationParams(
+      CygnusPlatformPathHandlerCreationParams(
         path: '',
       ).isClassSupported(platform: platform);
 }

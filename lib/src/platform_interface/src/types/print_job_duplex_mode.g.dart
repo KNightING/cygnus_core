@@ -6,16 +6,16 @@ part of 'print_job_duplex_mode.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class representing the orientation of a [PlatformPrintJobController].
-class PrintJobDuplexMode {
+///Class representing the orientation of a [CygnusPlatformPrintJobController].
+class CygnusPrintJobDuplexMode {
   final String _value;
   final int? _nativeValue;
-  const PrintJobDuplexMode._internal(this._value, this._nativeValue);
+  const CygnusPrintJobDuplexMode._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory PrintJobDuplexMode._internalMultiPlatform(
+  factory CygnusPrintJobDuplexMode._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => PrintJobDuplexMode._internal(value, nativeValue());
+  ) => CygnusPrintJobDuplexMode._internal(value, nativeValue());
 
   ///Duplex printing that flips the back page along the long edge of the paper.
   ///Pages are turned sideways along the long edge - like a book.
@@ -25,7 +25,7 @@ class PrintJobDuplexMode {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  static final LONG_EDGE = PrintJobDuplexMode._internalMultiPlatform(
+  static final LONG_EDGE = CygnusPrintJobDuplexMode._internalMultiPlatform(
     'LONG_EDGE',
     () {
       switch (defaultTargetPlatform) {
@@ -51,21 +51,24 @@ class PrintJobDuplexMode {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  static final NONE = PrintJobDuplexMode._internalMultiPlatform('NONE', () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.android:
-        return 1;
-      case TargetPlatform.iOS:
-        return 0;
-      case TargetPlatform.macOS:
-        return 1;
-      case TargetPlatform.windows:
-        return 1;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final NONE = CygnusPrintJobDuplexMode._internalMultiPlatform(
+    'NONE',
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.android:
+          return 1;
+        case TargetPlatform.iOS:
+          return 0;
+        case TargetPlatform.macOS:
+          return 1;
+        case TargetPlatform.windows:
+          return 1;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
   ///Duplex print that flips the back page along the short edge of the paper.
   ///Pages are turned upwards along the short edge - like a notepad.
@@ -75,7 +78,7 @@ class PrintJobDuplexMode {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Windows WebView2
-  static final SHORT_EDGE = PrintJobDuplexMode._internalMultiPlatform(
+  static final SHORT_EDGE = CygnusPrintJobDuplexMode._internalMultiPlatform(
     'SHORT_EDGE',
     () {
       switch (defaultTargetPlatform) {
@@ -94,18 +97,18 @@ class PrintJobDuplexMode {
     },
   );
 
-  ///Set of all values of [PrintJobDuplexMode].
-  static final Set<PrintJobDuplexMode> values = [
-    PrintJobDuplexMode.LONG_EDGE,
-    PrintJobDuplexMode.NONE,
-    PrintJobDuplexMode.SHORT_EDGE,
+  ///Set of all values of [CygnusPrintJobDuplexMode].
+  static final Set<CygnusPrintJobDuplexMode> values = [
+    CygnusPrintJobDuplexMode.LONG_EDGE,
+    CygnusPrintJobDuplexMode.NONE,
+    CygnusPrintJobDuplexMode.SHORT_EDGE,
   ].toSet();
 
-  ///Gets a possible [PrintJobDuplexMode] instance from [String] value.
-  static PrintJobDuplexMode? fromValue(String? value) {
+  ///Gets a possible [CygnusPrintJobDuplexMode] instance from [String] value.
+  static CygnusPrintJobDuplexMode? fromValue(String? value) {
     if (value != null) {
       try {
-        return PrintJobDuplexMode.values.firstWhere(
+        return CygnusPrintJobDuplexMode.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -115,11 +118,11 @@ class PrintJobDuplexMode {
     return null;
   }
 
-  ///Gets a possible [PrintJobDuplexMode] instance from a native value.
-  static PrintJobDuplexMode? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusPrintJobDuplexMode] instance from a native value.
+  static CygnusPrintJobDuplexMode? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return PrintJobDuplexMode.values.firstWhere(
+        return CygnusPrintJobDuplexMode.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -129,15 +132,15 @@ class PrintJobDuplexMode {
     return null;
   }
 
-  /// Gets a possible [PrintJobDuplexMode] instance value with name [name].
+  /// Gets a possible [CygnusPrintJobDuplexMode] instance value with name [name].
   ///
-  /// Goes through [PrintJobDuplexMode.values] looking for a value with
-  /// name [name], as reported by [PrintJobDuplexMode.name].
+  /// Goes through [CygnusPrintJobDuplexMode.values] looking for a value with
+  /// name [name], as reported by [CygnusPrintJobDuplexMode.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static PrintJobDuplexMode? byName(String? name) {
+  static CygnusPrintJobDuplexMode? byName(String? name) {
     if (name != null) {
       try {
-        return PrintJobDuplexMode.values.firstWhere(
+        return CygnusPrintJobDuplexMode.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -147,7 +150,7 @@ class PrintJobDuplexMode {
     return null;
   }
 
-  /// Creates a map from the names of [PrintJobDuplexMode] values to the values.
+  /// Creates a map from the names of [CygnusPrintJobDuplexMode] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -155,9 +158,10 @@ class PrintJobDuplexMode {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, PrintJobDuplexMode> asNameMap() =>
-      <String, PrintJobDuplexMode>{
-        for (final value in PrintJobDuplexMode.values) value.name(): value,
+  static Map<String, CygnusPrintJobDuplexMode> asNameMap() =>
+      <String, CygnusPrintJobDuplexMode>{
+        for (final value in CygnusPrintJobDuplexMode.values)
+          value.name(): value,
       };
 
   ///Gets [String] value.

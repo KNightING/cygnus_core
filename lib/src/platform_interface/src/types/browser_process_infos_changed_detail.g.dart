@@ -6,28 +6,28 @@ part of 'browser_process_infos_changed_detail.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///An object that contains information for the [PlatformWebViewEnvironment.onProcessInfosChanged] event.
-class BrowserProcessInfosChangedDetail {
+///An object that contains information for the [CygnusPlatformWebViewEnvironment.onProcessInfosChanged] event.
+class CygnusBrowserProcessInfosChangedDetail {
   ///The kind of the process.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  List<BrowserProcessInfo> infos;
-  BrowserProcessInfosChangedDetail({this.infos = const []});
+  List<CygnusBrowserProcessInfo> infos;
+  CygnusBrowserProcessInfosChangedDetail({this.infos = const []});
 
-  ///Gets a possible [BrowserProcessInfosChangedDetail] instance from a [Map] value.
-  static BrowserProcessInfosChangedDetail? fromMap(
+  ///Gets a possible [CygnusBrowserProcessInfosChangedDetail] instance from a [Map] value.
+  static CygnusBrowserProcessInfosChangedDetail? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = BrowserProcessInfosChangedDetail();
+    final instance = CygnusBrowserProcessInfosChangedDetail();
     if (map['infos'] != null) {
-      instance.infos = List<BrowserProcessInfo>.from(
+      instance.infos = List<CygnusBrowserProcessInfo>.from(
         map['infos'].map(
-          (e) => BrowserProcessInfo.fromMap(
+          (e) => CygnusBrowserProcessInfo.fromMap(
             e?.cast<String, dynamic>(),
             enumMethod: enumMethod,
           )!,
@@ -38,7 +38,7 @@ class BrowserProcessInfosChangedDetail {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "infos": infos.map((e) => e.toMap(enumMethod: enumMethod)).toList(),
     };
@@ -51,6 +51,6 @@ class BrowserProcessInfosChangedDetail {
 
   @override
   String toString() {
-    return 'BrowserProcessInfosChangedDetail{infos: $infos}';
+    return 'CygnusBrowserProcessInfosChangedDetail{infos: $infos}';
   }
 }

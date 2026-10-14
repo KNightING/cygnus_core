@@ -6,91 +6,86 @@ part of 'custom_tabs_navigation_event_type.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///The type corresponding to the navigation event of [PlatformChromeSafariBrowserEvents.onNavigationEvent].
-class CustomTabsNavigationEventType {
+///The type corresponding to the navigation event of [CygnusPlatformChromeSafariBrowserEvents.onNavigationEvent].
+class CygnusCustomTabsNavigationEventType {
   final int _value;
   final int? _nativeValue;
-  const CustomTabsNavigationEventType._internal(this._value, this._nativeValue);
+  const CygnusCustomTabsNavigationEventType._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory CustomTabsNavigationEventType._internalMultiPlatform(
+  factory CygnusCustomTabsNavigationEventType._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => CustomTabsNavigationEventType._internal(value, nativeValue());
+  ) => CygnusCustomTabsNavigationEventType._internal(value, nativeValue());
 
   ///Sent when loading was aborted by a user action before it finishes like clicking on a link or refreshing the page.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  static final ABORTED = CustomTabsNavigationEventType._internalMultiPlatform(
-    4,
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.android:
-          return 4;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final ABORTED =
+      CygnusCustomTabsNavigationEventType._internalMultiPlatform(4, () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.android:
+            return 4;
+          default:
+            break;
+        }
+        return null;
+      });
 
   ///Sent when the tab couldn't finish loading due to a failure.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  static final FAILED = CustomTabsNavigationEventType._internalMultiPlatform(
-    3,
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.android:
-          return 3;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final FAILED =
+      CygnusCustomTabsNavigationEventType._internalMultiPlatform(3, () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.android:
+            return 3;
+          default:
+            break;
+        }
+        return null;
+      });
 
   ///Sent when the tab has finished loading a page.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  static final FINISHED = CustomTabsNavigationEventType._internalMultiPlatform(
-    2,
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.android:
-          return 2;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final FINISHED =
+      CygnusCustomTabsNavigationEventType._internalMultiPlatform(2, () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.android:
+            return 2;
+          default:
+            break;
+        }
+        return null;
+      });
 
   ///Sent when the tab has started loading a page.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  static final STARTED = CustomTabsNavigationEventType._internalMultiPlatform(
-    1,
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.android:
-          return 1;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final STARTED =
+      CygnusCustomTabsNavigationEventType._internalMultiPlatform(1, () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.android:
+            return 1;
+          default:
+            break;
+        }
+        return null;
+      });
 
   ///Sent when the tab becomes hidden.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   static final TAB_HIDDEN =
-      CustomTabsNavigationEventType._internalMultiPlatform(6, () {
+      CygnusCustomTabsNavigationEventType._internalMultiPlatform(6, () {
         switch (defaultTargetPlatform) {
           case TargetPlatform.android:
             return 6;
@@ -104,34 +99,32 @@ class CustomTabsNavigationEventType {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  static final TAB_SHOWN = CustomTabsNavigationEventType._internalMultiPlatform(
-    5,
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.android:
-          return 5;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final TAB_SHOWN =
+      CygnusCustomTabsNavigationEventType._internalMultiPlatform(5, () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.android:
+            return 5;
+          default:
+            break;
+        }
+        return null;
+      });
 
-  ///Set of all values of [CustomTabsNavigationEventType].
-  static final Set<CustomTabsNavigationEventType> values = [
-    CustomTabsNavigationEventType.ABORTED,
-    CustomTabsNavigationEventType.FAILED,
-    CustomTabsNavigationEventType.FINISHED,
-    CustomTabsNavigationEventType.STARTED,
-    CustomTabsNavigationEventType.TAB_HIDDEN,
-    CustomTabsNavigationEventType.TAB_SHOWN,
+  ///Set of all values of [CygnusCustomTabsNavigationEventType].
+  static final Set<CygnusCustomTabsNavigationEventType> values = [
+    CygnusCustomTabsNavigationEventType.ABORTED,
+    CygnusCustomTabsNavigationEventType.FAILED,
+    CygnusCustomTabsNavigationEventType.FINISHED,
+    CygnusCustomTabsNavigationEventType.STARTED,
+    CygnusCustomTabsNavigationEventType.TAB_HIDDEN,
+    CygnusCustomTabsNavigationEventType.TAB_SHOWN,
   ].toSet();
 
-  ///Gets a possible [CustomTabsNavigationEventType] instance from [int] value.
-  static CustomTabsNavigationEventType? fromValue(int? value) {
+  ///Gets a possible [CygnusCustomTabsNavigationEventType] instance from [int] value.
+  static CygnusCustomTabsNavigationEventType? fromValue(int? value) {
     if (value != null) {
       try {
-        return CustomTabsNavigationEventType.values.firstWhere(
+        return CygnusCustomTabsNavigationEventType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -141,11 +134,11 @@ class CustomTabsNavigationEventType {
     return null;
   }
 
-  ///Gets a possible [CustomTabsNavigationEventType] instance from a native value.
-  static CustomTabsNavigationEventType? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusCustomTabsNavigationEventType] instance from a native value.
+  static CygnusCustomTabsNavigationEventType? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return CustomTabsNavigationEventType.values.firstWhere(
+        return CygnusCustomTabsNavigationEventType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -155,15 +148,15 @@ class CustomTabsNavigationEventType {
     return null;
   }
 
-  /// Gets a possible [CustomTabsNavigationEventType] instance value with name [name].
+  /// Gets a possible [CygnusCustomTabsNavigationEventType] instance value with name [name].
   ///
-  /// Goes through [CustomTabsNavigationEventType.values] looking for a value with
-  /// name [name], as reported by [CustomTabsNavigationEventType.name].
+  /// Goes through [CygnusCustomTabsNavigationEventType.values] looking for a value with
+  /// name [name], as reported by [CygnusCustomTabsNavigationEventType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static CustomTabsNavigationEventType? byName(String? name) {
+  static CygnusCustomTabsNavigationEventType? byName(String? name) {
     if (name != null) {
       try {
-        return CustomTabsNavigationEventType.values.firstWhere(
+        return CygnusCustomTabsNavigationEventType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -173,7 +166,7 @@ class CustomTabsNavigationEventType {
     return null;
   }
 
-  /// Creates a map from the names of [CustomTabsNavigationEventType] values to the values.
+  /// Creates a map from the names of [CygnusCustomTabsNavigationEventType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -181,9 +174,9 @@ class CustomTabsNavigationEventType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, CustomTabsNavigationEventType> asNameMap() =>
-      <String, CustomTabsNavigationEventType>{
-        for (final value in CustomTabsNavigationEventType.values)
+  static Map<String, CygnusCustomTabsNavigationEventType> asNameMap() =>
+      <String, CygnusCustomTabsNavigationEventType>{
+        for (final value in CygnusCustomTabsNavigationEventType.values)
           value.name(): value,
       };
 

@@ -11,25 +11,25 @@ import 'referrer_policy.dart';
 
 part 'fetch_request.g.dart';
 
-FetchRequestCredential? _fetchRequestCredentialDeserializer(
+CygnusFetchRequestCredential? _fetchRequestCredentialDeserializer(
   dynamic value, {
-  EnumMethod? enumMethod,
+  CygnusEnumMethod? enumMethod,
 }) {
   Map<String, dynamic>? credentialMap = value?.cast<String, dynamic>();
-  FetchRequestCredential? credentials;
+  CygnusFetchRequestCredential? credentials;
   if (credentialMap != null) {
     if (credentialMap["type"] == "default") {
-      credentials = FetchRequestCredentialDefault.fromMap(
+      credentials = CygnusFetchRequestCredentialDefault.fromMap(
         credentialMap,
         enumMethod: enumMethod,
       );
     } else if (credentialMap["type"] == "federated") {
-      credentials = FetchRequestFederatedCredential.fromMap(
+      credentials = CygnusFetchRequestFederatedCredential.fromMap(
         credentialMap,
         enumMethod: enumMethod,
       );
     } else if (credentialMap["type"] == "password") {
-      credentials = FetchRequestPasswordCredential.fromMap(
+      credentials = CygnusFetchRequestPasswordCredential.fromMap(
         credentialMap,
         enumMethod: enumMethod,
       );
@@ -40,9 +40,9 @@ FetchRequestCredential? _fetchRequestCredentialDeserializer(
 
 ///Class that represents a HTTP request created with JavaScript using the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
 @ExchangeableObject()
-class FetchRequest_ {
+class CygnusFetchRequest_ {
   ///The URL of the request.
-  WebUri? url;
+  CygnusWebUri? url;
 
   ///The HTTP request method used of the request.
   String? method;
@@ -58,7 +58,7 @@ class FetchRequest_ {
 
   ///The request credentials used by the request.
   @ExchangeableObjectProperty(deserializer: _fetchRequestCredentialDeserializer)
-  FetchRequestCredential_? credentials;
+  CygnusFetchRequestCredential_? credentials;
 
   ///The cache mode used by the request.
   String? cache;
@@ -70,7 +70,7 @@ class FetchRequest_ {
   String? referrer;
 
   ///The value of the referer HTTP header.
-  ReferrerPolicy_? referrerPolicy;
+  CygnusReferrerPolicy_? referrerPolicy;
 
   ///Contains the subresource integrity value of the request.
   String? integrity;
@@ -78,10 +78,10 @@ class FetchRequest_ {
   ///The keepalive option used to allow the request to outlive the page.
   bool? keepalive;
 
-  ///Indicates the [FetchRequestAction] that can be used to control the request.
-  FetchRequestAction_? action;
+  ///Indicates the [CygnusFetchRequestAction] that can be used to control the request.
+  CygnusFetchRequestAction_? action;
 
-  FetchRequest_({
+  CygnusFetchRequest_({
     this.url,
     this.method,
     this.headers,
@@ -94,6 +94,6 @@ class FetchRequest_ {
     this.referrerPolicy,
     this.integrity,
     this.keepalive,
-    this.action = FetchRequestAction_.PROCEED,
+    this.action = CygnusFetchRequestAction_.PROCEED,
   });
 }

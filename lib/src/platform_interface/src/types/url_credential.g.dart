@@ -8,21 +8,21 @@ part of 'url_credential.dart';
 
 ///Class that represents an authentication credential consisting of information
 ///specific to the type of credential and the type of persistent storage to use, if any.
-class URLCredential {
+class CygnusURLCredential {
   ///The intermediate certificates of the credential, if it is a client certificate credential.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
-  List<X509Certificate>? certificates;
+  List<CygnusX509Certificate>? certificates;
 
   ///Use [certificates] instead.
   @Deprecated('Use certificates instead')
-  List<X509Certificate>? iosCertificates;
+  List<CygnusX509Certificate>? iosCertificates;
 
   ///Use [persistence] instead.
   @Deprecated('Use persistence instead')
-  IOSURLCredentialPersistence? iosPersistence;
+  CygnusIOSURLCredentialPersistence? iosPersistence;
 
   ///The credential’s password.
   String? password;
@@ -32,11 +32,11 @@ class URLCredential {
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
-  URLCredentialPersistence? persistence;
+  CygnusURLCredentialPersistence? persistence;
 
   ///The credential’s user name.
   String? username;
-  URLCredential({
+  CygnusURLCredential({
     this.certificates,
     @Deprecated('Use certificates instead') this.iosCertificates,
     @Deprecated('Use persistence instead') this.iosPersistence,
@@ -47,20 +47,20 @@ class URLCredential {
     certificates = certificates ?? iosCertificates;
     persistence =
         persistence ??
-        URLCredentialPersistence.fromNativeValue(
+        CygnusURLCredentialPersistence.fromNativeValue(
           iosPersistence?.toNativeValue(),
         );
   }
 
-  ///Gets a possible [URLCredential] instance from a [Map] value.
-  static URLCredential? fromMap(
+  ///Gets a possible [CygnusURLCredential] instance from a [Map] value.
+  static CygnusURLCredential? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = URLCredential(
+    final instance = CygnusURLCredential(
       certificates: _certificatesDeserializer(
         map['certificates'],
         enumMethod: enumMethod,
@@ -69,26 +69,26 @@ class URLCredential {
         map['certificates'],
         enumMethod: enumMethod,
       ),
-      iosPersistence: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => IOSURLCredentialPersistence.fromNativeValue(
+      iosPersistence: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusIOSURLCredentialPersistence.fromNativeValue(map['persistence']),
+        CygnusEnumMethod.value => CygnusIOSURLCredentialPersistence.fromValue(
           map['persistence'],
         ),
-        EnumMethod.value => IOSURLCredentialPersistence.fromValue(
-          map['persistence'],
-        ),
-        EnumMethod.name => IOSURLCredentialPersistence.byName(
+        CygnusEnumMethod.name => CygnusIOSURLCredentialPersistence.byName(
           map['persistence'],
         ),
       },
       password: map['password'],
-      persistence: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => URLCredentialPersistence.fromNativeValue(
+      persistence: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusURLCredentialPersistence.fromNativeValue(map['persistence']),
+        CygnusEnumMethod.value => CygnusURLCredentialPersistence.fromValue(
           map['persistence'],
         ),
-        EnumMethod.value => URLCredentialPersistence.fromValue(
+        CygnusEnumMethod.name => CygnusURLCredentialPersistence.byName(
           map['persistence'],
         ),
-        EnumMethod.name => URLCredentialPersistence.byName(map['persistence']),
       },
       username: map['username'],
     );
@@ -96,16 +96,16 @@ class URLCredential {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "certificates": certificates
           ?.map((e) => e.toMap(enumMethod: enumMethod))
           .toList(),
       "password": password,
-      "persistence": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => persistence?.toNativeValue(),
-        EnumMethod.value => persistence?.toValue(),
-        EnumMethod.name => persistence?.name(),
+      "persistence": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => persistence?.toNativeValue(),
+        CygnusEnumMethod.value => persistence?.toValue(),
+        CygnusEnumMethod.name => persistence?.name(),
       },
       "username": username,
     };
@@ -118,6 +118,6 @@ class URLCredential {
 
   @override
   String toString() {
-    return 'URLCredential{certificates: $certificates, password: $password, persistence: $persistence, username: $username}';
+    return 'CygnusURLCredential{certificates: $certificates, password: $password, persistence: $persistence, username: $username}';
   }
 }

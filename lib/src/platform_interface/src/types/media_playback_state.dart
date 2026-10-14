@@ -4,20 +4,20 @@ part 'media_playback_state.g.dart';
 
 ///Class that describes whether an audio or video presentation is playing, paused, or suspended.
 @ExchangeableEnum()
-class MediaPlaybackState_ {
+class CygnusMediaPlaybackState_ {
   // ignore: unused_field
   final int _value;
-  const MediaPlaybackState_._internal(this._value);
+  const CygnusMediaPlaybackState_._internal(this._value);
 
   ///There is no media to play back.
-  static const NONE = const MediaPlaybackState_._internal(0);
+  static const NONE = const CygnusMediaPlaybackState_._internal(0);
 
   ///The media is playing.
-  static const PLAYING = const MediaPlaybackState_._internal(1);
+  static const PLAYING = const CygnusMediaPlaybackState_._internal(1);
 
   ///The media playback is paused.
-  static const PAUSED = const MediaPlaybackState_._internal(2);
+  static const PAUSED = const CygnusMediaPlaybackState_._internal(2);
 
   ///The media is not playing, and cannot be resumed until the user revokes the suspension.
-  static const SUSPENDED = const MediaPlaybackState_._internal(3);
+  static const SUSPENDED = const CygnusMediaPlaybackState_._internal(3);
 }

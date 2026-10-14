@@ -3,32 +3,32 @@ part of 'main.dart';
 void supported() {
   skippableGroup('supported', () {
     skippableTestWidgets('basic', (WidgetTester tester) async {
-      expect(InAppBrowser.isClassSupported(), true);
+      expect(CygnusBrowser.isClassSupported(), true);
       expect(
-        InAppBrowser.isPropertySupported(PlatformInAppBrowserProperty.windowId),
+        CygnusBrowser.isPropertySupported(CygnusPlatformBrowserProperty.windowId),
         true,
       );
       expect(
-        InAppBrowser.isMethodSupported(
-          PlatformInAppBrowserMethod.openUrlRequest,
+        CygnusBrowser.isMethodSupported(
+          CygnusPlatformBrowserMethod.openUrlRequest,
         ),
         true,
       );
       expect(
-        InAppBrowser.isMethodSupported(PlatformInAppBrowserMethod.close),
+        CygnusBrowser.isMethodSupported(CygnusPlatformBrowserMethod.close),
         true,
       );
       expect(
-        InAppBrowser.isMethodSupported(PlatformInAppBrowserMethod.hide),
+        CygnusBrowser.isMethodSupported(CygnusPlatformBrowserMethod.hide),
         true,
       );
       expect(
-        InAppBrowser.isMethodSupported(PlatformInAppBrowserMethod.show),
+        CygnusBrowser.isMethodSupported(CygnusPlatformBrowserMethod.show),
         true,
       );
       expect(
-        InAppBrowser.isEventMethodSupported(
-          PlatformInAppBrowserEventsMethod.onWebContentProcessDidTerminate,
+        CygnusBrowser.isEventMethodSupported(
+          CygnusPlatformBrowserEventsMethod.onWebContentProcessDidTerminate,
         ),
         [
           TargetPlatform.iOS,
@@ -37,27 +37,27 @@ void supported() {
         ].contains(defaultTargetPlatform),
       );
       expect(
-        InAppBrowser.isEventMethodSupported(
-          PlatformInAppBrowserEventsMethod.onAcceleratorKeyPressed,
+        CygnusBrowser.isEventMethodSupported(
+          CygnusPlatformBrowserEventsMethod.onAcceleratorKeyPressed,
         ),
         defaultTargetPlatform == TargetPlatform.windows,
       );
 
       expect(
-        InAppBrowserSettings.isPropertySupported(
-          InAppBrowserSettingsProperty.toolbarBottomTintColor,
+        CygnusBrowserSettings.isPropertySupported(
+          CygnusBrowserSettingsProperty.toolbarBottomTintColor,
         ),
         defaultTargetPlatform == TargetPlatform.iOS,
       );
       expect(
-        InAppBrowserSettings.isPropertySupported(
-          InAppBrowserSettingsProperty.hidden,
+        CygnusBrowserSettings.isPropertySupported(
+          CygnusBrowserSettingsProperty.hidden,
         ),
         true,
       );
       expect(
-        InAppBrowserSettings.isPropertySupported(
-          InAppBrowserSettingsProperty.closeOnCannotGoBack,
+        CygnusBrowserSettings.isPropertySupported(
+          CygnusBrowserSettingsProperty.closeOnCannotGoBack,
         ),
         defaultTargetPlatform == TargetPlatform.android,
       );

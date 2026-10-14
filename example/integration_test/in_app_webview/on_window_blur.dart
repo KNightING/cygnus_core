@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void onWindowBlur() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onWindowBlur,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onWindowBlur,
   );
 
   var url = !kIsWeb ? TEST_URL_1 : TEST_WEB_PLATFORM_URL_1;
@@ -12,9 +12,9 @@ void onWindowBlur() {
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: url),
+          initialUrlRequest: CygnusURLRequest(url: url),
           onLoadStop: (controller, url) async {
             await controller.evaluateJavascript(
               source: 'window.dispatchEvent(new Event("blur"));',

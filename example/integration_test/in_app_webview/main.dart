@@ -103,14 +103,14 @@ part 'webview_windows.dart';
 part 'keep_alive.dart';
 
 void main() {
-  final shouldSkip = !InAppWebViewController.isClassSupported();
+  final shouldSkip = !CygnusWebViewController.isClassSupported();
 
-  skippableGroup('InAppWebView', () {
+  skippableGroup('CygnusWebView', () {
     setUpAll(() async {
-      if (InAppWebViewController.isMethodSupported(
-        PlatformInAppWebViewControllerMethod.setWebContentsDebuggingEnabled,
+      if (CygnusWebViewController.isMethodSupported(
+        CygnusPlatformWebViewControllerMethod.setWebContentsDebuggingEnabled,
       )) {
-        await InAppWebViewController.setWebContentsDebuggingEnabled(true);
+        await CygnusWebViewController.setWebContentsDebuggingEnabled(true);
       }
     });
 

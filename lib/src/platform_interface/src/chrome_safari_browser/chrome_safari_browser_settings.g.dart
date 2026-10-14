@@ -6,22 +6,23 @@ part of 'chrome_safari_browser_settings.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///{@template cygnus_core.ChromeSafariBrowserSettings}
-///Class that represents the settings that can be used for an [ChromeSafariBrowser] window.
+///{@template cygnus_core.CygnusChromeSafariBrowserSettings}
+///Class that represents the settings that can be used for an [CygnusChromeSafariBrowser] window.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.ChromeSafariBrowserSettings.supported_platforms}
+///{@macro cygnus_core.CygnusChromeSafariBrowserSettings.supported_platforms}
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- Android Chrome Custom Tabs
 ///- iOS SFSafariViewController
-class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
+class CygnusChromeSafariBrowserSettings
+    implements CygnusChromeSafariBrowserOptions {
   ///An additional button to be shown in `SFSafariViewController`'s toolbar.
   ///This allows the user to access powerful functionality from your extension without needing to first show the `UIActivityViewController`.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController 15.0+
-  ActivityButton? activityButton;
+  CygnusActivityButton? activityButton;
 
   ///Sets a list of additional trusted origins that the user may navigate or be redirected to from the starting uri.
   ///
@@ -45,18 +46,18 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
   ///- iOS SFSafariViewController
   bool? barCollapsingEnabled;
 
-  ///Set the custom style for the dismiss button. The default value is [DismissButtonStyle.DONE].
+  ///Set the custom style for the dismiss button. The default value is [CygnusDismissButtonStyle.DONE].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController 11.0+
-  DismissButtonStyle? dismissButtonStyle;
+  CygnusDismissButtonStyle? dismissButtonStyle;
 
   ///Sets a display mode of a Trusted Web Activity.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs:
   ///    - Not available in a Trusted Web Activity.
-  TrustedWebActivityDisplayMode? displayMode;
+  CygnusTrustedWebActivityDisplayMode? displayMode;
 
   ///Set to `true` to enable the url bar to hide as the user scrolls down on the page. The default value is `false`.
   ///
@@ -76,15 +77,15 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController 15.2+
-  UIEventAttribution? eventAttribution;
+  CygnusUIEventAttribution? eventAttribution;
 
   ///Sets the exit animations.
-  ///It must contain 2 [AndroidResource], where the first one represents the "enter" animation for the application
+  ///It must contain 2 [CygnusAndroidResource], where the first one represents the "enter" animation for the application
   ///and the second one represents the "exit" animation for the browser.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
-  List<AndroidResource>? exitAnimations;
+  List<CygnusAndroidResource>? exitAnimations;
 
   ///Set to `true` to enable Instant Apps. The default value is `false`.
   ///
@@ -151,18 +152,18 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
   ///- iOS SFSafariViewController 10.0+
   Color? preferredControlTintColor;
 
-  ///Set the custom modal presentation style when presenting the WebView. The default value is [ModalPresentationStyle.FULL_SCREEN].
+  ///Set the custom modal presentation style when presenting the WebView. The default value is [CygnusModalPresentationStyle.FULL_SCREEN].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController
-  ModalPresentationStyle? presentationStyle;
+  CygnusModalPresentationStyle? presentationStyle;
 
   ///Sets a screen orientation. This can be used e.g. to enable the locking of an orientation lock type.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs:
   ///    - Not available in a Trusted Web Activity.
-  TrustedWebActivityScreenOrientation? screenOrientation;
+  CygnusTrustedWebActivityScreenOrientation? screenOrientation;
 
   ///Sets the color of the secondary toolbar.
   ///
@@ -170,12 +171,12 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
   ///- Android Chrome Custom Tabs
   Color? secondaryToolbarColor;
 
-  ///The share state that should be applied to the custom tab. The default value is [CustomTabsShareState.SHARE_STATE_DEFAULT].
+  ///The share state that should be applied to the custom tab. The default value is [CygnusCustomTabsShareState.SHARE_STATE_DEFAULT].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs:
   ///    - Not available in a Trusted Web Activity.
-  CustomTabsShareState? shareState;
+  CygnusCustomTabsShareState? shareState;
 
   ///Set to `false` if the title shouldn't be shown in the custom tab. The default value is `true`.
   ///
@@ -185,12 +186,12 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
   bool? showTitle;
 
   ///Sets the start animations.
-  ///It must contain 2 [AndroidResource], where the first one represents the "enter" animation for the browser
+  ///It must contain 2 [CygnusAndroidResource], where the first one represents the "enter" animation for the browser
   ///and the second one represents the "exit" animation for the application.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
-  List<AndroidResource>? startAnimations;
+  List<CygnusAndroidResource>? startAnimations;
 
   ///Set the custom background color of the toolbar.
   ///
@@ -198,18 +199,18 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
   ///- Android Chrome Custom Tabs
   Color? toolbarBackgroundColor;
 
-  ///Set to the custom transition style when presenting the WebView. The default value is [ModalTransitionStyle.COVER_VERTICAL].
+  ///Set to the custom transition style when presenting the WebView. The default value is [CygnusModalTransitionStyle.COVER_VERTICAL].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController
-  ModalTransitionStyle? transitionStyle;
+  CygnusModalTransitionStyle? transitionStyle;
 
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///- iOS SFSafariViewController
-  ChromeSafariBrowserSettings({
-    this.shareState = CustomTabsShareState.SHARE_STATE_DEFAULT,
+  CygnusChromeSafariBrowserSettings({
+    this.shareState = CygnusCustomTabsShareState.SHARE_STATE_DEFAULT,
     this.showTitle = true,
     this.toolbarBackgroundColor,
     this.navigationBarColor,
@@ -224,17 +225,17 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
     this.isTrustedWebActivity = false,
     this.additionalTrustedOrigins = const [],
     this.displayMode,
-    this.screenOrientation = TrustedWebActivityScreenOrientation.DEFAULT,
+    this.screenOrientation = CygnusTrustedWebActivityScreenOrientation.DEFAULT,
     this.startAnimations,
     this.exitAnimations,
     this.alwaysUseBrowserUI = false,
     this.entersReaderIfAvailable = false,
     this.barCollapsingEnabled = false,
-    this.dismissButtonStyle = DismissButtonStyle.DONE,
+    this.dismissButtonStyle = CygnusDismissButtonStyle.DONE,
     this.preferredBarTintColor,
     this.preferredControlTintColor,
-    this.presentationStyle = ModalPresentationStyle.FULL_SCREEN,
-    this.transitionStyle = ModalTransitionStyle.COVER_VERTICAL,
+    this.presentationStyle = CygnusModalPresentationStyle.FULL_SCREEN,
+    this.transitionStyle = CygnusModalTransitionStyle.COVER_VERTICAL,
     this.activityButton,
     this.eventAttribution,
   }) {
@@ -252,16 +253,16 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
     }
   }
 
-  ///Gets a possible [ChromeSafariBrowserSettings] instance from a [Map] value.
-  static ChromeSafariBrowserSettings? fromMap(
+  ///Gets a possible [CygnusChromeSafariBrowserSettings] instance from a [Map] value.
+  static CygnusChromeSafariBrowserSettings? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ChromeSafariBrowserSettings(
-      activityButton: ActivityButton.fromMap(
+    final instance = CygnusChromeSafariBrowserSettings(
+      activityButton: CygnusActivityButton.fromMap(
         map['activityButton']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -269,14 +270,14 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
         map['displayMode'],
         enumMethod: enumMethod,
       ),
-      eventAttribution: UIEventAttribution.fromMap(
+      eventAttribution: CygnusUIEventAttribution.fromMap(
         map['eventAttribution']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
       exitAnimations: map['exitAnimations'] != null
-          ? List<AndroidResource>.from(
+          ? List<CygnusAndroidResource>.from(
               map['exitAnimations'].map(
-                (e) => AndroidResource.fromMap(
+                (e) => CygnusAndroidResource.fromMap(
                   e?.cast<String, dynamic>(),
                   enumMethod: enumMethod,
                 )!,
@@ -300,9 +301,9 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
           ? UtilColor.fromStringRepresentation(map['secondaryToolbarColor'])
           : null,
       startAnimations: map['startAnimations'] != null
-          ? List<AndroidResource>.from(
+          ? List<CygnusAndroidResource>.from(
               map['startAnimations'].map(
-                (e) => AndroidResource.fromMap(
+                (e) => CygnusAndroidResource.fromMap(
                   e?.cast<String, dynamic>(),
                   enumMethod: enumMethod,
                 )!,
@@ -319,14 +320,16 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
     instance.alwaysUseBrowserUI = map['alwaysUseBrowserUI'];
     instance.barCollapsingEnabled = map['barCollapsingEnabled'];
     instance.dismissButtonStyle = switch (enumMethod ??
-        EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => DismissButtonStyle.fromNativeValue(
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue => CygnusDismissButtonStyle.fromNativeValue(
         map['dismissButtonStyle'],
       ),
-      EnumMethod.value => DismissButtonStyle.fromValue(
+      CygnusEnumMethod.value => CygnusDismissButtonStyle.fromValue(
         map['dismissButtonStyle'],
       ),
-      EnumMethod.name => DismissButtonStyle.byName(map['dismissButtonStyle']),
+      CygnusEnumMethod.name => CygnusDismissButtonStyle.byName(
+        map['dismissButtonStyle'],
+      ),
     };
     instance.enableUrlBarHiding = map['enableUrlBarHiding'];
     instance.entersReaderIfAvailable = map['entersReaderIfAvailable'];
@@ -335,69 +338,77 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
     instance.isTrustedWebActivity = map['isTrustedWebActivity'];
     instance.keepAliveEnabled = map['keepAliveEnabled'];
     instance.noHistory = map['noHistory'];
-    instance.presentationStyle = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => ModalPresentationStyle.fromNativeValue(
+    instance.presentationStyle = switch (enumMethod ??
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusModalPresentationStyle.fromNativeValue(map['presentationStyle']),
+      CygnusEnumMethod.value => CygnusModalPresentationStyle.fromValue(
         map['presentationStyle'],
       ),
-      EnumMethod.value => ModalPresentationStyle.fromValue(
-        map['presentationStyle'],
-      ),
-      EnumMethod.name => ModalPresentationStyle.byName(
+      CygnusEnumMethod.name => CygnusModalPresentationStyle.byName(
         map['presentationStyle'],
       ),
     };
-    instance.screenOrientation = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue =>
-        TrustedWebActivityScreenOrientation.fromNativeValue(
+    instance.screenOrientation = switch (enumMethod ??
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusTrustedWebActivityScreenOrientation.fromNativeValue(
           map['screenOrientation'],
         ),
-      EnumMethod.value => TrustedWebActivityScreenOrientation.fromValue(
-        map['screenOrientation'],
-      ),
-      EnumMethod.name => TrustedWebActivityScreenOrientation.byName(
+      CygnusEnumMethod.value =>
+        CygnusTrustedWebActivityScreenOrientation.fromValue(
+          map['screenOrientation'],
+        ),
+      CygnusEnumMethod.name => CygnusTrustedWebActivityScreenOrientation.byName(
         map['screenOrientation'],
       ),
     };
-    instance.shareState = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => CustomTabsShareState.fromNativeValue(
+    instance.shareState = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusCustomTabsShareState.fromNativeValue(map['shareState']),
+      CygnusEnumMethod.value => CygnusCustomTabsShareState.fromValue(
         map['shareState'],
       ),
-      EnumMethod.value => CustomTabsShareState.fromValue(map['shareState']),
-      EnumMethod.name => CustomTabsShareState.byName(map['shareState']),
+      CygnusEnumMethod.name => CygnusCustomTabsShareState.byName(
+        map['shareState'],
+      ),
     };
     instance.showTitle = map['showTitle'];
-    instance.transitionStyle = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => ModalTransitionStyle.fromNativeValue(
+    instance.transitionStyle = switch (enumMethod ??
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusModalTransitionStyle.fromNativeValue(map['transitionStyle']),
+      CygnusEnumMethod.value => CygnusModalTransitionStyle.fromValue(
         map['transitionStyle'],
       ),
-      EnumMethod.value => ModalTransitionStyle.fromValue(
+      CygnusEnumMethod.name => CygnusModalTransitionStyle.byName(
         map['transitionStyle'],
       ),
-      EnumMethod.name => ModalTransitionStyle.byName(map['transitionStyle']),
     };
     return instance;
   }
 
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   static bool isPropertySupported(
-    ChromeSafariBrowserSettingsProperty property, {
+    CygnusChromeSafariBrowserSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _ChromeSafariBrowserSettingsPropertySupported.isPropertySupported(
+  }) => _CygnusChromeSafariBrowserSettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "activityButton": activityButton?.toMap(enumMethod: enumMethod),
       "additionalTrustedOrigins": additionalTrustedOrigins,
       "alwaysUseBrowserUI": alwaysUseBrowserUI,
       "barCollapsingEnabled": barCollapsingEnabled,
-      "dismissButtonStyle": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => dismissButtonStyle?.toNativeValue(),
-        EnumMethod.value => dismissButtonStyle?.toValue(),
-        EnumMethod.name => dismissButtonStyle?.name(),
+      "dismissButtonStyle": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => dismissButtonStyle?.toNativeValue(),
+        CygnusEnumMethod.value => dismissButtonStyle?.toValue(),
+        CygnusEnumMethod.name => dismissButtonStyle?.name(),
       },
       "displayMode": displayMode?.toMap(enumMethod: enumMethod),
       "enableUrlBarHiding": enableUrlBarHiding,
@@ -416,31 +427,31 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
       "packageName": packageName,
       "preferredBarTintColor": preferredBarTintColor?.toHex(),
       "preferredControlTintColor": preferredControlTintColor?.toHex(),
-      "presentationStyle": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => presentationStyle?.toNativeValue(),
-        EnumMethod.value => presentationStyle?.toValue(),
-        EnumMethod.name => presentationStyle?.name(),
+      "presentationStyle": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => presentationStyle?.toNativeValue(),
+        CygnusEnumMethod.value => presentationStyle?.toValue(),
+        CygnusEnumMethod.name => presentationStyle?.name(),
       },
-      "screenOrientation": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => screenOrientation?.toNativeValue(),
-        EnumMethod.value => screenOrientation?.toValue(),
-        EnumMethod.name => screenOrientation?.name(),
+      "screenOrientation": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => screenOrientation?.toNativeValue(),
+        CygnusEnumMethod.value => screenOrientation?.toValue(),
+        CygnusEnumMethod.name => screenOrientation?.name(),
       },
       "secondaryToolbarColor": secondaryToolbarColor?.toHex(),
-      "shareState": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => shareState?.toNativeValue(),
-        EnumMethod.value => shareState?.toValue(),
-        EnumMethod.name => shareState?.name(),
+      "shareState": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => shareState?.toNativeValue(),
+        CygnusEnumMethod.value => shareState?.toValue(),
+        CygnusEnumMethod.name => shareState?.name(),
       },
       "showTitle": showTitle,
       "startAnimations": startAnimations
           ?.map((e) => e.toMap(enumMethod: enumMethod))
           .toList(),
       "toolbarBackgroundColor": toolbarBackgroundColor?.toHex(),
-      "transitionStyle": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => transitionStyle?.toNativeValue(),
-        EnumMethod.value => transitionStyle?.toValue(),
-        EnumMethod.name => transitionStyle?.name(),
+      "transitionStyle": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => transitionStyle?.toNativeValue(),
+        CygnusEnumMethod.value => transitionStyle?.toValue(),
+        CygnusEnumMethod.name => transitionStyle?.name(),
       },
     };
   }
@@ -450,15 +461,15 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
     return toMap();
   }
 
-  ///Returns a copy of ChromeSafariBrowserSettings.
-  ChromeSafariBrowserSettings copy() {
-    return ChromeSafariBrowserSettings.fromMap(toMap()) ??
-        ChromeSafariBrowserSettings();
+  ///Returns a copy of CygnusChromeSafariBrowserSettings.
+  CygnusChromeSafariBrowserSettings copy() {
+    return CygnusChromeSafariBrowserSettings.fromMap(toMap()) ??
+        CygnusChromeSafariBrowserSettings();
   }
 
   @override
   String toString() {
-    return 'ChromeSafariBrowserSettings{activityButton: $activityButton, additionalTrustedOrigins: $additionalTrustedOrigins, alwaysUseBrowserUI: $alwaysUseBrowserUI, barCollapsingEnabled: $barCollapsingEnabled, dismissButtonStyle: $dismissButtonStyle, displayMode: $displayMode, enableUrlBarHiding: $enableUrlBarHiding, entersReaderIfAvailable: $entersReaderIfAvailable, eventAttribution: $eventAttribution, exitAnimations: $exitAnimations, instantAppsEnabled: $instantAppsEnabled, isSingleInstance: $isSingleInstance, isTrustedWebActivity: $isTrustedWebActivity, keepAliveEnabled: $keepAliveEnabled, navigationBarColor: $navigationBarColor, navigationBarDividerColor: $navigationBarDividerColor, noHistory: $noHistory, packageName: $packageName, preferredBarTintColor: $preferredBarTintColor, preferredControlTintColor: $preferredControlTintColor, presentationStyle: $presentationStyle, screenOrientation: $screenOrientation, secondaryToolbarColor: $secondaryToolbarColor, shareState: $shareState, showTitle: $showTitle, startAnimations: $startAnimations, toolbarBackgroundColor: $toolbarBackgroundColor, transitionStyle: $transitionStyle}';
+    return 'CygnusChromeSafariBrowserSettings{activityButton: $activityButton, additionalTrustedOrigins: $additionalTrustedOrigins, alwaysUseBrowserUI: $alwaysUseBrowserUI, barCollapsingEnabled: $barCollapsingEnabled, dismissButtonStyle: $dismissButtonStyle, displayMode: $displayMode, enableUrlBarHiding: $enableUrlBarHiding, entersReaderIfAvailable: $entersReaderIfAvailable, eventAttribution: $eventAttribution, exitAnimations: $exitAnimations, instantAppsEnabled: $instantAppsEnabled, isSingleInstance: $isSingleInstance, isTrustedWebActivity: $isTrustedWebActivity, keepAliveEnabled: $keepAliveEnabled, navigationBarColor: $navigationBarColor, navigationBarDividerColor: $navigationBarDividerColor, noHistory: $noHistory, packageName: $packageName, preferredBarTintColor: $preferredBarTintColor, preferredControlTintColor: $preferredControlTintColor, presentationStyle: $presentationStyle, screenOrientation: $screenOrientation, secondaryToolbarColor: $secondaryToolbarColor, shareState: $shareState, showTitle: $showTitle, startAnimations: $startAnimations, toolbarBackgroundColor: $toolbarBackgroundColor, transitionStyle: $transitionStyle}';
   }
 }
 
@@ -466,451 +477,451 @@ class ChromeSafariBrowserSettings implements ChromeSafariBrowserOptions {
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-///List of [ChromeSafariBrowserSettings]'s properties that can be used to check i they are supported or not by the current platform.
-enum ChromeSafariBrowserSettingsProperty {
-  ///Can be used to check if the [ChromeSafariBrowserSettings.activityButton] property is supported at runtime.
+///List of [CygnusChromeSafariBrowserSettings]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusChromeSafariBrowserSettingsProperty {
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.activityButton] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.activityButton.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.activityButton.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController 15.0+
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   activityButton,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.additionalTrustedOrigins] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.additionalTrustedOrigins] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.additionalTrustedOrigins.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.additionalTrustedOrigins.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs:
   ///    - Not available in a Trusted Web Activity.
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   additionalTrustedOrigins,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.alwaysUseBrowserUI] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.alwaysUseBrowserUI] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.alwaysUseBrowserUI.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.alwaysUseBrowserUI.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   alwaysUseBrowserUI,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.barCollapsingEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.barCollapsingEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.barCollapsingEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.barCollapsingEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   barCollapsingEnabled,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.dismissButtonStyle] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.dismissButtonStyle] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.dismissButtonStyle.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.dismissButtonStyle.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController 11.0+
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   dismissButtonStyle,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.displayMode] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.displayMode] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.displayMode.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.displayMode.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs:
   ///    - Not available in a Trusted Web Activity.
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   displayMode,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.enableUrlBarHiding] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.enableUrlBarHiding] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.enableUrlBarHiding.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.enableUrlBarHiding.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs:
   ///    - Not available in a Trusted Web Activity.
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   enableUrlBarHiding,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.entersReaderIfAvailable] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.entersReaderIfAvailable] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.entersReaderIfAvailable.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.entersReaderIfAvailable.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   entersReaderIfAvailable,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.eventAttribution] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.eventAttribution] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.eventAttribution.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.eventAttribution.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController 15.2+
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   eventAttribution,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.exitAnimations] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.exitAnimations] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.exitAnimations.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.exitAnimations.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   exitAnimations,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.instantAppsEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.instantAppsEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.instantAppsEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.instantAppsEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs:
   ///    - Not available in a Trusted Web Activity.
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   instantAppsEnabled,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.isSingleInstance] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.isSingleInstance] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.isSingleInstance.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.isSingleInstance.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   isSingleInstance,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.isTrustedWebActivity] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.isTrustedWebActivity] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.isTrustedWebActivity.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.isTrustedWebActivity.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   isTrustedWebActivity,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.keepAliveEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.keepAliveEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.keepAliveEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.keepAliveEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   keepAliveEnabled,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.navigationBarColor] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.navigationBarColor] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.navigationBarColor.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.navigationBarColor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   navigationBarColor,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.navigationBarDividerColor] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.navigationBarDividerColor] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.navigationBarDividerColor.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.navigationBarDividerColor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   navigationBarDividerColor,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.noHistory] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.noHistory] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.noHistory.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.noHistory.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   noHistory,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.packageName] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.packageName] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.packageName.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.packageName.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   packageName,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.preferredBarTintColor] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.preferredBarTintColor] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.preferredBarTintColor.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.preferredBarTintColor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController 10.0+
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   preferredBarTintColor,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.preferredControlTintColor] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.preferredControlTintColor] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.preferredControlTintColor.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.preferredControlTintColor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController 10.0+
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   preferredControlTintColor,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.presentationStyle] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.presentationStyle] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.presentationStyle.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.presentationStyle.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   presentationStyle,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.screenOrientation] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.screenOrientation] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.screenOrientation.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.screenOrientation.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs:
   ///    - Not available in a Trusted Web Activity.
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   screenOrientation,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.secondaryToolbarColor] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.secondaryToolbarColor] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.secondaryToolbarColor.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.secondaryToolbarColor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   secondaryToolbarColor,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.shareState] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.shareState] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.shareState.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.shareState.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs:
   ///    - Not available in a Trusted Web Activity.
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   shareState,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.showTitle] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.showTitle] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.showTitle.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.showTitle.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs:
   ///    - Not available in a Trusted Web Activity.
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   showTitle,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.startAnimations] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.startAnimations] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.startAnimations.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.startAnimations.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   startAnimations,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.toolbarBackgroundColor] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.toolbarBackgroundColor] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.toolbarBackgroundColor.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.toolbarBackgroundColor.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   toolbarBackgroundColor,
 
-  ///Can be used to check if the [ChromeSafariBrowserSettings.transitionStyle] property is supported at runtime.
+  ///Can be used to check if the [CygnusChromeSafariBrowserSettings.transitionStyle] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ChromeSafariBrowserSettings.transitionStyle.supported_platforms}
+  ///{@template cygnus_core.CygnusChromeSafariBrowserSettings.transitionStyle.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController
   ///
-  ///Use the [ChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusChromeSafariBrowserSettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   transitionStyle,
 }
 
-extension _ChromeSafariBrowserSettingsPropertySupported
-    on ChromeSafariBrowserSettings {
+extension _CygnusChromeSafariBrowserSettingsPropertySupported
+    on CygnusChromeSafariBrowserSettings {
   static bool isPropertySupported(
-    ChromeSafariBrowserSettingsProperty property, {
+    CygnusChromeSafariBrowserSettingsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case ChromeSafariBrowserSettingsProperty.activityButton:
+      case CygnusChromeSafariBrowserSettingsProperty.activityButton:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.additionalTrustedOrigins:
+      case CygnusChromeSafariBrowserSettingsProperty.additionalTrustedOrigins:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.alwaysUseBrowserUI:
+      case CygnusChromeSafariBrowserSettingsProperty.alwaysUseBrowserUI:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.barCollapsingEnabled:
+      case CygnusChromeSafariBrowserSettingsProperty.barCollapsingEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.dismissButtonStyle:
+      case CygnusChromeSafariBrowserSettingsProperty.dismissButtonStyle:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.displayMode:
+      case CygnusChromeSafariBrowserSettingsProperty.displayMode:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.enableUrlBarHiding:
+      case CygnusChromeSafariBrowserSettingsProperty.enableUrlBarHiding:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.entersReaderIfAvailable:
+      case CygnusChromeSafariBrowserSettingsProperty.entersReaderIfAvailable:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.eventAttribution:
+      case CygnusChromeSafariBrowserSettingsProperty.eventAttribution:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.exitAnimations:
+      case CygnusChromeSafariBrowserSettingsProperty.exitAnimations:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.instantAppsEnabled:
+      case CygnusChromeSafariBrowserSettingsProperty.instantAppsEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.isSingleInstance:
+      case CygnusChromeSafariBrowserSettingsProperty.isSingleInstance:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.isTrustedWebActivity:
+      case CygnusChromeSafariBrowserSettingsProperty.isTrustedWebActivity:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.keepAliveEnabled:
+      case CygnusChromeSafariBrowserSettingsProperty.keepAliveEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.navigationBarColor:
+      case CygnusChromeSafariBrowserSettingsProperty.navigationBarColor:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.navigationBarDividerColor:
+      case CygnusChromeSafariBrowserSettingsProperty.navigationBarDividerColor:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.noHistory:
+      case CygnusChromeSafariBrowserSettingsProperty.noHistory:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.packageName:
+      case CygnusChromeSafariBrowserSettingsProperty.packageName:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.preferredBarTintColor:
+      case CygnusChromeSafariBrowserSettingsProperty.preferredBarTintColor:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.preferredControlTintColor:
+      case CygnusChromeSafariBrowserSettingsProperty.preferredControlTintColor:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.presentationStyle:
+      case CygnusChromeSafariBrowserSettingsProperty.presentationStyle:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.screenOrientation:
+      case CygnusChromeSafariBrowserSettingsProperty.screenOrientation:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.secondaryToolbarColor:
+      case CygnusChromeSafariBrowserSettingsProperty.secondaryToolbarColor:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.shareState:
+      case CygnusChromeSafariBrowserSettingsProperty.shareState:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.showTitle:
+      case CygnusChromeSafariBrowserSettingsProperty.showTitle:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.startAnimations:
+      case CygnusChromeSafariBrowserSettingsProperty.startAnimations:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.toolbarBackgroundColor:
+      case CygnusChromeSafariBrowserSettingsProperty.toolbarBackgroundColor:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ChromeSafariBrowserSettingsProperty.transitionStyle:
+      case CygnusChromeSafariBrowserSettingsProperty.transitionStyle:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
     }

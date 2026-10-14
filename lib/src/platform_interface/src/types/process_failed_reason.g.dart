@@ -7,21 +7,21 @@ part of 'process_failed_reason.dart';
 // **************************************************************************
 
 ///Class used to indicate the kind of process failure that has occurred.
-class ProcessFailedReason {
+class CygnusProcessFailedReason {
   final String _value;
   final int? _nativeValue;
-  const ProcessFailedReason._internal(this._value, this._nativeValue);
+  const CygnusProcessFailedReason._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory ProcessFailedReason._internalMultiPlatform(
+  factory CygnusProcessFailedReason._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => ProcessFailedReason._internal(value, nativeValue());
+  ) => CygnusProcessFailedReason._internal(value, nativeValue());
 
   ///The process crashed.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_REASON_CRASHED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_reason))
-  static final CRASHED = ProcessFailedReason._internalMultiPlatform(
+  static final CRASHED = CygnusProcessFailedReason._internalMultiPlatform(
     'CRASHED',
     () {
       switch (defaultTargetPlatform) {
@@ -38,7 +38,7 @@ class ProcessFailedReason {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_REASON_LAUNCH_FAILED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_reason))
-  static final LAUNCH_FAILED = ProcessFailedReason._internalMultiPlatform(
+  static final LAUNCH_FAILED = CygnusProcessFailedReason._internalMultiPlatform(
     'LAUNCH_FAILED',
     () {
       switch (defaultTargetPlatform) {
@@ -55,7 +55,7 @@ class ProcessFailedReason {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_REASON_OUT_OF_MEMORY](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_reason))
-  static final OUT_OF_MEMORY = ProcessFailedReason._internalMultiPlatform(
+  static final OUT_OF_MEMORY = CygnusProcessFailedReason._internalMultiPlatform(
     'OUT_OF_MEMORY',
     () {
       switch (defaultTargetPlatform) {
@@ -72,7 +72,7 @@ class ProcessFailedReason {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_REASON_TERMINATED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_reason))
-  static final TERMINATED = ProcessFailedReason._internalMultiPlatform(
+  static final TERMINATED = CygnusProcessFailedReason._internalMultiPlatform(
     'TERMINATED',
     () {
       switch (defaultTargetPlatform) {
@@ -89,7 +89,7 @@ class ProcessFailedReason {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_REASON_UNEXPECTED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_reason))
-  static final UNEXPECTED = ProcessFailedReason._internalMultiPlatform(
+  static final UNEXPECTED = CygnusProcessFailedReason._internalMultiPlatform(
     'UNEXPECTED',
     () {
       switch (defaultTargetPlatform) {
@@ -106,7 +106,7 @@ class ProcessFailedReason {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_PROCESS_FAILED_REASON_UNRESPONSIVE](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_process_failed_reason))
-  static final UNRESPONSIVE = ProcessFailedReason._internalMultiPlatform(
+  static final UNRESPONSIVE = CygnusProcessFailedReason._internalMultiPlatform(
     'UNRESPONSIVE',
     () {
       switch (defaultTargetPlatform) {
@@ -119,21 +119,21 @@ class ProcessFailedReason {
     },
   );
 
-  ///Set of all values of [ProcessFailedReason].
-  static final Set<ProcessFailedReason> values = [
-    ProcessFailedReason.CRASHED,
-    ProcessFailedReason.LAUNCH_FAILED,
-    ProcessFailedReason.OUT_OF_MEMORY,
-    ProcessFailedReason.TERMINATED,
-    ProcessFailedReason.UNEXPECTED,
-    ProcessFailedReason.UNRESPONSIVE,
+  ///Set of all values of [CygnusProcessFailedReason].
+  static final Set<CygnusProcessFailedReason> values = [
+    CygnusProcessFailedReason.CRASHED,
+    CygnusProcessFailedReason.LAUNCH_FAILED,
+    CygnusProcessFailedReason.OUT_OF_MEMORY,
+    CygnusProcessFailedReason.TERMINATED,
+    CygnusProcessFailedReason.UNEXPECTED,
+    CygnusProcessFailedReason.UNRESPONSIVE,
   ].toSet();
 
-  ///Gets a possible [ProcessFailedReason] instance from [String] value.
-  static ProcessFailedReason? fromValue(String? value) {
+  ///Gets a possible [CygnusProcessFailedReason] instance from [String] value.
+  static CygnusProcessFailedReason? fromValue(String? value) {
     if (value != null) {
       try {
-        return ProcessFailedReason.values.firstWhere(
+        return CygnusProcessFailedReason.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -143,11 +143,11 @@ class ProcessFailedReason {
     return null;
   }
 
-  ///Gets a possible [ProcessFailedReason] instance from a native value.
-  static ProcessFailedReason? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusProcessFailedReason] instance from a native value.
+  static CygnusProcessFailedReason? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return ProcessFailedReason.values.firstWhere(
+        return CygnusProcessFailedReason.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -157,15 +157,15 @@ class ProcessFailedReason {
     return null;
   }
 
-  /// Gets a possible [ProcessFailedReason] instance value with name [name].
+  /// Gets a possible [CygnusProcessFailedReason] instance value with name [name].
   ///
-  /// Goes through [ProcessFailedReason.values] looking for a value with
-  /// name [name], as reported by [ProcessFailedReason.name].
+  /// Goes through [CygnusProcessFailedReason.values] looking for a value with
+  /// name [name], as reported by [CygnusProcessFailedReason.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ProcessFailedReason? byName(String? name) {
+  static CygnusProcessFailedReason? byName(String? name) {
     if (name != null) {
       try {
-        return ProcessFailedReason.values.firstWhere(
+        return CygnusProcessFailedReason.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -175,7 +175,7 @@ class ProcessFailedReason {
     return null;
   }
 
-  /// Creates a map from the names of [ProcessFailedReason] values to the values.
+  /// Creates a map from the names of [CygnusProcessFailedReason] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -183,9 +183,10 @@ class ProcessFailedReason {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ProcessFailedReason> asNameMap() =>
-      <String, ProcessFailedReason>{
-        for (final value in ProcessFailedReason.values) value.name(): value,
+  static Map<String, CygnusProcessFailedReason> asNameMap() =>
+      <String, CygnusProcessFailedReason>{
+        for (final value in CygnusProcessFailedReason.values)
+          value.name(): value,
       };
 
   ///Gets [String] value.

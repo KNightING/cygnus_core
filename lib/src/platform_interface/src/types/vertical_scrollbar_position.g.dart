@@ -7,46 +7,43 @@ part of 'vertical_scrollbar_position.dart';
 // **************************************************************************
 
 ///Class used to configure the position of the vertical scroll bar.
-class VerticalScrollbarPosition {
+class CygnusVerticalScrollbarPosition {
   final int _value;
   final int? _nativeValue;
-  const VerticalScrollbarPosition._internal(this._value, this._nativeValue);
+  const CygnusVerticalScrollbarPosition._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory VerticalScrollbarPosition._internalMultiPlatform(
+  factory CygnusVerticalScrollbarPosition._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => VerticalScrollbarPosition._internal(value, nativeValue());
+  ) => CygnusVerticalScrollbarPosition._internal(value, nativeValue());
 
   ///Position the scroll bar at the default position as determined by the system.
-  static const SCROLLBAR_POSITION_DEFAULT = VerticalScrollbarPosition._internal(
-    0,
-    0,
-  );
+  static const SCROLLBAR_POSITION_DEFAULT =
+      CygnusVerticalScrollbarPosition._internal(0, 0);
 
   ///Position the scroll bar along the left edge.
-  static const SCROLLBAR_POSITION_LEFT = VerticalScrollbarPosition._internal(
-    1,
-    1,
-  );
+  static const SCROLLBAR_POSITION_LEFT =
+      CygnusVerticalScrollbarPosition._internal(1, 1);
 
   ///Position the scroll bar along the right edge.
-  static const SCROLLBAR_POSITION_RIGHT = VerticalScrollbarPosition._internal(
-    2,
-    2,
-  );
+  static const SCROLLBAR_POSITION_RIGHT =
+      CygnusVerticalScrollbarPosition._internal(2, 2);
 
-  ///Set of all values of [VerticalScrollbarPosition].
-  static final Set<VerticalScrollbarPosition> values = [
-    VerticalScrollbarPosition.SCROLLBAR_POSITION_DEFAULT,
-    VerticalScrollbarPosition.SCROLLBAR_POSITION_LEFT,
-    VerticalScrollbarPosition.SCROLLBAR_POSITION_RIGHT,
+  ///Set of all values of [CygnusVerticalScrollbarPosition].
+  static final Set<CygnusVerticalScrollbarPosition> values = [
+    CygnusVerticalScrollbarPosition.SCROLLBAR_POSITION_DEFAULT,
+    CygnusVerticalScrollbarPosition.SCROLLBAR_POSITION_LEFT,
+    CygnusVerticalScrollbarPosition.SCROLLBAR_POSITION_RIGHT,
   ].toSet();
 
-  ///Gets a possible [VerticalScrollbarPosition] instance from [int] value.
-  static VerticalScrollbarPosition? fromValue(int? value) {
+  ///Gets a possible [CygnusVerticalScrollbarPosition] instance from [int] value.
+  static CygnusVerticalScrollbarPosition? fromValue(int? value) {
     if (value != null) {
       try {
-        return VerticalScrollbarPosition.values.firstWhere(
+        return CygnusVerticalScrollbarPosition.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -56,11 +53,11 @@ class VerticalScrollbarPosition {
     return null;
   }
 
-  ///Gets a possible [VerticalScrollbarPosition] instance from a native value.
-  static VerticalScrollbarPosition? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusVerticalScrollbarPosition] instance from a native value.
+  static CygnusVerticalScrollbarPosition? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return VerticalScrollbarPosition.values.firstWhere(
+        return CygnusVerticalScrollbarPosition.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -70,15 +67,15 @@ class VerticalScrollbarPosition {
     return null;
   }
 
-  /// Gets a possible [VerticalScrollbarPosition] instance value with name [name].
+  /// Gets a possible [CygnusVerticalScrollbarPosition] instance value with name [name].
   ///
-  /// Goes through [VerticalScrollbarPosition.values] looking for a value with
-  /// name [name], as reported by [VerticalScrollbarPosition.name].
+  /// Goes through [CygnusVerticalScrollbarPosition.values] looking for a value with
+  /// name [name], as reported by [CygnusVerticalScrollbarPosition.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static VerticalScrollbarPosition? byName(String? name) {
+  static CygnusVerticalScrollbarPosition? byName(String? name) {
     if (name != null) {
       try {
-        return VerticalScrollbarPosition.values.firstWhere(
+        return CygnusVerticalScrollbarPosition.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -88,7 +85,7 @@ class VerticalScrollbarPosition {
     return null;
   }
 
-  /// Creates a map from the names of [VerticalScrollbarPosition] values to the values.
+  /// Creates a map from the names of [CygnusVerticalScrollbarPosition] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -96,9 +93,9 @@ class VerticalScrollbarPosition {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, VerticalScrollbarPosition> asNameMap() =>
-      <String, VerticalScrollbarPosition>{
-        for (final value in VerticalScrollbarPosition.values)
+  static Map<String, CygnusVerticalScrollbarPosition> asNameMap() =>
+      <String, CygnusVerticalScrollbarPosition>{
+        for (final value in CygnusVerticalScrollbarPosition.values)
           value.name(): value,
       };
 
@@ -139,45 +136,45 @@ class VerticalScrollbarPosition {
 }
 
 ///An Android-specific class used to configure the position of the vertical scroll bar.
-///Use [VerticalScrollbarPosition] instead.
-@Deprecated('Use VerticalScrollbarPosition instead')
-class AndroidVerticalScrollbarPosition {
+///Use [CygnusVerticalScrollbarPosition] instead.
+@Deprecated('Use CygnusVerticalScrollbarPosition instead')
+class CygnusAndroidVerticalScrollbarPosition {
   final int _value;
   final int? _nativeValue;
-  const AndroidVerticalScrollbarPosition._internal(
+  const CygnusAndroidVerticalScrollbarPosition._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory AndroidVerticalScrollbarPosition._internalMultiPlatform(
+  factory CygnusAndroidVerticalScrollbarPosition._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => AndroidVerticalScrollbarPosition._internal(value, nativeValue());
+  ) => CygnusAndroidVerticalScrollbarPosition._internal(value, nativeValue());
 
   ///Position the scroll bar at the default position as determined by the system.
   static const SCROLLBAR_POSITION_DEFAULT =
-      AndroidVerticalScrollbarPosition._internal(0, 0);
+      CygnusAndroidVerticalScrollbarPosition._internal(0, 0);
 
   ///Position the scroll bar along the left edge.
   static const SCROLLBAR_POSITION_LEFT =
-      AndroidVerticalScrollbarPosition._internal(1, 1);
+      CygnusAndroidVerticalScrollbarPosition._internal(1, 1);
 
   ///Position the scroll bar along the right edge.
   static const SCROLLBAR_POSITION_RIGHT =
-      AndroidVerticalScrollbarPosition._internal(2, 2);
+      CygnusAndroidVerticalScrollbarPosition._internal(2, 2);
 
-  ///Set of all values of [AndroidVerticalScrollbarPosition].
-  static final Set<AndroidVerticalScrollbarPosition> values = [
-    AndroidVerticalScrollbarPosition.SCROLLBAR_POSITION_DEFAULT,
-    AndroidVerticalScrollbarPosition.SCROLLBAR_POSITION_LEFT,
-    AndroidVerticalScrollbarPosition.SCROLLBAR_POSITION_RIGHT,
+  ///Set of all values of [CygnusAndroidVerticalScrollbarPosition].
+  static final Set<CygnusAndroidVerticalScrollbarPosition> values = [
+    CygnusAndroidVerticalScrollbarPosition.SCROLLBAR_POSITION_DEFAULT,
+    CygnusAndroidVerticalScrollbarPosition.SCROLLBAR_POSITION_LEFT,
+    CygnusAndroidVerticalScrollbarPosition.SCROLLBAR_POSITION_RIGHT,
   ].toSet();
 
-  ///Gets a possible [AndroidVerticalScrollbarPosition] instance from [int] value.
-  static AndroidVerticalScrollbarPosition? fromValue(int? value) {
+  ///Gets a possible [CygnusAndroidVerticalScrollbarPosition] instance from [int] value.
+  static CygnusAndroidVerticalScrollbarPosition? fromValue(int? value) {
     if (value != null) {
       try {
-        return AndroidVerticalScrollbarPosition.values.firstWhere(
+        return CygnusAndroidVerticalScrollbarPosition.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -187,11 +184,11 @@ class AndroidVerticalScrollbarPosition {
     return null;
   }
 
-  ///Gets a possible [AndroidVerticalScrollbarPosition] instance from a native value.
-  static AndroidVerticalScrollbarPosition? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusAndroidVerticalScrollbarPosition] instance from a native value.
+  static CygnusAndroidVerticalScrollbarPosition? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return AndroidVerticalScrollbarPosition.values.firstWhere(
+        return CygnusAndroidVerticalScrollbarPosition.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -201,15 +198,15 @@ class AndroidVerticalScrollbarPosition {
     return null;
   }
 
-  /// Gets a possible [AndroidVerticalScrollbarPosition] instance value with name [name].
+  /// Gets a possible [CygnusAndroidVerticalScrollbarPosition] instance value with name [name].
   ///
-  /// Goes through [AndroidVerticalScrollbarPosition.values] looking for a value with
-  /// name [name], as reported by [AndroidVerticalScrollbarPosition.name].
+  /// Goes through [CygnusAndroidVerticalScrollbarPosition.values] looking for a value with
+  /// name [name], as reported by [CygnusAndroidVerticalScrollbarPosition.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static AndroidVerticalScrollbarPosition? byName(String? name) {
+  static CygnusAndroidVerticalScrollbarPosition? byName(String? name) {
     if (name != null) {
       try {
-        return AndroidVerticalScrollbarPosition.values.firstWhere(
+        return CygnusAndroidVerticalScrollbarPosition.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -219,7 +216,7 @@ class AndroidVerticalScrollbarPosition {
     return null;
   }
 
-  /// Creates a map from the names of [AndroidVerticalScrollbarPosition] values to the values.
+  /// Creates a map from the names of [CygnusAndroidVerticalScrollbarPosition] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -227,9 +224,9 @@ class AndroidVerticalScrollbarPosition {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, AndroidVerticalScrollbarPosition> asNameMap() =>
-      <String, AndroidVerticalScrollbarPosition>{
-        for (final value in AndroidVerticalScrollbarPosition.values)
+  static Map<String, CygnusAndroidVerticalScrollbarPosition> asNameMap() =>
+      <String, CygnusAndroidVerticalScrollbarPosition>{
+        for (final value in CygnusAndroidVerticalScrollbarPosition.values)
           value.name(): value,
       };
 

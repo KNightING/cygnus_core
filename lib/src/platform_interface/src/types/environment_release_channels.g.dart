@@ -6,36 +6,42 @@ part of 'environment_release_channels.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///The WebView2 release channels searched for during [PlatformWebViewEnvironment] creation.
-class EnvironmentReleaseChannels {
+///The WebView2 release channels searched for during [CygnusPlatformWebViewEnvironment] creation.
+class CygnusEnvironmentReleaseChannels {
   final int _value;
   final int? _nativeValue;
-  const EnvironmentReleaseChannels._internal(this._value, this._nativeValue);
+  const CygnusEnvironmentReleaseChannels._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory EnvironmentReleaseChannels._internalMultiPlatform(
+  factory CygnusEnvironmentReleaseChannels._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => EnvironmentReleaseChannels._internal(value, nativeValue());
+  ) => CygnusEnvironmentReleaseChannels._internal(value, nativeValue());
 
   ///The Beta release channel that is released every 4 weeks, a week before the stable release.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final BETA = EnvironmentReleaseChannels._internalMultiPlatform(2, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.windows:
-        return 2;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final BETA = CygnusEnvironmentReleaseChannels._internalMultiPlatform(
+    2,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.windows:
+          return 2;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
   ///The Canary release channel that is released daily.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final CANARY = EnvironmentReleaseChannels._internalMultiPlatform(
+  static final CANARY = CygnusEnvironmentReleaseChannels._internalMultiPlatform(
     8,
     () {
       switch (defaultTargetPlatform) {
@@ -52,35 +58,41 @@ class EnvironmentReleaseChannels {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final DEV = EnvironmentReleaseChannels._internalMultiPlatform(4, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.windows:
-        return 4;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final DEV = CygnusEnvironmentReleaseChannels._internalMultiPlatform(
+    4,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.windows:
+          return 4;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
   ///No release channel. Passing only this value results in `HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND)`.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final NONE = EnvironmentReleaseChannels._internalMultiPlatform(0, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.windows:
-        return 0;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final NONE = CygnusEnvironmentReleaseChannels._internalMultiPlatform(
+    0,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.windows:
+          return 0;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
   ///The stable WebView2 Runtime that is released every 4 weeks.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  static final STABLE = EnvironmentReleaseChannels._internalMultiPlatform(
+  static final STABLE = CygnusEnvironmentReleaseChannels._internalMultiPlatform(
     1,
     () {
       switch (defaultTargetPlatform) {
@@ -93,34 +105,34 @@ class EnvironmentReleaseChannels {
     },
   );
 
-  ///Set of all values of [EnvironmentReleaseChannels].
-  static final Set<EnvironmentReleaseChannels> values = [
-    EnvironmentReleaseChannels.BETA,
-    EnvironmentReleaseChannels.CANARY,
-    EnvironmentReleaseChannels.DEV,
-    EnvironmentReleaseChannels.NONE,
-    EnvironmentReleaseChannels.STABLE,
+  ///Set of all values of [CygnusEnvironmentReleaseChannels].
+  static final Set<CygnusEnvironmentReleaseChannels> values = [
+    CygnusEnvironmentReleaseChannels.BETA,
+    CygnusEnvironmentReleaseChannels.CANARY,
+    CygnusEnvironmentReleaseChannels.DEV,
+    CygnusEnvironmentReleaseChannels.NONE,
+    CygnusEnvironmentReleaseChannels.STABLE,
   ].toSet();
 
-  ///Gets a possible [EnvironmentReleaseChannels] instance from [int] value.
-  static EnvironmentReleaseChannels? fromValue(int? value) {
+  ///Gets a possible [CygnusEnvironmentReleaseChannels] instance from [int] value.
+  static CygnusEnvironmentReleaseChannels? fromValue(int? value) {
     if (value != null) {
       try {
-        return EnvironmentReleaseChannels.values.firstWhere(
+        return CygnusEnvironmentReleaseChannels.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
-        return EnvironmentReleaseChannels._internal(value, value);
+        return CygnusEnvironmentReleaseChannels._internal(value, value);
       }
     }
     return null;
   }
 
-  ///Gets a possible [EnvironmentReleaseChannels] instance from a native value.
-  static EnvironmentReleaseChannels? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusEnvironmentReleaseChannels] instance from a native value.
+  static CygnusEnvironmentReleaseChannels? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return EnvironmentReleaseChannels.values.firstWhere(
+        return CygnusEnvironmentReleaseChannels.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -130,15 +142,15 @@ class EnvironmentReleaseChannels {
     return null;
   }
 
-  /// Gets a possible [EnvironmentReleaseChannels] instance value with name [name].
+  /// Gets a possible [CygnusEnvironmentReleaseChannels] instance value with name [name].
   ///
-  /// Goes through [EnvironmentReleaseChannels.values] looking for a value with
-  /// name [name], as reported by [EnvironmentReleaseChannels.name].
+  /// Goes through [CygnusEnvironmentReleaseChannels.values] looking for a value with
+  /// name [name], as reported by [CygnusEnvironmentReleaseChannels.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static EnvironmentReleaseChannels? byName(String? name) {
+  static CygnusEnvironmentReleaseChannels? byName(String? name) {
     if (name != null) {
       try {
-        return EnvironmentReleaseChannels.values.firstWhere(
+        return CygnusEnvironmentReleaseChannels.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -148,7 +160,7 @@ class EnvironmentReleaseChannels {
     return null;
   }
 
-  /// Creates a map from the names of [EnvironmentReleaseChannels] values to the values.
+  /// Creates a map from the names of [CygnusEnvironmentReleaseChannels] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -156,9 +168,9 @@ class EnvironmentReleaseChannels {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, EnvironmentReleaseChannels> asNameMap() =>
-      <String, EnvironmentReleaseChannels>{
-        for (final value in EnvironmentReleaseChannels.values)
+  static Map<String, CygnusEnvironmentReleaseChannels> asNameMap() =>
+      <String, CygnusEnvironmentReleaseChannels>{
+        for (final value in CygnusEnvironmentReleaseChannels.values)
           value.name(): value,
       };
 
@@ -191,13 +203,14 @@ class EnvironmentReleaseChannels {
   @override
   bool operator ==(value) => value == _value;
 
-  EnvironmentReleaseChannels operator |(EnvironmentReleaseChannels value) =>
-      EnvironmentReleaseChannels._internal(
-        value.toValue() | _value,
-        value.toNativeValue() != null && _nativeValue != null
-            ? value.toNativeValue()! | _nativeValue!
-            : null,
-      );
+  CygnusEnvironmentReleaseChannels operator |(
+    CygnusEnvironmentReleaseChannels value,
+  ) => CygnusEnvironmentReleaseChannels._internal(
+    value.toValue() | _value,
+    value.toNativeValue() != null && _nativeValue != null
+        ? value.toNativeValue()! | _nativeValue!
+        : null,
+  );
 
   ///Checks if the value is supported by the [defaultTargetPlatform].
   bool isSupported() {

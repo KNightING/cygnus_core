@@ -6,34 +6,34 @@ part of 'form_resubmission_action.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class that represents the action to take used by the [PlatformWebViewCreationParams.onFormResubmission] event.
-class FormResubmissionAction {
+///Class that represents the action to take used by the [CygnusPlatformWebViewCreationParams.onFormResubmission] event.
+class CygnusFormResubmissionAction {
   final int _value;
   final int? _nativeValue;
-  const FormResubmissionAction._internal(this._value, this._nativeValue);
+  const CygnusFormResubmissionAction._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory FormResubmissionAction._internalMultiPlatform(
+  factory CygnusFormResubmissionAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => FormResubmissionAction._internal(value, nativeValue());
+  ) => CygnusFormResubmissionAction._internal(value, nativeValue());
 
   ///Don't resend data
-  static const DONT_RESEND = FormResubmissionAction._internal(1, 1);
+  static const DONT_RESEND = CygnusFormResubmissionAction._internal(1, 1);
 
   ///Resend data
-  static const RESEND = FormResubmissionAction._internal(0, 0);
+  static const RESEND = CygnusFormResubmissionAction._internal(0, 0);
 
-  ///Set of all values of [FormResubmissionAction].
-  static final Set<FormResubmissionAction> values = [
-    FormResubmissionAction.DONT_RESEND,
-    FormResubmissionAction.RESEND,
+  ///Set of all values of [CygnusFormResubmissionAction].
+  static final Set<CygnusFormResubmissionAction> values = [
+    CygnusFormResubmissionAction.DONT_RESEND,
+    CygnusFormResubmissionAction.RESEND,
   ].toSet();
 
-  ///Gets a possible [FormResubmissionAction] instance from [int] value.
-  static FormResubmissionAction? fromValue(int? value) {
+  ///Gets a possible [CygnusFormResubmissionAction] instance from [int] value.
+  static CygnusFormResubmissionAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return FormResubmissionAction.values.firstWhere(
+        return CygnusFormResubmissionAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -43,11 +43,11 @@ class FormResubmissionAction {
     return null;
   }
 
-  ///Gets a possible [FormResubmissionAction] instance from a native value.
-  static FormResubmissionAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusFormResubmissionAction] instance from a native value.
+  static CygnusFormResubmissionAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return FormResubmissionAction.values.firstWhere(
+        return CygnusFormResubmissionAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -57,15 +57,15 @@ class FormResubmissionAction {
     return null;
   }
 
-  /// Gets a possible [FormResubmissionAction] instance value with name [name].
+  /// Gets a possible [CygnusFormResubmissionAction] instance value with name [name].
   ///
-  /// Goes through [FormResubmissionAction.values] looking for a value with
-  /// name [name], as reported by [FormResubmissionAction.name].
+  /// Goes through [CygnusFormResubmissionAction.values] looking for a value with
+  /// name [name], as reported by [CygnusFormResubmissionAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static FormResubmissionAction? byName(String? name) {
+  static CygnusFormResubmissionAction? byName(String? name) {
     if (name != null) {
       try {
-        return FormResubmissionAction.values.firstWhere(
+        return CygnusFormResubmissionAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -75,7 +75,7 @@ class FormResubmissionAction {
     return null;
   }
 
-  /// Creates a map from the names of [FormResubmissionAction] values to the values.
+  /// Creates a map from the names of [CygnusFormResubmissionAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -83,9 +83,10 @@ class FormResubmissionAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, FormResubmissionAction> asNameMap() =>
-      <String, FormResubmissionAction>{
-        for (final value in FormResubmissionAction.values) value.name(): value,
+  static Map<String, CygnusFormResubmissionAction> asNameMap() =>
+      <String, CygnusFormResubmissionAction>{
+        for (final value in CygnusFormResubmissionAction.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

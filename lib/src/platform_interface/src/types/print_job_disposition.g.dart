@@ -6,22 +6,22 @@ part of 'print_job_disposition.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class representing the constants that specify values for the print job disposition of a [PlatformPrintJobController].
-class PrintJobDisposition {
+///Class representing the constants that specify values for the print job disposition of a [CygnusPlatformPrintJobController].
+class CygnusPrintJobDisposition {
   final String _value;
   final String? _nativeValue;
-  const PrintJobDisposition._internal(this._value, this._nativeValue);
+  const CygnusPrintJobDisposition._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory PrintJobDisposition._internalMultiPlatform(
+  factory CygnusPrintJobDisposition._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => PrintJobDisposition._internal(value, nativeValue());
+  ) => CygnusPrintJobDisposition._internal(value, nativeValue());
 
   ///Cancel print job.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
-  static final CANCEL = PrintJobDisposition._internalMultiPlatform(
+  static final CANCEL = CygnusPrintJobDisposition._internalMultiPlatform(
     'CANCEL',
     () {
       switch (defaultTargetPlatform) {
@@ -38,7 +38,7 @@ class PrintJobDisposition {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
-  static final PREVIEW = PrintJobDisposition._internalMultiPlatform(
+  static final PREVIEW = CygnusPrintJobDisposition._internalMultiPlatform(
     'PREVIEW',
     () {
       switch (defaultTargetPlatform) {
@@ -55,43 +55,49 @@ class PrintJobDisposition {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
-  static final SAVE = PrintJobDisposition._internalMultiPlatform('SAVE', () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.macOS:
-        return 'save';
-      default:
-        break;
-    }
-    return null;
-  });
+  static final SAVE = CygnusPrintJobDisposition._internalMultiPlatform(
+    'SAVE',
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.macOS:
+          return 'save';
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
   ///Normal print job.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- macOS WKWebView
-  static final SPOOL = PrintJobDisposition._internalMultiPlatform('SPOOL', () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.macOS:
-        return 'spool';
-      default:
-        break;
-    }
-    return null;
-  });
+  static final SPOOL = CygnusPrintJobDisposition._internalMultiPlatform(
+    'SPOOL',
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.macOS:
+          return 'spool';
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
-  ///Set of all values of [PrintJobDisposition].
-  static final Set<PrintJobDisposition> values = [
-    PrintJobDisposition.CANCEL,
-    PrintJobDisposition.PREVIEW,
-    PrintJobDisposition.SAVE,
-    PrintJobDisposition.SPOOL,
+  ///Set of all values of [CygnusPrintJobDisposition].
+  static final Set<CygnusPrintJobDisposition> values = [
+    CygnusPrintJobDisposition.CANCEL,
+    CygnusPrintJobDisposition.PREVIEW,
+    CygnusPrintJobDisposition.SAVE,
+    CygnusPrintJobDisposition.SPOOL,
   ].toSet();
 
-  ///Gets a possible [PrintJobDisposition] instance from [String] value.
-  static PrintJobDisposition? fromValue(String? value) {
+  ///Gets a possible [CygnusPrintJobDisposition] instance from [String] value.
+  static CygnusPrintJobDisposition? fromValue(String? value) {
     if (value != null) {
       try {
-        return PrintJobDisposition.values.firstWhere(
+        return CygnusPrintJobDisposition.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -101,11 +107,11 @@ class PrintJobDisposition {
     return null;
   }
 
-  ///Gets a possible [PrintJobDisposition] instance from a native value.
-  static PrintJobDisposition? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusPrintJobDisposition] instance from a native value.
+  static CygnusPrintJobDisposition? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return PrintJobDisposition.values.firstWhere(
+        return CygnusPrintJobDisposition.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -115,15 +121,15 @@ class PrintJobDisposition {
     return null;
   }
 
-  /// Gets a possible [PrintJobDisposition] instance value with name [name].
+  /// Gets a possible [CygnusPrintJobDisposition] instance value with name [name].
   ///
-  /// Goes through [PrintJobDisposition.values] looking for a value with
-  /// name [name], as reported by [PrintJobDisposition.name].
+  /// Goes through [CygnusPrintJobDisposition.values] looking for a value with
+  /// name [name], as reported by [CygnusPrintJobDisposition.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static PrintJobDisposition? byName(String? name) {
+  static CygnusPrintJobDisposition? byName(String? name) {
     if (name != null) {
       try {
-        return PrintJobDisposition.values.firstWhere(
+        return CygnusPrintJobDisposition.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -133,7 +139,7 @@ class PrintJobDisposition {
     return null;
   }
 
-  /// Creates a map from the names of [PrintJobDisposition] values to the values.
+  /// Creates a map from the names of [CygnusPrintJobDisposition] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -141,9 +147,10 @@ class PrintJobDisposition {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, PrintJobDisposition> asNameMap() =>
-      <String, PrintJobDisposition>{
-        for (final value in PrintJobDisposition.values) value.name(): value,
+  static Map<String, CygnusPrintJobDisposition> asNameMap() =>
+      <String, CygnusPrintJobDisposition>{
+        for (final value in CygnusPrintJobDisposition.values)
+          value.name(): value,
       };
 
   ///Gets [String] value.

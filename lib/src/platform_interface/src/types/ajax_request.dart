@@ -11,7 +11,7 @@ part 'ajax_request.g.dart';
 
 ///Class that represents a JavaScript [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) object.
 @ExchangeableObject()
-class AjaxRequest_ {
+class CygnusAjaxRequest_ {
   ///Data passed as a parameter to the `XMLHttpRequest.send()` method.
   dynamic data;
 
@@ -19,7 +19,7 @@ class AjaxRequest_ {
   String? method;
 
   ///The URL of the `XMLHttpRequest` request.
-  WebUri? url;
+  CygnusWebUri? url;
 
   ///An optional Boolean parameter, defaulting to true, indicating whether or not the request is performed asynchronously.
   bool? isAsync;
@@ -37,10 +37,10 @@ class AjaxRequest_ {
   bool? withCredentials;
 
   ///The HTTP request headers.
-  AjaxRequestHeaders_? headers;
+  CygnusAjaxRequestHeaders_? headers;
 
   ///The state of the `XMLHttpRequest` request.
-  AjaxRequestReadyState_? readyState;
+  CygnusAjaxRequestReadyState_? readyState;
 
   ///The numerical HTTP [status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) of the `XMLHttpRequest`'s response.
   int? status;
@@ -48,14 +48,14 @@ class AjaxRequest_ {
   ///The serialized URL of the response or the empty string if the URL is null.
   ///If the URL is returned, any URL fragment present in the URL will be stripped away.
   ///The value of responseURL will be the final URL obtained after any redirects.
-  WebUri? responseURL;
+  CygnusWebUri? responseURL;
 
   ///It is an enumerated string value specifying the type of data contained in the response.
   ///It also lets the author change the [response type](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType).
   ///If an empty string is set as the value of responseType, the default value of text is used.
   String? responseType;
 
-  ///The response's body content. The content-type depends on the [AjaxRequest.responseType].
+  ///The response's body content. The content-type depends on the [CygnusAjaxRequest.responseType].
   dynamic response;
 
   ///The text received from a server following a request being sent.
@@ -65,8 +65,8 @@ class AjaxRequest_ {
   String? responseXML;
 
   ///A String containing the response's status message as returned by the HTTP server.
-  ///Unlike [AjaxRequest.status] which indicates a numerical status code, this property contains the text of the response status, such as "OK" or "Not Found".
-  ///If the request's readyState is in [AjaxRequestReadyState.UNSENT] or [AjaxRequestReadyState.OPENED] state, the value of statusText will be an empty string.
+  ///Unlike [CygnusAjaxRequest.status] which indicates a numerical status code, this property contains the text of the response status, such as "OK" or "Not Found".
+  ///If the request's readyState is in [CygnusAjaxRequestReadyState.UNSENT] or [CygnusAjaxRequestReadyState.OPENED] state, the value of statusText will be an empty string.
   ///If the server response doesn't explicitly specify a status text, statusText will assume the default value "OK".
   String? statusText;
 
@@ -74,12 +74,12 @@ class AjaxRequest_ {
   Map<String, dynamic>? responseHeaders;
 
   ///Event type of the `XMLHttpRequest` request.
-  AjaxRequestEvent_? event;
+  CygnusAjaxRequestEvent_? event;
 
-  ///Indicates the [AjaxRequestAction] that can be used to control the `XMLHttpRequest` request.
-  AjaxRequestAction_? action;
+  ///Indicates the [CygnusAjaxRequestAction] that can be used to control the `XMLHttpRequest` request.
+  CygnusAjaxRequestAction_? action;
 
-  AjaxRequest_({
+  CygnusAjaxRequest_({
     this.data,
     this.method,
     this.url,
@@ -98,6 +98,6 @@ class AjaxRequest_ {
     this.statusText,
     this.responseHeaders,
     this.event,
-    this.action = AjaxRequestAction_.PROCEED,
+    this.action = CygnusAjaxRequestAction_.PROCEED,
   });
 }

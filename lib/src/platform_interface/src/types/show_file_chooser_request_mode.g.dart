@@ -6,43 +6,30 @@ part of 'show_file_chooser_request_mode.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///It represents file chooser mode of a [ShowFileChooserRequest].
-class ShowFileChooserRequestMode {
+///It represents file chooser mode of a [CygnusShowFileChooserRequest].
+class CygnusShowFileChooserRequestMode {
   final int _value;
   final int? _nativeValue;
-  const ShowFileChooserRequestMode._internal(this._value, this._nativeValue);
+  const CygnusShowFileChooserRequestMode._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory ShowFileChooserRequestMode._internalMultiPlatform(
+  factory CygnusShowFileChooserRequestMode._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => ShowFileChooserRequestMode._internal(value, nativeValue());
+  ) => CygnusShowFileChooserRequestMode._internal(value, nativeValue());
 
   ///Open single file. Requires that the file exists before allowing the user to pick it.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  static final OPEN = ShowFileChooserRequestMode._internalMultiPlatform(0, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.android:
-        return 0;
-      default:
-        break;
-    }
-    return null;
-  });
-
-  ///Like Open but allows a folder to be selected.
-  ///The implementation should enumerate all files selected by this operation.
-  ///This feature is not supported at the moment.
-  ///
-  ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView
-  static final OPEN_FOLDER = ShowFileChooserRequestMode._internalMultiPlatform(
-    2,
+  static final OPEN = CygnusShowFileChooserRequestMode._internalMultiPlatform(
+    0,
     () {
       switch (defaultTargetPlatform) {
         case TargetPlatform.android:
-          return 2;
+          return 0;
         default:
           break;
       }
@@ -50,12 +37,29 @@ class ShowFileChooserRequestMode {
     },
   );
 
+  ///Like Open but allows a folder to be selected.
+  ///The implementation should enumerate all files selected by this operation.
+  ///This feature is not supported at the moment.
+  ///
+  ///**Officially Supported Platforms/Implementations**:
+  ///- Android WebView
+  static final OPEN_FOLDER =
+      CygnusShowFileChooserRequestMode._internalMultiPlatform(2, () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.android:
+            return 2;
+          default:
+            break;
+        }
+        return null;
+      });
+
   ///Like Open but allows multiple files to be selected.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   static final OPEN_MULTIPLE =
-      ShowFileChooserRequestMode._internalMultiPlatform(1, () {
+      CygnusShowFileChooserRequestMode._internalMultiPlatform(1, () {
         switch (defaultTargetPlatform) {
           case TargetPlatform.android:
             return 1;
@@ -69,29 +73,32 @@ class ShowFileChooserRequestMode {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  static final SAVE = ShowFileChooserRequestMode._internalMultiPlatform(3, () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.android:
-        return 3;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final SAVE = CygnusShowFileChooserRequestMode._internalMultiPlatform(
+    3,
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.android:
+          return 3;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
-  ///Set of all values of [ShowFileChooserRequestMode].
-  static final Set<ShowFileChooserRequestMode> values = [
-    ShowFileChooserRequestMode.OPEN,
-    ShowFileChooserRequestMode.OPEN_FOLDER,
-    ShowFileChooserRequestMode.OPEN_MULTIPLE,
-    ShowFileChooserRequestMode.SAVE,
+  ///Set of all values of [CygnusShowFileChooserRequestMode].
+  static final Set<CygnusShowFileChooserRequestMode> values = [
+    CygnusShowFileChooserRequestMode.OPEN,
+    CygnusShowFileChooserRequestMode.OPEN_FOLDER,
+    CygnusShowFileChooserRequestMode.OPEN_MULTIPLE,
+    CygnusShowFileChooserRequestMode.SAVE,
   ].toSet();
 
-  ///Gets a possible [ShowFileChooserRequestMode] instance from [int] value.
-  static ShowFileChooserRequestMode? fromValue(int? value) {
+  ///Gets a possible [CygnusShowFileChooserRequestMode] instance from [int] value.
+  static CygnusShowFileChooserRequestMode? fromValue(int? value) {
     if (value != null) {
       try {
-        return ShowFileChooserRequestMode.values.firstWhere(
+        return CygnusShowFileChooserRequestMode.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -101,11 +108,11 @@ class ShowFileChooserRequestMode {
     return null;
   }
 
-  ///Gets a possible [ShowFileChooserRequestMode] instance from a native value.
-  static ShowFileChooserRequestMode? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusShowFileChooserRequestMode] instance from a native value.
+  static CygnusShowFileChooserRequestMode? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return ShowFileChooserRequestMode.values.firstWhere(
+        return CygnusShowFileChooserRequestMode.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -115,15 +122,15 @@ class ShowFileChooserRequestMode {
     return null;
   }
 
-  /// Gets a possible [ShowFileChooserRequestMode] instance value with name [name].
+  /// Gets a possible [CygnusShowFileChooserRequestMode] instance value with name [name].
   ///
-  /// Goes through [ShowFileChooserRequestMode.values] looking for a value with
-  /// name [name], as reported by [ShowFileChooserRequestMode.name].
+  /// Goes through [CygnusShowFileChooserRequestMode.values] looking for a value with
+  /// name [name], as reported by [CygnusShowFileChooserRequestMode.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ShowFileChooserRequestMode? byName(String? name) {
+  static CygnusShowFileChooserRequestMode? byName(String? name) {
     if (name != null) {
       try {
-        return ShowFileChooserRequestMode.values.firstWhere(
+        return CygnusShowFileChooserRequestMode.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -133,7 +140,7 @@ class ShowFileChooserRequestMode {
     return null;
   }
 
-  /// Creates a map from the names of [ShowFileChooserRequestMode] values to the values.
+  /// Creates a map from the names of [CygnusShowFileChooserRequestMode] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -141,9 +148,9 @@ class ShowFileChooserRequestMode {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ShowFileChooserRequestMode> asNameMap() =>
-      <String, ShowFileChooserRequestMode>{
-        for (final value in ShowFileChooserRequestMode.values)
+  static Map<String, CygnusShowFileChooserRequestMode> asNameMap() =>
+      <String, CygnusShowFileChooserRequestMode>{
+        for (final value in CygnusShowFileChooserRequestMode.values)
           value.name(): value,
       };
 

@@ -61,7 +61,7 @@ class _TestRunnerScreenState extends State<TestRunnerScreen> {
     if (lastWebViewType != null) {
       final webViewType = TestWebViewType.values.firstWhere(
         (e) => e.name == lastWebViewType,
-        orElse: () => TestWebViewType.inAppWebView,
+        orElse: () => TestWebViewType.webView,
       );
       runner.setWebViewType(webViewType);
     }
@@ -162,7 +162,7 @@ class _TestRunnerScreenState extends State<TestRunnerScreen> {
           return Consumer<TestRunner>(
             builder: (context, runner, child) {
               final panelChildren = <Widget>[
-                if (runner.webViewType == TestWebViewType.inAppWebView)
+                if (runner.webViewType == TestWebViewType.webView)
                   Flexible(
                     key: const ValueKey('testRunnerWebViewPanel'),
                     flex: 1,
@@ -180,7 +180,7 @@ class _TestRunnerScreenState extends State<TestRunnerScreen> {
                   ),
                 Flexible(
                   key: const ValueKey('testRunnerResultsPanel'),
-                  flex: runner.webViewType == TestWebViewType.inAppWebView
+                  flex: runner.webViewType == TestWebViewType.webView
                       ? 1
                       : 2,
                   child: _buildResultsList(),
@@ -266,7 +266,7 @@ class _TestRunnerScreenState extends State<TestRunnerScreen> {
         final selector = SegmentedButton<TestWebViewType>(
           segments: const [
             ButtonSegment(
-              value: TestWebViewType.inAppWebView,
+              value: TestWebViewType.webView,
               label: Text('Visible'),
               icon: Icon(Icons.visibility, size: 18),
             ),
@@ -283,7 +283,7 @@ class _TestRunnerScreenState extends State<TestRunnerScreen> {
           },
         );
 
-        final helperText = runner.webViewType == TestWebViewType.inAppWebView
+        final helperText = runner.webViewType == TestWebViewType.webView
             ? Text(
                 'Real-time rendering enabled',
                 style: TextStyle(
@@ -372,7 +372,7 @@ class _TestRunnerScreenState extends State<TestRunnerScreen> {
             ],
           ),
         ),
-        Expanded(child: runner.buildInAppWebView()),
+        Expanded(child: runner.buildWebView()),
       ],
     );
   }
@@ -595,7 +595,7 @@ class _TestRunnerScreenState extends State<TestRunnerScreen> {
 
   Widget? _buildWebViewStatusChip(TestRunner runner) {
     if (!runner.webViewReady &&
-        runner.webViewType == TestWebViewType.inAppWebView) {
+        runner.webViewType == TestWebViewType.webView) {
       return const Chip(
         avatar: SizedBox(
           width: 16,

@@ -6,68 +6,71 @@ part of 'content_blocker_trigger_resource_type.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class that represents the possible resource type defined for a [ContentBlockerTrigger].
-class ContentBlockerTriggerResourceType {
+///Class that represents the possible resource type defined for a [CygnusContentBlockerTrigger].
+class CygnusContentBlockerTriggerResourceType {
   final String _value;
   final String? _nativeValue;
-  const ContentBlockerTriggerResourceType._internal(
+  const CygnusContentBlockerTriggerResourceType._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory ContentBlockerTriggerResourceType._internalMultiPlatform(
+  factory CygnusContentBlockerTriggerResourceType._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => ContentBlockerTriggerResourceType._internal(value, nativeValue());
-  static const DOCUMENT = ContentBlockerTriggerResourceType._internal(
+  ) => CygnusContentBlockerTriggerResourceType._internal(value, nativeValue());
+  static const DOCUMENT = CygnusContentBlockerTriggerResourceType._internal(
     'document',
     'document',
   );
-  static const FONT = ContentBlockerTriggerResourceType._internal(
+  static const FONT = CygnusContentBlockerTriggerResourceType._internal(
     'font',
     'font',
   );
-  static const IMAGE = ContentBlockerTriggerResourceType._internal(
+  static const IMAGE = CygnusContentBlockerTriggerResourceType._internal(
     'image',
     'image',
   );
-  static const MEDIA = ContentBlockerTriggerResourceType._internal(
+  static const MEDIA = CygnusContentBlockerTriggerResourceType._internal(
     'media',
     'media',
   );
 
   ///Any untyped load
-  static const RAW = ContentBlockerTriggerResourceType._internal('raw', 'raw');
-  static const SCRIPT = ContentBlockerTriggerResourceType._internal(
+  static const RAW = CygnusContentBlockerTriggerResourceType._internal(
+    'raw',
+    'raw',
+  );
+  static const SCRIPT = CygnusContentBlockerTriggerResourceType._internal(
     'script',
     'script',
   );
-  static const STYLE_SHEET = ContentBlockerTriggerResourceType._internal(
+  static const STYLE_SHEET = CygnusContentBlockerTriggerResourceType._internal(
     'style-sheet',
     'style-sheet',
   );
-  static const SVG_DOCUMENT = ContentBlockerTriggerResourceType._internal(
+  static const SVG_DOCUMENT = CygnusContentBlockerTriggerResourceType._internal(
     'svg-document',
     'svg-document',
   );
 
-  ///Set of all values of [ContentBlockerTriggerResourceType].
-  static final Set<ContentBlockerTriggerResourceType> values = [
-    ContentBlockerTriggerResourceType.DOCUMENT,
-    ContentBlockerTriggerResourceType.FONT,
-    ContentBlockerTriggerResourceType.IMAGE,
-    ContentBlockerTriggerResourceType.MEDIA,
-    ContentBlockerTriggerResourceType.RAW,
-    ContentBlockerTriggerResourceType.SCRIPT,
-    ContentBlockerTriggerResourceType.STYLE_SHEET,
-    ContentBlockerTriggerResourceType.SVG_DOCUMENT,
+  ///Set of all values of [CygnusContentBlockerTriggerResourceType].
+  static final Set<CygnusContentBlockerTriggerResourceType> values = [
+    CygnusContentBlockerTriggerResourceType.DOCUMENT,
+    CygnusContentBlockerTriggerResourceType.FONT,
+    CygnusContentBlockerTriggerResourceType.IMAGE,
+    CygnusContentBlockerTriggerResourceType.MEDIA,
+    CygnusContentBlockerTriggerResourceType.RAW,
+    CygnusContentBlockerTriggerResourceType.SCRIPT,
+    CygnusContentBlockerTriggerResourceType.STYLE_SHEET,
+    CygnusContentBlockerTriggerResourceType.SVG_DOCUMENT,
   ].toSet();
 
-  ///Gets a possible [ContentBlockerTriggerResourceType] instance from [String] value.
-  static ContentBlockerTriggerResourceType? fromValue(String? value) {
+  ///Gets a possible [CygnusContentBlockerTriggerResourceType] instance from [String] value.
+  static CygnusContentBlockerTriggerResourceType? fromValue(String? value) {
     if (value != null) {
       try {
-        return ContentBlockerTriggerResourceType.values.firstWhere(
+        return CygnusContentBlockerTriggerResourceType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -77,11 +80,13 @@ class ContentBlockerTriggerResourceType {
     return null;
   }
 
-  ///Gets a possible [ContentBlockerTriggerResourceType] instance from a native value.
-  static ContentBlockerTriggerResourceType? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusContentBlockerTriggerResourceType] instance from a native value.
+  static CygnusContentBlockerTriggerResourceType? fromNativeValue(
+    String? value,
+  ) {
     if (value != null) {
       try {
-        return ContentBlockerTriggerResourceType.values.firstWhere(
+        return CygnusContentBlockerTriggerResourceType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -91,15 +96,15 @@ class ContentBlockerTriggerResourceType {
     return null;
   }
 
-  /// Gets a possible [ContentBlockerTriggerResourceType] instance value with name [name].
+  /// Gets a possible [CygnusContentBlockerTriggerResourceType] instance value with name [name].
   ///
-  /// Goes through [ContentBlockerTriggerResourceType.values] looking for a value with
-  /// name [name], as reported by [ContentBlockerTriggerResourceType.name].
+  /// Goes through [CygnusContentBlockerTriggerResourceType.values] looking for a value with
+  /// name [name], as reported by [CygnusContentBlockerTriggerResourceType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ContentBlockerTriggerResourceType? byName(String? name) {
+  static CygnusContentBlockerTriggerResourceType? byName(String? name) {
     if (name != null) {
       try {
-        return ContentBlockerTriggerResourceType.values.firstWhere(
+        return CygnusContentBlockerTriggerResourceType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -109,7 +114,7 @@ class ContentBlockerTriggerResourceType {
     return null;
   }
 
-  /// Creates a map from the names of [ContentBlockerTriggerResourceType] values to the values.
+  /// Creates a map from the names of [CygnusContentBlockerTriggerResourceType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -117,9 +122,9 @@ class ContentBlockerTriggerResourceType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ContentBlockerTriggerResourceType> asNameMap() =>
-      <String, ContentBlockerTriggerResourceType>{
-        for (final value in ContentBlockerTriggerResourceType.values)
+  static Map<String, CygnusContentBlockerTriggerResourceType> asNameMap() =>
+      <String, CygnusContentBlockerTriggerResourceType>{
+        for (final value in CygnusContentBlockerTriggerResourceType.values)
           value.name(): value,
       };
 

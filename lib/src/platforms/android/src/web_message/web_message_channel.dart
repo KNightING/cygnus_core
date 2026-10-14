@@ -1,16 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 import 'web_message_port.dart';
 
 /// Object specifying creation parameters for creating a [AndroidWebMessageChannel].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebMessageChannelCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebMessageChannelCreationParams] for
 /// more information.
 @immutable
 class AndroidWebMessageChannelCreationParams
-    extends PlatformWebMessageChannelCreationParams {
+    extends CygnusPlatformWebMessageChannelCreationParams {
   /// Creates a new [AndroidWebMessageChannelCreationParams] instance.
   const AndroidWebMessageChannelCreationParams({
     required super.id,
@@ -18,11 +18,11 @@ class AndroidWebMessageChannelCreationParams
     required super.port2,
   });
 
-  /// Creates a [AndroidWebMessageChannelCreationParams] instance based on [PlatformWebMessageChannelCreationParams].
+  /// Creates a [AndroidWebMessageChannelCreationParams] instance based on [CygnusPlatformWebMessageChannelCreationParams].
   factory AndroidWebMessageChannelCreationParams.fromPlatformWebMessageChannelCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebMessageChannelCreationParams params,
+    CygnusPlatformWebMessageChannelCreationParams params,
   ) {
     return AndroidWebMessageChannelCreationParams(
       id: params.id,
@@ -37,11 +37,11 @@ class AndroidWebMessageChannelCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformWebMessageChannel}
-class AndroidWebMessageChannel extends PlatformWebMessageChannel
+///{@macro cygnus_core.CygnusPlatformWebMessageChannel}
+class AndroidWebMessageChannel extends CygnusPlatformWebMessageChannel
     with ChannelController {
   /// Constructs a [AndroidWebMessageChannel].
-  AndroidWebMessageChannel(PlatformWebMessageChannelCreationParams params)
+  AndroidWebMessageChannel(CygnusPlatformWebMessageChannelCreationParams params)
     : super.implementation(
         params is AndroidWebMessageChannelCreationParams
             ? params
@@ -103,8 +103,8 @@ class AndroidWebMessageChannel extends PlatformWebMessageChannel
         int index = call.arguments["index"];
         var port = index == 0 ? _androidPort1 : _androidPort2;
         if (port.onMessage != null) {
-          WebMessage? message = call.arguments["message"] != null
-              ? WebMessage.fromMap(
+          CygnusWebMessage? message = call.arguments["message"] != null
+              ? CygnusWebMessage.fromMap(
                   call.arguments["message"].cast<String, dynamic>(),
                 )
               : null;

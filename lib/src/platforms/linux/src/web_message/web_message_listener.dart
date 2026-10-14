@@ -1,15 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [LinuxWebMessageListener].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebMessageListenerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebMessageListenerCreationParams] for
 /// more information.
 @immutable
 class LinuxWebMessageListenerCreationParams
-    extends PlatformWebMessageListenerCreationParams {
+    extends CygnusPlatformWebMessageListenerCreationParams {
   /// Creates a new [LinuxWebMessageListenerCreationParams] instance.
   const LinuxWebMessageListenerCreationParams({
     required this.allowedOriginRules,
@@ -17,9 +17,9 @@ class LinuxWebMessageListenerCreationParams
     super.onPostMessage,
   });
 
-  /// Creates a [LinuxWebMessageListenerCreationParams] instance based on [PlatformWebMessageListenerCreationParams].
+  /// Creates a [LinuxWebMessageListenerCreationParams] instance based on [CygnusPlatformWebMessageListenerCreationParams].
   factory LinuxWebMessageListenerCreationParams.fromPlatformWebMessageListenerCreationParams(
-    PlatformWebMessageListenerCreationParams params,
+    CygnusPlatformWebMessageListenerCreationParams params,
   ) {
     return LinuxWebMessageListenerCreationParams(
       allowedOriginRules: params.allowedOriginRules ?? Set.from(["*"]),
@@ -37,11 +37,11 @@ class LinuxWebMessageListenerCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformWebMessageListener}
-class LinuxWebMessageListener extends PlatformWebMessageListener
+///{@macro cygnus_core.CygnusPlatformWebMessageListener}
+class LinuxWebMessageListener extends CygnusPlatformWebMessageListener
     with ChannelController {
   /// Constructs a [LinuxWebMessageListener].
-  LinuxWebMessageListener(PlatformWebMessageListenerCreationParams params)
+  LinuxWebMessageListener(CygnusPlatformWebMessageListenerCreationParams params)
     : super.implementation(
         params is LinuxWebMessageListenerCreationParams
             ? params
@@ -85,19 +85,19 @@ class LinuxWebMessageListener extends PlatformWebMessageListener
       case "onPostMessage":
         if (_replyProxy == null) {
           _replyProxy = LinuxJavaScriptReplyProxy(
-            PlatformJavaScriptReplyProxyCreationParams(
+            CygnusPlatformJavaScriptReplyProxyCreationParams(
               webMessageListener: this,
             ),
           );
         }
         if (onPostMessage != null) {
-          WebMessage? message = call.arguments["message"] != null
-              ? WebMessage.fromMap(
+          CygnusWebMessage? message = call.arguments["message"] != null
+              ? CygnusWebMessage.fromMap(
                   call.arguments["message"].cast<String, dynamic>(),
                 )
               : null;
-          WebUri? sourceOrigin = call.arguments["sourceOrigin"] != null
-              ? WebUri(call.arguments["sourceOrigin"])
+          CygnusWebUri? sourceOrigin = call.arguments["sourceOrigin"] != null
+              ? CygnusWebUri(call.arguments["sourceOrigin"])
               : null;
           bool isMainFrame = call.arguments["isMainFrame"];
           onPostMessage!(message, sourceOrigin, isMainFrame, _replyProxy!);
@@ -137,19 +137,19 @@ class LinuxWebMessageListener extends PlatformWebMessageListener
 /// Object specifying creation parameters for creating a [LinuxJavaScriptReplyProxy].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformJavaScriptReplyProxyCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformJavaScriptReplyProxyCreationParams] for
 /// more information.
 @immutable
 class LinuxJavaScriptReplyProxyCreationParams
-    extends PlatformJavaScriptReplyProxyCreationParams {
+    extends CygnusPlatformJavaScriptReplyProxyCreationParams {
   /// Creates a new [LinuxJavaScriptReplyProxyCreationParams] instance.
   const LinuxJavaScriptReplyProxyCreationParams({
     required super.webMessageListener,
   });
 
-  /// Creates a [LinuxJavaScriptReplyProxyCreationParams] instance based on [PlatformJavaScriptReplyProxyCreationParams].
+  /// Creates a [LinuxJavaScriptReplyProxyCreationParams] instance based on [CygnusPlatformJavaScriptReplyProxyCreationParams].
   factory LinuxJavaScriptReplyProxyCreationParams.fromPlatformJavaScriptReplyProxyCreationParams(
-    PlatformJavaScriptReplyProxyCreationParams params,
+    CygnusPlatformJavaScriptReplyProxyCreationParams params,
   ) {
     return LinuxJavaScriptReplyProxyCreationParams(
       webMessageListener: params.webMessageListener,
@@ -157,10 +157,10 @@ class LinuxJavaScriptReplyProxyCreationParams
   }
 }
 
-///{@macro cygnus_core.JavaScriptReplyProxy}
-class LinuxJavaScriptReplyProxy extends PlatformJavaScriptReplyProxy {
+///{@macro cygnus_core.CygnusJavaScriptReplyProxy}
+class LinuxJavaScriptReplyProxy extends CygnusPlatformJavaScriptReplyProxy {
   /// Constructs a [LinuxWebMessageListener].
-  LinuxJavaScriptReplyProxy(PlatformJavaScriptReplyProxyCreationParams params)
+  LinuxJavaScriptReplyProxy(CygnusPlatformJavaScriptReplyProxyCreationParams params)
     : super.implementation(
         params is LinuxJavaScriptReplyProxyCreationParams
             ? params
@@ -173,7 +173,7 @@ class LinuxJavaScriptReplyProxy extends PlatformJavaScriptReplyProxy {
       params.webMessageListener as LinuxWebMessageListener;
 
   @override
-  Future<void> postMessage(WebMessage message) async {
+  Future<void> postMessage(CygnusWebMessage message) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('message', () => message.toMap());
     await _linuxWebMessageListener.channel?.invokeMethod('postMessage', args);

@@ -6,16 +6,16 @@ part of 'print_job_info.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class representing the description of a [PlatformPrintJobController].
+///Class representing the description of a [CygnusPlatformPrintJobController].
 ///Note that the print jobs state may change over time and this class represents a snapshot of this state.
-class PrintJobInfo {
+class CygnusPrintJobInfo {
   ///The attributes of a print job.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android native WebView
   ///- iOS
   ///- MacOS
-  PrintJobAttributes? attributes;
+  CygnusPrintJobAttributes? attributes;
 
   ///Whether the print operation should spawn a separate thread in which to run itself.
   ///
@@ -85,13 +85,13 @@ class PrintJobInfo {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- MacOS
-  PrintJobPageOrder? pageOrder;
+  CygnusPrintJobPageOrder? pageOrder;
 
   ///The printing quality.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- MacOS
-  PrintJobRenderingQuality? preferredRenderingQuality;
+  CygnusPrintJobRenderingQuality? preferredRenderingQuality;
 
   ///The printer object to be used for printing.
   ///
@@ -99,7 +99,7 @@ class PrintJobInfo {
   ///- Android native WebView
   ///- iOS
   ///- MacOS
-  Printer? printer;
+  CygnusPrinter? printer;
 
   ///Whether the print panel is shown during the operation.
   ///
@@ -119,8 +119,8 @@ class PrintJobInfo {
   ///- Android native WebView
   ///- iOS
   ///- MacOS
-  PrintJobState? state;
-  PrintJobInfo({
+  CygnusPrintJobState? state;
+  CygnusPrintJobInfo({
     this.attributes,
     this.canSpawnSeparateThread,
     this.copies,
@@ -139,16 +139,16 @@ class PrintJobInfo {
     this.state,
   });
 
-  ///Gets a possible [PrintJobInfo] instance from a [Map] value.
-  static PrintJobInfo? fromMap(
+  ///Gets a possible [CygnusPrintJobInfo] instance from a [Map] value.
+  static CygnusPrintJobInfo? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = PrintJobInfo(
-      attributes: PrintJobAttributes.fromMap(
+    final instance = CygnusPrintJobInfo(
+      attributes: CygnusPrintJobAttributes.fromMap(
         map['attributes']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -161,41 +161,49 @@ class PrintJobInfo {
       label: map['label'],
       lastPage: map['lastPage'],
       numberOfPages: map['numberOfPages'],
-      pageOrder: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobPageOrder.fromNativeValue(
+      pageOrder: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusPrintJobPageOrder.fromNativeValue(
           map['pageOrder'],
         ),
-        EnumMethod.value => PrintJobPageOrder.fromValue(map['pageOrder']),
-        EnumMethod.name => PrintJobPageOrder.byName(map['pageOrder']),
-      },
-      preferredRenderingQuality: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobRenderingQuality.fromNativeValue(
-          map['preferredRenderingQuality'],
+        CygnusEnumMethod.value => CygnusPrintJobPageOrder.fromValue(
+          map['pageOrder'],
         ),
-        EnumMethod.value => PrintJobRenderingQuality.fromValue(
-          map['preferredRenderingQuality'],
-        ),
-        EnumMethod.name => PrintJobRenderingQuality.byName(
-          map['preferredRenderingQuality'],
+        CygnusEnumMethod.name => CygnusPrintJobPageOrder.byName(
+          map['pageOrder'],
         ),
       },
-      printer: Printer.fromMap(
+      preferredRenderingQuality: switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusPrintJobRenderingQuality.fromNativeValue(
+            map['preferredRenderingQuality'],
+          ),
+        CygnusEnumMethod.value => CygnusPrintJobRenderingQuality.fromValue(
+          map['preferredRenderingQuality'],
+        ),
+        CygnusEnumMethod.name => CygnusPrintJobRenderingQuality.byName(
+          map['preferredRenderingQuality'],
+        ),
+      },
+      printer: CygnusPrinter.fromMap(
         map['printer']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
       showsPrintPanel: map['showsPrintPanel'],
       showsProgressPanel: map['showsProgressPanel'],
-      state: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => PrintJobState.fromNativeValue(map['state']),
-        EnumMethod.value => PrintJobState.fromValue(map['state']),
-        EnumMethod.name => PrintJobState.byName(map['state']),
+      state: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusPrintJobState.fromNativeValue(
+          map['state'],
+        ),
+        CygnusEnumMethod.value => CygnusPrintJobState.fromValue(map['state']),
+        CygnusEnumMethod.name => CygnusPrintJobState.byName(map['state']),
       },
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "attributes": attributes?.toMap(enumMethod: enumMethod),
       "canSpawnSeparateThread": canSpawnSeparateThread,
@@ -207,24 +215,25 @@ class PrintJobInfo {
       "label": label,
       "lastPage": lastPage,
       "numberOfPages": numberOfPages,
-      "pageOrder": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => pageOrder?.toNativeValue(),
-        EnumMethod.value => pageOrder?.toValue(),
-        EnumMethod.name => pageOrder?.name(),
+      "pageOrder": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => pageOrder?.toNativeValue(),
+        CygnusEnumMethod.value => pageOrder?.toValue(),
+        CygnusEnumMethod.name => pageOrder?.name(),
       },
       "preferredRenderingQuality": switch (enumMethod ??
-          EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => preferredRenderingQuality?.toNativeValue(),
-        EnumMethod.value => preferredRenderingQuality?.toValue(),
-        EnumMethod.name => preferredRenderingQuality?.name(),
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          preferredRenderingQuality?.toNativeValue(),
+        CygnusEnumMethod.value => preferredRenderingQuality?.toValue(),
+        CygnusEnumMethod.name => preferredRenderingQuality?.name(),
       },
       "printer": printer?.toMap(enumMethod: enumMethod),
       "showsPrintPanel": showsPrintPanel,
       "showsProgressPanel": showsProgressPanel,
-      "state": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => state?.toNativeValue(),
-        EnumMethod.value => state?.toValue(),
-        EnumMethod.name => state?.name(),
+      "state": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => state?.toNativeValue(),
+        CygnusEnumMethod.value => state?.toValue(),
+        CygnusEnumMethod.name => state?.name(),
       },
     };
   }
@@ -236,6 +245,6 @@ class PrintJobInfo {
 
   @override
   String toString() {
-    return 'PrintJobInfo{attributes: $attributes, canSpawnSeparateThread: $canSpawnSeparateThread, copies: $copies, creationTime: $creationTime, currentPage: $currentPage, firstPage: $firstPage, isCopyingOperation: $isCopyingOperation, label: $label, lastPage: $lastPage, numberOfPages: $numberOfPages, pageOrder: $pageOrder, preferredRenderingQuality: $preferredRenderingQuality, printer: $printer, showsPrintPanel: $showsPrintPanel, showsProgressPanel: $showsProgressPanel, state: $state}';
+    return 'CygnusPrintJobInfo{attributes: $attributes, canSpawnSeparateThread: $canSpawnSeparateThread, copies: $copies, creationTime: $creationTime, currentPage: $currentPage, firstPage: $firstPage, isCopyingOperation: $isCopyingOperation, label: $label, lastPage: $lastPage, numberOfPages: $numberOfPages, pageOrder: $pageOrder, preferredRenderingQuality: $preferredRenderingQuality, printer: $printer, showsPrintPanel: $showsPrintPanel, showsProgressPanel: $showsProgressPanel, state: $state}';
   }
 }

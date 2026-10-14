@@ -10,9 +10,9 @@ import '../util.dart';
 part 'set_get_delete.dart';
 
 void main() {
-  final shouldSkip = !CookieManager.isClassSupported();
+  final shouldSkip = !CygnusCookieManager.isClassSupported();
 
-  skippableGroup('Cookie Manager', () {
+  skippableGroup('CygnusCookie Manager', () {
     setGetDelete();
   }, skip: shouldSkip);
 }

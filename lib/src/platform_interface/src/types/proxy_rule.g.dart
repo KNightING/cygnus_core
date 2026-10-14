@@ -7,7 +7,7 @@ part of 'proxy_rule.dart';
 // **************************************************************************
 
 ///Class that holds a scheme filter and a proxy URL.
-class ProxyRule {
+class CygnusProxyRule {
   ///A Boolean that indicates whether or not a proxy configuration allows failover to non-proxied connections.
   ///Failover isn’t allowed by default.
   ///
@@ -45,7 +45,7 @@ class ProxyRule {
   ///- Android WebView
   ///- Linux WPE WebKit ([Official API - webkit_network_proxy_settings_add_proxy_for_scheme](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.NetworkProxySettings.add_proxy_for_scheme.html)):
   ///    - Linux accepts scheme filters: '*', 'http', 'https', 'socks', 'socks4', 'socks5' (case-insensitive). '*' is treated as the default proxy.
-  ProxySchemeFilter? schemeFilter;
+  CygnusProxySchemeFilter? schemeFilter;
 
   ///Represents the proxy URL.
   ///
@@ -62,7 +62,7 @@ class ProxyRule {
   ///- iOS WKWebView
   ///- macOS WKWebView
   String? username;
-  ProxyRule({
+  CygnusProxyRule({
     this.allowFailover,
     this.excludedDomains,
     this.matchDomains,
@@ -72,15 +72,15 @@ class ProxyRule {
     this.username,
   });
 
-  ///Gets a possible [ProxyRule] instance from a [Map] value.
-  static ProxyRule? fromMap(
+  ///Gets a possible [CygnusProxyRule] instance from a [Map] value.
+  static CygnusProxyRule? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ProxyRule(
+    final instance = CygnusProxyRule(
       allowFailover: map['allowFailover'],
       excludedDomains: map['excludedDomains'] != null
           ? List<String>.from(map['excludedDomains']!.cast<String>())
@@ -89,12 +89,16 @@ class ProxyRule {
           ? List<String>.from(map['matchDomains']!.cast<String>())
           : null,
       password: map['password'],
-      schemeFilter: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => ProxySchemeFilter.fromNativeValue(
+      schemeFilter: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusProxySchemeFilter.fromNativeValue(
           map['schemeFilter'],
         ),
-        EnumMethod.value => ProxySchemeFilter.fromValue(map['schemeFilter']),
-        EnumMethod.name => ProxySchemeFilter.byName(map['schemeFilter']),
+        CygnusEnumMethod.value => CygnusProxySchemeFilter.fromValue(
+          map['schemeFilter'],
+        ),
+        CygnusEnumMethod.name => CygnusProxySchemeFilter.byName(
+          map['schemeFilter'],
+        ),
       },
       url: map['url'],
       username: map['username'],
@@ -103,16 +107,16 @@ class ProxyRule {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "allowFailover": allowFailover,
       "excludedDomains": excludedDomains,
       "matchDomains": matchDomains,
       "password": password,
-      "schemeFilter": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => schemeFilter?.toNativeValue(),
-        EnumMethod.value => schemeFilter?.toValue(),
-        EnumMethod.name => schemeFilter?.name(),
+      "schemeFilter": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => schemeFilter?.toNativeValue(),
+        CygnusEnumMethod.value => schemeFilter?.toValue(),
+        CygnusEnumMethod.name => schemeFilter?.name(),
       },
       "url": url,
       "username": username,
@@ -126,6 +130,6 @@ class ProxyRule {
 
   @override
   String toString() {
-    return 'ProxyRule{allowFailover: $allowFailover, excludedDomains: $excludedDomains, matchDomains: $matchDomains, password: $password, schemeFilter: $schemeFilter, url: $url, username: $username}';
+    return 'CygnusProxyRule{allowFailover: $allowFailover, excludedDomains: $excludedDomains, matchDomains: $matchDomains, password: $password, schemeFilter: $schemeFilter, url: $url, username: $username}';
   }
 }

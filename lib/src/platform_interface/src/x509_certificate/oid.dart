@@ -1,116 +1,116 @@
-class OID {
+class CygnusOID {
   final String _value;
 
-  const OID._internal(this._value);
+  const CygnusOID._internal(this._value);
 
-  static final Set<OID> values = [
-    OID.etsiQcsCompliance,
-    OID.etsiQcsRetentionPeriod,
-    OID.etsiQcsQcSSCD,
-    OID.dsa,
-    OID.ecPublicKey,
-    OID.prime256v1,
-    OID.ecdsaWithSHA256,
-    OID.ecdsaWithSHA512,
-    OID.rsaEncryption,
-    OID.md2WithRSAEncryption,
-    OID.md4WithRSAEncryption,
-    OID.md5WithRSAEncryption,
-    OID.sha1WithRSAEncryption,
-    OID.RSAES_OAEP,
-    OID.mgf1,
-    OID.pSpecified,
-    OID.RSASSA_PSS,
-    OID.sha256WithRSAEncryption,
-    OID.sha384WithRSAEncryption,
-    OID.sha512WithRSAEncryption,
-    OID.pkcs7data,
-    OID.pkcs7signedData,
-    OID.pkcs7envelopedData,
-    OID.emailAddress,
-    OID.signingCertificateV2,
-    OID.contentType,
-    OID.messageDigest,
-    OID.signingTime,
-    OID.dsaWithSha1,
-    OID.certificateExtension,
-    OID.jurisdictionOfIncorporationSP,
-    OID.jurisdictionOfIncorporationC,
-    OID.authorityInfoAccess,
-    OID.qcStatements,
-    OID.cps,
-    OID.unotice,
-    OID.serverAuth,
-    OID.clientAuth,
-    OID.ocsp,
-    OID.caIssuers,
-    OID.dateOfBirth,
-    OID.desCBC,
-    OID.sha1,
-    OID.sha256,
-    OID.sha384,
-    OID.sha512,
-    OID.md5,
-    OID.VeriSignEVpolicy,
-    OID.extendedValidation,
-    OID.organizationValidated,
-    OID.subjectKeyIdentifier,
-    OID.keyUsage,
-    OID.subjectAltName,
-    OID.issuerAltName,
-    OID.basicConstraints,
-    OID.cRLDistributionPoints,
-    OID.certificatePolicies,
-    OID.authorityKeyIdentifier,
-    OID.extKeyUsage,
-    OID.subjectDirectoryAttributes,
-    OID.organizationName,
-    OID.organizationalUnitName,
-    OID.businessCategory,
-    OID.postalCode,
-    OID.commonName,
-    OID.surname,
-    OID.givenName,
-    OID.dnQualifier,
-    OID.serialNumber,
-    OID.countryName,
-    OID.localityName,
-    OID.stateOrProvinceName,
-    OID.streetAddress,
-    OID.desEDE3CBC,
-    OID.aes128CBC,
-    OID.aes192CBC,
-    OID.aes256CBC,
-    OID.nsCertType,
-    OID.nsComment,
-    OID.privateKeyUsagePeriod,
-    OID.cRLNumber,
-    OID.cRLReason,
-    OID.expirationDate,
-    OID.instructionCode,
-    OID.invalidityDate,
-    OID.deltaCRLIndicator,
-    OID.issuingDistributionPoint,
-    OID.certificateIssuer,
-    OID.nameConstraints,
-    OID.policyMappings,
-    OID.policyConstraints,
-    OID.freshestCRL,
-    OID.inhibitAnyPolicy,
-    OID.codeSigning,
-    OID.emailProtection,
-    OID.timeStamping,
-    OID.pkcsSha256,
-    OID.sha2Family,
-    OID.sha3_244,
-    OID.sha3_256,
-    OID.sha3_384,
+  static final Set<CygnusOID> values = [
+    CygnusOID.etsiQcsCompliance,
+    CygnusOID.etsiQcsRetentionPeriod,
+    CygnusOID.etsiQcsQcSSCD,
+    CygnusOID.dsa,
+    CygnusOID.ecPublicKey,
+    CygnusOID.prime256v1,
+    CygnusOID.ecdsaWithSHA256,
+    CygnusOID.ecdsaWithSHA512,
+    CygnusOID.rsaEncryption,
+    CygnusOID.md2WithRSAEncryption,
+    CygnusOID.md4WithRSAEncryption,
+    CygnusOID.md5WithRSAEncryption,
+    CygnusOID.sha1WithRSAEncryption,
+    CygnusOID.RSAES_OAEP,
+    CygnusOID.mgf1,
+    CygnusOID.pSpecified,
+    CygnusOID.RSASSA_PSS,
+    CygnusOID.sha256WithRSAEncryption,
+    CygnusOID.sha384WithRSAEncryption,
+    CygnusOID.sha512WithRSAEncryption,
+    CygnusOID.pkcs7data,
+    CygnusOID.pkcs7signedData,
+    CygnusOID.pkcs7envelopedData,
+    CygnusOID.emailAddress,
+    CygnusOID.signingCertificateV2,
+    CygnusOID.contentType,
+    CygnusOID.messageDigest,
+    CygnusOID.signingTime,
+    CygnusOID.dsaWithSha1,
+    CygnusOID.certificateExtension,
+    CygnusOID.jurisdictionOfIncorporationSP,
+    CygnusOID.jurisdictionOfIncorporationC,
+    CygnusOID.authorityInfoAccess,
+    CygnusOID.qcStatements,
+    CygnusOID.cps,
+    CygnusOID.unotice,
+    CygnusOID.serverAuth,
+    CygnusOID.clientAuth,
+    CygnusOID.ocsp,
+    CygnusOID.caIssuers,
+    CygnusOID.dateOfBirth,
+    CygnusOID.desCBC,
+    CygnusOID.sha1,
+    CygnusOID.sha256,
+    CygnusOID.sha384,
+    CygnusOID.sha512,
+    CygnusOID.md5,
+    CygnusOID.VeriSignEVpolicy,
+    CygnusOID.extendedValidation,
+    CygnusOID.organizationValidated,
+    CygnusOID.subjectKeyIdentifier,
+    CygnusOID.keyUsage,
+    CygnusOID.subjectAltName,
+    CygnusOID.issuerAltName,
+    CygnusOID.basicConstraints,
+    CygnusOID.cRLDistributionPoints,
+    CygnusOID.certificatePolicies,
+    CygnusOID.authorityKeyIdentifier,
+    CygnusOID.extKeyUsage,
+    CygnusOID.subjectDirectoryAttributes,
+    CygnusOID.organizationName,
+    CygnusOID.organizationalUnitName,
+    CygnusOID.businessCategory,
+    CygnusOID.postalCode,
+    CygnusOID.commonName,
+    CygnusOID.surname,
+    CygnusOID.givenName,
+    CygnusOID.dnQualifier,
+    CygnusOID.serialNumber,
+    CygnusOID.countryName,
+    CygnusOID.localityName,
+    CygnusOID.stateOrProvinceName,
+    CygnusOID.streetAddress,
+    CygnusOID.desEDE3CBC,
+    CygnusOID.aes128CBC,
+    CygnusOID.aes192CBC,
+    CygnusOID.aes256CBC,
+    CygnusOID.nsCertType,
+    CygnusOID.nsComment,
+    CygnusOID.privateKeyUsagePeriod,
+    CygnusOID.cRLNumber,
+    CygnusOID.cRLReason,
+    CygnusOID.expirationDate,
+    CygnusOID.instructionCode,
+    CygnusOID.invalidityDate,
+    CygnusOID.deltaCRLIndicator,
+    CygnusOID.issuingDistributionPoint,
+    CygnusOID.certificateIssuer,
+    CygnusOID.nameConstraints,
+    CygnusOID.policyMappings,
+    CygnusOID.policyConstraints,
+    CygnusOID.freshestCRL,
+    CygnusOID.inhibitAnyPolicy,
+    CygnusOID.codeSigning,
+    CygnusOID.emailProtection,
+    CygnusOID.timeStamping,
+    CygnusOID.pkcsSha256,
+    CygnusOID.sha2Family,
+    CygnusOID.sha3_244,
+    CygnusOID.sha3_256,
+    CygnusOID.sha3_384,
   ].toSet();
 
-  static OID? fromValue(String? value) {
+  static CygnusOID? fromValue(String? value) {
     if (value != null) {
       try {
-        return OID.values.firstWhere((element) => element.toValue() == value);
+        return CygnusOID.values.firstWhere((element) => element.toValue() == value);
       } catch (e) {
         return null;
       }
@@ -126,131 +126,131 @@ class OID {
   @override
   String toString() => "($_value, ${name()})";
 
-  static const etsiQcsCompliance = const OID._internal("0.4.0.1862.1.1");
-  static const etsiQcsRetentionPeriod = const OID._internal("0.4.0.1862.1.3");
-  static const etsiQcsQcSSCD = const OID._internal("0.4.0.1862.1.4");
-  static const dsa = const OID._internal("1.2.840.10040.4.1");
-  static const ecPublicKey = const OID._internal("1.2.840.10045.2.1");
-  static const prime256v1 = const OID._internal("1.2.840.10045.3.1.7");
-  static const ecdsaWithSHA256 = const OID._internal("1.2.840.10045.4.3.2");
-  static const ecdsaWithSHA512 = const OID._internal("1.2.840.10045.4.3.4");
-  static const rsaEncryption = const OID._internal("1.2.840.113549.1.1.1");
-  static const md2WithRSAEncryption = const OID._internal(
+  static const etsiQcsCompliance = const CygnusOID._internal("0.4.0.1862.1.1");
+  static const etsiQcsRetentionPeriod = const CygnusOID._internal("0.4.0.1862.1.3");
+  static const etsiQcsQcSSCD = const CygnusOID._internal("0.4.0.1862.1.4");
+  static const dsa = const CygnusOID._internal("1.2.840.10040.4.1");
+  static const ecPublicKey = const CygnusOID._internal("1.2.840.10045.2.1");
+  static const prime256v1 = const CygnusOID._internal("1.2.840.10045.3.1.7");
+  static const ecdsaWithSHA256 = const CygnusOID._internal("1.2.840.10045.4.3.2");
+  static const ecdsaWithSHA512 = const CygnusOID._internal("1.2.840.10045.4.3.4");
+  static const rsaEncryption = const CygnusOID._internal("1.2.840.113549.1.1.1");
+  static const md2WithRSAEncryption = const CygnusOID._internal(
     "1.2.840.113549.1.1.2",
   );
-  static const md4WithRSAEncryption = const OID._internal(
+  static const md4WithRSAEncryption = const CygnusOID._internal(
     "1.2.840.113549.1.1.3",
   );
-  static const md5WithRSAEncryption = const OID._internal(
+  static const md5WithRSAEncryption = const CygnusOID._internal(
     "1.2.840.113549.1.1.4",
   );
-  static const sha1WithRSAEncryption = const OID._internal(
+  static const sha1WithRSAEncryption = const CygnusOID._internal(
     "1.2.840.113549.1.1.5",
   );
-  static const RSAES_OAEP = const OID._internal("1.2.840.113549.1.1.7");
-  static const mgf1 = const OID._internal(".2.840.113549.1.1.8");
-  static const pSpecified = const OID._internal(".2.840.113549.1.1.9");
-  static const RSASSA_PSS = const OID._internal(".2.840.113549.1.1.10");
-  static const sha256WithRSAEncryption = const OID._internal(
+  static const RSAES_OAEP = const CygnusOID._internal("1.2.840.113549.1.1.7");
+  static const mgf1 = const CygnusOID._internal(".2.840.113549.1.1.8");
+  static const pSpecified = const CygnusOID._internal(".2.840.113549.1.1.9");
+  static const RSASSA_PSS = const CygnusOID._internal(".2.840.113549.1.1.10");
+  static const sha256WithRSAEncryption = const CygnusOID._internal(
     "1.2.840.113549.1.1.11",
   );
-  static const sha384WithRSAEncryption = const OID._internal(
+  static const sha384WithRSAEncryption = const CygnusOID._internal(
     "1.2.840.113549.1.1.12",
   );
-  static const sha512WithRSAEncryption = const OID._internal(
+  static const sha512WithRSAEncryption = const CygnusOID._internal(
     "1.2.840.113549.1.1.13",
   );
-  static const pkcs7data = const OID._internal("1.2.840.113549.1.7.1");
-  static const pkcs7signedData = const OID._internal("1.2.840.113549.1.7.2");
-  static const pkcs7envelopedData = const OID._internal("1.2.840.113549.1.7.3");
-  static const emailAddress = const OID._internal("1.2.840.113549.1.9.1");
-  static const signingCertificateV2 = const OID._internal(
+  static const pkcs7data = const CygnusOID._internal("1.2.840.113549.1.7.1");
+  static const pkcs7signedData = const CygnusOID._internal("1.2.840.113549.1.7.2");
+  static const pkcs7envelopedData = const CygnusOID._internal("1.2.840.113549.1.7.3");
+  static const emailAddress = const CygnusOID._internal("1.2.840.113549.1.9.1");
+  static const signingCertificateV2 = const CygnusOID._internal(
     "1.2.840.113549.1.9.16.2.47",
   );
-  static const contentType = const OID._internal("1.2.840.113549.1.9.3");
-  static const messageDigest = const OID._internal("1.2.840.113549.1.9.4");
-  static const signingTime = const OID._internal("1.2.840.113549.1.9.5");
-  static const dsaWithSha1 = const OID._internal("1.2.840.10040.4.3");
-  static const certificateExtension = const OID._internal(
+  static const contentType = const CygnusOID._internal("1.2.840.113549.1.9.3");
+  static const messageDigest = const CygnusOID._internal("1.2.840.113549.1.9.4");
+  static const signingTime = const CygnusOID._internal("1.2.840.113549.1.9.5");
+  static const dsaWithSha1 = const CygnusOID._internal("1.2.840.10040.4.3");
+  static const certificateExtension = const CygnusOID._internal(
     "1.3.6.1.4.1.11129.2.4.2",
   );
-  static const jurisdictionOfIncorporationSP = const OID._internal(
+  static const jurisdictionOfIncorporationSP = const CygnusOID._internal(
     "1.3.6.1.4.1.311.60.2.1.2",
   );
-  static const jurisdictionOfIncorporationC = const OID._internal(
+  static const jurisdictionOfIncorporationC = const CygnusOID._internal(
     "1.3.6.1.4.1.311.60.2.1.3",
   );
-  static const authorityInfoAccess = const OID._internal("1.3.6.1.5.5.7.1.1");
-  static const qcStatements = const OID._internal("1.3.6.1.5.5.7.1.3");
-  static const cps = const OID._internal("1.3.6.1.5.5.7.2.1");
-  static const unotice = const OID._internal("1.3.6.1.5.5.7.2.2");
-  static const serverAuth = const OID._internal("1.3.6.1.5.5.7.3.1");
-  static const clientAuth = const OID._internal("1.3.6.1.5.5.7.3.2");
-  static const ocsp = const OID._internal("1.3.6.1.5.5.7.48.1");
-  static const caIssuers = const OID._internal("1.3.6.1.5.5.7.48.2");
-  static const dateOfBirth = const OID._internal("1.3.6.1.5.5.7.9.1");
-  static const desCBC = const OID._internal("1.3.14.3.2.7");
-  static const sha1 = const OID._internal("1.3.14.3.2.26");
-  static const pkcsSha256 = const OID._internal("1.3.6.1.4.1.22554.1.2.1");
-  static const sha2Family = const OID._internal("1.3.6.1.4.1.22554.1.2");
-  static const sha3_244 = const OID._internal("2.16.840.1.101.3.4.2.7");
-  static const sha3_256 = const OID._internal("2.16.840.1.101.3.4.2.8");
-  static const sha3_384 = const OID._internal("2.16.840.1.101.3.4.2.9");
-  static const md5 = const OID._internal("0.2.262.1.10.1.3.2");
-  static const sha256 = const OID._internal("2.16.840.1.101.3.4.2.1");
-  static const sha384 = const OID._internal("2.16.840.1.101.3.4.2.2");
-  static const sha512 = const OID._internal("2.16.840.1.101.3.4.2.3");
-  static const VeriSignEVpolicy = const OID._internal(
+  static const authorityInfoAccess = const CygnusOID._internal("1.3.6.1.5.5.7.1.1");
+  static const qcStatements = const CygnusOID._internal("1.3.6.1.5.5.7.1.3");
+  static const cps = const CygnusOID._internal("1.3.6.1.5.5.7.2.1");
+  static const unotice = const CygnusOID._internal("1.3.6.1.5.5.7.2.2");
+  static const serverAuth = const CygnusOID._internal("1.3.6.1.5.5.7.3.1");
+  static const clientAuth = const CygnusOID._internal("1.3.6.1.5.5.7.3.2");
+  static const ocsp = const CygnusOID._internal("1.3.6.1.5.5.7.48.1");
+  static const caIssuers = const CygnusOID._internal("1.3.6.1.5.5.7.48.2");
+  static const dateOfBirth = const CygnusOID._internal("1.3.6.1.5.5.7.9.1");
+  static const desCBC = const CygnusOID._internal("1.3.14.3.2.7");
+  static const sha1 = const CygnusOID._internal("1.3.14.3.2.26");
+  static const pkcsSha256 = const CygnusOID._internal("1.3.6.1.4.1.22554.1.2.1");
+  static const sha2Family = const CygnusOID._internal("1.3.6.1.4.1.22554.1.2");
+  static const sha3_244 = const CygnusOID._internal("2.16.840.1.101.3.4.2.7");
+  static const sha3_256 = const CygnusOID._internal("2.16.840.1.101.3.4.2.8");
+  static const sha3_384 = const CygnusOID._internal("2.16.840.1.101.3.4.2.9");
+  static const md5 = const CygnusOID._internal("0.2.262.1.10.1.3.2");
+  static const sha256 = const CygnusOID._internal("2.16.840.1.101.3.4.2.1");
+  static const sha384 = const CygnusOID._internal("2.16.840.1.101.3.4.2.2");
+  static const sha512 = const CygnusOID._internal("2.16.840.1.101.3.4.2.3");
+  static const VeriSignEVpolicy = const CygnusOID._internal(
     "2.16.840.1.113733.1.7.23.6",
   );
-  static const extendedValidation = const OID._internal("2.23.140.1.1");
-  static const organizationValidated = const OID._internal("2.23.140.1.2.2");
-  static const subjectKeyIdentifier = const OID._internal("2.5.29.14");
-  static const keyUsage = const OID._internal("2.5.29.15");
-  static const subjectAltName = const OID._internal("2.5.29.17");
-  static const issuerAltName = const OID._internal("2.5.29.18");
-  static const basicConstraints = const OID._internal("2.5.29.19");
-  static const cRLDistributionPoints = const OID._internal("2.5.29.31");
-  static const certificatePolicies = const OID._internal("2.5.29.32");
-  static const authorityKeyIdentifier = const OID._internal("2.5.29.35");
-  static const extKeyUsage = const OID._internal("2.5.29.37");
-  static const subjectDirectoryAttributes = const OID._internal("2.5.29.9");
-  static const organizationName = const OID._internal("2.5.4.10");
-  static const organizationalUnitName = const OID._internal("2.5.4.11");
-  static const businessCategory = const OID._internal("2.5.4.15");
-  static const postalCode = const OID._internal("2.5.4.17");
-  static const commonName = const OID._internal("2.5.4.3");
-  static const surname = const OID._internal("2.5.4.4");
-  static const givenName = const OID._internal("2.5.4.42");
-  static const dnQualifier = const OID._internal("2.5.4.46");
-  static const serialNumber = const OID._internal("2.5.4.5");
-  static const countryName = const OID._internal("2.5.4.6");
-  static const localityName = const OID._internal("2.5.4.7");
-  static const stateOrProvinceName = const OID._internal("2.5.4.8");
-  static const streetAddress = const OID._internal("2.5.4.9");
-  static const desEDE3CBC = const OID._internal("1.2.840.113549.3.7");
-  static const aes128CBC = const OID._internal("2.16.840.1.101.3.4.1.2");
-  static const aes192CBC = const OID._internal("2.16.840.1.101.3.4.1.22");
-  static const aes256CBC = const OID._internal("2.16.840.1.101.3.4.1.42");
-  static const nsCertType = const OID._internal("2.16.840.1.113730.1.1");
-  static const nsComment = const OID._internal("2.16.840.1.113730.1.13");
-  static const privateKeyUsagePeriod = const OID._internal("2.5.29.16");
-  static const cRLNumber = const OID._internal("2.5.29.20");
-  static const cRLReason = const OID._internal("2.5.29.21");
-  static const expirationDate = const OID._internal("2.5.29.22");
-  static const instructionCode = const OID._internal("2.5.29.23");
-  static const invalidityDate = const OID._internal("2.5.29.24");
-  static const deltaCRLIndicator = const OID._internal("2.5.29.27");
-  static const issuingDistributionPoint = const OID._internal("2.5.29.28");
-  static const certificateIssuer = const OID._internal("2.5.29.29");
-  static const nameConstraints = const OID._internal("2.5.29.30");
-  static const policyMappings = const OID._internal("2.5.29.33");
-  static const policyConstraints = const OID._internal("2.5.29.36");
-  static const freshestCRL = const OID._internal("2.5.29.46");
-  static const inhibitAnyPolicy = const OID._internal("2.5.29.54");
-  static const codeSigning = const OID._internal("1.3.6.1.5.5.7.3.3");
-  static const emailProtection = const OID._internal("1.3.6.1.5.5.7.3.4");
-  static const timeStamping = const OID._internal("1.3.6.1.5.5.7.3.8");
+  static const extendedValidation = const CygnusOID._internal("2.23.140.1.1");
+  static const organizationValidated = const CygnusOID._internal("2.23.140.1.2.2");
+  static const subjectKeyIdentifier = const CygnusOID._internal("2.5.29.14");
+  static const keyUsage = const CygnusOID._internal("2.5.29.15");
+  static const subjectAltName = const CygnusOID._internal("2.5.29.17");
+  static const issuerAltName = const CygnusOID._internal("2.5.29.18");
+  static const basicConstraints = const CygnusOID._internal("2.5.29.19");
+  static const cRLDistributionPoints = const CygnusOID._internal("2.5.29.31");
+  static const certificatePolicies = const CygnusOID._internal("2.5.29.32");
+  static const authorityKeyIdentifier = const CygnusOID._internal("2.5.29.35");
+  static const extKeyUsage = const CygnusOID._internal("2.5.29.37");
+  static const subjectDirectoryAttributes = const CygnusOID._internal("2.5.29.9");
+  static const organizationName = const CygnusOID._internal("2.5.4.10");
+  static const organizationalUnitName = const CygnusOID._internal("2.5.4.11");
+  static const businessCategory = const CygnusOID._internal("2.5.4.15");
+  static const postalCode = const CygnusOID._internal("2.5.4.17");
+  static const commonName = const CygnusOID._internal("2.5.4.3");
+  static const surname = const CygnusOID._internal("2.5.4.4");
+  static const givenName = const CygnusOID._internal("2.5.4.42");
+  static const dnQualifier = const CygnusOID._internal("2.5.4.46");
+  static const serialNumber = const CygnusOID._internal("2.5.4.5");
+  static const countryName = const CygnusOID._internal("2.5.4.6");
+  static const localityName = const CygnusOID._internal("2.5.4.7");
+  static const stateOrProvinceName = const CygnusOID._internal("2.5.4.8");
+  static const streetAddress = const CygnusOID._internal("2.5.4.9");
+  static const desEDE3CBC = const CygnusOID._internal("1.2.840.113549.3.7");
+  static const aes128CBC = const CygnusOID._internal("2.16.840.1.101.3.4.1.2");
+  static const aes192CBC = const CygnusOID._internal("2.16.840.1.101.3.4.1.22");
+  static const aes256CBC = const CygnusOID._internal("2.16.840.1.101.3.4.1.42");
+  static const nsCertType = const CygnusOID._internal("2.16.840.1.113730.1.1");
+  static const nsComment = const CygnusOID._internal("2.16.840.1.113730.1.13");
+  static const privateKeyUsagePeriod = const CygnusOID._internal("2.5.29.16");
+  static const cRLNumber = const CygnusOID._internal("2.5.29.20");
+  static const cRLReason = const CygnusOID._internal("2.5.29.21");
+  static const expirationDate = const CygnusOID._internal("2.5.29.22");
+  static const instructionCode = const CygnusOID._internal("2.5.29.23");
+  static const invalidityDate = const CygnusOID._internal("2.5.29.24");
+  static const deltaCRLIndicator = const CygnusOID._internal("2.5.29.27");
+  static const issuingDistributionPoint = const CygnusOID._internal("2.5.29.28");
+  static const certificateIssuer = const CygnusOID._internal("2.5.29.29");
+  static const nameConstraints = const CygnusOID._internal("2.5.29.30");
+  static const policyMappings = const CygnusOID._internal("2.5.29.33");
+  static const policyConstraints = const CygnusOID._internal("2.5.29.36");
+  static const freshestCRL = const CygnusOID._internal("2.5.29.46");
+  static const inhibitAnyPolicy = const CygnusOID._internal("2.5.29.54");
+  static const codeSigning = const CygnusOID._internal("1.3.6.1.5.5.7.3.3");
+  static const emailProtection = const CygnusOID._internal("1.3.6.1.5.5.7.3.4");
+  static const timeStamping = const CygnusOID._internal("1.3.6.1.5.5.7.3.8");
 
   bool operator ==(value) => value == _value;
 

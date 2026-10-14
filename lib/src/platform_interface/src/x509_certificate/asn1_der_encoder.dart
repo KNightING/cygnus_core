@@ -1,12 +1,12 @@
 import 'dart:typed_data';
 import 'asn1_identifier.dart';
 
-class ASN1DEREncoder {
+class CygnusASN1DEREncoder {
   static Uint8List encodeSequence({required Uint8List content}) {
     var encoded = Uint8List.fromList([]);
     encoded.add(
-      ASN1Identifier.constructedTag |
-          ASN1IdentifierTagNumber.SEQUENCE.toValue(),
+      CygnusASN1Identifier.constructedTag |
+          CygnusASN1IdentifierTagNumber.SEQUENCE.toValue(),
     );
     encoded.addAll(contentLength(size: content.length));
     encoded.addAll(content);

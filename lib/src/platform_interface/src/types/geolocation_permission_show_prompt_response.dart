@@ -1,13 +1,13 @@
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 
-import '../in_app_webview/platform_webview.dart';
+import '../webview/platform_webview.dart';
 import 'enum_method.dart';
 
 part 'geolocation_permission_show_prompt_response.g.dart';
 
-///Class used by the host application to set the Geolocation permission state for an origin during the [PlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt] event.
+///Class used by the host application to set the Geolocation permission state for an origin during the [CygnusPlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt] event.
 @ExchangeableObject()
-class GeolocationPermissionShowPromptResponse_ {
+class CygnusGeolocationPermissionShowPromptResponse_ {
   ///The origin for which permissions are set.
   String origin;
 
@@ -18,7 +18,7 @@ class GeolocationPermissionShowPromptResponse_ {
   ///The default value is `false`.
   bool retain;
 
-  GeolocationPermissionShowPromptResponse_({
+  CygnusGeolocationPermissionShowPromptResponse_({
     required this.origin,
     required this.allow,
     this.retain = false,

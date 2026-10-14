@@ -1,26 +1,26 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [WindowsWebNotificationController].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebNotificationControllerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebNotificationControllerCreationParams] for
 /// more information.
 @immutable
 class WindowsWebNotificationControllerCreationParams
-    extends PlatformWebNotificationControllerCreationParams {
+    extends CygnusPlatformWebNotificationControllerCreationParams {
   /// Creates a new [WindowsWebNotificationControllerCreationParams] instance.
   const WindowsWebNotificationControllerCreationParams({
     required super.id,
     required super.notification,
   });
 
-  /// Creates a [WindowsWebNotificationControllerCreationParams] instance based on [PlatformWebNotificationControllerCreationParams].
+  /// Creates a [WindowsWebNotificationControllerCreationParams] instance based on [CygnusPlatformWebNotificationControllerCreationParams].
   factory WindowsWebNotificationControllerCreationParams.fromPlatformWebNotificationControllerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebNotificationControllerCreationParams params,
+    CygnusPlatformWebNotificationControllerCreationParams params,
   ) {
     return WindowsWebNotificationControllerCreationParams(
       id: params.id,
@@ -29,12 +29,12 @@ class WindowsWebNotificationControllerCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformWebNotificationController}
-class WindowsWebNotificationController extends PlatformWebNotificationController
+///{@macro cygnus_core.CygnusPlatformWebNotificationController}
+class WindowsWebNotificationController extends CygnusPlatformWebNotificationController
     with ChannelController {
   /// Constructs a [WindowsWebNotificationController].
   WindowsWebNotificationController(
-    PlatformWebNotificationControllerCreationParams params,
+    CygnusPlatformWebNotificationControllerCreationParams params,
   ) : super.implementation(
         params is WindowsWebNotificationControllerCreationParams
             ? params
@@ -53,7 +53,7 @@ class WindowsWebNotificationController extends PlatformWebNotificationController
       WindowsWebNotificationController(
         WindowsWebNotificationControllerCreationParams(
           id: '',
-          notification: WebNotification(),
+          notification: CygnusWebNotification(),
         ),
       );
 

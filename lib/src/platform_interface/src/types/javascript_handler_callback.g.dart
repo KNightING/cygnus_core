@@ -6,31 +6,31 @@ part of 'javascript_handler_callback.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///A class that represents the data passed to a [JavaScriptHandlerFunction] added with [PlatformInAppWebViewController.addJavaScriptHandler].
-class JavaScriptHandlerFunctionData {
+///A class that represents the data passed to a [CygnusJavaScriptHandlerFunction] added with [CygnusPlatformWebViewController.addJavaScriptHandler].
+class CygnusJavaScriptHandlerFunctionData {
   List<dynamic> args;
   bool isMainFrame;
-  WebUri origin;
-  WebUri requestUrl;
-  JavaScriptHandlerFunctionData({
+  CygnusWebUri origin;
+  CygnusWebUri requestUrl;
+  CygnusJavaScriptHandlerFunctionData({
     this.args = const [],
     required this.isMainFrame,
     required this.origin,
     required this.requestUrl,
   });
 
-  ///Gets a possible [JavaScriptHandlerFunctionData] instance from a [Map] value.
-  static JavaScriptHandlerFunctionData? fromMap(
+  ///Gets a possible [CygnusJavaScriptHandlerFunctionData] instance from a [Map] value.
+  static CygnusJavaScriptHandlerFunctionData? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = JavaScriptHandlerFunctionData(
+    final instance = CygnusJavaScriptHandlerFunctionData(
       isMainFrame: map['isMainFrame'],
-      origin: WebUri(map['origin']),
-      requestUrl: WebUri(map['requestUrl']),
+      origin: CygnusWebUri(map['origin']),
+      requestUrl: CygnusWebUri(map['requestUrl']),
     );
     if (map['args'] != null) {
       instance.args = List<dynamic>.from(map['args']!.cast<dynamic>());
@@ -39,7 +39,7 @@ class JavaScriptHandlerFunctionData {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "args": args,
       "isMainFrame": isMainFrame,
@@ -55,6 +55,6 @@ class JavaScriptHandlerFunctionData {
 
   @override
   String toString() {
-    return 'JavaScriptHandlerFunctionData{args: $args, isMainFrame: $isMainFrame, origin: $origin, requestUrl: $requestUrl}';
+    return 'CygnusJavaScriptHandlerFunctionData{args: $args, isMainFrame: $isMainFrame, origin: $origin, requestUrl: $requestUrl}';
   }
 }

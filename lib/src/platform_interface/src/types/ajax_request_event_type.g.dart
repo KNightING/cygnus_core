@@ -6,61 +6,67 @@ part of 'ajax_request_event_type.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class used by [AjaxRequestEvent] class.
-class AjaxRequestEventType {
+///Class used by [CygnusAjaxRequestEvent] class.
+class CygnusAjaxRequestEventType {
   final String _value;
   final String? _nativeValue;
-  const AjaxRequestEventType._internal(this._value, this._nativeValue);
+  const CygnusAjaxRequestEventType._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory AjaxRequestEventType._internalMultiPlatform(
+  factory CygnusAjaxRequestEventType._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => AjaxRequestEventType._internal(value, nativeValue());
+  ) => CygnusAjaxRequestEventType._internal(value, nativeValue());
 
   ///The ABORT event is fired when a request has been aborted.
-  static const ABORT = AjaxRequestEventType._internal('abort', 'abort');
+  static const ABORT = CygnusAjaxRequestEventType._internal('abort', 'abort');
 
   ///The ERROR event is fired when the request encountered an error.
-  static const ERROR = AjaxRequestEventType._internal('error', 'error');
+  static const ERROR = CygnusAjaxRequestEventType._internal('error', 'error');
 
   ///The LOAD event is fired when an `XMLHttpRequest` transaction completes successfully.
-  static const LOAD = AjaxRequestEventType._internal('load', 'load');
+  static const LOAD = CygnusAjaxRequestEventType._internal('load', 'load');
 
-  ///The LOADEND event is fired when a request has completed, whether successfully (after [AjaxRequestEventType.LOAD]) or
-  ///unsuccessfully (after [AjaxRequestEventType.ABORT] or [AjaxRequestEventType.ERROR]).
-  static const LOADEND = AjaxRequestEventType._internal('loadend', 'loadend');
+  ///The LOADEND event is fired when a request has completed, whether successfully (after [CygnusAjaxRequestEventType.LOAD]) or
+  ///unsuccessfully (after [CygnusAjaxRequestEventType.ABORT] or [CygnusAjaxRequestEventType.ERROR]).
+  static const LOADEND = CygnusAjaxRequestEventType._internal(
+    'loadend',
+    'loadend',
+  );
 
   ///The LOADSTART event is fired when a request has started to load data.
-  static const LOADSTART = AjaxRequestEventType._internal(
+  static const LOADSTART = CygnusAjaxRequestEventType._internal(
     'loadstart',
     'loadstart',
   );
 
   ///The PROGRESS event is fired periodically when a request receives more data.
-  static const PROGRESS = AjaxRequestEventType._internal(
+  static const PROGRESS = CygnusAjaxRequestEventType._internal(
     'progress',
     'progress',
   );
 
   ///The TIMEOUT event is fired when progression is terminated due to preset time expiring.
-  static const TIMEOUT = AjaxRequestEventType._internal('timeout', 'timeout');
+  static const TIMEOUT = CygnusAjaxRequestEventType._internal(
+    'timeout',
+    'timeout',
+  );
 
-  ///Set of all values of [AjaxRequestEventType].
-  static final Set<AjaxRequestEventType> values = [
-    AjaxRequestEventType.ABORT,
-    AjaxRequestEventType.ERROR,
-    AjaxRequestEventType.LOAD,
-    AjaxRequestEventType.LOADEND,
-    AjaxRequestEventType.LOADSTART,
-    AjaxRequestEventType.PROGRESS,
-    AjaxRequestEventType.TIMEOUT,
+  ///Set of all values of [CygnusAjaxRequestEventType].
+  static final Set<CygnusAjaxRequestEventType> values = [
+    CygnusAjaxRequestEventType.ABORT,
+    CygnusAjaxRequestEventType.ERROR,
+    CygnusAjaxRequestEventType.LOAD,
+    CygnusAjaxRequestEventType.LOADEND,
+    CygnusAjaxRequestEventType.LOADSTART,
+    CygnusAjaxRequestEventType.PROGRESS,
+    CygnusAjaxRequestEventType.TIMEOUT,
   ].toSet();
 
-  ///Gets a possible [AjaxRequestEventType] instance from [String] value.
-  static AjaxRequestEventType? fromValue(String? value) {
+  ///Gets a possible [CygnusAjaxRequestEventType] instance from [String] value.
+  static CygnusAjaxRequestEventType? fromValue(String? value) {
     if (value != null) {
       try {
-        return AjaxRequestEventType.values.firstWhere(
+        return CygnusAjaxRequestEventType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -70,11 +76,11 @@ class AjaxRequestEventType {
     return null;
   }
 
-  ///Gets a possible [AjaxRequestEventType] instance from a native value.
-  static AjaxRequestEventType? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusAjaxRequestEventType] instance from a native value.
+  static CygnusAjaxRequestEventType? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return AjaxRequestEventType.values.firstWhere(
+        return CygnusAjaxRequestEventType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -84,15 +90,15 @@ class AjaxRequestEventType {
     return null;
   }
 
-  /// Gets a possible [AjaxRequestEventType] instance value with name [name].
+  /// Gets a possible [CygnusAjaxRequestEventType] instance value with name [name].
   ///
-  /// Goes through [AjaxRequestEventType.values] looking for a value with
-  /// name [name], as reported by [AjaxRequestEventType.name].
+  /// Goes through [CygnusAjaxRequestEventType.values] looking for a value with
+  /// name [name], as reported by [CygnusAjaxRequestEventType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static AjaxRequestEventType? byName(String? name) {
+  static CygnusAjaxRequestEventType? byName(String? name) {
     if (name != null) {
       try {
-        return AjaxRequestEventType.values.firstWhere(
+        return CygnusAjaxRequestEventType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -102,7 +108,7 @@ class AjaxRequestEventType {
     return null;
   }
 
-  /// Creates a map from the names of [AjaxRequestEventType] values to the values.
+  /// Creates a map from the names of [CygnusAjaxRequestEventType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -110,9 +116,10 @@ class AjaxRequestEventType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, AjaxRequestEventType> asNameMap() =>
-      <String, AjaxRequestEventType>{
-        for (final value in AjaxRequestEventType.values) value.name(): value,
+  static Map<String, CygnusAjaxRequestEventType> asNameMap() =>
+      <String, CygnusAjaxRequestEventType>{
+        for (final value in CygnusAjaxRequestEventType.values)
+          value.name(): value,
       };
 
   ///Gets [String] value.

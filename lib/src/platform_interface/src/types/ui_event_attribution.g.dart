@@ -12,13 +12,13 @@ part of 'ui_event_attribution.dart';
 ///For more information on the proposed PCM web standard, see [Introducing Private Click Measurement](https://webkit.org/blog/11529/introducing-private-click-measurement-pcm/)
 ///and [Private Click Measurement Draft Community Group Report](https://privacycg.github.io/private-click-measurement/).
 ///
-///Check [UIEventAttribution](https://developer.apple.com/documentation/uikit/uieventattribution) for details.
+///Check [CygnusUIEventAttribution](https://developer.apple.com/documentation/uikit/uieventattribution) for details.
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- iOS
-class UIEventAttribution {
+class CygnusUIEventAttribution {
   ///The destination URL of the attribution.
-  WebUri destinationURL;
+  CygnusWebUri destinationURL;
 
   ///A string that describes the entity that purchased the attributed content.
   String purchaser;
@@ -28,23 +28,23 @@ class UIEventAttribution {
 
   ///An 8-bit number that identifies the source of the click for attribution. Value must be between 0 and 255.
   int sourceIdentifier;
-  UIEventAttribution({
+  CygnusUIEventAttribution({
     required this.sourceIdentifier,
     required this.destinationURL,
     required this.sourceDescription,
     required this.purchaser,
   });
 
-  ///Gets a possible [UIEventAttribution] instance from a [Map] value.
-  static UIEventAttribution? fromMap(
+  ///Gets a possible [CygnusUIEventAttribution] instance from a [Map] value.
+  static CygnusUIEventAttribution? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = UIEventAttribution(
-      destinationURL: WebUri(map['destinationURL']),
+    final instance = CygnusUIEventAttribution(
+      destinationURL: CygnusWebUri(map['destinationURL']),
       purchaser: map['purchaser'],
       sourceDescription: map['sourceDescription'],
       sourceIdentifier: map['sourceIdentifier'],
@@ -53,7 +53,7 @@ class UIEventAttribution {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "destinationURL": destinationURL.toString(),
       "purchaser": purchaser,
@@ -69,6 +69,6 @@ class UIEventAttribution {
 
   @override
   String toString() {
-    return 'UIEventAttribution{destinationURL: $destinationURL, purchaser: $purchaser, sourceDescription: $sourceDescription, sourceIdentifier: $sourceIdentifier}';
+    return 'CygnusUIEventAttribution{destinationURL: $destinationURL, purchaser: $purchaser, sourceDescription: $sourceDescription, sourceIdentifier: $sourceIdentifier}';
   }
 }

@@ -2,36 +2,36 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [AndroidWebStorageManager].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebStorageManagerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebStorageManagerCreationParams] for
 /// more information.
 @immutable
 class AndroidWebStorageManagerCreationParams
-    extends PlatformWebStorageManagerCreationParams {
+    extends CygnusPlatformWebStorageManagerCreationParams {
   /// Creates a new [AndroidWebStorageManagerCreationParams] instance.
   const AndroidWebStorageManagerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebStorageManagerCreationParams params,
+    CygnusPlatformWebStorageManagerCreationParams params,
   ) : super();
 
-  /// Creates a [AndroidWebStorageManagerCreationParams] instance based on [PlatformWebStorageManagerCreationParams].
+  /// Creates a [AndroidWebStorageManagerCreationParams] instance based on [CygnusPlatformWebStorageManagerCreationParams].
   factory AndroidWebStorageManagerCreationParams.fromPlatformWebStorageManagerCreationParams(
-    PlatformWebStorageManagerCreationParams params,
+    CygnusPlatformWebStorageManagerCreationParams params,
   ) {
     return AndroidWebStorageManagerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformWebStorageManager}
-class AndroidWebStorageManager extends PlatformWebStorageManager
+///{@macro cygnus_core.CygnusPlatformWebStorageManager}
+class AndroidWebStorageManager extends CygnusPlatformWebStorageManager
     with ChannelController {
   /// Creates a new [AndroidWebStorageManager].
-  AndroidWebStorageManager(PlatformWebStorageManagerCreationParams params)
+  AndroidWebStorageManager(CygnusPlatformWebStorageManagerCreationParams params)
     : super.implementation(
         params is AndroidWebStorageManagerCreationParams
             ? params
@@ -48,7 +48,7 @@ class AndroidWebStorageManager extends PlatformWebStorageManager
 
   static AndroidWebStorageManager? _instance;
 
-  ///Gets the WebStorage manager shared instance.
+  ///Gets the CygnusWebStorage manager shared instance.
   static AndroidWebStorageManager instance() {
     return (_instance != null) ? _instance! : _init();
   }
@@ -56,7 +56,7 @@ class AndroidWebStorageManager extends PlatformWebStorageManager
   static AndroidWebStorageManager _init() {
     _instance = AndroidWebStorageManager(
       AndroidWebStorageManagerCreationParams(
-        const PlatformWebStorageManagerCreationParams(),
+        const CygnusPlatformWebStorageManagerCreationParams(),
       ),
     );
     return _instance!;
@@ -68,7 +68,7 @@ class AndroidWebStorageManager extends PlatformWebStorageManager
   factory AndroidWebStorageManager.static() {
     _static ??= AndroidWebStorageManager(
       AndroidWebStorageManagerCreationParams(
-        const PlatformWebStorageManagerCreationParams(),
+        const CygnusPlatformWebStorageManagerCreationParams(),
       ),
     );
     return _static!;
@@ -77,8 +77,8 @@ class AndroidWebStorageManager extends PlatformWebStorageManager
   Future<dynamic> _handleMethod(MethodCall call) async {}
 
   @override
-  Future<List<WebStorageOrigin>> getOrigins() async {
-    List<WebStorageOrigin> originsList = [];
+  Future<List<CygnusWebStorageOrigin>> getOrigins() async {
+    List<CygnusWebStorageOrigin> originsList = [];
 
     Map<String, dynamic> args = <String, dynamic>{};
     List<Map<dynamic, dynamic>> origins =
@@ -90,7 +90,7 @@ class AndroidWebStorageManager extends PlatformWebStorageManager
 
     for (var origin in origins) {
       originsList.add(
-        WebStorageOrigin(
+        CygnusWebStorageOrigin(
           origin: origin["origin"],
           quota: origin["quota"],
           usage: origin["usage"],

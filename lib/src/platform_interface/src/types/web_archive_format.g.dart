@@ -7,22 +7,22 @@ part of 'web_archive_format.dart';
 // **************************************************************************
 
 ///Class that represents the known Web Archive formats used when saving a web page.
-class WebArchiveFormat {
+class CygnusWebArchiveFormat {
   final String _value;
   final String? _nativeValue;
-  const WebArchiveFormat._internal(this._value, this._nativeValue);
+  const CygnusWebArchiveFormat._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory WebArchiveFormat._internalMultiPlatform(
+  factory CygnusWebArchiveFormat._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => WebArchiveFormat._internal(value, nativeValue());
+  ) => CygnusWebArchiveFormat._internal(value, nativeValue());
 
   ///MHT (MIME HTML) is a web Archive format that saves a web page's HTML code, images, CSS, and scripts into one document, allowing for offline viewing.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- Linux WPE WebKit
-  static final MHT = WebArchiveFormat._internalMultiPlatform('mht', () {
+  static final MHT = CygnusWebArchiveFormat._internalMultiPlatform('mht', () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return 'mht';
@@ -39,7 +39,7 @@ class WebArchiveFormat {
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
   ///- macOS WKWebView
-  static final WEBARCHIVE = WebArchiveFormat._internalMultiPlatform(
+  static final WEBARCHIVE = CygnusWebArchiveFormat._internalMultiPlatform(
     'webarchive',
     () {
       switch (defaultTargetPlatform) {
@@ -54,17 +54,17 @@ class WebArchiveFormat {
     },
   );
 
-  ///Set of all values of [WebArchiveFormat].
-  static final Set<WebArchiveFormat> values = [
-    WebArchiveFormat.MHT,
-    WebArchiveFormat.WEBARCHIVE,
+  ///Set of all values of [CygnusWebArchiveFormat].
+  static final Set<CygnusWebArchiveFormat> values = [
+    CygnusWebArchiveFormat.MHT,
+    CygnusWebArchiveFormat.WEBARCHIVE,
   ].toSet();
 
-  ///Gets a possible [WebArchiveFormat] instance from [String] value.
-  static WebArchiveFormat? fromValue(String? value) {
+  ///Gets a possible [CygnusWebArchiveFormat] instance from [String] value.
+  static CygnusWebArchiveFormat? fromValue(String? value) {
     if (value != null) {
       try {
-        return WebArchiveFormat.values.firstWhere(
+        return CygnusWebArchiveFormat.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -74,11 +74,11 @@ class WebArchiveFormat {
     return null;
   }
 
-  ///Gets a possible [WebArchiveFormat] instance from a native value.
-  static WebArchiveFormat? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusWebArchiveFormat] instance from a native value.
+  static CygnusWebArchiveFormat? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return WebArchiveFormat.values.firstWhere(
+        return CygnusWebArchiveFormat.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -88,15 +88,15 @@ class WebArchiveFormat {
     return null;
   }
 
-  /// Gets a possible [WebArchiveFormat] instance value with name [name].
+  /// Gets a possible [CygnusWebArchiveFormat] instance value with name [name].
   ///
-  /// Goes through [WebArchiveFormat.values] looking for a value with
-  /// name [name], as reported by [WebArchiveFormat.name].
+  /// Goes through [CygnusWebArchiveFormat.values] looking for a value with
+  /// name [name], as reported by [CygnusWebArchiveFormat.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static WebArchiveFormat? byName(String? name) {
+  static CygnusWebArchiveFormat? byName(String? name) {
     if (name != null) {
       try {
-        return WebArchiveFormat.values.firstWhere(
+        return CygnusWebArchiveFormat.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -106,7 +106,7 @@ class WebArchiveFormat {
     return null;
   }
 
-  /// Creates a map from the names of [WebArchiveFormat] values to the values.
+  /// Creates a map from the names of [CygnusWebArchiveFormat] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -114,9 +114,9 @@ class WebArchiveFormat {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, WebArchiveFormat> asNameMap() =>
-      <String, WebArchiveFormat>{
-        for (final value in WebArchiveFormat.values) value.name(): value,
+  static Map<String, CygnusWebArchiveFormat> asNameMap() =>
+      <String, CygnusWebArchiveFormat>{
+        for (final value in CygnusWebArchiveFormat.values) value.name(): value,
       };
 
   ///Gets [String] value.

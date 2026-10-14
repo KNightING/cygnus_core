@@ -7,8 +7,8 @@ part of 'attributed_string.dart';
 // **************************************************************************
 
 ///Class that represents a string with associated attributes
-///used by the [PlatformPullToRefreshController] and [PullToRefreshSettings] classes.
-class AttributedString {
+///used by the [CygnusPlatformPullToRefreshController] and [CygnusPullToRefreshSettings] classes.
+class CygnusAttributedString {
   ///The color of the background behind the text.
   ///
   ///The value of this attribute is a [Color] object.
@@ -65,9 +65,9 @@ class AttributedString {
 
   ///The strikethrough style of the text.
   ///
-  ///This value indicates whether the text has a line through it and corresponds to one of the constants described in [UnderlineStyle].
-  ///The default value for this attribute is [UnderlineStyle.STYLE_NONE].
-  UnderlineStyle? strikethroughStyle;
+  ///This value indicates whether the text has a line through it and corresponds to one of the constants described in [CygnusUnderlineStyle].
+  ///The default value for this attribute is [CygnusUnderlineStyle.STYLE_NONE].
+  CygnusUnderlineStyle? strikethroughStyle;
 
   ///The characters for the new object.
   String string;
@@ -91,9 +91,9 @@ class AttributedString {
 
   ///The text effect.
   ///
-  ///The value of this attribute is a [AttributedStringTextEffectStyle] object.
+  ///The value of this attribute is a [CygnusAttributedStringTextEffectStyle] object.
   ///The default value of this property is `null`, indicating no text effect.
-  AttributedStringTextEffectStyle? textEffect;
+  CygnusAttributedStringTextEffectStyle? textEffect;
 
   ///The color of the underline.
   ///
@@ -103,10 +103,10 @@ class AttributedString {
 
   ///The underline style of the text.
   ///
-  ///This value indicates whether the text is underlined and corresponds to one of the constants described in [UnderlineStyle].
-  ///The default value for this attribute is [UnderlineStyle.STYLE_NONE].
-  UnderlineStyle? underlineStyle;
-  AttributedString({
+  ///This value indicates whether the text is underlined and corresponds to one of the constants described in [CygnusUnderlineStyle].
+  ///The default value for this attribute is [CygnusUnderlineStyle.STYLE_NONE].
+  CygnusUnderlineStyle? underlineStyle;
+  CygnusAttributedString({
     this.backgroundColor,
     this.baselineOffset,
     this.expansion,
@@ -124,15 +124,15 @@ class AttributedString {
     this.underlineStyle,
   });
 
-  ///Gets a possible [AttributedString] instance from a [Map] value.
-  static AttributedString? fromMap(
+  ///Gets a possible [CygnusAttributedString] instance from a [Map] value.
+  static CygnusAttributedString? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = AttributedString(
+    final instance = CygnusAttributedString(
       backgroundColor: map['backgroundColor'] != null
           ? UtilColor.fromStringRepresentation(map['backgroundColor'])
           : null,
@@ -147,44 +147,53 @@ class AttributedString {
       strikethroughColor: map['strikethroughColor'] != null
           ? UtilColor.fromStringRepresentation(map['strikethroughColor'])
           : null,
-      strikethroughStyle: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => UnderlineStyle.fromNativeValue(
+      strikethroughStyle: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusUnderlineStyle.fromNativeValue(
           map['strikethroughStyle'],
         ),
-        EnumMethod.value => UnderlineStyle.fromValue(map['strikethroughStyle']),
-        EnumMethod.name => UnderlineStyle.byName(map['strikethroughStyle']),
+        CygnusEnumMethod.value => CygnusUnderlineStyle.fromValue(
+          map['strikethroughStyle'],
+        ),
+        CygnusEnumMethod.name => CygnusUnderlineStyle.byName(
+          map['strikethroughStyle'],
+        ),
       },
       string: map['string'],
       strokeColor: map['strokeColor'] != null
           ? UtilColor.fromStringRepresentation(map['strokeColor'])
           : null,
       strokeWidth: map['strokeWidth'],
-      textEffect: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue =>
-          AttributedStringTextEffectStyle.fromNativeValue(map['textEffect']),
-        EnumMethod.value => AttributedStringTextEffectStyle.fromValue(
-          map['textEffect'],
-        ),
-        EnumMethod.name => AttributedStringTextEffectStyle.byName(
+      textEffect: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusAttributedStringTextEffectStyle.fromNativeValue(
+            map['textEffect'],
+          ),
+        CygnusEnumMethod.value =>
+          CygnusAttributedStringTextEffectStyle.fromValue(map['textEffect']),
+        CygnusEnumMethod.name => CygnusAttributedStringTextEffectStyle.byName(
           map['textEffect'],
         ),
       },
       underlineColor: map['underlineColor'] != null
           ? UtilColor.fromStringRepresentation(map['underlineColor'])
           : null,
-      underlineStyle: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => UnderlineStyle.fromNativeValue(
+      underlineStyle: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusUnderlineStyle.fromNativeValue(
           map['underlineStyle'],
         ),
-        EnumMethod.value => UnderlineStyle.fromValue(map['underlineStyle']),
-        EnumMethod.name => UnderlineStyle.byName(map['underlineStyle']),
+        CygnusEnumMethod.value => CygnusUnderlineStyle.fromValue(
+          map['underlineStyle'],
+        ),
+        CygnusEnumMethod.name => CygnusUnderlineStyle.byName(
+          map['underlineStyle'],
+        ),
       },
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "backgroundColor": backgroundColor?.toHex(),
       "baselineOffset": baselineOffset,
@@ -194,24 +203,25 @@ class AttributedString {
       "ligature": ligature,
       "obliqueness": obliqueness,
       "strikethroughColor": strikethroughColor?.toHex(),
-      "strikethroughStyle": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => strikethroughStyle?.toNativeValue(),
-        EnumMethod.value => strikethroughStyle?.toValue(),
-        EnumMethod.name => strikethroughStyle?.name(),
+      "strikethroughStyle": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => strikethroughStyle?.toNativeValue(),
+        CygnusEnumMethod.value => strikethroughStyle?.toValue(),
+        CygnusEnumMethod.name => strikethroughStyle?.name(),
       },
       "string": string,
       "strokeColor": strokeColor?.toHex(),
       "strokeWidth": strokeWidth,
-      "textEffect": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => textEffect?.toNativeValue(),
-        EnumMethod.value => textEffect?.toValue(),
-        EnumMethod.name => textEffect?.name(),
+      "textEffect": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => textEffect?.toNativeValue(),
+        CygnusEnumMethod.value => textEffect?.toValue(),
+        CygnusEnumMethod.name => textEffect?.name(),
       },
       "underlineColor": underlineColor?.toHex(),
-      "underlineStyle": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => underlineStyle?.toNativeValue(),
-        EnumMethod.value => underlineStyle?.toValue(),
-        EnumMethod.name => underlineStyle?.name(),
+      "underlineStyle": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => underlineStyle?.toNativeValue(),
+        CygnusEnumMethod.value => underlineStyle?.toValue(),
+        CygnusEnumMethod.name => underlineStyle?.name(),
       },
     };
   }
@@ -223,15 +233,15 @@ class AttributedString {
 
   @override
   String toString() {
-    return 'AttributedString{backgroundColor: $backgroundColor, baselineOffset: $baselineOffset, expansion: $expansion, foregroundColor: $foregroundColor, kern: $kern, ligature: $ligature, obliqueness: $obliqueness, strikethroughColor: $strikethroughColor, strikethroughStyle: $strikethroughStyle, string: $string, strokeColor: $strokeColor, strokeWidth: $strokeWidth, textEffect: $textEffect, underlineColor: $underlineColor, underlineStyle: $underlineStyle}';
+    return 'CygnusAttributedString{backgroundColor: $backgroundColor, baselineOffset: $baselineOffset, expansion: $expansion, foregroundColor: $foregroundColor, kern: $kern, ligature: $ligature, obliqueness: $obliqueness, strikethroughColor: $strikethroughColor, strikethroughStyle: $strikethroughStyle, string: $string, strokeColor: $strokeColor, strokeWidth: $strokeWidth, textEffect: $textEffect, underlineColor: $underlineColor, underlineStyle: $underlineStyle}';
   }
 }
 
 ///An iOS-specific class that represents a string with associated attributes
-///used by the [PlatformPullToRefreshController] and [PullToRefreshOptions] classes.
-///Use [AttributedString] instead.
-@Deprecated('Use AttributedString instead')
-class IOSNSAttributedString {
+///used by the [CygnusPlatformPullToRefreshController] and [CygnusPullToRefreshOptions] classes.
+///Use [CygnusAttributedString] instead.
+@Deprecated('Use CygnusAttributedString instead')
+class CygnusIOSNSAttributedString {
   ///The color of the background behind the text.
   ///
   ///The value of this attribute is a [Color] object.
@@ -288,9 +298,9 @@ class IOSNSAttributedString {
 
   ///The strikethrough style of the text.
   ///
-  ///This value indicates whether the text has a line through it and corresponds to one of the constants described in [IOSNSUnderlineStyle].
-  ///The default value for this attribute is [IOSNSUnderlineStyle.STYLE_NONE].
-  IOSNSUnderlineStyle? strikethroughStyle;
+  ///This value indicates whether the text has a line through it and corresponds to one of the constants described in [CygnusIOSNSUnderlineStyle].
+  ///The default value for this attribute is [CygnusIOSNSUnderlineStyle.STYLE_NONE].
+  CygnusIOSNSUnderlineStyle? strikethroughStyle;
 
   ///The characters for the new object.
   String string;
@@ -314,9 +324,9 @@ class IOSNSAttributedString {
 
   ///The text effect.
   ///
-  ///The value of this attribute is a [IOSNSAttributedStringTextEffectStyle] object.
+  ///The value of this attribute is a [CygnusIOSNSAttributedStringTextEffectStyle] object.
   ///The default value of this property is `null`, indicating no text effect.
-  IOSNSAttributedStringTextEffectStyle? textEffect;
+  CygnusIOSNSAttributedStringTextEffectStyle? textEffect;
 
   ///The color of the underline.
   ///
@@ -326,10 +336,10 @@ class IOSNSAttributedString {
 
   ///The underline style of the text.
   ///
-  ///This value indicates whether the text is underlined and corresponds to one of the constants described in [IOSNSUnderlineStyle].
-  ///The default value for this attribute is [IOSNSUnderlineStyle.STYLE_NONE].
-  IOSNSUnderlineStyle? underlineStyle;
-  IOSNSAttributedString({
+  ///This value indicates whether the text is underlined and corresponds to one of the constants described in [CygnusIOSNSUnderlineStyle].
+  ///The default value for this attribute is [CygnusIOSNSUnderlineStyle.STYLE_NONE].
+  CygnusIOSNSUnderlineStyle? underlineStyle;
+  CygnusIOSNSAttributedString({
     this.backgroundColor,
     this.baselineOffset,
     this.expansion,
@@ -347,15 +357,15 @@ class IOSNSAttributedString {
     this.underlineStyle,
   });
 
-  ///Gets a possible [IOSNSAttributedString] instance from a [Map] value.
-  static IOSNSAttributedString? fromMap(
+  ///Gets a possible [CygnusIOSNSAttributedString] instance from a [Map] value.
+  static CygnusIOSNSAttributedString? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = IOSNSAttributedString(
+    final instance = CygnusIOSNSAttributedString(
       backgroundColor: map['backgroundColor'] != null
           ? UtilColor.fromStringRepresentation(map['backgroundColor'])
           : null,
@@ -370,14 +380,13 @@ class IOSNSAttributedString {
       strikethroughColor: map['strikethroughColor'] != null
           ? UtilColor.fromStringRepresentation(map['strikethroughColor'])
           : null,
-      strikethroughStyle: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => IOSNSUnderlineStyle.fromNativeValue(
+      strikethroughStyle: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusIOSNSUnderlineStyle.fromNativeValue(map['strikethroughStyle']),
+        CygnusEnumMethod.value => CygnusIOSNSUnderlineStyle.fromValue(
           map['strikethroughStyle'],
         ),
-        EnumMethod.value => IOSNSUnderlineStyle.fromValue(
-          map['strikethroughStyle'],
-        ),
-        EnumMethod.name => IOSNSUnderlineStyle.byName(
+        CygnusEnumMethod.name => CygnusIOSNSUnderlineStyle.byName(
           map['strikethroughStyle'],
         ),
       },
@@ -386,36 +395,37 @@ class IOSNSAttributedString {
           ? UtilColor.fromStringRepresentation(map['strokeColor'])
           : null,
       strokeWidth: map['strokeWidth'],
-      textEffect: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue =>
-          IOSNSAttributedStringTextEffectStyle.fromNativeValue(
+      textEffect: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusIOSNSAttributedStringTextEffectStyle.fromNativeValue(
             map['textEffect'],
           ),
-        EnumMethod.value => IOSNSAttributedStringTextEffectStyle.fromValue(
-          map['textEffect'],
-        ),
-        EnumMethod.name => IOSNSAttributedStringTextEffectStyle.byName(
-          map['textEffect'],
-        ),
+        CygnusEnumMethod.value =>
+          CygnusIOSNSAttributedStringTextEffectStyle.fromValue(
+            map['textEffect'],
+          ),
+        CygnusEnumMethod.name =>
+          CygnusIOSNSAttributedStringTextEffectStyle.byName(map['textEffect']),
       },
       underlineColor: map['underlineColor'] != null
           ? UtilColor.fromStringRepresentation(map['underlineColor'])
           : null,
-      underlineStyle: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => IOSNSUnderlineStyle.fromNativeValue(
+      underlineStyle: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusIOSNSUnderlineStyle.fromNativeValue(map['underlineStyle']),
+        CygnusEnumMethod.value => CygnusIOSNSUnderlineStyle.fromValue(
           map['underlineStyle'],
         ),
-        EnumMethod.value => IOSNSUnderlineStyle.fromValue(
+        CygnusEnumMethod.name => CygnusIOSNSUnderlineStyle.byName(
           map['underlineStyle'],
         ),
-        EnumMethod.name => IOSNSUnderlineStyle.byName(map['underlineStyle']),
       },
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "backgroundColor": backgroundColor?.toHex(),
       "baselineOffset": baselineOffset,
@@ -425,24 +435,25 @@ class IOSNSAttributedString {
       "ligature": ligature,
       "obliqueness": obliqueness,
       "strikethroughColor": strikethroughColor?.toHex(),
-      "strikethroughStyle": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => strikethroughStyle?.toNativeValue(),
-        EnumMethod.value => strikethroughStyle?.toValue(),
-        EnumMethod.name => strikethroughStyle?.name(),
+      "strikethroughStyle": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => strikethroughStyle?.toNativeValue(),
+        CygnusEnumMethod.value => strikethroughStyle?.toValue(),
+        CygnusEnumMethod.name => strikethroughStyle?.name(),
       },
       "string": string,
       "strokeColor": strokeColor?.toHex(),
       "strokeWidth": strokeWidth,
-      "textEffect": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => textEffect?.toNativeValue(),
-        EnumMethod.value => textEffect?.toValue(),
-        EnumMethod.name => textEffect?.name(),
+      "textEffect": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => textEffect?.toNativeValue(),
+        CygnusEnumMethod.value => textEffect?.toValue(),
+        CygnusEnumMethod.name => textEffect?.name(),
       },
       "underlineColor": underlineColor?.toHex(),
-      "underlineStyle": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => underlineStyle?.toNativeValue(),
-        EnumMethod.value => underlineStyle?.toValue(),
-        EnumMethod.name => underlineStyle?.name(),
+      "underlineStyle": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => underlineStyle?.toNativeValue(),
+        CygnusEnumMethod.value => underlineStyle?.toValue(),
+        CygnusEnumMethod.name => underlineStyle?.name(),
       },
     };
   }
@@ -454,6 +465,6 @@ class IOSNSAttributedString {
 
   @override
   String toString() {
-    return 'IOSNSAttributedString{backgroundColor: $backgroundColor, baselineOffset: $baselineOffset, expansion: $expansion, foregroundColor: $foregroundColor, kern: $kern, ligature: $ligature, obliqueness: $obliqueness, strikethroughColor: $strikethroughColor, strikethroughStyle: $strikethroughStyle, string: $string, strokeColor: $strokeColor, strokeWidth: $strokeWidth, textEffect: $textEffect, underlineColor: $underlineColor, underlineStyle: $underlineStyle}';
+    return 'CygnusIOSNSAttributedString{backgroundColor: $backgroundColor, baselineOffset: $baselineOffset, expansion: $expansion, foregroundColor: $foregroundColor, kern: $kern, ligature: $ligature, obliqueness: $obliqueness, strikethroughColor: $strikethroughColor, strikethroughStyle: $strikethroughStyle, string: $string, strokeColor: $strokeColor, strokeWidth: $strokeWidth, textEffect: $textEffect, underlineColor: $underlineColor, underlineStyle: $underlineStyle}';
   }
 }

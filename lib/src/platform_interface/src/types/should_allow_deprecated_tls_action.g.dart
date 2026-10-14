@@ -6,38 +6,38 @@ part of 'should_allow_deprecated_tls_action.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class that is used by [PlatformWebViewCreationParams.shouldAllowDeprecatedTLS] event.
+///Class that is used by [CygnusPlatformWebViewCreationParams.shouldAllowDeprecatedTLS] event.
 ///It represents the policy to pass back to the decision handler.
-class ShouldAllowDeprecatedTLSAction {
+class CygnusShouldAllowDeprecatedTLSAction {
   final int _value;
   final int? _nativeValue;
-  const ShouldAllowDeprecatedTLSAction._internal(
+  const CygnusShouldAllowDeprecatedTLSAction._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory ShouldAllowDeprecatedTLSAction._internalMultiPlatform(
+  factory CygnusShouldAllowDeprecatedTLSAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => ShouldAllowDeprecatedTLSAction._internal(value, nativeValue());
+  ) => CygnusShouldAllowDeprecatedTLSAction._internal(value, nativeValue());
 
   ///Allow the navigation to continue.
-  static const ALLOW = ShouldAllowDeprecatedTLSAction._internal(1, 1);
+  static const ALLOW = CygnusShouldAllowDeprecatedTLSAction._internal(1, 1);
 
   ///Cancel the navigation.
-  static const CANCEL = ShouldAllowDeprecatedTLSAction._internal(0, 0);
+  static const CANCEL = CygnusShouldAllowDeprecatedTLSAction._internal(0, 0);
 
-  ///Set of all values of [ShouldAllowDeprecatedTLSAction].
-  static final Set<ShouldAllowDeprecatedTLSAction> values = [
-    ShouldAllowDeprecatedTLSAction.ALLOW,
-    ShouldAllowDeprecatedTLSAction.CANCEL,
+  ///Set of all values of [CygnusShouldAllowDeprecatedTLSAction].
+  static final Set<CygnusShouldAllowDeprecatedTLSAction> values = [
+    CygnusShouldAllowDeprecatedTLSAction.ALLOW,
+    CygnusShouldAllowDeprecatedTLSAction.CANCEL,
   ].toSet();
 
-  ///Gets a possible [ShouldAllowDeprecatedTLSAction] instance from [int] value.
-  static ShouldAllowDeprecatedTLSAction? fromValue(int? value) {
+  ///Gets a possible [CygnusShouldAllowDeprecatedTLSAction] instance from [int] value.
+  static CygnusShouldAllowDeprecatedTLSAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return ShouldAllowDeprecatedTLSAction.values.firstWhere(
+        return CygnusShouldAllowDeprecatedTLSAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -47,11 +47,11 @@ class ShouldAllowDeprecatedTLSAction {
     return null;
   }
 
-  ///Gets a possible [ShouldAllowDeprecatedTLSAction] instance from a native value.
-  static ShouldAllowDeprecatedTLSAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusShouldAllowDeprecatedTLSAction] instance from a native value.
+  static CygnusShouldAllowDeprecatedTLSAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return ShouldAllowDeprecatedTLSAction.values.firstWhere(
+        return CygnusShouldAllowDeprecatedTLSAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -61,15 +61,15 @@ class ShouldAllowDeprecatedTLSAction {
     return null;
   }
 
-  /// Gets a possible [ShouldAllowDeprecatedTLSAction] instance value with name [name].
+  /// Gets a possible [CygnusShouldAllowDeprecatedTLSAction] instance value with name [name].
   ///
-  /// Goes through [ShouldAllowDeprecatedTLSAction.values] looking for a value with
-  /// name [name], as reported by [ShouldAllowDeprecatedTLSAction.name].
+  /// Goes through [CygnusShouldAllowDeprecatedTLSAction.values] looking for a value with
+  /// name [name], as reported by [CygnusShouldAllowDeprecatedTLSAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ShouldAllowDeprecatedTLSAction? byName(String? name) {
+  static CygnusShouldAllowDeprecatedTLSAction? byName(String? name) {
     if (name != null) {
       try {
-        return ShouldAllowDeprecatedTLSAction.values.firstWhere(
+        return CygnusShouldAllowDeprecatedTLSAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -79,7 +79,7 @@ class ShouldAllowDeprecatedTLSAction {
     return null;
   }
 
-  /// Creates a map from the names of [ShouldAllowDeprecatedTLSAction] values to the values.
+  /// Creates a map from the names of [CygnusShouldAllowDeprecatedTLSAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -87,9 +87,9 @@ class ShouldAllowDeprecatedTLSAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ShouldAllowDeprecatedTLSAction> asNameMap() =>
-      <String, ShouldAllowDeprecatedTLSAction>{
-        for (final value in ShouldAllowDeprecatedTLSAction.values)
+  static Map<String, CygnusShouldAllowDeprecatedTLSAction> asNameMap() =>
+      <String, CygnusShouldAllowDeprecatedTLSAction>{
+        for (final value in CygnusShouldAllowDeprecatedTLSAction.values)
           value.name(): value,
       };
 
@@ -127,40 +127,40 @@ class ShouldAllowDeprecatedTLSAction {
   }
 }
 
-///Class that is used by [PlatformWebViewCreationParams.shouldAllowDeprecatedTLS] event.
+///Class that is used by [CygnusPlatformWebViewCreationParams.shouldAllowDeprecatedTLS] event.
 ///It represents the policy to pass back to the decision handler.
-///Use [ShouldAllowDeprecatedTLSAction] instead.
-@Deprecated('Use ShouldAllowDeprecatedTLSAction instead')
-class IOSShouldAllowDeprecatedTLSAction {
+///Use [CygnusShouldAllowDeprecatedTLSAction] instead.
+@Deprecated('Use CygnusShouldAllowDeprecatedTLSAction instead')
+class CygnusIOSShouldAllowDeprecatedTLSAction {
   final int _value;
   final int? _nativeValue;
-  const IOSShouldAllowDeprecatedTLSAction._internal(
+  const CygnusIOSShouldAllowDeprecatedTLSAction._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory IOSShouldAllowDeprecatedTLSAction._internalMultiPlatform(
+  factory CygnusIOSShouldAllowDeprecatedTLSAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => IOSShouldAllowDeprecatedTLSAction._internal(value, nativeValue());
+  ) => CygnusIOSShouldAllowDeprecatedTLSAction._internal(value, nativeValue());
 
   ///Allow the navigation to continue.
-  static const ALLOW = IOSShouldAllowDeprecatedTLSAction._internal(1, 1);
+  static const ALLOW = CygnusIOSShouldAllowDeprecatedTLSAction._internal(1, 1);
 
   ///Cancel the navigation.
-  static const CANCEL = IOSShouldAllowDeprecatedTLSAction._internal(0, 0);
+  static const CANCEL = CygnusIOSShouldAllowDeprecatedTLSAction._internal(0, 0);
 
-  ///Set of all values of [IOSShouldAllowDeprecatedTLSAction].
-  static final Set<IOSShouldAllowDeprecatedTLSAction> values = [
-    IOSShouldAllowDeprecatedTLSAction.ALLOW,
-    IOSShouldAllowDeprecatedTLSAction.CANCEL,
+  ///Set of all values of [CygnusIOSShouldAllowDeprecatedTLSAction].
+  static final Set<CygnusIOSShouldAllowDeprecatedTLSAction> values = [
+    CygnusIOSShouldAllowDeprecatedTLSAction.ALLOW,
+    CygnusIOSShouldAllowDeprecatedTLSAction.CANCEL,
   ].toSet();
 
-  ///Gets a possible [IOSShouldAllowDeprecatedTLSAction] instance from [int] value.
-  static IOSShouldAllowDeprecatedTLSAction? fromValue(int? value) {
+  ///Gets a possible [CygnusIOSShouldAllowDeprecatedTLSAction] instance from [int] value.
+  static CygnusIOSShouldAllowDeprecatedTLSAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return IOSShouldAllowDeprecatedTLSAction.values.firstWhere(
+        return CygnusIOSShouldAllowDeprecatedTLSAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -170,11 +170,11 @@ class IOSShouldAllowDeprecatedTLSAction {
     return null;
   }
 
-  ///Gets a possible [IOSShouldAllowDeprecatedTLSAction] instance from a native value.
-  static IOSShouldAllowDeprecatedTLSAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusIOSShouldAllowDeprecatedTLSAction] instance from a native value.
+  static CygnusIOSShouldAllowDeprecatedTLSAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return IOSShouldAllowDeprecatedTLSAction.values.firstWhere(
+        return CygnusIOSShouldAllowDeprecatedTLSAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -184,15 +184,15 @@ class IOSShouldAllowDeprecatedTLSAction {
     return null;
   }
 
-  /// Gets a possible [IOSShouldAllowDeprecatedTLSAction] instance value with name [name].
+  /// Gets a possible [CygnusIOSShouldAllowDeprecatedTLSAction] instance value with name [name].
   ///
-  /// Goes through [IOSShouldAllowDeprecatedTLSAction.values] looking for a value with
-  /// name [name], as reported by [IOSShouldAllowDeprecatedTLSAction.name].
+  /// Goes through [CygnusIOSShouldAllowDeprecatedTLSAction.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSShouldAllowDeprecatedTLSAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSShouldAllowDeprecatedTLSAction? byName(String? name) {
+  static CygnusIOSShouldAllowDeprecatedTLSAction? byName(String? name) {
     if (name != null) {
       try {
-        return IOSShouldAllowDeprecatedTLSAction.values.firstWhere(
+        return CygnusIOSShouldAllowDeprecatedTLSAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -202,7 +202,7 @@ class IOSShouldAllowDeprecatedTLSAction {
     return null;
   }
 
-  /// Creates a map from the names of [IOSShouldAllowDeprecatedTLSAction] values to the values.
+  /// Creates a map from the names of [CygnusIOSShouldAllowDeprecatedTLSAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -210,9 +210,9 @@ class IOSShouldAllowDeprecatedTLSAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSShouldAllowDeprecatedTLSAction> asNameMap() =>
-      <String, IOSShouldAllowDeprecatedTLSAction>{
-        for (final value in IOSShouldAllowDeprecatedTLSAction.values)
+  static Map<String, CygnusIOSShouldAllowDeprecatedTLSAction> asNameMap() =>
+      <String, CygnusIOSShouldAllowDeprecatedTLSAction>{
+        for (final value in CygnusIOSShouldAllowDeprecatedTLSAction.values)
           value.name(): value,
       };
 

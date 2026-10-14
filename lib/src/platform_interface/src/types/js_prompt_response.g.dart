@@ -6,10 +6,10 @@ part of 'js_prompt_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onJsPrompt] event to control a JavaScript prompt dialog.
-class JsPromptResponse {
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onJsPrompt] event to control a JavaScript prompt dialog.
+class CygnusJsPromptResponse {
   ///Action used to confirm that the user hit confirm or cancel button.
-  JsPromptResponseAction? action;
+  CygnusJsPromptResponseAction? action;
 
   ///Title of the cancel button.
   String cancelButtonTitle;
@@ -28,31 +28,34 @@ class JsPromptResponse {
 
   ///Value of the prompt dialog.
   String? value;
-  JsPromptResponse({
-    JsPromptResponseAction? action,
+  CygnusJsPromptResponse({
+    CygnusJsPromptResponseAction? action,
     this.cancelButtonTitle = "",
     this.confirmButtonTitle = "",
     this.defaultValue = "",
     this.handledByClient = false,
     this.message = "",
     this.value,
-  }) : action = action ?? JsPromptResponseAction.CANCEL;
+  }) : action = action ?? CygnusJsPromptResponseAction.CANCEL;
 
-  ///Gets a possible [JsPromptResponse] instance from a [Map] value.
-  static JsPromptResponse? fromMap(
+  ///Gets a possible [CygnusJsPromptResponse] instance from a [Map] value.
+  static CygnusJsPromptResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = JsPromptResponse(value: map['value']);
-    instance.action = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => JsPromptResponseAction.fromNativeValue(
+    final instance = CygnusJsPromptResponse(value: map['value']);
+    instance.action = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusJsPromptResponseAction.fromNativeValue(map['action']),
+      CygnusEnumMethod.value => CygnusJsPromptResponseAction.fromValue(
         map['action'],
       ),
-      EnumMethod.value => JsPromptResponseAction.fromValue(map['action']),
-      EnumMethod.name => JsPromptResponseAction.byName(map['action']),
+      CygnusEnumMethod.name => CygnusJsPromptResponseAction.byName(
+        map['action'],
+      ),
     };
     if (map['cancelButtonTitle'] != null) {
       instance.cancelButtonTitle = map['cancelButtonTitle'];
@@ -73,12 +76,12 @@ class JsPromptResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "action": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => action?.toNativeValue(),
-        EnumMethod.value => action?.toValue(),
-        EnumMethod.name => action?.name(),
+      "action": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => action?.toNativeValue(),
+        CygnusEnumMethod.value => action?.toValue(),
+        CygnusEnumMethod.name => action?.name(),
       },
       "cancelButtonTitle": cancelButtonTitle,
       "confirmButtonTitle": confirmButtonTitle,
@@ -96,6 +99,6 @@ class JsPromptResponse {
 
   @override
   String toString() {
-    return 'JsPromptResponse{action: $action, cancelButtonTitle: $cancelButtonTitle, confirmButtonTitle: $confirmButtonTitle, defaultValue: $defaultValue, handledByClient: $handledByClient, message: $message, value: $value}';
+    return 'CygnusJsPromptResponse{action: $action, cancelButtonTitle: $cancelButtonTitle, confirmButtonTitle: $confirmButtonTitle, defaultValue: $defaultValue, handledByClient: $handledByClient, message: $message, value: $value}';
   }
 }

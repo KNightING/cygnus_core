@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void sfSafariViewController() {
-  final shouldSkip = !ChromeSafariBrowser.isMethodSupported(
-    PlatformChromeSafariBrowserMethod.prewarmConnections,
+  final shouldSkip = !CygnusChromeSafariBrowser.isMethodSupported(
+    CygnusPlatformChromeSafariBrowserMethod.prewarmConnections,
   );
 
   skippableGroup('SF Safari View Controller', () {
@@ -25,16 +25,16 @@ void sfSafariViewController() {
 
     // TODO: this test takes a lot of time to complete. Tested on iOS 16.0.
     // skippableTest('clearWebsiteData', () async {
-    //   await expectLater(ChromeSafariBrowser.clearWebsiteData(), completes);
+    //   await expectLater(CygnusChromeSafariBrowser.clearWebsiteData(), completes);
     // });
 
     skippableTest('create and invalidate Prewarming Token', () async {
-      final prewarmingToken = await ChromeSafariBrowser.prewarmConnections([
+      final prewarmingToken = await CygnusChromeSafariBrowser.prewarmConnections([
         TEST_URL_1,
       ]);
       expect(prewarmingToken, isNotNull);
       await expectLater(
-        ChromeSafariBrowser.invalidatePrewarmingToken(prewarmingToken!),
+        CygnusChromeSafariBrowser.invalidatePrewarmingToken(prewarmingToken!),
         completes,
       );
     });

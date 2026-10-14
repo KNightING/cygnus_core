@@ -1,130 +1,130 @@
 import 'package:flutter/foundation.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
-///{@macro cygnus_core.PlatformFindInteractionController}
+///{@macro cygnus_core.CygnusPlatformFindInteractionController}
 ///
-///{@macro cygnus_core.PlatformFindInteractionController.supported_platforms}
-class FindInteractionController {
-  ///{@macro cygnus_core.PlatformFindInteractionController}
+///{@macro cygnus_core.CygnusPlatformFindInteractionController.supported_platforms}
+class CygnusFindInteractionController {
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.supported_platforms}
-  FindInteractionController({
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.supported_platforms}
+  CygnusFindInteractionController({
     void Function(
-      PlatformFindInteractionController controller,
+      CygnusPlatformFindInteractionController controller,
       int activeMatchOrdinal,
       int numberOfMatches,
       bool isDoneCounting,
     )?
     onFindResultReceived,
   }) : this.fromPlatformCreationParams(
-         params: PlatformFindInteractionControllerCreationParams(
+         params: CygnusPlatformFindInteractionControllerCreationParams(
            onFindResultReceived: onFindResultReceived,
          ),
        );
 
-  /// Constructs a [FindInteractionController].
+  /// Constructs a [CygnusFindInteractionController].
   ///
-  /// See [FindInteractionController.fromPlatformCreationParams] for setting parameters for
+  /// See [CygnusFindInteractionController.fromPlatformCreationParams] for setting parameters for
   /// a specific platform.
-  FindInteractionController.fromPlatformCreationParams({
-    required PlatformFindInteractionControllerCreationParams params,
-  }) : this.fromPlatform(platform: PlatformFindInteractionController(params));
+  CygnusFindInteractionController.fromPlatformCreationParams({
+    required CygnusPlatformFindInteractionControllerCreationParams params,
+  }) : this.fromPlatform(platform: CygnusPlatformFindInteractionController(params));
 
-  /// Constructs a [FindInteractionController] from a specific platform implementation.
-  FindInteractionController.fromPlatform({required this.platform});
+  /// Constructs a [CygnusFindInteractionController] from a specific platform implementation.
+  CygnusFindInteractionController.fromPlatform({required this.platform});
 
-  /// Implementation of [PlatformFindInteractionController] for the current platform.
-  final PlatformFindInteractionController platform;
+  /// Implementation of [CygnusPlatformFindInteractionController] for the current platform.
+  final CygnusPlatformFindInteractionController platform;
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.onFindResultReceived}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.onFindResultReceived}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.onFindResultReceived.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.onFindResultReceived.supported_platforms}
   void Function(
-    PlatformFindInteractionController controller,
+    CygnusPlatformFindInteractionController controller,
     int activeMatchOrdinal,
     int numberOfMatches,
     bool isDoneCounting,
   )?
   get onFindResultReceived => platform.onFindResultReceived;
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.findAll}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.findAll}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.findAll.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.findAll.supported_platforms}
   Future<void> findAll({String? find}) => platform.findAll(find: find);
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.findNext}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.findNext}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.findNext.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.findNext.supported_platforms}
   Future<void> findNext({bool forward = true}) =>
       platform.findNext(forward: forward);
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.clearMatches}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.clearMatches}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.clearMatches.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.clearMatches.supported_platforms}
   Future<void> clearMatches() => platform.clearMatches();
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.setSearchText}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.setSearchText}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.setSearchText.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.setSearchText.supported_platforms}
   Future<void> setSearchText(String? searchText) =>
       platform.setSearchText(searchText);
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.getSearchText}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.getSearchText}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.getSearchText.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.getSearchText.supported_platforms}
   Future<String?> getSearchText() => platform.getSearchText();
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.isFindNavigatorVisible}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.isFindNavigatorVisible}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.isFindNavigatorVisible.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.isFindNavigatorVisible.supported_platforms}
   Future<bool?> isFindNavigatorVisible() => platform.isFindNavigatorVisible();
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.updateResultCount}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.updateResultCount}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.updateResultCount.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.updateResultCount.supported_platforms}
   Future<void> updateResultCount() => platform.updateResultCount();
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.presentFindNavigator}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.presentFindNavigator}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.presentFindNavigator.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.presentFindNavigator.supported_platforms}
   Future<void> presentFindNavigator() => platform.presentFindNavigator();
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.dismissFindNavigator}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.dismissFindNavigator}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.dismissFindNavigator.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.dismissFindNavigator.supported_platforms}
   Future<void> dismissFindNavigator() => platform.dismissFindNavigator();
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.getActiveFindSession}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.getActiveFindSession}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.getActiveFindSession.supported_platforms}
-  Future<FindSession?> getActiveFindSession() =>
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.getActiveFindSession.supported_platforms}
+  Future<CygnusFindSession?> getActiveFindSession() =>
       platform.getActiveFindSession();
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.dispose}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.dispose}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.dispose.supported_platforms}
   void dispose({bool isKeepAlive = false}) => platform.dispose();
 
-  ///{@macro cygnus_core.PlatformFindInteractionControllerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionControllerCreationParams.isClassSupported}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformFindInteractionController.static().isClassSupported(
+      CygnusPlatformFindInteractionController.static().isClassSupported(
         platform: platform,
       );
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.isPropertySupported}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.isPropertySupported}
   static bool isPropertySupported(
-    PlatformFindInteractionControllerCreationParamsProperty property, {
+    CygnusPlatformFindInteractionControllerCreationParamsProperty property, {
     TargetPlatform? platform,
-  }) => PlatformFindInteractionController.static().isPropertySupported(
+  }) => CygnusPlatformFindInteractionController.static().isPropertySupported(
     property,
     platform: platform,
   );
 
-  ///{@macro cygnus_core.PlatformFindInteractionController.isMethodSupported}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.isMethodSupported}
   static bool isMethodSupported(
-    PlatformFindInteractionControllerMethod method, {
+    CygnusPlatformFindInteractionControllerMethod method, {
     TargetPlatform? platform,
-  }) => PlatformFindInteractionController.static().isMethodSupported(
+  }) => CygnusPlatformFindInteractionController.static().isMethodSupported(
     method,
     platform: platform,
   );

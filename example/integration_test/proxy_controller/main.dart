@@ -10,7 +10,7 @@ import '../util.dart';
 part 'clear_and_set_proxy_override.dart';
 
 void main() {
-  final shouldSkip = !ProxyController.isClassSupported();
+  final shouldSkip = !CygnusProxyController.isClassSupported();
 
   skippableGroup('Proxy Controller', () {
     clearAndSetProxyOverride();

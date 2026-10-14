@@ -6,34 +6,34 @@ part of 'fetch_request_action.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class used by [FetchRequest] class.
-class FetchRequestAction {
+///Class used by [CygnusFetchRequest] class.
+class CygnusFetchRequestAction {
   final int _value;
   final int? _nativeValue;
-  const FetchRequestAction._internal(this._value, this._nativeValue);
+  const CygnusFetchRequestAction._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory FetchRequestAction._internalMultiPlatform(
+  factory CygnusFetchRequestAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => FetchRequestAction._internal(value, nativeValue());
+  ) => CygnusFetchRequestAction._internal(value, nativeValue());
 
   ///Aborts the fetch request.
-  static const ABORT = FetchRequestAction._internal(0, 0);
+  static const ABORT = CygnusFetchRequestAction._internal(0, 0);
 
   ///Proceeds with the fetch request.
-  static const PROCEED = FetchRequestAction._internal(1, 1);
+  static const PROCEED = CygnusFetchRequestAction._internal(1, 1);
 
-  ///Set of all values of [FetchRequestAction].
-  static final Set<FetchRequestAction> values = [
-    FetchRequestAction.ABORT,
-    FetchRequestAction.PROCEED,
+  ///Set of all values of [CygnusFetchRequestAction].
+  static final Set<CygnusFetchRequestAction> values = [
+    CygnusFetchRequestAction.ABORT,
+    CygnusFetchRequestAction.PROCEED,
   ].toSet();
 
-  ///Gets a possible [FetchRequestAction] instance from [int] value.
-  static FetchRequestAction? fromValue(int? value) {
+  ///Gets a possible [CygnusFetchRequestAction] instance from [int] value.
+  static CygnusFetchRequestAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return FetchRequestAction.values.firstWhere(
+        return CygnusFetchRequestAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -43,11 +43,11 @@ class FetchRequestAction {
     return null;
   }
 
-  ///Gets a possible [FetchRequestAction] instance from a native value.
-  static FetchRequestAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusFetchRequestAction] instance from a native value.
+  static CygnusFetchRequestAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return FetchRequestAction.values.firstWhere(
+        return CygnusFetchRequestAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -57,15 +57,15 @@ class FetchRequestAction {
     return null;
   }
 
-  /// Gets a possible [FetchRequestAction] instance value with name [name].
+  /// Gets a possible [CygnusFetchRequestAction] instance value with name [name].
   ///
-  /// Goes through [FetchRequestAction.values] looking for a value with
-  /// name [name], as reported by [FetchRequestAction.name].
+  /// Goes through [CygnusFetchRequestAction.values] looking for a value with
+  /// name [name], as reported by [CygnusFetchRequestAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static FetchRequestAction? byName(String? name) {
+  static CygnusFetchRequestAction? byName(String? name) {
     if (name != null) {
       try {
-        return FetchRequestAction.values.firstWhere(
+        return CygnusFetchRequestAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -75,7 +75,7 @@ class FetchRequestAction {
     return null;
   }
 
-  /// Creates a map from the names of [FetchRequestAction] values to the values.
+  /// Creates a map from the names of [CygnusFetchRequestAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -83,9 +83,10 @@ class FetchRequestAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, FetchRequestAction> asNameMap() =>
-      <String, FetchRequestAction>{
-        for (final value in FetchRequestAction.values) value.name(): value,
+  static Map<String, CygnusFetchRequestAction> asNameMap() =>
+      <String, CygnusFetchRequestAction>{
+        for (final value in CygnusFetchRequestAction.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

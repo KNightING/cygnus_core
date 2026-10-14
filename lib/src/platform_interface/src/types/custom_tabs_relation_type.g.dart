@@ -7,61 +7,57 @@ part of 'custom_tabs_relation_type.dart';
 // **************************************************************************
 
 ///Custom Tabs relation for which the result is available.
-class CustomTabsRelationType {
+class CygnusCustomTabsRelationType {
   final int _value;
   final int? _nativeValue;
-  const CustomTabsRelationType._internal(this._value, this._nativeValue);
+  const CygnusCustomTabsRelationType._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory CustomTabsRelationType._internalMultiPlatform(
+  factory CygnusCustomTabsRelationType._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => CustomTabsRelationType._internal(value, nativeValue());
+  ) => CygnusCustomTabsRelationType._internal(value, nativeValue());
 
   ///Requests the ability to handle all URLs from a given origin.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  static final HANDLE_ALL_URLS = CustomTabsRelationType._internalMultiPlatform(
-    2,
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.android:
-          return 2;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final HANDLE_ALL_URLS =
+      CygnusCustomTabsRelationType._internalMultiPlatform(2, () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.android:
+            return 2;
+          default:
+            break;
+        }
+        return null;
+      });
 
   ///For App -> Web transitions, requests the app to use the declared origin to be used as origin for the client app in the web APIs context.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
-  static final USE_AS_ORIGIN = CustomTabsRelationType._internalMultiPlatform(
-    1,
-    () {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.android:
-          return 1;
-        default:
-          break;
-      }
-      return null;
-    },
-  );
+  static final USE_AS_ORIGIN =
+      CygnusCustomTabsRelationType._internalMultiPlatform(1, () {
+        switch (defaultTargetPlatform) {
+          case TargetPlatform.android:
+            return 1;
+          default:
+            break;
+        }
+        return null;
+      });
 
-  ///Set of all values of [CustomTabsRelationType].
-  static final Set<CustomTabsRelationType> values = [
-    CustomTabsRelationType.HANDLE_ALL_URLS,
-    CustomTabsRelationType.USE_AS_ORIGIN,
+  ///Set of all values of [CygnusCustomTabsRelationType].
+  static final Set<CygnusCustomTabsRelationType> values = [
+    CygnusCustomTabsRelationType.HANDLE_ALL_URLS,
+    CygnusCustomTabsRelationType.USE_AS_ORIGIN,
   ].toSet();
 
-  ///Gets a possible [CustomTabsRelationType] instance from [int] value.
-  static CustomTabsRelationType? fromValue(int? value) {
+  ///Gets a possible [CygnusCustomTabsRelationType] instance from [int] value.
+  static CygnusCustomTabsRelationType? fromValue(int? value) {
     if (value != null) {
       try {
-        return CustomTabsRelationType.values.firstWhere(
+        return CygnusCustomTabsRelationType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -71,11 +67,11 @@ class CustomTabsRelationType {
     return null;
   }
 
-  ///Gets a possible [CustomTabsRelationType] instance from a native value.
-  static CustomTabsRelationType? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusCustomTabsRelationType] instance from a native value.
+  static CygnusCustomTabsRelationType? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return CustomTabsRelationType.values.firstWhere(
+        return CygnusCustomTabsRelationType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -85,15 +81,15 @@ class CustomTabsRelationType {
     return null;
   }
 
-  /// Gets a possible [CustomTabsRelationType] instance value with name [name].
+  /// Gets a possible [CygnusCustomTabsRelationType] instance value with name [name].
   ///
-  /// Goes through [CustomTabsRelationType.values] looking for a value with
-  /// name [name], as reported by [CustomTabsRelationType.name].
+  /// Goes through [CygnusCustomTabsRelationType.values] looking for a value with
+  /// name [name], as reported by [CygnusCustomTabsRelationType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static CustomTabsRelationType? byName(String? name) {
+  static CygnusCustomTabsRelationType? byName(String? name) {
     if (name != null) {
       try {
-        return CustomTabsRelationType.values.firstWhere(
+        return CygnusCustomTabsRelationType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -103,7 +99,7 @@ class CustomTabsRelationType {
     return null;
   }
 
-  /// Creates a map from the names of [CustomTabsRelationType] values to the values.
+  /// Creates a map from the names of [CygnusCustomTabsRelationType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -111,9 +107,10 @@ class CustomTabsRelationType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, CustomTabsRelationType> asNameMap() =>
-      <String, CustomTabsRelationType>{
-        for (final value in CustomTabsRelationType.values) value.name(): value,
+  static Map<String, CygnusCustomTabsRelationType> asNameMap() =>
+      <String, CygnusCustomTabsRelationType>{
+        for (final value in CygnusCustomTabsRelationType.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

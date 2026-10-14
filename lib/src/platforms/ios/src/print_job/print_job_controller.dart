@@ -1,33 +1,33 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [IOSPrintJobController].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformPrintJobControllerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformPrintJobControllerCreationParams] for
 /// more information.
 @immutable
 class IOSPrintJobControllerCreationParams
-    extends PlatformPrintJobControllerCreationParams {
+    extends CygnusPlatformPrintJobControllerCreationParams {
   /// Creates a new [IOSPrintJobControllerCreationParams] instance.
   const IOSPrintJobControllerCreationParams({required super.id});
 
-  /// Creates a [IOSPrintJobControllerCreationParams] instance based on [PlatformPrintJobControllerCreationParams].
+  /// Creates a [IOSPrintJobControllerCreationParams] instance based on [CygnusPlatformPrintJobControllerCreationParams].
   factory IOSPrintJobControllerCreationParams.fromPlatformPrintJobControllerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformPrintJobControllerCreationParams params,
+    CygnusPlatformPrintJobControllerCreationParams params,
   ) {
     return IOSPrintJobControllerCreationParams(id: params.id);
   }
 }
 
-///{@macro cygnus_core.PlatformPrintJobController}
-class IOSPrintJobController extends PlatformPrintJobController
+///{@macro cygnus_core.CygnusPlatformPrintJobController}
+class IOSPrintJobController extends CygnusPlatformPrintJobController
     with ChannelController {
   /// Constructs a [IOSPrintJobController].
-  IOSPrintJobController(PlatformPrintJobControllerCreationParams params)
+  IOSPrintJobController(CygnusPlatformPrintJobControllerCreationParams params)
     : super.implementation(
         params is IOSPrintJobControllerCreationParams
             ? params
@@ -73,13 +73,13 @@ class IOSPrintJobController extends PlatformPrintJobController
   }
 
   @override
-  Future<PrintJobInfo?> getInfo() async {
+  Future<CygnusPrintJobInfo?> getInfo() async {
     Map<String, dynamic> args = <String, dynamic>{};
     Map<String, dynamic>? infoMap = (await channel?.invokeMethod(
       'getInfo',
       args,
     ))?.cast<String, dynamic>();
-    return PrintJobInfo.fromMap(infoMap);
+    return CygnusPrintJobInfo.fromMap(infoMap);
   }
 
   @override

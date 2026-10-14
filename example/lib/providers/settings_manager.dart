@@ -15,7 +15,7 @@ import 'package:flutter_inappwebview_example/utils/environment_settings_definiti
     as environment_settings_definitions;
 
 /// Settings manager for the testing interface
-/// Manages InAppWebViewSettings profiles with save/load functionality
+/// Manages CygnusWebViewSettings profiles with save/load functionality
 class SettingsManager extends ChangeNotifier {
   static const String _profilesKey = 'settings_profiles';
   static const String _currentProfileKey = 'current_profile_id';
@@ -25,7 +25,7 @@ class SettingsManager extends ChangeNotifier {
       'current_environment_profile_id';
 
   SettingsManager({
-    Future<WebViewEnvironment?> Function(WebViewEnvironmentSettings? settings)?
+    Future<CygnusWebViewEnvironment?> Function(CygnusWebViewEnvironmentSettings? settings)?
     environmentFactory,
     bool Function()? environmentSupportChecker,
   }) : _environmentFactory = environmentFactory ?? _defaultEnvironmentFactory,
@@ -40,11 +40,11 @@ class SettingsManager extends ChangeNotifier {
   List<WebViewEnvironmentProfile> _environmentProfiles = [];
   String? _currentEnvironmentProfileId;
   Map<String, dynamic> _currentEnvironmentSettings = {};
-  WebViewEnvironment? _webViewEnvironment;
+  CygnusWebViewEnvironment? _webViewEnvironment;
   bool _isEnvironmentLoading = false;
   int _settingsRevision = 0;
   int _environmentRevision = 0;
-  final Future<WebViewEnvironment?> Function(WebViewEnvironmentSettings?)
+  final Future<CygnusWebViewEnvironment?> Function(CygnusWebViewEnvironmentSettings?)
   _environmentFactory;
   final bool Function() _environmentSupportChecker;
   bool _isLoading = true;
@@ -95,8 +95,8 @@ class SettingsManager extends ChangeNotifier {
   Map<String, dynamic> get currentEnvironmentSettings =>
       Map.unmodifiable(_currentEnvironmentSettings);
 
-  /// Current WebViewEnvironment instance
-  WebViewEnvironment? get webViewEnvironment => _webViewEnvironment;
+  /// Current CygnusWebViewEnvironment instance
+  CygnusWebViewEnvironment? get webViewEnvironment => _webViewEnvironment;
 
   /// Check if environment is supported on the current platform
   bool get isEnvironmentSupported => _environmentSupportChecker();
@@ -453,38 +453,38 @@ class SettingsManager extends ChangeNotifier {
     }
   }
 
-  /// Build InAppWebViewSettings from current settings
-  InAppWebViewSettings buildSettings() {
+  /// Build CygnusWebViewSettings from current settings
+  CygnusWebViewSettings buildSettings() {
     final defaults = _getDefaultSettings();
     final merged = Map<String, dynamic>.from(defaults)
       ..addAll(_currentSettings);
 
-    return InAppWebViewSettings.fromMap(
+    return CygnusWebViewSettings.fromMap(
           merged,
-          enumMethod: EnumMethod.nativeValue,
+          enumMethod: CygnusEnumMethod.nativeValue,
         ) ??
-        InAppWebViewSettings();
+        CygnusWebViewSettings();
   }
 
-  /// Build WebViewEnvironmentSettings from current environment settings
-  WebViewEnvironmentSettings buildEnvironmentSettings() {
+  /// Build CygnusWebViewEnvironmentSettings from current environment settings
+  CygnusWebViewEnvironmentSettings buildEnvironmentSettings() {
     final defaults = _getDefaultEnvironmentSettings();
     final merged = Map<String, dynamic>.from(defaults)
       ..addAll(_currentEnvironmentSettings);
 
-    return WebViewEnvironmentSettings.fromMap(
+    return CygnusWebViewEnvironmentSettings.fromMap(
           merged,
-          enumMethod: EnumMethod.nativeValue,
+          enumMethod: CygnusEnumMethod.nativeValue,
         ) ??
-        WebViewEnvironmentSettings();
+        CygnusWebViewEnvironmentSettings();
   }
 
-  /// Recreate the WebViewEnvironment using current selection
+  /// Recreate the CygnusWebViewEnvironment using current selection
   Future<void> recreateEnvironment() async {
     await _recreateEnvironment();
   }
 
-  /// Dispose the current WebViewEnvironment instance
+  /// Dispose the current CygnusWebViewEnvironment instance
   Future<void> disposeEnvironment() async {
     _isEnvironmentLoading = true;
     notifyListeners();
@@ -511,29 +511,29 @@ class SettingsManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  static Future<WebViewEnvironment?> _defaultEnvironmentFactory(
-    WebViewEnvironmentSettings? settings,
+  static Future<CygnusWebViewEnvironment?> _defaultEnvironmentFactory(
+    CygnusWebViewEnvironmentSettings? settings,
   ) async {
     if (!_defaultEnvironmentSupportChecker()) {
       return null;
     }
-    return WebViewEnvironment.create(settings: settings);
+    return CygnusWebViewEnvironment.create(settings: settings);
   }
 
   static bool _defaultEnvironmentSupportChecker() {
-    return !kIsWeb && WebViewEnvironment.isClassSupported();
+    return !kIsWeb && CygnusWebViewEnvironment.isClassSupported();
   }
 
   Map<String, dynamic> _getDefaultEnvironmentSettings() {
     return settings_defaults.defaultWebViewEnvironmentSettings().toMap(
-      enumMethod: EnumMethod.nativeValue,
+      enumMethod: CygnusEnumMethod.nativeValue,
     );
   }
 
   /// Get default settings map
   Map<String, dynamic> _getDefaultSettings() {
-    return settings_defaults.defaultInAppWebViewSettings().toMap(
-      enumMethod: EnumMethod.nativeValue,
+    return settings_defaults.defaultWebViewSettings().toMap(
+      enumMethod: CygnusEnumMethod.nativeValue,
     );
   }
 

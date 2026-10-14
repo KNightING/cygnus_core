@@ -8,9 +8,9 @@ import '../util.dart';
 part 'find_interactions.dart';
 
 void main() {
-  final shouldSkip = !FindInteractionController.isClassSupported();
+  final shouldSkip = !CygnusFindInteractionController.isClassSupported();
 
-  skippableGroup('FindInteractionController', () {
+  skippableGroup('CygnusFindInteractionController', () {
     findInteractions();
   }, skip: shouldSkip);
 }

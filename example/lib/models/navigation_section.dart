@@ -49,15 +49,15 @@ final List<NavigationSection> defaultNavigationSections = [
     ],
   ),
   NavigationSection(
-    title: 'Storage & Cookies',
+    title: 'CygnusStorage & Cookies',
     items: [
       NavigationItem(
-        title: 'Cookie Manager',
+        title: 'CygnusCookie Manager',
         icon: Icons.cookie_outlined,
         routeName: '/storage/cookies',
       ),
       NavigationItem(
-        title: 'Web Storage',
+        title: 'Web CygnusStorage',
         icon: Icons.storage_outlined,
         routeName: '/storage/webstorage',
       ),
@@ -72,7 +72,7 @@ final List<NavigationSection> defaultNavigationSections = [
     title: 'Browsers',
     items: [
       NavigationItem(
-        title: '$InAppBrowser',
+        title: '$CygnusBrowser',
         icon: Icons.open_in_browser,
         routeName: '/browsers/inapp-browser',
       ),

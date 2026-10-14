@@ -6,11 +6,11 @@ import 'enum_method.dart';
 
 part 'fetch_request_credential_default.g.dart';
 
-///Class that represents the default credentials used by an [FetchRequest].
+///Class that represents the default credentials used by an [CygnusFetchRequest].
 @ExchangeableObject()
-class FetchRequestCredentialDefault_ extends FetchRequestCredential_ {
+class CygnusFetchRequestCredentialDefault_ extends CygnusFetchRequestCredential_ {
   ///The value of the credentials.
   String? value;
 
-  FetchRequestCredentialDefault_({type, this.value}) : super(type: type);
+  CygnusFetchRequestCredentialDefault_({type, this.value}) : super(type: type);
 }

@@ -266,7 +266,7 @@ class ExchangeableObjectGenerator
               .replaceAll(className ?? '', extClassName)
               .replaceAll("@ExchangeableObjectConstructor()", "");
 
-          // Replace type names ending with _ (e.g., CompressFormat_? -> CompressFormat?)
+          // Replace type names ending with _ (e.g., CygnusCompressFormat_? -> CygnusCompressFormat?)
           // First replace _. (type access) then _? (nullable type) then _ (type name)
           generatedConstructor = generatedConstructor
               .replaceAll("_.", ".")
@@ -402,13 +402,13 @@ class ExchangeableObjectGenerator
                     ) ==
                     "Uri" &&
                 newFieldElement.type.getDisplayString(withNullability: false) ==
-                    "WebUri") {
+                    "CygnusWebUri") {
               if (deprecatedIsNullable) {
                 classBuffer.write(
-                  "($deprecatedFieldName != null ? WebUri.uri($deprecatedFieldName!) : ${isNullable ? "null" : "WebUri('')"})",
+                  "($deprecatedFieldName != null ? CygnusWebUri.uri($deprecatedFieldName!) : ${isNullable ? "null" : "CygnusWebUri('')"})",
                 );
               } else {
-                classBuffer.write("WebUri.uri($deprecatedFieldName)");
+                classBuffer.write("CygnusWebUri.uri($deprecatedFieldName)");
               }
             } else {
               classBuffer.write(deprecatedFieldName);
@@ -435,7 +435,7 @@ class ExchangeableObjectGenerator
         'static $extClassName${nullable ? '?' : ''} fromMap(',
       );
       classBuffer.writeln(
-        'Map<String, dynamic>${nullable ? '?' : ''} map, {EnumMethod? enumMethod}',
+        'Map<String, dynamic>${nullable ? '?' : ''} map, {CygnusEnumMethod? enumMethod}',
       );
       classBuffer.writeln(') {');
       if (nullable) {
@@ -611,7 +611,7 @@ class ExchangeableObjectGenerator
             Util.methodHasIgnore(visitor.methods['toMap']!))) {
       classBuffer.writeln('///Converts instance to a map.');
       classBuffer.writeln(
-        'Map<String, dynamic> toMap({EnumMethod? enumMethod}) {',
+        'Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {',
       );
       classBuffer.writeln('return {');
       final fieldElements = <FieldElement>[];
@@ -760,11 +760,11 @@ class ExchangeableObjectGenerator
       } else {
         return "$value != null ? Uri.tryParse($value) : null";
       }
-    } else if (displayString == "WebUri") {
+    } else if (displayString == "CygnusWebUri") {
       if (!isNullable) {
-        return "WebUri($value)";
+        return "CygnusWebUri($value)";
       } else {
-        return "$value != null ? WebUri($value) : null";
+        return "$value != null ? CygnusWebUri($value) : null";
       }
     } else if (displayString == "Color" || displayString == "Color_") {
       if (!isNullable) {
@@ -838,27 +838,27 @@ class ExchangeableObjectGenerator
             1) {
           String? defaultEnumMethodValue = null;
           if (hasFromNativeValue) {
-            defaultEnumMethodValue = "EnumMethod.nativeValue";
+            defaultEnumMethodValue = "CygnusEnumMethod.nativeValue";
           } else if (hasFromValue) {
-            defaultEnumMethodValue = "EnumMethod.value";
+            defaultEnumMethodValue = "CygnusEnumMethod.value";
           } else {
-            defaultEnumMethodValue = "EnumMethod.name";
+            defaultEnumMethodValue = "CygnusEnumMethod.name";
           }
           var wrapper = "switch (enumMethod ?? $defaultEnumMethodValue) {";
           wrapper +=
-              "EnumMethod.nativeValue => " +
+              "CygnusEnumMethod.nativeValue => " +
               (hasFromNativeValue
                   ? classNameReference! + '.fromNativeValue($value)'
                   : "null") +
               ", ";
           wrapper +=
-              "EnumMethod.value => " +
+              "CygnusEnumMethod.value => " +
               (hasFromValue
                   ? classNameReference! + '.fromValue($value)'
                   : "null") +
               ", ";
           wrapper +=
-              "EnumMethod.name => " +
+              "CygnusEnumMethod.name => " +
               (hasByName ? classNameReference! + '.byName($value)' : "null");
           wrapper += "}";
           value = wrapper;
@@ -887,7 +887,7 @@ class ExchangeableObjectGenerator
     final displayString = elementType.getDisplayString(withNullability: false);
     if (displayString == "Uri") {
       return fieldName + (isNullable ? '?' : '') + '.toString()';
-    } else if (displayString == "WebUri") {
+    } else if (displayString == "CygnusWebUri") {
       return fieldName + (isNullable ? '?' : '') + '.toString()';
     } else if (displayString == "Color" || displayString == "Color_") {
       return fieldName + (isNullable ? '?' : '') + '.toHex()';
@@ -928,27 +928,27 @@ class ExchangeableObjectGenerator
             1) {
           String? defaultEnumMethodValue = null;
           if (hasToNativeValue) {
-            defaultEnumMethodValue = "EnumMethod.nativeValue";
+            defaultEnumMethodValue = "CygnusEnumMethod.nativeValue";
           } else if (hasToValue) {
-            defaultEnumMethodValue = "EnumMethod.value";
+            defaultEnumMethodValue = "CygnusEnumMethod.value";
           } else {
-            defaultEnumMethodValue = "EnumMethod.name";
+            defaultEnumMethodValue = "CygnusEnumMethod.name";
           }
           var wrapper = "switch (enumMethod ?? $defaultEnumMethodValue) {";
           wrapper +=
-              "EnumMethod.nativeValue => " +
+              "CygnusEnumMethod.nativeValue => " +
               (hasToNativeValue
                   ? (fieldName + (isNullable ? '?' : '') + '.toNativeValue()')
                   : "null") +
               ", ";
           wrapper +=
-              "EnumMethod.value => " +
+              "CygnusEnumMethod.value => " +
               (hasToValue
                   ? (fieldName + (isNullable ? '?' : '') + '.toValue()')
                   : "null") +
               ", ";
           wrapper +=
-              "EnumMethod.name => " +
+              "CygnusEnumMethod.name => " +
               (hasName
                   ? (fieldName + (isNullable ? '?' : '') + '.name()')
                   : "null");

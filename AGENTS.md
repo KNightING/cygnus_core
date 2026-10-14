@@ -27,8 +27,8 @@
 1. **這是獨立 repo（非 GitHub fork），源自 `pichillilorenzo/flutter_inappwebview`，且不回貢上游。**
    所有推送與 PR 一律針對 `KNightING/cygnus_core`；不要接 `upstream` remote、不要對上游 repo 發 PR。
    出處與授權見 `NOTICE`，`LICENSE` 與各檔的版權宣告必須原樣保留。
-2. **對外名稱分階段調整，未經該階段的計畫核准不得更動。** 階段 ① 不得改 Dart 類別名、Android Java
-   namespace、channel 前綴（`com.pichillilorenzo/`）、JS 全域名稱（`window.flutter_inappwebview`）——
+2. **對外名稱分階段調整，未經該階段的計畫核准不得更動。** Dart 類別名已於階段 ② 改為 Cygnus 風格；
+   Android Java namespace、channel 前綴（`com.pichillilorenzo/`）、JS 全域名稱（`window.flutter_inappwebview`）在階段 ③ 前不得更動——
    它們由 Dart 與五個原生端共用同一個字串，只改一邊會讓橋接靜默失效。改名須另立計畫並逐端同步。
 3. **原生建置識別字必須與套件名 `cygnus_core` 一致，`pluginClass` 不得更動。** podspec、Swift Package、
    CMake 的 `PROJECT_NAME`／`PLUGIN_NAME`／`cygnus_core_bundled_libraries` 與 `include/cygnus_core/`

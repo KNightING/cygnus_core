@@ -7,33 +7,33 @@ part of 'memory_usage_target_level.dart';
 // **************************************************************************
 
 ///Constants that describe memory usage target levels.
-class MemoryUsageTargetLevel {
+class CygnusMemoryUsageTargetLevel {
   final int _value;
   final int? _nativeValue;
-  const MemoryUsageTargetLevel._internal(this._value, this._nativeValue);
+  const CygnusMemoryUsageTargetLevel._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory MemoryUsageTargetLevel._internalMultiPlatform(
+  factory CygnusMemoryUsageTargetLevel._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => MemoryUsageTargetLevel._internal(value, nativeValue());
+  ) => CygnusMemoryUsageTargetLevel._internal(value, nativeValue());
 
   ///Low memory usage target level.
-  static const LOW = MemoryUsageTargetLevel._internal(1, 1);
+  static const LOW = CygnusMemoryUsageTargetLevel._internal(1, 1);
 
   ///Normal memory usage target level.
-  static const NORMAL = MemoryUsageTargetLevel._internal(0, 0);
+  static const NORMAL = CygnusMemoryUsageTargetLevel._internal(0, 0);
 
-  ///Set of all values of [MemoryUsageTargetLevel].
-  static final Set<MemoryUsageTargetLevel> values = [
-    MemoryUsageTargetLevel.LOW,
-    MemoryUsageTargetLevel.NORMAL,
+  ///Set of all values of [CygnusMemoryUsageTargetLevel].
+  static final Set<CygnusMemoryUsageTargetLevel> values = [
+    CygnusMemoryUsageTargetLevel.LOW,
+    CygnusMemoryUsageTargetLevel.NORMAL,
   ].toSet();
 
-  ///Gets a possible [MemoryUsageTargetLevel] instance from [int] value.
-  static MemoryUsageTargetLevel? fromValue(int? value) {
+  ///Gets a possible [CygnusMemoryUsageTargetLevel] instance from [int] value.
+  static CygnusMemoryUsageTargetLevel? fromValue(int? value) {
     if (value != null) {
       try {
-        return MemoryUsageTargetLevel.values.firstWhere(
+        return CygnusMemoryUsageTargetLevel.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -43,11 +43,11 @@ class MemoryUsageTargetLevel {
     return null;
   }
 
-  ///Gets a possible [MemoryUsageTargetLevel] instance from a native value.
-  static MemoryUsageTargetLevel? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusMemoryUsageTargetLevel] instance from a native value.
+  static CygnusMemoryUsageTargetLevel? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return MemoryUsageTargetLevel.values.firstWhere(
+        return CygnusMemoryUsageTargetLevel.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -57,15 +57,15 @@ class MemoryUsageTargetLevel {
     return null;
   }
 
-  /// Gets a possible [MemoryUsageTargetLevel] instance value with name [name].
+  /// Gets a possible [CygnusMemoryUsageTargetLevel] instance value with name [name].
   ///
-  /// Goes through [MemoryUsageTargetLevel.values] looking for a value with
-  /// name [name], as reported by [MemoryUsageTargetLevel.name].
+  /// Goes through [CygnusMemoryUsageTargetLevel.values] looking for a value with
+  /// name [name], as reported by [CygnusMemoryUsageTargetLevel.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static MemoryUsageTargetLevel? byName(String? name) {
+  static CygnusMemoryUsageTargetLevel? byName(String? name) {
     if (name != null) {
       try {
-        return MemoryUsageTargetLevel.values.firstWhere(
+        return CygnusMemoryUsageTargetLevel.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -75,7 +75,7 @@ class MemoryUsageTargetLevel {
     return null;
   }
 
-  /// Creates a map from the names of [MemoryUsageTargetLevel] values to the values.
+  /// Creates a map from the names of [CygnusMemoryUsageTargetLevel] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -83,9 +83,10 @@ class MemoryUsageTargetLevel {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, MemoryUsageTargetLevel> asNameMap() =>
-      <String, MemoryUsageTargetLevel>{
-        for (final value in MemoryUsageTargetLevel.values) value.name(): value,
+  static Map<String, CygnusMemoryUsageTargetLevel> asNameMap() =>
+      <String, CygnusMemoryUsageTargetLevel>{
+        for (final value in CygnusMemoryUsageTargetLevel.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

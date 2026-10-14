@@ -1,17 +1,17 @@
 part of 'main.dart';
 
 void customMenuItem() {
-  final shouldSkip = !ChromeSafariBrowser.isMethodSupported(
-    PlatformChromeSafariBrowserMethod.addMenuItem,
+  final shouldSkip = !CygnusChromeSafariBrowser.isMethodSupported(
+    CygnusPlatformChromeSafariBrowserMethod.addMenuItem,
   );
 
   skippableTest('add custom menu item', () async {
     var chromeSafariBrowser = MyChromeSafariBrowser();
     chromeSafariBrowser.addMenuItem(
-      ChromeSafariBrowserMenuItem(
+      CygnusChromeSafariBrowserMenuItem(
         id: 2,
         label: 'Custom item menu 1',
-        image: UIImage(systemName: "pencil"),
+        image: CygnusUIImage(systemName: "pencil"),
         onClick: (url, title) {},
       ),
     );

@@ -1,17 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 import 'web_message_port.dart';
 
 /// Object specifying creation parameters for creating a [WindowsWebMessageChannel].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebMessageChannelCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebMessageChannelCreationParams] for
 /// more information.
 @immutable
 class WindowsWebMessageChannelCreationParams
-    extends PlatformWebMessageChannelCreationParams {
+    extends CygnusPlatformWebMessageChannelCreationParams {
   /// Creates a new [WindowsWebMessageChannelCreationParams] instance.
   const WindowsWebMessageChannelCreationParams({
     required super.id,
@@ -19,11 +19,11 @@ class WindowsWebMessageChannelCreationParams
     required super.port2,
   });
 
-  /// Creates a [WindowsWebMessageChannelCreationParams] instance based on [PlatformWebMessageChannelCreationParams].
+  /// Creates a [WindowsWebMessageChannelCreationParams] instance based on [CygnusPlatformWebMessageChannelCreationParams].
   factory WindowsWebMessageChannelCreationParams.fromPlatformWebMessageChannelCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebMessageChannelCreationParams params,
+    CygnusPlatformWebMessageChannelCreationParams params,
   ) {
     return WindowsWebMessageChannelCreationParams(
       id: params.id,
@@ -38,11 +38,11 @@ class WindowsWebMessageChannelCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformWebMessageChannel}
-class WindowsWebMessageChannel extends PlatformWebMessageChannel
+///{@macro cygnus_core.CygnusPlatformWebMessageChannel}
+class WindowsWebMessageChannel extends CygnusPlatformWebMessageChannel
     with ChannelController {
   /// Constructs a [WindowsWebMessageChannel].
-  WindowsWebMessageChannel(PlatformWebMessageChannelCreationParams params)
+  WindowsWebMessageChannel(CygnusPlatformWebMessageChannelCreationParams params)
     : super.implementation(
         params is WindowsWebMessageChannelCreationParams
             ? params
@@ -104,8 +104,8 @@ class WindowsWebMessageChannel extends PlatformWebMessageChannel
         int index = call.arguments["index"];
         var port = index == 0 ? _windowsPort1 : _windowsPort2;
         if (port.onMessage != null) {
-          WebMessage? message = call.arguments["message"] != null
-              ? WebMessage.fromMap(
+          CygnusWebMessage? message = call.arguments["message"] != null
+              ? CygnusWebMessage.fromMap(
                   call.arguments["message"].cast<String, dynamic>(),
                 )
               : null;

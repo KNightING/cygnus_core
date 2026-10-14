@@ -1,20 +1,20 @@
 part of 'main.dart';
 
 void onDownloadStarting() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onDownloadStarting,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onDownloadStarting,
   );
 
   skippableTestWidgets('onDownloadStarting', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<String> onDownloadStartCompleter = Completer<String>();
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialData: InAppWebViewInitialData(
+          initialData: CygnusWebViewInitialData(
             data:
                 """
 <!doctype html>

@@ -7,28 +7,28 @@ part of 'web_history.dart';
 // **************************************************************************
 
 ///This class contains a snapshot of the current back/forward list for a `WebView`.
-class WebHistory {
-  ///Index of the current [WebHistoryItem].
+class CygnusWebHistory {
+  ///Index of the current [CygnusWebHistoryItem].
   int? currentIndex;
 
-  ///List of all [WebHistoryItem]s.
-  List<WebHistoryItem>? list;
-  WebHistory({this.currentIndex, this.list});
+  ///List of all [CygnusWebHistoryItem]s.
+  List<CygnusWebHistoryItem>? list;
+  CygnusWebHistory({this.currentIndex, this.list});
 
-  ///Gets a possible [WebHistory] instance from a [Map] value.
-  static WebHistory? fromMap(
+  ///Gets a possible [CygnusWebHistory] instance from a [Map] value.
+  static CygnusWebHistory? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = WebHistory(
+    final instance = CygnusWebHistory(
       currentIndex: map['currentIndex'],
       list: map['list'] != null
-          ? List<WebHistoryItem>.from(
+          ? List<CygnusWebHistoryItem>.from(
               map['list'].map(
-                (e) => WebHistoryItem.fromMap(
+                (e) => CygnusWebHistoryItem.fromMap(
                   e?.cast<String, dynamic>(),
                   enumMethod: enumMethod,
                 )!,
@@ -40,7 +40,7 @@ class WebHistory {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "currentIndex": currentIndex,
       "list": list?.map((e) => e.toMap(enumMethod: enumMethod)).toList(),
@@ -54,6 +54,6 @@ class WebHistory {
 
   @override
   String toString() {
-    return 'WebHistory{currentIndex: $currentIndex, list: $list}';
+    return 'CygnusWebHistory{currentIndex: $currentIndex, list: $list}';
   }
 }

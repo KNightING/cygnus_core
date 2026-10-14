@@ -9,18 +9,18 @@ part 'navigation_action.g.dart';
 
 ///An object that contains information about an action that causes navigation to occur.
 @ExchangeableObject()
-class NavigationAction_ {
+class CygnusNavigationAction_ {
   ///The URL request object associated with the navigation action.
   ///
-  ///**NOTE for Android**: If the request is associated to the [PlatformWebViewCreationParams.onCreateWindow] event
+  ///**NOTE for Android**: If the request is associated to the [CygnusPlatformWebViewCreationParams.onCreateWindow] event
   ///and the window has been created using JavaScript, [request.url] will be `null`,
   ///the [request.method] is always `GET`, and [request.headers] value is always `null`.
   ///Also, on Android < 21, the [request.method]  is always `GET` and [request.headers] value is always `null`.
-  URLRequest_ request;
+  CygnusURLRequest_ request;
 
   ///Indicates whether the request was made for the main frame.
   ///
-  ///**NOTE for Android and Windows**: If the request is associated to the [PlatformWebViewCreationParams.onCreateWindow] event, this is always `true`.
+  ///**NOTE for Android and Windows**: If the request is associated to the [CygnusPlatformWebViewCreationParams.onCreateWindow] event, this is always `true`.
   ///Also, on Android < 21, this is always `true`.
   bool isForMainFrame;
 
@@ -36,14 +36,14 @@ class NavigationAction_ {
     platforms: [
       AndroidPlatform(
         available: "21",
-        apiName: "WebResourceRequest.hasGesture",
+        apiName: "CygnusWebResourceRequest.hasGesture",
         apiUrl:
-            "https://developer.android.com/reference/android/webkit/WebResourceRequest#hasGesture()",
+            "https://developer.android.com/reference/android/webkit/CygnusWebResourceRequest#hasGesture()",
         note: "On Android < 21, this is always `false`",
       ),
       WindowsPlatform(
         note:
-            "Available only if the request is associated to the [PlatformWebViewCreationParams.onCreateWindow] event",
+            "Available only if the request is associated to the [CygnusPlatformWebViewCreationParams.onCreateWindow] event",
       ),
     ],
   )
@@ -55,15 +55,15 @@ class NavigationAction_ {
 
   ///Gets whether the request was a result of a server-side redirect.
   ///
-  ///**NOTE**: If the request is associated to the [PlatformWebViewCreationParams.onCreateWindow] event, this is always `false`.
+  ///**NOTE**: If the request is associated to the [CygnusPlatformWebViewCreationParams.onCreateWindow] event, this is always `false`.
   ///Also, on Android < 21, this is always `false`.
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
         available: "21",
-        apiName: "WebResourceRequest.isRedirect",
+        apiName: "CygnusWebResourceRequest.isRedirect",
         apiUrl:
-            "https://developer.android.com/reference/android/webkit/WebResourceRequest#isRedirect()",
+            "https://developer.android.com/reference/android/webkit/CygnusWebResourceRequest#isRedirect()",
       ),
       WindowsPlatform(),
     ],
@@ -72,7 +72,7 @@ class NavigationAction_ {
 
   ///Use [navigationType] instead.
   @Deprecated("Use navigationType instead")
-  IOSWKNavigationType_? iosWKNavigationType;
+  CygnusIOSWKNavigationType_? iosWKNavigationType;
 
   ///The type of action triggering the navigation.
   @SupportedPlatforms(
@@ -90,11 +90,11 @@ class NavigationAction_ {
       WindowsPlatform(),
     ],
   )
-  NavigationType_? navigationType;
+  CygnusNavigationType_? navigationType;
 
   ///Use [sourceFrame] instead.
   @Deprecated("Use sourceFrame instead")
-  IOSWKFrameInfo_? iosSourceFrame;
+  CygnusIOSWKFrameInfo_? iosSourceFrame;
 
   ///The frame that requested the navigation.
   @SupportedPlatforms(
@@ -111,11 +111,11 @@ class NavigationAction_ {
       ),
     ],
   )
-  FrameInfo_? sourceFrame;
+  CygnusFrameInfo_? sourceFrame;
 
   ///Use [targetFrame] instead.
   @Deprecated("Use targetFrame instead")
-  IOSWKFrameInfo_? iosTargetFrame;
+  CygnusIOSWKFrameInfo_? iosTargetFrame;
 
   ///The frame in which to display the new content.
   @SupportedPlatforms(
@@ -132,7 +132,7 @@ class NavigationAction_ {
       ),
     ],
   )
-  FrameInfo_? targetFrame;
+  CygnusFrameInfo_? targetFrame;
 
   ///A value indicating whether the web content used a download attribute to indicate that this should be downloaded.
   @SupportedPlatforms(
@@ -153,7 +153,7 @@ class NavigationAction_ {
   )
   bool? shouldPerformDownload;
 
-  NavigationAction_({
+  CygnusNavigationAction_({
     required this.request,
     required this.isForMainFrame,
     @Deprecated('Use hasGesture instead') this.androidHasGesture,

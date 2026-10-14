@@ -151,7 +151,7 @@ class StatusBadge extends StatelessWidget {
 
 /// A channel status indicator showing active/inactive state.
 ///
-/// Used for WebMessageChannel and similar components.
+/// Used for CygnusWebMessageChannel and similar components.
 class ChannelStatusIndicator extends StatelessWidget {
   /// Whether the channel is active.
   final bool isActive;

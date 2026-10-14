@@ -7,35 +7,35 @@ import 'server_trust_challenge.dart';
 part 'ssl_error_type.g.dart';
 
 ///Class that represents the SSL Primary error associated to the server SSL certificate.
-///Used by the [ServerTrustChallenge] class.
+///Used by the [CygnusServerTrustChallenge] class.
 @ExchangeableEnum()
-class SslErrorType_ {
+class CygnusSslErrorType_ {
   // ignore: unused_field
   final String _value;
   // ignore: unused_field
   final int? _nativeValue = null;
-  const SslErrorType_._internal(this._value);
+  const CygnusSslErrorType_._internal(this._value);
 
   ///The certificate is not yet valid.
   @EnumSupportedPlatforms(
     platforms: [
       EnumAndroidPlatform(
-        apiName: 'SslError.SSL_NOTYETVALID',
+        apiName: 'CygnusSslError.SSL_NOTYETVALID',
         apiUrl:
-            'https://developer.android.com/reference/android/net/http/SslError#SSL_NOTYETVALID',
+            'https://developer.android.com/reference/android/net/http/CygnusSslError#SSL_NOTYETVALID',
         value: 0,
       ),
     ],
   )
-  static const NOT_YET_VALID = SslErrorType_._internal('NOT_YET_VALID');
+  static const NOT_YET_VALID = CygnusSslErrorType_._internal('NOT_YET_VALID');
 
   ///The certificate has expired.
   @EnumSupportedPlatforms(
     platforms: [
       EnumAndroidPlatform(
-        apiName: 'SslError.SSL_EXPIRED',
+        apiName: 'CygnusSslError.SSL_EXPIRED',
         apiUrl:
-            'https://developer.android.com/reference/android/net/http/SslError#SSL_EXPIRED',
+            'https://developer.android.com/reference/android/net/http/CygnusSslError#SSL_EXPIRED',
         value: 1,
       ),
       EnumWindowsPlatform(
@@ -46,54 +46,54 @@ class SslErrorType_ {
       ),
     ],
   )
-  static const EXPIRED = SslErrorType_._internal('EXPIRED');
+  static const EXPIRED = CygnusSslErrorType_._internal('EXPIRED');
 
   ///Hostname mismatch.
   @EnumSupportedPlatforms(
     platforms: [
       EnumAndroidPlatform(
-        apiName: 'SslError.SSL_IDMISMATCH',
+        apiName: 'CygnusSslError.SSL_IDMISMATCH',
         apiUrl:
-            'https://developer.android.com/reference/android/net/http/SslError#SSL_IDMISMATCH',
+            'https://developer.android.com/reference/android/net/http/CygnusSslError#SSL_IDMISMATCH',
         value: 2,
       ),
     ],
   )
-  static const IDMISMATCH = SslErrorType_._internal('IDMISMATCH');
+  static const IDMISMATCH = CygnusSslErrorType_._internal('IDMISMATCH');
 
   ///The certificate authority is not trusted.
   @EnumSupportedPlatforms(
     platforms: [
       EnumAndroidPlatform(
-        apiName: 'SslError.SSL_UNTRUSTED',
+        apiName: 'CygnusSslError.SSL_UNTRUSTED',
         apiUrl:
-            'https://developer.android.com/reference/android/net/http/SslError#SSL_UNTRUSTED',
+            'https://developer.android.com/reference/android/net/http/CygnusSslError#SSL_UNTRUSTED',
         value: 3,
       ),
     ],
   )
-  static const UNTRUSTED = SslErrorType_._internal('UNTRUSTED');
+  static const UNTRUSTED = CygnusSslErrorType_._internal('UNTRUSTED');
 
   ///The date of the certificate is invalid.
   @EnumSupportedPlatforms(
     platforms: [
       EnumAndroidPlatform(
-        apiName: 'SslError.DATE_INVALID',
+        apiName: 'CygnusSslError.DATE_INVALID',
         apiUrl:
-            'https://developer.android.com/reference/android/net/http/SslError#SSL_DATE_INVALID',
+            'https://developer.android.com/reference/android/net/http/CygnusSslError#SSL_DATE_INVALID',
         value: 4,
       ),
     ],
   )
-  static const DATE_INVALID = SslErrorType_._internal('DATE_INVALID');
+  static const DATE_INVALID = CygnusSslErrorType_._internal('DATE_INVALID');
 
   ///Indicates an invalid setting or result. A generic error occurred.
   @EnumSupportedPlatforms(
     platforms: [
       EnumAndroidPlatform(
-        apiName: 'SslError.SSL_INVALID',
+        apiName: 'CygnusSslError.SSL_INVALID',
         apiUrl:
-            'https://developer.android.com/reference/android/net/http/SslError#SSL_INVALID',
+            'https://developer.android.com/reference/android/net/http/CygnusSslError#SSL_INVALID',
         value: 5,
       ),
       EnumIOSPlatform(
@@ -116,7 +116,7 @@ class SslErrorType_ {
       ),
     ],
   )
-  static const INVALID = SslErrorType_._internal('INVALID');
+  static const INVALID = CygnusSslErrorType_._internal('INVALID');
 
   ///The user specified that the certificate should not be trusted.
   ///
@@ -140,7 +140,7 @@ class SslErrorType_ {
       ),
     ],
   )
-  static const DENY = SslErrorType_._internal('DENY');
+  static const DENY = CygnusSslErrorType_._internal('DENY');
 
   ///Indicates the evaluation succeeded and the certificate is implicitly trusted, but user intent was not explicitly specified.
   ///
@@ -166,7 +166,7 @@ class SslErrorType_ {
       ),
     ],
   )
-  static const UNSPECIFIED = SslErrorType_._internal('UNSPECIFIED');
+  static const UNSPECIFIED = CygnusSslErrorType_._internal('UNSPECIFIED');
 
   ///Trust is denied, but recovery may be possible.
   ///
@@ -193,7 +193,7 @@ class SslErrorType_ {
       ),
     ],
   )
-  static const RECOVERABLE_TRUST_FAILURE = SslErrorType_._internal(
+  static const RECOVERABLE_TRUST_FAILURE = CygnusSslErrorType_._internal(
     'RECOVERABLE_TRUST_FAILURE',
   );
 
@@ -219,7 +219,7 @@ class SslErrorType_ {
       ),
     ],
   )
-  static const FATAL_TRUST_FAILURE = SslErrorType_._internal(
+  static const FATAL_TRUST_FAILURE = CygnusSslErrorType_._internal(
     'FATAL_TRUST_FAILURE',
   );
 
@@ -252,7 +252,7 @@ class SslErrorType_ {
       ),
     ],
   )
-  static const OTHER_ERROR = SslErrorType_._internal('OTHER_ERROR');
+  static const OTHER_ERROR = CygnusSslErrorType_._internal('OTHER_ERROR');
 
   ///Indicates that the SSL certificate common name does not match the web address.
   @EnumSupportedPlatforms(
@@ -266,7 +266,7 @@ class SslErrorType_ {
       ),
     ],
   )
-  static const COMMON_NAME_IS_INCORRECT = SslErrorType_._internal(
+  static const COMMON_NAME_IS_INCORRECT = CygnusSslErrorType_._internal(
     'COMMON_NAME_IS_INCORRECT',
   );
 
@@ -281,64 +281,64 @@ class SslErrorType_ {
       ),
     ],
   )
-  static const REVOKED = SslErrorType_._internal('REVOKED');
+  static const REVOKED = CygnusSslErrorType_._internal('REVOKED');
 }
 
 ///Class that represents the Android-specific primary error associated to the server SSL certificate.
-///Used by the [ServerTrustChallenge] class.
-///Use [SslErrorType] instead.
-@Deprecated("Use SslErrorType instead")
+///Used by the [CygnusServerTrustChallenge] class.
+///Use [CygnusSslErrorType] instead.
+@Deprecated("Use CygnusSslErrorType instead")
 @ExchangeableEnum()
-class AndroidSslError_ {
+class CygnusAndroidSslError_ {
   // ignore: unused_field
   final int _value;
-  const AndroidSslError_._internal(this._value);
+  const CygnusAndroidSslError_._internal(this._value);
 
   ///The certificate is not yet valid
-  static const SSL_NOTYETVALID = const AndroidSslError_._internal(0);
+  static const SSL_NOTYETVALID = const CygnusAndroidSslError_._internal(0);
 
   ///The certificate has expired
-  static const SSL_EXPIRED = const AndroidSslError_._internal(1);
+  static const SSL_EXPIRED = const CygnusAndroidSslError_._internal(1);
 
   ///Hostname mismatch
-  static const SSL_IDMISMATCH = const AndroidSslError_._internal(2);
+  static const SSL_IDMISMATCH = const CygnusAndroidSslError_._internal(2);
 
   ///The certificate authority is not trusted
-  static const SSL_UNTRUSTED = const AndroidSslError_._internal(3);
+  static const SSL_UNTRUSTED = const CygnusAndroidSslError_._internal(3);
 
   ///The date of the certificate is invalid
-  static const SSL_DATE_INVALID = const AndroidSslError_._internal(4);
+  static const SSL_DATE_INVALID = const CygnusAndroidSslError_._internal(4);
 
   ///A generic error occurred
-  static const SSL_INVALID = const AndroidSslError_._internal(5);
+  static const SSL_INVALID = const CygnusAndroidSslError_._internal(5);
 }
 
 ///Class that represents the iOS-specific primary error associated to the server SSL certificate.
-///Used by the [ServerTrustChallenge] class.
-///Use [SslErrorType] instead.
-@Deprecated("Use SslErrorType instead")
+///Used by the [CygnusServerTrustChallenge] class.
+///Use [CygnusSslErrorType] instead.
+@Deprecated("Use CygnusSslErrorType instead")
 @ExchangeableEnum()
-class IOSSslError_ {
+class CygnusIOSSslError_ {
   // ignore: unused_field
   final int _value;
 
-  const IOSSslError_._internal(this._value);
+  const CygnusIOSSslError_._internal(this._value);
 
   ///Indicates an invalid setting or result.
-  static const INVALID = const IOSSslError_._internal(0);
+  static const INVALID = const CygnusIOSSslError_._internal(0);
 
   ///Indicates a user-configured deny; do not proceed.
-  static const DENY = const IOSSslError_._internal(3);
+  static const DENY = const CygnusIOSSslError_._internal(3);
 
   ///Indicates the evaluation succeeded and the certificate is implicitly trusted, but user intent was not explicitly specified.
-  static const UNSPECIFIED = const IOSSslError_._internal(4);
+  static const UNSPECIFIED = const CygnusIOSSslError_._internal(4);
 
   ///Indicates a trust policy failure which can be overridden by the user.
-  static const RECOVERABLE_TRUST_FAILURE = const IOSSslError_._internal(5);
+  static const RECOVERABLE_TRUST_FAILURE = const CygnusIOSSslError_._internal(5);
 
   ///Indicates a trust failure which cannot be overridden by the user.
-  static const FATAL_TRUST_FAILURE = const IOSSslError_._internal(6);
+  static const FATAL_TRUST_FAILURE = const CygnusIOSSslError_._internal(6);
 
   ///Indicates a failure other than that of trust evaluation.
-  static const OTHER_ERROR = const IOSSslError_._internal(7);
+  static const OTHER_ERROR = const CygnusIOSSslError_._internal(7);
 }

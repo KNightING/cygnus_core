@@ -19,36 +19,36 @@ import 'apple/safari_options.dart';
 
 part 'chrome_safari_browser_settings.g.dart';
 
-TrustedWebActivityDisplayMode? _deserializeDisplayMode(
+CygnusTrustedWebActivityDisplayMode? _deserializeDisplayMode(
   Map<String, dynamic>? displayMode, {
-  EnumMethod? enumMethod,
+  CygnusEnumMethod? enumMethod,
 }) {
   if (displayMode == null) {
     return null;
   }
   switch (displayMode["type"]) {
     case "IMMERSIVE_MODE":
-      return TrustedWebActivityImmersiveDisplayMode.fromMap(
+      return CygnusTrustedWebActivityImmersiveDisplayMode.fromMap(
         displayMode,
         enumMethod: enumMethod,
       );
     case "DEFAULT_MODE":
     default:
-      return TrustedWebActivityDefaultDisplayMode();
+      return CygnusTrustedWebActivityDefaultDisplayMode();
   }
 }
 
-class ChromeSafariBrowserOptions {
+class CygnusChromeSafariBrowserOptions {
   Map<String, dynamic> toMap() {
     return {};
   }
 
-  static ChromeSafariBrowserOptions fromMap(Map<String, dynamic> map) {
-    return new ChromeSafariBrowserOptions();
+  static CygnusChromeSafariBrowserOptions fromMap(Map<String, dynamic> map) {
+    return new CygnusChromeSafariBrowserOptions();
   }
 
-  ChromeSafariBrowserOptions copy() {
-    return ChromeSafariBrowserOptions.fromMap(this.toMap());
+  CygnusChromeSafariBrowserOptions copy() {
+    return CygnusChromeSafariBrowserOptions.fromMap(this.toMap());
   }
 
   Map<String, dynamic> toJson() {
@@ -61,11 +61,11 @@ class ChromeSafariBrowserOptions {
   }
 }
 
-///{@template cygnus_core.ChromeSafariBrowserSettings}
-///Class that represents the settings that can be used for an [ChromeSafariBrowser] window.
+///{@template cygnus_core.CygnusChromeSafariBrowserSettings}
+///Class that represents the settings that can be used for an [CygnusChromeSafariBrowser] window.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.ChromeSafariBrowserSettings.supported_platforms}
+///{@macro cygnus_core.CygnusChromeSafariBrowserSettings.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(name: 'Android Chrome Custom Tabs'),
@@ -73,14 +73,14 @@ class ChromeSafariBrowserOptions {
   ],
 )
 @ExchangeableObject(copyMethod: true)
-class ChromeSafariBrowserSettings_ implements ChromeSafariBrowserOptions {
-  ///The share state that should be applied to the custom tab. The default value is [CustomTabsShareState.SHARE_STATE_DEFAULT].
+class CygnusChromeSafariBrowserSettings_ implements CygnusChromeSafariBrowserOptions {
+  ///The share state that should be applied to the custom tab. The default value is [CygnusCustomTabsShareState.SHARE_STATE_DEFAULT].
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(note: 'Not available in a Trusted Web Activity.'),
     ],
   )
-  CustomTabsShareState_? shareState;
+  CygnusCustomTabsShareState_? shareState;
 
   ///Set to `false` if the title shouldn't be shown in the custom tab. The default value is `true`.
   @SupportedPlatforms(
@@ -161,7 +161,7 @@ class ChromeSafariBrowserSettings_ implements ChromeSafariBrowserOptions {
     ],
   )
   @ExchangeableObjectProperty(deserializer: _deserializeDisplayMode)
-  TrustedWebActivityDisplayMode_? displayMode;
+  CygnusTrustedWebActivityDisplayMode_? displayMode;
 
   ///Sets a screen orientation. This can be used e.g. to enable the locking of an orientation lock type.
   @SupportedPlatforms(
@@ -169,19 +169,19 @@ class ChromeSafariBrowserSettings_ implements ChromeSafariBrowserOptions {
       AndroidPlatform(note: 'Not available in a Trusted Web Activity.'),
     ],
   )
-  TrustedWebActivityScreenOrientation_? screenOrientation;
+  CygnusTrustedWebActivityScreenOrientation_? screenOrientation;
 
   ///Sets the start animations.
-  ///It must contain 2 [AndroidResource], where the first one represents the "enter" animation for the browser
+  ///It must contain 2 [CygnusAndroidResource], where the first one represents the "enter" animation for the browser
   ///and the second one represents the "exit" animation for the application.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
-  List<AndroidResource_>? startAnimations;
+  List<CygnusAndroidResource_>? startAnimations;
 
   ///Sets the exit animations.
-  ///It must contain 2 [AndroidResource], where the first one represents the "enter" animation for the application
+  ///It must contain 2 [CygnusAndroidResource], where the first one represents the "enter" animation for the application
   ///and the second one represents the "exit" animation for the browser.
   @SupportedPlatforms(platforms: [AndroidPlatform()])
-  List<AndroidResource_>? exitAnimations;
+  List<CygnusAndroidResource_>? exitAnimations;
 
   ///Adds the necessary flags and extras to signal any browser supporting custom tabs to use the browser UI
   ///at all times and avoid showing custom tab like UI.
@@ -198,9 +198,9 @@ class ChromeSafariBrowserSettings_ implements ChromeSafariBrowserOptions {
   @SupportedPlatforms(platforms: [IOSPlatform()])
   bool? barCollapsingEnabled;
 
-  ///Set the custom style for the dismiss button. The default value is [DismissButtonStyle.DONE].
+  ///Set the custom style for the dismiss button. The default value is [CygnusDismissButtonStyle.DONE].
   @SupportedPlatforms(platforms: [IOSPlatform(available: '11.0')])
-  DismissButtonStyle_? dismissButtonStyle;
+  CygnusDismissButtonStyle_? dismissButtonStyle;
 
   ///Set the custom background color of the navigation bar and the toolbar.
   @SupportedPlatforms(platforms: [IOSPlatform(available: '10.0')])
@@ -210,27 +210,27 @@ class ChromeSafariBrowserSettings_ implements ChromeSafariBrowserOptions {
   @SupportedPlatforms(platforms: [IOSPlatform(available: '10.0')])
   Color_? preferredControlTintColor;
 
-  ///Set the custom modal presentation style when presenting the WebView. The default value is [ModalPresentationStyle.FULL_SCREEN].
+  ///Set the custom modal presentation style when presenting the WebView. The default value is [CygnusModalPresentationStyle.FULL_SCREEN].
   @SupportedPlatforms(platforms: [IOSPlatform()])
-  ModalPresentationStyle_? presentationStyle;
+  CygnusModalPresentationStyle_? presentationStyle;
 
-  ///Set to the custom transition style when presenting the WebView. The default value is [ModalTransitionStyle.COVER_VERTICAL].
+  ///Set to the custom transition style when presenting the WebView. The default value is [CygnusModalTransitionStyle.COVER_VERTICAL].
   @SupportedPlatforms(platforms: [IOSPlatform()])
-  ModalTransitionStyle_? transitionStyle;
+  CygnusModalTransitionStyle_? transitionStyle;
 
   ///An additional button to be shown in `SFSafariViewController`'s toolbar.
   ///This allows the user to access powerful functionality from your extension without needing to first show the `UIActivityViewController`.
   @SupportedPlatforms(platforms: [IOSPlatform(available: '15.0')])
-  ActivityButton_? activityButton;
+  CygnusActivityButton_? activityButton;
 
   ///An event attribution associated with a click that caused this `SFSafariViewController` to be opened.
   ///This attribute is ignored if the `SFSafariViewController` url has a scheme of 'http'.
   @SupportedPlatforms(platforms: [IOSPlatform(available: '15.2')])
-  UIEventAttribution_? eventAttribution;
+  CygnusUIEventAttribution_? eventAttribution;
 
   @ExchangeableObjectConstructor()
-  ChromeSafariBrowserSettings_({
-    this.shareState = CustomTabsShareState_.SHARE_STATE_DEFAULT,
+  CygnusChromeSafariBrowserSettings_({
+    this.shareState = CygnusCustomTabsShareState_.SHARE_STATE_DEFAULT,
     this.showTitle = true,
     this.toolbarBackgroundColor,
     this.navigationBarColor,
@@ -245,17 +245,17 @@ class ChromeSafariBrowserSettings_ implements ChromeSafariBrowserOptions {
     this.isTrustedWebActivity = false,
     this.additionalTrustedOrigins = const [],
     this.displayMode,
-    this.screenOrientation = TrustedWebActivityScreenOrientation_.DEFAULT,
+    this.screenOrientation = CygnusTrustedWebActivityScreenOrientation_.DEFAULT,
     this.startAnimations,
     this.exitAnimations,
     this.alwaysUseBrowserUI = false,
     this.entersReaderIfAvailable = false,
     this.barCollapsingEnabled = false,
-    this.dismissButtonStyle = DismissButtonStyle_.DONE,
+    this.dismissButtonStyle = CygnusDismissButtonStyle_.DONE,
     this.preferredBarTintColor,
     this.preferredControlTintColor,
-    this.presentationStyle = ModalPresentationStyle_.FULL_SCREEN,
-    this.transitionStyle = ModalTransitionStyle_.COVER_VERTICAL,
+    this.presentationStyle = CygnusModalPresentationStyle_.FULL_SCREEN,
+    this.transitionStyle = CygnusModalTransitionStyle_.COVER_VERTICAL,
     this.activityButton,
     this.eventAttribution,
   }) {
@@ -275,7 +275,7 @@ class ChromeSafariBrowserSettings_ implements ChromeSafariBrowserOptions {
 
   @override
   @ExchangeableObjectMethod(ignore: true)
-  ChromeSafariBrowserSettings_ copy() {
+  CygnusChromeSafariBrowserSettings_ copy() {
     throw UnimplementedError();
   }
 
@@ -293,27 +293,27 @@ class ChromeSafariBrowserSettings_ implements ChromeSafariBrowserOptions {
 
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   static bool isPropertySupported(
-    ChromeSafariBrowserSettingsProperty property, {
+    CygnusChromeSafariBrowserSettingsProperty property, {
     TargetPlatform? platform,
-  }) => _ChromeSafariBrowserSettingsPropertySupported.isPropertySupported(
+  }) => _CygnusChromeSafariBrowserSettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 }
 
-///Class that represents the options that can be used for an [ChromeSafariBrowser] window.
-///Use [ChromeSafariBrowserSettings] instead.
-@Deprecated('Use ChromeSafariBrowserSettings instead')
-class ChromeSafariBrowserClassOptions {
+///Class that represents the options that can be used for an [CygnusChromeSafariBrowser] window.
+///Use [CygnusChromeSafariBrowserSettings] instead.
+@Deprecated('Use CygnusChromeSafariBrowserSettings instead')
+class CygnusChromeSafariBrowserClassOptions {
   ///Android-specific options.
-  AndroidChromeCustomTabsOptions? android;
+  CygnusAndroidChromeCustomTabsOptions? android;
 
   ///iOS-specific options.
-  IOSSafariOptions? ios;
+  CygnusIOSSafariOptions? ios;
 
-  ChromeSafariBrowserClassOptions({this.android, this.ios}) {
-    this.android = this.android ?? AndroidChromeCustomTabsOptions();
-    this.ios = this.ios ?? IOSSafariOptions();
+  CygnusChromeSafariBrowserClassOptions({this.android, this.ios}) {
+    this.android = this.android ?? CygnusAndroidChromeCustomTabsOptions();
+    this.ios = this.ios ?? CygnusIOSSafariOptions();
   }
 
   Map<String, dynamic> toMap() {

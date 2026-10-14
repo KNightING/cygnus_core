@@ -6,16 +6,16 @@ import 'enum_method.dart';
 
 part 'browser_process_exited_detail.g.dart';
 
-///An object that contains information for the [PlatformWebViewEnvironment.onBrowserProcessExited] event.
+///An object that contains information for the [CygnusPlatformWebViewEnvironment.onBrowserProcessExited] event.
 @ExchangeableObject()
-class BrowserProcessExitedDetail_ {
+class CygnusBrowserProcessExitedDetail_ {
   ///The kind of browser process exit that has occurred.
   @SupportedPlatforms(platforms: [WindowsPlatform()])
-  BrowserProcessExitKind_ kind;
+  CygnusBrowserProcessExitKind_ kind;
 
   ///The process ID of the browser process that has exited.
   @SupportedPlatforms(platforms: [WindowsPlatform()])
   int? processId;
 
-  BrowserProcessExitedDetail_({required this.kind, this.processId});
+  CygnusBrowserProcessExitedDetail_({required this.kind, this.processId});
 }

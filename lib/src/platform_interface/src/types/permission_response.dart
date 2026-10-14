@@ -1,42 +1,42 @@
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 
-import '../in_app_webview/platform_webview.dart';
+import '../webview/platform_webview.dart';
 import 'permission_resource_type.dart';
 import 'permission_response_action.dart';
 import 'enum_method.dart';
 
 part 'permission_response.g.dart';
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onPermissionRequest] event.
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onPermissionRequest] event.
 @ExchangeableObject()
-class PermissionResponse_ {
+class CygnusPermissionResponse_ {
   ///Resources granted to be accessed by origin.
   ///
-  ///**NOTE for iOS, macOS and Windows**: not used. The [action] taken is based on the [PermissionRequest.resources].
-  List<PermissionResourceType_> resources;
+  ///**NOTE for iOS, macOS and Windows**: not used. The [action] taken is based on the [CygnusPermissionRequest.resources].
+  List<CygnusPermissionResourceType_> resources;
 
-  ///Indicate the [PermissionResponseAction] to take in response of a permission request.
-  PermissionResponseAction_? action;
+  ///Indicate the [CygnusPermissionResponseAction] to take in response of a permission request.
+  CygnusPermissionResponseAction_? action;
 
-  PermissionResponse_({
+  CygnusPermissionResponse_({
     this.resources = const [],
-    this.action = PermissionResponseAction_.DENY,
+    this.action = CygnusPermissionResponseAction_.DENY,
   });
 }
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.androidOnPermissionRequest] event.
-///Use [PermissionResponse] instead.
-@Deprecated("Use PermissionResponse instead")
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.androidOnPermissionRequest] event.
+///Use [CygnusPermissionResponse] instead.
+@Deprecated("Use CygnusPermissionResponse instead")
 @ExchangeableObject()
-class PermissionRequestResponse_ {
+class CygnusPermissionRequestResponse_ {
   ///Resources granted to be accessed by origin.
   List<String> resources;
 
-  ///Indicate the [PermissionRequestResponseAction] to take in response of a permission request.
-  PermissionRequestResponseAction_? action;
+  ///Indicate the [CygnusPermissionRequestResponseAction] to take in response of a permission request.
+  CygnusPermissionRequestResponseAction_? action;
 
-  PermissionRequestResponse_({
+  CygnusPermissionRequestResponse_({
     this.resources = const [],
-    this.action = PermissionRequestResponseAction_.DENY,
+    this.action = CygnusPermissionRequestResponseAction_.DENY,
   });
 }

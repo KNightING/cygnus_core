@@ -6,10 +6,10 @@ part of 'client_cert_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onReceivedClientCertRequest] event.
-class ClientCertResponse {
-  ///Indicate the [ClientCertResponseAction] to take in response of the client certificate challenge.
-  ClientCertResponseAction? action;
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onReceivedClientCertRequest] event.
+class CygnusClientCertResponse {
+  ///Indicate the [CygnusClientCertResponseAction] to take in response of the client certificate challenge.
+  CygnusClientCertResponseAction? action;
 
   ///Use [keyStoreType] instead.
   @Deprecated('Use keyStoreType instead')
@@ -42,35 +42,39 @@ class ClientCertResponse {
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   int selectedCertificate;
-  ClientCertResponse({
+  CygnusClientCertResponse({
     this.certificatePath = "",
     this.certificatePassword = "",
     @Deprecated('Use keyStoreType instead') this.androidKeyStoreType = "PKCS12",
     this.keyStoreType = "PKCS12",
     this.selectedCertificate = -1,
-    this.action = ClientCertResponseAction.CANCEL,
+    this.action = CygnusClientCertResponseAction.CANCEL,
   }) {
-    if (this.action == ClientCertResponseAction.PROCEED && !Util.isWindows)
+    if (this.action == CygnusClientCertResponseAction.PROCEED &&
+        !Util.isWindows)
       assert(certificatePath.isNotEmpty);
     this.keyStoreType = this.keyStoreType ?? this.androidKeyStoreType;
     if (Util.isAndroid) assert(this.keyStoreType != null);
   }
 
-  ///Gets a possible [ClientCertResponse] instance from a [Map] value.
-  static ClientCertResponse? fromMap(
+  ///Gets a possible [CygnusClientCertResponse] instance from a [Map] value.
+  static CygnusClientCertResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ClientCertResponse();
-    instance.action = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => ClientCertResponseAction.fromNativeValue(
+    final instance = CygnusClientCertResponse();
+    instance.action = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusClientCertResponseAction.fromNativeValue(map['action']),
+      CygnusEnumMethod.value => CygnusClientCertResponseAction.fromValue(
         map['action'],
       ),
-      EnumMethod.value => ClientCertResponseAction.fromValue(map['action']),
-      EnumMethod.name => ClientCertResponseAction.byName(map['action']),
+      CygnusEnumMethod.name => CygnusClientCertResponseAction.byName(
+        map['action'],
+      ),
     };
     instance.androidKeyStoreType = map['keyStoreType'];
     instance.certificatePassword = map['certificatePassword'];
@@ -85,12 +89,12 @@ class ClientCertResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "action": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => action?.toNativeValue(),
-        EnumMethod.value => action?.toValue(),
-        EnumMethod.name => action?.name(),
+      "action": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => action?.toNativeValue(),
+        CygnusEnumMethod.value => action?.toValue(),
+        CygnusEnumMethod.name => action?.name(),
       },
       "certificatePassword": certificatePassword,
       "certificatePath": certificatePath,
@@ -106,6 +110,6 @@ class ClientCertResponse {
 
   @override
   String toString() {
-    return 'ClientCertResponse{action: $action, certificatePassword: $certificatePassword, certificatePath: $certificatePath, keyStoreType: $keyStoreType, selectedCertificate: $selectedCertificate}';
+    return 'CygnusClientCertResponse{action: $action, certificatePassword: $certificatePassword, certificatePath: $certificatePath, keyStoreType: $keyStoreType, selectedCertificate: $selectedCertificate}';
   }
 }

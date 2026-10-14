@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void applePayAPI() {
-  final shouldSkip = !InAppWebViewSettings.isPropertySupported(
-    InAppWebViewSettingsProperty.applePayAPIEnabled,
+  final shouldSkip = !CygnusWebViewSettings.isPropertySupported(
+    CygnusWebViewSettingsProperty.applePayAPIEnabled,
   );
 
   skippableTestWidgets('Apple Pay API enabled', (WidgetTester tester) async {
@@ -12,9 +12,9 @@ void applePayAPI() {
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialData: InAppWebViewInitialData(
+          initialData: CygnusWebViewInitialData(
             data: """
 <!DOCTYPE html>
 <html lang="en">
@@ -32,13 +32,13 @@ void applePayAPI() {
 </html>
                   """,
           ),
-          initialSettings: InAppWebViewSettings(applePayAPIEnabled: true),
+          initialSettings: CygnusWebViewSettings(applePayAPIEnabled: true),
           onLoadStop: (controller, url) {
             pageLoaded.complete();
           },
           onJsAlert: (controller, jsAlertRequest) async {
             alertMessageCompleter.complete(jsAlertRequest.message);
-            return JsAlertResponse(handledByClient: true);
+            return CygnusJsAlertResponse(handledByClient: true);
           },
         ),
       ),

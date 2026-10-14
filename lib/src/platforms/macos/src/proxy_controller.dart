@@ -1,36 +1,36 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [MacOSProxyController].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformProxyControllerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformProxyControllerCreationParams] for
 /// more information.
 @immutable
 class MacOSProxyControllerCreationParams
-    extends PlatformProxyControllerCreationParams {
+    extends CygnusPlatformProxyControllerCreationParams {
   /// Creates a new [MacOSProxyControllerCreationParams] instance.
   const MacOSProxyControllerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformProxyControllerCreationParams params,
+    CygnusPlatformProxyControllerCreationParams params,
   ) : super();
 
-  /// Creates a [MacOSProxyControllerCreationParams] instance based on [PlatformProxyControllerCreationParams].
+  /// Creates a [MacOSProxyControllerCreationParams] instance based on [CygnusPlatformProxyControllerCreationParams].
   factory MacOSProxyControllerCreationParams.fromPlatformProxyControllerCreationParams(
-    PlatformProxyControllerCreationParams params,
+    CygnusPlatformProxyControllerCreationParams params,
   ) {
     return MacOSProxyControllerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformProxyController}
-class MacOSProxyController extends PlatformProxyController
+///{@macro cygnus_core.CygnusPlatformProxyController}
+class MacOSProxyController extends CygnusPlatformProxyController
     with ChannelController {
   /// Creates a new [MacOSProxyController].
-  MacOSProxyController(PlatformProxyControllerCreationParams params)
+  MacOSProxyController(CygnusPlatformProxyControllerCreationParams params)
     : super.implementation(
         params is MacOSProxyControllerCreationParams
             ? params
@@ -55,7 +55,7 @@ class MacOSProxyController extends PlatformProxyController
   static MacOSProxyController _init() {
     _instance = MacOSProxyController(
       MacOSProxyControllerCreationParams(
-        const PlatformProxyControllerCreationParams(),
+        const CygnusPlatformProxyControllerCreationParams(),
       ),
     );
     return _instance!;
@@ -63,7 +63,7 @@ class MacOSProxyController extends PlatformProxyController
 
   static final MacOSProxyController _staticValue = MacOSProxyController(
     MacOSProxyControllerCreationParams(
-      const PlatformProxyControllerCreationParams(),
+      const CygnusPlatformProxyControllerCreationParams(),
     ),
   );
 
@@ -75,7 +75,7 @@ class MacOSProxyController extends PlatformProxyController
   Future<dynamic> _handleMethod(MethodCall call) async {}
 
   @override
-  Future<void> setProxyOverride({required ProxySettings settings}) async {
+  Future<void> setProxyOverride({required CygnusProxySettings settings}) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("settings", () => settings.toMap());
     await channel?.invokeMethod('setProxyOverride', args);

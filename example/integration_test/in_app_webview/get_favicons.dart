@@ -1,23 +1,23 @@
 part of 'main.dart';
 
 void getFavicons() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.getFavicons,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.getFavicons,
   );
 
   var url = !kIsWeb ? TEST_CROSS_PLATFORM_URL_1 : TEST_WEB_PLATFORM_URL_1;
 
   skippableTestWidgets('getFavicons', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<void> pageLoaded = Completer<void>();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: url),
+          initialUrlRequest: CygnusURLRequest(url: url),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
           },
@@ -28,11 +28,11 @@ void getFavicons() {
       ),
     );
 
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
     await tester.pump();
     await pageLoaded.future;
 
-    final List<Favicon>? favicons = await controller.getFavicons();
+    final List<CygnusFavicon>? favicons = await controller.getFavicons();
     expect(favicons, isNotNull);
     expect(favicons, isNotEmpty);
   }, skip: shouldSkip);

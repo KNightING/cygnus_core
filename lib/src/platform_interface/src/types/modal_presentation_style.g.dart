@@ -7,67 +7,70 @@ part of 'modal_presentation_style.dart';
 // **************************************************************************
 
 ///Class used to specify the modal presentation style when presenting a view controller.
-class ModalPresentationStyle {
+class CygnusModalPresentationStyle {
   final int _value;
   final int? _nativeValue;
-  const ModalPresentationStyle._internal(this._value, this._nativeValue);
+  const CygnusModalPresentationStyle._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory ModalPresentationStyle._internalMultiPlatform(
+  factory CygnusModalPresentationStyle._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => ModalPresentationStyle._internal(value, nativeValue());
+  ) => CygnusModalPresentationStyle._internal(value, nativeValue());
 
   ///The default presentation style chosen by the system.
   ///
   ///**NOTE**: available on iOS 13.0+.
-  static const AUTOMATIC = ModalPresentationStyle._internal(9, 9);
+  static const AUTOMATIC = CygnusModalPresentationStyle._internal(9, 9);
 
   ///A presentation style where the content is displayed over another view controller’s content.
-  static const CURRENT_CONTEXT = ModalPresentationStyle._internal(3, 3);
+  static const CURRENT_CONTEXT = CygnusModalPresentationStyle._internal(3, 3);
 
   ///A custom view presentation style that is managed by a custom presentation controller and one or more custom animator objects.
-  static const CUSTOM = ModalPresentationStyle._internal(4, 4);
+  static const CUSTOM = CygnusModalPresentationStyle._internal(4, 4);
 
   ///A presentation style that displays the content centered in the screen.
-  static const FORM_SHEET = ModalPresentationStyle._internal(2, 2);
+  static const FORM_SHEET = CygnusModalPresentationStyle._internal(2, 2);
 
   ///A presentation style in which the presented view covers the screen.
-  static const FULL_SCREEN = ModalPresentationStyle._internal(0, 0);
+  static const FULL_SCREEN = CygnusModalPresentationStyle._internal(0, 0);
 
   ///A presentation style that indicates no adaptations should be made.
-  static const NONE = ModalPresentationStyle._internal(8, 8);
+  static const NONE = CygnusModalPresentationStyle._internal(8, 8);
 
   ///A presentation style where the content is displayed over another view controller’s content.
-  static const OVER_CURRENT_CONTEXT = ModalPresentationStyle._internal(6, 6);
+  static const OVER_CURRENT_CONTEXT = CygnusModalPresentationStyle._internal(
+    6,
+    6,
+  );
 
   ///A view presentation style in which the presented view covers the screen.
-  static const OVER_FULL_SCREEN = ModalPresentationStyle._internal(5, 5);
+  static const OVER_FULL_SCREEN = CygnusModalPresentationStyle._internal(5, 5);
 
   ///A presentation style that partially covers the underlying content.
-  static const PAGE_SHEET = ModalPresentationStyle._internal(1, 1);
+  static const PAGE_SHEET = CygnusModalPresentationStyle._internal(1, 1);
 
   ///A presentation style where the content is displayed in a popover view.
-  static const POPOVER = ModalPresentationStyle._internal(7, 7);
+  static const POPOVER = CygnusModalPresentationStyle._internal(7, 7);
 
-  ///Set of all values of [ModalPresentationStyle].
-  static final Set<ModalPresentationStyle> values = [
-    ModalPresentationStyle.AUTOMATIC,
-    ModalPresentationStyle.CURRENT_CONTEXT,
-    ModalPresentationStyle.CUSTOM,
-    ModalPresentationStyle.FORM_SHEET,
-    ModalPresentationStyle.FULL_SCREEN,
-    ModalPresentationStyle.NONE,
-    ModalPresentationStyle.OVER_CURRENT_CONTEXT,
-    ModalPresentationStyle.OVER_FULL_SCREEN,
-    ModalPresentationStyle.PAGE_SHEET,
-    ModalPresentationStyle.POPOVER,
+  ///Set of all values of [CygnusModalPresentationStyle].
+  static final Set<CygnusModalPresentationStyle> values = [
+    CygnusModalPresentationStyle.AUTOMATIC,
+    CygnusModalPresentationStyle.CURRENT_CONTEXT,
+    CygnusModalPresentationStyle.CUSTOM,
+    CygnusModalPresentationStyle.FORM_SHEET,
+    CygnusModalPresentationStyle.FULL_SCREEN,
+    CygnusModalPresentationStyle.NONE,
+    CygnusModalPresentationStyle.OVER_CURRENT_CONTEXT,
+    CygnusModalPresentationStyle.OVER_FULL_SCREEN,
+    CygnusModalPresentationStyle.PAGE_SHEET,
+    CygnusModalPresentationStyle.POPOVER,
   ].toSet();
 
-  ///Gets a possible [ModalPresentationStyle] instance from [int] value.
-  static ModalPresentationStyle? fromValue(int? value) {
+  ///Gets a possible [CygnusModalPresentationStyle] instance from [int] value.
+  static CygnusModalPresentationStyle? fromValue(int? value) {
     if (value != null) {
       try {
-        return ModalPresentationStyle.values.firstWhere(
+        return CygnusModalPresentationStyle.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -77,11 +80,11 @@ class ModalPresentationStyle {
     return null;
   }
 
-  ///Gets a possible [ModalPresentationStyle] instance from a native value.
-  static ModalPresentationStyle? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusModalPresentationStyle] instance from a native value.
+  static CygnusModalPresentationStyle? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return ModalPresentationStyle.values.firstWhere(
+        return CygnusModalPresentationStyle.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -91,15 +94,15 @@ class ModalPresentationStyle {
     return null;
   }
 
-  /// Gets a possible [ModalPresentationStyle] instance value with name [name].
+  /// Gets a possible [CygnusModalPresentationStyle] instance value with name [name].
   ///
-  /// Goes through [ModalPresentationStyle.values] looking for a value with
-  /// name [name], as reported by [ModalPresentationStyle.name].
+  /// Goes through [CygnusModalPresentationStyle.values] looking for a value with
+  /// name [name], as reported by [CygnusModalPresentationStyle.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ModalPresentationStyle? byName(String? name) {
+  static CygnusModalPresentationStyle? byName(String? name) {
     if (name != null) {
       try {
-        return ModalPresentationStyle.values.firstWhere(
+        return CygnusModalPresentationStyle.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -109,7 +112,7 @@ class ModalPresentationStyle {
     return null;
   }
 
-  /// Creates a map from the names of [ModalPresentationStyle] values to the values.
+  /// Creates a map from the names of [CygnusModalPresentationStyle] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -117,9 +120,10 @@ class ModalPresentationStyle {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ModalPresentationStyle> asNameMap() =>
-      <String, ModalPresentationStyle>{
-        for (final value in ModalPresentationStyle.values) value.name(): value,
+  static Map<String, CygnusModalPresentationStyle> asNameMap() =>
+      <String, CygnusModalPresentationStyle>{
+        for (final value in CygnusModalPresentationStyle.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.
@@ -173,72 +177,79 @@ class ModalPresentationStyle {
 }
 
 ///An iOS-specific class used to specify the modal presentation style when presenting a view controller.
-///Use [ModalPresentationStyle] instead.
-@Deprecated('Use ModalPresentationStyle instead')
-class IOSUIModalPresentationStyle {
+///Use [CygnusModalPresentationStyle] instead.
+@Deprecated('Use CygnusModalPresentationStyle instead')
+class CygnusIOSUIModalPresentationStyle {
   final int _value;
   final int? _nativeValue;
-  const IOSUIModalPresentationStyle._internal(this._value, this._nativeValue);
+  const CygnusIOSUIModalPresentationStyle._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory IOSUIModalPresentationStyle._internalMultiPlatform(
+  factory CygnusIOSUIModalPresentationStyle._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => IOSUIModalPresentationStyle._internal(value, nativeValue());
+  ) => CygnusIOSUIModalPresentationStyle._internal(value, nativeValue());
 
   ///The default presentation style chosen by the system.
   ///
   ///**NOTE**: available on iOS 13.0+.
-  static const AUTOMATIC = IOSUIModalPresentationStyle._internal(9, 9);
+  static const AUTOMATIC = CygnusIOSUIModalPresentationStyle._internal(9, 9);
 
   ///A presentation style where the content is displayed over another view controller’s content.
-  static const CURRENT_CONTEXT = IOSUIModalPresentationStyle._internal(3, 3);
-
-  ///A custom view presentation style that is managed by a custom presentation controller and one or more custom animator objects.
-  static const CUSTOM = IOSUIModalPresentationStyle._internal(4, 4);
-
-  ///A presentation style that displays the content centered in the screen.
-  static const FORM_SHEET = IOSUIModalPresentationStyle._internal(2, 2);
-
-  ///A presentation style in which the presented view covers the screen.
-  static const FULL_SCREEN = IOSUIModalPresentationStyle._internal(0, 0);
-
-  ///A presentation style that indicates no adaptations should be made.
-  static const NONE = IOSUIModalPresentationStyle._internal(8, 8);
-
-  ///A presentation style where the content is displayed over another view controller’s content.
-  static const OVER_CURRENT_CONTEXT = IOSUIModalPresentationStyle._internal(
-    6,
-    6,
+  static const CURRENT_CONTEXT = CygnusIOSUIModalPresentationStyle._internal(
+    3,
+    3,
   );
 
+  ///A custom view presentation style that is managed by a custom presentation controller and one or more custom animator objects.
+  static const CUSTOM = CygnusIOSUIModalPresentationStyle._internal(4, 4);
+
+  ///A presentation style that displays the content centered in the screen.
+  static const FORM_SHEET = CygnusIOSUIModalPresentationStyle._internal(2, 2);
+
+  ///A presentation style in which the presented view covers the screen.
+  static const FULL_SCREEN = CygnusIOSUIModalPresentationStyle._internal(0, 0);
+
+  ///A presentation style that indicates no adaptations should be made.
+  static const NONE = CygnusIOSUIModalPresentationStyle._internal(8, 8);
+
+  ///A presentation style where the content is displayed over another view controller’s content.
+  static const OVER_CURRENT_CONTEXT =
+      CygnusIOSUIModalPresentationStyle._internal(6, 6);
+
   ///A view presentation style in which the presented view covers the screen.
-  static const OVER_FULL_SCREEN = IOSUIModalPresentationStyle._internal(5, 5);
+  static const OVER_FULL_SCREEN = CygnusIOSUIModalPresentationStyle._internal(
+    5,
+    5,
+  );
 
   ///A presentation style that partially covers the underlying content.
-  static const PAGE_SHEET = IOSUIModalPresentationStyle._internal(1, 1);
+  static const PAGE_SHEET = CygnusIOSUIModalPresentationStyle._internal(1, 1);
 
   ///A presentation style where the content is displayed in a popover view.
-  static const POPOVER = IOSUIModalPresentationStyle._internal(7, 7);
+  static const POPOVER = CygnusIOSUIModalPresentationStyle._internal(7, 7);
 
-  ///Set of all values of [IOSUIModalPresentationStyle].
-  static final Set<IOSUIModalPresentationStyle> values = [
-    IOSUIModalPresentationStyle.AUTOMATIC,
-    IOSUIModalPresentationStyle.CURRENT_CONTEXT,
-    IOSUIModalPresentationStyle.CUSTOM,
-    IOSUIModalPresentationStyle.FORM_SHEET,
-    IOSUIModalPresentationStyle.FULL_SCREEN,
-    IOSUIModalPresentationStyle.NONE,
-    IOSUIModalPresentationStyle.OVER_CURRENT_CONTEXT,
-    IOSUIModalPresentationStyle.OVER_FULL_SCREEN,
-    IOSUIModalPresentationStyle.PAGE_SHEET,
-    IOSUIModalPresentationStyle.POPOVER,
+  ///Set of all values of [CygnusIOSUIModalPresentationStyle].
+  static final Set<CygnusIOSUIModalPresentationStyle> values = [
+    CygnusIOSUIModalPresentationStyle.AUTOMATIC,
+    CygnusIOSUIModalPresentationStyle.CURRENT_CONTEXT,
+    CygnusIOSUIModalPresentationStyle.CUSTOM,
+    CygnusIOSUIModalPresentationStyle.FORM_SHEET,
+    CygnusIOSUIModalPresentationStyle.FULL_SCREEN,
+    CygnusIOSUIModalPresentationStyle.NONE,
+    CygnusIOSUIModalPresentationStyle.OVER_CURRENT_CONTEXT,
+    CygnusIOSUIModalPresentationStyle.OVER_FULL_SCREEN,
+    CygnusIOSUIModalPresentationStyle.PAGE_SHEET,
+    CygnusIOSUIModalPresentationStyle.POPOVER,
   ].toSet();
 
-  ///Gets a possible [IOSUIModalPresentationStyle] instance from [int] value.
-  static IOSUIModalPresentationStyle? fromValue(int? value) {
+  ///Gets a possible [CygnusIOSUIModalPresentationStyle] instance from [int] value.
+  static CygnusIOSUIModalPresentationStyle? fromValue(int? value) {
     if (value != null) {
       try {
-        return IOSUIModalPresentationStyle.values.firstWhere(
+        return CygnusIOSUIModalPresentationStyle.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -248,11 +259,11 @@ class IOSUIModalPresentationStyle {
     return null;
   }
 
-  ///Gets a possible [IOSUIModalPresentationStyle] instance from a native value.
-  static IOSUIModalPresentationStyle? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusIOSUIModalPresentationStyle] instance from a native value.
+  static CygnusIOSUIModalPresentationStyle? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return IOSUIModalPresentationStyle.values.firstWhere(
+        return CygnusIOSUIModalPresentationStyle.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -262,15 +273,15 @@ class IOSUIModalPresentationStyle {
     return null;
   }
 
-  /// Gets a possible [IOSUIModalPresentationStyle] instance value with name [name].
+  /// Gets a possible [CygnusIOSUIModalPresentationStyle] instance value with name [name].
   ///
-  /// Goes through [IOSUIModalPresentationStyle.values] looking for a value with
-  /// name [name], as reported by [IOSUIModalPresentationStyle.name].
+  /// Goes through [CygnusIOSUIModalPresentationStyle.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSUIModalPresentationStyle.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSUIModalPresentationStyle? byName(String? name) {
+  static CygnusIOSUIModalPresentationStyle? byName(String? name) {
     if (name != null) {
       try {
-        return IOSUIModalPresentationStyle.values.firstWhere(
+        return CygnusIOSUIModalPresentationStyle.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -280,7 +291,7 @@ class IOSUIModalPresentationStyle {
     return null;
   }
 
-  /// Creates a map from the names of [IOSUIModalPresentationStyle] values to the values.
+  /// Creates a map from the names of [CygnusIOSUIModalPresentationStyle] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -288,9 +299,9 @@ class IOSUIModalPresentationStyle {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSUIModalPresentationStyle> asNameMap() =>
-      <String, IOSUIModalPresentationStyle>{
-        for (final value in IOSUIModalPresentationStyle.values)
+  static Map<String, CygnusIOSUIModalPresentationStyle> asNameMap() =>
+      <String, CygnusIOSUIModalPresentationStyle>{
+        for (final value in CygnusIOSUIModalPresentationStyle.values)
           value.name(): value,
       };
 

@@ -1,22 +1,22 @@
 part of 'main.dart';
 
 void stopLoading() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.stopLoading,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.stopLoading,
   );
 
   skippableTestWidgets('stopLoading', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<void> pageLoaded = Completer<void>();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
-          initialSettings: InAppWebViewSettings(clearCache: true),
+          initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+          initialSettings: CygnusWebViewSettings(clearCache: true),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
           },
@@ -30,7 +30,7 @@ void stopLoading() {
       ),
     );
 
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
 
     if (defaultTargetPlatform == TargetPlatform.android) {
       await pageLoaded.future;

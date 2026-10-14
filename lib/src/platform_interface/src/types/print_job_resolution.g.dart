@@ -6,12 +6,12 @@ part of 'print_job_resolution.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class representing the supported resolution in DPI (dots per inch) for a [PlatformPrintJobController].
+///Class representing the supported resolution in DPI (dots per inch) for a [CygnusPlatformPrintJobController].
 ///Resolution defines how many points with different color can be placed
 ///on one inch in horizontal or vertical direction of the target media.
 ///For example, a printer with 600 DPI can produce higher quality images
 ///the one with 300 DPI resolution.
-class PrintJobResolution {
+class CygnusPrintJobResolution {
   ///The horizontal resolution in DPI (dots per inch).
   final int horizontalDpi;
 
@@ -27,22 +27,22 @@ class PrintJobResolution {
 
   ///The vertical resolution in DPI (dots per inch).
   final int verticalDpi;
-  const PrintJobResolution({
+  const CygnusPrintJobResolution({
     required this.horizontalDpi,
     required this.id,
     required this.label,
     required this.verticalDpi,
   });
 
-  ///Gets a possible [PrintJobResolution] instance from a [Map] value.
-  static PrintJobResolution? fromMap(
+  ///Gets a possible [CygnusPrintJobResolution] instance from a [Map] value.
+  static CygnusPrintJobResolution? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = PrintJobResolution(
+    final instance = CygnusPrintJobResolution(
       horizontalDpi: map['horizontalDpi'],
       id: map['id'],
       label: map['label'],
@@ -52,7 +52,7 @@ class PrintJobResolution {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "horizontalDpi": horizontalDpi,
       "id": id,
@@ -68,6 +68,6 @@ class PrintJobResolution {
 
   @override
   String toString() {
-    return 'PrintJobResolution{horizontalDpi: $horizontalDpi, id: $id, label: $label, verticalDpi: $verticalDpi}';
+    return 'CygnusPrintJobResolution{horizontalDpi: $horizontalDpi, id: $id, label: $label, verticalDpi: $verticalDpi}';
   }
 }

@@ -1,66 +1,66 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
-///{@macro cygnus_core.PlatformTracingController}
+///{@macro cygnus_core.CygnusPlatformTracingController}
 ///
-///{@macro cygnus_core.PlatformTracingController.supported_platforms}
-class TracingController {
-  ///{@macro cygnus_core.PlatformTracingController}
-  TracingController()
+///{@macro cygnus_core.CygnusPlatformTracingController.supported_platforms}
+class CygnusTracingController {
+  ///{@macro cygnus_core.CygnusPlatformTracingController}
+  CygnusTracingController()
     : this.fromPlatformCreationParams(
-        const PlatformTracingControllerCreationParams(),
+        const CygnusPlatformTracingControllerCreationParams(),
       );
 
-  /// Constructs a [TracingController] from creation params for a specific
+  /// Constructs a [CygnusTracingController] from creation params for a specific
   /// platform.
-  TracingController.fromPlatformCreationParams(
-    PlatformTracingControllerCreationParams params,
-  ) : this.fromPlatform(PlatformTracingController(params));
+  CygnusTracingController.fromPlatformCreationParams(
+    CygnusPlatformTracingControllerCreationParams params,
+  ) : this.fromPlatform(CygnusPlatformTracingController(params));
 
-  /// Constructs a [TracingController] from a specific platform
+  /// Constructs a [CygnusTracingController] from a specific platform
   /// implementation.
-  TracingController.fromPlatform(this.platform);
+  CygnusTracingController.fromPlatform(this.platform);
 
-  /// Implementation of [PlatformTracingController] for the current platform.
-  final PlatformTracingController platform;
+  /// Implementation of [CygnusPlatformTracingController] for the current platform.
+  final CygnusPlatformTracingController platform;
 
-  static TracingController? _instance;
+  static CygnusTracingController? _instance;
 
-  ///Gets the [TracingController] shared instance.
-  static TracingController instance() {
+  ///Gets the [CygnusTracingController] shared instance.
+  static CygnusTracingController instance() {
     if (_instance == null) {
-      _instance = TracingController();
+      _instance = CygnusTracingController();
     }
     return _instance!;
   }
 
-  ///{@macro cygnus_core.PlatformTracingController.start}
+  ///{@macro cygnus_core.CygnusPlatformTracingController.start}
   ///
-  ///{@macro cygnus_core.PlatformTracingController.start.supported_platforms}
-  Future<void> start({required TracingSettings settings}) =>
+  ///{@macro cygnus_core.CygnusPlatformTracingController.start.supported_platforms}
+  Future<void> start({required CygnusTracingSettings settings}) =>
       platform.start(settings: settings);
 
-  ///{@macro cygnus_core.PlatformTracingController.stop}
+  ///{@macro cygnus_core.CygnusPlatformTracingController.stop}
   ///
-  ///{@macro cygnus_core.PlatformTracingController.stop.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformTracingController.stop.supported_platforms}
   Future<bool> stop({String? filePath}) => platform.stop(filePath: filePath);
 
-  ///{@macro cygnus_core.PlatformTracingController.isTracing}
+  ///{@macro cygnus_core.CygnusPlatformTracingController.isTracing}
   ///
-  ///{@macro cygnus_core.PlatformTracingController.isTracing.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformTracingController.isTracing.supported_platforms}
   Future<bool> isTracing() => platform.isTracing();
 
-  ///{@macro cygnus_core.PlatformTracingControllerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformTracingControllerCreationParams.isClassSupported}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformTracingController.static().isClassSupported(platform: platform);
+      CygnusPlatformTracingController.static().isClassSupported(platform: platform);
 
-  ///{@macro cygnus_core.PlatformTracingController.isMethodSupported}
+  ///{@macro cygnus_core.CygnusPlatformTracingController.isMethodSupported}
   static bool isMethodSupported(
-    PlatformTracingControllerMethod method, {
+    CygnusPlatformTracingControllerMethod method, {
     TargetPlatform? platform,
-  }) => PlatformTracingController.static().isMethodSupported(
+  }) => CygnusPlatformTracingController.static().isMethodSupported(
     method,
     platform: platform,
   );

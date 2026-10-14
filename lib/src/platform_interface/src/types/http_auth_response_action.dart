@@ -5,12 +5,12 @@ import 'http_auth_response.dart';
 
 part 'http_auth_response_action.g.dart';
 
-///Class used by [HttpAuthResponse] class.
+///Class used by [CygnusHttpAuthResponse] class.
 @ExchangeableEnum()
-class HttpAuthResponseAction_ {
+class CygnusHttpAuthResponseAction_ {
   // ignore: unused_field
   final int _value;
-  const HttpAuthResponseAction_._internal(this._value);
+  const CygnusHttpAuthResponseAction_._internal(this._value);
 
   ///Instructs the WebView to cancel the authentication request.
   @EnumSupportedPlatforms(
@@ -21,7 +21,7 @@ class HttpAuthResponseAction_ {
       EnumWindowsPlatform(),
     ],
   )
-  static const CANCEL = const HttpAuthResponseAction_._internal(0);
+  static const CANCEL = const CygnusHttpAuthResponseAction_._internal(0);
 
   ///Instructs the WebView to proceed with the authentication with the given credentials.
   @EnumSupportedPlatforms(
@@ -32,12 +32,12 @@ class HttpAuthResponseAction_ {
       EnumWindowsPlatform(),
     ],
   )
-  static const PROCEED = const HttpAuthResponseAction_._internal(1);
+  static const PROCEED = const CygnusHttpAuthResponseAction_._internal(1);
 
   ///Uses the credentials stored for the current host.
   @EnumSupportedPlatforms(
     platforms: [EnumAndroidPlatform(), EnumIOSPlatform(), EnumMacOSPlatform()],
   )
   static const USE_SAVED_HTTP_AUTH_CREDENTIALS =
-      const HttpAuthResponseAction_._internal(2);
+      const CygnusHttpAuthResponseAction_._internal(2);
 }

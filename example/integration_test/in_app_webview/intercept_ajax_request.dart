@@ -1,14 +1,14 @@
 part of 'main.dart';
 
 void interceptAjaxRequest() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.shouldInterceptAjaxRequest,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.shouldInterceptAjaxRequest,
   );
 
   skippableGroup('intercept ajax request', () {
     skippableTestWidgets('send string data', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer shouldInterceptAjaxPostRequestCompleter =
           Completer<void>();
       final Completer<Map<String, dynamic>> onAjaxReadyStateChangeCompleter =
@@ -18,9 +18,9 @@ void interceptAjaxRequest() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialData: InAppWebViewInitialData(
+            initialData: CygnusWebViewInitialData(
               data:
                   """
 <!doctype html>
@@ -57,19 +57,19 @@ void interceptAjaxRequest() {
               return ajaxRequest;
             },
             onAjaxReadyStateChange: (controller, ajaxRequest) async {
-              if (ajaxRequest.readyState == AjaxRequestReadyState.DONE &&
+              if (ajaxRequest.readyState == CygnusAjaxRequestReadyState.DONE &&
                   ajaxRequest.status == 200) {
                 Map<String, dynamic> res = ajaxRequest.response;
                 onAjaxReadyStateChangeCompleter.complete(res);
               }
-              return AjaxRequestAction.PROCEED;
+              return CygnusAjaxRequestAction.PROCEED;
             },
             onAjaxProgress: (controller, ajaxRequest) async {
-              if (ajaxRequest.event!.type == AjaxRequestEventType.LOAD) {
+              if (ajaxRequest.event!.type == CygnusAjaxRequestEventType.LOAD) {
                 Map<String, dynamic> res = ajaxRequest.response;
                 onAjaxProgressCompleter.complete(res);
               }
-              return AjaxRequestAction.PROCEED;
+              return CygnusAjaxRequestAction.PROCEED;
             },
           ),
         ),
@@ -98,8 +98,8 @@ void interceptAjaxRequest() {
     });
 
     skippableTestWidgets('send json data', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer shouldInterceptAjaxPostRequestCompleter =
           Completer<void>();
       final Completer<Map<String, dynamic>> onAjaxReadyStateChangeCompleter =
@@ -109,9 +109,9 @@ void interceptAjaxRequest() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialData: InAppWebViewInitialData(
+            initialData: CygnusWebViewInitialData(
               data:
                   """
 <!doctype html>
@@ -156,19 +156,19 @@ void interceptAjaxRequest() {
               return ajaxRequest;
             },
             onAjaxReadyStateChange: (controller, ajaxRequest) async {
-              if (ajaxRequest.readyState == AjaxRequestReadyState.DONE &&
+              if (ajaxRequest.readyState == CygnusAjaxRequestReadyState.DONE &&
                   ajaxRequest.status == 200) {
                 Map<String, dynamic> res = ajaxRequest.response;
                 onAjaxReadyStateChangeCompleter.complete(res);
               }
-              return AjaxRequestAction.PROCEED;
+              return CygnusAjaxRequestAction.PROCEED;
             },
             onAjaxProgress: (controller, ajaxRequest) async {
-              if (ajaxRequest.event!.type == AjaxRequestEventType.LOAD) {
+              if (ajaxRequest.event!.type == CygnusAjaxRequestEventType.LOAD) {
                 Map<String, dynamic> res = ajaxRequest.response;
                 onAjaxProgressCompleter.complete(res);
               }
-              return AjaxRequestAction.PROCEED;
+              return CygnusAjaxRequestAction.PROCEED;
             },
           ),
         ),
@@ -199,8 +199,8 @@ void interceptAjaxRequest() {
     skippableTestWidgets('send URLSearchParams data', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer shouldInterceptAjaxPostRequestCompleter =
           Completer<void>();
       final Completer<Map<String, dynamic>> onAjaxReadyStateChangeCompleter =
@@ -210,9 +210,9 @@ void interceptAjaxRequest() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialData: InAppWebViewInitialData(
+            initialData: CygnusWebViewInitialData(
               data:
                   """
 <!doctype html>
@@ -251,19 +251,19 @@ void interceptAjaxRequest() {
               return ajaxRequest;
             },
             onAjaxReadyStateChange: (controller, ajaxRequest) async {
-              if (ajaxRequest.readyState == AjaxRequestReadyState.DONE &&
+              if (ajaxRequest.readyState == CygnusAjaxRequestReadyState.DONE &&
                   ajaxRequest.status == 200) {
                 Map<String, dynamic> res = ajaxRequest.response;
                 onAjaxReadyStateChangeCompleter.complete(res);
               }
-              return AjaxRequestAction.PROCEED;
+              return CygnusAjaxRequestAction.PROCEED;
             },
             onAjaxProgress: (controller, ajaxRequest) async {
-              if (ajaxRequest.event!.type == AjaxRequestEventType.LOAD) {
+              if (ajaxRequest.event!.type == CygnusAjaxRequestEventType.LOAD) {
                 Map<String, dynamic> res = ajaxRequest.response;
                 onAjaxProgressCompleter.complete(res);
               }
-              return AjaxRequestAction.PROCEED;
+              return CygnusAjaxRequestAction.PROCEED;
             },
           ),
         ),
@@ -292,8 +292,8 @@ void interceptAjaxRequest() {
     });
 
     skippableTestWidgets('send FormData', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer shouldInterceptAjaxPostRequestCompleter =
           Completer<void>();
       final Completer<Map<String, dynamic>> onAjaxReadyStateChangeCompleter =
@@ -303,9 +303,9 @@ void interceptAjaxRequest() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialData: InAppWebViewInitialData(
+            initialData: CygnusWebViewInitialData(
               data:
                   """
 <!doctype html>
@@ -352,19 +352,19 @@ void interceptAjaxRequest() {
               return ajaxRequest;
             },
             onAjaxReadyStateChange: (controller, ajaxRequest) async {
-              if (ajaxRequest.readyState == AjaxRequestReadyState.DONE &&
+              if (ajaxRequest.readyState == CygnusAjaxRequestReadyState.DONE &&
                   ajaxRequest.status == 200) {
                 Map<String, dynamic> res = ajaxRequest.response;
                 onAjaxReadyStateChangeCompleter.complete(res);
               }
-              return AjaxRequestAction.PROCEED;
+              return CygnusAjaxRequestAction.PROCEED;
             },
             onAjaxProgress: (controller, ajaxRequest) async {
-              if (ajaxRequest.event!.type == AjaxRequestEventType.LOAD) {
+              if (ajaxRequest.event!.type == CygnusAjaxRequestEventType.LOAD) {
                 Map<String, dynamic> res = ajaxRequest.response;
                 onAjaxProgressCompleter.complete(res);
               }
-              return AjaxRequestAction.PROCEED;
+              return CygnusAjaxRequestAction.PROCEED;
             },
           ),
         ),

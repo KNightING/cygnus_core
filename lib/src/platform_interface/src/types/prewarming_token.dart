@@ -5,11 +5,11 @@ import 'enum_method.dart';
 
 part 'prewarming_token.g.dart';
 
-///Class that represents the Prewarming Token returned by [PlatformChromeSafariBrowser.prewarmConnections].
+///Class that represents the Prewarming Token returned by [CygnusPlatformChromeSafariBrowser.prewarmConnections].
 @ExchangeableObject()
-class PrewarmingToken_ {
+class CygnusPrewarmingToken_ {
   ///Prewarming Token id.
   final String id;
 
-  PrewarmingToken_({required this.id});
+  CygnusPrewarmingToken_({required this.id});
 }

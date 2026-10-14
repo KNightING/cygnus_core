@@ -120,7 +120,7 @@ class ProfileSelectorCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '${InAppWebView} Settings',
+          '${CygnusWebView} Settings',
           style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: titleFontSize,
@@ -213,7 +213,7 @@ class ProfileSelectorCard extends StatelessWidget {
           children: [
             Expanded(
               child: Text(
-                '$WebViewEnvironment',
+                '$CygnusWebViewEnvironment',
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: titleFontSize,

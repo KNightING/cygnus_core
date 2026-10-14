@@ -3,25 +3,25 @@ import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_i
 import 'package:cygnus_core/src/platform_interface/src/types/disposable.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-import '../in_app_webview/platform_inappwebview_controller.dart';
-import '../inappwebview_platform.dart';
+import '../webview/platform_webview_controller.dart';
+import '../webview_platform.dart';
 import '../types/main.dart';
 import 'web_storage_item.dart';
 
 part 'platform_web_storage.g.dart';
 
-/// Object specifying creation parameters for creating a [PlatformWebStorage].
+/// Object specifying creation parameters for creating a [CygnusPlatformWebStorage].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
-///{@template cygnus_core.PlatformWebStorageCreationParams}
-/// Object specifying creation parameters for creating a [PlatformWebStorage].
+///{@template cygnus_core.CygnusPlatformWebStorageCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformWebStorage].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformWebStorageCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebStorageCreationParams.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -33,16 +33,16 @@ part 'platform_web_storage.g.dart';
   ],
 )
 @immutable
-class PlatformWebStorageCreationParams {
-  /// Used by the platform implementation to create a new [PlatformWebStorage].
-  const PlatformWebStorageCreationParams({
+class CygnusPlatformWebStorageCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformWebStorage].
+  const CygnusPlatformWebStorageCreationParams({
     required this.localStorage,
     required this.sessionStorage,
   });
 
-  ///{@macro cygnus_core.PlatformWebStorage.localStorage}
+  ///{@macro cygnus_core.CygnusPlatformWebStorage.localStorage}
   ///
-  ///{@macro cygnus_core.PlatformWebStorage.localStorage.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorage.localStorage.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -53,11 +53,11 @@ class PlatformWebStorageCreationParams {
       LinuxPlatform(),
     ],
   )
-  final PlatformLocalStorage localStorage;
+  final CygnusPlatformLocalStorage localStorage;
 
-  ///{@macro cygnus_core.PlatformWebStorage.sessionStorage}
+  ///{@macro cygnus_core.CygnusPlatformWebStorage.sessionStorage}
   ///
-  ///{@macro cygnus_core.PlatformWebStorage.sessionStorage.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorage.sessionStorage.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -68,33 +68,33 @@ class PlatformWebStorageCreationParams {
       LinuxPlatform(),
     ],
   )
-  final PlatformSessionStorage sessionStorage;
+  final CygnusPlatformSessionStorage sessionStorage;
 
-  ///{@template cygnus_core.PlatformWebStorageCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformWebStorageCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformWebStorageCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformWebStorageCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformWebStorageCreationParams.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformWebStorageCreationParams.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformWebStorageCreationParamsProperty property, {
+    CygnusPlatformWebStorageCreationParamsProperty property, {
     TargetPlatform? platform,
-  }) => _PlatformWebStorageCreationParamsPropertySupported.isPropertySupported(
+  }) => _CygnusPlatformWebStorageCreationParamsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 }
 
-///{@template cygnus_core.PlatformWebStorage}
-///Class that provides access to the JavaScript [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API): `window.sessionStorage` and `window.localStorage`.
-///It used by [PlatformInAppWebViewController.webStorage].
+///{@template cygnus_core.CygnusPlatformWebStorage}
+///Class that provides access to the JavaScript [Web CygnusStorage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API): `window.sessionStorage` and `window.localStorage`.
+///It used by [CygnusPlatformWebViewController.webStorage].
 ///{@endtemplate}
-///{@macro cygnus_core.PlatformWebStorage.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebStorage.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -105,55 +105,55 @@ class PlatformWebStorageCreationParams {
     LinuxPlatform(),
   ],
 )
-abstract class PlatformWebStorage extends PlatformInterface
-    implements Disposable {
-  /// Creates a new [PlatformWebStorage]
-  factory PlatformWebStorage(PlatformWebStorageCreationParams params) {
+abstract class CygnusPlatformWebStorage extends PlatformInterface
+    implements CygnusDisposable {
+  /// Creates a new [CygnusPlatformWebStorage]
+  factory CygnusPlatformWebStorage(CygnusPlatformWebStorageCreationParams params) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformWebStorage webStorage = InAppWebViewPlatform.instance!
+    final CygnusPlatformWebStorage webStorage = CygnusWebViewPlatform.instance!
         .createPlatformWebStorage(params);
     PlatformInterface.verify(webStorage, _token);
     return webStorage;
   }
 
-  /// Creates a new empty [PlatformWebStorage] to access static methods.
-  factory PlatformWebStorage.static() {
+  /// Creates a new empty [CygnusPlatformWebStorage] to access static methods.
+  factory CygnusPlatformWebStorage.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformWebStorage webStorageStatic = InAppWebViewPlatform.instance!
+    final CygnusPlatformWebStorage webStorageStatic = CygnusWebViewPlatform.instance!
         .createPlatformWebStorageStatic();
     PlatformInterface.verify(webStorageStatic, _token);
     return webStorageStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformWebStorage].
+  /// Used by the platform implementation to create a new [CygnusPlatformWebStorage].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformWebStorage.implementation(this.params) : super(token: _token);
+  CygnusPlatformWebStorage.implementation(this.params) : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformWebStorage].
-  final PlatformWebStorageCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformWebStorage].
+  final CygnusPlatformWebStorageCreationParams params;
 
-  ///{@template cygnus_core.PlatformWebStorage.localStorage}
+  ///{@template cygnus_core.CygnusPlatformWebStorage.localStorage}
   ///Represents `window.localStorage`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebStorage.localStorage.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorage.localStorage.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -164,13 +164,13 @@ abstract class PlatformWebStorage extends PlatformInterface
       LinuxPlatform(),
     ],
   )
-  PlatformLocalStorage get localStorage => params.localStorage;
+  CygnusPlatformLocalStorage get localStorage => params.localStorage;
 
-  ///{@template cygnus_core.PlatformWebStorage.sessionStorage}
+  ///{@template cygnus_core.CygnusPlatformWebStorage.sessionStorage}
   ///Represents `window.sessionStorage`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebStorage.sessionStorage.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorage.sessionStorage.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -181,13 +181,13 @@ abstract class PlatformWebStorage extends PlatformInterface
       LinuxPlatform(),
     ],
   )
-  PlatformSessionStorage get sessionStorage => params.sessionStorage;
+  CygnusPlatformSessionStorage get sessionStorage => params.sessionStorage;
 
-  ///{@template cygnus_core.PlatformWebStorage.dispose}
+  ///{@template cygnus_core.CygnusPlatformWebStorage.dispose}
   ///Disposes the web storage.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebStorage.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebStorage.dispose.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -204,45 +204,45 @@ abstract class PlatformWebStorage extends PlatformInterface
     );
   }
 
-  ///{@macro cygnus_core.PlatformWebStorageCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformWebStorageCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformWebStorageClassSupported.isClassSupported(platform: platform);
+      _CygnusPlatformWebStorageClassSupported.isClassSupported(platform: platform);
 
-  ///{@template cygnus_core.PlatformWebStorage.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformWebStorage.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(dynamic property, {TargetPlatform? platform}) =>
-      property is PlatformWebStorageCreationParamsProperty
+      property is CygnusPlatformWebStorageCreationParamsProperty
       ? params.isPropertySupported(property, platform: platform)
-      : _PlatformWebStoragePropertySupported.isPropertySupported(
+      : _CygnusPlatformWebStoragePropertySupported.isPropertySupported(
           property,
           platform: platform,
         );
 
-  ///{@template cygnus_core.PlatformWebStorage.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformWebStorage.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformWebStorageMethod method, {
+    CygnusPlatformWebStorageMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformWebStorageMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformWebStorageMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );
 }
 
-/// Object specifying creation parameters for creating a [PlatformStorage].
+/// Object specifying creation parameters for creating a [CygnusPlatformStorage].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
-///{@template cygnus_core.PlatformStorageCreationParams}
-/// Object specifying creation parameters for creating a [PlatformStorage].
+///{@template cygnus_core.CygnusPlatformStorageCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformStorage].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformStorageCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformStorageCreationParams.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -254,16 +254,16 @@ abstract class PlatformWebStorage extends PlatformInterface
   ],
 )
 @immutable
-class PlatformStorageCreationParams {
-  /// Used by the platform implementation to create a new [PlatformStorage].
-  const PlatformStorageCreationParams({
+class CygnusPlatformStorageCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformStorage].
+  const CygnusPlatformStorageCreationParams({
     required this.controller,
     required this.webStorageType,
   });
 
-  ///{@macro cygnus_core.PlatformStorage.controller}
+  ///{@macro cygnus_core.CygnusPlatformStorage.controller}
   ///
-  ///{@macro cygnus_core.PlatformStorage.controller.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformStorage.controller.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -274,11 +274,11 @@ class PlatformStorageCreationParams {
       LinuxPlatform(),
     ],
   )
-  final PlatformInAppWebViewController? controller;
+  final CygnusPlatformWebViewController? controller;
 
-  ///{@macro cygnus_core.PlatformStorage.webStorageType}
+  ///{@macro cygnus_core.CygnusPlatformStorage.webStorageType}
   ///
-  ///{@macro cygnus_core.PlatformStorage.webStorageType.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformStorage.webStorageType.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -289,33 +289,33 @@ class PlatformStorageCreationParams {
       LinuxPlatform(),
     ],
   )
-  final WebStorageType webStorageType;
+  final CygnusWebStorageType webStorageType;
 
-  ///{@template cygnus_core.PlatformStorageCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformStorageCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformStorageCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformStorageCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformStorageCreationParams.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformStorageCreationParams.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformStorageCreationParamsProperty property, {
+    CygnusPlatformStorageCreationParamsProperty property, {
     TargetPlatform? platform,
-  }) => _PlatformStorageCreationParamsPropertySupported.isPropertySupported(
+  }) => _CygnusPlatformStorageCreationParamsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 }
 
-///{@template cygnus_core.PlatformStorage}
-///Class that provides methods to manage the JavaScript [Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) object.
-///It is used by [PlatformLocalStorage] and [PlatformSessionStorage].
+///{@template cygnus_core.CygnusPlatformStorage}
+///Class that provides methods to manage the JavaScript [CygnusStorage](https://developer.mozilla.org/en-US/docs/Web/API/CygnusStorage) object.
+///It is used by [CygnusPlatformLocalStorage] and [CygnusPlatformSessionStorage].
 ///{@endtemplate}
-///{@macro cygnus_core.PlatformStorage.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformStorage.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -326,8 +326,8 @@ class PlatformStorageCreationParams {
     LinuxPlatform(),
   ],
 )
-abstract mixin class PlatformStorage implements Disposable {
-  ///{@template cygnus_core.PlatformStorage.controller}
+abstract mixin class CygnusPlatformStorage implements CygnusDisposable {
+  ///{@template cygnus_core.CygnusPlatformStorage.controller}
   ///Controller used to interact with storage.
   ///{@endtemplate}
   @SupportedPlatforms(
@@ -340,9 +340,9 @@ abstract mixin class PlatformStorage implements Disposable {
       LinuxPlatform(),
     ],
   )
-  PlatformInAppWebViewController? get controller;
+  CygnusPlatformWebViewController? get controller;
 
-  ///{@template cygnus_core.PlatformStorage.webStorageType}
+  ///{@template cygnus_core.CygnusPlatformStorage.webStorageType}
   ///The web storage type: `window.sessionStorage` or `window.localStorage`.
   ///{@endtemplate}
   @SupportedPlatforms(
@@ -355,14 +355,14 @@ abstract mixin class PlatformStorage implements Disposable {
       LinuxPlatform(),
     ],
   )
-  WebStorageType get webStorageType {
+  CygnusWebStorageType get webStorageType {
     throw UnimplementedError(
       'webStorageType is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformStorage.length}
-  ///Returns an integer representing the number of data items stored in the Storage object.
+  ///{@template cygnus_core.CygnusPlatformStorage.length}
+  ///Returns an integer representing the number of data items stored in the CygnusStorage object.
   ///{@endtemplate}
   @SupportedPlatforms(
     platforms: [
@@ -383,7 +383,7 @@ abstract mixin class PlatformStorage implements Disposable {
     );
   }
 
-  ///{@template cygnus_core.PlatformStorage.setItem}
+  ///{@template cygnus_core.CygnusPlatformStorage.setItem}
   ///When passed a [key] name and [value], will add that key to the storage, or update that key's value if it already exists.
   ///{@endtemplate}
   @SupportedPlatforms(
@@ -405,8 +405,8 @@ abstract mixin class PlatformStorage implements Disposable {
     );
   }
 
-  ///{@template cygnus_core.PlatformStorage.getItem}
-  ///When passed a [key] name, will return that key's value, or `null` if the key does not exist, in the given Storage object.
+  ///{@template cygnus_core.CygnusPlatformStorage.getItem}
+  ///When passed a [key] name, will return that key's value, or `null` if the key does not exist, in the given CygnusStorage object.
   ///{@endtemplate}
   @SupportedPlatforms(
     platforms: [
@@ -427,8 +427,8 @@ abstract mixin class PlatformStorage implements Disposable {
     );
   }
 
-  ///{@template cygnus_core.PlatformStorage.removeItem}
-  ///When passed a [key] name, will remove that key from the given Storage object if it exists.
+  ///{@template cygnus_core.CygnusPlatformStorage.removeItem}
+  ///When passed a [key] name, will remove that key from the given CygnusStorage object if it exists.
   ///{@endtemplate}
   @SupportedPlatforms(
     platforms: [
@@ -449,8 +449,8 @@ abstract mixin class PlatformStorage implements Disposable {
     );
   }
 
-  ///{@template cygnus_core.PlatformStorage.getItems}
-  ///Returns the list of all items from the given Storage object.
+  ///{@template cygnus_core.CygnusPlatformStorage.getItems}
+  ///Returns the list of all items from the given CygnusStorage object.
   ///{@endtemplate}
   @SupportedPlatforms(
     platforms: [
@@ -465,14 +465,14 @@ abstract mixin class PlatformStorage implements Disposable {
       LinuxPlatform(),
     ],
   )
-  Future<List<WebStorageItem>> getItems() {
+  Future<List<CygnusWebStorageItem>> getItems() {
     throw UnimplementedError(
       'getItems is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformStorage.clear}
-  ///Clears all keys stored in a given Storage object.
+  ///{@template cygnus_core.CygnusPlatformStorage.clear}
+  ///Clears all keys stored in a given CygnusStorage object.
   ///{@endtemplate}
   @SupportedPlatforms(
     platforms: [
@@ -493,8 +493,8 @@ abstract mixin class PlatformStorage implements Disposable {
     );
   }
 
-  ///{@template cygnus_core.PlatformStorage.key}
-  ///When passed a number [index], returns the name of the nth key in a given Storage object.
+  ///{@template cygnus_core.CygnusPlatformStorage.key}
+  ///When passed a number [index], returns the name of the nth key in a given CygnusStorage object.
   ///The order of keys is user-agent defined, so you should not rely on it.
   ///{@endtemplate}
   @SupportedPlatforms(
@@ -532,7 +532,7 @@ abstract mixin class PlatformStorage implements Disposable {
   }
 }
 
-/// Object specifying creation parameters for creating a [PlatformLocalStorage].
+/// Object specifying creation parameters for creating a [CygnusPlatformLocalStorage].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
@@ -547,38 +547,38 @@ abstract mixin class PlatformStorage implements Disposable {
     LinuxPlatform(),
   ],
 )
-class PlatformLocalStorageCreationParams extends PlatformStorageCreationParams {
-  /// Used by the platform implementation to create a new [PlatformLocalStorage].
-  PlatformLocalStorageCreationParams(
+class CygnusPlatformLocalStorageCreationParams extends CygnusPlatformStorageCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformLocalStorage].
+  CygnusPlatformLocalStorageCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformStorageCreationParams params,
+    CygnusPlatformStorageCreationParams params,
   ) : super(
         controller: params.controller,
-        webStorageType: WebStorageType.LOCAL_STORAGE,
+        webStorageType: CygnusWebStorageType.LOCAL_STORAGE,
       );
 
-  /// Creates a [PlatformLocalStorageCreationParams] instance based on [PlatformLocalStorageCreationParams].
-  factory PlatformLocalStorageCreationParams.fromPlatformStorageCreationParams(
-    PlatformStorageCreationParams params,
+  /// Creates a [CygnusPlatformLocalStorageCreationParams] instance based on [CygnusPlatformLocalStorageCreationParams].
+  factory CygnusPlatformLocalStorageCreationParams.fromPlatformStorageCreationParams(
+    CygnusPlatformStorageCreationParams params,
   ) {
-    return PlatformLocalStorageCreationParams(params);
+    return CygnusPlatformLocalStorageCreationParams(params);
   }
 
-  ///{@template cygnus_core.PlatformLocalStorageCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformLocalStorageCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformLocalStorageCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformLocalStorageCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformLocalStorage}
+///{@template cygnus_core.CygnusPlatformLocalStorage}
 ///Class that provides methods to manage the JavaScript `window.localStorage` object.
-///It used by [PlatformWebStorage].
+///It used by [CygnusPlatformWebStorage].
 ///{@endtemplate}
-///{@macro cygnus_core.PlatformLocalStorage.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformLocalStorage.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -589,73 +589,73 @@ class PlatformLocalStorageCreationParams extends PlatformStorageCreationParams {
     LinuxPlatform(),
   ],
 )
-abstract class PlatformLocalStorage extends PlatformInterface
-    with PlatformStorage {
-  /// Creates a new [PlatformLocalStorage]
-  factory PlatformLocalStorage(PlatformLocalStorageCreationParams params) {
+abstract class CygnusPlatformLocalStorage extends PlatformInterface
+    with CygnusPlatformStorage {
+  /// Creates a new [CygnusPlatformLocalStorage]
+  factory CygnusPlatformLocalStorage(CygnusPlatformLocalStorageCreationParams params) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformLocalStorage localStorage = InAppWebViewPlatform.instance!
+    final CygnusPlatformLocalStorage localStorage = CygnusWebViewPlatform.instance!
         .createPlatformLocalStorage(params);
     PlatformInterface.verify(localStorage, _token);
     return localStorage;
   }
 
-  /// Creates a new empty [PlatformLocalStorage] to access static methods.
-  factory PlatformLocalStorage.static() {
+  /// Creates a new empty [CygnusPlatformLocalStorage] to access static methods.
+  factory CygnusPlatformLocalStorage.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformLocalStorage localStorageStatic = InAppWebViewPlatform
+    final CygnusPlatformLocalStorage localStorageStatic = CygnusWebViewPlatform
         .instance!
         .createPlatformLocalStorageStatic();
     PlatformInterface.verify(localStorageStatic, _token);
     return localStorageStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformLocalStorage].
+  /// Used by the platform implementation to create a new [CygnusPlatformLocalStorage].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformLocalStorage.implementation(this.params) : super(token: _token);
+  CygnusPlatformLocalStorage.implementation(this.params) : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformLocalStorage].
-  final PlatformLocalStorageCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformLocalStorage].
+  final CygnusPlatformLocalStorageCreationParams params;
 
   @override
-  WebStorageType get webStorageType => params.webStorageType;
+  CygnusWebStorageType get webStorageType => params.webStorageType;
 
-  ///{@macro cygnus_core.PlatformLocalStorage.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformLocalStorage.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformLocalStorageClassSupported.isClassSupported(platform: platform);
+      _CygnusPlatformLocalStorageClassSupported.isClassSupported(platform: platform);
 
-  ///{@template cygnus_core.PlatformLocalStorage.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformLocalStorage.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformStorageCreationParamsProperty property, {
+    CygnusPlatformStorageCreationParamsProperty property, {
     TargetPlatform? platform,
   }) => params.isPropertySupported(property, platform: platform);
 
-  ///{@template cygnus_core.PlatformLocalStorage.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformLocalStorage.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformLocalStorageMethod method, {
+    CygnusPlatformLocalStorageMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformLocalStorageMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformLocalStorageMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );
@@ -724,7 +724,7 @@ abstract class PlatformLocalStorage extends PlatformInterface
       LinuxPlatform(),
     ],
   )
-  Future<List<WebStorageItem>> getItems() => super.getItems();
+  Future<List<CygnusWebStorageItem>> getItems() => super.getItems();
 
   @override
   @SupportedPlatforms(
@@ -766,7 +766,7 @@ abstract class PlatformLocalStorage extends PlatformInterface
   void dispose() => super.dispose();
 }
 
-/// Object specifying creation parameters for creating a [PlatformSessionStorage].
+/// Object specifying creation parameters for creating a [CygnusPlatformSessionStorage].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
@@ -781,39 +781,39 @@ abstract class PlatformLocalStorage extends PlatformInterface
     LinuxPlatform(),
   ],
 )
-class PlatformSessionStorageCreationParams
-    extends PlatformStorageCreationParams {
-  /// Used by the platform implementation to create a new [PlatformSessionStorage].
-  PlatformSessionStorageCreationParams(
+class CygnusPlatformSessionStorageCreationParams
+    extends CygnusPlatformStorageCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformSessionStorage].
+  CygnusPlatformSessionStorageCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformStorageCreationParams params,
+    CygnusPlatformStorageCreationParams params,
   ) : super(
         controller: params.controller,
-        webStorageType: WebStorageType.SESSION_STORAGE,
+        webStorageType: CygnusWebStorageType.SESSION_STORAGE,
       );
 
-  /// Creates a [PlatformSessionStorageCreationParams] instance based on [PlatformStorageCreationParams].
-  factory PlatformSessionStorageCreationParams.fromPlatformStorageCreationParams(
-    PlatformStorageCreationParams params,
+  /// Creates a [CygnusPlatformSessionStorageCreationParams] instance based on [CygnusPlatformStorageCreationParams].
+  factory CygnusPlatformSessionStorageCreationParams.fromPlatformStorageCreationParams(
+    CygnusPlatformStorageCreationParams params,
   ) {
-    return PlatformSessionStorageCreationParams(params);
+    return CygnusPlatformSessionStorageCreationParams(params);
   }
 
-  ///{@template cygnus_core.PlatformSessionStorageCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformSessionStorageCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformSessionStorageCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformSessionStorageCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformSessionStorage}
+///{@template cygnus_core.CygnusPlatformSessionStorage}
 ///Class that provides methods to manage the JavaScript `window.sessionStorage` object.
-///It used by [PlatformWebStorage].
+///It used by [CygnusPlatformWebStorage].
 ///{@endtemplate}
-///{@macro cygnus_core.PlatformSessionStorage.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformSessionStorage.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -824,75 +824,75 @@ class PlatformSessionStorageCreationParams
     LinuxPlatform(),
   ],
 )
-abstract class PlatformSessionStorage extends PlatformInterface
-    with PlatformStorage {
-  /// Creates a new [PlatformSessionStorage]
-  factory PlatformSessionStorage(PlatformSessionStorageCreationParams params) {
+abstract class CygnusPlatformSessionStorage extends PlatformInterface
+    with CygnusPlatformStorage {
+  /// Creates a new [CygnusPlatformSessionStorage]
+  factory CygnusPlatformSessionStorage(CygnusPlatformSessionStorageCreationParams params) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformSessionStorage sessionStorage = InAppWebViewPlatform.instance!
+    final CygnusPlatformSessionStorage sessionStorage = CygnusWebViewPlatform.instance!
         .createPlatformSessionStorage(params);
     PlatformInterface.verify(sessionStorage, _token);
     return sessionStorage;
   }
 
-  /// Creates a new empty [PlatformSessionStorage] to access static methods.
-  factory PlatformSessionStorage.static() {
+  /// Creates a new empty [CygnusPlatformSessionStorage] to access static methods.
+  factory CygnusPlatformSessionStorage.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformSessionStorage sessionStorageStatic = InAppWebViewPlatform
+    final CygnusPlatformSessionStorage sessionStorageStatic = CygnusWebViewPlatform
         .instance!
         .createPlatformSessionStorageStatic();
     PlatformInterface.verify(sessionStorageStatic, _token);
     return sessionStorageStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformSessionStorage].
+  /// Used by the platform implementation to create a new [CygnusPlatformSessionStorage].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformSessionStorage.implementation(this.params) : super(token: _token);
+  CygnusPlatformSessionStorage.implementation(this.params) : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformSessionStorage].
-  final PlatformSessionStorageCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformSessionStorage].
+  final CygnusPlatformSessionStorageCreationParams params;
 
   @override
-  WebStorageType get webStorageType => params.webStorageType;
+  CygnusWebStorageType get webStorageType => params.webStorageType;
 
-  ///{@macro cygnus_core.PlatformSessionStorage.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformSessionStorage.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformSessionStorageClassSupported.isClassSupported(
+      _CygnusPlatformSessionStorageClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformSessionStorage.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformSessionStorage.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformStorageCreationParamsProperty property, {
+    CygnusPlatformStorageCreationParamsProperty property, {
     TargetPlatform? platform,
   }) => params.isPropertySupported(property, platform: platform);
 
-  ///{@template cygnus_core.PlatformSessionStorage.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformSessionStorage.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformSessionStorageMethod method, {
+    CygnusPlatformSessionStorageMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformSessionStorageMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformSessionStorageMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );
@@ -961,7 +961,7 @@ abstract class PlatformSessionStorage extends PlatformInterface
       LinuxPlatform(),
     ],
   )
-  Future<List<WebStorageItem>> getItems() => super.getItems();
+  Future<List<CygnusWebStorageItem>> getItems() => super.getItems();
 
   @override
   @SupportedPlatforms(

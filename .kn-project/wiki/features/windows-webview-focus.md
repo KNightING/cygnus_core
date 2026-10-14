@@ -73,7 +73,7 @@ embedder 在**每一次**滑鼠按下都會 `SetFocus(FlutterView)`。若只在�
 
 ## Headless 不適用
 
-`HeadlessInAppWebView` 的宿主視窗建立後立即 `ShowWindow(SW_HIDE)`。隱藏的視窗無法被啟用，
+`CygnusHeadlessWebView` 的宿主視窗建立後立即 `ShowWindow(SW_HIDE)`。隱藏的視窗無法被啟用，
 也沒有使用者輸入，本頁的焦點路徑對它不適用。
 
 ## References

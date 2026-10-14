@@ -7,54 +7,63 @@ part of 'ssl_error.dart';
 // **************************************************************************
 
 ///Class that represents an SSL Error.
-class SslError {
+class CygnusSslError {
   ///Use [code] instead.
   @Deprecated('Use code instead')
-  AndroidSslError? androidError;
+  CygnusAndroidSslError? androidError;
 
   ///Primary code error associated to the server SSL certificate.
   ///It represents the most severe SSL error.
-  SslErrorType? code;
+  CygnusSslErrorType? code;
 
   ///Use [code] instead.
   @Deprecated('Use code instead')
-  IOSSslError? iosError;
+  CygnusIOSSslError? iosError;
 
   ///The message associated to the [code].
   String? message;
-  SslError({
+  CygnusSslError({
     @Deprecated('Use code instead') this.androidError,
     this.code,
     @Deprecated('Use code instead') this.iosError,
     this.message,
   }) {
-    code = code ?? SslErrorType.fromNativeValue(androidError?.toNativeValue());
-    code = code ?? SslErrorType.fromNativeValue(iosError?.toNativeValue());
+    code =
+        code ??
+        CygnusSslErrorType.fromNativeValue(androidError?.toNativeValue());
+    code =
+        code ?? CygnusSslErrorType.fromNativeValue(iosError?.toNativeValue());
   }
 
-  ///Gets a possible [SslError] instance from a [Map] value.
-  static SslError? fromMap(
+  ///Gets a possible [CygnusSslError] instance from a [Map] value.
+  static CygnusSslError? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = SslError(
-      androidError: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => AndroidSslError.fromNativeValue(map['code']),
-        EnumMethod.value => AndroidSslError.fromValue(map['code']),
-        EnumMethod.name => AndroidSslError.byName(map['code']),
+    final instance = CygnusSslError(
+      androidError: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusAndroidSslError.fromNativeValue(
+          map['code'],
+        ),
+        CygnusEnumMethod.value => CygnusAndroidSslError.fromValue(map['code']),
+        CygnusEnumMethod.name => CygnusAndroidSslError.byName(map['code']),
       },
-      code: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => SslErrorType.fromNativeValue(map['code']),
-        EnumMethod.value => SslErrorType.fromValue(map['code']),
-        EnumMethod.name => SslErrorType.byName(map['code']),
+      code: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusSslErrorType.fromNativeValue(
+          map['code'],
+        ),
+        CygnusEnumMethod.value => CygnusSslErrorType.fromValue(map['code']),
+        CygnusEnumMethod.name => CygnusSslErrorType.byName(map['code']),
       },
-      iosError: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => IOSSslError.fromNativeValue(map['code']),
-        EnumMethod.value => IOSSslError.fromValue(map['code']),
-        EnumMethod.name => IOSSslError.byName(map['code']),
+      iosError: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusIOSSslError.fromNativeValue(
+          map['code'],
+        ),
+        CygnusEnumMethod.value => CygnusIOSSslError.fromValue(map['code']),
+        CygnusEnumMethod.name => CygnusIOSSslError.byName(map['code']),
       },
       message: map['message'],
     );
@@ -62,12 +71,12 @@ class SslError {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "code": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => code?.toNativeValue(),
-        EnumMethod.value => code?.toValue(),
-        EnumMethod.name => code?.name(),
+      "code": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => code?.toNativeValue(),
+        CygnusEnumMethod.value => code?.toValue(),
+        CygnusEnumMethod.name => code?.name(),
       },
       "message": message,
     };
@@ -80,6 +89,6 @@ class SslError {
 
   @override
   String toString() {
-    return 'SslError{code: $code, message: $message}';
+    return 'CygnusSslError{code: $code, message: $message}';
   }
 }

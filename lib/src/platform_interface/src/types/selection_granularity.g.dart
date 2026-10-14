@@ -7,33 +7,33 @@ part of 'selection_granularity.dart';
 // **************************************************************************
 
 ///Class used to set the level of granularity with which the user can interactively select content in the web view.
-class SelectionGranularity {
+class CygnusSelectionGranularity {
   final int _value;
   final int? _nativeValue;
-  const SelectionGranularity._internal(this._value, this._nativeValue);
+  const CygnusSelectionGranularity._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory SelectionGranularity._internalMultiPlatform(
+  factory CygnusSelectionGranularity._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => SelectionGranularity._internal(value, nativeValue());
+  ) => CygnusSelectionGranularity._internal(value, nativeValue());
 
   ///Selection endpoints can be placed at any character boundary.
-  static const CHARACTER = SelectionGranularity._internal(1, 1);
+  static const CHARACTER = CygnusSelectionGranularity._internal(1, 1);
 
   ///Selection granularity varies automatically based on the selection.
-  static const DYNAMIC = SelectionGranularity._internal(0, 0);
+  static const DYNAMIC = CygnusSelectionGranularity._internal(0, 0);
 
-  ///Set of all values of [SelectionGranularity].
-  static final Set<SelectionGranularity> values = [
-    SelectionGranularity.CHARACTER,
-    SelectionGranularity.DYNAMIC,
+  ///Set of all values of [CygnusSelectionGranularity].
+  static final Set<CygnusSelectionGranularity> values = [
+    CygnusSelectionGranularity.CHARACTER,
+    CygnusSelectionGranularity.DYNAMIC,
   ].toSet();
 
-  ///Gets a possible [SelectionGranularity] instance from [int] value.
-  static SelectionGranularity? fromValue(int? value) {
+  ///Gets a possible [CygnusSelectionGranularity] instance from [int] value.
+  static CygnusSelectionGranularity? fromValue(int? value) {
     if (value != null) {
       try {
-        return SelectionGranularity.values.firstWhere(
+        return CygnusSelectionGranularity.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -43,11 +43,11 @@ class SelectionGranularity {
     return null;
   }
 
-  ///Gets a possible [SelectionGranularity] instance from a native value.
-  static SelectionGranularity? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusSelectionGranularity] instance from a native value.
+  static CygnusSelectionGranularity? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return SelectionGranularity.values.firstWhere(
+        return CygnusSelectionGranularity.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -57,15 +57,15 @@ class SelectionGranularity {
     return null;
   }
 
-  /// Gets a possible [SelectionGranularity] instance value with name [name].
+  /// Gets a possible [CygnusSelectionGranularity] instance value with name [name].
   ///
-  /// Goes through [SelectionGranularity.values] looking for a value with
-  /// name [name], as reported by [SelectionGranularity.name].
+  /// Goes through [CygnusSelectionGranularity.values] looking for a value with
+  /// name [name], as reported by [CygnusSelectionGranularity.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static SelectionGranularity? byName(String? name) {
+  static CygnusSelectionGranularity? byName(String? name) {
     if (name != null) {
       try {
-        return SelectionGranularity.values.firstWhere(
+        return CygnusSelectionGranularity.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -75,7 +75,7 @@ class SelectionGranularity {
     return null;
   }
 
-  /// Creates a map from the names of [SelectionGranularity] values to the values.
+  /// Creates a map from the names of [CygnusSelectionGranularity] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -83,9 +83,10 @@ class SelectionGranularity {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, SelectionGranularity> asNameMap() =>
-      <String, SelectionGranularity>{
-        for (final value in SelectionGranularity.values) value.name(): value,
+  static Map<String, CygnusSelectionGranularity> asNameMap() =>
+      <String, CygnusSelectionGranularity>{
+        for (final value in CygnusSelectionGranularity.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.
@@ -123,35 +124,38 @@ class SelectionGranularity {
 }
 
 ///An iOS-specific class used to set the level of granularity with which the user can interactively select content in the web view.
-///Use [SelectionGranularity] instead.
-@Deprecated('Use SelectionGranularity instead')
-class IOSWKSelectionGranularity {
+///Use [CygnusSelectionGranularity] instead.
+@Deprecated('Use CygnusSelectionGranularity instead')
+class CygnusIOSWKSelectionGranularity {
   final int _value;
   final int? _nativeValue;
-  const IOSWKSelectionGranularity._internal(this._value, this._nativeValue);
+  const CygnusIOSWKSelectionGranularity._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory IOSWKSelectionGranularity._internalMultiPlatform(
+  factory CygnusIOSWKSelectionGranularity._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => IOSWKSelectionGranularity._internal(value, nativeValue());
+  ) => CygnusIOSWKSelectionGranularity._internal(value, nativeValue());
 
   ///Selection endpoints can be placed at any character boundary.
-  static const CHARACTER = IOSWKSelectionGranularity._internal(1, 1);
+  static const CHARACTER = CygnusIOSWKSelectionGranularity._internal(1, 1);
 
   ///Selection granularity varies automatically based on the selection.
-  static const DYNAMIC = IOSWKSelectionGranularity._internal(0, 0);
+  static const DYNAMIC = CygnusIOSWKSelectionGranularity._internal(0, 0);
 
-  ///Set of all values of [IOSWKSelectionGranularity].
-  static final Set<IOSWKSelectionGranularity> values = [
-    IOSWKSelectionGranularity.CHARACTER,
-    IOSWKSelectionGranularity.DYNAMIC,
+  ///Set of all values of [CygnusIOSWKSelectionGranularity].
+  static final Set<CygnusIOSWKSelectionGranularity> values = [
+    CygnusIOSWKSelectionGranularity.CHARACTER,
+    CygnusIOSWKSelectionGranularity.DYNAMIC,
   ].toSet();
 
-  ///Gets a possible [IOSWKSelectionGranularity] instance from [int] value.
-  static IOSWKSelectionGranularity? fromValue(int? value) {
+  ///Gets a possible [CygnusIOSWKSelectionGranularity] instance from [int] value.
+  static CygnusIOSWKSelectionGranularity? fromValue(int? value) {
     if (value != null) {
       try {
-        return IOSWKSelectionGranularity.values.firstWhere(
+        return CygnusIOSWKSelectionGranularity.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -161,11 +165,11 @@ class IOSWKSelectionGranularity {
     return null;
   }
 
-  ///Gets a possible [IOSWKSelectionGranularity] instance from a native value.
-  static IOSWKSelectionGranularity? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusIOSWKSelectionGranularity] instance from a native value.
+  static CygnusIOSWKSelectionGranularity? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return IOSWKSelectionGranularity.values.firstWhere(
+        return CygnusIOSWKSelectionGranularity.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -175,15 +179,15 @@ class IOSWKSelectionGranularity {
     return null;
   }
 
-  /// Gets a possible [IOSWKSelectionGranularity] instance value with name [name].
+  /// Gets a possible [CygnusIOSWKSelectionGranularity] instance value with name [name].
   ///
-  /// Goes through [IOSWKSelectionGranularity.values] looking for a value with
-  /// name [name], as reported by [IOSWKSelectionGranularity.name].
+  /// Goes through [CygnusIOSWKSelectionGranularity.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSWKSelectionGranularity.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSWKSelectionGranularity? byName(String? name) {
+  static CygnusIOSWKSelectionGranularity? byName(String? name) {
     if (name != null) {
       try {
-        return IOSWKSelectionGranularity.values.firstWhere(
+        return CygnusIOSWKSelectionGranularity.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -193,7 +197,7 @@ class IOSWKSelectionGranularity {
     return null;
   }
 
-  /// Creates a map from the names of [IOSWKSelectionGranularity] values to the values.
+  /// Creates a map from the names of [CygnusIOSWKSelectionGranularity] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -201,9 +205,9 @@ class IOSWKSelectionGranularity {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSWKSelectionGranularity> asNameMap() =>
-      <String, IOSWKSelectionGranularity>{
-        for (final value in IOSWKSelectionGranularity.values)
+  static Map<String, CygnusIOSWKSelectionGranularity> asNameMap() =>
+      <String, CygnusIOSWKSelectionGranularity>{
+        for (final value in CygnusIOSWKSelectionGranularity.values)
           value.name(): value,
       };
 

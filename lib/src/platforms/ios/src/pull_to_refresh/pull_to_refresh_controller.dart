@@ -1,15 +1,15 @@
 import 'dart:ui';
 
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [IOSPullToRefreshController].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformPullToRefreshControllerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformPullToRefreshControllerCreationParams] for
 /// more information.
 class IOSPullToRefreshControllerCreationParams
-    extends PlatformPullToRefreshControllerCreationParams {
+    extends CygnusPlatformPullToRefreshControllerCreationParams {
   /// Creates a new [IOSPullToRefreshControllerCreationParams] instance.
   IOSPullToRefreshControllerCreationParams({
     super.onRefresh,
@@ -17,11 +17,11 @@ class IOSPullToRefreshControllerCreationParams
     super.settings,
   });
 
-  /// Creates a [IOSPullToRefreshControllerCreationParams] instance based on [PlatformPullToRefreshControllerCreationParams].
+  /// Creates a [IOSPullToRefreshControllerCreationParams] instance based on [CygnusPlatformPullToRefreshControllerCreationParams].
   factory IOSPullToRefreshControllerCreationParams.fromPlatformPullToRefreshControllerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformPullToRefreshControllerCreationParams params,
+    CygnusPlatformPullToRefreshControllerCreationParams params,
   ) {
     return IOSPullToRefreshControllerCreationParams(
       onRefresh: params.onRefresh,
@@ -31,12 +31,12 @@ class IOSPullToRefreshControllerCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformPullToRefreshController}
-class IOSPullToRefreshController extends PlatformPullToRefreshController
+///{@macro cygnus_core.CygnusPlatformPullToRefreshController}
+class IOSPullToRefreshController extends CygnusPlatformPullToRefreshController
     with ChannelController {
   /// Constructs a [IOSPullToRefreshController].
   IOSPullToRefreshController(
-    PlatformPullToRefreshControllerCreationParams params,
+    CygnusPlatformPullToRefreshControllerCreationParams params,
   ) : super.implementation(
         params is IOSPullToRefreshControllerCreationParams
             ? params
@@ -57,7 +57,7 @@ class IOSPullToRefreshController extends PlatformPullToRefreshController
     debugLog(
       className: this.runtimeType.toString(),
       debugLoggingSettings:
-          PlatformPullToRefreshController.debugLoggingSettings,
+          CygnusPlatformPullToRefreshController.debugLoggingSettings,
       method: method,
       args: args,
     );
@@ -127,14 +127,14 @@ class IOSPullToRefreshController extends PlatformPullToRefreshController
 
   @Deprecated("Use setStyledTitle instead")
   @override
-  Future<void> setAttributedTitle(IOSNSAttributedString attributedTitle) async {
+  Future<void> setAttributedTitle(CygnusIOSNSAttributedString attributedTitle) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('attributedTitle', () => attributedTitle.toMap());
     await channel?.invokeMethod('setStyledTitle', args);
   }
 
   @override
-  Future<void> setStyledTitle(AttributedString attributedTitle) async {
+  Future<void> setStyledTitle(CygnusAttributedString attributedTitle) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('attributedTitle', () => attributedTitle.toMap());
     await channel?.invokeMethod('setStyledTitle', args);

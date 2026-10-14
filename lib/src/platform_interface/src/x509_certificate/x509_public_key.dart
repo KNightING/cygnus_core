@@ -6,36 +6,36 @@ import 'asn1_der_encoder.dart';
 import 'asn1_object.dart';
 import 'oid.dart';
 
-class X509PublicKey {
-  ASN1Object? pkBlock;
+class CygnusX509PublicKey {
+  CygnusASN1Object? pkBlock;
 
-  X509PublicKey({this.pkBlock});
+  CygnusX509PublicKey({this.pkBlock});
 
   String? get algOid => pkBlock?.subAtIndex(0)?.subAtIndex(0)?.value;
 
-  String? get algName => OID.fromValue(algOid)?.name();
+  String? get algName => CygnusOID.fromValue(algOid)?.name();
 
   String? get algParams => pkBlock?.subAtIndex(0)?.subAtIndex(1)?.value;
 
   Uint8List? get derEncodedKey {
     var value = pkBlock?.encoded;
     if (value != null) {
-      return ASN1DEREncoder.encodeSequence(content: value);
+      return CygnusASN1DEREncoder.encodeSequence(content: value);
     }
     return null;
   }
 
   Uint8List? get encoded {
-    var oid = OID.fromValue(algOid);
+    var oid = CygnusOID.fromValue(algOid);
     var keyData = pkBlock?.subAtIndex(1)?.value ?? null;
 
     if (oid != null && algOid != null && keyData != null) {
-      if (oid == OID.ecPublicKey) {
+      if (oid == CygnusOID.ecPublicKey) {
         return Uint8List.fromList(keyData);
-      } else if (oid == OID.rsaEncryption) {
-        List<ASN1Object>? publicKeyAsn1Objects;
+      } else if (oid == CygnusOID.rsaEncryption) {
+        List<CygnusASN1Object>? publicKeyAsn1Objects;
         try {
-          publicKeyAsn1Objects = ASN1DERDecoder.decode(
+          publicKeyAsn1Objects = CygnusASN1DERDecoder.decode(
             data: keyData.toList(growable: true),
           );
         } catch (e) {}
@@ -53,7 +53,7 @@ class X509PublicKey {
     return null;
   }
 
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "algOid": algOid,
       "algName": algName,

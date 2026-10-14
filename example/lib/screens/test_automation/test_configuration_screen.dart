@@ -337,11 +337,11 @@ class _TestConfigurationScreenState extends State<TestConfigurationScreen>
                   ),
                   const SizedBox(height: 16),
                   RadioListTile<TestWebViewType>(
-                    title: Text('${InAppWebView} (Visible)'),
+                    title: Text('${CygnusWebView} (Visible)'),
                     subtitle: const Text(
                       'Display WebView in real-time during test execution',
                     ),
-                    value: TestWebViewType.inAppWebView,
+                    value: TestWebViewType.webView,
                     groupValue: config.webViewType,
                     onChanged: (value) {
                       if (value != null) {

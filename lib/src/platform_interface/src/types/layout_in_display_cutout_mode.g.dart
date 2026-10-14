@@ -7,49 +7,52 @@ part of 'layout_in_display_cutout_mode.dart';
 // **************************************************************************
 
 ///Class representing the share state that should be applied to the custom tab.
-class LayoutInDisplayCutoutMode {
+class CygnusLayoutInDisplayCutoutMode {
   final int _value;
   final int? _nativeValue;
-  const LayoutInDisplayCutoutMode._internal(this._value, this._nativeValue);
+  const CygnusLayoutInDisplayCutoutMode._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory LayoutInDisplayCutoutMode._internalMultiPlatform(
+  factory CygnusLayoutInDisplayCutoutMode._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => LayoutInDisplayCutoutMode._internal(value, nativeValue());
+  ) => CygnusLayoutInDisplayCutoutMode._internal(value, nativeValue());
 
   ///The window is always allowed to extend into the DisplayCutout areas on the all edges of the screen.
   ///
   ///**NOTE**: available on Android 30+.
-  static const ALWAYS = LayoutInDisplayCutoutMode._internal(3, 3);
+  static const ALWAYS = CygnusLayoutInDisplayCutoutMode._internal(3, 3);
 
   ///With this default setting, content renders into the cutout area when displayed in portrait mode, but content is letterboxed when displayed in landscape mode.
   ///
   ///**NOTE**: available on Android 28+.
-  static const DEFAULT = LayoutInDisplayCutoutMode._internal(0, 0);
+  static const DEFAULT = CygnusLayoutInDisplayCutoutMode._internal(0, 0);
 
   ///Content never renders into the cutout area.
   ///
   ///**NOTE**: available on Android 28+.
-  static const NEVER = LayoutInDisplayCutoutMode._internal(2, 2);
+  static const NEVER = CygnusLayoutInDisplayCutoutMode._internal(2, 2);
 
   ///Content renders into the cutout area in both portrait and landscape modes.
   ///
   ///**NOTE**: available on Android 28+.
-  static const SHORT_EDGES = LayoutInDisplayCutoutMode._internal(1, 1);
+  static const SHORT_EDGES = CygnusLayoutInDisplayCutoutMode._internal(1, 1);
 
-  ///Set of all values of [LayoutInDisplayCutoutMode].
-  static final Set<LayoutInDisplayCutoutMode> values = [
-    LayoutInDisplayCutoutMode.ALWAYS,
-    LayoutInDisplayCutoutMode.DEFAULT,
-    LayoutInDisplayCutoutMode.NEVER,
-    LayoutInDisplayCutoutMode.SHORT_EDGES,
+  ///Set of all values of [CygnusLayoutInDisplayCutoutMode].
+  static final Set<CygnusLayoutInDisplayCutoutMode> values = [
+    CygnusLayoutInDisplayCutoutMode.ALWAYS,
+    CygnusLayoutInDisplayCutoutMode.DEFAULT,
+    CygnusLayoutInDisplayCutoutMode.NEVER,
+    CygnusLayoutInDisplayCutoutMode.SHORT_EDGES,
   ].toSet();
 
-  ///Gets a possible [LayoutInDisplayCutoutMode] instance from [int] value.
-  static LayoutInDisplayCutoutMode? fromValue(int? value) {
+  ///Gets a possible [CygnusLayoutInDisplayCutoutMode] instance from [int] value.
+  static CygnusLayoutInDisplayCutoutMode? fromValue(int? value) {
     if (value != null) {
       try {
-        return LayoutInDisplayCutoutMode.values.firstWhere(
+        return CygnusLayoutInDisplayCutoutMode.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -59,11 +62,11 @@ class LayoutInDisplayCutoutMode {
     return null;
   }
 
-  ///Gets a possible [LayoutInDisplayCutoutMode] instance from a native value.
-  static LayoutInDisplayCutoutMode? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusLayoutInDisplayCutoutMode] instance from a native value.
+  static CygnusLayoutInDisplayCutoutMode? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return LayoutInDisplayCutoutMode.values.firstWhere(
+        return CygnusLayoutInDisplayCutoutMode.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -73,15 +76,15 @@ class LayoutInDisplayCutoutMode {
     return null;
   }
 
-  /// Gets a possible [LayoutInDisplayCutoutMode] instance value with name [name].
+  /// Gets a possible [CygnusLayoutInDisplayCutoutMode] instance value with name [name].
   ///
-  /// Goes through [LayoutInDisplayCutoutMode.values] looking for a value with
-  /// name [name], as reported by [LayoutInDisplayCutoutMode.name].
+  /// Goes through [CygnusLayoutInDisplayCutoutMode.values] looking for a value with
+  /// name [name], as reported by [CygnusLayoutInDisplayCutoutMode.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static LayoutInDisplayCutoutMode? byName(String? name) {
+  static CygnusLayoutInDisplayCutoutMode? byName(String? name) {
     if (name != null) {
       try {
-        return LayoutInDisplayCutoutMode.values.firstWhere(
+        return CygnusLayoutInDisplayCutoutMode.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -91,7 +94,7 @@ class LayoutInDisplayCutoutMode {
     return null;
   }
 
-  /// Creates a map from the names of [LayoutInDisplayCutoutMode] values to the values.
+  /// Creates a map from the names of [CygnusLayoutInDisplayCutoutMode] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -99,9 +102,9 @@ class LayoutInDisplayCutoutMode {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, LayoutInDisplayCutoutMode> asNameMap() =>
-      <String, LayoutInDisplayCutoutMode>{
-        for (final value in LayoutInDisplayCutoutMode.values)
+  static Map<String, CygnusLayoutInDisplayCutoutMode> asNameMap() =>
+      <String, CygnusLayoutInDisplayCutoutMode>{
+        for (final value in CygnusLayoutInDisplayCutoutMode.values)
           value.name(): value,
       };
 
@@ -147,54 +150,57 @@ class LayoutInDisplayCutoutMode {
 ///
 ///**NOTE**: available on Android 28+.
 ///
-///Use [LayoutInDisplayCutoutMode] instead.
-@Deprecated('Use LayoutInDisplayCutoutMode instead')
-class AndroidLayoutInDisplayCutoutMode {
+///Use [CygnusLayoutInDisplayCutoutMode] instead.
+@Deprecated('Use CygnusLayoutInDisplayCutoutMode instead')
+class CygnusAndroidLayoutInDisplayCutoutMode {
   final int _value;
   final int? _nativeValue;
-  const AndroidLayoutInDisplayCutoutMode._internal(
+  const CygnusAndroidLayoutInDisplayCutoutMode._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory AndroidLayoutInDisplayCutoutMode._internalMultiPlatform(
+  factory CygnusAndroidLayoutInDisplayCutoutMode._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => AndroidLayoutInDisplayCutoutMode._internal(value, nativeValue());
+  ) => CygnusAndroidLayoutInDisplayCutoutMode._internal(value, nativeValue());
 
   ///The window is always allowed to extend into the DisplayCutout areas on the all edges of the screen.
   ///
   ///**NOTE**: available on Android 30+.
-  static const ALWAYS = AndroidLayoutInDisplayCutoutMode._internal(3, 3);
+  static const ALWAYS = CygnusAndroidLayoutInDisplayCutoutMode._internal(3, 3);
 
   ///With this default setting, content renders into the cutout area when displayed in portrait mode, but content is letterboxed when displayed in landscape mode.
   ///
   ///**NOTE**: available on Android 28+.
-  static const DEFAULT = AndroidLayoutInDisplayCutoutMode._internal(0, 0);
+  static const DEFAULT = CygnusAndroidLayoutInDisplayCutoutMode._internal(0, 0);
 
   ///Content never renders into the cutout area.
   ///
   ///**NOTE**: available on Android 28+.
-  static const NEVER = AndroidLayoutInDisplayCutoutMode._internal(2, 2);
+  static const NEVER = CygnusAndroidLayoutInDisplayCutoutMode._internal(2, 2);
 
   ///Content renders into the cutout area in both portrait and landscape modes.
   ///
   ///**NOTE**: available on Android 28+.
-  static const SHORT_EDGES = AndroidLayoutInDisplayCutoutMode._internal(1, 1);
+  static const SHORT_EDGES = CygnusAndroidLayoutInDisplayCutoutMode._internal(
+    1,
+    1,
+  );
 
-  ///Set of all values of [AndroidLayoutInDisplayCutoutMode].
-  static final Set<AndroidLayoutInDisplayCutoutMode> values = [
-    AndroidLayoutInDisplayCutoutMode.ALWAYS,
-    AndroidLayoutInDisplayCutoutMode.DEFAULT,
-    AndroidLayoutInDisplayCutoutMode.NEVER,
-    AndroidLayoutInDisplayCutoutMode.SHORT_EDGES,
+  ///Set of all values of [CygnusAndroidLayoutInDisplayCutoutMode].
+  static final Set<CygnusAndroidLayoutInDisplayCutoutMode> values = [
+    CygnusAndroidLayoutInDisplayCutoutMode.ALWAYS,
+    CygnusAndroidLayoutInDisplayCutoutMode.DEFAULT,
+    CygnusAndroidLayoutInDisplayCutoutMode.NEVER,
+    CygnusAndroidLayoutInDisplayCutoutMode.SHORT_EDGES,
   ].toSet();
 
-  ///Gets a possible [AndroidLayoutInDisplayCutoutMode] instance from [int] value.
-  static AndroidLayoutInDisplayCutoutMode? fromValue(int? value) {
+  ///Gets a possible [CygnusAndroidLayoutInDisplayCutoutMode] instance from [int] value.
+  static CygnusAndroidLayoutInDisplayCutoutMode? fromValue(int? value) {
     if (value != null) {
       try {
-        return AndroidLayoutInDisplayCutoutMode.values.firstWhere(
+        return CygnusAndroidLayoutInDisplayCutoutMode.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -204,11 +210,11 @@ class AndroidLayoutInDisplayCutoutMode {
     return null;
   }
 
-  ///Gets a possible [AndroidLayoutInDisplayCutoutMode] instance from a native value.
-  static AndroidLayoutInDisplayCutoutMode? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusAndroidLayoutInDisplayCutoutMode] instance from a native value.
+  static CygnusAndroidLayoutInDisplayCutoutMode? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return AndroidLayoutInDisplayCutoutMode.values.firstWhere(
+        return CygnusAndroidLayoutInDisplayCutoutMode.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -218,15 +224,15 @@ class AndroidLayoutInDisplayCutoutMode {
     return null;
   }
 
-  /// Gets a possible [AndroidLayoutInDisplayCutoutMode] instance value with name [name].
+  /// Gets a possible [CygnusAndroidLayoutInDisplayCutoutMode] instance value with name [name].
   ///
-  /// Goes through [AndroidLayoutInDisplayCutoutMode.values] looking for a value with
-  /// name [name], as reported by [AndroidLayoutInDisplayCutoutMode.name].
+  /// Goes through [CygnusAndroidLayoutInDisplayCutoutMode.values] looking for a value with
+  /// name [name], as reported by [CygnusAndroidLayoutInDisplayCutoutMode.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static AndroidLayoutInDisplayCutoutMode? byName(String? name) {
+  static CygnusAndroidLayoutInDisplayCutoutMode? byName(String? name) {
     if (name != null) {
       try {
-        return AndroidLayoutInDisplayCutoutMode.values.firstWhere(
+        return CygnusAndroidLayoutInDisplayCutoutMode.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -236,7 +242,7 @@ class AndroidLayoutInDisplayCutoutMode {
     return null;
   }
 
-  /// Creates a map from the names of [AndroidLayoutInDisplayCutoutMode] values to the values.
+  /// Creates a map from the names of [CygnusAndroidLayoutInDisplayCutoutMode] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -244,9 +250,9 @@ class AndroidLayoutInDisplayCutoutMode {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, AndroidLayoutInDisplayCutoutMode> asNameMap() =>
-      <String, AndroidLayoutInDisplayCutoutMode>{
-        for (final value in AndroidLayoutInDisplayCutoutMode.values)
+  static Map<String, CygnusAndroidLayoutInDisplayCutoutMode> asNameMap() =>
+      <String, CygnusAndroidLayoutInDisplayCutoutMode>{
+        for (final value in CygnusAndroidLayoutInDisplayCutoutMode.values)
           value.name(): value,
       };
 

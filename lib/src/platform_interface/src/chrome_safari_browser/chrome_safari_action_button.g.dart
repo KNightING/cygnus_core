@@ -6,12 +6,12 @@ part of 'chrome_safari_action_button.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents a custom action button for a [PlatformChromeSafariBrowser] instance.
+///Class that represents a custom action button for a [CygnusPlatformChromeSafariBrowser] instance.
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- Android WebView:
 ///    - Not available in an Android Trusted Web Activity.
-class ChromeSafariBrowserActionButton {
+class CygnusChromeSafariBrowserActionButton {
   ///Use onClick instead.
   @Deprecated('Use onClick instead')
   void Function(String, String)? action;
@@ -22,11 +22,11 @@ class ChromeSafariBrowserActionButton {
   ///The icon byte data.
   Uint8List icon;
 
-  ///The action button id. It should be different from the [ChromeSafariBrowserMenuItem.id].
+  ///The action button id. It should be different from the [CygnusChromeSafariBrowserMenuItem.id].
   int id;
 
   ///Callback function to be invoked when the action button is clicked
-  void Function(WebUri?, String)? onClick;
+  void Function(CygnusWebUri?, String)? onClick;
 
   ///Whether the action button should be tinted.
   bool shouldTint;
@@ -35,7 +35,7 @@ class ChromeSafariBrowserActionButton {
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
   ///    - Not available in an Android Trusted Web Activity.
-  ChromeSafariBrowserActionButton({
+  CygnusChromeSafariBrowserActionButton({
     required this.id,
     required this.icon,
     required this.description,
@@ -44,15 +44,15 @@ class ChromeSafariBrowserActionButton {
     this.shouldTint = false,
   });
 
-  ///Gets a possible [ChromeSafariBrowserActionButton] instance from a [Map] value.
-  static ChromeSafariBrowserActionButton? fromMap(
+  ///Gets a possible [CygnusChromeSafariBrowserActionButton] instance from a [Map] value.
+  static CygnusChromeSafariBrowserActionButton? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ChromeSafariBrowserActionButton(
+    final instance = CygnusChromeSafariBrowserActionButton(
       description: map['description'],
       icon: Uint8List.fromList(map['icon'].cast<int>()),
       id: map['id'],
@@ -64,7 +64,7 @@ class ChromeSafariBrowserActionButton {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "description": description,
       "icon": icon,
@@ -80,6 +80,6 @@ class ChromeSafariBrowserActionButton {
 
   @override
   String toString() {
-    return 'ChromeSafariBrowserActionButton{description: $description, icon: $icon, id: $id, shouldTint: $shouldTint}';
+    return 'CygnusChromeSafariBrowserActionButton{description: $description, icon: $icon, id: $id, shouldTint: $shouldTint}';
   }
 }

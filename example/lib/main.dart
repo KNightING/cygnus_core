@@ -32,7 +32,7 @@ import 'package:flutter_inappwebview_example/utils/test_registry.dart';
 // import 'package:path_provider/path_provider.dart';
 // import 'package:permission_handler/permission_handler.dart';
 
-final localhostServer = InAppLocalhostServer(documentRoot: 'assets');
+final localhostServer = CygnusLocalhostServer(documentRoot: 'assets');
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +45,7 @@ Future main() async {
   // await Permission.storage.request();
 
   if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
-    await InAppWebViewController.setWebContentsDebuggingEnabled(kDebugMode);
+    await CygnusWebViewController.setWebContentsDebuggingEnabled(kDebugMode);
   }
 
   final settingsManager = SettingsManager();
@@ -104,7 +104,7 @@ class _MyAppState extends State<MyApp> {
 
   Widget _buildMaterialApp() {
     return MaterialApp(
-      title: '${InAppWebView} Test Suite',
+      title: '${CygnusWebView} Test Suite',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         appBarTheme: AppBarTheme(

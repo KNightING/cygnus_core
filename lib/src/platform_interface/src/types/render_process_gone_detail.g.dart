@@ -7,8 +7,8 @@ part of 'render_process_gone_detail.dart';
 // **************************************************************************
 
 ///Class that provides more specific information about why the render process exited.
-///It is used by the [PlatformWebViewCreationParams.onRenderProcessGone] event.
-class RenderProcessGoneDetail {
+///It is used by the [CygnusPlatformWebViewCreationParams.onRenderProcessGone] event.
+class CygnusRenderProcessGoneDetail {
   ///Indicates whether the render process was observed to crash, or whether it was killed by the system.
   ///
   ///If the render process was killed, this is most likely caused by the system being low on memory.
@@ -16,30 +16,31 @@ class RenderProcessGoneDetail {
 
   /// Returns the renderer priority that was set at the time that the renderer exited. This may be greater than the priority that
   /// any individual `WebView` requested using [].
-  RendererPriority? rendererPriorityAtExit;
-  RenderProcessGoneDetail({
+  CygnusRendererPriority? rendererPriorityAtExit;
+  CygnusRenderProcessGoneDetail({
     required this.didCrash,
     this.rendererPriorityAtExit,
   });
 
-  ///Gets a possible [RenderProcessGoneDetail] instance from a [Map] value.
-  static RenderProcessGoneDetail? fromMap(
+  ///Gets a possible [CygnusRenderProcessGoneDetail] instance from a [Map] value.
+  static CygnusRenderProcessGoneDetail? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = RenderProcessGoneDetail(
+    final instance = CygnusRenderProcessGoneDetail(
       didCrash: map['didCrash'],
-      rendererPriorityAtExit: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => RendererPriority.fromNativeValue(
+      rendererPriorityAtExit: switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusRendererPriority.fromNativeValue(
           map['rendererPriorityAtExit'],
         ),
-        EnumMethod.value => RendererPriority.fromValue(
+        CygnusEnumMethod.value => CygnusRendererPriority.fromValue(
           map['rendererPriorityAtExit'],
         ),
-        EnumMethod.name => RendererPriority.byName(
+        CygnusEnumMethod.name => CygnusRendererPriority.byName(
           map['rendererPriorityAtExit'],
         ),
       },
@@ -48,13 +49,14 @@ class RenderProcessGoneDetail {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "didCrash": didCrash,
-      "rendererPriorityAtExit": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => rendererPriorityAtExit?.toNativeValue(),
-        EnumMethod.value => rendererPriorityAtExit?.toValue(),
-        EnumMethod.name => rendererPriorityAtExit?.name(),
+      "rendererPriorityAtExit": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => rendererPriorityAtExit?.toNativeValue(),
+        CygnusEnumMethod.value => rendererPriorityAtExit?.toValue(),
+        CygnusEnumMethod.name => rendererPriorityAtExit?.name(),
       },
     };
   }
@@ -66,6 +68,6 @@ class RenderProcessGoneDetail {
 
   @override
   String toString() {
-    return 'RenderProcessGoneDetail{didCrash: $didCrash, rendererPriorityAtExit: $rendererPriorityAtExit}';
+    return 'CygnusRenderProcessGoneDetail{didCrash: $didCrash, rendererPriorityAtExit: $rendererPriorityAtExit}';
   }
 }

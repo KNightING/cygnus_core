@@ -7,9 +7,9 @@ part 'url_response.g.dart';
 
 ///The metadata associated with the response to a URL load request, independent of protocol and URL scheme.
 @ExchangeableObject()
-class URLResponse_ {
+class CygnusURLResponse_ {
   ///The URL for the response.
-  WebUri? url;
+  CygnusWebUri? url;
 
   ///The expected length of the response’s content.
   int expectedContentLength;
@@ -29,7 +29,7 @@ class URLResponse_ {
   ///The response’s HTTP status code.
   int? statusCode;
 
-  URLResponse_({
+  CygnusURLResponse_({
     this.url,
     required this.expectedContentLength,
     this.mimeType,
@@ -40,10 +40,10 @@ class URLResponse_ {
   });
 }
 
-///Use [URLResponse] instead.
-@Deprecated("Use URLResponse instead")
+///Use [CygnusURLResponse] instead.
+@Deprecated("Use CygnusURLResponse instead")
 @ExchangeableObject()
-class IOSURLResponse_ {
+class CygnusIOSURLResponse_ {
   ///The URL for the response.
   Uri? url;
 
@@ -65,7 +65,7 @@ class IOSURLResponse_ {
   ///The response’s HTTP status code.
   int? statusCode;
 
-  IOSURLResponse_({
+  CygnusIOSURLResponse_({
     this.url,
     required this.expectedContentLength,
     this.mimeType,

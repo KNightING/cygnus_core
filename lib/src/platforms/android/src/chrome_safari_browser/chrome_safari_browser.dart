@@ -4,37 +4,37 @@ import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [AndroidChromeSafariBrowser].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformChromeSafariBrowserCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformChromeSafariBrowserCreationParams] for
 /// more information.
 @immutable
 class AndroidChromeSafariBrowserCreationParams
-    extends PlatformChromeSafariBrowserCreationParams {
+    extends CygnusPlatformChromeSafariBrowserCreationParams {
   /// Creates a new [AndroidChromeSafariBrowserCreationParams] instance.
   const AndroidChromeSafariBrowserCreationParams();
 
-  /// Creates a [AndroidChromeSafariBrowserCreationParams] instance based on [PlatformChromeSafariBrowserCreationParams].
+  /// Creates a [AndroidChromeSafariBrowserCreationParams] instance based on [CygnusPlatformChromeSafariBrowserCreationParams].
   factory AndroidChromeSafariBrowserCreationParams.fromPlatformChromeSafariBrowserCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformChromeSafariBrowserCreationParams params,
+    CygnusPlatformChromeSafariBrowserCreationParams params,
   ) {
     return AndroidChromeSafariBrowserCreationParams();
   }
 }
 
-///{@macro cygnus_core.PlatformChromeSafariBrowser}
-class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
+///{@macro cygnus_core.CygnusPlatformChromeSafariBrowser}
+class AndroidChromeSafariBrowser extends CygnusPlatformChromeSafariBrowser
     with ChannelController {
   @override
   final String id = IdGenerator.generate();
 
   /// Constructs a [AndroidChromeSafariBrowser].
-  AndroidChromeSafariBrowser(PlatformChromeSafariBrowserCreationParams params)
+  AndroidChromeSafariBrowser(CygnusPlatformChromeSafariBrowserCreationParams params)
     : super.implementation(
         params is AndroidChromeSafariBrowserCreationParams
             ? params
@@ -51,9 +51,9 @@ class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
     return _staticValue;
   }
 
-  ChromeSafariBrowserActionButton? _actionButton;
-  Map<int, ChromeSafariBrowserMenuItem> _menuItems = new HashMap();
-  ChromeSafariBrowserSecondaryToolbar? _secondaryToolbar;
+  CygnusChromeSafariBrowserActionButton? _actionButton;
+  Map<int, CygnusChromeSafariBrowserMenuItem> _menuItems = new HashMap();
+  CygnusChromeSafariBrowserSecondaryToolbar? _secondaryToolbar;
   bool _isOpened = false;
   static const MethodChannel _staticChannel = const MethodChannel(
     'com.pichillilorenzo/flutter_chromesafaribrowser',
@@ -71,7 +71,7 @@ class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
     debugLog(
       className: this.runtimeType.toString(),
       id: id,
-      debugLoggingSettings: PlatformChromeSafariBrowser.debugLoggingSettings,
+      debugLoggingSettings: CygnusPlatformChromeSafariBrowser.debugLoggingSettings,
       method: method,
       args: args,
     );
@@ -92,17 +92,17 @@ class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
         eventHandler?.onCompletedInitialLoad(didLoadSuccessfully);
         break;
       case "onNavigationEvent":
-        final navigationEvent = CustomTabsNavigationEventType.fromNativeValue(
+        final navigationEvent = CygnusCustomTabsNavigationEventType.fromNativeValue(
           call.arguments["navigationEvent"],
         );
         eventHandler?.onNavigationEvent(navigationEvent);
         break;
       case "onRelationshipValidationResult":
-        final relation = CustomTabsRelationType.fromNativeValue(
+        final relation = CygnusCustomTabsRelationType.fromNativeValue(
           call.arguments["relation"],
         );
         final requestedOrigin = call.arguments["requestedOrigin"] != null
-            ? WebUri(call.arguments["requestedOrigin"])
+            ? CygnusWebUri(call.arguments["requestedOrigin"])
             : null;
         final bool result = call.arguments["result"];
         eventHandler?.onRelationshipValidationResult(
@@ -126,22 +126,22 @@ class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
             this._actionButton?.action!(url, title);
           }
           if (this._actionButton?.onClick != null) {
-            this._actionButton?.onClick!(WebUri(url), title);
+            this._actionButton?.onClick!(CygnusWebUri(url), title);
           }
         } else if (this._menuItems[id] != null) {
           if (this._menuItems[id]?.action != null) {
             this._menuItems[id]?.action!(url, title);
           }
           if (this._menuItems[id]?.onClick != null) {
-            this._menuItems[id]?.onClick!(WebUri(url), title);
+            this._menuItems[id]?.onClick!(CygnusWebUri(url), title);
           }
         }
         break;
       case "onSecondaryItemActionPerform":
         final clickableIDs = this._secondaryToolbar?.clickableIDs;
         if (clickableIDs != null) {
-          WebUri? url = call.arguments["url"] != null
-              ? WebUri(call.arguments["url"])
+          CygnusWebUri? url = call.arguments["url"] != null
+              ? CygnusWebUri(call.arguments["url"])
               : null;
           String name = call.arguments["name"];
           for (final clickable in clickableIDs) {
@@ -190,14 +190,14 @@ class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
 
   @override
   Future<void> open({
-    WebUri? url,
+    CygnusWebUri? url,
     Map<String, String>? headers,
-    List<WebUri>? otherLikelyURLs,
-    WebUri? referrer,
+    List<CygnusWebUri>? otherLikelyURLs,
+    CygnusWebUri? referrer,
     @Deprecated('Use settings instead')
     // ignore: deprecated_member_use_from_same_package
-    ChromeSafariBrowserClassOptions? options,
-    ChromeSafariBrowserSettings? settings,
+    CygnusChromeSafariBrowserClassOptions? options,
+    CygnusChromeSafariBrowserSettings? settings,
   }) async {
     assert(!_isOpened, 'The browser is already opened.');
     _isOpened = true;
@@ -223,7 +223,7 @@ class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
     var initialSettings =
         settings?.toMap() ??
         options?.toMap() ??
-        ChromeSafariBrowserSettings().toMap();
+        CygnusChromeSafariBrowserSettings().toMap();
 
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('id', () => id);
@@ -243,10 +243,10 @@ class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
 
   @override
   Future<void> launchUrl({
-    required WebUri url,
+    required CygnusWebUri url,
     Map<String, String>? headers,
-    List<WebUri>? otherLikelyURLs,
-    WebUri? referrer,
+    List<CygnusWebUri>? otherLikelyURLs,
+    CygnusWebUri? referrer,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('url', () => url.toString());
@@ -261,8 +261,8 @@ class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
 
   @override
   Future<bool> mayLaunchUrl({
-    WebUri? url,
-    List<WebUri>? otherLikelyURLs,
+    CygnusWebUri? url,
+    List<CygnusWebUri>? otherLikelyURLs,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('url', () => url?.toString());
@@ -275,8 +275,8 @@ class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
 
   @override
   Future<bool> validateRelationship({
-    required CustomTabsRelationType relation,
-    required WebUri origin,
+    required CygnusCustomTabsRelationType relation,
+    required CygnusWebUri origin,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('relation', () => relation.toNativeValue());
@@ -292,7 +292,7 @@ class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
   }
 
   @override
-  void setActionButton(ChromeSafariBrowserActionButton actionButton) {
+  void setActionButton(CygnusChromeSafariBrowserActionButton actionButton) {
     this._actionButton = actionButton;
   }
 
@@ -311,14 +311,14 @@ class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
 
   @override
   void setSecondaryToolbar(
-    ChromeSafariBrowserSecondaryToolbar secondaryToolbar,
+    CygnusChromeSafariBrowserSecondaryToolbar secondaryToolbar,
   ) {
     this._secondaryToolbar = secondaryToolbar;
   }
 
   @override
   Future<void> updateSecondaryToolbar(
-    ChromeSafariBrowserSecondaryToolbar secondaryToolbar,
+    CygnusChromeSafariBrowserSecondaryToolbar secondaryToolbar,
   ) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('secondaryToolbar', () => secondaryToolbar.toMap());
@@ -327,12 +327,12 @@ class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
   }
 
   @override
-  void addMenuItem(ChromeSafariBrowserMenuItem menuItem) {
+  void addMenuItem(CygnusChromeSafariBrowserMenuItem menuItem) {
     this._menuItems[menuItem.id] = menuItem;
   }
 
   @override
-  void addMenuItems(List<ChromeSafariBrowserMenuItem> menuItems) {
+  void addMenuItems(List<CygnusChromeSafariBrowserMenuItem> menuItems) {
     menuItems.forEach((menuItem) {
       this._menuItems[menuItem.id] = menuItem;
     });
@@ -340,8 +340,8 @@ class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
 
   @override
   Future<bool> requestPostMessageChannel({
-    required WebUri sourceOrigin,
-    WebUri? targetOrigin,
+    required CygnusWebUri sourceOrigin,
+    CygnusWebUri? targetOrigin,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("sourceOrigin", () => sourceOrigin.toString());
@@ -354,13 +354,13 @@ class AndroidChromeSafariBrowser extends PlatformChromeSafariBrowser
   }
 
   @override
-  Future<CustomTabsPostMessageResultType> postMessage(String message) async {
+  Future<CygnusCustomTabsPostMessageResultType> postMessage(String message) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("message", () => message);
-    return CustomTabsPostMessageResultType.fromNativeValue(
+    return CygnusCustomTabsPostMessageResultType.fromNativeValue(
           await channel?.invokeMethod<int>("postMessage", args),
         ) ??
-        CustomTabsPostMessageResultType.FAILURE_MESSAGING_ERROR;
+        CygnusCustomTabsPostMessageResultType.FAILURE_MESSAGING_ERROR;
   }
 
   @override

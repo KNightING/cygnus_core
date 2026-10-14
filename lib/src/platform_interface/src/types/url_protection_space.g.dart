@@ -7,37 +7,37 @@ part of 'url_protection_space.dart';
 // **************************************************************************
 
 ///Class that represents a protection space requiring authentication.
-class URLProtectionSpace {
+class CygnusURLProtectionSpace {
   ///The authentication method used by the receiver.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView ([Official API - URLProtectionSpace.authenticationMethod](https://developer.apple.com/documentation/foundation/urlprotectionspace/1415028-authenticationmethod))
-  ///- macOS WKWebView ([Official API - URLProtectionSpace.authenticationMethod](https://developer.apple.com/documentation/foundation/urlprotectionspace/1415028-authenticationmethod))
-  URLProtectionSpaceAuthenticationMethod? authenticationMethod;
+  ///- iOS WKWebView ([Official API - CygnusURLProtectionSpace.authenticationMethod](https://developer.apple.com/documentation/foundation/urlprotectionspace/1415028-authenticationmethod))
+  ///- macOS WKWebView ([Official API - CygnusURLProtectionSpace.authenticationMethod](https://developer.apple.com/documentation/foundation/urlprotectionspace/1415028-authenticationmethod))
+  CygnusURLProtectionSpaceAuthenticationMethod? authenticationMethod;
 
   ///The acceptable certificate-issuing authorities for client certificate authentication.
   ///This value is `null` if the authentication method of the protection space is not client certificate.
   ///The returned issuing authorities are encoded with Distinguished Encoding Rules (DER).
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView ([Official API - URLProtectionSpace.distinguishedNames](https://developer.apple.com/documentation/foundation/urlprotectionspace/1417061-distinguishednames))
-  ///- macOS WKWebView ([Official API - URLProtectionSpace.distinguishedNames](https://developer.apple.com/documentation/foundation/urlprotectionspace/1417061-distinguishednames))
-  List<X509Certificate>? distinguishedNames;
+  ///- iOS WKWebView ([Official API - CygnusURLProtectionSpace.distinguishedNames](https://developer.apple.com/documentation/foundation/urlprotectionspace/1417061-distinguishednames))
+  ///- macOS WKWebView ([Official API - CygnusURLProtectionSpace.distinguishedNames](https://developer.apple.com/documentation/foundation/urlprotectionspace/1417061-distinguishednames))
+  List<CygnusX509Certificate>? distinguishedNames;
 
   ///The hostname of the server.
   String host;
 
   ///Use [authenticationMethod] instead.
   @Deprecated('Use authenticationMethod instead')
-  IOSNSURLProtectionSpaceAuthenticationMethod? iosAuthenticationMethod;
+  CygnusIOSNSURLProtectionSpaceAuthenticationMethod? iosAuthenticationMethod;
 
   ///Use [distinguishedNames] instead.
   @Deprecated('Use distinguishedNames instead')
-  List<X509Certificate>? iosDistinguishedNames;
+  List<CygnusX509Certificate>? iosDistinguishedNames;
 
   ///Use [proxyType] instead.
   @Deprecated('Use proxyType instead')
-  IOSNSURLProtectionSpaceProxyType? iosProxyType;
+  CygnusIOSNSURLProtectionSpaceProxyType? iosProxyType;
 
   ///Use [receivesCredentialSecurely] instead.
   @Deprecated('Use receivesCredentialSecurely instead')
@@ -51,12 +51,12 @@ class URLProtectionSpace {
 
   ///The receiver's proxy type.
   ///This value is `null` if the receiver does not represent a proxy protection space.
-  ///The supported proxy types are listed in [URLProtectionSpaceProxyType.values].
+  ///The supported proxy types are listed in [CygnusURLProtectionSpaceProxyType.values].
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView ([Official API - URLProtectionSpace.proxyType](https://developer.apple.com/documentation/foundation/urlprotectionspace/1411924-proxytype))
-  ///- macOS WKWebView ([Official API - URLProtectionSpace.proxyType](https://developer.apple.com/documentation/foundation/urlprotectionspace/1411924-proxytype))
-  URLProtectionSpaceProxyType? proxyType;
+  ///- iOS WKWebView ([Official API - CygnusURLProtectionSpace.proxyType](https://developer.apple.com/documentation/foundation/urlprotectionspace/1411924-proxytype))
+  ///- macOS WKWebView ([Official API - CygnusURLProtectionSpace.proxyType](https://developer.apple.com/documentation/foundation/urlprotectionspace/1411924-proxytype))
+  CygnusURLProtectionSpaceProxyType? proxyType;
 
   ///A string indicating a protocol-specific subdivision of a single host.
   ///For http and https, this maps to the realm string in http authentication challenges.
@@ -67,16 +67,16 @@ class URLProtectionSpace {
   ///This value is `true` if the credentials for the protection space represented by the receiver can be sent securely, `false` otherwise.
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS WKWebView ([Official API - URLProtectionSpace.receivesCredentialSecurely](https://developer.apple.com/documentation/foundation/urlprotectionspace/1415176-receivescredentialsecurely))
-  ///- macOS WKWebView ([Official API - URLProtectionSpace.receivesCredentialSecurely](https://developer.apple.com/documentation/foundation/urlprotectionspace/1415176-receivescredentialsecurely))
+  ///- iOS WKWebView ([Official API - CygnusURLProtectionSpace.receivesCredentialSecurely](https://developer.apple.com/documentation/foundation/urlprotectionspace/1415176-receivescredentialsecurely))
+  ///- macOS WKWebView ([Official API - CygnusURLProtectionSpace.receivesCredentialSecurely](https://developer.apple.com/documentation/foundation/urlprotectionspace/1415176-receivescredentialsecurely))
   bool? receivesCredentialSecurely;
 
   ///The SSL certificate used.
-  SslCertificate? sslCertificate;
+  CygnusSslCertificate? sslCertificate;
 
   ///The SSL Error associated.
-  SslError? sslError;
-  URLProtectionSpace({
+  CygnusSslError? sslError;
+  CygnusURLProtectionSpace({
     this.authenticationMethod,
     this.distinguishedNames,
     required this.host,
@@ -96,91 +96,98 @@ class URLProtectionSpace {
   }) {
     authenticationMethod =
         authenticationMethod ??
-        URLProtectionSpaceAuthenticationMethod.fromNativeValue(
+        CygnusURLProtectionSpaceAuthenticationMethod.fromNativeValue(
           iosAuthenticationMethod?.toNativeValue(),
         );
     distinguishedNames = distinguishedNames ?? iosDistinguishedNames;
     proxyType =
         proxyType ??
-        URLProtectionSpaceProxyType.fromNativeValue(
+        CygnusURLProtectionSpaceProxyType.fromNativeValue(
           iosProxyType?.toNativeValue(),
         );
     receivesCredentialSecurely =
         receivesCredentialSecurely ?? iosReceivesCredentialSecurely;
   }
 
-  ///Gets a possible [URLProtectionSpace] instance from a [Map] value.
-  static URLProtectionSpace? fromMap(
+  ///Gets a possible [CygnusURLProtectionSpace] instance from a [Map] value.
+  static CygnusURLProtectionSpace? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = URLProtectionSpace(
-      authenticationMethod: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue =>
-          URLProtectionSpaceAuthenticationMethod.fromNativeValue(
+    final instance = CygnusURLProtectionSpace(
+      authenticationMethod: switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusURLProtectionSpaceAuthenticationMethod.fromNativeValue(
             map['authenticationMethod'],
           ),
-        EnumMethod.value => URLProtectionSpaceAuthenticationMethod.fromValue(
-          map['authenticationMethod'],
-        ),
-        EnumMethod.name => URLProtectionSpaceAuthenticationMethod.byName(
-          map['authenticationMethod'],
-        ),
+        CygnusEnumMethod.value =>
+          CygnusURLProtectionSpaceAuthenticationMethod.fromValue(
+            map['authenticationMethod'],
+          ),
+        CygnusEnumMethod.name =>
+          CygnusURLProtectionSpaceAuthenticationMethod.byName(
+            map['authenticationMethod'],
+          ),
       },
       distinguishedNames: _distinguishedNamesDeserializer(
         map['distinguishedNames'],
         enumMethod: enumMethod,
       ),
       host: map['host'],
-      iosAuthenticationMethod: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue =>
-          IOSNSURLProtectionSpaceAuthenticationMethod.fromNativeValue(
+      iosAuthenticationMethod: switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusIOSNSURLProtectionSpaceAuthenticationMethod.fromNativeValue(
             map['authenticationMethod'],
           ),
-        EnumMethod.value =>
-          IOSNSURLProtectionSpaceAuthenticationMethod.fromValue(
+        CygnusEnumMethod.value =>
+          CygnusIOSNSURLProtectionSpaceAuthenticationMethod.fromValue(
             map['authenticationMethod'],
           ),
-        EnumMethod.name => IOSNSURLProtectionSpaceAuthenticationMethod.byName(
-          map['authenticationMethod'],
-        ),
+        CygnusEnumMethod.name =>
+          CygnusIOSNSURLProtectionSpaceAuthenticationMethod.byName(
+            map['authenticationMethod'],
+          ),
       },
       iosDistinguishedNames: _distinguishedNamesDeserializer(
         map['distinguishedNames'],
         enumMethod: enumMethod,
       ),
-      iosProxyType: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue =>
-          IOSNSURLProtectionSpaceProxyType.fromNativeValue(map['proxyType']),
-        EnumMethod.value => IOSNSURLProtectionSpaceProxyType.fromValue(
-          map['proxyType'],
-        ),
-        EnumMethod.name => IOSNSURLProtectionSpaceProxyType.byName(
+      iosProxyType: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusIOSNSURLProtectionSpaceProxyType.fromNativeValue(
+            map['proxyType'],
+          ),
+        CygnusEnumMethod.value =>
+          CygnusIOSNSURLProtectionSpaceProxyType.fromValue(map['proxyType']),
+        CygnusEnumMethod.name => CygnusIOSNSURLProtectionSpaceProxyType.byName(
           map['proxyType'],
         ),
       },
       iosReceivesCredentialSecurely: map['receivesCredentialSecurely'],
       port: map['port'],
       protocol: map['protocol'],
-      proxyType: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => URLProtectionSpaceProxyType.fromNativeValue(
+      proxyType: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusURLProtectionSpaceProxyType.fromNativeValue(map['proxyType']),
+        CygnusEnumMethod.value => CygnusURLProtectionSpaceProxyType.fromValue(
           map['proxyType'],
         ),
-        EnumMethod.value => URLProtectionSpaceProxyType.fromValue(
+        CygnusEnumMethod.name => CygnusURLProtectionSpaceProxyType.byName(
           map['proxyType'],
         ),
-        EnumMethod.name => URLProtectionSpaceProxyType.byName(map['proxyType']),
       },
       realm: map['realm'],
       receivesCredentialSecurely: map['receivesCredentialSecurely'],
-      sslCertificate: SslCertificate.fromMap(
+      sslCertificate: CygnusSslCertificate.fromMap(
         map['sslCertificate']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
-      sslError: SslError.fromMap(
+      sslError: CygnusSslError.fromMap(
         map['sslError']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -189,12 +196,13 @@ class URLProtectionSpace {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "authenticationMethod": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => authenticationMethod?.toNativeValue(),
-        EnumMethod.value => authenticationMethod?.toValue(),
-        EnumMethod.name => authenticationMethod?.name(),
+      "authenticationMethod": switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => authenticationMethod?.toNativeValue(),
+        CygnusEnumMethod.value => authenticationMethod?.toValue(),
+        CygnusEnumMethod.name => authenticationMethod?.name(),
       },
       "distinguishedNames": distinguishedNames
           ?.map((e) => e.toMap(enumMethod: enumMethod))
@@ -202,10 +210,10 @@ class URLProtectionSpace {
       "host": host,
       "port": port,
       "protocol": protocol,
-      "proxyType": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => proxyType?.toNativeValue(),
-        EnumMethod.value => proxyType?.toValue(),
-        EnumMethod.name => proxyType?.name(),
+      "proxyType": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => proxyType?.toNativeValue(),
+        CygnusEnumMethod.value => proxyType?.toValue(),
+        CygnusEnumMethod.name => proxyType?.name(),
       },
       "realm": realm,
       "receivesCredentialSecurely": receivesCredentialSecurely,
@@ -221,6 +229,6 @@ class URLProtectionSpace {
 
   @override
   String toString() {
-    return 'URLProtectionSpace{authenticationMethod: $authenticationMethod, distinguishedNames: $distinguishedNames, host: $host, port: $port, protocol: $protocol, proxyType: $proxyType, realm: $realm, receivesCredentialSecurely: $receivesCredentialSecurely, sslCertificate: $sslCertificate, sslError: $sslError}';
+    return 'CygnusURLProtectionSpace{authenticationMethod: $authenticationMethod, distinguishedNames: $distinguishedNames, host: $host, port: $port, protocol: $protocol, proxyType: $proxyType, realm: $realm, receivesCredentialSecurely: $receivesCredentialSecurely, sslCertificate: $sslCertificate, sslError: $sslError}';
   }
 }

@@ -147,9 +147,9 @@ void main() {
       ),
     );
     await tester.ensureVisible(
-      find.widgetWithText(ExpansionTile, 'ProxyController'),
+      find.widgetWithText(ExpansionTile, 'CygnusProxyController'),
     );
-    await tester.tap(find.widgetWithText(ExpansionTile, 'ProxyController'));
+    await tester.tap(find.widgetWithText(ExpansionTile, 'CygnusProxyController'));
     await tester.pump(const Duration(milliseconds: 100));
     expect(
       find.byKey(const Key('service_controllers_proxy_row')),

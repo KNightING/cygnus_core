@@ -7,18 +7,18 @@ part of 'ajax_request.dart';
 // **************************************************************************
 
 ///Class that represents a JavaScript [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) object.
-class AjaxRequest {
-  ///Indicates the [AjaxRequestAction] that can be used to control the `XMLHttpRequest` request.
-  AjaxRequestAction? action;
+class CygnusAjaxRequest {
+  ///Indicates the [CygnusAjaxRequestAction] that can be used to control the `XMLHttpRequest` request.
+  CygnusAjaxRequestAction? action;
 
   ///Data passed as a parameter to the `XMLHttpRequest.send()` method.
   dynamic data;
 
   ///Event type of the `XMLHttpRequest` request.
-  AjaxRequestEvent? event;
+  CygnusAjaxRequestEvent? event;
 
   ///The HTTP request headers.
-  AjaxRequestHeaders? headers;
+  CygnusAjaxRequestHeaders? headers;
 
   ///An optional Boolean parameter, defaulting to true, indicating whether or not the request is performed asynchronously.
   bool? isAsync;
@@ -30,9 +30,9 @@ class AjaxRequest {
   String? password;
 
   ///The state of the `XMLHttpRequest` request.
-  AjaxRequestReadyState? readyState;
+  CygnusAjaxRequestReadyState? readyState;
 
-  ///The response's body content. The content-type depends on the [AjaxRequest.responseType].
+  ///The response's body content. The content-type depends on the [CygnusAjaxRequest.responseType].
   dynamic response;
 
   ///All the response headers or returns null if no response has been received. If a network error happened, an empty string is returned.
@@ -49,7 +49,7 @@ class AjaxRequest {
   ///The serialized URL of the response or the empty string if the URL is null.
   ///If the URL is returned, any URL fragment present in the URL will be stripped away.
   ///The value of responseURL will be the final URL obtained after any redirects.
-  WebUri? responseURL;
+  CygnusWebUri? responseURL;
 
   ///The HTML or XML string retrieved by the request or null if the request was unsuccessful, has not yet been sent, or if the data can't be parsed as XML or HTML.
   String? responseXML;
@@ -58,13 +58,13 @@ class AjaxRequest {
   int? status;
 
   ///A String containing the response's status message as returned by the HTTP server.
-  ///Unlike [AjaxRequest.status] which indicates a numerical status code, this property contains the text of the response status, such as "OK" or "Not Found".
-  ///If the request's readyState is in [AjaxRequestReadyState.UNSENT] or [AjaxRequestReadyState.OPENED] state, the value of statusText will be an empty string.
+  ///Unlike [CygnusAjaxRequest.status] which indicates a numerical status code, this property contains the text of the response status, such as "OK" or "Not Found".
+  ///If the request's readyState is in [CygnusAjaxRequestReadyState.UNSENT] or [CygnusAjaxRequestReadyState.OPENED] state, the value of statusText will be an empty string.
   ///If the server response doesn't explicitly specify a status text, statusText will assume the default value "OK".
   String? statusText;
 
   ///The URL of the `XMLHttpRequest` request.
-  WebUri? url;
+  CygnusWebUri? url;
 
   ///The optional user name to use for authentication purposes; by default, this is the null value.
   String? user;
@@ -74,8 +74,8 @@ class AjaxRequest {
   ///Setting withCredentials has no effect on same-site requests.
   ///In addition, this flag is also used to indicate when cookies are to be ignored in the response. The default is false.
   bool? withCredentials;
-  AjaxRequest({
-    AjaxRequestAction? action,
+  CygnusAjaxRequest({
+    CygnusAjaxRequestAction? action,
     this.data,
     this.event,
     this.headers,
@@ -94,67 +94,72 @@ class AjaxRequest {
     this.url,
     this.user,
     this.withCredentials,
-  }) : action = action ?? AjaxRequestAction.PROCEED;
+  }) : action = action ?? CygnusAjaxRequestAction.PROCEED;
 
-  ///Gets a possible [AjaxRequest] instance from a [Map] value.
-  static AjaxRequest? fromMap(
+  ///Gets a possible [CygnusAjaxRequest] instance from a [Map] value.
+  static CygnusAjaxRequest? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = AjaxRequest(
+    final instance = CygnusAjaxRequest(
       data: map['data'],
-      event: AjaxRequestEvent.fromMap(
+      event: CygnusAjaxRequestEvent.fromMap(
         map['event']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
-      headers: AjaxRequestHeaders.fromMap(
+      headers: CygnusAjaxRequestHeaders.fromMap(
         map['headers']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
       isAsync: map['isAsync'],
       method: map['method'],
       password: map['password'],
-      readyState: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => AjaxRequestReadyState.fromNativeValue(
+      readyState: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusAjaxRequestReadyState.fromNativeValue(map['readyState']),
+        CygnusEnumMethod.value => CygnusAjaxRequestReadyState.fromValue(
           map['readyState'],
         ),
-        EnumMethod.value => AjaxRequestReadyState.fromValue(map['readyState']),
-        EnumMethod.name => AjaxRequestReadyState.byName(map['readyState']),
+        CygnusEnumMethod.name => CygnusAjaxRequestReadyState.byName(
+          map['readyState'],
+        ),
       },
       response: map['response'],
       responseHeaders: map['responseHeaders']?.cast<String, dynamic>(),
       responseText: map['responseText'],
       responseType: map['responseType'],
       responseURL: map['responseURL'] != null
-          ? WebUri(map['responseURL'])
+          ? CygnusWebUri(map['responseURL'])
           : null,
       responseXML: map['responseXML'],
       status: map['status'],
       statusText: map['statusText'],
-      url: map['url'] != null ? WebUri(map['url']) : null,
+      url: map['url'] != null ? CygnusWebUri(map['url']) : null,
       user: map['user'],
       withCredentials: map['withCredentials'],
     );
-    instance.action = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => AjaxRequestAction.fromNativeValue(
+    instance.action = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue => CygnusAjaxRequestAction.fromNativeValue(
         map['action'],
       ),
-      EnumMethod.value => AjaxRequestAction.fromValue(map['action']),
-      EnumMethod.name => AjaxRequestAction.byName(map['action']),
+      CygnusEnumMethod.value => CygnusAjaxRequestAction.fromValue(
+        map['action'],
+      ),
+      CygnusEnumMethod.name => CygnusAjaxRequestAction.byName(map['action']),
     };
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "action": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => action?.toNativeValue(),
-        EnumMethod.value => action?.toValue(),
-        EnumMethod.name => action?.name(),
+      "action": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => action?.toNativeValue(),
+        CygnusEnumMethod.value => action?.toValue(),
+        CygnusEnumMethod.name => action?.name(),
       },
       "data": data,
       "event": event?.toMap(enumMethod: enumMethod),
@@ -162,10 +167,10 @@ class AjaxRequest {
       "isAsync": isAsync,
       "method": method,
       "password": password,
-      "readyState": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => readyState?.toNativeValue(),
-        EnumMethod.value => readyState?.toValue(),
-        EnumMethod.name => readyState?.name(),
+      "readyState": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => readyState?.toNativeValue(),
+        CygnusEnumMethod.value => readyState?.toValue(),
+        CygnusEnumMethod.name => readyState?.name(),
       },
       "response": response,
       "responseHeaders": responseHeaders,
@@ -188,6 +193,6 @@ class AjaxRequest {
 
   @override
   String toString() {
-    return 'AjaxRequest{action: $action, data: $data, event: $event, headers: $headers, isAsync: $isAsync, method: $method, password: $password, readyState: $readyState, response: $response, responseHeaders: $responseHeaders, responseText: $responseText, responseType: $responseType, responseURL: $responseURL, responseXML: $responseXML, status: $status, statusText: $statusText, url: $url, user: $user, withCredentials: $withCredentials}';
+    return 'CygnusAjaxRequest{action: $action, data: $data, event: $event, headers: $headers, isAsync: $isAsync, method: $method, password: $password, readyState: $readyState, response: $response, responseHeaders: $responseHeaders, responseText: $responseText, responseType: $responseType, responseURL: $responseURL, responseXML: $responseXML, status: $status, statusText: $statusText, url: $url, user: $user, withCredentials: $withCredentials}';
   }
 }

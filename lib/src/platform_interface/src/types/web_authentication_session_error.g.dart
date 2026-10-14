@@ -7,39 +7,45 @@ part of 'web_authentication_session_error.dart';
 // **************************************************************************
 
 ///Class that represents the error code for a web authentication session error.
-class WebAuthenticationSessionError {
+class CygnusWebAuthenticationSessionError {
   final int _value;
   final int? _nativeValue;
-  const WebAuthenticationSessionError._internal(this._value, this._nativeValue);
+  const CygnusWebAuthenticationSessionError._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory WebAuthenticationSessionError._internalMultiPlatform(
+  factory CygnusWebAuthenticationSessionError._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => WebAuthenticationSessionError._internal(value, nativeValue());
+  ) => CygnusWebAuthenticationSessionError._internal(value, nativeValue());
 
   ///The login has been canceled.
-  static const CANCELED_LOGIN = WebAuthenticationSessionError._internal(1, 1);
+  static const CANCELED_LOGIN = CygnusWebAuthenticationSessionError._internal(
+    1,
+    1,
+  );
 
   ///The context was invalid.
   static const PRESENTATION_CONTEXT_INVALID =
-      WebAuthenticationSessionError._internal(3, 3);
+      CygnusWebAuthenticationSessionError._internal(3, 3);
 
   ///A context wasn’t provided.
   static const PRESENTATION_CONTEXT_NOT_PROVIDED =
-      WebAuthenticationSessionError._internal(2, 2);
+      CygnusWebAuthenticationSessionError._internal(2, 2);
 
-  ///Set of all values of [WebAuthenticationSessionError].
-  static final Set<WebAuthenticationSessionError> values = [
-    WebAuthenticationSessionError.CANCELED_LOGIN,
-    WebAuthenticationSessionError.PRESENTATION_CONTEXT_INVALID,
-    WebAuthenticationSessionError.PRESENTATION_CONTEXT_NOT_PROVIDED,
+  ///Set of all values of [CygnusWebAuthenticationSessionError].
+  static final Set<CygnusWebAuthenticationSessionError> values = [
+    CygnusWebAuthenticationSessionError.CANCELED_LOGIN,
+    CygnusWebAuthenticationSessionError.PRESENTATION_CONTEXT_INVALID,
+    CygnusWebAuthenticationSessionError.PRESENTATION_CONTEXT_NOT_PROVIDED,
   ].toSet();
 
-  ///Gets a possible [WebAuthenticationSessionError] instance from [int] value.
-  static WebAuthenticationSessionError? fromValue(int? value) {
+  ///Gets a possible [CygnusWebAuthenticationSessionError] instance from [int] value.
+  static CygnusWebAuthenticationSessionError? fromValue(int? value) {
     if (value != null) {
       try {
-        return WebAuthenticationSessionError.values.firstWhere(
+        return CygnusWebAuthenticationSessionError.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -49,11 +55,11 @@ class WebAuthenticationSessionError {
     return null;
   }
 
-  ///Gets a possible [WebAuthenticationSessionError] instance from a native value.
-  static WebAuthenticationSessionError? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusWebAuthenticationSessionError] instance from a native value.
+  static CygnusWebAuthenticationSessionError? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return WebAuthenticationSessionError.values.firstWhere(
+        return CygnusWebAuthenticationSessionError.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -63,15 +69,15 @@ class WebAuthenticationSessionError {
     return null;
   }
 
-  /// Gets a possible [WebAuthenticationSessionError] instance value with name [name].
+  /// Gets a possible [CygnusWebAuthenticationSessionError] instance value with name [name].
   ///
-  /// Goes through [WebAuthenticationSessionError.values] looking for a value with
-  /// name [name], as reported by [WebAuthenticationSessionError.name].
+  /// Goes through [CygnusWebAuthenticationSessionError.values] looking for a value with
+  /// name [name], as reported by [CygnusWebAuthenticationSessionError.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static WebAuthenticationSessionError? byName(String? name) {
+  static CygnusWebAuthenticationSessionError? byName(String? name) {
     if (name != null) {
       try {
-        return WebAuthenticationSessionError.values.firstWhere(
+        return CygnusWebAuthenticationSessionError.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -81,7 +87,7 @@ class WebAuthenticationSessionError {
     return null;
   }
 
-  /// Creates a map from the names of [WebAuthenticationSessionError] values to the values.
+  /// Creates a map from the names of [CygnusWebAuthenticationSessionError] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -89,9 +95,9 @@ class WebAuthenticationSessionError {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, WebAuthenticationSessionError> asNameMap() =>
-      <String, WebAuthenticationSessionError>{
-        for (final value in WebAuthenticationSessionError.values)
+  static Map<String, CygnusWebAuthenticationSessionError> asNameMap() =>
+      <String, CygnusWebAuthenticationSessionError>{
+        for (final value in CygnusWebAuthenticationSessionError.values)
           value.name(): value,
       };
 

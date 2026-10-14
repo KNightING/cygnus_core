@@ -6,9 +6,9 @@ part of 'platform_print_job_controller.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformPrintJobControllerCreationParamsClassSupported
-    on PlatformPrintJobControllerCreationParams {
-  ///{@template cygnus_core.PlatformPrintJobControllerCreationParams.supported_platforms}
+extension _CygnusPlatformPrintJobControllerCreationParamsClassSupported
+    on CygnusPlatformPrintJobControllerCreationParams {
+  ///{@template cygnus_core.CygnusPlatformPrintJobControllerCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -16,7 +16,7 @@ extension _PlatformPrintJobControllerCreationParamsClassSupported
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [PlatformPrintJobControllerCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformPrintJobControllerCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -29,11 +29,11 @@ extension _PlatformPrintJobControllerCreationParamsClassSupported
   }
 }
 
-///List of [PlatformPrintJobControllerCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformPrintJobControllerCreationParamsProperty {
-  ///Can be used to check if the [PlatformPrintJobControllerCreationParams.id] property is supported at runtime.
+///List of [CygnusPlatformPrintJobControllerCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformPrintJobControllerCreationParamsProperty {
+  ///Can be used to check if the [CygnusPlatformPrintJobControllerCreationParams.id] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformPrintJobControllerCreationParams.id.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformPrintJobControllerCreationParams.id.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -41,19 +41,19 @@ enum PlatformPrintJobControllerCreationParamsProperty {
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [PlatformPrintJobControllerCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformPrintJobControllerCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   id,
 }
 
-extension _PlatformPrintJobControllerCreationParamsPropertySupported
-    on PlatformPrintJobControllerCreationParams {
+extension _CygnusPlatformPrintJobControllerCreationParamsPropertySupported
+    on CygnusPlatformPrintJobControllerCreationParams {
   static bool isPropertySupported(
-    PlatformPrintJobControllerCreationParamsProperty property, {
+    CygnusPlatformPrintJobControllerCreationParamsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformPrintJobControllerCreationParamsProperty.id:
+      case CygnusPlatformPrintJobControllerCreationParamsProperty.id:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -65,9 +65,9 @@ extension _PlatformPrintJobControllerCreationParamsPropertySupported
   }
 }
 
-extension _PlatformPrintJobControllerClassSupported
-    on PlatformPrintJobController {
-  ///{@template cygnus_core.PlatformPrintJobController.supported_platforms}
+extension _CygnusPlatformPrintJobControllerClassSupported
+    on CygnusPlatformPrintJobController {
+  ///{@template cygnus_core.CygnusPlatformPrintJobController.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -75,7 +75,7 @@ extension _PlatformPrintJobControllerClassSupported
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [PlatformPrintJobController.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformPrintJobController.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -88,11 +88,11 @@ extension _PlatformPrintJobControllerClassSupported
   }
 }
 
-///List of [PlatformPrintJobController]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformPrintJobControllerProperty {
-  ///Can be used to check if the [PlatformPrintJobController.onComplete] property is supported at runtime.
+///List of [CygnusPlatformPrintJobController]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformPrintJobControllerProperty {
+  ///Can be used to check if the [CygnusPlatformPrintJobController.onComplete] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformPrintJobController.onComplete.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformPrintJobController.onComplete.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - PrintDocumentAdapter.onFinish](https://developer.android.com/reference/android/print/PrintDocumentAdapter#onFinish())):
@@ -105,19 +105,19 @@ enum PlatformPrintJobControllerProperty {
   ///- [completed]: all platforms
   ///- [error]: all platforms
   ///
-  ///Use the [PlatformPrintJobController.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformPrintJobController.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onComplete,
 }
 
-extension _PlatformPrintJobControllerPropertySupported
-    on PlatformPrintJobController {
+extension _CygnusPlatformPrintJobControllerPropertySupported
+    on CygnusPlatformPrintJobController {
   static bool isPropertySupported(
-    PlatformPrintJobControllerProperty property, {
+    CygnusPlatformPrintJobControllerProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformPrintJobControllerProperty.onComplete:
+      case CygnusPlatformPrintJobControllerProperty.onComplete:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -129,22 +129,22 @@ extension _PlatformPrintJobControllerPropertySupported
   }
 }
 
-///List of [PlatformPrintJobController]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformPrintJobControllerMethod {
-  ///Can be used to check if the [PlatformPrintJobController.cancel] method is supported at runtime.
+///List of [CygnusPlatformPrintJobController]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformPrintJobControllerMethod {
+  ///Can be used to check if the [CygnusPlatformPrintJobController.cancel] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformPrintJobController.cancel.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformPrintJobController.cancel.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - PrintJob.cancel](https://developer.android.com/reference/android/print/PrintJob#cancel()))
   ///
-  ///Use the [PlatformPrintJobController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformPrintJobController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   cancel,
 
-  ///Can be used to check if the [PlatformPrintJobController.dismiss] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformPrintJobController.dismiss] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformPrintJobController.dismiss.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformPrintJobController.dismiss.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView
@@ -152,13 +152,13 @@ enum PlatformPrintJobControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [animated]: all platforms
   ///
-  ///Use the [PlatformPrintJobController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformPrintJobController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   dismiss,
 
-  ///Can be used to check if the [PlatformPrintJobController.dispose] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformPrintJobController.dispose] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformPrintJobController.dispose.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformPrintJobController.dispose.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -166,13 +166,13 @@ enum PlatformPrintJobControllerMethod {
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [PlatformPrintJobController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformPrintJobController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   dispose,
 
-  ///Can be used to check if the [PlatformPrintJobController.getInfo] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformPrintJobController.getInfo] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformPrintJobController.getInfo.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformPrintJobController.getInfo.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - PrintJob.getInfo](https://developer.android.com/reference/android/print/PrintJob#getInfo()))
@@ -180,38 +180,38 @@ enum PlatformPrintJobControllerMethod {
   ///- macOS WKWebView
   ///- Windows WebView2
   ///
-  ///Use the [PlatformPrintJobController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformPrintJobController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getInfo,
 
-  ///Can be used to check if the [PlatformPrintJobController.restart] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformPrintJobController.restart] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformPrintJobController.restart.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformPrintJobController.restart.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - PrintJob.restart](https://developer.android.com/reference/android/print/PrintJob#restart()))
   ///
-  ///Use the [PlatformPrintJobController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformPrintJobController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   restart,
 }
 
-extension _PlatformPrintJobControllerMethodSupported
-    on PlatformPrintJobController {
+extension _CygnusPlatformPrintJobControllerMethodSupported
+    on CygnusPlatformPrintJobController {
   static bool isMethodSupported(
-    PlatformPrintJobControllerMethod method, {
+    CygnusPlatformPrintJobControllerMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformPrintJobControllerMethod.cancel:
+      case CygnusPlatformPrintJobControllerMethod.cancel:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformPrintJobControllerMethod.dismiss:
+      case CygnusPlatformPrintJobControllerMethod.dismiss:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformPrintJobControllerMethod.dispose:
+      case CygnusPlatformPrintJobControllerMethod.dispose:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -219,7 +219,7 @@ extension _PlatformPrintJobControllerMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformPrintJobControllerMethod.getInfo:
+      case CygnusPlatformPrintJobControllerMethod.getInfo:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -227,7 +227,7 @@ extension _PlatformPrintJobControllerMethodSupported
               TargetPlatform.macOS,
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformPrintJobControllerMethod.restart:
+      case CygnusPlatformPrintJobControllerMethod.restart:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,

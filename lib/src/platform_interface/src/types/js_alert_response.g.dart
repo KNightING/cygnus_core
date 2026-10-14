@@ -6,10 +6,10 @@ part of 'js_alert_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onJsAlert] event to control a JavaScript alert dialog.
-class JsAlertResponse {
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onJsAlert] event to control a JavaScript alert dialog.
+class CygnusJsAlertResponse {
   ///Action used to confirm that the user hit confirm button.
-  JsAlertResponseAction? action;
+  CygnusJsAlertResponseAction? action;
 
   ///Title of the confirm button.
   String confirmButtonTitle;
@@ -19,28 +19,31 @@ class JsAlertResponse {
 
   ///Message to be displayed in the window.
   String message;
-  JsAlertResponse({
-    JsAlertResponseAction? action,
+  CygnusJsAlertResponse({
+    CygnusJsAlertResponseAction? action,
     this.confirmButtonTitle = "",
     this.handledByClient = false,
     this.message = "",
-  }) : action = action ?? JsAlertResponseAction.CONFIRM;
+  }) : action = action ?? CygnusJsAlertResponseAction.CONFIRM;
 
-  ///Gets a possible [JsAlertResponse] instance from a [Map] value.
-  static JsAlertResponse? fromMap(
+  ///Gets a possible [CygnusJsAlertResponse] instance from a [Map] value.
+  static CygnusJsAlertResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = JsAlertResponse();
-    instance.action = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => JsAlertResponseAction.fromNativeValue(
+    final instance = CygnusJsAlertResponse();
+    instance.action = switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue =>
+        CygnusJsAlertResponseAction.fromNativeValue(map['action']),
+      CygnusEnumMethod.value => CygnusJsAlertResponseAction.fromValue(
         map['action'],
       ),
-      EnumMethod.value => JsAlertResponseAction.fromValue(map['action']),
-      EnumMethod.name => JsAlertResponseAction.byName(map['action']),
+      CygnusEnumMethod.name => CygnusJsAlertResponseAction.byName(
+        map['action'],
+      ),
     };
     if (map['confirmButtonTitle'] != null) {
       instance.confirmButtonTitle = map['confirmButtonTitle'];
@@ -55,12 +58,12 @@ class JsAlertResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
-      "action": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => action?.toNativeValue(),
-        EnumMethod.value => action?.toValue(),
-        EnumMethod.name => action?.name(),
+      "action": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => action?.toNativeValue(),
+        CygnusEnumMethod.value => action?.toValue(),
+        CygnusEnumMethod.name => action?.name(),
       },
       "confirmButtonTitle": confirmButtonTitle,
       "handledByClient": handledByClient,
@@ -75,6 +78,6 @@ class JsAlertResponse {
 
   @override
   String toString() {
-    return 'JsAlertResponse{action: $action, confirmButtonTitle: $confirmButtonTitle, handledByClient: $handledByClient, message: $message}';
+    return 'CygnusJsAlertResponse{action: $action, confirmButtonTitle: $confirmButtonTitle, handledByClient: $handledByClient, message: $message}';
   }
 }

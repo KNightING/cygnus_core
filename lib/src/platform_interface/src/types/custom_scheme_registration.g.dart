@@ -6,11 +6,11 @@ part of 'custom_scheme_registration.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the registration of a custom scheme for [WebViewEnvironmentSettings] method.
+///Class that represents the registration of a custom scheme for [CygnusWebViewEnvironmentSettings] method.
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- Windows WebView2
-class CustomSchemeRegistration {
+class CygnusCustomSchemeRegistration {
   ///List of origins that are allowed to issue requests with the custom scheme, such as XHRs and subresource requests that have an Origin header.
   List<String>? allowedOrigins;
 
@@ -28,22 +28,22 @@ class CustomSchemeRegistration {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  CustomSchemeRegistration({
+  CygnusCustomSchemeRegistration({
     this.allowedOrigins,
     this.hasAuthorityComponent,
     required this.scheme,
     this.treatAsSecure,
   });
 
-  ///Gets a possible [CustomSchemeRegistration] instance from a [Map] value.
-  static CustomSchemeRegistration? fromMap(
+  ///Gets a possible [CygnusCustomSchemeRegistration] instance from a [Map] value.
+  static CygnusCustomSchemeRegistration? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = CustomSchemeRegistration(
+    final instance = CygnusCustomSchemeRegistration(
       allowedOrigins: map['allowedOrigins'] != null
           ? List<String>.from(map['allowedOrigins']!.cast<String>())
           : null,
@@ -55,7 +55,7 @@ class CustomSchemeRegistration {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "allowedOrigins": allowedOrigins,
       "hasAuthorityComponent": hasAuthorityComponent,
@@ -71,6 +71,6 @@ class CustomSchemeRegistration {
 
   @override
   String toString() {
-    return 'CustomSchemeRegistration{allowedOrigins: $allowedOrigins, hasAuthorityComponent: $hasAuthorityComponent, scheme: $scheme, treatAsSecure: $treatAsSecure}';
+    return 'CygnusCustomSchemeRegistration{allowedOrigins: $allowedOrigins, hasAuthorityComponent: $hasAuthorityComponent, scheme: $scheme, treatAsSecure: $treatAsSecure}';
   }
 }

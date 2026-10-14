@@ -6,18 +6,18 @@ part of 'platform_proxy_controller.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///{@template cygnus_core.ProxySettings}
-///Class that represents the settings used to configure the [PlatformProxyController].
+///{@template cygnus_core.CygnusProxySettings}
+///Class that represents the settings used to configure the [CygnusPlatformProxyController].
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.ProxySettings.supported_platforms}
+///{@macro cygnus_core.CygnusProxySettings.supported_platforms}
 ///
 ///**Officially Supported Platforms/Implementations**:
 ///- Android WebView ([Official API - ProxyConfig](https://developer.android.com/reference/androidx/webkit/ProxyConfig))
 ///- iOS WKWebView 17.0+ ([Official API - ProxyConfiguration](https://developer.apple.com/documentation/network/proxyconfiguration))
 ///- macOS WKWebView 14.0+ ([Official API - ProxyConfiguration](https://developer.apple.com/documentation/network/proxyconfiguration))
 ///- Linux WPE WebKit ([Official API - WebKitNetworkProxySettings](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/struct.NetworkProxySettings.html))
-class ProxySettings {
+class CygnusProxySettings {
   ///List of bypass rules.
   ///
   ///A bypass rule describes URLs that should skip proxy override settings and make a direct connection instead. These can be URLs or IP addresses. Wildcards are accepted.
@@ -60,7 +60,7 @@ class ProxySettings {
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///- Linux WPE WebKit
-  List<ProxyRule> proxyRules;
+  List<CygnusProxyRule> proxyRules;
 
   ///By default, certain hostnames implicitly bypass the proxy if they are link-local IPs, or localhost addresses.
   ///For instance hostnames matching any of (non-exhaustive list):
@@ -84,7 +84,7 @@ class ProxySettings {
   ///
   ///Use [bypassRules] to add bypass rules.
   ///
-  ///**NOTE**: available only if [WebViewFeature.PROXY_OVERRIDE_REVERSE_BYPASS] feature is supported.
+  ///**NOTE**: available only if [CygnusWebViewFeature.PROXY_OVERRIDE_REVERSE_BYPASS] feature is supported.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -96,7 +96,7 @@ class ProxySettings {
   ///- iOS WKWebView 17.0+ ([Official API - ProxyConfiguration](https://developer.apple.com/documentation/network/proxyconfiguration))
   ///- macOS WKWebView 14.0+ ([Official API - ProxyConfiguration](https://developer.apple.com/documentation/network/proxyconfiguration))
   ///- Linux WPE WebKit ([Official API - WebKitNetworkProxySettings](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/struct.NetworkProxySettings.html))
-  ProxySettings({
+  CygnusProxySettings({
     this.bypassRules = const [],
     this.bypassSimpleHostnames,
     this.directs = const [],
@@ -105,15 +105,15 @@ class ProxySettings {
     this.reverseBypassEnabled = false,
   });
 
-  ///Gets a possible [ProxySettings] instance from a [Map] value.
-  static ProxySettings? fromMap(
+  ///Gets a possible [CygnusProxySettings] instance from a [Map] value.
+  static CygnusProxySettings? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ProxySettings(
+    final instance = CygnusProxySettings(
       bypassSimpleHostnames: map['bypassSimpleHostnames'],
       removeImplicitRules: map['removeImplicitRules'],
     );
@@ -126,9 +126,9 @@ class ProxySettings {
       instance.directs = List<String>.from(map['directs']!.cast<String>());
     }
     if (map['proxyRules'] != null) {
-      instance.proxyRules = List<ProxyRule>.from(
+      instance.proxyRules = List<CygnusProxyRule>.from(
         map['proxyRules'].map(
-          (e) => ProxyRule.fromMap(
+          (e) => CygnusProxyRule.fromMap(
             e?.cast<String, dynamic>(),
             enumMethod: enumMethod,
           )!,
@@ -141,25 +141,25 @@ class ProxySettings {
     return instance;
   }
 
-  ///{@template cygnus_core.ProxySettings.isClassSupported}
+  ///{@template cygnus_core.CygnusProxySettings.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      _ProxySettingsClassSupported.isClassSupported(platform: platform);
+      _CygnusProxySettingsClassSupported.isClassSupported(platform: platform);
 
-  ///{@template cygnus_core.ProxySettings.isPropertySupported}
+  ///{@template cygnus_core.CygnusProxySettings.isPropertySupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   static bool isPropertySupported(
-    ProxySettingsProperty property, {
+    CygnusProxySettingsProperty property, {
     TargetPlatform? platform,
-  }) => _ProxySettingsPropertySupported.isPropertySupported(
+  }) => _CygnusProxySettingsPropertySupported.isPropertySupported(
     property,
     platform: platform,
   );
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "bypassRules": bypassRules,
       "bypassSimpleHostnames": bypassSimpleHostnames,
@@ -177,14 +177,14 @@ class ProxySettings {
     return toMap();
   }
 
-  ///Returns a copy of ProxySettings.
-  ProxySettings copy() {
-    return ProxySettings.fromMap(toMap()) ?? ProxySettings();
+  ///Returns a copy of CygnusProxySettings.
+  CygnusProxySettings copy() {
+    return CygnusProxySettings.fromMap(toMap()) ?? CygnusProxySettings();
   }
 
   @override
   String toString() {
-    return 'ProxySettings{bypassRules: $bypassRules, bypassSimpleHostnames: $bypassSimpleHostnames, directs: $directs, proxyRules: $proxyRules, removeImplicitRules: $removeImplicitRules, reverseBypassEnabled: $reverseBypassEnabled}';
+    return 'CygnusProxySettings{bypassRules: $bypassRules, bypassSimpleHostnames: $bypassSimpleHostnames, directs: $directs, proxyRules: $proxyRules, removeImplicitRules: $removeImplicitRules, reverseBypassEnabled: $reverseBypassEnabled}';
   }
 }
 
@@ -192,9 +192,9 @@ class ProxySettings {
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformProxyControllerCreationParamsClassSupported
-    on PlatformProxyControllerCreationParams {
-  ///{@template cygnus_core.PlatformProxyControllerCreationParams.supported_platforms}
+extension _CygnusPlatformProxyControllerCreationParamsClassSupported
+    on CygnusPlatformProxyControllerCreationParams {
+  ///{@template cygnus_core.CygnusPlatformProxyControllerCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -202,7 +202,7 @@ extension _PlatformProxyControllerCreationParamsClassSupported
   ///- macOS WKWebView
   ///- Linux WPE WebKit
   ///
-  ///Use the [PlatformProxyControllerCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformProxyControllerCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -215,16 +215,17 @@ extension _PlatformProxyControllerCreationParamsClassSupported
   }
 }
 
-extension _PlatformProxyControllerClassSupported on PlatformProxyController {
-  ///{@template cygnus_core.PlatformProxyController.supported_platforms}
+extension _CygnusPlatformProxyControllerClassSupported
+    on CygnusPlatformProxyController {
+  ///{@template cygnus_core.CygnusPlatformProxyController.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - ProxyController](https://developer.android.com/reference/androidx/webkit/ProxyController))
+  ///- Android WebView ([Official API - CygnusProxyController](https://developer.android.com/reference/androidx/webkit/CygnusProxyController))
   ///- iOS WKWebView 17.0+ ([Official API - WKWebsiteDataStore.proxyConfigurations](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/4264546-proxyconfigurations))
   ///- macOS WKWebView 14.0+ ([Official API - WKWebsiteDataStore.proxyConfigurations](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/4264546-proxyconfigurations))
   ///- Linux WPE WebKit ([Official API - WebKitNetworkProxySettings](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/struct.NetworkProxySettings.html))
   ///
-  ///Use the [PlatformProxyController.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformProxyController.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -237,28 +238,28 @@ extension _PlatformProxyControllerClassSupported on PlatformProxyController {
   }
 }
 
-///List of [PlatformProxyController]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformProxyControllerMethod {
-  ///Can be used to check if the [PlatformProxyController.clearProxyOverride] method is supported at runtime.
+///List of [CygnusPlatformProxyController]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformProxyControllerMethod {
+  ///Can be used to check if the [CygnusPlatformProxyController.clearProxyOverride] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformProxyController.clearProxyOverride.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformProxyController.clearProxyOverride.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - ProxyController.clearProxyOverride](https://developer.android.com/reference/androidx/webkit/ProxyController#clearProxyOverride(java.util.concurrent.Executor,%20java.lang.Runnable)))
+  ///- Android WebView ([Official API - CygnusProxyController.clearProxyOverride](https://developer.android.com/reference/androidx/webkit/CygnusProxyController#clearProxyOverride(java.util.concurrent.Executor,%20java.lang.Runnable)))
   ///- iOS WKWebView 17.0+ ([Official API - WKWebsiteDataStore.proxyConfigurations](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/4264546-proxyconfigurations))
   ///- macOS WKWebView 14.0+ ([Official API - WKWebsiteDataStore.proxyConfigurations](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/4264546-proxyconfigurations))
   ///- Linux WPE WebKit ([Official API - webkit_network_session_set_proxy_settings](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.NetworkSession.set_proxy_settings.html))
   ///
-  ///Use the [PlatformProxyController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformProxyController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   clearProxyOverride,
 
-  ///Can be used to check if the [PlatformProxyController.setProxyOverride] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformProxyController.setProxyOverride] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformProxyController.setProxyOverride.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformProxyController.setProxyOverride.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- Android WebView ([Official API - ProxyController.setProxyOverride](https://developer.android.com/reference/androidx/webkit/ProxyController#setProxyOverride(androidx.webkit.ProxyConfig,%20java.util.concurrent.Executor,%20java.lang.Runnable)))
+  ///- Android WebView ([Official API - CygnusProxyController.setProxyOverride](https://developer.android.com/reference/androidx/webkit/CygnusProxyController#setProxyOverride(androidx.webkit.ProxyConfig,%20java.util.concurrent.Executor,%20java.lang.Runnable)))
   ///- iOS WKWebView 17.0+ ([Official API - WKWebsiteDataStore.proxyConfigurations](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/4264546-proxyconfigurations))
   ///- macOS WKWebView 14.0+ ([Official API - WKWebsiteDataStore.proxyConfigurations](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/4264546-proxyconfigurations))
   ///- Linux WPE WebKit ([Official API - webkit_network_session_set_proxy_settings](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/method.NetworkSession.set_proxy_settings.html))
@@ -266,18 +267,19 @@ enum PlatformProxyControllerMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [settings]: all platforms
   ///
-  ///Use the [PlatformProxyController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformProxyController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setProxyOverride,
 }
 
-extension _PlatformProxyControllerMethodSupported on PlatformProxyController {
+extension _CygnusPlatformProxyControllerMethodSupported
+    on CygnusPlatformProxyController {
   static bool isMethodSupported(
-    PlatformProxyControllerMethod method, {
+    CygnusPlatformProxyControllerMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformProxyControllerMethod.clearProxyOverride:
+      case CygnusPlatformProxyControllerMethod.clearProxyOverride:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -285,7 +287,7 @@ extension _PlatformProxyControllerMethodSupported on PlatformProxyController {
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformProxyControllerMethod.setProxyOverride:
+      case CygnusPlatformProxyControllerMethod.setProxyOverride:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -297,8 +299,8 @@ extension _PlatformProxyControllerMethodSupported on PlatformProxyController {
   }
 }
 
-extension _ProxySettingsClassSupported on ProxySettings {
-  ///{@template cygnus_core.ProxySettings.supported_platforms}
+extension _CygnusProxySettingsClassSupported on CygnusProxySettings {
+  ///{@template cygnus_core.CygnusProxySettings.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - ProxyConfig](https://developer.android.com/reference/androidx/webkit/ProxyConfig))
@@ -306,7 +308,7 @@ extension _ProxySettingsClassSupported on ProxySettings {
   ///- macOS WKWebView 14.0+ ([Official API - ProxyConfiguration](https://developer.apple.com/documentation/network/proxyconfiguration))
   ///- Linux WPE WebKit ([Official API - WebKitNetworkProxySettings](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/struct.NetworkProxySettings.html))
   ///
-  ///Use the [ProxySettings.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusProxySettings.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -319,46 +321,46 @@ extension _ProxySettingsClassSupported on ProxySettings {
   }
 }
 
-///List of [ProxySettings]'s properties that can be used to check i they are supported or not by the current platform.
-enum ProxySettingsProperty {
-  ///Can be used to check if the [ProxySettings.bypassRules] property is supported at runtime.
+///List of [CygnusProxySettings]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusProxySettingsProperty {
+  ///Can be used to check if the [CygnusProxySettings.bypassRules] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ProxySettings.bypassRules.supported_platforms}
+  ///{@template cygnus_core.CygnusProxySettings.bypassRules.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- Linux WPE WebKit ([Official API - webkit_network_proxy_settings_new (ignore_hosts)](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/ctor.NetworkProxySettings.new.html)):
   ///    - Mapped to ignore_hosts; bypass rules are passed as host patterns to WebKitNetworkProxySettings.
   ///
-  ///Use the [ProxySettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusProxySettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   bypassRules,
 
-  ///Can be used to check if the [ProxySettings.bypassSimpleHostnames] property is supported at runtime.
+  ///Can be used to check if the [CygnusProxySettings.bypassSimpleHostnames] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ProxySettings.bypassSimpleHostnames.supported_platforms}
+  ///{@template cygnus_core.CygnusProxySettings.bypassSimpleHostnames.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [ProxySettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusProxySettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   bypassSimpleHostnames,
 
-  ///Can be used to check if the [ProxySettings.directs] property is supported at runtime.
+  ///Can be used to check if the [CygnusProxySettings.directs] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ProxySettings.directs.supported_platforms}
+  ///{@template cygnus_core.CygnusProxySettings.directs.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [ProxySettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusProxySettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   directs,
 
-  ///Can be used to check if the [ProxySettings.proxyRules] property is supported at runtime.
+  ///Can be used to check if the [CygnusProxySettings.proxyRules] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ProxySettings.proxyRules.supported_platforms}
+  ///{@template cygnus_core.CygnusProxySettings.proxyRules.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -366,56 +368,56 @@ enum ProxySettingsProperty {
   ///- macOS WKWebView
   ///- Linux WPE WebKit
   ///
-  ///Use the [ProxySettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusProxySettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   proxyRules,
 
-  ///Can be used to check if the [ProxySettings.removeImplicitRules] property is supported at runtime.
+  ///Can be used to check if the [CygnusProxySettings.removeImplicitRules] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ProxySettings.removeImplicitRules.supported_platforms}
+  ///{@template cygnus_core.CygnusProxySettings.removeImplicitRules.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [ProxySettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusProxySettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   removeImplicitRules,
 
-  ///Can be used to check if the [ProxySettings.reverseBypassEnabled] property is supported at runtime.
+  ///Can be used to check if the [CygnusProxySettings.reverseBypassEnabled] property is supported at runtime.
   ///
-  ///{@template cygnus_core.ProxySettings.reverseBypassEnabled.supported_platforms}
+  ///{@template cygnus_core.CygnusProxySettings.reverseBypassEnabled.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [ProxySettings.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusProxySettings.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   reverseBypassEnabled,
 }
 
-extension _ProxySettingsPropertySupported on ProxySettings {
+extension _CygnusProxySettingsPropertySupported on CygnusProxySettings {
   static bool isPropertySupported(
-    ProxySettingsProperty property, {
+    CygnusProxySettingsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case ProxySettingsProperty.bypassRules:
+      case CygnusProxySettingsProperty.bypassRules:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case ProxySettingsProperty.bypassSimpleHostnames:
+      case CygnusProxySettingsProperty.bypassSimpleHostnames:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ProxySettingsProperty.directs:
+      case CygnusProxySettingsProperty.directs:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ProxySettingsProperty.proxyRules:
+      case CygnusProxySettingsProperty.proxyRules:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -423,12 +425,12 @@ extension _ProxySettingsPropertySupported on ProxySettings {
               TargetPlatform.macOS,
               TargetPlatform.linux,
             ].contains(platform ?? defaultTargetPlatform);
-      case ProxySettingsProperty.removeImplicitRules:
+      case CygnusProxySettingsProperty.removeImplicitRules:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case ProxySettingsProperty.reverseBypassEnabled:
+      case CygnusProxySettingsProperty.reverseBypassEnabled:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,

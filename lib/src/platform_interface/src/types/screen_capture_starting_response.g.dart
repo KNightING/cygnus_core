@@ -6,24 +6,24 @@ part of 'screen_capture_starting_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onScreenCaptureStarting] event.
-class ScreenCaptureStartingResponse {
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onScreenCaptureStarting] event.
+class CygnusScreenCaptureStartingResponse {
   ///Whether to cancel the screen capture.
   bool? cancel;
 
   ///Whether the event has been handled.
   bool? handled;
-  ScreenCaptureStartingResponse({this.cancel, this.handled});
+  CygnusScreenCaptureStartingResponse({this.cancel, this.handled});
 
-  ///Gets a possible [ScreenCaptureStartingResponse] instance from a [Map] value.
-  static ScreenCaptureStartingResponse? fromMap(
+  ///Gets a possible [CygnusScreenCaptureStartingResponse] instance from a [Map] value.
+  static CygnusScreenCaptureStartingResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ScreenCaptureStartingResponse(
+    final instance = CygnusScreenCaptureStartingResponse(
       cancel: map['cancel'],
       handled: map['handled'],
     );
@@ -31,7 +31,7 @@ class ScreenCaptureStartingResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"cancel": cancel, "handled": handled};
   }
 
@@ -42,6 +42,6 @@ class ScreenCaptureStartingResponse {
 
   @override
   String toString() {
-    return 'ScreenCaptureStartingResponse{cancel: $cancel, handled: $handled}';
+    return 'CygnusScreenCaptureStartingResponse{cancel: $cancel, handled: $handled}';
   }
 }

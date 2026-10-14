@@ -6,38 +6,41 @@ part of 'client_cert_response_action.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class used by [ClientCertResponse] class.
-class ClientCertResponseAction {
+///Class used by [CygnusClientCertResponse] class.
+class CygnusClientCertResponseAction {
   final int _value;
   final int? _nativeValue;
-  const ClientCertResponseAction._internal(this._value, this._nativeValue);
+  const CygnusClientCertResponseAction._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory ClientCertResponseAction._internalMultiPlatform(
+  factory CygnusClientCertResponseAction._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => ClientCertResponseAction._internal(value, nativeValue());
+  ) => CygnusClientCertResponseAction._internal(value, nativeValue());
 
   ///Cancel this request.
-  static const CANCEL = ClientCertResponseAction._internal(0, 0);
+  static const CANCEL = CygnusClientCertResponseAction._internal(0, 0);
 
   ///Ignore the request for now.
-  static const IGNORE = ClientCertResponseAction._internal(2, 2);
+  static const IGNORE = CygnusClientCertResponseAction._internal(2, 2);
 
   ///Proceed with the specified certificate.
-  static const PROCEED = ClientCertResponseAction._internal(1, 1);
+  static const PROCEED = CygnusClientCertResponseAction._internal(1, 1);
 
-  ///Set of all values of [ClientCertResponseAction].
-  static final Set<ClientCertResponseAction> values = [
-    ClientCertResponseAction.CANCEL,
-    ClientCertResponseAction.IGNORE,
-    ClientCertResponseAction.PROCEED,
+  ///Set of all values of [CygnusClientCertResponseAction].
+  static final Set<CygnusClientCertResponseAction> values = [
+    CygnusClientCertResponseAction.CANCEL,
+    CygnusClientCertResponseAction.IGNORE,
+    CygnusClientCertResponseAction.PROCEED,
   ].toSet();
 
-  ///Gets a possible [ClientCertResponseAction] instance from [int] value.
-  static ClientCertResponseAction? fromValue(int? value) {
+  ///Gets a possible [CygnusClientCertResponseAction] instance from [int] value.
+  static CygnusClientCertResponseAction? fromValue(int? value) {
     if (value != null) {
       try {
-        return ClientCertResponseAction.values.firstWhere(
+        return CygnusClientCertResponseAction.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -47,11 +50,11 @@ class ClientCertResponseAction {
     return null;
   }
 
-  ///Gets a possible [ClientCertResponseAction] instance from a native value.
-  static ClientCertResponseAction? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusClientCertResponseAction] instance from a native value.
+  static CygnusClientCertResponseAction? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return ClientCertResponseAction.values.firstWhere(
+        return CygnusClientCertResponseAction.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -61,15 +64,15 @@ class ClientCertResponseAction {
     return null;
   }
 
-  /// Gets a possible [ClientCertResponseAction] instance value with name [name].
+  /// Gets a possible [CygnusClientCertResponseAction] instance value with name [name].
   ///
-  /// Goes through [ClientCertResponseAction.values] looking for a value with
-  /// name [name], as reported by [ClientCertResponseAction.name].
+  /// Goes through [CygnusClientCertResponseAction.values] looking for a value with
+  /// name [name], as reported by [CygnusClientCertResponseAction.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ClientCertResponseAction? byName(String? name) {
+  static CygnusClientCertResponseAction? byName(String? name) {
     if (name != null) {
       try {
-        return ClientCertResponseAction.values.firstWhere(
+        return CygnusClientCertResponseAction.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -79,7 +82,7 @@ class ClientCertResponseAction {
     return null;
   }
 
-  /// Creates a map from the names of [ClientCertResponseAction] values to the values.
+  /// Creates a map from the names of [CygnusClientCertResponseAction] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -87,9 +90,9 @@ class ClientCertResponseAction {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ClientCertResponseAction> asNameMap() =>
-      <String, ClientCertResponseAction>{
-        for (final value in ClientCertResponseAction.values)
+  static Map<String, CygnusClientCertResponseAction> asNameMap() =>
+      <String, CygnusClientCertResponseAction>{
+        for (final value in CygnusClientCertResponseAction.values)
           value.name(): value,
       };
 

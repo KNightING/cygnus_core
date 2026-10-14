@@ -1,24 +1,24 @@
 part of 'main.dart';
 
 void injectCSS() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.injectCSSCode,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.injectCSSCode,
   );
 
   var url = !kIsWeb ? TEST_URL_ABOUT_BLANK : TEST_WEB_PLATFORM_URL_1;
 
   skippableGroup('inject CSS', () {
     skippableTestWidgets('code', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: url),
+            initialUrlRequest: CygnusURLRequest(url: url),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -29,7 +29,7 @@ void injectCSS() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await tester.pump();
       await pageLoaded.future;
@@ -53,16 +53,16 @@ void injectCSS() {
     });
 
     skippableTestWidgets('file from url', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: url),
+            initialUrlRequest: CygnusURLRequest(url: url),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -73,16 +73,16 @@ void injectCSS() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await tester.pump();
       await pageLoaded.future;
 
       await controller.injectCSSFileFromUrl(
-        urlFile: WebUri(
+        urlFile: CygnusWebUri(
           'https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css',
         ),
-        cssLinkHtmlTagAttributes: CSSLinkHtmlTagAttributes(id: 'bootstrap'),
+        cssLinkHtmlTagAttributes: CygnusCSSLinkHtmlTagAttributes(id: 'bootstrap'),
       );
       await Future.delayed(Duration(seconds: 2));
       expect(
@@ -94,16 +94,16 @@ void injectCSS() {
     });
 
     skippableTestWidgets('file from asset', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: url),
+            initialUrlRequest: CygnusURLRequest(url: url),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -114,7 +114,7 @@ void injectCSS() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await tester.pump();
       await pageLoaded.future;

@@ -1,96 +1,96 @@
 import 'package:flutter/foundation.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
-///{@macro cygnus_core.PlatformWebNotificationController}
+///{@macro cygnus_core.CygnusPlatformWebNotificationController}
 ///
-///{@macro cygnus_core.PlatformWebNotificationController.supported_platforms}
-class WebNotificationController {
-  ///{@macro cygnus_core.PlatformWebNotificationController}
+///{@macro cygnus_core.CygnusPlatformWebNotificationController.supported_platforms}
+class CygnusWebNotificationController {
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationController.supported_platforms}
-  WebNotificationController({
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.supported_platforms}
+  CygnusWebNotificationController({
     required String id,
-    required WebNotification notification,
+    required CygnusWebNotification notification,
   }) : this.fromPlatformCreationParams(
-         params: PlatformWebNotificationControllerCreationParams(
+         params: CygnusPlatformWebNotificationControllerCreationParams(
            id: id,
            notification: notification,
          ),
        );
 
-  /// Constructs a [WebNotificationController].
+  /// Constructs a [CygnusWebNotificationController].
   ///
-  /// See [WebNotificationController.fromPlatformCreationParams] for setting parameters for
+  /// See [CygnusWebNotificationController.fromPlatformCreationParams] for setting parameters for
   /// a specific platform.
-  WebNotificationController.fromPlatformCreationParams({
-    required PlatformWebNotificationControllerCreationParams params,
-  }) : this.fromPlatform(platform: PlatformWebNotificationController(params));
+  CygnusWebNotificationController.fromPlatformCreationParams({
+    required CygnusPlatformWebNotificationControllerCreationParams params,
+  }) : this.fromPlatform(platform: CygnusPlatformWebNotificationController(params));
 
-  /// Constructs a [WebNotificationController] from a specific platform implementation.
-  WebNotificationController.fromPlatform({required this.platform});
+  /// Constructs a [CygnusWebNotificationController] from a specific platform implementation.
+  CygnusWebNotificationController.fromPlatform({required this.platform});
 
-  /// Implementation of [PlatformWebNotificationController] for the current platform.
-  final PlatformWebNotificationController platform;
+  /// Implementation of [CygnusPlatformWebNotificationController] for the current platform.
+  final CygnusPlatformWebNotificationController platform;
 
-  ///{@macro cygnus_core.PlatformWebNotificationControllerCreationParams.id}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.id}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationControllerCreationParams.id.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.id.supported_platforms}
   String get id => platform.id;
 
-  ///{@macro cygnus_core.PlatformWebNotificationControllerCreationParams.notification}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.notification}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationControllerCreationParams.notification.supported_platforms}
-  WebNotification get notification => platform.notification;
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.notification.supported_platforms}
+  CygnusWebNotification get notification => platform.notification;
 
-  ///{@macro cygnus_core.PlatformWebNotificationController.onClose}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.onClose}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationController.onClose.supported_platforms}
-  WebNotificationCloseHandler? get onClose => platform.onClose;
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.onClose.supported_platforms}
+  CygnusWebNotificationCloseHandler? get onClose => platform.onClose;
 
-  void set onClose(WebNotificationCloseHandler? handler) {
+  void set onClose(CygnusWebNotificationCloseHandler? handler) {
     platform.onClose = handler;
   }
 
-  ///{@macro cygnus_core.PlatformWebNotificationController.reportShown}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.reportShown}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationController.reportShown.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.reportShown.supported_platforms}
   Future<void> reportShown() => platform.reportShown();
 
-  ///{@macro cygnus_core.PlatformWebNotificationController.reportClicked}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.reportClicked}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationController.reportClicked.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.reportClicked.supported_platforms}
   Future<void> reportClicked() => platform.reportClicked();
 
-  ///{@macro cygnus_core.PlatformWebNotificationController.reportClosed}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.reportClosed}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationController.reportClosed.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.reportClosed.supported_platforms}
   Future<void> reportClosed() => platform.reportClosed();
 
-  ///{@macro cygnus_core.PlatformWebNotificationController.dispose}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.dispose}
   ///
-  ///{@macro cygnus_core.PlatformWebNotificationController.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.dispose.supported_platforms}
   void dispose() => platform.dispose();
 
-  ///{@macro cygnus_core.PlatformWebNotificationControllerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.isClassSupported}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformWebNotificationController.static().isClassSupported(
+      CygnusPlatformWebNotificationController.static().isClassSupported(
         platform: platform,
       );
 
-  ///{@macro cygnus_core.PlatformWebNotificationController.isPropertySupported}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.isPropertySupported}
   static bool isPropertySupported(
     dynamic property, {
     TargetPlatform? platform,
-  }) => PlatformWebNotificationController.static().isPropertySupported(
+  }) => CygnusPlatformWebNotificationController.static().isPropertySupported(
     property,
     platform: platform,
   );
 
-  ///{@macro cygnus_core.PlatformWebNotificationController.isMethodSupported}
+  ///{@macro cygnus_core.CygnusPlatformWebNotificationController.isMethodSupported}
   static bool isMethodSupported(
-    PlatformWebNotificationControllerMethod method, {
+    CygnusPlatformWebNotificationControllerMethod method, {
     TargetPlatform? platform,
-  }) => PlatformWebNotificationController.static().isMethodSupported(
+  }) => CygnusPlatformWebNotificationController.static().isMethodSupported(
     method,
     platform: platform,
   );

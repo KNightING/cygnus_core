@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${InAppWebView} Test Suite'),
+        title: Text('${CygnusWebView} Test Suite'),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                     _buildCategoryCard(
                       context,
                       category: TestCategory.storage,
-                      title: 'Storage & Cookies',
+                      title: 'CygnusStorage & Cookies',
                       icon: Icons.storage,
                       color: Colors.purple,
                     ),

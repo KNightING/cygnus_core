@@ -1,34 +1,34 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [IOSWebAuthenticationSession].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebAuthenticationSessionCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebAuthenticationSessionCreationParams] for
 /// more information.
 class IOSWebAuthenticationSessionCreationParams
-    extends PlatformWebAuthenticationSessionCreationParams {
+    extends CygnusPlatformWebAuthenticationSessionCreationParams {
   /// Creates a new [IOSWebAuthenticationSessionCreationParams] instance.
   const IOSWebAuthenticationSessionCreationParams();
 
-  /// Creates a [IOSWebAuthenticationSessionCreationParams] instance based on [PlatformWebAuthenticationSessionCreationParams].
+  /// Creates a [IOSWebAuthenticationSessionCreationParams] instance based on [CygnusPlatformWebAuthenticationSessionCreationParams].
   factory IOSWebAuthenticationSessionCreationParams.fromPlatformWebAuthenticationSessionCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebAuthenticationSessionCreationParams params,
+    CygnusPlatformWebAuthenticationSessionCreationParams params,
   ) {
     return IOSWebAuthenticationSessionCreationParams();
   }
 }
 
-///{@macro cygnus_core.PlatformWebAuthenticationSession}
-class IOSWebAuthenticationSession extends PlatformWebAuthenticationSession
+///{@macro cygnus_core.CygnusPlatformWebAuthenticationSession}
+class IOSWebAuthenticationSession extends CygnusPlatformWebAuthenticationSession
     with ChannelController {
   /// Constructs a [IOSWebAuthenticationSession].
   IOSWebAuthenticationSession(
-    PlatformWebAuthenticationSessionCreationParams params,
+    CygnusPlatformWebAuthenticationSessionCreationParams params,
   ) : super.implementation(
         params is IOSWebAuthenticationSessionCreationParams
             ? params
@@ -49,16 +49,16 @@ class IOSWebAuthenticationSession extends PlatformWebAuthenticationSession
   final String id = IdGenerator.generate();
 
   @override
-  late final WebUri url;
+  late final CygnusWebUri url;
 
   @override
   late final String? callbackURLScheme;
 
   @override
-  late final WebAuthenticationSessionSettings? initialSettings;
+  late final CygnusWebAuthenticationSessionSettings? initialSettings;
 
   @override
-  late final WebAuthenticationSessionCompletionHandler onComplete;
+  late final CygnusWebAuthenticationSessionCompletionHandler onComplete;
 
   static const MethodChannel _staticChannel = const MethodChannel(
     'com.pichillilorenzo/flutter_webauthenticationsession',
@@ -66,10 +66,10 @@ class IOSWebAuthenticationSession extends PlatformWebAuthenticationSession
 
   @override
   Future<IOSWebAuthenticationSession> create({
-    required WebUri url,
+    required CygnusWebUri url,
     String? callbackURLScheme,
-    WebAuthenticationSessionCompletionHandler onComplete,
-    WebAuthenticationSessionSettings? initialSettings,
+    CygnusWebAuthenticationSessionCompletionHandler onComplete,
+    CygnusWebAuthenticationSessionSettings? initialSettings,
   }) async {
     var session = IOSWebAuthenticationSession._create(
       url: url,
@@ -78,7 +78,7 @@ class IOSWebAuthenticationSession extends PlatformWebAuthenticationSession
       initialSettings: initialSettings,
     );
     initialSettings =
-        session.initialSettings ?? WebAuthenticationSessionSettings();
+        session.initialSettings ?? CygnusWebAuthenticationSessionSettings();
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("id", () => session.id);
     args.putIfAbsent("url", () => session.url.toString());
@@ -92,7 +92,7 @@ class IOSWebAuthenticationSession extends PlatformWebAuthenticationSession
     required this.url,
     this.callbackURLScheme,
     this.onComplete,
-    WebAuthenticationSessionSettings? initialSettings,
+    CygnusWebAuthenticationSessionSettings? initialSettings,
   }) : super.implementation(IOSWebAuthenticationSessionCreationParams()) {
     assert(url.toString().isNotEmpty);
     assert(
@@ -101,7 +101,7 @@ class IOSWebAuthenticationSession extends PlatformWebAuthenticationSession
     );
 
     this.initialSettings =
-        initialSettings ?? WebAuthenticationSessionSettings();
+        initialSettings ?? CygnusWebAuthenticationSessionSettings();
     channel = MethodChannel(
       'com.pichillilorenzo/flutter_webauthenticationsession_$id',
     );
@@ -113,7 +113,7 @@ class IOSWebAuthenticationSession extends PlatformWebAuthenticationSession
     debugLog(
       className: this.runtimeType.toString(),
       debugLoggingSettings:
-          PlatformWebAuthenticationSession.debugLoggingSettings,
+          CygnusPlatformWebAuthenticationSession.debugLoggingSettings,
       id: id,
       method: method,
       args: args,
@@ -126,8 +126,8 @@ class IOSWebAuthenticationSession extends PlatformWebAuthenticationSession
     switch (call.method) {
       case "onComplete":
         String? url = call.arguments["url"];
-        WebUri? uri = url != null ? WebUri(url) : null;
-        var error = WebAuthenticationSessionError.fromNativeValue(
+        CygnusWebUri? uri = url != null ? CygnusWebUri(url) : null;
+        var error = CygnusWebAuthenticationSessionError.fromNativeValue(
           call.arguments["errorCode"],
         );
         if (onComplete != null) {

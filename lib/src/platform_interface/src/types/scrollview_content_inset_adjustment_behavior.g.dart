@@ -7,51 +7,53 @@ part of 'scrollview_content_inset_adjustment_behavior.dart';
 // **************************************************************************
 
 ///Class used to configure how safe area insets are added to the adjusted content inset.
-class ScrollViewContentInsetAdjustmentBehavior {
+class CygnusScrollViewContentInsetAdjustmentBehavior {
   final int _value;
   final int? _nativeValue;
-  const ScrollViewContentInsetAdjustmentBehavior._internal(
+  const CygnusScrollViewContentInsetAdjustmentBehavior._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory ScrollViewContentInsetAdjustmentBehavior._internalMultiPlatform(
+  factory CygnusScrollViewContentInsetAdjustmentBehavior._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => ScrollViewContentInsetAdjustmentBehavior._internal(value, nativeValue());
+  ) => CygnusScrollViewContentInsetAdjustmentBehavior._internal(
+    value,
+    nativeValue(),
+  );
 
   ///Always include the safe area insets in the content adjustment.
-  static const ALWAYS = ScrollViewContentInsetAdjustmentBehavior._internal(
-    3,
-    3,
-  );
+  static const ALWAYS =
+      CygnusScrollViewContentInsetAdjustmentBehavior._internal(3, 3);
 
   ///Automatically adjust the scroll view insets.
-  static const AUTOMATIC = ScrollViewContentInsetAdjustmentBehavior._internal(
-    0,
-    0,
-  );
+  static const AUTOMATIC =
+      CygnusScrollViewContentInsetAdjustmentBehavior._internal(0, 0);
 
   ///Do not adjust the scroll view insets.
-  static const NEVER = ScrollViewContentInsetAdjustmentBehavior._internal(2, 2);
+  static const NEVER = CygnusScrollViewContentInsetAdjustmentBehavior._internal(
+    2,
+    2,
+  );
 
   ///Adjust the insets only in the scrollable directions.
   static const SCROLLABLE_AXES =
-      ScrollViewContentInsetAdjustmentBehavior._internal(1, 1);
+      CygnusScrollViewContentInsetAdjustmentBehavior._internal(1, 1);
 
-  ///Set of all values of [ScrollViewContentInsetAdjustmentBehavior].
-  static final Set<ScrollViewContentInsetAdjustmentBehavior> values = [
-    ScrollViewContentInsetAdjustmentBehavior.ALWAYS,
-    ScrollViewContentInsetAdjustmentBehavior.AUTOMATIC,
-    ScrollViewContentInsetAdjustmentBehavior.NEVER,
-    ScrollViewContentInsetAdjustmentBehavior.SCROLLABLE_AXES,
+  ///Set of all values of [CygnusScrollViewContentInsetAdjustmentBehavior].
+  static final Set<CygnusScrollViewContentInsetAdjustmentBehavior> values = [
+    CygnusScrollViewContentInsetAdjustmentBehavior.ALWAYS,
+    CygnusScrollViewContentInsetAdjustmentBehavior.AUTOMATIC,
+    CygnusScrollViewContentInsetAdjustmentBehavior.NEVER,
+    CygnusScrollViewContentInsetAdjustmentBehavior.SCROLLABLE_AXES,
   ].toSet();
 
-  ///Gets a possible [ScrollViewContentInsetAdjustmentBehavior] instance from [int] value.
-  static ScrollViewContentInsetAdjustmentBehavior? fromValue(int? value) {
+  ///Gets a possible [CygnusScrollViewContentInsetAdjustmentBehavior] instance from [int] value.
+  static CygnusScrollViewContentInsetAdjustmentBehavior? fromValue(int? value) {
     if (value != null) {
       try {
-        return ScrollViewContentInsetAdjustmentBehavior.values.firstWhere(
+        return CygnusScrollViewContentInsetAdjustmentBehavior.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -61,11 +63,13 @@ class ScrollViewContentInsetAdjustmentBehavior {
     return null;
   }
 
-  ///Gets a possible [ScrollViewContentInsetAdjustmentBehavior] instance from a native value.
-  static ScrollViewContentInsetAdjustmentBehavior? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusScrollViewContentInsetAdjustmentBehavior] instance from a native value.
+  static CygnusScrollViewContentInsetAdjustmentBehavior? fromNativeValue(
+    int? value,
+  ) {
     if (value != null) {
       try {
-        return ScrollViewContentInsetAdjustmentBehavior.values.firstWhere(
+        return CygnusScrollViewContentInsetAdjustmentBehavior.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -75,15 +79,15 @@ class ScrollViewContentInsetAdjustmentBehavior {
     return null;
   }
 
-  /// Gets a possible [ScrollViewContentInsetAdjustmentBehavior] instance value with name [name].
+  /// Gets a possible [CygnusScrollViewContentInsetAdjustmentBehavior] instance value with name [name].
   ///
-  /// Goes through [ScrollViewContentInsetAdjustmentBehavior.values] looking for a value with
-  /// name [name], as reported by [ScrollViewContentInsetAdjustmentBehavior.name].
+  /// Goes through [CygnusScrollViewContentInsetAdjustmentBehavior.values] looking for a value with
+  /// name [name], as reported by [CygnusScrollViewContentInsetAdjustmentBehavior.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ScrollViewContentInsetAdjustmentBehavior? byName(String? name) {
+  static CygnusScrollViewContentInsetAdjustmentBehavior? byName(String? name) {
     if (name != null) {
       try {
-        return ScrollViewContentInsetAdjustmentBehavior.values.firstWhere(
+        return CygnusScrollViewContentInsetAdjustmentBehavior.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -93,7 +97,7 @@ class ScrollViewContentInsetAdjustmentBehavior {
     return null;
   }
 
-  /// Creates a map from the names of [ScrollViewContentInsetAdjustmentBehavior] values to the values.
+  /// Creates a map from the names of [CygnusScrollViewContentInsetAdjustmentBehavior] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -101,11 +105,11 @@ class ScrollViewContentInsetAdjustmentBehavior {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ScrollViewContentInsetAdjustmentBehavior> asNameMap() =>
-      <String, ScrollViewContentInsetAdjustmentBehavior>{
-        for (final value in ScrollViewContentInsetAdjustmentBehavior.values)
-          value.name(): value,
-      };
+  static Map<String, CygnusScrollViewContentInsetAdjustmentBehavior>
+  asNameMap() => <String, CygnusScrollViewContentInsetAdjustmentBehavior>{
+    for (final value in CygnusScrollViewContentInsetAdjustmentBehavior.values)
+      value.name(): value,
+  };
 
   ///Gets [int] value.
   int toValue() => _value;
@@ -149,75 +153,57 @@ class ScrollViewContentInsetAdjustmentBehavior {
 ///
 ///**NOTE**: available on iOS 11.0+.
 ///
-///Use [ScrollViewContentInsetAdjustmentBehavior] instead.
-@Deprecated('Use ScrollViewContentInsetAdjustmentBehavior instead')
-class IOSUIScrollViewContentInsetAdjustmentBehavior {
+///Use [CygnusScrollViewContentInsetAdjustmentBehavior] instead.
+@Deprecated('Use CygnusScrollViewContentInsetAdjustmentBehavior instead')
+class CygnusIOSUIScrollViewContentInsetAdjustmentBehavior {
   final int _value;
   final int? _nativeValue;
-  const IOSUIScrollViewContentInsetAdjustmentBehavior._internal(
+  const CygnusIOSUIScrollViewContentInsetAdjustmentBehavior._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory IOSUIScrollViewContentInsetAdjustmentBehavior._internalMultiPlatform(
+  factory CygnusIOSUIScrollViewContentInsetAdjustmentBehavior._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => IOSUIScrollViewContentInsetAdjustmentBehavior._internal(
+  ) => CygnusIOSUIScrollViewContentInsetAdjustmentBehavior._internal(
     value,
     nativeValue(),
   );
 
   ///Always include the safe area insets in the content adjustment.
-  static const ALWAYS = IOSUIScrollViewContentInsetAdjustmentBehavior._internal(
-    3,
-    3,
-  );
+  static const ALWAYS =
+      CygnusIOSUIScrollViewContentInsetAdjustmentBehavior._internal(3, 3);
 
   ///Automatically adjust the scroll view insets.
   static const AUTOMATIC =
-      IOSUIScrollViewContentInsetAdjustmentBehavior._internal(0, 0);
+      CygnusIOSUIScrollViewContentInsetAdjustmentBehavior._internal(0, 0);
 
   ///Do not adjust the scroll view insets.
-  static const NEVER = IOSUIScrollViewContentInsetAdjustmentBehavior._internal(
-    2,
-    2,
-  );
+  static const NEVER =
+      CygnusIOSUIScrollViewContentInsetAdjustmentBehavior._internal(2, 2);
 
   ///Adjust the insets only in the scrollable directions.
   static const SCROLLABLE_AXES =
-      IOSUIScrollViewContentInsetAdjustmentBehavior._internal(1, 1);
+      CygnusIOSUIScrollViewContentInsetAdjustmentBehavior._internal(1, 1);
 
-  ///Set of all values of [IOSUIScrollViewContentInsetAdjustmentBehavior].
-  static final Set<IOSUIScrollViewContentInsetAdjustmentBehavior> values = [
-    IOSUIScrollViewContentInsetAdjustmentBehavior.ALWAYS,
-    IOSUIScrollViewContentInsetAdjustmentBehavior.AUTOMATIC,
-    IOSUIScrollViewContentInsetAdjustmentBehavior.NEVER,
-    IOSUIScrollViewContentInsetAdjustmentBehavior.SCROLLABLE_AXES,
-  ].toSet();
+  ///Set of all values of [CygnusIOSUIScrollViewContentInsetAdjustmentBehavior].
+  static final Set<CygnusIOSUIScrollViewContentInsetAdjustmentBehavior> values =
+      [
+        CygnusIOSUIScrollViewContentInsetAdjustmentBehavior.ALWAYS,
+        CygnusIOSUIScrollViewContentInsetAdjustmentBehavior.AUTOMATIC,
+        CygnusIOSUIScrollViewContentInsetAdjustmentBehavior.NEVER,
+        CygnusIOSUIScrollViewContentInsetAdjustmentBehavior.SCROLLABLE_AXES,
+      ].toSet();
 
-  ///Gets a possible [IOSUIScrollViewContentInsetAdjustmentBehavior] instance from [int] value.
-  static IOSUIScrollViewContentInsetAdjustmentBehavior? fromValue(int? value) {
-    if (value != null) {
-      try {
-        return IOSUIScrollViewContentInsetAdjustmentBehavior.values.firstWhere(
-          (element) => element.toValue() == value,
-        );
-      } catch (e) {
-        return null;
-      }
-    }
-    return null;
-  }
-
-  ///Gets a possible [IOSUIScrollViewContentInsetAdjustmentBehavior] instance from a native value.
-  static IOSUIScrollViewContentInsetAdjustmentBehavior? fromNativeValue(
+  ///Gets a possible [CygnusIOSUIScrollViewContentInsetAdjustmentBehavior] instance from [int] value.
+  static CygnusIOSUIScrollViewContentInsetAdjustmentBehavior? fromValue(
     int? value,
   ) {
     if (value != null) {
       try {
-        return IOSUIScrollViewContentInsetAdjustmentBehavior.values.firstWhere(
-          (element) => element.toNativeValue() == value,
-        );
+        return CygnusIOSUIScrollViewContentInsetAdjustmentBehavior.values
+            .firstWhere((element) => element.toValue() == value);
       } catch (e) {
         return null;
       }
@@ -225,17 +211,33 @@ class IOSUIScrollViewContentInsetAdjustmentBehavior {
     return null;
   }
 
-  /// Gets a possible [IOSUIScrollViewContentInsetAdjustmentBehavior] instance value with name [name].
+  ///Gets a possible [CygnusIOSUIScrollViewContentInsetAdjustmentBehavior] instance from a native value.
+  static CygnusIOSUIScrollViewContentInsetAdjustmentBehavior? fromNativeValue(
+    int? value,
+  ) {
+    if (value != null) {
+      try {
+        return CygnusIOSUIScrollViewContentInsetAdjustmentBehavior.values
+            .firstWhere((element) => element.toNativeValue() == value);
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
+  /// Gets a possible [CygnusIOSUIScrollViewContentInsetAdjustmentBehavior] instance value with name [name].
   ///
-  /// Goes through [IOSUIScrollViewContentInsetAdjustmentBehavior.values] looking for a value with
-  /// name [name], as reported by [IOSUIScrollViewContentInsetAdjustmentBehavior.name].
+  /// Goes through [CygnusIOSUIScrollViewContentInsetAdjustmentBehavior.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSUIScrollViewContentInsetAdjustmentBehavior.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSUIScrollViewContentInsetAdjustmentBehavior? byName(String? name) {
+  static CygnusIOSUIScrollViewContentInsetAdjustmentBehavior? byName(
+    String? name,
+  ) {
     if (name != null) {
       try {
-        return IOSUIScrollViewContentInsetAdjustmentBehavior.values.firstWhere(
-          (element) => element.name() == name,
-        );
+        return CygnusIOSUIScrollViewContentInsetAdjustmentBehavior.values
+            .firstWhere((element) => element.name() == name);
       } catch (e) {
         return null;
       }
@@ -243,7 +245,7 @@ class IOSUIScrollViewContentInsetAdjustmentBehavior {
     return null;
   }
 
-  /// Creates a map from the names of [IOSUIScrollViewContentInsetAdjustmentBehavior] values to the values.
+  /// Creates a map from the names of [CygnusIOSUIScrollViewContentInsetAdjustmentBehavior] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -251,9 +253,10 @@ class IOSUIScrollViewContentInsetAdjustmentBehavior {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSUIScrollViewContentInsetAdjustmentBehavior>
-  asNameMap() => <String, IOSUIScrollViewContentInsetAdjustmentBehavior>{
-    for (final value in IOSUIScrollViewContentInsetAdjustmentBehavior.values)
+  static Map<String, CygnusIOSUIScrollViewContentInsetAdjustmentBehavior>
+  asNameMap() => <String, CygnusIOSUIScrollViewContentInsetAdjustmentBehavior>{
+    for (final value
+        in CygnusIOSUIScrollViewContentInsetAdjustmentBehavior.values)
       value.name(): value,
   };
 

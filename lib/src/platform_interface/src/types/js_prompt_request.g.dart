@@ -6,8 +6,8 @@ part of 'js_prompt_request.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the request of the [PlatformWebViewCreationParams.onJsPrompt] event.
-class JsPromptRequest {
+///Class that represents the request of the [CygnusPlatformWebViewCreationParams.onJsPrompt] event.
+class CygnusJsPromptRequest {
   ///The default value displayed in the prompt dialog.
   String? defaultValue;
 
@@ -26,8 +26,8 @@ class JsPromptRequest {
   String? message;
 
   ///The url of the page requesting the dialog.
-  WebUri? url;
-  JsPromptRequest({
+  CygnusWebUri? url;
+  CygnusJsPromptRequest({
     this.defaultValue,
     @Deprecated('Use isMainFrame instead') this.iosIsMainFrame,
     this.isMainFrame,
@@ -37,26 +37,26 @@ class JsPromptRequest {
     isMainFrame = isMainFrame ?? iosIsMainFrame;
   }
 
-  ///Gets a possible [JsPromptRequest] instance from a [Map] value.
-  static JsPromptRequest? fromMap(
+  ///Gets a possible [CygnusJsPromptRequest] instance from a [Map] value.
+  static CygnusJsPromptRequest? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = JsPromptRequest(
+    final instance = CygnusJsPromptRequest(
       defaultValue: map['defaultValue'],
       iosIsMainFrame: map['isMainFrame'],
       isMainFrame: map['isMainFrame'],
       message: map['message'],
-      url: map['url'] != null ? WebUri(map['url']) : null,
+      url: map['url'] != null ? CygnusWebUri(map['url']) : null,
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "defaultValue": defaultValue,
       "isMainFrame": isMainFrame,
@@ -72,6 +72,6 @@ class JsPromptRequest {
 
   @override
   String toString() {
-    return 'JsPromptRequest{defaultValue: $defaultValue, isMainFrame: $isMainFrame, message: $message, url: $url}';
+    return 'CygnusJsPromptRequest{defaultValue: $defaultValue, isMainFrame: $isMainFrame, message: $message, url: $url}';
   }
 }

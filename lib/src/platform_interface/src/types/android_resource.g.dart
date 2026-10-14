@@ -7,7 +7,7 @@ part of 'android_resource.dart';
 // **************************************************************************
 
 ///Class that represents an Android resource file.
-class AndroidResource {
+class CygnusAndroidResource {
   ///Optional default package to find, if "package:" is not included in the name.
   ///Can be `null` to require an explicit package.
   ///
@@ -33,17 +33,17 @@ class AndroidResource {
   ///(abc_*.xml files).
   ///In this case, [defPackage] must match your App Android package name.
   String name;
-  AndroidResource({this.defPackage, this.defType, required this.name});
+  CygnusAndroidResource({this.defPackage, this.defType, required this.name});
 
-  ///Gets a possible [AndroidResource] instance from a [Map] value.
-  static AndroidResource? fromMap(
+  ///Gets a possible [CygnusAndroidResource] instance from a [Map] value.
+  static CygnusAndroidResource? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = AndroidResource(
+    final instance = CygnusAndroidResource(
       defPackage: map['defPackage'],
       defType: map['defType'],
       name: map['name'],
@@ -51,24 +51,41 @@ class AndroidResource {
     return instance;
   }
 
-  static AndroidResource anim({required String name, String? defPackage}) {
-    return AndroidResource(name: name, defType: "anim", defPackage: defPackage);
+  static CygnusAndroidResource anim({
+    required String name,
+    String? defPackage,
+  }) {
+    return CygnusAndroidResource(
+      name: name,
+      defType: "anim",
+      defPackage: defPackage,
+    );
   }
 
-  static AndroidResource layout({required String name, String? defPackage}) {
-    return AndroidResource(
+  static CygnusAndroidResource layout({
+    required String name,
+    String? defPackage,
+  }) {
+    return CygnusAndroidResource(
       name: name,
       defType: "layout",
       defPackage: defPackage,
     );
   }
 
-  static AndroidResource id({required String name, String? defPackage}) {
-    return AndroidResource(name: name, defType: "id", defPackage: defPackage);
+  static CygnusAndroidResource id({required String name, String? defPackage}) {
+    return CygnusAndroidResource(
+      name: name,
+      defType: "id",
+      defPackage: defPackage,
+    );
   }
 
-  static AndroidResource drawable({required String name, String? defPackage}) {
-    return AndroidResource(
+  static CygnusAndroidResource drawable({
+    required String name,
+    String? defPackage,
+  }) {
+    return CygnusAndroidResource(
       name: name,
       defType: "drawable",
       defPackage: defPackage,
@@ -76,7 +93,7 @@ class AndroidResource {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"defPackage": defPackage, "defType": defType, "name": name};
   }
 
@@ -87,6 +104,6 @@ class AndroidResource {
 
   @override
   String toString() {
-    return 'AndroidResource{defPackage: $defPackage, defType: $defType, name: $name}';
+    return 'CygnusAndroidResource{defPackage: $defPackage, defType: $defType, name: $name}';
   }
 }

@@ -1,37 +1,37 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [MacOSHttpAuthCredentialDatabase].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformHttpAuthCredentialDatabaseCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformHttpAuthCredentialDatabaseCreationParams] for
 /// more information.
 @immutable
 class MacOSHttpAuthCredentialDatabaseCreationParams
-    extends PlatformHttpAuthCredentialDatabaseCreationParams {
+    extends CygnusPlatformHttpAuthCredentialDatabaseCreationParams {
   /// Creates a new [MacOSHttpAuthCredentialDatabaseCreationParams] instance.
   const MacOSHttpAuthCredentialDatabaseCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformHttpAuthCredentialDatabaseCreationParams params,
+    CygnusPlatformHttpAuthCredentialDatabaseCreationParams params,
   ) : super();
 
-  /// Creates a [MacOSHttpAuthCredentialDatabaseCreationParams] instance based on [PlatformHttpAuthCredentialDatabaseCreationParams].
+  /// Creates a [MacOSHttpAuthCredentialDatabaseCreationParams] instance based on [CygnusPlatformHttpAuthCredentialDatabaseCreationParams].
   factory MacOSHttpAuthCredentialDatabaseCreationParams.fromPlatformHttpAuthCredentialDatabaseCreationParams(
-    PlatformHttpAuthCredentialDatabaseCreationParams params,
+    CygnusPlatformHttpAuthCredentialDatabaseCreationParams params,
   ) {
     return MacOSHttpAuthCredentialDatabaseCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformHttpAuthCredentialDatabase}
-class MacOSHttpAuthCredentialDatabase extends PlatformHttpAuthCredentialDatabase
+///{@macro cygnus_core.CygnusPlatformHttpAuthCredentialDatabase}
+class MacOSHttpAuthCredentialDatabase extends CygnusPlatformHttpAuthCredentialDatabase
     with ChannelController {
   /// Creates a new [MacOSHttpAuthCredentialDatabase].
   MacOSHttpAuthCredentialDatabase(
-    PlatformHttpAuthCredentialDatabaseCreationParams params,
+    CygnusPlatformHttpAuthCredentialDatabaseCreationParams params,
   ) : super.implementation(
         params is MacOSHttpAuthCredentialDatabaseCreationParams
             ? params
@@ -56,7 +56,7 @@ class MacOSHttpAuthCredentialDatabase extends PlatformHttpAuthCredentialDatabase
   static MacOSHttpAuthCredentialDatabase _init() {
     _instance = MacOSHttpAuthCredentialDatabase(
       MacOSHttpAuthCredentialDatabaseCreationParams(
-        const PlatformHttpAuthCredentialDatabaseCreationParams(),
+        const CygnusPlatformHttpAuthCredentialDatabaseCreationParams(),
       ),
     );
     return _instance!;
@@ -65,7 +65,7 @@ class MacOSHttpAuthCredentialDatabase extends PlatformHttpAuthCredentialDatabase
   static final MacOSHttpAuthCredentialDatabase _staticValue =
       MacOSHttpAuthCredentialDatabase(
         MacOSHttpAuthCredentialDatabaseCreationParams(
-          const PlatformHttpAuthCredentialDatabaseCreationParams(),
+          const CygnusPlatformHttpAuthCredentialDatabaseCreationParams(),
         ),
       );
 
@@ -76,16 +76,16 @@ class MacOSHttpAuthCredentialDatabase extends PlatformHttpAuthCredentialDatabase
   Future<dynamic> _handleMethod(MethodCall call) async {}
 
   @override
-  Future<List<URLProtectionSpaceHttpAuthCredentials>>
+  Future<List<CygnusURLProtectionSpaceHttpAuthCredentials>>
   getAllAuthCredentials() async {
     Map<String, dynamic> args = <String, dynamic>{};
     List<dynamic> allCredentials =
         await channel?.invokeMethod<List>('getAllAuthCredentials', args) ?? [];
 
-    List<URLProtectionSpaceHttpAuthCredentials> result = [];
+    List<CygnusURLProtectionSpaceHttpAuthCredentials> result = [];
 
     for (Map<dynamic, dynamic> map in allCredentials) {
-      var element = URLProtectionSpaceHttpAuthCredentials.fromMap(
+      var element = CygnusURLProtectionSpaceHttpAuthCredentials.fromMap(
         map.cast<String, dynamic>(),
       );
       if (element != null) {
@@ -96,8 +96,8 @@ class MacOSHttpAuthCredentialDatabase extends PlatformHttpAuthCredentialDatabase
   }
 
   @override
-  Future<List<URLCredential>> getHttpAuthCredentials({
-    required URLProtectionSpace protectionSpace,
+  Future<List<CygnusURLCredential>> getHttpAuthCredentials({
+    required CygnusURLProtectionSpace protectionSpace,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("host", () => protectionSpace.host);
@@ -106,9 +106,9 @@ class MacOSHttpAuthCredentialDatabase extends PlatformHttpAuthCredentialDatabase
     args.putIfAbsent("port", () => protectionSpace.port);
     List<dynamic> credentialList =
         await channel?.invokeMethod<List>('getHttpAuthCredentials', args) ?? [];
-    List<URLCredential> credentials = [];
+    List<CygnusURLCredential> credentials = [];
     for (Map<dynamic, dynamic> map in credentialList) {
-      var credential = URLCredential.fromMap(map.cast<String, dynamic>());
+      var credential = CygnusURLCredential.fromMap(map.cast<String, dynamic>());
       if (credential != null) {
         credentials.add(credential);
       }
@@ -118,8 +118,8 @@ class MacOSHttpAuthCredentialDatabase extends PlatformHttpAuthCredentialDatabase
 
   @override
   Future<void> setHttpAuthCredential({
-    required URLProtectionSpace protectionSpace,
-    required URLCredential credential,
+    required CygnusURLProtectionSpace protectionSpace,
+    required CygnusURLCredential credential,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("host", () => protectionSpace.host);
@@ -133,8 +133,8 @@ class MacOSHttpAuthCredentialDatabase extends PlatformHttpAuthCredentialDatabase
 
   @override
   Future<void> removeHttpAuthCredential({
-    required URLProtectionSpace protectionSpace,
-    required URLCredential credential,
+    required CygnusURLProtectionSpace protectionSpace,
+    required CygnusURLCredential credential,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("host", () => protectionSpace.host);
@@ -148,7 +148,7 @@ class MacOSHttpAuthCredentialDatabase extends PlatformHttpAuthCredentialDatabase
 
   @override
   Future<void> removeHttpAuthCredentials({
-    required URLProtectionSpace protectionSpace,
+    required CygnusURLProtectionSpace protectionSpace,
   }) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("host", () => protectionSpace.host);

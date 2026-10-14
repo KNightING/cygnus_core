@@ -6,14 +6,14 @@ part of 'ajax_request_event.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class used by [AjaxRequest] class. It represents events measuring progress of an [AjaxRequest].
-class AjaxRequestEvent {
+///Class used by [CygnusAjaxRequest] class. It represents events measuring progress of an [CygnusAjaxRequest].
+class CygnusAjaxRequestEvent {
   ///Is a Boolean flag indicating if the total work to be done, and the amount of work already done, by the underlying process is calculable.
   ///In other words, it tells if the progress is measurable or not.
   bool? lengthComputable;
 
   ///Is an integer representing the amount of work already performed by the underlying process.
-  ///The ratio of work done can be calculated with the property and [AjaxRequestEvent.total].
+  ///The ratio of work done can be calculated with the property and [CygnusAjaxRequestEvent.total].
   ///When downloading a resource using HTTP, this only represent the part of the content itself, not headers and other overhead.
   int? loaded;
 
@@ -22,42 +22,48 @@ class AjaxRequestEvent {
   int? total;
 
   ///Event type.
-  AjaxRequestEventType? type;
-  AjaxRequestEvent({this.lengthComputable, this.loaded, this.total, this.type});
+  CygnusAjaxRequestEventType? type;
+  CygnusAjaxRequestEvent({
+    this.lengthComputable,
+    this.loaded,
+    this.total,
+    this.type,
+  });
 
-  ///Gets a possible [AjaxRequestEvent] instance from a [Map] value.
-  static AjaxRequestEvent? fromMap(
+  ///Gets a possible [CygnusAjaxRequestEvent] instance from a [Map] value.
+  static CygnusAjaxRequestEvent? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = AjaxRequestEvent(
+    final instance = CygnusAjaxRequestEvent(
       lengthComputable: map['lengthComputable'],
       loaded: map['loaded'],
       total: map['total'],
-      type: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => AjaxRequestEventType.fromNativeValue(
+      type: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusAjaxRequestEventType.fromNativeValue(map['type']),
+        CygnusEnumMethod.value => CygnusAjaxRequestEventType.fromValue(
           map['type'],
         ),
-        EnumMethod.value => AjaxRequestEventType.fromValue(map['type']),
-        EnumMethod.name => AjaxRequestEventType.byName(map['type']),
+        CygnusEnumMethod.name => CygnusAjaxRequestEventType.byName(map['type']),
       },
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "lengthComputable": lengthComputable,
       "loaded": loaded,
       "total": total,
-      "type": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => type?.toNativeValue(),
-        EnumMethod.value => type?.toValue(),
-        EnumMethod.name => type?.name(),
+      "type": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => type?.toNativeValue(),
+        CygnusEnumMethod.value => type?.toValue(),
+        CygnusEnumMethod.name => type?.name(),
       },
     };
   }
@@ -69,6 +75,6 @@ class AjaxRequestEvent {
 
   @override
   String toString() {
-    return 'AjaxRequestEvent{lengthComputable: $lengthComputable, loaded: $loaded, total: $total, type: $type}';
+    return 'CygnusAjaxRequestEvent{lengthComputable: $lengthComputable, loaded: $loaded, total: $total, type: $type}';
   }
 }

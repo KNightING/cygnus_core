@@ -143,7 +143,7 @@ void main() {
       await tester.pumpWidget(createWidget());
       await tester.pump();
 
-      // Note: This test assumes InAppWebView would show a progress indicator
+      // Note: This test assumes CygnusWebView would show a progress indicator
       // The actual implementation would need to track loading state
     });
 

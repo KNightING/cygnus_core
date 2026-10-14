@@ -7,45 +7,45 @@ part of 'save_as_ui_result.dart';
 // **************************************************************************
 
 ///Constants that describe the result of a programmatic Save As call.
-class SaveAsUIResult {
+class CygnusSaveAsUIResult {
   final int _value;
   final int? _nativeValue;
-  const SaveAsUIResult._internal(this._value, this._nativeValue);
+  const CygnusSaveAsUIResult._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory SaveAsUIResult._internalMultiPlatform(
+  factory CygnusSaveAsUIResult._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => SaveAsUIResult._internal(value, nativeValue());
+  ) => CygnusSaveAsUIResult._internal(value, nativeValue());
 
   ///The user cancelled the Save As operation.
-  static const CANCELLED = SaveAsUIResult._internal(4, 4);
+  static const CANCELLED = CygnusSaveAsUIResult._internal(4, 4);
 
   ///The destination file path already exists.
-  static const FILE_ALREADY_EXISTS = SaveAsUIResult._internal(2, 2);
+  static const FILE_ALREADY_EXISTS = CygnusSaveAsUIResult._internal(2, 2);
 
   ///The destination file path is invalid.
-  static const INVALID_PATH = SaveAsUIResult._internal(1, 1);
+  static const INVALID_PATH = CygnusSaveAsUIResult._internal(1, 1);
 
   ///The selected Save As kind is not supported.
-  static const KIND_NOT_SUPPORTED = SaveAsUIResult._internal(3, 3);
+  static const KIND_NOT_SUPPORTED = CygnusSaveAsUIResult._internal(3, 3);
 
   ///The Save As operation completed successfully.
-  static const SUCCESS = SaveAsUIResult._internal(0, 0);
+  static const SUCCESS = CygnusSaveAsUIResult._internal(0, 0);
 
-  ///Set of all values of [SaveAsUIResult].
-  static final Set<SaveAsUIResult> values = [
-    SaveAsUIResult.CANCELLED,
-    SaveAsUIResult.FILE_ALREADY_EXISTS,
-    SaveAsUIResult.INVALID_PATH,
-    SaveAsUIResult.KIND_NOT_SUPPORTED,
-    SaveAsUIResult.SUCCESS,
+  ///Set of all values of [CygnusSaveAsUIResult].
+  static final Set<CygnusSaveAsUIResult> values = [
+    CygnusSaveAsUIResult.CANCELLED,
+    CygnusSaveAsUIResult.FILE_ALREADY_EXISTS,
+    CygnusSaveAsUIResult.INVALID_PATH,
+    CygnusSaveAsUIResult.KIND_NOT_SUPPORTED,
+    CygnusSaveAsUIResult.SUCCESS,
   ].toSet();
 
-  ///Gets a possible [SaveAsUIResult] instance from [int] value.
-  static SaveAsUIResult? fromValue(int? value) {
+  ///Gets a possible [CygnusSaveAsUIResult] instance from [int] value.
+  static CygnusSaveAsUIResult? fromValue(int? value) {
     if (value != null) {
       try {
-        return SaveAsUIResult.values.firstWhere(
+        return CygnusSaveAsUIResult.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -55,11 +55,11 @@ class SaveAsUIResult {
     return null;
   }
 
-  ///Gets a possible [SaveAsUIResult] instance from a native value.
-  static SaveAsUIResult? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusSaveAsUIResult] instance from a native value.
+  static CygnusSaveAsUIResult? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return SaveAsUIResult.values.firstWhere(
+        return CygnusSaveAsUIResult.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -69,15 +69,15 @@ class SaveAsUIResult {
     return null;
   }
 
-  /// Gets a possible [SaveAsUIResult] instance value with name [name].
+  /// Gets a possible [CygnusSaveAsUIResult] instance value with name [name].
   ///
-  /// Goes through [SaveAsUIResult.values] looking for a value with
-  /// name [name], as reported by [SaveAsUIResult.name].
+  /// Goes through [CygnusSaveAsUIResult.values] looking for a value with
+  /// name [name], as reported by [CygnusSaveAsUIResult.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static SaveAsUIResult? byName(String? name) {
+  static CygnusSaveAsUIResult? byName(String? name) {
     if (name != null) {
       try {
-        return SaveAsUIResult.values.firstWhere(
+        return CygnusSaveAsUIResult.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -87,7 +87,7 @@ class SaveAsUIResult {
     return null;
   }
 
-  /// Creates a map from the names of [SaveAsUIResult] values to the values.
+  /// Creates a map from the names of [CygnusSaveAsUIResult] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -95,9 +95,10 @@ class SaveAsUIResult {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, SaveAsUIResult> asNameMap() => <String, SaveAsUIResult>{
-    for (final value in SaveAsUIResult.values) value.name(): value,
-  };
+  static Map<String, CygnusSaveAsUIResult> asNameMap() =>
+      <String, CygnusSaveAsUIResult>{
+        for (final value in CygnusSaveAsUIResult.values) value.name(): value,
+      };
 
   ///Gets [int] value.
   int toValue() => _value;

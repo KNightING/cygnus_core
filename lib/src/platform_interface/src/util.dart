@@ -563,7 +563,7 @@ extension MapEdgeInsets on EdgeInsets {
 }
 
 void debugLog({
-  required DebugLoggingSettings debugLoggingSettings,
+  required CygnusDebugLoggingSettings debugLoggingSettings,
   required String className,
   required String method,
   String? name,
@@ -599,7 +599,7 @@ class Color_ extends Color {
   Color_(int value) : super(value);
 }
 
-abstract mixin class ChannelController implements Disposable {
+abstract mixin class ChannelController implements CygnusDisposable {
   MethodChannel? _channel;
   Future<dynamic> Function(MethodCall call)? _handler;
 

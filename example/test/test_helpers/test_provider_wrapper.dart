@@ -8,7 +8,7 @@ import 'package:flutter_inappwebview_example/providers/settings_manager.dart';
 import 'mock_inappwebview_platform.dart';
 
 /// Creates a mock SettingsManager for testing.
-/// This bypasses the SharedPreferences and WebViewEnvironment dependencies.
+/// This bypasses the SharedPreferences and CygnusWebViewEnvironment dependencies.
 class MockSettingsManager extends SettingsManager {
   MockSettingsManager()
     : super(
@@ -17,13 +17,13 @@ class MockSettingsManager extends SettingsManager {
       );
 
   @override
-  WebViewEnvironmentSettings buildEnvironmentSettings() =>
-      WebViewEnvironmentSettings(
-        releaseChannels: EnvironmentReleaseChannels.STABLE,
+  CygnusWebViewEnvironmentSettings buildEnvironmentSettings() =>
+      CygnusWebViewEnvironmentSettings(
+        releaseChannels: CygnusEnvironmentReleaseChannels.STABLE,
       );
 
   @override
-  InAppWebViewSettings buildSettings() => InAppWebViewSettings();
+  CygnusWebViewSettings buildSettings() => CygnusWebViewSettings();
 }
 
 /// A wrapper widget that provides all common providers needed for testing.
@@ -60,7 +60,7 @@ class TestProviderWrapper extends StatelessWidget {
   }
 }
 
-/// Helper to set up tests that require the InAppWebViewPlatform mock.
+/// Helper to set up tests that require the CygnusWebViewPlatform mock.
 void setUpMockPlatform() {
   MockInAppWebViewPlatform.initialize();
 }

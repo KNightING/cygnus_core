@@ -6,18 +6,18 @@ import 'enum_method.dart';
 
 part 'ajax_request_event.g.dart';
 
-///Class used by [AjaxRequest] class. It represents events measuring progress of an [AjaxRequest].
+///Class used by [CygnusAjaxRequest] class. It represents events measuring progress of an [CygnusAjaxRequest].
 @ExchangeableObject()
-class AjaxRequestEvent_ {
+class CygnusAjaxRequestEvent_ {
   ///Event type.
-  AjaxRequestEventType_? type;
+  CygnusAjaxRequestEventType_? type;
 
   ///Is a Boolean flag indicating if the total work to be done, and the amount of work already done, by the underlying process is calculable.
   ///In other words, it tells if the progress is measurable or not.
   bool? lengthComputable;
 
   ///Is an integer representing the amount of work already performed by the underlying process.
-  ///The ratio of work done can be calculated with the property and [AjaxRequestEvent.total].
+  ///The ratio of work done can be calculated with the property and [CygnusAjaxRequestEvent.total].
   ///When downloading a resource using HTTP, this only represent the part of the content itself, not headers and other overhead.
   int? loaded;
 
@@ -25,7 +25,7 @@ class AjaxRequestEvent_ {
   ///When downloading a resource using HTTP, this only represent the content itself, not headers and other overhead.
   int? total;
 
-  AjaxRequestEvent_({
+  CygnusAjaxRequestEvent_({
     this.type,
     this.lengthComputable,
     this.loaded,

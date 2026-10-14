@@ -7,10 +7,10 @@ part of 'process_failed_detail.dart';
 // **************************************************************************
 
 ///An object that contains information about a frame on a webpage.
-class ProcessFailedDetail {
+class CygnusProcessFailedDetail {
   ///The exit code of the failing process, for telemetry purposes.
   ///
-  ///The exit code is always STILL_ACTIVE (259) when [ProcessFailedKind.RENDER_PROCESS_UNRESPONSIVE].
+  ///The exit code is always STILL_ACTIVE (259) when [CygnusProcessFailedKind.RENDER_PROCESS_UNRESPONSIVE].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
@@ -31,22 +31,22 @@ class ProcessFailedDetail {
   ///- Windows WebView2
   String? failureSourceModulePath;
 
-  ///The collection of [FrameInfo]s for frames in the WebView that were being rendered by the failed process.
+  ///The collection of [CygnusFrameInfo]s for frames in the WebView that were being rendered by the failed process.
   ///
   ///The content in these frames is replaced with an error page.
-  ///This is only available when [ProcessFailedKind] is [ProcessFailedKind.FRAME_RENDER_PROCESS_EXITED];
+  ///This is only available when [CygnusProcessFailedKind] is [CygnusProcessFailedKind.FRAME_RENDER_PROCESS_EXITED];
   ///frames is null for all other process failure kinds, including the case in which the failed process was the renderer
-  ///for the main frame and subframes within it, for which the failure kind is [ProcessFailedKind.RENDER_PROCESS_EXITED].
+  ///for the main frame and subframes within it, for which the failure kind is [CygnusProcessFailedKind.RENDER_PROCESS_EXITED].
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  List<FrameInfo>? frameInfos;
+  List<CygnusFrameInfo>? frameInfos;
 
   ///The kind of process failure that has occurred.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  ProcessFailedKind kind;
+  CygnusProcessFailedKind kind;
 
   ///Description of the process assigned by the WebView2 Runtime.
   ///
@@ -62,8 +62,8 @@ class ProcessFailedDetail {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  ProcessFailedReason? reason;
-  ProcessFailedDetail({
+  CygnusProcessFailedReason? reason;
+  CygnusProcessFailedDetail({
     this.exitCode,
     this.failureSourceModulePath,
     this.frameInfos,
@@ -72,64 +72,69 @@ class ProcessFailedDetail {
     this.reason,
   });
 
-  ///Gets a possible [ProcessFailedDetail] instance from a [Map] value.
-  static ProcessFailedDetail? fromMap(
+  ///Gets a possible [CygnusProcessFailedDetail] instance from a [Map] value.
+  static CygnusProcessFailedDetail? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ProcessFailedDetail(
+    final instance = CygnusProcessFailedDetail(
       exitCode: map['exitCode'],
       failureSourceModulePath: map['failureSourceModulePath'],
       frameInfos: map['frameInfos'] != null
-          ? List<FrameInfo>.from(
+          ? List<CygnusFrameInfo>.from(
               map['frameInfos'].map(
-                (e) => FrameInfo.fromMap(
+                (e) => CygnusFrameInfo.fromMap(
                   e?.cast<String, dynamic>(),
                   enumMethod: enumMethod,
                 )!,
               ),
             )
           : null,
-      kind: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => ProcessFailedKind.fromNativeValue(
+      kind: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusProcessFailedKind.fromNativeValue(
           map['kind'],
         ),
-        EnumMethod.value => ProcessFailedKind.fromValue(map['kind']),
-        EnumMethod.name => ProcessFailedKind.byName(map['kind']),
+        CygnusEnumMethod.value => CygnusProcessFailedKind.fromValue(
+          map['kind'],
+        ),
+        CygnusEnumMethod.name => CygnusProcessFailedKind.byName(map['kind']),
       }!,
       processDescription: map['processDescription'],
-      reason: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => ProcessFailedReason.fromNativeValue(
+      reason: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusProcessFailedReason.fromNativeValue(map['reason']),
+        CygnusEnumMethod.value => CygnusProcessFailedReason.fromValue(
           map['reason'],
         ),
-        EnumMethod.value => ProcessFailedReason.fromValue(map['reason']),
-        EnumMethod.name => ProcessFailedReason.byName(map['reason']),
+        CygnusEnumMethod.name => CygnusProcessFailedReason.byName(
+          map['reason'],
+        ),
       },
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "exitCode": exitCode,
       "failureSourceModulePath": failureSourceModulePath,
       "frameInfos": frameInfos
           ?.map((e) => e.toMap(enumMethod: enumMethod))
           .toList(),
-      "kind": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => kind.toNativeValue(),
-        EnumMethod.value => kind.toValue(),
-        EnumMethod.name => kind.name(),
+      "kind": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => kind.toNativeValue(),
+        CygnusEnumMethod.value => kind.toValue(),
+        CygnusEnumMethod.name => kind.name(),
       },
       "processDescription": processDescription,
-      "reason": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => reason?.toNativeValue(),
-        EnumMethod.value => reason?.toValue(),
-        EnumMethod.name => reason?.name(),
+      "reason": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => reason?.toNativeValue(),
+        CygnusEnumMethod.value => reason?.toValue(),
+        CygnusEnumMethod.name => reason?.name(),
       },
     };
   }
@@ -141,6 +146,6 @@ class ProcessFailedDetail {
 
   @override
   String toString() {
-    return 'ProcessFailedDetail{exitCode: $exitCode, failureSourceModulePath: $failureSourceModulePath, frameInfos: $frameInfos, kind: $kind, processDescription: $processDescription, reason: $reason}';
+    return 'CygnusProcessFailedDetail{exitCode: $exitCode, failureSourceModulePath: $failureSourceModulePath, frameInfos: $frameInfos, kind: $kind, processDescription: $processDescription, reason: $reason}';
   }
 }

@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void onContentSizeChanged() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onContentSizeChanged,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onContentSizeChanged,
   );
 
   skippableTestWidgets('onContentSizeChanged', (WidgetTester tester) async {
@@ -10,9 +10,9 @@ void onContentSizeChanged() {
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+          initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
           onContentSizeChanged: (controller, oldContentSize, newContentSize) {
             if (!onContentSizeChangedCompleter.isCompleted) {
               onContentSizeChangedCompleter.complete();

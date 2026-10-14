@@ -6,9 +6,9 @@ part of 'custom_scheme_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class representing the response returned by the [PlatformWebViewCreationParams.onLoadResourceWithCustomScheme] event.
+///Class representing the response returned by the [CygnusPlatformWebViewCreationParams.onLoadResourceWithCustomScheme] event.
 ///It allows to load a specific resource. The resource data must be encoded to `base64`.
-class CustomSchemeResponse {
+class CygnusCustomSchemeResponse {
   ///Content-Encoding of the data, such as `utf-8`.
   String contentEncoding;
 
@@ -17,21 +17,21 @@ class CustomSchemeResponse {
 
   ///Data enconded to 'base64'.
   Uint8List data;
-  CustomSchemeResponse({
+  CygnusCustomSchemeResponse({
     this.contentEncoding = 'utf-8',
     required this.contentType,
     required this.data,
   });
 
-  ///Gets a possible [CustomSchemeResponse] instance from a [Map] value.
-  static CustomSchemeResponse? fromMap(
+  ///Gets a possible [CygnusCustomSchemeResponse] instance from a [Map] value.
+  static CygnusCustomSchemeResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = CustomSchemeResponse(
+    final instance = CygnusCustomSchemeResponse(
       contentType: map['contentType'],
       data: Uint8List.fromList(map['data'].cast<int>()),
     );
@@ -42,7 +42,7 @@ class CustomSchemeResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "contentEncoding": contentEncoding,
       "contentType": contentType,
@@ -57,6 +57,6 @@ class CustomSchemeResponse {
 
   @override
   String toString() {
-    return 'CustomSchemeResponse{contentEncoding: $contentEncoding, contentType: $contentType, data: $data}';
+    return 'CygnusCustomSchemeResponse{contentEncoding: $contentEncoding, contentType: $contentType, data: $data}';
   }
 }

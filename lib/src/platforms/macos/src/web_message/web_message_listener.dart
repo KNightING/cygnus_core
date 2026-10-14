@@ -1,15 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [MacOSWebMessageListener].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebMessageListenerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebMessageListenerCreationParams] for
 /// more information.
 @immutable
 class MacOSWebMessageListenerCreationParams
-    extends PlatformWebMessageListenerCreationParams {
+    extends CygnusPlatformWebMessageListenerCreationParams {
   /// Creates a new [MacOSWebMessageListenerCreationParams] instance.
   const MacOSWebMessageListenerCreationParams({
     required this.allowedOriginRules,
@@ -17,11 +17,11 @@ class MacOSWebMessageListenerCreationParams
     super.onPostMessage,
   });
 
-  /// Creates a [MacOSWebMessageListenerCreationParams] instance based on [PlatformWebMessageListenerCreationParams].
+  /// Creates a [MacOSWebMessageListenerCreationParams] instance based on [CygnusPlatformWebMessageListenerCreationParams].
   factory MacOSWebMessageListenerCreationParams.fromPlatformWebMessageListenerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebMessageListenerCreationParams params,
+    CygnusPlatformWebMessageListenerCreationParams params,
   ) {
     return MacOSWebMessageListenerCreationParams(
       allowedOriginRules: params.allowedOriginRules ?? Set.from(["*"]),
@@ -39,11 +39,11 @@ class MacOSWebMessageListenerCreationParams
   }
 }
 
-///{@macro cygnus_core.PlatformWebMessageListener}
-class MacOSWebMessageListener extends PlatformWebMessageListener
+///{@macro cygnus_core.CygnusPlatformWebMessageListener}
+class MacOSWebMessageListener extends CygnusPlatformWebMessageListener
     with ChannelController {
   /// Constructs a [MacOSWebMessageListener].
-  MacOSWebMessageListener(PlatformWebMessageListenerCreationParams params)
+  MacOSWebMessageListener(CygnusPlatformWebMessageListenerCreationParams params)
     : super.implementation(
         params is MacOSWebMessageListenerCreationParams
             ? params
@@ -87,19 +87,19 @@ class MacOSWebMessageListener extends PlatformWebMessageListener
       case "onPostMessage":
         if (_replyProxy == null) {
           _replyProxy = MacOSJavaScriptReplyProxy(
-            PlatformJavaScriptReplyProxyCreationParams(
+            CygnusPlatformJavaScriptReplyProxyCreationParams(
               webMessageListener: this,
             ),
           );
         }
         if (onPostMessage != null) {
-          WebMessage? message = call.arguments["message"] != null
-              ? WebMessage.fromMap(
+          CygnusWebMessage? message = call.arguments["message"] != null
+              ? CygnusWebMessage.fromMap(
                   call.arguments["message"].cast<String, dynamic>(),
                 )
               : null;
-          WebUri? sourceOrigin = call.arguments["sourceOrigin"] != null
-              ? WebUri(call.arguments["sourceOrigin"])
+          CygnusWebUri? sourceOrigin = call.arguments["sourceOrigin"] != null
+              ? CygnusWebUri(call.arguments["sourceOrigin"])
               : null;
           bool isMainFrame = call.arguments["isMainFrame"];
           onPostMessage!(message, sourceOrigin, isMainFrame, _replyProxy!);
@@ -139,21 +139,21 @@ class MacOSWebMessageListener extends PlatformWebMessageListener
 /// Object specifying creation parameters for creating a [MacOSJavaScriptReplyProxy].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformJavaScriptReplyProxyCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformJavaScriptReplyProxyCreationParams] for
 /// more information.
 @immutable
 class MacOSJavaScriptReplyProxyCreationParams
-    extends PlatformJavaScriptReplyProxyCreationParams {
+    extends CygnusPlatformJavaScriptReplyProxyCreationParams {
   /// Creates a new [MacOSJavaScriptReplyProxyCreationParams] instance.
   const MacOSJavaScriptReplyProxyCreationParams({
     required super.webMessageListener,
   });
 
-  /// Creates a [MacOSJavaScriptReplyProxyCreationParams] instance based on [PlatformJavaScriptReplyProxyCreationParams].
+  /// Creates a [MacOSJavaScriptReplyProxyCreationParams] instance based on [CygnusPlatformJavaScriptReplyProxyCreationParams].
   factory MacOSJavaScriptReplyProxyCreationParams.fromPlatformJavaScriptReplyProxyCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformJavaScriptReplyProxyCreationParams params,
+    CygnusPlatformJavaScriptReplyProxyCreationParams params,
   ) {
     return MacOSJavaScriptReplyProxyCreationParams(
       webMessageListener: params.webMessageListener,
@@ -161,10 +161,10 @@ class MacOSJavaScriptReplyProxyCreationParams
   }
 }
 
-///{@macro cygnus_core.JavaScriptReplyProxy}
-class MacOSJavaScriptReplyProxy extends PlatformJavaScriptReplyProxy {
+///{@macro cygnus_core.CygnusJavaScriptReplyProxy}
+class MacOSJavaScriptReplyProxy extends CygnusPlatformJavaScriptReplyProxy {
   /// Constructs a [MacOSWebMessageListener].
-  MacOSJavaScriptReplyProxy(PlatformJavaScriptReplyProxyCreationParams params)
+  MacOSJavaScriptReplyProxy(CygnusPlatformJavaScriptReplyProxyCreationParams params)
     : super.implementation(
         params is MacOSJavaScriptReplyProxyCreationParams
             ? params
@@ -177,7 +177,7 @@ class MacOSJavaScriptReplyProxy extends PlatformJavaScriptReplyProxy {
       params.webMessageListener as MacOSWebMessageListener;
 
   @override
-  Future<void> postMessage(WebMessage message) async {
+  Future<void> postMessage(CygnusWebMessage message) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('message', () => message.toMap());
     await _macosWebMessageListener.channel?.invokeMethod('postMessage', args);

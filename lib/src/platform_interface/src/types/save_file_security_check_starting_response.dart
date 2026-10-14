@@ -4,16 +4,16 @@ import 'enum_method.dart';
 
 part 'save_file_security_check_starting_response.g.dart';
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onSaveFileSecurityCheckStarting] event.
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onSaveFileSecurityCheckStarting] event.
 @ExchangeableObject()
-class SaveFileSecurityCheckStartingResponse_ {
+class CygnusSaveFileSecurityCheckStartingResponse_ {
   ///Whether to cancel the save operation.
   bool? cancelSave;
 
   ///Whether to suppress the default policy check.
   bool? suppressDefaultPolicy;
 
-  SaveFileSecurityCheckStartingResponse_({
+  CygnusSaveFileSecurityCheckStartingResponse_({
     this.cancelSave,
     this.suppressDefaultPolicy,
   });

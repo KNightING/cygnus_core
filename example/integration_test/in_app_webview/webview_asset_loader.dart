@@ -1,29 +1,29 @@
 part of 'main.dart';
 
 void webViewAssetLoader() {
-  final shouldSkip = !InAppWebViewSettings.isPropertySupported(
-    InAppWebViewSettingsProperty.webViewAssetLoader,
+  final shouldSkip = !CygnusWebViewSettings.isPropertySupported(
+    CygnusWebViewSettingsProperty.webViewAssetLoader,
   );
 
-  skippableTestWidgets('WebViewAssetLoader', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+  skippableTestWidgets('CygnusWebViewAssetLoader', (WidgetTester tester) async {
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<String> pageLoaded = Completer<String>();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_WEBVIEW_ASSET_LOADER_URL),
-          initialSettings: InAppWebViewSettings(
+          initialUrlRequest: CygnusURLRequest(url: TEST_WEBVIEW_ASSET_LOADER_URL),
+          initialSettings: CygnusWebViewSettings(
             allowFileAccessFromFileURLs: false,
             allowUniversalAccessFromFileURLs: false,
             allowFileAccess: false,
             allowContentAccess: false,
-            webViewAssetLoader: WebViewAssetLoader(
+            webViewAssetLoader: CygnusWebViewAssetLoader(
               domain: TEST_WEBVIEW_ASSET_LOADER_DOMAIN,
-              pathHandlers: [AssetsPathHandler(path: '/assets/')],
+              pathHandlers: [CygnusAssetsPathHandler(path: '/assets/')],
             ),
           ),
           onWebViewCreated: (controller) {
@@ -36,7 +36,7 @@ void webViewAssetLoader() {
       ),
     );
 
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
     final url = await pageLoaded.future;
 
     expect(url, TEST_WEBVIEW_ASSET_LOADER_URL.toString());
@@ -45,7 +45,7 @@ void webViewAssetLoader() {
       await controller.evaluateJavascript(
         source: "document.querySelector('h1').innerHTML",
       ),
-      'WebViewAssetLoader',
+      'CygnusWebViewAssetLoader',
     );
   }, skip: shouldSkip);
 }

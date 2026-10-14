@@ -1,55 +1,55 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
-///{@macro cygnus_core.PlatformProcessGlobalConfig}
+///{@macro cygnus_core.CygnusPlatformProcessGlobalConfig}
 ///
-///{@macro cygnus_core.PlatformProcessGlobalConfig.supported_platforms}
-class ProcessGlobalConfig {
-  ///{@macro cygnus_core.PlatformProcessGlobalConfig}
-  ProcessGlobalConfig()
+///{@macro cygnus_core.CygnusPlatformProcessGlobalConfig.supported_platforms}
+class CygnusProcessGlobalConfig {
+  ///{@macro cygnus_core.CygnusPlatformProcessGlobalConfig}
+  CygnusProcessGlobalConfig()
     : this.fromPlatformCreationParams(
-        const PlatformProcessGlobalConfigCreationParams(),
+        const CygnusPlatformProcessGlobalConfigCreationParams(),
       );
 
-  /// Constructs a [ProcessGlobalConfig] from creation params for a specific
+  /// Constructs a [CygnusProcessGlobalConfig] from creation params for a specific
   /// platform.
-  ProcessGlobalConfig.fromPlatformCreationParams(
-    PlatformProcessGlobalConfigCreationParams params,
-  ) : this.fromPlatform(PlatformProcessGlobalConfig(params));
+  CygnusProcessGlobalConfig.fromPlatformCreationParams(
+    CygnusPlatformProcessGlobalConfigCreationParams params,
+  ) : this.fromPlatform(CygnusPlatformProcessGlobalConfig(params));
 
-  /// Constructs a [ProcessGlobalConfig] from a specific platform
+  /// Constructs a [CygnusProcessGlobalConfig] from a specific platform
   /// implementation.
-  ProcessGlobalConfig.fromPlatform(this.platform);
+  CygnusProcessGlobalConfig.fromPlatform(this.platform);
 
-  /// Implementation of [PlatformProcessGlobalConfig] for the current platform.
-  final PlatformProcessGlobalConfig platform;
+  /// Implementation of [CygnusPlatformProcessGlobalConfig] for the current platform.
+  final CygnusPlatformProcessGlobalConfig platform;
 
-  static ProcessGlobalConfig? _instance;
+  static CygnusProcessGlobalConfig? _instance;
 
-  ///Gets the [ProcessGlobalConfig] shared instance.
-  static ProcessGlobalConfig instance() {
+  ///Gets the [CygnusProcessGlobalConfig] shared instance.
+  static CygnusProcessGlobalConfig instance() {
     if (_instance == null) {
-      _instance = ProcessGlobalConfig();
+      _instance = CygnusProcessGlobalConfig();
     }
     return _instance!;
   }
 
-  ///{@macro cygnus_core.PlatformProcessGlobalConfig.apply}
+  ///{@macro cygnus_core.CygnusPlatformProcessGlobalConfig.apply}
   ///
-  ///{@macro cygnus_core.PlatformProcessGlobalConfig.apply.supported_platforms}
-  Future<void> apply({required ProcessGlobalConfigSettings settings}) =>
+  ///{@macro cygnus_core.CygnusPlatformProcessGlobalConfig.apply.supported_platforms}
+  Future<void> apply({required CygnusProcessGlobalConfigSettings settings}) =>
       platform.apply(settings: settings);
 
-  ///{@macro cygnus_core.PlatformProcessGlobalConfigCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformProcessGlobalConfigCreationParams.isClassSupported}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformProcessGlobalConfig.static().isClassSupported(platform: platform);
+      CygnusPlatformProcessGlobalConfig.static().isClassSupported(platform: platform);
 
-  ///{@macro cygnus_core.PlatformProcessGlobalConfig.isMethodSupported}
+  ///{@macro cygnus_core.CygnusPlatformProcessGlobalConfig.isMethodSupported}
   static bool isMethodSupported(
-    PlatformProcessGlobalConfigMethod method, {
+    CygnusPlatformProcessGlobalConfigMethod method, {
     TargetPlatform? platform,
-  }) => PlatformProcessGlobalConfig.static().isMethodSupported(
+  }) => CygnusPlatformProcessGlobalConfig.static().isMethodSupported(
     method,
     platform: platform,
   );

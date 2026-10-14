@@ -7,9 +7,9 @@ part 'web_resource_request.g.dart';
 
 ///Class representing a resource request of the `WebView`.
 @ExchangeableObject()
-class WebResourceRequest_ {
+class CygnusWebResourceRequest_ {
   ///The URL for which the resource request was made.
-  WebUri url;
+  CygnusWebUri url;
 
   ///The headers associated with the request.
   ///
@@ -39,7 +39,7 @@ class WebResourceRequest_ {
   ///**NOTE**: available on Android 21+. For Android < 21 it will be always `false`.
   bool? isRedirect;
 
-  WebResourceRequest_({
+  CygnusWebResourceRequest_({
     required this.url,
     this.headers,
     this.method,

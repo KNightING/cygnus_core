@@ -15,37 +15,37 @@ import 'package:flutter_inappwebview_example/models/event_log_entry.dart';
 import 'package:flutter_inappwebview_example/providers/settings_manager.dart';
 import 'package:flutter_inappwebview_example/widgets/common/profile_selector_card.dart';
 
-/// Custom InAppBrowser implementation for testing
-class TestInAppBrowser extends InAppBrowser {
+/// Custom CygnusBrowser implementation for testing
+class TestInAppBrowser extends CygnusBrowser {
   final void Function(String event, Map<String, dynamic>? data)? onEvent;
 
-  TestInAppBrowser({this.onEvent, WebViewEnvironment? webViewEnvironment})
+  TestInAppBrowser({this.onEvent, CygnusWebViewEnvironment? webViewEnvironment})
     : super(webViewEnvironment: webViewEnvironment);
 
   @override
   void onBrowserCreated() {
-    onEvent?.call(PlatformInAppBrowserEventsMethod.onBrowserCreated.name, {
+    onEvent?.call(CygnusPlatformBrowserEventsMethod.onBrowserCreated.name, {
       'id': id,
     });
   }
 
   @override
-  void onLoadStart(WebUri? url) {
-    onEvent?.call(PlatformInAppBrowserEventsMethod.onLoadStart.name, {
+  void onLoadStart(CygnusWebUri? url) {
+    onEvent?.call(CygnusPlatformBrowserEventsMethod.onLoadStart.name, {
       'url': url?.toString(),
     });
   }
 
   @override
-  void onLoadStop(WebUri? url) {
-    onEvent?.call(PlatformInAppBrowserEventsMethod.onLoadStop.name, {
+  void onLoadStop(CygnusWebUri? url) {
+    onEvent?.call(CygnusPlatformBrowserEventsMethod.onLoadStop.name, {
       'url': url?.toString(),
     });
   }
 
   @override
-  void onReceivedError(WebResourceRequest request, WebResourceError error) {
-    onEvent?.call(PlatformInAppBrowserEventsMethod.onReceivedError.name, {
+  void onReceivedError(CygnusWebResourceRequest request, CygnusWebResourceError error) {
+    onEvent?.call(CygnusPlatformBrowserEventsMethod.onReceivedError.name, {
       'url': request.url.toString(),
       'errorType': error.type.name(),
       'description': error.description,
@@ -54,34 +54,34 @@ class TestInAppBrowser extends InAppBrowser {
 
   @override
   void onProgressChanged(int progress) {
-    onEvent?.call(PlatformInAppBrowserEventsMethod.onProgressChanged.name, {
+    onEvent?.call(CygnusPlatformBrowserEventsMethod.onProgressChanged.name, {
       'progress': progress,
     });
   }
 
   @override
   void onExit() {
-    onEvent?.call(PlatformInAppBrowserEventsMethod.onExit.name, null);
+    onEvent?.call(CygnusPlatformBrowserEventsMethod.onExit.name, null);
   }
 
   @override
   void onMainWindowWillClose() {
     onEvent?.call(
-      PlatformInAppBrowserEventsMethod.onMainWindowWillClose.name,
+      CygnusPlatformBrowserEventsMethod.onMainWindowWillClose.name,
       null,
     );
   }
 
   @override
-  void onConsoleMessage(ConsoleMessage consoleMessage) {
-    onEvent?.call(PlatformInAppBrowserEventsMethod.onConsoleMessage.name, {
+  void onConsoleMessage(CygnusConsoleMessage consoleMessage) {
+    onEvent?.call(CygnusPlatformBrowserEventsMethod.onConsoleMessage.name, {
       'message': consoleMessage.message,
       'level': consoleMessage.messageLevel.name,
     });
   }
 }
 
-/// Screen for testing InAppBrowser functionality
+/// Screen for testing CygnusBrowser functionality
 class InAppBrowserScreen extends StatefulWidget {
   const InAppBrowserScreen({super.key});
 
@@ -98,7 +98,7 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
   TestInAppBrowser? _browser;
   bool _isLoading = false;
   bool _browserOpened = false;
-  final List<InAppBrowserMenuItem> _menuItems = [];
+  final List<CygnusBrowserMenuItem> _menuItems = [];
   bool _isInitialized = false;
   int _lastEnvironmentRevision = -1;
 
@@ -106,15 +106,15 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
   final Map<String, int> _selectedHistoryIndex = {};
   static const int _maxHistoryEntries = 3;
 
-  String get _initStatusKey => PlatformInAppBrowserMethod.openUrlRequest.name;
+  String get _initStatusKey => CygnusPlatformBrowserMethod.openUrlRequest.name;
 
-  void _initBrowser(WebViewEnvironment? webViewEnvironment) {
+  void _initBrowser(CygnusWebViewEnvironment? webViewEnvironment) {
     try {
       _browser = TestInAppBrowser(
         webViewEnvironment: webViewEnvironment,
         onEvent: (event, data) {
           _logEvent(EventType.ui, event, data: data);
-          if (event == PlatformInAppBrowserEventsMethod.onExit.name) {
+          if (event == CygnusPlatformBrowserEventsMethod.onExit.name) {
             setState(() => _browserOpened = false);
           }
         },
@@ -124,7 +124,7 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     }
   }
 
-  String _staticMethodName(PlatformInAppBrowserMethod method) {
+  String _staticMethodName(CygnusPlatformBrowserMethod method) {
     return '${method.name} (static)';
   }
 
@@ -174,7 +174,7 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     final settingsManager = context.read<SettingsManager>();
     final params = await showParameterDialog(
       context: context,
-      title: PlatformInAppBrowserMethod.openUrlRequest.name,
+      title: CygnusPlatformBrowserMethod.openUrlRequest.name,
       parameters: {
         'url': 'https://flutter.dev',
         'toolbarTopBackgroundColor': Colors.blue,
@@ -188,7 +188,7 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     final url = params['url']?.toString() ?? '';
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformInAppBrowserMethod.openUrlRequest.name,
+        CygnusPlatformBrowserMethod.openUrlRequest.name,
         'Please enter a URL',
         isError: true,
       );
@@ -199,18 +199,18 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     try {
       final baseSettings = settingsManager.buildSettings();
       final webViewSettings =
-          InAppWebViewSettings.fromMap({
+          CygnusWebViewSettings.fromMap({
             ...baseSettings.toMap(),
             'javaScriptEnabled':
                 params['javaScriptEnabled'] as bool? ??
                 baseSettings.javaScriptEnabled ??
                 true,
           }) ??
-          InAppWebViewSettings();
+          CygnusWebViewSettings();
       await _browser?.openUrlRequest(
-        urlRequest: URLRequest(url: WebUri(url)),
-        settings: InAppBrowserClassSettings(
-          browserSettings: InAppBrowserSettings(
+        urlRequest: CygnusURLRequest(url: CygnusWebUri(url)),
+        settings: CygnusBrowserClassSettings(
+          browserSettings: CygnusBrowserSettings(
             toolbarTopBackgroundColor:
                 params['toolbarTopBackgroundColor'] as Color?,
             presentationStyle: _parseModalPresentationStyle(
@@ -222,13 +222,13 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
       );
       setState(() => _browserOpened = true);
       _recordMethodResult(
-        PlatformInAppBrowserMethod.openUrlRequest.name,
+        CygnusPlatformBrowserMethod.openUrlRequest.name,
         'Browser opened with URL',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppBrowserMethod.openUrlRequest.name,
+        CygnusPlatformBrowserMethod.openUrlRequest.name,
         'Error opening browser: $e',
         isError: true,
       );
@@ -241,7 +241,7 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     final settingsManager = context.read<SettingsManager>();
     final params = await showParameterDialog(
       context: context,
-      title: PlatformInAppBrowserMethod.openFile.name,
+      title: CygnusPlatformBrowserMethod.openFile.name,
       parameters: {
         'assetFilePath': 'assets/index.html',
         'toolbarTopBackgroundColor': Colors.green,
@@ -253,7 +253,7 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     final assetFilePath = params['assetFilePath']?.toString() ?? '';
     if (assetFilePath.isEmpty) {
       _recordMethodResult(
-        PlatformInAppBrowserMethod.openFile.name,
+        CygnusPlatformBrowserMethod.openFile.name,
         'Please enter an asset file path',
         isError: true,
       );
@@ -263,8 +263,8 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     try {
       await _browser?.openFile(
         assetFilePath: assetFilePath,
-        settings: InAppBrowserClassSettings(
-          browserSettings: InAppBrowserSettings(
+        settings: CygnusBrowserClassSettings(
+          browserSettings: CygnusBrowserSettings(
             toolbarTopBackgroundColor:
                 params['toolbarTopBackgroundColor'] as Color?,
           ),
@@ -273,13 +273,13 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
       );
       setState(() => _browserOpened = true);
       _recordMethodResult(
-        PlatformInAppBrowserMethod.openFile.name,
+        CygnusPlatformBrowserMethod.openFile.name,
         'Browser opened with file',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppBrowserMethod.openFile.name,
+        CygnusPlatformBrowserMethod.openFile.name,
         'Error opening file: $e',
         isError: true,
       );
@@ -292,10 +292,10 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     final settingsManager = context.read<SettingsManager>();
     final params = await showParameterDialog(
       context: context,
-      title: PlatformInAppBrowserMethod.openData.name,
+      title: CygnusPlatformBrowserMethod.openData.name,
       parameters: {
         'data':
-            '<html><body><h1>Hello ${InAppBrowser}!</h1><p>This is HTML data.</p></body></html>',
+            '<html><body><h1>Hello ${CygnusBrowser}!</h1><p>This is HTML data.</p></body></html>',
         'mimeType': 'text/html',
         'encoding': 'utf8',
         'toolbarTopBackgroundColor': Colors.purple,
@@ -307,7 +307,7 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     final data = params['data']?.toString() ?? '';
     if (data.isEmpty) {
       _recordMethodResult(
-        PlatformInAppBrowserMethod.openData.name,
+        CygnusPlatformBrowserMethod.openData.name,
         'Please enter HTML data',
         isError: true,
       );
@@ -320,8 +320,8 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
         data: data,
         mimeType: params['mimeType']?.toString() ?? 'text/html',
         encoding: params['encoding']?.toString() ?? 'utf8',
-        settings: InAppBrowserClassSettings(
-          browserSettings: InAppBrowserSettings(
+        settings: CygnusBrowserClassSettings(
+          browserSettings: CygnusBrowserSettings(
             toolbarTopBackgroundColor:
                 params['toolbarTopBackgroundColor'] as Color?,
           ),
@@ -330,13 +330,13 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
       );
       setState(() => _browserOpened = true);
       _recordMethodResult(
-        PlatformInAppBrowserMethod.openData.name,
+        CygnusPlatformBrowserMethod.openData.name,
         'Browser opened with data',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppBrowserMethod.openData.name,
+        CygnusPlatformBrowserMethod.openData.name,
         'Error opening data: $e',
         isError: true,
       );
@@ -348,7 +348,7 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
   Future<void> _openWithSystemBrowser() async {
     final params = await showParameterDialog(
       context: context,
-      title: PlatformInAppBrowserMethod.openWithSystemBrowser.name,
+      title: CygnusPlatformBrowserMethod.openWithSystemBrowser.name,
       parameters: {'url': 'https://flutter.dev'},
       requiredPaths: ['url'],
     );
@@ -357,7 +357,7 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     final url = params['url']?.toString() ?? '';
     if (url.isEmpty) {
       _recordMethodResult(
-        _staticMethodName(PlatformInAppBrowserMethod.openWithSystemBrowser),
+        _staticMethodName(CygnusPlatformBrowserMethod.openWithSystemBrowser),
         'Please enter a URL',
         isError: true,
       );
@@ -366,15 +366,15 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
 
     setState(() => _isLoading = true);
     try {
-      await InAppBrowser.openWithSystemBrowser(url: WebUri(url));
+      await CygnusBrowser.openWithSystemBrowser(url: CygnusWebUri(url));
       _recordMethodResult(
-        _staticMethodName(PlatformInAppBrowserMethod.openWithSystemBrowser),
+        _staticMethodName(CygnusPlatformBrowserMethod.openWithSystemBrowser),
         'Opened in system browser',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        _staticMethodName(PlatformInAppBrowserMethod.openWithSystemBrowser),
+        _staticMethodName(CygnusPlatformBrowserMethod.openWithSystemBrowser),
         'Error opening system browser: $e',
         isError: true,
       );
@@ -389,20 +389,20 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
 
     if (id.isEmpty || title.isEmpty) {
       _recordMethodResult(
-        PlatformInAppBrowserMethod.addMenuItem.name,
+        CygnusPlatformBrowserMethod.addMenuItem.name,
         'Please enter menu item ID and title',
         isError: true,
       );
       return;
     }
 
-    final menuItem = InAppBrowserMenuItem(
+    final menuItem = CygnusBrowserMenuItem(
       id: id.hashCode,
       title: title,
       onClick: () {
         _logEvent(EventType.ui, 'Menu item clicked', data: {'id': id});
         _recordMethodResult(
-          PlatformInAppBrowserMethod.addMenuItem.name,
+          CygnusPlatformBrowserMethod.addMenuItem.name,
           'Menu item "$title" clicked',
           isError: false,
         );
@@ -415,26 +415,26 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     });
     _menuItemIdController.clear();
     _recordMethodResult(
-      PlatformInAppBrowserMethod.addMenuItem.name,
+      CygnusPlatformBrowserMethod.addMenuItem.name,
       'Menu item added',
       isError: false,
     );
   }
 
-  void _removeMenuItem(InAppBrowserMenuItem menuItem) {
+  void _removeMenuItem(CygnusBrowserMenuItem menuItem) {
     final removed = _browser?.removeMenuItem(menuItem) ?? false;
     if (removed) {
       setState(() {
         _menuItems.remove(menuItem);
       });
       _recordMethodResult(
-        PlatformInAppBrowserMethod.removeMenuItem.name,
+        CygnusPlatformBrowserMethod.removeMenuItem.name,
         'Menu item removed',
         isError: false,
       );
     } else {
       _recordMethodResult(
-        PlatformInAppBrowserMethod.removeMenuItem.name,
+        CygnusPlatformBrowserMethod.removeMenuItem.name,
         'Failed to remove menu item',
         isError: true,
       );
@@ -446,13 +446,13 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     try {
       await _browser?.show();
       _recordMethodResult(
-        PlatformInAppBrowserMethod.show.name,
+        CygnusPlatformBrowserMethod.show.name,
         'Browser shown',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppBrowserMethod.show.name,
+        CygnusPlatformBrowserMethod.show.name,
         'Error showing browser: $e',
         isError: true,
       );
@@ -466,13 +466,13 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     try {
       await _browser?.hide();
       _recordMethodResult(
-        PlatformInAppBrowserMethod.hide.name,
+        CygnusPlatformBrowserMethod.hide.name,
         'Browser hidden',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppBrowserMethod.hide.name,
+        CygnusPlatformBrowserMethod.hide.name,
         'Error hiding browser: $e',
         isError: true,
       );
@@ -487,13 +487,13 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
       await _browser?.close();
       setState(() => _browserOpened = false);
       _recordMethodResult(
-        PlatformInAppBrowserMethod.close.name,
+        CygnusPlatformBrowserMethod.close.name,
         'Browser closed',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppBrowserMethod.close.name,
+        CygnusPlatformBrowserMethod.close.name,
         'Error closing browser: $e',
         isError: true,
       );
@@ -507,13 +507,13 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     try {
       final hidden = await _browser?.isHidden();
       _recordMethodResult(
-        PlatformInAppBrowserMethod.isHidden.name,
+        CygnusPlatformBrowserMethod.isHidden.name,
         'Browser is hidden: $hidden',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppBrowserMethod.isHidden.name,
+        CygnusPlatformBrowserMethod.isHidden.name,
         'Error checking hidden state: $e',
         isError: true,
       );
@@ -528,13 +528,13 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
       final settings = await _browser?.getSettings();
       _showSettingsDialog(settings);
       _recordMethodResult(
-        PlatformInAppBrowserMethod.getSettings.name,
+        CygnusPlatformBrowserMethod.getSettings.name,
         'Settings dialog opened',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppBrowserMethod.getSettings.name,
+        CygnusPlatformBrowserMethod.getSettings.name,
         'Error getting settings: $e',
         isError: true,
       );
@@ -546,7 +546,7 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
   Future<void> _setSettings() async {
     final params = await showParameterDialog(
       context: context,
-      title: PlatformInAppBrowserMethod.setSettings.name,
+      title: CygnusPlatformBrowserMethod.setSettings.name,
       parameters: {
         'toolbarTopBackgroundColor': Colors.orange,
         'hideToolbarTop': false,
@@ -557,8 +557,8 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     setState(() => _isLoading = true);
     try {
       await _browser?.setSettings(
-        settings: InAppBrowserClassSettings(
-          browserSettings: InAppBrowserSettings(
+        settings: CygnusBrowserClassSettings(
+          browserSettings: CygnusBrowserSettings(
             toolbarTopBackgroundColor:
                 params['toolbarTopBackgroundColor'] as Color?,
             hideToolbarTop: params['hideToolbarTop'] as bool?,
@@ -566,13 +566,13 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
         ),
       );
       _recordMethodResult(
-        PlatformInAppBrowserMethod.setSettings.name,
+        CygnusPlatformBrowserMethod.setSettings.name,
         'Settings updated',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppBrowserMethod.setSettings.name,
+        CygnusPlatformBrowserMethod.setSettings.name,
         'Error setting settings: $e',
         isError: true,
       );
@@ -584,13 +584,13 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
   void _checkIsOpened() {
     final opened = _browser?.isOpened() ?? false;
     _recordMethodResult(
-      PlatformInAppBrowserMethod.isOpened.name,
+      CygnusPlatformBrowserMethod.isOpened.name,
       'Browser is opened: $opened',
       isError: false,
     );
   }
 
-  void _showSettingsDialog(InAppBrowserClassSettings? settings) {
+  void _showSettingsDialog(CygnusBrowserClassSettings? settings) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -654,7 +654,7 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     _recordMethodResult(_initStatusKey, message, isError: true);
   }
 
-  void _handleEnvironmentChange(WebViewEnvironment? environment) {
+  void _handleEnvironmentChange(CygnusWebViewEnvironment? environment) {
     if (_browserOpened) {
       _browser?.close();
     }
@@ -676,13 +676,13 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
     );
   }
 
-  ModalPresentationStyle _parseModalPresentationStyle(String? value) {
+  CygnusModalPresentationStyle _parseModalPresentationStyle(String? value) {
     if (value == null || value.isEmpty) {
-      return ModalPresentationStyle.FULL_SCREEN;
+      return CygnusModalPresentationStyle.FULL_SCREEN;
     }
-    return ModalPresentationStyle.values.firstWhere(
+    return CygnusModalPresentationStyle.values.firstWhere(
       (style) => style.name().toLowerCase() == value.toLowerCase(),
-      orElse: () => ModalPresentationStyle.FULL_SCREEN,
+      orElse: () => CygnusModalPresentationStyle.FULL_SCREEN,
     );
   }
 
@@ -690,7 +690,7 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('$InAppBrowser'),
+        title: Text('$CygnusBrowser'),
         actions: [
           AppBarLoadingIndicator(isLoading: _isLoading),
           IconButton(
@@ -753,29 +753,29 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
             ),
             const SizedBox(height: 12),
             _buildMethodTile(
-              PlatformInAppBrowserMethod.openUrlRequest.name,
+              CygnusPlatformBrowserMethod.openUrlRequest.name,
               'Open browser with URL request',
-              PlatformInAppBrowserMethod.openUrlRequest,
+              CygnusPlatformBrowserMethod.openUrlRequest,
               _openUrlRequest,
             ),
             _buildMethodTile(
-              PlatformInAppBrowserMethod.openFile.name,
+              CygnusPlatformBrowserMethod.openFile.name,
               'Open browser with local file',
-              PlatformInAppBrowserMethod.openFile,
+              CygnusPlatformBrowserMethod.openFile,
               _openFile,
             ),
             _buildMethodTile(
-              PlatformInAppBrowserMethod.openData.name,
+              CygnusPlatformBrowserMethod.openData.name,
               'Open browser with HTML data',
-              PlatformInAppBrowserMethod.openData,
+              CygnusPlatformBrowserMethod.openData,
               _openData,
             ),
             _buildMethodTile(
               _staticMethodName(
-                PlatformInAppBrowserMethod.openWithSystemBrowser,
+                CygnusPlatformBrowserMethod.openWithSystemBrowser,
               ),
               'Open URL in system browser',
-              PlatformInAppBrowserMethod.openWithSystemBrowser,
+              CygnusPlatformBrowserMethod.openWithSystemBrowser,
               _openWithSystemBrowser,
             ),
           ],
@@ -856,8 +856,8 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
               },
             ),
             const SizedBox(height: 8),
-            _buildMethodHistory(PlatformInAppBrowserMethod.addMenuItem.name),
-            _buildMethodHistory(PlatformInAppBrowserMethod.removeMenuItem.name),
+            _buildMethodHistory(CygnusPlatformBrowserMethod.addMenuItem.name),
+            _buildMethodHistory(CygnusPlatformBrowserMethod.removeMenuItem.name),
             const SizedBox(height: 12),
             if (_menuItems.isNotEmpty) ...[
               const Divider(),
@@ -898,33 +898,33 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
             ),
             const SizedBox(height: 12),
             _buildMethodTile(
-              PlatformInAppBrowserMethod.show.name,
+              CygnusPlatformBrowserMethod.show.name,
               'Show the browser',
-              PlatformInAppBrowserMethod.show,
+              CygnusPlatformBrowserMethod.show,
               _browserOpened ? _show : null,
             ),
             _buildMethodTile(
-              PlatformInAppBrowserMethod.hide.name,
+              CygnusPlatformBrowserMethod.hide.name,
               'Hide the browser',
-              PlatformInAppBrowserMethod.hide,
+              CygnusPlatformBrowserMethod.hide,
               _browserOpened ? _hide : null,
             ),
             _buildMethodTile(
-              PlatformInAppBrowserMethod.close.name,
+              CygnusPlatformBrowserMethod.close.name,
               'Close the browser',
-              PlatformInAppBrowserMethod.close,
+              CygnusPlatformBrowserMethod.close,
               _browserOpened ? _close : null,
             ),
             _buildMethodTile(
-              PlatformInAppBrowserMethod.isHidden.name,
+              CygnusPlatformBrowserMethod.isHidden.name,
               'Check if browser is hidden',
-              PlatformInAppBrowserMethod.isHidden,
+              CygnusPlatformBrowserMethod.isHidden,
               _browserOpened ? _isHidden : null,
             ),
             _buildMethodTile(
-              PlatformInAppBrowserMethod.isOpened.name,
+              CygnusPlatformBrowserMethod.isOpened.name,
               'Check if browser is opened',
-              PlatformInAppBrowserMethod.isOpened,
+              CygnusPlatformBrowserMethod.isOpened,
               _checkIsOpened,
             ),
           ],
@@ -946,15 +946,15 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
             ),
             const SizedBox(height: 12),
             _buildMethodTile(
-              PlatformInAppBrowserMethod.getSettings.name,
+              CygnusPlatformBrowserMethod.getSettings.name,
               'Get current browser settings',
-              PlatformInAppBrowserMethod.getSettings,
+              CygnusPlatformBrowserMethod.getSettings,
               _browserOpened ? _getSettings : null,
             ),
             _buildMethodTile(
-              PlatformInAppBrowserMethod.setSettings.name,
+              CygnusPlatformBrowserMethod.setSettings.name,
               'Update browser settings',
-              PlatformInAppBrowserMethod.setSettings,
+              CygnusPlatformBrowserMethod.setSettings,
               _browserOpened ? _setSettings : null,
             ),
           ],
@@ -966,12 +966,12 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
   Widget _buildMethodTile(
     String methodName,
     String description,
-    PlatformInAppBrowserMethod method,
+    CygnusPlatformBrowserMethod method,
     VoidCallback? onPressed,
   ) {
     final supportedPlatforms = SupportCheckHelper.supportedPlatformsForMethod(
       method: method,
-      checker: InAppBrowser.isMethodSupported,
+      checker: CygnusBrowser.isMethodSupported,
     );
 
     return MethodTile(

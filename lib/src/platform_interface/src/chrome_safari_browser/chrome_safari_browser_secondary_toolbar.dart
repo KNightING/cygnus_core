@@ -21,34 +21,34 @@ part 'chrome_safari_browser_secondary_toolbar.g.dart';
   ],
 )
 @ExchangeableObject()
-class ChromeSafariBrowserSecondaryToolbar_ {
+class CygnusChromeSafariBrowserSecondaryToolbar_ {
   ///The android layout resource.
-  AndroidResource_ layout;
+  CygnusAndroidResource_ layout;
 
   ///The IDs of clickable views. The `onClick` event of these views will be handled by custom tabs.
-  List<ChromeSafariBrowserSecondaryToolbarClickableID_> clickableIDs;
+  List<CygnusChromeSafariBrowserSecondaryToolbarClickableID_> clickableIDs;
 
-  ChromeSafariBrowserSecondaryToolbar_({
+  CygnusChromeSafariBrowserSecondaryToolbar_({
     required this.layout,
     this.clickableIDs = const [],
   });
 }
 
-///Class that represents a clickable ID item of the secondary toolbar for a [PlatformChromeSafariBrowser] instance.
+///Class that represents a clickable ID item of the secondary toolbar for a [CygnusPlatformChromeSafariBrowser] instance.
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(note: 'Not available in an Android Trusted Web Activity.'),
   ],
 )
 @ExchangeableObject()
-class ChromeSafariBrowserSecondaryToolbarClickableID_ {
+class CygnusChromeSafariBrowserSecondaryToolbarClickableID_ {
   ///The android id resource
-  AndroidResource_ id;
+  CygnusAndroidResource_ id;
 
   ///Callback function to be invoked when the item is clicked
-  void Function(WebUri? url)? onClick;
+  void Function(CygnusWebUri? url)? onClick;
 
-  ChromeSafariBrowserSecondaryToolbarClickableID_({
+  CygnusChromeSafariBrowserSecondaryToolbarClickableID_({
     required this.id,
     this.onClick,
   });

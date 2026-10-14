@@ -6,8 +6,8 @@ part of 'request_focus_node_href_result.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the result used by the [PlatformInAppWebViewController.requestFocusNodeHref] method.
-class RequestFocusNodeHrefResult {
+///Class that represents the result used by the [CygnusPlatformWebViewController.requestFocusNodeHref] method.
+class CygnusRequestFocusNodeHrefResult {
   ///The image's src attribute.
   String? src;
 
@@ -15,27 +15,27 @@ class RequestFocusNodeHrefResult {
   String? title;
 
   ///The anchor's href attribute.
-  WebUri? url;
-  RequestFocusNodeHrefResult({this.src, this.title, this.url});
+  CygnusWebUri? url;
+  CygnusRequestFocusNodeHrefResult({this.src, this.title, this.url});
 
-  ///Gets a possible [RequestFocusNodeHrefResult] instance from a [Map] value.
-  static RequestFocusNodeHrefResult? fromMap(
+  ///Gets a possible [CygnusRequestFocusNodeHrefResult] instance from a [Map] value.
+  static CygnusRequestFocusNodeHrefResult? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = RequestFocusNodeHrefResult(
+    final instance = CygnusRequestFocusNodeHrefResult(
       src: map['src'],
       title: map['title'],
-      url: map['url'] != null ? WebUri(map['url']) : null,
+      url: map['url'] != null ? CygnusWebUri(map['url']) : null,
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"src": src, "title": title, "url": url?.toString()};
   }
 
@@ -46,6 +46,6 @@ class RequestFocusNodeHrefResult {
 
   @override
   String toString() {
-    return 'RequestFocusNodeHrefResult{src: $src, title: $title, url: $url}';
+    return 'CygnusRequestFocusNodeHrefResult{src: $src, title: $title, url: $url}';
   }
 }

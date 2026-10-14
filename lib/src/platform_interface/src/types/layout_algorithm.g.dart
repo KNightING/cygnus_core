@@ -7,46 +7,46 @@ part of 'layout_algorithm.dart';
 // **************************************************************************
 
 ///Class used to set the underlying layout algorithm.
-class LayoutAlgorithm {
+class CygnusLayoutAlgorithm {
   final String _value;
   final String? _nativeValue;
-  const LayoutAlgorithm._internal(this._value, this._nativeValue);
+  const CygnusLayoutAlgorithm._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory LayoutAlgorithm._internalMultiPlatform(
+  factory CygnusLayoutAlgorithm._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => LayoutAlgorithm._internal(value, nativeValue());
+  ) => CygnusLayoutAlgorithm._internal(value, nativeValue());
 
   ///NARROW_COLUMNS makes all columns no wider than the screen if possible. Only use this for API levels prior to `Build.VERSION_CODES.KITKAT`.
-  static const NARROW_COLUMNS = LayoutAlgorithm._internal(
+  static const NARROW_COLUMNS = CygnusLayoutAlgorithm._internal(
     'NARROW_COLUMNS',
     'NARROW_COLUMNS',
   );
 
   ///NORMAL means no rendering changes. This is the recommended choice for maximum compatibility across different platforms and Android versions.
-  static const NORMAL = LayoutAlgorithm._internal('NORMAL', 'NORMAL');
+  static const NORMAL = CygnusLayoutAlgorithm._internal('NORMAL', 'NORMAL');
 
   ///TEXT_AUTOSIZING boosts font size of paragraphs based on heuristics to make the text readable when viewing a wide-viewport layout in the overview mode.
-  ///It is recommended to enable zoom support [InAppWebViewSettings.supportZoom] when using this mode.
+  ///It is recommended to enable zoom support [CygnusWebViewSettings.supportZoom] when using this mode.
   ///
   ///**NOTE**: available on Android 19+.
-  static const TEXT_AUTOSIZING = LayoutAlgorithm._internal(
+  static const TEXT_AUTOSIZING = CygnusLayoutAlgorithm._internal(
     'TEXT_AUTOSIZING',
     'TEXT_AUTOSIZING',
   );
 
-  ///Set of all values of [LayoutAlgorithm].
-  static final Set<LayoutAlgorithm> values = [
-    LayoutAlgorithm.NARROW_COLUMNS,
-    LayoutAlgorithm.NORMAL,
-    LayoutAlgorithm.TEXT_AUTOSIZING,
+  ///Set of all values of [CygnusLayoutAlgorithm].
+  static final Set<CygnusLayoutAlgorithm> values = [
+    CygnusLayoutAlgorithm.NARROW_COLUMNS,
+    CygnusLayoutAlgorithm.NORMAL,
+    CygnusLayoutAlgorithm.TEXT_AUTOSIZING,
   ].toSet();
 
-  ///Gets a possible [LayoutAlgorithm] instance from [String] value.
-  static LayoutAlgorithm? fromValue(String? value) {
+  ///Gets a possible [CygnusLayoutAlgorithm] instance from [String] value.
+  static CygnusLayoutAlgorithm? fromValue(String? value) {
     if (value != null) {
       try {
-        return LayoutAlgorithm.values.firstWhere(
+        return CygnusLayoutAlgorithm.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -56,11 +56,11 @@ class LayoutAlgorithm {
     return null;
   }
 
-  ///Gets a possible [LayoutAlgorithm] instance from a native value.
-  static LayoutAlgorithm? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusLayoutAlgorithm] instance from a native value.
+  static CygnusLayoutAlgorithm? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return LayoutAlgorithm.values.firstWhere(
+        return CygnusLayoutAlgorithm.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -70,15 +70,15 @@ class LayoutAlgorithm {
     return null;
   }
 
-  /// Gets a possible [LayoutAlgorithm] instance value with name [name].
+  /// Gets a possible [CygnusLayoutAlgorithm] instance value with name [name].
   ///
-  /// Goes through [LayoutAlgorithm.values] looking for a value with
-  /// name [name], as reported by [LayoutAlgorithm.name].
+  /// Goes through [CygnusLayoutAlgorithm.values] looking for a value with
+  /// name [name], as reported by [CygnusLayoutAlgorithm.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static LayoutAlgorithm? byName(String? name) {
+  static CygnusLayoutAlgorithm? byName(String? name) {
     if (name != null) {
       try {
-        return LayoutAlgorithm.values.firstWhere(
+        return CygnusLayoutAlgorithm.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -88,7 +88,7 @@ class LayoutAlgorithm {
     return null;
   }
 
-  /// Creates a map from the names of [LayoutAlgorithm] values to the values.
+  /// Creates a map from the names of [CygnusLayoutAlgorithm] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -96,9 +96,10 @@ class LayoutAlgorithm {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, LayoutAlgorithm> asNameMap() => <String, LayoutAlgorithm>{
-    for (final value in LayoutAlgorithm.values) value.name(): value,
-  };
+  static Map<String, CygnusLayoutAlgorithm> asNameMap() =>
+      <String, CygnusLayoutAlgorithm>{
+        for (final value in CygnusLayoutAlgorithm.values) value.name(): value,
+      };
 
   ///Gets [String] value.
   String toValue() => _value;
@@ -137,48 +138,51 @@ class LayoutAlgorithm {
 }
 
 ///An Android-specific class used to set the underlying layout algorithm.
-///Use [LayoutAlgorithm] instead.
-@Deprecated('Use LayoutAlgorithm instead')
-class AndroidLayoutAlgorithm {
+///Use [CygnusLayoutAlgorithm] instead.
+@Deprecated('Use CygnusLayoutAlgorithm instead')
+class CygnusAndroidLayoutAlgorithm {
   final String _value;
   final String? _nativeValue;
-  const AndroidLayoutAlgorithm._internal(this._value, this._nativeValue);
+  const CygnusAndroidLayoutAlgorithm._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory AndroidLayoutAlgorithm._internalMultiPlatform(
+  factory CygnusAndroidLayoutAlgorithm._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => AndroidLayoutAlgorithm._internal(value, nativeValue());
+  ) => CygnusAndroidLayoutAlgorithm._internal(value, nativeValue());
 
   ///NARROW_COLUMNS makes all columns no wider than the screen if possible. Only use this for API levels prior to `Build.VERSION_CODES.KITKAT`.
-  static const NARROW_COLUMNS = AndroidLayoutAlgorithm._internal(
+  static const NARROW_COLUMNS = CygnusAndroidLayoutAlgorithm._internal(
     'NARROW_COLUMNS',
     'NARROW_COLUMNS',
   );
 
   ///NORMAL means no rendering changes. This is the recommended choice for maximum compatibility across different platforms and Android versions.
-  static const NORMAL = AndroidLayoutAlgorithm._internal('NORMAL', 'NORMAL');
+  static const NORMAL = CygnusAndroidLayoutAlgorithm._internal(
+    'NORMAL',
+    'NORMAL',
+  );
 
   ///TEXT_AUTOSIZING boosts font size of paragraphs based on heuristics to make the text readable when viewing a wide-viewport layout in the overview mode.
-  ///It is recommended to enable zoom support [InAppWebViewOptions.supportZoom] when using this mode.
+  ///It is recommended to enable zoom support [CygnusInAppWebViewOptions.supportZoom] when using this mode.
   ///
   ///**NOTE**: available on Android 19+.
-  static const TEXT_AUTOSIZING = AndroidLayoutAlgorithm._internal(
+  static const TEXT_AUTOSIZING = CygnusAndroidLayoutAlgorithm._internal(
     'TEXT_AUTOSIZING',
     'TEXT_AUTOSIZING',
   );
 
-  ///Set of all values of [AndroidLayoutAlgorithm].
-  static final Set<AndroidLayoutAlgorithm> values = [
-    AndroidLayoutAlgorithm.NARROW_COLUMNS,
-    AndroidLayoutAlgorithm.NORMAL,
-    AndroidLayoutAlgorithm.TEXT_AUTOSIZING,
+  ///Set of all values of [CygnusAndroidLayoutAlgorithm].
+  static final Set<CygnusAndroidLayoutAlgorithm> values = [
+    CygnusAndroidLayoutAlgorithm.NARROW_COLUMNS,
+    CygnusAndroidLayoutAlgorithm.NORMAL,
+    CygnusAndroidLayoutAlgorithm.TEXT_AUTOSIZING,
   ].toSet();
 
-  ///Gets a possible [AndroidLayoutAlgorithm] instance from [String] value.
-  static AndroidLayoutAlgorithm? fromValue(String? value) {
+  ///Gets a possible [CygnusAndroidLayoutAlgorithm] instance from [String] value.
+  static CygnusAndroidLayoutAlgorithm? fromValue(String? value) {
     if (value != null) {
       try {
-        return AndroidLayoutAlgorithm.values.firstWhere(
+        return CygnusAndroidLayoutAlgorithm.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -188,11 +192,11 @@ class AndroidLayoutAlgorithm {
     return null;
   }
 
-  ///Gets a possible [AndroidLayoutAlgorithm] instance from a native value.
-  static AndroidLayoutAlgorithm? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusAndroidLayoutAlgorithm] instance from a native value.
+  static CygnusAndroidLayoutAlgorithm? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return AndroidLayoutAlgorithm.values.firstWhere(
+        return CygnusAndroidLayoutAlgorithm.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -202,15 +206,15 @@ class AndroidLayoutAlgorithm {
     return null;
   }
 
-  /// Gets a possible [AndroidLayoutAlgorithm] instance value with name [name].
+  /// Gets a possible [CygnusAndroidLayoutAlgorithm] instance value with name [name].
   ///
-  /// Goes through [AndroidLayoutAlgorithm.values] looking for a value with
-  /// name [name], as reported by [AndroidLayoutAlgorithm.name].
+  /// Goes through [CygnusAndroidLayoutAlgorithm.values] looking for a value with
+  /// name [name], as reported by [CygnusAndroidLayoutAlgorithm.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static AndroidLayoutAlgorithm? byName(String? name) {
+  static CygnusAndroidLayoutAlgorithm? byName(String? name) {
     if (name != null) {
       try {
-        return AndroidLayoutAlgorithm.values.firstWhere(
+        return CygnusAndroidLayoutAlgorithm.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -220,7 +224,7 @@ class AndroidLayoutAlgorithm {
     return null;
   }
 
-  /// Creates a map from the names of [AndroidLayoutAlgorithm] values to the values.
+  /// Creates a map from the names of [CygnusAndroidLayoutAlgorithm] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -228,9 +232,10 @@ class AndroidLayoutAlgorithm {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, AndroidLayoutAlgorithm> asNameMap() =>
-      <String, AndroidLayoutAlgorithm>{
-        for (final value in AndroidLayoutAlgorithm.values) value.name(): value,
+  static Map<String, CygnusAndroidLayoutAlgorithm> asNameMap() =>
+      <String, CygnusAndroidLayoutAlgorithm>{
+        for (final value in CygnusAndroidLayoutAlgorithm.values)
+          value.name(): value,
       };
 
   ///Gets [String] value.

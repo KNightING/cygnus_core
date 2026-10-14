@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void customTabs() {
-  final shouldSkip = !ChromeSafariBrowser.isMethodSupported(
-    PlatformChromeSafariBrowserMethod.launchUrl,
+  final shouldSkip = !CygnusChromeSafariBrowser.isMethodSupported(
+    CygnusPlatformChromeSafariBrowserMethod.launchUrl,
   );
 
   skippableGroup('Custom Tabs', () {
@@ -12,8 +12,8 @@ void customTabs() {
 
       await chromeSafariBrowser.open(
         url: TEST_URL_1,
-        referrer: WebUri("android-app://custom-referrer"),
-        settings: ChromeSafariBrowserSettings(isSingleInstance: true),
+        referrer: CygnusWebUri("android-app://custom-referrer"),
+        settings: CygnusChromeSafariBrowserSettings(isSingleInstance: true),
       );
       await expectLater(chromeSafariBrowser.opened.future, completes);
       expect(chromeSafariBrowser.isOpened(), true);
@@ -33,7 +33,7 @@ void customTabs() {
 
       await chromeSafariBrowser.open(
         url: TEST_URL_1,
-        settings: ChromeSafariBrowserSettings(isSingleInstance: true),
+        settings: CygnusChromeSafariBrowserSettings(isSingleInstance: true),
       );
       await expectLater(chromeSafariBrowser.opened.future, completes);
       expect(chromeSafariBrowser.isOpened(), true);
@@ -56,7 +56,7 @@ void customTabs() {
         'test_assets/images/flutter-logo.jpg',
       );
       chromeSafariBrowser.setActionButton(
-        ChromeSafariBrowserActionButton(
+        CygnusChromeSafariBrowserActionButton(
           id: 1,
           description: 'Action Button description',
           icon: actionButtonIcon.buffer.asUint8List(),
@@ -125,27 +125,27 @@ void customTabs() {
     skippableTest('add and update secondary toolbar', () async {
       var chromeSafariBrowser = MyChromeSafariBrowser();
       chromeSafariBrowser.setSecondaryToolbar(
-        ChromeSafariBrowserSecondaryToolbar(
-          layout: AndroidResource.layout(
+        CygnusChromeSafariBrowserSecondaryToolbar(
+          layout: CygnusAndroidResource.layout(
             name: "remote_view",
             defPackage: "com.pichillilorenzo.flutter_inappwebviewexample",
           ),
           clickableIDs: [
-            ChromeSafariBrowserSecondaryToolbarClickableID(
-              id: AndroidResource.id(
+            CygnusChromeSafariBrowserSecondaryToolbarClickableID(
+              id: CygnusAndroidResource.id(
                 name: "button1",
                 defPackage: "com.pichillilorenzo.flutter_inappwebviewexample",
               ),
-              onClick: (WebUri? url) {
+              onClick: (CygnusWebUri? url) {
                 print("Button 1 with $url");
               },
             ),
-            ChromeSafariBrowserSecondaryToolbarClickableID(
-              id: AndroidResource.id(
+            CygnusChromeSafariBrowserSecondaryToolbarClickableID(
+              id: CygnusAndroidResource.id(
                 name: "button2",
                 defPackage: "com.pichillilorenzo.flutter_inappwebviewexample",
               ),
-              onClick: (WebUri? url) {
+              onClick: (CygnusWebUri? url) {
                 print("Button 2 with $url");
               },
             ),
@@ -160,18 +160,18 @@ void customTabs() {
 
       await expectLater(chromeSafariBrowser.firstPageLoaded.future, completes);
       await chromeSafariBrowser.updateSecondaryToolbar(
-        ChromeSafariBrowserSecondaryToolbar(
-          layout: AndroidResource.layout(
+        CygnusChromeSafariBrowserSecondaryToolbar(
+          layout: CygnusAndroidResource.layout(
             name: "remote_view_2",
             defPackage: "com.pichillilorenzo.flutter_inappwebviewexample",
           ),
           clickableIDs: [
-            ChromeSafariBrowserSecondaryToolbarClickableID(
-              id: AndroidResource.id(
+            CygnusChromeSafariBrowserSecondaryToolbarClickableID(
+              id: CygnusAndroidResource.id(
                 name: "button3",
                 defPackage: "com.pichillilorenzo.flutter_inappwebviewexample",
               ),
-              onClick: (WebUri? url) {
+              onClick: (CygnusWebUri? url) {
                 print("Button 3 with $url");
               },
             ),
@@ -189,7 +189,7 @@ void customTabs() {
 
       await chromeSafariBrowser.open(
         url: TEST_CUSTOM_TABS_POST_MESSAGE_URL,
-        settings: ChromeSafariBrowserSettings(isSingleInstance: true),
+        settings: CygnusChromeSafariBrowserSettings(isSingleInstance: true),
       );
       await expectLater(chromeSafariBrowser.opened.future, completes);
       expect(chromeSafariBrowser.isOpened(), true);
@@ -200,7 +200,7 @@ void customTabs() {
       );
       expect(
         await chromeSafariBrowser.requestPostMessageChannel(
-          sourceOrigin: WebUri(TEST_CUSTOM_TABS_POST_MESSAGE_URL.origin),
+          sourceOrigin: CygnusWebUri(TEST_CUSTOM_TABS_POST_MESSAGE_URL.origin),
         ),
         true,
       );
@@ -210,7 +210,7 @@ void customTabs() {
       );
       expect(
         await chromeSafariBrowser.postMessage("Message from Flutter"),
-        CustomTabsPostMessageResultType.SUCCESS,
+        CygnusCustomTabsPostMessageResultType.SUCCESS,
       );
       await expectLater(
         chromeSafariBrowser.postMessageReceived.future,
@@ -229,7 +229,7 @@ void customTabs() {
 
       await chromeSafariBrowser.open(
         url: TEST_URL_1,
-        settings: ChromeSafariBrowserSettings(isSingleInstance: true),
+        settings: CygnusChromeSafariBrowserSettings(isSingleInstance: true),
       );
       await expectLater(chromeSafariBrowser.opened.future, completes);
 
@@ -246,13 +246,13 @@ void customTabs() {
 
     skippableTest('getMaxToolbarItems', () async {
       expect(
-        await ChromeSafariBrowser.getMaxToolbarItems(),
+        await CygnusChromeSafariBrowser.getMaxToolbarItems(),
         greaterThanOrEqualTo(0),
       );
     });
 
     skippableTest('getPackageName', () async {
-      expect(await ChromeSafariBrowser.getPackageName(), isNotNull);
+      expect(await CygnusChromeSafariBrowser.getPackageName(), isNotNull);
     });
   }, skip: shouldSkip);
 }

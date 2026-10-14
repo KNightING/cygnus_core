@@ -6,15 +6,15 @@ part of 'create_window_action.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the navigation request used by the [PlatformWebViewCreationParams.onCreateWindow] event.
-class CreateWindowAction extends NavigationAction {
+///Class that represents the navigation request used by the [CygnusPlatformWebViewCreationParams.onCreateWindow] event.
+class CygnusCreateWindowAction extends CygnusNavigationAction {
   ///Use [isDialog] instead.
   @Deprecated('Use isDialog instead')
   bool? androidIsDialog;
 
   ///Use [windowFeatures] instead.
   @Deprecated('Use windowFeatures instead')
-  IOSWKWindowFeatures? iosWindowFeatures;
+  CygnusIOSWKWindowFeatures? iosWindowFeatures;
 
   ///Indicates if the new window should be a dialog, rather than a full-size window.
   ///
@@ -28,29 +28,29 @@ class CreateWindowAction extends NavigationAction {
   ///- iOS WKWebView ([Official API - WKWindowFeatures](https://developer.apple.com/documentation/webkit/wkwindowfeatures))
   ///- macOS WKWebView ([Official API - WKWindowFeatures](https://developer.apple.com/documentation/webkit/wkwindowfeatures))
   ///- Windows WebView2 ([Official API - ICoreWebView2WindowFeatures](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2windowfeatures?view=webview2-1.0.2210.55))
-  WindowFeatures? windowFeatures;
+  CygnusWindowFeatures? windowFeatures;
 
   ///The window id. Used by `WebView` to create a new WebView.
   int windowId;
-  CreateWindowAction({
+  CygnusCreateWindowAction({
     @Deprecated('Use isDialog instead') this.androidIsDialog,
     @Deprecated('Use windowFeatures instead') this.iosWindowFeatures,
     this.isDialog,
     this.windowFeatures,
     required this.windowId,
-    required URLRequest request,
+    required CygnusURLRequest request,
     required bool isForMainFrame,
     @Deprecated('Use hasGesture instead') bool? androidHasGesture,
     bool? hasGesture,
     @Deprecated('Use isRedirect instead') bool? androidIsRedirect,
     bool? isRedirect,
     @Deprecated('Use navigationType instead')
-    IOSWKNavigationType? iosWKNavigationType,
-    NavigationType? navigationType,
-    @Deprecated('Use sourceFrame instead') IOSWKFrameInfo? iosSourceFrame,
-    FrameInfo? sourceFrame,
-    @Deprecated('Use targetFrame instead') IOSWKFrameInfo? iosTargetFrame,
-    FrameInfo? targetFrame,
+    CygnusIOSWKNavigationType? iosWKNavigationType,
+    CygnusNavigationType? navigationType,
+    @Deprecated('Use sourceFrame instead') CygnusIOSWKFrameInfo? iosSourceFrame,
+    CygnusFrameInfo? sourceFrame,
+    @Deprecated('Use targetFrame instead') CygnusIOSWKFrameInfo? iosTargetFrame,
+    CygnusFrameInfo? targetFrame,
     bool? shouldPerformDownload,
   }) : super(
          request: request,
@@ -69,30 +69,31 @@ class CreateWindowAction extends NavigationAction {
        ) {
     isDialog = isDialog ?? androidIsDialog;
     windowFeatures =
-        windowFeatures ?? WindowFeatures.fromMap(iosWindowFeatures?.toMap());
+        windowFeatures ??
+        CygnusWindowFeatures.fromMap(iosWindowFeatures?.toMap());
   }
 
-  ///Gets a possible [CreateWindowAction] instance from a [Map] value.
-  static CreateWindowAction? fromMap(
+  ///Gets a possible [CygnusCreateWindowAction] instance from a [Map] value.
+  static CygnusCreateWindowAction? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = CreateWindowAction(
-      request: URLRequest.fromMap(
+    final instance = CygnusCreateWindowAction(
+      request: CygnusURLRequest.fromMap(
         map['request']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       )!,
       isForMainFrame: map['isForMainFrame'],
       androidIsDialog: map['isDialog'],
-      iosWindowFeatures: IOSWKWindowFeatures.fromMap(
+      iosWindowFeatures: CygnusIOSWKWindowFeatures.fromMap(
         map['windowFeatures']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
       isDialog: map['isDialog'],
-      windowFeatures: WindowFeatures.fromMap(
+      windowFeatures: CygnusWindowFeatures.fromMap(
         map['windowFeatures']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       ),
@@ -103,33 +104,42 @@ class CreateWindowAction extends NavigationAction {
     instance.androidIsRedirect = map['isRedirect'];
     instance.isRedirect = map['isRedirect'];
     instance.iosWKNavigationType = switch (enumMethod ??
-        EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => IOSWKNavigationType.fromNativeValue(
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue => CygnusIOSWKNavigationType.fromNativeValue(
         map['navigationType'],
       ),
-      EnumMethod.value => IOSWKNavigationType.fromValue(map['navigationType']),
-      EnumMethod.name => IOSWKNavigationType.byName(map['navigationType']),
-    };
-    instance.navigationType = switch (enumMethod ?? EnumMethod.nativeValue) {
-      EnumMethod.nativeValue => NavigationType.fromNativeValue(
+      CygnusEnumMethod.value => CygnusIOSWKNavigationType.fromValue(
         map['navigationType'],
       ),
-      EnumMethod.value => NavigationType.fromValue(map['navigationType']),
-      EnumMethod.name => NavigationType.byName(map['navigationType']),
+      CygnusEnumMethod.name => CygnusIOSWKNavigationType.byName(
+        map['navigationType'],
+      ),
     };
-    instance.iosSourceFrame = IOSWKFrameInfo.fromMap(
+    instance.navigationType = switch (enumMethod ??
+        CygnusEnumMethod.nativeValue) {
+      CygnusEnumMethod.nativeValue => CygnusNavigationType.fromNativeValue(
+        map['navigationType'],
+      ),
+      CygnusEnumMethod.value => CygnusNavigationType.fromValue(
+        map['navigationType'],
+      ),
+      CygnusEnumMethod.name => CygnusNavigationType.byName(
+        map['navigationType'],
+      ),
+    };
+    instance.iosSourceFrame = CygnusIOSWKFrameInfo.fromMap(
       map['sourceFrame']?.cast<String, dynamic>(),
       enumMethod: enumMethod,
     );
-    instance.sourceFrame = FrameInfo.fromMap(
+    instance.sourceFrame = CygnusFrameInfo.fromMap(
       map['sourceFrame']?.cast<String, dynamic>(),
       enumMethod: enumMethod,
     );
-    instance.iosTargetFrame = IOSWKFrameInfo.fromMap(
+    instance.iosTargetFrame = CygnusIOSWKFrameInfo.fromMap(
       map['targetFrame']?.cast<String, dynamic>(),
       enumMethod: enumMethod,
     );
-    instance.targetFrame = FrameInfo.fromMap(
+    instance.targetFrame = CygnusFrameInfo.fromMap(
       map['targetFrame']?.cast<String, dynamic>(),
       enumMethod: enumMethod,
     );
@@ -138,16 +148,16 @@ class CreateWindowAction extends NavigationAction {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "request": request.toMap(enumMethod: enumMethod),
       "isForMainFrame": isForMainFrame,
       "hasGesture": hasGesture,
       "isRedirect": isRedirect,
-      "navigationType": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => navigationType?.toNativeValue(),
-        EnumMethod.value => navigationType?.toValue(),
-        EnumMethod.name => navigationType?.name(),
+      "navigationType": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => navigationType?.toNativeValue(),
+        CygnusEnumMethod.value => navigationType?.toValue(),
+        CygnusEnumMethod.name => navigationType?.name(),
       },
       "sourceFrame": sourceFrame?.toMap(enumMethod: enumMethod),
       "targetFrame": targetFrame?.toMap(enumMethod: enumMethod),
@@ -165,6 +175,6 @@ class CreateWindowAction extends NavigationAction {
 
   @override
   String toString() {
-    return 'CreateWindowAction{request: $request, isForMainFrame: $isForMainFrame, hasGesture: $hasGesture, isRedirect: $isRedirect, navigationType: $navigationType, sourceFrame: $sourceFrame, targetFrame: $targetFrame, shouldPerformDownload: $shouldPerformDownload, isDialog: $isDialog, windowFeatures: $windowFeatures, windowId: $windowId}';
+    return 'CygnusCreateWindowAction{request: $request, isForMainFrame: $isForMainFrame, hasGesture: $hasGesture, isRedirect: $isRedirect, navigationType: $navigationType, sourceFrame: $sourceFrame, targetFrame: $targetFrame, shouldPerformDownload: $shouldPerformDownload, isDialog: $isDialog, windowFeatures: $windowFeatures, windowId: $windowId}';
   }
 }

@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void keepAlive() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformInAppWebViewWidgetCreationParamsProperty.keepAlive,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewWidgetCreationParamsProperty.keepAlive,
   );
 
   final initialUrl = !kIsWeb
@@ -10,22 +10,22 @@ void keepAlive() {
       : TEST_WEB_PLATFORM_URL_1;
 
   skippableTestWidgets('Keep Alive', (WidgetTester tester) async {
-    final keepAlive = InAppWebViewKeepAlive();
+    final keepAlive = CygnusWebViewKeepAlive();
 
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
-    final Completer<InAppWebViewController> controllerCompleter2 =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter2 =
+        Completer<CygnusWebViewController>();
     final Completer<void> pageLoaded = Completer<void>();
     final Completer<void> pageLoaded2 = Completer<void>();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
           keepAlive: keepAlive,
-          initialUrlRequest: URLRequest(url: initialUrl),
+          initialUrlRequest: CygnusURLRequest(url: initialUrl),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
           },
@@ -43,18 +43,18 @@ void keepAlive() {
       ),
     );
 
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
     await pageLoaded.future;
 
     await controller.loadUrl(
-      urlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_2),
+      urlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_2),
     );
     await pageLoaded2.future;
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
           keepAlive: keepAlive,
           onWebViewCreated: (controller) {
@@ -63,14 +63,14 @@ void keepAlive() {
         ),
       ),
     );
-    final InAppWebViewController controller2 =
+    final CygnusWebViewController controller2 =
         await controllerCompleter2.future;
 
     final String? currentUrl = (await controller2.getUrl())?.toString();
     expect(currentUrl, TEST_CROSS_PLATFORM_URL_2.toString());
 
     await expectLater(
-      InAppWebViewController.disposeKeepAlive(keepAlive),
+      CygnusWebViewController.disposeKeepAlive(keepAlive),
       completes,
     );
   }, skip: shouldSkip);

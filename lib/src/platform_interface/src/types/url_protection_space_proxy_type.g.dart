@@ -7,57 +7,60 @@ part of 'url_protection_space_proxy_type.dart';
 // **************************************************************************
 
 ///Class that represents the supported proxy types.
-class URLProtectionSpaceProxyType {
+class CygnusURLProtectionSpaceProxyType {
   final String _value;
   final String? _nativeValue;
-  const URLProtectionSpaceProxyType._internal(this._value, this._nativeValue);
+  const CygnusURLProtectionSpaceProxyType._internal(
+    this._value,
+    this._nativeValue,
+  );
   // ignore: unused_element
-  factory URLProtectionSpaceProxyType._internalMultiPlatform(
+  factory CygnusURLProtectionSpaceProxyType._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => URLProtectionSpaceProxyType._internal(value, nativeValue());
+  ) => CygnusURLProtectionSpaceProxyType._internal(value, nativeValue());
 
   ///The proxy type for FTP proxies.
   static const URL_PROTECTION_SPACE_FTP_PROXY =
-      URLProtectionSpaceProxyType._internal(
+      CygnusURLProtectionSpaceProxyType._internal(
         'NSURLProtectionSpaceFTPProxy',
         'NSURLProtectionSpaceFTPProxy',
       );
 
   ///The proxy type for HTTPS proxies.
   static const URL_PROTECTION_SPACE_HTTPS_PROXY =
-      URLProtectionSpaceProxyType._internal(
+      CygnusURLProtectionSpaceProxyType._internal(
         'NSURLProtectionSpaceHTTPSProxy',
         'NSURLProtectionSpaceHTTPSProxy',
       );
 
   ///The proxy type for HTTP proxies.
   static const URL_PROTECTION_SPACE_HTTP_PROXY =
-      URLProtectionSpaceProxyType._internal(
+      CygnusURLProtectionSpaceProxyType._internal(
         'NSURLProtectionSpaceHTTPProxy',
         'NSURLProtectionSpaceHTTPProxy',
       );
 
   ///The proxy type for SOCKS proxies.
   static const URL_PROTECTION_SPACE_SOCKS_PROXY =
-      URLProtectionSpaceProxyType._internal(
+      CygnusURLProtectionSpaceProxyType._internal(
         'NSURLProtectionSpaceSOCKSProxy',
         'NSURLProtectionSpaceSOCKSProxy',
       );
 
-  ///Set of all values of [URLProtectionSpaceProxyType].
-  static final Set<URLProtectionSpaceProxyType> values = [
-    URLProtectionSpaceProxyType.URL_PROTECTION_SPACE_FTP_PROXY,
-    URLProtectionSpaceProxyType.URL_PROTECTION_SPACE_HTTPS_PROXY,
-    URLProtectionSpaceProxyType.URL_PROTECTION_SPACE_HTTP_PROXY,
-    URLProtectionSpaceProxyType.URL_PROTECTION_SPACE_SOCKS_PROXY,
+  ///Set of all values of [CygnusURLProtectionSpaceProxyType].
+  static final Set<CygnusURLProtectionSpaceProxyType> values = [
+    CygnusURLProtectionSpaceProxyType.URL_PROTECTION_SPACE_FTP_PROXY,
+    CygnusURLProtectionSpaceProxyType.URL_PROTECTION_SPACE_HTTPS_PROXY,
+    CygnusURLProtectionSpaceProxyType.URL_PROTECTION_SPACE_HTTP_PROXY,
+    CygnusURLProtectionSpaceProxyType.URL_PROTECTION_SPACE_SOCKS_PROXY,
   ].toSet();
 
-  ///Gets a possible [URLProtectionSpaceProxyType] instance from [String] value.
-  static URLProtectionSpaceProxyType? fromValue(String? value) {
+  ///Gets a possible [CygnusURLProtectionSpaceProxyType] instance from [String] value.
+  static CygnusURLProtectionSpaceProxyType? fromValue(String? value) {
     if (value != null) {
       try {
-        return URLProtectionSpaceProxyType.values.firstWhere(
+        return CygnusURLProtectionSpaceProxyType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -67,11 +70,11 @@ class URLProtectionSpaceProxyType {
     return null;
   }
 
-  ///Gets a possible [URLProtectionSpaceProxyType] instance from a native value.
-  static URLProtectionSpaceProxyType? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusURLProtectionSpaceProxyType] instance from a native value.
+  static CygnusURLProtectionSpaceProxyType? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return URLProtectionSpaceProxyType.values.firstWhere(
+        return CygnusURLProtectionSpaceProxyType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -81,15 +84,15 @@ class URLProtectionSpaceProxyType {
     return null;
   }
 
-  /// Gets a possible [URLProtectionSpaceProxyType] instance value with name [name].
+  /// Gets a possible [CygnusURLProtectionSpaceProxyType] instance value with name [name].
   ///
-  /// Goes through [URLProtectionSpaceProxyType.values] looking for a value with
-  /// name [name], as reported by [URLProtectionSpaceProxyType.name].
+  /// Goes through [CygnusURLProtectionSpaceProxyType.values] looking for a value with
+  /// name [name], as reported by [CygnusURLProtectionSpaceProxyType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static URLProtectionSpaceProxyType? byName(String? name) {
+  static CygnusURLProtectionSpaceProxyType? byName(String? name) {
     if (name != null) {
       try {
-        return URLProtectionSpaceProxyType.values.firstWhere(
+        return CygnusURLProtectionSpaceProxyType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -99,7 +102,7 @@ class URLProtectionSpaceProxyType {
     return null;
   }
 
-  /// Creates a map from the names of [URLProtectionSpaceProxyType] values to the values.
+  /// Creates a map from the names of [CygnusURLProtectionSpaceProxyType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -107,9 +110,9 @@ class URLProtectionSpaceProxyType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, URLProtectionSpaceProxyType> asNameMap() =>
-      <String, URLProtectionSpaceProxyType>{
-        for (final value in URLProtectionSpaceProxyType.values)
+  static Map<String, CygnusURLProtectionSpaceProxyType> asNameMap() =>
+      <String, CygnusURLProtectionSpaceProxyType>{
+        for (final value in CygnusURLProtectionSpaceProxyType.values)
           value.name(): value,
       };
 
@@ -152,62 +155,62 @@ class URLProtectionSpaceProxyType {
 }
 
 ///An iOS-specific Class that represents the supported proxy types.
-///Use [URLProtectionSpaceProxyType] instead.
-@Deprecated('Use URLProtectionSpaceProxyType instead')
-class IOSNSURLProtectionSpaceProxyType {
+///Use [CygnusURLProtectionSpaceProxyType] instead.
+@Deprecated('Use CygnusURLProtectionSpaceProxyType instead')
+class CygnusIOSNSURLProtectionSpaceProxyType {
   final String _value;
   final String? _nativeValue;
-  const IOSNSURLProtectionSpaceProxyType._internal(
+  const CygnusIOSNSURLProtectionSpaceProxyType._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory IOSNSURLProtectionSpaceProxyType._internalMultiPlatform(
+  factory CygnusIOSNSURLProtectionSpaceProxyType._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => IOSNSURLProtectionSpaceProxyType._internal(value, nativeValue());
+  ) => CygnusIOSNSURLProtectionSpaceProxyType._internal(value, nativeValue());
 
   ///The proxy type for FTP proxies.
   static const NSURL_PROTECTION_SPACE_FTP_PROXY =
-      IOSNSURLProtectionSpaceProxyType._internal(
+      CygnusIOSNSURLProtectionSpaceProxyType._internal(
         'NSURLProtectionSpaceFTPProxy',
         'NSURLProtectionSpaceFTPProxy',
       );
 
   ///The proxy type for HTTPS proxies.
   static const NSURL_PROTECTION_SPACE_HTTPS_PROXY =
-      IOSNSURLProtectionSpaceProxyType._internal(
+      CygnusIOSNSURLProtectionSpaceProxyType._internal(
         'NSURLProtectionSpaceHTTPSProxy',
         'NSURLProtectionSpaceHTTPSProxy',
       );
 
   ///The proxy type for SOCKS proxies.
   static const NSURL_PROTECTION_SPACE_SOCKS_PROXY =
-      IOSNSURLProtectionSpaceProxyType._internal(
+      CygnusIOSNSURLProtectionSpaceProxyType._internal(
         'NSURLProtectionSpaceSOCKSProxy',
         'NSURLProtectionSpaceSOCKSProxy',
       );
 
   ///The proxy type for HTTP proxies.
   static const NSUR_PROTECTION_SPACE_HTTP_PROXY =
-      IOSNSURLProtectionSpaceProxyType._internal(
+      CygnusIOSNSURLProtectionSpaceProxyType._internal(
         'NSURLProtectionSpaceHTTPProxy',
         'NSURLProtectionSpaceHTTPProxy',
       );
 
-  ///Set of all values of [IOSNSURLProtectionSpaceProxyType].
-  static final Set<IOSNSURLProtectionSpaceProxyType> values = [
-    IOSNSURLProtectionSpaceProxyType.NSURL_PROTECTION_SPACE_FTP_PROXY,
-    IOSNSURLProtectionSpaceProxyType.NSURL_PROTECTION_SPACE_HTTPS_PROXY,
-    IOSNSURLProtectionSpaceProxyType.NSURL_PROTECTION_SPACE_SOCKS_PROXY,
-    IOSNSURLProtectionSpaceProxyType.NSUR_PROTECTION_SPACE_HTTP_PROXY,
+  ///Set of all values of [CygnusIOSNSURLProtectionSpaceProxyType].
+  static final Set<CygnusIOSNSURLProtectionSpaceProxyType> values = [
+    CygnusIOSNSURLProtectionSpaceProxyType.NSURL_PROTECTION_SPACE_FTP_PROXY,
+    CygnusIOSNSURLProtectionSpaceProxyType.NSURL_PROTECTION_SPACE_HTTPS_PROXY,
+    CygnusIOSNSURLProtectionSpaceProxyType.NSURL_PROTECTION_SPACE_SOCKS_PROXY,
+    CygnusIOSNSURLProtectionSpaceProxyType.NSUR_PROTECTION_SPACE_HTTP_PROXY,
   ].toSet();
 
-  ///Gets a possible [IOSNSURLProtectionSpaceProxyType] instance from [String] value.
-  static IOSNSURLProtectionSpaceProxyType? fromValue(String? value) {
+  ///Gets a possible [CygnusIOSNSURLProtectionSpaceProxyType] instance from [String] value.
+  static CygnusIOSNSURLProtectionSpaceProxyType? fromValue(String? value) {
     if (value != null) {
       try {
-        return IOSNSURLProtectionSpaceProxyType.values.firstWhere(
+        return CygnusIOSNSURLProtectionSpaceProxyType.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -217,11 +220,13 @@ class IOSNSURLProtectionSpaceProxyType {
     return null;
   }
 
-  ///Gets a possible [IOSNSURLProtectionSpaceProxyType] instance from a native value.
-  static IOSNSURLProtectionSpaceProxyType? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusIOSNSURLProtectionSpaceProxyType] instance from a native value.
+  static CygnusIOSNSURLProtectionSpaceProxyType? fromNativeValue(
+    String? value,
+  ) {
     if (value != null) {
       try {
-        return IOSNSURLProtectionSpaceProxyType.values.firstWhere(
+        return CygnusIOSNSURLProtectionSpaceProxyType.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -231,15 +236,15 @@ class IOSNSURLProtectionSpaceProxyType {
     return null;
   }
 
-  /// Gets a possible [IOSNSURLProtectionSpaceProxyType] instance value with name [name].
+  /// Gets a possible [CygnusIOSNSURLProtectionSpaceProxyType] instance value with name [name].
   ///
-  /// Goes through [IOSNSURLProtectionSpaceProxyType.values] looking for a value with
-  /// name [name], as reported by [IOSNSURLProtectionSpaceProxyType.name].
+  /// Goes through [CygnusIOSNSURLProtectionSpaceProxyType.values] looking for a value with
+  /// name [name], as reported by [CygnusIOSNSURLProtectionSpaceProxyType.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static IOSNSURLProtectionSpaceProxyType? byName(String? name) {
+  static CygnusIOSNSURLProtectionSpaceProxyType? byName(String? name) {
     if (name != null) {
       try {
-        return IOSNSURLProtectionSpaceProxyType.values.firstWhere(
+        return CygnusIOSNSURLProtectionSpaceProxyType.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -249,7 +254,7 @@ class IOSNSURLProtectionSpaceProxyType {
     return null;
   }
 
-  /// Creates a map from the names of [IOSNSURLProtectionSpaceProxyType] values to the values.
+  /// Creates a map from the names of [CygnusIOSNSURLProtectionSpaceProxyType] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -257,9 +262,9 @@ class IOSNSURLProtectionSpaceProxyType {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, IOSNSURLProtectionSpaceProxyType> asNameMap() =>
-      <String, IOSNSURLProtectionSpaceProxyType>{
-        for (final value in IOSNSURLProtectionSpaceProxyType.values)
+  static Map<String, CygnusIOSNSURLProtectionSpaceProxyType> asNameMap() =>
+      <String, CygnusIOSNSURLProtectionSpaceProxyType>{
+        for (final value in CygnusIOSNSURLProtectionSpaceProxyType.values)
           value.name(): value,
       };
 

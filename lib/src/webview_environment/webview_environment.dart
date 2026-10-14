@@ -1,157 +1,157 @@
 import 'dart:core';
 
 import 'package:flutter/foundation.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
-///{@macro cygnus_core.PlatformWebViewEnvironment}
+///{@macro cygnus_core.CygnusPlatformWebViewEnvironment}
 ///
-///{@macro cygnus_core.PlatformWebViewEnvironment.supported_platforms}
-class WebViewEnvironment {
-  /// Constructs a [WebViewEnvironment].
+///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.supported_platforms}
+class CygnusWebViewEnvironment {
+  /// Constructs a [CygnusWebViewEnvironment].
   ///
-  /// See [WebViewEnvironment.fromPlatformCreationParams] for setting parameters for
+  /// See [CygnusWebViewEnvironment.fromPlatformCreationParams] for setting parameters for
   /// a specific platform.
-  WebViewEnvironment.fromPlatformCreationParams({
-    required PlatformWebViewEnvironmentCreationParams params,
-  }) : this.fromPlatform(platform: PlatformWebViewEnvironment(params));
+  CygnusWebViewEnvironment.fromPlatformCreationParams({
+    required CygnusPlatformWebViewEnvironmentCreationParams params,
+  }) : this.fromPlatform(platform: CygnusPlatformWebViewEnvironment(params));
 
-  /// Constructs a [WebViewEnvironment] from a specific platform implementation.
-  WebViewEnvironment.fromPlatform({required this.platform});
+  /// Constructs a [CygnusWebViewEnvironment] from a specific platform implementation.
+  CygnusWebViewEnvironment.fromPlatform({required this.platform});
 
-  /// Implementation of [PlatformWebViewEnvironment] for the current platform.
-  final PlatformWebViewEnvironment platform;
+  /// Implementation of [CygnusPlatformWebViewEnvironment] for the current platform.
+  final CygnusPlatformWebViewEnvironment platform;
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.id}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.id}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.id.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.id.supported_platforms}
   String get id => platform.id;
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.settings}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.settings}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.settings.supported_platforms}
-  WebViewEnvironmentSettings? get settings => platform.settings;
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.settings.supported_platforms}
+  CygnusWebViewEnvironmentSettings? get settings => platform.settings;
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.isInterfaceSupported}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.isInterfaceSupported}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.isInterfaceSupported.supported_platforms}
-  Future<bool> isInterfaceSupported(WebViewInterface interface) =>
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.isInterfaceSupported.supported_platforms}
+  Future<bool> isInterfaceSupported(CygnusWebViewInterface interface) =>
       platform.isInterfaceSupported(interface);
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getProcessInfos}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getProcessInfos}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getProcessInfos.supported_platforms}
-  Future<List<BrowserProcessInfo>> getProcessInfos() =>
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getProcessInfos.supported_platforms}
+  Future<List<CygnusBrowserProcessInfo>> getProcessInfos() =>
       platform.getProcessInfos();
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getFailureReportFolderPath}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getFailureReportFolderPath}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getFailureReportFolderPath.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getFailureReportFolderPath.supported_platforms}
   Future<String?> getFailureReportFolderPath() =>
       platform.getFailureReportFolderPath();
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.create}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.create}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.create.supported_platforms}
-  static Future<WebViewEnvironment> create({
-    WebViewEnvironmentSettings? settings,
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.create.supported_platforms}
+  static Future<CygnusWebViewEnvironment> create({
+    CygnusWebViewEnvironmentSettings? settings,
   }) async {
-    return WebViewEnvironment.fromPlatform(
-      platform: await PlatformWebViewEnvironment.static().create(
+    return CygnusWebViewEnvironment.fromPlatform(
+      platform: await CygnusPlatformWebViewEnvironment.static().create(
         settings: settings,
       ),
     );
   }
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getAvailableVersion}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getAvailableVersion}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getAvailableVersion.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getAvailableVersion.supported_platforms}
   static Future<String?> getAvailableVersion({
     String? browserExecutableFolder,
-  }) => PlatformWebViewEnvironment.static().getAvailableVersion(
+  }) => CygnusPlatformWebViewEnvironment.static().getAvailableVersion(
     browserExecutableFolder: browserExecutableFolder,
   );
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getAvailableVersion}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getAvailableVersion}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getAvailableVersion.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getAvailableVersion.supported_platforms}
   static Future<int?> compareBrowserVersions({
     required String version1,
     required String version2,
-  }) => PlatformWebViewEnvironment.static().compareBrowserVersions(
+  }) => CygnusPlatformWebViewEnvironment.static().compareBrowserVersions(
     version1: version1,
     version2: version2,
   );
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.onNewBrowserVersionAvailable}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.onNewBrowserVersionAvailable}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.onNewBrowserVersionAvailable.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.onNewBrowserVersionAvailable.supported_platforms}
   void Function()? get onNewBrowserVersionAvailable =>
       platform.onNewBrowserVersionAvailable;
   set onNewBrowserVersionAvailable(void Function()? value) =>
       platform.onNewBrowserVersionAvailable = value;
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.onBrowserProcessExited}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.onBrowserProcessExited}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.onBrowserProcessExited.supported_platforms}
-  void Function(BrowserProcessExitedDetail detail)?
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.onBrowserProcessExited.supported_platforms}
+  void Function(CygnusBrowserProcessExitedDetail detail)?
   get onBrowserProcessExited => platform.onBrowserProcessExited;
   set onBrowserProcessExited(
-    void Function(BrowserProcessExitedDetail detail)? value,
+    void Function(CygnusBrowserProcessExitedDetail detail)? value,
   ) => platform.onBrowserProcessExited = value;
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.onProcessInfosChanged}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.onProcessInfosChanged}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.onProcessInfosChanged.supported_platforms}
-  void Function(BrowserProcessInfosChangedDetail detail)?
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.onProcessInfosChanged.supported_platforms}
+  void Function(CygnusBrowserProcessInfosChangedDetail detail)?
   get onProcessInfosChanged => platform.onProcessInfosChanged;
   set onProcessInfosChanged(
-    void Function(BrowserProcessInfosChangedDetail detail)? value,
+    void Function(CygnusBrowserProcessInfosChangedDetail detail)? value,
   ) => platform.onProcessInfosChanged = value;
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getCacheModel}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getCacheModel}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getCacheModel.supported_platforms}
-  Future<CacheModel?> getCacheModel() => platform.getCacheModel();
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getCacheModel.supported_platforms}
+  Future<CygnusCacheModel?> getCacheModel() => platform.getCacheModel();
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.isSpellCheckingEnabled}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.isSpellCheckingEnabled}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.isSpellCheckingEnabled.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.isSpellCheckingEnabled.supported_platforms}
   Future<bool> isSpellCheckingEnabled() => platform.isSpellCheckingEnabled();
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getSpellCheckingLanguages}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getSpellCheckingLanguages}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.getSpellCheckingLanguages.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.getSpellCheckingLanguages.supported_platforms}
   Future<List<String>> getSpellCheckingLanguages() =>
       platform.getSpellCheckingLanguages();
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.isAutomationAllowed}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.isAutomationAllowed}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.isAutomationAllowed.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.isAutomationAllowed.supported_platforms}
   Future<bool> isAutomationAllowed() => platform.isAutomationAllowed();
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.dispose}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.dispose}
   ///
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.dispose.supported_platforms}
   Future<void> dispose() => platform.dispose();
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironmentCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironmentCreationParams.isClassSupported}
   static bool isClassSupported({TargetPlatform? platform}) =>
-      PlatformWebViewEnvironment.static().isClassSupported(platform: platform);
+      CygnusPlatformWebViewEnvironment.static().isClassSupported(platform: platform);
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.isPropertySupported}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.isPropertySupported}
   static bool isPropertySupported(
     dynamic property, {
     TargetPlatform? platform,
-  }) => PlatformWebViewEnvironment.static().isPropertySupported(
+  }) => CygnusPlatformWebViewEnvironment.static().isPropertySupported(
     property,
     platform: platform,
   );
 
-  ///{@macro cygnus_core.PlatformWebViewEnvironment.isMethodSupported}
+  ///{@macro cygnus_core.CygnusPlatformWebViewEnvironment.isMethodSupported}
   static bool isMethodSupported(
-    PlatformWebViewEnvironmentMethod method, {
+    CygnusPlatformWebViewEnvironmentMethod method, {
     TargetPlatform? platform,
-  }) => PlatformWebViewEnvironment.static().isMethodSupported(
+  }) => CygnusPlatformWebViewEnvironment.static().isMethodSupported(
     method,
     platform: platform,
   );

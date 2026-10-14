@@ -2,22 +2,22 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 import 'package:cygnus_core/src/platform_interface/src/types/disposable.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import '../in_app_webview/platform_inappwebview_controller.dart';
-import '../inappwebview_platform.dart';
+import '../webview/platform_webview_controller.dart';
+import '../webview_platform.dart';
 import '../types/main.dart';
 import 'web_message.dart';
 
 // ignore: uri_has_not_been_generated
 part 'platform_web_message_listener.g.dart';
 
-///{@template cygnus_core.PlatformWebMessageListenerCreationParams}
-/// Object specifying creation parameters for creating a [PlatformWebMessageListener].
+///{@template cygnus_core.CygnusPlatformWebMessageListenerCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformWebMessageListener].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformWebMessageListenerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebMessageListenerCreationParams.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -28,19 +28,19 @@ part 'platform_web_message_listener.g.dart';
   ],
 )
 @immutable
-class PlatformWebMessageListenerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformWebMessageListener].
-  const PlatformWebMessageListenerCreationParams({
+class CygnusPlatformWebMessageListenerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformWebMessageListener].
+  const CygnusPlatformWebMessageListenerCreationParams({
     required this.jsObjectName,
     this.allowedOriginRules,
     this.onPostMessage,
   });
 
-  ///{@template cygnus_core.PlatformWebMessageListenerCreationParams.jsObjectName}
+  ///{@template cygnus_core.CygnusPlatformWebMessageListenerCreationParams.jsObjectName}
   ///The name for the injected JavaScript object.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageListenerCreationParams.jsObjectName.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListenerCreationParams.jsObjectName.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -52,11 +52,11 @@ class PlatformWebMessageListenerCreationParams {
   )
   final String jsObjectName;
 
-  ///{@template cygnus_core.PlatformWebMessageListenerCreationParams.allowedOriginRules}
+  ///{@template cygnus_core.CygnusPlatformWebMessageListenerCreationParams.allowedOriginRules}
   ///A set of matching rules for the allowed origins.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageListenerCreationParams.allowedOriginRules.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListenerCreationParams.allowedOriginRules.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -68,7 +68,7 @@ class PlatformWebMessageListenerCreationParams {
   )
   final Set<String>? allowedOriginRules;
 
-  ///{@template cygnus_core.PlatformWebMessageListenerCreationParams.onPostMessage}
+  ///{@template cygnus_core.CygnusPlatformWebMessageListenerCreationParams.onPostMessage}
   ///Event that receives a message sent by a `postMessage()` on the injected JavaScript object.
   ///
   ///Note that when the frame is `file:` or `content:` origin, the value of [sourceOrigin] is `null`.
@@ -79,13 +79,13 @@ class PlatformWebMessageListenerCreationParams {
   ///- [replyProxy] is used to reply back to the JavaScript object.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageListenerCreationParams.onPostMessage.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListenerCreationParams.onPostMessage.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
-        apiName: 'WebViewCompat.WebMessageListener.onPostMessage',
+        apiName: 'WebViewCompat.CygnusWebMessageListener.onPostMessage',
         apiUrl:
-            'https://developer.android.com/reference/androidx/webkit/WebViewCompat.WebMessageListener#onPostMessage(android.webkit.WebView,%20androidx.webkit.WebMessageCompat,%20android.net.Uri,%20boolean,%20androidx.webkit.JavaScriptReplyProxy)',
+            'https://developer.android.com/reference/androidx/webkit/WebViewCompat.CygnusWebMessageListener#onPostMessage(android.webkit.WebView,%20androidx.webkit.WebMessageCompat,%20android.net.Uri,%20boolean,%20androidx.webkit.CygnusJavaScriptReplyProxy)',
       ),
       IOSPlatform(),
       MacOSPlatform(),
@@ -93,39 +93,39 @@ class PlatformWebMessageListenerCreationParams {
       WindowsPlatform(),
     ],
   )
-  final OnPostMessageCallback? onPostMessage;
+  final CygnusOnPostMessageCallback? onPostMessage;
 
-  ///{@template cygnus_core.PlatformWebMessageListenerCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformWebMessageListenerCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformWebMessageListenerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformWebMessageListenerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformWebMessageListenerCreationParams.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformWebMessageListenerCreationParams.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformWebMessageListenerCreationParamsProperty property, {
+    CygnusPlatformWebMessageListenerCreationParamsProperty property, {
     TargetPlatform? platform,
   }) =>
-      _PlatformWebMessageListenerCreationParamsPropertySupported.isPropertySupported(
+      _CygnusPlatformWebMessageListenerCreationParamsPropertySupported.isPropertySupported(
         property,
         platform: platform,
       );
 
   @override
   String toString() {
-    return 'PlatformWebMessageListenerCreationParams{jsObjectName: $jsObjectName, allowedOriginRules: $allowedOriginRules, onPostMessage: $onPostMessage}';
+    return 'CygnusPlatformWebMessageListenerCreationParams{jsObjectName: $jsObjectName, allowedOriginRules: $allowedOriginRules, onPostMessage: $onPostMessage}';
   }
 }
 
-///{@template cygnus_core.PlatformWebMessageListener}
-///This listener receives messages sent on the JavaScript object which was injected by [PlatformInAppWebViewController.addWebMessageListener].
+///{@template cygnus_core.CygnusPlatformWebMessageListener}
+///This listener receives messages sent on the JavaScript object which was injected by [CygnusPlatformWebViewController.addWebMessageListener].
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformWebMessageListener.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformWebMessageListener.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -135,67 +135,67 @@ class PlatformWebMessageListenerCreationParams {
     WindowsPlatform(),
   ],
 )
-abstract class PlatformWebMessageListener extends PlatformInterface
-    implements Disposable {
-  /// Creates a new [PlatformWebMessageListener]
-  factory PlatformWebMessageListener(
-    PlatformWebMessageListenerCreationParams params,
+abstract class CygnusPlatformWebMessageListener extends PlatformInterface
+    implements CygnusDisposable {
+  /// Creates a new [CygnusPlatformWebMessageListener]
+  factory CygnusPlatformWebMessageListener(
+    CygnusPlatformWebMessageListenerCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformWebMessageListener webMessageListener = InAppWebViewPlatform
+    final CygnusPlatformWebMessageListener webMessageListener = CygnusWebViewPlatform
         .instance!
         .createPlatformWebMessageListener(params);
     PlatformInterface.verify(webMessageListener, _token);
     return webMessageListener;
   }
 
-  /// Creates a new [PlatformWebMessageListener] to access static methods.
-  factory PlatformWebMessageListener.static() {
+  /// Creates a new [CygnusPlatformWebMessageListener] to access static methods.
+  factory CygnusPlatformWebMessageListener.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformWebMessageListener webMessageListenerStatic =
-        InAppWebViewPlatform.instance!.createPlatformWebMessageListenerStatic();
+    final CygnusPlatformWebMessageListener webMessageListenerStatic =
+        CygnusWebViewPlatform.instance!.createPlatformWebMessageListenerStatic();
     PlatformInterface.verify(webMessageListenerStatic, _token);
     return webMessageListenerStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformWebMessageListener].
+  /// Used by the platform implementation to create a new [CygnusPlatformWebMessageListener].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformWebMessageListener.implementation(this.params) : super(token: _token);
+  CygnusPlatformWebMessageListener.implementation(this.params) : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformWebMessageListener].
-  final PlatformWebMessageListenerCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformWebMessageListener].
+  final CygnusPlatformWebMessageListenerCreationParams params;
 
-  ///{@macro cygnus_core.PlatformWebMessageListenerCreationParams.jsObjectName}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListenerCreationParams.jsObjectName}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageListenerCreationParams.jsObjectName.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListenerCreationParams.jsObjectName.supported_platforms}
   String get jsObjectName => params.jsObjectName;
 
-  ///{@macro cygnus_core.PlatformWebMessageListenerCreationParams.allowedOriginRules}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListenerCreationParams.allowedOriginRules}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageListenerCreationParams.allowedOriginRules.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListenerCreationParams.allowedOriginRules.supported_platforms}
   Set<String>? get allowedOriginRules => params.allowedOriginRules;
 
-  ///{@macro cygnus_core.PlatformWebMessageListenerCreationParams.onPostMessage}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListenerCreationParams.onPostMessage}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageListenerCreationParams.onPostMessage.supported_platforms}
-  OnPostMessageCallback? get onPostMessage => params.onPostMessage;
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListenerCreationParams.onPostMessage.supported_platforms}
+  CygnusOnPostMessageCallback? get onPostMessage => params.onPostMessage;
 
   Map<String, dynamic> toMap() {
     throw UnimplementedError(
@@ -209,11 +209,11 @@ abstract class PlatformWebMessageListener extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformWebMessageListener.dispose}
+  ///{@template cygnus_core.CygnusPlatformWebMessageListener.dispose}
   ///Disposes the channel.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformWebMessageListener.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListener.dispose.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -230,60 +230,60 @@ abstract class PlatformWebMessageListener extends PlatformInterface
     );
   }
 
-  ///{@macro cygnus_core.PlatformWebMessageListenerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformWebMessageListenerCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformWebMessageListenerClassSupported.isClassSupported(
+      _CygnusPlatformWebMessageListenerClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformWebMessageListener.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformWebMessageListener.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformWebMessageListenerCreationParamsProperty property, {
+    CygnusPlatformWebMessageListenerCreationParamsProperty property, {
     TargetPlatform? platform,
   }) => params.isPropertySupported(property, platform: platform);
 
-  ///{@template cygnus_core.PlatformWebMessageListener.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformWebMessageListener.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformWebMessageListenerMethod method, {
+    CygnusPlatformWebMessageListenerMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformWebMessageListenerMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformWebMessageListenerMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );
 
   @override
   String toString() {
-    return 'PlatformWebMessageListener{jsObjectName: $jsObjectName, allowedOriginRules: $allowedOriginRules, onPostMessage: $onPostMessage}';
+    return 'CygnusPlatformWebMessageListener{jsObjectName: $jsObjectName, allowedOriginRules: $allowedOriginRules, onPostMessage: $onPostMessage}';
   }
 }
 
-/// Object specifying creation parameters for creating a [PlatformJavaScriptReplyProxy].
+/// Object specifying creation parameters for creating a [CygnusPlatformJavaScriptReplyProxy].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 @immutable
-class PlatformJavaScriptReplyProxyCreationParams {
-  /// Used by the platform implementation to create a new [PlatformJavaScriptReplyProxy].
-  const PlatformJavaScriptReplyProxyCreationParams({
+class CygnusPlatformJavaScriptReplyProxyCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformJavaScriptReplyProxy].
+  const CygnusPlatformJavaScriptReplyProxyCreationParams({
     required this.webMessageListener,
   });
 
-  final PlatformWebMessageListener webMessageListener;
+  final CygnusPlatformWebMessageListener webMessageListener;
 }
 
-///{@template cygnus_core.PlatformJavaScriptReplyProxy}
-///This class represents the JavaScript object injected by [PlatformInAppWebViewController.addWebMessageListener].
-///An instance will be given by [PlatformWebMessageListener.onPostMessage].
+///{@template cygnus_core.CygnusPlatformJavaScriptReplyProxy}
+///This class represents the JavaScript object injected by [CygnusPlatformWebViewController.addWebMessageListener].
+///An instance will be given by [CygnusPlatformWebMessageListener.onPostMessage].
 ///The app can use `postMessage(String)` to talk to the JavaScript context.
 ///
 ///There is a 1:1 relationship between this object and the JavaScript object in a frame.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformJavaScriptReplyProxy.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformJavaScriptReplyProxy.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -293,48 +293,48 @@ class PlatformJavaScriptReplyProxyCreationParams {
     WindowsPlatform(),
   ],
 )
-abstract class PlatformJavaScriptReplyProxy extends PlatformInterface {
-  /// Creates a new [PlatformWebMessageListener]
-  factory PlatformJavaScriptReplyProxy(
-    PlatformJavaScriptReplyProxyCreationParams params,
+abstract class CygnusPlatformJavaScriptReplyProxy extends PlatformInterface {
+  /// Creates a new [CygnusPlatformWebMessageListener]
+  factory CygnusPlatformJavaScriptReplyProxy(
+    CygnusPlatformJavaScriptReplyProxyCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformJavaScriptReplyProxy javaScriptReplyProxy =
-        InAppWebViewPlatform.instance!.createPlatformJavaScriptReplyProxy(
+    final CygnusPlatformJavaScriptReplyProxy javaScriptReplyProxy =
+        CygnusWebViewPlatform.instance!.createPlatformJavaScriptReplyProxy(
           params,
         );
     PlatformInterface.verify(javaScriptReplyProxy, _token);
     return javaScriptReplyProxy;
   }
 
-  /// Used by the platform implementation to create a new [PlatformJavaScriptReplyProxy].
+  /// Used by the platform implementation to create a new [CygnusPlatformJavaScriptReplyProxy].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformJavaScriptReplyProxy.implementation(this.params)
+  CygnusPlatformJavaScriptReplyProxy.implementation(this.params)
     : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformJavaScriptReplyProxy].
-  final PlatformJavaScriptReplyProxyCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformJavaScriptReplyProxy].
+  final CygnusPlatformJavaScriptReplyProxyCreationParams params;
 
-  ///{@template cygnus_core.PlatformJavaScriptReplyProxy.postMessage}
-  ///Post a [message] to the injected JavaScript object which sent this [PlatformJavaScriptReplyProxy].
+  ///{@template cygnus_core.CygnusPlatformJavaScriptReplyProxy.postMessage}
+  ///Post a [message] to the injected JavaScript object which sent this [CygnusPlatformJavaScriptReplyProxy].
   ///
-  ///If [message] is of type [WebMessageType.ARRAY_BUFFER], be aware that large byte buffers can lead to out-of-memory crashes on low-end devices.
+  ///If [message] is of type [CygnusWebMessageType.ARRAY_BUFFER], be aware that large byte buffers can lead to out-of-memory crashes on low-end devices.
   ///
-  ///**Official Android API**: https://developer.android.com/reference/androidx/webkit/JavaScriptReplyProxy#postMessage(java.lang.String)
+  ///**Official Android API**: https://developer.android.com/reference/androidx/webkit/CygnusJavaScriptReplyProxy#postMessage(java.lang.String)
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformJavaScriptReplyProxy.postMessage.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformJavaScriptReplyProxy.postMessage.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -344,7 +344,7 @@ abstract class PlatformJavaScriptReplyProxy extends PlatformInterface {
       WindowsPlatform(),
     ],
   )
-  Future<void> postMessage(WebMessage message) {
+  Future<void> postMessage(CygnusWebMessage message) {
     throw UnimplementedError(
       'postMessage is not implemented on the current platform.',
     );
@@ -352,6 +352,6 @@ abstract class PlatformJavaScriptReplyProxy extends PlatformInterface {
 
   @override
   String toString() {
-    return 'JavaScriptReplyProxy{}';
+    return 'CygnusJavaScriptReplyProxy{}';
   }
 }

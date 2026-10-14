@@ -7,7 +7,7 @@ part of 'url_response.dart';
 // **************************************************************************
 
 ///The metadata associated with the response to a URL load request, independent of protocol and URL scheme.
-class URLResponse {
+class CygnusURLResponse {
   ///The expected length of the response’s content.
   int expectedContentLength;
 
@@ -27,8 +27,8 @@ class URLResponse {
   String? textEncodingName;
 
   ///The URL for the response.
-  WebUri? url;
-  URLResponse({
+  CygnusWebUri? url;
+  CygnusURLResponse({
     required this.expectedContentLength,
     this.headers,
     this.mimeType,
@@ -38,28 +38,28 @@ class URLResponse {
     this.url,
   });
 
-  ///Gets a possible [URLResponse] instance from a [Map] value.
-  static URLResponse? fromMap(
+  ///Gets a possible [CygnusURLResponse] instance from a [Map] value.
+  static CygnusURLResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = URLResponse(
+    final instance = CygnusURLResponse(
       expectedContentLength: map['expectedContentLength'],
       headers: map['headers']?.cast<String, String>(),
       mimeType: map['mimeType'],
       statusCode: map['statusCode'],
       suggestedFilename: map['suggestedFilename'],
       textEncodingName: map['textEncodingName'],
-      url: map['url'] != null ? WebUri(map['url']) : null,
+      url: map['url'] != null ? CygnusWebUri(map['url']) : null,
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "expectedContentLength": expectedContentLength,
       "headers": headers,
@@ -78,13 +78,13 @@ class URLResponse {
 
   @override
   String toString() {
-    return 'URLResponse{expectedContentLength: $expectedContentLength, headers: $headers, mimeType: $mimeType, statusCode: $statusCode, suggestedFilename: $suggestedFilename, textEncodingName: $textEncodingName, url: $url}';
+    return 'CygnusURLResponse{expectedContentLength: $expectedContentLength, headers: $headers, mimeType: $mimeType, statusCode: $statusCode, suggestedFilename: $suggestedFilename, textEncodingName: $textEncodingName, url: $url}';
   }
 }
 
-///Use [URLResponse] instead.
-@Deprecated('Use URLResponse instead')
-class IOSURLResponse {
+///Use [CygnusURLResponse] instead.
+@Deprecated('Use CygnusURLResponse instead')
+class CygnusIOSURLResponse {
   ///The expected length of the response’s content.
   int expectedContentLength;
 
@@ -105,7 +105,7 @@ class IOSURLResponse {
 
   ///The URL for the response.
   Uri? url;
-  IOSURLResponse({
+  CygnusIOSURLResponse({
     required this.expectedContentLength,
     this.headers,
     this.mimeType,
@@ -115,15 +115,15 @@ class IOSURLResponse {
     this.url,
   });
 
-  ///Gets a possible [IOSURLResponse] instance from a [Map] value.
-  static IOSURLResponse? fromMap(
+  ///Gets a possible [CygnusIOSURLResponse] instance from a [Map] value.
+  static CygnusIOSURLResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = IOSURLResponse(
+    final instance = CygnusIOSURLResponse(
       expectedContentLength: map['expectedContentLength'],
       headers: map['headers']?.cast<String, String>(),
       mimeType: map['mimeType'],
@@ -136,7 +136,7 @@ class IOSURLResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "expectedContentLength": expectedContentLength,
       "headers": headers,
@@ -155,6 +155,6 @@ class IOSURLResponse {
 
   @override
   String toString() {
-    return 'IOSURLResponse{expectedContentLength: $expectedContentLength, headers: $headers, mimeType: $mimeType, statusCode: $statusCode, suggestedFilename: $suggestedFilename, textEncodingName: $textEncodingName, url: $url}';
+    return 'CygnusIOSURLResponse{expectedContentLength: $expectedContentLength, headers: $headers, mimeType: $mimeType, statusCode: $statusCode, suggestedFilename: $suggestedFilename, textEncodingName: $textEncodingName, url: $url}';
   }
 }

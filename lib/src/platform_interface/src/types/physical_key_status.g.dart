@@ -7,7 +7,7 @@ part of 'physical_key_status.dart';
 // **************************************************************************
 
 ///Contains the information packed into the LPARAM sent to a Win32 key event.
-class PhysicalKeyStatus {
+class CygnusPhysicalKeyStatus {
   ///Indicates that the key is an extended key.
   bool isExtendedKey;
 
@@ -25,7 +25,7 @@ class PhysicalKeyStatus {
 
   ///Indicates that the key was held down.
   bool wasKeyDown;
-  PhysicalKeyStatus({
+  CygnusPhysicalKeyStatus({
     required this.isExtendedKey,
     required this.isKeyReleased,
     required this.isMenuKeyDown,
@@ -34,15 +34,15 @@ class PhysicalKeyStatus {
     required this.wasKeyDown,
   });
 
-  ///Gets a possible [PhysicalKeyStatus] instance from a [Map] value.
-  static PhysicalKeyStatus? fromMap(
+  ///Gets a possible [CygnusPhysicalKeyStatus] instance from a [Map] value.
+  static CygnusPhysicalKeyStatus? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = PhysicalKeyStatus(
+    final instance = CygnusPhysicalKeyStatus(
       isExtendedKey: map['isExtendedKey'],
       isKeyReleased: map['isKeyReleased'],
       isMenuKeyDown: map['isMenuKeyDown'],
@@ -54,7 +54,7 @@ class PhysicalKeyStatus {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "isExtendedKey": isExtendedKey,
       "isKeyReleased": isKeyReleased,
@@ -72,6 +72,6 @@ class PhysicalKeyStatus {
 
   @override
   String toString() {
-    return 'PhysicalKeyStatus{isExtendedKey: $isExtendedKey, isKeyReleased: $isKeyReleased, isMenuKeyDown: $isMenuKeyDown, repeatCount: $repeatCount, scanCode: $scanCode, wasKeyDown: $wasKeyDown}';
+    return 'CygnusPhysicalKeyStatus{isExtendedKey: $isExtendedKey, isKeyReleased: $isKeyReleased, isMenuKeyDown: $isMenuKeyDown, repeatCount: $repeatCount, scanCode: $scanCode, wasKeyDown: $wasKeyDown}';
   }
 }

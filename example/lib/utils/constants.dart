@@ -5,7 +5,7 @@ enum TestCategory {
   navigation('Navigation', 'Tests for navigation-related methods'),
   javascript('JavaScript', 'Tests for JavaScript execution and handlers'),
   content('Content', 'Tests for content manipulation and retrieval'),
-  storage('Storage', 'Tests for storage and cookie management'),
+  storage('CygnusStorage', 'Tests for storage and cookie management'),
   advanced('Advanced', 'Advanced and misc test cases'),
   browsers('Browsers', 'Tests for browser-related functionality');
 

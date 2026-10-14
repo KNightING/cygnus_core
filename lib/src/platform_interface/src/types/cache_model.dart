@@ -7,10 +7,10 @@ part 'cache_model.g.dart';
 ///
 ///Determines how caching is handled for web content.
 @ExchangeableEnum()
-class CacheModel_ {
+class CygnusCacheModel_ {
   // ignore: unused_field
   final int _value;
-  const CacheModel_._internal(this._value);
+  const CygnusCacheModel_._internal(this._value);
 
   ///Disable the cache completely, which is useful for ephemeral applications
   ///or applications without a persistent data storage.
@@ -21,12 +21,12 @@ class CacheModel_ {
       EnumLinuxPlatform(
         apiName: 'WEBKIT_CACHE_MODEL_DOCUMENT_VIEWER',
         apiUrl:
-            'https://wpewebkit.org/reference/stable/wpe-webkit-2.0/enum.CacheModel.html',
+            'https://wpewebkit.org/reference/stable/wpe-webkit-2.0/enum.CygnusCacheModel.html',
         value: 0,
       ),
     ],
   )
-  static const DOCUMENT_VIEWER = CacheModel_._internal(0);
+  static const DOCUMENT_VIEWER = CygnusCacheModel_._internal(0);
 
   ///Improves document load speed substantially by caching a very large number of resources
   ///and previously visited content. This mode is optimal for web browser applications.
@@ -35,12 +35,12 @@ class CacheModel_ {
       EnumLinuxPlatform(
         apiName: 'WEBKIT_CACHE_MODEL_WEB_BROWSER',
         apiUrl:
-            'https://wpewebkit.org/reference/stable/wpe-webkit-2.0/enum.CacheModel.html',
+            'https://wpewebkit.org/reference/stable/wpe-webkit-2.0/enum.CygnusCacheModel.html',
         value: 1,
       ),
     ],
   )
-  static const WEB_BROWSER = CacheModel_._internal(1);
+  static const WEB_BROWSER = CygnusCacheModel_._internal(1);
 
   ///A cache model optimized for viewing a series of local files, such as ebooks,
   ///without browsing a variety of online content.
@@ -49,10 +49,10 @@ class CacheModel_ {
       EnumLinuxPlatform(
         apiName: 'WEBKIT_CACHE_MODEL_DOCUMENT_BROWSER',
         apiUrl:
-            'https://wpewebkit.org/reference/stable/wpe-webkit-2.0/enum.CacheModel.html',
+            'https://wpewebkit.org/reference/stable/wpe-webkit-2.0/enum.CygnusCacheModel.html',
         value: 2,
       ),
     ],
   )
-  static const DOCUMENT_BROWSER = CacheModel_._internal(2);
+  static const DOCUMENT_BROWSER = CygnusCacheModel_._internal(2);
 }

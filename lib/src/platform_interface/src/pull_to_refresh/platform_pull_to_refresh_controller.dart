@@ -5,172 +5,172 @@ import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_i
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import '../debug_logging_settings.dart';
-import '../in_app_browser/platform_in_app_browser.dart';
-import '../in_app_webview/in_app_webview_settings.dart';
-import '../in_app_webview/platform_webview.dart';
-import '../inappwebview_platform.dart';
+import '../browser/platform_browser.dart';
+import '../webview/webview_settings.dart';
+import '../webview/platform_webview.dart';
+import '../webview_platform.dart';
 import '../types/main.dart';
 import 'pull_to_refresh_settings.dart';
 
 // ignore: uri_has_not_been_generated
 part 'platform_pull_to_refresh_controller.g.dart';
 
-///{@template cygnus_core.PlatformPullToRefreshControllerCreationParams}
-/// Object specifying creation parameters for creating a [PlatformPullToRefreshController].
+///{@template cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformPullToRefreshController].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformPullToRefreshControllerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.supported_platforms}
 @SupportedPlatforms(platforms: [AndroidPlatform(), IOSPlatform()])
-class PlatformPullToRefreshControllerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformPullToRefreshController].
-  PlatformPullToRefreshControllerCreationParams({
-    @Deprecated("Use settings instead") PullToRefreshOptions? options,
-    PullToRefreshSettings? settings,
+class CygnusPlatformPullToRefreshControllerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformPullToRefreshController].
+  CygnusPlatformPullToRefreshControllerCreationParams({
+    @Deprecated("Use settings instead") CygnusPullToRefreshOptions? options,
+    CygnusPullToRefreshSettings? settings,
     this.onRefresh,
-  }) : this.options = options ?? PullToRefreshOptions(),
-       this.settings = settings ?? PullToRefreshSettings();
+  }) : this.options = options ?? CygnusPullToRefreshOptions(),
+       this.settings = settings ?? CygnusPullToRefreshSettings();
 
-  ///{@template cygnus_core.PlatformPullToRefreshControllerCreationParams.options}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.options}
   /// Use [settings] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshControllerCreationParams.options.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.options.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform(), IOSPlatform()])
   @Deprecated("Use settings instead")
-  late PullToRefreshOptions options;
+  late CygnusPullToRefreshOptions options;
 
-  ///{@template cygnus_core.PlatformPullToRefreshControllerCreationParams.settings}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.settings}
   /// Initial settings.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshControllerCreationParams.settings.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.settings.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform(), IOSPlatform()])
-  late PullToRefreshSettings settings;
+  late CygnusPullToRefreshSettings settings;
 
-  ///{@template cygnus_core.PlatformPullToRefreshControllerCreationParams.onRefresh}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.onRefresh}
   ///Event called when a swipe gesture triggers a refresh.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshControllerCreationParams.onRefresh.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.onRefresh.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform(), IOSPlatform()])
   final void Function()? onRefresh;
 
-  ///{@template cygnus_core.PlatformPullToRefreshControllerCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformPullToRefreshControllerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformPullToRefreshControllerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformPullToRefreshControllerCreationParams.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformPullToRefreshControllerCreationParamsProperty property, {
+    CygnusPlatformPullToRefreshControllerCreationParamsProperty property, {
     TargetPlatform? platform,
   }) =>
-      _PlatformPullToRefreshControllerCreationParamsPropertySupported.isPropertySupported(
+      _CygnusPlatformPullToRefreshControllerCreationParamsPropertySupported.isPropertySupported(
         property,
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformPullToRefreshController}
+///{@template cygnus_core.CygnusPlatformPullToRefreshController}
 ///A standard controller that can initiate the refreshing of a scroll view’s contents.
 ///This should be used whenever the user can refresh the contents of a WebView via a vertical swipe gesture.
 ///
 ///All the methods should be called only when the WebView has been created or is already running
-///(for example [PlatformWebViewCreationParams.onWebViewCreated] or [PlatformInAppBrowserEvents.onBrowserCreated]).
+///(for example [CygnusPlatformWebViewCreationParams.onWebViewCreated] or [CygnusPlatformBrowserEvents.onBrowserCreated]).
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformPullToRefreshController.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformPullToRefreshController.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(
       note:
-          '**NOTE**: to be able to use the "pull-to-refresh" feature, [InAppWebViewSettings.useHybridComposition] must be `true`.',
+          '**NOTE**: to be able to use the "pull-to-refresh" feature, [CygnusWebViewSettings.useHybridComposition] must be `true`.',
     ),
     IOSPlatform(),
   ],
 )
-abstract class PlatformPullToRefreshController extends PlatformInterface
-    implements Disposable {
+abstract class CygnusPlatformPullToRefreshController extends PlatformInterface
+    implements CygnusDisposable {
   ///Debug settings.
-  static DebugLoggingSettings debugLoggingSettings = DebugLoggingSettings();
+  static CygnusDebugLoggingSettings debugLoggingSettings = CygnusDebugLoggingSettings();
 
-  /// Creates a new [PlatformPullToRefreshController]
-  factory PlatformPullToRefreshController(
-    PlatformPullToRefreshControllerCreationParams params,
+  /// Creates a new [CygnusPlatformPullToRefreshController]
+  factory CygnusPlatformPullToRefreshController(
+    CygnusPlatformPullToRefreshControllerCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformPullToRefreshController webViewControllerDelegate =
-        InAppWebViewPlatform.instance!.createPlatformPullToRefreshController(
+    final CygnusPlatformPullToRefreshController webViewControllerDelegate =
+        CygnusWebViewPlatform.instance!.createPlatformPullToRefreshController(
           params,
         );
     PlatformInterface.verify(webViewControllerDelegate, _token);
     return webViewControllerDelegate;
   }
 
-  /// Creates a new empty [PlatformPullToRefreshController] to access static methods.
-  factory PlatformPullToRefreshController.static() {
+  /// Creates a new empty [CygnusPlatformPullToRefreshController] to access static methods.
+  factory CygnusPlatformPullToRefreshController.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
       'ensure that an implementation of `flutter_inappwebview` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformPullToRefreshController controllerStatic =
-        InAppWebViewPlatform.instance!
+    final CygnusPlatformPullToRefreshController controllerStatic =
+        CygnusWebViewPlatform.instance!
             .createPlatformPullToRefreshControllerStatic();
     PlatformInterface.verify(controllerStatic, _token);
     return controllerStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformPullToRefreshController].
+  /// Used by the platform implementation to create a new [CygnusPlatformPullToRefreshController].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformPullToRefreshController.implementation(this.params)
+  CygnusPlatformPullToRefreshController.implementation(this.params)
     : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformPullToRefreshController].
-  final PlatformPullToRefreshControllerCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformPullToRefreshController].
+  final CygnusPlatformPullToRefreshControllerCreationParams params;
 
-  ///{@macro cygnus_core.PlatformPullToRefreshControllerCreationParams.options}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.options}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshControllerCreationParams.options.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.options.supported_platforms}
   @Deprecated("Use settings instead")
-  PullToRefreshOptions get options => params.options;
+  CygnusPullToRefreshOptions get options => params.options;
 
-  ///{@macro cygnus_core.PlatformPullToRefreshControllerCreationParams.settings}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.settings}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshControllerCreationParams.settings.supported_platforms}
-  PullToRefreshSettings get settings => params.settings;
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.settings.supported_platforms}
+  CygnusPullToRefreshSettings get settings => params.settings;
 
-  ///{@macro cygnus_core.PlatformPullToRefreshControllerCreationParams.onRefresh}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.onRefresh}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshControllerCreationParams.onRefresh.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.onRefresh.supported_platforms}
   void Function()? get onRefresh => params.onRefresh;
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.setEnabled}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.setEnabled}
   ///Sets whether the pull-to-refresh feature is enabled or not.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setEnabled.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setEnabled.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -191,11 +191,11 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.isEnabled}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.isEnabled}
   ///Returns `true` is pull-to-refresh feature is enabled, otherwise `false`.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.isEnabled.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.isEnabled.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -216,7 +216,7 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.beginRefreshing}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.beginRefreshing}
   ///Tells the controller that a refresh operation was started programmatically.
   ///
   ///Call this method when an external event source triggers a programmatic refresh of your scrolling view.
@@ -224,7 +224,7 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
   ///When the refresh operation ends, be sure to call the [endRefreshing] method to return the controller to its default state.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.beginRefreshing.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.beginRefreshing.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -245,7 +245,7 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.endRefreshing}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.endRefreshing}
   ///Tells the controller that a refresh operation has ended.
   ///
   ///Call this method at the end of any refresh operation (whether it was initiated programmatically or by the user)
@@ -254,7 +254,7 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
   ///If animations are also enabled, the control is hidden using an animation.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.endRefreshing.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.endRefreshing.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -275,11 +275,11 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.isRefreshing}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.isRefreshing}
   ///Returns whether a refresh operation has been triggered and is in progress.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.isRefreshing.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.isRefreshing.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -300,11 +300,11 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.setColor}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.setColor}
   ///Sets the color of the refresh control.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setColor.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setColor.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -325,11 +325,11 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.setBackgroundColor}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.setBackgroundColor}
   ///Sets the background color of the refresh control.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setBackgroundColor.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setBackgroundColor.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -350,11 +350,11 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.setDistanceToTriggerSync}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.setDistanceToTriggerSync}
   ///Set the distance to trigger a sync in dips.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setDistanceToTriggerSync.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setDistanceToTriggerSync.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -370,11 +370,11 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.setSlingshotDistance}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.setSlingshotDistance}
   ///Sets the distance that the refresh indicator can be pulled beyond its resting position during a swipe gesture.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setSlingshotDistance.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setSlingshotDistance.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -390,11 +390,11 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.getDefaultSlingshotDistance}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.getDefaultSlingshotDistance}
   ///Gets the default distance that the refresh indicator can be pulled beyond its resting position during a swipe gesture.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.getDefaultSlingshotDistance.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.getDefaultSlingshotDistance.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -410,11 +410,11 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.setSize}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.setSize}
   ///Use [setIndicatorSize] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setSize.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setSize.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -425,17 +425,17 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
     ],
   )
   @Deprecated("Use setIndicatorSize instead")
-  Future<void> setSize(AndroidPullToRefreshSize size) {
+  Future<void> setSize(CygnusAndroidPullToRefreshSize size) {
     throw UnimplementedError(
       'setSize is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.setIndicatorSize}
-  ///Sets the size of the refresh indicator. One of [PullToRefreshSize.DEFAULT], or [PullToRefreshSize.LARGE].
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.setIndicatorSize}
+  ///Sets the size of the refresh indicator. One of [CygnusPullToRefreshSize.DEFAULT], or [CygnusPullToRefreshSize.LARGE].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setIndicatorSize.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setIndicatorSize.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -445,17 +445,17 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
       ),
     ],
   )
-  Future<void> setIndicatorSize(PullToRefreshSize size) {
+  Future<void> setIndicatorSize(CygnusPullToRefreshSize size) {
     throw UnimplementedError(
       'setIndicatorSize is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.setAttributedTitle}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.setAttributedTitle}
   ///Use [setStyledTitle] instead.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setAttributedTitle.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setAttributedTitle.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -466,17 +466,17 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
     ],
   )
   @Deprecated("Use setStyledTitle instead")
-  Future<void> setAttributedTitle(IOSNSAttributedString attributedTitle) {
+  Future<void> setAttributedTitle(CygnusIOSNSAttributedString attributedTitle) {
     throw UnimplementedError(
       'setAttributedTitle is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.setStyledTitle}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.setStyledTitle}
   ///Sets the styled title text to display in the refresh control.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.setStyledTitle.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.setStyledTitle.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -486,17 +486,17 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
       ),
     ],
   )
-  Future<void> setStyledTitle(AttributedString attributedTitle) {
+  Future<void> setStyledTitle(CygnusAttributedString attributedTitle) {
     throw UnimplementedError(
       'setStyledTitle is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.dispose}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.dispose}
   ///Disposes the controller.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformPullToRefreshController.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshController.dispose.supported_platforms}
   @SupportedPlatforms(platforms: [AndroidPlatform(), IOSPlatform()])
   @override
   void dispose({bool isKeepAlive = false}) {
@@ -505,27 +505,27 @@ abstract class PlatformPullToRefreshController extends PlatformInterface
     );
   }
 
-  ///{@macro cygnus_core.PlatformPullToRefreshControllerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformPullToRefreshControllerCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformPullToRefreshControllerClassSupported.isClassSupported(
+      _CygnusPlatformPullToRefreshControllerClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformPullToRefreshControllerCreationParamsProperty property, {
+    CygnusPlatformPullToRefreshControllerCreationParamsProperty property, {
     TargetPlatform? platform,
   }) => params.isPropertySupported(property, platform: platform);
 
-  ///{@template cygnus_core.PlatformPullToRefreshController.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformPullToRefreshController.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformPullToRefreshControllerMethod method, {
+    CygnusPlatformPullToRefreshControllerMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformPullToRefreshControllerMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformPullToRefreshControllerMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );

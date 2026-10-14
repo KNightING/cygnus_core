@@ -13,9 +13,9 @@ class SettingDefinition {
   final dynamic defaultValue;
   final List<dynamic>? enumValues;
 
-  /// The InAppWebViewSettings property for runtime support checking.
-  /// If provided, use InAppWebViewSettings.isPropertySupported to check platform support.
-  final InAppWebViewSettingsProperty property;
+  /// The CygnusWebViewSettings property for runtime support checking.
+  /// If provided, use CygnusWebViewSettings.isPropertySupported to check platform support.
+  final CygnusWebViewSettingsProperty property;
 
   const SettingDefinition({
     required this.name,
@@ -58,7 +58,7 @@ class SettingDefinition {
     if (platform == SupportedPlatform.web) return false;
     final targetPlatform = platform.targetPlatform;
     if (targetPlatform == null) return false;
-    return InAppWebViewSettings.isPropertySupported(
+    return CygnusWebViewSettings.isPropertySupported(
       property,
       platform: targetPlatform,
     );
@@ -68,7 +68,7 @@ class SettingDefinition {
   bool get isSupportedOnCurrentPlatform {
     // On web, we can't check without TargetPlatform
     if (kIsWeb) return false;
-    return InAppWebViewSettings.isPropertySupported(property);
+    return CygnusWebViewSettings.isPropertySupported(property);
   }
 
   /// Get the set of supported platforms for this setting.

@@ -1,16 +1,16 @@
 part of 'main.dart';
 
 void injectJavascriptFile() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.injectJavascriptFileFromUrl,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.injectJavascriptFileFromUrl,
   );
 
   var url = !kIsWeb ? TEST_URL_ABOUT_BLANK : TEST_WEB_PLATFORM_URL_1;
 
   skippableGroup('inject javascript file', () {
     skippableTestWidgets('from url', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
       final Completer<void> jQueryLoaded = Completer<void>();
       final Completer<void> jQueryLoadError = Completer<void>();
@@ -18,9 +18,9 @@ void injectJavascriptFile() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: url),
+            initialUrlRequest: CygnusURLRequest(url: url),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -31,14 +31,14 @@ void injectJavascriptFile() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await tester.pump();
       await pageLoaded.future;
 
       await controller.injectJavascriptFileFromUrl(
-        urlFile: WebUri('https://www.notawebsite..com/jquery-3.3.1.min.js'),
-        scriptHtmlTagAttributes: ScriptHtmlTagAttributes(
+        urlFile: CygnusWebUri('https://www.notawebsite..com/jquery-3.3.1.min.js'),
+        scriptHtmlTagAttributes: CygnusScriptHtmlTagAttributes(
           id: 'jquery-error',
           onError: () {
             jQueryLoadError.complete();
@@ -58,8 +58,8 @@ void injectJavascriptFile() {
       );
 
       await controller.injectJavascriptFileFromUrl(
-        urlFile: WebUri('https://code.jquery.com/jquery-3.3.1.min.js'),
-        scriptHtmlTagAttributes: ScriptHtmlTagAttributes(
+        urlFile: CygnusWebUri('https://code.jquery.com/jquery-3.3.1.min.js'),
+        scriptHtmlTagAttributes: CygnusScriptHtmlTagAttributes(
           id: 'jquery',
           onLoad: () {
             jQueryLoaded.complete();
@@ -80,16 +80,16 @@ void injectJavascriptFile() {
     });
 
     skippableTestWidgets('from asset', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: url),
+            initialUrlRequest: CygnusURLRequest(url: url),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -100,7 +100,7 @@ void injectJavascriptFile() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await tester.pump();
       await pageLoaded.future;

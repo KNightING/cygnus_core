@@ -7,9 +7,10 @@ part of 'fetch_request_federated_credential.dart';
 // **************************************************************************
 
 ///Class that represents a [FederatedCredential](https://developer.mozilla.org/en-US/docs/Web/API/FederatedCredential) type of credentials.
-class FetchRequestFederatedCredential extends FetchRequestCredential {
+class CygnusFetchRequestFederatedCredential
+    extends CygnusFetchRequestCredential {
   ///URL pointing to an image for an icon. This image is intended for display in a credential chooser. The URL must be accessible without authentication.
-  WebUri? iconURL;
+  CygnusWebUri? iconURL;
 
   ///Credential's identifier.
   dynamic id;
@@ -22,7 +23,7 @@ class FetchRequestFederatedCredential extends FetchRequestCredential {
 
   ///Credential's federated identity provider.
   String? provider;
-  FetchRequestFederatedCredential({
+  CygnusFetchRequestFederatedCredential({
     this.iconURL,
     this.id,
     this.name,
@@ -31,16 +32,16 @@ class FetchRequestFederatedCredential extends FetchRequestCredential {
     String? type,
   }) : super(type: type);
 
-  ///Gets a possible [FetchRequestFederatedCredential] instance from a [Map] value.
-  static FetchRequestFederatedCredential? fromMap(
+  ///Gets a possible [CygnusFetchRequestFederatedCredential] instance from a [Map] value.
+  static CygnusFetchRequestFederatedCredential? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = FetchRequestFederatedCredential(
-      iconURL: map['iconURL'] != null ? WebUri(map['iconURL']) : null,
+    final instance = CygnusFetchRequestFederatedCredential(
+      iconURL: map['iconURL'] != null ? CygnusWebUri(map['iconURL']) : null,
       id: map['id'],
       name: map['name'],
       protocol: map['protocol'],
@@ -51,7 +52,7 @@ class FetchRequestFederatedCredential extends FetchRequestCredential {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "type": type,
       "iconURL": iconURL?.toString(),
@@ -69,6 +70,6 @@ class FetchRequestFederatedCredential extends FetchRequestCredential {
 
   @override
   String toString() {
-    return 'FetchRequestFederatedCredential{type: $type, iconURL: $iconURL, id: $id, name: $name, protocol: $protocol, provider: $provider}';
+    return 'CygnusFetchRequestFederatedCredential{type: $type, iconURL: $iconURL, id: $id, name: $name, protocol: $protocol, provider: $provider}';
   }
 }

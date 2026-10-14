@@ -6,22 +6,23 @@ part of 'server_trust_challenge.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the challenge of the [PlatformWebViewCreationParams.onReceivedServerTrustAuthRequest] event.
+///Class that represents the challenge of the [CygnusPlatformWebViewCreationParams.onReceivedServerTrustAuthRequest] event.
 ///It provides all the information about the challenge.
-class ServerTrustChallenge extends URLAuthenticationChallenge {
-  ServerTrustChallenge({required URLProtectionSpace protectionSpace})
-    : super(protectionSpace: protectionSpace);
+class CygnusServerTrustChallenge extends CygnusURLAuthenticationChallenge {
+  CygnusServerTrustChallenge({
+    required CygnusURLProtectionSpace protectionSpace,
+  }) : super(protectionSpace: protectionSpace);
 
-  ///Gets a possible [ServerTrustChallenge] instance from a [Map] value.
-  static ServerTrustChallenge? fromMap(
+  ///Gets a possible [CygnusServerTrustChallenge] instance from a [Map] value.
+  static CygnusServerTrustChallenge? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ServerTrustChallenge(
-      protectionSpace: URLProtectionSpace.fromMap(
+    final instance = CygnusServerTrustChallenge(
+      protectionSpace: CygnusURLProtectionSpace.fromMap(
         map['protectionSpace']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       )!,
@@ -30,7 +31,7 @@ class ServerTrustChallenge extends URLAuthenticationChallenge {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"protectionSpace": protectionSpace.toMap(enumMethod: enumMethod)};
   }
 
@@ -41,6 +42,6 @@ class ServerTrustChallenge extends URLAuthenticationChallenge {
 
   @override
   String toString() {
-    return 'ServerTrustChallenge{protectionSpace: $protectionSpace}';
+    return 'CygnusServerTrustChallenge{protectionSpace: $protectionSpace}';
   }
 }

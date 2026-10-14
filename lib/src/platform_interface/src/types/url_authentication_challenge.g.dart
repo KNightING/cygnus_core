@@ -8,21 +8,21 @@ part of 'url_authentication_challenge.dart';
 
 ///Class that represents a challenge from a server requiring authentication from the client.
 ///It provides all the information about the challenge.
-class URLAuthenticationChallenge {
+class CygnusURLAuthenticationChallenge {
   ///The protection space requiring authentication.
-  URLProtectionSpace protectionSpace;
-  URLAuthenticationChallenge({required this.protectionSpace});
+  CygnusURLProtectionSpace protectionSpace;
+  CygnusURLAuthenticationChallenge({required this.protectionSpace});
 
-  ///Gets a possible [URLAuthenticationChallenge] instance from a [Map] value.
-  static URLAuthenticationChallenge? fromMap(
+  ///Gets a possible [CygnusURLAuthenticationChallenge] instance from a [Map] value.
+  static CygnusURLAuthenticationChallenge? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = URLAuthenticationChallenge(
-      protectionSpace: URLProtectionSpace.fromMap(
+    final instance = CygnusURLAuthenticationChallenge(
+      protectionSpace: CygnusURLProtectionSpace.fromMap(
         map['protectionSpace']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       )!,
@@ -31,7 +31,7 @@ class URLAuthenticationChallenge {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"protectionSpace": protectionSpace.toMap(enumMethod: enumMethod)};
   }
 
@@ -42,6 +42,6 @@ class URLAuthenticationChallenge {
 
   @override
   String toString() {
-    return 'URLAuthenticationChallenge{protectionSpace: $protectionSpace}';
+    return 'CygnusURLAuthenticationChallenge{protectionSpace: $protectionSpace}';
   }
 }

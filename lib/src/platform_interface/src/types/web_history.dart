@@ -7,12 +7,12 @@ part 'web_history.g.dart';
 
 ///This class contains a snapshot of the current back/forward list for a `WebView`.
 @ExchangeableObject()
-class WebHistory_ {
-  ///List of all [WebHistoryItem]s.
-  List<WebHistoryItem_>? list;
+class CygnusWebHistory_ {
+  ///List of all [CygnusWebHistoryItem]s.
+  List<CygnusWebHistoryItem_>? list;
 
-  ///Index of the current [WebHistoryItem].
+  ///Index of the current [CygnusWebHistoryItem].
   int? currentIndex;
 
-  WebHistory_({this.list, this.currentIndex});
+  CygnusWebHistory_({this.list, this.currentIndex});
 }

@@ -6,14 +6,14 @@
 ///
 ///Examples:
 ///```dart
-///  // InAppWebView example
-///  InAppWebView(
+///  // CygnusWebView example
+///  CygnusWebView(
 ///    initialUrlRequest:
-///      URLRequest(url: WebUri('https://flutter.dev'))
+///      CygnusURLRequest(url: CygnusWebUri('https://flutter.dev'))
 ///  )
 ///
 ///  // example of letter case difference
-///  final uri = WebUri('scheme://customHostValue', forceToStringRawValue: false);
+///  final uri = CygnusWebUri('scheme://customHostValue', forceToStringRawValue: false);
 ///  print(uri.rawValue); // scheme://customHostValue
 ///  print(uri.isValidUri); // true
 ///  print(uri.uriValue.toString()); // scheme://customhostvalue
@@ -24,13 +24,13 @@
 ///
 ///  // example of a not valid URI
 ///  // Uncaught Error: FormatException: Invalid port (at character 14)
-///  final invalidUri = WebUri('intent://not:valid_uri');
+///  final invalidUri = CygnusWebUri('intent://not:valid_uri');
 ///  print(invalidUri.rawValue); // intent://not:valid_uri
 ///  print(invalidUri.isValidUri); // false
 ///  print(invalidUri.uriValue.toString()); // ''
 ///  print(invalidUri.toString()); // intent://not:valid_uri
 ///```
-class WebUri implements Uri {
+class CygnusWebUri implements Uri {
   Uri _uri = Uri();
   String _rawValue = '';
   bool _isValidUri = false;
@@ -42,9 +42,9 @@ class WebUri implements Uri {
   ///The default value is `false`.
   bool forceToStringRawValue = false;
 
-  ///Initialize a [WebUri] using a raw string value.
+  ///Initialize a [CygnusWebUri] using a raw string value.
   ///In this case, [uriValue]`.toString()` and [rawValue] could not have the same value.
-  WebUri(String source, {this.forceToStringRawValue = false}) {
+  CygnusWebUri(String source, {this.forceToStringRawValue = false}) {
     _rawValue = source;
     try {
       _uri = Uri.parse(this._rawValue);
@@ -55,9 +55,9 @@ class WebUri implements Uri {
     }
   }
 
-  ///Initialize a [WebUri] using an [Uri] instance.
+  ///Initialize a [CygnusWebUri] using an [Uri] instance.
   ///In this case, [uriValue]`.toString()` and [rawValue] will have the same value.
-  WebUri.uri(Uri uri) {
+  CygnusWebUri.uri(Uri uri) {
     _uri = uri;
     _rawValue = uri.toString();
     _isValidUri = true;
@@ -193,7 +193,7 @@ class WebUri implements Uri {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is WebUri &&
+      other is CygnusWebUri &&
           runtimeType == other.runtimeType &&
           _uri == other._uri &&
           _rawValue == other._rawValue &&

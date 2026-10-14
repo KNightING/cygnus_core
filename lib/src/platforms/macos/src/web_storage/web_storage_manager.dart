@@ -2,36 +2,36 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [MacOSWebStorageManager].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebStorageManagerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebStorageManagerCreationParams] for
 /// more information.
 @immutable
 class MacOSWebStorageManagerCreationParams
-    extends PlatformWebStorageManagerCreationParams {
+    extends CygnusPlatformWebStorageManagerCreationParams {
   /// Creates a new [MacOSWebStorageManagerCreationParams] instance.
   const MacOSWebStorageManagerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebStorageManagerCreationParams params,
+    CygnusPlatformWebStorageManagerCreationParams params,
   ) : super();
 
-  /// Creates a [MacOSWebStorageManagerCreationParams] instance based on [PlatformWebStorageManagerCreationParams].
+  /// Creates a [MacOSWebStorageManagerCreationParams] instance based on [CygnusPlatformWebStorageManagerCreationParams].
   factory MacOSWebStorageManagerCreationParams.fromPlatformWebStorageManagerCreationParams(
-    PlatformWebStorageManagerCreationParams params,
+    CygnusPlatformWebStorageManagerCreationParams params,
   ) {
     return MacOSWebStorageManagerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformWebStorageManager}
-class MacOSWebStorageManager extends PlatformWebStorageManager
+///{@macro cygnus_core.CygnusPlatformWebStorageManager}
+class MacOSWebStorageManager extends CygnusPlatformWebStorageManager
     with ChannelController {
   /// Creates a new [MacOSWebStorageManager].
-  MacOSWebStorageManager(PlatformWebStorageManagerCreationParams params)
+  MacOSWebStorageManager(CygnusPlatformWebStorageManagerCreationParams params)
     : super.implementation(
         params is MacOSWebStorageManagerCreationParams
             ? params
@@ -48,7 +48,7 @@ class MacOSWebStorageManager extends PlatformWebStorageManager
 
   static MacOSWebStorageManager? _instance;
 
-  ///Gets the WebStorage manager shared instance.
+  ///Gets the CygnusWebStorage manager shared instance.
   static MacOSWebStorageManager instance() {
     return (_instance != null) ? _instance! : _init();
   }
@@ -56,7 +56,7 @@ class MacOSWebStorageManager extends PlatformWebStorageManager
   static MacOSWebStorageManager _init() {
     _instance = MacOSWebStorageManager(
       MacOSWebStorageManagerCreationParams(
-        const PlatformWebStorageManagerCreationParams(),
+        const CygnusPlatformWebStorageManagerCreationParams(),
       ),
     );
     return _instance!;
@@ -68,7 +68,7 @@ class MacOSWebStorageManager extends PlatformWebStorageManager
   factory MacOSWebStorageManager.static() {
     _static ??= MacOSWebStorageManager(
       MacOSWebStorageManagerCreationParams(
-        const PlatformWebStorageManagerCreationParams(),
+        const CygnusPlatformWebStorageManagerCreationParams(),
       ),
     );
     return _static!;
@@ -77,10 +77,10 @@ class MacOSWebStorageManager extends PlatformWebStorageManager
   Future<dynamic> _handleMethod(MethodCall call) async {}
 
   @override
-  Future<List<WebsiteDataRecord>> fetchDataRecords({
-    required Set<WebsiteDataType> dataTypes,
+  Future<List<CygnusWebsiteDataRecord>> fetchDataRecords({
+    required Set<CygnusWebsiteDataType> dataTypes,
   }) async {
-    List<WebsiteDataRecord> recordList = [];
+    List<CygnusWebsiteDataRecord> recordList = [];
     List<String> dataTypesList = [];
     for (var dataType in dataTypes) {
       if (dataType.isSupported()) {
@@ -97,15 +97,15 @@ class MacOSWebStorageManager extends PlatformWebStorageManager
         [];
     for (var record in records) {
       List<String> dataTypesString = record["dataTypes"].cast<String>();
-      Set<WebsiteDataType> dataTypes = Set();
+      Set<CygnusWebsiteDataType> dataTypes = Set();
       for (var dataTypeValue in dataTypesString) {
-        var dataType = WebsiteDataType.fromNativeValue(dataTypeValue);
+        var dataType = CygnusWebsiteDataType.fromNativeValue(dataTypeValue);
         if (dataType != null) {
           dataTypes.add(dataType);
         }
       }
       recordList.add(
-        WebsiteDataRecord(
+        CygnusWebsiteDataRecord(
           displayName: record["displayName"],
           dataTypes: dataTypes,
         ),
@@ -116,8 +116,8 @@ class MacOSWebStorageManager extends PlatformWebStorageManager
 
   @override
   Future<void> removeDataFor({
-    required Set<WebsiteDataType> dataTypes,
-    required List<WebsiteDataRecord> dataRecords,
+    required Set<CygnusWebsiteDataType> dataTypes,
+    required List<CygnusWebsiteDataRecord> dataRecords,
   }) async {
     List<String> dataTypesList = [];
     for (var dataType in dataTypes) {
@@ -139,7 +139,7 @@ class MacOSWebStorageManager extends PlatformWebStorageManager
 
   @override
   Future<void> removeDataModifiedSince({
-    required Set<WebsiteDataType> dataTypes,
+    required Set<CygnusWebsiteDataType> dataTypes,
     required DateTime date,
   }) async {
     List<String> dataTypesList = [];

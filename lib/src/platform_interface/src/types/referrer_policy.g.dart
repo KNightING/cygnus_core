@@ -7,84 +7,84 @@ part of 'referrer_policy.dart';
 // **************************************************************************
 
 ///Class that represents a Referrer-Policy HTTP header.
-///It could be used with [ScriptHtmlTagAttributes] and [CSSLinkHtmlTagAttributes]
+///It could be used with [CygnusScriptHtmlTagAttributes] and [CygnusCSSLinkHtmlTagAttributes]
 ///when fetching a resource `<link>` or a `<script>` (or resources fetched by the `<script>`).
-class ReferrerPolicy {
+class CygnusReferrerPolicy {
   final String _value;
   final String? _nativeValue;
-  const ReferrerPolicy._internal(this._value, this._nativeValue);
+  const CygnusReferrerPolicy._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory ReferrerPolicy._internalMultiPlatform(
+  factory CygnusReferrerPolicy._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => ReferrerPolicy._internal(value, nativeValue());
+  ) => CygnusReferrerPolicy._internal(value, nativeValue());
 
   ///The Referer header will not be sent.
-  static const NO_REFERRER = ReferrerPolicy._internal(
+  static const NO_REFERRER = CygnusReferrerPolicy._internal(
     'no-referrer',
     'no-referrer',
   );
 
   ///The Referer header will not be sent to origins without TLS (HTTPS).
-  static const NO_REFERRER_WHEN_DOWNGRADE = ReferrerPolicy._internal(
+  static const NO_REFERRER_WHEN_DOWNGRADE = CygnusReferrerPolicy._internal(
     'no-referrer-when-downgrade',
     'no-referrer-when-downgrade',
   );
 
   ///The sent referrer will be limited to the origin of the referring page: its scheme, host, and port.
-  static const ORIGIN = ReferrerPolicy._internal('origin', 'origin');
+  static const ORIGIN = CygnusReferrerPolicy._internal('origin', 'origin');
 
   ///The referrer sent to other origins will be limited to the scheme, the host, and the port.
   ///Navigations on the same origin will still include the path.
-  static const ORIGIN_WHEN_CROSS_ORIGIN = ReferrerPolicy._internal(
+  static const ORIGIN_WHEN_CROSS_ORIGIN = CygnusReferrerPolicy._internal(
     'origin-when-cross-origin',
     'origin-when-cross-origin',
   );
 
   ///A referrer will be sent for same origin, but cross-origin requests will contain no referrer information.
-  static const SAME_ORIGIN = ReferrerPolicy._internal(
+  static const SAME_ORIGIN = CygnusReferrerPolicy._internal(
     'same-origin',
     'same-origin',
   );
 
   ///Only send the origin of the document as the referrer when the protocol security level stays the same (e.g. HTTPS -> HTTPS),
   ///but don't send it to a less secure destination (e.g. HTTPS -> HTTP).
-  static const STRICT_ORIGIN = ReferrerPolicy._internal(
+  static const STRICT_ORIGIN = CygnusReferrerPolicy._internal(
     'strict-origin',
     'strict-origin',
   );
 
   ///Send a full URL when performing a same-origin request, but only send the origin when the protocol security level stays the same (e.g.HTTPS -> HTTPS),
   ///and send no header to a less secure destination (e.g. HTTPS -> HTTP).
-  static const STRICT_ORIGIN_WHEN_CROSS_ORIGIN = ReferrerPolicy._internal(
+  static const STRICT_ORIGIN_WHEN_CROSS_ORIGIN = CygnusReferrerPolicy._internal(
     'strict-origin-when-cross-origin',
     'strict-origin-when-cross-origin',
   );
 
   ///The referrer will include the origin and the path (but not the fragment, password, or username).
   ///This value is unsafe, because it leaks origins and paths from TLS-protected resources to insecure origins.
-  static const UNSAFE_URL = ReferrerPolicy._internal(
+  static const UNSAFE_URL = CygnusReferrerPolicy._internal(
     'unsafe-url',
     'unsafe-url',
   );
 
-  ///Set of all values of [ReferrerPolicy].
-  static final Set<ReferrerPolicy> values = [
-    ReferrerPolicy.NO_REFERRER,
-    ReferrerPolicy.NO_REFERRER_WHEN_DOWNGRADE,
-    ReferrerPolicy.ORIGIN,
-    ReferrerPolicy.ORIGIN_WHEN_CROSS_ORIGIN,
-    ReferrerPolicy.SAME_ORIGIN,
-    ReferrerPolicy.STRICT_ORIGIN,
-    ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN,
-    ReferrerPolicy.UNSAFE_URL,
+  ///Set of all values of [CygnusReferrerPolicy].
+  static final Set<CygnusReferrerPolicy> values = [
+    CygnusReferrerPolicy.NO_REFERRER,
+    CygnusReferrerPolicy.NO_REFERRER_WHEN_DOWNGRADE,
+    CygnusReferrerPolicy.ORIGIN,
+    CygnusReferrerPolicy.ORIGIN_WHEN_CROSS_ORIGIN,
+    CygnusReferrerPolicy.SAME_ORIGIN,
+    CygnusReferrerPolicy.STRICT_ORIGIN,
+    CygnusReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN,
+    CygnusReferrerPolicy.UNSAFE_URL,
   ].toSet();
 
-  ///Gets a possible [ReferrerPolicy] instance from [String] value.
-  static ReferrerPolicy? fromValue(String? value) {
+  ///Gets a possible [CygnusReferrerPolicy] instance from [String] value.
+  static CygnusReferrerPolicy? fromValue(String? value) {
     if (value != null) {
       try {
-        return ReferrerPolicy.values.firstWhere(
+        return CygnusReferrerPolicy.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -94,11 +94,11 @@ class ReferrerPolicy {
     return null;
   }
 
-  ///Gets a possible [ReferrerPolicy] instance from a native value.
-  static ReferrerPolicy? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusReferrerPolicy] instance from a native value.
+  static CygnusReferrerPolicy? fromNativeValue(String? value) {
     if (value != null) {
       try {
-        return ReferrerPolicy.values.firstWhere(
+        return CygnusReferrerPolicy.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -108,15 +108,15 @@ class ReferrerPolicy {
     return null;
   }
 
-  /// Gets a possible [ReferrerPolicy] instance value with name [name].
+  /// Gets a possible [CygnusReferrerPolicy] instance value with name [name].
   ///
-  /// Goes through [ReferrerPolicy.values] looking for a value with
-  /// name [name], as reported by [ReferrerPolicy.name].
+  /// Goes through [CygnusReferrerPolicy.values] looking for a value with
+  /// name [name], as reported by [CygnusReferrerPolicy.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ReferrerPolicy? byName(String? name) {
+  static CygnusReferrerPolicy? byName(String? name) {
     if (name != null) {
       try {
-        return ReferrerPolicy.values.firstWhere(
+        return CygnusReferrerPolicy.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -126,7 +126,7 @@ class ReferrerPolicy {
     return null;
   }
 
-  /// Creates a map from the names of [ReferrerPolicy] values to the values.
+  /// Creates a map from the names of [CygnusReferrerPolicy] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -134,9 +134,10 @@ class ReferrerPolicy {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ReferrerPolicy> asNameMap() => <String, ReferrerPolicy>{
-    for (final value in ReferrerPolicy.values) value.name(): value,
-  };
+  static Map<String, CygnusReferrerPolicy> asNameMap() =>
+      <String, CygnusReferrerPolicy>{
+        for (final value in CygnusReferrerPolicy.values) value.name(): value,
+      };
 
   ///Gets [String] value.
   String toValue() => _value;

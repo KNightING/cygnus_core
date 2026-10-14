@@ -1,28 +1,28 @@
 part of 'main.dart';
 
 void clearAndSetProxyOverride() {
-  final shouldSkip = !ProxyController.isMethodSupported(
-    PlatformProxyControllerMethod.setProxyOverride,
+  final shouldSkip = !CygnusProxyController.isMethodSupported(
+    CygnusPlatformProxyControllerMethod.setProxyOverride,
   );
 
   skippableTestWidgets('clear and set proxy override', (
     WidgetTester tester,
   ) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<String> pageLoaded = Completer<String>();
 
     var proxyAvailable =
-        !PlatformWebViewFeature.static().isClassSupported() ||
-        await WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE);
+        !CygnusPlatformWebViewFeature.static().isClassSupported() ||
+        await CygnusWebViewFeature.isFeatureSupported(CygnusWebViewFeature.PROXY_OVERRIDE);
 
     if (proxyAvailable) {
-      ProxyController proxyController = ProxyController.instance();
+      CygnusProxyController proxyController = CygnusProxyController.instance();
 
       await proxyController.clearProxyOverride();
       await proxyController.setProxyOverride(
-        settings: ProxySettings(
-          proxyRules: [ProxyRule(url: "${environment["NODE_SERVER_IP"]}:8083")],
+        settings: CygnusProxySettings(
+          proxyRules: [CygnusProxyRule(url: "${environment["NODE_SERVER_IP"]}:8083")],
         ),
       );
     }
@@ -30,9 +30,9 @@ void clearAndSetProxyOverride() {
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_URL_HTTP_EXAMPLE),
+          initialUrlRequest: CygnusURLRequest(url: TEST_URL_HTTP_EXAMPLE),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
           },
@@ -43,7 +43,7 @@ void clearAndSetProxyOverride() {
       ),
     );
 
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
 
     await tester.pump();
 

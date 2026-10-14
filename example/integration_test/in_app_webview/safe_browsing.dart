@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void safeBrowsing() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onSafeBrowsingHit,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onSafeBrowsingHit,
   );
 
   skippableGroup('safe browsing', () {
@@ -11,12 +11,12 @@ void safeBrowsing() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(
+            initialUrlRequest: CygnusURLRequest(
               url: TEST_CHROME_SAFE_BROWSING_MALWARE,
             ),
-            initialSettings: InAppWebViewSettings(
+            initialSettings: CygnusWebViewSettings(
               // if I set javaScriptEnabled to true, it will crash!
               javaScriptEnabled: false,
               clearCache: true,
@@ -29,9 +29,9 @@ void safeBrowsing() {
               pageLoaded.complete(url!.toString());
             },
             onSafeBrowsingHit: (controller, url, threatType) async {
-              return SafeBrowsingResponse(
+              return CygnusSafeBrowsingResponse(
                 report: true,
-                action: SafeBrowsingResponseAction.PROCEED,
+                action: CygnusSafeBrowsingResponseAction.PROCEED,
               );
             },
           ),
@@ -44,14 +44,14 @@ void safeBrowsing() {
 
     skippableTest('getSafeBrowsingPrivacyPolicyUrl', () async {
       expect(
-        await InAppWebViewController.getSafeBrowsingPrivacyPolicyUrl(),
+        await CygnusWebViewController.getSafeBrowsingPrivacyPolicyUrl(),
         isNotNull,
       );
     });
 
     skippableTest('setSafeBrowsingWhitelist', () async {
       expect(
-        await InAppWebViewController.setSafeBrowsingAllowlist(
+        await CygnusWebViewController.setSafeBrowsingAllowlist(
           hosts: ["flutter.dev", "github.com"],
         ),
         true,

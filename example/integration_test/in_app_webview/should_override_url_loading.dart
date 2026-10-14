@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void shouldOverrideUrlLoading() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.shouldOverrideUrlLoading,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.shouldOverrideUrlLoading,
   );
 
   skippableGroup('shouldOverrideUrlLoading', () {
@@ -13,16 +13,16 @@ void shouldOverrideUrlLoading() {
         base64Encode(const Utf8Encoder().convert(page));
 
     skippableTestWidgets('can allow requests', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final StreamController<String> pageLoads =
           StreamController<String>.broadcast();
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: WebUri(pageEncoded)),
+            initialUrlRequest: CygnusURLRequest(url: CygnusWebUri(pageEncoded)),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -30,8 +30,8 @@ void shouldOverrideUrlLoading() {
               return (navigationAction.request.url!.host.contains(
                     TEST_URL_4.host.replaceAll("www.", ""),
                   ))
-                  ? NavigationActionPolicy.CANCEL
-                  : NavigationActionPolicy.ALLOW;
+                  ? CygnusNavigationActionPolicy.CANCEL
+                  : CygnusNavigationActionPolicy.ALLOW;
             },
             onLoadStop: (controller, url) {
               pageLoads.add(url!.toString());
@@ -41,7 +41,7 @@ void shouldOverrideUrlLoading() {
       );
 
       await pageLoads.stream.first; // Wait for initial page load.
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await controller.evaluateJavascript(
         source: 'location.href = "$TEST_URL_EXAMPLE"',
@@ -54,20 +54,20 @@ void shouldOverrideUrlLoading() {
       pageLoads.close();
     });
 
-    final shouldSkipTest2 = !NavigationType.LINK_ACTIVATED.isSupported();
+    final shouldSkipTest2 = !CygnusNavigationType.LINK_ACTIVATED.isSupported();
     testWidgets(
-      'allow requests on iOS only if navigationType == NavigationType.LINK_ACTIVATED',
+      'allow requests on iOS only if navigationType == CygnusNavigationType.LINK_ACTIVATED',
       (WidgetTester tester) async {
-        final Completer<InAppWebViewController> controllerCompleter =
-            Completer<InAppWebViewController>();
+        final Completer<CygnusWebViewController> controllerCompleter =
+            Completer<CygnusWebViewController>();
         final StreamController<String> pageLoads =
             StreamController<String>.broadcast();
         await tester.pumpWidget(
           Directionality(
             textDirection: TextDirection.ltr,
-            child: InAppWebView(
+            child: CygnusWebView(
               key: GlobalKey(),
-              initialUrlRequest: URLRequest(url: WebUri(pageEncoded)),
+              initialUrlRequest: CygnusURLRequest(url: CygnusWebUri(pageEncoded)),
               onWebViewCreated: (controller) {
                 controllerCompleter.complete(controller);
               },
@@ -76,9 +76,9 @@ void shouldOverrideUrlLoading() {
                     navigationAction.request.url!.scheme == "data";
                 return (isFirstLoad ||
                         navigationAction.navigationType ==
-                            NavigationType.LINK_ACTIVATED)
-                    ? NavigationActionPolicy.ALLOW
-                    : NavigationActionPolicy.CANCEL;
+                            CygnusNavigationType.LINK_ACTIVATED)
+                    ? CygnusNavigationActionPolicy.ALLOW
+                    : CygnusNavigationActionPolicy.CANCEL;
               },
               onLoadStop: (controller, url) {
                 pageLoads.add(url!.toString());
@@ -88,7 +88,7 @@ void shouldOverrideUrlLoading() {
         );
 
         await pageLoads.stream.first; // Wait for initial page load.
-        final InAppWebViewController controller =
+        final CygnusWebViewController controller =
             await controllerCompleter.future;
         await controller.evaluateJavascript(
           source: 'location.href = "$TEST_URL_2"',
@@ -118,16 +118,16 @@ void shouldOverrideUrlLoading() {
     );
 
     skippableTestWidgets('can block requests', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final StreamController<String> pageLoads =
           StreamController<String>.broadcast();
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: WebUri(pageEncoded)),
+            initialUrlRequest: CygnusURLRequest(url: CygnusWebUri(pageEncoded)),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -135,8 +135,8 @@ void shouldOverrideUrlLoading() {
               return (navigationAction.request.url!.host.contains(
                     TEST_URL_4.host.replaceAll("www.", ""),
                   ))
-                  ? NavigationActionPolicy.CANCEL
-                  : NavigationActionPolicy.ALLOW;
+                  ? CygnusNavigationActionPolicy.CANCEL
+                  : CygnusNavigationActionPolicy.ALLOW;
             },
             onLoadStop: (controller, url) {
               pageLoads.add(url!.toString());
@@ -146,7 +146,7 @@ void shouldOverrideUrlLoading() {
       );
 
       await pageLoads.stream.first; // Wait for initial page load.
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await controller.evaluateJavascript(
         source: 'location.href = "$TEST_URL_4"',
@@ -172,24 +172,24 @@ void shouldOverrideUrlLoading() {
     skippableTestWidgets('supports asynchronous decisions', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final StreamController<String> pageLoads =
           StreamController<String>.broadcast();
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: WebUri(pageEncoded)),
+            initialUrlRequest: CygnusURLRequest(url: CygnusWebUri(pageEncoded)),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
             shouldOverrideUrlLoading: (controller, navigationAction) async {
-              var action = NavigationActionPolicy.CANCEL;
-              action = await Future<NavigationActionPolicy>.delayed(
+              var action = CygnusNavigationActionPolicy.CANCEL;
+              action = await Future<CygnusNavigationActionPolicy>.delayed(
                 const Duration(milliseconds: 10),
-                () => NavigationActionPolicy.ALLOW,
+                () => CygnusNavigationActionPolicy.ALLOW,
               );
               return action;
             },
@@ -201,7 +201,7 @@ void shouldOverrideUrlLoading() {
       );
 
       await pageLoads.stream.first; // Wait for initial page load.
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await controller.evaluateJavascript(
         source: 'location.href = "$TEST_URL_EXAMPLE"',

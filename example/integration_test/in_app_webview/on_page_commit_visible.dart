@@ -1,21 +1,21 @@
 part of 'main.dart';
 
 void onPageCommitVisible() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onPageCommitVisible,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onPageCommitVisible,
   );
 
   skippableTestWidgets('onPageCommitVisible', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<String> onPageCommitVisibleCompleter = Completer<String>();
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_URL_1),
+          initialUrlRequest: CygnusURLRequest(url: TEST_URL_1),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
           },

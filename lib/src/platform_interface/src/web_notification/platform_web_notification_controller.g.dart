@@ -6,14 +6,14 @@ part of 'platform_web_notification_controller.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformWebNotificationControllerCreationParamsClassSupported
-    on PlatformWebNotificationControllerCreationParams {
-  ///{@template cygnus_core.PlatformWebNotificationControllerCreationParams.supported_platforms}
+extension _CygnusPlatformWebNotificationControllerCreationParamsClassSupported
+    on CygnusPlatformWebNotificationControllerCreationParams {
+  ///{@template cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PlatformWebNotificationControllerCreationParams.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformWebNotificationControllerCreationParams.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -21,44 +21,45 @@ extension _PlatformWebNotificationControllerCreationParamsClassSupported
   }
 }
 
-///List of [PlatformWebNotificationControllerCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformWebNotificationControllerCreationParamsProperty {
-  ///Can be used to check if the [PlatformWebNotificationControllerCreationParams.id] property is supported at runtime.
+///List of [CygnusPlatformWebNotificationControllerCreationParams]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformWebNotificationControllerCreationParamsProperty {
+  ///Can be used to check if the [CygnusPlatformWebNotificationControllerCreationParams.id] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebNotificationControllerCreationParams.id.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.id.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PlatformWebNotificationControllerCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebNotificationControllerCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   id,
 
-  ///Can be used to check if the [PlatformWebNotificationControllerCreationParams.notification] property is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebNotificationControllerCreationParams.notification] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebNotificationControllerCreationParams.notification.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationControllerCreationParams.notification.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PlatformWebNotificationControllerCreationParams.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebNotificationControllerCreationParams.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   notification,
 }
 
-extension _PlatformWebNotificationControllerCreationParamsPropertySupported
-    on PlatformWebNotificationControllerCreationParams {
+extension _CygnusPlatformWebNotificationControllerCreationParamsPropertySupported
+    on CygnusPlatformWebNotificationControllerCreationParams {
   static bool isPropertySupported(
-    PlatformWebNotificationControllerCreationParamsProperty property, {
+    CygnusPlatformWebNotificationControllerCreationParamsProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformWebNotificationControllerCreationParamsProperty.id:
+      case CygnusPlatformWebNotificationControllerCreationParamsProperty.id:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebNotificationControllerCreationParamsProperty.notification:
+      case CygnusPlatformWebNotificationControllerCreationParamsProperty
+          .notification:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
@@ -67,14 +68,14 @@ extension _PlatformWebNotificationControllerCreationParamsPropertySupported
   }
 }
 
-extension _PlatformWebNotificationControllerClassSupported
-    on PlatformWebNotificationController {
-  ///{@template cygnus_core.PlatformWebNotificationController.supported_platforms}
+extension _CygnusPlatformWebNotificationControllerClassSupported
+    on CygnusPlatformWebNotificationController {
+  ///{@template cygnus_core.CygnusPlatformWebNotificationController.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PlatformWebNotificationController.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformWebNotificationController.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -82,28 +83,28 @@ extension _PlatformWebNotificationControllerClassSupported
   }
 }
 
-///List of [PlatformWebNotificationController]'s properties that can be used to check i they are supported or not by the current platform.
-enum PlatformWebNotificationControllerProperty {
-  ///Can be used to check if the [PlatformWebNotificationController.onClose] property is supported at runtime.
+///List of [CygnusPlatformWebNotificationController]'s properties that can be used to check i they are supported or not by the current platform.
+enum CygnusPlatformWebNotificationControllerProperty {
+  ///Can be used to check if the [CygnusPlatformWebNotificationController.onClose] property is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebNotificationController.onClose.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationController.onClose.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2Notification.add_CloseRequested](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2notification?view=webview2-1.0.3595.46#add_closerequested))
   ///
-  ///Use the [PlatformWebNotificationController.isPropertySupported] method to check if this property is supported at runtime.
+  ///Use the [CygnusPlatformWebNotificationController.isPropertySupported] method to check if this property is supported at runtime.
   ///{@endtemplate}
   onClose,
 }
 
-extension _PlatformWebNotificationControllerPropertySupported
-    on PlatformWebNotificationController {
+extension _CygnusPlatformWebNotificationControllerPropertySupported
+    on CygnusPlatformWebNotificationController {
   static bool isPropertySupported(
-    PlatformWebNotificationControllerProperty property, {
+    CygnusPlatformWebNotificationControllerProperty property, {
     TargetPlatform? platform,
   }) {
     switch (property) {
-      case PlatformWebNotificationControllerProperty.onClose:
+      case CygnusPlatformWebNotificationControllerProperty.onClose:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
@@ -112,76 +113,76 @@ extension _PlatformWebNotificationControllerPropertySupported
   }
 }
 
-///List of [PlatformWebNotificationController]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformWebNotificationControllerMethod {
-  ///Can be used to check if the [PlatformWebNotificationController.dispose] method is supported at runtime.
+///List of [CygnusPlatformWebNotificationController]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformWebNotificationControllerMethod {
+  ///Can be used to check if the [CygnusPlatformWebNotificationController.dispose] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebNotificationController.dispose.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationController.dispose.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   ///
-  ///Use the [PlatformWebNotificationController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebNotificationController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   dispose,
 
-  ///Can be used to check if the [PlatformWebNotificationController.reportClicked] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebNotificationController.reportClicked] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebNotificationController.reportClicked.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationController.reportClicked.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2Notification.ReportClicked](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2notification?view=webview2-1.0.3595.46#reportclicked))
   ///
-  ///Use the [PlatformWebNotificationController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebNotificationController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   reportClicked,
 
-  ///Can be used to check if the [PlatformWebNotificationController.reportClosed] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebNotificationController.reportClosed] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebNotificationController.reportClosed.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationController.reportClosed.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2Notification.ReportClosed](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2notification?view=webview2-1.0.3595.46#reportclosed))
   ///
-  ///Use the [PlatformWebNotificationController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebNotificationController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   reportClosed,
 
-  ///Can be used to check if the [PlatformWebNotificationController.reportShown] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformWebNotificationController.reportShown] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformWebNotificationController.reportShown.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformWebNotificationController.reportShown.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - ICoreWebView2Notification.ReportShown](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2notification?view=webview2-1.0.3595.46#reportshown))
   ///
-  ///Use the [PlatformWebNotificationController.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformWebNotificationController.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   reportShown,
 }
 
-extension _PlatformWebNotificationControllerMethodSupported
-    on PlatformWebNotificationController {
+extension _CygnusPlatformWebNotificationControllerMethodSupported
+    on CygnusPlatformWebNotificationController {
   static bool isMethodSupported(
-    PlatformWebNotificationControllerMethod method, {
+    CygnusPlatformWebNotificationControllerMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformWebNotificationControllerMethod.dispose:
+      case CygnusPlatformWebNotificationControllerMethod.dispose:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebNotificationControllerMethod.reportClicked:
+      case CygnusPlatformWebNotificationControllerMethod.reportClicked:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebNotificationControllerMethod.reportClosed:
+      case CygnusPlatformWebNotificationControllerMethod.reportClosed:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformWebNotificationControllerMethod.reportShown:
+      case CygnusPlatformWebNotificationControllerMethod.reportShown:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.windows,

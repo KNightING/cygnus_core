@@ -9,21 +9,21 @@ part of 'web_notification.dart';
 ///Class that represents the data of a web notification.
 ///
 ///This corresponds to the properties of the [ICoreWebView2Notification](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2notification?view=webview2-1.0.3595.46) interface.
-class WebNotification {
+class CygnusWebNotification {
   ///The badge URI.
-  WebUri? badgeUri;
+  CygnusWebUri? badgeUri;
 
   ///The body text of the notification.
   String? body;
 
   ///The body image URI.
-  WebUri? bodyImageUri;
+  CygnusWebUri? bodyImageUri;
 
   ///The text direction.
-  TextDirectionKind? direction;
+  CygnusTextDirectionKind? direction;
 
   ///The icon URI.
-  WebUri? iconUri;
+  CygnusWebUri? iconUri;
 
   ///Whether the notification is silent.
   bool? isSilent;
@@ -53,7 +53,7 @@ class WebNotification {
   ///This corresponds to [Notification.vibrate](https://developer.mozilla.org/docs/Web/API/Notification/vibrate) DOM API.
   ///An empty list is returned if no vibration patterns are specified.
   List<int>? vibrationPattern;
-  WebNotification({
+  CygnusWebNotification({
     this.badgeUri,
     this.body,
     this.bodyImageUri,
@@ -69,28 +69,32 @@ class WebNotification {
     this.vibrationPattern,
   });
 
-  ///Gets a possible [WebNotification] instance from a [Map] value.
-  static WebNotification? fromMap(
+  ///Gets a possible [CygnusWebNotification] instance from a [Map] value.
+  static CygnusWebNotification? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = WebNotification(
-      badgeUri: map['badgeUri'] != null ? WebUri(map['badgeUri']) : null,
+    final instance = CygnusWebNotification(
+      badgeUri: map['badgeUri'] != null ? CygnusWebUri(map['badgeUri']) : null,
       body: map['body'],
       bodyImageUri: map['bodyImageUri'] != null
-          ? WebUri(map['bodyImageUri'])
+          ? CygnusWebUri(map['bodyImageUri'])
           : null,
-      direction: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => TextDirectionKind.fromNativeValue(
+      direction: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusTextDirectionKind.fromNativeValue(
           map['direction'],
         ),
-        EnumMethod.value => TextDirectionKind.fromValue(map['direction']),
-        EnumMethod.name => TextDirectionKind.byName(map['direction']),
+        CygnusEnumMethod.value => CygnusTextDirectionKind.fromValue(
+          map['direction'],
+        ),
+        CygnusEnumMethod.name => CygnusTextDirectionKind.byName(
+          map['direction'],
+        ),
       },
-      iconUri: map['iconUri'] != null ? WebUri(map['iconUri']) : null,
+      iconUri: map['iconUri'] != null ? CygnusWebUri(map['iconUri']) : null,
       isSilent: map['isSilent'],
       language: map['language'],
       requiresInteraction: map['requiresInteraction'],
@@ -106,15 +110,15 @@ class WebNotification {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "badgeUri": badgeUri?.toString(),
       "body": body,
       "bodyImageUri": bodyImageUri?.toString(),
-      "direction": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => direction?.toNativeValue(),
-        EnumMethod.value => direction?.toValue(),
-        EnumMethod.name => direction?.name(),
+      "direction": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => direction?.toNativeValue(),
+        CygnusEnumMethod.value => direction?.toValue(),
+        CygnusEnumMethod.name => direction?.name(),
       },
       "iconUri": iconUri?.toString(),
       "isSilent": isSilent,
@@ -135,6 +139,6 @@ class WebNotification {
 
   @override
   String toString() {
-    return 'WebNotification{badgeUri: $badgeUri, body: $body, bodyImageUri: $bodyImageUri, direction: $direction, iconUri: $iconUri, isSilent: $isSilent, language: $language, requiresInteraction: $requiresInteraction, shouldRenotify: $shouldRenotify, tag: $tag, timestamp: $timestamp, title: $title, vibrationPattern: $vibrationPattern}';
+    return 'CygnusWebNotification{badgeUri: $badgeUri, body: $body, bodyImageUri: $bodyImageUri, direction: $direction, iconUri: $iconUri, isSilent: $isSilent, language: $language, requiresInteraction: $requiresInteraction, shouldRenotify: $shouldRenotify, tag: $tag, timestamp: $timestamp, title: $title, vibrationPattern: $vibrationPattern}';
   }
 }

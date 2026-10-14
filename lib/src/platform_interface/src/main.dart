@@ -1,8 +1,8 @@
-export 'inappwebview_platform.dart';
+export 'webview_platform.dart';
 export 'types/main.dart';
 export 'webview_environment/main.dart';
-export 'in_app_webview/main.dart';
-export 'in_app_browser/main.dart';
+export 'webview/main.dart';
+export 'browser/main.dart';
 export 'chrome_safari_browser/main.dart';
 export 'x509_certificate/main.dart';
 export 'web_storage/main.dart';
@@ -21,11 +21,11 @@ export 'debug_logging_settings.dart';
 export 'util.dart';
 export 'platform_service_worker_controller.dart';
 export 'platform_webview_feature.dart'
-    hide WebViewFeature_, AndroidWebViewFeature_;
-export 'platform_proxy_controller.dart' hide ProxySettings_;
+    hide CygnusWebViewFeature_, CygnusAndroidWebViewFeature_;
+export 'platform_proxy_controller.dart' hide CygnusProxySettings_;
 export 'platform_webview_asset_loader.dart';
-export 'platform_tracing_controller.dart' hide TracingSettings_;
+export 'platform_tracing_controller.dart' hide CygnusTracingSettings_;
 export 'platform_process_global_config.dart'
-    hide ProcessGlobalConfigSettings_, ProcessGlobalConfigDirectoryBasePaths_;
-export 'platform_in_app_localhost_server.dart';
-export 'in_app_localhost_server.dart';
+    hide CygnusProcessGlobalConfigSettings_, CygnusProcessGlobalConfigDirectoryBasePaths_;
+export 'platform_localhost_server.dart';
+export 'localhost_server.dart';

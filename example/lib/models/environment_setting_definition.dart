@@ -19,7 +19,7 @@ class EnvironmentSettingDefinition {
   final dynamic defaultValue;
   final List<dynamic>? enumValues;
   final String? hint;
-  final WebViewEnvironmentSettingsProperty property;
+  final CygnusWebViewEnvironmentSettingsProperty property;
 
   const EnvironmentSettingDefinition({
     required this.name,
@@ -59,7 +59,7 @@ class EnvironmentSettingDefinition {
     if (platform == SupportedPlatform.web) return false;
     final targetPlatform = platform.targetPlatform;
     if (targetPlatform == null) return false;
-    return WebViewEnvironmentSettings.isPropertySupported(
+    return CygnusWebViewEnvironmentSettings.isPropertySupported(
       property,
       platform: targetPlatform,
     );
@@ -67,7 +67,7 @@ class EnvironmentSettingDefinition {
 
   bool get isSupportedOnCurrentPlatform {
     if (kIsWeb) return true;
-    return WebViewEnvironmentSettings.isPropertySupported(property);
+    return CygnusWebViewEnvironmentSettings.isPropertySupported(property);
   }
 
   /// Platforms that support this setting (web cannot be checked via TargetPlatform).
@@ -75,7 +75,7 @@ class EnvironmentSettingDefinition {
     return SupportCheckHelper.supportedPlatformsForProperty(
       property: property,
       checker: (property, {platform}) =>
-          WebViewEnvironmentSettings.isPropertySupported(
+          CygnusWebViewEnvironmentSettings.isPropertySupported(
             property,
             platform: platform,
           ),

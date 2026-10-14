@@ -3,8 +3,8 @@ part of 'main.dart';
 void resizeWebView() {
   final shouldSkip =
       kIsWeb ||
-      !InAppWebViewController.isMethodSupported(
-        PlatformInAppWebViewControllerMethod.addJavaScriptHandler,
+      !CygnusWebViewController.isMethodSupported(
+        CygnusPlatformWebViewControllerMethod.addJavaScriptHandler,
       );
 
   skippableTestWidgets('resize webview', (WidgetTester tester) async {
@@ -30,14 +30,14 @@ void resizeWebView() {
     final Completer<void> resizeCompleter = Completer<void>();
     final Completer<void> pageStarted = Completer<void>();
     final Completer<void> pageLoaded = Completer<void>();
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final GlobalKey key = GlobalKey();
 
-    final InAppWebView webView = InAppWebView(
+    final CygnusWebView webView = CygnusWebView(
       key: key,
-      initialUrlRequest: URLRequest(
-        url: WebUri('data:text/html;charset=utf-8;base64,$resizeTestBase64'),
+      initialUrlRequest: CygnusURLRequest(
+        url: CygnusWebUri('data:text/html;charset=utf-8;base64,$resizeTestBase64'),
       ),
       onWebViewCreated: (controller) {
         controllerCompleter.complete(controller);
@@ -55,7 +55,7 @@ void resizeWebView() {
       onLoadStop: (controller, url) {
         pageLoaded.complete();
       },
-      initialSettings: InAppWebViewSettings(javaScriptEnabled: true),
+      initialSettings: CygnusWebViewSettings(javaScriptEnabled: true),
     );
 
     await tester.pumpWidget(

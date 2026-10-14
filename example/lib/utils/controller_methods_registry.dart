@@ -52,12 +52,12 @@ enum ControllerMethodCategoryType {
 class ControllerMethodEntry {
   /// The method enum that this entry represents.
   /// The id and name are derived from methodEnum.name.
-  final PlatformInAppWebViewControllerMethod methodEnum;
+  final CygnusPlatformWebViewControllerMethod methodEnum;
   final String description;
   final Map<String, dynamic> parameters;
   final List<String> requiredParameters;
   final Future<dynamic> Function(
-    InAppWebViewController controller,
+    CygnusWebViewController controller,
     Map<String, dynamic> params,
   )
   execute;
@@ -252,7 +252,7 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Loads the given URL',
-          methodEnum: PlatformInAppWebViewControllerMethod.loadUrl,
+          methodEnum: CygnusPlatformWebViewControllerMethod.loadUrl,
           parameters: {
             'url': 'https://example.com',
             'method': 'GET',
@@ -272,8 +272,8 @@ class ControllerMethodsRegistry {
             final body = extractParam<Uint8List>(params['body']);
 
             await controller.loadUrl(
-              urlRequest: URLRequest(
-                url: WebUri(url),
+              urlRequest: CygnusURLRequest(
+                url: CygnusWebUri(url),
                 method: method?.isNotEmpty == true ? method : null,
                 headers: headers?.cast<String, String>(),
                 body: body,
@@ -284,7 +284,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Loads URL using POST method',
-          methodEnum: PlatformInAppWebViewControllerMethod.postUrl,
+          methodEnum: CygnusPlatformWebViewControllerMethod.postUrl,
           parameters: {
             'url': 'https://httpbin.org/post',
             'postData': const ParameterValueHint<Uint8List?>(
@@ -304,7 +304,7 @@ class ControllerMethodsRegistry {
               }
             }
             await controller.postUrl(
-              url: WebUri(url),
+              url: CygnusWebUri(url),
               postData: postData ?? Uint8List(0),
             );
             return 'POST request sent with ${postData?.length ?? 0} bytes';
@@ -312,7 +312,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Loads HTML data string',
-          methodEnum: PlatformInAppWebViewControllerMethod.loadData,
+          methodEnum: CygnusPlatformWebViewControllerMethod.loadData,
           parameters: {
             'data': '<html><body><h1>Test HTML</h1></body></html>',
             'mimeType': 'text/html',
@@ -332,9 +332,9 @@ class ControllerMethodsRegistry {
               data: data,
               mimeType: mimeType?.isNotEmpty == true ? mimeType! : 'text/html',
               encoding: encoding?.isNotEmpty == true ? encoding! : 'utf-8',
-              baseUrl: baseUrl?.isNotEmpty == true ? WebUri(baseUrl!) : null,
+              baseUrl: baseUrl?.isNotEmpty == true ? CygnusWebUri(baseUrl!) : null,
               historyUrl: historyUrl?.isNotEmpty == true
-                  ? WebUri(historyUrl!)
+                  ? CygnusWebUri(historyUrl!)
                   : null,
             );
             return 'HTML data loaded';
@@ -342,7 +342,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Loads a file from assets',
-          methodEnum: PlatformInAppWebViewControllerMethod.loadFile,
+          methodEnum: CygnusPlatformWebViewControllerMethod.loadFile,
           parameters: {'assetFilePath': 'assets/index.html'},
           requiredParameters: ['assetFilePath'],
           execute: (controller, params) async {
@@ -353,7 +353,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Reloads the current page',
-          methodEnum: PlatformInAppWebViewControllerMethod.reload,
+          methodEnum: CygnusPlatformWebViewControllerMethod.reload,
           execute: (controller, params) async {
             await controller.reload();
             return 'Page reloaded';
@@ -361,7 +361,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Reloads bypassing cache',
-          methodEnum: PlatformInAppWebViewControllerMethod.reloadFromOrigin,
+          methodEnum: CygnusPlatformWebViewControllerMethod.reloadFromOrigin,
           execute: (controller, params) async {
             await controller.reloadFromOrigin();
             return 'Page reloaded from origin';
@@ -369,7 +369,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Navigates back in history',
-          methodEnum: PlatformInAppWebViewControllerMethod.goBack,
+          methodEnum: CygnusPlatformWebViewControllerMethod.goBack,
           execute: (controller, params) async {
             await controller.goBack();
             return 'Navigated back';
@@ -377,7 +377,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Navigates forward in history',
-          methodEnum: PlatformInAppWebViewControllerMethod.goForward,
+          methodEnum: CygnusPlatformWebViewControllerMethod.goForward,
           execute: (controller, params) async {
             await controller.goForward();
             return 'Navigated forward';
@@ -385,7 +385,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Navigates by steps',
-          methodEnum: PlatformInAppWebViewControllerMethod.goBackOrForward,
+          methodEnum: CygnusPlatformWebViewControllerMethod.goBackOrForward,
           parameters: {'steps': -1},
           requiredParameters: ['steps'],
           execute: (controller, params) async {
@@ -396,21 +396,21 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Checks if can go back',
-          methodEnum: PlatformInAppWebViewControllerMethod.canGoBack,
+          methodEnum: CygnusPlatformWebViewControllerMethod.canGoBack,
           execute: (controller, params) async {
             return await controller.canGoBack();
           },
         ),
         ControllerMethodEntry(
           description: 'Checks if can go forward',
-          methodEnum: PlatformInAppWebViewControllerMethod.canGoForward,
+          methodEnum: CygnusPlatformWebViewControllerMethod.canGoForward,
           execute: (controller, params) async {
             return await controller.canGoForward();
           },
         ),
         ControllerMethodEntry(
           description: 'Checks if can navigate by steps',
-          methodEnum: PlatformInAppWebViewControllerMethod.canGoBackOrForward,
+          methodEnum: CygnusPlatformWebViewControllerMethod.canGoBackOrForward,
           parameters: {'steps': -1},
           requiredParameters: ['steps'],
           execute: (controller, params) async {
@@ -420,14 +420,14 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Checks if page is loading',
-          methodEnum: PlatformInAppWebViewControllerMethod.isLoading,
+          methodEnum: CygnusPlatformWebViewControllerMethod.isLoading,
           execute: (controller, params) async {
             return await controller.isLoading();
           },
         ),
         ControllerMethodEntry(
           description: 'Stops page loading',
-          methodEnum: PlatformInAppWebViewControllerMethod.stopLoading,
+          methodEnum: CygnusPlatformWebViewControllerMethod.stopLoading,
           execute: (controller, params) async {
             await controller.stopLoading();
             return 'Loading stopped';
@@ -446,28 +446,28 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Gets current page URL',
-          methodEnum: PlatformInAppWebViewControllerMethod.getUrl,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getUrl,
           execute: (controller, params) async {
             return (await controller.getUrl())?.toString() ?? 'No URL';
           },
         ),
         ControllerMethodEntry(
           description: 'Gets current page title',
-          methodEnum: PlatformInAppWebViewControllerMethod.getTitle,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getTitle,
           execute: (controller, params) async {
             return await controller.getTitle() ?? 'No title';
           },
         ),
         ControllerMethodEntry(
           description: 'Gets page load progress',
-          methodEnum: PlatformInAppWebViewControllerMethod.getProgress,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getProgress,
           execute: (controller, params) async {
             return await controller.getProgress();
           },
         ),
         ControllerMethodEntry(
           description: 'Gets page HTML source',
-          methodEnum: PlatformInAppWebViewControllerMethod.getHtml,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getHtml,
           execute: (controller, params) async {
             final html = await controller.getHtml();
             if (html != null && html.length > 500) {
@@ -478,7 +478,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Gets page favicons',
-          methodEnum: PlatformInAppWebViewControllerMethod.getFavicons,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getFavicons,
           execute: (controller, params) async {
             final favicons = await controller.getFavicons();
             return 'Found ${favicons.length} favicons';
@@ -486,21 +486,21 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Gets original URL before redirects',
-          methodEnum: PlatformInAppWebViewControllerMethod.getOriginalUrl,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getOriginalUrl,
           execute: (controller, params) async {
             return (await controller.getOriginalUrl())?.toString() ?? 'No URL';
           },
         ),
         ControllerMethodEntry(
           description: 'Gets selected text',
-          methodEnum: PlatformInAppWebViewControllerMethod.getSelectedText,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getSelectedText,
           execute: (controller, params) async {
             return await controller.getSelectedText() ?? 'No selection';
           },
         ),
         ControllerMethodEntry(
           description: 'Gets hit test result',
-          methodEnum: PlatformInAppWebViewControllerMethod.getHitTestResult,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getHitTestResult,
           execute: (controller, params) async {
             final result = await controller.getHitTestResult();
             return result?.type.toString() ?? 'No hit test result';
@@ -508,7 +508,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Gets meta tags from page',
-          methodEnum: PlatformInAppWebViewControllerMethod.getMetaTags,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getMetaTags,
           execute: (controller, params) async {
             final tags = await controller.getMetaTags();
             return 'Found ${tags.length} meta tags';
@@ -516,7 +516,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Gets meta theme color',
-          methodEnum: PlatformInAppWebViewControllerMethod.getMetaThemeColor,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getMetaThemeColor,
           execute: (controller, params) async {
             final color = await controller.getMetaThemeColor();
             return color?.toString() ?? 'No theme color';
@@ -524,7 +524,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Gets SSL certificate info and X509 data',
-          methodEnum: PlatformInAppWebViewControllerMethod.getCertificate,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getCertificate,
           execute: (controller, params) async {
             final cert = await controller.getCertificate();
             if (cert == null) return {'error': 'No certificate available'};
@@ -534,7 +534,7 @@ class ControllerMethodsRegistry {
         ControllerMethodEntry(
           description: 'Gets navigation history',
           methodEnum:
-              PlatformInAppWebViewControllerMethod.getCopyBackForwardList,
+              CygnusPlatformWebViewControllerMethod.getCopyBackForwardList,
           execute: (controller, params) async {
             final history = await controller.getCopyBackForwardList();
             return 'History: ${history?.list?.length ?? 0} items, current: ${history?.currentIndex}';
@@ -553,7 +553,7 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Executes JavaScript code',
-          methodEnum: PlatformInAppWebViewControllerMethod.evaluateJavascript,
+          methodEnum: CygnusPlatformWebViewControllerMethod.evaluateJavascript,
           parameters: {'source': 'document.title'},
           requiredParameters: ['source'],
           execute: (controller, params) async {
@@ -564,7 +564,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Calls async JavaScript function',
-          methodEnum: PlatformInAppWebViewControllerMethod.callAsyncJavaScript,
+          methodEnum: CygnusPlatformWebViewControllerMethod.callAsyncJavaScript,
           parameters: {
             'functionBody': 'return await Promise.resolve("async result");',
             'arguments': <String, dynamic>{},
@@ -582,21 +582,21 @@ class ControllerMethodsRegistry {
         ControllerMethodEntry(
           description: 'Injects JS file from URL',
           methodEnum:
-              PlatformInAppWebViewControllerMethod.injectJavascriptFileFromUrl,
+              CygnusPlatformWebViewControllerMethod.injectJavascriptFileFromUrl,
           parameters: {
             'urlFile': 'https://code.jquery.com/jquery-3.7.1.min.js',
           },
           requiredParameters: ['urlFile'],
           execute: (controller, params) async {
             await controller.injectJavascriptFileFromUrl(
-              urlFile: WebUri(params['urlFile']?.toString() ?? ''),
+              urlFile: CygnusWebUri(params['urlFile']?.toString() ?? ''),
             );
             return 'JavaScript file injected';
           },
         ),
         ControllerMethodEntry(
           description: 'Injects CSS code',
-          methodEnum: PlatformInAppWebViewControllerMethod.injectCSSCode,
+          methodEnum: CygnusPlatformWebViewControllerMethod.injectCSSCode,
           parameters: {
             'source': 'body { background-color: #f0f0f0 !important; }',
           },
@@ -610,7 +610,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Injects CSS file from URL',
-          methodEnum: PlatformInAppWebViewControllerMethod.injectCSSFileFromUrl,
+          methodEnum: CygnusPlatformWebViewControllerMethod.injectCSSFileFromUrl,
           parameters: {
             'urlFile':
                 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
@@ -618,7 +618,7 @@ class ControllerMethodsRegistry {
           requiredParameters: ['urlFile'],
           execute: (controller, params) async {
             await controller.injectCSSFileFromUrl(
-              urlFile: WebUri(params['urlFile']?.toString() ?? ''),
+              urlFile: CygnusWebUri(params['urlFile']?.toString() ?? ''),
             );
             return 'CSS file injected';
           },
@@ -636,7 +636,7 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Adds a JavaScript handler',
-          methodEnum: PlatformInAppWebViewControllerMethod.addJavaScriptHandler,
+          methodEnum: CygnusPlatformWebViewControllerMethod.addJavaScriptHandler,
           parameters: {'handlerName': 'testHandler'},
           requiredParameters: ['handlerName'],
           execute: (controller, params) async {
@@ -653,7 +653,7 @@ class ControllerMethodsRegistry {
         ControllerMethodEntry(
           description: 'Removes a JavaScript handler',
           methodEnum:
-              PlatformInAppWebViewControllerMethod.removeJavaScriptHandler,
+              CygnusPlatformWebViewControllerMethod.removeJavaScriptHandler,
           parameters: {'handlerName': 'testHandler'},
           requiredParameters: ['handlerName'],
           execute: (controller, params) async {
@@ -665,7 +665,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Checks if handler exists',
-          methodEnum: PlatformInAppWebViewControllerMethod.hasJavaScriptHandler,
+          methodEnum: CygnusPlatformWebViewControllerMethod.hasJavaScriptHandler,
           parameters: {'handlerName': 'testHandler'},
           requiredParameters: ['handlerName'],
           execute: (controller, params) async {
@@ -687,24 +687,24 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Adds a user script',
-          methodEnum: PlatformInAppWebViewControllerMethod.addUserScript,
+          methodEnum: CygnusPlatformWebViewControllerMethod.addUserScript,
           parameters: {
             'source': 'console.log("User script executed");',
             'injectionTime':
-                EnumParameterValueHint<UserScriptInjectionTime>.fromIterable(
-                  UserScriptInjectionTime.AT_DOCUMENT_END,
-                  _safeEnumValues(() => UserScriptInjectionTime.values),
+                EnumParameterValueHint<CygnusUserScriptInjectionTime>.fromIterable(
+                  CygnusUserScriptInjectionTime.AT_DOCUMENT_END,
+                  _safeEnumValues(() => CygnusUserScriptInjectionTime.values),
                 ),
             'groupName': 'testGroup',
           },
           requiredParameters: ['source'],
           execute: (controller, params) async {
             final injectionTimeParam = params['injectionTime'];
-            final injectionTime = injectionTimeParam is UserScriptInjectionTime
+            final injectionTime = injectionTimeParam is CygnusUserScriptInjectionTime
                 ? injectionTimeParam
                 : _parseUserScriptInjectionTime(injectionTimeParam?.toString());
             await controller.addUserScript(
-              userScript: UserScript(
+              userScript: CygnusUserScript(
                 source: params['source']?.toString() ?? '',
                 injectionTime: injectionTime,
                 groupName: params['groupName']?.toString(),
@@ -715,7 +715,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Removes all user scripts',
-          methodEnum: PlatformInAppWebViewControllerMethod.removeAllUserScripts,
+          methodEnum: CygnusPlatformWebViewControllerMethod.removeAllUserScripts,
           execute: (controller, params) async {
             await controller.removeAllUserScripts();
             return 'All user scripts removed';
@@ -734,7 +734,7 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Scrolls to position',
-          methodEnum: PlatformInAppWebViewControllerMethod.scrollTo,
+          methodEnum: CygnusPlatformWebViewControllerMethod.scrollTo,
           parameters: {'x': 0, 'y': 100, 'animated': true},
           execute: (controller, params) async {
             final x = (params['x'] as num?)?.toInt() ?? 0;
@@ -746,7 +746,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Scrolls by offset',
-          methodEnum: PlatformInAppWebViewControllerMethod.scrollBy,
+          methodEnum: CygnusPlatformWebViewControllerMethod.scrollBy,
           parameters: {'x': 0, 'y': 50, 'animated': true},
           execute: (controller, params) async {
             final x = (params['x'] as num?)?.toInt() ?? 0;
@@ -758,28 +758,28 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Gets horizontal scroll position',
-          methodEnum: PlatformInAppWebViewControllerMethod.getScrollX,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getScrollX,
           execute: (controller, params) async {
             return await controller.getScrollX();
           },
         ),
         ControllerMethodEntry(
           description: 'Gets vertical scroll position',
-          methodEnum: PlatformInAppWebViewControllerMethod.getScrollY,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getScrollY,
           execute: (controller, params) async {
             return await controller.getScrollY();
           },
         ),
         ControllerMethodEntry(
           description: 'Gets content height',
-          methodEnum: PlatformInAppWebViewControllerMethod.getContentHeight,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getContentHeight,
           execute: (controller, params) async {
             return await controller.getContentHeight();
           },
         ),
         ControllerMethodEntry(
           description: 'Gets content width',
-          methodEnum: PlatformInAppWebViewControllerMethod.getContentWidth,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getContentWidth,
           execute: (controller, params) async {
             return await controller.getContentWidth();
           },
@@ -797,7 +797,7 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Zooms by factor',
-          methodEnum: PlatformInAppWebViewControllerMethod.zoomBy,
+          methodEnum: CygnusPlatformWebViewControllerMethod.zoomBy,
           parameters: {'zoomFactor': 1.5, 'animated': true},
           requiredParameters: ['zoomFactor'],
           execute: (controller, params) async {
@@ -810,21 +810,21 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Zooms in',
-          methodEnum: PlatformInAppWebViewControllerMethod.zoomIn,
+          methodEnum: CygnusPlatformWebViewControllerMethod.zoomIn,
           execute: (controller, params) async {
             return await controller.zoomIn();
           },
         ),
         ControllerMethodEntry(
           description: 'Zooms out',
-          methodEnum: PlatformInAppWebViewControllerMethod.zoomOut,
+          methodEnum: CygnusPlatformWebViewControllerMethod.zoomOut,
           execute: (controller, params) async {
             return await controller.zoomOut();
           },
         ),
         ControllerMethodEntry(
           description: 'Gets current zoom scale',
-          methodEnum: PlatformInAppWebViewControllerMethod.getZoomScale,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getZoomScale,
           execute: (controller, params) async {
             return await controller.getZoomScale();
           },
@@ -842,7 +842,7 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Gets WebView settings',
-          methodEnum: PlatformInAppWebViewControllerMethod.getSettings,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getSettings,
           execute: (controller, params) async {
             final settings = await controller.getSettings();
             return 'JS enabled: ${settings?.javaScriptEnabled}';
@@ -850,14 +850,14 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Requests focus for WebView',
-          methodEnum: PlatformInAppWebViewControllerMethod.requestFocus,
+          methodEnum: CygnusPlatformWebViewControllerMethod.requestFocus,
           execute: (controller, params) async {
             return await controller.requestFocus();
           },
         ),
         ControllerMethodEntry(
           description: 'Clears focus from WebView',
-          methodEnum: PlatformInAppWebViewControllerMethod.clearFocus,
+          methodEnum: CygnusPlatformWebViewControllerMethod.clearFocus,
           execute: (controller, params) async {
             await controller.clearFocus();
             return 'Focus cleared';
@@ -876,12 +876,12 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Takes a screenshot',
-          methodEnum: PlatformInAppWebViewControllerMethod.takeScreenshot,
+          methodEnum: CygnusPlatformWebViewControllerMethod.takeScreenshot,
           parameters: {
             'compressFormat':
-                EnumParameterValueHint<CompressFormat>.fromIterable(
-                  CompressFormat.PNG,
-                  _safeEnumValues(() => CompressFormat.values),
+                EnumParameterValueHint<CygnusCompressFormat>.fromIterable(
+                  CygnusCompressFormat.PNG,
+                  _safeEnumValues(() => CygnusCompressFormat.values),
                 ),
             'quality': 100,
             'snapshotWidth': const ParameterValueHint<double?>(
@@ -891,16 +891,16 @@ class ControllerMethodsRegistry {
           },
           execute: (controller, params) async {
             final compressFormatParam = params['compressFormat'];
-            final compressFormat = compressFormatParam is CompressFormat
+            final compressFormat = compressFormatParam is CygnusCompressFormat
                 ? compressFormatParam
-                : CompressFormat.PNG;
+                : CygnusCompressFormat.PNG;
             final quality = (params['quality'] as num?)?.toInt() ?? 100;
             final snapshotWidth = extractParam<num>(
               params['snapshotWidth'],
             )?.toDouble();
 
             final screenshot = await controller.takeScreenshot(
-              screenshotConfiguration: ScreenshotConfiguration(
+              screenshotConfiguration: CygnusScreenshotConfiguration(
                 compressFormat: compressFormat,
                 quality: quality,
                 snapshotWidth: snapshotWidth,
@@ -914,7 +914,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Prints current page',
-          methodEnum: PlatformInAppWebViewControllerMethod.printCurrentPage,
+          methodEnum: CygnusPlatformWebViewControllerMethod.printCurrentPage,
           execute: (controller, params) async {
             final printJob = await controller.printCurrentPage();
             return printJob != null
@@ -924,7 +924,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Creates PDF from page',
-          methodEnum: PlatformInAppWebViewControllerMethod.createPdf,
+          methodEnum: CygnusPlatformWebViewControllerMethod.createPdf,
           execute: (controller, params) async {
             final pdf = await controller.createPdf();
             if (pdf != null) {
@@ -946,7 +946,7 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Clears navigation history',
-          methodEnum: PlatformInAppWebViewControllerMethod.clearHistory,
+          methodEnum: CygnusPlatformWebViewControllerMethod.clearHistory,
           execute: (controller, params) async {
             await controller.clearHistory();
             return 'History cleared';
@@ -954,7 +954,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Clears form data',
-          methodEnum: PlatformInAppWebViewControllerMethod.clearFormData,
+          methodEnum: CygnusPlatformWebViewControllerMethod.clearFormData,
           execute: (controller, params) async {
             await controller.clearFormData();
             return 'Form data cleared';
@@ -962,7 +962,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Clears SSL preferences',
-          methodEnum: PlatformInAppWebViewControllerMethod.clearSslPreferences,
+          methodEnum: CygnusPlatformWebViewControllerMethod.clearSslPreferences,
           execute: (controller, params) async {
             await controller.clearSslPreferences();
             return 'SSL preferences cleared';
@@ -981,7 +981,7 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Pauses WebView',
-          methodEnum: PlatformInAppWebViewControllerMethod.pause,
+          methodEnum: CygnusPlatformWebViewControllerMethod.pause,
           execute: (controller, params) async {
             await controller.pause();
             return 'WebView paused';
@@ -989,7 +989,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Resumes WebView',
-          methodEnum: PlatformInAppWebViewControllerMethod.resume,
+          methodEnum: CygnusPlatformWebViewControllerMethod.resume,
           execute: (controller, params) async {
             await controller.resume();
             return 'WebView resumed';
@@ -997,7 +997,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Pauses JavaScript timers',
-          methodEnum: PlatformInAppWebViewControllerMethod.pauseTimers,
+          methodEnum: CygnusPlatformWebViewControllerMethod.pauseTimers,
           execute: (controller, params) async {
             await controller.pauseTimers();
             return 'Timers paused';
@@ -1005,7 +1005,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Resumes JavaScript timers',
-          methodEnum: PlatformInAppWebViewControllerMethod.resumeTimers,
+          methodEnum: CygnusPlatformWebViewControllerMethod.resumeTimers,
           execute: (controller, params) async {
             await controller.resumeTimers();
             return 'Timers resumed';
@@ -1025,7 +1025,7 @@ class ControllerMethodsRegistry {
         ControllerMethodEntry(
           description: 'Creates a web message channel',
           methodEnum:
-              PlatformInAppWebViewControllerMethod.createWebMessageChannel,
+              CygnusPlatformWebViewControllerMethod.createWebMessageChannel,
           execute: (controller, params) async {
             final channel = await controller.createWebMessageChannel();
             return channel != null
@@ -1035,14 +1035,14 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Posts a web message',
-          methodEnum: PlatformInAppWebViewControllerMethod.postWebMessage,
+          methodEnum: CygnusPlatformWebViewControllerMethod.postWebMessage,
           parameters: {'message': 'Hello from Flutter', 'targetOrigin': '*'},
           requiredParameters: ['message'],
           execute: (controller, params) async {
             final targetOrigin = params['targetOrigin']?.toString();
             await controller.postWebMessage(
-              message: WebMessage(data: params['message']?.toString()),
-              targetOrigin: WebUri(
+              message: CygnusWebMessage(data: params['message']?.toString()),
+              targetOrigin: CygnusWebUri(
                 targetOrigin?.isNotEmpty == true ? targetOrigin! : '*',
               ),
             );
@@ -1062,7 +1062,7 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Checks if in fullscreen',
-          methodEnum: PlatformInAppWebViewControllerMethod.isInFullscreen,
+          methodEnum: CygnusPlatformWebViewControllerMethod.isInFullscreen,
           execute: (controller, params) async {
             return await controller.isInFullscreen();
           },
@@ -1070,7 +1070,7 @@ class ControllerMethodsRegistry {
         ControllerMethodEntry(
           description: 'Pauses all media',
           methodEnum:
-              PlatformInAppWebViewControllerMethod.pauseAllMediaPlayback,
+              CygnusPlatformWebViewControllerMethod.pauseAllMediaPlayback,
           execute: (controller, params) async {
             await controller.pauseAllMediaPlayback();
             return 'Media paused';
@@ -1078,21 +1078,21 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Checks if playing audio',
-          methodEnum: PlatformInAppWebViewControllerMethod.isPlayingAudio,
+          methodEnum: CygnusPlatformWebViewControllerMethod.isPlayingAudio,
           execute: (controller, params) async {
             return await controller.isPlayingAudio();
           },
         ),
         ControllerMethodEntry(
           description: 'Checks if muted',
-          methodEnum: PlatformInAppWebViewControllerMethod.isMuted,
+          methodEnum: CygnusPlatformWebViewControllerMethod.isMuted,
           execute: (controller, params) async {
             return await controller.isMuted();
           },
         ),
         ControllerMethodEntry(
           description: 'Sets mute state',
-          methodEnum: PlatformInAppWebViewControllerMethod.setMuted,
+          methodEnum: CygnusPlatformWebViewControllerMethod.setMuted,
           parameters: {'muted': true},
           execute: (controller, params) async {
             await controller.setMuted(muted: params['muted'] as bool? ?? true);
@@ -1113,7 +1113,7 @@ class ControllerMethodsRegistry {
         ControllerMethodEntry(
           description: 'Gets camera capture state',
           methodEnum:
-              PlatformInAppWebViewControllerMethod.getCameraCaptureState,
+              CygnusPlatformWebViewControllerMethod.getCameraCaptureState,
           execute: (controller, params) async {
             final state = await controller.getCameraCaptureState();
             return state?.toString() ?? 'Unknown state';
@@ -1122,7 +1122,7 @@ class ControllerMethodsRegistry {
         ControllerMethodEntry(
           description: 'Gets microphone capture state',
           methodEnum:
-              PlatformInAppWebViewControllerMethod.getMicrophoneCaptureState,
+              CygnusPlatformWebViewControllerMethod.getMicrophoneCaptureState,
           execute: (controller, params) async {
             final state = await controller.getMicrophoneCaptureState();
             return state?.toString() ?? 'Unknown state';
@@ -1141,14 +1141,14 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Checks if secure context',
-          methodEnum: PlatformInAppWebViewControllerMethod.isSecureContext,
+          methodEnum: CygnusPlatformWebViewControllerMethod.isSecureContext,
           execute: (controller, params) async {
             return await controller.isSecureContext();
           },
         ),
         ControllerMethodEntry(
           description: 'Checks if only secure content',
-          methodEnum: PlatformInAppWebViewControllerMethod.hasOnlySecureContent,
+          methodEnum: CygnusPlatformWebViewControllerMethod.hasOnlySecureContent,
           execute: (controller, params) async {
             return await controller.hasOnlySecureContent();
           },
@@ -1166,7 +1166,7 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Saves WebView state',
-          methodEnum: PlatformInAppWebViewControllerMethod.saveState,
+          methodEnum: CygnusPlatformWebViewControllerMethod.saveState,
           execute: (controller, params) async {
             final state = await controller.saveState();
             return state != null
@@ -1176,7 +1176,7 @@ class ControllerMethodsRegistry {
         ),
         ControllerMethodEntry(
           description: 'Creates web archive data',
-          methodEnum: PlatformInAppWebViewControllerMethod.createWebArchiveData,
+          methodEnum: CygnusPlatformWebViewControllerMethod.createWebArchiveData,
           execute: (controller, params) async {
             final data = await controller.createWebArchiveData();
             return data != null ? 'Archive: ${data.length} bytes' : 'Failed';
@@ -1195,21 +1195,21 @@ class ControllerMethodsRegistry {
       methods: [
         ControllerMethodEntry(
           description: 'Gets the WebView ID',
-          methodEnum: PlatformInAppWebViewControllerMethod.getViewId,
+          methodEnum: CygnusPlatformWebViewControllerMethod.getViewId,
           execute: (controller, params) async {
             return controller.getViewId();
           },
         ),
         ControllerMethodEntry(
           description: 'Starts Safe Browsing',
-          methodEnum: PlatformInAppWebViewControllerMethod.startSafeBrowsing,
+          methodEnum: CygnusPlatformWebViewControllerMethod.startSafeBrowsing,
           execute: (controller, params) async {
             return await controller.startSafeBrowsing();
           },
         ),
         ControllerMethodEntry(
           description: 'Opens DevTools',
-          methodEnum: PlatformInAppWebViewControllerMethod.openDevTools,
+          methodEnum: CygnusPlatformWebViewControllerMethod.openDevTools,
           execute: (controller, params) async {
             await controller.openDevTools();
             return 'DevTools opened';
@@ -1219,13 +1219,13 @@ class ControllerMethodsRegistry {
     );
   }
 
-  static UserScriptInjectionTime _parseUserScriptInjectionTime(String? value) {
+  static CygnusUserScriptInjectionTime _parseUserScriptInjectionTime(String? value) {
     if (value == null || value.isEmpty) {
-      return UserScriptInjectionTime.AT_DOCUMENT_END;
+      return CygnusUserScriptInjectionTime.AT_DOCUMENT_END;
     }
-    return UserScriptInjectionTime.values.firstWhere(
+    return CygnusUserScriptInjectionTime.values.firstWhere(
       (entry) => entry.name().toLowerCase() == value.toLowerCase(),
-      orElse: () => UserScriptInjectionTime.AT_DOCUMENT_END,
+      orElse: () => CygnusUserScriptInjectionTime.AT_DOCUMENT_END,
     );
   }
 }

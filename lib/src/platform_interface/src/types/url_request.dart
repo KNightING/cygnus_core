@@ -11,9 +11,9 @@ part 'url_request.g.dart';
 
 ///A URL load request that is independent of protocol or URL scheme.
 @ExchangeableObject()
-class URLRequest_ {
+class CygnusURLRequest_ {
   ///The URL of the request. Setting this to `null` will load `about:blank`.
-  WebUri? url;
+  CygnusWebUri? url;
 
   ///The HTTP request method.
   ///
@@ -34,12 +34,12 @@ class URLRequest_ {
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
-        apiName: "URLRequest.allowsCellularAccess",
+        apiName: "CygnusURLRequest.allowsCellularAccess",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/2011607-allowscellularaccess/",
       ),
       MacOSPlatform(
-        apiName: "URLRequest.allowsCellularAccess",
+        apiName: "CygnusURLRequest.allowsCellularAccess",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/2011607-allowscellularaccess/",
       ),
@@ -56,13 +56,13 @@ class URLRequest_ {
     platforms: [
       IOSPlatform(
         available: "13.0",
-        apiName: "URLRequest.allowsConstrainedNetworkAccess",
+        apiName: "CygnusURLRequest.allowsConstrainedNetworkAccess",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/3358304-allowsconstrainednetworkaccess",
       ),
       MacOSPlatform(
         available: "10.15",
-        apiName: "URLRequest.allowsConstrainedNetworkAccess",
+        apiName: "CygnusURLRequest.allowsConstrainedNetworkAccess",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/3358304-allowsconstrainednetworkaccess",
       ),
@@ -79,13 +79,13 @@ class URLRequest_ {
     platforms: [
       IOSPlatform(
         available: "13.0",
-        apiName: "URLRequest.allowsExpensiveNetworkAccess",
+        apiName: "CygnusURLRequest.allowsExpensiveNetworkAccess",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/3358305-allowsexpensivenetworkaccess",
       ),
       MacOSPlatform(
         available: "10.15",
-        apiName: "URLRequest.allowsExpensiveNetworkAccess",
+        apiName: "CygnusURLRequest.allowsExpensiveNetworkAccess",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/3358305-allowsexpensivenetworkaccess",
       ),
@@ -95,24 +95,24 @@ class URLRequest_ {
 
   ///Use [cachePolicy] instead.
   @Deprecated("Use cachePolicy instead")
-  IOSURLRequestCachePolicy_? iosCachePolicy;
+  CygnusIOSURLRequestCachePolicy_? iosCachePolicy;
 
   ///The request’s cache policy.
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
-        apiName: "URLRequest.cachePolicy",
+        apiName: "CygnusURLRequest.cachePolicy",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/2011593-cachepolicy",
       ),
       MacOSPlatform(
-        apiName: "URLRequest.cachePolicy",
+        apiName: "CygnusURLRequest.cachePolicy",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/2011593-cachepolicy",
       ),
     ],
   )
-  URLRequestCachePolicy_? cachePolicy;
+  CygnusURLRequestCachePolicy_? cachePolicy;
 
   ///Use [httpShouldHandleCookies] instead.
   @Deprecated("Use httpShouldHandleCookies instead")
@@ -122,12 +122,12 @@ class URLRequest_ {
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
-        apiName: "URLRequest.httpShouldHandleCookies",
+        apiName: "CygnusURLRequest.httpShouldHandleCookies",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/2011548-httpshouldhandlecookies",
       ),
       MacOSPlatform(
-        apiName: "URLRequest.httpShouldHandleCookies",
+        apiName: "CygnusURLRequest.httpShouldHandleCookies",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/2011548-httpshouldhandlecookies",
       ),
@@ -143,12 +143,12 @@ class URLRequest_ {
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
-        apiName: "URLRequest.httpShouldUsePipelining",
+        apiName: "CygnusURLRequest.httpShouldUsePipelining",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/2011508-httpshouldusepipelining",
       ),
       MacOSPlatform(
-        apiName: "URLRequest.httpShouldUsePipelining",
+        apiName: "CygnusURLRequest.httpShouldUsePipelining",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/2011508-httpshouldusepipelining",
       ),
@@ -158,24 +158,24 @@ class URLRequest_ {
 
   ///Use [networkServiceType] instead.
   @Deprecated("Use networkServiceType instead")
-  IOSURLRequestNetworkServiceType_? iosNetworkServiceType;
+  CygnusIOSURLRequestNetworkServiceType_? iosNetworkServiceType;
 
   ///The service type associated with this request.
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
-        apiName: "URLRequest.networkServiceType",
+        apiName: "CygnusURLRequest.networkServiceType",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/2011409-networkservicetype",
       ),
       MacOSPlatform(
-        apiName: "URLRequest.networkServiceType",
+        apiName: "CygnusURLRequest.networkServiceType",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/2011409-networkservicetype",
       ),
     ],
   )
-  URLRequestNetworkServiceType_? networkServiceType;
+  CygnusURLRequestNetworkServiceType_? networkServiceType;
 
   ///Use [timeoutInterval] instead.
   @Deprecated("Use timeoutInterval instead")
@@ -185,12 +185,12 @@ class URLRequest_ {
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
-        apiName: "URLRequest.timeoutInterval",
+        apiName: "CygnusURLRequest.timeoutInterval",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/2011509-timeoutinterval",
       ),
       MacOSPlatform(
-        apiName: "URLRequest.timeoutInterval",
+        apiName: "CygnusURLRequest.timeoutInterval",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/2011509-timeoutinterval",
       ),
@@ -207,18 +207,18 @@ class URLRequest_ {
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
-        apiName: "URLRequest.mainDocumentURL",
+        apiName: "CygnusURLRequest.mainDocumentURL",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/2011552-maindocumenturl",
       ),
       MacOSPlatform(
-        apiName: "URLRequest.mainDocumentURL",
+        apiName: "CygnusURLRequest.mainDocumentURL",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/2011552-maindocumenturl",
       ),
     ],
   )
-  WebUri? mainDocumentURL;
+  CygnusWebUri? mainDocumentURL;
 
   ///`true` if server endpoint is known to support HTTP/3. Enables QUIC racing
   ///without HTTP/3 service discovery. Defaults to `false`.
@@ -227,13 +227,13 @@ class URLRequest_ {
     platforms: [
       IOSPlatform(
         available: "14.5",
-        apiName: "URLRequest.assumesHTTP3Capable",
+        apiName: "CygnusURLRequest.assumesHTTP3Capable",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/3738175-assumeshttp3capable",
       ),
       MacOSPlatform(
         available: "11.3",
-        apiName: "URLRequest.assumesHTTP3Capable",
+        apiName: "CygnusURLRequest.assumesHTTP3Capable",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/3738175-assumeshttp3capable",
       ),
@@ -243,26 +243,26 @@ class URLRequest_ {
 
   ///The entities that can make a network request.
   ///
-  ///If you don’t set a value, the system assumes [URLRequestAttribution.DEVELOPER].
+  ///If you don’t set a value, the system assumes [CygnusURLRequestAttribution.DEVELOPER].
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
         available: "15.0",
-        apiName: "URLRequest.attribution",
+        apiName: "CygnusURLRequest.attribution",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/3767318-attribution",
       ),
       MacOSPlatform(
         available: "12.0",
-        apiName: "URLRequest.attribution",
+        apiName: "CygnusURLRequest.attribution",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlrequest/3767318-attribution",
       ),
     ],
   )
-  URLRequestAttribution_? attribution;
+  CygnusURLRequestAttribution_? attribution;
 
-  URLRequest_({
+  CygnusURLRequest_({
     required this.url,
     this.method,
     this.headers,

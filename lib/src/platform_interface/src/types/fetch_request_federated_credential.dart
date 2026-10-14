@@ -8,7 +8,7 @@ part 'fetch_request_federated_credential.g.dart';
 
 ///Class that represents a [FederatedCredential](https://developer.mozilla.org/en-US/docs/Web/API/FederatedCredential) type of credentials.
 @ExchangeableObject()
-class FetchRequestFederatedCredential_ extends FetchRequestCredential_ {
+class CygnusFetchRequestFederatedCredential_ extends CygnusFetchRequestCredential_ {
   ///Credential's identifier.
   dynamic id;
 
@@ -22,9 +22,9 @@ class FetchRequestFederatedCredential_ extends FetchRequestCredential_ {
   String? provider;
 
   ///URL pointing to an image for an icon. This image is intended for display in a credential chooser. The URL must be accessible without authentication.
-  WebUri? iconURL;
+  CygnusWebUri? iconURL;
 
-  FetchRequestFederatedCredential_({
+  CygnusFetchRequestFederatedCredential_({
     type,
     this.id,
     this.name,

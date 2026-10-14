@@ -2,36 +2,36 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [AndroidCookieManager].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformCookieManagerCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformCookieManagerCreationParams] for
 /// more information.
 @immutable
 class AndroidCookieManagerCreationParams
-    extends PlatformCookieManagerCreationParams {
+    extends CygnusPlatformCookieManagerCreationParams {
   /// Creates a new [AndroidCookieManagerCreationParams] instance.
   const AndroidCookieManagerCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformCookieManagerCreationParams params,
+    CygnusPlatformCookieManagerCreationParams params,
   ) : super();
 
-  /// Creates a [AndroidCookieManagerCreationParams] instance based on [PlatformCookieManagerCreationParams].
+  /// Creates a [AndroidCookieManagerCreationParams] instance based on [CygnusPlatformCookieManagerCreationParams].
   factory AndroidCookieManagerCreationParams.fromPlatformCookieManagerCreationParams(
-    PlatformCookieManagerCreationParams params,
+    CygnusPlatformCookieManagerCreationParams params,
   ) {
     return AndroidCookieManagerCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformCookieManager}
-class AndroidCookieManager extends PlatformCookieManager
+///{@macro cygnus_core.CygnusPlatformCookieManager}
+class AndroidCookieManager extends CygnusPlatformCookieManager
     with ChannelController {
   /// Creates a new [AndroidCookieManager].
-  AndroidCookieManager(PlatformCookieManagerCreationParams params)
+  AndroidCookieManager(CygnusPlatformCookieManagerCreationParams params)
     : super.implementation(
         params is AndroidCookieManagerCreationParams
             ? params
@@ -47,7 +47,7 @@ class AndroidCookieManager extends PlatformCookieManager
   }
 
   static final AndroidCookieManager _staticValue = AndroidCookieManager(
-    AndroidCookieManagerCreationParams(PlatformCookieManagerCreationParams()),
+    AndroidCookieManagerCreationParams(CygnusPlatformCookieManagerCreationParams()),
   );
 
   factory AndroidCookieManager.static() {
@@ -64,7 +64,7 @@ class AndroidCookieManager extends PlatformCookieManager
   static AndroidCookieManager _init() {
     _instance = AndroidCookieManager(
       AndroidCookieManagerCreationParams(
-        const PlatformCookieManagerCreationParams(),
+        const CygnusPlatformCookieManagerCreationParams(),
       ),
     );
     return _instance!;
@@ -74,7 +74,7 @@ class AndroidCookieManager extends PlatformCookieManager
 
   @override
   Future<bool> setCookie({
-    required WebUri url,
+    required CygnusWebUri url,
     required String name,
     required String value,
     String path = "/",
@@ -83,10 +83,10 @@ class AndroidCookieManager extends PlatformCookieManager
     int? maxAge,
     bool? isSecure,
     bool? isHttpOnly,
-    HTTPCookieSameSitePolicy? sameSite,
+    CygnusHTTPCookieSameSitePolicy? sameSite,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
     assert(name.isNotEmpty);
@@ -108,15 +108,15 @@ class AndroidCookieManager extends PlatformCookieManager
   }
 
   @override
-  Future<List<Cookie>> getCookies({
-    required WebUri url,
+  Future<List<CygnusCookie>> getCookies({
+    required CygnusWebUri url,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
 
-    List<Cookie> cookies = [];
+    List<CygnusCookie> cookies = [];
 
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent('url', () => url.toString());
@@ -126,13 +126,13 @@ class AndroidCookieManager extends PlatformCookieManager
 
     cookieListMap.forEach((cookieMap) {
       cookies.add(
-        Cookie(
+        CygnusCookie(
           name: cookieMap["name"],
           value: cookieMap["value"],
           expiresDate: cookieMap["expiresDate"],
           isSessionOnly: cookieMap["isSessionOnly"],
           domain: cookieMap["domain"],
-          sameSite: HTTPCookieSameSitePolicy.fromNativeValue(
+          sameSite: CygnusHTTPCookieSameSitePolicy.fromNativeValue(
             cookieMap["sameSite"],
           ),
           isSecure: cookieMap["isSecure"],
@@ -145,12 +145,12 @@ class AndroidCookieManager extends PlatformCookieManager
   }
 
   @override
-  Future<Cookie?> getCookie({
-    required WebUri url,
+  Future<CygnusCookie?> getCookie({
+    required CygnusWebUri url,
     required String name,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
     assert(name.isNotEmpty);
@@ -163,13 +163,13 @@ class AndroidCookieManager extends PlatformCookieManager
     for (var i = 0; i < cookies.length; i++) {
       cookies[i] = cookies[i].cast<String, dynamic>();
       if (cookies[i]["name"] == name)
-        return Cookie(
+        return CygnusCookie(
           name: cookies[i]["name"],
           value: cookies[i]["value"],
           expiresDate: cookies[i]["expiresDate"],
           isSessionOnly: cookies[i]["isSessionOnly"],
           domain: cookies[i]["domain"],
-          sameSite: HTTPCookieSameSitePolicy.fromNativeValue(
+          sameSite: CygnusHTTPCookieSameSitePolicy.fromNativeValue(
             cookies[i]["sameSite"],
           ),
           isSecure: cookies[i]["isSecure"],
@@ -182,13 +182,13 @@ class AndroidCookieManager extends PlatformCookieManager
 
   @override
   Future<bool> deleteCookie({
-    required WebUri url,
+    required CygnusWebUri url,
     required String name,
     String path = "/",
     String? domain,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
     assert(name.isNotEmpty);
@@ -203,12 +203,12 @@ class AndroidCookieManager extends PlatformCookieManager
 
   @override
   Future<bool> deleteCookies({
-    required WebUri url,
+    required CygnusWebUri url,
     String path = "/",
     String? domain,
     @Deprecated("Use webViewController instead")
-    PlatformInAppWebViewController? iosBelow11WebViewController,
-    PlatformInAppWebViewController? webViewController,
+    CygnusPlatformWebViewController? iosBelow11WebViewController,
+    CygnusPlatformWebViewController? webViewController,
   }) async {
     assert(url.toString().isNotEmpty);
 

@@ -6,7 +6,7 @@ part 'window_features.g.dart';
 
 ///Class that specifies optional attributes for the containing window when a new web view is requested.
 @ExchangeableObject()
-class WindowFeatures_ {
+class CygnusWindowFeatures_ {
   ///A Boolean value indicating whether the containing window should be resizable, or `null` if resizability is not specified.
   bool? allowsResizing;
 
@@ -31,7 +31,7 @@ class WindowFeatures_ {
   ///A Double value specifying the y-coordinate of the containing window, or `null` if the y-coordinate is not specified.
   double? y;
 
-  WindowFeatures_({
+  CygnusWindowFeatures_({
     this.allowsResizing,
     this.height,
     this.menuBarVisibility,
@@ -44,10 +44,10 @@ class WindowFeatures_ {
 }
 
 ///An iOS-specific class that specifies optional attributes for the containing window when a new web view is requested.
-///Use [WindowFeatures] instead.
-@Deprecated("Use WindowFeatures instead")
+///Use [CygnusWindowFeatures] instead.
+@Deprecated("Use CygnusWindowFeatures instead")
 @ExchangeableObject()
-class IOSWKWindowFeatures_ {
+class CygnusIOSWKWindowFeatures_ {
   ///A Boolean value indicating whether the containing window should be resizable, or `null` if resizability is not specified.
   bool? allowsResizing;
 
@@ -72,7 +72,7 @@ class IOSWKWindowFeatures_ {
   ///A Double value specifying the y-coordinate of the containing window, or `null` if the y-coordinate is not specified.
   double? y;
 
-  IOSWKWindowFeatures_({
+  CygnusIOSWKWindowFeatures_({
     this.allowsResizing,
     this.height,
     this.menuBarVisibility,

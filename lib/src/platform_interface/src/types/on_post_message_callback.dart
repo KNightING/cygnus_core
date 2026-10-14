@@ -1,10 +1,10 @@
 import '../web_message/main.dart';
 import '../web_uri.dart';
 
-///The listener for handling [PlatformWebMessageListener] events sent by a `postMessage()` on the injected JavaScript object.
-typedef void OnPostMessageCallback(
-  WebMessage? message,
-  WebUri? sourceOrigin,
+///The listener for handling [CygnusPlatformWebMessageListener] events sent by a `postMessage()` on the injected JavaScript object.
+typedef void CygnusOnPostMessageCallback(
+  CygnusWebMessage? message,
+  CygnusWebUri? sourceOrigin,
   bool isMainFrame,
-  PlatformJavaScriptReplyProxy replyProxy,
+  CygnusPlatformJavaScriptReplyProxy replyProxy,
 );

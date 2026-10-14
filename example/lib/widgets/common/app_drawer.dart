@@ -38,7 +38,7 @@ class AppDrawer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(
-              '$InAppWebView',
+              '$CygnusWebView',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: headerTitleSize,

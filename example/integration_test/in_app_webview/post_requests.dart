@@ -1,23 +1,23 @@
 part of 'main.dart';
 
 void postRequests() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.postUrl,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.postUrl,
   );
 
   skippableGroup('POST requests', () {
     skippableTestWidgets('initialUrlRequest', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> postPageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(
-              url: WebUri(
+            initialUrlRequest: CygnusURLRequest(
+              url: CygnusWebUri(
                 "http://${environment["NODE_SERVER_IP"]}:8082/test-post",
               ),
               method: 'POST',
@@ -34,7 +34,7 @@ void postRequests() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await postPageLoaded.future;
 
@@ -51,16 +51,16 @@ void postRequests() {
     });
 
     skippableTestWidgets('loadUrl', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> postPageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: WebUri('about:blank')),
+            initialUrlRequest: CygnusURLRequest(url: CygnusWebUri('about:blank')),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -73,13 +73,13 @@ void postRequests() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
 
       var postData = Uint8List.fromList(utf8.encode("name=FooBar"));
       await controller.loadUrl(
-        urlRequest: URLRequest(
-          url: WebUri("http://${environment["NODE_SERVER_IP"]}:8082/test-post"),
+        urlRequest: CygnusURLRequest(
+          url: CygnusWebUri("http://${environment["NODE_SERVER_IP"]}:8082/test-post"),
           method: 'POST',
           body: postData,
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -101,16 +101,16 @@ void postRequests() {
     });
 
     skippableTestWidgets('postUrl', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> postPageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: WebUri('about:blank')),
+            initialUrlRequest: CygnusURLRequest(url: CygnusWebUri('about:blank')),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -123,12 +123,12 @@ void postRequests() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
 
       var postData = Uint8List.fromList(utf8.encode("name=FooBar"));
       await controller.postUrl(
-        url: WebUri("http://${environment["NODE_SERVER_IP"]}:8082/test-post"),
+        url: CygnusWebUri("http://${environment["NODE_SERVER_IP"]}:8082/test-post"),
         postData: postData,
       );
 

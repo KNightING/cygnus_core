@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void videoPlaybackPolicy() {
-  final shouldSkip = !InAppWebViewSettings.isPropertySupported(
-    InAppWebViewSettingsProperty.mediaPlaybackRequiresUserGesture,
+  final shouldSkip = !CygnusWebViewSettings.isPropertySupported(
+    CygnusWebViewSettingsProperty.mediaPlaybackRequiresUserGesture,
   );
 
   skippableGroup('Video playback policy', () {
@@ -49,24 +49,24 @@ void videoPlaybackPolicy() {
     });
 
     skippableTestWidgets('Auto media playback', (WidgetTester tester) async {
-      Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(
-              url: WebUri(
+            initialUrlRequest: CygnusURLRequest(
+              url: CygnusWebUri(
                 'data:text/html;charset=utf-8;base64,$videoTestBase64',
               ),
             ),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
-            initialSettings: InAppWebViewSettings(
+            initialSettings: CygnusWebViewSettings(
               javaScriptEnabled: true,
               mediaPlaybackRequiresUserGesture: false,
             ),
@@ -76,7 +76,7 @@ void videoPlaybackPolicy() {
           ),
         ),
       );
-      InAppWebViewController controller = await controllerCompleter.future;
+      CygnusWebViewController controller = await controllerCompleter.future;
       await pageLoaded.future;
 
       bool isPaused = await controller.evaluateJavascript(
@@ -84,24 +84,24 @@ void videoPlaybackPolicy() {
       );
       expect(isPaused, false);
 
-      controllerCompleter = Completer<InAppWebViewController>();
+      controllerCompleter = Completer<CygnusWebViewController>();
       pageLoaded = Completer<void>();
 
       // We change the key to re-create a new webview as we change the mediaPlaybackRequiresUserGesture
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(
-              url: WebUri(
+            initialUrlRequest: CygnusURLRequest(
+              url: CygnusWebUri(
                 'data:text/html;charset=utf-8;base64,$videoTestBase64',
               ),
             ),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
-            initialSettings: InAppWebViewSettings(
+            initialSettings: CygnusWebViewSettings(
               javaScriptEnabled: true,
               mediaPlaybackRequiresUserGesture: true,
             ),
@@ -119,32 +119,32 @@ void videoPlaybackPolicy() {
       expect(isPaused, true);
     });
 
-    final shouldSkipTest2 = !InAppWebViewSettings.isPropertySupported(
-      InAppWebViewSettingsProperty.allowsInlineMediaPlayback,
+    final shouldSkipTest2 = !CygnusWebViewSettings.isPropertySupported(
+      CygnusWebViewSettingsProperty.allowsInlineMediaPlayback,
     );
 
     skippableTestWidgets(
       'Video plays inline when allowsInlineMediaPlayback is true',
       (WidgetTester tester) async {
-        Completer<InAppWebViewController> controllerCompleter =
-            Completer<InAppWebViewController>();
+        Completer<CygnusWebViewController> controllerCompleter =
+            Completer<CygnusWebViewController>();
         Completer<void> pageLoaded = Completer<void>();
         Completer<void> onEnterFullscreenCompleter = Completer<void>();
 
         await tester.pumpWidget(
           Directionality(
             textDirection: TextDirection.ltr,
-            child: InAppWebView(
+            child: CygnusWebView(
               key: GlobalKey(),
-              initialUrlRequest: URLRequest(
-                url: WebUri(
+              initialUrlRequest: CygnusURLRequest(
+                url: CygnusWebUri(
                   'data:text/html;charset=utf-8;base64,$videoTestBase64',
                 ),
               ),
               onWebViewCreated: (controller) {
                 controllerCompleter.complete(controller);
               },
-              initialSettings: InAppWebViewSettings(
+              initialSettings: CygnusWebViewSettings(
                 javaScriptEnabled: true,
                 mediaPlaybackRequiresUserGesture: false,
                 allowsInlineMediaPlayback: true,
@@ -165,32 +165,32 @@ void videoPlaybackPolicy() {
       skip: shouldSkipTest2,
     );
 
-    final shouldSkipTest3 = !InAppWebViewSettings.isPropertySupported(
-      InAppWebViewSettingsProperty.allowsInlineMediaPlayback,
+    final shouldSkipTest3 = !CygnusWebViewSettings.isPropertySupported(
+      CygnusWebViewSettingsProperty.allowsInlineMediaPlayback,
     );
 
     testWidgets(
       'Video plays fullscreen when allowsInlineMediaPlayback is false',
       (WidgetTester tester) async {
-        Completer<InAppWebViewController> controllerCompleter =
-            Completer<InAppWebViewController>();
+        Completer<CygnusWebViewController> controllerCompleter =
+            Completer<CygnusWebViewController>();
         Completer<void> pageLoaded = Completer<void>();
         Completer<void> onEnterFullscreenCompleter = Completer<void>();
 
         await tester.pumpWidget(
           Directionality(
             textDirection: TextDirection.ltr,
-            child: InAppWebView(
+            child: CygnusWebView(
               key: GlobalKey(),
-              initialUrlRequest: URLRequest(
-                url: WebUri(
+              initialUrlRequest: CygnusURLRequest(
+                url: CygnusWebUri(
                   'data:text/html;charset=utf-8;base64,$videoTestBase64',
                 ),
               ),
               onWebViewCreated: (controller) {
                 controllerCompleter.complete(controller);
               },
-              initialSettings: InAppWebViewSettings(
+              initialSettings: CygnusWebViewSettings(
                 javaScriptEnabled: true,
                 mediaPlaybackRequiresUserGesture: false,
                 allowsInlineMediaPlayback: false,
@@ -214,30 +214,30 @@ void videoPlaybackPolicy() {
       skip: shouldSkipTest3,
     );
 
-    final shouldSkipTest4 = !InAppWebViewSettings.isPropertySupported(
-      InAppWebViewSettingsProperty.allowsInlineMediaPlayback,
+    final shouldSkipTest4 = !CygnusWebViewSettings.isPropertySupported(
+      CygnusWebViewSettingsProperty.allowsInlineMediaPlayback,
     );
     // on Android, entering fullscreen requires user interaction
     skippableTestWidgets('exit fullscreen event', (WidgetTester tester) async {
-      Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       Completer<void> pageLoaded = Completer<void>();
       Completer<void> onExitFullscreenCompleter = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(
-              url: WebUri(
+            initialUrlRequest: CygnusURLRequest(
+              url: CygnusWebUri(
                 'data:text/html;charset=utf-8;base64,$videoTestBase64',
               ),
             ),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
-            initialSettings: InAppWebViewSettings(
+            initialSettings: CygnusWebViewSettings(
               javaScriptEnabled: true,
               mediaPlaybackRequiresUserGesture: false,
               allowsInlineMediaPlayback: false,
@@ -252,7 +252,7 @@ void videoPlaybackPolicy() {
         ),
       );
 
-      InAppWebViewController controller = await controllerCompleter.future;
+      CygnusWebViewController controller = await controllerCompleter.future;
       await pageLoaded.future;
 
       await Future.delayed(Duration(seconds: 2));

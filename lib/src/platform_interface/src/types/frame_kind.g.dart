@@ -7,21 +7,21 @@ part of 'frame_kind.dart';
 // **************************************************************************
 
 ///Class used to indicate the the frame kind.
-class FrameKind {
+class CygnusFrameKind {
   final String _value;
   final int? _nativeValue;
-  const FrameKind._internal(this._value, this._nativeValue);
+  const CygnusFrameKind._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory FrameKind._internalMultiPlatform(
+  factory CygnusFrameKind._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => FrameKind._internal(value, nativeValue());
+  ) => CygnusFrameKind._internal(value, nativeValue());
 
   ///Indicates that the frame is an embed element.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_FRAME_KIND_EMBED](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_frame_kind))
-  static final EMBED = FrameKind._internalMultiPlatform('EMBED', () {
+  static final EMBED = CygnusFrameKind._internalMultiPlatform('EMBED', () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.windows:
         return 3;
@@ -35,7 +35,7 @@ class FrameKind {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_FRAME_KIND_IFRAME](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_frame_kind))
-  static final IFRAME = FrameKind._internalMultiPlatform('IFRAME', () {
+  static final IFRAME = CygnusFrameKind._internalMultiPlatform('IFRAME', () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.windows:
         return 2;
@@ -49,21 +49,24 @@ class FrameKind {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_FRAME_KIND_MAIN_FRAME](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_frame_kind))
-  static final MAIN_FRAME = FrameKind._internalMultiPlatform('MAIN_FRAME', () {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.windows:
-        return 1;
-      default:
-        break;
-    }
-    return null;
-  });
+  static final MAIN_FRAME = CygnusFrameKind._internalMultiPlatform(
+    'MAIN_FRAME',
+    () {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.windows:
+          return 1;
+        default:
+          break;
+      }
+      return null;
+    },
+  );
 
   ///Indicates that the frame is an object element.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_FRAME_KIND_OBJECT](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_frame_kind))
-  static final OBJECT = FrameKind._internalMultiPlatform('OBJECT', () {
+  static final OBJECT = CygnusFrameKind._internalMultiPlatform('OBJECT', () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.windows:
         return 4;
@@ -77,7 +80,7 @@ class FrameKind {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 ([Official API - COREWEBVIEW2_FRAME_KIND_UNKNOWN](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/webview2-idl?view=webview2-1.0.2849.39#corewebview2_frame_kind))
-  static final UNKNOWN = FrameKind._internalMultiPlatform('UNKNOWN', () {
+  static final UNKNOWN = CygnusFrameKind._internalMultiPlatform('UNKNOWN', () {
     switch (defaultTargetPlatform) {
       case TargetPlatform.windows:
         return 0;
@@ -87,20 +90,20 @@ class FrameKind {
     return null;
   });
 
-  ///Set of all values of [FrameKind].
-  static final Set<FrameKind> values = [
-    FrameKind.EMBED,
-    FrameKind.IFRAME,
-    FrameKind.MAIN_FRAME,
-    FrameKind.OBJECT,
-    FrameKind.UNKNOWN,
+  ///Set of all values of [CygnusFrameKind].
+  static final Set<CygnusFrameKind> values = [
+    CygnusFrameKind.EMBED,
+    CygnusFrameKind.IFRAME,
+    CygnusFrameKind.MAIN_FRAME,
+    CygnusFrameKind.OBJECT,
+    CygnusFrameKind.UNKNOWN,
   ].toSet();
 
-  ///Gets a possible [FrameKind] instance from [String] value.
-  static FrameKind? fromValue(String? value) {
+  ///Gets a possible [CygnusFrameKind] instance from [String] value.
+  static CygnusFrameKind? fromValue(String? value) {
     if (value != null) {
       try {
-        return FrameKind.values.firstWhere(
+        return CygnusFrameKind.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -110,11 +113,11 @@ class FrameKind {
     return null;
   }
 
-  ///Gets a possible [FrameKind] instance from a native value.
-  static FrameKind? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusFrameKind] instance from a native value.
+  static CygnusFrameKind? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return FrameKind.values.firstWhere(
+        return CygnusFrameKind.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -124,15 +127,17 @@ class FrameKind {
     return null;
   }
 
-  /// Gets a possible [FrameKind] instance value with name [name].
+  /// Gets a possible [CygnusFrameKind] instance value with name [name].
   ///
-  /// Goes through [FrameKind.values] looking for a value with
-  /// name [name], as reported by [FrameKind.name].
+  /// Goes through [CygnusFrameKind.values] looking for a value with
+  /// name [name], as reported by [CygnusFrameKind.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static FrameKind? byName(String? name) {
+  static CygnusFrameKind? byName(String? name) {
     if (name != null) {
       try {
-        return FrameKind.values.firstWhere((element) => element.name() == name);
+        return CygnusFrameKind.values.firstWhere(
+          (element) => element.name() == name,
+        );
       } catch (e) {
         return null;
       }
@@ -140,7 +145,7 @@ class FrameKind {
     return null;
   }
 
-  /// Creates a map from the names of [FrameKind] values to the values.
+  /// Creates a map from the names of [CygnusFrameKind] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -148,8 +153,8 @@ class FrameKind {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, FrameKind> asNameMap() => <String, FrameKind>{
-    for (final value in FrameKind.values) value.name(): value,
+  static Map<String, CygnusFrameKind> asNameMap() => <String, CygnusFrameKind>{
+    for (final value in CygnusFrameKind.values) value.name(): value,
   };
 
   ///Gets [String] value.

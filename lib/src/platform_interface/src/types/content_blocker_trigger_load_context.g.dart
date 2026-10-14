@@ -6,43 +6,43 @@ part of 'content_blocker_trigger_load_context.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class that represents the kind of load context that can be used with a [ContentBlockerTrigger].
-class ContentBlockerTriggerLoadContext {
+///Class that represents the kind of load context that can be used with a [CygnusContentBlockerTrigger].
+class CygnusContentBlockerTriggerLoadContext {
   final String _value;
   final String? _nativeValue;
-  const ContentBlockerTriggerLoadContext._internal(
+  const CygnusContentBlockerTriggerLoadContext._internal(
     this._value,
     this._nativeValue,
   );
   // ignore: unused_element
-  factory ContentBlockerTriggerLoadContext._internalMultiPlatform(
+  factory CygnusContentBlockerTriggerLoadContext._internalMultiPlatform(
     String value,
     Function nativeValue,
-  ) => ContentBlockerTriggerLoadContext._internal(value, nativeValue());
+  ) => CygnusContentBlockerTriggerLoadContext._internal(value, nativeValue());
 
   ///Child frame load context
-  static const CHILD_FRAME = ContentBlockerTriggerLoadContext._internal(
+  static const CHILD_FRAME = CygnusContentBlockerTriggerLoadContext._internal(
     'child-frame',
     'child-frame',
   );
 
   ///Top frame load context
-  static const TOP_FRAME = ContentBlockerTriggerLoadContext._internal(
+  static const TOP_FRAME = CygnusContentBlockerTriggerLoadContext._internal(
     'top-frame',
     'top-frame',
   );
 
-  ///Set of all values of [ContentBlockerTriggerLoadContext].
-  static final Set<ContentBlockerTriggerLoadContext> values = [
-    ContentBlockerTriggerLoadContext.CHILD_FRAME,
-    ContentBlockerTriggerLoadContext.TOP_FRAME,
+  ///Set of all values of [CygnusContentBlockerTriggerLoadContext].
+  static final Set<CygnusContentBlockerTriggerLoadContext> values = [
+    CygnusContentBlockerTriggerLoadContext.CHILD_FRAME,
+    CygnusContentBlockerTriggerLoadContext.TOP_FRAME,
   ].toSet();
 
-  ///Gets a possible [ContentBlockerTriggerLoadContext] instance from [String] value.
-  static ContentBlockerTriggerLoadContext? fromValue(String? value) {
+  ///Gets a possible [CygnusContentBlockerTriggerLoadContext] instance from [String] value.
+  static CygnusContentBlockerTriggerLoadContext? fromValue(String? value) {
     if (value != null) {
       try {
-        return ContentBlockerTriggerLoadContext.values.firstWhere(
+        return CygnusContentBlockerTriggerLoadContext.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -52,11 +52,13 @@ class ContentBlockerTriggerLoadContext {
     return null;
   }
 
-  ///Gets a possible [ContentBlockerTriggerLoadContext] instance from a native value.
-  static ContentBlockerTriggerLoadContext? fromNativeValue(String? value) {
+  ///Gets a possible [CygnusContentBlockerTriggerLoadContext] instance from a native value.
+  static CygnusContentBlockerTriggerLoadContext? fromNativeValue(
+    String? value,
+  ) {
     if (value != null) {
       try {
-        return ContentBlockerTriggerLoadContext.values.firstWhere(
+        return CygnusContentBlockerTriggerLoadContext.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -66,15 +68,15 @@ class ContentBlockerTriggerLoadContext {
     return null;
   }
 
-  /// Gets a possible [ContentBlockerTriggerLoadContext] instance value with name [name].
+  /// Gets a possible [CygnusContentBlockerTriggerLoadContext] instance value with name [name].
   ///
-  /// Goes through [ContentBlockerTriggerLoadContext.values] looking for a value with
-  /// name [name], as reported by [ContentBlockerTriggerLoadContext.name].
+  /// Goes through [CygnusContentBlockerTriggerLoadContext.values] looking for a value with
+  /// name [name], as reported by [CygnusContentBlockerTriggerLoadContext.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static ContentBlockerTriggerLoadContext? byName(String? name) {
+  static CygnusContentBlockerTriggerLoadContext? byName(String? name) {
     if (name != null) {
       try {
-        return ContentBlockerTriggerLoadContext.values.firstWhere(
+        return CygnusContentBlockerTriggerLoadContext.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -84,7 +86,7 @@ class ContentBlockerTriggerLoadContext {
     return null;
   }
 
-  /// Creates a map from the names of [ContentBlockerTriggerLoadContext] values to the values.
+  /// Creates a map from the names of [CygnusContentBlockerTriggerLoadContext] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -92,9 +94,9 @@ class ContentBlockerTriggerLoadContext {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, ContentBlockerTriggerLoadContext> asNameMap() =>
-      <String, ContentBlockerTriggerLoadContext>{
-        for (final value in ContentBlockerTriggerLoadContext.values)
+  static Map<String, CygnusContentBlockerTriggerLoadContext> asNameMap() =>
+      <String, CygnusContentBlockerTriggerLoadContext>{
+        for (final value in CygnusContentBlockerTriggerLoadContext.values)
           value.name(): value,
       };
 

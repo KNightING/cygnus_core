@@ -6,8 +6,8 @@ part of 'geolocation_permission_show_prompt_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class used by the host application to set the Geolocation permission state for an origin during the [PlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt] event.
-class GeolocationPermissionShowPromptResponse {
+///Class used by the host application to set the Geolocation permission state for an origin during the [CygnusPlatformWebViewCreationParams.onGeolocationPermissionsShowPrompt] event.
+class CygnusGeolocationPermissionShowPromptResponse {
   ///Whether or not the origin should be allowed to use the Geolocation API.
   bool allow;
 
@@ -17,21 +17,21 @@ class GeolocationPermissionShowPromptResponse {
   ///Whether the permission should be retained beyond the lifetime of a page currently being displayed by a WebView
   ///The default value is `false`.
   bool retain;
-  GeolocationPermissionShowPromptResponse({
+  CygnusGeolocationPermissionShowPromptResponse({
     required this.allow,
     required this.origin,
     this.retain = false,
   });
 
-  ///Gets a possible [GeolocationPermissionShowPromptResponse] instance from a [Map] value.
-  static GeolocationPermissionShowPromptResponse? fromMap(
+  ///Gets a possible [CygnusGeolocationPermissionShowPromptResponse] instance from a [Map] value.
+  static CygnusGeolocationPermissionShowPromptResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = GeolocationPermissionShowPromptResponse(
+    final instance = CygnusGeolocationPermissionShowPromptResponse(
       allow: map['allow'],
       origin: map['origin'],
     );
@@ -42,7 +42,7 @@ class GeolocationPermissionShowPromptResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {"allow": allow, "origin": origin, "retain": retain};
   }
 
@@ -53,6 +53,6 @@ class GeolocationPermissionShowPromptResponse {
 
   @override
   String toString() {
-    return 'GeolocationPermissionShowPromptResponse{allow: $allow, origin: $origin, retain: $retain}';
+    return 'CygnusGeolocationPermissionShowPromptResponse{allow: $allow, origin: $origin, retain: $retain}';
   }
 }

@@ -10,16 +10,16 @@ import 'enum_method.dart';
 
 part 'url_protection_space.g.dart';
 
-List<X509Certificate>? _distinguishedNamesDeserializer(
+List<CygnusX509Certificate>? _distinguishedNamesDeserializer(
   dynamic value, {
-  EnumMethod? enumMethod,
+  CygnusEnumMethod? enumMethod,
 }) {
-  List<X509Certificate>? distinguishedNames;
+  List<CygnusX509Certificate>? distinguishedNames;
   if (value != null) {
-    distinguishedNames = <X509Certificate>[];
+    distinguishedNames = <CygnusX509Certificate>[];
     (value.cast<Uint8List>() as List<Uint8List>).forEach((data) {
       try {
-        distinguishedNames!.add(X509Certificate.fromData(data: data));
+        distinguishedNames!.add(CygnusX509Certificate.fromData(data: data));
       } catch (e, stacktrace) {
         print(e);
         print(stacktrace);
@@ -31,7 +31,7 @@ List<X509Certificate>? _distinguishedNamesDeserializer(
 
 ///Class that represents a protection space requiring authentication.
 @ExchangeableObject()
-class URLProtectionSpace_ {
+class CygnusURLProtectionSpace_ {
   ///The hostname of the server.
   String host;
 
@@ -47,36 +47,36 @@ class URLProtectionSpace_ {
   int? port;
 
   ///The SSL certificate used.
-  SslCertificate_? sslCertificate;
+  CygnusSslCertificate_? sslCertificate;
 
   ///The SSL Error associated.
-  SslError_? sslError;
+  CygnusSslError_? sslError;
 
   ///Use [authenticationMethod] instead.
   @Deprecated("Use authenticationMethod instead")
-  IOSNSURLProtectionSpaceAuthenticationMethod_? iosAuthenticationMethod;
+  CygnusIOSNSURLProtectionSpaceAuthenticationMethod_? iosAuthenticationMethod;
 
   ///The authentication method used by the receiver.
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
-        apiName: "URLProtectionSpace.authenticationMethod",
+        apiName: "CygnusURLProtectionSpace.authenticationMethod",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlprotectionspace/1415028-authenticationmethod",
       ),
       MacOSPlatform(
-        apiName: "URLProtectionSpace.authenticationMethod",
+        apiName: "CygnusURLProtectionSpace.authenticationMethod",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlprotectionspace/1415028-authenticationmethod",
       ),
     ],
   )
-  URLProtectionSpaceAuthenticationMethod_? authenticationMethod;
+  CygnusURLProtectionSpaceAuthenticationMethod_? authenticationMethod;
 
   ///Use [distinguishedNames] instead.
   @Deprecated("Use distinguishedNames instead")
   @ExchangeableObjectProperty(deserializer: _distinguishedNamesDeserializer)
-  List<X509Certificate>? iosDistinguishedNames;
+  List<CygnusX509Certificate>? iosDistinguishedNames;
 
   ///The acceptable certificate-issuing authorities for client certificate authentication.
   ///This value is `null` if the authentication method of the protection space is not client certificate.
@@ -85,18 +85,18 @@ class URLProtectionSpace_ {
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
-        apiName: "URLProtectionSpace.distinguishedNames",
+        apiName: "CygnusURLProtectionSpace.distinguishedNames",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlprotectionspace/1417061-distinguishednames",
       ),
       MacOSPlatform(
-        apiName: "URLProtectionSpace.distinguishedNames",
+        apiName: "CygnusURLProtectionSpace.distinguishedNames",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlprotectionspace/1417061-distinguishednames",
       ),
     ],
   )
-  List<X509Certificate>? distinguishedNames;
+  List<CygnusX509Certificate>? distinguishedNames;
 
   ///Use [receivesCredentialSecurely] instead.
   @Deprecated("Use receivesCredentialSecurely instead")
@@ -107,12 +107,12 @@ class URLProtectionSpace_ {
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
-        apiName: "URLProtectionSpace.receivesCredentialSecurely",
+        apiName: "CygnusURLProtectionSpace.receivesCredentialSecurely",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlprotectionspace/1415176-receivescredentialsecurely",
       ),
       MacOSPlatform(
-        apiName: "URLProtectionSpace.receivesCredentialSecurely",
+        apiName: "CygnusURLProtectionSpace.receivesCredentialSecurely",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlprotectionspace/1415176-receivescredentialsecurely",
       ),
@@ -122,28 +122,28 @@ class URLProtectionSpace_ {
 
   ///Use [proxyType] instead.
   @Deprecated("Use proxyType instead")
-  IOSNSURLProtectionSpaceProxyType_? iosProxyType;
+  CygnusIOSNSURLProtectionSpaceProxyType_? iosProxyType;
 
   ///The receiver's proxy type.
   ///This value is `null` if the receiver does not represent a proxy protection space.
-  ///The supported proxy types are listed in [URLProtectionSpaceProxyType.values].
+  ///The supported proxy types are listed in [CygnusURLProtectionSpaceProxyType.values].
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
-        apiName: "URLProtectionSpace.proxyType",
+        apiName: "CygnusURLProtectionSpace.proxyType",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlprotectionspace/1411924-proxytype",
       ),
       MacOSPlatform(
-        apiName: "URLProtectionSpace.proxyType",
+        apiName: "CygnusURLProtectionSpace.proxyType",
         apiUrl:
             "https://developer.apple.com/documentation/foundation/urlprotectionspace/1411924-proxytype",
       ),
     ],
   )
-  URLProtectionSpaceProxyType_? proxyType;
+  CygnusURLProtectionSpaceProxyType_? proxyType;
 
-  URLProtectionSpace_({
+  CygnusURLProtectionSpace_({
     required this.host,
     this.protocol,
     this.realm,

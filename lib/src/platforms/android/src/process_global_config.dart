@@ -2,36 +2,36 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 /// Object specifying creation parameters for creating a [AndroidProcessGlobalConfig].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformProcessGlobalConfigCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformProcessGlobalConfigCreationParams] for
 /// more information.
 @immutable
 class AndroidProcessGlobalConfigCreationParams
-    extends PlatformProcessGlobalConfigCreationParams {
+    extends CygnusPlatformProcessGlobalConfigCreationParams {
   /// Creates a new [AndroidProcessGlobalConfigCreationParams] instance.
   const AndroidProcessGlobalConfigCreationParams(
     // This parameter prevents breaking changes later.
     // ignore: avoid_unused_constructor_parameters
-    PlatformProcessGlobalConfigCreationParams params,
+    CygnusPlatformProcessGlobalConfigCreationParams params,
   ) : super();
 
-  /// Creates a [AndroidProcessGlobalConfigCreationParams] instance based on [PlatformProcessGlobalConfigCreationParams].
+  /// Creates a [AndroidProcessGlobalConfigCreationParams] instance based on [CygnusPlatformProcessGlobalConfigCreationParams].
   factory AndroidProcessGlobalConfigCreationParams.fromPlatformProcessGlobalConfigCreationParams(
-    PlatformProcessGlobalConfigCreationParams params,
+    CygnusPlatformProcessGlobalConfigCreationParams params,
   ) {
     return AndroidProcessGlobalConfigCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformProcessGlobalConfig}
-class AndroidProcessGlobalConfig extends PlatformProcessGlobalConfig
+///{@macro cygnus_core.CygnusPlatformProcessGlobalConfig}
+class AndroidProcessGlobalConfig extends CygnusPlatformProcessGlobalConfig
     with ChannelController {
   /// Creates a new [AndroidProcessGlobalConfig].
-  AndroidProcessGlobalConfig(PlatformProcessGlobalConfigCreationParams params)
+  AndroidProcessGlobalConfig(CygnusPlatformProcessGlobalConfigCreationParams params)
     : super.implementation(
         params is AndroidProcessGlobalConfigCreationParams
             ? params
@@ -56,7 +56,7 @@ class AndroidProcessGlobalConfig extends PlatformProcessGlobalConfig
   static AndroidProcessGlobalConfig _init() {
     _instance = AndroidProcessGlobalConfig(
       AndroidProcessGlobalConfigCreationParams(
-        const PlatformProcessGlobalConfigCreationParams(),
+        const CygnusPlatformProcessGlobalConfigCreationParams(),
       ),
     );
     return _instance!;
@@ -65,7 +65,7 @@ class AndroidProcessGlobalConfig extends PlatformProcessGlobalConfig
   static final AndroidProcessGlobalConfig _staticValue =
       AndroidProcessGlobalConfig(
         AndroidProcessGlobalConfigCreationParams(
-          const PlatformProcessGlobalConfigCreationParams(),
+          const CygnusPlatformProcessGlobalConfigCreationParams(),
         ),
       );
 
@@ -77,7 +77,7 @@ class AndroidProcessGlobalConfig extends PlatformProcessGlobalConfig
   Future<dynamic> _handleMethod(MethodCall call) async {}
 
   @override
-  Future<void> apply({required ProcessGlobalConfigSettings settings}) async {
+  Future<void> apply({required CygnusProcessGlobalConfigSettings settings}) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("settings", () => settings.toMap());
     await channel?.invokeMethod('apply', args);

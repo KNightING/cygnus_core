@@ -1,45 +1,45 @@
 part of 'main.dart';
 
 void userScripts() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.addUserScript,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.addUserScript,
   );
 
   skippableGroup('user scripts', () {
     skippableTestWidgets('initialUserScripts', (WidgetTester tester) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
-            initialUserScripts: UnmodifiableListView<UserScript>([
-              UserScript(
+            initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+            initialUserScripts: UnmodifiableListView<CygnusUserScript>([
+              CygnusUserScript(
                 source: "var foo = 49;",
-                injectionTime: UserScriptInjectionTime.AT_DOCUMENT_START,
+                injectionTime: CygnusUserScriptInjectionTime.AT_DOCUMENT_START,
               ),
-              UserScript(
+              CygnusUserScript(
                 source: "var foo2 = 19;",
-                injectionTime: UserScriptInjectionTime.AT_DOCUMENT_START,
-                contentWorld: ContentWorld.PAGE,
+                injectionTime: CygnusUserScriptInjectionTime.AT_DOCUMENT_START,
+                contentWorld: CygnusContentWorld.PAGE,
               ),
-              UserScript(
+              CygnusUserScript(
                 source: "var bar = 2;",
-                injectionTime: UserScriptInjectionTime.AT_DOCUMENT_END,
+                injectionTime: CygnusUserScriptInjectionTime.AT_DOCUMENT_END,
                 forMainFrameOnly:
                     defaultTargetPlatform != TargetPlatform.android,
-                contentWorld: ContentWorld.DEFAULT_CLIENT,
+                contentWorld: CygnusContentWorld.DEFAULT_CLIENT,
               ),
-              UserScript(
+              CygnusUserScript(
                 source: "var bar2 = 12;",
-                injectionTime: UserScriptInjectionTime.AT_DOCUMENT_END,
+                injectionTime: CygnusUserScriptInjectionTime.AT_DOCUMENT_END,
                 forMainFrameOnly:
                     defaultTargetPlatform != TargetPlatform.android,
-                contentWorld: ContentWorld.world(name: "test"),
+                contentWorld: CygnusContentWorld.world(name: "test"),
               ),
             ]),
             onWebViewCreated: (controller) {
@@ -51,7 +51,7 @@ void userScripts() {
           ),
         ),
       );
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoaded.future;
 
@@ -60,7 +60,7 @@ void userScripts() {
       expect(
         await controller.evaluateJavascript(
           source: "foo2;",
-          contentWorld: ContentWorld.PAGE,
+          contentWorld: CygnusContentWorld.PAGE,
         ),
         19,
       );
@@ -69,14 +69,14 @@ void userScripts() {
       expect(
         await controller.evaluateJavascript(
           source: "bar;",
-          contentWorld: ContentWorld.DEFAULT_CLIENT,
+          contentWorld: CygnusContentWorld.DEFAULT_CLIENT,
         ),
         2,
       );
       expect(
         await controller.evaluateJavascript(
           source: "bar2;",
-          contentWorld: ContentWorld.world(name: "test"),
+          contentWorld: CygnusContentWorld.world(name: "test"),
         ),
         12,
       );
@@ -85,17 +85,17 @@ void userScripts() {
     skippableTestWidgets('add/remove user scripts', (
       WidgetTester tester,
     ) async {
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       final StreamController<String> pageLoads =
           StreamController<String>.broadcast();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(url: TEST_CROSS_PLATFORM_URL_1),
+            initialUrlRequest: CygnusURLRequest(url: TEST_CROSS_PLATFORM_URL_1),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -106,17 +106,17 @@ void userScripts() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await pageLoads.stream.first;
 
-      var userScript1 = UserScript(
+      var userScript1 = CygnusUserScript(
         source: "window.foo = 49;",
-        injectionTime: UserScriptInjectionTime.AT_DOCUMENT_START,
+        injectionTime: CygnusUserScriptInjectionTime.AT_DOCUMENT_START,
       );
-      var userScript2 = UserScript(
+      var userScript2 = CygnusUserScript(
         source: "window.bar = 19;",
-        injectionTime: UserScriptInjectionTime.AT_DOCUMENT_END,
+        injectionTime: CygnusUserScriptInjectionTime.AT_DOCUMENT_END,
       );
       await controller.addUserScripts(userScripts: [userScript1, userScript2]);
       await controller.reload();

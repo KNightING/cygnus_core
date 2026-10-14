@@ -1,24 +1,24 @@
 part of 'main.dart';
 
 void onPermissionRequest() {
-  final shouldSkip = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onPermissionRequest,
+  final shouldSkip = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onPermissionRequest,
   );
 
   skippableTestWidgets('onPermissionRequest', (WidgetTester tester) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<void> pageLoaded = Completer<void>();
-    final Completer<List<PermissionResourceType>> onPermissionRequestCompleter =
-        Completer<List<PermissionResourceType>>();
-    final expectedValue = [PermissionResourceType.CAMERA];
+    final Completer<List<CygnusPermissionResourceType>> onPermissionRequestCompleter =
+        Completer<List<CygnusPermissionResourceType>>();
+    final expectedValue = [CygnusPermissionResourceType.CAMERA];
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_PERMISSION_SITE),
+          initialUrlRequest: CygnusURLRequest(url: TEST_PERMISSION_SITE),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
           },
@@ -29,16 +29,16 @@ void onPermissionRequest() {
           },
           onPermissionRequest: (controller, permissionRequest) async {
             onPermissionRequestCompleter.complete(permissionRequest.resources);
-            return PermissionResponse(
+            return CygnusPermissionResponse(
               resources: permissionRequest.resources,
-              action: PermissionResponseAction.GRANT,
+              action: CygnusPermissionResponseAction.GRANT,
             );
           },
         ),
       ),
     );
 
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
     await pageLoaded.future;
 
     await tester.pump();
@@ -46,35 +46,35 @@ void onPermissionRequest() {
     await controller.evaluateJavascript(
       source: "document.querySelector('#camera').click();",
     );
-    final List<PermissionResourceType> resources =
+    final List<CygnusPermissionResourceType> resources =
         await onPermissionRequestCompleter.future;
 
     expect(listEquals(resources, expectedValue), true);
   }, skip: shouldSkip);
 
-  final shouldSkip2 = !InAppWebView.isPropertySupported(
-    PlatformWebViewCreationParamsProperty.onPermissionRequestCanceled,
+  final shouldSkip2 = !CygnusWebView.isPropertySupported(
+    CygnusPlatformWebViewCreationParamsProperty.onPermissionRequestCanceled,
   );
 
   skippableTestWidgets('onPermissionRequestCanceled', (
     WidgetTester tester,
   ) async {
-    final Completer<InAppWebViewController> controllerCompleter =
-        Completer<InAppWebViewController>();
+    final Completer<CygnusWebViewController> controllerCompleter =
+        Completer<CygnusWebViewController>();
     final Completer<void> pageLoaded = Completer<void>();
-    final Completer<List<PermissionResourceType>> onPermissionRequestCompleter =
-        Completer<List<PermissionResourceType>>();
-    final Completer<List<PermissionResourceType>>
+    final Completer<List<CygnusPermissionResourceType>> onPermissionRequestCompleter =
+        Completer<List<CygnusPermissionResourceType>>();
+    final Completer<List<CygnusPermissionResourceType>>
     onPermissionRequestCancelCompleter =
-        Completer<List<PermissionResourceType>>();
-    final expectedValue = [PermissionResourceType.MICROPHONE];
+        Completer<List<CygnusPermissionResourceType>>();
+    final expectedValue = [CygnusPermissionResourceType.MICROPHONE];
 
     await tester.pumpWidget(
       Directionality(
         textDirection: TextDirection.ltr,
-        child: InAppWebView(
+        child: CygnusWebView(
           key: GlobalKey(),
-          initialUrlRequest: URLRequest(url: TEST_PERMISSION_SITE),
+          initialUrlRequest: CygnusURLRequest(url: TEST_PERMISSION_SITE),
           onWebViewCreated: (controller) {
             controllerCompleter.complete(controller);
           },
@@ -86,9 +86,9 @@ void onPermissionRequest() {
           onPermissionRequest: (controller, permissionRequest) async {
             onPermissionRequestCompleter.complete(permissionRequest.resources);
             await Future.delayed(Duration(seconds: 5));
-            return PermissionResponse(
+            return CygnusPermissionResponse(
               resources: permissionRequest.resources,
-              action: PermissionResponseAction.GRANT,
+              action: CygnusPermissionResponseAction.GRANT,
             );
           },
           onPermissionRequestCanceled: (controller, permissionRequest) {
@@ -100,7 +100,7 @@ void onPermissionRequest() {
       ),
     );
 
-    final InAppWebViewController controller = await controllerCompleter.future;
+    final CygnusWebViewController controller = await controllerCompleter.future;
     await pageLoaded.future;
 
     await tester.pump();
@@ -109,14 +109,14 @@ void onPermissionRequest() {
       source: "document.querySelector('#microphone').click();",
     );
 
-    final List<PermissionResourceType> resources =
+    final List<CygnusPermissionResourceType> resources =
         await onPermissionRequestCompleter.future;
     expect(listEquals(resources, expectedValue), true);
 
     // Reload the webview to cancel the permission request
     controller.reload();
 
-    final List<PermissionResourceType> canceledResources =
+    final List<CygnusPermissionResourceType> canceledResources =
         await onPermissionRequestCancelCompleter.future;
     expect(listEquals(canceledResources, expectedValue), true);
   }, skip: shouldSkip2);

@@ -7,20 +7,20 @@ void main() {
   group('SupportChecker naming', () {
     test('helper class names use Type.toString()', () {
       expect(
-        SupportChecker.classNameOf(InAppWebViewController),
-        (InAppWebViewController).toString(),
+        SupportChecker.classNameOf(CygnusWebViewController),
+        (CygnusWebViewController).toString(),
       );
       expect(
-        SupportChecker.classNameOf(HeadlessInAppWebView),
-        (HeadlessInAppWebView).toString(),
+        SupportChecker.classNameOf(CygnusHeadlessWebView),
+        (CygnusHeadlessWebView).toString(),
       );
       expect(
-        SupportChecker.classNameOf(InAppBrowser),
-        (InAppBrowser).toString(),
+        SupportChecker.classNameOf(CygnusBrowser),
+        (CygnusBrowser).toString(),
       );
       expect(
-        SupportChecker.eventClassNameOf(InAppWebView),
-        '${(InAppWebView).toString()} Events',
+        SupportChecker.eventClassNameOf(CygnusWebView),
+        '${(CygnusWebView).toString()} Events',
       );
     });
 
@@ -29,11 +29,11 @@ void main() {
 
       final controllerDefinition = definitions.firstWhere(
         (definition) =>
-            definition.className == (InAppWebViewController).toString(),
+            definition.className == (CygnusWebViewController).toString(),
       );
       expect(
         controllerDefinition.className,
-        (InAppWebViewController).toString(),
+        (CygnusWebViewController).toString(),
       );
       expect(controllerDefinition.methods, isNotEmpty);
       expect(
@@ -45,9 +45,9 @@ void main() {
 
       final eventsDefinition = definitions.firstWhere(
         (definition) =>
-            definition.className == '${(InAppWebView).toString()} Events',
+            definition.className == '${(CygnusWebView).toString()} Events',
       );
-      expect(eventsDefinition.className, '${(InAppWebView).toString()} Events');
+      expect(eventsDefinition.className, '${(CygnusWebView).toString()} Events');
       expect(
         eventsDefinition.events.every(
           (event) => event.className == eventsDefinition.className,

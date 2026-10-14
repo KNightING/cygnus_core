@@ -2,21 +2,21 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 import 'package:cygnus_core/src/platform_interface/src/types/disposable.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import '../in_app_webview/in_app_webview_settings.dart';
+import '../webview/webview_settings.dart';
 import '../debug_logging_settings.dart';
-import '../inappwebview_platform.dart';
+import '../webview_platform.dart';
 import '../types/main.dart';
 
 part 'platform_find_interaction_controller.g.dart';
 
-///{@template cygnus_core.PlatformFindInteractionControllerCreationParams}
-/// Object specifying creation parameters for creating a [PlatformFindInteractionController].
+///{@template cygnus_core.CygnusPlatformFindInteractionControllerCreationParams}
+/// Object specifying creation parameters for creating a [CygnusPlatformFindInteractionController].
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformFindInteractionControllerCreationParams.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformFindInteractionControllerCreationParams.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -27,13 +27,13 @@ part 'platform_find_interaction_controller.g.dart';
   ],
 )
 @immutable
-class PlatformFindInteractionControllerCreationParams {
-  /// Used by the platform implementation to create a new [PlatformFindInteractionController].
-  const PlatformFindInteractionControllerCreationParams({
+class CygnusPlatformFindInteractionControllerCreationParams {
+  /// Used by the platform implementation to create a new [CygnusPlatformFindInteractionController].
+  const CygnusPlatformFindInteractionControllerCreationParams({
     this.onFindResultReceived,
   });
 
-  ///{@template cygnus_core.PlatformFindInteractionControllerCreationParams.onFindResultReceived}
+  ///{@template cygnus_core.CygnusPlatformFindInteractionControllerCreationParams.onFindResultReceived}
   ///Event fired as find-on-page operations progress.
   ///The listener may be notified multiple times while the operation is underway, and the [numberOfMatches] value should not be considered final unless [isDoneCounting] is true.
   ///
@@ -44,7 +44,7 @@ class PlatformFindInteractionControllerCreationParams {
   ///[isDoneCounting] whether the find operation has actually completed.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionControllerCreationParams.onFindResultReceived.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionControllerCreationParams.onFindResultReceived.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -54,7 +54,7 @@ class PlatformFindInteractionControllerCreationParams {
       ),
       IOSPlatform(
         note:
-            'If [InAppWebViewSettings.isFindInteractionEnabled] is `true`, this event will not be called.',
+            'If [CygnusWebViewSettings.isFindInteractionEnabled] is `true`, this event will not be called.',
       ),
       MacOSPlatform(),
       LinuxPlatform(
@@ -70,40 +70,40 @@ class PlatformFindInteractionControllerCreationParams {
     ],
   )
   final void Function(
-    PlatformFindInteractionController controller,
+    CygnusPlatformFindInteractionController controller,
     int activeMatchOrdinal,
     int numberOfMatches,
     bool isDoneCounting,
   )?
   onFindResultReceived;
 
-  ///{@template cygnus_core.PlatformFindInteractionControllerCreationParams.isClassSupported}
+  ///{@template cygnus_core.CygnusPlatformFindInteractionControllerCreationParams.isClassSupported}
   ///Check if the current class is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isClassSupported({TargetPlatform? platform}) =>
-      _PlatformFindInteractionControllerCreationParamsClassSupported.isClassSupported(
+      _CygnusPlatformFindInteractionControllerCreationParamsClassSupported.isClassSupported(
         platform: platform,
       );
 
-  ///{@template cygnus_core.PlatformFindInteractionControllerCreationParams.isPropertySupported}
+  ///{@template cygnus_core.CygnusPlatformFindInteractionControllerCreationParams.isPropertySupported}
   ///Check if the given [property] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isPropertySupported(
-    PlatformFindInteractionControllerCreationParamsProperty property, {
+    CygnusPlatformFindInteractionControllerCreationParamsProperty property, {
     TargetPlatform? platform,
   }) =>
-      _PlatformFindInteractionControllerCreationParamsPropertySupported.isPropertySupported(
+      _CygnusPlatformFindInteractionControllerCreationParamsPropertySupported.isPropertySupported(
         property,
         platform: platform,
       );
 }
 
-///{@template cygnus_core.PlatformFindInteractionController}
+///{@template cygnus_core.CygnusPlatformFindInteractionController}
 ///This class represents the controller used by the `WebView` to add
 ///text-finding capabilities, such as the "Find on page" feature.
 ///{@endtemplate}
 ///
-///{@macro cygnus_core.PlatformFindInteractionController.supported_platforms}
+///{@macro cygnus_core.CygnusPlatformFindInteractionController.supported_platforms}
 @SupportedPlatforms(
   platforms: [
     AndroidPlatform(),
@@ -113,77 +113,77 @@ class PlatformFindInteractionControllerCreationParams {
     WindowsPlatform(),
   ],
 )
-abstract class PlatformFindInteractionController extends PlatformInterface
-    implements Disposable {
+abstract class CygnusPlatformFindInteractionController extends PlatformInterface
+    implements CygnusDisposable {
   ///Debug settings.
-  static DebugLoggingSettings debugLoggingSettings = DebugLoggingSettings();
+  static CygnusDebugLoggingSettings debugLoggingSettings = CygnusDebugLoggingSettings();
 
-  /// Creates a new [PlatformFindInteractionController]
-  factory PlatformFindInteractionController(
-    PlatformFindInteractionControllerCreationParams params,
+  /// Creates a new [CygnusPlatformFindInteractionController]
+  factory CygnusPlatformFindInteractionController(
+    CygnusPlatformFindInteractionControllerCreationParams params,
   ) {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
-      '`InAppWebViewPlatform.instance` before use. For unit testing, '
-      '`InAppWebViewPlatform.instance` can be set with your own test implementation.',
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
+      '`CygnusWebViewPlatform.instance` before use. For unit testing, '
+      '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformFindInteractionController webViewControllerDelegate =
-        InAppWebViewPlatform.instance!.createPlatformFindInteractionController(
+    final CygnusPlatformFindInteractionController webViewControllerDelegate =
+        CygnusWebViewPlatform.instance!.createPlatformFindInteractionController(
           params,
         );
     PlatformInterface.verify(webViewControllerDelegate, _token);
     return webViewControllerDelegate;
   }
 
-  /// Creates a new [PlatformFindInteractionController]
-  factory PlatformFindInteractionController.static() {
+  /// Creates a new [CygnusPlatformFindInteractionController]
+  factory CygnusPlatformFindInteractionController.static() {
     assert(
-      InAppWebViewPlatform.instance != null,
+      CygnusWebViewPlatform.instance != null,
       'A platform implementation for `flutter_inappwebview` has not been set. Please '
-      'ensure that an implementation of `InAppWebViewPlatform` has been set to '
+      'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
     );
-    final PlatformFindInteractionController findInteractionControllerStatic =
-        InAppWebViewPlatform.instance!
+    final CygnusPlatformFindInteractionController findInteractionControllerStatic =
+        CygnusWebViewPlatform.instance!
             .createPlatformFindInteractionControllerStatic();
     PlatformInterface.verify(findInteractionControllerStatic, _token);
     return findInteractionControllerStatic;
   }
 
-  /// Used by the platform implementation to create a new [PlatformFindInteractionController].
+  /// Used by the platform implementation to create a new [CygnusPlatformFindInteractionController].
   ///
   /// Should only be used by platform implementations because they can't extend
   /// a class that only contains a factory constructor.
   @protected
-  PlatformFindInteractionController.implementation(this.params)
+  CygnusPlatformFindInteractionController.implementation(this.params)
     : super(token: _token);
 
   static final Object _token = Object();
 
-  /// The parameters used to initialize the [PlatformFindInteractionController].
-  final PlatformFindInteractionControllerCreationParams params;
+  /// The parameters used to initialize the [CygnusPlatformFindInteractionController].
+  final CygnusPlatformFindInteractionControllerCreationParams params;
 
-  ///{@macro cygnus_core.PlatformFindInteractionControllerCreationParams.onFindResultReceived}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionControllerCreationParams.onFindResultReceived}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionControllerCreationParams.onFindResultReceived.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionControllerCreationParams.onFindResultReceived.supported_platforms}
   void Function(
-    PlatformFindInteractionController controller,
+    CygnusPlatformFindInteractionController controller,
     int activeMatchOrdinal,
     int numberOfMatches,
     bool isDoneCounting,
   )?
   get onFindResultReceived => params.onFindResultReceived;
 
-  ///{@template cygnus_core.PlatformFindInteractionController.findAll}
-  ///Finds all instances of find on the page and highlights them. Notifies [PlatformFindInteractionController.onFindResultReceived] listener.
+  ///{@template cygnus_core.CygnusPlatformFindInteractionController.findAll}
+  ///Finds all instances of find on the page and highlights them. Notifies [CygnusPlatformFindInteractionController.onFindResultReceived] listener.
   ///
   ///[find] represents the string to find.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.findAll.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.findAll.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -195,7 +195,7 @@ abstract class PlatformFindInteractionController extends PlatformInterface
       ),
       IOSPlatform(
         note:
-            'If [InAppWebViewSettings.isFindInteractionEnabled] is `true`, it uses the built-in find interaction native UI, otherwise this is implemented using CSS and Javascript. In this case, it will use the [Official API - UIFindInteraction.presentFindNavigator](https://developer.apple.com/documentation/uikit/uifindinteraction/3975832-presentfindnavigator?changes=_2) with [Official API - UIFindInteraction.searchText](https://developer.apple.com/documentation/uikit/uifindinteraction/3975834-searchtext?changes=_2)',
+            'If [CygnusWebViewSettings.isFindInteractionEnabled] is `true`, it uses the built-in find interaction native UI, otherwise this is implemented using CSS and Javascript. In this case, it will use the [Official API - UIFindInteraction.presentFindNavigator](https://developer.apple.com/documentation/uikit/uifindinteraction/3975832-presentfindnavigator?changes=_2) with [Official API - UIFindInteraction.searchText](https://developer.apple.com/documentation/uikit/uifindinteraction/3975834-searchtext?changes=_2)',
       ),
       MacOSPlatform(),
       LinuxPlatform(
@@ -216,11 +216,11 @@ abstract class PlatformFindInteractionController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformFindInteractionController.setFindOptions}
+  ///{@template cygnus_core.CygnusPlatformFindInteractionController.setFindOptions}
   ///Sets the options used for find-on-page operations.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.setFindOptions.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.setFindOptions.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       WindowsPlatform(
@@ -230,19 +230,19 @@ abstract class PlatformFindInteractionController extends PlatformInterface
       ),
     ],
   )
-  Future<void> setFindOptions({FindOptions? options}) {
+  Future<void> setFindOptions({CygnusFindOptions? options}) {
     throw UnimplementedError(
       'setFindOptions is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformFindInteractionController.findNext}
-  ///Highlights and scrolls to the next match found by [findAll]. Notifies [PlatformFindInteractionController.onFindResultReceived] listener.
+  ///{@template cygnus_core.CygnusPlatformFindInteractionController.findNext}
+  ///Highlights and scrolls to the next match found by [findAll]. Notifies [CygnusPlatformFindInteractionController.onFindResultReceived] listener.
   ///
   ///[forward] represents the direction to search. The default value is `true`, meaning forward.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.findNext.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.findNext.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -252,7 +252,7 @@ abstract class PlatformFindInteractionController extends PlatformInterface
       ),
       IOSPlatform(
         note:
-            'If [InAppWebViewSettings.isFindInteractionEnabled] is `true`, it uses the built-in find interaction native UI, otherwise this is implemented using CSS and Javascript. In this case, it will use the [Official API - UIFindInteraction.findNext](https://developer.apple.com/documentation/uikit/uifindinteraction/3975829-findnext?changes=_2) and ([Official API - UIFindInteraction.findPrevious](https://developer.apple.com/documentation/uikit/uifindinteraction/3975830-findprevious?changes=_2)',
+            'If [CygnusWebViewSettings.isFindInteractionEnabled] is `true`, it uses the built-in find interaction native UI, otherwise this is implemented using CSS and Javascript. In this case, it will use the [Official API - UIFindInteraction.findNext](https://developer.apple.com/documentation/uikit/uifindinteraction/3975829-findnext?changes=_2) and ([Official API - UIFindInteraction.findPrevious](https://developer.apple.com/documentation/uikit/uifindinteraction/3975830-findprevious?changes=_2)',
       ),
       MacOSPlatform(),
       LinuxPlatform(
@@ -273,11 +273,11 @@ abstract class PlatformFindInteractionController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformFindInteractionController.clearMatches}
+  ///{@template cygnus_core.CygnusPlatformFindInteractionController.clearMatches}
   ///Clears the highlighting surrounding text matches created by [findAll].
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.clearMatches.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.clearMatches.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(
@@ -287,7 +287,7 @@ abstract class PlatformFindInteractionController extends PlatformInterface
       ),
       IOSPlatform(
         note:
-            'If [InAppWebViewSettings.isFindInteractionEnabled] is `true`, it uses the built-in find interaction native UI, otherwise this is implemented using CSS and Javascript. In this case, it will use the [Official API - UIFindInteraction.dismissFindNavigator](https://developer.apple.com/documentation/uikit/uifindinteraction/3975827-dismissfindnavigator?changes=_2)',
+            'If [CygnusWebViewSettings.isFindInteractionEnabled] is `true`, it uses the built-in find interaction native UI, otherwise this is implemented using CSS and Javascript. In this case, it will use the [Official API - UIFindInteraction.dismissFindNavigator](https://developer.apple.com/documentation/uikit/uifindinteraction/3975827-dismissfindnavigator?changes=_2)',
       ),
       MacOSPlatform(),
       LinuxPlatform(
@@ -308,11 +308,11 @@ abstract class PlatformFindInteractionController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformFindInteractionController.setSearchText}
+  ///{@template cygnus_core.CygnusPlatformFindInteractionController.setSearchText}
   ///Pre-populate the search text to be used.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.setSearchText.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.setSearchText.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -321,7 +321,7 @@ abstract class PlatformFindInteractionController extends PlatformInterface
         apiUrl:
             'https://developer.apple.com/documentation/uikit/uifindinteraction/3975834-searchtext?changes=_2',
         note:
-            'If [InAppWebViewSettings.isFindInteractionEnabled] is `true`, it will pre-populate the system find panel\'s search text field with a search query.',
+            'If [CygnusWebViewSettings.isFindInteractionEnabled] is `true`, it will pre-populate the system find panel\'s search text field with a search query.',
       ),
       MacOSPlatform(),
       LinuxPlatform(
@@ -342,11 +342,11 @@ abstract class PlatformFindInteractionController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformFindInteractionController.getSearchText}
+  ///{@template cygnus_core.CygnusPlatformFindInteractionController.getSearchText}
   ///Get the search text used.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.getSearchText.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.getSearchText.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -355,7 +355,7 @@ abstract class PlatformFindInteractionController extends PlatformInterface
         apiUrl:
             'https://developer.apple.com/documentation/uikit/uifindinteraction/3975834-searchtext?changes=_2',
         note:
-            'If [InAppWebViewSettings.isFindInteractionEnabled] is `true`, it will get the system find panel\'s search text field value.',
+            'If [CygnusWebViewSettings.isFindInteractionEnabled] is `true`, it will get the system find panel\'s search text field value.',
       ),
       MacOSPlatform(),
       LinuxPlatform(
@@ -372,11 +372,11 @@ abstract class PlatformFindInteractionController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformFindInteractionController.isFindNavigatorVisible}
+  ///{@template cygnus_core.CygnusPlatformFindInteractionController.isFindNavigatorVisible}
   ///A Boolean value that indicates when the find panel displays onscreen.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.isFindNavigatorVisible.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.isFindNavigatorVisible.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -384,7 +384,7 @@ abstract class PlatformFindInteractionController extends PlatformInterface
         apiUrl:
             'https://developer.apple.com/documentation/uikit/uifindinteraction/3975828-isfindnavigatorvisible?changes=_2',
         note:
-            'Available only if [InAppWebViewSettings.isFindInteractionEnabled] is `true`.',
+            'Available only if [CygnusWebViewSettings.isFindInteractionEnabled] is `true`.',
       ),
     ],
   )
@@ -394,11 +394,11 @@ abstract class PlatformFindInteractionController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformFindInteractionController.updateResultCount}
+  ///{@template cygnus_core.CygnusPlatformFindInteractionController.updateResultCount}
   ///Updates the results the interface displays for the active search.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.updateResultCount.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.updateResultCount.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -406,7 +406,7 @@ abstract class PlatformFindInteractionController extends PlatformInterface
         apiUrl:
             'https://developer.apple.com/documentation/uikit/uifindinteraction/3975835-updateresultcount?changes=_2',
         note:
-            'Available only if [InAppWebViewSettings.isFindInteractionEnabled] is `true`.',
+            'Available only if [CygnusWebViewSettings.isFindInteractionEnabled] is `true`.',
       ),
     ],
   )
@@ -416,11 +416,11 @@ abstract class PlatformFindInteractionController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformFindInteractionController.presentFindNavigator}
+  ///{@template cygnus_core.CygnusPlatformFindInteractionController.presentFindNavigator}
   ///Begins a search, displaying the find panel.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.presentFindNavigator.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.presentFindNavigator.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -428,7 +428,7 @@ abstract class PlatformFindInteractionController extends PlatformInterface
         apiUrl:
             'https://developer.apple.com/documentation/uikit/uifindinteraction/3975832-presentfindnavigator?changes=_2',
         note:
-            'Available only if [InAppWebViewSettings.isFindInteractionEnabled] is `true`.',
+            'Available only if [CygnusWebViewSettings.isFindInteractionEnabled] is `true`.',
       ),
     ],
   )
@@ -438,11 +438,11 @@ abstract class PlatformFindInteractionController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformFindInteractionController.dismissFindNavigator}
+  ///{@template cygnus_core.CygnusPlatformFindInteractionController.dismissFindNavigator}
   ///Dismisses the find panel, if present.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.dismissFindNavigator.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.dismissFindNavigator.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       IOSPlatform(
@@ -450,7 +450,7 @@ abstract class PlatformFindInteractionController extends PlatformInterface
         apiUrl:
             'https://developer.apple.com/documentation/uikit/uifindinteraction/3975827-dismissfindnavigator?changes=_2',
         note:
-            'Available only if [InAppWebViewSettings.isFindInteractionEnabled] is `true`.',
+            'Available only if [CygnusWebViewSettings.isFindInteractionEnabled] is `true`.',
       ),
     ],
   )
@@ -460,11 +460,11 @@ abstract class PlatformFindInteractionController extends PlatformInterface
     );
   }
 
-  ///{@template cygnus_core.PlatformFindInteractionController.getActiveFindSession}
+  ///{@template cygnus_core.CygnusPlatformFindInteractionController.getActiveFindSession}
   ///If there's a currently active find session, returns the active find session.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.getActiveFindSession.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.getActiveFindSession.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -486,17 +486,17 @@ abstract class PlatformFindInteractionController extends PlatformInterface
       ),
     ],
   )
-  Future<FindSession?> getActiveFindSession() {
+  Future<CygnusFindSession?> getActiveFindSession() {
     throw UnimplementedError(
       'getActiveFindSession is not implemented on the current platform',
     );
   }
 
-  ///{@template cygnus_core.PlatformFindInteractionController.dispose}
+  ///{@template cygnus_core.CygnusPlatformFindInteractionController.dispose}
   ///Disposes the controller.
   ///{@endtemplate}
   ///
-  ///{@macro cygnus_core.PlatformFindInteractionController.dispose.supported_platforms}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionController.dispose.supported_platforms}
   @SupportedPlatforms(
     platforms: [
       AndroidPlatform(),
@@ -513,23 +513,23 @@ abstract class PlatformFindInteractionController extends PlatformInterface
     );
   }
 
-  ///{@macro cygnus_core.PlatformFindInteractionControllerCreationParams.isClassSupported}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionControllerCreationParams.isClassSupported}
   bool isClassSupported({TargetPlatform? platform}) =>
       params.isClassSupported(platform: platform);
 
-  ///{@macro cygnus_core.PlatformFindInteractionControllerCreationParams.isPropertySupported}
+  ///{@macro cygnus_core.CygnusPlatformFindInteractionControllerCreationParams.isPropertySupported}
   bool isPropertySupported(
-    PlatformFindInteractionControllerCreationParamsProperty property, {
+    CygnusPlatformFindInteractionControllerCreationParamsProperty property, {
     TargetPlatform? platform,
   }) => params.isPropertySupported(property, platform: platform);
 
-  ///{@template cygnus_core.PlatformFindInteractionController.isMethodSupported}
+  ///{@template cygnus_core.CygnusPlatformFindInteractionController.isMethodSupported}
   ///Check if the given [method] is supported by the [defaultTargetPlatform] or a specific [platform].
   ///{@endtemplate}
   bool isMethodSupported(
-    PlatformFindInteractionControllerMethod method, {
+    CygnusPlatformFindInteractionControllerMethod method, {
     TargetPlatform? platform,
-  }) => _PlatformFindInteractionControllerMethodSupported.isMethodSupported(
+  }) => _CygnusPlatformFindInteractionControllerMethodSupported.isMethodSupported(
     method,
     platform: platform,
   );

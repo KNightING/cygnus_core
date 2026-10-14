@@ -15,7 +15,7 @@ import 'package:flutter_inappwebview_example/models/event_log_entry.dart';
 import 'package:flutter_inappwebview_example/providers/settings_manager.dart';
 import 'package:flutter_inappwebview_example/widgets/common/profile_selector_card.dart';
 
-/// Screen for testing HeadlessInAppWebView functionality
+/// Screen for testing CygnusHeadlessWebView functionality
 class HeadlessWebViewScreen extends StatefulWidget {
   const HeadlessWebViewScreen({super.key});
 
@@ -34,8 +34,8 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
     text: '768',
   );
 
-  HeadlessInAppWebView? _headlessWebView;
-  InAppWebViewController? _webViewController;
+  CygnusHeadlessWebView? _headlessWebView;
+  CygnusWebViewController? _webViewController;
   bool _isLoading = false;
   bool _isRunning = false;
   Size? _currentSize;
@@ -97,7 +97,7 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
   }) {
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformHeadlessInAppWebViewMethod.run.name,
+        CygnusPlatformHeadlessWebViewMethod.run.name,
         'Please enter a URL',
         isError: true,
       );
@@ -106,28 +106,28 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
     try {
       final baseSettings = settingsManager.buildSettings();
       final mergedSettings =
-          InAppWebViewSettings.fromMap({
+          CygnusWebViewSettings.fromMap({
             ...baseSettings.toMap(),
             'javaScriptEnabled': javaScriptEnabled,
           }) ??
-          InAppWebViewSettings();
-      _headlessWebView = HeadlessInAppWebView(
+          CygnusWebViewSettings();
+      _headlessWebView = CygnusHeadlessWebView(
         initialSize: Size(width, height),
-        initialUrlRequest: URLRequest(url: WebUri(url)),
+        initialUrlRequest: CygnusURLRequest(url: CygnusWebUri(url)),
         webViewEnvironment: settingsManager.webViewEnvironment,
         initialSettings: mergedSettings,
         onWebViewCreated: (controller) {
           _webViewController = controller;
           _logEvent(
             EventType.ui,
-            PlatformWebViewCreationParamsProperty.onWebViewCreated.name,
+            CygnusPlatformWebViewCreationParamsProperty.onWebViewCreated.name,
             data: {'viewId': controller.getViewId()},
           );
         },
         onLoadStart: (controller, url) {
           _logEvent(
             EventType.navigation,
-            PlatformWebViewCreationParamsProperty.onLoadStart.name,
+            CygnusPlatformWebViewCreationParamsProperty.onLoadStart.name,
             data: {'url': url?.toString()},
           );
           setState(() => _currentUrl = url?.toString());
@@ -135,7 +135,7 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
         onLoadStop: (controller, url) async {
           _logEvent(
             EventType.navigation,
-            PlatformWebViewCreationParamsProperty.onLoadStop.name,
+            CygnusPlatformWebViewCreationParamsProperty.onLoadStop.name,
             data: {'url': url?.toString()},
           );
           final title = await controller.getTitle();
@@ -147,7 +147,7 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
         onReceivedError: (controller, request, error) {
           _logEvent(
             EventType.error,
-            PlatformWebViewCreationParamsProperty.onReceivedError.name,
+            CygnusPlatformWebViewCreationParamsProperty.onReceivedError.name,
             data: {
               'url': request.url.toString(),
               'errorType': error.type.name(),
@@ -158,14 +158,14 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
         onProgressChanged: (controller, progress) {
           _logEvent(
             EventType.performance,
-            PlatformWebViewCreationParamsProperty.onProgressChanged.name,
+            CygnusPlatformWebViewCreationParamsProperty.onProgressChanged.name,
             data: {'progress': progress},
           );
         },
         onConsoleMessage: (controller, consoleMessage) {
           _logEvent(
             EventType.console,
-            PlatformWebViewCreationParamsProperty.onConsoleMessage.name,
+            CygnusPlatformWebViewCreationParamsProperty.onConsoleMessage.name,
             data: {
               'message': consoleMessage.message,
               'level': consoleMessage.messageLevel.name(),
@@ -175,7 +175,7 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
         onTitleChanged: (controller, title) {
           _logEvent(
             EventType.ui,
-            PlatformWebViewCreationParamsProperty.onTitleChanged.name,
+            CygnusPlatformWebViewCreationParamsProperty.onTitleChanged.name,
             data: {'title': title},
           );
           setState(() => _currentTitle = title);
@@ -183,8 +183,8 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformHeadlessInAppWebViewMethod.run.name,
-        'Error creating $HeadlessInAppWebView: $e',
+        CygnusPlatformHeadlessWebViewMethod.run.name,
+        'Error creating $CygnusHeadlessWebView: $e',
         isError: true,
       );
       return false;
@@ -202,7 +202,7 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
 
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformHeadlessInAppWebViewMethod.run.name,
+        CygnusPlatformHeadlessWebViewMethod.run.name,
         'Please enter a URL',
         isError: true,
       );
@@ -222,14 +222,14 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
       await _headlessWebView?.run();
       setState(() => _isRunning = _headlessWebView?.isRunning() ?? false);
       _recordMethodResult(
-        PlatformHeadlessInAppWebViewMethod.run.name,
-        '$HeadlessInAppWebView started',
+        CygnusPlatformHeadlessWebViewMethod.run.name,
+        '$CygnusHeadlessWebView started',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformHeadlessInAppWebViewMethod.run.name,
-        'Error starting $HeadlessInAppWebView: $e',
+        CygnusPlatformHeadlessWebViewMethod.run.name,
+        'Error starting $CygnusHeadlessWebView: $e',
         isError: true,
       );
     } finally {
@@ -241,8 +241,8 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
     final running = _headlessWebView?.isRunning() ?? false;
     setState(() => _isRunning = running);
     _recordMethodResult(
-      PlatformHeadlessInAppWebViewMethod.isRunning.name,
-      '$HeadlessInAppWebView is running: $running',
+      CygnusPlatformHeadlessWebViewMethod.isRunning.name,
+      '$CygnusHeadlessWebView is running: $running',
       isError: false,
     );
   }
@@ -263,7 +263,7 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
     final height = (params['height'] as num?)?.toDouble();
     if (width == null || height == null) {
       _recordMethodResult(
-        PlatformHeadlessInAppWebViewMethod.setSize.name,
+        CygnusPlatformHeadlessWebViewMethod.setSize.name,
         'Please enter valid width and height',
         isError: true,
       );
@@ -276,14 +276,14 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
     try {
       await _headlessWebView?.setSize(Size(width, height));
       _recordMethodResult(
-        PlatformHeadlessInAppWebViewMethod.setSize.name,
+        CygnusPlatformHeadlessWebViewMethod.setSize.name,
         'Size set to ${width}x$height',
         isError: false,
       );
       await _getSize();
     } catch (e) {
       _recordMethodResult(
-        PlatformHeadlessInAppWebViewMethod.setSize.name,
+        CygnusPlatformHeadlessWebViewMethod.setSize.name,
         'Error setting size: $e',
         isError: true,
       );
@@ -298,13 +298,13 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
       final size = await _headlessWebView?.getSize();
       setState(() => _currentSize = size);
       _recordMethodResult(
-        PlatformHeadlessInAppWebViewMethod.getSize.name,
+        CygnusPlatformHeadlessWebViewMethod.getSize.name,
         'Current size: ${size?.width}x${size?.height}',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformHeadlessInAppWebViewMethod.getSize.name,
+        CygnusPlatformHeadlessWebViewMethod.getSize.name,
         'Error getting size: $e',
         isError: true,
       );
@@ -327,13 +327,13 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
       _headlessWebView = null;
       _webViewController = null;
       _recordMethodResult(
-        PlatformHeadlessInAppWebViewMethod.dispose.name,
-        '$HeadlessInAppWebView disposed',
+        CygnusPlatformHeadlessWebViewMethod.dispose.name,
+        '$CygnusHeadlessWebView disposed',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformHeadlessInAppWebViewMethod.dispose.name,
+        CygnusPlatformHeadlessWebViewMethod.dispose.name,
         'Error disposing: $e',
         isError: true,
       );
@@ -345,7 +345,7 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
   Future<void> _takeScreenshot() async {
     if (_webViewController == null) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.takeScreenshot.name,
+        CygnusPlatformWebViewControllerMethod.takeScreenshot.name,
         'WebView not initialized',
         isError: true,
       );
@@ -358,20 +358,20 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
       setState(() => _screenshotData = screenshot);
       if (screenshot != null) {
         _recordMethodResult(
-          PlatformInAppWebViewControllerMethod.takeScreenshot.name,
+          CygnusPlatformWebViewControllerMethod.takeScreenshot.name,
           'Screenshot taken (${screenshot.length} bytes)',
           isError: false,
         );
       } else {
         _recordMethodResult(
-          PlatformInAppWebViewControllerMethod.takeScreenshot.name,
+          CygnusPlatformWebViewControllerMethod.takeScreenshot.name,
           'Failed to take screenshot',
           isError: true,
         );
       }
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.takeScreenshot.name,
+        CygnusPlatformWebViewControllerMethod.takeScreenshot.name,
         'Error taking screenshot: $e',
         isError: true,
       );
@@ -392,7 +392,7 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
     final url = params['url']?.toString() ?? '';
     if (url.isEmpty) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.loadUrl.name,
+        CygnusPlatformWebViewControllerMethod.loadUrl.name,
         'Please enter a URL',
         isError: true,
       );
@@ -402,7 +402,7 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
 
     if (_webViewController == null) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.loadUrl.name,
+        CygnusPlatformWebViewControllerMethod.loadUrl.name,
         'WebView not initialized. Run first.',
         isError: true,
       );
@@ -412,16 +412,16 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
     setState(() => _isLoading = true);
     try {
       await _webViewController?.loadUrl(
-        urlRequest: URLRequest(url: WebUri(url)),
+        urlRequest: CygnusURLRequest(url: CygnusWebUri(url)),
       );
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.loadUrl.name,
+        CygnusPlatformWebViewControllerMethod.loadUrl.name,
         'Loading URL: $url',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.loadUrl.name,
+        CygnusPlatformWebViewControllerMethod.loadUrl.name,
         'Error loading URL: $e',
         isError: true,
       );
@@ -433,7 +433,7 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
   Future<void> _evaluateJavaScript() async {
     if (_webViewController == null) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.evaluateJavascript.name,
+        CygnusPlatformWebViewControllerMethod.evaluateJavascript.name,
         'WebView not initialized',
         isError: true,
       );
@@ -451,7 +451,7 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
     final source = params['source']?.toString() ?? '';
     if (source.isEmpty) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.evaluateJavascript.name,
+        CygnusPlatformWebViewControllerMethod.evaluateJavascript.name,
         'Please enter JavaScript source',
         isError: true,
       );
@@ -464,13 +464,13 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
         source: source,
       );
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.evaluateJavascript.name,
+        CygnusPlatformWebViewControllerMethod.evaluateJavascript.name,
         'JavaScript result: $result',
         isError: false,
       );
     } catch (e) {
       _recordMethodResult(
-        PlatformInAppWebViewControllerMethod.evaluateJavascript.name,
+        CygnusPlatformWebViewControllerMethod.evaluateJavascript.name,
         'Error evaluating JavaScript: $e',
         isError: true,
       );
@@ -540,7 +540,7 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('$HeadlessInAppWebView'),
+        title: Text('$CygnusHeadlessWebView'),
         actions: [
           if (_isLoading)
             const Padding(
@@ -745,21 +745,21 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
             ),
             const SizedBox(height: 12),
             _buildMethodTile(
-              PlatformHeadlessInAppWebViewMethod.run.name,
+              CygnusPlatformHeadlessWebViewMethod.run.name,
               'Start the headless WebView',
-              PlatformHeadlessInAppWebViewMethod.run,
+              CygnusPlatformHeadlessWebViewMethod.run,
               !_isRunning ? _run : null,
             ),
             _buildMethodTile(
-              PlatformHeadlessInAppWebViewMethod.isRunning.name,
+              CygnusPlatformHeadlessWebViewMethod.isRunning.name,
               'Check if the headless WebView is running',
-              PlatformHeadlessInAppWebViewMethod.isRunning,
+              CygnusPlatformHeadlessWebViewMethod.isRunning,
               _checkIsRunning,
             ),
             _buildMethodTile(
-              PlatformHeadlessInAppWebViewMethod.dispose.name,
+              CygnusPlatformHeadlessWebViewMethod.dispose.name,
               'Stop and dispose the headless WebView',
-              PlatformHeadlessInAppWebViewMethod.dispose,
+              CygnusPlatformHeadlessWebViewMethod.dispose,
               _isRunning ? _dispose : null,
             ),
           ],
@@ -781,15 +781,15 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
             ),
             const SizedBox(height: 12),
             _buildMethodTile(
-              PlatformHeadlessInAppWebViewMethod.setSize.name,
+              CygnusPlatformHeadlessWebViewMethod.setSize.name,
               'Set the WebView size',
-              PlatformHeadlessInAppWebViewMethod.setSize,
+              CygnusPlatformHeadlessWebViewMethod.setSize,
               _isRunning ? _setSize : null,
             ),
             _buildMethodTile(
-              PlatformHeadlessInAppWebViewMethod.getSize.name,
+              CygnusPlatformHeadlessWebViewMethod.getSize.name,
               'Get the current WebView size',
-              PlatformHeadlessInAppWebViewMethod.getSize,
+              CygnusPlatformHeadlessWebViewMethod.getSize,
               _isRunning ? _getSize : null,
             ),
           ],
@@ -838,13 +838,13 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
             ),
             const SizedBox(height: 8),
             _buildMethodHistory(
-              PlatformInAppWebViewControllerMethod.loadUrl.name,
+              CygnusPlatformWebViewControllerMethod.loadUrl.name,
             ),
             _buildMethodHistory(
-              PlatformInAppWebViewControllerMethod.takeScreenshot.name,
+              CygnusPlatformWebViewControllerMethod.takeScreenshot.name,
             ),
             _buildMethodHistory(
-              PlatformInAppWebViewControllerMethod.evaluateJavascript.name,
+              CygnusPlatformWebViewControllerMethod.evaluateJavascript.name,
             ),
           ],
         ),
@@ -925,12 +925,12 @@ class _HeadlessWebViewScreenState extends State<HeadlessWebViewScreen> {
   Widget _buildMethodTile(
     String methodName,
     String description,
-    PlatformHeadlessInAppWebViewMethod method,
+    CygnusPlatformHeadlessWebViewMethod method,
     VoidCallback? onPressed,
   ) {
     final supportedPlatforms = SupportCheckHelper.supportedPlatformsForMethod(
       method: method,
-      checker: HeadlessInAppWebView.isMethodSupported,
+      checker: CygnusHeadlessWebView.isMethodSupported,
     );
 
     return Padding(

@@ -59,7 +59,7 @@ flowchart TD
 
 ## 使用端可調的設定
 
-`InAppWebViewSettings.scrollMultiplier`（Windows 專用，預設 `1`）**僅作用於滑鼠滾輪**。
+`CygnusWebViewSettings.scrollMultiplier`（Windows 專用，預設 `1`）**僅作用於滑鼠滾輪**。
 觸控板不經過它——那條路徑的捲動距離由實際的手指位移決定，乘上係數等於偽造手指移動速度，
 會讓瀏覽器算出失真的慣性。
 

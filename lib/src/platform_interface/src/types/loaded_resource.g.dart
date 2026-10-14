@@ -7,8 +7,8 @@ part of 'loaded_resource.dart';
 // **************************************************************************
 
 ///Class representing a resource response of the `WebView`.
-///It is used by the method [PlatformWebViewCreationParams.onLoadResource].
-class LoadedResource {
+///It is used by the method [CygnusPlatformWebViewCreationParams.onLoadResource].
+class CygnusLoadedResource {
   ///Returns the [DOMHighResTimeStamp](https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp) duration to fetch a resource.
   double? duration;
 
@@ -19,28 +19,33 @@ class LoadedResource {
   double? startTime;
 
   ///Resource URL.
-  WebUri? url;
-  LoadedResource({this.duration, this.initiatorType, this.startTime, this.url});
+  CygnusWebUri? url;
+  CygnusLoadedResource({
+    this.duration,
+    this.initiatorType,
+    this.startTime,
+    this.url,
+  });
 
-  ///Gets a possible [LoadedResource] instance from a [Map] value.
-  static LoadedResource? fromMap(
+  ///Gets a possible [CygnusLoadedResource] instance from a [Map] value.
+  static CygnusLoadedResource? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = LoadedResource(
+    final instance = CygnusLoadedResource(
       duration: map['duration'],
       initiatorType: map['initiatorType'],
       startTime: map['startTime'],
-      url: map['url'] != null ? WebUri(map['url']) : null,
+      url: map['url'] != null ? CygnusWebUri(map['url']) : null,
     );
     return instance;
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "duration": duration,
       "initiatorType": initiatorType,
@@ -56,6 +61,6 @@ class LoadedResource {
 
   @override
   String toString() {
-    return 'LoadedResource{duration: $duration, initiatorType: $initiatorType, startTime: $startTime, url: $url}';
+    return 'CygnusLoadedResource{duration: $duration, initiatorType: $initiatorType, startTime: $startTime, url: $url}';
   }
 }

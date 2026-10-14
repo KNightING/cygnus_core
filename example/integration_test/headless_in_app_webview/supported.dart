@@ -3,28 +3,28 @@ part of 'main.dart';
 void supported() {
   skippableGroup('supported', () {
     skippableTestWidgets('basic', (WidgetTester tester) async {
-      expect(HeadlessInAppWebView.isClassSupported(), true);
+      expect(CygnusHeadlessWebView.isClassSupported(), true);
       expect(
-        HeadlessInAppWebView.isPropertySupported(
-          PlatformHeadlessInAppWebViewCreationParamsProperty.initialSize,
+        CygnusHeadlessWebView.isPropertySupported(
+          CygnusPlatformHeadlessWebViewCreationParamsProperty.initialSize,
         ),
         true,
       );
       expect(
-        HeadlessInAppWebView.isPropertySupported(
-          PlatformHeadlessInAppWebViewCreationParamsProperty.webViewEnvironment,
+        CygnusHeadlessWebView.isPropertySupported(
+          CygnusPlatformHeadlessWebViewCreationParamsProperty.webViewEnvironment,
         ),
         defaultTargetPlatform == TargetPlatform.windows,
       );
       expect(
-        HeadlessInAppWebView.isMethodSupported(
-          PlatformHeadlessInAppWebViewMethod.run,
+        CygnusHeadlessWebView.isMethodSupported(
+          CygnusPlatformHeadlessWebViewMethod.run,
         ),
         true,
       );
       expect(
-        HeadlessInAppWebView.isMethodSupported(
-          PlatformHeadlessInAppWebViewMethod.dispose,
+        CygnusHeadlessWebView.isMethodSupported(
+          CygnusPlatformHeadlessWebViewMethod.dispose,
         ),
         true,
       );

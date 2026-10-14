@@ -6,27 +6,27 @@ part of 'save_file_security_check_starting_response.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represents the response used by the [PlatformWebViewCreationParams.onSaveFileSecurityCheckStarting] event.
-class SaveFileSecurityCheckStartingResponse {
+///Class that represents the response used by the [CygnusPlatformWebViewCreationParams.onSaveFileSecurityCheckStarting] event.
+class CygnusSaveFileSecurityCheckStartingResponse {
   ///Whether to cancel the save operation.
   bool? cancelSave;
 
   ///Whether to suppress the default policy check.
   bool? suppressDefaultPolicy;
-  SaveFileSecurityCheckStartingResponse({
+  CygnusSaveFileSecurityCheckStartingResponse({
     this.cancelSave,
     this.suppressDefaultPolicy,
   });
 
-  ///Gets a possible [SaveFileSecurityCheckStartingResponse] instance from a [Map] value.
-  static SaveFileSecurityCheckStartingResponse? fromMap(
+  ///Gets a possible [CygnusSaveFileSecurityCheckStartingResponse] instance from a [Map] value.
+  static CygnusSaveFileSecurityCheckStartingResponse? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = SaveFileSecurityCheckStartingResponse(
+    final instance = CygnusSaveFileSecurityCheckStartingResponse(
       cancelSave: map['cancelSave'],
       suppressDefaultPolicy: map['suppressDefaultPolicy'],
     );
@@ -34,7 +34,7 @@ class SaveFileSecurityCheckStartingResponse {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "cancelSave": cancelSave,
       "suppressDefaultPolicy": suppressDefaultPolicy,
@@ -48,6 +48,6 @@ class SaveFileSecurityCheckStartingResponse {
 
   @override
   String toString() {
-    return 'SaveFileSecurityCheckStartingResponse{cancelSave: $cancelSave, suppressDefaultPolicy: $suppressDefaultPolicy}';
+    return 'CygnusSaveFileSecurityCheckStartingResponse{cancelSave: $cancelSave, suppressDefaultPolicy: $suppressDefaultPolicy}';
   }
 }

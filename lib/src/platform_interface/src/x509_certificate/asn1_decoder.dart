@@ -4,20 +4,20 @@ import 'dart:typed_data';
 import 'asn1_identifier.dart';
 import 'asn1_object.dart';
 
-class ASN1DERDecoder {
-  static List<ASN1Object> decode({required List<int> data}) {
+class CygnusASN1DERDecoder {
+  static List<CygnusASN1Object> decode({required List<int> data}) {
     var iterator = data.iterator;
     return parse(iterator: iterator);
   }
 
-  static List<ASN1Object> parse({required Iterator<int> iterator}) {
-    var result = <ASN1Object>[];
+  static List<CygnusASN1Object> parse({required Iterator<int> iterator}) {
+    var result = <CygnusASN1Object>[];
 
     while (iterator.moveNext()) {
       var nextValue = iterator.current;
 
-      var asn1obj = ASN1Object();
-      asn1obj.identifier = ASN1Identifier(nextValue);
+      var asn1obj = CygnusASN1Object();
+      asn1obj.identifier = CygnusASN1Identifier(nextValue);
 
       if (asn1obj.identifier!.isConstructed()) {
         var contentData = loadSubContent(iterator: iterator);
@@ -39,7 +39,7 @@ class ASN1DERDecoder {
           }
         }
       } else {
-        if (asn1obj.identifier!.typeClass() == ASN1IdentifierClass.UNIVERSAL) {
+        if (asn1obj.identifier!.typeClass() == CygnusASN1IdentifierClass.UNIVERSAL) {
           var contentData = loadSubContent(iterator: iterator);
 
           asn1obj.encoded = Uint8List.fromList(contentData);
@@ -48,49 +48,49 @@ class ASN1DERDecoder {
 
           var tagNumber = asn1obj.identifier!.tagNumber();
 
-          if (tagNumber == ASN1IdentifierTagNumber.END_OF_CONTENT) {
+          if (tagNumber == CygnusASN1IdentifierTagNumber.END_OF_CONTENT) {
             return result;
-          } else if (tagNumber == ASN1IdentifierTagNumber.BOOLEAN) {
+          } else if (tagNumber == CygnusASN1IdentifierTagNumber.BOOLEAN) {
             var value = contentData.length > 0 ? contentData.first : null;
             if (value != null) {
               asn1obj.value = value > 0 ? true : false;
             }
-          } else if (tagNumber == ASN1IdentifierTagNumber.INTEGER) {
+          } else if (tagNumber == CygnusASN1IdentifierTagNumber.INTEGER) {
             while (contentData.length > 0 && contentData.first == 0) {
               contentData.removeAt(0); // remove not significant digit
             }
             asn1obj.value = contentData;
-          } else if (tagNumber == ASN1IdentifierTagNumber.NULL) {
+          } else if (tagNumber == CygnusASN1IdentifierTagNumber.NULL) {
             asn1obj.value = null;
-          } else if (tagNumber == ASN1IdentifierTagNumber.OBJECT_IDENTIFIER) {
+          } else if (tagNumber == CygnusASN1IdentifierTagNumber.OBJECT_IDENTIFIER) {
             asn1obj.value = decodeOid(contentData: contentData);
           } else if ([
-            ASN1IdentifierTagNumber.UTF8_STRING,
-            ASN1IdentifierTagNumber.PRINTABLE_STRING,
-            ASN1IdentifierTagNumber.NUMERIC_STRING,
-            ASN1IdentifierTagNumber.GENERAL_STRING,
-            ASN1IdentifierTagNumber.UNIVERSAL_STRING,
-            ASN1IdentifierTagNumber.CHARACTER_STRING,
-            ASN1IdentifierTagNumber.T61_STRING,
+            CygnusASN1IdentifierTagNumber.UTF8_STRING,
+            CygnusASN1IdentifierTagNumber.PRINTABLE_STRING,
+            CygnusASN1IdentifierTagNumber.NUMERIC_STRING,
+            CygnusASN1IdentifierTagNumber.GENERAL_STRING,
+            CygnusASN1IdentifierTagNumber.UNIVERSAL_STRING,
+            CygnusASN1IdentifierTagNumber.CHARACTER_STRING,
+            CygnusASN1IdentifierTagNumber.T61_STRING,
           ].contains(tagNumber)) {
             asn1obj.value = utf8.decode(contentData, allowMalformed: true);
-          } else if (tagNumber == ASN1IdentifierTagNumber.BMP_STRING) {
+          } else if (tagNumber == CygnusASN1IdentifierTagNumber.BMP_STRING) {
             asn1obj.value = String.fromCharCodes(contentData);
           } else if ([
-            ASN1IdentifierTagNumber.VISIBLE_STRING,
-            ASN1IdentifierTagNumber.IA5_STRING,
+            CygnusASN1IdentifierTagNumber.VISIBLE_STRING,
+            CygnusASN1IdentifierTagNumber.IA5_STRING,
           ].contains(tagNumber)) {
             asn1obj.value = ascii.decode(contentData, allowInvalid: true);
-          } else if (tagNumber == ASN1IdentifierTagNumber.UTC_TIME) {
+          } else if (tagNumber == CygnusASN1IdentifierTagNumber.UTC_TIME) {
             asn1obj.value = utcTimeToDate(contentData: contentData);
-          } else if (tagNumber == ASN1IdentifierTagNumber.GENERALIZED_TIME) {
+          } else if (tagNumber == CygnusASN1IdentifierTagNumber.GENERALIZED_TIME) {
             asn1obj.value = generalizedTimeToDate(contentData: contentData);
-          } else if (tagNumber == ASN1IdentifierTagNumber.BIT_STRING) {
+          } else if (tagNumber == CygnusASN1IdentifierTagNumber.BIT_STRING) {
             if (contentData.length > 0) {
               contentData.removeAt(0); // unused bits
             }
             asn1obj.value = contentData;
-          } else if (tagNumber == ASN1IdentifierTagNumber.OCTET_STRING) {
+          } else if (tagNumber == CygnusASN1IdentifierTagNumber.OCTET_STRING) {
             try {
               var subIterator = contentData.iterator;
               asn1obj.sub = parse(iterator: subIterator);
@@ -185,14 +185,14 @@ class ASN1DERDecoder {
           byteArray.add(n);
         }
       } else {
-        throw ASN1OutOfBufferError();
+        throw CygnusASN1OutOfBufferError();
       }
     }
 
     return byteArray;
   }
 
-  /// Decode DER OID bytes to String with dot notation
+  /// Decode DER CygnusOID bytes to String with dot notation
   static String? decodeOid({required List<int> contentData}) {
     if (contentData.isEmpty) {
       return null;
@@ -426,6 +426,6 @@ BigInt? toIntValue(List<int> data) {
   return value;
 }
 
-class ASN1OutOfBufferError extends Error {}
+class CygnusASN1OutOfBufferError extends Error {}
 
-class ASN1ParseError extends Error {}
+class CygnusASN1ParseError extends Error {}

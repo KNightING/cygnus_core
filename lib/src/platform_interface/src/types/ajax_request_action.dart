@@ -4,16 +4,16 @@ import 'ajax_request.dart';
 
 part 'ajax_request_action.g.dart';
 
-///Class used by [AjaxRequest] class.
+///Class used by [CygnusAjaxRequest] class.
 @ExchangeableEnum()
-class AjaxRequestAction_ {
+class CygnusAjaxRequestAction_ {
   // ignore: unused_field
   final int _value;
-  const AjaxRequestAction_._internal(this._value);
+  const CygnusAjaxRequestAction_._internal(this._value);
 
-  ///Aborts the current [AjaxRequest].
-  static const ABORT = const AjaxRequestAction_._internal(0);
+  ///Aborts the current [CygnusAjaxRequest].
+  static const ABORT = const CygnusAjaxRequestAction_._internal(0);
 
-  ///Proceeds with the current [AjaxRequest].
-  static const PROCEED = const AjaxRequestAction_._internal(1);
+  ///Proceeds with the current [CygnusAjaxRequest].
+  static const PROCEED = const CygnusAjaxRequestAction_._internal(1);
 }

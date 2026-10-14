@@ -3,13 +3,13 @@ import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_i
 import 'enum_method.dart';
 import 'user_script_injection_time.dart';
 import 'content_world.dart';
-import '../in_app_webview/platform_inappwebview_controller.dart';
+import '../webview/platform_webview_controller.dart';
 
 part 'user_script.g.dart';
 
 ///Class that represents a script that the `WebView` injects into the web page.
 @ExchangeableObject()
-class UserScript_ {
+class CygnusUserScript_ {
   ///The script’s group name.
   String? groupName;
 
@@ -17,7 +17,7 @@ class UserScript_ {
   String source;
 
   ///The time at which to inject the script into the `WebView`.
-  UserScriptInjectionTime_ injectionTime;
+  CygnusUserScriptInjectionTime_ injectionTime;
 
   ///Use [forMainFrameOnly] instead.
   @Deprecated("Use forMainFrameOnly instead")
@@ -40,7 +40,7 @@ class UserScript_ {
   ///Adding `'*'` as an allowed origin or setting this to `null`, it means it will allow every origin.
   ///Instead, an empty [Set] will block every origin.
   ///
-  ///**NOTE for Android**: each origin pattern MUST follow the table rule of [PlatformInAppWebViewController.addWebMessageListener].
+  ///**NOTE for Android**: each origin pattern MUST follow the table rule of [CygnusPlatformWebViewController.addWebMessageListener].
   ///
   ///**NOTE for iOS, macOS, Windows**: each origin pattern will be used as a
   ///Regular Expression Pattern that will be used on JavaScript side using [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).
@@ -55,27 +55,27 @@ class UserScript_ {
   late Set<String> allowedOriginRules;
 
   ///A scope of execution in which to evaluate the script to prevent conflicts between different scripts.
-  ///For more information about content worlds, see [ContentWorld].
+  ///For more information about content worlds, see [CygnusContentWorld].
   ///
   ///**NOTE for Android**: because of how a Content World is implemented on Android, if [forMainFrameOnly] is `true`,
-  ///the [source] inside a specific Content World that is not [ContentWorld.PAGE] will not be executed.
-  ///See [ContentWorld] for more details.
-  late ContentWorld contentWorld;
+  ///the [source] inside a specific Content World that is not [CygnusContentWorld.PAGE] will not be executed.
+  ///See [CygnusContentWorld] for more details.
+  late CygnusContentWorld contentWorld;
 
   @ExchangeableObjectConstructor()
-  UserScript_({
+  CygnusUserScript_({
     this.groupName,
     required this.source,
     required this.injectionTime,
     @Deprecated("Use forMainFrameOnly instead") this.iosForMainFrameOnly,
     this.forMainFrameOnly = true,
     Set<String>? allowedOriginRules,
-    ContentWorld? contentWorld,
+    CygnusContentWorld? contentWorld,
   }) {
     this.allowedOriginRules = allowedOriginRules != null
         ? allowedOriginRules
         : Set.from(["*"]);
-    this.contentWorld = contentWorld ?? ContentWorld.PAGE;
+    this.contentWorld = contentWorld ?? CygnusContentWorld.PAGE;
     // ignore: deprecated_member_use_from_same_package
     this.forMainFrameOnly = this.iosForMainFrameOnly != null
         // ignore: deprecated_member_use_from_same_package

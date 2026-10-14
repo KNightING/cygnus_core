@@ -7,37 +7,37 @@ part of 'media_capture_state.dart';
 // **************************************************************************
 
 ///Class that describes whether a media device, like a camera or microphone, is currently capturing audio or video.
-class MediaCaptureState {
+class CygnusMediaCaptureState {
   final int _value;
   final int? _nativeValue;
-  const MediaCaptureState._internal(this._value, this._nativeValue);
+  const CygnusMediaCaptureState._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory MediaCaptureState._internalMultiPlatform(
+  factory CygnusMediaCaptureState._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => MediaCaptureState._internal(value, nativeValue());
+  ) => CygnusMediaCaptureState._internal(value, nativeValue());
 
   ///The media device is actively capturing audio or video.
-  static const ACTIVE = MediaCaptureState._internal(1, 1);
+  static const ACTIVE = CygnusMediaCaptureState._internal(1, 1);
 
   ///The media device is muted, and not actively capturing audio or video.
-  static const MUTED = MediaCaptureState._internal(2, 2);
+  static const MUTED = CygnusMediaCaptureState._internal(2, 2);
 
   ///The media device is off.
-  static const NONE = MediaCaptureState._internal(0, 0);
+  static const NONE = CygnusMediaCaptureState._internal(0, 0);
 
-  ///Set of all values of [MediaCaptureState].
-  static final Set<MediaCaptureState> values = [
-    MediaCaptureState.ACTIVE,
-    MediaCaptureState.MUTED,
-    MediaCaptureState.NONE,
+  ///Set of all values of [CygnusMediaCaptureState].
+  static final Set<CygnusMediaCaptureState> values = [
+    CygnusMediaCaptureState.ACTIVE,
+    CygnusMediaCaptureState.MUTED,
+    CygnusMediaCaptureState.NONE,
   ].toSet();
 
-  ///Gets a possible [MediaCaptureState] instance from [int] value.
-  static MediaCaptureState? fromValue(int? value) {
+  ///Gets a possible [CygnusMediaCaptureState] instance from [int] value.
+  static CygnusMediaCaptureState? fromValue(int? value) {
     if (value != null) {
       try {
-        return MediaCaptureState.values.firstWhere(
+        return CygnusMediaCaptureState.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -47,11 +47,11 @@ class MediaCaptureState {
     return null;
   }
 
-  ///Gets a possible [MediaCaptureState] instance from a native value.
-  static MediaCaptureState? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusMediaCaptureState] instance from a native value.
+  static CygnusMediaCaptureState? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return MediaCaptureState.values.firstWhere(
+        return CygnusMediaCaptureState.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -61,15 +61,15 @@ class MediaCaptureState {
     return null;
   }
 
-  /// Gets a possible [MediaCaptureState] instance value with name [name].
+  /// Gets a possible [CygnusMediaCaptureState] instance value with name [name].
   ///
-  /// Goes through [MediaCaptureState.values] looking for a value with
-  /// name [name], as reported by [MediaCaptureState.name].
+  /// Goes through [CygnusMediaCaptureState.values] looking for a value with
+  /// name [name], as reported by [CygnusMediaCaptureState.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static MediaCaptureState? byName(String? name) {
+  static CygnusMediaCaptureState? byName(String? name) {
     if (name != null) {
       try {
-        return MediaCaptureState.values.firstWhere(
+        return CygnusMediaCaptureState.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -79,7 +79,7 @@ class MediaCaptureState {
     return null;
   }
 
-  /// Creates a map from the names of [MediaCaptureState] values to the values.
+  /// Creates a map from the names of [CygnusMediaCaptureState] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -87,9 +87,9 @@ class MediaCaptureState {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, MediaCaptureState> asNameMap() =>
-      <String, MediaCaptureState>{
-        for (final value in MediaCaptureState.values) value.name(): value,
+  static Map<String, CygnusMediaCaptureState> asNameMap() =>
+      <String, CygnusMediaCaptureState>{
+        for (final value in CygnusMediaCaptureState.values) value.name(): value,
       };
 
   ///Gets [int] value.

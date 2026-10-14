@@ -6,53 +6,58 @@ part of 'browser_process_info.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///An object that contains information for a process in the [PlatformWebViewEnvironment].
-class BrowserProcessInfo {
-  ///A list of associated [FrameInfo]s which are actively running
+///An object that contains information for a process in the [CygnusPlatformWebViewEnvironment].
+class CygnusBrowserProcessInfo {
+  ///A list of associated [CygnusFrameInfo]s which are actively running
   ///(showing or hiding UI elements) in the renderer process.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2 1.0.2210.55+
-  List<FrameInfo>? frameInfos;
+  List<CygnusFrameInfo>? frameInfos;
 
   ///The kind of the process.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
-  BrowserProcessKind kind;
+  CygnusBrowserProcessKind kind;
 
   ///The process id of the process.
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Windows WebView2
   int? processId;
-  BrowserProcessInfo({this.frameInfos, required this.kind, this.processId});
+  CygnusBrowserProcessInfo({
+    this.frameInfos,
+    required this.kind,
+    this.processId,
+  });
 
-  ///Gets a possible [BrowserProcessInfo] instance from a [Map] value.
-  static BrowserProcessInfo? fromMap(
+  ///Gets a possible [CygnusBrowserProcessInfo] instance from a [Map] value.
+  static CygnusBrowserProcessInfo? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = BrowserProcessInfo(
+    final instance = CygnusBrowserProcessInfo(
       frameInfos: map['frameInfos'] != null
-          ? List<FrameInfo>.from(
+          ? List<CygnusFrameInfo>.from(
               map['frameInfos'].map(
-                (e) => FrameInfo.fromMap(
+                (e) => CygnusFrameInfo.fromMap(
                   e?.cast<String, dynamic>(),
                   enumMethod: enumMethod,
                 )!,
               ),
             )
           : null,
-      kind: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => BrowserProcessKind.fromNativeValue(
+      kind: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusBrowserProcessKind.fromNativeValue(map['kind']),
+        CygnusEnumMethod.value => CygnusBrowserProcessKind.fromValue(
           map['kind'],
         ),
-        EnumMethod.value => BrowserProcessKind.fromValue(map['kind']),
-        EnumMethod.name => BrowserProcessKind.byName(map['kind']),
+        CygnusEnumMethod.name => CygnusBrowserProcessKind.byName(map['kind']),
       }!,
       processId: map['processId'],
     );
@@ -60,15 +65,15 @@ class BrowserProcessInfo {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "frameInfos": frameInfos
           ?.map((e) => e.toMap(enumMethod: enumMethod))
           .toList(),
-      "kind": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => kind.toNativeValue(),
-        EnumMethod.value => kind.toValue(),
-        EnumMethod.name => kind.name(),
+      "kind": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => kind.toNativeValue(),
+        CygnusEnumMethod.value => kind.toValue(),
+        CygnusEnumMethod.name => kind.name(),
       },
       "processId": processId,
     };
@@ -81,6 +86,6 @@ class BrowserProcessInfo {
 
   @override
   String toString() {
-    return 'BrowserProcessInfo{frameInfos: $frameInfos, kind: $kind, processId: $processId}';
+    return 'CygnusBrowserProcessInfo{frameInfos: $frameInfos, kind: $kind, processId: $processId}';
   }
 }

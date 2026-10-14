@@ -8,38 +8,39 @@ part of 'renderer_priority_policy.dart';
 
 ///Class that represents the priority policy will be used to determine whether an out of process renderer should be considered to be a target for OOM killing.
 ///When a WebView is destroyed it will cease to be considerered when calculating the renderer priority.
-///Once no WebViews remain associated with the renderer, the priority of the renderer will be reduced to [RendererPriority.RENDERER_PRIORITY_WAIVED].
-///The default policy is to set the priority to [RendererPriority.RENDERER_PRIORITY_IMPORTANT] regardless of visibility,
-///and this should not be changed unless the caller also handles renderer crashes with [PlatformWebViewCreationParams.onRenderProcessGone].
+///Once no WebViews remain associated with the renderer, the priority of the renderer will be reduced to [CygnusRendererPriority.RENDERER_PRIORITY_WAIVED].
+///The default policy is to set the priority to [CygnusRendererPriority.RENDERER_PRIORITY_IMPORTANT] regardless of visibility,
+///and this should not be changed unless the caller also handles renderer crashes with [CygnusPlatformWebViewCreationParams.onRenderProcessGone].
 ///Any other setting will result in WebView renderers being killed by the system more aggressively than the application.
-class RendererPriorityPolicy {
+class CygnusRendererPriorityPolicy {
   ///The minimum priority at which this WebView desires the renderer process to be bound.
-  RendererPriority? rendererRequestedPriority;
+  CygnusRendererPriority? rendererRequestedPriority;
 
-  ///If `true`, this flag specifies that when this WebView is not visible, it will be treated as if it had requested a priority of [RendererPriority.RENDERER_PRIORITY_WAIVED].
+  ///If `true`, this flag specifies that when this WebView is not visible, it will be treated as if it had requested a priority of [CygnusRendererPriority.RENDERER_PRIORITY_WAIVED].
   bool waivedWhenNotVisible;
-  RendererPriorityPolicy({
+  CygnusRendererPriorityPolicy({
     this.rendererRequestedPriority,
     required this.waivedWhenNotVisible,
   });
 
-  ///Gets a possible [RendererPriorityPolicy] instance from a [Map] value.
-  static RendererPriorityPolicy? fromMap(
+  ///Gets a possible [CygnusRendererPriorityPolicy] instance from a [Map] value.
+  static CygnusRendererPriorityPolicy? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = RendererPriorityPolicy(
-      rendererRequestedPriority: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => RendererPriority.fromNativeValue(
+    final instance = CygnusRendererPriorityPolicy(
+      rendererRequestedPriority: switch (enumMethod ??
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => CygnusRendererPriority.fromNativeValue(
           map['rendererRequestedPriority'],
         ),
-        EnumMethod.value => RendererPriority.fromValue(
+        CygnusEnumMethod.value => CygnusRendererPriority.fromValue(
           map['rendererRequestedPriority'],
         ),
-        EnumMethod.name => RendererPriority.byName(
+        CygnusEnumMethod.name => CygnusRendererPriority.byName(
           map['rendererRequestedPriority'],
         ),
       },
@@ -49,13 +50,14 @@ class RendererPriorityPolicy {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "rendererRequestedPriority": switch (enumMethod ??
-          EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => rendererRequestedPriority?.toNativeValue(),
-        EnumMethod.value => rendererRequestedPriority?.toValue(),
-        EnumMethod.name => rendererRequestedPriority?.name(),
+          CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          rendererRequestedPriority?.toNativeValue(),
+        CygnusEnumMethod.value => rendererRequestedPriority?.toValue(),
+        CygnusEnumMethod.name => rendererRequestedPriority?.name(),
       },
       "waivedWhenNotVisible": waivedWhenNotVisible,
     };
@@ -68,6 +70,6 @@ class RendererPriorityPolicy {
 
   @override
   String toString() {
-    return 'RendererPriorityPolicy{rendererRequestedPriority: $rendererRequestedPriority, waivedWhenNotVisible: $waivedWhenNotVisible}';
+    return 'CygnusRendererPriorityPolicy{rendererRequestedPriority: $rendererRequestedPriority, waivedWhenNotVisible: $waivedWhenNotVisible}';
   }
 }

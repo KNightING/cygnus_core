@@ -6,17 +6,17 @@ part of 'platform_chrome_safari_browser.dart';
 // SupportedPlatformsGenerator
 // **************************************************************************
 
-extension _PlatformChromeSafariBrowserClassSupported
-    on PlatformChromeSafariBrowser {
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.supported_platforms}
+extension _CygnusPlatformChromeSafariBrowserClassSupported
+    on CygnusPlatformChromeSafariBrowser {
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs:
-  ///    - This class uses native [Chrome Custom Tabs](https://developer.android.com/reference/android/support/customtabs/package-summary). If you want to use the `ChromeSafariBrowser` class on Android 11+ you need to specify your app querying for `android.support.customtabs.action.CustomTabsService` in your `AndroidManifest.xml` (you can read more about it here: https://developers.google.com/web/android/custom-tabs/best-practices#applications_targeting_android_11_api_level_30_or_above).
+  ///    - This class uses native [Chrome Custom Tabs](https://developer.android.com/reference/android/support/customtabs/package-summary). If you want to use the `CygnusChromeSafariBrowser` class on Android 11+ you need to specify your app querying for `android.support.customtabs.action.CustomTabsService` in your `AndroidManifest.xml` (you can read more about it here: https://developers.google.com/web/android/custom-tabs/best-practices#applications_targeting_android_11_api_level_30_or_above).
   ///- iOS SFSafariViewController:
   ///    - This class uses native [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller)
   ///
-  ///Use the [PlatformChromeSafariBrowser.isClassSupported] method to check if this class is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isClassSupported] method to check if this class is supported at runtime.
   ///{@endtemplate}
   static bool isClassSupported({TargetPlatform? platform}) {
     return ((kIsWeb && platform != null) || !kIsWeb) &&
@@ -27,11 +27,11 @@ extension _PlatformChromeSafariBrowserClassSupported
   }
 }
 
-///List of [PlatformChromeSafariBrowser]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformChromeSafariBrowserMethod {
-  ///Can be used to check if the [PlatformChromeSafariBrowser.addMenuItem] method is supported at runtime.
+///List of [CygnusPlatformChromeSafariBrowser]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformChromeSafariBrowserMethod {
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.addMenuItem] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.addMenuItem.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.addMenuItem.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs:
@@ -41,13 +41,13 @@ enum PlatformChromeSafariBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [menuItem]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   addMenuItem,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.addMenuItems] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.addMenuItems] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.addMenuItems.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.addMenuItems.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs:
@@ -57,59 +57,59 @@ enum PlatformChromeSafariBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [menuItems]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   addMenuItems,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.clearWebsiteData] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.clearWebsiteData] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.clearWebsiteData.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.clearWebsiteData.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController 16.0+ ([Official API - SFSafariViewController.DataStore.clearWebsiteData](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller/datastore/3981117-clearwebsitedata))
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   clearWebsiteData,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.close] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.close] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.close.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.close.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///- iOS SFSafariViewController
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   close,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.dispose] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.dispose] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.dispose.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.dispose.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///- iOS SFSafariViewController
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   dispose,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.getMaxToolbarItems] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.getMaxToolbarItems] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.getMaxToolbarItems.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.getMaxToolbarItems.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getMaxToolbarItems,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.getPackageName] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.getPackageName] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.getPackageName.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.getPackageName.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs ([Official API - CustomTabsClient.getPackageName](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsClient#getPackageName(android.content.Context,java.util.List%3Cjava.lang.String%3E,boolean)))
@@ -118,62 +118,62 @@ enum PlatformChromeSafariBrowserMethod {
   ///- [packages]: all platforms
   ///- [ignoreDefault]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   getPackageName,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.invalidatePrewarmingToken] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.invalidatePrewarmingToken] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.invalidatePrewarmingToken.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.invalidatePrewarmingToken.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
-  ///- iOS SFSafariViewController 15.0+ ([Official API - SFSafariViewController.PrewarmingToken.invalidate](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller/prewarmingtoken/invalidate()))
+  ///- iOS SFSafariViewController 15.0+ ([Official API - SFSafariViewController.CygnusPrewarmingToken.invalidate](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller/prewarmingtoken/invalidate()))
   ///
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [prewarmingToken]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   invalidatePrewarmingToken,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.isAvailable] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.isAvailable] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.isAvailable.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.isAvailable.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///- iOS SFSafariViewController
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isAvailable,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.isEngagementSignalsApiAvailable] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.isEngagementSignalsApiAvailable] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.isEngagementSignalsApiAvailable.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.isEngagementSignalsApiAvailable.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs ([Official API - CustomTabsSession.isEngagementSignalsApiAvailable](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsSession#isEngagementSignalsApiAvailable(android.os.Bundle)))
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isEngagementSignalsApiAvailable,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.isOpened] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.isOpened] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.isOpened.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.isOpened.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
   ///- iOS SFSafariViewController
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   isOpened,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.launchUrl] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.launchUrl] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.launchUrl.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.launchUrl.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
@@ -184,13 +184,13 @@ enum PlatformChromeSafariBrowserMethod {
   ///- [otherLikelyURLs]: all platforms
   ///- [referrer]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   launchUrl,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.mayLaunchUrl] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.mayLaunchUrl] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.mayLaunchUrl.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.mayLaunchUrl.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs ([Official API - CustomTabsSession.mayLaunchUrl](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsSession#mayLaunchUrl(android.net.Uri,android.os.Bundle,java.util.List%3Candroid.os.Bundle%3E)))
@@ -199,13 +199,13 @@ enum PlatformChromeSafariBrowserMethod {
   ///- [url]: all platforms
   ///- [otherLikelyURLs]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   mayLaunchUrl,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.open] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.open] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.open.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.open.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs
@@ -221,13 +221,13 @@ enum PlatformChromeSafariBrowserMethod {
   ///    - Android Chrome Custom Tabs
   ///- [settings]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   open,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.postMessage] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.postMessage] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.postMessage.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.postMessage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs ([Official API - CustomTabsSession.postMessage](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsSession#postMessage(java.lang.String,android.os.Bundle)))
@@ -235,13 +235,13 @@ enum PlatformChromeSafariBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [message]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   postMessage,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.prewarmConnections] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.prewarmConnections] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.prewarmConnections.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.prewarmConnections.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS SFSafariViewController 15.0+ ([Official API - SFSafariViewController.prewarmConnections](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller/3752133-prewarmconnections))
@@ -249,13 +249,13 @@ enum PlatformChromeSafariBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [URLs]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   prewarmConnections,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.requestPostMessageChannel] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.requestPostMessageChannel] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.requestPostMessageChannel.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.requestPostMessageChannel.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs ([Official API - CustomTabsSession.requestPostMessageChannel](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsSession#requestPostMessageChannel(android.net.Uri,android.net.Uri,android.os.Bundle)))
@@ -264,13 +264,13 @@ enum PlatformChromeSafariBrowserMethod {
   ///- [sourceOrigin]: all platforms
   ///- [targetOrigin]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   requestPostMessageChannel,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.setActionButton] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.setActionButton] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.setActionButton.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.setActionButton.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs ([Official API - CustomTabsSession.setActionButton](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsIntent.Builder#setActionButton(android.graphics.Bitmap,%20java.lang.String,%20android.app.PendingIntent,%20boolean))):
@@ -279,13 +279,13 @@ enum PlatformChromeSafariBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [actionButton]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setActionButton,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.setSecondaryToolbar] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.setSecondaryToolbar] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.setSecondaryToolbar.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.setSecondaryToolbar.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs ([Official API - CustomTabsIntent.Builder.setSecondaryToolbarViews](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsIntent.Builder#setSecondaryToolbarViews(android.widget.RemoteViews,int[],android.app.PendingIntent))):
@@ -294,13 +294,13 @@ enum PlatformChromeSafariBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [secondaryToolbar]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   setSecondaryToolbar,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.updateActionButton] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.updateActionButton] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.updateActionButton.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.updateActionButton.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs ([Official API - CustomTabsSession.setActionButton](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsIntent.Builder#setActionButton(android.graphics.Bitmap,%20java.lang.String,%20android.app.PendingIntent,%20boolean))):
@@ -310,13 +310,13 @@ enum PlatformChromeSafariBrowserMethod {
   ///- [icon]: all platforms
   ///- [description]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   updateActionButton,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.updateSecondaryToolbar] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.updateSecondaryToolbar] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.updateSecondaryToolbar.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.updateSecondaryToolbar.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs ([Official API - CustomTabsIntent.Builder.setSecondaryToolbarViews](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsIntent.Builder#setSecondaryToolbarViews(android.widget.RemoteViews,int[],android.app.PendingIntent))):
@@ -325,13 +325,13 @@ enum PlatformChromeSafariBrowserMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [secondaryToolbar]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   updateSecondaryToolbar,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowser.validateRelationship] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowser.validateRelationship] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowser.validateRelationship.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowser.validateRelationship.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android Chrome Custom Tabs ([Official API - CustomTabsSession.validateRelationship](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsSession#validateRelationship(int,android.net.Uri,android.os.Bundle)))
@@ -340,125 +340,126 @@ enum PlatformChromeSafariBrowserMethod {
   ///- [relation]: all platforms
   ///- [origin]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowser.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   validateRelationship,
 }
 
-extension _PlatformChromeSafariBrowserMethodSupported
-    on PlatformChromeSafariBrowser {
+extension _CygnusPlatformChromeSafariBrowserMethodSupported
+    on CygnusPlatformChromeSafariBrowser {
   static bool isMethodSupported(
-    PlatformChromeSafariBrowserMethod method, {
+    CygnusPlatformChromeSafariBrowserMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformChromeSafariBrowserMethod.addMenuItem:
+      case CygnusPlatformChromeSafariBrowserMethod.addMenuItem:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.addMenuItems:
+      case CygnusPlatformChromeSafariBrowserMethod.addMenuItems:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.clearWebsiteData:
+      case CygnusPlatformChromeSafariBrowserMethod.clearWebsiteData:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.close:
+      case CygnusPlatformChromeSafariBrowserMethod.close:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.dispose:
+      case CygnusPlatformChromeSafariBrowserMethod.dispose:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.getMaxToolbarItems:
+      case CygnusPlatformChromeSafariBrowserMethod.getMaxToolbarItems:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.getPackageName:
+      case CygnusPlatformChromeSafariBrowserMethod.getPackageName:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.invalidatePrewarmingToken:
+      case CygnusPlatformChromeSafariBrowserMethod.invalidatePrewarmingToken:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.isAvailable:
+      case CygnusPlatformChromeSafariBrowserMethod.isAvailable:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.isEngagementSignalsApiAvailable:
+      case CygnusPlatformChromeSafariBrowserMethod
+          .isEngagementSignalsApiAvailable:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.isOpened:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-              TargetPlatform.iOS,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.launchUrl:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.mayLaunchUrl:
-        return ((kIsWeb && platform != null) || !kIsWeb) &&
-            [
-              TargetPlatform.android,
-            ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.open:
+      case CygnusPlatformChromeSafariBrowserMethod.isOpened:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.postMessage:
+      case CygnusPlatformChromeSafariBrowserMethod.launchUrl:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.prewarmConnections:
+      case CygnusPlatformChromeSafariBrowserMethod.mayLaunchUrl:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformChromeSafariBrowserMethod.open:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+              TargetPlatform.iOS,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformChromeSafariBrowserMethod.postMessage:
+        return ((kIsWeb && platform != null) || !kIsWeb) &&
+            [
+              TargetPlatform.android,
+            ].contains(platform ?? defaultTargetPlatform);
+      case CygnusPlatformChromeSafariBrowserMethod.prewarmConnections:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.requestPostMessageChannel:
+      case CygnusPlatformChromeSafariBrowserMethod.requestPostMessageChannel:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.setActionButton:
+      case CygnusPlatformChromeSafariBrowserMethod.setActionButton:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.setSecondaryToolbar:
+      case CygnusPlatformChromeSafariBrowserMethod.setSecondaryToolbar:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.updateActionButton:
+      case CygnusPlatformChromeSafariBrowserMethod.updateActionButton:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.updateSecondaryToolbar:
+      case CygnusPlatformChromeSafariBrowserMethod.updateSecondaryToolbar:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserMethod.validateRelationship:
+      case CygnusPlatformChromeSafariBrowserMethod.validateRelationship:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
@@ -467,23 +468,23 @@ extension _PlatformChromeSafariBrowserMethodSupported
   }
 }
 
-///List of [PlatformChromeSafariBrowserEvents]'s methods that can be used to check if they are supported or not by the current platform.
-enum PlatformChromeSafariBrowserEventsMethod {
-  ///Can be used to check if the [PlatformChromeSafariBrowserEvents.onClosed] method is supported at runtime.
+///List of [CygnusPlatformChromeSafariBrowserEvents]'s methods that can be used to check if they are supported or not by the current platform.
+enum CygnusPlatformChromeSafariBrowserEventsMethod {
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowserEvents.onClosed] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowserEvents.onClosed.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowserEvents.onClosed.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///
-  ///Use the [PlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onClosed,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowserEvents.onCompletedInitialLoad] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowserEvents.onCompletedInitialLoad] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowserEvents.onCompletedInitialLoad.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowserEvents.onCompletedInitialLoad.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
@@ -493,13 +494,13 @@ enum PlatformChromeSafariBrowserEventsMethod {
   ///- [didLoadSuccessfully]:
   ///    - iOS WKWebView
   ///
-  ///Use the [PlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onCompletedInitialLoad,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowserEvents.onGreatestScrollPercentageIncreased] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowserEvents.onGreatestScrollPercentageIncreased] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowserEvents.onGreatestScrollPercentageIncreased.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowserEvents.onGreatestScrollPercentageIncreased.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - EngagementSignalsCallback.onGreatestScrollPercentageIncreased](https://developer.android.com/reference/androidx/browser/customtabs/EngagementSignalsCallback#onGreatestScrollPercentageIncreased(int,android.os.Bundle)))
@@ -507,13 +508,13 @@ enum PlatformChromeSafariBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [scrollPercentage]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onGreatestScrollPercentageIncreased,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowserEvents.onInitialLoadDidRedirect] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowserEvents.onInitialLoadDidRedirect] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowserEvents.onInitialLoadDidRedirect.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowserEvents.onInitialLoadDidRedirect.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView ([Official API - SFSafariViewControllerDelegate.safariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontrollerdelegate/2923545-safariviewcontroller))
@@ -521,24 +522,24 @@ enum PlatformChromeSafariBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [url]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onInitialLoadDidRedirect,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowserEvents.onMessageChannelReady] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowserEvents.onMessageChannelReady] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowserEvents.onMessageChannelReady.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowserEvents.onMessageChannelReady.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - CustomTabsCallback.onMessageChannelReady](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsCallback#onMessageChannelReady(android.os.Bundle)))
   ///
-  ///Use the [PlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onMessageChannelReady,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowserEvents.onNavigationEvent] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowserEvents.onNavigationEvent] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowserEvents.onNavigationEvent.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowserEvents.onNavigationEvent.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - CustomTabsCallback.onNavigationEvent](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsCallback#onNavigationEvent(int,android.os.Bundle)))
@@ -546,25 +547,25 @@ enum PlatformChromeSafariBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [navigationEvent]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onNavigationEvent,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowserEvents.onOpened] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowserEvents.onOpened] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowserEvents.onOpened.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowserEvents.onOpened.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///- iOS WKWebView
   ///
-  ///Use the [PlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onOpened,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowserEvents.onPostMessage] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowserEvents.onPostMessage] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowserEvents.onPostMessage.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowserEvents.onPostMessage.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - CustomTabsCallback.onPostMessage](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsCallback#onPostMessage(java.lang.String,android.os.Bundle)))
@@ -572,13 +573,13 @@ enum PlatformChromeSafariBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [message]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onPostMessage,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowserEvents.onRelationshipValidationResult] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowserEvents.onRelationshipValidationResult] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowserEvents.onRelationshipValidationResult.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowserEvents.onRelationshipValidationResult.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - CustomTabsCallback.onRelationshipValidationResult](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsCallback#onRelationshipValidationResult(int,android.net.Uri,boolean,android.os.Bundle)))
@@ -588,24 +589,24 @@ enum PlatformChromeSafariBrowserEventsMethod {
   ///- [requestedOrigin]: all platforms
   ///- [result]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onRelationshipValidationResult,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowserEvents.onServiceConnected] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowserEvents.onServiceConnected] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowserEvents.onServiceConnected.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowserEvents.onServiceConnected.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView
   ///
-  ///Use the [PlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onServiceConnected,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowserEvents.onSessionEnded] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowserEvents.onSessionEnded] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowserEvents.onSessionEnded.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowserEvents.onSessionEnded.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - EngagementSignalsCallback.onSessionEnded](https://developer.android.com/reference/androidx/browser/customtabs/EngagementSignalsCallback#onSessionEnded(boolean,android.os.Bundle)))
@@ -613,13 +614,13 @@ enum PlatformChromeSafariBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [didUserInteract]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onSessionEnded,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowserEvents.onVerticalScrollEvent] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowserEvents.onVerticalScrollEvent] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowserEvents.onVerticalScrollEvent.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowserEvents.onVerticalScrollEvent.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView ([Official API - EngagementSignalsCallback.onVerticalScrollEvent](https://developer.android.com/reference/androidx/browser/customtabs/EngagementSignalsCallback#onVerticalScrollEvent(boolean,android.os.Bundle)))
@@ -627,93 +628,94 @@ enum PlatformChromeSafariBrowserEventsMethod {
   ///**Parameters - Officially Supported Platforms/Implementations**:
   ///- [isDirectionUp]: all platforms
   ///
-  ///Use the [PlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onVerticalScrollEvent,
 
-  ///Can be used to check if the [PlatformChromeSafariBrowserEvents.onWillOpenInBrowser] method is supported at runtime.
+  ///Can be used to check if the [CygnusPlatformChromeSafariBrowserEvents.onWillOpenInBrowser] method is supported at runtime.
   ///
-  ///{@template cygnus_core.PlatformChromeSafariBrowserEvents.onWillOpenInBrowser.supported_platforms}
+  ///{@template cygnus_core.CygnusPlatformChromeSafariBrowserEvents.onWillOpenInBrowser.supported_platforms}
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- iOS WKWebView 14.0+ ([Official API - SFSafariViewControllerDelegate.safariViewControllerWillOpenInBrowser](https://developer.apple.com/documentation/safariservices/sfsafariviewcontrollerdelegate/3650426-safariviewcontrollerwillopeninbr))
   ///
-  ///Use the [PlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
+  ///Use the [CygnusPlatformChromeSafariBrowserEvents.isMethodSupported] method to check if this method is supported at runtime.
   ///{@endtemplate}
   onWillOpenInBrowser,
 }
 
-extension _PlatformChromeSafariBrowserEventsMethodSupported
-    on PlatformChromeSafariBrowserEvents {
+extension _CygnusPlatformChromeSafariBrowserEventsMethodSupported
+    on CygnusPlatformChromeSafariBrowserEvents {
   static bool isMethodSupported(
-    PlatformChromeSafariBrowserEventsMethod method, {
+    CygnusPlatformChromeSafariBrowserEventsMethod method, {
     TargetPlatform? platform,
   }) {
     switch (method) {
-      case PlatformChromeSafariBrowserEventsMethod.onClosed:
+      case CygnusPlatformChromeSafariBrowserEventsMethod.onClosed:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserEventsMethod.onCompletedInitialLoad:
+      case CygnusPlatformChromeSafariBrowserEventsMethod.onCompletedInitialLoad:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserEventsMethod
+      case CygnusPlatformChromeSafariBrowserEventsMethod
           .onGreatestScrollPercentageIncreased:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserEventsMethod.onInitialLoadDidRedirect:
+      case CygnusPlatformChromeSafariBrowserEventsMethod
+          .onInitialLoadDidRedirect:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserEventsMethod.onMessageChannelReady:
+      case CygnusPlatformChromeSafariBrowserEventsMethod.onMessageChannelReady:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserEventsMethod.onNavigationEvent:
+      case CygnusPlatformChromeSafariBrowserEventsMethod.onNavigationEvent:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserEventsMethod.onOpened:
+      case CygnusPlatformChromeSafariBrowserEventsMethod.onOpened:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
               TargetPlatform.iOS,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserEventsMethod.onPostMessage:
+      case CygnusPlatformChromeSafariBrowserEventsMethod.onPostMessage:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserEventsMethod
+      case CygnusPlatformChromeSafariBrowserEventsMethod
           .onRelationshipValidationResult:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserEventsMethod.onServiceConnected:
+      case CygnusPlatformChromeSafariBrowserEventsMethod.onServiceConnected:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserEventsMethod.onSessionEnded:
+      case CygnusPlatformChromeSafariBrowserEventsMethod.onSessionEnded:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserEventsMethod.onVerticalScrollEvent:
+      case CygnusPlatformChromeSafariBrowserEventsMethod.onVerticalScrollEvent:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [
               TargetPlatform.android,
             ].contains(platform ?? defaultTargetPlatform);
-      case PlatformChromeSafariBrowserEventsMethod.onWillOpenInBrowser:
+      case CygnusPlatformChromeSafariBrowserEventsMethod.onWillOpenInBrowser:
         return ((kIsWeb && platform != null) || !kIsWeb) &&
             [TargetPlatform.iOS].contains(platform ?? defaultTargetPlatform);
     }

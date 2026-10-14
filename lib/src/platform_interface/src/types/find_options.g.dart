@@ -7,7 +7,7 @@ part of 'find_options.dart';
 // **************************************************************************
 
 ///Class that represents find options for find-on-page operations.
-class FindOptions {
+class CygnusFindOptions {
   ///The text to find.
   String? findTerm;
 
@@ -22,7 +22,7 @@ class FindOptions {
 
   ///Whether to suppress the default find dialog.
   bool? suppressDefaultFindDialog;
-  FindOptions({
+  CygnusFindOptions({
     this.findTerm,
     this.shouldHighlightAllMatches,
     this.shouldMatchCase,
@@ -30,15 +30,15 @@ class FindOptions {
     this.suppressDefaultFindDialog,
   });
 
-  ///Gets a possible [FindOptions] instance from a [Map] value.
-  static FindOptions? fromMap(
+  ///Gets a possible [CygnusFindOptions] instance from a [Map] value.
+  static CygnusFindOptions? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = FindOptions(
+    final instance = CygnusFindOptions(
       findTerm: map['findTerm'],
       shouldHighlightAllMatches: map['shouldHighlightAllMatches'],
       shouldMatchCase: map['shouldMatchCase'],
@@ -49,7 +49,7 @@ class FindOptions {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "findTerm": findTerm,
       "shouldHighlightAllMatches": shouldHighlightAllMatches,
@@ -66,6 +66,6 @@ class FindOptions {
 
   @override
   String toString() {
-    return 'FindOptions{findTerm: $findTerm, shouldHighlightAllMatches: $shouldHighlightAllMatches, shouldMatchCase: $shouldMatchCase, shouldMatchWord: $shouldMatchWord, suppressDefaultFindDialog: $suppressDefaultFindDialog}';
+    return 'CygnusFindOptions{findTerm: $findTerm, shouldHighlightAllMatches: $shouldHighlightAllMatches, shouldMatchCase: $shouldMatchCase, shouldMatchWord: $shouldMatchWord, suppressDefaultFindDialog: $suppressDefaultFindDialog}';
   }
 }

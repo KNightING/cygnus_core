@@ -1,26 +1,26 @@
 import 'dart:convert';
 
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
-import '../in_app_webview/in_app_webview_controller.dart';
+import '../webview/webview_controller.dart';
 
 /// Object specifying creation parameters for creating a [MacOSWebStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformWebStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformWebStorageCreationParams] for
 /// more information.
-class MacOSWebStorageCreationParams extends PlatformWebStorageCreationParams {
+class MacOSWebStorageCreationParams extends CygnusPlatformWebStorageCreationParams {
   /// Creates a new [MacOSWebStorageCreationParams] instance.
   MacOSWebStorageCreationParams({
     required super.localStorage,
     required super.sessionStorage,
   });
 
-  /// Creates a [MacOSWebStorageCreationParams] instance based on [PlatformWebStorageCreationParams].
+  /// Creates a [MacOSWebStorageCreationParams] instance based on [CygnusPlatformWebStorageCreationParams].
   factory MacOSWebStorageCreationParams.fromPlatformWebStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformWebStorageCreationParams params,
+    CygnusPlatformWebStorageCreationParams params,
   ) {
     return MacOSWebStorageCreationParams(
       localStorage: params.localStorage,
@@ -29,10 +29,10 @@ class MacOSWebStorageCreationParams extends PlatformWebStorageCreationParams {
   }
 }
 
-///{@macro cygnus_core.PlatformWebStorage}
-class MacOSWebStorage extends PlatformWebStorage {
+///{@macro cygnus_core.CygnusPlatformWebStorage}
+class MacOSWebStorage extends CygnusPlatformWebStorage {
   /// Constructs a [MacOSWebStorage].
-  MacOSWebStorage(PlatformWebStorageCreationParams params)
+  MacOSWebStorage(CygnusPlatformWebStorageCreationParams params)
     : super.implementation(
         params is MacOSWebStorageCreationParams
             ? params
@@ -42,10 +42,10 @@ class MacOSWebStorage extends PlatformWebStorage {
       );
 
   @override
-  PlatformLocalStorage get localStorage => params.localStorage;
+  CygnusPlatformLocalStorage get localStorage => params.localStorage;
 
   @override
-  PlatformSessionStorage get sessionStorage => params.sessionStorage;
+  CygnusPlatformSessionStorage get sessionStorage => params.sessionStorage;
 
   @override
   void dispose() {
@@ -57,20 +57,20 @@ class MacOSWebStorage extends PlatformWebStorage {
 /// Object specifying creation parameters for creating a [MacOSStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformStorageCreationParams] for
 /// more information.
-class MacOSStorageCreationParams extends PlatformStorageCreationParams {
+class MacOSStorageCreationParams extends CygnusPlatformStorageCreationParams {
   /// Creates a new [MacOSStorageCreationParams] instance.
   MacOSStorageCreationParams({
     required super.controller,
     required super.webStorageType,
   });
 
-  /// Creates a [MacOSStorageCreationParams] instance based on [PlatformStorageCreationParams].
+  /// Creates a [MacOSStorageCreationParams] instance based on [CygnusPlatformStorageCreationParams].
   factory MacOSStorageCreationParams.fromPlatformStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformStorageCreationParams params,
+    CygnusPlatformStorageCreationParams params,
   ) {
     return MacOSStorageCreationParams(
       controller: params.controller,
@@ -79,8 +79,8 @@ class MacOSStorageCreationParams extends PlatformStorageCreationParams {
   }
 }
 
-///{@macro cygnus_core.PlatformStorage}
-abstract mixin class MacOSStorage implements PlatformStorage {
+///{@macro cygnus_core.CygnusPlatformStorage}
+abstract mixin class MacOSStorage implements CygnusPlatformStorage {
   @override
   MacOSInAppWebViewController? controller;
 
@@ -137,8 +137,8 @@ abstract mixin class MacOSStorage implements PlatformStorage {
   }
 
   @override
-  Future<List<WebStorageItem>> getItems() async {
-    var webStorageItems = <WebStorageItem>[];
+  Future<List<CygnusWebStorageItem>> getItems() async {
+    var webStorageItems = <CygnusWebStorageItem>[];
 
     List<Map<dynamic, dynamic>>? items = (await controller?.evaluateJavascript(
       source:
@@ -165,7 +165,7 @@ abstract mixin class MacOSStorage implements PlatformStorage {
 
     for (var item in items) {
       webStorageItems.add(
-        WebStorageItem(key: item["key"], value: item["value"]),
+        CygnusWebStorageItem(key: item["key"], value: item["value"]),
       );
     }
 
@@ -202,27 +202,27 @@ abstract mixin class MacOSStorage implements PlatformStorage {
 /// Object specifying creation parameters for creating a [MacOSLocalStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformLocalStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformLocalStorageCreationParams] for
 /// more information.
 class MacOSLocalStorageCreationParams
-    extends PlatformLocalStorageCreationParams {
+    extends CygnusPlatformLocalStorageCreationParams {
   /// Creates a new [MacOSLocalStorageCreationParams] instance.
   MacOSLocalStorageCreationParams(super.params);
 
-  /// Creates a [MacOSLocalStorageCreationParams] instance based on [PlatformLocalStorageCreationParams].
+  /// Creates a [MacOSLocalStorageCreationParams] instance based on [CygnusPlatformLocalStorageCreationParams].
   factory MacOSLocalStorageCreationParams.fromPlatformLocalStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformLocalStorageCreationParams params,
+    CygnusPlatformLocalStorageCreationParams params,
   ) {
     return MacOSLocalStorageCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformLocalStorage}
-class MacOSLocalStorage extends PlatformLocalStorage with MacOSStorage {
+///{@macro cygnus_core.CygnusPlatformLocalStorage}
+class MacOSLocalStorage extends CygnusPlatformLocalStorage with MacOSStorage {
   /// Constructs a [MacOSLocalStorage].
-  MacOSLocalStorage(PlatformLocalStorageCreationParams params)
+  MacOSLocalStorage(CygnusPlatformLocalStorageCreationParams params)
     : super.implementation(
         params is MacOSLocalStorageCreationParams
             ? params
@@ -233,14 +233,14 @@ class MacOSLocalStorage extends PlatformLocalStorage with MacOSStorage {
 
   /// Default storage
   factory MacOSLocalStorage.defaultStorage({
-    required PlatformInAppWebViewController? controller,
+    required CygnusPlatformWebViewController? controller,
   }) {
     return MacOSLocalStorage(
       MacOSLocalStorageCreationParams(
-        PlatformLocalStorageCreationParams(
-          PlatformStorageCreationParams(
+        CygnusPlatformLocalStorageCreationParams(
+          CygnusPlatformStorageCreationParams(
             controller: controller,
-            webStorageType: WebStorageType.LOCAL_STORAGE,
+            webStorageType: CygnusWebStorageType.LOCAL_STORAGE,
           ),
         ),
       ),
@@ -255,27 +255,27 @@ class MacOSLocalStorage extends PlatformLocalStorage with MacOSStorage {
 /// Object specifying creation parameters for creating a [MacOSSessionStorage].
 ///
 /// When adding additional fields make sure they can be null or have a default
-/// value to avoid breaking changes. See [PlatformSessionStorageCreationParams] for
+/// value to avoid breaking changes. See [CygnusPlatformSessionStorageCreationParams] for
 /// more information.
 class MacOSSessionStorageCreationParams
-    extends PlatformSessionStorageCreationParams {
+    extends CygnusPlatformSessionStorageCreationParams {
   /// Creates a new [MacOSSessionStorageCreationParams] instance.
   MacOSSessionStorageCreationParams(super.params);
 
-  /// Creates a [MacOSSessionStorageCreationParams] instance based on [PlatformSessionStorageCreationParams].
+  /// Creates a [MacOSSessionStorageCreationParams] instance based on [CygnusPlatformSessionStorageCreationParams].
   factory MacOSSessionStorageCreationParams.fromPlatformSessionStorageCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
-    PlatformSessionStorageCreationParams params,
+    CygnusPlatformSessionStorageCreationParams params,
   ) {
     return MacOSSessionStorageCreationParams(params);
   }
 }
 
-///{@macro cygnus_core.PlatformSessionStorage}
-class MacOSSessionStorage extends PlatformSessionStorage with MacOSStorage {
+///{@macro cygnus_core.CygnusPlatformSessionStorage}
+class MacOSSessionStorage extends CygnusPlatformSessionStorage with MacOSStorage {
   /// Constructs a [MacOSSessionStorage].
-  MacOSSessionStorage(PlatformSessionStorageCreationParams params)
+  MacOSSessionStorage(CygnusPlatformSessionStorageCreationParams params)
     : super.implementation(
         params is MacOSSessionStorageCreationParams
             ? params
@@ -286,14 +286,14 @@ class MacOSSessionStorage extends PlatformSessionStorage with MacOSStorage {
 
   /// Default storage
   factory MacOSSessionStorage.defaultStorage({
-    required PlatformInAppWebViewController? controller,
+    required CygnusPlatformWebViewController? controller,
   }) {
     return MacOSSessionStorage(
       MacOSSessionStorageCreationParams(
-        PlatformSessionStorageCreationParams(
-          PlatformStorageCreationParams(
+        CygnusPlatformSessionStorageCreationParams(
+          CygnusPlatformStorageCreationParams(
             controller: controller,
-            webStorageType: WebStorageType.SESSION_STORAGE,
+            webStorageType: CygnusWebStorageType.SESSION_STORAGE,
           ),
         ),
       ),

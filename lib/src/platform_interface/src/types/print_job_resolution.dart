@@ -5,13 +5,13 @@ import 'enum_method.dart';
 
 part 'print_job_resolution.g.dart';
 
-///Class representing the supported resolution in DPI (dots per inch) for a [PlatformPrintJobController].
+///Class representing the supported resolution in DPI (dots per inch) for a [CygnusPlatformPrintJobController].
 ///Resolution defines how many points with different color can be placed
 ///on one inch in horizontal or vertical direction of the target media.
 ///For example, a printer with 600 DPI can produce higher quality images
 ///the one with 300 DPI resolution.
 @ExchangeableObject()
-class PrintJobResolution_ {
+class CygnusPrintJobResolution_ {
   ///The unique resolution id.
   ///
   ///It is unique amongst other resolutions supported by the printer.
@@ -28,7 +28,7 @@ class PrintJobResolution_ {
   ///The horizontal resolution in DPI (dots per inch).
   final int horizontalDpi;
 
-  const PrintJobResolution_({
+  const CygnusPrintJobResolution_({
     required this.id,
     required this.label,
     required this.verticalDpi,

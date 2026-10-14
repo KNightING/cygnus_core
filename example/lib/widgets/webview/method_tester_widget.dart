@@ -11,12 +11,12 @@ import 'package:flutter_inappwebview_example/widgets/common/method_result_histor
 class MethodEntry {
   /// The method enum that this entry represents.
   /// The name is derived from methodEnum.name.
-  final PlatformInAppWebViewControllerMethod methodEnum;
+  final CygnusPlatformWebViewControllerMethod methodEnum;
   final String description;
   final Map<String, dynamic> parameters;
   final List<String> requiredParameters;
   final Future<dynamic> Function(
-    InAppWebViewController controller,
+    CygnusWebViewController controller,
     Map<String, dynamic> params,
   )
   execute;
@@ -77,7 +77,7 @@ class MethodCategory {
 /// Widget to test WebView controller methods
 /// Tests controller methods organized by category
 class MethodTesterWidget extends StatefulWidget {
-  final InAppWebViewController? controller;
+  final CygnusWebViewController? controller;
 
   const MethodTesterWidget({super.key, required this.controller});
 
@@ -118,7 +118,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
         methods: [
           MethodEntry(
             description: 'Loads the given URL',
-            methodEnum: PlatformInAppWebViewControllerMethod.loadUrl,
+            methodEnum: CygnusPlatformWebViewControllerMethod.loadUrl,
             parameters: {
               'url': 'https://example.com',
               'method': 'GET',
@@ -138,8 +138,8 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
               final body = params['body'] as Uint8List?;
 
               await controller.loadUrl(
-                urlRequest: URLRequest(
-                  url: WebUri(url),
+                urlRequest: CygnusURLRequest(
+                  url: CygnusWebUri(url),
                   method: method?.isNotEmpty == true ? method : null,
                   headers: headers?.cast<String, String>(),
                   body: body,
@@ -150,7 +150,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Loads URL using POST method',
-            methodEnum: PlatformInAppWebViewControllerMethod.postUrl,
+            methodEnum: CygnusPlatformWebViewControllerMethod.postUrl,
             parameters: {
               'url': 'https://httpbin.org/post',
               'postData': const ParameterValueHint<Uint8List?>(
@@ -170,7 +170,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
                 postData = Uint8List.fromList(postDataParam.codeUnits);
               }
               await controller.postUrl(
-                url: WebUri(url),
+                url: CygnusWebUri(url),
                 postData: postData ?? Uint8List(0),
               );
               return 'POST request sent with ${postData?.length ?? 0} bytes';
@@ -178,7 +178,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Loads HTML data string',
-            methodEnum: PlatformInAppWebViewControllerMethod.loadData,
+            methodEnum: CygnusPlatformWebViewControllerMethod.loadData,
             parameters: {
               'data': '<html><body><h1>Test HTML</h1></body></html>',
               'mimeType': 'text/html',
@@ -200,9 +200,9 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
                     ? mimeType!
                     : 'text/html',
                 encoding: encoding?.isNotEmpty == true ? encoding! : 'utf-8',
-                baseUrl: baseUrl?.isNotEmpty == true ? WebUri(baseUrl!) : null,
+                baseUrl: baseUrl?.isNotEmpty == true ? CygnusWebUri(baseUrl!) : null,
                 historyUrl: historyUrl?.isNotEmpty == true
-                    ? WebUri(historyUrl!)
+                    ? CygnusWebUri(historyUrl!)
                     : null,
               );
               return 'HTML data loaded';
@@ -210,7 +210,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Loads a file from assets',
-            methodEnum: PlatformInAppWebViewControllerMethod.loadFile,
+            methodEnum: CygnusPlatformWebViewControllerMethod.loadFile,
             parameters: {'assetFilePath': 'assets/index.html'},
             requiredParameters: ['assetFilePath'],
             execute: (controller, params) async {
@@ -221,7 +221,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Reloads the current page',
-            methodEnum: PlatformInAppWebViewControllerMethod.reload,
+            methodEnum: CygnusPlatformWebViewControllerMethod.reload,
             execute: (controller, params) async {
               await controller.reload();
               return 'Page reloaded';
@@ -229,7 +229,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Reloads bypassing cache',
-            methodEnum: PlatformInAppWebViewControllerMethod.reloadFromOrigin,
+            methodEnum: CygnusPlatformWebViewControllerMethod.reloadFromOrigin,
             execute: (controller, params) async {
               await controller.reloadFromOrigin();
               return 'Page reloaded from origin';
@@ -237,7 +237,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Navigates back in history',
-            methodEnum: PlatformInAppWebViewControllerMethod.goBack,
+            methodEnum: CygnusPlatformWebViewControllerMethod.goBack,
             execute: (controller, params) async {
               await controller.goBack();
               return 'Navigated back';
@@ -245,7 +245,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Navigates forward in history',
-            methodEnum: PlatformInAppWebViewControllerMethod.goForward,
+            methodEnum: CygnusPlatformWebViewControllerMethod.goForward,
             execute: (controller, params) async {
               await controller.goForward();
               return 'Navigated forward';
@@ -253,7 +253,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Navigates by steps',
-            methodEnum: PlatformInAppWebViewControllerMethod.goBackOrForward,
+            methodEnum: CygnusPlatformWebViewControllerMethod.goBackOrForward,
             parameters: {'steps': -1},
             requiredParameters: ['steps'],
             execute: (controller, params) async {
@@ -264,7 +264,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Navigates to history item',
-            methodEnum: PlatformInAppWebViewControllerMethod.goTo,
+            methodEnum: CygnusPlatformWebViewControllerMethod.goTo,
             parameters: {'index': 0},
             requiredParameters: ['index'],
             execute: (controller, params) async {
@@ -283,21 +283,21 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Checks if can go back',
-            methodEnum: PlatformInAppWebViewControllerMethod.canGoBack,
+            methodEnum: CygnusPlatformWebViewControllerMethod.canGoBack,
             execute: (controller, params) async {
               return await controller.canGoBack();
             },
           ),
           MethodEntry(
             description: 'Checks if can go forward',
-            methodEnum: PlatformInAppWebViewControllerMethod.canGoForward,
+            methodEnum: CygnusPlatformWebViewControllerMethod.canGoForward,
             execute: (controller, params) async {
               return await controller.canGoForward();
             },
           ),
           MethodEntry(
             description: 'Checks if can navigate by steps',
-            methodEnum: PlatformInAppWebViewControllerMethod.canGoBackOrForward,
+            methodEnum: CygnusPlatformWebViewControllerMethod.canGoBackOrForward,
             parameters: {'steps': -1},
             requiredParameters: ['steps'],
             execute: (controller, params) async {
@@ -307,14 +307,14 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Checks if page is loading',
-            methodEnum: PlatformInAppWebViewControllerMethod.isLoading,
+            methodEnum: CygnusPlatformWebViewControllerMethod.isLoading,
             execute: (controller, params) async {
               return await controller.isLoading();
             },
           ),
           MethodEntry(
             description: 'Stops page loading',
-            methodEnum: PlatformInAppWebViewControllerMethod.stopLoading,
+            methodEnum: CygnusPlatformWebViewControllerMethod.stopLoading,
             execute: (controller, params) async {
               await controller.stopLoading();
               return 'Loading stopped';
@@ -323,7 +323,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Loads simulated request',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.loadSimulatedRequest,
+                CygnusPlatformWebViewControllerMethod.loadSimulatedRequest,
             parameters: {
               'url': 'https://example.com',
               'data': Uint8List.fromList(
@@ -335,7 +335,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
               final url = params['url']?.toString() ?? '';
               final data = params['data'] as Uint8List?;
               await controller.loadSimulatedRequest(
-                urlRequest: URLRequest(url: WebUri(url)),
+                urlRequest: CygnusURLRequest(url: CygnusWebUri(url)),
                 data: data ?? Uint8List(0),
               );
               return 'Simulated request loaded';
@@ -350,28 +350,28 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
         methods: [
           MethodEntry(
             description: 'Gets current page URL',
-            methodEnum: PlatformInAppWebViewControllerMethod.getUrl,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getUrl,
             execute: (controller, params) async {
               return (await controller.getUrl())?.toString() ?? 'No URL';
             },
           ),
           MethodEntry(
             description: 'Gets current page title',
-            methodEnum: PlatformInAppWebViewControllerMethod.getTitle,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getTitle,
             execute: (controller, params) async {
               return await controller.getTitle() ?? 'No title';
             },
           ),
           MethodEntry(
             description: 'Gets page load progress',
-            methodEnum: PlatformInAppWebViewControllerMethod.getProgress,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getProgress,
             execute: (controller, params) async {
               return await controller.getProgress();
             },
           ),
           MethodEntry(
             description: 'Gets page HTML source',
-            methodEnum: PlatformInAppWebViewControllerMethod.getHtml,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getHtml,
             execute: (controller, params) async {
               final html = await controller.getHtml();
               if (html != null && html.length > 500) {
@@ -382,7 +382,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Gets page favicons',
-            methodEnum: PlatformInAppWebViewControllerMethod.getFavicons,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getFavicons,
             execute: (controller, params) async {
               final favicons = await controller.getFavicons();
               return 'Found ${favicons.length} favicons';
@@ -390,7 +390,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Gets original URL before redirects',
-            methodEnum: PlatformInAppWebViewControllerMethod.getOriginalUrl,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getOriginalUrl,
             execute: (controller, params) async {
               return (await controller.getOriginalUrl())?.toString() ??
                   'No URL';
@@ -398,14 +398,14 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Gets selected text',
-            methodEnum: PlatformInAppWebViewControllerMethod.getSelectedText,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getSelectedText,
             execute: (controller, params) async {
               return await controller.getSelectedText() ?? 'No selection';
             },
           ),
           MethodEntry(
             description: 'Gets hit test result',
-            methodEnum: PlatformInAppWebViewControllerMethod.getHitTestResult,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getHitTestResult,
             execute: (controller, params) async {
               final result = await controller.getHitTestResult();
               return result?.type.toString() ?? 'No hit test result';
@@ -413,7 +413,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Gets meta tags from page',
-            methodEnum: PlatformInAppWebViewControllerMethod.getMetaTags,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getMetaTags,
             execute: (controller, params) async {
               final tags = await controller.getMetaTags();
               return 'Found ${tags.length} meta tags';
@@ -421,7 +421,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Gets meta theme color',
-            methodEnum: PlatformInAppWebViewControllerMethod.getMetaThemeColor,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getMetaThemeColor,
             execute: (controller, params) async {
               final color = await controller.getMetaThemeColor();
               return color?.toString() ?? 'No theme color';
@@ -429,7 +429,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Gets SSL certificate info and X509 data',
-            methodEnum: PlatformInAppWebViewControllerMethod.getCertificate,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getCertificate,
             execute: (controller, params) async {
               final cert = await controller.getCertificate();
               if (cert == null) return {'error': 'No certificate available'};
@@ -439,7 +439,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Gets navigation history',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.getCopyBackForwardList,
+                CygnusPlatformWebViewControllerMethod.getCopyBackForwardList,
             execute: (controller, params) async {
               final history = await controller.getCopyBackForwardList();
               return 'History: ${history?.list?.length ?? 0} items, current: ${history?.currentIndex}';
@@ -454,7 +454,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
         methods: [
           MethodEntry(
             description: 'Executes JavaScript code',
-            methodEnum: PlatformInAppWebViewControllerMethod.evaluateJavascript,
+            methodEnum: CygnusPlatformWebViewControllerMethod.evaluateJavascript,
             parameters: {'source': 'document.title'},
             requiredParameters: ['source'],
             execute: (controller, params) async {
@@ -466,7 +466,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Calls async JavaScript function',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.callAsyncJavaScript,
+                CygnusPlatformWebViewControllerMethod.callAsyncJavaScript,
             parameters: {
               'functionBody': 'return await Promise.resolve("async result");',
               'arguments': <String, dynamic>{},
@@ -483,7 +483,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Injects JS file from URL',
-            methodEnum: PlatformInAppWebViewControllerMethod
+            methodEnum: CygnusPlatformWebViewControllerMethod
                 .injectJavascriptFileFromUrl,
             parameters: {
               'urlFile': 'https://code.jquery.com/jquery-3.7.1.min.js',
@@ -491,14 +491,14 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
             requiredParameters: ['urlFile'],
             execute: (controller, params) async {
               await controller.injectJavascriptFileFromUrl(
-                urlFile: WebUri(params['urlFile']?.toString() ?? ''),
+                urlFile: CygnusWebUri(params['urlFile']?.toString() ?? ''),
               );
               return 'JavaScript file injected';
             },
           ),
           MethodEntry(
             description: 'Injects JS file from assets',
-            methodEnum: PlatformInAppWebViewControllerMethod
+            methodEnum: CygnusPlatformWebViewControllerMethod
                 .injectJavascriptFileFromAsset,
             parameters: {'assetFilePath': 'assets/js/script.js'},
             requiredParameters: ['assetFilePath'],
@@ -515,7 +515,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Injects CSS code',
-            methodEnum: PlatformInAppWebViewControllerMethod.injectCSSCode,
+            methodEnum: CygnusPlatformWebViewControllerMethod.injectCSSCode,
             parameters: {
               'source': 'body { background-color: #f0f0f0 !important; }',
             },
@@ -530,7 +530,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Injects CSS file from URL',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.injectCSSFileFromUrl,
+                CygnusPlatformWebViewControllerMethod.injectCSSFileFromUrl,
             parameters: {
               'urlFile':
                   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
@@ -538,7 +538,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
             requiredParameters: ['urlFile'],
             execute: (controller, params) async {
               await controller.injectCSSFileFromUrl(
-                urlFile: WebUri(params['urlFile']?.toString() ?? ''),
+                urlFile: CygnusWebUri(params['urlFile']?.toString() ?? ''),
               );
               return 'CSS file injected';
             },
@@ -546,7 +546,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Injects CSS file from assets',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.injectCSSFileFromAsset,
+                CygnusPlatformWebViewControllerMethod.injectCSSFileFromAsset,
             parameters: {'assetFilePath': 'assets/css/style.css'},
             requiredParameters: ['assetFilePath'],
             execute: (controller, params) async {
@@ -570,7 +570,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Adds a JavaScript handler',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.addJavaScriptHandler,
+                CygnusPlatformWebViewControllerMethod.addJavaScriptHandler,
             parameters: {'handlerName': 'testHandler'},
             requiredParameters: ['handlerName'],
             execute: (controller, params) async {
@@ -587,7 +587,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Removes a JavaScript handler',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.removeJavaScriptHandler,
+                CygnusPlatformWebViewControllerMethod.removeJavaScriptHandler,
             parameters: {'handlerName': 'testHandler'},
             requiredParameters: ['handlerName'],
             execute: (controller, params) async {
@@ -600,7 +600,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Checks if handler exists',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.hasJavaScriptHandler,
+                CygnusPlatformWebViewControllerMethod.hasJavaScriptHandler,
             parameters: {'handlerName': 'testHandler'},
             requiredParameters: ['handlerName'],
             execute: (controller, params) async {
@@ -618,12 +618,12 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
         methods: [
           MethodEntry(
             description: 'Adds a user script',
-            methodEnum: PlatformInAppWebViewControllerMethod.addUserScript,
+            methodEnum: CygnusPlatformWebViewControllerMethod.addUserScript,
             parameters: {
               'source': 'console.log("User script executed");',
-              'injectionTime': EnumParameterValueHint<UserScriptInjectionTime>(
-                UserScriptInjectionTime.AT_DOCUMENT_END,
-                UserScriptInjectionTime.values.toList(),
+              'injectionTime': EnumParameterValueHint<CygnusUserScriptInjectionTime>(
+                CygnusUserScriptInjectionTime.AT_DOCUMENT_END,
+                CygnusUserScriptInjectionTime.values.toList(),
                 displayName: (e) => e.name(),
               ),
               'groupName': 'testGroup',
@@ -632,13 +632,13 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
             execute: (controller, params) async {
               final injectionTimeParam = params['injectionTime'];
               final injectionTime =
-                  injectionTimeParam is UserScriptInjectionTime
+                  injectionTimeParam is CygnusUserScriptInjectionTime
                   ? injectionTimeParam
                   : _parseUserScriptInjectionTime(
                       injectionTimeParam?.toString(),
                     );
               await controller.addUserScript(
-                userScript: UserScript(
+                userScript: CygnusUserScript(
                   source: params['source']?.toString() ?? '',
                   injectionTime: injectionTime,
                   groupName: params['groupName']?.toString(),
@@ -649,12 +649,12 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Removes a user script',
-            methodEnum: PlatformInAppWebViewControllerMethod.removeUserScript,
+            methodEnum: CygnusPlatformWebViewControllerMethod.removeUserScript,
             parameters: {
               'source': 'console.log("User script executed");',
-              'injectionTime': EnumParameterValueHint<UserScriptInjectionTime>(
-                UserScriptInjectionTime.AT_DOCUMENT_END,
-                UserScriptInjectionTime.values.toList(),
+              'injectionTime': EnumParameterValueHint<CygnusUserScriptInjectionTime>(
+                CygnusUserScriptInjectionTime.AT_DOCUMENT_END,
+                CygnusUserScriptInjectionTime.values.toList(),
                 displayName: (e) => e.name(),
               ),
               'groupName': 'testGroup',
@@ -663,12 +663,12 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
             execute: (controller, params) async {
               final injectionTimeParam = params['injectionTime'];
               final injectionTime =
-                  injectionTimeParam is UserScriptInjectionTime
+                  injectionTimeParam is CygnusUserScriptInjectionTime
                   ? injectionTimeParam
                   : _parseUserScriptInjectionTime(
                       injectionTimeParam?.toString(),
                     );
-              final script = UserScript(
+              final script = CygnusUserScript(
                 source: params['source']?.toString() ?? '',
                 injectionTime: injectionTime,
                 groupName: params['groupName']?.toString(),
@@ -681,7 +681,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Removes scripts by group name',
-            methodEnum: PlatformInAppWebViewControllerMethod
+            methodEnum: CygnusPlatformWebViewControllerMethod
                 .removeUserScriptsByGroupName,
             parameters: {'groupName': 'testGroup'},
             requiredParameters: ['groupName'],
@@ -695,7 +695,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Removes all user scripts',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.removeAllUserScripts,
+                CygnusPlatformWebViewControllerMethod.removeAllUserScripts,
             execute: (controller, params) async {
               await controller.removeAllUserScripts();
               return 'All user scripts removed';
@@ -703,12 +703,12 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Checks if user script exists',
-            methodEnum: PlatformInAppWebViewControllerMethod.hasUserScript,
+            methodEnum: CygnusPlatformWebViewControllerMethod.hasUserScript,
             parameters: {
               'source': 'console.log("test");',
-              'injectionTime': EnumParameterValueHint<UserScriptInjectionTime>(
-                UserScriptInjectionTime.AT_DOCUMENT_END,
-                UserScriptInjectionTime.values.toList(),
+              'injectionTime': EnumParameterValueHint<CygnusUserScriptInjectionTime>(
+                CygnusUserScriptInjectionTime.AT_DOCUMENT_END,
+                CygnusUserScriptInjectionTime.values.toList(),
                 displayName: (e) => e.name(),
               ),
             },
@@ -716,12 +716,12 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
             execute: (controller, params) async {
               final injectionTimeParam = params['injectionTime'];
               final injectionTime =
-                  injectionTimeParam is UserScriptInjectionTime
+                  injectionTimeParam is CygnusUserScriptInjectionTime
                   ? injectionTimeParam
                   : _parseUserScriptInjectionTime(
                       injectionTimeParam?.toString(),
                     );
-              final script = UserScript(
+              final script = CygnusUserScript(
                 source: params['source']?.toString() ?? '',
                 injectionTime: injectionTime,
               );
@@ -737,7 +737,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
         methods: [
           MethodEntry(
             description: 'Scrolls to position',
-            methodEnum: PlatformInAppWebViewControllerMethod.scrollTo,
+            methodEnum: CygnusPlatformWebViewControllerMethod.scrollTo,
             parameters: {'x': 0, 'y': 100, 'animated': true},
             execute: (controller, params) async {
               final x = (params['x'] as num?)?.toInt() ?? 0;
@@ -749,7 +749,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Scrolls by offset',
-            methodEnum: PlatformInAppWebViewControllerMethod.scrollBy,
+            methodEnum: CygnusPlatformWebViewControllerMethod.scrollBy,
             parameters: {'x': 0, 'y': 50, 'animated': true},
             execute: (controller, params) async {
               final x = (params['x'] as num?)?.toInt() ?? 0;
@@ -761,28 +761,28 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Gets horizontal scroll position',
-            methodEnum: PlatformInAppWebViewControllerMethod.getScrollX,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getScrollX,
             execute: (controller, params) async {
               return await controller.getScrollX();
             },
           ),
           MethodEntry(
             description: 'Gets vertical scroll position',
-            methodEnum: PlatformInAppWebViewControllerMethod.getScrollY,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getScrollY,
             execute: (controller, params) async {
               return await controller.getScrollY();
             },
           ),
           MethodEntry(
             description: 'Gets content height',
-            methodEnum: PlatformInAppWebViewControllerMethod.getContentHeight,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getContentHeight,
             execute: (controller, params) async {
               return await controller.getContentHeight();
             },
           ),
           MethodEntry(
             description: 'Gets content width',
-            methodEnum: PlatformInAppWebViewControllerMethod.getContentWidth,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getContentWidth,
             execute: (controller, params) async {
               return await controller.getContentWidth();
             },
@@ -790,7 +790,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Checks if can scroll vertically',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.canScrollVertically,
+                CygnusPlatformWebViewControllerMethod.canScrollVertically,
             execute: (controller, params) async {
               return await controller.canScrollVertically();
             },
@@ -798,14 +798,14 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Checks if can scroll horizontally',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.canScrollHorizontally,
+                CygnusPlatformWebViewControllerMethod.canScrollHorizontally,
             execute: (controller, params) async {
               return await controller.canScrollHorizontally();
             },
           ),
           MethodEntry(
             description: 'Scrolls page down',
-            methodEnum: PlatformInAppWebViewControllerMethod.pageDown,
+            methodEnum: CygnusPlatformWebViewControllerMethod.pageDown,
             parameters: {'bottom': false},
             execute: (controller, params) async {
               final bottom = params['bottom'] as bool? ?? false;
@@ -814,7 +814,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Scrolls page up',
-            methodEnum: PlatformInAppWebViewControllerMethod.pageUp,
+            methodEnum: CygnusPlatformWebViewControllerMethod.pageUp,
             parameters: {'top': false},
             execute: (controller, params) async {
               final top = params['top'] as bool? ?? false;
@@ -830,7 +830,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
         methods: [
           MethodEntry(
             description: 'Zooms by factor',
-            methodEnum: PlatformInAppWebViewControllerMethod.zoomBy,
+            methodEnum: CygnusPlatformWebViewControllerMethod.zoomBy,
             parameters: {'zoomFactor': 1.5, 'animated': true},
             requiredParameters: ['zoomFactor'],
             execute: (controller, params) async {
@@ -846,21 +846,21 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Zooms in',
-            methodEnum: PlatformInAppWebViewControllerMethod.zoomIn,
+            methodEnum: CygnusPlatformWebViewControllerMethod.zoomIn,
             execute: (controller, params) async {
               return await controller.zoomIn();
             },
           ),
           MethodEntry(
             description: 'Zooms out',
-            methodEnum: PlatformInAppWebViewControllerMethod.zoomOut,
+            methodEnum: CygnusPlatformWebViewControllerMethod.zoomOut,
             execute: (controller, params) async {
               return await controller.zoomOut();
             },
           ),
           MethodEntry(
             description: 'Gets current zoom scale',
-            methodEnum: PlatformInAppWebViewControllerMethod.getZoomScale,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getZoomScale,
             execute: (controller, params) async {
               return await controller.getZoomScale();
             },
@@ -874,11 +874,11 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
         methods: [
           MethodEntry(
             description: 'Sets WebView settings',
-            methodEnum: PlatformInAppWebViewControllerMethod.setSettings,
+            methodEnum: CygnusPlatformWebViewControllerMethod.setSettings,
             parameters: {'javaScriptEnabled': true, 'supportZoom': true},
             execute: (controller, params) async {
               await controller.setSettings(
-                settings: InAppWebViewSettings(
+                settings: CygnusWebViewSettings(
                   javaScriptEnabled: params['javaScriptEnabled'] as bool?,
                   supportZoom: params['supportZoom'] as bool?,
                 ),
@@ -888,7 +888,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Gets WebView settings',
-            methodEnum: PlatformInAppWebViewControllerMethod.getSettings,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getSettings,
             execute: (controller, params) async {
               final settings = await controller.getSettings();
               return 'JS enabled: ${settings?.javaScriptEnabled}';
@@ -896,13 +896,13 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Sets context menu',
-            methodEnum: PlatformInAppWebViewControllerMethod.setContextMenu,
+            methodEnum: CygnusPlatformWebViewControllerMethod.setContextMenu,
             parameters: {'menuItemTitle': 'Test Item'},
             execute: (controller, params) async {
               await controller.setContextMenu(
-                ContextMenu(
+                CygnusContextMenu(
                   menuItems: [
-                    ContextMenuItem(
+                    CygnusContextMenuItem(
                       id: 1,
                       title: params['menuItemTitle']?.toString() ?? 'Item',
                       action: () {},
@@ -915,14 +915,14 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Requests focus for WebView',
-            methodEnum: PlatformInAppWebViewControllerMethod.requestFocus,
+            methodEnum: CygnusPlatformWebViewControllerMethod.requestFocus,
             execute: (controller, params) async {
               return await controller.requestFocus();
             },
           ),
           MethodEntry(
             description: 'Clears focus from WebView',
-            methodEnum: PlatformInAppWebViewControllerMethod.clearFocus,
+            methodEnum: CygnusPlatformWebViewControllerMethod.clearFocus,
             execute: (controller, params) async {
               await controller.clearFocus();
               return 'Focus cleared';
@@ -937,11 +937,11 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
         methods: [
           MethodEntry(
             description: 'Takes a screenshot',
-            methodEnum: PlatformInAppWebViewControllerMethod.takeScreenshot,
+            methodEnum: CygnusPlatformWebViewControllerMethod.takeScreenshot,
             parameters: {
-              'compressFormat': EnumParameterValueHint<CompressFormat>(
-                CompressFormat.PNG,
-                CompressFormat.values.toList(),
+              'compressFormat': EnumParameterValueHint<CygnusCompressFormat>(
+                CygnusCompressFormat.PNG,
+                CygnusCompressFormat.values.toList(),
                 displayName: (e) => e.name(),
               ),
               'quality': 100,
@@ -952,9 +952,9 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
             },
             execute: (controller, params) async {
               final compressFormatParam = params['compressFormat'];
-              final compressFormat = compressFormatParam is CompressFormat
+              final compressFormat = compressFormatParam is CygnusCompressFormat
                   ? compressFormatParam
-                  : CompressFormat.PNG;
+                  : CygnusCompressFormat.PNG;
               final quality = (params['quality'] as num?)?.toInt() ?? 100;
               final snapshotWidthParam = params['snapshotWidth'];
               final snapshotWidth = snapshotWidthParam is ParameterValueHint
@@ -962,7 +962,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
                   : (snapshotWidthParam as num?)?.toDouble();
 
               final screenshot = await controller.takeScreenshot(
-                screenshotConfiguration: ScreenshotConfiguration(
+                screenshotConfiguration: CygnusScreenshotConfiguration(
                   compressFormat: compressFormat,
                   quality: quality,
                   snapshotWidth: snapshotWidth,
@@ -976,7 +976,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Prints current page',
-            methodEnum: PlatformInAppWebViewControllerMethod.printCurrentPage,
+            methodEnum: CygnusPlatformWebViewControllerMethod.printCurrentPage,
             execute: (controller, params) async {
               final printJob = await controller.printCurrentPage();
               return printJob != null
@@ -986,7 +986,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Creates PDF from page',
-            methodEnum: PlatformInAppWebViewControllerMethod.createPdf,
+            methodEnum: CygnusPlatformWebViewControllerMethod.createPdf,
             execute: (controller, params) async {
               final pdf = await controller.createPdf();
               if (pdf != null) {
@@ -1004,7 +1004,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
         methods: [
           MethodEntry(
             description: 'Clears navigation history',
-            methodEnum: PlatformInAppWebViewControllerMethod.clearHistory,
+            methodEnum: CygnusPlatformWebViewControllerMethod.clearHistory,
             execute: (controller, params) async {
               await controller.clearHistory();
               return 'History cleared';
@@ -1012,7 +1012,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Clears form data',
-            methodEnum: PlatformInAppWebViewControllerMethod.clearFormData,
+            methodEnum: CygnusPlatformWebViewControllerMethod.clearFormData,
             execute: (controller, params) async {
               await controller.clearFormData();
               return 'Form data cleared';
@@ -1021,7 +1021,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Clears SSL preferences',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.clearSslPreferences,
+                CygnusPlatformWebViewControllerMethod.clearSslPreferences,
             execute: (controller, params) async {
               await controller.clearSslPreferences();
               return 'SSL preferences cleared';
@@ -1036,7 +1036,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
         methods: [
           MethodEntry(
             description: 'Pauses WebView',
-            methodEnum: PlatformInAppWebViewControllerMethod.pause,
+            methodEnum: CygnusPlatformWebViewControllerMethod.pause,
             execute: (controller, params) async {
               await controller.pause();
               return 'WebView paused';
@@ -1044,7 +1044,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Resumes WebView',
-            methodEnum: PlatformInAppWebViewControllerMethod.resume,
+            methodEnum: CygnusPlatformWebViewControllerMethod.resume,
             execute: (controller, params) async {
               await controller.resume();
               return 'WebView resumed';
@@ -1052,7 +1052,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Pauses JavaScript timers',
-            methodEnum: PlatformInAppWebViewControllerMethod.pauseTimers,
+            methodEnum: CygnusPlatformWebViewControllerMethod.pauseTimers,
             execute: (controller, params) async {
               await controller.pauseTimers();
               return 'Timers paused';
@@ -1060,7 +1060,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Resumes JavaScript timers',
-            methodEnum: PlatformInAppWebViewControllerMethod.resumeTimers,
+            methodEnum: CygnusPlatformWebViewControllerMethod.resumeTimers,
             execute: (controller, params) async {
               await controller.resumeTimers();
               return 'Timers resumed';
@@ -1076,7 +1076,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Creates a web message channel',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.createWebMessageChannel,
+                CygnusPlatformWebViewControllerMethod.createWebMessageChannel,
             execute: (controller, params) async {
               final channel = await controller.createWebMessageChannel();
               return channel != null
@@ -1086,14 +1086,14 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Posts a web message',
-            methodEnum: PlatformInAppWebViewControllerMethod.postWebMessage,
+            methodEnum: CygnusPlatformWebViewControllerMethod.postWebMessage,
             parameters: {'message': 'Hello from Flutter', 'targetOrigin': '*'},
             requiredParameters: ['message'],
             execute: (controller, params) async {
               final targetOrigin = params['targetOrigin']?.toString();
               await controller.postWebMessage(
-                message: WebMessage(data: params['message']?.toString()),
-                targetOrigin: WebUri(
+                message: CygnusWebMessage(data: params['message']?.toString()),
+                targetOrigin: CygnusWebUri(
                   targetOrigin?.isNotEmpty == true ? targetOrigin! : '*',
                 ),
               );
@@ -1103,12 +1103,12 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Adds a web message listener',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.addWebMessageListener,
+                CygnusPlatformWebViewControllerMethod.addWebMessageListener,
             parameters: {'jsObjectName': 'testListener'},
             requiredParameters: ['jsObjectName'],
             execute: (controller, params) async {
               await controller.addWebMessageListener(
-                WebMessageListener(
+                CygnusWebMessageListener(
                   jsObjectName: params['jsObjectName']?.toString() ?? '',
                   onPostMessage:
                       (message, sourceOrigin, isMainFrame, replyProxy) {
@@ -1122,11 +1122,11 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Checks if listener exists',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.hasWebMessageListener,
+                CygnusPlatformWebViewControllerMethod.hasWebMessageListener,
             parameters: {'jsObjectName': 'testListener'},
             requiredParameters: ['jsObjectName'],
             execute: (controller, params) async {
-              final listener = WebMessageListener(
+              final listener = CygnusWebMessageListener(
                 jsObjectName: params['jsObjectName']?.toString() ?? '',
                 onPostMessage:
                     (message, sourceOrigin, isMainFrame, replyProxy) {},
@@ -1143,7 +1143,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
         methods: [
           MethodEntry(
             description: 'Checks if in fullscreen',
-            methodEnum: PlatformInAppWebViewControllerMethod.isInFullscreen,
+            methodEnum: CygnusPlatformWebViewControllerMethod.isInFullscreen,
             execute: (controller, params) async {
               return await controller.isInFullscreen();
             },
@@ -1151,7 +1151,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Pauses all media',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.pauseAllMediaPlayback,
+                CygnusPlatformWebViewControllerMethod.pauseAllMediaPlayback,
             execute: (controller, params) async {
               await controller.pauseAllMediaPlayback();
               return 'Media paused';
@@ -1159,7 +1159,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Suspends media playback',
-            methodEnum: PlatformInAppWebViewControllerMethod
+            methodEnum: CygnusPlatformWebViewControllerMethod
                 .setAllMediaPlaybackSuspended,
             parameters: {'suspended': true},
             execute: (controller, params) async {
@@ -1172,7 +1172,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Closes media presentations',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.closeAllMediaPresentations,
+                CygnusPlatformWebViewControllerMethod.closeAllMediaPresentations,
             execute: (controller, params) async {
               await controller.closeAllMediaPresentations();
               return 'Media presentations closed';
@@ -1181,7 +1181,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Gets media playback state',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.requestMediaPlaybackState,
+                CygnusPlatformWebViewControllerMethod.requestMediaPlaybackState,
             execute: (controller, params) async {
               final state = await controller.requestMediaPlaybackState();
               return state?.toString() ?? 'Unknown state';
@@ -1189,21 +1189,21 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Checks if playing audio',
-            methodEnum: PlatformInAppWebViewControllerMethod.isPlayingAudio,
+            methodEnum: CygnusPlatformWebViewControllerMethod.isPlayingAudio,
             execute: (controller, params) async {
               return await controller.isPlayingAudio();
             },
           ),
           MethodEntry(
             description: 'Checks if muted',
-            methodEnum: PlatformInAppWebViewControllerMethod.isMuted,
+            methodEnum: CygnusPlatformWebViewControllerMethod.isMuted,
             execute: (controller, params) async {
               return await controller.isMuted();
             },
           ),
           MethodEntry(
             description: 'Sets mute state',
-            methodEnum: PlatformInAppWebViewControllerMethod.setMuted,
+            methodEnum: CygnusPlatformWebViewControllerMethod.setMuted,
             parameters: {'muted': true},
             execute: (controller, params) async {
               await controller.setMuted(
@@ -1222,7 +1222,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Gets camera capture state',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.getCameraCaptureState,
+                CygnusPlatformWebViewControllerMethod.getCameraCaptureState,
             execute: (controller, params) async {
               final state = await controller.getCameraCaptureState();
               return state?.toString() ?? 'Unknown state';
@@ -1231,18 +1231,18 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Sets camera capture state',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.setCameraCaptureState,
+                CygnusPlatformWebViewControllerMethod.setCameraCaptureState,
             parameters: {
-              'state': EnumParameterValueHint<MediaCaptureState>(
-                MediaCaptureState.ACTIVE,
-                MediaCaptureState.values.toList(),
+              'state': EnumParameterValueHint<CygnusMediaCaptureState>(
+                CygnusMediaCaptureState.ACTIVE,
+                CygnusMediaCaptureState.values.toList(),
                 displayName: (e) => e.name(),
               ),
             },
             requiredParameters: ['state'],
             execute: (controller, params) async {
               final stateParam = params['state'];
-              final state = stateParam is MediaCaptureState
+              final state = stateParam is CygnusMediaCaptureState
                   ? stateParam
                   : _parseMediaCaptureState(stateParam?.toString());
               await controller.setCameraCaptureState(state: state);
@@ -1252,7 +1252,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Gets microphone capture state',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.getMicrophoneCaptureState,
+                CygnusPlatformWebViewControllerMethod.getMicrophoneCaptureState,
             execute: (controller, params) async {
               final state = await controller.getMicrophoneCaptureState();
               return state?.toString() ?? 'Unknown state';
@@ -1261,18 +1261,18 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Sets microphone capture state',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.setMicrophoneCaptureState,
+                CygnusPlatformWebViewControllerMethod.setMicrophoneCaptureState,
             parameters: {
-              'state': EnumParameterValueHint<MediaCaptureState>(
-                MediaCaptureState.ACTIVE,
-                MediaCaptureState.values.toList(),
+              'state': EnumParameterValueHint<CygnusMediaCaptureState>(
+                CygnusMediaCaptureState.ACTIVE,
+                CygnusMediaCaptureState.values.toList(),
                 displayName: (e) => e.name(),
               ),
             },
             requiredParameters: ['state'],
             execute: (controller, params) async {
               final stateParam = params['state'];
-              final state = stateParam is MediaCaptureState
+              final state = stateParam is CygnusMediaCaptureState
                   ? stateParam
                   : _parseMediaCaptureState(stateParam?.toString());
               await controller.setMicrophoneCaptureState(state: state);
@@ -1288,7 +1288,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
         methods: [
           MethodEntry(
             description: 'Checks if secure context',
-            methodEnum: PlatformInAppWebViewControllerMethod.isSecureContext,
+            methodEnum: CygnusPlatformWebViewControllerMethod.isSecureContext,
             execute: (controller, params) async {
               return await controller.isSecureContext();
             },
@@ -1296,7 +1296,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Checks if only secure content',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.hasOnlySecureContent,
+                CygnusPlatformWebViewControllerMethod.hasOnlySecureContent,
             execute: (controller, params) async {
               return await controller.hasOnlySecureContent();
             },
@@ -1310,7 +1310,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
         methods: [
           MethodEntry(
             description: 'Saves WebView state',
-            methodEnum: PlatformInAppWebViewControllerMethod.saveState,
+            methodEnum: CygnusPlatformWebViewControllerMethod.saveState,
             execute: (controller, params) async {
               final state = await controller.saveState();
               return state != null
@@ -1320,7 +1320,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Restores WebView state',
-            methodEnum: PlatformInAppWebViewControllerMethod.restoreState,
+            methodEnum: CygnusPlatformWebViewControllerMethod.restoreState,
             execute: (controller, params) async {
               // Would need saved state to restore
               return 'No state to restore';
@@ -1328,7 +1328,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Saves page as web archive',
-            methodEnum: PlatformInAppWebViewControllerMethod.saveWebArchive,
+            methodEnum: CygnusPlatformWebViewControllerMethod.saveWebArchive,
             parameters: {'filePath': '/tmp/archive.mht', 'autoname': true},
             requiredParameters: ['filePath'],
             execute: (controller, params) async {
@@ -1346,7 +1346,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Creates web archive data',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.createWebArchiveData,
+                CygnusPlatformWebViewControllerMethod.createWebArchiveData,
             execute: (controller, params) async {
               final data = await controller.createWebArchiveData();
               return data != null ? 'Archive: ${data.length} bytes' : 'Failed';
@@ -1361,21 +1361,21 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
         methods: [
           MethodEntry(
             description: 'Gets the WebView ID',
-            methodEnum: PlatformInAppWebViewControllerMethod.getViewId,
+            methodEnum: CygnusPlatformWebViewControllerMethod.getViewId,
             execute: (controller, params) async {
               return controller.getViewId();
             },
           ),
           MethodEntry(
             description: 'Starts Safe Browsing',
-            methodEnum: PlatformInAppWebViewControllerMethod.startSafeBrowsing,
+            methodEnum: CygnusPlatformWebViewControllerMethod.startSafeBrowsing,
             execute: (controller, params) async {
               return await controller.startSafeBrowsing();
             },
           ),
           MethodEntry(
             description: 'Opens DevTools',
-            methodEnum: PlatformInAppWebViewControllerMethod.openDevTools,
+            methodEnum: CygnusPlatformWebViewControllerMethod.openDevTools,
             execute: (controller, params) async {
               await controller.openDevTools();
               return 'DevTools opened';
@@ -1384,7 +1384,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Gets focused node href',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.requestFocusNodeHref,
+                CygnusPlatformWebViewControllerMethod.requestFocusNodeHref,
             execute: (controller, params) async {
               final result = await controller.requestFocusNodeHref();
               return result?.url ?? 'No focused node';
@@ -1392,7 +1392,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           ),
           MethodEntry(
             description: 'Gets focused image URL',
-            methodEnum: PlatformInAppWebViewControllerMethod.requestImageRef,
+            methodEnum: CygnusPlatformWebViewControllerMethod.requestImageRef,
             execute: (controller, params) async {
               final result = await controller.requestImageRef();
               return result?.url ?? 'No image focused';
@@ -1401,8 +1401,8 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
           MethodEntry(
             description: 'Checks interface support',
             methodEnum:
-                PlatformInAppWebViewControllerMethod.isInterfaceSupported,
-            parameters: {'interface': WebViewInterface.ICoreWebView2.name()},
+                CygnusPlatformWebViewControllerMethod.isInterfaceSupported,
+            parameters: {'interface': CygnusWebViewInterface.ICoreWebView2.name()},
             requiredParameters: ['interface'],
             execute: (controller, params) async {
               return await controller.isInterfaceSupported(
@@ -1631,7 +1631,7 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
     final historyEntries = _methodHistory[method.name] ?? const [];
     final supportedPlatforms = SupportCheckHelper.supportedPlatformsForMethod(
       method: method.methodEnum,
-      checker: InAppWebViewController.isMethodSupported,
+      checker: CygnusWebViewController.isMethodSupported,
     );
 
     return Container(
@@ -1708,33 +1708,33 @@ class _MethodTesterWidgetState extends State<MethodTesterWidget> {
     );
   }
 
-  UserScriptInjectionTime _parseUserScriptInjectionTime(String? value) {
+  CygnusUserScriptInjectionTime _parseUserScriptInjectionTime(String? value) {
     if (value == null || value.isEmpty) {
-      return UserScriptInjectionTime.AT_DOCUMENT_END;
+      return CygnusUserScriptInjectionTime.AT_DOCUMENT_END;
     }
-    return UserScriptInjectionTime.values.firstWhere(
+    return CygnusUserScriptInjectionTime.values.firstWhere(
       (entry) => entry.name().toLowerCase() == value.toLowerCase(),
-      orElse: () => UserScriptInjectionTime.AT_DOCUMENT_END,
+      orElse: () => CygnusUserScriptInjectionTime.AT_DOCUMENT_END,
     );
   }
 
-  MediaCaptureState _parseMediaCaptureState(String? value) {
+  CygnusMediaCaptureState _parseMediaCaptureState(String? value) {
     if (value == null || value.isEmpty) {
-      return MediaCaptureState.ACTIVE;
+      return CygnusMediaCaptureState.ACTIVE;
     }
-    return MediaCaptureState.values.firstWhere(
+    return CygnusMediaCaptureState.values.firstWhere(
       (entry) => entry.name().toLowerCase() == value.toLowerCase(),
-      orElse: () => MediaCaptureState.ACTIVE,
+      orElse: () => CygnusMediaCaptureState.ACTIVE,
     );
   }
 
-  WebViewInterface _parseWebViewInterface(String? value) {
+  CygnusWebViewInterface _parseWebViewInterface(String? value) {
     if (value == null || value.isEmpty) {
-      return WebViewInterface.ICoreWebView2;
+      return CygnusWebViewInterface.ICoreWebView2;
     }
-    return WebViewInterface.values.firstWhere(
+    return CygnusWebViewInterface.values.firstWhere(
       (entry) => entry.name().toLowerCase() == value.toLowerCase(),
-      orElse: () => WebViewInterface.ICoreWebView2,
+      orElse: () => CygnusWebViewInterface.ICoreWebView2,
     );
   }
 

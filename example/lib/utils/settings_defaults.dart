@@ -1,21 +1,21 @@
 import 'package:cygnus_core/cygnus_core.dart';
 
-InAppWebViewSettings defaultInAppWebViewSettings() {
-  return InAppWebViewSettings();
+CygnusWebViewSettings defaultWebViewSettings() {
+  return CygnusWebViewSettings();
 }
 
-WebViewEnvironmentSettings defaultWebViewEnvironmentSettings() {
-  return WebViewEnvironmentSettings();
+CygnusWebViewEnvironmentSettings defaultWebViewEnvironmentSettings() {
+  return CygnusWebViewEnvironmentSettings();
 }
 
-Map<String, dynamic> defaultInAppWebViewSettingsMap() {
-  return defaultInAppWebViewSettings().toMap(
-    enumMethod: EnumMethod.nativeValue,
+Map<String, dynamic> defaultWebViewSettingsMap() {
+  return defaultWebViewSettings().toMap(
+    enumMethod: CygnusEnumMethod.nativeValue,
   );
 }
 
 Map<String, dynamic> defaultWebViewEnvironmentSettingsMap() {
   return defaultWebViewEnvironmentSettings().toMap(
-    enumMethod: EnumMethod.nativeValue,
+    enumMethod: CygnusEnumMethod.nativeValue,
   );
 }

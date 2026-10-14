@@ -1,13 +1,13 @@
 part of 'main.dart';
 
 void programmaticScroll() {
-  final shouldSkip = !InAppWebViewController.isMethodSupported(
-    PlatformInAppWebViewControllerMethod.scrollTo,
+  final shouldSkip = !CygnusWebViewController.isMethodSupported(
+    CygnusPlatformWebViewControllerMethod.scrollTo,
   );
 
   skippableGroup('Programmatic Scroll', () {
-    final shouldSkipTest1 = !InAppWebViewController.isMethodSupported(
-      PlatformInAppWebViewControllerMethod.scrollTo,
+    final shouldSkipTest1 = !CygnusWebViewController.isMethodSupported(
+      CygnusPlatformWebViewControllerMethod.scrollTo,
     );
 
     skippableTestWidgets('set and get scroll position', (
@@ -39,18 +39,18 @@ void programmaticScroll() {
       );
 
       var url = !kIsWeb
-          ? WebUri('data:text/html;charset=utf-8;base64,$scrollTestPageBase64')
+          ? CygnusWebUri('data:text/html;charset=utf-8;base64,$scrollTestPageBase64')
           : TEST_WEB_PLATFORM_URL_1;
 
       final Completer<void> pageLoaded = Completer<void>();
-      final Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      final Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
-            initialUrlRequest: URLRequest(url: url),
+          child: CygnusWebView(
+            initialUrlRequest: CygnusURLRequest(url: url),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
@@ -61,7 +61,7 @@ void programmaticScroll() {
         ),
       );
 
-      final InAppWebViewController controller =
+      final CygnusWebViewController controller =
           await controllerCompleter.future;
       await tester.pump();
       await pageLoaded.future;
@@ -88,8 +88,8 @@ void programmaticScroll() {
 
     final shouldSkipTest2 =
         kIsWeb ||
-        !InAppWebViewSettings.isPropertySupported(
-          InAppWebViewSettingsProperty.useHybridComposition,
+        !CygnusWebViewSettings.isPropertySupported(
+          CygnusWebViewSettingsProperty.useHybridComposition,
         );
 
     testWidgets(
@@ -121,22 +121,22 @@ void programmaticScroll() {
         );
 
         final Completer<void> pageLoaded = Completer<void>();
-        final Completer<InAppWebViewController> controllerCompleter =
-            Completer<InAppWebViewController>();
+        final Completer<CygnusWebViewController> controllerCompleter =
+            Completer<CygnusWebViewController>();
 
         await tester.pumpWidget(
           Directionality(
             textDirection: TextDirection.ltr,
-            child: InAppWebView(
-              initialUrlRequest: URLRequest(
-                url: WebUri(
+            child: CygnusWebView(
+              initialUrlRequest: CygnusURLRequest(
+                url: CygnusWebUri(
                   'data:text/html;charset=utf-8;base64,$scrollTestPageBase64',
                 ),
               ),
               onWebViewCreated: (controller) {
                 controllerCompleter.complete(controller);
               },
-              initialSettings: InAppWebViewSettings(
+              initialSettings: CygnusWebViewSettings(
                 useHybridComposition: false,
               ),
               onLoadStop: (controller, url) {
@@ -146,7 +146,7 @@ void programmaticScroll() {
           ),
         );
 
-        final InAppWebViewController controller =
+        final CygnusWebViewController controller =
             await controllerCompleter.future;
         await pageLoaded.future;
         await controller.scrollTo(x: 0, y: 0);

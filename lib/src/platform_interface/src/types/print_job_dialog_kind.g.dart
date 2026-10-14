@@ -6,34 +6,34 @@ part of 'print_job_dialog_kind.dart';
 // ExchangeableEnumGenerator
 // **************************************************************************
 
-///Class representing the print dialog kind used by a [PlatformPrintJobController].
-class PrintJobDialogKind {
+///Class representing the print dialog kind used by a [CygnusPlatformPrintJobController].
+class CygnusPrintJobDialogKind {
   final int _value;
   final int? _nativeValue;
-  const PrintJobDialogKind._internal(this._value, this._nativeValue);
+  const CygnusPrintJobDialogKind._internal(this._value, this._nativeValue);
   // ignore: unused_element
-  factory PrintJobDialogKind._internalMultiPlatform(
+  factory CygnusPrintJobDialogKind._internalMultiPlatform(
     int value,
     Function nativeValue,
-  ) => PrintJobDialogKind._internal(value, nativeValue());
+  ) => CygnusPrintJobDialogKind._internal(value, nativeValue());
 
   ///Use the browser print dialog UI.
-  static const BROWSER = PrintJobDialogKind._internal(0, 0);
+  static const BROWSER = CygnusPrintJobDialogKind._internal(0, 0);
 
   ///Use the system print dialog UI.
-  static const SYSTEM = PrintJobDialogKind._internal(1, 1);
+  static const SYSTEM = CygnusPrintJobDialogKind._internal(1, 1);
 
-  ///Set of all values of [PrintJobDialogKind].
-  static final Set<PrintJobDialogKind> values = [
-    PrintJobDialogKind.BROWSER,
-    PrintJobDialogKind.SYSTEM,
+  ///Set of all values of [CygnusPrintJobDialogKind].
+  static final Set<CygnusPrintJobDialogKind> values = [
+    CygnusPrintJobDialogKind.BROWSER,
+    CygnusPrintJobDialogKind.SYSTEM,
   ].toSet();
 
-  ///Gets a possible [PrintJobDialogKind] instance from [int] value.
-  static PrintJobDialogKind? fromValue(int? value) {
+  ///Gets a possible [CygnusPrintJobDialogKind] instance from [int] value.
+  static CygnusPrintJobDialogKind? fromValue(int? value) {
     if (value != null) {
       try {
-        return PrintJobDialogKind.values.firstWhere(
+        return CygnusPrintJobDialogKind.values.firstWhere(
           (element) => element.toValue() == value,
         );
       } catch (e) {
@@ -43,11 +43,11 @@ class PrintJobDialogKind {
     return null;
   }
 
-  ///Gets a possible [PrintJobDialogKind] instance from a native value.
-  static PrintJobDialogKind? fromNativeValue(int? value) {
+  ///Gets a possible [CygnusPrintJobDialogKind] instance from a native value.
+  static CygnusPrintJobDialogKind? fromNativeValue(int? value) {
     if (value != null) {
       try {
-        return PrintJobDialogKind.values.firstWhere(
+        return CygnusPrintJobDialogKind.values.firstWhere(
           (element) => element.toNativeValue() == value,
         );
       } catch (e) {
@@ -57,15 +57,15 @@ class PrintJobDialogKind {
     return null;
   }
 
-  /// Gets a possible [PrintJobDialogKind] instance value with name [name].
+  /// Gets a possible [CygnusPrintJobDialogKind] instance value with name [name].
   ///
-  /// Goes through [PrintJobDialogKind.values] looking for a value with
-  /// name [name], as reported by [PrintJobDialogKind.name].
+  /// Goes through [CygnusPrintJobDialogKind.values] looking for a value with
+  /// name [name], as reported by [CygnusPrintJobDialogKind.name].
   /// Returns the first value with the given name, otherwise `null`.
-  static PrintJobDialogKind? byName(String? name) {
+  static CygnusPrintJobDialogKind? byName(String? name) {
     if (name != null) {
       try {
-        return PrintJobDialogKind.values.firstWhere(
+        return CygnusPrintJobDialogKind.values.firstWhere(
           (element) => element.name() == name,
         );
       } catch (e) {
@@ -75,7 +75,7 @@ class PrintJobDialogKind {
     return null;
   }
 
-  /// Creates a map from the names of [PrintJobDialogKind] values to the values.
+  /// Creates a map from the names of [CygnusPrintJobDialogKind] values to the values.
   ///
   /// The collection that this method is called on is expected to have
   /// values with distinct names, like the `values` list of an enum class.
@@ -83,9 +83,10 @@ class PrintJobDialogKind {
   /// so if two or more values have the same name (either being the
   /// same value, or being values of different enum type), at most one of
   /// them will be represented in the returned map.
-  static Map<String, PrintJobDialogKind> asNameMap() =>
-      <String, PrintJobDialogKind>{
-        for (final value in PrintJobDialogKind.values) value.name(): value,
+  static Map<String, CygnusPrintJobDialogKind> asNameMap() =>
+      <String, CygnusPrintJobDialogKind>{
+        for (final value in CygnusPrintJobDialogKind.values)
+          value.name(): value,
       };
 
   ///Gets [int] value.

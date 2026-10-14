@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 void audioPlaybackPolicy() {
-  final shouldSkip = !InAppWebViewSettings.isPropertySupported(
-    InAppWebViewSettingsProperty.mediaPlaybackRequiresUserGesture,
+  final shouldSkip = !CygnusWebViewSettings.isPropertySupported(
+    CygnusWebViewSettingsProperty.mediaPlaybackRequiresUserGesture,
   );
 
   skippableGroup('Audio playback policy', () {
@@ -40,25 +40,25 @@ void audioPlaybackPolicy() {
     });
 
     skippableTestWidgets('Auto media playback', (WidgetTester tester) async {
-      Completer<InAppWebViewController> controllerCompleter =
-          Completer<InAppWebViewController>();
+      Completer<CygnusWebViewController> controllerCompleter =
+          Completer<CygnusWebViewController>();
       Completer<void> pageStarted = Completer<void>();
       Completer<void> pageLoaded = Completer<void>();
 
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(
-              url: WebUri(
+            initialUrlRequest: CygnusURLRequest(
+              url: CygnusWebUri(
                 'data:text/html;charset=utf-8;base64,$audioTestBase64',
               ),
             ),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
-            initialSettings: InAppWebViewSettings(
+            initialSettings: CygnusWebViewSettings(
               javaScriptEnabled: true,
               mediaPlaybackRequiresUserGesture: false,
             ),
@@ -71,7 +71,7 @@ void audioPlaybackPolicy() {
           ),
         ),
       );
-      InAppWebViewController controller = await controllerCompleter.future;
+      CygnusWebViewController controller = await controllerCompleter.future;
       await pageStarted.future;
       await pageLoaded.future;
 
@@ -80,7 +80,7 @@ void audioPlaybackPolicy() {
       );
       expect(isPaused, false);
 
-      controllerCompleter = Completer<InAppWebViewController>();
+      controllerCompleter = Completer<CygnusWebViewController>();
       pageStarted = Completer<void>();
       pageLoaded = Completer<void>();
 
@@ -88,17 +88,17 @@ void audioPlaybackPolicy() {
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
-          child: InAppWebView(
+          child: CygnusWebView(
             key: GlobalKey(),
-            initialUrlRequest: URLRequest(
-              url: WebUri(
+            initialUrlRequest: CygnusURLRequest(
+              url: CygnusWebUri(
                 'data:text/html;charset=utf-8;base64,$audioTestBase64',
               ),
             ),
             onWebViewCreated: (controller) {
               controllerCompleter.complete(controller);
             },
-            initialSettings: InAppWebViewSettings(
+            initialSettings: CygnusWebViewSettings(
               javaScriptEnabled: true,
               mediaPlaybackRequiresUserGesture: true,
             ),

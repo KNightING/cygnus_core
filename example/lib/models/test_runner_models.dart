@@ -71,7 +71,7 @@ class ExecutableTestCase {
   final String title;
   final String description;
   final TestCategory category;
-  final Future<TestResult> Function(InAppWebViewController? controller) execute;
+  final Future<TestResult> Function(CygnusWebViewController? controller) execute;
   final List<String> supportedPlatforms;
   final dynamic supportedMethod;
   final bool Function(dynamic method, {TargetPlatform? platform})?

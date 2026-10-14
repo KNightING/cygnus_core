@@ -7,12 +7,12 @@ part of 'user_script.dart';
 // **************************************************************************
 
 ///Class that represents a script that the `WebView` injects into the web page.
-class UserScript {
+class CygnusUserScript {
   ///A set of matching rules for the allowed origins.
   ///Adding `'*'` as an allowed origin or setting this to `null`, it means it will allow every origin.
   ///Instead, an empty [Set] will block every origin.
   ///
-  ///**NOTE for Android**: each origin pattern MUST follow the table rule of [PlatformInAppWebViewController.addWebMessageListener].
+  ///**NOTE for Android**: each origin pattern MUST follow the table rule of [CygnusPlatformWebViewController.addWebMessageListener].
   ///
   ///**NOTE for iOS, macOS, Windows**: each origin pattern will be used as a
   ///Regular Expression Pattern that will be used on JavaScript side using [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).
@@ -25,12 +25,12 @@ class UserScript {
   late Set<String> allowedOriginRules;
 
   ///A scope of execution in which to evaluate the script to prevent conflicts between different scripts.
-  ///For more information about content worlds, see [ContentWorld].
+  ///For more information about content worlds, see [CygnusContentWorld].
   ///
   ///**NOTE for Android**: because of how a Content World is implemented on Android, if [forMainFrameOnly] is `true`,
-  ///the [source] inside a specific Content World that is not [ContentWorld.PAGE] will not be executed.
-  ///See [ContentWorld] for more details.
-  late ContentWorld contentWorld;
+  ///the [source] inside a specific Content World that is not [CygnusContentWorld.PAGE] will not be executed.
+  ///See [CygnusContentWorld] for more details.
+  late CygnusContentWorld contentWorld;
 
   ///A Boolean value that indicates whether to inject the script into the main frame.
   ///Specify `true` to inject the script only into the main frame, or false to inject it into all frames.
@@ -47,7 +47,7 @@ class UserScript {
   String? groupName;
 
   ///The time at which to inject the script into the `WebView`.
-  UserScriptInjectionTime injectionTime;
+  CygnusUserScriptInjectionTime injectionTime;
 
   ///Use [forMainFrameOnly] instead.
   @Deprecated('Use forMainFrameOnly instead')
@@ -55,42 +55,43 @@ class UserScript {
 
   ///The script’s source code.
   String source;
-  UserScript({
+  CygnusUserScript({
     this.groupName,
     required this.source,
     required this.injectionTime,
     @Deprecated("Use forMainFrameOnly instead") this.iosForMainFrameOnly,
     this.forMainFrameOnly = true,
     Set<String>? allowedOriginRules,
-    ContentWorld? contentWorld,
+    CygnusContentWorld? contentWorld,
   }) {
     this.allowedOriginRules = allowedOriginRules != null
         ? allowedOriginRules
         : Set.from(["*"]);
-    this.contentWorld = contentWorld ?? ContentWorld.PAGE;
+    this.contentWorld = contentWorld ?? CygnusContentWorld.PAGE;
     this.forMainFrameOnly = this.iosForMainFrameOnly != null
         ? this.iosForMainFrameOnly!
         : this.forMainFrameOnly;
   }
 
-  ///Gets a possible [UserScript] instance from a [Map] value.
-  static UserScript? fromMap(
+  ///Gets a possible [CygnusUserScript] instance from a [Map] value.
+  static CygnusUserScript? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = UserScript(
+    final instance = CygnusUserScript(
       groupName: map['groupName'],
-      injectionTime: switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => UserScriptInjectionTime.fromNativeValue(
+      injectionTime: switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue =>
+          CygnusUserScriptInjectionTime.fromNativeValue(map['injectionTime']),
+        CygnusEnumMethod.value => CygnusUserScriptInjectionTime.fromValue(
           map['injectionTime'],
         ),
-        EnumMethod.value => UserScriptInjectionTime.fromValue(
+        CygnusEnumMethod.name => CygnusUserScriptInjectionTime.byName(
           map['injectionTime'],
         ),
-        EnumMethod.name => UserScriptInjectionTime.byName(map['injectionTime']),
       }!,
       iosForMainFrameOnly: map['forMainFrameOnly'],
       source: map['source'],
@@ -101,7 +102,7 @@ class UserScript {
       );
     }
     if (map['contentWorld'] != null) {
-      instance.contentWorld = ContentWorld.fromMap(
+      instance.contentWorld = CygnusContentWorld.fromMap(
         map['contentWorld']?.cast<String, dynamic>(),
         enumMethod: enumMethod,
       )!;
@@ -113,16 +114,16 @@ class UserScript {
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "allowedOriginRules": allowedOriginRules.toList(),
       "contentWorld": contentWorld.toMap(enumMethod: enumMethod),
       "forMainFrameOnly": forMainFrameOnly,
       "groupName": groupName,
-      "injectionTime": switch (enumMethod ?? EnumMethod.nativeValue) {
-        EnumMethod.nativeValue => injectionTime.toNativeValue(),
-        EnumMethod.value => injectionTime.toValue(),
-        EnumMethod.name => injectionTime.name(),
+      "injectionTime": switch (enumMethod ?? CygnusEnumMethod.nativeValue) {
+        CygnusEnumMethod.nativeValue => injectionTime.toNativeValue(),
+        CygnusEnumMethod.value => injectionTime.toValue(),
+        CygnusEnumMethod.name => injectionTime.name(),
       },
       "source": source,
     };
@@ -135,6 +136,6 @@ class UserScript {
 
   @override
   String toString() {
-    return 'UserScript{allowedOriginRules: $allowedOriginRules, contentWorld: $contentWorld, forMainFrameOnly: $forMainFrameOnly, groupName: $groupName, injectionTime: $injectionTime, source: $source}';
+    return 'CygnusUserScript{allowedOriginRules: $allowedOriginRules, contentWorld: $contentWorld, forMainFrameOnly: $forMainFrameOnly, groupName: $groupName, injectionTime: $injectionTime, source: $source}';
   }
 }

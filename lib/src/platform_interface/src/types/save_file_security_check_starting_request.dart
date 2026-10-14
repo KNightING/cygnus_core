@@ -5,11 +5,11 @@ import 'enum_method.dart';
 
 part 'save_file_security_check_starting_request.g.dart';
 
-///Class that represents the request used by the [PlatformWebViewCreationParams.onSaveFileSecurityCheckStarting] event.
+///Class that represents the request used by the [CygnusPlatformWebViewCreationParams.onSaveFileSecurityCheckStarting] event.
 @ExchangeableObject()
-class SaveFileSecurityCheckStartingRequest_ {
+class CygnusSaveFileSecurityCheckStartingRequest_ {
   ///The document origin URI of the file save operation.
-  WebUri? documentOriginUri;
+  CygnusWebUri? documentOriginUri;
 
   ///The file extension to be saved.
   String? fileExtension;
@@ -23,7 +23,7 @@ class SaveFileSecurityCheckStartingRequest_ {
   ///Whether to suppress the default policy check.
   bool? suppressDefaultPolicy;
 
-  SaveFileSecurityCheckStartingRequest_({
+  CygnusSaveFileSecurityCheckStartingRequest_({
     this.documentOriginUri,
     this.fileExtension,
     this.filePath,

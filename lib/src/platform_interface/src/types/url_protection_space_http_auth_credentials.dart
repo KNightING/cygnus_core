@@ -7,17 +7,17 @@ import 'enum_method.dart';
 
 part 'url_protection_space_http_auth_credentials.g.dart';
 
-///Class that represents a [URLProtectionSpace] with all of its [URLCredential]s.
-///It used by [PlatformHttpAuthCredentialDatabase.getAllAuthCredentials].
+///Class that represents a [CygnusURLProtectionSpace] with all of its [CygnusURLCredential]s.
+///It used by [CygnusPlatformHttpAuthCredentialDatabase.getAllAuthCredentials].
 @ExchangeableObject()
-class URLProtectionSpaceHttpAuthCredentials_ {
+class CygnusURLProtectionSpaceHttpAuthCredentials_ {
   ///The protection space.
-  URLProtectionSpace_? protectionSpace;
+  CygnusURLProtectionSpace_? protectionSpace;
 
   ///The list of all its http authentication credentials.
-  List<URLCredential_>? credentials;
+  List<CygnusURLCredential_>? credentials;
 
-  URLProtectionSpaceHttpAuthCredentials_({
+  CygnusURLProtectionSpaceHttpAuthCredentials_({
     this.protectionSpace,
     this.credentials,
   });

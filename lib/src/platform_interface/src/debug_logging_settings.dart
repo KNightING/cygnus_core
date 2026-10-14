@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 ///Class that represents the debug logging settings.
-class DebugLoggingSettings {
+class CygnusDebugLoggingSettings {
   ///Enables debug logging info.
   ///
   ///The default value is the same value of [kDebugMode],
@@ -21,7 +21,7 @@ class DebugLoggingSettings {
   ///Use [print] instead of `developer.log` to log messages.
   bool usePrint;
 
-  DebugLoggingSettings({
+  CygnusDebugLoggingSettings({
     this.enabled = kDebugMode,
     this.excludeFilter = const [],
     this.maxLogMessageLength = -1,

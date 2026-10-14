@@ -6,8 +6,8 @@ part of 'context_menu_item.dart';
 // ExchangeableObjectGenerator
 // **************************************************************************
 
-///Class that represent an item of the [ContextMenu].
-class ContextMenuItem {
+///Class that represent an item of the [CygnusContextMenu].
+class CygnusContextMenuItem {
   ///Menu item action that will be called when an user clicks on it.
   dynamic Function()? action;
 
@@ -26,7 +26,7 @@ class ContextMenuItem {
 
   ///Menu item title.
   String title;
-  ContextMenuItem({
+  CygnusContextMenuItem({
     this.id,
     @Deprecated("Use id instead") this.androidId,
     @Deprecated("Use id instead") this.iosId,
@@ -42,15 +42,15 @@ class ContextMenuItem {
     assert(this.id != null && (this.id is int || this.id is String));
   }
 
-  ///Gets a possible [ContextMenuItem] instance from a [Map] value.
-  static ContextMenuItem? fromMap(
+  ///Gets a possible [CygnusContextMenuItem] instance from a [Map] value.
+  static CygnusContextMenuItem? fromMap(
     Map<String, dynamic>? map, {
-    EnumMethod? enumMethod,
+    CygnusEnumMethod? enumMethod,
   }) {
     if (map == null) {
       return null;
     }
-    final instance = ContextMenuItem(
+    final instance = CygnusContextMenuItem(
       androidId: map['id'],
       id: map['id'],
       iosId: map['id'],
@@ -60,12 +60,12 @@ class ContextMenuItem {
   }
 
   @ExchangeableObjectMethod(toMapMergeWith: true)
-  Map<String, dynamic> _toMapMergeWith({EnumMethod? enumMethod}) {
+  Map<String, dynamic> _toMapMergeWith({CygnusEnumMethod? enumMethod}) {
     return {"androidId": androidId, "iosId": iosId};
   }
 
   ///Converts instance to a map.
-  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+  Map<String, dynamic> toMap({CygnusEnumMethod? enumMethod}) {
     return {
       "id": id,
       "title": title,
@@ -80,6 +80,6 @@ class ContextMenuItem {
 
   @override
   String toString() {
-    return 'ContextMenuItem{id: $id, title: $title}';
+    return 'CygnusContextMenuItem{id: $id, title: $title}';
   }
 }

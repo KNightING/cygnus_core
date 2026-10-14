@@ -1,4 +1,4 @@
-library flutter_inappwebview_internal_annotations;
+library flutter_webview_internal_annotations;
 
 export 'src/exchangeable_object.dart';
 export 'src/exchangeable_object_constructor.dart';

@@ -1,16 +1,16 @@
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 
-import '../in_app_webview/platform_webview.dart';
+import '../webview/platform_webview.dart';
 import 'show_file_chooser_request_mode.dart';
 import 'enum_method.dart';
 
 part 'show_file_chooser_request.g.dart';
 
-///Class used in the [PlatformWebViewCreationParams.onShowFileChooser] method.
+///Class used in the [CygnusPlatformWebViewCreationParams.onShowFileChooser] method.
 @ExchangeableObject()
-class ShowFileChooserRequest_ {
+class CygnusShowFileChooserRequest_ {
   ///The file chooser mode.
-  final ShowFileChooserRequestMode_ mode;
+  final CygnusShowFileChooserRequestMode_ mode;
 
   ///An array of acceptable MIME types.
   ///The returned MIME type could be partial such as audio/*.
@@ -29,7 +29,7 @@ class ShowFileChooserRequest_ {
   ///The file name of a default selection if specified, or `null`.
   final String? filenameHint;
 
-  ShowFileChooserRequest_({
+  CygnusShowFileChooserRequest_({
     required this.mode,
     required this.acceptTypes,
     required this.isCaptureEnabled,
