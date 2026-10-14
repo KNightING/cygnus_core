@@ -12,9 +12,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
   flutter_inappwebview_internal_annotations:
     path: dev_packages/flutter_inappwebview_internal_annotations
   plugin_platform_interface: ^2.1.8
+  web: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -33,9 +36,13 @@ flutter:
         package: com.pichillilorenzo.flutter_inappwebview_android
         pluginClass: InAppWebViewFlutterPlugin
         dartPluginClass: AndroidInAppWebViewPlatform
+      web:
+        pluginClass: InAppWebViewFlutterPlugin
+        fileName: src/platforms/web/web/main.dart
   assets:
     - packages/cygnus_core/assets/t_rex_runner/t-rex.html
     - packages/cygnus_core/assets/t_rex_runner/t-rex.css
+    - packages/cygnus_core/assets/web/web_support.js
 
 false_secrets:
   - /test_node_server/*.pem

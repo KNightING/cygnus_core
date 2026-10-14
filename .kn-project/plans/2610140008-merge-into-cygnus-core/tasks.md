@@ -13,11 +13,11 @@
 - [x] 搬移 `android/`，`rootProject.name` 改 `cygnus_core`；`example` 以 Android 建置並啟動（確認 `AndroidInAppWebViewPlatform` 註冊成功、頁面能載入）— 已於 Android 模擬器載入 flutter.dev，事件正常記錄，logcat 無外掛錯誤
 
 ## Phase 2 — Dart 樹全面合併
-- [ ] 搬移 ios／macos／windows／linux／web 的 Dart 到 `lib/src/platforms/<平台>/`
-- [ ] 在 `lib/cygnus_core.dart` 加入 6 平台條件匯出；解決 `PlatformUtil`、`CustomPlatformView*` 等同名類別的匯出衝突
-- [ ] 重寫全部 `package:flutter_inappwebview_*` 匯入
-- [ ] 根 `pubspec.yaml` 宣告 6 平台 plugin（含 Web 的 `fileName` 與 `flutter_web_plugins`、`web` 依賴）
-- [ ] `flutter analyze` 通過；`example` 以 Web 建置（`flutter build web`）通過
+- [x] 搬移 ios／macos／windows／linux／web 的 Dart 到 `lib/src/platforms/<平台>/`
+- [x] 在 `lib/cygnus_core.dart` 加入 6 平台條件匯出；解決 `PlatformUtil`、`CustomPlatformView*` 等同名類別的匯出衝突（`platforms.dart` 以 `dart.library.js_interop` 切換，原生側只 `show` 各平台註冊類別）
+- [x] 重寫全部 `package:flutter_inappwebview_*` 匯入
+- [x] 根 `pubspec.yaml` 宣告 6 平台 plugin（含 Web 的 `fileName` 與 `flutter_web_plugins`、`web` 依賴）— 本階段先宣告 android 與 web；ios／macos／windows／linux 隨 Phase 3 的原生端一併宣告，避免宣告了卻沒有原生目錄
+- [x] `flutter analyze` 通過；`example` 以 Web 建置（`flutter build web`）通過（analyze 0 error；web 與 Android 建置皆成功）
 
 ## Phase 3 — 原生端搬移與必要改名
 - [ ] iOS：搬移到 `ios/`，podspec 與 SPM（`Package.swift`）名稱改 `cygnus_core`，Swift 目錄更名

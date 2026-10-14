@@ -22,9 +22,8 @@
 library cygnus_core;
 
 // Flutter 產生的 dart_plugin_registrant 以本入口取得各平台的 dartPluginClass，
-// 因此每個已宣告的平台實作都必須從這裡匯出，且僅公開該註冊類別以免擴大 API 面。
-export 'src/platforms/android/flutter_inappwebview_android.dart'
-    show AndroidInAppWebViewPlatform;
+// 因此每個已宣告的平台實作都必須從這裡匯出（原生與 Web 的取捨見 platforms.dart）。
+export 'src/platforms/platforms.dart';
 export 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart'
     hide
         ChannelController,

@@ -166,6 +166,8 @@ cygnus_core/                          ← repo 根目錄 = 套件根目錄
 - **[執行中]** dartdoc 的 `{@macro}`／`{@template}` 命名空間前綴 `flutter_inappwebview_platform_interface.`（2395 處）與 `flutter_inappwebview.`（3 處）統一改為 `cygnus_core.` — 理由：產生器把「所在套件名」寫進模板名，套件改名後不改會讓 1735 個手寫的 `{@macro}` 指向不存在的模板（`dart doc` 解析失敗）；改完重跑 build_runner，269 個 `*.g.dart` 與原版逐檔比對，扣除此前綴改名後完全一致。屬 `lib/src/**` 範圍內的內容修改，已含於 Impact Files 的目錄級項目。
 - **[執行中]** Android／iOS／macOS／Windows／Linux 的 `in_app_webview_controller.dart` 內寫死的內建頁面資產路徑 `packages/flutter_inappwebview/assets/t_rex_runner/...` 改為 `packages/cygnus_core/assets/...`（根 `pubspec.yaml` 的 `assets:` 同步） — 理由：Flutter 以套件名解析 `packages/<套件>/...` 資產路徑，套件改名後舊字串會找不到檔案。計畫原未特別點名，屬 `lib/src/platforms/**` 目錄級項目已涵蓋的內容修改。
 - **[執行中]** 根目錄需新增 `analysis_options.yaml`（原三個套件各自有，內容不同） — 理由：合併後只剩一份分析設定；Phase 4 逐檔比對三份差異後合併，避免 lint 規則悄悄放寬。
+- **[執行中]** 根 `pubspec.yaml` 在 Phase 2 只宣告 android 與 web；ios／macos／windows／linux 的 plugin 宣告改到 Phase 3 與各自原生目錄一起加入 — 理由：宣告了 `pluginClass` 卻沒有對應原生目錄，使用端 `pod install`／CMake 會直接失敗；與原生搬移放在同一階段才能一起驗證。
+- **[執行中]** Web 的資產 `web_support.js` 併入 `lib/assets/web/`，執行期路徑由 `assets/packages/flutter_inappwebview_web/assets/web/web_support.js` 變為 `assets/packages/cygnus_core/assets/web/web_support.js` — 理由：資產路徑以套件名解析；使用端 `index.html` 若硬寫舊路徑需改，列入 README 說明（Phase 4）。
 
 ## Git Completion Policy
 - **完成後（使用者自訂，Rule 17 三選項之外）**：commit 一律自動；任務完成時 `git fetch` 後 `git rebase origin/main` 工作分支，再於本機 **fast-forward 合併進 `main`** 並 `git push origin main`，**不開 PR**。工作分支另以 `git push --force-with-lease --force-if-includes` 備份到遠端（此動作會重寫遠端工作分支歷史；`main` 的推送是 fast-forward，不改寫）。
