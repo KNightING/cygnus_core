@@ -1,9 +1,7 @@
-package com.github.knighting.cygnus.core.webview.in_app_webview;
+package com.github.knighting.cygnus.core.webview.in_app_webview
 
-import android.view.View;
-import android.webkit.JavascriptInterface;
-
-import androidx.annotation.NonNull;
+import android.view.View
+import android.webkit.JavascriptInterface
 
 /**
  * Shifts the WebView up so the focused editable element clears the soft keyboard.
@@ -16,38 +14,34 @@ import androidx.annotation.NonNull;
  * relaid out. The strip revealed below the view's shifted bottom edge sits behind the keyboard, and
  * the shift is clamped to the keyboard height so it can never become visible.
  */
-public class KeyboardAvoidanceController {
-  /** Gap left between the bottom of the focused element and the top of the keyboard, in dp. */
-  private static final int MARGIN_DP = 8;
+open class KeyboardAvoidanceController(private val webView: View) {
 
-  /** Sentinel for "no editable element is focused". */
-  private static final float NO_FOCUS = -1f;
+  companion object {
+    /** Gap left between the bottom of the focused element and the top of the keyboard, in dp. */
+    private const val MARGIN_DP = 8
 
-  @NonNull
-  private final View webView;
+    /** Sentinel for "no editable element is focused". */
+    private const val NO_FOCUS = -1f
+  }
 
   /** Height of the consumed IME inset in physical pixels; 0 while the keyboard is closed. */
-  private int keyboardHeightPx = 0;
+  private var keyboardHeightPx = 0
 
   /** Bottom edge of the focused element in physical pixels, or {@link #NO_FOCUS}. */
-  private float focusedBottomPx = NO_FOCUS;
+  private var focusedBottomPx = NO_FOCUS
 
   /** Scratch buffer for {@link View#getLocationInWindow}; reused to keep this off the hot path. */
-  private final int[] locationInWindow = new int[2];
-
-  public KeyboardAvoidanceController(@NonNull View webView) {
-    this.webView = webView;
-  }
+  private val locationInWindow = IntArray(2)
 
   /**
    * @param heightPx height of the IME inset in physical pixels, 0 when the keyboard is closed
    */
-  public void setKeyboardHeightPx(int heightPx) {
+  open fun setKeyboardHeightPx(heightPx: Int) {
     if (keyboardHeightPx == heightPx) {
-      return;
+      return
     }
-    keyboardHeightPx = heightPx;
-    applyShift();
+    keyboardHeightPx = heightPx
+    applyShift()
   }
 
   /**
@@ -57,47 +51,45 @@ public class KeyboardAvoidanceController {
    * @param devicePixelRatio the page's {@code window.devicePixelRatio}, folding in density and zoom
    */
   @JavascriptInterface
-  public void onFocusedRect(final float bottomCssPx, final float devicePixelRatio) {
+  open fun onFocusedRect(bottomCssPx: Float, devicePixelRatio: Float) {
     // @JavascriptInterface methods arrive on a background thread; every field below is only
     // touched from the UI thread so the shift cannot race the insets callback.
-    webView.post(new Runnable() {
-      @Override
-      public void run() {
-        focusedBottomPx = bottomCssPx * devicePixelRatio;
-        applyShift();
+    webView.post(object : Runnable {
+      override fun run() {
+        focusedBottomPx = bottomCssPx * devicePixelRatio
+        applyShift()
       }
-    });
+    })
   }
 
   /** Called from the injected script when focus leaves every editable element. */
   @JavascriptInterface
-  public void onFocusCleared() {
-    webView.post(new Runnable() {
-      @Override
-      public void run() {
-        focusedBottomPx = NO_FOCUS;
-        applyShift();
+  open fun onFocusCleared() {
+    webView.post(object : Runnable {
+      override fun run() {
+        focusedBottomPx = NO_FOCUS
+        applyShift()
       }
-    });
+    })
   }
 
   /** Drops any applied shift. Used when the setting is turned off or the view goes away. */
-  public void reset() {
-    keyboardHeightPx = 0;
-    focusedBottomPx = NO_FOCUS;
-    webView.setTranslationY(0f);
+  open fun reset() {
+    keyboardHeightPx = 0
+    focusedBottomPx = NO_FOCUS
+    webView.translationY = 0f
   }
 
-  private void applyShift() {
-    webView.setTranslationY(-computeShiftPx());
+  private fun applyShift() {
+    webView.translationY = -computeShiftPx()
   }
 
-  private float computeShiftPx() {
+  private fun computeShiftPx(): Float {
     if (keyboardHeightPx <= 0 || focusedBottomPx == NO_FOCUS) {
-      return 0f;
+      return 0f
     }
 
-    final float marginPx = MARGIN_DP * webView.getResources().getDisplayMetrics().density;
+    val marginPx = MARGIN_DP * webView.resources.displayMetrics.density
 
     // Compared in window coordinates rather than inside the view, because the host may already
     // have shrunk the WebView for the keyboard (Scaffold.resizeToAvoidBottomInset left at its
@@ -105,21 +97,21 @@ public class KeyboardAvoidanceController {
     // twice and overshoot -- reintroducing the doubled shift this option exists to remove. In
     // window coordinates the shrink is already reflected in the view's own position and height,
     // so both host configurations fall out of the same arithmetic.
-    webView.getLocationInWindow(locationInWindow);
+    webView.getLocationInWindow(locationInWindow)
     // getLocationInWindow reports where the view is drawn, translation included. Backing it out
     // gives a fixed reference, which keeps this idempotent -- recomputing without any change to
     // the inputs must not walk the view further up each time.
-    final float untranslatedTopInWindow = locationInWindow[1] - webView.getTranslationY();
-    final float keyboardTopInWindow = webView.getRootView().getHeight() - keyboardHeightPx;
+    val untranslatedTopInWindow = locationInWindow[1] - webView.translationY
+    val keyboardTopInWindow = (webView.rootView.height - keyboardHeightPx).toFloat()
 
-    final float overlapPx =
-            untranslatedTopInWindow + focusedBottomPx + marginPx - keyboardTopInWindow;
+    val overlapPx =
+      untranslatedTopInWindow + focusedBottomPx + marginPx - keyboardTopInWindow
     if (overlapPx <= 0f) {
-      return 0f;
+      return 0f
     }
 
     // Shifting further than the keyboard height would expose the strip revealed below the view's
     // bottom edge above the keyboard's top edge, making the gap visible.
-    return Math.min(overlapPx, keyboardHeightPx);
+    return Math.min(overlapPx, keyboardHeightPx.toFloat())
   }
 }
