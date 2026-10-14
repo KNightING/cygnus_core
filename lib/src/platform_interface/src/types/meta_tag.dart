@@ -1,6 +1,6 @@
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 
-import '../in_app_webview/platform_inappwebview_controller.dart';
+import '../webview/platform_webview_controller.dart';
 import 'meta_tag_attribute.dart';
 import 'enum_method.dart';
 

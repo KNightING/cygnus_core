@@ -3,8 +3,8 @@ import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_i
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import '../debug_logging_settings.dart';
-import '../inappwebview_platform.dart';
-import '../in_app_webview/platform_webview.dart';
+import '../webview_platform.dart';
+import '../webview/platform_webview.dart';
 import '../types/browser_process_info.dart';
 import '../types/cache_model.dart';
 import '../types/disposable.dart';

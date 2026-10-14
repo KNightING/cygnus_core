@@ -5,10 +5,10 @@ import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_i
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import '../debug_logging_settings.dart';
-import '../in_app_browser/platform_in_app_browser.dart';
-import '../in_app_webview/in_app_webview_settings.dart';
-import '../in_app_webview/platform_webview.dart';
-import '../inappwebview_platform.dart';
+import '../browser/platform_browser.dart';
+import '../webview/webview_settings.dart';
+import '../webview/platform_webview.dart';
+import '../webview_platform.dart';
 import '../types/main.dart';
 import 'pull_to_refresh_settings.dart';
 

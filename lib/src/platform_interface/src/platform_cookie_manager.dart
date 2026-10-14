@@ -4,9 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-import 'in_app_webview/platform_headless_in_app_webview.dart';
-import 'in_app_webview/platform_inappwebview_controller.dart';
-import 'inappwebview_platform.dart';
+import 'webview/platform_headless_webview.dart';
+import 'webview/platform_webview_controller.dart';
+import 'webview_platform.dart';
 import 'types/main.dart';
 import 'web_uri.dart';
 import 'webview_environment/platform_webview_environment.dart';

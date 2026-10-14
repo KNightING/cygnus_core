@@ -1,7 +1,7 @@
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 
-import '../in_app_webview/platform_webview.dart';
-import '../types/in_app_webview_hit_test_result.dart';
+import '../webview/platform_webview.dart';
+import '../types/webview_hit_test_result.dart';
 import 'context_menu_item.dart';
 import 'context_menu_settings.dart';
 import '../types/enum_method.dart';

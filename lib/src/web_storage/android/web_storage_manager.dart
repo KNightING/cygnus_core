@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 import '../web_storage_manager.dart';
 

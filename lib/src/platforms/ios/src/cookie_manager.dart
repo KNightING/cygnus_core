@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
-import 'in_app_webview/headless_in_app_webview.dart';
+import 'webview/headless_webview.dart';
 import 'platform_util.dart';
 
 /// Object specifying creation parameters for creating a [IOSCookieManager].

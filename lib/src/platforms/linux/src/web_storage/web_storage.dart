@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
-import '../in_app_webview/in_app_webview_controller.dart';
+import '../webview/webview_controller.dart';
 
 /// Object specifying creation parameters for creating a [LinuxWebStorage].
 ///

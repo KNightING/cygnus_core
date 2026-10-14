@@ -3,7 +3,7 @@ import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_i
 import 'enum_method.dart';
 import 'user_script_injection_time.dart';
 import 'content_world.dart';
-import '../in_app_webview/platform_inappwebview_controller.dart';
+import '../webview/platform_webview_controller.dart';
 
 part 'user_script.g.dart';
 

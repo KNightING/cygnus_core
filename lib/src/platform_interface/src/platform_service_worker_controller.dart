@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-import 'inappwebview_platform.dart';
+import 'webview_platform.dart';
 import 'platform_webview_feature.dart';
 import 'types/main.dart';
 

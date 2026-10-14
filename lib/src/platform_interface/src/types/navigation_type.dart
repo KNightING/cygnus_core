@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
-import '../in_app_webview/platform_webview.dart';
+import '../webview/platform_webview.dart';
 part 'navigation_type.g.dart';
 
 ///Class that represents the type of action triggering a navigation for the [CygnusPlatformWebViewCreationParams.shouldOverrideUrlLoading] event.

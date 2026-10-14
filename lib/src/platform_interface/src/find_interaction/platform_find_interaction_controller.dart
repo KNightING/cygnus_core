@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 import 'package:cygnus_core/src/platform_interface/src/types/disposable.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import '../in_app_webview/in_app_webview_settings.dart';
+import '../webview/webview_settings.dart';
 import '../debug_logging_settings.dart';
-import '../inappwebview_platform.dart';
+import '../webview_platform.dart';
 import '../types/main.dart';
 
 part 'platform_find_interaction_controller.g.dart';

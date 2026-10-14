@@ -1,5 +1,5 @@
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
-import '../in_app_webview/platform_webview.dart';
+import '../webview/platform_webview.dart';
 part 'should_allow_deprecated_tls_action.g.dart';
 
 ///Class that is used by [CygnusPlatformWebViewCreationParams.shouldAllowDeprecatedTLS] event.

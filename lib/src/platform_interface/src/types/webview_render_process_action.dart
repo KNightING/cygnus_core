@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
-import '../in_app_webview/platform_webview.dart';
+import '../webview/platform_webview.dart';
 part 'webview_render_process_action.g.dart';
 
 ///Class that represents the action to take used by the [CygnusPlatformWebViewCreationParams.onRenderProcessUnresponsive] and [CygnusPlatformWebViewCreationParams.onRenderProcessResponsive] event

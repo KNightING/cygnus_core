@@ -6,7 +6,7 @@ import '../../types/main.dart';
 import '../chrome_safari_browser_settings.dart';
 import '../platform_chrome_safari_browser.dart';
 
-import '../../in_app_webview/apple/in_app_webview_options.dart';
+import '../../webview/apple/webview_options.dart';
 
 ///This class represents all the iOS-only [CygnusPlatformChromeSafariBrowser] options available.
 ///Use [CygnusChromeSafariBrowserSettings] instead.

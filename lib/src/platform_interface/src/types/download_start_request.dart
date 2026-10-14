@@ -1,7 +1,7 @@
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 
 import '../web_uri.dart';
-import '../in_app_webview/platform_webview.dart';
+import '../webview/platform_webview.dart';
 import 'enum_method.dart';
 
 part 'download_start_request.g.dart';

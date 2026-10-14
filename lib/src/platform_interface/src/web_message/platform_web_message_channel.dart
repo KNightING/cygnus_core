@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 import 'package:cygnus_core/src/platform_interface/src/types/disposable.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import '../inappwebview_platform.dart';
+import '../webview_platform.dart';
 import 'platform_web_message_port.dart';
 
 // ignore: uri_has_not_been_generated

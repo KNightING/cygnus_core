@@ -3,8 +3,8 @@ import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_i
 import 'package:cygnus_core/src/platform_interface/src/types/disposable.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-import '../in_app_webview/platform_inappwebview_controller.dart';
-import '../inappwebview_platform.dart';
+import '../webview/platform_webview_controller.dart';
+import '../webview_platform.dart';
 import '../types/main.dart';
 import 'web_storage_item.dart';
 

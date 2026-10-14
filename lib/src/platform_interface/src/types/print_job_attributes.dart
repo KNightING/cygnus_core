@@ -5,7 +5,7 @@ import '../print_job/main.dart';
 import '../util.dart';
 import '../web_uri.dart';
 import 'enum_method.dart';
-import 'in_app_webview_rect.dart';
+import 'webview_rect.dart';
 import 'print_job_color_mode.dart';
 import 'print_job_disposition.dart';
 import 'print_job_duplex_mode.dart';

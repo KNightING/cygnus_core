@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import '../debug_logging_settings.dart';
-import '../inappwebview_platform.dart';
+import '../webview_platform.dart';
 import '../types/main.dart';
 import '../web_uri.dart';
 import 'web_authenticate_session_settings.dart';

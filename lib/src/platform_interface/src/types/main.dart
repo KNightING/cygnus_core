@@ -57,11 +57,11 @@ export 'http_auth_response.dart' show CygnusHttpAuthResponse;
 export 'http_auth_response_action.dart' show CygnusHttpAuthResponseAction;
 export 'http_authentication_challenge.dart' show CygnusHttpAuthenticationChallenge;
 export 'http_cookie_same_site_policy.dart' show CygnusHTTPCookieSameSitePolicy;
-export 'in_app_webview_hit_test_result.dart' show CygnusWebViewHitTestResult;
-export 'in_app_webview_hit_test_result_type.dart'
+export 'webview_hit_test_result.dart' show CygnusWebViewHitTestResult;
+export 'webview_hit_test_result_type.dart'
     show CygnusWebViewHitTestResultType;
-export 'in_app_webview_initial_data.dart' show CygnusWebViewInitialData;
-export 'in_app_webview_rect.dart' show CygnusWebViewRect;
+export 'webview_initial_data.dart' show CygnusWebViewInitialData;
+export 'webview_rect.dart' show CygnusWebViewRect;
 export 'javascript_handler_callback.dart'
     show
         CygnusJavaScriptHandlerCallback,

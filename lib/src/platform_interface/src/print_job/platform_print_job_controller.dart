@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-import '../in_app_webview/platform_inappwebview_controller.dart';
-import '../inappwebview_platform.dart';
+import '../webview/platform_webview_controller.dart';
+import '../webview_platform.dart';
 import '../types/disposable.dart';
 import '../types/print_job_info.dart';
 

@@ -4,13 +4,13 @@ import 'dart:js_interop';
 import 'dart:ui_web' as ui_web;
 
 import 'package:flutter/foundation.dart';
-import 'package:cygnus_core/src/platform_interface/flutter_inappwebview_platform_interface.dart';
+import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-import '../src/inappwebview_platform.dart';
-import 'headless_inappwebview_manager.dart';
-import 'in_app_web_view_web_element.dart';
-import 'in_app_webview_manager.dart';
+import '../src/webview_platform.dart';
+import 'headless_webview_manager.dart';
+import 'web_view_web_element.dart';
+import 'webview_manager.dart';
 import 'js_bridge.dart';
 import 'platform_util.dart';
 
