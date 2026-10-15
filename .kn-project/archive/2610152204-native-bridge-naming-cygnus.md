@@ -1,6 +1,6 @@
 # 2610152204 - native-bridge-naming-cygnus
 
-- Created: 2026-10-15 22:04 / Archived: 2026-10-16 00:30
+- Created: 2026-10-15 22:04 / Archived: 2026-10-15 23:50
 - Issue: KNightING/cygnus_core#8
 - Milestone: N/A / Base Branch: main
 
@@ -54,9 +54,9 @@
 
 | 頁面 | 日期 | 版本 | 變動 | Issue | PR |
 |---|---|---|---|---|---|
-| `features/android-back-gesture.md` | 2026-10-16 | — | 原生類別名與路徑改為 Cygnus 命名 | [#8](https://github.com/KNightING/cygnus_core/issues/8) | [PR #9](https://github.com/KNightING/cygnus_core/pull/9) |
-| `features/android-platform-view-composition.md` | 2026-10-16 | — | 原生類別名與路徑改為 Cygnus 命名 | [#8](https://github.com/KNightING/cygnus_core/issues/8) | [PR #9](https://github.com/KNightING/cygnus_core/pull/9) |
-| `features/keyboard-avoidance.md` | 2026-10-16 | — | 原生類別名與路徑改為 Cygnus 命名 | [#8](https://github.com/KNightING/cygnus_core/issues/8) | [PR #9](https://github.com/KNightING/cygnus_core/pull/9) |
-| `features/windows-scroll-input.md` | 2026-10-16 | — | 原生類別名與路徑改為 Cygnus 命名 | [#8](https://github.com/KNightING/cygnus_core/issues/8) | [PR #9](https://github.com/KNightING/cygnus_core/pull/9) |
-| `features/windows-view-geometry.md` | 2026-10-16 | — | 原生類別名與路徑改為 Cygnus 命名 | [#8](https://github.com/KNightING/cygnus_core/issues/8) | [PR #9](https://github.com/KNightING/cygnus_core/pull/9) |
-| `features/windows-webview-focus.md` | 2026-10-16 | — | 原生類別名與路徑改為 Cygnus 命名 | [#8](https://github.com/KNightING/cygnus_core/issues/8) | [PR #9](https://github.com/KNightING/cygnus_core/pull/9) |
+| `features/android-back-gesture.md` | 2026-10-15 | — | 原生類別名與路徑改為 Cygnus 命名 | [#8](https://github.com/KNightING/cygnus_core/issues/8) | [PR #9](https://github.com/KNightING/cygnus_core/pull/9) |
+| `features/android-platform-view-composition.md` | 2026-10-15 | — | 原生類別名與路徑改為 Cygnus 命名 | [#8](https://github.com/KNightING/cygnus_core/issues/8) | [PR #9](https://github.com/KNightING/cygnus_core/pull/9) |
+| `features/keyboard-avoidance.md` | 2026-10-15 | — | 原生類別名與路徑改為 Cygnus 命名 | [#8](https://github.com/KNightING/cygnus_core/issues/8) | [PR #9](https://github.com/KNightING/cygnus_core/pull/9) |
+| `features/windows-scroll-input.md` | 2026-10-15 | — | 原生類別名與路徑改為 Cygnus 命名 | [#8](https://github.com/KNightING/cygnus_core/issues/8) | [PR #9](https://github.com/KNightING/cygnus_core/pull/9) |
+| `features/windows-view-geometry.md` | 2026-10-15 | — | 原生類別名與路徑改為 Cygnus 命名 | [#8](https://github.com/KNightING/cygnus_core/issues/8) | [PR #9](https://github.com/KNightING/cygnus_core/pull/9) |
+| `features/windows-webview-focus.md` | 2026-10-15 | — | 原生類別名與路徑改為 Cygnus 命名 | [#8](https://github.com/KNightING/cygnus_core/issues/8) | [PR #9](https://github.com/KNightING/cygnus_core/pull/9) |

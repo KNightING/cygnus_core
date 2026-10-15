@@ -30,7 +30,7 @@ void findInteractions() {
     await tester.pump();
     await Future.delayed(Duration(seconds: 1));
 
-    const firstSearchText = "InAppWebViewInitialFileTest";
+    const firstSearchText = "CygnusWebViewInitialFileTest";
     await expectLater(
       findInteractionController.findAll(find: firstSearchText),
       completes,
@@ -117,7 +117,7 @@ void findInteractions() {
     await Future.delayed(Duration(seconds: 1));
 
     await findInteractionController.findAll(
-      find: "InAppWebViewInitialFileTest",
+      find: "CygnusWebViewInitialFileTest",
     );
     final int numberOfMatches = await numberOfMatchesCompleter.future;
     expect(numberOfMatches, 2);

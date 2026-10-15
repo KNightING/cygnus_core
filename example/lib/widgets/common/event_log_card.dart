@@ -4,7 +4,7 @@ import 'package:cygnus_core_example/providers/event_log_provider.dart';
 
 /// A card displaying a scrollable event log.
 ///
-/// Used in screens like ControllersScreen, InAppBrowserScreen, and WebViewTesterScreen
+/// Used in screens like ControllersScreen, CygnusBrowserScreen, and WebViewTesterScreen
 /// to display a log of recent events.
 class EventLogCard extends StatelessWidget {
   /// Maximum number of events to display.

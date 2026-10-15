@@ -82,7 +82,7 @@ class AndroidStorageCreationParams extends CygnusPlatformStorageCreationParams {
 ///{@macro cygnus_core.CygnusPlatformStorage}
 abstract mixin class AndroidStorage implements CygnusPlatformStorage {
   @override
-  AndroidInAppWebViewController? controller;
+  CygnusAndroidWebViewControllerImpl? controller;
 
   @override
   Future<int?> length() async {
@@ -248,8 +248,8 @@ class AndroidLocalStorage extends CygnusPlatformLocalStorage with AndroidStorage
   }
 
   @override
-  AndroidInAppWebViewController? get controller =>
-      params.controller as AndroidInAppWebViewController?;
+  CygnusAndroidWebViewControllerImpl? get controller =>
+      params.controller as CygnusAndroidWebViewControllerImpl?;
 }
 
 /// Object specifying creation parameters for creating a [AndroidSessionStorage].
@@ -301,6 +301,6 @@ class AndroidSessionStorage extends CygnusPlatformSessionStorage with AndroidSto
   }
 
   @override
-  AndroidInAppWebViewController? get controller =>
-      params.controller as AndroidInAppWebViewController?;
+  CygnusAndroidWebViewControllerImpl? get controller =>
+      params.controller as CygnusAndroidWebViewControllerImpl?;
 }

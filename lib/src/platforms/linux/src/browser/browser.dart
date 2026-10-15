@@ -9,15 +9,15 @@ import '../find_interaction/find_interaction_controller.dart';
 import '../webview/webview_controller.dart';
 import '../webview_environment/webview_environment.dart';
 
-/// Object specifying creation parameters for creating a [LinuxInAppBrowser].
+/// Object specifying creation parameters for creating a [CygnusLinuxBrowser].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformBrowserCreationParams] for
 /// more information.
-class LinuxInAppBrowserCreationParams
+class CygnusLinuxBrowserCreationParams
     extends CygnusPlatformBrowserCreationParams {
-  /// Creates a new [LinuxInAppBrowserCreationParams] instance.
-  LinuxInAppBrowserCreationParams({
+  /// Creates a new [CygnusLinuxBrowserCreationParams] instance.
+  CygnusLinuxBrowserCreationParams({
     super.contextMenu,
     super.pullToRefreshController,
     this.findInteractionController,
@@ -26,13 +26,13 @@ class LinuxInAppBrowserCreationParams
     this.webViewEnvironment,
   });
 
-  /// Creates a [LinuxInAppBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
-  factory LinuxInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
+  /// Creates a [CygnusLinuxBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
+  factory CygnusLinuxBrowserCreationParams.fromPlatformBrowserCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformBrowserCreationParams params,
   ) {
-    return LinuxInAppBrowserCreationParams(
+    return CygnusLinuxBrowserCreationParams(
       contextMenu: params.contextMenu,
       pullToRefreshController: params.pullToRefreshController,
       findInteractionController:
@@ -52,33 +52,33 @@ class LinuxInAppBrowserCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformBrowser}
-class LinuxInAppBrowser extends CygnusPlatformBrowser with ChannelController {
+class CygnusLinuxBrowser extends CygnusPlatformBrowser with ChannelController {
   @override
   final String id = IdGenerator.generate();
 
-  /// Constructs a [LinuxInAppBrowser].
-  LinuxInAppBrowser(CygnusPlatformBrowserCreationParams params)
+  /// Constructs a [CygnusLinuxBrowser].
+  CygnusLinuxBrowser(CygnusPlatformBrowserCreationParams params)
     : super.implementation(
-        params is LinuxInAppBrowserCreationParams
+        params is CygnusLinuxBrowserCreationParams
             ? params
-            : LinuxInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
+            : CygnusLinuxBrowserCreationParams.fromPlatformBrowserCreationParams(
                 params,
               ),
       ) {
     _contextMenu = params.contextMenu;
   }
 
-  static final LinuxInAppBrowser _staticValue = LinuxInAppBrowser(
-    LinuxInAppBrowserCreationParams(),
+  static final CygnusLinuxBrowser _staticValue = CygnusLinuxBrowser(
+    CygnusLinuxBrowserCreationParams(),
   );
 
   /// Provide static access.
-  factory LinuxInAppBrowser.static() {
+  factory CygnusLinuxBrowser.static() {
     return _staticValue;
   }
 
-  LinuxInAppBrowserCreationParams get _linuxParams =>
-      params as LinuxInAppBrowserCreationParams;
+  CygnusLinuxBrowserCreationParams get _linuxParams =>
+      params as CygnusLinuxBrowserCreationParams;
 
   static const MethodChannel _staticChannel = const MethodChannel(
     'com.github.knighting.cygnus/browser',
@@ -91,10 +91,10 @@ class LinuxInAppBrowser extends CygnusPlatformBrowser with ChannelController {
 
   Map<int, CygnusBrowserMenuItem> _menuItems = HashMap();
   bool _isOpened = false;
-  LinuxInAppWebViewController? _webViewController;
+  CygnusLinuxWebViewController? _webViewController;
 
   @override
-  LinuxInAppWebViewController? get webViewController {
+  CygnusLinuxWebViewController? get webViewController {
     return _isOpened ? _webViewController : null;
   }
 
@@ -103,8 +103,8 @@ class LinuxInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     handler = _handleMethod;
     initMethodCallHandler();
 
-    _webViewController = LinuxInAppWebViewController.fromBrowser(
-      LinuxInAppWebViewControllerCreationParams(id: id),
+    _webViewController = CygnusLinuxWebViewController.fromBrowser(
+      CygnusLinuxWebViewControllerCreationParams(id: id),
       channel!,
       this,
       this.initialUserScripts,
@@ -406,7 +406,7 @@ class LinuxInAppBrowser extends CygnusPlatformBrowser with ChannelController {
   }
 }
 
-extension InternalInAppBrowser on LinuxInAppBrowser {
+extension CygnusInternalBrowser on CygnusLinuxBrowser {
   void setContextMenu(CygnusContextMenu? contextMenu) {
     _contextMenu = contextMenu;
   }

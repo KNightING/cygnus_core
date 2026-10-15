@@ -4,7 +4,7 @@ void setGetSettings() {
   final shouldSkip = !CygnusBrowser.isClassSupported();
 
   skippableTest('set/get settings', () async {
-    var browser = new MyInAppBrowser();
+    var browser = new CygnusMyBrowser();
     await browser.openUrlRequest(
       urlRequest: CygnusURLRequest(url: TEST_URL_1),
       settings: CygnusBrowserClassSettings(

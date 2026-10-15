@@ -9,15 +9,15 @@ import '../find_interaction/find_interaction_controller.dart';
 import '../webview/webview_controller.dart';
 import '../webview_environment/webview_environment.dart';
 
-/// Object specifying creation parameters for creating a [WindowsInAppBrowser].
+/// Object specifying creation parameters for creating a [CygnusWindowsBrowser].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformBrowserCreationParams] for
 /// more information.
-class WindowsInAppBrowserCreationParams
+class CygnusWindowsBrowserCreationParams
     extends CygnusPlatformBrowserCreationParams {
-  /// Creates a new [WindowsInAppBrowserCreationParams] instance.
-  WindowsInAppBrowserCreationParams({
+  /// Creates a new [CygnusWindowsBrowserCreationParams] instance.
+  CygnusWindowsBrowserCreationParams({
     super.contextMenu,
     super.pullToRefreshController,
     this.findInteractionController,
@@ -26,13 +26,13 @@ class WindowsInAppBrowserCreationParams
     this.webViewEnvironment,
   });
 
-  /// Creates a [WindowsInAppBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
-  factory WindowsInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
+  /// Creates a [CygnusWindowsBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
+  factory CygnusWindowsBrowserCreationParams.fromPlatformBrowserCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformBrowserCreationParams params,
   ) {
-    return WindowsInAppBrowserCreationParams(
+    return CygnusWindowsBrowserCreationParams(
       contextMenu: params.contextMenu,
       pullToRefreshController: params.pullToRefreshController,
       findInteractionController:
@@ -52,33 +52,33 @@ class WindowsInAppBrowserCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformBrowser}
-class WindowsInAppBrowser extends CygnusPlatformBrowser with ChannelController {
+class CygnusWindowsBrowser extends CygnusPlatformBrowser with ChannelController {
   @override
   final String id = IdGenerator.generate();
 
-  /// Constructs a [WindowsInAppBrowser].
-  WindowsInAppBrowser(CygnusPlatformBrowserCreationParams params)
+  /// Constructs a [CygnusWindowsBrowser].
+  CygnusWindowsBrowser(CygnusPlatformBrowserCreationParams params)
     : super.implementation(
-        params is WindowsInAppBrowserCreationParams
+        params is CygnusWindowsBrowserCreationParams
             ? params
-            : WindowsInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
+            : CygnusWindowsBrowserCreationParams.fromPlatformBrowserCreationParams(
                 params,
               ),
       ) {
     _contextMenu = params.contextMenu;
   }
 
-  static final WindowsInAppBrowser _staticValue = WindowsInAppBrowser(
-    WindowsInAppBrowserCreationParams(),
+  static final CygnusWindowsBrowser _staticValue = CygnusWindowsBrowser(
+    CygnusWindowsBrowserCreationParams(),
   );
 
   /// Provide static access.
-  factory WindowsInAppBrowser.static() {
+  factory CygnusWindowsBrowser.static() {
     return _staticValue;
   }
 
-  WindowsInAppBrowserCreationParams get _windowsParams =>
-      params as WindowsInAppBrowserCreationParams;
+  CygnusWindowsBrowserCreationParams get _windowsParams =>
+      params as CygnusWindowsBrowserCreationParams;
 
   static const MethodChannel _staticChannel = const MethodChannel(
     'com.github.knighting.cygnus/browser',
@@ -91,10 +91,10 @@ class WindowsInAppBrowser extends CygnusPlatformBrowser with ChannelController {
 
   Map<int, CygnusBrowserMenuItem> _menuItems = HashMap();
   bool _isOpened = false;
-  WindowsInAppWebViewController? _webViewController;
+  CygnusWindowsWebViewController? _webViewController;
 
   @override
-  WindowsInAppWebViewController? get webViewController {
+  CygnusWindowsWebViewController? get webViewController {
     return _isOpened ? _webViewController : null;
   }
 
@@ -103,8 +103,8 @@ class WindowsInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     handler = _handleMethod;
     initMethodCallHandler();
 
-    _webViewController = WindowsInAppWebViewController.fromBrowser(
-      WindowsInAppWebViewControllerCreationParams(id: id),
+    _webViewController = CygnusWindowsWebViewController.fromBrowser(
+      CygnusWindowsWebViewControllerCreationParams(id: id),
       channel!,
       this,
       this.initialUserScripts,
@@ -406,7 +406,7 @@ class WindowsInAppBrowser extends CygnusPlatformBrowser with ChannelController {
   }
 }
 
-extension InternalInAppBrowser on WindowsInAppBrowser {
+extension CygnusInternalBrowser on CygnusWindowsBrowser {
   void setContextMenu(CygnusContextMenu? contextMenu) {
     _contextMenu = contextMenu;
   }

@@ -17,38 +17,38 @@ import '../web_storage/web_storage.dart';
 import '_static_channel.dart';
 import 'headless_webview.dart';
 
-/// Object specifying creation parameters for creating a [IOSInAppWebViewController].
+/// Object specifying creation parameters for creating a [CygnusIOSWebViewControllerImpl].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformWebViewControllerCreationParams] for
 /// more information.
 @immutable
-class IOSInAppWebViewControllerCreationParams
+class CygnusIOSWebViewControllerCreationParams
     extends CygnusPlatformWebViewControllerCreationParams {
-  /// Creates a new [IOSInAppWebViewControllerCreationParams] instance.
-  const IOSInAppWebViewControllerCreationParams({
+  /// Creates a new [CygnusIOSWebViewControllerCreationParams] instance.
+  const CygnusIOSWebViewControllerCreationParams({
     required super.id,
     super.webviewParams,
   });
 
-  /// Creates a [IOSInAppWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
-  factory IOSInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+  /// Creates a [CygnusIOSWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
+  factory CygnusIOSWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
-    return IOSInAppWebViewControllerCreationParams(
+    return CygnusIOSWebViewControllerCreationParams(
       id: params.id,
       webviewParams: params.webviewParams,
     );
   }
 }
 
-///Controls a WebView, such as an [CygnusWebView] widget instance, a [IOSHeadlessInAppWebView] instance or [IOSInAppBrowser] WebView instance.
+///Controls a WebView, such as an [CygnusWebView] widget instance, a [CygnusIOSHeadlessWebView] instance or [CygnusIOSBrowser] WebView instance.
 ///
 ///If you are using the [CygnusWebView] widget, an [CygnusWebViewController] instance can be obtained by setting the [CygnusWebView.onWebViewCreated]
-///callback. Instead, if you are using an [IOSInAppBrowser] instance, you can get it through the [IOSInAppBrowser.webViewController] attribute.
-class IOSInAppWebViewController extends CygnusPlatformWebViewController
+///callback. Instead, if you are using an [CygnusIOSBrowser] instance, you can get it through the [CygnusIOSBrowser.webViewController] attribute.
+class CygnusIOSWebViewControllerImpl extends CygnusPlatformWebViewController
     with ChannelController {
   static final MethodChannel _staticChannel = IN_APP_WEBVIEW_STATIC_CHANNEL;
 
@@ -67,7 +67,7 @@ class IOSInAppWebViewController extends CygnusPlatformWebViewController
   static final Map<CygnusWebViewKeepAlive, CygnusWebViewControllerKeepAliveProps?>
   _keepAliveMap = {};
 
-  IOSInAppBrowser? _browser;
+  CygnusIOSBrowser? _browser;
 
   CygnusPlatformBrowserEvents? get _browserEventHandler =>
       _browser?.eventHandler;
@@ -77,11 +77,11 @@ class IOSInAppWebViewController extends CygnusPlatformWebViewController
   @override
   late IOSWebStorage webStorage;
 
-  IOSInAppWebViewController(CygnusPlatformWebViewControllerCreationParams params)
+  CygnusIOSWebViewControllerImpl(CygnusPlatformWebViewControllerCreationParams params)
     : super.implementation(
-        params is IOSInAppWebViewControllerCreationParams
+        params is CygnusIOSWebViewControllerCreationParams
             ? params
-            : IOSInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+            : CygnusIOSWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
@@ -108,24 +108,24 @@ class IOSInAppWebViewController extends CygnusPlatformWebViewController
     this._init(params);
   }
 
-  static final IOSInAppWebViewController _staticValue =
-      IOSInAppWebViewController(
-        IOSInAppWebViewControllerCreationParams(id: null),
+  static final CygnusIOSWebViewControllerImpl _staticValue =
+      CygnusIOSWebViewControllerImpl(
+        CygnusIOSWebViewControllerCreationParams(id: null),
       );
 
-  factory IOSInAppWebViewController.static() {
+  factory CygnusIOSWebViewControllerImpl.static() {
     return _staticValue;
   }
 
-  IOSInAppWebViewController.fromBrowser(
+  CygnusIOSWebViewControllerImpl.fromBrowser(
     CygnusPlatformWebViewControllerCreationParams params,
     MethodChannel channel,
-    IOSInAppBrowser browser,
+    CygnusIOSBrowser browser,
     UnmodifiableListView<CygnusUserScript>? initialUserScripts,
   ) : super.implementation(
-        params is IOSInAppWebViewControllerCreationParams
+        params is CygnusIOSWebViewControllerCreationParams
             ? params
-            : IOSInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+            : CygnusIOSWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
@@ -3177,6 +3177,6 @@ class IOSInAppWebViewController extends CygnusPlatformWebViewController
   }
 }
 
-extension InternalInAppWebViewController on IOSInAppWebViewController {
+extension CygnusInternalWebViewController on CygnusIOSWebViewControllerImpl {
   get handleMethod => _handleMethod;
 }

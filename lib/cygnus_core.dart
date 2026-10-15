@@ -28,7 +28,7 @@ export 'package:cygnus_core/src/platform_interface/flutter_webview_platform_inte
     hide
         ChannelController,
         InternalChannelController,
-        InternalInAppWebViewKeepAlive,
+        CygnusInternalWebViewKeepAlive,
         IdGenerator,
         Color_,
         Util,

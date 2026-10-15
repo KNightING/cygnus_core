@@ -40,84 +40,84 @@ class CygnusWindowsWebViewPlatform extends CygnusWebViewPlatform {
     return WindowsCookieManager.static();
   }
 
-  /// Creates a new [WindowsInAppWebViewController].
+  /// Creates a new [CygnusWindowsWebViewController].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
-  WindowsInAppWebViewController createPlatformWebViewController(
+  CygnusWindowsWebViewController createPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
-    return WindowsInAppWebViewController(params);
+    return CygnusWindowsWebViewController(params);
   }
 
-  /// Creates a new empty [WindowsInAppWebViewController] to access static methods.
+  /// Creates a new empty [CygnusWindowsWebViewController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
-  WindowsInAppWebViewController createPlatformWebViewControllerStatic() {
-    return WindowsInAppWebViewController.static();
+  CygnusWindowsWebViewController createPlatformWebViewControllerStatic() {
+    return CygnusWindowsWebViewController.static();
   }
 
-  /// Creates a new [WindowsInAppWebViewWidget].
+  /// Creates a new [CygnusWindowsWebViewWidget].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
-  WindowsInAppWebViewWidget createPlatformWebViewWidget(
+  CygnusWindowsWebViewWidget createPlatformWebViewWidget(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) {
-    return WindowsInAppWebViewWidget(params);
+    return CygnusWindowsWebViewWidget(params);
   }
 
-  /// Creates a new empty [WindowsInAppWebViewWidget] to access static methods.
+  /// Creates a new empty [CygnusWindowsWebViewWidget] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
-  WindowsInAppWebViewWidget createPlatformWebViewWidgetStatic() {
-    return WindowsInAppWebViewWidget.static();
+  CygnusWindowsWebViewWidget createPlatformWebViewWidgetStatic() {
+    return CygnusWindowsWebViewWidget.static();
   }
 
-  /// Creates a new [WindowsInAppBrowser].
+  /// Creates a new [CygnusWindowsBrowser].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusBrowser] in `cygnus` instead.
   @override
-  WindowsInAppBrowser createPlatformBrowser(
+  CygnusWindowsBrowser createPlatformBrowser(
     CygnusPlatformBrowserCreationParams params,
   ) {
-    return WindowsInAppBrowser(params);
+    return CygnusWindowsBrowser(params);
   }
 
-  /// Creates a new empty [WindowsInAppBrowser] to access static methods.
+  /// Creates a new empty [CygnusWindowsBrowser] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusBrowser] in `cygnus` instead.
   @override
-  WindowsInAppBrowser createPlatformBrowserStatic() {
-    return WindowsInAppBrowser.static();
+  CygnusWindowsBrowser createPlatformBrowserStatic() {
+    return CygnusWindowsBrowser.static();
   }
 
-  /// Creates a new [WindowsHeadlessInAppWebView].
+  /// Creates a new [CygnusWindowsHeadlessWebView].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `cygnus` instead.
   @override
-  WindowsHeadlessInAppWebView createPlatformHeadlessWebView(
+  CygnusWindowsHeadlessWebView createPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
-    return WindowsHeadlessInAppWebView(params);
+    return CygnusWindowsHeadlessWebView(params);
   }
 
-  /// Creates a new empty [WindowsHeadlessInAppWebView] to access static methods.
+  /// Creates a new empty [CygnusWindowsHeadlessWebView] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `cygnus` instead.
   @override
-  WindowsHeadlessInAppWebView createPlatformHeadlessWebViewStatic() {
-    return WindowsHeadlessInAppWebView.static();
+  CygnusWindowsHeadlessWebView createPlatformHeadlessWebViewStatic() {
+    return CygnusWindowsHeadlessWebView.static();
   }
 
   /// Creates a new [WindowsWebViewEnvironment].

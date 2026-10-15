@@ -8,15 +8,15 @@ import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_inte
 import '../find_interaction/find_interaction_controller.dart';
 import '../webview/webview_controller.dart';
 
-/// Object specifying creation parameters for creating a [MacOSInAppBrowser].
+/// Object specifying creation parameters for creating a [CygnusMacOSBrowser].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformBrowserCreationParams] for
 /// more information.
-class MacOSInAppBrowserCreationParams
+class CygnusMacOSBrowserCreationParams
     extends CygnusPlatformBrowserCreationParams {
-  /// Creates a new [MacOSInAppBrowserCreationParams] instance.
-  MacOSInAppBrowserCreationParams({
+  /// Creates a new [CygnusMacOSBrowserCreationParams] instance.
+  CygnusMacOSBrowserCreationParams({
     super.contextMenu,
     super.pullToRefreshController,
     this.findInteractionController,
@@ -24,13 +24,13 @@ class MacOSInAppBrowserCreationParams
     super.windowId,
   });
 
-  /// Creates a [MacOSInAppBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
-  factory MacOSInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
+  /// Creates a [CygnusMacOSBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
+  factory CygnusMacOSBrowserCreationParams.fromPlatformBrowserCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformBrowserCreationParams params,
   ) {
-    return MacOSInAppBrowserCreationParams(
+    return CygnusMacOSBrowserCreationParams(
       contextMenu: params.contextMenu,
       pullToRefreshController: params.pullToRefreshController,
       findInteractionController:
@@ -45,33 +45,33 @@ class MacOSInAppBrowserCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformBrowser}
-class MacOSInAppBrowser extends CygnusPlatformBrowser with ChannelController {
+class CygnusMacOSBrowser extends CygnusPlatformBrowser with ChannelController {
   @override
   final String id = IdGenerator.generate();
 
-  /// Constructs a [MacOSInAppBrowser].
-  MacOSInAppBrowser(CygnusPlatformBrowserCreationParams params)
+  /// Constructs a [CygnusMacOSBrowser].
+  CygnusMacOSBrowser(CygnusPlatformBrowserCreationParams params)
     : super.implementation(
-        params is MacOSInAppBrowserCreationParams
+        params is CygnusMacOSBrowserCreationParams
             ? params
-            : MacOSInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
+            : CygnusMacOSBrowserCreationParams.fromPlatformBrowserCreationParams(
                 params,
               ),
       ) {
     _contextMenu = params.contextMenu;
   }
 
-  static final MacOSInAppBrowser _staticValue = MacOSInAppBrowser(
-    MacOSInAppBrowserCreationParams(),
+  static final CygnusMacOSBrowser _staticValue = CygnusMacOSBrowser(
+    CygnusMacOSBrowserCreationParams(),
   );
 
   /// Provide static access.
-  factory MacOSInAppBrowser.static() {
+  factory CygnusMacOSBrowser.static() {
     return _staticValue;
   }
 
-  MacOSInAppBrowserCreationParams get _macosParams =>
-      params as MacOSInAppBrowserCreationParams;
+  CygnusMacOSBrowserCreationParams get _macosParams =>
+      params as CygnusMacOSBrowserCreationParams;
 
   static const MethodChannel _staticChannel = const MethodChannel(
     'com.github.knighting.cygnus/browser',
@@ -84,10 +84,10 @@ class MacOSInAppBrowser extends CygnusPlatformBrowser with ChannelController {
 
   Map<int, CygnusBrowserMenuItem> _menuItems = HashMap();
   bool _isOpened = false;
-  MacOSInAppWebViewController? _webViewController;
+  CygnusMacOSWebViewController? _webViewController;
 
   @override
-  MacOSInAppWebViewController? get webViewController {
+  CygnusMacOSWebViewController? get webViewController {
     return _isOpened ? _webViewController : null;
   }
 
@@ -96,8 +96,8 @@ class MacOSInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     handler = _handleMethod;
     initMethodCallHandler();
 
-    _webViewController = MacOSInAppWebViewController.fromBrowser(
-      MacOSInAppWebViewControllerCreationParams(id: id),
+    _webViewController = CygnusMacOSWebViewController.fromBrowser(
+      CygnusMacOSWebViewControllerCreationParams(id: id),
       channel!,
       this,
       this.initialUserScripts,
@@ -395,7 +395,7 @@ class MacOSInAppBrowser extends CygnusPlatformBrowser with ChannelController {
   }
 }
 
-extension InternalInAppBrowser on MacOSInAppBrowser {
+extension CygnusInternalBrowser on CygnusMacOSBrowser {
   void setContextMenu(CygnusContextMenu? contextMenu) {
     _contextMenu = contextMenu;
   }

@@ -1,1 +1,1 @@
-export 'browser.dart' hide InternalInAppBrowser;
+export 'browser.dart' hide CygnusInternalBrowser;

@@ -6,16 +6,16 @@ import '../find_interaction/find_interaction_controller.dart';
 import '../pull_to_refresh/pull_to_refresh_controller.dart';
 import 'webview_controller.dart';
 
-/// Object specifying creation parameters for creating a [AndroidHeadlessInAppWebView].
+/// Object specifying creation parameters for creating a [CygnusAndroidHeadlessWebView].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformHeadlessWebViewCreationParams] for
 /// more information.
 @immutable
-class AndroidHeadlessInAppWebViewCreationParams
+class CygnusAndroidHeadlessWebViewCreationParams
     extends CygnusPlatformHeadlessWebViewCreationParams {
-  /// Creates a new [AndroidHeadlessInAppWebViewCreationParams] instance.
-  AndroidHeadlessInAppWebViewCreationParams({
+  /// Creates a new [CygnusAndroidHeadlessWebViewCreationParams] instance.
+  CygnusAndroidHeadlessWebViewCreationParams({
     super.controllerFromPlatform,
     super.initialSize,
     super.windowId,
@@ -130,8 +130,8 @@ class AndroidHeadlessInAppWebViewCreationParams
     this.findInteractionController,
   });
 
-  /// Creates a [AndroidHeadlessInAppWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
-  AndroidHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
+  /// Creates a [CygnusAndroidHeadlessWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
+  CygnusAndroidHeadlessWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -251,7 +251,7 @@ class AndroidHeadlessInAppWebViewCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformHeadlessWebView}
-class AndroidHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
+class CygnusAndroidHeadlessWebView extends CygnusPlatformHeadlessWebView
     with ChannelController {
   @override
   late final String id;
@@ -263,38 +263,38 @@ class AndroidHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     'com.github.knighting.cygnus/headless_webview',
   );
 
-  AndroidInAppWebViewController? _webViewController;
+  CygnusAndroidWebViewControllerImpl? _webViewController;
 
-  /// Constructs a [AndroidHeadlessInAppWebView].
-  AndroidHeadlessInAppWebView(CygnusPlatformHeadlessWebViewCreationParams params)
+  /// Constructs a [CygnusAndroidHeadlessWebView].
+  CygnusAndroidHeadlessWebView(CygnusPlatformHeadlessWebViewCreationParams params)
     : super.implementation(
-        params is AndroidHeadlessInAppWebViewCreationParams
+        params is CygnusAndroidHeadlessWebViewCreationParams
             ? params
-            : AndroidHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
+            : CygnusAndroidHeadlessWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
                 params,
               ),
       ) {
     id = IdGenerator.generate();
   }
 
-  static final AndroidHeadlessInAppWebView _staticValue =
-      AndroidHeadlessInAppWebView(AndroidHeadlessInAppWebViewCreationParams());
+  static final CygnusAndroidHeadlessWebView _staticValue =
+      CygnusAndroidHeadlessWebView(CygnusAndroidHeadlessWebViewCreationParams());
 
-  factory AndroidHeadlessInAppWebView.static() {
+  factory CygnusAndroidHeadlessWebView.static() {
     return _staticValue;
   }
 
   @override
-  AndroidInAppWebViewController? get webViewController => _webViewController;
+  CygnusAndroidWebViewControllerImpl? get webViewController => _webViewController;
 
   dynamic _controllerFromPlatform;
 
-  AndroidHeadlessInAppWebViewCreationParams get _androidParams =>
-      params as AndroidHeadlessInAppWebViewCreationParams;
+  CygnusAndroidHeadlessWebViewCreationParams get _androidParams =>
+      params as CygnusAndroidHeadlessWebViewCreationParams;
 
   _init() {
-    _webViewController = AndroidInAppWebViewController(
-      AndroidInAppWebViewControllerCreationParams(
+    _webViewController = CygnusAndroidWebViewControllerImpl(
+      CygnusAndroidWebViewControllerCreationParams(
         id: id,
         webviewParams: params,
       ),
@@ -462,7 +462,7 @@ class AndroidHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
   }
 }
 
-extension InternalHeadlessInAppWebView on AndroidHeadlessInAppWebView {
+extension CygnusInternalHeadlessWebView on CygnusAndroidHeadlessWebView {
   Future<void> internalDispose() async {
     _started = false;
     _running = false;

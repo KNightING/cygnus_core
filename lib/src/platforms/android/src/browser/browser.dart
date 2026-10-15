@@ -9,15 +9,15 @@ import '../find_interaction/find_interaction_controller.dart';
 import '../webview/webview_controller.dart';
 import '../pull_to_refresh/pull_to_refresh_controller.dart';
 
-/// Object specifying creation parameters for creating a [AndroidInAppBrowser].
+/// Object specifying creation parameters for creating a [CygnusAndroidBrowser].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformBrowserCreationParams] for
 /// more information.
-class AndroidInAppBrowserCreationParams
+class CygnusAndroidBrowserCreationParams
     extends CygnusPlatformBrowserCreationParams {
-  /// Creates a new [AndroidInAppBrowserCreationParams] instance.
-  AndroidInAppBrowserCreationParams({
+  /// Creates a new [CygnusAndroidBrowserCreationParams] instance.
+  CygnusAndroidBrowserCreationParams({
     super.contextMenu,
     this.pullToRefreshController,
     this.findInteractionController,
@@ -25,13 +25,13 @@ class AndroidInAppBrowserCreationParams
     super.windowId,
   });
 
-  /// Creates a [AndroidInAppBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
-  factory AndroidInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
+  /// Creates a [CygnusAndroidBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
+  factory CygnusAndroidBrowserCreationParams.fromPlatformBrowserCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformBrowserCreationParams params,
   ) {
-    return AndroidInAppBrowserCreationParams(
+    return CygnusAndroidBrowserCreationParams(
       contextMenu: params.contextMenu,
       pullToRefreshController:
           params.pullToRefreshController as AndroidPullToRefreshController?,
@@ -50,33 +50,33 @@ class AndroidInAppBrowserCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformBrowser}
-class AndroidInAppBrowser extends CygnusPlatformBrowser with ChannelController {
+class CygnusAndroidBrowser extends CygnusPlatformBrowser with ChannelController {
   @override
   final String id = IdGenerator.generate();
 
-  /// Constructs a [AndroidInAppBrowser].
-  AndroidInAppBrowser(CygnusPlatformBrowserCreationParams params)
+  /// Constructs a [CygnusAndroidBrowser].
+  CygnusAndroidBrowser(CygnusPlatformBrowserCreationParams params)
     : super.implementation(
-        params is AndroidInAppBrowserCreationParams
+        params is CygnusAndroidBrowserCreationParams
             ? params
-            : AndroidInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
+            : CygnusAndroidBrowserCreationParams.fromPlatformBrowserCreationParams(
                 params,
               ),
       ) {
     _contextMenu = params.contextMenu;
   }
 
-  static final AndroidInAppBrowser _staticValue = AndroidInAppBrowser(
-    AndroidInAppBrowserCreationParams(),
+  static final CygnusAndroidBrowser _staticValue = CygnusAndroidBrowser(
+    CygnusAndroidBrowserCreationParams(),
   );
 
   /// Provide static access.
-  factory AndroidInAppBrowser.static() {
+  factory CygnusAndroidBrowser.static() {
     return _staticValue;
   }
 
-  AndroidInAppBrowserCreationParams get _androidParams =>
-      params as AndroidInAppBrowserCreationParams;
+  CygnusAndroidBrowserCreationParams get _androidParams =>
+      params as CygnusAndroidBrowserCreationParams;
 
   static const MethodChannel _staticChannel = const MethodChannel(
     'com.github.knighting.cygnus/browser',
@@ -89,10 +89,10 @@ class AndroidInAppBrowser extends CygnusPlatformBrowser with ChannelController {
 
   Map<int, CygnusBrowserMenuItem> _menuItems = HashMap();
   bool _isOpened = false;
-  AndroidInAppWebViewController? _webViewController;
+  CygnusAndroidWebViewControllerImpl? _webViewController;
 
   @override
-  AndroidInAppWebViewController? get webViewController {
+  CygnusAndroidWebViewControllerImpl? get webViewController {
     return _isOpened ? _webViewController : null;
   }
 
@@ -101,8 +101,8 @@ class AndroidInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     handler = _handleMethod;
     initMethodCallHandler();
 
-    _webViewController = AndroidInAppWebViewController.fromBrowser(
-      AndroidInAppWebViewControllerCreationParams(id: id),
+    _webViewController = CygnusAndroidWebViewControllerImpl.fromBrowser(
+      CygnusAndroidWebViewControllerCreationParams(id: id),
       channel!,
       this,
       this.initialUserScripts,
@@ -397,7 +397,7 @@ class AndroidInAppBrowser extends CygnusPlatformBrowser with ChannelController {
   }
 }
 
-extension InternalInAppBrowser on AndroidInAppBrowser {
+extension CygnusInternalBrowser on CygnusAndroidBrowser {
   void setContextMenu(CygnusContextMenu? contextMenu) {
     _contextMenu = contextMenu;
   }

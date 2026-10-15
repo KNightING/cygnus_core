@@ -10,9 +10,9 @@ import 'webview_controller.dart';
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
-class WebPlatformInAppWebViewWidgetCreationParams
+class CygnusWebPlatformWebViewWidgetCreationParams
     extends CygnusPlatformWebViewWidgetCreationParams {
-  WebPlatformInAppWebViewWidgetCreationParams({
+  CygnusWebPlatformWebViewWidgetCreationParams({
     super.controllerFromPlatform,
     super.key,
     super.layoutDirection,
@@ -132,9 +132,9 @@ class WebPlatformInAppWebViewWidgetCreationParams
     super.findInteractionController,
   });
 
-  /// Constructs a [WebPlatformInAppWebViewWidgetCreationParams] using a
+  /// Constructs a [CygnusWebPlatformWebViewWidgetCreationParams] using a
   /// [CygnusPlatformWebViewWidgetCreationParams].
-  WebPlatformInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
+  CygnusWebPlatformWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -250,33 +250,33 @@ class WebPlatformInAppWebViewWidgetCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
-class WebPlatformInAppWebViewWidget extends CygnusPlatformWebViewWidget {
-  /// Constructs a [WebPlatformInAppWebViewWidget].
+class CygnusWebPlatformWebViewWidget extends CygnusPlatformWebViewWidget {
+  /// Constructs a [CygnusWebPlatformWebViewWidget].
   ///
   ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
-  WebPlatformInAppWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
+  CygnusWebPlatformWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
     : super.implementation(
-        params is WebPlatformInAppWebViewWidgetCreationParams
+        params is CygnusWebPlatformWebViewWidgetCreationParams
             ? params
-            : WebPlatformInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
+            : CygnusWebPlatformWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
                 params,
               ),
       );
 
-  WebPlatformInAppWebViewWidgetCreationParams get _webPlatformParams =>
-      params as WebPlatformInAppWebViewWidgetCreationParams;
+  CygnusWebPlatformWebViewWidgetCreationParams get _webPlatformParams =>
+      params as CygnusWebPlatformWebViewWidgetCreationParams;
 
-  WebPlatformInAppWebViewController? _controller;
+  CygnusWebPlatformWebViewController? _controller;
 
-  WebPlatformHeadlessInAppWebView? get _macosHeadlessWebView =>
-      _webPlatformParams.headlessWebView as WebPlatformHeadlessInAppWebView?;
+  CygnusWebPlatformHeadlessWebView? get _macosHeadlessWebView =>
+      _webPlatformParams.headlessWebView as CygnusWebPlatformHeadlessWebView?;
 
-  static final WebPlatformInAppWebViewWidget _staticValue =
-      WebPlatformInAppWebViewWidget(
-        WebPlatformInAppWebViewWidgetCreationParams(),
+  static final CygnusWebPlatformWebViewWidget _staticValue =
+      CygnusWebPlatformWebViewWidget(
+        CygnusWebPlatformWebViewWidgetCreationParams(),
       );
 
-  factory WebPlatformInAppWebViewWidget.static() {
+  factory CygnusWebPlatformWebViewWidget.static() {
     return _staticValue;
   }
 
@@ -298,7 +298,7 @@ class WebPlatformInAppWebViewWidget extends CygnusPlatformWebViewWidget {
     return HtmlElementView(
       viewType: 'com.github.knighting.cygnus/webview',
       onPlatformViewCreated: (int viewId) {
-        var webViewHtmlElement = InAppWebViewManager.webViews[viewId]!;
+        var webViewHtmlElement = CygnusWebViewManager.webViews[viewId]!;
         webViewHtmlElement.initialSettings = initialSettings;
         webViewHtmlElement.initialUrlRequest =
             _webPlatformParams.initialUrlRequest;
@@ -323,7 +323,7 @@ class WebPlatformInAppWebViewWidget extends CygnusPlatformWebViewWidget {
   void _onPlatformViewCreated(int id) {
     dynamic viewId = id;
     _macosHeadlessWebView?.internalDispose();
-    _controller = WebPlatformInAppWebViewController(
+    _controller = CygnusWebPlatformWebViewController(
       CygnusPlatformWebViewControllerCreationParams(
         id: viewId,
         webviewParams: params,

@@ -16,10 +16,10 @@ import 'package:cygnus_core_example/providers/settings_manager.dart';
 import 'package:cygnus_core_example/widgets/common/profile_selector_card.dart';
 
 /// Custom CygnusBrowser implementation for testing
-class TestInAppBrowser extends CygnusBrowser {
+class CygnusTestBrowser extends CygnusBrowser {
   final void Function(String event, Map<String, dynamic>? data)? onEvent;
 
-  TestInAppBrowser({this.onEvent, CygnusWebViewEnvironment? webViewEnvironment})
+  CygnusTestBrowser({this.onEvent, CygnusWebViewEnvironment? webViewEnvironment})
     : super(webViewEnvironment: webViewEnvironment);
 
   @override
@@ -82,20 +82,20 @@ class TestInAppBrowser extends CygnusBrowser {
 }
 
 /// Screen for testing CygnusBrowser functionality
-class InAppBrowserScreen extends StatefulWidget {
-  const InAppBrowserScreen({super.key});
+class CygnusBrowserScreen extends StatefulWidget {
+  const CygnusBrowserScreen({super.key});
 
   @override
-  State<InAppBrowserScreen> createState() => _InAppBrowserScreenState();
+  State<CygnusBrowserScreen> createState() => _CygnusBrowserScreenState();
 }
 
-class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
+class _CygnusBrowserScreenState extends State<CygnusBrowserScreen> {
   final TextEditingController _menuItemIdController = TextEditingController();
   final TextEditingController _menuItemTitleController = TextEditingController(
     text: 'Custom Menu Item',
   );
 
-  TestInAppBrowser? _browser;
+  CygnusTestBrowser? _browser;
   bool _isLoading = false;
   bool _browserOpened = false;
   final List<CygnusBrowserMenuItem> _menuItems = [];
@@ -110,7 +110,7 @@ class _InAppBrowserScreenState extends State<InAppBrowserScreen> {
 
   void _initBrowser(CygnusWebViewEnvironment? webViewEnvironment) {
     try {
-      _browser = TestInAppBrowser(
+      _browser = CygnusTestBrowser(
         webViewEnvironment: webViewEnvironment,
         onEvent: (event, data) {
           _logEvent(EventType.ui, event, data: data);

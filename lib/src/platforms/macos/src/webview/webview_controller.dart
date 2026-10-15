@@ -16,38 +16,38 @@ import '../web_storage/web_storage.dart';
 import '_static_channel.dart';
 import 'headless_webview.dart';
 
-/// Object specifying creation parameters for creating a [MacOSInAppWebViewController].
+/// Object specifying creation parameters for creating a [CygnusMacOSWebViewController].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformWebViewControllerCreationParams] for
 /// more information.
 @immutable
-class MacOSInAppWebViewControllerCreationParams
+class CygnusMacOSWebViewControllerCreationParams
     extends CygnusPlatformWebViewControllerCreationParams {
-  /// Creates a new [MacOSInAppWebViewControllerCreationParams] instance.
-  const MacOSInAppWebViewControllerCreationParams({
+  /// Creates a new [CygnusMacOSWebViewControllerCreationParams] instance.
+  const CygnusMacOSWebViewControllerCreationParams({
     required super.id,
     super.webviewParams,
   });
 
-  /// Creates a [MacOSInAppWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
-  factory MacOSInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+  /// Creates a [CygnusMacOSWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
+  factory CygnusMacOSWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
-    return MacOSInAppWebViewControllerCreationParams(
+    return CygnusMacOSWebViewControllerCreationParams(
       id: params.id,
       webviewParams: params.webviewParams,
     );
   }
 }
 
-///Controls a WebView, such as an [CygnusWebView] widget instance, a [MacOSHeadlessInAppWebView] instance or [MacOSInAppBrowser] WebView instance.
+///Controls a WebView, such as an [CygnusWebView] widget instance, a [CygnusMacOSHeadlessWebView] instance or [CygnusMacOSBrowser] WebView instance.
 ///
 ///If you are using the [CygnusWebView] widget, an [CygnusWebViewController] instance can be obtained by setting the [CygnusWebView.onWebViewCreated]
-///callback. Instead, if you are using an [MacOSInAppBrowser] instance, you can get it through the [MacOSInAppBrowser.webViewController] attribute.
-class MacOSInAppWebViewController extends CygnusPlatformWebViewController
+///callback. Instead, if you are using an [CygnusMacOSBrowser] instance, you can get it through the [CygnusMacOSBrowser.webViewController] attribute.
+class CygnusMacOSWebViewController extends CygnusPlatformWebViewController
     with ChannelController {
   static final MethodChannel _staticChannel = IN_APP_WEBVIEW_STATIC_CHANNEL;
 
@@ -66,7 +66,7 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
   static final Map<CygnusWebViewKeepAlive, CygnusWebViewControllerKeepAliveProps?>
   _keepAliveMap = {};
 
-  MacOSInAppBrowser? _browser;
+  CygnusMacOSBrowser? _browser;
 
   CygnusPlatformBrowserEvents? get _browserEventHandler =>
       _browser?.eventHandler;
@@ -76,12 +76,12 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
   @override
   late MacOSWebStorage webStorage;
 
-  MacOSInAppWebViewController(
+  CygnusMacOSWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) : super.implementation(
-        params is MacOSInAppWebViewControllerCreationParams
+        params is CygnusMacOSWebViewControllerCreationParams
             ? params
-            : MacOSInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+            : CygnusMacOSWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
@@ -108,24 +108,24 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
     this._init(params);
   }
 
-  static final MacOSInAppWebViewController _staticValue =
-      MacOSInAppWebViewController(
-        MacOSInAppWebViewControllerCreationParams(id: null),
+  static final CygnusMacOSWebViewController _staticValue =
+      CygnusMacOSWebViewController(
+        CygnusMacOSWebViewControllerCreationParams(id: null),
       );
 
-  factory MacOSInAppWebViewController.static() {
+  factory CygnusMacOSWebViewController.static() {
     return _staticValue;
   }
 
-  MacOSInAppWebViewController.fromBrowser(
+  CygnusMacOSWebViewController.fromBrowser(
     CygnusPlatformWebViewControllerCreationParams params,
     MethodChannel channel,
-    MacOSInAppBrowser browser,
+    CygnusMacOSBrowser browser,
     UnmodifiableListView<CygnusUserScript>? initialUserScripts,
   ) : super.implementation(
-        params is MacOSInAppWebViewControllerCreationParams
+        params is CygnusMacOSWebViewControllerCreationParams
             ? params
-            : MacOSInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+            : CygnusMacOSWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
@@ -3092,6 +3092,6 @@ class MacOSInAppWebViewController extends CygnusPlatformWebViewController
   }
 }
 
-extension InternalInAppWebViewController on MacOSInAppWebViewController {
+extension CygnusInternalWebViewController on CygnusMacOSWebViewController {
   get handleMethod => _handleMethod;
 }

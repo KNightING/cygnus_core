@@ -27,7 +27,7 @@ class MockCygnusPlatform extends CygnusWebViewPlatform
 
   @override
   CygnusPlatformWebViewController createPlatformWebViewControllerStatic() {
-    return MockPlatformInAppWebViewControllerStatic(
+    return CygnusMockPlatformWebViewControllerStatic(
       const CygnusPlatformWebViewControllerCreationParams(id: 'mock_controller'),
     );
   }
@@ -50,12 +50,12 @@ class MockCygnusPlatform extends CygnusWebViewPlatform
   CygnusPlatformWebViewWidget createPlatformWebViewWidget(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) {
-    return MockPlatformInAppWebViewWidget(params);
+    return CygnusMockPlatformWebViewWidget(params);
   }
 
   @override
   CygnusPlatformWebViewWidget createPlatformWebViewWidgetStatic() {
-    return MockPlatformInAppWebViewWidget(
+    return CygnusMockPlatformWebViewWidget(
       CygnusPlatformWebViewWidgetCreationParams(),
     );
   }
@@ -64,7 +64,7 @@ class MockCygnusPlatform extends CygnusWebViewPlatform
   CygnusPlatformWebViewController createPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
-    return MockPlatformInAppWebViewController(params);
+    return CygnusMockPlatformWebViewController(params);
   }
 
   @override
@@ -196,12 +196,12 @@ class MockCygnusPlatform extends CygnusWebViewPlatform
   CygnusPlatformHeadlessWebView createPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
-    return MockPlatformHeadlessInAppWebView(params);
+    return CygnusMockPlatformHeadlessWebView(params);
   }
 
   @override
   CygnusPlatformHeadlessWebView createPlatformHeadlessWebViewStatic() {
-    return MockPlatformHeadlessInAppWebView(
+    return CygnusMockPlatformHeadlessWebView(
       const CygnusPlatformHeadlessWebViewCreationParams(),
     );
   }
@@ -210,12 +210,12 @@ class MockCygnusPlatform extends CygnusWebViewPlatform
   CygnusPlatformBrowser createPlatformBrowser(
     CygnusPlatformBrowserCreationParams params,
   ) {
-    return MockPlatformInAppBrowser(params);
+    return CygnusMockPlatformBrowser(params);
   }
 
   @override
   CygnusPlatformBrowser createPlatformBrowserStatic() {
-    return MockPlatformInAppBrowser(const CygnusPlatformBrowserCreationParams());
+    return CygnusMockPlatformBrowser(const CygnusPlatformBrowserCreationParams());
   }
 
   @override
@@ -349,10 +349,10 @@ class MockCygnusPlatform extends CygnusWebViewPlatform
 }
 
 /// Mock static controller for testing
-class MockPlatformInAppWebViewControllerStatic
+class CygnusMockPlatformWebViewControllerStatic
     extends CygnusPlatformWebViewController
     with MockPlatformInterfaceMixin {
-  MockPlatformInAppWebViewControllerStatic(super.params)
+  CygnusMockPlatformWebViewControllerStatic(super.params)
     : super.implementation();
 
   @override
@@ -365,9 +365,9 @@ class MockPlatformInAppWebViewControllerStatic
   }
 }
 
-class MockPlatformInAppWebViewController extends CygnusPlatformWebViewController
+class CygnusMockPlatformWebViewController extends CygnusPlatformWebViewController
     with MockPlatformInterfaceMixin {
-  MockPlatformInAppWebViewController(super.params) : super.implementation();
+  CygnusMockPlatformWebViewController(super.params) : super.implementation();
 
   @override
   bool isMethodSupported(
@@ -444,9 +444,9 @@ class MockPlatformInAppWebViewController extends CygnusPlatformWebViewController
   }
 }
 
-class MockPlatformInAppWebViewWidget extends CygnusPlatformWebViewWidget
+class CygnusMockPlatformWebViewWidget extends CygnusPlatformWebViewWidget
     with MockPlatformInterfaceMixin {
-  MockPlatformInAppWebViewWidget(super.params) : super.implementation();
+  CygnusMockPlatformWebViewWidget(super.params) : super.implementation();
 
   @override
   T controllerFromPlatform<T>(CygnusPlatformWebViewController controller) {
@@ -712,16 +712,16 @@ class MockPlatformWebMessagePort extends CygnusPlatformWebMessagePort
   Map<String, dynamic> toJson() => toMap();
 }
 
-class MockPlatformHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
+class CygnusMockPlatformHeadlessWebView extends CygnusPlatformHeadlessWebView
     with MockPlatformInterfaceMixin {
-  MockPlatformHeadlessInAppWebView(super.params) : super.implementation();
+  CygnusMockPlatformHeadlessWebView(super.params) : super.implementation();
 
   @override
   String get id => 'mock_headless';
 
   @override
   CygnusPlatformWebViewController? get webViewController =>
-      MockPlatformInAppWebViewController(
+      CygnusMockPlatformWebViewController(
         const CygnusPlatformWebViewControllerCreationParams(
           id: 'mock_headless_controller',
         ),
@@ -743,16 +743,16 @@ class MockPlatformHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
   Future<void> dispose() async {}
 }
 
-class MockPlatformInAppBrowser extends CygnusPlatformBrowser
+class CygnusMockPlatformBrowser extends CygnusPlatformBrowser
     with MockPlatformInterfaceMixin {
-  MockPlatformInAppBrowser(super.params) : super.implementation();
+  CygnusMockPlatformBrowser(super.params) : super.implementation();
 
   @override
   String get id => 'mock_inapp_browser';
 
   @override
   CygnusPlatformWebViewController? get webViewController =>
-      MockPlatformInAppWebViewController(
+      CygnusMockPlatformWebViewController(
         const CygnusPlatformWebViewControllerCreationParams(
           id: 'mock_inapp_browser_controller',
         ),

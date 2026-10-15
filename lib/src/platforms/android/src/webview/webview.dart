@@ -70,9 +70,9 @@ Future<bool>? _autoModeProbe;
 Future<bool> _autoCompositionModeSupport() =>
     _autoModeProbe ??= precacheHybridCompositionPlusPlusSupport();
 
-class AndroidInAppWebViewWidgetCreationParams
+class CygnusAndroidWebViewWidgetCreationParams
     extends CygnusPlatformWebViewWidgetCreationParams {
-  AndroidInAppWebViewWidgetCreationParams({
+  CygnusAndroidWebViewWidgetCreationParams({
     super.controllerFromPlatform,
     super.key,
     super.layoutDirection,
@@ -193,9 +193,9 @@ class AndroidInAppWebViewWidgetCreationParams
     this.findInteractionController,
   });
 
-  /// Constructs a [AndroidInAppWebViewWidgetCreationParams] using a
+  /// Constructs a [CygnusAndroidWebViewWidgetCreationParams] using a
   /// [CygnusPlatformWebViewWidgetCreationParams].
-  AndroidInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
+  CygnusAndroidWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -321,31 +321,31 @@ class AndroidInAppWebViewWidgetCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
-class AndroidInAppWebViewWidget extends CygnusPlatformWebViewWidget {
-  /// Constructs a [AndroidInAppWebViewWidget].
+class CygnusAndroidWebViewWidget extends CygnusPlatformWebViewWidget {
+  /// Constructs a [CygnusAndroidWebViewWidget].
   ///
   ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
-  AndroidInAppWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
+  CygnusAndroidWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
     : super.implementation(
-        params is AndroidInAppWebViewWidgetCreationParams
+        params is CygnusAndroidWebViewWidgetCreationParams
             ? params
-            : AndroidInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
+            : CygnusAndroidWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
                 params,
               ),
       );
 
-  AndroidInAppWebViewWidgetCreationParams get _androidParams =>
-      params as AndroidInAppWebViewWidgetCreationParams;
+  CygnusAndroidWebViewWidgetCreationParams get _androidParams =>
+      params as CygnusAndroidWebViewWidgetCreationParams;
 
-  AndroidInAppWebViewController? _controller;
+  CygnusAndroidWebViewControllerImpl? _controller;
 
-  AndroidHeadlessInAppWebView? get _androidHeadlessWebView =>
-      params.headlessWebView as AndroidHeadlessInAppWebView?;
+  CygnusAndroidHeadlessWebView? get _androidHeadlessWebView =>
+      params.headlessWebView as CygnusAndroidHeadlessWebView?;
 
-  static final AndroidInAppWebViewWidget _staticValue =
-      AndroidInAppWebViewWidget(AndroidInAppWebViewWidgetCreationParams());
+  static final CygnusAndroidWebViewWidget _staticValue =
+      CygnusAndroidWebViewWidget(CygnusAndroidWebViewWidgetCreationParams());
 
-  factory AndroidInAppWebViewWidget.static() {
+  factory CygnusAndroidWebViewWidget.static() {
     return _staticValue;
   }
 
@@ -582,7 +582,7 @@ class AndroidInAppWebViewWidget extends CygnusPlatformWebViewWidget {
     }
     viewId = params.keepAlive?.id ?? viewId ?? id;
     _androidHeadlessWebView?.internalDispose();
-    _controller = AndroidInAppWebViewController(
+    _controller = CygnusAndroidWebViewControllerImpl(
       CygnusPlatformWebViewControllerCreationParams(
         id: viewId,
         webviewParams: params,

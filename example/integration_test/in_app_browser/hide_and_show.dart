@@ -4,7 +4,7 @@ void hideAndShow() {
   final shouldSkip = !CygnusBrowser.isClassSupported();
 
   skippableTest('hide and show', () async {
-    var browser = new MyInAppBrowser();
+    var browser = new CygnusMyBrowser();
     await browser.openUrlRequest(
       urlRequest: CygnusURLRequest(url: TEST_URL_1),
       settings: CygnusBrowserClassSettings(

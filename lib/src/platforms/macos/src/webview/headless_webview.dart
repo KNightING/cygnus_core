@@ -6,16 +6,16 @@ import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_inte
 import '../find_interaction/find_interaction_controller.dart';
 import 'webview_controller.dart';
 
-/// Object specifying creation parameters for creating a [MacOSHeadlessInAppWebView].
+/// Object specifying creation parameters for creating a [CygnusMacOSHeadlessWebView].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformHeadlessWebViewCreationParams] for
 /// more information.
 @immutable
-class MacOSHeadlessInAppWebViewCreationParams
+class CygnusMacOSHeadlessWebViewCreationParams
     extends CygnusPlatformHeadlessWebViewCreationParams {
-  /// Creates a new [MacOSHeadlessInAppWebViewCreationParams] instance.
-  MacOSHeadlessInAppWebViewCreationParams({
+  /// Creates a new [CygnusMacOSHeadlessWebViewCreationParams] instance.
+  CygnusMacOSHeadlessWebViewCreationParams({
     super.controllerFromPlatform,
     super.initialSize,
     super.windowId,
@@ -130,8 +130,8 @@ class MacOSHeadlessInAppWebViewCreationParams
     this.findInteractionController,
   });
 
-  /// Creates a [MacOSHeadlessInAppWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
-  MacOSHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
+  /// Creates a [CygnusMacOSHeadlessWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
+  CygnusMacOSHeadlessWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -246,7 +246,7 @@ class MacOSHeadlessInAppWebViewCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformHeadlessWebView}
-class MacOSHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
+class CygnusMacOSHeadlessWebView extends CygnusPlatformHeadlessWebView
     with ChannelController {
   @override
   late final String id;
@@ -258,38 +258,38 @@ class MacOSHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     'com.github.knighting.cygnus/headless_webview',
   );
 
-  MacOSInAppWebViewController? _webViewController;
+  CygnusMacOSWebViewController? _webViewController;
 
-  /// Constructs a [MacOSHeadlessInAppWebView].
-  MacOSHeadlessInAppWebView(CygnusPlatformHeadlessWebViewCreationParams params)
+  /// Constructs a [CygnusMacOSHeadlessWebView].
+  CygnusMacOSHeadlessWebView(CygnusPlatformHeadlessWebViewCreationParams params)
     : super.implementation(
-        params is MacOSHeadlessInAppWebViewCreationParams
+        params is CygnusMacOSHeadlessWebViewCreationParams
             ? params
-            : MacOSHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
+            : CygnusMacOSHeadlessWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
                 params,
               ),
       ) {
     id = IdGenerator.generate();
   }
 
-  static final MacOSHeadlessInAppWebView _staticValue =
-      MacOSHeadlessInAppWebView(MacOSHeadlessInAppWebViewCreationParams());
+  static final CygnusMacOSHeadlessWebView _staticValue =
+      CygnusMacOSHeadlessWebView(CygnusMacOSHeadlessWebViewCreationParams());
 
-  factory MacOSHeadlessInAppWebView.static() {
+  factory CygnusMacOSHeadlessWebView.static() {
     return _staticValue;
   }
 
   @override
-  MacOSInAppWebViewController? get webViewController => _webViewController;
+  CygnusMacOSWebViewController? get webViewController => _webViewController;
 
   dynamic _controllerFromPlatform;
 
-  MacOSHeadlessInAppWebViewCreationParams get _macosParams =>
-      params as MacOSHeadlessInAppWebViewCreationParams;
+  CygnusMacOSHeadlessWebViewCreationParams get _macosParams =>
+      params as CygnusMacOSHeadlessWebViewCreationParams;
 
   _init() {
-    _webViewController = MacOSInAppWebViewController(
-      MacOSInAppWebViewControllerCreationParams(id: id, webviewParams: params),
+    _webViewController = CygnusMacOSWebViewController(
+      CygnusMacOSWebViewControllerCreationParams(id: id, webviewParams: params),
     );
     _controllerFromPlatform =
         params.controllerFromPlatform?.call(_webViewController!) ??
@@ -449,7 +449,7 @@ class MacOSHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
   }
 }
 
-extension InternalHeadlessInAppWebView on MacOSHeadlessInAppWebView {
+extension CygnusInternalHeadlessWebView on CygnusMacOSHeadlessWebView {
   Future<void> internalDispose() async {
     _started = false;
     _running = false;

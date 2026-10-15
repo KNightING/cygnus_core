@@ -9,14 +9,14 @@ import '../find_interaction/find_interaction_controller.dart';
 import '../webview/webview_controller.dart';
 import '../pull_to_refresh/pull_to_refresh_controller.dart';
 
-/// Object specifying creation parameters for creating a [IOSInAppBrowser].
+/// Object specifying creation parameters for creating a [CygnusIOSBrowser].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformBrowserCreationParams] for
 /// more information.
-class IOSInAppBrowserCreationParams extends CygnusPlatformBrowserCreationParams {
-  /// Creates a new [IOSInAppBrowserCreationParams] instance.
-  IOSInAppBrowserCreationParams({
+class CygnusIOSBrowserCreationParams extends CygnusPlatformBrowserCreationParams {
+  /// Creates a new [CygnusIOSBrowserCreationParams] instance.
+  CygnusIOSBrowserCreationParams({
     super.contextMenu,
     this.pullToRefreshController,
     this.findInteractionController,
@@ -24,13 +24,13 @@ class IOSInAppBrowserCreationParams extends CygnusPlatformBrowserCreationParams 
     super.windowId,
   });
 
-  /// Creates a [IOSInAppBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
-  factory IOSInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
+  /// Creates a [CygnusIOSBrowserCreationParams] instance based on [CygnusPlatformBrowserCreationParams].
+  factory CygnusIOSBrowserCreationParams.fromPlatformBrowserCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformBrowserCreationParams params,
   ) {
-    return IOSInAppBrowserCreationParams(
+    return CygnusIOSBrowserCreationParams(
       contextMenu: params.contextMenu,
       pullToRefreshController:
           params.pullToRefreshController as IOSPullToRefreshController?,
@@ -49,33 +49,33 @@ class IOSInAppBrowserCreationParams extends CygnusPlatformBrowserCreationParams 
 }
 
 ///{@macro cygnus_core.CygnusPlatformBrowser}
-class IOSInAppBrowser extends CygnusPlatformBrowser with ChannelController {
+class CygnusIOSBrowser extends CygnusPlatformBrowser with ChannelController {
   @override
   final String id = IdGenerator.generate();
 
-  /// Constructs a [IOSInAppBrowser].
-  IOSInAppBrowser(CygnusPlatformBrowserCreationParams params)
+  /// Constructs a [CygnusIOSBrowser].
+  CygnusIOSBrowser(CygnusPlatformBrowserCreationParams params)
     : super.implementation(
-        params is IOSInAppBrowserCreationParams
+        params is CygnusIOSBrowserCreationParams
             ? params
-            : IOSInAppBrowserCreationParams.fromPlatformBrowserCreationParams(
+            : CygnusIOSBrowserCreationParams.fromPlatformBrowserCreationParams(
                 params,
               ),
       ) {
     _contextMenu = params.contextMenu;
   }
 
-  static final IOSInAppBrowser _staticValue = IOSInAppBrowser(
-    IOSInAppBrowserCreationParams(),
+  static final CygnusIOSBrowser _staticValue = CygnusIOSBrowser(
+    CygnusIOSBrowserCreationParams(),
   );
 
   /// Provide static access.
-  factory IOSInAppBrowser.static() {
+  factory CygnusIOSBrowser.static() {
     return _staticValue;
   }
 
-  IOSInAppBrowserCreationParams get _iosParams =>
-      params as IOSInAppBrowserCreationParams;
+  CygnusIOSBrowserCreationParams get _iosParams =>
+      params as CygnusIOSBrowserCreationParams;
 
   static const MethodChannel _staticChannel = const MethodChannel(
     'com.github.knighting.cygnus/browser',
@@ -88,10 +88,10 @@ class IOSInAppBrowser extends CygnusPlatformBrowser with ChannelController {
 
   Map<int, CygnusBrowserMenuItem> _menuItems = HashMap();
   bool _isOpened = false;
-  IOSInAppWebViewController? _webViewController;
+  CygnusIOSWebViewControllerImpl? _webViewController;
 
   @override
-  IOSInAppWebViewController? get webViewController {
+  CygnusIOSWebViewControllerImpl? get webViewController {
     return _isOpened ? _webViewController : null;
   }
 
@@ -100,8 +100,8 @@ class IOSInAppBrowser extends CygnusPlatformBrowser with ChannelController {
     handler = _handleMethod;
     initMethodCallHandler();
 
-    _webViewController = IOSInAppWebViewController.fromBrowser(
-      IOSInAppWebViewControllerCreationParams(id: id),
+    _webViewController = CygnusIOSWebViewControllerImpl.fromBrowser(
+      CygnusIOSWebViewControllerCreationParams(id: id),
       channel!,
       this,
       this.initialUserScripts,
@@ -396,7 +396,7 @@ class IOSInAppBrowser extends CygnusPlatformBrowser with ChannelController {
   }
 }
 
-extension InternalInAppBrowser on IOSInAppBrowser {
+extension CygnusInternalBrowser on CygnusIOSBrowser {
   void setContextMenu(CygnusContextMenu? contextMenu) {
     _contextMenu = contextMenu;
   }

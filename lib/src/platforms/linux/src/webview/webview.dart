@@ -11,9 +11,9 @@ import 'custom_platform_view.dart';
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
-class LinuxInAppWebViewWidgetCreationParams
+class CygnusLinuxWebViewWidgetCreationParams
     extends CygnusPlatformWebViewWidgetCreationParams {
-  LinuxInAppWebViewWidgetCreationParams({
+  CygnusLinuxWebViewWidgetCreationParams({
     super.controllerFromPlatform,
     super.key,
     super.layoutDirection,
@@ -100,9 +100,9 @@ class LinuxInAppWebViewWidgetCreationParams
     super.findInteractionController,
   });
 
-  /// Constructs a [LinuxInAppWebViewWidgetCreationParams] using a
+  /// Constructs a [CygnusLinuxWebViewWidgetCreationParams] using a
   /// [CygnusPlatformWebViewWidgetCreationParams].
-  LinuxInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
+  CygnusLinuxWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -199,29 +199,29 @@ class LinuxInAppWebViewWidgetCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
-class LinuxInAppWebViewWidget extends CygnusPlatformWebViewWidget {
-  /// Constructs a [LinuxInAppWebViewWidget].
+class CygnusLinuxWebViewWidget extends CygnusPlatformWebViewWidget {
+  /// Constructs a [CygnusLinuxWebViewWidget].
   ///
   ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
-  LinuxInAppWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
+  CygnusLinuxWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
     : super.implementation(
-        params is LinuxInAppWebViewWidgetCreationParams
+        params is CygnusLinuxWebViewWidgetCreationParams
             ? params
-            : LinuxInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
+            : CygnusLinuxWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
                 params,
               ),
       );
 
-  LinuxInAppWebViewWidgetCreationParams get _linuxParams =>
-      params as LinuxInAppWebViewWidgetCreationParams;
+  CygnusLinuxWebViewWidgetCreationParams get _linuxParams =>
+      params as CygnusLinuxWebViewWidgetCreationParams;
 
-  LinuxInAppWebViewController? _controller;
+  CygnusLinuxWebViewController? _controller;
 
-  static final LinuxInAppWebViewWidget _staticValue = LinuxInAppWebViewWidget(
-    LinuxInAppWebViewWidgetCreationParams(),
+  static final CygnusLinuxWebViewWidget _staticValue = CygnusLinuxWebViewWidget(
+    CygnusLinuxWebViewWidgetCreationParams(),
   );
 
-  factory LinuxInAppWebViewWidget.static() {
+  factory CygnusLinuxWebViewWidget.static() {
     return _staticValue;
   }
 
@@ -272,7 +272,7 @@ class LinuxInAppWebViewWidget extends CygnusPlatformWebViewWidget {
     }
     viewId = params.keepAlive?.id ?? viewId ?? id;
 
-    _controller = LinuxInAppWebViewController(
+    _controller = CygnusLinuxWebViewController(
       CygnusPlatformWebViewControllerCreationParams(
         id: viewId,
         webviewParams: params,

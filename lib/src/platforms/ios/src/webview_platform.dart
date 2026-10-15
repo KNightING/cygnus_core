@@ -40,44 +40,44 @@ class CygnusIOSWebViewPlatform extends CygnusWebViewPlatform {
     return IOSCookieManager.static();
   }
 
-  /// Creates a new [IOSInAppWebViewController].
+  /// Creates a new [CygnusIOSWebViewControllerImpl].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
-  IOSInAppWebViewController createPlatformWebViewController(
+  CygnusIOSWebViewControllerImpl createPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
-    return IOSInAppWebViewController(params);
+    return CygnusIOSWebViewControllerImpl(params);
   }
 
-  /// Creates a new empty [IOSInAppWebViewController] to access static methods.
+  /// Creates a new empty [CygnusIOSWebViewControllerImpl] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
-  IOSInAppWebViewController createPlatformWebViewControllerStatic() {
-    return IOSInAppWebViewController.static();
+  CygnusIOSWebViewControllerImpl createPlatformWebViewControllerStatic() {
+    return CygnusIOSWebViewControllerImpl.static();
   }
 
-  /// Creates a new [IOSInAppWebViewWidget].
+  /// Creates a new [CygnusIOSWebViewWidget].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
-  IOSInAppWebViewWidget createPlatformWebViewWidget(
+  CygnusIOSWebViewWidget createPlatformWebViewWidget(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) {
-    return IOSInAppWebViewWidget(params);
+    return CygnusIOSWebViewWidget(params);
   }
 
-  /// Creates a new empty [IOSInAppWebViewWidget] to access static methods.
+  /// Creates a new empty [CygnusIOSWebViewWidget] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
-  IOSInAppWebViewWidget createPlatformWebViewWidgetStatic() {
-    return IOSInAppWebViewWidget.static();
+  CygnusIOSWebViewWidget createPlatformWebViewWidgetStatic() {
+    return CygnusIOSWebViewWidget.static();
   }
 
   /// Creates a new [IOSFindInteractionController].
@@ -267,24 +267,24 @@ class CygnusIOSWebViewPlatform extends CygnusWebViewPlatform {
     return IOSSessionStorage.defaultStorage(controller: null);
   }
 
-  /// Creates a new [IOSHeadlessInAppWebView].
+  /// Creates a new [CygnusIOSHeadlessWebView].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `cygnus` instead.
   @override
-  IOSHeadlessInAppWebView createPlatformHeadlessWebView(
+  CygnusIOSHeadlessWebView createPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
-    return IOSHeadlessInAppWebView(params);
+    return CygnusIOSHeadlessWebView(params);
   }
 
-  /// Creates a new empty [IOSHeadlessInAppWebView] to access static methods.
+  /// Creates a new empty [CygnusIOSHeadlessWebView] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `cygnus` instead.
   @override
-  IOSHeadlessInAppWebView createPlatformHeadlessWebViewStatic() {
-    return IOSHeadlessInAppWebView.static();
+  CygnusIOSHeadlessWebView createPlatformHeadlessWebViewStatic() {
+    return CygnusIOSHeadlessWebView.static();
   }
 
   /// Creates a new [IOSHttpAuthCredentialDatabase].
@@ -308,24 +308,24 @@ class CygnusIOSWebViewPlatform extends CygnusWebViewPlatform {
     return IOSHttpAuthCredentialDatabase.static();
   }
 
-  /// Creates a new [IOSInAppBrowser].
+  /// Creates a new [CygnusIOSBrowser].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusBrowser] in `cygnus` instead.
   @override
-  IOSInAppBrowser createPlatformBrowser(
+  CygnusIOSBrowser createPlatformBrowser(
     CygnusPlatformBrowserCreationParams params,
   ) {
-    return IOSInAppBrowser(params);
+    return CygnusIOSBrowser(params);
   }
 
-  /// Creates a new empty [IOSInAppBrowser] to access static methods.
+  /// Creates a new empty [CygnusIOSBrowser] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusBrowser] in `cygnus` instead.
   @override
-  IOSInAppBrowser createPlatformBrowserStatic() {
-    return IOSInAppBrowser.static();
+  CygnusIOSBrowser createPlatformBrowserStatic() {
+    return CygnusIOSBrowser.static();
   }
 
   /// Creates a new [IOSChromeSafariBrowser].

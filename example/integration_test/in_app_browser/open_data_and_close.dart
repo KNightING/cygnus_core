@@ -4,7 +4,7 @@ void openDataAndClose() {
   final shouldSkip = !CygnusBrowser.isClassSupported();
 
   skippableTest('open data and close', () async {
-    var browser = new MyInAppBrowser();
+    var browser = new CygnusMyBrowser();
     expect(browser.isOpened(), false);
     expect(() async {
       await browser.show();

@@ -12,9 +12,9 @@ import 'webview_controller.dart';
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
-class IOSInAppWebViewWidgetCreationParams
+class CygnusIOSWebViewWidgetCreationParams
     extends CygnusPlatformWebViewWidgetCreationParams {
-  IOSInAppWebViewWidgetCreationParams({
+  CygnusIOSWebViewWidgetCreationParams({
     super.controllerFromPlatform,
     super.key,
     super.layoutDirection,
@@ -134,9 +134,9 @@ class IOSInAppWebViewWidgetCreationParams
     this.findInteractionController,
   });
 
-  /// Constructs a [IOSInAppWebViewWidgetCreationParams] using a
+  /// Constructs a [CygnusIOSWebViewWidgetCreationParams] using a
   /// [CygnusPlatformWebViewWidgetCreationParams].
-  IOSInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
+  CygnusIOSWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -260,32 +260,32 @@ class IOSInAppWebViewWidgetCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
-class IOSInAppWebViewWidget extends CygnusPlatformWebViewWidget {
-  /// Constructs a [IOSInAppWebViewWidget].
+class CygnusIOSWebViewWidget extends CygnusPlatformWebViewWidget {
+  /// Constructs a [CygnusIOSWebViewWidget].
   ///
   ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
-  IOSInAppWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
+  CygnusIOSWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
     : super.implementation(
-        params is IOSInAppWebViewWidgetCreationParams
+        params is CygnusIOSWebViewWidgetCreationParams
             ? params
-            : IOSInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
+            : CygnusIOSWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
                 params,
               ),
       );
 
-  IOSInAppWebViewWidgetCreationParams get _iosParams =>
-      params as IOSInAppWebViewWidgetCreationParams;
+  CygnusIOSWebViewWidgetCreationParams get _iosParams =>
+      params as CygnusIOSWebViewWidgetCreationParams;
 
-  IOSInAppWebViewController? _controller;
+  CygnusIOSWebViewControllerImpl? _controller;
 
-  IOSHeadlessInAppWebView? get _iosHeadlessWebView =>
-      params.headlessWebView as IOSHeadlessInAppWebView?;
+  CygnusIOSHeadlessWebView? get _iosHeadlessWebView =>
+      params.headlessWebView as CygnusIOSHeadlessWebView?;
 
-  static final IOSInAppWebViewWidget _staticValue = IOSInAppWebViewWidget(
-    IOSInAppWebViewWidgetCreationParams(),
+  static final CygnusIOSWebViewWidget _staticValue = CygnusIOSWebViewWidget(
+    CygnusIOSWebViewWidgetCreationParams(),
   );
 
-  factory IOSInAppWebViewWidget.static() {
+  factory CygnusIOSWebViewWidget.static() {
     return _staticValue;
   }
 
@@ -346,7 +346,7 @@ class IOSInAppWebViewWidget extends CygnusPlatformWebViewWidget {
     }
     viewId = params.keepAlive?.id ?? viewId ?? id;
     _iosHeadlessWebView?.internalDispose();
-    _controller = IOSInAppWebViewController(
+    _controller = CygnusIOSWebViewControllerImpl(
       CygnusPlatformWebViewControllerCreationParams(
         id: viewId,
         webviewParams: params,

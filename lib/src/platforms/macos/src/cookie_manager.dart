@@ -168,8 +168,8 @@ class MacOSCookieManager extends CygnusPlatformCookieManager with ChannelControl
     }
 
     final setCookieCompleter = Completer<void>();
-    final headlessWebView = MacOSHeadlessInAppWebView(
-      MacOSHeadlessInAppWebViewCreationParams(
+    final headlessWebView = CygnusMacOSHeadlessWebView(
+      CygnusMacOSHeadlessWebViewCreationParams(
         initialUrlRequest: CygnusURLRequest(url: url),
         onLoadStop: (controller, url) async {
           await controller.evaluateJavascript(
@@ -261,8 +261,8 @@ class MacOSCookieManager extends CygnusPlatformCookieManager with ChannelControl
     }
 
     final pageLoaded = Completer<void>();
-    final headlessWebView = MacOSHeadlessInAppWebView(
-      MacOSHeadlessInAppWebViewCreationParams(
+    final headlessWebView = CygnusMacOSHeadlessWebView(
+      CygnusMacOSHeadlessWebViewCreationParams(
         initialUrlRequest: CygnusURLRequest(url: url),
         onLoadStop: (controller, url) async {
           pageLoaded.complete();

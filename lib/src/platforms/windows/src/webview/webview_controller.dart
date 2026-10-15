@@ -17,38 +17,38 @@ import '../web_storage/web_storage.dart';
 import '_static_channel.dart';
 import 'headless_webview.dart';
 
-/// Object specifying creation parameters for creating a [WindowsInAppWebViewController].
+/// Object specifying creation parameters for creating a [CygnusWindowsWebViewController].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformWebViewControllerCreationParams] for
 /// more information.
 @immutable
-class WindowsInAppWebViewControllerCreationParams
+class CygnusWindowsWebViewControllerCreationParams
     extends CygnusPlatformWebViewControllerCreationParams {
-  /// Creates a new [WindowsInAppWebViewControllerCreationParams] instance.
-  const WindowsInAppWebViewControllerCreationParams({
+  /// Creates a new [CygnusWindowsWebViewControllerCreationParams] instance.
+  const CygnusWindowsWebViewControllerCreationParams({
     required super.id,
     super.webviewParams,
   });
 
-  /// Creates a [WindowsInAppWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
-  factory WindowsInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+  /// Creates a [CygnusWindowsWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
+  factory CygnusWindowsWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
-    return WindowsInAppWebViewControllerCreationParams(
+    return CygnusWindowsWebViewControllerCreationParams(
       id: params.id,
       webviewParams: params.webviewParams,
     );
   }
 }
 
-///Controls a WebView, such as an [CygnusWebView] widget instance, a [WindowsHeadlessInAppWebView] instance or [WindowsInAppBrowser] WebView instance.
+///Controls a WebView, such as an [CygnusWebView] widget instance, a [CygnusWindowsHeadlessWebView] instance or [CygnusWindowsBrowser] WebView instance.
 ///
 ///If you are using the [CygnusWebView] widget, an [CygnusWebViewController] instance can be obtained by setting the [CygnusWebView.onWebViewCreated]
-///callback. Instead, if you are using an [WindowsInAppBrowser] instance, you can get it through the [WindowsInAppBrowser.webViewController] attribute.
-class WindowsInAppWebViewController extends CygnusPlatformWebViewController
+///callback. Instead, if you are using an [CygnusWindowsBrowser] instance, you can get it through the [CygnusWindowsBrowser.webViewController] attribute.
+class CygnusWindowsWebViewController extends CygnusPlatformWebViewController
     with ChannelController {
   static final MethodChannel _staticChannel = IN_APP_WEBVIEW_STATIC_CHANNEL;
 
@@ -69,7 +69,7 @@ class WindowsInAppWebViewController extends CygnusPlatformWebViewController
   static final Map<CygnusWebViewKeepAlive, CygnusWebViewControllerKeepAliveProps?>
   _keepAliveMap = {};
 
-  WindowsInAppBrowser? _browser;
+  CygnusWindowsBrowser? _browser;
 
   CygnusPlatformBrowserEvents? get _browserEventHandler =>
       _browser?.eventHandler;
@@ -79,12 +79,12 @@ class WindowsInAppWebViewController extends CygnusPlatformWebViewController
   @override
   late WindowsWebStorage webStorage;
 
-  WindowsInAppWebViewController(
+  CygnusWindowsWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) : super.implementation(
-        params is WindowsInAppWebViewControllerCreationParams
+        params is CygnusWindowsWebViewControllerCreationParams
             ? params
-            : WindowsInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+            : CygnusWindowsWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
@@ -111,24 +111,24 @@ class WindowsInAppWebViewController extends CygnusPlatformWebViewController
     this._init(params);
   }
 
-  static final WindowsInAppWebViewController _staticValue =
-      WindowsInAppWebViewController(
-        WindowsInAppWebViewControllerCreationParams(id: null),
+  static final CygnusWindowsWebViewController _staticValue =
+      CygnusWindowsWebViewController(
+        CygnusWindowsWebViewControllerCreationParams(id: null),
       );
 
-  factory WindowsInAppWebViewController.static() {
+  factory CygnusWindowsWebViewController.static() {
     return _staticValue;
   }
 
-  WindowsInAppWebViewController.fromBrowser(
+  CygnusWindowsWebViewController.fromBrowser(
     CygnusPlatformWebViewControllerCreationParams params,
     MethodChannel channel,
-    WindowsInAppBrowser browser,
+    CygnusWindowsBrowser browser,
     UnmodifiableListView<CygnusUserScript>? initialUserScripts,
   ) : super.implementation(
-        params is WindowsInAppWebViewControllerCreationParams
+        params is CygnusWindowsWebViewControllerCreationParams
             ? params
-            : WindowsInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+            : CygnusWindowsWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
@@ -3501,6 +3501,6 @@ class WindowsInAppWebViewController extends CygnusPlatformWebViewController
   }
 }
 
-extension InternalInAppWebViewController on WindowsInAppWebViewController {
+extension CygnusInternalWebViewController on CygnusWindowsWebViewController {
   get handleMethod => _handleMethod;
 }

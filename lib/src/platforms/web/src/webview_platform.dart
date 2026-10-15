@@ -5,10 +5,10 @@ import 'webview/main.dart';
 import 'web_storage/web_storage.dart';
 
 /// Implementation of [CygnusWebViewPlatform] using the Web API.
-class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
+class CygnusWebPlatformWebViewPlatform extends CygnusWebViewPlatform {
   /// Registers this class as the default instance of [CygnusWebViewPlatform].
   static void registerWith() {
-    CygnusWebViewPlatform.instance = WebPlatformInAppWebViewPlatform();
+    CygnusWebViewPlatform.instance = CygnusWebPlatformWebViewPlatform();
   }
 
   /// Creates a new [WebPlatformCookieManager].
@@ -31,65 +31,65 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
     return WebPlatformCookieManager.static();
   }
 
-  /// Creates a new [WebPlatformInAppWebViewController].
+  /// Creates a new [CygnusWebPlatformWebViewController].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
-  WebPlatformInAppWebViewController createPlatformWebViewController(
+  CygnusWebPlatformWebViewController createPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
-    return WebPlatformInAppWebViewController(params);
+    return CygnusWebPlatformWebViewController(params);
   }
 
-  /// Creates a new empty [WebPlatformInAppWebViewController] to access static methods.
+  /// Creates a new empty [CygnusWebPlatformWebViewController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
-  WebPlatformInAppWebViewController
+  CygnusWebPlatformWebViewController
   createPlatformWebViewControllerStatic() {
-    return WebPlatformInAppWebViewController.static();
+    return CygnusWebPlatformWebViewController.static();
   }
 
-  /// Creates a new [WebPlatformInAppWebViewWidget].
+  /// Creates a new [CygnusWebPlatformWebViewWidget].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
-  WebPlatformInAppWebViewWidget createPlatformWebViewWidget(
+  CygnusWebPlatformWebViewWidget createPlatformWebViewWidget(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) {
-    return WebPlatformInAppWebViewWidget(params);
+    return CygnusWebPlatformWebViewWidget(params);
   }
 
-  /// Creates a new empty [WebPlatformInAppWebViewWidget] to access static methods.
+  /// Creates a new empty [CygnusWebPlatformWebViewWidget] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
-  WebPlatformInAppWebViewWidget createPlatformWebViewWidgetStatic() {
-    return WebPlatformInAppWebViewWidget.static();
+  CygnusWebPlatformWebViewWidget createPlatformWebViewWidgetStatic() {
+    return CygnusWebPlatformWebViewWidget.static();
   }
 
-  /// Creates a new [WebPlatformHeadlessInAppWebView].
+  /// Creates a new [CygnusWebPlatformHeadlessWebView].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `cygnus` instead.
   @override
-  WebPlatformHeadlessInAppWebView createPlatformHeadlessWebView(
+  CygnusWebPlatformHeadlessWebView createPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
-    return WebPlatformHeadlessInAppWebView(params);
+    return CygnusWebPlatformHeadlessWebView(params);
   }
 
-  /// Creates a new empty [WebPlatformHeadlessInAppWebView] to access static methods.
+  /// Creates a new empty [CygnusWebPlatformHeadlessWebView] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `cygnus` instead.
   @override
-  WebPlatformHeadlessInAppWebView createPlatformHeadlessWebViewStatic() {
-    return WebPlatformHeadlessInAppWebView.static();
+  CygnusWebPlatformHeadlessWebView createPlatformHeadlessWebViewStatic() {
+    return CygnusWebPlatformHeadlessWebView.static();
   }
 
   /// Creates a new [WebPlatformWebStorage].
@@ -188,7 +188,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Look at using [CygnusBrowser] in `cygnus` instead.
   @override
   CygnusPlatformBrowser createPlatformBrowserStatic() {
-    return _PlatformInAppBrowser.static();
+    return _CygnusPlatformBrowser.static();
   }
 
   /// Creates a new empty [CygnusPlatformChromeSafariBrowser] to access static methods.
@@ -356,7 +356,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Look at using [CygnusLocalhostServer] in `cygnus` instead.
   @override
   CygnusPlatformLocalhostServer createPlatformLocalhostServerStatic() {
-    return _PlatformInAppLocalhostServer.static();
+    return _CygnusPlatformLocalhostServer.static();
   }
 
   /// Creates a new empty [CygnusPlatformWebViewFeature] to access static methods.
@@ -369,14 +369,14 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   }
 }
 
-class _PlatformInAppBrowser extends CygnusPlatformBrowser {
-  _PlatformInAppBrowser(CygnusPlatformBrowserCreationParams params)
+class _CygnusPlatformBrowser extends CygnusPlatformBrowser {
+  _CygnusPlatformBrowser(CygnusPlatformBrowserCreationParams params)
     : super.implementation(params);
-  static final _PlatformInAppBrowser _staticValue = _PlatformInAppBrowser(
+  static final _CygnusPlatformBrowser _staticValue = _CygnusPlatformBrowser(
     const CygnusPlatformBrowserCreationParams(),
   );
 
-  factory _PlatformInAppBrowser.static() => _staticValue;
+  factory _CygnusPlatformBrowser.static() => _staticValue;
 }
 
 class _PlatformChromeSafariBrowser extends CygnusPlatformChromeSafariBrowser {
@@ -728,15 +728,15 @@ class _PlatformCustomPathHandler extends CygnusPlatformCustomPathHandler {
   Map<String, dynamic> toJson() => toMap();
 }
 
-class _PlatformInAppLocalhostServer extends CygnusPlatformLocalhostServer {
-  _PlatformInAppLocalhostServer(
+class _CygnusPlatformLocalhostServer extends CygnusPlatformLocalhostServer {
+  _CygnusPlatformLocalhostServer(
     CygnusPlatformLocalhostServerCreationParams params,
   ) : super.implementation(params);
 
-  static final _PlatformInAppLocalhostServer _staticValue =
-      _PlatformInAppLocalhostServer(
+  static final _CygnusPlatformLocalhostServer _staticValue =
+      _CygnusPlatformLocalhostServer(
         const CygnusPlatformLocalhostServerCreationParams(),
       );
 
-  factory _PlatformInAppLocalhostServer.static() => _staticValue;
+  factory _CygnusPlatformLocalhostServer.static() => _staticValue;
 }

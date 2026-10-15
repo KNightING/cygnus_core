@@ -82,7 +82,7 @@ class LinuxStorageCreationParams extends CygnusPlatformStorageCreationParams {
 ///{@macro cygnus_core.CygnusPlatformStorage}
 abstract mixin class LinuxStorage implements CygnusPlatformStorage {
   @override
-  LinuxInAppWebViewController? controller;
+  CygnusLinuxWebViewController? controller;
 
   @override
   Future<int?> length() async {
@@ -247,8 +247,8 @@ class LinuxLocalStorage extends CygnusPlatformLocalStorage with LinuxStorage {
   }
 
   @override
-  LinuxInAppWebViewController? get controller =>
-      params.controller as LinuxInAppWebViewController?;
+  CygnusLinuxWebViewController? get controller =>
+      params.controller as CygnusLinuxWebViewController?;
 }
 
 /// Object specifying creation parameters for creating a [LinuxSessionStorage].
@@ -300,6 +300,6 @@ class LinuxSessionStorage extends CygnusPlatformSessionStorage with LinuxStorage
   }
 
   @override
-  LinuxInAppWebViewController? get controller =>
-      params.controller as LinuxInAppWebViewController?;
+  CygnusLinuxWebViewController? get controller =>
+      params.controller as CygnusLinuxWebViewController?;
 }

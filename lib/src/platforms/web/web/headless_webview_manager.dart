@@ -6,12 +6,12 @@ import 'webview_manager.dart';
 import 'web_view_web_element.dart';
 import 'headless_web_view_web_element.dart';
 
-class HeadlessInAppWebViewManager extends ChannelController {
-  static final Map<String, HeadlessInAppWebViewWebElement?> webViews = {};
+class CygnusHeadlessWebViewManager extends ChannelController {
+  static final Map<String, CygnusHeadlessWebViewWebElement?> webViews = {};
 
   late BinaryMessenger _messenger;
 
-  HeadlessInAppWebViewManager({required BinaryMessenger messenger}) {
+  CygnusHeadlessWebViewManager({required BinaryMessenger messenger}) {
     this._messenger = messenger;
     channel = MethodChannel(
       'com.github.knighting.cygnus/headless_webview',
@@ -37,20 +37,20 @@ class HeadlessInAppWebViewManager extends ChannelController {
   }
 
   void run(String id, Map<String, dynamic> params) {
-    var webView = InAppWebViewWebElement(viewId: id, messenger: _messenger);
-    var headlessWebView = HeadlessInAppWebViewWebElement(
+    var webView = CygnusWebViewWebElement(viewId: id, messenger: _messenger);
+    var headlessWebView = CygnusHeadlessWebViewWebElement(
       id: id,
       messenger: _messenger,
       webView: webView,
     );
-    InAppWebViewManager.webViews.putIfAbsent(id, () => webView);
-    HeadlessInAppWebViewManager.webViews.putIfAbsent(id, () => headlessWebView);
+    CygnusWebViewManager.webViews.putIfAbsent(id, () => webView);
+    CygnusHeadlessWebViewManager.webViews.putIfAbsent(id, () => headlessWebView);
     prepare(webView, params);
     headlessWebView.onWebViewCreated();
     webView.makeInitialLoad();
   }
 
-  void prepare(InAppWebViewWebElement webView, Map<String, dynamic> params) {
+  void prepare(CygnusWebViewWebElement webView, Map<String, dynamic> params) {
     webView.iframeContainer.style.display = 'none';
     Map<String, num>? initialSize = params["initialSize"]?.cast<String, num>();
     if (initialSize != null) {

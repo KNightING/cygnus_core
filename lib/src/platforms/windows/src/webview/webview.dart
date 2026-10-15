@@ -13,9 +13,9 @@ import 'custom_platform_view.dart';
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
-class WindowsInAppWebViewWidgetCreationParams
+class CygnusWindowsWebViewWidgetCreationParams
     extends CygnusPlatformWebViewWidgetCreationParams {
-  WindowsInAppWebViewWidgetCreationParams({
+  CygnusWindowsWebViewWidgetCreationParams({
     super.controllerFromPlatform,
     super.key,
     super.layoutDirection,
@@ -144,9 +144,9 @@ class WindowsInAppWebViewWidgetCreationParams
     this.findInteractionController,
   });
 
-  /// Constructs a [WindowsInAppWebViewWidgetCreationParams] using a
+  /// Constructs a [CygnusWindowsWebViewWidgetCreationParams] using a
   /// [CygnusPlatformWebViewWidgetCreationParams].
-  WindowsInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
+  CygnusWindowsWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -280,31 +280,31 @@ class WindowsInAppWebViewWidgetCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
-class WindowsInAppWebViewWidget extends CygnusPlatformWebViewWidget {
-  /// Constructs a [WindowsInAppWebViewWidget].
+class CygnusWindowsWebViewWidget extends CygnusPlatformWebViewWidget {
+  /// Constructs a [CygnusWindowsWebViewWidget].
   ///
   ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
-  WindowsInAppWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
+  CygnusWindowsWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
     : super.implementation(
-        params is WindowsInAppWebViewWidgetCreationParams
+        params is CygnusWindowsWebViewWidgetCreationParams
             ? params
-            : WindowsInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
+            : CygnusWindowsWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
                 params,
               ),
       );
 
-  WindowsInAppWebViewWidgetCreationParams get _windowsParams =>
-      params as WindowsInAppWebViewWidgetCreationParams;
+  CygnusWindowsWebViewWidgetCreationParams get _windowsParams =>
+      params as CygnusWindowsWebViewWidgetCreationParams;
 
-  WindowsInAppWebViewController? _controller;
+  CygnusWindowsWebViewController? _controller;
 
-  WindowsHeadlessInAppWebView? get _windowsHeadlessWebView =>
-      params.headlessWebView as WindowsHeadlessInAppWebView?;
+  CygnusWindowsHeadlessWebView? get _windowsHeadlessWebView =>
+      params.headlessWebView as CygnusWindowsHeadlessWebView?;
 
-  static final WindowsInAppWebViewWidget _staticValue =
-      WindowsInAppWebViewWidget(WindowsInAppWebViewWidgetCreationParams());
+  static final CygnusWindowsWebViewWidget _staticValue =
+      CygnusWindowsWebViewWidget(CygnusWindowsWebViewWidgetCreationParams());
 
-  factory WindowsInAppWebViewWidget.static() {
+  factory CygnusWindowsWebViewWidget.static() {
     return _staticValue;
   }
 
@@ -355,7 +355,7 @@ class WindowsInAppWebViewWidget extends CygnusPlatformWebViewWidget {
     }
     viewId = params.keepAlive?.id ?? viewId ?? id;
     _windowsHeadlessWebView?.internalDispose();
-    _controller = WindowsInAppWebViewController(
+    _controller = CygnusWindowsWebViewController(
       CygnusPlatformWebViewControllerCreationParams(
         id: viewId,
         webviewParams: params,

@@ -129,7 +129,7 @@ class _MyAppState extends State<MyApp> {
         '/storage/cookies': (context) => CookieManagerScreen(),
         '/storage/webstorage': (context) => WebStorageScreen(),
         '/storage/http-auth': (context) => HttpAuthScreen(),
-        '/browsers/inapp-browser': (context) => InAppBrowserScreen(),
+        '/browsers/inapp-browser': (context) => CygnusBrowserScreen(),
         '/browsers/chrome-safari-browser': (context) =>
             ChromeSafariBrowserScreen(),
         '/browsers/headless': (context) => HeadlessWebViewScreen(),

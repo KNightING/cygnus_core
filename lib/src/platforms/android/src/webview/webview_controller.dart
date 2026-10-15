@@ -22,7 +22,7 @@ import 'headless_webview.dart';
 /// the page scrolls, so the native side is told up front which ones to send; a method channel
 /// round trip per frame for a callback nobody registered is pure overhead. The conditions here
 /// must stay identical to the ones guarding the matching `case` branches in
-/// [AndroidInAppWebViewController.handleMethod] — this is the same decision, taken before the
+/// [CygnusAndroidWebViewControllerImpl.handleMethod] — this is the same decision, taken before the
 /// message is sent instead of after it arrives.
 ///
 /// Returns every event when [webviewParams] is null or an in-app browser is listening, since
@@ -49,38 +49,38 @@ List<String> enabledHighFrequencyEvents({
   ];
 }
 
-/// Object specifying creation parameters for creating a [AndroidInAppWebViewController].
+/// Object specifying creation parameters for creating a [CygnusAndroidWebViewControllerImpl].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformWebViewControllerCreationParams] for
 /// more information.
 @immutable
-class AndroidInAppWebViewControllerCreationParams
+class CygnusAndroidWebViewControllerCreationParams
     extends CygnusPlatformWebViewControllerCreationParams {
-  /// Creates a new [AndroidInAppWebViewControllerCreationParams] instance.
-  const AndroidInAppWebViewControllerCreationParams({
+  /// Creates a new [CygnusAndroidWebViewControllerCreationParams] instance.
+  const CygnusAndroidWebViewControllerCreationParams({
     required super.id,
     super.webviewParams,
   });
 
-  /// Creates a [AndroidInAppWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
-  factory AndroidInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+  /// Creates a [CygnusAndroidWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
+  factory CygnusAndroidWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
-    return AndroidInAppWebViewControllerCreationParams(
+    return CygnusAndroidWebViewControllerCreationParams(
       id: params.id,
       webviewParams: params.webviewParams,
     );
   }
 }
 
-///Controls a WebView, such as an [CygnusWebView] widget instance, a [AndroidHeadlessInAppWebView] instance or [AndroidInAppBrowser] WebView instance.
+///Controls a WebView, such as an [CygnusWebView] widget instance, a [CygnusAndroidHeadlessWebView] instance or [CygnusAndroidBrowser] WebView instance.
 ///
 ///If you are using the [CygnusWebView] widget, an [CygnusWebViewController] instance can be obtained by setting the [CygnusWebView.onWebViewCreated]
-///callback. Instead, if you are using an [AndroidInAppBrowser] instance, you can get it through the [AndroidInAppBrowser.webViewController] attribute.
-class AndroidInAppWebViewController extends CygnusPlatformWebViewController
+///callback. Instead, if you are using an [CygnusAndroidBrowser] instance, you can get it through the [CygnusAndroidBrowser.webViewController] attribute.
+class CygnusAndroidWebViewControllerImpl extends CygnusPlatformWebViewController
     with ChannelController {
   static final MethodChannel _staticChannel = IN_APP_WEBVIEW_STATIC_CHANNEL;
 
@@ -99,7 +99,7 @@ class AndroidInAppWebViewController extends CygnusPlatformWebViewController
   static final Map<CygnusWebViewKeepAlive, CygnusWebViewControllerKeepAliveProps?>
   _keepAliveMap = {};
 
-  AndroidInAppBrowser? _browser;
+  CygnusAndroidBrowser? _browser;
 
   CygnusPlatformBrowserEvents? get _browserEventHandler =>
       _browser?.eventHandler;
@@ -109,12 +109,12 @@ class AndroidInAppWebViewController extends CygnusPlatformWebViewController
   @override
   late AndroidWebStorage webStorage;
 
-  AndroidInAppWebViewController(
+  CygnusAndroidWebViewControllerImpl(
     CygnusPlatformWebViewControllerCreationParams params,
   ) : super.implementation(
-        params is AndroidInAppWebViewControllerCreationParams
+        params is CygnusAndroidWebViewControllerCreationParams
             ? params
-            : AndroidInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+            : CygnusAndroidWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
@@ -141,24 +141,24 @@ class AndroidInAppWebViewController extends CygnusPlatformWebViewController
     this._init(params);
   }
 
-  static final AndroidInAppWebViewController _staticValue =
-      AndroidInAppWebViewController(
-        AndroidInAppWebViewControllerCreationParams(id: null),
+  static final CygnusAndroidWebViewControllerImpl _staticValue =
+      CygnusAndroidWebViewControllerImpl(
+        CygnusAndroidWebViewControllerCreationParams(id: null),
       );
 
-  factory AndroidInAppWebViewController.static() {
+  factory CygnusAndroidWebViewControllerImpl.static() {
     return _staticValue;
   }
 
-  AndroidInAppWebViewController.fromBrowser(
+  CygnusAndroidWebViewControllerImpl.fromBrowser(
     CygnusPlatformWebViewControllerCreationParams params,
     MethodChannel channel,
-    AndroidInAppBrowser browser,
+    CygnusAndroidBrowser browser,
     UnmodifiableListView<CygnusUserScript>? initialUserScripts,
   ) : super.implementation(
-        params is AndroidInAppWebViewControllerCreationParams
+        params is CygnusAndroidWebViewControllerCreationParams
             ? params
-            : AndroidInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+            : CygnusAndroidWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
@@ -3326,7 +3326,7 @@ class AndroidInAppWebViewController extends CygnusPlatformWebViewController
   }
 }
 
-extension InternalInAppWebViewController on AndroidInAppWebViewController {
+extension CygnusInternalWebViewController on CygnusAndroidWebViewControllerImpl {
   get handleMethod => _handleMethod;
 }
 

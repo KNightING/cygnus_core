@@ -27,10 +27,10 @@ void interceptFetchRequest() {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>InAppWebViewFetchTest</title>
+        <title>CygnusWebViewFetchTest</title>
     </head>
     <body>
-        <h1>InAppWebViewFetchTest</h1>
+        <h1>CygnusWebViewFetchTest</h1>
         <script>
           window.addEventListener('cygnusPlatformReady', function(event) {
             fetch("http://${environment["NODE_SERVER_IP"]}:8082/test-ajax-post", {
@@ -108,10 +108,10 @@ void interceptFetchRequest() {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>InAppWebViewFetchTest</title>
+        <title>CygnusWebViewFetchTest</title>
     </head>
     <body>
-        <h1>InAppWebViewFetchTest</h1>
+        <h1>CygnusWebViewFetchTest</h1>
         <script>
           window.addEventListener('cygnusPlatformReady', function(event) {
             var jsonData = {
@@ -199,10 +199,10 @@ void interceptFetchRequest() {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>InAppWebViewFetchTest</title>
+        <title>CygnusWebViewFetchTest</title>
     </head>
     <body>
-        <h1>InAppWebViewFetchTest</h1>
+        <h1>CygnusWebViewFetchTest</h1>
         <script>
           window.addEventListener('cygnusPlatformReady', function(event) {
             var paramsString = "firstname=Foo&lastname=Bar";
@@ -282,10 +282,10 @@ void interceptFetchRequest() {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>InAppWebViewFetchTest</title>
+        <title>CygnusWebViewFetchTest</title>
     </head>
     <body>
-        <h1>InAppWebViewFetchTest</h1>
+        <h1>CygnusWebViewFetchTest</h1>
         <script>
           window.addEventListener('cygnusPlatformReady', function(event) {
             var formData = new FormData();

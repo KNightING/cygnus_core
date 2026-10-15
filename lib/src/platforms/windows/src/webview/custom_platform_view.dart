@@ -51,12 +51,12 @@ SystemMouseCursor _getCursorByName(String name) =>
     _cursors[name] ?? SystemMouseCursors.basic;
 
 /// Pointer button type
-// Order must match InAppWebViewPointerEventKind (see in_app_webview.h)
+// Order must match CygnusWebViewPointerEventKind (see in_app_webview.h)
 enum PointerButton { none, primary, secondary, tertiary }
 
 /// Pointer Event kind
-// Order must match InAppWebViewPointerEventKind (see in_app_webview.h)
-enum InAppWebViewPointerEventKind {
+// Order must match CygnusWebViewPointerEventKind (see in_app_webview.h)
+enum CygnusWebViewPointerEventKind {
   activate,
   down,
   enter,
@@ -128,7 +128,7 @@ class CustomPlatformViewController
       return;
     }
     _textureId = (await _pluginChannel.invokeMethod<int>(
-      'createInAppWebView',
+      'createCygnusWebView',
       arguments,
     ))!;
 
@@ -182,7 +182,7 @@ class CustomPlatformViewController
 
   /// Sends a Pointer (Touch) update
   Future<void> _setPointerUpdate(
-    InAppWebViewPointerEventKind kind,
+    CygnusWebViewPointerEventKind kind,
     int pointer,
     Offset position,
     double size,
@@ -216,7 +216,7 @@ class CustomPlatformViewController
 
   /// Indicates whether the specified [button] is currently down.
   Future<void> _setPointerButtonState(
-    InAppWebViewPointerEventKind kind,
+    CygnusWebViewPointerEventKind kind,
     PointerButton button,
   ) async {
     if (_isDisposed) {
@@ -378,7 +378,7 @@ class _CustomPlatformViewState extends State<CustomPlatformView>
       autofocus: true,
       focusNode: _focusNode,
       canRequestFocus: true,
-      debugLabel: "flutter_inappwebview_windows_custom_platform_view",
+      debugLabel: "cygnus_core_windows_custom_platform_view",
       onFocusChange: (focused) {},
       child: SizedBox.expand(key: _key, child: _buildInner()),
     );
@@ -418,7 +418,7 @@ class _CustomPlatformViewState extends State<CustomPlatformView>
                   _pointerKind = ev.kind;
                   if (ev.kind == PointerDeviceKind.touch) {
                     _controller._setPointerUpdate(
-                      InAppWebViewPointerEventKind.down,
+                      CygnusWebViewPointerEventKind.down,
                       ev.pointer,
                       ev.localPosition,
                       ev.size,
@@ -429,7 +429,7 @@ class _CustomPlatformViewState extends State<CustomPlatformView>
                   final button = _getButton(ev.buttons);
                   _downButtons[ev.pointer] = button;
                   _controller._setPointerButtonState(
-                    InAppWebViewPointerEventKind.down,
+                    CygnusWebViewPointerEventKind.down,
                     button,
                   );
                 },
@@ -437,7 +437,7 @@ class _CustomPlatformViewState extends State<CustomPlatformView>
                   _pointerKind = ev.kind;
                   if (ev.kind == PointerDeviceKind.touch) {
                     _controller._setPointerUpdate(
-                      InAppWebViewPointerEventKind.up,
+                      CygnusWebViewPointerEventKind.up,
                       ev.pointer,
                       ev.localPosition,
                       ev.size,
@@ -448,7 +448,7 @@ class _CustomPlatformViewState extends State<CustomPlatformView>
                   final button = _downButtons.remove(ev.pointer);
                   if (button != null) {
                     _controller._setPointerButtonState(
-                      InAppWebViewPointerEventKind.up,
+                      CygnusWebViewPointerEventKind.up,
                       button,
                     );
                   }
@@ -458,7 +458,7 @@ class _CustomPlatformViewState extends State<CustomPlatformView>
                   final button = _downButtons.remove(ev.pointer);
                   if (button != null) {
                     _controller._setPointerButtonState(
-                      InAppWebViewPointerEventKind.cancel,
+                      CygnusWebViewPointerEventKind.cancel,
                       button,
                     );
                   }
@@ -467,7 +467,7 @@ class _CustomPlatformViewState extends State<CustomPlatformView>
                   _pointerKind = ev.kind;
                   if (ev.kind == PointerDeviceKind.touch) {
                     _controller._setPointerUpdate(
-                      InAppWebViewPointerEventKind.update,
+                      CygnusWebViewPointerEventKind.update,
                       ev.pointer,
                       ev.localPosition,
                       ev.size,
@@ -494,7 +494,7 @@ class _CustomPlatformViewState extends State<CustomPlatformView>
                   _panContactOrigin = ev.localPosition;
                   _panTotal = Offset.zero;
                   _controller._setPointerUpdate(
-                    InAppWebViewPointerEventKind.down,
+                    CygnusWebViewPointerEventKind.down,
                     ev.pointer,
                     ev.localPosition,
                     0,
@@ -507,7 +507,7 @@ class _CustomPlatformViewState extends State<CustomPlatformView>
                   // and so does pan.
                   _panTotal = ev.pan;
                   _controller._setPointerUpdate(
-                    InAppWebViewPointerEventKind.update,
+                    CygnusWebViewPointerEventKind.update,
                     ev.pointer,
                     _panContactOrigin + ev.pan,
                     0,
@@ -519,7 +519,7 @@ class _CustomPlatformViewState extends State<CustomPlatformView>
                   // preceded it into a fling; the end event carries no pan of its own, so the
                   // last known position is reused.
                   _controller._setPointerUpdate(
-                    InAppWebViewPointerEventKind.up,
+                    CygnusWebViewPointerEventKind.up,
                     ev.pointer,
                     _panContactOrigin + _panTotal,
                     0,
@@ -532,14 +532,14 @@ class _CustomPlatformViewState extends State<CustomPlatformView>
                   onEnter: (ev) {
                     final button = _getButton(ev.buttons);
                     _controller._setPointerButtonState(
-                      InAppWebViewPointerEventKind.enter,
+                      CygnusWebViewPointerEventKind.enter,
                       button,
                     );
                   },
                   onExit: (ev) {
                     final button = _getButton(ev.buttons);
                     _controller._setPointerButtonState(
-                      InAppWebViewPointerEventKind.leave,
+                      CygnusWebViewPointerEventKind.leave,
                       button,
                     );
                   },

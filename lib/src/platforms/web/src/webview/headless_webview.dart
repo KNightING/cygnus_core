@@ -5,16 +5,16 @@ import 'package:flutter/services.dart';
 import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 import 'webview_controller.dart';
 
-/// Object specifying creation parameters for creating a [WebPlatformHeadlessInAppWebView].
+/// Object specifying creation parameters for creating a [CygnusWebPlatformHeadlessWebView].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformHeadlessWebViewCreationParams] for
 /// more information.
 @immutable
-class WebPlatformHeadlessInAppWebViewCreationParams
+class CygnusWebPlatformHeadlessWebViewCreationParams
     extends CygnusPlatformHeadlessWebViewCreationParams {
-  /// Creates a new [WebPlatformHeadlessInAppWebViewCreationParams] instance.
-  WebPlatformHeadlessInAppWebViewCreationParams({
+  /// Creates a new [CygnusWebPlatformHeadlessWebViewCreationParams] instance.
+  CygnusWebPlatformHeadlessWebViewCreationParams({
     super.controllerFromPlatform,
     super.initialSize,
     super.windowId,
@@ -129,8 +129,8 @@ class WebPlatformHeadlessInAppWebViewCreationParams
     super.findInteractionController,
   });
 
-  /// Creates a [WebPlatformHeadlessInAppWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
-  WebPlatformHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
+  /// Creates a [CygnusWebPlatformHeadlessWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
+  CygnusWebPlatformHeadlessWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -241,7 +241,7 @@ class WebPlatformHeadlessInAppWebViewCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformHeadlessWebView}
-class WebPlatformHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
+class CygnusWebPlatformHeadlessWebView extends CygnusPlatformHeadlessWebView
     with ChannelController {
   @override
   late final String id;
@@ -253,42 +253,42 @@ class WebPlatformHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     'com.github.knighting.cygnus/headless_webview',
   );
 
-  WebPlatformInAppWebViewController? _webViewController;
+  CygnusWebPlatformWebViewController? _webViewController;
 
-  /// Constructs a [WebPlatformHeadlessInAppWebView].
-  WebPlatformHeadlessInAppWebView(
+  /// Constructs a [CygnusWebPlatformHeadlessWebView].
+  CygnusWebPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) : super.implementation(
-        params is WebPlatformHeadlessInAppWebViewCreationParams
+        params is CygnusWebPlatformHeadlessWebViewCreationParams
             ? params
-            : WebPlatformHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
+            : CygnusWebPlatformHeadlessWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
                 params,
               ),
       ) {
     id = IdGenerator.generate();
   }
 
-  static final WebPlatformHeadlessInAppWebView _staticValue =
-      WebPlatformHeadlessInAppWebView(
-        WebPlatformHeadlessInAppWebViewCreationParams(),
+  static final CygnusWebPlatformHeadlessWebView _staticValue =
+      CygnusWebPlatformHeadlessWebView(
+        CygnusWebPlatformHeadlessWebViewCreationParams(),
       );
 
-  factory WebPlatformHeadlessInAppWebView.static() {
+  factory CygnusWebPlatformHeadlessWebView.static() {
     return _staticValue;
   }
 
   @override
-  WebPlatformInAppWebViewController? get webViewController =>
+  CygnusWebPlatformWebViewController? get webViewController =>
       _webViewController;
 
   dynamic _controllerFromPlatform;
 
-  WebPlatformHeadlessInAppWebViewCreationParams get _macosParams =>
-      params as WebPlatformHeadlessInAppWebViewCreationParams;
+  CygnusWebPlatformHeadlessWebViewCreationParams get _macosParams =>
+      params as CygnusWebPlatformHeadlessWebViewCreationParams;
 
   _init() {
-    _webViewController = WebPlatformInAppWebViewController(
-      WebPlatformInAppWebViewControllerCreationParams(
+    _webViewController = CygnusWebPlatformWebViewController(
+      CygnusWebPlatformWebViewControllerCreationParams(
         id: id,
         webviewParams: params,
       ),
@@ -440,7 +440,7 @@ class WebPlatformHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
   }
 }
 
-extension InternalHeadlessInAppWebView on WebPlatformHeadlessInAppWebView {
+extension CygnusInternalHeadlessWebView on CygnusWebPlatformHeadlessWebView {
   Future<void> internalDispose() async {
     _started = false;
     _running = false;

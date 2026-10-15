@@ -4,7 +4,7 @@ void customMenuItems() {
   final shouldSkip = !CygnusBrowser.isClassSupported();
 
   skippableTest('custom menu items', () async {
-    var browser = new MyInAppBrowser();
+    var browser = new CygnusMyBrowser();
 
     final data = (await rootBundle.load(
       'test_assets/images/flutter-logo.png',
