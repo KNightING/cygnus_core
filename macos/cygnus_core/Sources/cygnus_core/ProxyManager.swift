@@ -1,6 +1,6 @@
 //
 //  ProxyManager.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 
 import Foundation
@@ -9,7 +9,7 @@ import FlutterMacOS
 
 @available(macOS 14.0, *)
 public class ProxyManager: ChannelDelegate {
-    static let METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_proxycontroller"
+    static let METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_proxycontroller"
 
     private var plugin: InAppWebViewFlutterPlugin?
 

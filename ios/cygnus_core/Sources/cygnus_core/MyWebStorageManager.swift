@@ -11,7 +11,7 @@ import Flutter
 
 @available(iOS 9.0, *)
 public class MyWebStorageManager: ChannelDelegate {
-    static let METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_webstoragemanager"
+    static let METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_webstoragemanager"
     static let websiteDataStore = WKWebsiteDataStore.default()
 
     private var plugin: InAppWebViewFlutterPlugin?

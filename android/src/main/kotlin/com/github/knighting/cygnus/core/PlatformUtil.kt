@@ -41,7 +41,7 @@ open class PlatformUtil(plugin: InAppWebViewFlutterPlugin) :
 
   companion object {
     protected const val LOG_TAG = "PlatformUtil"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_platformutil"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_platformutil"
 
     @JvmStatic
     fun getLocaleFromString(locale: String?): Locale {

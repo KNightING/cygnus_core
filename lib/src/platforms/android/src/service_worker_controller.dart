@@ -40,7 +40,7 @@ class AndroidServiceWorkerController extends CygnusPlatformServiceWorkerControll
               ),
       ) {
     channel = const MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_serviceworkercontroller',
+      'com.github.knighting.cygnus/webview_serviceworkercontroller',
     );
     handler = handleMethod;
     initMethodCallHandler();

@@ -46,7 +46,7 @@ struct ProxySettings {
 class ProxyManager : public ChannelDelegate {
  public:
   static constexpr const char* METHOD_CHANNEL_NAME =
-      "com.pichillilorenzo/flutter_inappwebview_proxycontroller";
+      "com.github.knighting.cygnus/webview_proxycontroller";
 
   ProxyManager(PluginInstance* plugin);
   ~ProxyManager() override;

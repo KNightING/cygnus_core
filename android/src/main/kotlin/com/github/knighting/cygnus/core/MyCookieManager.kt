@@ -380,7 +380,7 @@ open class MyCookieManager(plugin: InAppWebViewFlutterPlugin) :
 
   companion object {
     protected const val LOG_TAG = "MyCookieManager"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_cookiemanager"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_cookiemanager"
 
     @JvmField
     var cookieManager: CookieManager? = null

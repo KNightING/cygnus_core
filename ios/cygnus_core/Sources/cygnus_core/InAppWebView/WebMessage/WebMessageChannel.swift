@@ -1,6 +1,6 @@
 //
 //  WebMessageChannel.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 10/03/21.
 //
@@ -9,7 +9,7 @@ import Foundation
 import Flutter
 
 public class WebMessageChannel: FlutterMethodCallDelegate {
-    static var METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_web_message_channel_"
+    static var METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_web_message_channel_"
     var id: String
     var plugin: InAppWebViewFlutterPlugin?
     var channelDelegate: WebMessageChannelChannelDelegate?

@@ -1,6 +1,6 @@
 //
 //  CustomUIActivity.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 08/05/22.
 //

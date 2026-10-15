@@ -31,7 +31,7 @@ class LinuxProxyControllerCreationParams
 /// [WebKitNetworkProxySettings](https://wpewebkit.org/reference/stable/wpe-webkit-2.0/struct.NetworkProxySettings.html).
 class LinuxProxyController extends CygnusPlatformProxyController {
   static const MethodChannel _channel = MethodChannel(
-    'com.pichillilorenzo/flutter_inappwebview_proxycontroller',
+    'com.github.knighting.cygnus/webview_proxycontroller',
   );
 
   /// Creates a new [LinuxProxyController].

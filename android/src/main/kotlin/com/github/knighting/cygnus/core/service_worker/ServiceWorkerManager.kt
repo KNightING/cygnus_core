@@ -20,7 +20,7 @@ class ServiceWorkerManager(plugin: InAppWebViewFlutterPlugin) : Disposable {
   companion object {
     // protected static in Java
     const val LOG_TAG = "ServiceWorkerManager"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_serviceworkercontroller"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_serviceworkercontroller"
 
     @JvmField
     var serviceWorkerController: ServiceWorkerControllerCompat? = null

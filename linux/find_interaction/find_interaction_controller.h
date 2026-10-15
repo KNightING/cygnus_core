@@ -18,7 +18,7 @@ class FindInteractionChannelDelegate;
 class FindInteractionController {
  public:
   static constexpr const char* METHOD_CHANNEL_NAME_PREFIX =
-      "com.pichillilorenzo/flutter_inappwebview_find_interaction_";
+      "com.github.knighting.cygnus/webview_find_interaction_";
 
   FindInteractionController(InAppWebView* webView);
   ~FindInteractionController();

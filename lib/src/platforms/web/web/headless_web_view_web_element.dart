@@ -19,7 +19,7 @@ class HeadlessInAppWebViewWebElement extends ChannelController {
     this._messenger = messenger;
 
     channel = MethodChannel(
-      'com.pichillilorenzo/flutter_headless_inappwebview_${this.id}',
+      'com.github.knighting.cygnus/headless_webview_${this.id}',
       const StandardMethodCodec(),
       _messenger,
     );
@@ -44,7 +44,7 @@ class HeadlessInAppWebViewWebElement extends ChannelController {
         throw PlatformException(
           code: 'Unimplemented',
           details:
-              'flutter_inappwebview for web doesn\'t implement \'${call.method}\'',
+              'cygnus_core for web doesn\'t implement \'${call.method}\'',
         );
     }
   }

@@ -1,6 +1,6 @@
 //
 //  OriginalViewPortMetaTagContentJS.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 16/02/21.
 //

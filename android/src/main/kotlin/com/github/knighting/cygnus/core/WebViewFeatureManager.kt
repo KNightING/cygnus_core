@@ -35,6 +35,6 @@ open class WebViewFeatureManager(plugin: InAppWebViewFlutterPlugin) :
 
   companion object {
     protected const val LOG_TAG = "WebViewFeatureManager"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_webviewfeature"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_webviewfeature"
   }
 }

@@ -157,7 +157,7 @@ CustomPlatformView::CustomPlatformView(FlBinaryMessenger* messenger,
 
   // Create method channel for platform view operations
   std::string method_channel_name =
-      "com.pichillilorenzo/custom_platform_view_" + std::to_string(texture_id_);
+      "com.github.knighting.cygnus/custom_platform_view_" + std::to_string(texture_id_);
   g_autoptr(FlStandardMethodCodec) codec = fl_standard_method_codec_new();
   method_channel_ =
       fl_method_channel_new(messenger, method_channel_name.c_str(), FL_METHOD_CODEC(codec));
@@ -167,7 +167,7 @@ CustomPlatformView::CustomPlatformView(FlBinaryMessenger* messenger,
 
   // Create event channel for cursor changes, etc.
   std::string event_channel_name =
-      "com.pichillilorenzo/custom_platform_view_" + std::to_string(texture_id_) + "_events";
+      "com.github.knighting.cygnus/custom_platform_view_" + std::to_string(texture_id_) + "_events";
   g_autoptr(FlStandardMethodCodec) event_codec = fl_standard_method_codec_new();
   event_channel_ =
       fl_event_channel_new(messenger, event_channel_name.c_str(), FL_METHOD_CODEC(event_codec));

@@ -51,7 +51,7 @@ class WebViewEnvironmentInstanceChannelDelegate : public ChannelDelegate {
 class WebViewEnvironment : public ChannelDelegate {
  public:
   static constexpr const char* METHOD_CHANNEL_NAME =
-      "com.pichillilorenzo/flutter_webview_environment";
+      "com.github.knighting.cygnus/webview_environment";
 
   WebViewEnvironment(PluginInstance* plugin);
   ~WebViewEnvironment() override;

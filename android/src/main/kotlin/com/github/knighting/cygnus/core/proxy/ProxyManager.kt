@@ -14,7 +14,7 @@ class ProxyManager(plugin: InAppWebViewFlutterPlugin) :
   companion object {
     // protected static in Java
     const val LOG_TAG = "ProxyManager"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_proxycontroller"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_proxycontroller"
 
     @JvmField
     var proxyController: ProxyController? = null

@@ -80,6 +80,6 @@ open class FindInteractionController(
 
   companion object {
     const val LOG_TAG = "FindInteractionController" // package-private in Java
-    const val METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_find_interaction_"
+    const val METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_find_interaction_"
   }
 }

@@ -201,7 +201,7 @@ class InAppBrowserManager(plugin: InAppWebViewFlutterPlugin) :
   companion object {
     // protected static in Java
     const val LOG_TAG = "InAppBrowserManager"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappbrowser"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/browser"
 
     @JvmField
     val shared: MutableMap<String, InAppBrowserManager> = HashMap()

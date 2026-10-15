@@ -1,6 +1,6 @@
 //
 //  PullToRefreshDelegate.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 04/03/21.
 //

@@ -1,6 +1,6 @@
 //
 //  InAppWebViewManager.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 08/12/2019.
 //
@@ -10,7 +10,7 @@ import WebKit
 import FlutterMacOS
 
 public class InAppWebViewManager: ChannelDelegate {
-    static let METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_manager"
+    static let METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_manager"
     var plugin: InAppWebViewFlutterPlugin?
     var webViewForUserAgent: WKWebView?
     var defaultUserAgent: String?

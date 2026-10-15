@@ -47,7 +47,7 @@ class MethodResultEntry {
       return value.map((k, v) => MapEntry(k.toString(), _toSerializable(v)));
     }
 
-    // Try toMap() - common in flutter_inappwebview objects
+    // Try toMap() - common in cygnus_core objects
     try {
       final result = (value as dynamic).toMap?.call();
       if (result is Map) {

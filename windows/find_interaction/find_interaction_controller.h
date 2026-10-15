@@ -19,7 +19,7 @@ namespace flutter_inappwebview_plugin
   class FindInteractionController
   {
   public:
-    static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_find_interaction_";
+    static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_find_interaction_";
 
     InAppWebView* webView;
     std::unique_ptr<FindInteractionChannelDelegate> channelDelegate;

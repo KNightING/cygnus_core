@@ -265,11 +265,11 @@ void UserContentController::onScriptMessageReceived(WebKitUserContentManager* ma
     if (jscContext != nullptr) {
       // Evaluate JSON.stringify(value) properly
       // First, create a reference to the value in a global variable
-      jsc_context_set_value(jscContext, "__inappwebview_temp_value", value);
+      jsc_context_set_value(jscContext, "__cygnus_temp_value", value);
 
       // Then stringify it
       JSCValue* jsonResult =
-          jsc_context_evaluate(jscContext, "JSON.stringify(__inappwebview_temp_value)", -1);
+          jsc_context_evaluate(jscContext, "JSON.stringify(__cygnus_temp_value)", -1);
 
       if (jsonResult != nullptr && jsc_value_is_string(jsonResult)) {
         jsonStr = jsc_value_to_string(jsonResult);
@@ -282,7 +282,7 @@ void UserContentController::onScriptMessageReceived(WebKitUserContentManager* ma
 
       // Remove the temp variable (ignore result)
       JSCValue* deleteResult =
-          jsc_context_evaluate(jscContext, "delete __inappwebview_temp_value", -1);
+          jsc_context_evaluate(jscContext, "delete __cygnus_temp_value", -1);
       if (deleteResult != nullptr) {
         g_object_unref(deleteResult);
       }
@@ -389,9 +389,9 @@ gboolean UserContentController::onScriptMessageWithReplyReceived(
 
   if (jsc_value_is_object(value)) {
     if (jscContext != nullptr) {
-      jsc_context_set_value(jscContext, "__inappwebview_temp_value", value);
+      jsc_context_set_value(jscContext, "__cygnus_temp_value", value);
       JSCValue* jsonResult =
-          jsc_context_evaluate(jscContext, "JSON.stringify(__inappwebview_temp_value)", -1);
+          jsc_context_evaluate(jscContext, "JSON.stringify(__cygnus_temp_value)", -1);
       if (jsonResult != nullptr && jsc_value_is_string(jsonResult)) {
         jsonStr = jsc_value_to_string(jsonResult);
       }
@@ -399,7 +399,7 @@ gboolean UserContentController::onScriptMessageWithReplyReceived(
         g_object_unref(jsonResult);
       }
       JSCValue* deleteResult =
-          jsc_context_evaluate(jscContext, "delete __inappwebview_temp_value", -1);
+          jsc_context_evaluate(jscContext, "delete __cygnus_temp_value", -1);
       if (deleteResult != nullptr) {
         g_object_unref(deleteResult);
       }

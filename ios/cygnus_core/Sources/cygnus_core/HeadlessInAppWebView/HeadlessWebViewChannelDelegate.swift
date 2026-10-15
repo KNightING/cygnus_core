@@ -1,6 +1,6 @@
 //
 //  HeadlessWebViewChannelDelegate.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 05/05/22.
 //

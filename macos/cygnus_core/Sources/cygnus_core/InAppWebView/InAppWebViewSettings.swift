@@ -1,6 +1,6 @@
 //
 //  InAppWebViewSettings.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo on 21/10/18.
 //

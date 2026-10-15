@@ -39,7 +39,7 @@ class AndroidTracingController extends CygnusPlatformTracingController
               ),
       ) {
     channel = const MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_tracingcontroller',
+      'com.github.knighting.cygnus/webview_tracingcontroller',
     );
     handler = handleMethod;
     initMethodCallHandler();

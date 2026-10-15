@@ -1,6 +1,6 @@
 //
 //  WebAuthenticationSessionManager.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 08/05/22.
 //
@@ -13,7 +13,7 @@ import AVFoundation
 import SafariServices
 
 public class WebAuthenticationSessionManager: ChannelDelegate {
-    static let METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_webauthenticationsession"
+    static let METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webauthenticationsession"
     var plugin: InAppWebViewFlutterPlugin?
     var sessions: [String: WebAuthenticationSession?] = [:]
     

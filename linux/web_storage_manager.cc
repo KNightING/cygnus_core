@@ -23,7 +23,7 @@ WebStorageManager::WebStorageManager(PluginInstance* plugin)
   // Create the method channel
   channel_ = fl_method_channel_new(
       messenger,
-      "com.pichillilorenzo/flutter_inappwebview_webstoragemanager",
+      "com.github.knighting.cygnus/webview_webstoragemanager",
       FL_METHOD_CODEC(fl_standard_method_codec_new()));
 
   // Set the method call handler

@@ -1,6 +1,6 @@
 //
 //  MethodChannelResult.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 06/05/22.
 //

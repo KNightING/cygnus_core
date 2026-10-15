@@ -36,7 +36,7 @@ class WindowsPrintJobController extends CygnusPlatformPrintJobController
               ),
       ) {
     channel = MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_printjobcontroller_${params.id}',
+      'com.github.knighting.cygnus/webview_printjobcontroller_${params.id}',
     );
     handler = _handleMethod;
     initMethodCallHandler();

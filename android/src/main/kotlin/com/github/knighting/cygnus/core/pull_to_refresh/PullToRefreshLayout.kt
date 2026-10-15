@@ -14,7 +14,7 @@ class PullToRefreshLayout : SwipeRefreshLayout, Disposable {
   companion object {
     // package-private in Java
     const val LOG_TAG = "PullToRefreshLayout"
-    const val METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_pull_to_refresh_"
+    const val METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_pull_to_refresh_"
   }
 
   @JvmField

@@ -21,7 +21,7 @@ HeadlessInAppWebView::HeadlessInAppWebView(HeadlessInAppWebViewManager* manager,
                                             webviewParams);
 
   // CRITICAL: Attach the method channel to the InAppWebView using the string ID.
-  // This creates the channel at "com.pichillilorenzo/flutter_inappwebview_<id>"
+  // This creates the channel at "com.github.knighting.cygnus/webview_<id>"
   // which the Dart LinuxInAppWebViewController expects.
   webview_->AttachChannel(manager_->messenger(), id_, false);
 

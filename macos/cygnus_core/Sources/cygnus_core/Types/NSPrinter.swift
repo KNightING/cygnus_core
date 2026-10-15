@@ -1,6 +1,6 @@
 //
 //  NSPrinter.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 17/10/22.
 //

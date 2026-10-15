@@ -20,7 +20,7 @@ class PluginInstance;
 class InAppBrowserManager {
  public:
   static constexpr const char* METHOD_CHANNEL_NAME =
-      "com.pichillilorenzo/flutter_inappbrowser";
+      "com.github.knighting.cygnus/browser";
 
   /// Create the manager
   /// @param plugin The plugin instance

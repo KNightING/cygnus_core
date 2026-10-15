@@ -124,7 +124,7 @@ enum class WpePointerButton { None = 0, Primary = 1, Secondary = 2, Tertiary = 3
 class InAppWebView {
  public:
   static constexpr const char* METHOD_CHANNEL_NAME_PREFIX =
-      "com.pichillilorenzo/flutter_inappwebview_";
+      "com.github.knighting.cygnus/webview_";
 
   InAppWebView(FlPluginRegistrar* registrar, FlBinaryMessenger* messenger, int64_t id,
                const InAppWebViewCreationParams& params);
@@ -438,7 +438,7 @@ class InAppWebView {
   std::optional<int64_t> getWindowId() const { return window_id_; }
 
   // Initialize the window ID JavaScript variable in the webview
-  // This injects JS to set window._flutter_inappwebview_windowId
+  // This injects JS to set window._cygnus_windowId
   void initializeWindowIdJS();
 
   // Get the GTK window (for focus restoration after popup dialogs)

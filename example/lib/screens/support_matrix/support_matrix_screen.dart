@@ -112,7 +112,7 @@ class _SupportMatrixScreenState extends State<SupportMatrixScreen>
 
   void _exportAsMarkdown() {
     final buffer = StringBuffer();
-    buffer.writeln('# flutter_inappwebview API Support Matrix\n');
+    buffer.writeln('# cygnus_core API Support Matrix\n');
     buffer.writeln('Generated: ${DateTime.now().toIso8601String()}\n');
 
     // Summary

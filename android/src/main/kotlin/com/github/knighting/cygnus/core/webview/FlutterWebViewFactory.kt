@@ -10,7 +10,7 @@ import io.flutter.plugin.platform.PlatformViewFactory
 
 class FlutterWebViewFactory(private val plugin: InAppWebViewFlutterPlugin) : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
   companion object {
-    const val VIEW_TYPE_ID = "com.pichillilorenzo/flutter_inappwebview"
+    const val VIEW_TYPE_ID = "com.github.knighting.cygnus/webview"
   }
 
   override fun create(context: Context?, id: Int, args: Any?): PlatformView {

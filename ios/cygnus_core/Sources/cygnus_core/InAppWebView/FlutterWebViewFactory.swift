@@ -1,6 +1,6 @@
 //
 //  FlutterWebViewFactory.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo on 13/11/18.
 //
@@ -9,7 +9,7 @@ import Flutter
 import Foundation
 
 public class FlutterWebViewFactory: NSObject, FlutterPlatformViewFactory {
-    static let VIEW_TYPE_ID = "com.pichillilorenzo/flutter_inappwebview"
+    static let VIEW_TYPE_ID = "com.github.knighting.cygnus/webview"
     
     private var plugin: InAppWebViewFlutterPlugin
     

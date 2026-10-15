@@ -11,7 +11,7 @@ class ProcessGlobalConfigManager(plugin: InAppWebViewFlutterPlugin) :
   companion object {
     // protected static in Java
     const val LOG_TAG = "ProcessGlobalConfigM"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_processglobalconfig"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_processglobalconfig"
   }
 
   @JvmField

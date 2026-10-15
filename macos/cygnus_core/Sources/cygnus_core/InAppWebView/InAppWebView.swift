@@ -1,6 +1,6 @@
 //
 //  InAppWebView.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo on 21/10/18.
 //
@@ -13,7 +13,7 @@ public class InAppWebView: WKWebView, WKUIDelegate,
                             WKNavigationDelegate, WKScriptMessageHandler,
                             WKDownloadDelegate,
                             Disposable {
-    static var METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_"
+    static var METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_"
 
     var id: Any? // viewId
     var plugin: InAppWebViewFlutterPlugin?

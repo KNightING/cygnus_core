@@ -102,7 +102,7 @@ abstract class CygnusPlatformWebViewController extends PlatformInterface
   ) {
     assert(
       CygnusWebViewPlatform.instance != null,
-      'A platform implementation for `flutter_inappwebview` has not been set. Please '
+      'A platform implementation for `cygnus` has not been set. Please '
       'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`CygnusWebViewPlatform.instance` before use. For unit testing, '
       '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
@@ -119,7 +119,7 @@ abstract class CygnusPlatformWebViewController extends PlatformInterface
   factory CygnusPlatformWebViewController.static() {
     assert(
       CygnusWebViewPlatform.instance != null,
-      'A platform implementation for `flutter_inappwebview` has not been set. Please '
+      'A platform implementation for `cygnus` has not been set. Please '
       'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`CygnusWebViewPlatform.instance` before use. For unit testing, '
       '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',
@@ -1247,35 +1247,35 @@ abstract class CygnusPlatformWebViewController extends PlatformInterface
   ///Adds a JavaScript message handler [callback] ([CygnusJavaScriptHandlerCallback] or [CygnusJavaScriptHandlerFunction]) that listen to post messages sent from JavaScript by the handler with name [handlerName].
   ///Forbidden [handlerName]s are represented by [kJavaScriptHandlerForbiddenNames], they are used internally by this plugin.
   ///
-  ///The JavaScript function that can be used to call the handler is `window.flutter_inappwebview.callHandler(handlerName <String>, ...args)`,
-  ///where `window.flutter_inappwebview` is the default JavaScript bridge object injected in the WebView and
+  ///The JavaScript function that can be used to call the handler is `window.cygnus.callHandler(handlerName <String>, ...args)`,
+  ///where `window.cygnus` is the default JavaScript bridge object injected in the WebView and
   ///`args` are [rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters).
   ///The `args` will be stringified automatically using `JSON.stringify(args)` method and then they will be decoded on the Dart side.
   ///
   ///To get the default JavaScript bridge object name, you can use the [getJavaScriptBridgeName] method.
   ///To change the default JavaScript bridge object name, you can use the [setJavaScriptBridgeName] method.
   ///
-  ///In order to call `window.flutter_inappwebview.callHandler(handlerName <String>, ...args)` properly, you need to wait and listen the JavaScript event `flutterInAppWebViewPlatformReady`.
+  ///In order to call `window.cygnus.callHandler(handlerName <String>, ...args)` properly, you need to wait and listen the JavaScript event `cygnusPlatformReady`.
   ///This event will be dispatched as soon as the platform (Android or iOS) is ready to handle the `callHandler` method.
   ///```javascript
-  ///   window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
+  ///   window.addEventListener("cygnusPlatformReady", function(event) {
   ///     console.log("ready");
   ///   });
   ///```
   ///
-  ///`window.flutter_inappwebview.callHandler` returns a JavaScript [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+  ///`window.cygnus.callHandler` returns a JavaScript [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
   ///that can be used to get the json result returned by [CygnusJavaScriptHandlerCallback] or [CygnusJavaScriptHandlerFunction].
   ///In this case, simply return data that you want to send and it will be automatically json encoded using [jsonEncode] from the `dart:convert` library.
   ///
   ///So, on the JavaScript side, to get data coming from the Dart side, you will use:
   ///```html
   ///<script>
-  ///   window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
-  ///     window.flutter_inappwebview.callHandler('handlerFoo').then(function(result) {
+  ///   window.addEventListener("cygnusPlatformReady", function(event) {
+  ///     window.cygnus.callHandler('handlerFoo').then(function(result) {
   ///       console.log(result);
   ///     });
   ///
-  ///     window.flutter_inappwebview.callHandler('handlerFooWithArgs', 1, true, ['bar', 5], {foo: 'baz'}).then(function(result) {
+  ///     window.cygnus.callHandler('handlerFooWithArgs', 1, true, ['bar', 5], {foo: 'baz'}).then(function(result) {
   ///       console.log(result);
   ///     });
   ///   });
@@ -1286,7 +1286,7 @@ abstract class CygnusPlatformWebViewController extends PlatformInterface
   ///```dart
   ///  // Inject JavaScript that will receive data back from Flutter
   ///  webViewController.evaluateJavascript(source: """
-  ///    window.flutter_inappwebview.callHandler('test', 'Text from Javascript').then(function(result) {
+  ///    window.cygnus.callHandler('test', 'Text from Javascript').then(function(result) {
   ///      console.log(result);
   ///    });
   ///  """);
@@ -1295,7 +1295,7 @@ abstract class CygnusPlatformWebViewController extends PlatformInterface
   ///There could be forbidden names for JavaScript handlers depending on the implementation platform.
   ///
   ///**NOTE**: This method should be called, for example, in the [CygnusPlatformWebViewCreationParams.onWebViewCreated] or [CygnusPlatformWebViewCreationParams.onLoadStart] events or, at least,
-  ///before you know that your JavaScript code will call the `window.flutter_inappwebview.callHandler` method,
+  ///before you know that your JavaScript code will call the `window.cygnus.callHandler` method,
   ///otherwise you won't be able to intercept the JavaScript message.
   ///{@endtemplate}
   ///
@@ -4455,7 +4455,7 @@ abstract class CygnusPlatformWebViewController extends PlatformInterface
   ///The [bridgeName] must be a non-empty string with only alphanumeric and underscore characters.
   ///It can't start with a number.
   ///
-  ///The default name used by this plugin is `flutter_inappwebview`.
+  ///The default name used by this plugin is `cygnus`.
   ///{@endtemplate}
   ///
   ///{@macro cygnus_core.CygnusPlatformWebViewController.setJavaScriptBridgeName.supported_platforms}
@@ -4478,7 +4478,7 @@ abstract class CygnusPlatformWebViewController extends PlatformInterface
   ///{@template cygnus_core.CygnusPlatformWebViewController.getJavaScriptBridgeName}
   ///Gets the name of the JavaScript Bridge object that is used to interact with the WebView.
   ///Use [setJavaScriptBridgeName] to set a custom name.
-  ///The default name used by this plugin is `flutter_inappwebview`.
+  ///The default name used by this plugin is `cygnus`.
   ///{@endtemplate}
   ///
   ///{@macro cygnus_core.CygnusPlatformWebViewController.getJavaScriptBridgeName.supported_platforms}

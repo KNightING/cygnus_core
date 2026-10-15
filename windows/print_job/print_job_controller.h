@@ -19,7 +19,7 @@ namespace flutter_inappwebview_plugin
   class PrintJobController
   {
   public:
-    static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_printjobcontroller_";
+    static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_printjobcontroller_";
 
     const std::string id;
     std::unique_ptr<PrintJobChannelDelegate> channelDelegate;

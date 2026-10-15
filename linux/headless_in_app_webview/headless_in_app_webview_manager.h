@@ -16,7 +16,7 @@ class PluginInstance;
 class HeadlessInAppWebViewManager {
  public:
   static constexpr const char* METHOD_CHANNEL_NAME =
-      "com.pichillilorenzo/flutter_headless_inappwebview";
+      "com.github.knighting.cygnus/headless_webview";
 
   HeadlessInAppWebViewManager(PluginInstance* plugin);
   ~HeadlessInAppWebViewManager();

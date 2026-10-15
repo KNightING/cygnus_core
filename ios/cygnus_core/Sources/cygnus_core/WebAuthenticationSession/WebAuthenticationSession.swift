@@ -1,6 +1,6 @@
 //
 //  WebAuthenticationSession.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 08/05/22.
 //
@@ -11,7 +11,7 @@ import SafariServices
 import Flutter
 
 public class WebAuthenticationSession: NSObject, ASWebAuthenticationPresentationContextProviding, Disposable {
-    static let METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_webauthenticationsession_"
+    static let METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webauthenticationsession_"
     var id: String
     var plugin: InAppWebViewFlutterPlugin?
     var url: URL

@@ -467,7 +467,7 @@ open class ChromeCustomTabsActivity : Activity(), Disposable {
 
   companion object {
     protected const val LOG_TAG = "CustomTabsActivity"
-    const val METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_chromesafaribrowser_"
+    const val METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/chromesafaribrowser_"
     const val CHROME_CUSTOM_TAB_REQUEST_CODE = 100
     const val NO_HISTORY_CHROME_CUSTOM_TAB_REQUEST_CODE = 101
   }

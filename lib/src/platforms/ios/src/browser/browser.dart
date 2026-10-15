@@ -78,7 +78,7 @@ class IOSInAppBrowser extends CygnusPlatformBrowser with ChannelController {
       params as IOSInAppBrowserCreationParams;
 
   static const MethodChannel _staticChannel = const MethodChannel(
-    'com.pichillilorenzo/flutter_inappbrowser',
+    'com.github.knighting.cygnus/browser',
   );
 
   CygnusContextMenu? _contextMenu;
@@ -96,7 +96,7 @@ class IOSInAppBrowser extends CygnusPlatformBrowser with ChannelController {
   }
 
   _init() {
-    channel = MethodChannel('com.pichillilorenzo/flutter_inappbrowser_$id');
+    channel = MethodChannel('com.github.knighting.cygnus/browser_$id');
     handler = _handleMethod;
     initMethodCallHandler();
 

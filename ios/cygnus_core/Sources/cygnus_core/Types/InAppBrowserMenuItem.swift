@@ -1,6 +1,6 @@
 //
 //  InAppBrowserMenuItem.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 21/05/23.
 //

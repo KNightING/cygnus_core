@@ -7,7 +7,7 @@ void shouldOverrideUrlLoading() {
 
   skippableGroup('shouldOverrideUrlLoading', () {
     final String page =
-        '''<!DOCTYPE html><head></head><body><a id="link" href="$TEST_URL_3">flutter_inappwebview</a></body></html>''';
+        '''<!DOCTYPE html><head></head><body><a id="link" href="$TEST_URL_3">cygnus_core</a></body></html>''';
     final String pageEncoded =
         'data:text/html;charset=utf-8;base64,' +
         base64Encode(const Utf8Encoder().convert(page));

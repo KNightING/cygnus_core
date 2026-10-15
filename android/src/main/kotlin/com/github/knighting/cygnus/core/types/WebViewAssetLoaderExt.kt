@@ -87,7 +87,7 @@ class WebViewAssetLoaderExt(
     companion object {
       // protected in Java
       const val LOG_TAG = "PathHandlerExt"
-      const val METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_custompathhandler_"
+      const val METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_custompathhandler_"
     }
 
     @JvmField

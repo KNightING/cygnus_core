@@ -1,5 +1,5 @@
 name: flutter_inappwebview_internal_annotations
-description: Internal annotations used by the generator of flutter_inappwebview plugin
+description: Internal annotations used by the generator of cygnus_core plugin
 version: 1.3.0
 homepage: https://github.com/pichillilorenzo/flutter_inappwebview
 

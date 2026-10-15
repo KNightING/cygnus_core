@@ -16,7 +16,7 @@ class PrintJobController(
   companion object {
     // protected static in Java
     const val LOG_TAG = "PrintJob"
-    const val METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_printjobcontroller_"
+    const val METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_printjobcontroller_"
   }
 
   @JvmField

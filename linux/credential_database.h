@@ -55,13 +55,13 @@ struct Credential {
  * Credentials are stored in the system keyring (gnome-keyring, KDE Wallet, etc.)
  * using the Secret Service D-Bus API.
  *
- * Schema: com.pichillilorenzo.flutter_inappwebview.HttpAuth
+ * Schema: com.github.knighting.cygnus.HttpAuth
  * Attributes: appId, host, port, protocol, realm, username
  */
 class CredentialDatabase : public ChannelDelegate {
  public:
   static constexpr const char* METHOD_CHANNEL_NAME =
-      "com.pichillilorenzo/flutter_inappwebview_credential_database";
+      "com.github.knighting.cygnus/webview_credential_database";
 
   explicit CredentialDatabase(PluginInstance* plugin);
   ~CredentialDatabase() override;

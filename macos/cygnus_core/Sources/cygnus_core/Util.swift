@@ -1,6 +1,6 @@
 //
 //  Util.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 12/02/21.
 //

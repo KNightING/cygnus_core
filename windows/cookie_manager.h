@@ -16,7 +16,7 @@ namespace flutter_inappwebview_plugin
   class CookieManager : public ChannelDelegate
   {
   public:
-    static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_cookiemanager";
+    static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_cookiemanager";
 
     const FlutterInappwebviewWindowsPlugin* plugin;
 

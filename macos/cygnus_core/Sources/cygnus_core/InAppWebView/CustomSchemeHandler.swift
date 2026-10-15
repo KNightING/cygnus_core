@@ -1,6 +1,6 @@
 //
 //  CustomSchemeHandler.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 25/10/2019.
 //

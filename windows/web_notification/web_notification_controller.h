@@ -21,7 +21,7 @@ namespace flutter_inappwebview_plugin
   class WebNotificationController
   {
   public:
-    static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_webnotificationcontroller_";
+    static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_webnotificationcontroller_";
 
     const std::string id;
     std::shared_ptr<WebNotification> notification;

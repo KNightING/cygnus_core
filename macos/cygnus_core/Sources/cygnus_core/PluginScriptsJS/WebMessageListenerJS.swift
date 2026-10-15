@@ -1,6 +1,6 @@
 //
 //  WebMessageListenerJS.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 10/03/21.
 //

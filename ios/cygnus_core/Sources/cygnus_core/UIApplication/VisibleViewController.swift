@@ -1,6 +1,6 @@
 //
 //  VisibleViewController.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Alexandru Terente on 02.08.2023.
 //

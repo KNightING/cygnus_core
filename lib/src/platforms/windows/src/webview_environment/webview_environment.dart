@@ -29,7 +29,7 @@ class WindowsWebViewEnvironmentCreationParams
 class WindowsWebViewEnvironment extends CygnusPlatformWebViewEnvironment
     with ChannelController {
   static final MethodChannel _staticChannel = MethodChannel(
-    'com.pichillilorenzo/flutter_webview_environment',
+    'com.github.knighting.cygnus/webview_environment',
   );
 
   @override
@@ -138,7 +138,7 @@ class WindowsWebViewEnvironment extends CygnusPlatformWebViewEnvironment
     await _staticChannel.invokeMethod('create', args);
 
     env.channel = MethodChannel(
-      'com.pichillilorenzo/flutter_webview_environment_${env.id}',
+      'com.github.knighting.cygnus/webview_environment_${env.id}',
     );
     env.handler = env.handleMethod;
     env.initMethodCallHandler();

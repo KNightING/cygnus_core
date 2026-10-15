@@ -113,7 +113,7 @@ class InAppWebView : InputAwareWebView, InAppWebViewInterface {
      */
     private const val GESTURE_ARTEFACT_THRESHOLD_DP = 48f
 
-    const val METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_"
+    const val METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_"
 
     // package-private in Java
     @JvmField

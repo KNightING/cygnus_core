@@ -82,6 +82,6 @@ class HeadlessInAppWebViewManager(plugin: InAppWebViewFlutterPlugin) :
   companion object {
     // protected static in Java
     const val LOG_TAG = "HeadlessInAppWebViewManager"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_headless_inappwebview"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/headless_webview"
   }
 }

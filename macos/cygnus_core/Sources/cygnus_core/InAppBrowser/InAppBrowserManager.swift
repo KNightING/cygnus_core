@@ -1,6 +1,6 @@
 //
 //  InAppBrowserManager.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 18/12/2019.
 //
@@ -12,7 +12,7 @@ import Foundation
 import AVFoundation
 
 public class InAppBrowserManager: ChannelDelegate {
-    static let METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappbrowser"
+    static let METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/browser"
     static let WEBVIEW_STORYBOARD = "WebView"
     static let WEBVIEW_STORYBOARD_CONTROLLER_ID = "viewController"
     static let NAV_STORYBOARD_CONTROLLER_ID = "navController"

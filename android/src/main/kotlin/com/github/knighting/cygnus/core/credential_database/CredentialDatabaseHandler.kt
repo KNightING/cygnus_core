@@ -120,7 +120,7 @@ open class CredentialDatabaseHandler(plugin: InAppWebViewFlutterPlugin) :
 
   companion object {
     protected const val LOG_TAG = "CredentialDatabaseHandler"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_credential_database"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_credential_database"
 
     @JvmField
     var credentialDatabase: CredentialDatabase? = null

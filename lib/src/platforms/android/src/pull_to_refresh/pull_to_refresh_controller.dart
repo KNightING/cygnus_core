@@ -175,7 +175,7 @@ class AndroidPullToRefreshController extends CygnusPlatformPullToRefreshControll
 extension InternalPullToRefreshController on AndroidPullToRefreshController {
   void init(dynamic id) {
     channel = MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_pull_to_refresh_$id',
+      'com.github.knighting.cygnus/webview_pull_to_refresh_$id',
     );
     handler = _handleMethod;
     initMethodCallHandler();

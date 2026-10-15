@@ -1,6 +1,6 @@
 //
 //  WebMessageListener.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 10/03/21.
 //
@@ -10,7 +10,7 @@ import WebKit
 import Flutter
 
 public class WebMessageListener: FlutterMethodCallDelegate {
-    static var METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_web_message_listener_"
+    static var METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_web_message_listener_"
     var id: String
     var jsObjectName: String
     var allowedOriginRules: Set<String>

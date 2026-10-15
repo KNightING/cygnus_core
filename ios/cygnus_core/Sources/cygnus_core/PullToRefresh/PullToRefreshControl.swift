@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 03/03/21.
 //
@@ -9,7 +9,7 @@ import Foundation
 import Flutter
 
 public class PullToRefreshControl: UIRefreshControl, Disposable {
-    static let METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_pull_to_refresh_"
+    static let METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_pull_to_refresh_"
 
     var plugin: InAppWebViewFlutterPlugin?
     var channelDelegate: PullToRefreshChannelDelegate?

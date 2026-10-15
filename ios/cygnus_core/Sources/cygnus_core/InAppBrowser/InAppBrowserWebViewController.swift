@@ -1,6 +1,6 @@
 //
 //  InAppBrowserWebViewController.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo on 17/09/18.
 //
@@ -11,7 +11,7 @@ import WebKit
 import Foundation
 
 public class InAppBrowserWebViewController: UIViewController, InAppBrowserDelegate, UIScrollViewDelegate, UISearchBarDelegate, Disposable {
-    static let METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappbrowser_"
+    static let METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/browser_"
     
     var closeButton: UIBarButtonItem!
     var reloadButton: UIBarButtonItem!

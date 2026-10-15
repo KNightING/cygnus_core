@@ -39,9 +39,9 @@ open class ActionBroadcastReceiver : BroadcastReceiver() {
 
   companion object {
     protected const val LOG_TAG = "ActionBroadcastReceiver"
-    const val KEY_ACTION_ID = "com.pichillilorenzo.flutter_inappwebview.ChromeCustomTabs.ACTION_ID"
-    const val KEY_ACTION_VIEW_ID = "com.pichillilorenzo.flutter_inappwebview.ChromeCustomTabs.ACTION_VIEW_ID"
-    const val KEY_ACTION_MANAGER_ID = "com.pichillilorenzo.flutter_inappwebview.ChromeCustomTabs.ACTION_MANAGER_ID"
+    const val KEY_ACTION_ID = "com.github.knighting.cygnus.ChromeCustomTabs.ACTION_ID"
+    const val KEY_ACTION_VIEW_ID = "com.github.knighting.cygnus.ChromeCustomTabs.ACTION_VIEW_ID"
+    const val KEY_ACTION_MANAGER_ID = "com.github.knighting.cygnus.ChromeCustomTabs.ACTION_MANAGER_ID"
     const val KEY_URL_TITLE = "android.intent.extra.SUBJECT"
   }
 }

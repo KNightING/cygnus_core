@@ -1,6 +1,6 @@
 //
 //  javaScriptBridgeJS.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 16/02/21.
 //
@@ -8,7 +8,7 @@
 import Foundation
 
 public class JavaScriptBridgeJS {
-    private static var _JAVASCRIPT_BRIDGE_NAME = "flutter_inappwebview"
+    private static var _JAVASCRIPT_BRIDGE_NAME = "cygnus"
     public static func set_JAVASCRIPT_BRIDGE_NAME(bridgeName: String) {
         _JAVASCRIPT_BRIDGE_NAME = bridgeName
     }
@@ -78,7 +78,7 @@ public class JavaScriptBridgeJS {
         """
     }
 
-    public static let PLATFORM_READY_JS_SOURCE = "window.dispatchEvent(new Event('flutterInAppWebViewPlatformReady'));";
+    public static let PLATFORM_READY_JS_SOURCE = "window.dispatchEvent(new Event('cygnusPlatformReady'));";
 
     public static func JAVASCRIPT_UTIL_VAR_NAME() -> String {
         return "window.\(get_JAVASCRIPT_BRIDGE_NAME())._Util"

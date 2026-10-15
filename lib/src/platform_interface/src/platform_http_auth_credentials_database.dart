@@ -70,7 +70,7 @@ abstract class CygnusPlatformHttpAuthCredentialDatabase extends PlatformInterfac
   ) {
     assert(
       CygnusWebViewPlatform.instance != null,
-      'A platform implementation for `flutter_inappwebview` has not been set. Please '
+      'A platform implementation for `cygnus` has not been set. Please '
       'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
@@ -87,7 +87,7 @@ abstract class CygnusPlatformHttpAuthCredentialDatabase extends PlatformInterfac
   factory CygnusPlatformHttpAuthCredentialDatabase.static() {
     assert(
       CygnusWebViewPlatform.instance != null,
-      'A platform implementation for `flutter_inappwebview` has not been set. Please '
+      'A platform implementation for `cygnus` has not been set. Please '
       'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`CygnusWebViewPlatform.instance` before use. For unit testing, '
       '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',

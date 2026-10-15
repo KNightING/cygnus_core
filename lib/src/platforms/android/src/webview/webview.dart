@@ -453,7 +453,7 @@ class AndroidInAppWebViewWidget extends CygnusPlatformWebViewWidget {
 
     return PlatformViewLink(
       key: params.key,
-      viewType: 'com.pichillilorenzo/flutter_inappwebview',
+      viewType: 'com.github.knighting.cygnus/webview',
       surfaceFactory:
           (BuildContext context, PlatformViewController controller) {
             return AndroidViewSurface(
@@ -468,7 +468,7 @@ class AndroidInAppWebViewWidget extends CygnusPlatformWebViewWidget {
         return _createAndroidViewController(
             compositionMode: compositionMode,
             id: params.id,
-            viewType: 'com.pichillilorenzo/flutter_inappwebview',
+            viewType: 'com.github.knighting.cygnus/webview',
             layoutDirection:
                 this.params.layoutDirection ??
                 Directionality.maybeOf(context) ??

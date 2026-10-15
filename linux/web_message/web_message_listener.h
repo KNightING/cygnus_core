@@ -20,7 +20,7 @@ class WebMessageListenerChannelDelegate;
  * callbacks are routed through a dedicated channel (not the main WebView channel).
  *
  * Channel name pattern:
- *   com.pichillilorenzo/flutter_inappwebview_web_message_listener_{id}_{jsObjectName}
+ *   com.github.knighting.cygnus/webview_web_message_listener_{id}_{jsObjectName}
  *
  * This matches the iOS/Android architecture where:
  * - WebMessageListener is a native class with its own channelDelegate
@@ -30,7 +30,7 @@ class WebMessageListenerChannelDelegate;
 class WebMessageListener {
  public:
   static constexpr const char* METHOD_CHANNEL_NAME_PREFIX =
-      "com.pichillilorenzo/flutter_inappwebview_web_message_listener_";
+      "com.github.knighting.cygnus/webview_web_message_listener_";
 
   /**
    * Create a WebMessageListener from a Flutter map value.

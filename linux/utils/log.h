@@ -25,9 +25,9 @@ static inline void debugLog(const std::basic_string<T>& msg, const bool& isError
 
   // Use g_message for GLib-based logging
   if (isError) {
-    g_warning("[flutter_inappwebview] %s", std::string(debugMsg).c_str());
+    g_warning("[cygnus_core] %s", std::string(debugMsg).c_str());
   } else {
-    g_message("[flutter_inappwebview] %s", std::string(debugMsg).c_str());
+    g_message("[cygnus_core] %s", std::string(debugMsg).c_str());
   }
 #endif
 }

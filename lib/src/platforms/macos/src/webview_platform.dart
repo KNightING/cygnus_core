@@ -21,7 +21,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSCookieManager].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusCookieManager] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusCookieManager] in `cygnus` instead.
   @override
   MacOSCookieManager createPlatformCookieManager(
     CygnusPlatformCookieManagerCreationParams params,
@@ -32,7 +32,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSCookieManager] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusCookieManager] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusCookieManager] in `cygnus` instead.
   @override
   MacOSCookieManager createPlatformCookieManagerStatic() {
     return MacOSCookieManager.static();
@@ -41,7 +41,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSInAppWebViewController].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
   MacOSInAppWebViewController createPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
@@ -52,7 +52,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSInAppWebViewController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
   MacOSInAppWebViewController createPlatformWebViewControllerStatic() {
     return MacOSInAppWebViewController.static();
@@ -61,7 +61,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSInAppWebViewWidget].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
   MacOSInAppWebViewWidget createPlatformWebViewWidget(
     CygnusPlatformWebViewWidgetCreationParams params,
@@ -72,7 +72,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSInAppWebViewWidget] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
   MacOSInAppWebViewWidget createPlatformWebViewWidgetStatic() {
     return MacOSInAppWebViewWidget.static();
@@ -81,7 +81,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSFindInteractionController].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusFindInteractionController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusFindInteractionController] in `cygnus` instead.
   @override
   MacOSFindInteractionController createPlatformFindInteractionController(
     CygnusPlatformFindInteractionControllerCreationParams params,
@@ -92,7 +92,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSFindInteractionController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusFindInteractionController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusFindInteractionController] in `cygnus` instead.
   @override
   MacOSFindInteractionController
   createPlatformFindInteractionControllerStatic() {
@@ -102,7 +102,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSPrintJobController].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusPrintJobController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusPrintJobController] in `cygnus` instead.
   @override
   MacOSPrintJobController createPlatformPrintJobController(
     CygnusPlatformPrintJobControllerCreationParams params,
@@ -113,7 +113,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformPrintJobController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusPrintJobController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusPrintJobController] in `cygnus` instead.
   @override
   MacOSPrintJobController createPlatformPrintJobControllerStatic() {
     return MacOSPrintJobController.static();
@@ -122,7 +122,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformPullToRefreshController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusPullToRefreshController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusPullToRefreshController] in `cygnus` instead.
   @override
   CygnusPlatformPullToRefreshController
   createPlatformPullToRefreshControllerStatic() {
@@ -132,7 +132,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSWebMessageChannel].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebMessageChannel] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebMessageChannel] in `cygnus` instead.
   @override
   MacOSWebMessageChannel createPlatformWebMessageChannel(
     CygnusPlatformWebMessageChannelCreationParams params,
@@ -143,7 +143,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSWebMessageChannel] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebMessageChannel] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebMessageChannel] in `cygnus` instead.
   @override
   MacOSWebMessageChannel createPlatformWebMessageChannelStatic() {
     return MacOSWebMessageChannel.static();
@@ -152,7 +152,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSWebMessageListener].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebMessageListener] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebMessageListener] in `cygnus` instead.
   @override
   MacOSWebMessageListener createPlatformWebMessageListener(
     CygnusPlatformWebMessageListenerCreationParams params,
@@ -163,7 +163,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSWebMessageListener] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebMessageListener] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebMessageListener] in `cygnus` instead.
   @override
   MacOSWebMessageListener createPlatformWebMessageListenerStatic() {
     return MacOSWebMessageListener.static();
@@ -172,7 +172,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSJavaScriptReplyProxy].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusJavaScriptReplyProxy] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusJavaScriptReplyProxy] in `cygnus` instead.
   @override
   MacOSJavaScriptReplyProxy createPlatformJavaScriptReplyProxy(
     CygnusPlatformJavaScriptReplyProxyCreationParams params,
@@ -183,7 +183,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSWebMessagePort].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebMessagePort] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebMessagePort] in `cygnus` instead.
   @override
   MacOSWebMessagePort createPlatformWebMessagePort(
     CygnusPlatformWebMessagePortCreationParams params,
@@ -194,7 +194,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSWebStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebStorage] in `cygnus` instead.
   @override
   MacOSWebStorage createPlatformWebStorage(
     CygnusPlatformWebStorageCreationParams params,
@@ -205,7 +205,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSWebStorage] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebStorage] in `cygnus` instead.
   @override
   MacOSWebStorage createPlatformWebStorageStatic() {
     return MacOSWebStorage(
@@ -219,7 +219,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSLocalStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusLocalStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusLocalStorage] in `cygnus` instead.
   @override
   MacOSLocalStorage createPlatformLocalStorage(
     CygnusPlatformLocalStorageCreationParams params,
@@ -230,7 +230,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSLocalStorage] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusLocalStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusLocalStorage] in `cygnus` instead.
   @override
   MacOSLocalStorage createPlatformLocalStorageStatic() {
     return MacOSLocalStorage.defaultStorage(controller: null);
@@ -239,7 +239,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSSessionStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusSessionStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusSessionStorage] in `cygnus` instead.
   @override
   MacOSSessionStorage createPlatformSessionStorage(
     CygnusPlatformSessionStorageCreationParams params,
@@ -250,7 +250,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSSessionStorage] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusSessionStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusSessionStorage] in `cygnus` instead.
   @override
   MacOSSessionStorage createPlatformSessionStorageStatic() {
     return MacOSSessionStorage.defaultStorage(controller: null);
@@ -259,7 +259,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSHeadlessInAppWebView].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusHeadlessWebView] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusHeadlessWebView] in `cygnus` instead.
   @override
   MacOSHeadlessInAppWebView createPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
@@ -270,7 +270,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSHeadlessInAppWebView] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusHeadlessWebView] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusHeadlessWebView] in `cygnus` instead.
   @override
   MacOSHeadlessInAppWebView createPlatformHeadlessWebViewStatic() {
     return MacOSHeadlessInAppWebView.static();
@@ -279,7 +279,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSHttpAuthCredentialDatabase].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusHttpAuthCredentialDatabase] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusHttpAuthCredentialDatabase] in `cygnus` instead.
   @override
   MacOSHttpAuthCredentialDatabase createPlatformHttpAuthCredentialDatabase(
     CygnusPlatformHttpAuthCredentialDatabaseCreationParams params,
@@ -290,7 +290,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSHttpAuthCredentialDatabase] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusHttpAuthCredentialDatabase] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusHttpAuthCredentialDatabase] in `cygnus` instead.
   @override
   MacOSHttpAuthCredentialDatabase
   createPlatformHttpAuthCredentialDatabaseStatic() {
@@ -300,7 +300,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSInAppBrowser].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusBrowser] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusBrowser] in `cygnus` instead.
   @override
   MacOSInAppBrowser createPlatformBrowser(
     CygnusPlatformBrowserCreationParams params,
@@ -311,7 +311,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSInAppBrowser] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusBrowser] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusBrowser] in `cygnus` instead.
   @override
   MacOSInAppBrowser createPlatformBrowserStatic() {
     return MacOSInAppBrowser.static();
@@ -320,7 +320,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSWebStorageManager] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebStorageManager] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebStorageManager] in `cygnus` instead.
   @override
   MacOSWebStorageManager createPlatformWebStorageManager(
     CygnusPlatformWebStorageManagerCreationParams params,
@@ -331,7 +331,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSWebStorageManager] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebStorageManager] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebStorageManager] in `cygnus` instead.
   @override
   MacOSWebStorageManager createPlatformWebStorageManagerStatic() {
     return MacOSWebStorageManager.static();
@@ -340,7 +340,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSWebAuthenticationSession].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebAuthenticationSession] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebAuthenticationSession] in `cygnus` instead.
   @override
   MacOSWebAuthenticationSession createPlatformWebAuthenticationSession(
     CygnusPlatformWebAuthenticationSessionCreationParams params,
@@ -351,7 +351,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSWebAuthenticationSession] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebAuthenticationSession] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebAuthenticationSession] in `cygnus` instead.
   @override
   MacOSWebAuthenticationSession createPlatformWebAuthenticationSessionStatic() {
     return MacOSWebAuthenticationSession.static();
@@ -360,7 +360,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [MacOSProxyController].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusProxyController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusProxyController] in `cygnus` instead.
   @override
   CygnusPlatformProxyController createPlatformProxyController(
     CygnusPlatformProxyControllerCreationParams params,
@@ -371,7 +371,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [MacOSProxyController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusProxyController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusProxyController] in `cygnus` instead.
   @override
   MacOSProxyController createPlatformProxyControllerStatic() {
     return MacOSProxyController.static();
@@ -387,7 +387,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformWebViewEnvironment] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebViewEnvironment] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebViewEnvironment] in `cygnus` instead.
   @override
   CygnusPlatformWebViewEnvironment createPlatformWebViewEnvironmentStatic() {
     return _PlatformWebViewEnvironment.static();
@@ -396,7 +396,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformChromeSafariBrowser] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusChromeSafariBrowser] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusChromeSafariBrowser] in `cygnus` instead.
   CygnusPlatformChromeSafariBrowser createPlatformChromeSafariBrowserStatic() {
     return _PlatformChromeSafariBrowser.static();
   }
@@ -404,7 +404,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformProcessGlobalConfig] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusProcessGlobalConfig] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusProcessGlobalConfig] in `cygnus` instead.
   @override
   CygnusPlatformProcessGlobalConfig createPlatformProcessGlobalConfigStatic() {
     return _PlatformProcessGlobalConfig.static();
@@ -413,7 +413,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformServiceWorkerController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusServiceWorkerController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusServiceWorkerController] in `cygnus` instead.
   @override
   CygnusPlatformServiceWorkerController
   createPlatformServiceWorkerControllerStatic() {
@@ -423,7 +423,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformTracingController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusTracingController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusTracingController] in `cygnus` instead.
   @override
   CygnusPlatformTracingController createPlatformTracingControllerStatic() {
     return _PlatformTracingController.static();
@@ -432,7 +432,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformWebNotificationController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebNotificationController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebNotificationController] in `cygnus` instead.
   @override
   CygnusPlatformWebNotificationController
   createPlatformWebNotificationControllerStatic() {
@@ -442,7 +442,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformAssetsPathHandler] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusAssetsPathHandler] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusAssetsPathHandler] in `cygnus` instead.
   @override
   CygnusPlatformAssetsPathHandler createPlatformAssetsPathHandlerStatic() {
     return _PlatformAssetsPathHandler.static();
@@ -451,7 +451,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformResourcesPathHandler] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusResourcesPathHandler] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusResourcesPathHandler] in `cygnus` instead.
   @override
   CygnusPlatformResourcesPathHandler createPlatformResourcesPathHandlerStatic() {
     return _PlatformResourcesPathHandler.static();
@@ -460,7 +460,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformInternalStoragePathHandler] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusInternalStoragePathHandler] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusInternalStoragePathHandler] in `cygnus` instead.
   @override
   CygnusPlatformInternalStoragePathHandler
   createPlatformInternalStoragePathHandlerStatic() {
@@ -470,7 +470,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformCustomPathHandler] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusCustomPathHandler] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusCustomPathHandler] in `cygnus` instead.
   @override
   CygnusPlatformCustomPathHandler createPlatformCustomPathHandlerStatic() {
     return _PlatformCustomPathHandler.static();
@@ -479,7 +479,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [CygnusDefaultLocalhostServer].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusLocalhostServer] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusLocalhostServer] in `cygnus` instead.
   @override
   CygnusDefaultLocalhostServer createPlatformLocalhostServer(
     CygnusPlatformLocalhostServerCreationParams params,
@@ -490,7 +490,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusDefaultLocalhostServer] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusLocalhostServer] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusLocalhostServer] in `cygnus` instead.
   @override
   CygnusDefaultLocalhostServer createPlatformLocalhostServerStatic() {
     return CygnusDefaultLocalhostServer.static();
@@ -499,7 +499,7 @@ class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformWebViewFeature] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebViewFeature] in `flutter_inappwebview` instead
+  /// Look at using [CygnusWebViewFeature] in `cygnus` instead
   @override
   CygnusPlatformWebViewFeature createPlatformWebViewFeatureStatic() {
     return _PlatformWebViewFeature.static();

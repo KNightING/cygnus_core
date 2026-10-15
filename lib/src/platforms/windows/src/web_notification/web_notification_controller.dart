@@ -43,7 +43,7 @@ class WindowsWebNotificationController extends CygnusPlatformWebNotificationCont
               ),
       ) {
     channel = MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_webnotificationcontroller_${params.id}',
+      'com.github.knighting.cygnus/webview_webnotificationcontroller_${params.id}',
     );
     handler = _handleMethod;
     initMethodCallHandler();

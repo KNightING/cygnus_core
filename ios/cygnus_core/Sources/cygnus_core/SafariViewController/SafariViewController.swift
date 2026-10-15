@@ -1,6 +1,6 @@
 //
 //  SafariViewController.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo on 25/09/18.
 //
@@ -11,7 +11,7 @@ import Flutter
 
 @available(iOS 9.0, *)
 public class SafariViewController: SFSafariViewController, SFSafariViewControllerDelegate, Disposable {
-    static let METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_chromesafaribrowser_"
+    static let METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/chromesafaribrowser_"
     var channelDelegate: SafariViewControllerChannelDelegate?
     var safariSettings: SafariBrowserSettings
     var id: String

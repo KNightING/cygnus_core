@@ -1,6 +1,6 @@
 //
 //  ContextMenuOptions.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 30/05/2020.
 //

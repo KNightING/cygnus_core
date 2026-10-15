@@ -29,7 +29,7 @@ bool string_equals(const gchar* a, const char* b) {
 
 const SecretSchema* CredentialDatabase::getSchema() {
   static const SecretSchema schema = {
-    "com.pichillilorenzo.flutter_inappwebview.HttpAuth",
+    "com.github.knighting.cygnus.HttpAuth",
       SECRET_SCHEMA_NONE,
       {
       {"appId", SECRET_SCHEMA_ATTRIBUTE_STRING},

@@ -134,7 +134,7 @@ open class ChromeSafariBrowserManager(plugin: InAppWebViewFlutterPlugin) :
 
   companion object {
     protected const val LOG_TAG = "ChromeBrowserManager"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_chromesafaribrowser"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/chromesafaribrowser"
 
     @JvmField
     val shared: MutableMap<String, ChromeSafariBrowserManager> = HashMap()

@@ -18,7 +18,7 @@ Cygnus 框架（Nuxt 網頁 + Flutter 殼）的 WebView 核心套件，供 KNigh
   移植。本專案不對上游發 PR，所有變更只服務 KNightING 自有專案的需求。
 - **對外名稱分階段調整，每階段各自一份計畫、可獨立建置驗證**：
   - 階段 ①（已完成）：合併為單一套件、套件名改為 `cygnus_core`。**不改** Dart 類別名、Android Java
-    namespace、channel 前綴 `com.pichillilorenzo/`、JS 全域名稱 `window.flutter_inappwebview`——
+    namespace、channel 前綴 `com.pichillilorenzo/`、JS 全域名稱 `window.cygnus`——
     先只做結構合併，行為不變，把變更面壓到最小。
   - Android 原生端（階段 ② 之後的獨立計畫，已完成）：159 個 Java 檔全數改寫為 Kotlin，命名空間由 `com.pichillilorenzo.flutter_inappwebview_android` 改為 `com.github.knighting.cygnus.core`；行為、channel、JS 名稱未動。
   - 階段 ②（已完成）：Dart 公開 API 命名改為 Cygnus 風格——型別前綴 `Cygnus` 並移除 `InApp`，檔名去掉 `in_app_`；完整對照見 `doc/dart-rename-map.md`。
@@ -105,8 +105,8 @@ gh repo set-default KNightING/cygnus_core
 注入於網頁的全域物件名**是執行期可設定的**，非寫死常數：
 `JavaScriptBridgeJS.set_JAVASCRIPT_BRIDGE_NAME()` / `get_JAVASCRIPT_BRIDGE_NAME()`，
 Android / iOS / macOS 三平台的宣告皆位於各自的 `plugin_scripts_js` / `PluginScriptsJS`
-目錄下的 `JavaScriptBridgeJS`。預設值 `flutter_inappwebview`，使用端的
-`window.flutter_inappwebview.callHandler(...)` 依此。
+目錄下的 `JavaScriptBridgeJS`。預設值 `cygnus`，使用端的
+`window.cygnus.callHandler(...)` 依此。
 
 ## 待移植（來自 `KNightING/camelot_inappwebview`）
 

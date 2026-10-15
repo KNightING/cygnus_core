@@ -40,7 +40,7 @@ class AndroidWebStorageManager extends CygnusPlatformWebStorageManager
               ),
       ) {
     channel = const MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_webstoragemanager',
+      'com.github.knighting.cygnus/webview_webstoragemanager',
     );
     handler = _handleMethod;
     initMethodCallHandler();

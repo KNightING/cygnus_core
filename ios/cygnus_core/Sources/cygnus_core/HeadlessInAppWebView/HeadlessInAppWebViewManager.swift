@@ -1,6 +1,6 @@
 //
 //  HeadlessInAppWebViewManager.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 10/05/2020.
 //
@@ -14,7 +14,7 @@ import Foundation
 import AVFoundation
 
 public class HeadlessInAppWebViewManager: ChannelDelegate {
-    static let METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_headless_inappwebview"
+    static let METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/headless_webview"
     var plugin: InAppWebViewFlutterPlugin?
     var webViews: [String: HeadlessInAppWebView?] = [:]
     

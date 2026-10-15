@@ -165,6 +165,6 @@ open class HeadlessInAppWebView(
 
   companion object {
     protected const val LOG_TAG = "HeadlessInAppWebView"
-    const val METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_headless_inappwebview_"
+    const val METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/headless_webview_"
   }
 }

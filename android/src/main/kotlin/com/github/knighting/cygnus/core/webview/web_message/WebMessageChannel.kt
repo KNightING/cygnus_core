@@ -21,7 +21,7 @@ class WebMessageChannel(id: String, webView: InAppWebViewInterface) : Disposable
   companion object {
     // protected in Java
     const val LOG_TAG = "WebMessageChannel"
-    const val METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_web_message_channel_"
+    const val METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_web_message_channel_"
   }
 
   @JvmField

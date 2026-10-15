@@ -17,7 +17,7 @@ namespace flutter_inappwebview_plugin
   {
   public:
     static inline const wchar_t* CLASS_NAME = L"HeadlessInAppWebView";
-    static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_headless_inappwebview_";
+    static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/headless_webview_";
 
     const FlutterInappwebviewWindowsPlugin* plugin;
     std::string id;

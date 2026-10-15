@@ -667,6 +667,6 @@ class InAppBrowserActivity : AppCompatActivity(), InAppBrowserDelegate, Disposab
   companion object {
     // protected static in Java
     const val LOG_TAG = "InAppBrowserActivity"
-    const val METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappbrowser_"
+    const val METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/browser_"
   }
 }

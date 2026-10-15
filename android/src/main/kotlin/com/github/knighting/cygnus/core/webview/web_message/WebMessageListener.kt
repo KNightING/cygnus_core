@@ -31,7 +31,7 @@ class WebMessageListener(
   companion object {
     // protected in Java
     const val LOG_TAG = "WebMessageListener"
-    const val METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_web_message_listener_"
+    const val METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_web_message_listener_"
 
     @JvmStatic
     @Suppress("UNCHECKED_CAST")

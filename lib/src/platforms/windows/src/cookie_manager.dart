@@ -46,7 +46,7 @@ class WindowsCookieManager extends CygnusPlatformCookieManager
               ),
       ) {
     channel = const MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_cookiemanager',
+      'com.github.knighting.cygnus/webview_cookiemanager',
     );
     handler = handleMethod;
     initMethodCallHandler();

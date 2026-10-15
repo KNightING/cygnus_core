@@ -100,7 +100,7 @@ open class MyWebStorage(plugin: InAppWebViewFlutterPlugin) :
 
   companion object {
     protected const val LOG_TAG = "MyWebStorage"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_webstoragemanager"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_webstoragemanager"
 
     @JvmField
     var webStorageManager: WebStorage? = null

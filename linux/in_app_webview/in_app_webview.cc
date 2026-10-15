@@ -7747,7 +7747,7 @@ bool InAppWebView::handleScriptMessageWithReply(const std::string& body, WebKitS
 }
 
 void InAppWebView::dispatchPlatformReady() {
-  std::string script = "window.dispatchEvent(new Event('flutterInAppWebViewPlatformReady'));";
+  std::string script = "window.dispatchEvent(new Event('cygnusPlatformReady'));";
   evaluateJavascript(script, std::nullopt, nullptr);
 }
 

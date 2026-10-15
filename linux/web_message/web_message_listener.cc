@@ -53,7 +53,7 @@ WebMessageListener::WebMessageListener(FlBinaryMessenger* messenger,
       allowedOriginRules_(allowedOriginRules),
       webView_(webView) {
   // Create the channel name following the pattern:
-  // com.pichillilorenzo/flutter_inappwebview_web_message_listener_{id}_{jsObjectName}
+  // com.github.knighting.cygnus/webview_web_message_listener_{id}_{jsObjectName}
   std::string channelName = std::string(METHOD_CHANNEL_NAME_PREFIX) + id + "_" + jsObjectName;
   
   channelDelegate_ = std::make_unique<WebMessageListenerChannelDelegate>(

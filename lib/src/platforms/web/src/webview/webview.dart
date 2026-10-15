@@ -296,7 +296,7 @@ class WebPlatformInAppWebViewWidget extends CygnusPlatformWebViewWidget {
     }
 
     return HtmlElementView(
-      viewType: 'com.pichillilorenzo/flutter_inappwebview',
+      viewType: 'com.github.knighting.cygnus/webview',
       onPlatformViewCreated: (int viewId) {
         var webViewHtmlElement = InAppWebViewManager.webViews[viewId]!;
         webViewHtmlElement.initialSettings = initialSettings;

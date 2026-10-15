@@ -14,7 +14,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [WebPlatformCookieManager].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusCookieManager] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusCookieManager] in `cygnus` instead.
   @override
   WebPlatformCookieManager createPlatformCookieManager(
     CygnusPlatformCookieManagerCreationParams params,
@@ -25,7 +25,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [WebPlatformCookieManager] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusCookieManager] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusCookieManager] in `cygnus` instead.
   @override
   WebPlatformCookieManager createPlatformCookieManagerStatic() {
     return WebPlatformCookieManager.static();
@@ -34,7 +34,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [WebPlatformInAppWebViewController].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
   WebPlatformInAppWebViewController createPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
@@ -45,7 +45,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [WebPlatformInAppWebViewController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebViewController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
   WebPlatformInAppWebViewController
   createPlatformWebViewControllerStatic() {
@@ -55,7 +55,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [WebPlatformInAppWebViewWidget].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
   WebPlatformInAppWebViewWidget createPlatformWebViewWidget(
     CygnusPlatformWebViewWidgetCreationParams params,
@@ -66,7 +66,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [WebPlatformInAppWebViewWidget] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebView] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
   WebPlatformInAppWebViewWidget createPlatformWebViewWidgetStatic() {
     return WebPlatformInAppWebViewWidget.static();
@@ -75,7 +75,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [WebPlatformHeadlessInAppWebView].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusHeadlessWebView] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusHeadlessWebView] in `cygnus` instead.
   @override
   WebPlatformHeadlessInAppWebView createPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
@@ -86,7 +86,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [WebPlatformHeadlessInAppWebView] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusHeadlessWebView] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusHeadlessWebView] in `cygnus` instead.
   @override
   WebPlatformHeadlessInAppWebView createPlatformHeadlessWebViewStatic() {
     return WebPlatformHeadlessInAppWebView.static();
@@ -95,7 +95,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [WebPlatformWebStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebStorage] in `cygnus` instead.
   @override
   WebPlatformWebStorage createPlatformWebStorage(
     CygnusPlatformWebStorageCreationParams params,
@@ -106,7 +106,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [WebPlatformWebStorage] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebStorage] in `cygnus` instead.
   @override
   WebPlatformWebStorage createPlatformWebStorageStatic() {
     return WebPlatformWebStorage(
@@ -120,7 +120,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [WebPlatformLocalStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusLocalStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusLocalStorage] in `cygnus` instead.
   @override
   WebPlatformLocalStorage createPlatformLocalStorage(
     CygnusPlatformLocalStorageCreationParams params,
@@ -131,7 +131,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [WebPlatformLocalStorage] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusLocalStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusLocalStorage] in `cygnus` instead.
   @override
   WebPlatformLocalStorage createPlatformLocalStorageStatic() {
     return WebPlatformLocalStorage.defaultStorage(controller: null);
@@ -140,7 +140,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new [WebPlatformSessionStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusSessionStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusSessionStorage] in `cygnus` instead.
   @override
   WebPlatformSessionStorage createPlatformSessionStorage(
     CygnusPlatformSessionStorageCreationParams params,
@@ -151,7 +151,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [WebPlatformSessionStorage] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusSessionStorage] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusSessionStorage] in `cygnus` instead.
   @override
   WebPlatformSessionStorage createPlatformSessionStorageStatic() {
     return WebPlatformSessionStorage.defaultStorage(controller: null);
@@ -160,7 +160,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformWebStorageManager] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebStorageManager] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebStorageManager] in `cygnus` instead.
   @override
   CygnusPlatformWebStorageManager createPlatformWebStorageManagerStatic() {
     return _PlatformWebStorageManager.static();
@@ -176,7 +176,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformWebViewEnvironment] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebViewEnvironment] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebViewEnvironment] in `cygnus` instead.
   @override
   CygnusPlatformWebViewEnvironment createPlatformWebViewEnvironmentStatic() {
     return _PlatformWebViewEnvironment.static();
@@ -185,7 +185,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformBrowser] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusBrowser] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusBrowser] in `cygnus` instead.
   @override
   CygnusPlatformBrowser createPlatformBrowserStatic() {
     return _PlatformInAppBrowser.static();
@@ -194,7 +194,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformChromeSafariBrowser] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusChromeSafariBrowser] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusChromeSafariBrowser] in `cygnus` instead.
   CygnusPlatformChromeSafariBrowser createPlatformChromeSafariBrowserStatic() {
     return _PlatformChromeSafariBrowser.static();
   }
@@ -202,7 +202,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformHttpAuthCredentialDatabase] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusHttpAuthCredentialDatabase] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusHttpAuthCredentialDatabase] in `cygnus` instead.
   @override
   CygnusPlatformHttpAuthCredentialDatabase
   createPlatformHttpAuthCredentialDatabaseStatic() {
@@ -212,7 +212,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformProcessGlobalConfig] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusProcessGlobalConfig] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusProcessGlobalConfig] in `cygnus` instead.
   @override
   CygnusPlatformProcessGlobalConfig createPlatformProcessGlobalConfigStatic() {
     return _PlatformProcessGlobalConfig.static();
@@ -221,7 +221,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformProxyController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusProxyController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusProxyController] in `cygnus` instead.
   @override
   CygnusPlatformProxyController createPlatformProxyControllerStatic() {
     return _PlatformProxyController.static();
@@ -230,7 +230,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformServiceWorkerController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusServiceWorkerController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusServiceWorkerController] in `cygnus` instead.
   @override
   CygnusPlatformServiceWorkerController
   createPlatformServiceWorkerControllerStatic() {
@@ -240,7 +240,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformTracingController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusTracingController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusTracingController] in `cygnus` instead.
   @override
   CygnusPlatformTracingController createPlatformTracingControllerStatic() {
     return _PlatformTracingController.static();
@@ -249,7 +249,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformFindInteractionController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusFindInteractionController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusFindInteractionController] in `cygnus` instead.
   @override
   CygnusPlatformFindInteractionController
   createPlatformFindInteractionControllerStatic() {
@@ -259,7 +259,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformPrintJobController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusPrintJobController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusPrintJobController] in `cygnus` instead.
   @override
   CygnusPlatformPrintJobController createPlatformPrintJobControllerStatic() {
     return _PlatformPrintJobController.static();
@@ -268,7 +268,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformPullToRefreshController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusPullToRefreshController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusPullToRefreshController] in `cygnus` instead.
   @override
   CygnusPlatformPullToRefreshController
   createPlatformPullToRefreshControllerStatic() {
@@ -278,7 +278,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformWebAuthenticationSession] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebAuthenticationSession] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebAuthenticationSession] in `cygnus` instead.
   @override
   CygnusPlatformWebAuthenticationSession
   createPlatformWebAuthenticationSessionStatic() {
@@ -288,7 +288,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformWebMessageChannel] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebMessageChannel] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebMessageChannel] in `cygnus` instead.
   @override
   CygnusPlatformWebMessageChannel createPlatformWebMessageChannelStatic() {
     return _PlatformWebMessageChannel.static();
@@ -297,7 +297,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformWebMessageListener] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebMessageListener] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebMessageListener] in `cygnus` instead.
   @override
   CygnusPlatformWebMessageListener createPlatformWebMessageListenerStatic() {
     return _PlatformWebMessageListener.static();
@@ -306,7 +306,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformWebNotificationController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebNotificationController] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusWebNotificationController] in `cygnus` instead.
   @override
   CygnusPlatformWebNotificationController
   createPlatformWebNotificationControllerStatic() {
@@ -316,7 +316,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformAssetsPathHandler] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusAssetsPathHandler] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusAssetsPathHandler] in `cygnus` instead.
   @override
   CygnusPlatformAssetsPathHandler createPlatformAssetsPathHandlerStatic() {
     return _PlatformAssetsPathHandler.static();
@@ -325,7 +325,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformResourcesPathHandler] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusResourcesPathHandler] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusResourcesPathHandler] in `cygnus` instead.
   @override
   CygnusPlatformResourcesPathHandler createPlatformResourcesPathHandlerStatic() {
     return _PlatformResourcesPathHandler.static();
@@ -334,7 +334,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformInternalStoragePathHandler] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusInternalStoragePathHandler] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusInternalStoragePathHandler] in `cygnus` instead.
   @override
   CygnusPlatformInternalStoragePathHandler
   createPlatformInternalStoragePathHandlerStatic() {
@@ -344,7 +344,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformCustomPathHandler] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusCustomPathHandler] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusCustomPathHandler] in `cygnus` instead.
   @override
   CygnusPlatformCustomPathHandler createPlatformCustomPathHandlerStatic() {
     return _PlatformCustomPathHandler.static();
@@ -353,7 +353,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformLocalhostServer] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusLocalhostServer] in `flutter_inappwebview` instead.
+  /// Look at using [CygnusLocalhostServer] in `cygnus` instead.
   @override
   CygnusPlatformLocalhostServer createPlatformLocalhostServerStatic() {
     return _PlatformInAppLocalhostServer.static();
@@ -362,7 +362,7 @@ class WebPlatformInAppWebViewPlatform extends CygnusWebViewPlatform {
   /// Creates a new empty [CygnusPlatformWebViewFeature] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [CygnusWebViewFeature] in `flutter_inappwebview` instead
+  /// Look at using [CygnusWebViewFeature] in `cygnus` instead
   @override
   CygnusPlatformWebViewFeature createPlatformWebViewFeatureStatic() {
     return _PlatformWebViewFeature.static();

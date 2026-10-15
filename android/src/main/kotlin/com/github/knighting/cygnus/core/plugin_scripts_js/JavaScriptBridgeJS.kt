@@ -6,7 +6,7 @@ import com.github.knighting.cygnus.core.types.UserScriptInjectionTime
 
 class JavaScriptBridgeJS {
   companion object {
-    private var _JAVASCRIPT_BRIDGE_NAME: String = "flutter_inappwebview"
+    private var _JAVASCRIPT_BRIDGE_NAME: String = "cygnus"
 
     @JvmStatic
     fun set_JAVASCRIPT_BRIDGE_NAME(bridgeName: String) {
@@ -359,7 +359,7 @@ class JavaScriptBridgeJS {
     fun PLATFORM_READY_JS_SOURCE(): String {
       return "(function() {" +
               "  if ((window.top == null || window.top === window) && window." + get_JAVASCRIPT_BRIDGE_NAME() + " != null && window." + get_JAVASCRIPT_BRIDGE_NAME() + "._platformReady == null) {" +
-              "    window.dispatchEvent(new Event('flutterInAppWebViewPlatformReady'));" +
+              "    window.dispatchEvent(new Event('cygnusPlatformReady'));" +
               "    window." + get_JAVASCRIPT_BRIDGE_NAME() + "._platformReady = true;" +
               "  }" +
               "})();"

@@ -21,7 +21,7 @@ class InAppWebViewManager(plugin: InAppWebViewFlutterPlugin) : ChannelDelegateIm
   companion object {
     // protected in Java
     const val LOG_TAG = "InAppWebViewManager"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_manager"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_manager"
   }
 
   @JvmField

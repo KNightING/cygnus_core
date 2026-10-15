@@ -22,7 +22,7 @@ class PluginInstance;
 class InAppWebViewManager {
  public:
   static constexpr const char* METHOD_CHANNEL_NAME =
-      "com.pichillilorenzo/flutter_inappwebview_manager";
+      "com.github.knighting.cygnus/webview_manager";
 
   InAppWebViewManager(PluginInstance* plugin);
   ~InAppWebViewManager();
