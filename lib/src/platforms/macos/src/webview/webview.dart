@@ -11,9 +11,9 @@ import 'webview_controller.dart';
 ///
 /// Platform specific implementations can add additional fields by extending
 /// this class.
-class MacOSInAppWebViewWidgetCreationParams
+class CygnusMacOSWebViewWidgetCreationParams
     extends CygnusPlatformWebViewWidgetCreationParams {
-  MacOSInAppWebViewWidgetCreationParams({
+  CygnusMacOSWebViewWidgetCreationParams({
     super.controllerFromPlatform,
     super.key,
     super.layoutDirection,
@@ -133,9 +133,9 @@ class MacOSInAppWebViewWidgetCreationParams
     this.findInteractionController,
   });
 
-  /// Constructs a [MacOSInAppWebViewWidgetCreationParams] using a
+  /// Constructs a [CygnusMacOSWebViewWidgetCreationParams] using a
   /// [CygnusPlatformWebViewWidgetCreationParams].
-  MacOSInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
+  CygnusMacOSWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -255,32 +255,32 @@ class MacOSInAppWebViewWidgetCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
-class MacOSInAppWebViewWidget extends CygnusPlatformWebViewWidget {
-  /// Constructs a [MacOSInAppWebViewWidget].
+class CygnusMacOSWebViewWidget extends CygnusPlatformWebViewWidget {
+  /// Constructs a [CygnusMacOSWebViewWidget].
   ///
   ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
-  MacOSInAppWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
+  CygnusMacOSWebViewWidget(CygnusPlatformWebViewWidgetCreationParams params)
     : super.implementation(
-        params is MacOSInAppWebViewWidgetCreationParams
+        params is CygnusMacOSWebViewWidgetCreationParams
             ? params
-            : MacOSInAppWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
+            : CygnusMacOSWebViewWidgetCreationParams.fromPlatformWebViewWidgetCreationParams(
                 params,
               ),
       );
 
-  MacOSInAppWebViewWidgetCreationParams get _macosParams =>
-      params as MacOSInAppWebViewWidgetCreationParams;
+  CygnusMacOSWebViewWidgetCreationParams get _macosParams =>
+      params as CygnusMacOSWebViewWidgetCreationParams;
 
-  MacOSInAppWebViewController? _controller;
+  CygnusMacOSWebViewController? _controller;
 
-  MacOSHeadlessInAppWebView? get _macosHeadlessWebView =>
-      params.headlessWebView as MacOSHeadlessInAppWebView?;
+  CygnusMacOSHeadlessWebView? get _macosHeadlessWebView =>
+      params.headlessWebView as CygnusMacOSHeadlessWebView?;
 
-  static final MacOSInAppWebViewWidget _staticValue = MacOSInAppWebViewWidget(
-    MacOSInAppWebViewWidgetCreationParams(),
+  static final CygnusMacOSWebViewWidget _staticValue = CygnusMacOSWebViewWidget(
+    CygnusMacOSWebViewWidgetCreationParams(),
   );
 
-  factory MacOSInAppWebViewWidget.static() {
+  factory CygnusMacOSWebViewWidget.static() {
     return _staticValue;
   }
 
@@ -341,7 +341,7 @@ class MacOSInAppWebViewWidget extends CygnusPlatformWebViewWidget {
     }
     viewId = params.keepAlive?.id ?? viewId ?? id;
     _macosHeadlessWebView?.internalDispose();
-    _controller = MacOSInAppWebViewController(
+    _controller = CygnusMacOSWebViewController(
       CygnusPlatformWebViewControllerCreationParams(
         id: viewId,
         webviewParams: params,

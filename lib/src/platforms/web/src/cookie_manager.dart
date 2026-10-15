@@ -155,8 +155,8 @@ class WebPlatformCookieManager extends CygnusPlatformCookieManager
     }
 
     final setCookieCompleter = Completer<void>();
-    final headlessWebView = WebPlatformHeadlessInAppWebView(
-      WebPlatformHeadlessInAppWebViewCreationParams(
+    final headlessWebView = CygnusWebPlatformHeadlessWebView(
+      CygnusWebPlatformHeadlessWebViewCreationParams(
         initialUrlRequest: CygnusURLRequest(url: url),
         onLoadStop: (controller, url) async {
           await controller.evaluateJavascript(
@@ -219,8 +219,8 @@ class WebPlatformCookieManager extends CygnusPlatformCookieManager
     }
 
     final pageLoaded = Completer<void>();
-    final headlessWebView = WebPlatformHeadlessInAppWebView(
-      WebPlatformHeadlessInAppWebViewCreationParams(
+    final headlessWebView = CygnusWebPlatformHeadlessWebView(
+      CygnusWebPlatformHeadlessWebViewCreationParams(
         initialUrlRequest: CygnusURLRequest(url: url),
         onLoadStop: (controller, url) async {
           pageLoaded.complete();

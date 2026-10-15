@@ -11,7 +11,7 @@ class CygnusWebViewKeepAlive {
 }
 
 ///Used internally
-extension InternalInAppWebViewKeepAlive on CygnusWebViewKeepAlive {
+extension CygnusInternalWebViewKeepAlive on CygnusWebViewKeepAlive {
   String get id => _id;
 
   set id(String id) {

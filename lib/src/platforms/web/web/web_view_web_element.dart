@@ -21,7 +21,7 @@ extension on HTMLIFrameElement {
   external String? get csp;
 }
 
-class InAppWebViewWebElement implements CygnusDisposable {
+class CygnusWebViewWebElement implements CygnusDisposable {
   late dynamic _viewId;
   late BinaryMessenger _messenger;
   late HTMLDivElement iframeContainer;
@@ -42,7 +42,7 @@ class InAppWebViewWebElement implements CygnusDisposable {
 
   late final String _expectedBridgeSecret;
 
-  InAppWebViewWebElement({
+  CygnusWebViewWebElement({
     required dynamic viewId,
     required BinaryMessenger messenger,
   }) {
@@ -248,7 +248,7 @@ class InAppWebViewWebElement implements CygnusDisposable {
   void prepare() {
     if (headlessWebViewId != null) {
       final headlessWebView =
-          HeadlessInAppWebViewManager.webViews[headlessWebViewId!];
+          CygnusHeadlessWebViewManager.webViews[headlessWebViewId!];
       if (headlessWebView != null && headlessWebView.webView != null) {
         final webView = headlessWebView.disposeAndGetFlutterWebView();
         if (webView != null) {
@@ -321,8 +321,8 @@ class InAppWebViewWebElement implements CygnusDisposable {
 
   void makeInitialLoad() async {
     if (windowId != null) {
-      if (InAppWebViewManager.windowActions.containsKey(windowId!)) {
-        final createWindowAction = InAppWebViewManager.windowActions[windowId!];
+      if (CygnusWebViewManager.windowActions.containsKey(windowId!)) {
+        final createWindowAction = CygnusWebViewManager.windowActions[windowId!];
         loadUrl(urlRequest: createWindowAction!.request);
       }
     } else if (initialUrlRequest != null) {
@@ -672,8 +672,8 @@ class InAppWebViewWebElement implements CygnusDisposable {
       }
     }
 
-    final windowId = InAppWebViewManager.windowAutoincrementId;
-    InAppWebViewManager.windowAutoincrementId++;
+    final windowId = CygnusWebViewManager.windowAutoincrementId;
+    CygnusWebViewManager.windowAutoincrementId++;
 
     final createWindowAction = CygnusCreateWindowAction.fromMap({
       "windowId": windowId,
@@ -682,7 +682,7 @@ class InAppWebViewWebElement implements CygnusDisposable {
       "windowFeatures": windowFeaturesMap,
     });
 
-    InAppWebViewManager.windowActions[windowId] = createWindowAction!;
+    CygnusWebViewManager.windowActions[windowId] = createWindowAction!;
     final handledByClient =
         await _channel?.invokeMethod<bool>(
           "onCreateWindow",
@@ -690,8 +690,8 @@ class InAppWebViewWebElement implements CygnusDisposable {
         ) ??
         false;
     if (!handledByClient &&
-        InAppWebViewManager.windowActions.containsKey(windowId)) {
-      InAppWebViewManager.windowActions.remove(windowId);
+        CygnusWebViewManager.windowActions.containsKey(windowId)) {
+      CygnusWebViewManager.windowActions.remove(windowId);
     }
     return handledByClient;
   }
@@ -790,12 +790,12 @@ class InAppWebViewWebElement implements CygnusDisposable {
     _channel?.setMethodCallHandler(null);
     _channel = null;
     if (windowId != null &&
-        InAppWebViewManager.windowActions.containsKey(windowId)) {
-      InAppWebViewManager.windowActions.remove(windowId);
+        CygnusWebViewManager.windowActions.containsKey(windowId)) {
+      CygnusWebViewManager.windowActions.remove(windowId);
     }
     iframeContainer.remove();
-    if (InAppWebViewManager.webViews.containsKey(_viewId)) {
-      InAppWebViewManager.webViews.remove(_viewId);
+    if (CygnusWebViewManager.webViews.containsKey(_viewId)) {
+      CygnusWebViewManager.webViews.remove(_viewId);
     }
   }
 }

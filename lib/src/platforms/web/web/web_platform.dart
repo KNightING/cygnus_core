@@ -23,26 +23,26 @@ class CygnusCorePlugin {
     ui_web.platformViewRegistry.registerViewFactory(
       'com.github.knighting.cygnus/webview',
       (int viewId) {
-        var webView = InAppWebViewWebElement(
+        var webView = CygnusWebViewWebElement(
           viewId: viewId,
           messenger: registrar,
         );
-        InAppWebViewManager.webViews.putIfAbsent(viewId, () => webView);
+        CygnusWebViewManager.webViews.putIfAbsent(viewId, () => webView);
         return webView.iframeContainer;
       },
     );
   }
 
   static void registerWith(Registrar registrar) {
-    WebPlatformInAppWebViewPlatform.registerWith();
+    CygnusWebPlatformWebViewPlatform.registerWith();
     // ignore: unused_local_variable
     final pluginInstance = CygnusCorePlugin(registrar);
     // ignore: unused_local_variable
     final platformUtil = PlatformUtil(messenger: registrar);
     // ignore: unused_local_variable
-    final webViewManager = InAppWebViewManager(messenger: registrar);
+    final webViewManager = CygnusWebViewManager(messenger: registrar);
     // ignore: unused_local_variable
-    final headlessManager = HeadlessInAppWebViewManager(messenger: registrar);
+    final headlessManager = CygnusHeadlessWebViewManager(messenger: registrar);
     if (cygnusWeb != null) {
       if (!Object_isFrozen(cygnusWeb!).toDart) {
         cygnusWeb!.nativeAsyncCommunication =
@@ -76,9 +76,9 @@ Future<String?> _dartNativeAsyncCommunication(
   dynamic viewId, [
   List? args,
 ]) async {
-  if (InAppWebViewManager.webViews.containsKey(viewId)) {
+  if (CygnusWebViewManager.webViews.containsKey(viewId)) {
     var webViewHtmlElement =
-        InAppWebViewManager.webViews[viewId] as InAppWebViewWebElement;
+        CygnusWebViewManager.webViews[viewId] as CygnusWebViewWebElement;
     var result = null;
     try {
       switch (method) {
@@ -116,9 +116,9 @@ String? _dartNativeSyncCommunication(
   dynamic viewId, [
   List? args,
 ]) {
-  if (InAppWebViewManager.webViews.containsKey(viewId)) {
+  if (CygnusWebViewManager.webViews.containsKey(viewId)) {
     var webViewHtmlElement =
-        InAppWebViewManager.webViews[viewId] as InAppWebViewWebElement;
+        CygnusWebViewManager.webViews[viewId] as CygnusWebViewWebElement;
     var result = null;
 
     try {
@@ -189,7 +189,7 @@ String? _dartNativeSyncCommunication(
               .getUserOnlyScriptsAt(injectionTime!);
           break;
         case 'getJavaScriptBridgeName':
-          result = InAppWebViewManager.javaScriptBridgeName;
+          result = CygnusWebViewManager.javaScriptBridgeName;
           break;
         default:
           throw UnimplementedError("Method '$method' not implemented");

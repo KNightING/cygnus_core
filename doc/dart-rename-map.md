@@ -705,3 +705,87 @@
 | `lib/src/platforms/windows/src/in_app_webview/in_app_webview_controller.dart` | `lib/src/platforms/windows/src/webview/webview_controller.dart` |
 | `lib/src/platforms/windows/src/in_app_webview/main.dart` | `lib/src/platforms/windows/src/webview/main.dart` |
 | `lib/src/platforms/windows/src/inappwebview_platform.dart` | `lib/src/platforms/windows/src/webview_platform.dart` |
+
+## 實作層與內部類別（階段 ③ 補）
+
+階段 ② 規則「各平台實作內部類別維持原名」於此補完：`lib/src/platforms/**` 的實作類別、不對外的內部類別與 `example` 自訂類別，同樣套用「前綴 `Cygnus`、移除 `InApp`」。例外：兩個舊式子類 `CygnusInAppWebViewOptions`、`CygnusInAppBrowserOptions` 保留；與公開類別同名的兩個實作類別加 `Impl` 後綴（公開版已佔用不帶 `Impl` 的名稱）。
+
+共 75 個名稱：
+
+| 舊名 | 新名 |
+|---|---|
+| `AndroidHeadlessInAppWebView` | `CygnusAndroidHeadlessWebView` |
+| `AndroidHeadlessInAppWebViewCreationParams` | `CygnusAndroidHeadlessWebViewCreationParams` |
+| `AndroidInAppBrowser` | `CygnusAndroidBrowser` |
+| `AndroidInAppBrowserCreationParams` | `CygnusAndroidBrowserCreationParams` |
+| `AndroidInAppWebViewController` | `CygnusAndroidWebViewControllerImpl` |
+| `AndroidInAppWebViewControllerCreationParams` | `CygnusAndroidWebViewControllerCreationParams` |
+| `AndroidInAppWebViewWidget` | `CygnusAndroidWebViewWidget` |
+| `AndroidInAppWebViewWidgetCreationParams` | `CygnusAndroidWebViewWidgetCreationParams` |
+| `HeadlessInAppWebViewManager` | `CygnusHeadlessWebViewManager` |
+| `HeadlessInAppWebViewWebElement` | `CygnusHeadlessWebViewWebElement` |
+| `IOSHeadlessInAppWebView` | `CygnusIOSHeadlessWebView` |
+| `IOSHeadlessInAppWebViewCreationParams` | `CygnusIOSHeadlessWebViewCreationParams` |
+| `IOSInAppBrowser` | `CygnusIOSBrowser` |
+| `IOSInAppBrowserCreationParams` | `CygnusIOSBrowserCreationParams` |
+| `IOSInAppWebViewController` | `CygnusIOSWebViewControllerImpl` |
+| `IOSInAppWebViewControllerCreationParams` | `CygnusIOSWebViewControllerCreationParams` |
+| `IOSInAppWebViewWidget` | `CygnusIOSWebViewWidget` |
+| `IOSInAppWebViewWidgetCreationParams` | `CygnusIOSWebViewWidgetCreationParams` |
+| `InAppBrowserScreen` | `CygnusBrowserScreen` |
+| `InAppWebViewAjaxTest` | `CygnusWebViewAjaxTest` |
+| `InAppWebViewFetchTest` | `CygnusWebViewFetchTest` |
+| `InAppWebViewInitialFileTest` | `CygnusWebViewInitialFileTest` |
+| `InAppWebViewManager` | `CygnusWebViewManager` |
+| `InAppWebViewOnDownloadStartTest` | `CygnusWebViewOnDownloadStartTest` |
+| `InAppWebViewPointerEventKind` | `CygnusWebViewPointerEventKind` |
+| `InAppWebViewWebElement` | `CygnusWebViewWebElement` |
+| `InternalHeadlessInAppWebView` | `CygnusInternalHeadlessWebView` |
+| `InternalInAppBrowser` | `CygnusInternalBrowser` |
+| `InternalInAppWebViewController` | `CygnusInternalWebViewController` |
+| `InternalInAppWebViewKeepAlive` | `CygnusInternalWebViewKeepAlive` |
+| `LinuxHeadlessInAppWebView` | `CygnusLinuxHeadlessWebView` |
+| `LinuxHeadlessInAppWebViewCreationParams` | `CygnusLinuxHeadlessWebViewCreationParams` |
+| `LinuxInAppBrowser` | `CygnusLinuxBrowser` |
+| `LinuxInAppBrowserCreationParams` | `CygnusLinuxBrowserCreationParams` |
+| `LinuxInAppWebViewController` | `CygnusLinuxWebViewController` |
+| `LinuxInAppWebViewControllerCreationParams` | `CygnusLinuxWebViewControllerCreationParams` |
+| `LinuxInAppWebViewWidget` | `CygnusLinuxWebViewWidget` |
+| `LinuxInAppWebViewWidgetCreationParams` | `CygnusLinuxWebViewWidgetCreationParams` |
+| `MacOSHeadlessInAppWebView` | `CygnusMacOSHeadlessWebView` |
+| `MacOSHeadlessInAppWebViewCreationParams` | `CygnusMacOSHeadlessWebViewCreationParams` |
+| `MacOSInAppBrowser` | `CygnusMacOSBrowser` |
+| `MacOSInAppBrowserCreationParams` | `CygnusMacOSBrowserCreationParams` |
+| `MacOSInAppWebViewController` | `CygnusMacOSWebViewController` |
+| `MacOSInAppWebViewControllerCreationParams` | `CygnusMacOSWebViewControllerCreationParams` |
+| `MacOSInAppWebViewWidget` | `CygnusMacOSWebViewWidget` |
+| `MacOSInAppWebViewWidgetCreationParams` | `CygnusMacOSWebViewWidgetCreationParams` |
+| `MockPlatformHeadlessInAppWebView` | `CygnusMockPlatformHeadlessWebView` |
+| `MockPlatformInAppBrowser` | `CygnusMockPlatformBrowser` |
+| `MockPlatformInAppWebViewController` | `CygnusMockPlatformWebViewController` |
+| `MockPlatformInAppWebViewControllerStatic` | `CygnusMockPlatformWebViewControllerStatic` |
+| `MockPlatformInAppWebViewWidget` | `CygnusMockPlatformWebViewWidget` |
+| `MyInAppBrowser` | `CygnusMyBrowser` |
+| `PlatformInAppWebView` | `CygnusPlatformWebView` |
+| `TestInAppBrowser` | `CygnusTestBrowser` |
+| `WebPlatformHeadlessInAppWebView` | `CygnusWebPlatformHeadlessWebView` |
+| `WebPlatformHeadlessInAppWebViewCreationParams` | `CygnusWebPlatformHeadlessWebViewCreationParams` |
+| `WebPlatformInAppBrowser` | `CygnusWebPlatformBrowser` |
+| `WebPlatformInAppWebViewController` | `CygnusWebPlatformWebViewController` |
+| `WebPlatformInAppWebViewControllerCreationParams` | `CygnusWebPlatformWebViewControllerCreationParams` |
+| `WebPlatformInAppWebViewPlatform` | `CygnusWebPlatformWebViewPlatform` |
+| `WebPlatformInAppWebViewWidget` | `CygnusWebPlatformWebViewWidget` |
+| `WebPlatformInAppWebViewWidgetCreationParams` | `CygnusWebPlatformWebViewWidgetCreationParams` |
+| `WindowsHeadlessInAppWebView` | `CygnusWindowsHeadlessWebView` |
+| `WindowsHeadlessInAppWebViewCreationParams` | `CygnusWindowsHeadlessWebViewCreationParams` |
+| `WindowsInAppBrowser` | `CygnusWindowsBrowser` |
+| `WindowsInAppBrowserCreationParams` | `CygnusWindowsBrowserCreationParams` |
+| `WindowsInAppWebViewController` | `CygnusWindowsWebViewController` |
+| `WindowsInAppWebViewControllerCreationParams` | `CygnusWindowsWebViewControllerCreationParams` |
+| `WindowsInAppWebViewWidget` | `CygnusWindowsWebViewWidget` |
+| `WindowsInAppWebViewWidgetCreationParams` | `CygnusWindowsWebViewWidgetCreationParams` |
+| `_InAppBrowserScreenState` | `_CygnusBrowserScreenState` |
+| `_InAppWebViewState` | `_CygnusWebViewState` |
+| `_PlatformInAppBrowser` | `_CygnusPlatformBrowser` |
+| `_PlatformInAppLocalhostServer` | `_CygnusPlatformLocalhostServer` |
+| `createInAppWebView` | `createCygnusWebView` |

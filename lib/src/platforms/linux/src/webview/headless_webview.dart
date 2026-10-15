@@ -7,16 +7,16 @@ import '../find_interaction/find_interaction_controller.dart';
 import '../webview_environment/webview_environment.dart';
 import 'webview_controller.dart';
 
-/// Object specifying creation parameters for creating a [LinuxHeadlessInAppWebView].
+/// Object specifying creation parameters for creating a [CygnusLinuxHeadlessWebView].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformHeadlessWebViewCreationParams] for
 /// more information.
 @immutable
-class LinuxHeadlessInAppWebViewCreationParams
+class CygnusLinuxHeadlessWebViewCreationParams
     extends CygnusPlatformHeadlessWebViewCreationParams {
-  /// Creates a new [LinuxHeadlessInAppWebViewCreationParams] instance.
-  LinuxHeadlessInAppWebViewCreationParams({
+  /// Creates a new [CygnusLinuxHeadlessWebViewCreationParams] instance.
+  CygnusLinuxHeadlessWebViewCreationParams({
     super.controllerFromPlatform,
     super.initialSize,
     super.windowId,
@@ -132,8 +132,8 @@ class LinuxHeadlessInAppWebViewCreationParams
     this.findInteractionController,
   });
 
-  /// Creates a [LinuxHeadlessInAppWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
-  LinuxHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
+  /// Creates a [CygnusLinuxHeadlessWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
+  CygnusLinuxHeadlessWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -253,7 +253,7 @@ class LinuxHeadlessInAppWebViewCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformHeadlessWebView}
-class LinuxHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
+class CygnusLinuxHeadlessWebView extends CygnusPlatformHeadlessWebView
     with ChannelController {
   @override
   late final String id;
@@ -265,38 +265,38 @@ class LinuxHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     'com.github.knighting.cygnus/headless_webview',
   );
 
-  LinuxInAppWebViewController? _webViewController;
+  CygnusLinuxWebViewController? _webViewController;
 
-  /// Constructs a [LinuxHeadlessInAppWebView].
-  LinuxHeadlessInAppWebView(CygnusPlatformHeadlessWebViewCreationParams params)
+  /// Constructs a [CygnusLinuxHeadlessWebView].
+  CygnusLinuxHeadlessWebView(CygnusPlatformHeadlessWebViewCreationParams params)
     : super.implementation(
-        params is LinuxHeadlessInAppWebViewCreationParams
+        params is CygnusLinuxHeadlessWebViewCreationParams
             ? params
-            : LinuxHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
+            : CygnusLinuxHeadlessWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
                 params,
               ),
       ) {
     id = IdGenerator.generate();
   }
 
-  static final LinuxHeadlessInAppWebView _staticValue =
-      LinuxHeadlessInAppWebView(LinuxHeadlessInAppWebViewCreationParams());
+  static final CygnusLinuxHeadlessWebView _staticValue =
+      CygnusLinuxHeadlessWebView(CygnusLinuxHeadlessWebViewCreationParams());
 
-  factory LinuxHeadlessInAppWebView.static() {
+  factory CygnusLinuxHeadlessWebView.static() {
     return _staticValue;
   }
 
   @override
-  LinuxInAppWebViewController? get webViewController => _webViewController;
+  CygnusLinuxWebViewController? get webViewController => _webViewController;
 
   dynamic _controllerFromPlatform;
 
-  LinuxHeadlessInAppWebViewCreationParams get _linuxParams =>
-      params as LinuxHeadlessInAppWebViewCreationParams;
+  CygnusLinuxHeadlessWebViewCreationParams get _linuxParams =>
+      params as CygnusLinuxHeadlessWebViewCreationParams;
 
   void _init() {
-    _webViewController = LinuxInAppWebViewController(
-      LinuxInAppWebViewControllerCreationParams(id: id, webviewParams: params),
+    _webViewController = CygnusLinuxWebViewController(
+      CygnusLinuxWebViewControllerCreationParams(id: id, webviewParams: params),
     );
     _controllerFromPlatform =
         params.controllerFromPlatform?.call(_webViewController!) ??
@@ -462,7 +462,7 @@ class LinuxHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
   }
 }
 
-extension InternalHeadlessInAppWebView on LinuxHeadlessInAppWebView {
+extension CygnusInternalHeadlessWebView on CygnusLinuxHeadlessWebView {
   Future<void> internalDispose() async {
     _started = false;
     _running = false;

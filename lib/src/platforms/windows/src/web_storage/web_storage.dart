@@ -82,7 +82,7 @@ class WindowsStorageCreationParams extends CygnusPlatformStorageCreationParams {
 ///{@macro cygnus_core.CygnusPlatformStorage}
 abstract mixin class WindowsStorage implements CygnusPlatformStorage {
   @override
-  WindowsInAppWebViewController? controller;
+  CygnusWindowsWebViewController? controller;
 
   @override
   Future<int?> length() async {
@@ -248,8 +248,8 @@ class WindowsLocalStorage extends CygnusPlatformLocalStorage with WindowsStorage
   }
 
   @override
-  WindowsInAppWebViewController? get controller =>
-      params.controller as WindowsInAppWebViewController?;
+  CygnusWindowsWebViewController? get controller =>
+      params.controller as CygnusWindowsWebViewController?;
 }
 
 /// Object specifying creation parameters for creating a [WindowsSessionStorage].
@@ -301,6 +301,6 @@ class WindowsSessionStorage extends CygnusPlatformSessionStorage with WindowsSto
   }
 
   @override
-  WindowsInAppWebViewController? get controller =>
-      params.controller as WindowsInAppWebViewController?;
+  CygnusWindowsWebViewController? get controller =>
+      params.controller as CygnusWindowsWebViewController?;
 }

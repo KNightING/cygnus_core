@@ -7,7 +7,7 @@ import 'package:cygnus_core_example/screens/browsers/inapp_browser_screen.dart';
 import '../test_helpers/test_settings_manager.dart';
 
 void main() {
-  group('InAppBrowserScreen', () {
+  group('CygnusBrowserScreen', () {
     Widget createWidget() {
       return MultiProvider(
         providers: [
@@ -18,7 +18,7 @@ void main() {
             create: (_) => TestSettingsManager(),
           ),
         ],
-        child: const MaterialApp(home: InAppBrowserScreen()),
+        child: const MaterialApp(home: CygnusBrowserScreen()),
       );
     }
 

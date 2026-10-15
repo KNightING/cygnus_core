@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 import 'package:web/web.dart';
 
-class InAppWebViewManager extends ChannelController {
+class CygnusWebViewManager extends ChannelController {
   static final Map<dynamic, dynamic> webViews = {};
   static final Map<int, CygnusCreateWindowAction?> windowActions = {};
   static int windowAutoincrementId = 0;
   static String javaScriptBridgeName = "cygnus";
   late BinaryMessenger _messenger;
 
-  InAppWebViewManager({required BinaryMessenger messenger}) {
+  CygnusWebViewManager({required BinaryMessenger messenger}) {
     this._messenger = messenger;
     channel = MethodChannel(
       'com.github.knighting.cygnus/webview_manager',

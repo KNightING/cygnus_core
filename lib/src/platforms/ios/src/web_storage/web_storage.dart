@@ -82,7 +82,7 @@ class IOSStorageCreationParams extends CygnusPlatformStorageCreationParams {
 ///{@macro cygnus_core.CygnusPlatformStorage}
 abstract mixin class IOSStorage implements CygnusPlatformStorage {
   @override
-  IOSInAppWebViewController? controller;
+  CygnusIOSWebViewControllerImpl? controller;
 
   @override
   Future<int?> length() async {
@@ -247,8 +247,8 @@ class IOSLocalStorage extends CygnusPlatformLocalStorage with IOSStorage {
   }
 
   @override
-  IOSInAppWebViewController? get controller =>
-      params.controller as IOSInAppWebViewController?;
+  CygnusIOSWebViewControllerImpl? get controller =>
+      params.controller as CygnusIOSWebViewControllerImpl?;
 }
 
 /// Object specifying creation parameters for creating a [IOSSessionStorage].
@@ -300,6 +300,6 @@ class IOSSessionStorage extends CygnusPlatformSessionStorage with IOSStorage {
   }
 
   @override
-  IOSInAppWebViewController? get controller =>
-      params.controller as IOSInAppWebViewController?;
+  CygnusIOSWebViewControllerImpl? get controller =>
+      params.controller as CygnusIOSWebViewControllerImpl?;
 }

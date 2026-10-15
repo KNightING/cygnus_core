@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// A card displaying the status of a component (e.g., browser, WebView, channel).
 ///
-/// Used in screens like InAppBrowserScreen and ControllersScreen to show
+/// Used in screens like CygnusBrowserScreen and ControllersScreen to show
 /// whether a component is active/open or inactive/closed.
 class StatusCard extends StatelessWidget {
   /// Whether the component is in an active/open state.

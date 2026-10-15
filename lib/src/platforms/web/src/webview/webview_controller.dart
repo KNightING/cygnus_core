@@ -11,38 +11,38 @@ import '../web_storage/web_storage.dart';
 import '_static_channel.dart';
 import 'headless_webview.dart';
 
-/// Object specifying creation parameters for creating a [WebPlatformInAppWebViewController].
+/// Object specifying creation parameters for creating a [CygnusWebPlatformWebViewController].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformWebViewControllerCreationParams] for
 /// more information.
 @immutable
-class WebPlatformInAppWebViewControllerCreationParams
+class CygnusWebPlatformWebViewControllerCreationParams
     extends CygnusPlatformWebViewControllerCreationParams {
-  /// Creates a new [WebPlatformInAppWebViewControllerCreationParams] instance.
-  const WebPlatformInAppWebViewControllerCreationParams({
+  /// Creates a new [CygnusWebPlatformWebViewControllerCreationParams] instance.
+  const CygnusWebPlatformWebViewControllerCreationParams({
     required super.id,
     super.webviewParams,
   });
 
-  /// Creates a [WebPlatformInAppWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
-  factory WebPlatformInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+  /// Creates a [CygnusWebPlatformWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
+  factory CygnusWebPlatformWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
-    return WebPlatformInAppWebViewControllerCreationParams(
+    return CygnusWebPlatformWebViewControllerCreationParams(
       id: params.id,
       webviewParams: params.webviewParams,
     );
   }
 }
 
-///Controls a WebView, such as an [CygnusWebView] widget instance, a [WebPlatformHeadlessInAppWebView] instance or [WebPlatformInAppBrowser] WebView instance.
+///Controls a WebView, such as an [CygnusWebView] widget instance, a [CygnusWebPlatformHeadlessWebView] instance or [CygnusWebPlatformBrowser] WebView instance.
 ///
 ///If you are using the [CygnusWebView] widget, an [CygnusWebViewController] instance can be obtained by setting the [CygnusWebView.onWebViewCreated]
-///callback. Instead, if you are using an [WebPlatformInAppBrowser] instance, you can get it through the [WebPlatformInAppBrowser.webViewController] attribute.
-class WebPlatformInAppWebViewController extends CygnusPlatformWebViewController
+///callback. Instead, if you are using an [CygnusWebPlatformBrowser] instance, you can get it through the [CygnusWebPlatformBrowser.webViewController] attribute.
+class CygnusWebPlatformWebViewController extends CygnusPlatformWebViewController
     with ChannelController {
   // ignore: unused_field
   static final MethodChannel _staticChannel = IN_APP_WEBVIEW_STATIC_CHANNEL;
@@ -59,12 +59,12 @@ class WebPlatformInAppWebViewController extends CygnusPlatformWebViewController
   @override
   late WebPlatformWebStorage webStorage;
 
-  WebPlatformInAppWebViewController(
+  CygnusWebPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) : super.implementation(
-        params is WebPlatformInAppWebViewControllerCreationParams
+        params is CygnusWebPlatformWebViewControllerCreationParams
             ? params
-            : WebPlatformInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+            : CygnusWebPlatformWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
@@ -75,12 +75,12 @@ class WebPlatformInAppWebViewController extends CygnusPlatformWebViewController
     this._init(params);
   }
 
-  static final WebPlatformInAppWebViewController _staticValue =
-      WebPlatformInAppWebViewController(
-        WebPlatformInAppWebViewControllerCreationParams(id: null),
+  static final CygnusWebPlatformWebViewController _staticValue =
+      CygnusWebPlatformWebViewController(
+        CygnusWebPlatformWebViewControllerCreationParams(id: null),
       );
 
-  factory WebPlatformInAppWebViewController.static() {
+  factory CygnusWebPlatformWebViewController.static() {
     return _staticValue;
   }
 
@@ -1132,6 +1132,6 @@ class WebPlatformInAppWebViewController extends CygnusPlatformWebViewController
   }
 }
 
-extension InternalInAppWebViewController on WebPlatformInAppWebViewController {
+extension CygnusInternalWebViewController on CygnusWebPlatformWebViewController {
   get handleMethod => _handleMethod;
 }

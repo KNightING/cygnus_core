@@ -15,25 +15,25 @@ import '../web_message/web_message_listener.dart';
 import '../web_storage/web_storage.dart';
 import '_static_channel.dart';
 
-/// Object specifying creation parameters for creating a [LinuxInAppWebViewController].
+/// Object specifying creation parameters for creating a [CygnusLinuxWebViewController].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformWebViewControllerCreationParams] for
 /// more information.
 @immutable
-class LinuxInAppWebViewControllerCreationParams
+class CygnusLinuxWebViewControllerCreationParams
     extends CygnusPlatformWebViewControllerCreationParams {
-  /// Creates a new [LinuxInAppWebViewControllerCreationParams] instance.
-  const LinuxInAppWebViewControllerCreationParams({
+  /// Creates a new [CygnusLinuxWebViewControllerCreationParams] instance.
+  const CygnusLinuxWebViewControllerCreationParams({
     required super.id,
     super.webviewParams,
   });
 
-  /// Creates a [LinuxInAppWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
-  factory LinuxInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+  /// Creates a [CygnusLinuxWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
+  factory CygnusLinuxWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
-    return LinuxInAppWebViewControllerCreationParams(
+    return CygnusLinuxWebViewControllerCreationParams(
       id: params.id,
       webviewParams: params.webviewParams,
     );
@@ -44,7 +44,7 @@ class LinuxInAppWebViewControllerCreationParams
 ///
 /// If you are using the [CygnusWebView] widget, an [CygnusWebViewController] instance
 /// can be obtained by setting the [CygnusWebView.onWebViewCreated] callback.
-class LinuxInAppWebViewController extends CygnusPlatformWebViewController
+class CygnusLinuxWebViewController extends CygnusPlatformWebViewController
     with ChannelController {
   static final MethodChannel _staticChannel = IN_APP_WEBVIEW_STATIC_CHANNEL;
 
@@ -63,7 +63,7 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
   static final Map<CygnusWebViewKeepAlive, CygnusWebViewControllerKeepAliveProps?>
   _keepAliveMap = {};
 
-  LinuxInAppBrowser? _browser;
+  CygnusLinuxBrowser? _browser;
 
   CygnusPlatformBrowserEvents? get _browserEventHandler =>
       _browser?.eventHandler;
@@ -73,12 +73,12 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
   @override
   late LinuxWebStorage webStorage;
 
-  LinuxInAppWebViewController(
+  CygnusLinuxWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) : super.implementation(
-        params is LinuxInAppWebViewControllerCreationParams
+        params is CygnusLinuxWebViewControllerCreationParams
             ? params
-            : LinuxInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+            : CygnusLinuxWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
@@ -105,24 +105,24 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
     this._init(params);
   }
 
-  static final LinuxInAppWebViewController _staticValue =
-      LinuxInAppWebViewController(
-        LinuxInAppWebViewControllerCreationParams(id: null),
+  static final CygnusLinuxWebViewController _staticValue =
+      CygnusLinuxWebViewController(
+        CygnusLinuxWebViewControllerCreationParams(id: null),
       );
 
-  factory LinuxInAppWebViewController.static() {
+  factory CygnusLinuxWebViewController.static() {
     return _staticValue;
   }
 
-  LinuxInAppWebViewController.fromBrowser(
+  CygnusLinuxWebViewController.fromBrowser(
     CygnusPlatformWebViewControllerCreationParams params,
     MethodChannel channel,
-    LinuxInAppBrowser browser,
+    CygnusLinuxBrowser browser,
     UnmodifiableListView<CygnusUserScript>? initialUserScripts,
   ) : super.implementation(
-        params is LinuxInAppWebViewControllerCreationParams
+        params is CygnusLinuxWebViewControllerCreationParams
             ? params
-            : LinuxInAppWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
+            : CygnusLinuxWebViewControllerCreationParams.fromPlatformWebViewControllerCreationParams(
                 params,
               ),
       ) {
@@ -2357,6 +2357,6 @@ class LinuxInAppWebViewController extends CygnusPlatformWebViewController
   }
 }
 
-extension InternalInAppWebViewController on LinuxInAppWebViewController {
+extension CygnusInternalWebViewController on CygnusLinuxWebViewController {
   get handleMethod => _handleMethod;
 }

@@ -38,44 +38,44 @@ class CygnusMacOSWebViewPlatform extends CygnusWebViewPlatform {
     return MacOSCookieManager.static();
   }
 
-  /// Creates a new [MacOSInAppWebViewController].
+  /// Creates a new [CygnusMacOSWebViewController].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
-  MacOSInAppWebViewController createPlatformWebViewController(
+  CygnusMacOSWebViewController createPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
-    return MacOSInAppWebViewController(params);
+    return CygnusMacOSWebViewController(params);
   }
 
-  /// Creates a new empty [MacOSInAppWebViewController] to access static methods.
+  /// Creates a new empty [CygnusMacOSWebViewController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
-  MacOSInAppWebViewController createPlatformWebViewControllerStatic() {
-    return MacOSInAppWebViewController.static();
+  CygnusMacOSWebViewController createPlatformWebViewControllerStatic() {
+    return CygnusMacOSWebViewController.static();
   }
 
-  /// Creates a new [MacOSInAppWebViewWidget].
+  /// Creates a new [CygnusMacOSWebViewWidget].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
-  MacOSInAppWebViewWidget createPlatformWebViewWidget(
+  CygnusMacOSWebViewWidget createPlatformWebViewWidget(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) {
-    return MacOSInAppWebViewWidget(params);
+    return CygnusMacOSWebViewWidget(params);
   }
 
-  /// Creates a new empty [MacOSInAppWebViewWidget] to access static methods.
+  /// Creates a new empty [CygnusMacOSWebViewWidget] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
-  MacOSInAppWebViewWidget createPlatformWebViewWidgetStatic() {
-    return MacOSInAppWebViewWidget.static();
+  CygnusMacOSWebViewWidget createPlatformWebViewWidgetStatic() {
+    return CygnusMacOSWebViewWidget.static();
   }
 
   /// Creates a new [MacOSFindInteractionController].
@@ -256,24 +256,24 @@ class CygnusMacOSWebViewPlatform extends CygnusWebViewPlatform {
     return MacOSSessionStorage.defaultStorage(controller: null);
   }
 
-  /// Creates a new [MacOSHeadlessInAppWebView].
+  /// Creates a new [CygnusMacOSHeadlessWebView].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `cygnus` instead.
   @override
-  MacOSHeadlessInAppWebView createPlatformHeadlessWebView(
+  CygnusMacOSHeadlessWebView createPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
-    return MacOSHeadlessInAppWebView(params);
+    return CygnusMacOSHeadlessWebView(params);
   }
 
-  /// Creates a new empty [MacOSHeadlessInAppWebView] to access static methods.
+  /// Creates a new empty [CygnusMacOSHeadlessWebView] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `cygnus` instead.
   @override
-  MacOSHeadlessInAppWebView createPlatformHeadlessWebViewStatic() {
-    return MacOSHeadlessInAppWebView.static();
+  CygnusMacOSHeadlessWebView createPlatformHeadlessWebViewStatic() {
+    return CygnusMacOSHeadlessWebView.static();
   }
 
   /// Creates a new [MacOSHttpAuthCredentialDatabase].
@@ -297,24 +297,24 @@ class CygnusMacOSWebViewPlatform extends CygnusWebViewPlatform {
     return MacOSHttpAuthCredentialDatabase.static();
   }
 
-  /// Creates a new [MacOSInAppBrowser].
+  /// Creates a new [CygnusMacOSBrowser].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusBrowser] in `cygnus` instead.
   @override
-  MacOSInAppBrowser createPlatformBrowser(
+  CygnusMacOSBrowser createPlatformBrowser(
     CygnusPlatformBrowserCreationParams params,
   ) {
-    return MacOSInAppBrowser(params);
+    return CygnusMacOSBrowser(params);
   }
 
-  /// Creates a new empty [MacOSInAppBrowser] to access static methods.
+  /// Creates a new empty [CygnusMacOSBrowser] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusBrowser] in `cygnus` instead.
   @override
-  MacOSInAppBrowser createPlatformBrowserStatic() {
-    return MacOSInAppBrowser.static();
+  CygnusMacOSBrowser createPlatformBrowserStatic() {
+    return CygnusMacOSBrowser.static();
   }
 
   /// Creates a new empty [MacOSWebStorageManager] to access static methods.

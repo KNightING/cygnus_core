@@ -22,44 +22,44 @@ class CygnusLinuxWebViewPlatform extends CygnusWebViewPlatform {
     CygnusWebViewPlatform.instance = CygnusLinuxWebViewPlatform();
   }
 
-  /// Creates a new [LinuxInAppWebViewController].
+  /// Creates a new [CygnusLinuxWebViewController].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
-  LinuxInAppWebViewController createPlatformWebViewController(
+  CygnusLinuxWebViewController createPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
-    return LinuxInAppWebViewController(params);
+    return CygnusLinuxWebViewController(params);
   }
 
-  /// Creates a new empty [LinuxInAppWebViewController] to access static methods.
+  /// Creates a new empty [CygnusLinuxWebViewController] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
-  LinuxInAppWebViewController createPlatformWebViewControllerStatic() {
-    return LinuxInAppWebViewController.static();
+  CygnusLinuxWebViewController createPlatformWebViewControllerStatic() {
+    return CygnusLinuxWebViewController.static();
   }
 
-  /// Creates a new [LinuxInAppWebViewWidget].
+  /// Creates a new [CygnusLinuxWebViewWidget].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
-  LinuxInAppWebViewWidget createPlatformWebViewWidget(
+  CygnusLinuxWebViewWidget createPlatformWebViewWidget(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) {
-    return LinuxInAppWebViewWidget(params);
+    return CygnusLinuxWebViewWidget(params);
   }
 
-  /// Creates a new empty [LinuxInAppWebViewWidget] to access static methods.
+  /// Creates a new empty [CygnusLinuxWebViewWidget] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
-  LinuxInAppWebViewWidget createPlatformWebViewWidgetStatic() {
-    return LinuxInAppWebViewWidget.static();
+  CygnusLinuxWebViewWidget createPlatformWebViewWidgetStatic() {
+    return CygnusLinuxWebViewWidget.static();
   }
 
   /// Creates a new empty [CygnusPlatformCookieManager] to access static methods.
@@ -118,32 +118,32 @@ class CygnusLinuxWebViewPlatform extends CygnusWebViewPlatform {
     return LinuxHttpAuthCredentialDatabase.static();
   }
 
-  /// Creates a new empty [LinuxInAppBrowser] to access static methods.
+  /// Creates a new empty [CygnusLinuxBrowser] to access static methods.
   @override
-  LinuxInAppBrowser createPlatformBrowserStatic() {
-    return LinuxInAppBrowser.static();
+  CygnusLinuxBrowser createPlatformBrowserStatic() {
+    return CygnusLinuxBrowser.static();
   }
 
-  /// Creates a new [LinuxInAppBrowser].
+  /// Creates a new [CygnusLinuxBrowser].
   @override
-  LinuxInAppBrowser createPlatformBrowser(
+  CygnusLinuxBrowser createPlatformBrowser(
     CygnusPlatformBrowserCreationParams params,
   ) {
-    return LinuxInAppBrowser(params);
+    return CygnusLinuxBrowser(params);
   }
 
   /// Creates a new empty [CygnusPlatformHeadlessWebView] to access static methods.
   @override
   CygnusPlatformHeadlessWebView createPlatformHeadlessWebViewStatic() {
-    return LinuxHeadlessInAppWebView.static();
+    return CygnusLinuxHeadlessWebView.static();
   }
 
-  /// Creates a new [LinuxHeadlessInAppWebView].
+  /// Creates a new [CygnusLinuxHeadlessWebView].
   @override
-  LinuxHeadlessInAppWebView createPlatformHeadlessWebView(
+  CygnusLinuxHeadlessWebView createPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
-    return LinuxHeadlessInAppWebView(params);
+    return CygnusLinuxHeadlessWebView(params);
   }
 
   /// Creates a new empty [CygnusPlatformProcessGlobalConfig] to access static methods.

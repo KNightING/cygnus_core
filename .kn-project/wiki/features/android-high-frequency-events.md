@@ -50,7 +50,7 @@ Dart 端的 helper 在 `webviewParams == null` 或有 CygnusBrowser handler 時�
 順序穩固。
 
 > [!IMPORTANT]
-> Dart 端 helper 的判斷式必須與 `AndroidInAppWebViewController.handleMethod` 中對應
+> Dart 端 helper 的判斷式必須與 `CygnusAndroidWebViewControllerImpl.handleMethod` 中對應
 > `case` 分支的守衛**完全一致**。那是同一個決定，只是提前到送出之前做；兩邊漂移會造成
 > 事件靜默消失。
 

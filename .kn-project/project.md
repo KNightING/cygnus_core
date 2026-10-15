@@ -20,7 +20,7 @@ Cygnus 框架（Nuxt 網頁 + Flutter 殼）的 WebView 核心套件，供 KNigh
   - 階段 ①（已完成）：合併為單一套件、套件名改為 `cygnus_core`，先只做結構合併、行為不變，把變更面壓到最小。
   - Android 原生端（階段 ② 之後的獨立計畫，已完成）：159 個 Java 檔全數改寫為 Kotlin，命名空間由 `com.pichillilorenzo.flutter_inappwebview_android` 改為 `com.github.knighting.cygnus.core`；行為不變。
   - 階段 ②（已完成）：Dart 公開 API 命名改為 Cygnus 風格——型別前綴 `Cygnus` 並移除 `InApp`，檔名去掉 `in_app_`；完整對照見 `doc/dart-rename-map.md`。
-  - 階段 ③（已完成）：原生端、channel、JS 橋接與 plugin 命名改為 Cygnus 風格——channel 前綴 `com.github.knighting.cygnus/`、JS 全域 `window.cygnus`、plugin `CygnusCorePlugin`、原生類別前綴 `Cygnus` 並移除 `InApp`；JS 硬切換不留舊名稱；完整對照見 `doc/native-rename-map.md`。
+  - 階段 ③（已完成）：原生端、channel、JS 橋接與 plugin 命名改為 Cygnus 風格——channel 前綴 `com.github.knighting.cygnus/`、JS 全域 `window.cygnus`、plugin `CygnusCorePlugin`、原生類別前綴 `Cygnus` 並移除 `InApp`；JS 硬切換不留舊名稱；完整對照見 `doc/native-rename-map.md`；Dart 實作層與內部類別（`lib/src/platforms/**` 等）同樣移除 `InApp`、加前綴 `Cygnus`，見 `doc/dart-rename-map.md` 末段，僅 2 個舊式子類保留 `InApp`。
   - 階段 ④：`nuxt-flutter-app` 的 `flutter-host` 改依賴本套件。
 - **以 git 依賴使用，不發佈 pub.dev。** 根 `pubspec.yaml` 設定 `publish_to: none`，實際執行 `flutter pub publish`
   會被 pub 以「A private package cannot be published.」拒絕，repo 也不保留任何發佈腳本；`dev_packages/*` 因此可以使用 `path:` 依賴。

@@ -48,44 +48,44 @@ class CygnusAndroidWebViewPlatform extends CygnusWebViewPlatform {
     return AndroidCookieManager.static();
   }
 
-  /// Creates a new [AndroidInAppWebViewController].
+  /// Creates a new [CygnusAndroidWebViewControllerImpl].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
-  AndroidInAppWebViewController createPlatformWebViewController(
+  CygnusAndroidWebViewControllerImpl createPlatformWebViewController(
     CygnusPlatformWebViewControllerCreationParams params,
   ) {
-    return AndroidInAppWebViewController(params);
+    return CygnusAndroidWebViewControllerImpl(params);
   }
 
-  /// Creates a new empty [AndroidInAppWebViewController] to access static methods.
+  /// Creates a new empty [CygnusAndroidWebViewControllerImpl] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebViewController] in `cygnus` instead.
   @override
-  AndroidInAppWebViewController createPlatformWebViewControllerStatic() {
-    return AndroidInAppWebViewController.static();
+  CygnusAndroidWebViewControllerImpl createPlatformWebViewControllerStatic() {
+    return CygnusAndroidWebViewControllerImpl.static();
   }
 
-  /// Creates a new [AndroidInAppWebViewWidget].
+  /// Creates a new [CygnusAndroidWebViewWidget].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
-  AndroidInAppWebViewWidget createPlatformWebViewWidget(
+  CygnusAndroidWebViewWidget createPlatformWebViewWidget(
     CygnusPlatformWebViewWidgetCreationParams params,
   ) {
-    return AndroidInAppWebViewWidget(params);
+    return CygnusAndroidWebViewWidget(params);
   }
 
-  /// Creates a new empty [AndroidInAppWebViewWidget] to access static methods.
+  /// Creates a new empty [CygnusAndroidWebViewWidget] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusWebView] in `cygnus` instead.
   @override
-  AndroidInAppWebViewWidget createPlatformWebViewWidgetStatic() {
-    return AndroidInAppWebViewWidget.static();
+  CygnusAndroidWebViewWidget createPlatformWebViewWidgetStatic() {
+    return CygnusAndroidWebViewWidget.static();
   }
 
   /// Creates a new [AndroidFindInteractionController].
@@ -276,24 +276,24 @@ class CygnusAndroidWebViewPlatform extends CygnusWebViewPlatform {
     return AndroidSessionStorage.defaultStorage(controller: null);
   }
 
-  /// Creates a new [AndroidHeadlessInAppWebView].
+  /// Creates a new [CygnusAndroidHeadlessWebView].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `cygnus` instead.
   @override
-  AndroidHeadlessInAppWebView createPlatformHeadlessWebView(
+  CygnusAndroidHeadlessWebView createPlatformHeadlessWebView(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) {
-    return AndroidHeadlessInAppWebView(params);
+    return CygnusAndroidHeadlessWebView(params);
   }
 
-  /// Creates a new empty [AndroidHeadlessInAppWebView] to access static methods.
+  /// Creates a new empty [CygnusAndroidHeadlessWebView] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusHeadlessWebView] in `cygnus` instead.
   @override
-  AndroidHeadlessInAppWebView createPlatformHeadlessWebViewStatic() {
-    return AndroidHeadlessInAppWebView.static();
+  CygnusAndroidHeadlessWebView createPlatformHeadlessWebViewStatic() {
+    return CygnusAndroidHeadlessWebView.static();
   }
 
   /// Creates a new [AndroidHttpAuthCredentialDatabase].
@@ -317,24 +317,24 @@ class CygnusAndroidWebViewPlatform extends CygnusWebViewPlatform {
     return AndroidHttpAuthCredentialDatabase.static();
   }
 
-  /// Creates a new [AndroidInAppBrowser].
+  /// Creates a new [CygnusAndroidBrowser].
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusBrowser] in `cygnus` instead.
   @override
-  AndroidInAppBrowser createPlatformBrowser(
+  CygnusAndroidBrowser createPlatformBrowser(
     CygnusPlatformBrowserCreationParams params,
   ) {
-    return AndroidInAppBrowser(params);
+    return CygnusAndroidBrowser(params);
   }
 
-  /// Creates a new empty [AndroidInAppBrowser] to access static methods.
+  /// Creates a new empty [CygnusAndroidBrowser] to access static methods.
   ///
   /// This function should only be called by the app-facing package.
   /// Look at using [CygnusBrowser] in `cygnus` instead.
   @override
-  AndroidInAppBrowser createPlatformBrowserStatic() {
-    return AndroidInAppBrowser.static();
+  CygnusAndroidBrowser createPlatformBrowserStatic() {
+    return CygnusAndroidBrowser.static();
   }
 
   /// Creates a new [AndroidProcessGlobalConfig].

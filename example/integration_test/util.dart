@@ -99,12 +99,12 @@ class Foo {
   }
 }
 
-class MyInAppBrowser extends CygnusBrowser {
+class CygnusMyBrowser extends CygnusBrowser {
   final Completer<void> browserCreated = Completer<void>();
   final Completer<void> firstPageLoaded = Completer<void>();
   final Completer<void> browserClosed = Completer<void>();
 
-  MyInAppBrowser({
+  CygnusMyBrowser({
     int? windowId,
     UnmodifiableListView<CygnusUserScript>? initialUserScripts,
   }) : super(windowId: windowId, initialUserScripts: initialUserScripts);

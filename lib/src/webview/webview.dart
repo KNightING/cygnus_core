@@ -34,7 +34,7 @@ class CygnusWebView extends StatefulWidget {
   /// Constructs a [CygnusWebView] from a specific platform implementation.
   CygnusWebView.fromPlatform({super.key, required this.platform});
 
-  /// Implementation of [PlatformInAppWebView] for the current platform.
+  /// Implementation of [CygnusPlatformWebView] for the current platform.
   final CygnusPlatformWebViewWidget platform;
 
   ///{@macro cygnus_core.CygnusPlatformWebViewWidget}
@@ -894,7 +894,7 @@ class CygnusWebView extends StatefulWidget {
        );
 
   @override
-  _InAppWebViewState createState() => _InAppWebViewState();
+  _CygnusWebViewState createState() => _CygnusWebViewState();
 
   ///{@macro cygnus_core.CygnusPlatformWebViewWidgetCreationParams.isClassSupported}
   static bool isClassSupported({TargetPlatform? platform}) =>
@@ -910,7 +910,7 @@ class CygnusWebView extends StatefulWidget {
   );
 }
 
-class _InAppWebViewState extends State<CygnusWebView> {
+class _CygnusWebViewState extends State<CygnusWebView> {
   @override
   Widget build(BuildContext context) {
     return widget.platform.build(context);

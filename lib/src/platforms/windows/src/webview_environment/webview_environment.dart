@@ -9,10 +9,10 @@ import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_inte
 @immutable
 class WindowsWebViewEnvironmentCreationParams
     extends CygnusPlatformWebViewEnvironmentCreationParams {
-  /// Creates a new [WindowsInAppWebViewControllerCreationParams] instance.
+  /// Creates a new [CygnusWindowsWebViewControllerCreationParams] instance.
   const WindowsWebViewEnvironmentCreationParams({super.settings});
 
-  /// Creates a [WindowsInAppWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
+  /// Creates a [CygnusWindowsWebViewControllerCreationParams] instance based on [CygnusPlatformWebViewControllerCreationParams].
   factory WindowsWebViewEnvironmentCreationParams.fromPlatformWebViewEnvironmentCreationParams(
     // Recommended placeholder to prevent being broken by platform interface.
     // ignore: avoid_unused_constructor_parameters

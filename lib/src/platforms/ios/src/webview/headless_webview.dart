@@ -7,16 +7,16 @@ import '../find_interaction/find_interaction_controller.dart';
 import '../pull_to_refresh/pull_to_refresh_controller.dart';
 import 'webview_controller.dart';
 
-/// Object specifying creation parameters for creating a [IOSHeadlessInAppWebView].
+/// Object specifying creation parameters for creating a [CygnusIOSHeadlessWebView].
 ///
 /// When adding additional fields make sure they can be null or have a default
 /// value to avoid breaking changes. See [CygnusPlatformHeadlessWebViewCreationParams] for
 /// more information.
 @immutable
-class IOSHeadlessInAppWebViewCreationParams
+class CygnusIOSHeadlessWebViewCreationParams
     extends CygnusPlatformHeadlessWebViewCreationParams {
-  /// Creates a new [IOSHeadlessInAppWebViewCreationParams] instance.
-  IOSHeadlessInAppWebViewCreationParams({
+  /// Creates a new [CygnusIOSHeadlessWebViewCreationParams] instance.
+  CygnusIOSHeadlessWebViewCreationParams({
     super.controllerFromPlatform,
     super.initialSize,
     super.windowId,
@@ -131,8 +131,8 @@ class IOSHeadlessInAppWebViewCreationParams
     this.findInteractionController,
   });
 
-  /// Creates a [IOSHeadlessInAppWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
-  IOSHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
+  /// Creates a [CygnusIOSHeadlessWebViewCreationParams] instance based on [CygnusPlatformHeadlessWebViewCreationParams].
+  CygnusIOSHeadlessWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
     CygnusPlatformHeadlessWebViewCreationParams params,
   ) : this(
         controllerFromPlatform: params.controllerFromPlatform,
@@ -251,7 +251,7 @@ class IOSHeadlessInAppWebViewCreationParams
 }
 
 ///{@macro cygnus_core.CygnusPlatformHeadlessWebView}
-class IOSHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
+class CygnusIOSHeadlessWebView extends CygnusPlatformHeadlessWebView
     with ChannelController {
   @override
   late final String id;
@@ -263,39 +263,39 @@ class IOSHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     'com.github.knighting.cygnus/headless_webview',
   );
 
-  IOSInAppWebViewController? _webViewController;
+  CygnusIOSWebViewControllerImpl? _webViewController;
 
-  /// Constructs a [IOSHeadlessInAppWebView].
-  IOSHeadlessInAppWebView(CygnusPlatformHeadlessWebViewCreationParams params)
+  /// Constructs a [CygnusIOSHeadlessWebView].
+  CygnusIOSHeadlessWebView(CygnusPlatformHeadlessWebViewCreationParams params)
     : super.implementation(
-        params is IOSHeadlessInAppWebViewCreationParams
+        params is CygnusIOSHeadlessWebViewCreationParams
             ? params
-            : IOSHeadlessInAppWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
+            : CygnusIOSHeadlessWebViewCreationParams.fromPlatformHeadlessWebViewCreationParams(
                 params,
               ),
       ) {
     id = IdGenerator.generate();
   }
 
-  static final IOSHeadlessInAppWebView _staticValue = IOSHeadlessInAppWebView(
-    IOSHeadlessInAppWebViewCreationParams(),
+  static final CygnusIOSHeadlessWebView _staticValue = CygnusIOSHeadlessWebView(
+    CygnusIOSHeadlessWebViewCreationParams(),
   );
 
-  factory IOSHeadlessInAppWebView.static() {
+  factory CygnusIOSHeadlessWebView.static() {
     return _staticValue;
   }
 
   @override
-  IOSInAppWebViewController? get webViewController => _webViewController;
+  CygnusIOSWebViewControllerImpl? get webViewController => _webViewController;
 
   dynamic _controllerFromPlatform;
 
-  IOSHeadlessInAppWebViewCreationParams get _iosParams =>
-      params as IOSHeadlessInAppWebViewCreationParams;
+  CygnusIOSHeadlessWebViewCreationParams get _iosParams =>
+      params as CygnusIOSHeadlessWebViewCreationParams;
 
   _init() {
-    _webViewController = IOSInAppWebViewController(
-      IOSInAppWebViewControllerCreationParams(id: id, webviewParams: params),
+    _webViewController = CygnusIOSWebViewControllerImpl(
+      CygnusIOSWebViewControllerCreationParams(id: id, webviewParams: params),
     );
     _controllerFromPlatform =
         params.controllerFromPlatform?.call(_webViewController!) ??
@@ -456,7 +456,7 @@ class IOSHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
   }
 }
 
-extension InternalHeadlessInAppWebView on IOSHeadlessInAppWebView {
+extension CygnusInternalHeadlessWebView on CygnusIOSHeadlessWebView {
   Future<void> internalDispose() async {
     _started = false;
     _running = false;

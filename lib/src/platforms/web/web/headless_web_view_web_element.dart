@@ -6,12 +6,12 @@ import 'headless_webview_manager.dart';
 import 'web_view_web_element.dart';
 import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
-class HeadlessInAppWebViewWebElement extends ChannelController {
+class CygnusHeadlessWebViewWebElement extends ChannelController {
   String id;
   late BinaryMessenger _messenger;
-  InAppWebViewWebElement? webView;
+  CygnusWebViewWebElement? webView;
 
-  HeadlessInAppWebViewWebElement({
+  CygnusHeadlessWebViewWebElement({
     required this.id,
     required BinaryMessenger messenger,
     required this.webView,
@@ -58,8 +58,8 @@ class HeadlessInAppWebViewWebElement extends ChannelController {
     webView?.iframeContainer.style.height = size.height.toString() + "px";
   }
 
-  InAppWebViewWebElement? disposeAndGetFlutterWebView() {
-    InAppWebViewWebElement? newFlutterWebView = webView;
+  CygnusWebViewWebElement? disposeAndGetFlutterWebView() {
+    CygnusWebViewWebElement? newFlutterWebView = webView;
     dispose();
     return newFlutterWebView;
   }
@@ -67,7 +67,7 @@ class HeadlessInAppWebViewWebElement extends ChannelController {
   @override
   void dispose() {
     disposeChannel();
-    HeadlessInAppWebViewManager.webViews.putIfAbsent(id, () => null);
+    CygnusHeadlessWebViewManager.webViews.putIfAbsent(id, () => null);
     webView?.dispose();
     webView = null;
   }

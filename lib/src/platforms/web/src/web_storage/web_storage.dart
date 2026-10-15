@@ -83,7 +83,7 @@ class WebPlatformStorageCreationParams extends CygnusPlatformStorageCreationPara
 ///{@macro cygnus_core.CygnusPlatformStorage}
 abstract mixin class WebPlatformStorage implements CygnusPlatformStorage {
   @override
-  WebPlatformInAppWebViewController? controller;
+  CygnusWebPlatformWebViewController? controller;
 
   @override
   Future<int?> length() async {
@@ -252,8 +252,8 @@ class WebPlatformLocalStorage extends CygnusPlatformLocalStorage
   }
 
   @override
-  WebPlatformInAppWebViewController? get controller =>
-      params.controller as WebPlatformInAppWebViewController?;
+  CygnusWebPlatformWebViewController? get controller =>
+      params.controller as CygnusWebPlatformWebViewController?;
 }
 
 /// Object specifying creation parameters for creating a [WebPlatformSessionStorage].
@@ -306,6 +306,6 @@ class WebPlatformSessionStorage extends CygnusPlatformSessionStorage
   }
 
   @override
-  WebPlatformInAppWebViewController? get controller =>
-      params.controller as WebPlatformInAppWebViewController?;
+  CygnusWebPlatformWebViewController? get controller =>
+      params.controller as CygnusWebPlatformWebViewController?;
 }

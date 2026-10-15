@@ -8,7 +8,7 @@ import 'package:cygnus_core_example/widgets/common/method_result_history.dart';
 /// result history, and a run button.
 ///
 /// Used across multiple screens (CookieManagerScreen, HttpAuthScreen,
-/// WebStorageScreen, InAppBrowserScreen, etc.) to provide a consistent
+/// WebStorageScreen, CygnusBrowserScreen, etc.) to provide a consistent
 /// method testing UI.
 class MethodCard extends StatelessWidget {
   /// The name of the method to display.
