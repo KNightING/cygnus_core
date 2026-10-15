@@ -4,17 +4,17 @@
 #include <winrt/base.h>
 #include <wrl/event.h>
 
-#include "in_app_webview/in_app_webview_manager.h"
+#include "webview/webview_manager.h"
 #include "platform_util.h"
 #include "types/callbacks_complete.h"
 #include "utils/flutter.h"
 #include "utils/log.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   using namespace Microsoft::WRL;
 
-  PlatformUtil::PlatformUtil(const FlutterInappwebviewWindowsPlugin* plugin)
+  PlatformUtil::PlatformUtil(const CygnusCorePlugin* plugin)
     : plugin(plugin), ChannelDelegate(plugin->registrar->messenger(), PlatformUtil::METHOD_CHANNEL_NAME_PREFIX)
   {}
 

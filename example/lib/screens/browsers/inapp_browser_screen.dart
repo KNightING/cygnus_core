@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/widgets/common/app_drawer.dart';
-import 'package:flutter_inappwebview_example/widgets/common/appbar_loading_indicator.dart';
-import 'package:flutter_inappwebview_example/widgets/common/event_log_card.dart';
-import 'package:flutter_inappwebview_example/widgets/common/method_card.dart';
-import 'package:flutter_inappwebview_example/widgets/common/status_card.dart';
-import 'package:flutter_inappwebview_example/utils/support_checker.dart';
-import 'package:flutter_inappwebview_example/utils/responsive_utils.dart';
-import 'package:flutter_inappwebview_example/widgets/common/parameter_dialog.dart';
-import 'package:flutter_inappwebview_example/widgets/common/method_result_history.dart';
+import 'package:cygnus_core_example/widgets/common/app_drawer.dart';
+import 'package:cygnus_core_example/widgets/common/appbar_loading_indicator.dart';
+import 'package:cygnus_core_example/widgets/common/event_log_card.dart';
+import 'package:cygnus_core_example/widgets/common/method_card.dart';
+import 'package:cygnus_core_example/widgets/common/status_card.dart';
+import 'package:cygnus_core_example/utils/support_checker.dart';
+import 'package:cygnus_core_example/utils/responsive_utils.dart';
+import 'package:cygnus_core_example/widgets/common/parameter_dialog.dart';
+import 'package:cygnus_core_example/widgets/common/method_result_history.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_inappwebview_example/providers/event_log_provider.dart';
-import 'package:flutter_inappwebview_example/models/event_log_entry.dart';
-import 'package:flutter_inappwebview_example/providers/settings_manager.dart';
-import 'package:flutter_inappwebview_example/widgets/common/profile_selector_card.dart';
+import 'package:cygnus_core_example/providers/event_log_provider.dart';
+import 'package:cygnus_core_example/models/event_log_entry.dart';
+import 'package:cygnus_core_example/providers/settings_manager.dart';
+import 'package:cygnus_core_example/widgets/common/profile_selector_card.dart';
 
 /// Custom CygnusBrowser implementation for testing
 class TestInAppBrowser extends CygnusBrowser {

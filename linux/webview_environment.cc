@@ -9,7 +9,7 @@
 #include "utils/flutter.h"
 #include "utils/log.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 namespace {
 // Helper to compare method names
@@ -278,4 +278,4 @@ WebViewEnvironmentInstanceChannelDelegate* WebViewEnvironment::getInstance(const
   return nullptr;
 }
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin

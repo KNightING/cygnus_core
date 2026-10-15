@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_inappwebview_example/models/event_log_entry.dart';
+import 'package:cygnus_core_example/models/event_log_entry.dart';
 
 /// Provider for managing event logs with buffer management, filtering, and search
 class EventLogProvider extends ChangeNotifier {

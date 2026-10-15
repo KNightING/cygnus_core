@@ -9,7 +9,7 @@ import Foundation
 
 public class ConsoleLogJS {
     
-    public static let CONSOLE_LOG_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_CONSOLE_LOG_JS_PLUGIN_SCRIPT"
+    public static let CONSOLE_LOG_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_CONSOLE_LOG_JS_PLUGIN_SCRIPT"
     
     // This plugin is only for main frame.
     // Using it also on non-main frames could cause issues

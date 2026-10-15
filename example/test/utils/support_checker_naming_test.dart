@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/utils/controller_methods_registry.dart';
-import 'package:flutter_inappwebview_example/utils/support_checker.dart';
+import 'package:cygnus_core_example/utils/controller_methods_registry.dart';
+import 'package:cygnus_core_example/utils/support_checker.dart';
 
 void main() {
   group('SupportChecker naming', () {

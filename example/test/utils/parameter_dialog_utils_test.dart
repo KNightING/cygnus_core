@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview_example/utils/parameter_dialog_utils.dart';
+import 'package:cygnus_core_example/utils/parameter_dialog_utils.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

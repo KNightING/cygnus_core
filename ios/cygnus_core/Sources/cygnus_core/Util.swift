@@ -8,10 +8,10 @@
 import Foundation
 import WebKit
 
-var SharedLastTouchPointTimestamp: [InAppWebView: Int64] = [:]
+var SharedLastTouchPointTimestamp: [CygnusWebView: Int64] = [:]
 
 public class Util {
-    public static func getUrlAsset(plugin: InAppWebViewFlutterPlugin, assetFilePath: String) throws -> URL {
+    public static func getUrlAsset(plugin: CygnusCorePlugin, assetFilePath: String) throws -> URL {
         let key = plugin.registrar.lookupKey(forAsset: assetFilePath)
         guard let assetURL = Bundle.main.url(forResource: key, withExtension: nil) else {
             throw NSError(domain: assetFilePath + " asset file cannot be found!", code: 0)
@@ -19,7 +19,7 @@ public class Util {
         return assetURL
     }
     
-    public static func getAbsPathAsset(plugin: InAppWebViewFlutterPlugin, assetFilePath: String) throws -> String {
+    public static func getAbsPathAsset(plugin: CygnusCorePlugin, assetFilePath: String) throws -> String {
         let key = plugin.registrar.lookupKey(forAsset: assetFilePath)
         guard let assetAbsPath = Bundle.main.path(forResource: key, ofType: nil) else {
             throw NSError(domain: assetFilePath + " asset file cannot be found!", code: 0)

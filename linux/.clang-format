@@ -1,4 +1,4 @@
-# Clang-format configuration for flutter_inappwebview_linux
+# Clang-format configuration for cygnus_core
 # Based on Google style with some adjustments for consistency
 
 BasedOnStyle: Google

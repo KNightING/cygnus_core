@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_inappwebview_example/widgets/common/test_card.dart';
-import 'package:flutter_inappwebview_example/models/test_case.dart';
-import 'package:flutter_inappwebview_example/utils/constants.dart';
+import 'package:cygnus_core_example/widgets/common/test_card.dart';
+import 'package:cygnus_core_example/models/test_case.dart';
+import 'package:cygnus_core_example/utils/constants.dart';
 
 void main() {
   group('TestCard', () {

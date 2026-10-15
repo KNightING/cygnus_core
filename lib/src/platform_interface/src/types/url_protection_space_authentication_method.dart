@@ -1,4 +1,4 @@
-import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
+import 'package:cygnus_core_internal_annotations/cygnus_core_internal_annotations.dart';
 
 import 'url_protection_space.dart';
 

@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_CURSOR_DETECTION_JS_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_CURSOR_DETECTION_JS_H_
+#ifndef CYGNUS_CORE_PLUGIN_CURSOR_DETECTION_JS_H_
+#define CYGNUS_CORE_PLUGIN_CURSOR_DETECTION_JS_H_
 
 #include <memory>
 #include <optional>
@@ -9,7 +9,7 @@
 #include "../types/plugin_script.h"
 #include "javascript_bridge_js.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * JavaScript for detecting cursor style changes in the WebView.
@@ -21,7 +21,7 @@ namespace flutter_inappwebview_plugin {
 class CursorDetectionJS {
  public:
   inline static const std::string CURSOR_DETECTION_JS_PLUGIN_SCRIPT_GROUP_NAME =
-      "IN_APP_WEBVIEW_CURSOR_DETECTION_JS_PLUGIN_SCRIPT";
+      "CYGNUS_WEBVIEW_CURSOR_DETECTION_JS_PLUGIN_SCRIPT";
 
   /**
    * JavaScript source code for cursor detection.
@@ -264,6 +264,6 @@ class CursorDetectionJS {
   }
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_CURSOR_DETECTION_JS_H_
+#endif  // CYGNUS_CORE_PLUGIN_CURSOR_DETECTION_JS_H_

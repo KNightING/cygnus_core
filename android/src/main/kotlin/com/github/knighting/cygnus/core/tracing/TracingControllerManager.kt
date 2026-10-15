@@ -3,11 +3,11 @@ package com.github.knighting.cygnus.core.tracing
 import androidx.webkit.TracingConfig
 import androidx.webkit.TracingController
 import androidx.webkit.WebViewFeature
-import com.github.knighting.cygnus.core.InAppWebViewFlutterPlugin
+import com.github.knighting.cygnus.core.CygnusCorePlugin
 import com.github.knighting.cygnus.core.types.Disposable
 import io.flutter.plugin.common.MethodChannel
 
-class TracingControllerManager(plugin: InAppWebViewFlutterPlugin) : Disposable {
+class TracingControllerManager(plugin: CygnusCorePlugin) : Disposable {
   companion object {
     // protected static in Java
     const val LOG_TAG = "TracingControllerMan"
@@ -45,7 +45,7 @@ class TracingControllerManager(plugin: InAppWebViewFlutterPlugin) : Disposable {
   @JvmField
   var channelDelegate: TracingControllerChannelDelegate?
   @JvmField
-  var plugin: InAppWebViewFlutterPlugin? = plugin
+  var plugin: CygnusCorePlugin? = plugin
 
   init {
     val channel = MethodChannel(plugin.messenger, METHOD_CHANNEL_NAME)

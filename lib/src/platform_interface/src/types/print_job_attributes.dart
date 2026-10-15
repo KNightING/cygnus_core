@@ -1,5 +1,5 @@
 import 'package:flutter/rendering.dart';
-import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
+import 'package:cygnus_core_internal_annotations/cygnus_core_internal_annotations.dart';
 
 import '../print_job/main.dart';
 import '../util.dart';

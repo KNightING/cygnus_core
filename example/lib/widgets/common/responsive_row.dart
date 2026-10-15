@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview_example/utils/responsive_utils.dart';
+import 'package:cygnus_core_example/utils/responsive_utils.dart';
 
 /// A layout widget that switches between [Row] and [Column] by breakpoint.
 class ResponsiveRow extends StatelessWidget {

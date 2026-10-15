@@ -3,13 +3,13 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/widgets/common/app_drawer.dart';
-import 'package:flutter_inappwebview_example/utils/support_checker.dart';
-import 'package:flutter_inappwebview_example/widgets/common/support_badge.dart';
-import 'package:flutter_inappwebview_example/widgets/common/method_result_history.dart';
+import 'package:cygnus_core_example/widgets/common/app_drawer.dart';
+import 'package:cygnus_core_example/utils/support_checker.dart';
+import 'package:cygnus_core_example/widgets/common/support_badge.dart';
+import 'package:cygnus_core_example/widgets/common/method_result_history.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_inappwebview_example/providers/event_log_provider.dart';
-import 'package:flutter_inappwebview_example/models/event_log_entry.dart';
+import 'package:cygnus_core_example/providers/event_log_provider.dart';
+import 'package:cygnus_core_example/models/event_log_entry.dart';
 
 /// Custom CygnusChromeSafariBrowser implementation for testing
 class TestChromeSafariBrowser extends CygnusChromeSafariBrowser {

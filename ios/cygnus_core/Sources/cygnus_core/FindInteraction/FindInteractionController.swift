@@ -11,10 +11,10 @@ import Flutter
 public class FindInteractionController: NSObject, Disposable {
     static let METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_find_interaction_"
 
-    var webView: InAppWebView?
+    var webView: CygnusWebView?
     var channelDelegate: FindInteractionChannelDelegate?
 
-    private var plugin: InAppWebViewFlutterPlugin?
+    private var plugin: CygnusCorePlugin?
     private var settings: FindInteractionSettings?
     
     private var _searchText: String? = nil
@@ -49,7 +49,7 @@ public class FindInteractionController: NSObject, Disposable {
         }
     }
     
-    public init(plugin: InAppWebViewFlutterPlugin, id: Any, webView: InAppWebView, settings: FindInteractionSettings?) {
+    public init(plugin: CygnusCorePlugin, id: Any, webView: CygnusWebView, settings: FindInteractionSettings?) {
         super.init()
         self.plugin = plugin
         self.webView = webView

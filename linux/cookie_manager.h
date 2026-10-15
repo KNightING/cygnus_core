@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_COOKIE_MANAGER_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_COOKIE_MANAGER_H_
+#ifndef CYGNUS_CORE_PLUGIN_COOKIE_MANAGER_H_
+#define CYGNUS_CORE_PLUGIN_COOKIE_MANAGER_H_
 
 #include <flutter_linux/flutter_linux.h>
 #include <wpe/webkit.h>
@@ -12,7 +12,7 @@
 
 #include "types/channel_delegate.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 class PluginInstance;
 
@@ -82,6 +82,6 @@ class CookieManager : public ChannelDelegate {
   WebKitCookieManager* getCookieManager();
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_COOKIE_MANAGER_H_
+#endif  // CYGNUS_CORE_PLUGIN_COOKIE_MANAGER_H_

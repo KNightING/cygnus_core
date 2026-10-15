@@ -6,11 +6,11 @@ import com.github.knighting.cygnus.core.types.ChannelDelegateImpl
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
-open class MyWebStorage(plugin: InAppWebViewFlutterPlugin) :
+open class MyWebStorage(plugin: CygnusCorePlugin) :
   ChannelDelegateImpl(MethodChannel(plugin.messenger, METHOD_CHANNEL_NAME)) {
 
   @JvmField
-  var plugin: InAppWebViewFlutterPlugin? = plugin
+  var plugin: CygnusCorePlugin? = plugin
 
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
     init()

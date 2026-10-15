@@ -11,13 +11,13 @@ import Flutter
 public class PullToRefreshControl: UIRefreshControl, Disposable {
     static let METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_pull_to_refresh_"
 
-    var plugin: InAppWebViewFlutterPlugin?
+    var plugin: CygnusCorePlugin?
     var channelDelegate: PullToRefreshChannelDelegate?
     var settings: PullToRefreshSettings?
     var shouldCallOnRefresh = false
     var delegate: PullToRefreshDelegate?
     
-    public init(plugin: InAppWebViewFlutterPlugin, id: Any, settings: PullToRefreshSettings?) {
+    public init(plugin: CygnusCorePlugin, id: Any, settings: PullToRefreshSettings?) {
         super.init()
         self.plugin = plugin
         self.settings = settings

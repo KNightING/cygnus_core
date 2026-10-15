@@ -1,14 +1,14 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_WEBVIEW_ENVIRONMENT_CREATION_PARAMS_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_WEBVIEW_ENVIRONMENT_CREATION_PARAMS_H_
+#ifndef CYGNUS_CORE_PLUGIN_WEBVIEW_ENVIRONMENT_CREATION_PARAMS_H_
+#define CYGNUS_CORE_PLUGIN_WEBVIEW_ENVIRONMENT_CREATION_PARAMS_H_
 
 #include <flutter/standard_method_codec.h>
 #include <optional>
 #include <string>
 
-#include "../flutter_inappwebview_windows_plugin.h"
+#include "../cygnus_core_plugin.h"
 #include "../types/custom_scheme_registration.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   class WebViewEnvironmentSettings
   {
@@ -35,4 +35,4 @@ namespace flutter_inappwebview_plugin
     flutter::EncodableMap toEncodableMap() const;
   };
 }
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_WEBVIEW_ENVIRONMENT_CREATION_PARAMS_H_
+#endif //CYGNUS_CORE_PLUGIN_WEBVIEW_ENVIRONMENT_CREATION_PARAMS_H_

@@ -11,7 +11,7 @@
 
 #include "graphics_context.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   typedef struct {
     size_t width;

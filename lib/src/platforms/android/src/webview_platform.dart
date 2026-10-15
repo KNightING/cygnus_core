@@ -18,10 +18,10 @@ import 'webview_asset_loader.dart';
 import 'webview_feature.dart' as wv;
 
 /// Implementation of [CygnusWebViewPlatform] using the WebView API.
-class AndroidInAppWebViewPlatform extends CygnusWebViewPlatform {
+class CygnusAndroidWebViewPlatform extends CygnusWebViewPlatform {
   /// Registers this class as the default instance of [CygnusWebViewPlatform].
   static void registerWith() {
-    CygnusWebViewPlatform.instance = AndroidInAppWebViewPlatform();
+    CygnusWebViewPlatform.instance = CygnusAndroidWebViewPlatform();
     // The platform view factory picks a composition mode synchronously, so whether Hybrid
     // Composition++ is available has to be known by then. Start resolving it here, at the
     // earliest point the plugin runs any Dart code.

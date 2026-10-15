@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.browser.customtabs.CustomTabsClient
 import androidx.browser.customtabs.CustomTabsIntent
-import com.github.knighting.cygnus.core.InAppWebViewFlutterPlugin
+import com.github.knighting.cygnus.core.CygnusCorePlugin
 import com.github.knighting.cygnus.core.Util
 import com.github.knighting.cygnus.core.types.ChannelDelegateImpl
 import io.flutter.plugin.common.MethodCall
@@ -13,11 +13,11 @@ import io.flutter.plugin.common.MethodChannel
 import java.io.Serializable
 import java.util.UUID
 
-open class ChromeSafariBrowserManager(plugin: InAppWebViewFlutterPlugin) :
+open class ChromeSafariBrowserManager(plugin: CygnusCorePlugin) :
   ChannelDelegateImpl(MethodChannel(plugin.messenger, METHOD_CHANNEL_NAME)) {
 
   @JvmField
-  var plugin: InAppWebViewFlutterPlugin?
+  var plugin: CygnusCorePlugin?
 
   @JvmField
   var id: String

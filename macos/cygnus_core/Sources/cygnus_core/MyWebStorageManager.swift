@@ -11,10 +11,10 @@ import FlutterMacOS
 
 public class MyWebStorageManager: ChannelDelegate {
     static let METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_webstoragemanager"
-    var plugin: InAppWebViewFlutterPlugin?
+    var plugin: CygnusCorePlugin?
     static var websiteDataStore = WKWebsiteDataStore.default()
     
-    init(plugin: InAppWebViewFlutterPlugin) {
+    init(plugin: CygnusCorePlugin) {
         super.init(channel: FlutterMethodChannel(name: MyWebStorageManager.METHOD_CHANNEL_NAME, binaryMessenger: plugin.registrar.messenger))
         self.plugin = plugin
     }

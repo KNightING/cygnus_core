@@ -1,14 +1,14 @@
 #include "web_view_transport.h"
 
-#include "../in_app_webview/in_app_webview.h"
+#include "../webview/webview.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 WebKitWebView* WebViewTransport::getWebKitWebView() const {
-  if (inAppWebView) {
-    return inAppWebView->webview();
+  if (cygnusWebView) {
+    return cygnusWebView->webview();
   }
   return nullptr;
 }
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin

@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_PRINT_JOB_MANAGER_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_PRINT_JOB_MANAGER_H_
+#ifndef CYGNUS_CORE_PLUGIN_PRINT_JOB_MANAGER_H_
+#define CYGNUS_CORE_PLUGIN_PRINT_JOB_MANAGER_H_
 
 #include <flutter/binary_messenger.h>
 
@@ -8,15 +8,15 @@
 
 #include "print_job_settings.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
-  class InAppWebView;
+  class CygnusWebView;
   class PrintJobController;
 
   class PrintJobManager
   {
   public:
-    PrintJobManager(InAppWebView* webView, flutter::BinaryMessenger* messenger);
+    PrintJobManager(CygnusWebView* webView, flutter::BinaryMessenger* messenger);
     ~PrintJobManager();
 
     std::shared_ptr<PrintJobController> createPrintJobController(
@@ -28,9 +28,9 @@ namespace flutter_inappwebview_plugin
     void dispose();
 
   private:
-    InAppWebView* webView_ = nullptr;
+    CygnusWebView* webView_ = nullptr;
     flutter::BinaryMessenger* messenger_ = nullptr;
   };
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_PRINT_JOB_MANAGER_H_
+#endif //CYGNUS_CORE_PLUGIN_PRINT_JOB_MANAGER_H_

@@ -2,7 +2,7 @@ package com.github.knighting.cygnus.core.webview.web_message
 
 import com.github.knighting.cygnus.core.types.ChannelDelegateImpl
 import com.github.knighting.cygnus.core.types.WebMessageCompatExt
-import com.github.knighting.cygnus.core.webview.in_app_webview.InAppWebView
+import com.github.knighting.cygnus.core.webview.webview.CygnusWebView
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import java.util.HashMap
@@ -16,9 +16,9 @@ class WebMessageListenerChannelDelegate(
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
     when (call.method) {
       "postMessage" -> {
-        if (webMessageListener != null && webMessageListener!!.webView is InAppWebView) {
+        if (webMessageListener != null && webMessageListener!!.webView is CygnusWebView) {
           val message = WebMessageCompatExt.fromMap(call.argument<Map<String, Any?>>("message"))
-          webMessageListener!!.postMessageForInAppWebView(message, result)
+          webMessageListener!!.postMessageForCygnusWebView(message, result)
         } else {
           result.success(false)
         }

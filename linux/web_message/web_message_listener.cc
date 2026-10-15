@@ -4,17 +4,17 @@
 #include <cstring>
 #include <regex>
 
-#include "../in_app_webview/in_app_webview.h"
+#include "../webview/webview.h"
 #include "../utils/flutter.h"
 #include "../utils/log.h"
 #include "web_message_listener_channel_delegate.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 std::unique_ptr<WebMessageListener> WebMessageListener::fromFlValue(
     FlBinaryMessenger* messenger,
     FlValue* map,
-    InAppWebView* webView) {
+    CygnusWebView* webView) {
   if (map == nullptr || fl_value_get_type(map) != FL_VALUE_TYPE_MAP) {
     return nullptr;
   }
@@ -47,7 +47,7 @@ WebMessageListener::WebMessageListener(FlBinaryMessenger* messenger,
                                        const std::string& id,
                                        const std::string& jsObjectName,
                                        const std::set<std::string>& allowedOriginRules,
-                                       InAppWebView* webView)
+                                       CygnusWebView* webView)
     : id_(id),
       jsObjectName_(jsObjectName),
       allowedOriginRules_(allowedOriginRules),
@@ -200,4 +200,4 @@ void WebMessageListener::dispose() {
   webView_ = nullptr;
 }
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin

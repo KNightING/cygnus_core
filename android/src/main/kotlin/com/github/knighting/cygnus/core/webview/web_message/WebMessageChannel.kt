@@ -10,14 +10,14 @@ import com.github.knighting.cygnus.core.types.Disposable
 import com.github.knighting.cygnus.core.types.WebMessageCompatExt
 import com.github.knighting.cygnus.core.types.WebMessagePort
 import com.github.knighting.cygnus.core.types.WebMessagePortCompatExt
-import com.github.knighting.cygnus.core.webview.InAppWebViewInterface
-import com.github.knighting.cygnus.core.webview.in_app_webview.InAppWebView
+import com.github.knighting.cygnus.core.webview.CygnusWebViewInterface
+import com.github.knighting.cygnus.core.webview.webview.CygnusWebView
 import io.flutter.plugin.common.MethodChannel
 import java.util.ArrayList
 import java.util.Arrays
 import java.util.HashMap
 
-class WebMessageChannel(id: String, webView: InAppWebViewInterface) : Disposable {
+class WebMessageChannel(id: String, webView: CygnusWebViewInterface) : Disposable {
   companion object {
     // protected in Java
     const val LOG_TAG = "WebMessageChannel"
@@ -37,13 +37,13 @@ class WebMessageChannel(id: String, webView: InAppWebViewInterface) : Disposable
   val ports: MutableList<WebMessagePort>
 
   @JvmField
-  var webView: InAppWebViewInterface? = null
+  var webView: CygnusWebViewInterface? = null
 
   init {
     this.id = id
     val channel = MethodChannel(webView.getPlugin()!!.messenger, METHOD_CHANNEL_NAME_PREFIX + id)
     this.channelDelegate = WebMessageChannelChannelDelegate(this, channel)
-    if (webView is InAppWebView) {
+    if (webView is CygnusWebView) {
       this.compatPorts = ArrayList(Arrays.asList(*WebViewCompat.createWebMessageChannel(webView)))
       this.ports = ArrayList()
     } else {
@@ -53,7 +53,7 @@ class WebMessageChannel(id: String, webView: InAppWebViewInterface) : Disposable
     this.webView = webView
   }
 
-  fun initJsInstance(webView: InAppWebViewInterface?, callback: ValueCallback<WebMessageChannel>) {
+  fun initJsInstance(webView: CygnusWebViewInterface?, callback: ValueCallback<WebMessageChannel>) {
     if (webView != null) {
       val webMessageChannel = this
       webView.evaluateJavascript("(function() {" +
@@ -68,7 +68,7 @@ class WebMessageChannel(id: String, webView: InAppWebViewInterface) : Disposable
     }
   }
 
-  fun setWebMessageCallbackForInAppWebView(index: Int, result: MethodChannel.Result) {
+  fun setWebMessageCallbackForCygnusWebView(index: Int, result: MethodChannel.Result) {
     if (webView != null && compatPorts.size > 0 &&
       WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_PORT_SET_MESSAGE_CALLBACK)) {
       val webMessagePort = compatPorts[index]
@@ -89,7 +89,7 @@ class WebMessageChannel(id: String, webView: InAppWebViewInterface) : Disposable
     }
   }
 
-  fun postMessageForInAppWebView(index: Int, message: WebMessageCompatExt?, result: MethodChannel.Result) {
+  fun postMessageForCygnusWebView(index: Int, message: WebMessageCompatExt?, result: MethodChannel.Result) {
     val webView = this.webView
     if (webView != null && compatPorts.size > 0 &&
       WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_PORT_POST_MESSAGE)) {
@@ -121,7 +121,7 @@ class WebMessageChannel(id: String, webView: InAppWebViewInterface) : Disposable
     }
   }
 
-  fun closeForInAppWebView(index: Int, result: MethodChannel.Result) {
+  fun closeForCygnusWebView(index: Int, result: MethodChannel.Result) {
     if (webView != null && compatPorts.size > 0 &&
       WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_PORT_CLOSE)) {
       val port = compatPorts[index]

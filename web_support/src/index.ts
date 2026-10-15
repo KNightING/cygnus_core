@@ -1,7 +1,7 @@
 import {
-  InAppWebView,
-  InAppWebViewPlugin,
-  InAppWebViewSettings,
+  CygnusWebView,
+  CygnusWebViewPlugin,
+  CygnusWebViewSettings,
   JavaScriptBridgeHandler,
   UserScript,
   UserScriptInjectionTime
@@ -9,7 +9,7 @@ import {
 
 declare global {
   interface Window {
-    cygnusWeb: InAppWebViewPlugin;
+    cygnusWeb: CygnusWebViewPlugin;
     cygnus?: JavaScriptBridgeHandler | null;
     console: Console;
 
@@ -25,7 +25,7 @@ declare global {
   window.cygnusWeb = {
     createCygnusWebView: function (viewId: number | string, iframe: HTMLIFrameElement, iframeContainer: HTMLDivElement, bridgeSecret: string) {
       const iframeId = iframe.id;
-      const webView: InAppWebView = {
+      const webView: CygnusWebView = {
         viewId: viewId,
         iframeId: iframeId,
         iframe: null,
@@ -40,7 +40,7 @@ declare global {
           event.stopPropagation();
           return false;
         },
-        prepare: function (settings: InAppWebViewSettings) {
+        prepare: function (settings: CygnusWebViewSettings) {
           webView.settings = settings;
 
           webView.javaScriptBridgeEnabled = webView.settings.javaScriptBridgeEnabled ?? true;
@@ -349,7 +349,7 @@ declare global {
             });
           }
         },
-        setSettings: function (newSettings: InAppWebViewSettings) {
+        setSettings: function (newSettings: CygnusWebViewSettings) {
           const iframe = webView.iframe;
           if (iframe == null) {
             return;

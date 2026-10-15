@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/providers/settings_manager.dart';
-import 'package:flutter_inappwebview_example/models/settings_profile.dart';
-import 'package:flutter_inappwebview_example/models/webview_environment_profile.dart';
-import 'package:flutter_inappwebview_example/utils/responsive_utils.dart';
+import 'package:cygnus_core_example/providers/settings_manager.dart';
+import 'package:cygnus_core_example/models/settings_profile.dart';
+import 'package:cygnus_core_example/models/webview_environment_profile.dart';
+import 'package:cygnus_core_example/utils/responsive_utils.dart';
 
 class ProfileSelectorCard extends StatelessWidget {
   const ProfileSelectorCard({

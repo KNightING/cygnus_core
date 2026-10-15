@@ -1,6 +1,7 @@
 package com.github.knighting.cygnus.core.credential_database
 
 import android.content.Context
+import android.util.Log
 import com.github.knighting.cygnus.core.types.URLCredential
 import com.github.knighting.cygnus.core.types.URLProtectionSpace
 
@@ -81,12 +82,40 @@ open class CredentialDatabase private constructor(
 
     // If you change the database schema, you must increment the database version.
     const val DATABASE_VERSION = 2
-    const val DATABASE_NAME = "CredentialDatabase.db"
+    const val DATABASE_NAME = "cygnus_credential_database.db"
+    private const val LEGACY_DATABASE_NAME = "CredentialDatabase.db"
+    private val DATABASE_FILE_SUFFIXES = arrayOf("", "-journal", "-wal", "-shm")
+
+    // 舊版資料庫名稱為 CredentialDatabase.db；首次開啟時把檔案（含 journal／wal／shm）搬到新名稱，已存的 HTTP 認證不遺失
+    private fun migrateLegacyDatabase(context: Context) {
+      try {
+        val legacy = context.getDatabasePath(LEGACY_DATABASE_NAME)
+        val target = context.getDatabasePath(DATABASE_NAME)
+        if (!legacy.exists() || target.exists()) {
+          return
+        }
+        target.parentFile?.mkdirs()
+        for (suffix in DATABASE_FILE_SUFFIXES) {
+          val from = java.io.File(legacy.path + suffix)
+          if (!from.exists()) {
+            continue
+          }
+          val to = java.io.File(target.path + suffix)
+          if (!from.renameTo(to)) {
+            from.copyTo(to, overwrite = true)
+            from.delete()
+          }
+        }
+      } catch (e: Exception) {
+        Log.e(LOG_TAG, "Failed to migrate the legacy credential database", e)
+      }
+    }
 
     @JvmStatic
     fun getInstance(context: Context): CredentialDatabase {
       if (instance != null)
         return instance!!
+      migrateLegacyDatabase(context)
       val db = CredentialDatabaseHelper(context)
       instance = CredentialDatabase(db, URLProtectionSpaceDao(db), URLCredentialDao(db))
       return instance!!

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_inappwebview_example/models/network_request.dart';
-import 'package:flutter_inappwebview_example/providers/network_monitor.dart';
-import 'package:flutter_inappwebview_example/widgets/webview/network_monitor_widget.dart';
+import 'package:cygnus_core_example/models/network_request.dart';
+import 'package:cygnus_core_example/providers/network_monitor.dart';
+import 'package:cygnus_core_example/widgets/webview/network_monitor_widget.dart';
 
 void main() {
   group('NetworkMonitorWidget', () {

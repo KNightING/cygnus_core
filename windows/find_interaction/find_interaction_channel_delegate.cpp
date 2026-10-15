@@ -2,13 +2,13 @@
 
 #include "find_interaction_controller.h"
 
-#include "../in_app_webview/in_app_webview.h"
+#include "../webview/webview.h"
 
 #include "../utils/flutter.h"
 #include "../utils/log.h"
 #include "../utils/string.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   FindInteractionChannelDelegate::FindInteractionChannelDelegate(
     FindInteractionController* findInteractionController,

@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_inappwebview_example/providers/test_runner.dart';
-import 'package:flutter_inappwebview_example/models/test_configuration.dart';
-import 'package:flutter_inappwebview_example/models/test_result.dart';
-import 'package:flutter_inappwebview_example/models/test_runner_models.dart';
-import 'package:flutter_inappwebview_example/utils/constants.dart';
+import 'package:cygnus_core_example/providers/test_runner.dart';
+import 'package:cygnus_core_example/models/test_configuration.dart';
+import 'package:cygnus_core_example/models/test_result.dart';
+import 'package:cygnus_core_example/models/test_runner_models.dart';
+import 'package:cygnus_core_example/utils/constants.dart';
 
 void main() {
   group('TestRunner', () {

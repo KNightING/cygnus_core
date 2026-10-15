@@ -1,12 +1,12 @@
 #include "find_interaction_controller.h"
 
 #include "find_interaction_channel_delegate.h"
-#include "../in_app_webview/in_app_webview.h"
+#include "../webview/webview.h"
 #include "../utils/log.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
-FindInteractionController::FindInteractionController(InAppWebView* webView)
+FindInteractionController::FindInteractionController(CygnusWebView* webView)
     : webView_(webView) {
   // Connect to find controller signals
   if (webView_ && webView_->webview()) {
@@ -150,4 +150,4 @@ void FindInteractionController::dispose() {
   searchText_ = std::nullopt;
 }
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin

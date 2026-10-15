@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_inappwebview_example/screens/home_screen.dart';
-import 'package:flutter_inappwebview_example/utils/test_registry.dart';
-import 'package:flutter_inappwebview_example/providers/event_log_provider.dart';
-import 'package:flutter_inappwebview_example/providers/settings_manager.dart';
-import 'package:flutter_inappwebview_example/providers/test_runner.dart';
-import 'package:flutter_inappwebview_example/providers/network_monitor.dart';
-import 'package:flutter_inappwebview_example/utils/platform_utils.dart';
+import 'package:cygnus_core_example/screens/home_screen.dart';
+import 'package:cygnus_core_example/utils/test_registry.dart';
+import 'package:cygnus_core_example/providers/event_log_provider.dart';
+import 'package:cygnus_core_example/providers/settings_manager.dart';
+import 'package:cygnus_core_example/providers/test_runner.dart';
+import 'package:cygnus_core_example/providers/network_monitor.dart';
+import 'package:cygnus_core_example/utils/platform_utils.dart';
 
 void main() {
   group('HomeScreen', () {

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_inappwebview_example/models/test_result.dart';
+import 'package:cygnus_core_example/models/test_result.dart';
 
 void main() {
   group('TestResult', () {

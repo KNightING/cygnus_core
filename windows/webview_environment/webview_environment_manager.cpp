@@ -2,16 +2,16 @@
 #include <flutter/method_channel.h>
 #include <flutter/standard_method_codec.h>
 
-#include "../in_app_webview/in_app_webview_settings.h"
+#include "../webview/webview_settings.h"
 #include "../utils/flutter.h"
 #include "../utils/log.h"
 #include "../utils/string.h"
 #include "../utils/vector.h"
 #include "webview_environment_manager.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
-  WebViewEnvironmentManager::WebViewEnvironmentManager(const FlutterInappwebviewWindowsPlugin* plugin)
+  WebViewEnvironmentManager::WebViewEnvironmentManager(const CygnusCorePlugin* plugin)
     : plugin(plugin),
     ChannelDelegate(plugin->registrar->messenger(), WebViewEnvironmentManager::METHOD_CHANNEL_NAME)
   {

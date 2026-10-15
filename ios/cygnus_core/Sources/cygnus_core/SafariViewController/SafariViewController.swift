@@ -15,11 +15,11 @@ public class SafariViewController: SFSafariViewController, SFSafariViewControlle
     var channelDelegate: SafariViewControllerChannelDelegate?
     var safariSettings: SafariBrowserSettings
     var id: String
-    var plugin: InAppWebViewFlutterPlugin?
+    var plugin: CygnusCorePlugin?
     var menuItemList: [[String: Any]] = []
     
     @available(iOS 11.0, *)
-    public init(plugin: InAppWebViewFlutterPlugin, id: String, url: URL, configuration: SFSafariViewController.Configuration, menuItemList: [[String: Any]] = [], safariSettings: SafariBrowserSettings) {
+    public init(plugin: CygnusCorePlugin, id: String, url: URL, configuration: SFSafariViewController.Configuration, menuItemList: [[String: Any]] = [], safariSettings: SafariBrowserSettings) {
         self.id = id
         self.plugin = plugin
         self.menuItemList = menuItemList
@@ -32,7 +32,7 @@ public class SafariViewController: SFSafariViewController, SFSafariViewControlle
         self.delegate = self
     }
     
-    public init(plugin: InAppWebViewFlutterPlugin, id: String, url: URL, entersReaderIfAvailable: Bool, menuItemList: [[String: Any]] = [], safariSettings: SafariBrowserSettings) {
+    public init(plugin: CygnusCorePlugin, id: String, url: URL, entersReaderIfAvailable: Bool, menuItemList: [[String: Any]] = [], safariSettings: SafariBrowserSettings) {
         self.id = id
         self.plugin = plugin
         self.menuItemList = menuItemList

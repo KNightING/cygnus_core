@@ -6,7 +6,7 @@
 
 #include "texture_bridge.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   class TextureBridgeFallback : public TextureBridge {
   public:

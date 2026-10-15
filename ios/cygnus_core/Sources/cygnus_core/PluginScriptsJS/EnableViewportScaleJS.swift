@@ -9,7 +9,7 @@ import Foundation
 
 public class EnableViewportScaleJS {
     
-    public static let ENABLE_VIEWPORT_SCALE_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_ENABLE_VIEWPORT_SCALE_JS_PLUGIN_SCRIPT"
+    public static let ENABLE_VIEWPORT_SCALE_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_ENABLE_VIEWPORT_SCALE_JS_PLUGIN_SCRIPT"
     
     // This plugin is only for main frame
     public static func ENABLE_VIEWPORT_SCALE_JS_PLUGIN_SCRIPT(allowedOriginRules: [String]?) -> PluginScript {

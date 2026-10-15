@@ -17,9 +17,9 @@ import 'platform_util.dart';
 /// Builds an iframe based WebView.
 ///
 /// This is used as the default implementation for `WebView` on web.
-class InAppWebViewFlutterPlugin {
-  /// Constructs a new instance of [InAppWebViewFlutterPlugin].
-  InAppWebViewFlutterPlugin(Registrar registrar) {
+class CygnusCorePlugin {
+  /// Constructs a new instance of [CygnusCorePlugin].
+  CygnusCorePlugin(Registrar registrar) {
     ui_web.platformViewRegistry.registerViewFactory(
       'com.github.knighting.cygnus/webview',
       (int viewId) {
@@ -36,7 +36,7 @@ class InAppWebViewFlutterPlugin {
   static void registerWith(Registrar registrar) {
     WebPlatformInAppWebViewPlatform.registerWith();
     // ignore: unused_local_variable
-    final pluginInstance = InAppWebViewFlutterPlugin(registrar);
+    final pluginInstance = CygnusCorePlugin(registrar);
     // ignore: unused_local_variable
     final platformUtil = PlatformUtil(messenger: registrar);
     // ignore: unused_local_variable

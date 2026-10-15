@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/providers/event_log_provider.dart';
-import 'package:flutter_inappwebview_example/providers/network_monitor.dart';
-import 'package:flutter_inappwebview_example/providers/settings_manager.dart';
+import 'package:cygnus_core_example/providers/event_log_provider.dart';
+import 'package:cygnus_core_example/providers/network_monitor.dart';
+import 'package:cygnus_core_example/providers/settings_manager.dart';
 
-import 'mock_inappwebview_platform.dart';
+import 'mock_cygnus_platform.dart';
 
 /// Creates a mock SettingsManager for testing.
 /// This bypasses the SharedPreferences and CygnusWebViewEnvironment dependencies.
@@ -62,5 +62,5 @@ class TestProviderWrapper extends StatelessWidget {
 
 /// Helper to set up tests that require the CygnusWebViewPlatform mock.
 void setUpMockPlatform() {
-  MockInAppWebViewPlatform.initialize();
+  MockCygnusPlatform.initialize();
 }

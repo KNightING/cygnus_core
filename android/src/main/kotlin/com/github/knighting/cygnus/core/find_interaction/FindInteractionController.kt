@@ -1,20 +1,20 @@
 package com.github.knighting.cygnus.core.find_interaction
 
-import com.github.knighting.cygnus.core.InAppWebViewFlutterPlugin
+import com.github.knighting.cygnus.core.CygnusCorePlugin
 import com.github.knighting.cygnus.core.types.Disposable
 import com.github.knighting.cygnus.core.types.FindSession
-import com.github.knighting.cygnus.core.webview.InAppWebViewInterface
+import com.github.knighting.cygnus.core.webview.CygnusWebViewInterface
 import io.flutter.plugin.common.MethodChannel
 
 open class FindInteractionController(
-  webView: InAppWebViewInterface,
-  plugin: InAppWebViewFlutterPlugin,
+  webView: CygnusWebViewInterface,
+  plugin: CygnusCorePlugin,
   id: Any,
   settings: FindInteractionSettings?
 ) : Disposable {
 
   @JvmField
-  var webView: InAppWebViewInterface? = null
+  var webView: CygnusWebViewInterface? = null
 
   @JvmField
   var activeFindSession: FindSession? = null

@@ -2,11 +2,11 @@
 
 #include <cstring>
 
-#include "../in_app_webview/in_app_webview.h"
+#include "../webview/webview.h"
 #include "../utils/flutter.h"
 #include "../utils/log.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 namespace {
 // Helper to compare method names
@@ -17,7 +17,7 @@ bool string_equals(const gchar* a, const char* b) {
 
 WebMessageChannel::WebMessageChannel(FlBinaryMessenger* messenger,
                                      const std::string& channelId,
-                                     InAppWebView* webView)
+                                     CygnusWebView* webView)
     : ChannelDelegate(messenger, std::string(METHOD_CHANNEL_NAME_PREFIX) + channelId),
       id_(channelId),
       webView_(webView) {
@@ -148,4 +148,4 @@ void WebMessageChannel::onMessage(int portIndex, const std::string* message,
   invokeMethod("onMessage", args);
 }
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin

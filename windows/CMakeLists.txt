@@ -40,8 +40,8 @@ add_custom_command(
 
 # Any new source files that you add to the plugin should be added here.
 list(APPEND PLUGIN_SOURCES
-  "flutter_inappwebview_windows_plugin.cpp"
-  "flutter_inappwebview_windows_plugin.h"
+  "cygnus_core_plugin.cpp"
+  "cygnus_core_plugin.h"
   "utils/log.h"
   "utils/defer.h"
   "utils/timer.h"
@@ -219,30 +219,30 @@ list(APPEND PLUGIN_SOURCES
   "webview_environment/webview_environment_manager.h"
   "webview_environment/webview_environment_channel_delegate.cpp"
   "webview_environment/webview_environment_channel_delegate.h"
-  "in_app_webview/user_content_controller.cpp"
-  "in_app_webview/user_content_controller.h"
-  "in_app_webview/in_app_webview_settings.cpp"
-  "in_app_webview/in_app_webview_settings.h"
-  "in_app_webview/in_app_webview.cpp"
-  "in_app_webview/in_app_webview.h"
-  "in_app_webview/in_app_webview_manager.cpp"
-  "in_app_webview/in_app_webview_manager.h"
-  "in_app_webview/webview_channel_delegate.cpp"
-  "in_app_webview/webview_channel_delegate.h"
-  "headless_in_app_webview/headless_in_app_webview.cpp"
-  "headless_in_app_webview/headless_in_app_webview.h"
-  "headless_in_app_webview/headless_in_app_webview_manager.cpp"
-  "headless_in_app_webview/headless_in_app_webview_manager.h"
-  "headless_in_app_webview/headless_webview_channel_delegate.cpp"
-  "headless_in_app_webview/headless_webview_channel_delegate.h"
-  "in_app_browser/in_app_browser_settings.cpp"
-  "in_app_browser/in_app_browser_settings.h"
-  "in_app_browser/in_app_browser_manager.cpp"
-  "in_app_browser/in_app_browser_manager.h"
-  "in_app_browser/in_app_browser.cpp"
-  "in_app_browser/in_app_browser.h"
-  "in_app_browser/in_app_browser_channel_delegate.cpp"
-  "in_app_browser/in_app_browser_channel_delegate.h"
+  "webview/user_content_controller.cpp"
+  "webview/user_content_controller.h"
+  "webview/webview_settings.cpp"
+  "webview/webview_settings.h"
+  "webview/webview.cpp"
+  "webview/webview.h"
+  "webview/webview_manager.cpp"
+  "webview/webview_manager.h"
+  "webview/webview_channel_delegate.cpp"
+  "webview/webview_channel_delegate.h"
+  "headless_webview/headless_webview.cpp"
+  "headless_webview/headless_webview.h"
+  "headless_webview/headless_webview_manager.cpp"
+  "headless_webview/headless_webview_manager.h"
+  "headless_webview/headless_webview_channel_delegate.cpp"
+  "headless_webview/headless_webview_channel_delegate.h"
+  "browser/browser_settings.cpp"
+  "browser/browser_settings.h"
+  "browser/browser_manager.cpp"
+  "browser/browser_manager.h"
+  "browser/browser.cpp"
+  "browser/browser.h"
+  "browser/browser_channel_delegate.cpp"
+  "browser/browser_channel_delegate.h"
   "cookie_manager.cpp"
   "cookie_manager.h"
   "platform_util.cpp"
@@ -252,8 +252,8 @@ list(APPEND PLUGIN_SOURCES
 # Define the plugin library target. Its name must not be changed (see comment
 # on PLUGIN_NAME above).
 add_library(${PLUGIN_NAME} SHARED
-  "include/cygnus_core/flutter_inappwebview_windows_plugin_c_api.h"
-  "flutter_inappwebview_windows_plugin_c_api.cpp"
+  "include/cygnus_core/cygnus_core_plugin_c_api.h"
+  "cygnus_core_plugin_c_api.cpp"
   ${PLUGIN_SOURCES}
 )
 
@@ -289,7 +289,7 @@ endif()
 # is causing the plugin to fail to compile because of the usage of /WX flag.
 # So, creating here a custom function to apply the standard settings without the /WX flag.
 # Also, added /bigobj flag.
-function(FLUTTER_INAPPWEBVIEW_WINDOWS_APPLY_STANDARD_SETTINGS TARGET)
+function(CYGNUS_WINDOWS_APPLY_STANDARD_SETTINGS TARGET)
   target_compile_features(${TARGET} PUBLIC cxx_std_17)
   target_compile_options(${TARGET} PRIVATE /W4 /wd"4100")
   target_compile_options(${TARGET} PRIVATE /EHsc)
@@ -297,7 +297,7 @@ function(FLUTTER_INAPPWEBVIEW_WINDOWS_APPLY_STANDARD_SETTINGS TARGET)
   target_compile_definitions(${TARGET} PRIVATE "_HAS_EXCEPTIONS=0")
   target_compile_definitions(${TARGET} PRIVATE "$<$<CONFIG:Debug>:_DEBUG>")
 endfunction()
-flutter_inappwebview_windows_apply_standard_settings(${PLUGIN_NAME})
+cygnus_core_apply_standard_settings(${PLUGIN_NAME})
 
 target_link_libraries(${PLUGIN_NAME} PRIVATE ${CMAKE_BINARY_DIR}/packages/Microsoft.Web.WebView2/build/native/Microsoft.Web.WebView2.targets)
 target_link_libraries(${PLUGIN_NAME} PRIVATE ${CMAKE_BINARY_DIR}/packages/Microsoft.Windows.ImplementationLibrary/build/native/Microsoft.Windows.ImplementationLibrary.targets)
@@ -348,7 +348,7 @@ FetchContent_MakeAvailable(googletest)
 # The plugin's C API is not very useful for unit testing, so build the sources
 # directly into the test binary rather than using the DLL.
 add_executable(${TEST_RUNNER}
-  test/flutter_inappwebview_windows_plugin_test.cpp
+  test/cygnus_core_plugin_test.cpp
   ${PLUGIN_SOURCES}
 )
 apply_standard_settings(${TEST_RUNNER})

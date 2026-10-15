@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/utils/settings_defaults.dart';
+import 'package:cygnus_core_example/utils/settings_defaults.dart';
 
 void main() {
   setUp(() {

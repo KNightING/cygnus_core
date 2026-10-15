@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/providers/settings_manager.dart';
-import 'package:flutter_inappwebview_example/models/environment_setting_definition.dart';
-import 'package:flutter_inappwebview_example/models/webview_environment_profile.dart';
-import 'package:flutter_inappwebview_example/utils/platform_utils.dart';
-import 'package:flutter_inappwebview_example/utils/responsive_utils.dart';
-import 'package:flutter_inappwebview_example/widgets/common/app_drawer.dart';
-import 'package:flutter_inappwebview_example/widgets/settings/responsive_setting_tile.dart';
-import 'package:flutter_inappwebview_example/widgets/common/support_badge.dart';
+import 'package:cygnus_core_example/providers/settings_manager.dart';
+import 'package:cygnus_core_example/models/environment_setting_definition.dart';
+import 'package:cygnus_core_example/models/webview_environment_profile.dart';
+import 'package:cygnus_core_example/utils/platform_utils.dart';
+import 'package:cygnus_core_example/utils/responsive_utils.dart';
+import 'package:cygnus_core_example/widgets/common/app_drawer.dart';
+import 'package:cygnus_core_example/widgets/settings/responsive_setting_tile.dart';
+import 'package:cygnus_core_example/widgets/common/support_badge.dart';
 
 import '../utils/support_checker.dart';
 

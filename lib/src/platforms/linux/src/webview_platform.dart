@@ -16,10 +16,10 @@ import 'web_storage/web_storage_manager.dart';
 import 'webview_environment/webview_environment.dart';
 
 /// Implementation of [CygnusWebViewPlatform] using WPE WebKit.
-class LinuxInAppWebViewPlatform extends CygnusWebViewPlatform {
+class CygnusLinuxWebViewPlatform extends CygnusWebViewPlatform {
   /// Registers this class as the default instance of [CygnusWebViewPlatform].
   static void registerWith() {
-    CygnusWebViewPlatform.instance = LinuxInAppWebViewPlatform();
+    CygnusWebViewPlatform.instance = CygnusLinuxWebViewPlatform();
   }
 
   /// Creates a new [LinuxInAppWebViewController].

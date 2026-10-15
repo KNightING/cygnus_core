@@ -12,10 +12,10 @@ import 'web_message/main.dart';
 import 'web_storage/main.dart';
 
 /// Implementation of [CygnusWebViewPlatform] using the WebKit API.
-class MacOSInAppWebViewPlatform extends CygnusWebViewPlatform {
+class CygnusMacOSWebViewPlatform extends CygnusWebViewPlatform {
   /// Registers this class as the default instance of [CygnusWebViewPlatform].
   static void registerWith() {
-    CygnusWebViewPlatform.instance = MacOSInAppWebViewPlatform();
+    CygnusWebViewPlatform.instance = CygnusMacOSWebViewPlatform();
   }
 
   /// Creates a new [MacOSCookieManager].

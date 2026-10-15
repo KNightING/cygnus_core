@@ -3,7 +3,7 @@ import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_inappwebview_example/utils/support_checker.dart';
+import 'package:cygnus_core_example/utils/support_checker.dart';
 
 /// Utility class for platform detection and information.
 class PlatformUtils {

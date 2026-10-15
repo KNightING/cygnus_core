@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview_example/utils/support_checker.dart';
-import 'package:flutter_inappwebview_example/utils/responsive_utils.dart';
-import 'package:flutter_inappwebview_example/widgets/common/support_badge.dart';
-import 'package:flutter_inappwebview_example/widgets/common/method_result_history.dart';
+import 'package:cygnus_core_example/utils/support_checker.dart';
+import 'package:cygnus_core_example/utils/responsive_utils.dart';
+import 'package:cygnus_core_example/widgets/common/support_badge.dart';
+import 'package:cygnus_core_example/widgets/common/method_result_history.dart';
 
 /// A card displaying a method with its description, platform support badges,
 /// result history, and a run button.

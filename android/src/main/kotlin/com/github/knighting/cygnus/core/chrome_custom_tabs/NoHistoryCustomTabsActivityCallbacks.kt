@@ -3,13 +3,13 @@ package com.github.knighting.cygnus.core.chrome_custom_tabs
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import com.github.knighting.cygnus.core.InAppWebViewFlutterPlugin
+import com.github.knighting.cygnus.core.CygnusCorePlugin
 import com.github.knighting.cygnus.core.types.Disposable
 import io.flutter.embedding.android.FlutterActivity
 
-open class NoHistoryCustomTabsActivityCallbacks(plugin: InAppWebViewFlutterPlugin) : Disposable {
+open class NoHistoryCustomTabsActivityCallbacks(plugin: CygnusCorePlugin) : Disposable {
   @JvmField
-  var plugin: InAppWebViewFlutterPlugin? = plugin
+  var plugin: CygnusCorePlugin? = plugin
 
   @JvmField
   val noHistoryBrowserIDs: MutableMap<String?, String?> = HashMap()

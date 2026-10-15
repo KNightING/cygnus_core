@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_inappwebview_example/providers/event_log_provider.dart';
-import 'package:flutter_inappwebview_example/providers/settings_manager.dart';
-import 'package:flutter_inappwebview_example/screens/browsers/inapp_browser_screen.dart';
+import 'package:cygnus_core_example/providers/event_log_provider.dart';
+import 'package:cygnus_core_example/providers/settings_manager.dart';
+import 'package:cygnus_core_example/screens/browsers/inapp_browser_screen.dart';
 import '../test_helpers/test_settings_manager.dart';
 
 void main() {

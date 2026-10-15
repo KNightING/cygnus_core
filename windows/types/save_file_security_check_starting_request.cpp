@@ -1,6 +1,6 @@
 #include "save_file_security_check_starting_request.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   SaveFileSecurityCheckStartingRequest::SaveFileSecurityCheckStartingRequest(const std::optional<std::string>& documentOriginUri,
     const std::optional<std::string>& fileExtension,

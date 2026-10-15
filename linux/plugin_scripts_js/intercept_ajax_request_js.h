@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_INTERCEPT_AJAX_REQUEST_JS_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_INTERCEPT_AJAX_REQUEST_JS_H_
+#ifndef CYGNUS_CORE_PLUGIN_INTERCEPT_AJAX_REQUEST_JS_H_
+#define CYGNUS_CORE_PLUGIN_INTERCEPT_AJAX_REQUEST_JS_H_
 
 #include <memory>
 #include <optional>
@@ -9,7 +9,7 @@
 #include "../types/plugin_script.h"
 #include "javascript_bridge_js.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * JavaScript for intercepting XMLHttpRequest (AJAX) requests.
@@ -22,7 +22,7 @@ namespace flutter_inappwebview_plugin {
 class InterceptAjaxRequestJS {
  public:
   inline static const std::string INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT_GROUP_NAME =
-      "IN_APP_WEBVIEW_INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT";
+      "CYGNUS_WEBVIEW_INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT";
 
   /**
    * Flag variable name used to enable/disable AJAX request interception at runtime.
@@ -498,6 +498,6 @@ class InterceptAjaxRequestJS {
   }
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_INTERCEPT_AJAX_REQUEST_JS_H_
+#endif  // CYGNUS_CORE_PLUGIN_INTERCEPT_AJAX_REQUEST_JS_H_

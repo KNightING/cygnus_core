@@ -1,6 +1,6 @@
 #include "save_as_ui_showing_response.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   SaveAsUIShowingResponse::SaveAsUIShowingResponse(const std::optional<bool>& cancel,
     const std::optional<bool>& suppressDefaultDialog,

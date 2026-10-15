@@ -1,10 +1,10 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_UUID_UTIL_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_UUID_UTIL_H_
+#ifndef CYGNUS_CORE_PLUGIN_UUID_UTIL_H_
+#define CYGNUS_CORE_PLUGIN_UUID_UTIL_H_
 
 #include <string>
 #include <Windows.h>
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
     static inline std::string get_uuid()
     {
         UUID uuid = { 0 };
@@ -22,4 +22,4 @@ namespace flutter_inappwebview_plugin {
     }
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_UUID_UTIL_H_
+#endif //CYGNUS_CORE_PLUGIN_UUID_UTIL_H_

@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_NAVIGATION_ACTION_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_NAVIGATION_ACTION_H_
+#ifndef CYGNUS_CORE_PLUGIN_NAVIGATION_ACTION_H_
+#define CYGNUS_CORE_PLUGIN_NAVIGATION_ACTION_H_
 
 #include <flutter_linux/flutter_linux.h>
 
@@ -8,7 +8,7 @@
 
 #include "url_request.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 enum class NavigationActionType { linkActivated = 0, backForward, reload, other };
 
@@ -32,6 +32,6 @@ class NavigationAction {
   FlValue* toFlValue() const;
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_NAVIGATION_ACTION_H_
+#endif  // CYGNUS_CORE_PLUGIN_NAVIGATION_ACTION_H_

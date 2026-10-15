@@ -3,15 +3,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/foundation.dart';
 import 'package:cygnus_core/cygnus_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_inappwebview_example/screens/webview_environment_settings_editor_screen.dart';
-import 'package:flutter_inappwebview_example/models/environment_setting_definition.dart';
+import 'package:cygnus_core_example/screens/webview_environment_settings_editor_screen.dart';
+import 'package:cygnus_core_example/models/environment_setting_definition.dart';
 
-import '../test_helpers/mock_inappwebview_platform.dart';
+import '../test_helpers/mock_cygnus_platform.dart';
 import '../test_helpers/test_provider_wrapper.dart';
 
 void main() {
   setUpAll(() {
-    MockInAppWebViewPlatform.initialize();
+    MockCygnusPlatform.initialize();
   });
 
   setUp(() {

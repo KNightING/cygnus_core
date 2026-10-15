@@ -1,5 +1,5 @@
 //
-//  InAppWebViewUserScript.swift
+//  CygnusWebViewUserScript.swift
 //  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 16/02/21.

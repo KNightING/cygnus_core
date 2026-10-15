@@ -6,11 +6,11 @@
 
 #include "webview_environment_manager.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   using namespace Microsoft::WRL;
 
-  WebViewEnvironment::WebViewEnvironment(const FlutterInappwebviewWindowsPlugin* plugin, const std::string& id)
+  WebViewEnvironment::WebViewEnvironment(const CygnusCorePlugin* plugin, const std::string& id)
     : plugin(plugin), id(id),
     channelDelegate(std::make_unique<WebViewEnvironmentChannelDelegate>(this, plugin->registrar->messenger()))
   {}

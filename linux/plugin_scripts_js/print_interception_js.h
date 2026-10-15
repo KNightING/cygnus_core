@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_PRINT_INTERCEPTION_JS_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_PRINT_INTERCEPTION_JS_H_
+#ifndef CYGNUS_CORE_PLUGIN_PRINT_INTERCEPTION_JS_H_
+#define CYGNUS_CORE_PLUGIN_PRINT_INTERCEPTION_JS_H_
 
 #include <memory>
 #include <optional>
@@ -9,7 +9,7 @@
 #include "../types/plugin_script.h"
 #include "javascript_bridge_js.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * JavaScript for intercepting window.print() calls.
@@ -26,7 +26,7 @@ namespace flutter_inappwebview_plugin {
 class PrintInterceptionJS {
  public:
   inline static const std::string PRINT_INTERCEPTION_JS_PLUGIN_SCRIPT_GROUP_NAME =
-      "IN_APP_WEBVIEW_PRINT_INTERCEPTION_JS_PLUGIN_SCRIPT";
+      "CYGNUS_WEBVIEW_PRINT_INTERCEPTION_JS_PLUGIN_SCRIPT";
 
   /**
    * JavaScript source code for print interception.
@@ -36,8 +36,8 @@ class PrintInterceptionJS {
     return R"JS(
 (function() {
   // Avoid re-registering
-  if (window._flutterInAppWebViewPrintInterceptionInit) return;
-  window._flutterInAppWebViewPrintInterceptionInit = true;
+  if (window._flutterCygnusWebViewPrintInterceptionInit) return;
+  window._flutterCygnusWebViewPrintInterceptionInit = true;
 
   // Store the original window.print function
   var originalPrint = window.print;
@@ -88,6 +88,6 @@ class PrintInterceptionJS {
   }
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_PRINT_INTERCEPTION_JS_H_
+#endif  // CYGNUS_CORE_PLUGIN_PRINT_INTERCEPTION_JS_H_

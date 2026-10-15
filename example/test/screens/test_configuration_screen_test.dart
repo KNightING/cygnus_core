@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_inappwebview_example/models/test_configuration.dart';
-import 'package:flutter_inappwebview_example/screens/test_automation/test_configuration_screen.dart';
+import 'package:cygnus_core_example/models/test_configuration.dart';
+import 'package:cygnus_core_example/screens/test_automation/test_configuration_screen.dart';
 
 void main() {
   group('TestConfigurationScreen', () {

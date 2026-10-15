@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_LISTENER_CHANNEL_DELEGATE_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_LISTENER_CHANNEL_DELEGATE_H_
+#ifndef CYGNUS_CORE_PLUGIN_WEB_MESSAGE_LISTENER_CHANNEL_DELEGATE_H_
+#define CYGNUS_CORE_PLUGIN_WEB_MESSAGE_LISTENER_CHANNEL_DELEGATE_H_
 
 #include <string>
 
@@ -7,7 +7,7 @@
 
 #include "../types/channel_delegate.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 class WebMessageListener;
 
@@ -57,6 +57,6 @@ class WebMessageListenerChannelDelegate : public ChannelDelegate {
   WebMessageListener* webMessageListener_;
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_LISTENER_CHANNEL_DELEGATE_H_
+#endif  // CYGNUS_CORE_PLUGIN_WEB_MESSAGE_LISTENER_CHANNEL_DELEGATE_H_

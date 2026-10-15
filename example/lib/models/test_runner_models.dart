@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/models/test_result.dart';
-import 'package:flutter_inappwebview_example/utils/constants.dart';
+import 'package:cygnus_core_example/models/test_result.dart';
+import 'package:cygnus_core_example/utils/constants.dart';
 
 /// Status of the test runner
 enum TestStatus { idle, running, paused, completed, error }

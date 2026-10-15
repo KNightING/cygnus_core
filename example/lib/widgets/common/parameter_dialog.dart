@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview_example/utils/parameter_dialog_utils.dart';
+import 'package:cygnus_core_example/utils/parameter_dialog_utils.dart';
 
 enum ParameterValueType {
   string,

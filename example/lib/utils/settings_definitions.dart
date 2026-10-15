@@ -1,5 +1,5 @@
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/models/setting_definition.dart';
+import 'package:cygnus_core_example/models/setting_definition.dart';
 
 List<T> _safeEnumValues<T>(Iterable<T> Function() getter) {
   try {

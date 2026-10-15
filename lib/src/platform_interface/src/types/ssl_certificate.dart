@@ -1,4 +1,4 @@
-import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
+import 'package:cygnus_core_internal_annotations/cygnus_core_internal_annotations.dart';
 
 import '../x509_certificate/x509_certificate.dart';
 import '../x509_certificate/asn1_distinguished_names.dart';

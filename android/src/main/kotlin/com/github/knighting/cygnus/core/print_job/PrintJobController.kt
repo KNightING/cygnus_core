@@ -2,7 +2,7 @@ package com.github.knighting.cygnus.core.print_job
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.github.knighting.cygnus.core.InAppWebViewFlutterPlugin
+import com.github.knighting.cygnus.core.CygnusCorePlugin
 import com.github.knighting.cygnus.core.types.Disposable
 import com.github.knighting.cygnus.core.types.PrintJobInfoExt
 import io.flutter.plugin.common.MethodChannel
@@ -11,7 +11,7 @@ import io.flutter.plugin.common.MethodChannel
 class PrintJobController(
   @JvmField var id: String,
   settings: PrintJobSettings?,
-  plugin: InAppWebViewFlutterPlugin
+  plugin: CygnusCorePlugin
 ) : Disposable {
   companion object {
     // protected static in Java
@@ -20,7 +20,7 @@ class PrintJobController(
   }
 
   @JvmField
-  var plugin: InAppWebViewFlutterPlugin? = plugin
+  var plugin: CygnusCorePlugin? = plugin
   @JvmField
   var channelDelegate: PrintJobChannelDelegate?
   @JvmField

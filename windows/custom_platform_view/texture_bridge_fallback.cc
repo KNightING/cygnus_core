@@ -5,7 +5,7 @@
 #include "util/direct3d11.interop.h"
 #include "util/swizzle.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   TextureBridgeFallback::TextureBridgeFallback(
     GraphicsContext* graphics_context,

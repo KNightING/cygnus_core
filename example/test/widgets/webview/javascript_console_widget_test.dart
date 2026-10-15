@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_inappwebview_example/widgets/webview/javascript_console_widget.dart';
+import 'package:cygnus_core_example/widgets/webview/javascript_console_widget.dart';
 
 void main() {
   group('JavaScriptConsoleWidget', () {

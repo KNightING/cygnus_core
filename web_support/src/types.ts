@@ -1,4 +1,4 @@
-export interface InAppWebViewSettings {
+export interface CygnusWebViewSettings {
   javaScriptBridgeEnabled?: boolean;
   javaScriptBridgeOriginAllowList?: string[];
   javaScriptCanOpenWindowsAutomatically?: boolean;
@@ -9,7 +9,7 @@ export interface InAppWebViewSettings {
   disableContextMenu?: boolean;
 }
 
-export interface InAppWebView {
+export interface CygnusWebView {
   viewId: any,
   iframeId: string,
   iframe?: HTMLIFrameElement | null,
@@ -19,11 +19,11 @@ export interface InAppWebView {
   functionMap: {
     "window.open"?: any;
   },
-  settings: InAppWebViewSettings,
+  settings: CygnusWebViewSettings,
   javaScriptBridgeEnabled: boolean,
   disableContextMenuHandler: (event: Event) => boolean,
   prepare: (settings: { [key: string]: any }) => void,
-  setSettings: (newSettings: InAppWebViewSettings) => void,
+  setSettings: (newSettings: CygnusWebViewSettings) => void,
   reload: () => void,
   goBack: () => void,
   goForward: () => void,
@@ -49,8 +49,8 @@ export interface InAppWebView {
   getSize: () => { width: number, height: number }
 }
 
-export interface InAppWebViewPlugin {
-  createCygnusWebView: (viewId: number | string, iframe: HTMLIFrameElement, iframeContainer: HTMLDivElement, bridgeSecret: string) => InAppWebView,
+export interface CygnusWebViewPlugin {
+  createCygnusWebView: (viewId: number | string, iframe: HTMLIFrameElement, iframeContainer: HTMLDivElement, bridgeSecret: string) => CygnusWebView,
   getCookieExpirationDate: (timestamp: number) => string,
   nativeAsyncCommunication: (method: string, viewId: number | string, args?: any[]) => Promise<string>,
   nativeSyncCommunication: (method: string, viewId: number | string, args?: any[]) => string,

@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_LISTENER_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_LISTENER_H_
+#ifndef CYGNUS_CORE_PLUGIN_WEB_MESSAGE_LISTENER_H_
+#define CYGNUS_CORE_PLUGIN_WEB_MESSAGE_LISTENER_H_
 
 #include <memory>
 #include <set>
@@ -9,9 +9,9 @@
 #include <flutter/binary_messenger.h>
 #include <flutter/encodable_value.h>
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
-class InAppWebView;
+class CygnusWebView;
 class WebMessageListenerChannelDelegate;
 
 /**
@@ -40,13 +40,13 @@ class WebMessageListener {
   static std::unique_ptr<WebMessageListener> fromEncodableValue(
       flutter::BinaryMessenger* messenger,
       const flutter::EncodableValue& value,
-      InAppWebView* webView);
+      CygnusWebView* webView);
 
   WebMessageListener(flutter::BinaryMessenger* messenger,
                      const std::string& id,
                      const std::string& jsObjectName,
                      const std::set<std::string>& allowedOriginRules,
-                     InAppWebView* webView);
+                     CygnusWebView* webView);
   ~WebMessageListener();
 
   const std::string& id() const { return id_; }
@@ -89,16 +89,16 @@ class WebMessageListener {
   friend class WebMessageListenerChannelDelegate;
 
   // Public accessor for webView (needed by channel delegate)
-  InAppWebView* webView() const { return webView_; }
+  CygnusWebView* webView() const { return webView_; }
 
  private:
   std::string id_;
   std::string jsObjectName_;
   std::set<std::string> allowedOriginRules_;
-  InAppWebView* webView_;
+  CygnusWebView* webView_;
   std::unique_ptr<WebMessageListenerChannelDelegate> channelDelegate_;
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_LISTENER_H_
+#endif  // CYGNUS_CORE_PLUGIN_WEB_MESSAGE_LISTENER_H_

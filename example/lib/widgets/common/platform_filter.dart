@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview_example/utils/support_checker.dart';
+import 'package:cygnus_core_example/utils/support_checker.dart';
 
 /// Widget for filtering tests by platform with checkboxes
 class PlatformFilter extends StatelessWidget {

@@ -14,10 +14,10 @@ import SafariServices
 
 public class WebAuthenticationSessionManager: ChannelDelegate {
     static let METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webauthenticationsession"
-    var plugin: InAppWebViewFlutterPlugin?
+    var plugin: CygnusCorePlugin?
     var sessions: [String: WebAuthenticationSession?] = [:]
     
-    init(plugin: InAppWebViewFlutterPlugin) {
+    init(plugin: CygnusCorePlugin) {
         super.init(channel: FlutterMethodChannel(name: WebAuthenticationSessionManager.METHOD_CHANNEL_NAME, binaryMessenger: plugin.registrar.messenger))
         self.plugin = plugin
     }

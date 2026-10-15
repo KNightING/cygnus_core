@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class CustomUIActivity: UIActivity {
-    var plugin: InAppWebViewFlutterPlugin
+    var plugin: CygnusCorePlugin
     var viewId: String
     var id: Int64
     var url: URL
@@ -18,7 +18,7 @@ class CustomUIActivity: UIActivity {
     var label: String?
     var image: UIImage?
     
-    init(plugin: InAppWebViewFlutterPlugin, viewId: String, id: Int64, url: URL, title: String?, label: String?, type: UIActivity.ActivityType?, image: UIImage?) {
+    init(plugin: CygnusCorePlugin, viewId: String, id: Int64, url: URL, title: String?, label: String?, type: UIActivity.ActivityType?, image: UIImage?) {
         self.plugin = plugin
         self.viewId = viewId
         self.id = id

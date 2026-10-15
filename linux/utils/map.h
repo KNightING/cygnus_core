@@ -1,12 +1,12 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_UTIL_MAP_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_UTIL_MAP_H_
+#ifndef CYGNUS_CORE_PLUGIN_UTIL_MAP_H_
+#define CYGNUS_CORE_PLUGIN_UTIL_MAP_H_
 
 #include <algorithm>
 #include <iterator>
 #include <map>
 #include <optional>
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 template <typename T, typename U = void>
 struct is_mappish_impl : std::false_type {};
@@ -37,6 +37,6 @@ static inline std::optional<T> map_at_optional(const std::map<K, T>& map, const 
   return itr != map.end() ? std::make_optional(itr->second) : std::nullopt;
 }
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_UTIL_MAP_H_
+#endif  // CYGNUS_CORE_PLUGIN_UTIL_MAP_H_

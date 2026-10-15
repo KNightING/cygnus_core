@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_COLOR_INPUT_JS_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_COLOR_INPUT_JS_H_
+#ifndef CYGNUS_CORE_PLUGIN_COLOR_INPUT_JS_H_
+#define CYGNUS_CORE_PLUGIN_COLOR_INPUT_JS_H_
 
 #include <memory>
 #include <optional>
@@ -9,7 +9,7 @@
 #include "../types/plugin_script.h"
 #include "javascript_bridge_js.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * JavaScript for intercepting color input elements.
@@ -28,7 +28,7 @@ namespace flutter_inappwebview_plugin {
 class ColorInputJS {
  public:
   inline static const std::string COLOR_INPUT_JS_PLUGIN_SCRIPT_GROUP_NAME =
-      "IN_APP_WEBVIEW_COLOR_INPUT_JS_PLUGIN_SCRIPT";
+      "CYGNUS_WEBVIEW_COLOR_INPUT_JS_PLUGIN_SCRIPT";
 
   /**
    * JavaScript source code for color input interception.
@@ -47,8 +47,8 @@ class ColorInputJS {
     return R"JS(
 (function() {
   // Avoid re-registering
-  if (window._flutterInAppWebViewColorInputInit) return;
-  window._flutterInAppWebViewColorInputInit = true;
+  if (window._flutterCygnusWebViewColorInputInit) return;
+  window._flutterCygnusWebViewColorInputInit = true;
 
   // CSS to style color inputs like Firefox/Chrome (colored box, not text input)
   // WPE WebKit renders color inputs as text fields, so we need to style them properly
@@ -280,6 +280,6 @@ class ColorInputJS {
   }
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_COLOR_INPUT_JS_H_
+#endif  // CYGNUS_CORE_PLUGIN_COLOR_INPUT_JS_H_

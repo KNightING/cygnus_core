@@ -6,7 +6,7 @@ import com.github.knighting.cygnus.core.types.UserScriptInjectionTime
 class InterceptAjaxRequestJS {
   companion object {
 
-    const val INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT"
+    const val INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT"
 
     @JvmStatic
     fun FLAG_VARIABLE_FOR_SHOULD_INTERCEPT_AJAX_REQUEST_JS_SOURCE(): String {

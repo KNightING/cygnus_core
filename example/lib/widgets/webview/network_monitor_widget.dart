@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_inappwebview_example/models/network_request.dart';
-import 'package:flutter_inappwebview_example/providers/network_monitor.dart';
+import 'package:cygnus_core_example/models/network_request.dart';
+import 'package:cygnus_core_example/providers/network_monitor.dart';
 
 /// Widget to display and monitor network requests
 class NetworkMonitorWidget extends StatelessWidget {

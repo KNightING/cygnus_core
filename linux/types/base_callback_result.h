@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_BASE_CALLBACK_RESULT_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_BASE_CALLBACK_RESULT_H_
+#ifndef CYGNUS_CORE_PLUGIN_BASE_CALLBACK_RESULT_H_
+#define CYGNUS_CORE_PLUGIN_BASE_CALLBACK_RESULT_H_
 
 #include <flutter_linux/flutter_linux.h>
 
@@ -7,7 +7,7 @@
 #include <optional>
 #include <string>
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * Base class for async callback results from Flutter method invocations.
@@ -106,6 +106,6 @@ class BaseCallbackResult {
   }
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_BASE_CALLBACK_RESULT_H_
+#endif  // CYGNUS_CORE_PLUGIN_BASE_CALLBACK_RESULT_H_

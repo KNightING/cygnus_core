@@ -4,7 +4,7 @@
 
 #include "util/direct3d11.interop.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   TextureBridgeGpu::TextureBridgeGpu(
     GraphicsContext* graphics_context,

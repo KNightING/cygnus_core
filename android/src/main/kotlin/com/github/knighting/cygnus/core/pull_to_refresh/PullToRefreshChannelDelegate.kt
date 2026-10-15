@@ -14,7 +14,7 @@ class PullToRefreshChannelDelegate(pullToRefreshView: PullToRefreshLayout, chann
       "setEnabled" ->
         if (pullToRefreshView != null) {
           val enabled = call.argument<Boolean>("enabled")
-          pullToRefreshView!!.settings.enabled = enabled // used by InAppWebView.onOverScrolled
+          pullToRefreshView!!.settings.enabled = enabled // used by CygnusWebView.onOverScrolled
           pullToRefreshView!!.isEnabled = enabled!!
           result.success(true)
         } else {

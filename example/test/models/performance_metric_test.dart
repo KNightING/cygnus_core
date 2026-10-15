@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_inappwebview_example/models/performance_metric.dart';
+import 'package:cygnus_core_example/models/performance_metric.dart';
 
 void main() {
   group('PerformanceMetric', () {

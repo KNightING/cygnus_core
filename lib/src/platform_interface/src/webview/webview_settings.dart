@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
+import 'package:cygnus_core_internal_annotations/cygnus_core_internal_annotations.dart';
 import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 import '../types/action_mode_menu_item.dart';

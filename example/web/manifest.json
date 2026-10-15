@@ -1,6 +1,6 @@
 {
-    "name": "flutter_inappwebview_example",
-    "short_name": "flutter_inappwebview_example",
+    "name": "cygnus_core_example",
+    "short_name": "cygnus_core_example",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

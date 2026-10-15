@@ -12,10 +12,10 @@ import FlutterMacOS
 @available(macOS 10.13, *)
 public class MyCookieManager: ChannelDelegate {
     static let METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_cookiemanager"
-    var plugin: InAppWebViewFlutterPlugin?
+    var plugin: CygnusCorePlugin?
     static var httpCookieStore = WKWebsiteDataStore.default().httpCookieStore
     
-    init(plugin: InAppWebViewFlutterPlugin) {
+    init(plugin: CygnusCorePlugin) {
         super.init(channel: FlutterMethodChannel(name: MyCookieManager.METHOD_CHANNEL_NAME, binaryMessenger: plugin.registrar.messenger))
         self.plugin = plugin
     }

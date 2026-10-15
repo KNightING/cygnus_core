@@ -1,6 +1,6 @@
 #include "screen_capture_starting_response.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   ScreenCaptureStartingResponse::ScreenCaptureStartingResponse(const std::optional<bool>& cancel,
     const std::optional<bool>& handled)

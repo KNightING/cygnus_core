@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_inappwebview_example/widgets/common/parameter_dialog.dart';
-import 'package:flutter_inappwebview_example/utils/constants.dart';
+import 'package:cygnus_core_example/widgets/common/parameter_dialog.dart';
+import 'package:cygnus_core_example/utils/constants.dart';
 
 /// Specifies which type of WebView to use for test execution
 enum TestWebViewType {

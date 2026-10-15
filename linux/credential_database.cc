@@ -15,7 +15,7 @@
 #include "utils/log.h"
 #include "utils/util.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 using json = nlohmann::json;
 
@@ -104,7 +104,7 @@ std::string CredentialDatabase::makeKey(const ProtectionSpace& ps) {
 
 std::string CredentialDatabase::makeLabel(const ProtectionSpace& ps, const std::string& username) {
   std::ostringstream oss;
-  oss << "InAppWebView: " << username << "@" << ps.host;
+  oss << "CygnusWebView: " << username << "@" << ps.host;
   if (ps.port != 0 && ps.port != 80 && ps.port != 443) {
     oss << ":" << ps.port;
   }
@@ -166,7 +166,7 @@ std::string CredentialDatabase::getIndexPath(const std::string& app_id) {
     }
   }
 
-  std::string dir = base_dir + "/flutter_inappwebview";
+  std::string dir = base_dir + "/flutter_cygnus_webview";
   mkdir(dir.c_str(), 0700);
 
   std::string app_dir = dir + "/" + app_id;
@@ -591,4 +591,4 @@ void CredentialDatabase::clearAllAuthCredentials() {
   unlink(index_path_.c_str());
 }
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin

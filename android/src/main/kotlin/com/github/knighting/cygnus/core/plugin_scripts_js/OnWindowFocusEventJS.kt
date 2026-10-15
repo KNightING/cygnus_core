@@ -5,7 +5,7 @@ import com.github.knighting.cygnus.core.types.UserScriptInjectionTime
 
 class OnWindowFocusEventJS {
   companion object {
-    const val ON_WINDOW_FOCUS_EVENT_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_ON_WINDOW_FOCUS_EVENT_JS_PLUGIN_SCRIPT"
+    const val ON_WINDOW_FOCUS_EVENT_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_ON_WINDOW_FOCUS_EVENT_JS_PLUGIN_SCRIPT"
 
     // This plugin is only for main frame
     @JvmStatic

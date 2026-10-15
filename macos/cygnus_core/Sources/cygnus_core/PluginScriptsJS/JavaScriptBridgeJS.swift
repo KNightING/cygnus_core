@@ -16,9 +16,9 @@ public class JavaScriptBridgeJS {
         return _JAVASCRIPT_BRIDGE_NAME
     }
     
-    public static let JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT"
+    public static let JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT"
     
-    public static let VAR_JAVASCRIPT_BRIDGE_BRIDGE_SECRET = "$IN_APP_WEBVIEW_JAVASCRIPT_BRIDGE_BRIDGE_SECRET"
+    public static let VAR_JAVASCRIPT_BRIDGE_BRIDGE_SECRET = "$CYGNUS_WEBVIEW_JAVASCRIPT_BRIDGE_BRIDGE_SECRET"
 
     public static func JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT(expectedBridgeSecret: String, allowedOriginRules: [String]?, forMainFrameOnly: Bool) -> PluginScript {
         let source = JAVASCRIPT_BRIDGE_JS_SOURCE().replacingOccurrences(of: VAR_JAVASCRIPT_BRIDGE_BRIDGE_SECRET, with: expectedBridgeSecret)

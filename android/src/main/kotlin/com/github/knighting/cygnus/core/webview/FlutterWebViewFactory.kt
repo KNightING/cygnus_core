@@ -2,13 +2,13 @@ package com.github.knighting.cygnus.core.webview
 
 import android.content.Context
 import android.view.ViewGroup
-import com.github.knighting.cygnus.core.InAppWebViewFlutterPlugin
-import com.github.knighting.cygnus.core.webview.in_app_webview.FlutterWebView
+import com.github.knighting.cygnus.core.CygnusCorePlugin
+import com.github.knighting.cygnus.core.webview.webview.FlutterWebView
 import io.flutter.plugin.common.StandardMessageCodec
 import io.flutter.plugin.platform.PlatformView
 import io.flutter.plugin.platform.PlatformViewFactory
 
-class FlutterWebViewFactory(private val plugin: InAppWebViewFlutterPlugin) : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
+class FlutterWebViewFactory(private val plugin: CygnusCorePlugin) : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
   companion object {
     const val VIEW_TYPE_ID = "com.github.knighting.cygnus/webview"
   }
@@ -21,20 +21,20 @@ class FlutterWebViewFactory(private val plugin: InAppWebViewFlutterPlugin) : Pla
     val keepAliveId = params["keepAliveId"] as String?
     val headlessWebViewId = params["headlessWebViewId"] as String?
 
-    val headlessInAppWebViewManager = plugin.headlessInAppWebViewManager
-    if (headlessWebViewId != null && headlessInAppWebViewManager != null) {
-      val headlessInAppWebView = headlessInAppWebViewManager.webViews[headlessWebViewId]
-      if (headlessInAppWebView != null) {
-        flutterWebView = headlessInAppWebView.disposeAndGetFlutterWebView()
+    val headlessCygnusWebViewManager = plugin.headlessCygnusWebViewManager
+    if (headlessWebViewId != null && headlessCygnusWebViewManager != null) {
+      val headlessCygnusWebView = headlessCygnusWebViewManager.webViews[headlessWebViewId]
+      if (headlessCygnusWebView != null) {
+        flutterWebView = headlessCygnusWebView.disposeAndGetFlutterWebView()
         if (flutterWebView != null) {
           flutterWebView.keepAliveId = keepAliveId
         }
       }
     }
 
-    val inAppWebViewManager = plugin.inAppWebViewManager
-    if (keepAliveId != null && flutterWebView == null && inAppWebViewManager != null) {
-      flutterWebView = inAppWebViewManager.keepAliveWebViews[keepAliveId]
+    val cygnusWebViewManager = plugin.cygnusWebViewManager
+    if (keepAliveId != null && flutterWebView == null && cygnusWebViewManager != null) {
+      flutterWebView = cygnusWebViewManager.keepAliveWebViews[keepAliveId]
       if (flutterWebView != null) {
         // be sure to remove the view from the previous parent.
         val view = flutterWebView.view
@@ -55,8 +55,8 @@ class FlutterWebViewFactory(private val plugin: InAppWebViewFlutterPlugin) : Pla
       flutterWebView = FlutterWebView(plugin, context!!, viewId, params)
     }
 
-    if (keepAliveId != null && inAppWebViewManager != null) {
-      inAppWebViewManager.keepAliveWebViews[keepAliveId] = flutterWebView
+    if (keepAliveId != null && cygnusWebViewManager != null) {
+      cygnusWebViewManager.keepAliveWebViews[keepAliveId] = flutterWebView
     }
 
     if (shouldMakeInitialLoad) {

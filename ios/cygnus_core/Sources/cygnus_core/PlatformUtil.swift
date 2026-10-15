@@ -11,9 +11,9 @@ import Flutter
 
 public class PlatformUtil: ChannelDelegate {
     static let METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_platformutil"
-    var plugin: InAppWebViewFlutterPlugin?
+    var plugin: CygnusCorePlugin?
     
-    init(plugin: InAppWebViewFlutterPlugin) {
+    init(plugin: CygnusCorePlugin) {
         super.init(channel: FlutterMethodChannel(name: PlatformUtil.METHOD_CHANNEL_NAME, binaryMessenger: plugin.registrar.messenger()))
         self.plugin = plugin
     }

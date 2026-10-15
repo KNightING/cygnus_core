@@ -1,11 +1,11 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_URL_AUTHENTICATION_CHALLENGE_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_URL_AUTHENTICATION_CHALLENGE_H_
+#ifndef CYGNUS_CORE_PLUGIN_URL_AUTHENTICATION_CHALLENGE_H_
+#define CYGNUS_CORE_PLUGIN_URL_AUTHENTICATION_CHALLENGE_H_
 
 #include <flutter/standard_method_codec.h>
 
 #include "url_protection_space.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   class URLAuthenticationChallenge
   {
@@ -19,4 +19,4 @@ namespace flutter_inappwebview_plugin
   };
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_URL_AUTHENTICATION_CHALLENGE_H_
+#endif //CYGNUS_CORE_PLUGIN_URL_AUTHENTICATION_CHALLENGE_H_

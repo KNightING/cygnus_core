@@ -17,11 +17,11 @@ import java.util.Locale
 import java.util.TimeZone
 import java.util.regex.Pattern
 
-open class MyCookieManager(plugin: InAppWebViewFlutterPlugin) :
+open class MyCookieManager(plugin: CygnusCorePlugin) :
   ChannelDelegateImpl(MethodChannel(plugin.messenger, METHOD_CHANNEL_NAME)) {
 
   @JvmField
-  var plugin: InAppWebViewFlutterPlugin? = plugin
+  var plugin: CygnusCorePlugin? = plugin
 
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
     init()

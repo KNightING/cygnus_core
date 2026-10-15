@@ -1,9 +1,9 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_JS_CONFIRM_RESPONSE_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_JS_CONFIRM_RESPONSE_H_
+#ifndef CYGNUS_CORE_PLUGIN_JS_CONFIRM_RESPONSE_H_
+#define CYGNUS_CORE_PLUGIN_JS_CONFIRM_RESPONSE_H_
 
 #include <flutter_linux/flutter_linux.h>
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * Response action for JS confirm dialogs.
@@ -23,6 +23,6 @@ class JsConfirmResponse {
   ~JsConfirmResponse() = default;
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_JS_CONFIRM_RESPONSE_H_
+#endif  // CYGNUS_CORE_PLUGIN_JS_CONFIRM_RESPONSE_H_

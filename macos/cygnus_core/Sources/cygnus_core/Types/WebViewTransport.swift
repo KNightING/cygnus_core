@@ -8,10 +8,10 @@
 import Foundation
 
 public class WebViewTransport: NSObject {
-    var webView: InAppWebView
+    var webView: CygnusWebView
     var request: URLRequest
     
-    init(webView: InAppWebView, request: URLRequest) {
+    init(webView: CygnusWebView, request: URLRequest) {
         self.webView = webView
         self.request = request
     }

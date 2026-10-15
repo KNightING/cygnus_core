@@ -10,7 +10,7 @@
 #include "texture_bridge_fallback.h"
 #endif
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   constexpr auto kErrorInvalidArgs = "invalidArguments";
 
@@ -116,7 +116,7 @@ namespace flutter_inappwebview_plugin
     flutter::TextureRegistrar* texture_registrar,
     GraphicsContext* graphics_context,
     HWND hwnd,
-    std::shared_ptr<flutter_inappwebview_plugin::InAppWebView> webView)
+    std::shared_ptr<cygnus_core_plugin::CygnusWebView> webView)
     : hwnd_(hwnd), view(std::move(webView)), texture_registrar_(texture_registrar)
   {
 #ifdef HAVE_FLUTTER_D3D_TEXTURE
@@ -261,7 +261,7 @@ namespace flutter_inappwebview_plugin
 
       if (pointer && event && x && y && size && pressure && view) {
         view->setPointerUpdate(*pointer,
-          static_cast<flutter_inappwebview_plugin::InAppWebViewPointerEventKind>(*event),
+          static_cast<cygnus_core_plugin::CygnusWebViewPointerEventKind>(*event),
           *x, *y, *size, *pressure);
         return result->Success();
       }
@@ -289,8 +289,8 @@ namespace flutter_inappwebview_plugin
         const auto buttonValue = std::get_if<int32_t>(&button->second);
         if (kindValue && buttonValue && view) {
           view->setPointerButtonState(
-            static_cast<InAppWebViewPointerEventKind>(*kindValue),
-            static_cast<InAppWebViewPointerButton>(*buttonValue));
+            static_cast<CygnusWebViewPointerEventKind>(*kindValue),
+            static_cast<CygnusWebViewPointerButton>(*buttonValue));
           return result->Success();
         }
       }

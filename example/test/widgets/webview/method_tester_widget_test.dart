@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_inappwebview_example/widgets/webview/method_tester_widget.dart';
+import 'package:cygnus_core_example/widgets/webview/method_tester_widget.dart';
 
-import '../../test_helpers/mock_inappwebview_platform.dart';
+import '../../test_helpers/mock_cygnus_platform.dart';
 
 void main() {
   setUpAll(() {
-    MockInAppWebViewPlatform.initialize();
+    MockCygnusPlatform.initialize();
   });
 
   group('MethodTesterWidget', () {

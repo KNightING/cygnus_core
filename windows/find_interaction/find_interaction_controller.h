@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_FIND_INTERACTION_CONTROLLER_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_FIND_INTERACTION_CONTROLLER_H_
+#ifndef CYGNUS_CORE_PLUGIN_FIND_INTERACTION_CONTROLLER_H_
+#define CYGNUS_CORE_PLUGIN_FIND_INTERACTION_CONTROLLER_H_
 
 #include <flutter/binary_messenger.h>
 #include <flutter/standard_message_codec.h>
@@ -10,9 +10,9 @@
 #include <optional>
 #include <string>
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
-  class InAppWebView;
+  class CygnusWebView;
 
   class FindInteractionChannelDelegate;
 
@@ -21,10 +21,10 @@ namespace flutter_inappwebview_plugin
   public:
     static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_find_interaction_";
 
-    InAppWebView* webView;
+    CygnusWebView* webView;
     std::unique_ptr<FindInteractionChannelDelegate> channelDelegate;
 
-    FindInteractionController(InAppWebView* webView, flutter::BinaryMessenger* messenger);
+    FindInteractionController(CygnusWebView* webView, flutter::BinaryMessenger* messenger);
     ~FindInteractionController();
 
     void dispose();
@@ -60,4 +60,4 @@ namespace flutter_inappwebview_plugin
   };
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_FIND_INTERACTION_CONTROLLER_H_
+#endif //CYGNUS_CORE_PLUGIN_FIND_INTERACTION_CONTROLLER_H_

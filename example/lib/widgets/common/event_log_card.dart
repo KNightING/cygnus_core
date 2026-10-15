@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_inappwebview_example/providers/event_log_provider.dart';
+import 'package:cygnus_core_example/providers/event_log_provider.dart';
 
 /// A card displaying a scrollable event log.
 ///

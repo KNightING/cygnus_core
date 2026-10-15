@@ -1,6 +1,6 @@
 #include "size_2d.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   Size2D::Size2D(const double& width, const double& height)
     : width(width), height(height)

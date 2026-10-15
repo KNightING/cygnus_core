@@ -6,7 +6,7 @@
 #include "utils/flutter.h"
 #include "utils/log.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 namespace {
 // Helper to compare method names
@@ -370,4 +370,4 @@ void WebStorageManager::removeDataModifiedSince(FlMethodCall* method_call) {
       method_call);
 }
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin

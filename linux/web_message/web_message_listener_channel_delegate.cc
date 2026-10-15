@@ -2,12 +2,12 @@
 
 #include <cstring>
 
-#include "../in_app_webview/in_app_webview.h"
+#include "../webview/webview.h"
 #include "../utils/flutter.h"
 #include "../utils/log.h"
 #include "web_message_listener.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 namespace {
 // Helper to compare method names
@@ -42,7 +42,7 @@ void WebMessageListenerChannelDelegate::HandleMethodCall(FlMethodCall* method_ca
     // Handle reply from Dart to JavaScript
     // This is called when JavaScriptReplyProxy.postMessage() is invoked on the Dart side
     
-    InAppWebView* webView = webMessageListener_->webView();
+    CygnusWebView* webView = webMessageListener_->webView();
     if (webView == nullptr || webView->webview() == nullptr) {
       g_autoptr(FlValue) result = fl_value_new_bool(false);
       fl_method_call_respond_success(method_call, result, nullptr);
@@ -192,4 +192,4 @@ void WebMessageListenerChannelDelegate::dispose() {
   webMessageListener_ = nullptr;
 }
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin

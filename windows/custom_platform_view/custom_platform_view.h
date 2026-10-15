@@ -7,23 +7,23 @@
 
 #include <memory>
 
-#include "../in_app_webview/in_app_webview.h"
+#include "../webview/webview.h"
 #include "graphics_context.h"
 #include "texture_bridge.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   class CustomPlatformView {
   public:
     static inline const wchar_t* CLASS_NAME = L"CustomPlatformView";
 
-    std::shared_ptr<flutter_inappwebview_plugin::InAppWebView> view;
+    std::shared_ptr<cygnus_core_plugin::CygnusWebView> view;
 
     CustomPlatformView(flutter::BinaryMessenger* messenger,
       flutter::TextureRegistrar* texture_registrar,
       GraphicsContext* graphics_context,
       HWND hwnd,
-      std::shared_ptr<flutter_inappwebview_plugin::InAppWebView> webView);
+      std::shared_ptr<cygnus_core_plugin::CygnusWebView> webView);
     ~CustomPlatformView();
 
     TextureBridge* texture_bridge() const { return texture_bridge_.get(); }

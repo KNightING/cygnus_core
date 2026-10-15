@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_WEBVIEW_ENVIRONMENT_CHANNEL_DELEGATE_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_WEBVIEW_ENVIRONMENT_CHANNEL_DELEGATE_H_
+#ifndef CYGNUS_CORE_PLUGIN_WEBVIEW_ENVIRONMENT_CHANNEL_DELEGATE_H_
+#define CYGNUS_CORE_PLUGIN_WEBVIEW_ENVIRONMENT_CHANNEL_DELEGATE_H_
 
 #include <flutter/method_channel.h>
 
@@ -7,7 +7,7 @@
 #include "../types/browser_process_infos_changed_detail.h"
 #include "../types/channel_delegate.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   class WebViewEnvironment;
 
@@ -29,4 +29,4 @@ namespace flutter_inappwebview_plugin
   };
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_WEBVIEW_ENVIRONMENT_CHANNEL_DELEGATE_H_
+#endif //CYGNUS_CORE_PLUGIN_WEBVIEW_ENVIRONMENT_CHANNEL_DELEGATE_H_

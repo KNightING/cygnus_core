@@ -1,14 +1,14 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_HIT_TEST_RESULT_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_HIT_TEST_RESULT_H_
+#ifndef CYGNUS_CORE_PLUGIN_HIT_TEST_RESULT_H_
+#define CYGNUS_CORE_PLUGIN_HIT_TEST_RESULT_H_
 
 #include <flutter_linux/flutter_linux.h>
 
 #include <optional>
 #include <string>
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
-/// Hit test result types matching InAppWebViewHitTestResultType in Dart
+/// Hit test result types matching CygnusWebViewHitTestResultType in Dart
 enum class HitTestResultType {
   UNKNOWN_TYPE = 0,
   PHONE_TYPE = 2,
@@ -22,7 +22,7 @@ enum class HitTestResultType {
 
 /// HitTestResult - represents the result of a hit test on the WebView
 ///
-/// This maps to InAppWebViewHitTestResult in Dart.
+/// This maps to CygnusWebViewHitTestResult in Dart.
 /// It contains the type of element hit and optional extra information (like a URL).
 class HitTestResult {
  public:
@@ -49,6 +49,6 @@ class HitTestResult {
   std::optional<std::string> extra_;
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_HIT_TEST_RESULT_H_
+#endif  // CYGNUS_CORE_PLUGIN_HIT_TEST_RESULT_H_

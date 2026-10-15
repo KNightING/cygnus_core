@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_WEBVIEW_ENVIRONMENT_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_WEBVIEW_ENVIRONMENT_H_
+#ifndef CYGNUS_CORE_PLUGIN_WEBVIEW_ENVIRONMENT_H_
+#define CYGNUS_CORE_PLUGIN_WEBVIEW_ENVIRONMENT_H_
 
 #include <functional>
 #include <string>
@@ -7,11 +7,11 @@
 #include <WebView2.h>
 #include <wil/com.h>
 
-#include "../flutter_inappwebview_windows_plugin.h"
+#include "../cygnus_core_plugin.h"
 #include "webview_environment_channel_delegate.h"
 #include "webview_environment_settings.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   class WebViewEnvironment
   {
@@ -19,12 +19,12 @@ namespace flutter_inappwebview_plugin
     static inline const wchar_t* CLASS_NAME = L"WebViewEnvironment";
     static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_environment_";
 
-    const FlutterInappwebviewWindowsPlugin* plugin;
+    const CygnusCorePlugin* plugin;
     std::string id;
 
     std::unique_ptr<WebViewEnvironmentChannelDelegate> channelDelegate;
 
-    WebViewEnvironment(const FlutterInappwebviewWindowsPlugin* plugin, const std::string& id);
+    WebViewEnvironment(const CygnusCorePlugin* plugin, const std::string& id);
     ~WebViewEnvironment();
 
     void create(const std::unique_ptr<WebViewEnvironmentSettings> settings, const std::function<void(HRESULT)> completionHandler);
@@ -46,4 +46,4 @@ namespace flutter_inappwebview_plugin
     WNDCLASS windowClass_ = {};
   };
 }
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_WEBVIEW_ENVIRONMENT_H_
+#endif //CYGNUS_CORE_PLUGIN_WEBVIEW_ENVIRONMENT_H_

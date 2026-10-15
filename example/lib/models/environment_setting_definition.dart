@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/utils/support_checker.dart';
+import 'package:cygnus_core_example/utils/support_checker.dart';
 
 /// Enum representing the type of an environment setting.
 enum EnvironmentSettingType {

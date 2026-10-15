@@ -2,7 +2,7 @@
 
 #include "../utils/flutter.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 ClientCertChallenge::ClientCertChallenge(const URLProtectionSpace& protectionSpace, bool isProxy)
     : protectionSpace(protectionSpace), isProxy(isProxy) {}
@@ -42,4 +42,4 @@ FlValue* ClientCertChallenge::toFlValue() const {
   });
 }
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin

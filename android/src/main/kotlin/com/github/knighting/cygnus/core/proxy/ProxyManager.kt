@@ -3,13 +3,13 @@ package com.github.knighting.cygnus.core.proxy
 import androidx.webkit.ProxyConfig
 import androidx.webkit.ProxyController
 import androidx.webkit.WebViewFeature
-import com.github.knighting.cygnus.core.InAppWebViewFlutterPlugin
+import com.github.knighting.cygnus.core.CygnusCorePlugin
 import com.github.knighting.cygnus.core.types.ChannelDelegateImpl
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import java.util.concurrent.Executor
 
-class ProxyManager(plugin: InAppWebViewFlutterPlugin) :
+class ProxyManager(plugin: CygnusCorePlugin) :
   ChannelDelegateImpl(MethodChannel(plugin.messenger, METHOD_CHANNEL_NAME)) {
   companion object {
     // protected static in Java
@@ -29,7 +29,7 @@ class ProxyManager(plugin: InAppWebViewFlutterPlugin) :
   }
 
   @JvmField
-  var plugin: InAppWebViewFlutterPlugin? = plugin
+  var plugin: CygnusCorePlugin? = plugin
 
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
     init()

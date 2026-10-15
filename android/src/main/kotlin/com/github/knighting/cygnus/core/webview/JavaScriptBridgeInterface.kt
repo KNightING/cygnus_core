@@ -8,13 +8,13 @@ import android.webkit.ValueCallback
 import com.github.knighting.cygnus.core.plugin_scripts_js.JavaScriptBridgeJS
 import com.github.knighting.cygnus.core.print_job.PrintJobSettings
 import com.github.knighting.cygnus.core.types.JavaScriptHandlerFunctionData
-import com.github.knighting.cygnus.core.webview.in_app_webview.InAppWebView
+import com.github.knighting.cygnus.core.webview.webview.CygnusWebView
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
 class JavaScriptBridgeInterface(
-  private var inAppWebView: InAppWebView?,
+  private var cygnusWebView: CygnusWebView?,
   private val expectedBridgeSecret: String
 ) {
   companion object {
@@ -23,7 +23,7 @@ class JavaScriptBridgeInterface(
 
   @JavascriptInterface
   fun _hideContextMenu() {
-    val webView = inAppWebView
+    val webView = cygnusWebView
     if (webView == null) {
       return
     }
@@ -31,8 +31,8 @@ class JavaScriptBridgeInterface(
     val handler = Handler(webView.webViewLooper)
     handler.post(object : Runnable {
       override fun run() {
-        if (inAppWebView != null && inAppWebView!!.floatingContextMenu != null) {
-          inAppWebView!!.hideContextMenu()
+        if (cygnusWebView != null && cygnusWebView!!.floatingContextMenu != null) {
+          cygnusWebView!!.hideContextMenu()
         }
       }
     })
@@ -40,7 +40,7 @@ class JavaScriptBridgeInterface(
 
   @JavascriptInterface
   fun _callHandler(jsonStringifiedData: String?) {
-    val webView = inAppWebView
+    val webView = cygnusWebView
     if (webView == null) {
       return
     }
@@ -99,7 +99,7 @@ class JavaScriptBridgeInterface(
     val handler = Handler(webView.webViewLooper)
     handler.post(object : Runnable {
       override fun run() {
-        if (inAppWebView == null) {
+        if (cygnusWebView == null) {
           // The webview has already been disposed, ignore.
           return
         }
@@ -110,16 +110,16 @@ class JavaScriptBridgeInterface(
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
               val settings = PrintJobSettings()
               settings.handledByClient = true
-              val printJobId = inAppWebView!!.printCurrentPage(settings)
-              val printChannelDelegate = inAppWebView?.channelDelegate
+              val printJobId = cygnusWebView!!.printCurrentPage(settings)
+              val printChannelDelegate = cygnusWebView?.channelDelegate
               if (printChannelDelegate != null) {
-                printChannelDelegate.onPrintRequest(inAppWebView!!.url, printJobId, object : WebViewChannelDelegate.PrintRequestCallback() {
+                printChannelDelegate.onPrintRequest(cygnusWebView!!.url, printJobId, object : WebViewChannelDelegate.PrintRequestCallback() {
                   override fun nonNullSuccess(handledByClient: Boolean): Boolean {
                     return !handledByClient
                   }
 
                   override fun defaultBehaviour(handledByClient: Boolean?) {
-                    val printJobManager = inAppWebView?.plugin?.printJobManager
+                    val printJobManager = cygnusWebView?.plugin?.printJobManager
                     if (printJobManager != null) {
                       val printJobController = printJobManager.jobs.get(printJobId)
                       if (printJobController != null) {
@@ -141,10 +141,10 @@ class JavaScriptBridgeInterface(
               val arguments = JSONArray(args)
               val jsonObject = arguments.getJSONObject(0)
               val resultUuid = jsonObject.getString("resultUuid")
-              val callAsyncJavaScriptCallback = inAppWebView!!.callAsyncJavaScriptCallbacks.get(resultUuid)
+              val callAsyncJavaScriptCallback = cygnusWebView!!.callAsyncJavaScriptCallbacks.get(resultUuid)
               if (callAsyncJavaScriptCallback != null) {
                 callAsyncJavaScriptCallback.onReceiveValue(jsonObject.toString())
-                inAppWebView!!.callAsyncJavaScriptCallbacks.remove(resultUuid)
+                cygnusWebView!!.callAsyncJavaScriptCallbacks.remove(resultUuid)
               }
             } catch (e: JSONException) {
               Log.e(LOG_TAG, "", e)
@@ -155,10 +155,10 @@ class JavaScriptBridgeInterface(
               val arguments = JSONArray(args)
               val jsonObject = arguments.getJSONObject(0)
               val resultUuid = jsonObject.getString("resultUuid")
-              val evaluateJavaScriptCallback = inAppWebView!!.evaluateJavaScriptContentWorldCallbacks.get(resultUuid)
+              val evaluateJavaScriptCallback = cygnusWebView!!.evaluateJavaScriptContentWorldCallbacks.get(resultUuid)
               if (evaluateJavaScriptCallback != null) {
                 evaluateJavaScriptCallback.onReceiveValue(if (jsonObject.has("value")) jsonObject.get("value").toString() else "null")
-                inAppWebView!!.evaluateJavaScriptContentWorldCallbacks.remove(resultUuid)
+                cygnusWebView!!.evaluateJavaScriptContentWorldCallbacks.remove(resultUuid)
               }
             } catch (e: JSONException) {
               Log.e(LOG_TAG, "", e)
@@ -170,24 +170,24 @@ class JavaScriptBridgeInterface(
         }
 
         if (isInternalHandler) {
-          if (inAppWebView != null) {
+          if (cygnusWebView != null) {
             val sourceCode = "if (window." + JavaScriptBridgeJS.get_JAVASCRIPT_BRIDGE_NAME() + "[" + _callHandlerID + "] != null) { " +
                     "window." + JavaScriptBridgeJS.get_JAVASCRIPT_BRIDGE_NAME() + "[" + _callHandlerID + "].resolve(); " +
                     "delete window." + JavaScriptBridgeJS.get_JAVASCRIPT_BRIDGE_NAME() + "[" + _callHandlerID + "]; " +
                     "}"
-            inAppWebView!!.evaluateJavascript(sourceCode, null as ValueCallback<String>?)
+            cygnusWebView!!.evaluateJavascript(sourceCode, null as ValueCallback<String>?)
           }
           return
         }
 
 
-        val channelDelegate = inAppWebView!!.channelDelegate
+        val channelDelegate = cygnusWebView!!.channelDelegate
         if (channelDelegate != null) {
           val data = JavaScriptHandlerFunctionData(origin, requestUrl, isMainFrame, args)
           // invoke flutter javascript handler and send back flutter data as a JSON Object to javascript
           channelDelegate.onCallJsHandler(handlerName, data, object : WebViewChannelDelegate.CallJsHandlerCallback() {
             override fun defaultBehaviour(json: Any?) {
-              if (inAppWebView == null) {
+              if (cygnusWebView == null) {
                 // The webview has already been disposed, ignore.
                 return
               }
@@ -195,14 +195,14 @@ class JavaScriptBridgeInterface(
                       "window." + JavaScriptBridgeJS.get_JAVASCRIPT_BRIDGE_NAME() + "[" + _callHandlerID + "].resolve(" + json + "); " +
                       "delete window." + JavaScriptBridgeJS.get_JAVASCRIPT_BRIDGE_NAME() + "[" + _callHandlerID + "]; " +
                       "}"
-              inAppWebView!!.evaluateJavascript(sourceCode, null as ValueCallback<String>?)
+              cygnusWebView!!.evaluateJavascript(sourceCode, null as ValueCallback<String>?)
             }
 
             override fun error(errorCode: String, errorMessage: String?, errorDetails: Any?) {
               val message = errorCode + (if (errorMessage != null) ", " + errorMessage else "")
               Log.e(LOG_TAG, message)
 
-              if (inAppWebView == null) {
+              if (cygnusWebView == null) {
                 // The webview has already been disposed, ignore.
                 return
               }
@@ -211,7 +211,7 @@ class JavaScriptBridgeInterface(
                       "window." + JavaScriptBridgeJS.get_JAVASCRIPT_BRIDGE_NAME() + "[" + _callHandlerID + "].reject(new Error(" + JSONObject.quote(message) + ")); " +
                       "delete window." + JavaScriptBridgeJS.get_JAVASCRIPT_BRIDGE_NAME() + "[" + _callHandlerID + "]; " +
                       "}"
-              inAppWebView!!.evaluateJavascript(sourceCode, null as ValueCallback<String>?)
+              cygnusWebView!!.evaluateJavascript(sourceCode, null as ValueCallback<String>?)
             }
           })
         }
@@ -220,6 +220,6 @@ class JavaScriptBridgeInterface(
   }
 
   fun dispose() {
-    inAppWebView = null
+    cygnusWebView = null
   }
 }

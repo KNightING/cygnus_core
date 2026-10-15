@@ -9,7 +9,7 @@ import Foundation
 
 public class InterceptAjaxRequestJS {
     
-    public static let INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT"
+    public static let INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT"
     
     public static func FLAG_VARIABLE_FOR_SHOULD_INTERCEPT_AJAX_REQUEST_JS_SOURCE() -> String {
         return "window.\(JavaScriptBridgeJS.get_JAVASCRIPT_BRIDGE_NAME())._useShouldInterceptAjaxRequest"

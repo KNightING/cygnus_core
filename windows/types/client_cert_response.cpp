@@ -1,7 +1,7 @@
 #include "../utils/flutter.h"
 #include "client_cert_response.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   ClientCertResponse::ClientCertResponse(const int64_t& selectedCertificate,
     const std::optional<ClientCertResponseAction>& action)

@@ -1,24 +1,24 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_PLATFORM_UTIL_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_PLATFORM_UTIL_H_
+#ifndef CYGNUS_CORE_PLUGIN_PLATFORM_UTIL_H_
+#define CYGNUS_CORE_PLUGIN_PLATFORM_UTIL_H_
 
 #include <flutter/method_channel.h>
 #include <flutter/standard_message_codec.h>
 #include <functional>
 #include <optional>
 
-#include "flutter_inappwebview_windows_plugin.h"
+#include "cygnus_core_plugin.h"
 #include "types/channel_delegate.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   class PlatformUtil : public ChannelDelegate
   {
   public:
     static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_platformutil";
 
-    const FlutterInappwebviewWindowsPlugin* plugin;
+    const CygnusCorePlugin* plugin;
 
-    PlatformUtil(const FlutterInappwebviewWindowsPlugin* plugin);
+    PlatformUtil(const CygnusCorePlugin* plugin);
     ~PlatformUtil();
 
     void HandleMethodCall(
@@ -38,4 +38,4 @@ namespace flutter_inappwebview_plugin
   };
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_PLATFORM_UTIL_H_
+#endif //CYGNUS_CORE_PLUGIN_PLATFORM_UTIL_H_

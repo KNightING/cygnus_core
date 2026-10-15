@@ -9,8 +9,8 @@ import androidx.webkit.WebViewCompat
 import androidx.webkit.WebViewFeature
 import com.github.knighting.cygnus.core.Util
 import com.github.knighting.cygnus.core.find_interaction.FindInteractionChannelDelegate
-import com.github.knighting.cygnus.core.in_app_browser.InAppBrowserActivity
-import com.github.knighting.cygnus.core.in_app_browser.InAppBrowserSettings
+import com.github.knighting.cygnus.core.browser.CygnusBrowserActivity
+import com.github.knighting.cygnus.core.browser.CygnusBrowserSettings
 import com.github.knighting.cygnus.core.print_job.PrintJobSettings
 import com.github.knighting.cygnus.core.types.BaseCallbackResultImpl
 import com.github.knighting.cygnus.core.types.ChannelDelegateImpl
@@ -24,7 +24,7 @@ import com.github.knighting.cygnus.core.types.GeolocationPermissionShowPromptRes
 import com.github.knighting.cygnus.core.types.HitTestResult
 import com.github.knighting.cygnus.core.types.HttpAuthResponse
 import com.github.knighting.cygnus.core.types.HttpAuthenticationChallenge
-import com.github.knighting.cygnus.core.types.InAppWebViewRect
+import com.github.knighting.cygnus.core.types.CygnusWebViewRect
 import com.github.knighting.cygnus.core.types.JavaScriptHandlerFunctionData
 import com.github.knighting.cygnus.core.types.JsAlertResponse
 import com.github.knighting.cygnus.core.types.JsBeforeUnloadResponse
@@ -46,8 +46,8 @@ import com.github.knighting.cygnus.core.types.WebMessageCompatExt
 import com.github.knighting.cygnus.core.types.WebResourceErrorExt
 import com.github.knighting.cygnus.core.types.WebResourceRequestExt
 import com.github.knighting.cygnus.core.types.WebResourceResponseExt
-import com.github.knighting.cygnus.core.webview.in_app_webview.InAppWebView
-import com.github.knighting.cygnus.core.webview.in_app_webview.InAppWebViewSettings
+import com.github.knighting.cygnus.core.webview.webview.CygnusWebView
+import com.github.knighting.cygnus.core.webview.webview.CygnusWebViewSettings
 import com.github.knighting.cygnus.core.webview.web_message.WebMessageListener
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -56,7 +56,7 @@ import java.util.ArrayList
 import java.util.HashMap
 import java.util.HashSet
 
-open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel) : ChannelDelegateImpl(channel) {
+open class WebViewChannelDelegate(webView: CygnusWebView, channel: MethodChannel) : ChannelDelegateImpl(channel) {
   companion object {
     // package-private in Java
     const val LOG_TAG = "WebViewChannelDelegate"
@@ -66,7 +66,7 @@ open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel)
     const val EVENT_ON_ZOOM_SCALE_CHANGED = "onZoomScaleChanged"
   }
 
-  private var webView: InAppWebView? = webView
+  private var webView: CygnusWebView? = webView
 
   /**
    * The events above fire on every scrolled frame, so Dart reports up front which of them it
@@ -221,58 +221,58 @@ open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel)
           result.success(null)
       }
       WebViewChannelDelegateMethods.setSettings -> {
-        if (webView != null && webView.getInAppBrowserDelegate() is InAppBrowserActivity) {
-          val inAppBrowserActivity = webView.getInAppBrowserDelegate() as InAppBrowserActivity
-          val inAppBrowserSettings = InAppBrowserSettings()
-          val inAppBrowserSettingsMap = call.argument<HashMap<String, Any?>>("settings")
-          inAppBrowserSettings.parse(inAppBrowserSettingsMap!!)
-          inAppBrowserActivity.setSettings(inAppBrowserSettings, inAppBrowserSettingsMap)
+        if (webView != null && webView.getCygnusBrowserDelegate() is CygnusBrowserActivity) {
+          val cygnusBrowserActivity = webView.getCygnusBrowserDelegate() as CygnusBrowserActivity
+          val cygnusBrowserSettings = CygnusBrowserSettings()
+          val cygnusBrowserSettingsMap = call.argument<HashMap<String, Any?>>("settings")
+          cygnusBrowserSettings.parse(cygnusBrowserSettingsMap!!)
+          cygnusBrowserActivity.setSettings(cygnusBrowserSettings, cygnusBrowserSettingsMap)
         } else if (webView != null) {
-          val inAppWebViewSettings = InAppWebViewSettings()
-          val inAppWebViewSettingsMap = call.argument<HashMap<String, Any?>>("settings")
-          inAppWebViewSettings.parse(inAppWebViewSettingsMap!!)
-          webView.setSettings(inAppWebViewSettings, inAppWebViewSettingsMap)
+          val cygnusWebViewSettings = CygnusWebViewSettings()
+          val cygnusWebViewSettingsMap = call.argument<HashMap<String, Any?>>("settings")
+          cygnusWebViewSettings.parse(cygnusWebViewSettingsMap!!)
+          webView.setSettings(cygnusWebViewSettings, cygnusWebViewSettingsMap)
         }
         result.success(true)
       }
       WebViewChannelDelegateMethods.getSettings -> {
-        if (webView != null && webView.getInAppBrowserDelegate() is InAppBrowserActivity) {
-          val inAppBrowserActivity = webView.getInAppBrowserDelegate() as InAppBrowserActivity
-          result.success(inAppBrowserActivity.getCustomSettingsMap())
+        if (webView != null && webView.getCygnusBrowserDelegate() is CygnusBrowserActivity) {
+          val cygnusBrowserActivity = webView.getCygnusBrowserDelegate() as CygnusBrowserActivity
+          result.success(cygnusBrowserActivity.getCustomSettingsMap())
         } else {
           result.success(webView?.getCustomSettingsMap())
         }
       }
       WebViewChannelDelegateMethods.close -> {
-        if (webView != null && webView.getInAppBrowserDelegate() is InAppBrowserActivity) {
-          val inAppBrowserActivity = webView.getInAppBrowserDelegate() as InAppBrowserActivity
-          inAppBrowserActivity.close(result)
+        if (webView != null && webView.getCygnusBrowserDelegate() is CygnusBrowserActivity) {
+          val cygnusBrowserActivity = webView.getCygnusBrowserDelegate() as CygnusBrowserActivity
+          cygnusBrowserActivity.close(result)
         } else {
           result.notImplemented()
         }
       }
       WebViewChannelDelegateMethods.show -> {
-        if (webView != null && webView.getInAppBrowserDelegate() is InAppBrowserActivity) {
-          val inAppBrowserActivity = webView.getInAppBrowserDelegate() as InAppBrowserActivity
-          inAppBrowserActivity.show()
+        if (webView != null && webView.getCygnusBrowserDelegate() is CygnusBrowserActivity) {
+          val cygnusBrowserActivity = webView.getCygnusBrowserDelegate() as CygnusBrowserActivity
+          cygnusBrowserActivity.show()
           result.success(true)
         } else {
           result.notImplemented()
         }
       }
       WebViewChannelDelegateMethods.hide -> {
-        if (webView != null && webView.getInAppBrowserDelegate() is InAppBrowserActivity) {
-          val inAppBrowserActivity = webView.getInAppBrowserDelegate() as InAppBrowserActivity
-          inAppBrowserActivity.hide()
+        if (webView != null && webView.getCygnusBrowserDelegate() is CygnusBrowserActivity) {
+          val cygnusBrowserActivity = webView.getCygnusBrowserDelegate() as CygnusBrowserActivity
+          cygnusBrowserActivity.hide()
           result.success(true)
         } else {
           result.notImplemented()
         }
       }
       WebViewChannelDelegateMethods.isHidden -> {
-        if (webView != null && webView.getInAppBrowserDelegate() is InAppBrowserActivity) {
-          val inAppBrowserActivity = webView.getInAppBrowserDelegate() as InAppBrowserActivity
-          result.success(inAppBrowserActivity.isHidden)
+        if (webView != null && webView.getCygnusBrowserDelegate() is CygnusBrowserActivity) {
+          val cygnusBrowserActivity = webView.getCygnusBrowserDelegate() as CygnusBrowserActivity
+          result.success(cygnusBrowserActivity.isHidden)
         } else {
           result.notImplemented()
         }
@@ -374,14 +374,14 @@ open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel)
         }
       }
       WebViewChannelDelegateMethods.getContentHeight -> {
-        if (webView is InAppWebView) {
+        if (webView is CygnusWebView) {
           result.success(webView.getContentHeight())
         } else {
           result.success(null)
         }
       }
       WebViewChannelDelegateMethods.getContentWidth -> {
-        if (webView is InAppWebView) {
+        if (webView is CygnusWebView) {
           webView.getContentWidth(ValueCallback<Int> { contentWidth ->
             result.success(contentWidth)
           })
@@ -400,14 +400,14 @@ open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel)
         result.success(webView?.getOriginalUrl())
       }
       WebViewChannelDelegateMethods.getZoomScale -> {
-        if (webView is InAppWebView) {
+        if (webView is CygnusWebView) {
           result.success(webView.getZoomScale())
         } else {
           result.success(null)
         }
       }
       WebViewChannelDelegateMethods.getSelectedText -> {
-        if ((webView is InAppWebView && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)) {
+        if ((webView is CygnusWebView && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)) {
           webView.getSelectedText(ValueCallback<String> { value ->
             result.success(value)
           })
@@ -416,7 +416,7 @@ open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel)
         }
       }
       WebViewChannelDelegateMethods.getHitTestResult -> {
-        if (webView is InAppWebView) {
+        if (webView is CygnusWebView) {
           result.success(HitTestResult.fromWebViewHitTestResult(webView.getHitTestResult())!!.toMap())
         } else {
           result.success(null)
@@ -473,7 +473,7 @@ open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel)
         if (webView != null) {
           var resultValue = false
           val direction = call.argument<Int>("direction")
-          val previouslyFocusedRect = InAppWebViewRect.fromMap(call.argument<MutableMap<String, Any?>>("previouslyFocusedRect"))
+          val previouslyFocusedRect = CygnusWebViewRect.fromMap(call.argument<MutableMap<String, Any?>>("previouslyFocusedRect"))
           if (direction != null && previouslyFocusedRect != null) {
             resultValue = webView.requestFocus(direction, previouslyFocusedRect.toRect())
           } else if (direction != null) {
@@ -590,7 +590,7 @@ open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel)
       }
       WebViewChannelDelegateMethods.createWebMessageChannel -> {
         if (webView != null) {
-          if (webView is InAppWebView && WebViewFeature.isFeatureSupported(WebViewFeature.CREATE_WEB_MESSAGE_CHANNEL)) {
+          if (webView is CygnusWebView && WebViewFeature.isFeatureSupported(WebViewFeature.CREATE_WEB_MESSAGE_CHANNEL)) {
             result.success(webView.createCompatWebMessageChannel().toMap())
           } else {
             result.success(null)
@@ -609,14 +609,14 @@ open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel)
             for (portExt in portsExt) {
               val webMessageChannel = webView.getWebMessageChannels()[portExt.webMessageChannelId]
               if (webMessageChannel != null) {
-                if (webView is InAppWebView) {
+                if (webView is CygnusWebView) {
                   compatPorts.add(webMessageChannel.compatPorts[portExt.index])
                 }
               }
             }
           }
           val data = message.data
-          if (webView is InAppWebView) {
+          if (webView is CygnusWebView) {
             try {
               if (WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_ARRAY_BUFFER) && data != null &&
                 message.type == WebMessageCompat.TYPE_ARRAY_BUFFER) {
@@ -641,7 +641,7 @@ open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel)
         if (webView != null) {
           val webMessageListenerMap = call.argument<MutableMap<String, Any?>>("webMessageListener")
           val webMessageListener = WebMessageListener.fromMap(webView, webView.getPlugin()!!.messenger, webMessageListenerMap)
-          if (webView is InAppWebView && WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) {
+          if (webView is CygnusWebView && WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) {
             try {
               webView.addWebMessageListener(webMessageListener!!)
               result.success(true)
@@ -722,10 +722,10 @@ open class WebViewChannelDelegate(webView: InAppWebView, channel: MethodChannel)
         }
       }
       WebViewChannelDelegateMethods.setFrameworkKeyboardInset -> {
-        // Only InAppWebView performs keyboard avoidance; the other InAppWebViewInterface
+        // Only CygnusWebView performs keyboard avoidance; the other CygnusWebViewInterface
         // implementations have no view to shift, so this is a no-op for them rather than a method
         // every one of them would have to carry.
-        if (webView is InAppWebView) {
+        if (webView is CygnusWebView) {
           val heightPx = call.argument<Int>("height")
           webView.setFrameworkKeyboardInsetPx(if (heightPx != null) heightPx else 0)
         }

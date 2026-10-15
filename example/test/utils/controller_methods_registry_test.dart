@@ -3,8 +3,8 @@ import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/utils/controller_methods_registry.dart';
-import 'package:flutter_inappwebview_example/widgets/common/parameter_dialog.dart';
+import 'package:cygnus_core_example/utils/controller_methods_registry.dart';
+import 'package:cygnus_core_example/widgets/common/parameter_dialog.dart';
 
 void main() {
   group('controller_methods_registry helpers', () {

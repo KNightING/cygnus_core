@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
+import 'package:cygnus_core_internal_annotations/cygnus_core_internal_annotations.dart';
 
 import '../find_interaction/platform_find_interaction_controller.dart';
 import '../pull_to_refresh/platform_pull_to_refresh_controller.dart';

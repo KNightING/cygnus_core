@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_SERVER_TRUST_CHALLENGE_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_SERVER_TRUST_CHALLENGE_H_
+#ifndef CYGNUS_CORE_PLUGIN_SERVER_TRUST_CHALLENGE_H_
+#define CYGNUS_CORE_PLUGIN_SERVER_TRUST_CHALLENGE_H_
 
 #include <flutter_linux/flutter_linux.h>
 #include <gio/gio.h>
@@ -12,7 +12,7 @@
 
 #include "ssl_certificate.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * SSL Error type - maps to Dart's SslErrorType.
@@ -85,6 +85,6 @@ class ServerTrustChallenge {
       const std::string& failingUri, GTlsCertificate* certificate, GTlsCertificateFlags errors);
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_SERVER_TRUST_CHALLENGE_H_
+#endif  // CYGNUS_CORE_PLUGIN_SERVER_TRUST_CHALLENGE_H_

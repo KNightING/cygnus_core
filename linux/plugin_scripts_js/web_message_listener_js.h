@@ -1,16 +1,16 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_LISTENER_JS_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_LISTENER_JS_H_
+#ifndef CYGNUS_CORE_PLUGIN_WEB_MESSAGE_LISTENER_JS_H_
+#define CYGNUS_CORE_PLUGIN_WEB_MESSAGE_LISTENER_JS_H_
 
 #include <string>
 
 #include "javascript_bridge_js.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * JavaScript source for WebMessageListener support.
  *
- * This creates the FlutterInAppWebViewWebMessageListener class that web pages
+ * This creates the CygnusFlutterWebViewWebMessageListener class that web pages
  * can use to communicate with the native side via postMessage.
  *
  * Usage in JavaScript:
@@ -22,16 +22,16 @@ namespace flutter_inappwebview_plugin {
 class WebMessageListenerJS {
  public:
   /**
-   * JavaScript source code for the FlutterInAppWebViewWebMessageListener class.
+   * JavaScript source code for the CygnusFlutterWebViewWebMessageListener class.
    */
   static std::string WEB_MESSAGE_LISTENER_JS_SOURCE() {
     return R"JS(
-function FlutterInAppWebViewWebMessageListener(jsObjectName) {
+function CygnusFlutterWebViewWebMessageListener(jsObjectName) {
     this.jsObjectName = jsObjectName;
     this.listeners = [];
     this.onmessage = null;
 }
-FlutterInAppWebViewWebMessageListener.prototype.postMessage = function(data) {
+CygnusFlutterWebViewWebMessageListener.prototype.postMessage = function(data) {
     var message = {
         "data": window.ArrayBuffer != null && data instanceof ArrayBuffer ? Array.from(new Uint8Array(data)) : (data != null ? data.toString() : null),
         "type": window.ArrayBuffer != null && data instanceof ArrayBuffer ? 1 : 0
@@ -44,13 +44,13 @@ FlutterInAppWebViewWebMessageListener.prototype.postMessage = function(data) {
         isMainFrame: window.top === window
     });
 };
-FlutterInAppWebViewWebMessageListener.prototype.addEventListener = function(type, listener) {
+CygnusFlutterWebViewWebMessageListener.prototype.addEventListener = function(type, listener) {
     if (listener == null) {
         return;
     }
     this.listeners.push(listener);
 };
-FlutterInAppWebViewWebMessageListener.prototype.removeEventListener = function(type, listener) {
+CygnusFlutterWebViewWebMessageListener.prototype.removeEventListener = function(type, listener) {
     if (listener == null) {
         return;
     }
@@ -173,7 +173,7 @@ FlutterInAppWebViewWebMessageListener.prototype.removeEventListener = function(t
            "if (_isOriginAllowed(allowedOriginRules, scheme, host, port)) {\n"
            "    window['" +
            jsObjectNameEscaped +
-           "'] = new FlutterInAppWebViewWebMessageListener('" +
+           "'] = new CygnusFlutterWebViewWebMessageListener('" +
            jsObjectNameEscaped +
            "');\n"
            "}\n"
@@ -181,6 +181,6 @@ FlutterInAppWebViewWebMessageListener.prototype.removeEventListener = function(t
   }
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_LISTENER_JS_H_
+#endif  // CYGNUS_CORE_PLUGIN_WEB_MESSAGE_LISTENER_JS_H_

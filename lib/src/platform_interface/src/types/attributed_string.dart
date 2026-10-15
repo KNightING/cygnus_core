@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
+import 'package:cygnus_core_internal_annotations/cygnus_core_internal_annotations.dart';
 
 import '../pull_to_refresh/main.dart';
 import 'underline_style.dart';

@@ -14,10 +14,10 @@ import 'web_storage/web_storage.dart';
 import 'webview_environment/webview_environment.dart';
 
 /// Implementation of [CygnusWebViewPlatform] using the WebView2 API.
-class WindowsInAppWebViewPlatform extends CygnusWebViewPlatform {
+class CygnusWindowsWebViewPlatform extends CygnusWebViewPlatform {
   /// Registers this class as the default instance of [CygnusWebViewPlatform].
   static void registerWith() {
-    CygnusWebViewPlatform.instance = WindowsInAppWebViewPlatform();
+    CygnusWebViewPlatform.instance = CygnusWindowsWebViewPlatform();
   }
 
   /// Creates a new [WindowsCookieManager].

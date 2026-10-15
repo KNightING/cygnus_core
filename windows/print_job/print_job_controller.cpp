@@ -2,19 +2,19 @@
 
 #include "print_job_channel_delegate.h"
 #include "print_job_info.h"
-#include "../in_app_webview/in_app_webview.h"
+#include "../webview/webview.h"
 #include "../utils/flutter.h"
 #include "../utils/log.h"
 
 #include <chrono>
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   PrintJobController::PrintJobController(const std::string& id,
     flutter::BinaryMessenger* messenger,
-    InAppWebView* inAppWebView,
+    CygnusWebView* cygnusWebView,
     std::shared_ptr<PrintJobSettings> settings)
-    : id(id), inAppWebView_(inAppWebView), settings_(settings)
+    : id(id), cygnusWebView_(cygnusWebView), settings_(settings)
   {
     creationTime_ = std::chrono::duration_cast<std::chrono::milliseconds>(
       std::chrono::system_clock::now().time_since_epoch()).count();
@@ -79,15 +79,15 @@ namespace flutter_inappwebview_plugin
 
   void PrintJobController::invalidateParentWebView()
   {
-    inAppWebView_ = nullptr;
+    cygnusWebView_ = nullptr;
   }
 
   void PrintJobController::eraseFromParentWebView()
   {
     // Only erase if parent webview is still valid (not being destroyed)
-    if (inAppWebView_) {
-      inAppWebView_->erasePrintJobController(id);
-      inAppWebView_ = nullptr;
+    if (cygnusWebView_) {
+      cygnusWebView_->erasePrintJobController(id);
+      cygnusWebView_ = nullptr;
     }
   }
 
