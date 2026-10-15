@@ -1,6 +1,6 @@
 //
 //  PromisePolyfillJS.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 16/02/21.
 //
@@ -9,7 +9,7 @@ import Foundation
 import WebKit
 
 public class PromisePolyfillJS {
-    public static let PROMISE_POLYFILL_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_PROMISE_POLYFILL_JS_PLUGIN_SCRIPT"
+    public static let PROMISE_POLYFILL_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_PROMISE_POLYFILL_JS_PLUGIN_SCRIPT"
     
     public static func PROMISE_POLYFILL_JS_PLUGIN_SCRIPT(allowedOriginRules: [String]?, forMainFrameOnly: Bool) -> PluginScript {
         return PluginScript(

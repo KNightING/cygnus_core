@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_INTERCEPT_FETCH_REQUEST_JS_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_INTERCEPT_FETCH_REQUEST_JS_H_
+#ifndef CYGNUS_CORE_PLUGIN_INTERCEPT_FETCH_REQUEST_JS_H_
+#define CYGNUS_CORE_PLUGIN_INTERCEPT_FETCH_REQUEST_JS_H_
 
 #include <memory>
 #include <optional>
@@ -10,7 +10,7 @@
 #include "javascript_bridge_js.h"
 #include "intercept_ajax_request_js.h"  // For JAVASCRIPT_UTIL_VAR_NAME
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * JavaScript for intercepting fetch() requests.
@@ -23,7 +23,7 @@ namespace flutter_inappwebview_plugin {
 class InterceptFetchRequestJS {
  public:
   inline static const std::string INTERCEPT_FETCH_REQUEST_JS_PLUGIN_SCRIPT_GROUP_NAME =
-      "IN_APP_WEBVIEW_INTERCEPT_FETCH_REQUEST_JS_PLUGIN_SCRIPT";
+      "CYGNUS_WEBVIEW_INTERCEPT_FETCH_REQUEST_JS_PLUGIN_SCRIPT";
 
   /**
    * Flag variable name used to enable/disable fetch request interception at runtime.
@@ -211,6 +211,6 @@ if (typeof )JS" + utilVarName + R"JS( === 'undefined') {
   }
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_INTERCEPT_FETCH_REQUEST_JS_H_
+#endif  // CYGNUS_CORE_PLUGIN_INTERCEPT_FETCH_REQUEST_JS_H_

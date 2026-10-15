@@ -1,11 +1,11 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_CHANNEL_JS_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_CHANNEL_JS_H_
+#ifndef CYGNUS_CORE_PLUGIN_WEB_MESSAGE_CHANNEL_JS_H_
+#define CYGNUS_CORE_PLUGIN_WEB_MESSAGE_CHANNEL_JS_H_
 
 #include <string>
 
 #include "javascript_bridge_js.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * JavaScript support for WebMessageChannel.
@@ -17,7 +17,7 @@ class WebMessageChannelJS {
  public:
   /**
    * Returns the JavaScript variable name for storing WebMessageChannels.
-   * Example: "window.flutter_inappwebview._webMessageChannels"
+   * Example: "window.cygnus._webMessageChannels"
    */
   static std::string WEB_MESSAGE_CHANNELS_VARIABLE_NAME() {
     return "window." + JavaScriptBridgeJS::get_JAVASCRIPT_BRIDGE_NAME() +
@@ -144,6 +144,6 @@ class WebMessageChannelJS {
   }
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_CHANNEL_JS_H_
+#endif  // CYGNUS_CORE_PLUGIN_WEB_MESSAGE_CHANNEL_JS_H_

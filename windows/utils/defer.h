@@ -1,10 +1,10 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_UTIL_DEFER_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_UTIL_DEFER_H_
+#ifndef CYGNUS_CORE_PLUGIN_UTIL_DEFER_H_
+#define CYGNUS_CORE_PLUGIN_UTIL_DEFER_H_
 
 #include <functional>
 #include <memory>
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   static inline std::shared_ptr<void> defer(void* handle, const std::function<void(void*)>& callback)
   {
@@ -12,4 +12,4 @@ namespace flutter_inappwebview_plugin
   }
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_UTIL_DEFER_H_
+#endif //CYGNUS_CORE_PLUGIN_UTIL_DEFER_H_

@@ -10,11 +10,11 @@ import java.util.Locale
 import java.util.TimeZone
 import java.util.regex.Pattern
 
-open class PlatformUtil(plugin: InAppWebViewFlutterPlugin) :
+open class PlatformUtil(plugin: CygnusCorePlugin) :
   ChannelDelegateImpl(MethodChannel(plugin.messenger, METHOD_CHANNEL_NAME)) {
 
   @JvmField
-  var plugin: InAppWebViewFlutterPlugin? = plugin
+  var plugin: CygnusCorePlugin? = plugin
 
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
     when (call.method) {
@@ -41,7 +41,7 @@ open class PlatformUtil(plugin: InAppWebViewFlutterPlugin) :
 
   companion object {
     protected const val LOG_TAG = "PlatformUtil"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_platformutil"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_platformutil"
 
     @JvmStatic
     fun getLocaleFromString(locale: String?): Locale {

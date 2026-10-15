@@ -1,11 +1,11 @@
 {
-    "name": "flutter_inappwebview_example",
-    "short_name": "flutter_inappwebview_example",
+    "name": "cygnus_core_example",
+    "short_name": "cygnus_core_example",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Demonstrates how to use the flutter_inappwebview plugin.",
+    "description": "Demonstrates how to use the cygnus_core plugin.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

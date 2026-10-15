@@ -32,7 +32,7 @@ void interceptFetchRequest() {
     <body>
         <h1>InAppWebViewFetchTest</h1>
         <script>
-          window.addEventListener('flutterInAppWebViewPlatformReady', function(event) {
+          window.addEventListener('cygnusPlatformReady', function(event) {
             fetch("http://${environment["NODE_SERVER_IP"]}:8082/test-ajax-post", {
                 method: 'POST',
                 headers: {
@@ -41,12 +41,12 @@ void interceptFetchRequest() {
                 body: "firstname=Foo&lastname=Bar"
             }).then(function(response) {
                 response.json().then(function(value) {
-                  window.flutter_inappwebview.callHandler('fetchPost', value);
+                  window.cygnus.callHandler('fetchPost', value);
                 }).catch(function(error) {
-                  window.flutter_inappwebview.callHandler('fetchPost', "ERROR: " + error);
+                  window.cygnus.callHandler('fetchPost', "ERROR: " + error);
                 });
             }).catch(function(error) {
-              window.flutter_inappwebview.callHandler('fetchPost', "ERROR: " + error);
+              window.cygnus.callHandler('fetchPost', "ERROR: " + error);
             });
           });
         </script>
@@ -113,7 +113,7 @@ void interceptFetchRequest() {
     <body>
         <h1>InAppWebViewFetchTest</h1>
         <script>
-          window.addEventListener('flutterInAppWebViewPlatformReady', function(event) {
+          window.addEventListener('cygnusPlatformReady', function(event) {
             var jsonData = {
               firstname: 'Foo',
               lastname: 'Bar'
@@ -126,12 +126,12 @@ void interceptFetchRequest() {
                 body: JSON.stringify(jsonData)
             }).then(function(response) {
                 response.json().then(function(value) {
-                  window.flutter_inappwebview.callHandler('fetchPost', value);
+                  window.cygnus.callHandler('fetchPost', value);
                 }).catch(function(error) {
-                    window.flutter_inappwebview.callHandler('fetchPost', "ERROR: " + error);
+                    window.cygnus.callHandler('fetchPost', "ERROR: " + error);
                 });
             }).catch(function(error) {
-                window.flutter_inappwebview.callHandler('fetchPost', "ERROR: " + error);
+                window.cygnus.callHandler('fetchPost', "ERROR: " + error);
             });
           });
         </script>
@@ -204,7 +204,7 @@ void interceptFetchRequest() {
     <body>
         <h1>InAppWebViewFetchTest</h1>
         <script>
-          window.addEventListener('flutterInAppWebViewPlatformReady', function(event) {
+          window.addEventListener('cygnusPlatformReady', function(event) {
             var paramsString = "firstname=Foo&lastname=Bar";
             var searchParams = new URLSearchParams(paramsString);
             fetch("http://${environment["NODE_SERVER_IP"]}:8082/test-ajax-post", {
@@ -215,12 +215,12 @@ void interceptFetchRequest() {
                 body: searchParams
             }).then(function(response) {
                 response.json().then(function(value) {
-                  window.flutter_inappwebview.callHandler('fetchPost', value);
+                  window.cygnus.callHandler('fetchPost', value);
                 }).catch(function(error) {
-                    window.flutter_inappwebview.callHandler('fetchPost', "ERROR: " + error);
+                    window.cygnus.callHandler('fetchPost', "ERROR: " + error);
                 });
             }).catch(function(error) {
-                window.flutter_inappwebview.callHandler('fetchPost', "ERROR: " + error);
+                window.cygnus.callHandler('fetchPost', "ERROR: " + error);
             });
           });
         </script>
@@ -287,7 +287,7 @@ void interceptFetchRequest() {
     <body>
         <h1>InAppWebViewFetchTest</h1>
         <script>
-          window.addEventListener('flutterInAppWebViewPlatformReady', function(event) {
+          window.addEventListener('cygnusPlatformReady', function(event) {
             var formData = new FormData();
             formData.append('firstname', 'Foo');
             formData.append('lastname', 'Bar');
@@ -296,12 +296,12 @@ void interceptFetchRequest() {
                 body: formData
             }).then(function(response) {
                 response.json().then(function(value) {
-                  window.flutter_inappwebview.callHandler('fetchPost', value);
+                  window.cygnus.callHandler('fetchPost', value);
                 }).catch(function(error) {
-                    window.flutter_inappwebview.callHandler('fetchPost', "ERROR: " + error);
+                    window.cygnus.callHandler('fetchPost', "ERROR: " + error);
                 });
             }).catch(function(error) {
-                window.flutter_inappwebview.callHandler('fetchPost', "ERROR: " + error);
+                window.cygnus.callHandler('fetchPost', "ERROR: " + error);
             });
           });
         </script>

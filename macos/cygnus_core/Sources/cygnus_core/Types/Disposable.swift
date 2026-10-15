@@ -1,6 +1,6 @@
 //
 //  Disposable.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 04/05/22.
 //

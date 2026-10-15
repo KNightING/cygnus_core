@@ -5,12 +5,12 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Demonstrates how to use the flutter_inappwebview plugin.">
+  <meta name="description" content="Demonstrates how to use the cygnus_core plugin.">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="flutter_inappwebview_example">
+  <meta name="apple-mobile-web-app-title" content="cygnus_core_example">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
   <meta name="theme-color" content="#0175C2">
 
@@ -26,10 +26,10 @@
   <br>
   <a href="/heavy-page.html" id="link-heavy-page">Go to heavy-page</a>
   <script>
-    window.addEventListener('flutterInAppWebViewPlatformReady', function (event) {
+    window.addEventListener('cygnusPlatformReady', function (event) {
       console.log('message');
 
-      window.flutter_inappwebview.callHandler('testHandler', 'Hello from page 1').then(function(result) {
+      window.cygnus.callHandler('testHandler', 'Hello from page 1').then(function(result) {
         console.log(result + 3);
       });
     });

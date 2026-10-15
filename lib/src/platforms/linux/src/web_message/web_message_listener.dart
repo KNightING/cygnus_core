@@ -54,7 +54,7 @@ class LinuxWebMessageListener extends CygnusPlatformWebMessageListener
       "allowedOriginRules cannot contain empty strings",
     );
     channel = MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_web_message_listener_${_id}_${params.jsObjectName}',
+      'com.github.knighting.cygnus/webview_web_message_listener_${_id}_${params.jsObjectName}',
     );
     handler = _handleMethod;
     initMethodCallHandler();

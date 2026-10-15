@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_inappwebview_example/widgets/common/platform_filter.dart';
-import 'package:flutter_inappwebview_example/utils/support_checker.dart';
+import 'package:cygnus_core_example/widgets/common/platform_filter.dart';
+import 'package:cygnus_core_example/utils/support_checker.dart';
 
 void main() {
   group('PlatformFilter', () {

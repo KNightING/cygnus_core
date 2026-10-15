@@ -13,8 +13,8 @@ import com.github.knighting.cygnus.core.types.Disposable
 import com.github.knighting.cygnus.core.types.PluginScript
 import com.github.knighting.cygnus.core.types.UserScriptInjectionTime
 import com.github.knighting.cygnus.core.types.WebMessageCompatExt
-import com.github.knighting.cygnus.core.webview.InAppWebViewInterface
-import com.github.knighting.cygnus.core.webview.in_app_webview.InAppWebView
+import com.github.knighting.cygnus.core.webview.CygnusWebViewInterface
+import com.github.knighting.cygnus.core.webview.webview.CygnusWebView
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodChannel
 import java.util.ArrayList
@@ -23,7 +23,7 @@ import java.util.regex.Pattern
 
 class WebMessageListener(
   id: String,
-  webView: InAppWebViewInterface,
+  webView: CygnusWebViewInterface,
   messenger: BinaryMessenger,
   jsObjectName: String,
   allowedOriginRules: MutableSet<String>
@@ -31,11 +31,11 @@ class WebMessageListener(
   companion object {
     // protected in Java
     const val LOG_TAG = "WebMessageListener"
-    const val METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_web_message_listener_"
+    const val METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_web_message_listener_"
 
     @JvmStatic
     @Suppress("UNCHECKED_CAST")
-    fun fromMap(webView: InAppWebViewInterface, messenger: BinaryMessenger, map: MutableMap<String, Any?>?): WebMessageListener? {
+    fun fromMap(webView: CygnusWebViewInterface, messenger: BinaryMessenger, map: MutableMap<String, Any?>?): WebMessageListener? {
       if (map == null) {
         return null
       }
@@ -65,7 +65,7 @@ class WebMessageListener(
   var replyProxy: JavaScriptReplyProxy? = null
 
   @JvmField
-  var webView: InAppWebViewInterface? = null
+  var webView: CygnusWebViewInterface? = null
 
   @JvmField
   var channelDelegate: WebMessageListenerChannelDelegate? = null
@@ -78,7 +78,7 @@ class WebMessageListener(
     val channel = MethodChannel(messenger, METHOD_CHANNEL_NAME_PREFIX + this.id + "_" + this.jsObjectName)
     this.channelDelegate = WebMessageListenerChannelDelegate(this, channel)
 
-    if (this.webView is InAppWebView) {
+    if (this.webView is CygnusWebView) {
       this.listener = object : WebViewCompat.WebMessageListener {
         override fun onPostMessage(
           view: WebView, message: WebMessageCompat, sourceOrigin: Uri,
@@ -118,7 +118,7 @@ class WebMessageListener(
         "  var host = !isPageBlank ? window.location.hostname : null;" +
         "  var port = !isPageBlank ? window.location.port : null;" +
         "  if (window." + JavaScriptBridgeJS.get_JAVASCRIPT_BRIDGE_NAME() + "._isOriginAllowed(allowedOriginRules, scheme, host, port)) {" +
-        "      window['" + jsObjectNameEscaped + "'] = new FlutterInAppWebViewWebMessageListener('" + jsObjectNameEscaped + "');" +
+        "      window['" + jsObjectNameEscaped + "'] = new CygnusFlutterWebViewWebMessageListener('" + jsObjectNameEscaped + "');" +
         "  }" +
         "})();"
       webView.getUserContentController()!!.addPluginScript(PluginScript(
@@ -186,7 +186,7 @@ class WebMessageListener(
     }
   }
 
-  fun postMessageForInAppWebView(message: WebMessageCompatExt?, result: MethodChannel.Result) {
+  fun postMessageForCygnusWebView(message: WebMessageCompatExt?, result: MethodChannel.Result) {
     if (replyProxy != null && WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) {
       val data = message!!.data
       if (data != null) {

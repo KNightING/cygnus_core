@@ -29,7 +29,7 @@ void onDownloadStarting() {
         <h1>InAppWebViewOnDownloadStartTest</h1>
         <a id="download-file" href="http://${environment["NODE_SERVER_IP"]}:8082/test-download-file">download file</a>
         <script>
-            window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
+            window.addEventListener("cygnusPlatformReady", function(event) {
                 document.querySelector("#download-file").click();
             });
         </script>

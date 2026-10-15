@@ -17,16 +17,14 @@ Cygnus 框架（Nuxt 網頁 + Flutter 殼）的 WebView 核心套件，供 KNigh
 - **永久分岔，不再同步上游。** 合併後的目錄結構與上游不同，無法再 merge；上游日後的修正需手動評估
   移植。本專案不對上游發 PR，所有變更只服務 KNightING 自有專案的需求。
 - **對外名稱分階段調整，每階段各自一份計畫、可獨立建置驗證**：
-  - 階段 ①（已完成）：合併為單一套件、套件名改為 `cygnus_core`。**不改** Dart 類別名、Android Java
-    namespace、channel 前綴 `com.pichillilorenzo/`、JS 全域名稱 `window.flutter_inappwebview`——
-    先只做結構合併，行為不變，把變更面壓到最小。
-  - Android 原生端（階段 ② 之後的獨立計畫，已完成）：159 個 Java 檔全數改寫為 Kotlin，命名空間由 `com.pichillilorenzo.flutter_inappwebview_android` 改為 `com.github.knighting.cygnus.core`；行為、channel、JS 名稱未動。
+  - 階段 ①（已完成）：合併為單一套件、套件名改為 `cygnus_core`，先只做結構合併、行為不變，把變更面壓到最小。
+  - Android 原生端（階段 ② 之後的獨立計畫，已完成）：159 個 Java 檔全數改寫為 Kotlin，命名空間由 `com.pichillilorenzo.flutter_inappwebview_android` 改為 `com.github.knighting.cygnus.core`；行為不變。
   - 階段 ②（已完成）：Dart 公開 API 命名改為 Cygnus 風格——型別前綴 `Cygnus` 並移除 `InApp`，檔名去掉 `in_app_`；完整對照見 `doc/dart-rename-map.md`。
-  - 階段 ③：原生端、channel 前綴、JS 全域名稱是否更動與改成什麼，屆時再決定。
+  - 階段 ③（已完成）：原生端、channel、JS 橋接與 plugin 命名改為 Cygnus 風格——channel 前綴 `com.github.knighting.cygnus/`、JS 全域 `window.cygnus`、plugin `CygnusCorePlugin`、原生類別前綴 `Cygnus` 並移除 `InApp`；JS 硬切換不留舊名稱；完整對照見 `doc/native-rename-map.md`。
   - 階段 ④：`nuxt-flutter-app` 的 `flutter-host` 改依賴本套件。
 - **以 git 依賴使用，不發佈 pub.dev。** 根 `pubspec.yaml` 設定 `publish_to: none`，實際執行 `flutter pub publish`
   會被 pub 以「A private package cannot be published.」拒絕，repo 也不保留任何發佈腳本；`dev_packages/*` 因此可以使用 `path:` 依賴。
-  日後若要改為發佈，須先讓 `flutter_inappwebview_internal_annotations` 與 `generators` 也能從 pub.dev 解析，
+  日後若要改為發佈，須先讓 `cygnus_core_internal_annotations` 與 `generators` 也能從 pub.dev 解析，
   再移除 `publish_to`。
 - **對同 repo 的 `dev_packages` 一律用相對 `path:`**，不帶版本約束（`path` 依賴不得同時帶版本）。
 - **版本號即 milestone 標題**，起始為 `0.0.0`；根 `pubspec.yaml` 的 `version` 是唯一來源。
@@ -52,7 +50,7 @@ gh repo set-default KNightING/cygnus_core
 | `lib/src/platforms/<平台>/` | 各平台的 Dart 實作（android、ios、macos、windows、linux、web） |
 | `lib/src/platforms/platforms.dart` | 以 `dart.library.js_interop` 條件匯出：原生建置只公開 5 個平台的註冊類別，Web 改由 pubspec 的 `fileName` 註冊 |
 | `android/` `ios/` `macos/` `windows/` `linux/` | 各平台原生程式碼（Android 為 Kotlin，位於 `android/src/main/kotlin`，命名空間 `com.github.knighting.cygnus.core`） |
-| `dev_packages/flutter_inappwebview_internal_annotations` | 程式碼產生用註記（套件名階段 ① 不改） |
+| `dev_packages/cygnus_core_internal_annotations` | 程式碼產生用註記 |
 | `dev_packages/generators` | 程式碼產生器 |
 | `example/` | 範例與整合測試（唯一保留的 example） |
 | `web_support/` | Web 端 JS 橋接（TypeScript），建置為 `lib/assets/web/web_support.js` |
@@ -62,12 +60,12 @@ gh repo set-default KNightING/cygnus_core
 
 原生建置識別字（podspec、Swift Package、CMake 目標與 `include/` 目錄）一律與套件名 `cygnus_core`
 一致——Flutter 產生的 registrant 與 `generated_plugins.cmake` 以套件名解析它們；
-`pluginClass`（`InAppWebViewFlutterPlugin` 等）決定標頭與函式名，階段 ① 不改。
+`pluginClass`（`CygnusCorePlugin`、Windows 為 `CygnusCorePluginCApi`）決定標頭與註冊函式名，不得更動。
 
 ### Android 的 WebView 層次
 
 `FlutterWebView`（`public class`，`implements PlatformWebView`）
-→ `InAppWebView`（`final public class`）
+→ `CygnusWebView`（`final public class`）
 → `InputAwareWebView`（`public class`，**非 final**）
 → `android.webkit.WebView`。
 
@@ -105,8 +103,8 @@ gh repo set-default KNightING/cygnus_core
 注入於網頁的全域物件名**是執行期可設定的**，非寫死常數：
 `JavaScriptBridgeJS.set_JAVASCRIPT_BRIDGE_NAME()` / `get_JAVASCRIPT_BRIDGE_NAME()`，
 Android / iOS / macOS 三平台的宣告皆位於各自的 `plugin_scripts_js` / `PluginScriptsJS`
-目錄下的 `JavaScriptBridgeJS`。預設值 `flutter_inappwebview`，使用端的
-`window.flutter_inappwebview.callHandler(...)` 依此。
+目錄下的 `JavaScriptBridgeJS`。預設值 `cygnus`，使用端的
+`window.cygnus.callHandler(...)` 依此。
 
 ## 待移植（來自 `KNightING/camelot_inappwebview`）
 
@@ -136,7 +134,7 @@ Android / iOS / macOS 三平台的宣告皆位於各自的 `plugin_scripts_js` /
 | JS 橋接名 | 寫死 `final`，macOS 宣告誤置於 `FindInteractionJS.swift` | 執行期可設定，三平台位置一致 |
 | 使用端遷移 | 需改依賴、`import`、JS 全域名 | **零遷移** |
 
-軟鍵盤避讓所需的錨點（`InputAwareWebView` / `InAppWebView` / `InAppWebViewSettings`）兩邊相同，
+軟鍵盤避讓所需的錨點（`InputAwareWebView` / `CygnusWebView` / `CygnusWebViewSettings`）兩邊相同，
 改用本 repo 無工作損失。
 
 ## 版本紀錄

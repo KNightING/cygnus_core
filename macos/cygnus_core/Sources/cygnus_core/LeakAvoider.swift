@@ -1,6 +1,6 @@
 //
 //  LeakAvoider.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 15/12/2019.
 //

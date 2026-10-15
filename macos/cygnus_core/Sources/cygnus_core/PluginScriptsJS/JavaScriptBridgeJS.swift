@@ -1,6 +1,6 @@
 //
 //  javaScriptBridgeJS.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 16/02/21.
 //
@@ -8,7 +8,7 @@
 import Foundation
 
 public class JavaScriptBridgeJS {
-    private static var _JAVASCRIPT_BRIDGE_NAME = "flutter_inappwebview"
+    private static var _JAVASCRIPT_BRIDGE_NAME = "cygnus"
     public static func set_JAVASCRIPT_BRIDGE_NAME(bridgeName: String) {
         _JAVASCRIPT_BRIDGE_NAME = bridgeName
     }
@@ -16,9 +16,9 @@ public class JavaScriptBridgeJS {
         return _JAVASCRIPT_BRIDGE_NAME
     }
     
-    public static let JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT"
+    public static let JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT"
     
-    public static let VAR_JAVASCRIPT_BRIDGE_BRIDGE_SECRET = "$IN_APP_WEBVIEW_JAVASCRIPT_BRIDGE_BRIDGE_SECRET"
+    public static let VAR_JAVASCRIPT_BRIDGE_BRIDGE_SECRET = "$CYGNUS_WEBVIEW_JAVASCRIPT_BRIDGE_BRIDGE_SECRET"
 
     public static func JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT(expectedBridgeSecret: String, allowedOriginRules: [String]?, forMainFrameOnly: Bool) -> PluginScript {
         let source = JAVASCRIPT_BRIDGE_JS_SOURCE().replacingOccurrences(of: VAR_JAVASCRIPT_BRIDGE_BRIDGE_SECRET, with: expectedBridgeSecret)
@@ -78,7 +78,7 @@ public class JavaScriptBridgeJS {
         """
     }
 
-    public static let PLATFORM_READY_JS_SOURCE = "window.dispatchEvent(new Event('flutterInAppWebViewPlatformReady'));";
+    public static let PLATFORM_READY_JS_SOURCE = "window.dispatchEvent(new Event('cygnusPlatformReady'));";
 
     public static func JAVASCRIPT_UTIL_VAR_NAME() -> String {
         return "window.\(get_JAVASCRIPT_BRIDGE_NAME())._Util"

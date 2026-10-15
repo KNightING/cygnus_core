@@ -40,7 +40,7 @@ class AndroidProcessGlobalConfig extends CygnusPlatformProcessGlobalConfig
               ),
       ) {
     channel = const MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_processglobalconfig',
+      'com.github.knighting.cygnus/webview_processglobalconfig',
     );
     handler = handleMethod;
     initMethodCallHandler();

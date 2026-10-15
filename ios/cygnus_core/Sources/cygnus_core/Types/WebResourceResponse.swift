@@ -1,6 +1,6 @@
 //
 //  WebResourceResponse.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 01/05/22.
 //

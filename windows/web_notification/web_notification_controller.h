@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_NOTIFICATION_CONTROLLER_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_NOTIFICATION_CONTROLLER_H_
+#ifndef CYGNUS_CORE_PLUGIN_WEB_NOTIFICATION_CONTROLLER_H_
+#define CYGNUS_CORE_PLUGIN_WEB_NOTIFICATION_CONTROLLER_H_
 
 #include <flutter/binary_messenger.h>
 #include <flutter/standard_message_codec.h>
@@ -13,15 +13,15 @@
 
 #include "../types/web_notification.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   class WebNotificationChannelDelegate;
-  class InAppWebView;
+  class CygnusWebView;
 
   class WebNotificationController
   {
   public:
-    static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_webnotificationcontroller_";
+    static inline const std::string METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_webnotificationcontroller_";
 
     const std::string id;
     std::shared_ptr<WebNotification> notification;
@@ -31,7 +31,7 @@ namespace flutter_inappwebview_plugin
       wil::com_ptr<ICoreWebView2Notification> webNotification,
       std::shared_ptr<WebNotification> notification,
       flutter::BinaryMessenger* messenger,
-      InAppWebView* inAppWebView);
+      CygnusWebView* cygnusWebView);
     ~WebNotificationController();
 
     void reportShown();
@@ -39,14 +39,14 @@ namespace flutter_inappwebview_plugin
     void reportClosed();
     void dispose();
 
-    // Called by InAppWebView before destruction to invalidate pointer
+    // Called by CygnusWebView before destruction to invalidate pointer
     void invalidateParentWebView();
 
-    InAppWebView* getParentWebView() const { return inAppWebView_; }
+    CygnusWebView* getParentWebView() const { return cygnusWebView_; }
 
   private:
     wil::com_ptr<ICoreWebView2Notification> webNotification_;
-    InAppWebView* inAppWebView_ = nullptr;
+    CygnusWebView* cygnusWebView_ = nullptr;
     EventRegistrationToken closeRequestedToken_{};
     bool closeRequestedRegistered_ = false;
     bool disposed_ = false;
@@ -57,4 +57,4 @@ namespace flutter_inappwebview_plugin
   };
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_NOTIFICATION_CONTROLLER_H_
+#endif //CYGNUS_CORE_PLUGIN_WEB_NOTIFICATION_CONTROLLER_H_

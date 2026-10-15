@@ -1,6 +1,6 @@
 //
 //  ChromeSafariBrowserManager.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 18/12/2019.
 //
@@ -13,12 +13,12 @@ import AVFoundation
 import SafariServices
 
 public class ChromeSafariBrowserManager: ChannelDelegate {
-    static let METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_chromesafaribrowser"
-    var plugin: InAppWebViewFlutterPlugin?
+    static let METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/chromesafaribrowser"
+    var plugin: CygnusCorePlugin?
     var browsers: [String: SafariViewController?] = [:]
     var prewarmingTokens: [String: Any?] = [:]
     
-    init(plugin: InAppWebViewFlutterPlugin) {
+    init(plugin: CygnusCorePlugin) {
         super.init(channel: FlutterMethodChannel(name: ChromeSafariBrowserManager.METHOD_CHANNEL_NAME, binaryMessenger: plugin.registrar.messenger()))
         self.plugin = plugin
     }

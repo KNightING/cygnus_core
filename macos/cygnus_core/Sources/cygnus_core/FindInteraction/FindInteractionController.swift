@@ -1,6 +1,6 @@
 //
 //  FindInteractionController.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 07/10/22.
 //
@@ -10,16 +10,16 @@ import FlutterMacOS
 
 public class FindInteractionController: NSObject, Disposable {
     
-    static var METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_find_interaction_";
-    var plugin: InAppWebViewFlutterPlugin?
-    var webView: InAppWebView?
+    static var METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_find_interaction_";
+    var plugin: CygnusCorePlugin?
+    var webView: CygnusWebView?
     var channelDelegate: FindInteractionChannelDelegate?
     var settings: FindInteractionSettings?
     var shouldCallOnRefresh = false
     var searchText: String?
     var activeFindSession: FindSession?
     
-    public init(plugin: InAppWebViewFlutterPlugin, id: Any, webView: InAppWebView, settings: FindInteractionSettings?) {
+    public init(plugin: CygnusCorePlugin, id: Any, webView: CygnusWebView, settings: FindInteractionSettings?) {
         super.init()
         self.plugin = plugin
         self.webView = webView

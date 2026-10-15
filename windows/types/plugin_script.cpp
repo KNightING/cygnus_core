@@ -1,6 +1,6 @@
 #include "plugin_script.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   PluginScript::PluginScript(
     const std::optional<std::string>& groupName,

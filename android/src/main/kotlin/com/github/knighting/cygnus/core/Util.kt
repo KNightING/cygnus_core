@@ -54,7 +54,7 @@ open class Util private constructor() {
 
     @JvmStatic
     @Throws(IOException::class)
-    fun getUrlAsset(plugin: InAppWebViewFlutterPlugin, assetFilePath: String): String {
+    fun getUrlAsset(plugin: CygnusCorePlugin, assetFilePath: String): String {
       val key = plugin.flutterAssets.getAssetFilePathByName(assetFilePath)
       var inputStream: InputStream? = null
       var e: IOException? = null
@@ -82,7 +82,7 @@ open class Util private constructor() {
 
     @JvmStatic
     @Throws(IOException::class)
-    fun getFileAsset(plugin: InAppWebViewFlutterPlugin, assetFilePath: String): InputStream {
+    fun getFileAsset(plugin: CygnusCorePlugin, assetFilePath: String): InputStream {
       val key = plugin.flutterAssets.getAssetFilePathByName(assetFilePath)
       val mg = plugin.applicationContext.resources.assets
       return mg.open(key)
@@ -103,7 +103,7 @@ open class Util private constructor() {
     }
 
     @JvmStatic
-    fun loadPrivateKeyAndCertificate(plugin: InAppWebViewFlutterPlugin,
+    fun loadPrivateKeyAndCertificate(plugin: CygnusCorePlugin,
                                      certificatePath: String,
                                      certificatePassword: String?,
                                      keyStoreType: String): PrivateKeyAndCertificates? {

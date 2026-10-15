@@ -8,7 +8,7 @@
 
 #include "webview_environment_manager.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   WebViewEnvironmentChannelDelegate::WebViewEnvironmentChannelDelegate(WebViewEnvironment* webViewEnv, flutter::BinaryMessenger* messenger)
     : webViewEnvironment(webViewEnv), ChannelDelegate(messenger, WebViewEnvironment::METHOD_CHANNEL_NAME_PREFIX + webViewEnv->id)

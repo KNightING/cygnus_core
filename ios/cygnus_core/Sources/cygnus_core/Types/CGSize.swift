@@ -1,6 +1,6 @@
 //
 //  CGSize.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 28/10/22.
 //

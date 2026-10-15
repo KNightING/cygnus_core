@@ -1,5 +1,5 @@
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/providers/settings_manager.dart';
+import 'package:cygnus_core_example/providers/settings_manager.dart';
 
 /// Lightweight settings manager for widget tests.
 class TestSettingsManager extends SettingsManager {

@@ -1,7 +1,7 @@
 #include "../utils/flutter.h"
 #include "download_start_response.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   DownloadStartResponse::DownloadStartResponse(const bool& handled,
     const std::optional<DownloadStartResponseAction>& action,

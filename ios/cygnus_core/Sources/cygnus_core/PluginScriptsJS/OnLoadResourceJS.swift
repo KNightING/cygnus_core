@@ -1,6 +1,6 @@
 //
 //  resourceObserverJS.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 16/02/21.
 //
@@ -9,7 +9,7 @@ import Foundation
 
 public class OnLoadResourceJS {
     
-    public static let ON_LOAD_RESOURCE_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_ON_LOAD_RESOURCE_JS_PLUGIN_SCRIPT"
+    public static let ON_LOAD_RESOURCE_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_ON_LOAD_RESOURCE_JS_PLUGIN_SCRIPT"
     
     public static func FLAG_VARIABLE_FOR_ON_LOAD_RESOURCE_JS_SOURCE() -> String {
         return "window.\(JavaScriptBridgeJS.get_JAVASCRIPT_BRIDGE_NAME())._useOnLoadResource"

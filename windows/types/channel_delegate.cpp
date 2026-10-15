@@ -4,7 +4,7 @@
 #include "../utils/util.h"
 #include "channel_delegate.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   ChannelDelegate::ChannelDelegate(flutter::BinaryMessenger* messenger, const std::string& name) : messenger(messenger)
   {

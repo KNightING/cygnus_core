@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview_example/models/test_case.dart';
+import 'package:cygnus_core_example/models/test_case.dart';
 
 /// Test status enum
 enum TestStatus { none, running, passed, failed }

@@ -13,7 +13,7 @@ void resizeWebView() {
         <head><title>Resize test</title>
           <script type="text/javascript">
             function onResize() {
-              window.flutter_inappwebview.callHandler('resize');
+              window.cygnus.callHandler('resize');
             }
             function onLoad() {
               window.onresize = onResize;

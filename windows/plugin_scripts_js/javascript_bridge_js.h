@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_JAVASCRIPT_BRIDGE_JS_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_JAVASCRIPT_BRIDGE_JS_H_
+#ifndef CYGNUS_CORE_PLUGIN_JAVASCRIPT_BRIDGE_JS_H_
+#define CYGNUS_CORE_PLUGIN_JAVASCRIPT_BRIDGE_JS_H_
 
 #include <memory>
 #include <string>
@@ -8,7 +8,7 @@
 #include "../utils/log.h"
 #include "../utils/string.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
 
   class JavaScriptBridgeJS
@@ -24,9 +24,9 @@ namespace flutter_inappwebview_plugin
       return _JAVASCRIPT_BRIDGE_NAME;
     }
 
-    inline static const std::string JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT";
+    inline static const std::string JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT";
 
-    inline static const std::string VAR_JAVASCRIPT_BRIDGE_BRIDGE_SECRET = "$IN_APP_WEBVIEW_JAVASCRIPT_BRIDGE_BRIDGE_SECRET";
+    inline static const std::string VAR_JAVASCRIPT_BRIDGE_BRIDGE_SECRET = "$CYGNUS_WEBVIEW_JAVASCRIPT_BRIDGE_BRIDGE_SECRET";
 
     static std::string JAVASCRIPT_BRIDGE_JS_SOURCE()
     {
@@ -85,7 +85,7 @@ namespace flutter_inappwebview_plugin
     {
       return "(function() { \
          if ((window.top == null || window.top === window) && window." + get_JAVASCRIPT_BRIDGE_NAME() + " != null && window." + get_JAVASCRIPT_BRIDGE_NAME() + "._platformReady == null) { \
-           window.dispatchEvent(new Event('flutterInAppWebViewPlatformReady')); \
+           window.dispatchEvent(new Event('cygnusPlatformReady')); \
            window." + get_JAVASCRIPT_BRIDGE_NAME() + "._platformReady = true; \
          } \
        })();";
@@ -107,8 +107,8 @@ namespace flutter_inappwebview_plugin
     }
 
   private:
-    inline static std::string _JAVASCRIPT_BRIDGE_NAME = "flutter_inappwebview";
+    inline static std::string _JAVASCRIPT_BRIDGE_NAME = "cygnus";
   };
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_JAVASCRIPT_BRIDGE_JS_H_
+#endif //CYGNUS_CORE_PLUGIN_JAVASCRIPT_BRIDGE_JS_H_

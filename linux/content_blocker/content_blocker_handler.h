@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_CONTENT_BLOCKER_HANDLER_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_CONTENT_BLOCKER_HANDLER_H_
+#ifndef CYGNUS_CORE_PLUGIN_CONTENT_BLOCKER_HANDLER_H_
+#define CYGNUS_CORE_PLUGIN_CONTENT_BLOCKER_HANDLER_H_
 
 #include <flutter_linux/flutter_linux.h>
 #include <wpe/webkit.h>
@@ -8,9 +8,9 @@
 #include <memory>
 #include <string>
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
-class InAppWebView;
+class CygnusWebView;
 
 /**
  * ContentBlockerHandler manages WebKit content filters for content blocking.
@@ -97,6 +97,6 @@ class ContentBlockerHandler {
   };
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_CONTENT_BLOCKER_HANDLER_H_
+#endif  // CYGNUS_CORE_PLUGIN_CONTENT_BLOCKER_HANDLER_H_

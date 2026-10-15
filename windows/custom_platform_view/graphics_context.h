@@ -7,7 +7,7 @@
 
 #include "util/rohelper.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   class GraphicsContext {
   public:

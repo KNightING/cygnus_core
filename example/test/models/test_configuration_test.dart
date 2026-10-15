@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_inappwebview_example/models/test_configuration.dart';
-import 'package:flutter_inappwebview_example/utils/constants.dart';
-import 'package:flutter_inappwebview_example/widgets/common/parameter_dialog.dart';
+import 'package:cygnus_core_example/models/test_configuration.dart';
+import 'package:cygnus_core_example/utils/constants.dart';
+import 'package:cygnus_core_example/widgets/common/parameter_dialog.dart';
 
 void main() {
   group('CustomTestStep', () {

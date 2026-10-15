@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_JAVASCRIPT_BRIDGE_JS_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_JAVASCRIPT_BRIDGE_JS_H_
+#ifndef CYGNUS_CORE_PLUGIN_JAVASCRIPT_BRIDGE_JS_H_
+#define CYGNUS_CORE_PLUGIN_JAVASCRIPT_BRIDGE_JS_H_
 
 #include <memory>
 #include <optional>
@@ -9,7 +9,7 @@
 #include "../types/plugin_script.h"
 #include "../utils/string.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 // Forward declaration to avoid circular dependency
 class WindowIdJS;
@@ -30,14 +30,14 @@ class JavaScriptBridgeJS {
   static std::string get_JAVASCRIPT_BRIDGE_NAME() { return _JAVASCRIPT_BRIDGE_NAME; }
 
   inline static const std::string JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT_GROUP_NAME =
-      "IN_APP_WEBVIEW_JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT";
+      "CYGNUS_WEBVIEW_JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT";
 
   inline static const std::string VAR_JAVASCRIPT_BRIDGE_BRIDGE_SECRET =
-      "$IN_APP_WEBVIEW_JAVASCRIPT_BRIDGE_BRIDGE_SECRET";
+      "$CYGNUS_WEBVIEW_JAVASCRIPT_BRIDGE_BRIDGE_SECRET";
 
   /**
    * Returns the JavaScript variable name for the window ID.
-   * Match iOS WindowIdJS: "window._flutter_inappwebview_windowId"
+   * Match iOS WindowIdJS: "window._cygnus_windowId"
    */
   static std::string WINDOW_ID_VARIABLE_JS_SOURCE() {
     return "window._" + get_JAVASCRIPT_BRIDGE_NAME() + "_windowId";
@@ -45,7 +45,7 @@ class JavaScriptBridgeJS {
 
   /**
    * JavaScript source code for the bridge.
-   * This code sets up window.flutter_inappwebview.callHandler() function
+   * This code sets up window.cygnus.callHandler() function
    * which communicates with native code via webkit.messageHandlers.
    *
    * Matches iOS JavaScriptBridgeJS.JAVASCRIPT_BRIDGE_JS_SOURCE()
@@ -101,7 +101,7 @@ window.)JS" +
            get_JAVASCRIPT_BRIDGE_NAME() + R"JS( != null && 
       window.)JS" +
            get_JAVASCRIPT_BRIDGE_NAME() + R"JS(._platformReady == null) {
-    window.dispatchEvent(new Event('flutterInAppWebViewPlatformReady'));
+    window.dispatchEvent(new Event('cygnusPlatformReady'));
     window.)JS" +
            get_JAVASCRIPT_BRIDGE_NAME() + R"JS(._platformReady = true;
   }
@@ -132,9 +132,9 @@ window.)JS" +
   }
 
  private:
-  inline static std::string _JAVASCRIPT_BRIDGE_NAME = "flutter_inappwebview";
+  inline static std::string _JAVASCRIPT_BRIDGE_NAME = "cygnus";
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_JAVASCRIPT_BRIDGE_JS_H_
+#endif  // CYGNUS_CORE_PLUGIN_JAVASCRIPT_BRIDGE_JS_H_

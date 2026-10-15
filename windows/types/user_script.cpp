@@ -3,7 +3,7 @@
 #include "../utils/log.h"
 #include "../utils/string.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   UserScript::UserScript(
     const std::optional<std::string>& groupName,

@@ -5,7 +5,7 @@ import com.github.knighting.cygnus.core.types.UserScriptInjectionTime
 
 class PrintJS {
   companion object {
-    const val PRINT_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_PRINT_JS_PLUGIN_SCRIPT"
+    const val PRINT_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_PRINT_JS_PLUGIN_SCRIPT"
 
     @JvmStatic
     fun PRINT_JS_PLUGIN_SCRIPT(allowedOriginRules: MutableSet<String>?,

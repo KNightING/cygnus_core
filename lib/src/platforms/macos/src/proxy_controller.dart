@@ -39,7 +39,7 @@ class MacOSProxyController extends CygnusPlatformProxyController
               ),
       ) {
     channel = const MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_proxycontroller',
+      'com.github.knighting.cygnus/webview_proxycontroller',
     );
     handler = handleMethod;
     initMethodCallHandler();

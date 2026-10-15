@@ -4,7 +4,7 @@
 
 #include <Shlwapi.h>
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   CustomSchemeResponse::CustomSchemeResponse(const std::vector<uint8_t>& data, const std::string& contentType, const std::string& contentEncoding)
     : data(data), contentType(contentType), contentEncoding(contentEncoding)

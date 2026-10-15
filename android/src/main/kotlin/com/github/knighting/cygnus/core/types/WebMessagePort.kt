@@ -4,7 +4,7 @@ import android.text.TextUtils
 import android.webkit.ValueCallback
 import com.github.knighting.cygnus.core.Util
 import com.github.knighting.cygnus.core.plugin_scripts_js.JavaScriptBridgeJS
-import com.github.knighting.cygnus.core.webview.InAppWebViewInterface
+import com.github.knighting.cygnus.core.webview.CygnusWebViewInterface
 import com.github.knighting.cygnus.core.webview.web_message.WebMessageChannel
 import java.util.ArrayList
 
@@ -27,7 +27,7 @@ class WebMessagePort(
       throw Exception("Port is already closed or transferred")
     }
     this.isStarted = true
-    val webView: InAppWebViewInterface? = if (webMessageChannel != null && webMessageChannel!!.webView != null) webMessageChannel!!.webView else null
+    val webView: CygnusWebViewInterface? = if (webMessageChannel != null && webMessageChannel!!.webView != null) webMessageChannel!!.webView else null
     if (webView != null) {
       val index = if (name == "port1") 0 else 1
       webView.evaluateJavascript("(function() {" +
@@ -60,7 +60,7 @@ class WebMessagePort(
     if (isClosed || isTransferred) {
       throw Exception("Port is already closed or transferred")
     }
-    val webView: InAppWebViewInterface? = if (webMessageChannel != null && webMessageChannel!!.webView != null) webMessageChannel!!.webView else null
+    val webView: CygnusWebViewInterface? = if (webMessageChannel != null && webMessageChannel!!.webView != null) webMessageChannel!!.webView else null
     if (webView != null) {
       var portsString = "null"
       val ports: List<WebMessagePort>? = message.ports
@@ -105,7 +105,7 @@ class WebMessagePort(
       throw Exception("Port is already transferred")
     }
     isClosed = true
-    val webView: InAppWebViewInterface? = if (webMessageChannel != null && webMessageChannel!!.webView != null) webMessageChannel!!.webView else null
+    val webView: CygnusWebViewInterface? = if (webMessageChannel != null && webMessageChannel!!.webView != null) webMessageChannel!!.webView else null
     if (webView != null) {
       val source = "(function() {" +
         "  var webMessageChannel = " + JavaScriptBridgeJS.WEB_MESSAGE_CHANNELS_VARIABLE_NAME() + "['" + webMessageChannel!!.id + "'];" +

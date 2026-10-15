@@ -1,6 +1,6 @@
 //
 //  PrintJobManager.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 09/05/22.
 //
@@ -8,10 +8,10 @@
 import Foundation
 
 public class PrintJobManager: NSObject, Disposable {
-    var plugin: InAppWebViewFlutterPlugin?
+    var plugin: CygnusCorePlugin?
     var jobs: [String: PrintJobController?] = [:]
     
-    public init(plugin: InAppWebViewFlutterPlugin?) {
+    public init(plugin: CygnusCorePlugin?) {
         super.init()
         self.plugin = plugin
     }

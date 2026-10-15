@@ -1,21 +1,21 @@
 package com.github.knighting.cygnus.core.process_global_config
 
 import androidx.webkit.ProcessGlobalConfig
-import com.github.knighting.cygnus.core.InAppWebViewFlutterPlugin
+import com.github.knighting.cygnus.core.CygnusCorePlugin
 import com.github.knighting.cygnus.core.types.ChannelDelegateImpl
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
-class ProcessGlobalConfigManager(plugin: InAppWebViewFlutterPlugin) :
+class ProcessGlobalConfigManager(plugin: CygnusCorePlugin) :
   ChannelDelegateImpl(MethodChannel(plugin.messenger, METHOD_CHANNEL_NAME)) {
   companion object {
     // protected static in Java
     const val LOG_TAG = "ProcessGlobalConfigM"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_processglobalconfig"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_processglobalconfig"
   }
 
   @JvmField
-  var plugin: InAppWebViewFlutterPlugin? = plugin
+  var plugin: CygnusCorePlugin? = plugin
 
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
     when (call.method) {

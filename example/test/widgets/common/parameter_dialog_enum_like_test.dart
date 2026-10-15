@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_inappwebview_example/widgets/common/parameter_dialog.dart';
+import 'package:cygnus_core_example/widgets/common/parameter_dialog.dart';
 
 class _TestEnumLike {
   final String _label;

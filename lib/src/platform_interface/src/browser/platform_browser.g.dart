@@ -975,7 +975,7 @@ enum CygnusPlatformBrowserEventsMethod {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] and [CygnusWebViewSettings.useOnAjaxProgress] settings documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
+  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] and [CygnusWebViewSettings.useOnAjaxProgress] settings documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("cygnusPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
@@ -992,7 +992,7 @@ enum CygnusPlatformBrowserEventsMethod {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] and [CygnusWebViewSettings.useOnAjaxReadyStateChange] settings documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
+  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] and [CygnusWebViewSettings.useOnAjaxReadyStateChange] settings documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("cygnusPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
@@ -2092,7 +2092,7 @@ enum CygnusPlatformBrowserEventsMethod {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] setting documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
+  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptAjaxRequest] setting documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("cygnusPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///
@@ -2109,7 +2109,7 @@ enum CygnusPlatformBrowserEventsMethod {
   ///
   ///**Officially Supported Platforms/Implementations**:
   ///- Android WebView:
-  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptFetchRequest] setting documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
+  ///    - In order to be able to listen this event, check the [CygnusWebViewSettings.useShouldInterceptFetchRequest] setting documentation. Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS. In that case, after the `window.addEventListener("cygnusPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.
   ///- iOS WKWebView
   ///- macOS WKWebView
   ///

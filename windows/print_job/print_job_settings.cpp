@@ -3,7 +3,7 @@
 #include "../utils/string.h"
 #include "../utils/log.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   std::optional<EdgeInsets> EdgeInsets::fromEncodableMap(const flutter::EncodableMap& map)
   {

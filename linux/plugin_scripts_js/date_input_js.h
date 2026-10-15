@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_DATE_INPUT_JS_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_DATE_INPUT_JS_H_
+#ifndef CYGNUS_CORE_PLUGIN_DATE_INPUT_JS_H_
+#define CYGNUS_CORE_PLUGIN_DATE_INPUT_JS_H_
 
 #include <memory>
 #include <optional>
@@ -9,7 +9,7 @@
 #include "../types/plugin_script.h"
 #include "javascript_bridge_js.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * JavaScript for intercepting date/time input elements.
@@ -28,7 +28,7 @@ namespace flutter_inappwebview_plugin {
 class DateInputJS {
  public:
   inline static const std::string DATE_INPUT_JS_PLUGIN_SCRIPT_GROUP_NAME =
-      "IN_APP_WEBVIEW_DATE_INPUT_JS_PLUGIN_SCRIPT";
+      "CYGNUS_WEBVIEW_DATE_INPUT_JS_PLUGIN_SCRIPT";
 
   /**
    * JavaScript source code for date input interception.
@@ -43,8 +43,8 @@ class DateInputJS {
     return R"JS(
 (function() {
   // Avoid re-registering
-  if (window._flutterInAppWebViewDateInputInit) return;
-  window._flutterInAppWebViewDateInputInit = true;
+  if (window._flutterCygnusWebViewDateInputInit) return;
+  window._flutterCygnusWebViewDateInputInit = true;
 
   // Supported date input types
   var DATE_INPUT_TYPES = ['date', 'datetime-local', 'time', 'month', 'week'];
@@ -281,6 +281,6 @@ class DateInputJS {
   }
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_DATE_INPUT_JS_H_
+#endif  // CYGNUS_CORE_PLUGIN_DATE_INPUT_JS_H_

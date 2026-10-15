@@ -2,7 +2,7 @@
 #include "../utils/map.h"
 #include "screenshot_configuration.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   CompressFormat CompressFormatFromString(const std::string& compressFormat)
   {

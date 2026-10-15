@@ -44,11 +44,11 @@ extension type JSWebView._(JSObject _) implements JSObject {
   external JSSize getSize();
 }
 
-@JS('window.flutter_inappwebview_plugin')
-external FlutterInAppWebViewBridge? get flutterInAppWebView;
+@JS('window.cygnusWeb')
+external CygnusWebBridge? get cygnusWeb;
 
-extension type FlutterInAppWebViewBridge._(JSObject _) implements JSObject {
-  external JSWebView createFlutterInAppWebView(
+extension type CygnusWebBridge._(JSObject _) implements JSObject {
+  external JSWebView createCygnusWebView(
     JSAny viewId,
     HTMLIFrameElement iframe,
     HTMLDivElement iframeContainer,

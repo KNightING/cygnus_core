@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_SCREENSHOT_CONFIGURATION_H_
-#define FLUTTER_INAPPWEBVIEW_SCREENSHOT_CONFIGURATION_H_
+#ifndef CYGNUS_SCREENSHOT_CONFIGURATION_H_
+#define CYGNUS_SCREENSHOT_CONFIGURATION_H_
 
 #include <flutter/standard_method_codec.h>
 #include <optional>
@@ -8,7 +8,7 @@
 #include "../types/rect.h"
 #include "../utils/string.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   enum class CompressFormat {
     png,
@@ -35,4 +35,4 @@ namespace flutter_inappwebview_plugin
     ~ScreenshotConfiguration();
   };
 }
-#endif //FLUTTER_INAPPWEBVIEW_SCREENSHOT_CONFIGURATION_H_
+#endif //CYGNUS_SCREENSHOT_CONFIGURATION_H_

@@ -43,7 +43,7 @@ class IOSCookieManager extends CygnusPlatformCookieManager with ChannelControlle
               ),
       ) {
     channel = const MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_cookiemanager',
+      'com.github.knighting.cygnus/webview_cookiemanager',
     );
     handler = handleMethod;
     initMethodCallHandler();

@@ -1,7 +1,7 @@
 #include "../utils/flutter.h"
 #include "download_start_request.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   DownloadStartRequest::DownloadStartRequest(const std::optional<std::string>& contentDisposition,
     const int64_t& contentLength,

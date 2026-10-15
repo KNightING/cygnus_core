@@ -1,12 +1,12 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_HTTP_AUTH_RESPONSE_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_HTTP_AUTH_RESPONSE_H_
+#ifndef CYGNUS_CORE_PLUGIN_HTTP_AUTH_RESPONSE_H_
+#define CYGNUS_CORE_PLUGIN_HTTP_AUTH_RESPONSE_H_
 
 #include <flutter_linux/flutter_linux.h>
 
 #include <optional>
 #include <string>
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * HTTP authentication response action.
@@ -28,6 +28,6 @@ class HttpAuthResponse {
   ~HttpAuthResponse() = default;
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_HTTP_AUTH_RESPONSE_H_
+#endif  // CYGNUS_CORE_PLUGIN_HTTP_AUTH_RESPONSE_H_

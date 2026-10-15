@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/widgets/webview/user_script_tester_widget.dart';
+import 'package:cygnus_core_example/widgets/webview/user_script_tester_widget.dart';
 
 void main() {
   group('UserScriptTesterWidget', () {

@@ -6,18 +6,18 @@
 
 #include <utility>
 
-#include "../in_app_webview/in_app_webview.h"
+#include "../webview/webview.h"
 #include "../utils/flutter.h"
 #include "../utils/log.h"
 #include "../utils/strconv.h"
 #include "../utils/string.h"
 #include "../utils/util.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   using namespace Microsoft::WRL;
 
-  FindInteractionController::FindInteractionController(InAppWebView* webView, flutter::BinaryMessenger* messenger)
+  FindInteractionController::FindInteractionController(CygnusWebView* webView, flutter::BinaryMessenger* messenger)
     : webView(webView)
   {
     channelDelegate = std::make_unique<FindInteractionChannelDelegate>(

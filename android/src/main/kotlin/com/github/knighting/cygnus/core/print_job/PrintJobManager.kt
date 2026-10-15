@@ -23,18 +23,18 @@ package com.github.knighting.cygnus.core.print_job
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.github.knighting.cygnus.core.InAppWebViewFlutterPlugin
+import com.github.knighting.cygnus.core.CygnusCorePlugin
 import com.github.knighting.cygnus.core.types.Disposable
 
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-class PrintJobManager(plugin: InAppWebViewFlutterPlugin) : Disposable {
+class PrintJobManager(plugin: CygnusCorePlugin) : Disposable {
   companion object {
     // protected static in Java
     const val LOG_TAG = "PrintJobManager"
   }
 
   @JvmField
-  var plugin: InAppWebViewFlutterPlugin? = plugin
+  var plugin: CygnusCorePlugin? = plugin
   @JvmField
   val jobs: MutableMap<String, PrintJobController?> = HashMap()
 

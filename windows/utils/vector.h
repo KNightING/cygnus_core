@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_UTIL_VECTOR_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_UTIL_VECTOR_H_
+#ifndef CYGNUS_CORE_PLUGIN_UTIL_VECTOR_H_
+#define CYGNUS_CORE_PLUGIN_UTIL_VECTOR_H_
 
 #include <algorithm>
 #include <functional>
@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   template<typename T = void, typename = void>
   struct is_vector_impl : std::false_type { };
@@ -96,4 +96,4 @@ namespace flutter_inappwebview_plugin
   }
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_UTIL_VECTOR_H_
+#endif //CYGNUS_CORE_PLUGIN_UTIL_VECTOR_H_

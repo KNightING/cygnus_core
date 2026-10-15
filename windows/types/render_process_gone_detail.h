@@ -1,9 +1,9 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_RENDER_PROCESS_GONE_DETAIL_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_RENDER_PROCESS_GONE_DETAIL_H_
+#ifndef CYGNUS_CORE_PLUGIN_RENDER_PROCESS_GONE_DETAIL_H_
+#define CYGNUS_CORE_PLUGIN_RENDER_PROCESS_GONE_DETAIL_H_
 
 #include <flutter/standard_method_codec.h>
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
 
   class RenderProcessGoneDetail
@@ -18,4 +18,4 @@ namespace flutter_inappwebview_plugin
   };
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_RENDER_PROCESS_GONE_DETAIL_H_
+#endif //CYGNUS_CORE_PLUGIN_RENDER_PROCESS_GONE_DETAIL_H_

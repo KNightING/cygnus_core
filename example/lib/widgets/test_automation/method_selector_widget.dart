@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview_example/utils/controller_methods_registry.dart';
-import 'package:flutter_inappwebview_example/widgets/common/method_card.dart';
-import 'package:flutter_inappwebview_example/widgets/common/parameter_dialog.dart';
+import 'package:cygnus_core_example/utils/controller_methods_registry.dart';
+import 'package:cygnus_core_example/widgets/common/method_card.dart';
+import 'package:cygnus_core_example/widgets/common/parameter_dialog.dart';
 
 /// A widget that allows users to select a controller method and configure its parameters
 class MethodSelectorWidget extends StatefulWidget {

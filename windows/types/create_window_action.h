@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_CREATE_WINDOW_ACTION_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_CREATE_WINDOW_ACTION_H_
+#ifndef CYGNUS_CORE_PLUGIN_CREATE_WINDOW_ACTION_H_
+#define CYGNUS_CORE_PLUGIN_CREATE_WINDOW_ACTION_H_
 
 #include <flutter/standard_method_codec.h>
 #include <optional>
@@ -7,7 +7,7 @@
 #include "url_request.h"
 #include "window_features.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   class CreateWindowAction
   {
@@ -25,4 +25,4 @@ namespace flutter_inappwebview_plugin
   };
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_CREATE_WINDOW_ACTION_H_
+#endif //CYGNUS_CORE_PLUGIN_CREATE_WINDOW_ACTION_H_

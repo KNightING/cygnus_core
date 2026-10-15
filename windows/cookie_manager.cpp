@@ -1,20 +1,20 @@
 #include <nlohmann/json.hpp>
 
 #include "cookie_manager.h"
-#include "headless_in_app_webview/headless_in_app_webview_manager.h"
-#include "in_app_browser/in_app_browser_manager.h"
-#include "in_app_webview/in_app_webview_manager.h"
+#include "headless_webview/headless_webview_manager.h"
+#include "browser/browser_manager.h"
+#include "webview/webview_manager.h"
 #include "types/callbacks_complete.h"
 #include "utils/flutter.h"
 #include "utils/log.h"
 #include "utils/timer.h"
 
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   using namespace Microsoft::WRL;
 
-  CookieManager::CookieManager(const FlutterInappwebviewWindowsPlugin* plugin)
+  CookieManager::CookieManager(const CygnusCorePlugin* plugin)
     : plugin(plugin), ChannelDelegate(plugin->registrar->messenger(), CookieManager::METHOD_CHANNEL_NAME_PREFIX)
   {}
 
@@ -29,21 +29,21 @@ namespace flutter_inappwebview_plugin
     auto webViewEnvironment = plugin && webViewEnvironmentId.has_value() && map_contains(plugin->webViewEnvironmentManager->webViewEnvironments, webViewEnvironmentId.value())
       ? plugin->webViewEnvironmentManager->webViewEnvironments.at(webViewEnvironmentId.value()).get() : nullptr;
 
-    InAppWebView* webView = nullptr;
+    CygnusWebView* webView = nullptr;
     auto webViewIdInt = get_optional_fl_map_value<int64_t>(arguments, "webViewId");
     auto webViewIdString = !webViewIdInt.has_value() ? get_optional_fl_map_value<std::string>(arguments, "webViewId") : std::optional<std::string>{};
-    if (webViewIdInt.has_value() && plugin->inAppWebViewManager && map_contains(plugin->inAppWebViewManager->webViews, (uint64_t)webViewIdInt.value())) {
-      webView = plugin->inAppWebViewManager->webViews.at(webViewIdInt.value())->view.get();
+    if (webViewIdInt.has_value() && plugin->cygnusWebViewManager && map_contains(plugin->cygnusWebViewManager->webViews, (uint64_t)webViewIdInt.value())) {
+      webView = plugin->cygnusWebViewManager->webViews.at(webViewIdInt.value())->view.get();
     }
     else if (webViewIdString.has_value()) {
-      if (plugin->inAppWebViewManager && map_contains(plugin->inAppWebViewManager->keepAliveWebViews, webViewIdString.value())) {
-        webView = plugin->inAppWebViewManager->keepAliveWebViews.at(webViewIdString.value())->view.get();
+      if (plugin->cygnusWebViewManager && map_contains(plugin->cygnusWebViewManager->keepAliveWebViews, webViewIdString.value())) {
+        webView = plugin->cygnusWebViewManager->keepAliveWebViews.at(webViewIdString.value())->view.get();
       }
-      else if (plugin->headlessInAppWebViewManager && map_contains(plugin->headlessInAppWebViewManager->webViews, webViewIdString.value())) {
-        webView = plugin->headlessInAppWebViewManager->webViews.at(webViewIdString.value())->webView.get();
+      else if (plugin->headlessCygnusWebViewManager && map_contains(plugin->headlessCygnusWebViewManager->webViews, webViewIdString.value())) {
+        webView = plugin->headlessCygnusWebViewManager->webViews.at(webViewIdString.value())->webView.get();
       }
-      else if (plugin->inAppBrowserManager && map_contains(plugin->inAppBrowserManager->browsers, webViewIdString.value())) {
-        webView = plugin->inAppBrowserManager->browsers.at(webViewIdString.value())->webView.get();
+      else if (plugin->cygnusBrowserManager && map_contains(plugin->cygnusBrowserManager->browsers, webViewIdString.value())) {
+        webView = plugin->cygnusBrowserManager->browsers.at(webViewIdString.value())->webView.get();
       }
     }
 
@@ -117,7 +117,7 @@ namespace flutter_inappwebview_plugin
     }
   }
 
-  void CookieManager::setCookie(WebViewEnvironment* webViewEnvironment, InAppWebView* inAppWebView, const flutter::EncodableMap& map, std::function<void(const bool&)> completionHandler) const
+  void CookieManager::setCookie(WebViewEnvironment* webViewEnvironment, CygnusWebView* cygnusWebView, const flutter::EncodableMap& map, std::function<void(const bool&)> completionHandler) const
   {
     if (!plugin || !plugin->webViewEnvironmentManager) {
       if (completionHandler) {
@@ -206,8 +206,8 @@ namespace flutter_inappwebview_plugin
         }
       };
 
-    if (inAppWebView && inAppWebView->webView) {
-      callback(nullptr, inAppWebView->webView, false);
+    if (cygnusWebView && cygnusWebView->webView) {
+      callback(nullptr, cygnusWebView->webView, false);
     }
     else {
       webViewEnvironment->useTempWebView([this, callback](wil::com_ptr<ICoreWebView2Controller> webViewController, wil::com_ptr<ICoreWebView2> webView)
@@ -217,7 +217,7 @@ namespace flutter_inappwebview_plugin
     }
   }
 
-  void CookieManager::getCookie(WebViewEnvironment* webViewEnvironment, InAppWebView* inAppWebView, const std::string& url, const std::string& name, std::function<void(const flutter::EncodableValue&)> completionHandler) const
+  void CookieManager::getCookie(WebViewEnvironment* webViewEnvironment, CygnusWebView* cygnusWebView, const std::string& url, const std::string& name, std::function<void(const flutter::EncodableValue&)> completionHandler) const
   {
     if (!plugin || !plugin->webViewEnvironmentManager) {
       if (completionHandler) {
@@ -294,8 +294,8 @@ namespace flutter_inappwebview_plugin
         }
       };
 
-    if (inAppWebView && inAppWebView->webView) {
-      callback(nullptr, inAppWebView->webView, false);
+    if (cygnusWebView && cygnusWebView->webView) {
+      callback(nullptr, cygnusWebView->webView, false);
     }
     else {
       webViewEnvironment->useTempWebView([callback](wil::com_ptr<ICoreWebView2Controller> webViewController, wil::com_ptr<ICoreWebView2> webView)
@@ -305,7 +305,7 @@ namespace flutter_inappwebview_plugin
     }
   }
 
-  void CookieManager::getCookies(WebViewEnvironment* webViewEnvironment, InAppWebView* inAppWebView, const std::string& url, std::function<void(const flutter::EncodableList&)> completionHandler) const
+  void CookieManager::getCookies(WebViewEnvironment* webViewEnvironment, CygnusWebView* cygnusWebView, const std::string& url, std::function<void(const flutter::EncodableList&)> completionHandler) const
   {
     if (!plugin || !plugin->webViewEnvironmentManager) {
       if (completionHandler) {
@@ -380,8 +380,8 @@ namespace flutter_inappwebview_plugin
         }
       };
 
-    if (inAppWebView && inAppWebView->webView) {
-      callback(nullptr, inAppWebView->webView, false);
+    if (cygnusWebView && cygnusWebView->webView) {
+      callback(nullptr, cygnusWebView->webView, false);
     }
     else {
       webViewEnvironment->useTempWebView([callback](wil::com_ptr<ICoreWebView2Controller> webViewController, wil::com_ptr<ICoreWebView2> webView)
@@ -391,7 +391,7 @@ namespace flutter_inappwebview_plugin
     }
   }
 
-  void CookieManager::deleteCookie(WebViewEnvironment* webViewEnvironment, InAppWebView* inAppWebView, const std::string& url, const std::string& name, const std::string& path, const std::optional<std::string>& domain, std::function<void(const bool&)> completionHandler) const
+  void CookieManager::deleteCookie(WebViewEnvironment* webViewEnvironment, CygnusWebView* cygnusWebView, const std::string& url, const std::string& name, const std::string& path, const std::optional<std::string>& domain, std::function<void(const bool&)> completionHandler) const
   {
     if (!plugin || !plugin->webViewEnvironmentManager) {
       if (completionHandler) {
@@ -452,8 +452,8 @@ namespace flutter_inappwebview_plugin
         }
       };
 
-    if (inAppWebView && inAppWebView->webView) {
-      callback(nullptr, inAppWebView->webView, false);
+    if (cygnusWebView && cygnusWebView->webView) {
+      callback(nullptr, cygnusWebView->webView, false);
     }
     else {
       webViewEnvironment->useTempWebView([callback](wil::com_ptr<ICoreWebView2Controller> webViewController, wil::com_ptr<ICoreWebView2> webView)
@@ -463,7 +463,7 @@ namespace flutter_inappwebview_plugin
     }
   }
 
-  void CookieManager::deleteCookies(WebViewEnvironment* webViewEnvironment, InAppWebView* inAppWebView, const std::string& url, const std::string& path, const std::optional<std::string>& domain, std::function<void(const bool&)> completionHandler) const
+  void CookieManager::deleteCookies(WebViewEnvironment* webViewEnvironment, CygnusWebView* cygnusWebView, const std::string& url, const std::string& path, const std::optional<std::string>& domain, std::function<void(const bool&)> completionHandler) const
   {
     if (!plugin || !plugin->webViewEnvironmentManager) {
       if (completionHandler) {
@@ -472,7 +472,7 @@ namespace flutter_inappwebview_plugin
       return;
     }
 
-    getCookies(webViewEnvironment, inAppWebView, url, [this, webViewEnvironment, inAppWebView, url, path, domain, completionHandler](const flutter::EncodableList& cookies)
+    getCookies(webViewEnvironment, cygnusWebView, url, [this, webViewEnvironment, cygnusWebView, url, path, domain, completionHandler](const flutter::EncodableList& cookies)
       {
         auto callbacksComplete = std::make_shared<CallbacksComplete<bool>>(
           [completionHandler](const std::vector<bool>& values)
@@ -485,7 +485,7 @@ namespace flutter_inappwebview_plugin
         for (auto& cookie : cookies) {
           auto cookieMap = std::get<flutter::EncodableMap>(cookie);
           auto name = get_fl_map_value<std::string>(cookieMap, "name");
-          deleteCookie(webViewEnvironment, inAppWebView, url, name, path, domain, [callbacksComplete](const bool& deleted)
+          deleteCookie(webViewEnvironment, cygnusWebView, url, name, path, domain, [callbacksComplete](const bool& deleted)
             {
               callbacksComplete->addValue(deleted);
             });

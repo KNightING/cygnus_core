@@ -1,7 +1,7 @@
 #include "../utils/flutter.h"
 #include "http_auth_response.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   HttpAuthResponse::HttpAuthResponse(const std::string& username,
     const std::string& password,

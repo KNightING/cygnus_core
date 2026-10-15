@@ -1,10 +1,10 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_URL_REQUEST_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_URL_REQUEST_H_
+#ifndef CYGNUS_CORE_PLUGIN_URL_REQUEST_H_
+#define CYGNUS_CORE_PLUGIN_URL_REQUEST_H_
 
 #include <flutter/standard_method_codec.h>
 #include <optional>
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   class URLRequest
   {
@@ -23,4 +23,4 @@ namespace flutter_inappwebview_plugin
   };
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_URL_REQUEST_H_
+#endif //CYGNUS_CORE_PLUGIN_URL_REQUEST_H_

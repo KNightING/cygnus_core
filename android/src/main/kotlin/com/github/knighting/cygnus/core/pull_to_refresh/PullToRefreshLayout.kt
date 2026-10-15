@@ -5,16 +5,16 @@ import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.github.knighting.cygnus.core.InAppWebViewFlutterPlugin
+import com.github.knighting.cygnus.core.CygnusCorePlugin
 import com.github.knighting.cygnus.core.types.Disposable
-import com.github.knighting.cygnus.core.webview.in_app_webview.InAppWebView
+import com.github.knighting.cygnus.core.webview.webview.CygnusWebView
 import io.flutter.plugin.common.MethodChannel
 
 class PullToRefreshLayout : SwipeRefreshLayout, Disposable {
   companion object {
     // package-private in Java
     const val LOG_TAG = "PullToRefreshLayout"
-    const val METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_pull_to_refresh_"
+    const val METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_pull_to_refresh_"
   }
 
   @JvmField
@@ -22,7 +22,7 @@ class PullToRefreshLayout : SwipeRefreshLayout, Disposable {
   @JvmField
   var settings: PullToRefreshSettings = PullToRefreshSettings()
 
-  constructor(context: Context, plugin: InAppWebViewFlutterPlugin,
+  constructor(context: Context, plugin: CygnusCorePlugin,
               id: Any, settings: PullToRefreshSettings) : super(context) {
     this.settings = settings
     val channel = MethodChannel(plugin.messenger, METHOD_CHANNEL_NAME_PREFIX + id)
@@ -41,10 +41,10 @@ class PullToRefreshLayout : SwipeRefreshLayout, Disposable {
     isEnabled = settings.enabled!!
     setOnChildScrollUpCallback(object : OnChildScrollUpCallback {
       override fun canChildScrollUp(parent: SwipeRefreshLayout, child: View?): Boolean {
-        if (child is InAppWebView) {
-          val inAppWebView = child
-          return (inAppWebView.canScrollVertically() && inAppWebView.scrollY > 0) ||
-            (!inAppWebView.canScrollVertically() && inAppWebView.scrollY == 0)
+        if (child is CygnusWebView) {
+          val cygnusWebView = child
+          return (cygnusWebView.canScrollVertically() && cygnusWebView.scrollY > 0) ||
+            (!cygnusWebView.canScrollVertically() && cygnusWebView.scrollY == 0)
         }
         return true
       }

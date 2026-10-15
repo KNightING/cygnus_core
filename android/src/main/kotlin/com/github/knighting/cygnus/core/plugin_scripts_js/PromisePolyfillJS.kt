@@ -5,7 +5,7 @@ import com.github.knighting.cygnus.core.types.UserScriptInjectionTime
 
 class PromisePolyfillJS {
   companion object {
-    const val PROMISE_POLYFILL_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_PROMISE_POLYFILL_JS_PLUGIN_SCRIPT"
+    const val PROMISE_POLYFILL_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_PROMISE_POLYFILL_JS_PLUGIN_SCRIPT"
 
     @JvmStatic
     fun PROMISE_POLYFILL_JS_PLUGIN_SCRIPT(allowedOriginRules: MutableSet<String>?,

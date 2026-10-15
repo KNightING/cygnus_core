@@ -5,7 +5,7 @@ import com.github.knighting.cygnus.core.types.UserScriptInjectionTime
 
 class OnLoadResourceJS {
   companion object {
-    const val ON_LOAD_RESOURCE_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_ON_LOAD_RESOURCE_JS_PLUGIN_SCRIPT"
+    const val ON_LOAD_RESOURCE_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_ON_LOAD_RESOURCE_JS_PLUGIN_SCRIPT"
 
     @JvmStatic
     fun FLAG_VARIABLE_FOR_ON_LOAD_RESOURCE_JS_SOURCE(): String {

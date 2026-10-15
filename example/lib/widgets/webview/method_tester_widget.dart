@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/utils/support_checker.dart';
-import 'package:flutter_inappwebview_example/widgets/common/support_badge.dart';
-import 'package:flutter_inappwebview_example/widgets/common/parameter_dialog.dart';
-import 'package:flutter_inappwebview_example/widgets/common/method_result_history.dart';
+import 'package:cygnus_core_example/utils/support_checker.dart';
+import 'package:cygnus_core_example/widgets/common/support_badge.dart';
+import 'package:cygnus_core_example/widgets/common/parameter_dialog.dart';
+import 'package:cygnus_core_example/widgets/common/method_result_history.dart';
 
 /// Method entry for a single controller method
 class MethodEntry {

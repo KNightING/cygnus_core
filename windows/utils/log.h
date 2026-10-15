@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_LOG_UTIL_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_LOG_UTIL_H_
+#ifndef CYGNUS_CORE_PLUGIN_LOG_UTIL_H_
+#define CYGNUS_CORE_PLUGIN_LOG_UTIL_H_
 
 #include <comdef.h>
 #include <iostream>
@@ -9,7 +9,7 @@
 #include "strconv.h"
 #include "string.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   template <typename T>
   static inline void debugLog(const std::basic_string<T>& msg, const bool& isError = false, const std::string& filename = "", const int& line = 0)
@@ -17,8 +17,8 @@ namespace flutter_inappwebview_plugin
 #ifndef NDEBUG
     std::basic_string<T> debugMsg = msg;
     if (!filename.empty() && line > 0) {
-      auto filenameSplit = split(filename, std::string{ "\\flutter_inappwebview_windows\\" });
-      std::string reduceFilenamePath = filenameSplit.size() > 0 ? "flutter_inappwebview_windows\\" + filenameSplit.back() : filename;
+      auto filenameSplit = split(filename, std::string{ "\\cygnus_core\\" });
+      std::string reduceFilenamePath = filenameSplit.size() > 0 ? "cygnus_core\\" + filenameSplit.back() : filename;
       debugMsg = reduceFilenamePath + "(" + std::to_string(line) + "): " + debugMsg;
     }
     if (isError) {
@@ -100,4 +100,4 @@ namespace flutter_inappwebview_plugin
 #define failedLog(value) failedLog(value, __FILE__, __LINE__)
 #endif
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_LOG_UTIL_H_
+#endif //CYGNUS_CORE_PLUGIN_LOG_UTIL_H_

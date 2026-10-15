@@ -1,7 +1,7 @@
 #include "../utils/flutter.h"
 #include "client_cert_challenge.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   ClientCertChallenge::ClientCertChallenge(const std::shared_ptr<URLProtectionSpace> protectionSpace,
     const std::vector<std::string>& allowedCertificateAuthorities,

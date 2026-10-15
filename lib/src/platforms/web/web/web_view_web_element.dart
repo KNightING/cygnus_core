@@ -49,19 +49,19 @@ class InAppWebViewWebElement implements CygnusDisposable {
     this._viewId = viewId;
     this._messenger = messenger;
     iframeContainer = HTMLDivElement()
-      ..id = 'flutter_inappwebview-$_viewId-container'
+      ..id = 'cygnus-$_viewId-container'
       ..style.height = '100%'
       ..style.width = '100%'
       ..style.border = 'none';
     iframe = HTMLIFrameElement()
-      ..id = 'flutter_inappwebview-$_viewId'
+      ..id = 'cygnus-$_viewId'
       ..style.height = '100%'
       ..style.width = '100%'
       ..style.border = 'none';
     iframeContainer.append(iframe);
 
     _channel = MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_$_viewId',
+      'com.github.knighting.cygnus/webview_$_viewId',
       const StandardMethodCodec(),
       _messenger,
     );
@@ -89,7 +89,7 @@ class InAppWebViewWebElement implements CygnusDisposable {
               .join('-');
     }
 
-    jsWebView = flutterInAppWebView?.createFlutterInAppWebView(
+    jsWebView = cygnusWeb?.createCygnusWebView(
       _viewId is int ? (_viewId as int).toJS : _viewId.toString().toJS,
       iframe,
       iframeContainer,
@@ -239,7 +239,7 @@ class InAppWebViewWebElement implements CygnusDisposable {
         throw PlatformException(
           code: 'Unimplemented',
           details:
-              'flutter_inappwebview for web doesn\'t implement \'${call.method}\'',
+              'cygnus_core for web doesn\'t implement \'${call.method}\'',
         );
     }
     return null;
@@ -264,7 +264,7 @@ class InAppWebViewWebElement implements CygnusDisposable {
           initialFile = webView.initialFile;
           initialUserScripts = webView.initialUserScripts;
 
-          jsWebView = flutterInAppWebView?.createFlutterInAppWebView(
+          jsWebView = cygnusWeb?.createCygnusWebView(
             _viewId is int ? (_viewId as int).toJS : _viewId.toString().toJS,
             iframe,
             iframeContainer,

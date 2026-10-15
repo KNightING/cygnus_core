@@ -17,11 +17,11 @@ import java.util.Locale
 import java.util.TimeZone
 import java.util.regex.Pattern
 
-open class MyCookieManager(plugin: InAppWebViewFlutterPlugin) :
+open class MyCookieManager(plugin: CygnusCorePlugin) :
   ChannelDelegateImpl(MethodChannel(plugin.messenger, METHOD_CHANNEL_NAME)) {
 
   @JvmField
-  var plugin: InAppWebViewFlutterPlugin? = plugin
+  var plugin: CygnusCorePlugin? = plugin
 
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
     init()
@@ -380,7 +380,7 @@ open class MyCookieManager(plugin: InAppWebViewFlutterPlugin) :
 
   companion object {
     protected const val LOG_TAG = "MyCookieManager"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_cookiemanager"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_cookiemanager"
 
     @JvmField
     var cookieManager: CookieManager? = null

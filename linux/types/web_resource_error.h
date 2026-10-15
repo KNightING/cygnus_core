@@ -1,12 +1,12 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_RESOURCE_ERROR_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_RESOURCE_ERROR_H_
+#ifndef CYGNUS_CORE_PLUGIN_WEB_RESOURCE_ERROR_H_
+#define CYGNUS_CORE_PLUGIN_WEB_RESOURCE_ERROR_H_
 
 #include <flutter_linux/flutter_linux.h>
 
 #include <cstdint>
 #include <string>
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 class WebResourceError {
  public:
@@ -20,6 +20,6 @@ class WebResourceError {
   FlValue* toFlValue() const;
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_RESOURCE_ERROR_H_
+#endif  // CYGNUS_CORE_PLUGIN_WEB_RESOURCE_ERROR_H_

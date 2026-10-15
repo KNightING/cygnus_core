@@ -1,6 +1,6 @@
 //
 //  CredentialDatabase.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 29/10/2019.
 //
@@ -9,11 +9,11 @@ import Foundation
 import FlutterMacOS
 
 public class CredentialDatabase: ChannelDelegate {
-    static let METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_credential_database"
-    var plugin: InAppWebViewFlutterPlugin?
+    static let METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_credential_database"
+    var plugin: CygnusCorePlugin?
     static var credentialStore = URLCredentialStorage.shared
 
-    init(plugin: InAppWebViewFlutterPlugin) {
+    init(plugin: CygnusCorePlugin) {
         super.init(channel: FlutterMethodChannel(name: CredentialDatabase.METHOD_CHANNEL_NAME, binaryMessenger: plugin.registrar.messenger))
         self.plugin = plugin
     }

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
+import 'package:cygnus_core_internal_annotations/cygnus_core_internal_annotations.dart';
 import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 
 part 'javascript_handler_callback.g.dart';
@@ -14,7 +14,7 @@ typedef dynamic CygnusJavaScriptHandlerCallback(List<dynamic> arguments);
 ///The Android implementation uses [addJavascriptInterface](https://developer.android.com/reference/android/webkit/WebView#addJavascriptInterface(java.lang.Object,%20java.lang.String)).
 ///The iOS/macOS implementation uses [addScriptMessageHandler](https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1537172-addscriptmessagehandler?language=objc)
 ///
-///The JavaScript function that can be used to call the handler is `window.flutter_inappwebview.callHandler(handlerName <String>, ...args);`, where `args` are [rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters).
+///The JavaScript function that can be used to call the handler is `window.cygnus.callHandler(handlerName <String>, ...args);`, where `args` are [rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters).
 ///The `args` will be stringified automatically using `JSON.stringify(args)` method and then they will be decoded on the Dart side.
 ///
 ///Also, a [CygnusJavaScriptHandlerFunction] can return json data to the JavaScript side.

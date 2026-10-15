@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_LOG_UTIL_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_LOG_UTIL_H_
+#ifndef CYGNUS_CORE_PLUGIN_LOG_UTIL_H_
+#define CYGNUS_CORE_PLUGIN_LOG_UTIL_H_
 
 #include <glib.h>
 
@@ -9,7 +9,7 @@
 
 #include "string.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 template <typename T>
 static inline void debugLog(const std::basic_string<T>& msg, const bool& isError = false,
@@ -25,9 +25,9 @@ static inline void debugLog(const std::basic_string<T>& msg, const bool& isError
 
   // Use g_message for GLib-based logging
   if (isError) {
-    g_warning("[flutter_inappwebview] %s", std::string(debugMsg).c_str());
+    g_warning("[cygnus_core] %s", std::string(debugMsg).c_str());
   } else {
-    g_message("[flutter_inappwebview] %s", std::string(debugMsg).c_str());
+    g_message("[cygnus_core] %s", std::string(debugMsg).c_str());
   }
 #endif
 }
@@ -97,7 +97,7 @@ static inline void failedLog(GError** error, const std::string& filename = "",
   }
 }
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
 #ifndef NDEBUG
 #define debugLog(value) debugLog(value, false, __FILE__, __LINE__)
@@ -107,4 +107,4 @@ static inline void failedLog(GError** error, const std::string& filename = "",
 #define failedLog(error) failedLog(error, __FILE__, __LINE__)
 #endif
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_LOG_UTIL_H_
+#endif  // CYGNUS_CORE_PLUGIN_LOG_UTIL_H_

@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_inappwebview_example/providers/event_log_provider.dart';
-import 'package:flutter_inappwebview_example/screens/advanced/service_controllers_screen.dart';
-import 'package:flutter_inappwebview_example/screens/storage/cookie_manager_screen.dart';
-import 'package:flutter_inappwebview_example/screens/support_matrix/platform_comparison_screen.dart';
-import 'package:flutter_inappwebview_example/screens/support_matrix/support_matrix_screen.dart';
+import 'package:cygnus_core_example/providers/event_log_provider.dart';
+import 'package:cygnus_core_example/screens/advanced/service_controllers_screen.dart';
+import 'package:cygnus_core_example/screens/storage/cookie_manager_screen.dart';
+import 'package:cygnus_core_example/screens/support_matrix/platform_comparison_screen.dart';
+import 'package:cygnus_core_example/screens/support_matrix/support_matrix_screen.dart';
 
-import '../test_helpers/mock_inappwebview_platform.dart';
+import '../test_helpers/mock_cygnus_platform.dart';
 import '../test_helpers/test_provider_wrapper.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() {
-    MockInAppWebViewPlatform.initialize();
+    MockCygnusPlatform.initialize();
   });
 
   Future<void> pumpScreen(WidgetTester tester, Widget screen) async {
-    MockInAppWebViewPlatform.initialize();
+    MockCygnusPlatform.initialize();
     await tester.pumpWidget(screen);
     await tester.pump(const Duration(milliseconds: 100));
   }

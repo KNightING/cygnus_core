@@ -14,7 +14,7 @@ class HeadlessInAppWebViewManager extends ChannelController {
   HeadlessInAppWebViewManager({required BinaryMessenger messenger}) {
     this._messenger = messenger;
     channel = MethodChannel(
-      'com.pichillilorenzo/flutter_headless_inappwebview',
+      'com.github.knighting.cygnus/headless_webview',
       const StandardMethodCodec(),
       _messenger,
     );

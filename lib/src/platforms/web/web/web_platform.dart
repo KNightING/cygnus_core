@@ -17,11 +17,11 @@ import 'platform_util.dart';
 /// Builds an iframe based WebView.
 ///
 /// This is used as the default implementation for `WebView` on web.
-class InAppWebViewFlutterPlugin {
-  /// Constructs a new instance of [InAppWebViewFlutterPlugin].
-  InAppWebViewFlutterPlugin(Registrar registrar) {
+class CygnusCorePlugin {
+  /// Constructs a new instance of [CygnusCorePlugin].
+  CygnusCorePlugin(Registrar registrar) {
     ui_web.platformViewRegistry.registerViewFactory(
-      'com.pichillilorenzo/flutter_inappwebview',
+      'com.github.knighting.cygnus/webview',
       (int viewId) {
         var webView = InAppWebViewWebElement(
           viewId: viewId,
@@ -36,16 +36,16 @@ class InAppWebViewFlutterPlugin {
   static void registerWith(Registrar registrar) {
     WebPlatformInAppWebViewPlatform.registerWith();
     // ignore: unused_local_variable
-    final pluginInstance = InAppWebViewFlutterPlugin(registrar);
+    final pluginInstance = CygnusCorePlugin(registrar);
     // ignore: unused_local_variable
     final platformUtil = PlatformUtil(messenger: registrar);
     // ignore: unused_local_variable
     final webViewManager = InAppWebViewManager(messenger: registrar);
     // ignore: unused_local_variable
     final headlessManager = HeadlessInAppWebViewManager(messenger: registrar);
-    if (flutterInAppWebView != null) {
-      if (!Object_isFrozen(flutterInAppWebView!).toDart) {
-        flutterInAppWebView!.nativeAsyncCommunication =
+    if (cygnusWeb != null) {
+      if (!Object_isFrozen(cygnusWeb!).toDart) {
+        cygnusWeb!.nativeAsyncCommunication =
             ((JSString method, JSAny viewId, [JSArray? args]) {
               return _dartNativeAsyncCommunication(
                 method.toDart,
@@ -53,7 +53,7 @@ class InAppWebViewFlutterPlugin {
                 args?.toDart,
               ).then((value) => value?.toJS).toJS;
             }).toJS;
-        flutterInAppWebView!.nativeSyncCommunication =
+        cygnusWeb!.nativeSyncCommunication =
             ((JSString method, JSAny viewId, [JSArray? args]) =>
                     _dartNativeSyncCommunication(
                       method.toDart,
@@ -61,11 +61,11 @@ class InAppWebViewFlutterPlugin {
                       args?.toDart,
                     )?.toJS)
                 .toJS;
-        Object_freeze(flutterInAppWebView!);
+        Object_freeze(cygnusWeb!);
       }
     } else {
       if (kDebugMode) {
-        print("Error: window.flutter_inappwebview_plugin is not available!");
+        print("Error: window.cygnusWeb is not available!");
       }
     }
   }

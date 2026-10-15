@@ -1,6 +1,6 @@
 //
 //  PluginScripts.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 16/02/21.
 //
@@ -8,12 +8,12 @@
 import Foundation
 
 public class PluginScriptsUtil {
-    public static let VAR_PLACEHOLDER_VALUE = "$IN_APP_WEBVIEW_PLACEHOLDER_VALUE"
-    public static let VAR_FUNCTION_ARGUMENT_NAMES = "$IN_APP_WEBVIEW_FUNCTION_ARGUMENT_NAMES"
-    public static let VAR_FUNCTION_ARGUMENT_VALUES = "$IN_APP_WEBVIEW_FUNCTION_ARGUMENT_VALUES"
-    public static let VAR_FUNCTION_ARGUMENTS_OBJ = "$IN_APP_WEBVIEW_FUNCTION_ARGUMENTS_OBJ"
-    public static let VAR_FUNCTION_BODY = "$IN_APP_WEBVIEW_FUNCTION_BODY"
-    public static let VAR_RESULT_UUID = "$IN_APP_WEBVIEW_RESULT_UUID"
+    public static let VAR_PLACEHOLDER_VALUE = "$CYGNUS_WEBVIEW_PLACEHOLDER_VALUE"
+    public static let VAR_FUNCTION_ARGUMENT_NAMES = "$CYGNUS_WEBVIEW_FUNCTION_ARGUMENT_NAMES"
+    public static let VAR_FUNCTION_ARGUMENT_VALUES = "$CYGNUS_WEBVIEW_FUNCTION_ARGUMENT_VALUES"
+    public static let VAR_FUNCTION_ARGUMENTS_OBJ = "$CYGNUS_WEBVIEW_FUNCTION_ARGUMENTS_OBJ"
+    public static let VAR_FUNCTION_BODY = "$CYGNUS_WEBVIEW_FUNCTION_BODY"
+    public static let VAR_RESULT_UUID = "$CYGNUS_WEBVIEW_RESULT_UUID"
 
     public static let GET_SELECTED_TEXT_JS_SOURCE = """
 (function(){

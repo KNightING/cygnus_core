@@ -1,6 +1,6 @@
 //
 //  PrintJob.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 09/05/22.
 //
@@ -18,9 +18,9 @@ public enum PrintJobState: Int {
 }
 
 public class PrintJobController: NSObject, Disposable, UIPrintInteractionControllerDelegate {
-    static let METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_printjobcontroller_"
+    static let METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_printjobcontroller_"
     var id: String
-    var plugin: InAppWebViewFlutterPlugin?
+    var plugin: CygnusCorePlugin?
     var job: UIPrintInteractionController?
     var settings: PrintJobSettings?
     var printFormatter: UIPrintFormatter?
@@ -29,7 +29,7 @@ public class PrintJobController: NSObject, Disposable, UIPrintInteractionControl
     var state = PrintJobState.created
     var creationTime = Int64(Date().timeIntervalSince1970 * 1000)
     
-    public init(plugin: InAppWebViewFlutterPlugin, id: String, job: UIPrintInteractionController? = nil, settings: PrintJobSettings? = nil) {
+    public init(plugin: CygnusCorePlugin, id: String, job: UIPrintInteractionController? = nil, settings: PrintJobSettings? = nil) {
         self.id = id
         self.plugin = plugin
         super.init()

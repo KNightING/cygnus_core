@@ -3,17 +3,17 @@ package com.github.knighting.cygnus.core.credential_database
 import android.os.Build
 import android.webkit.WebViewDatabase
 import androidx.annotation.RequiresApi
-import com.github.knighting.cygnus.core.InAppWebViewFlutterPlugin
+import com.github.knighting.cygnus.core.CygnusCorePlugin
 import com.github.knighting.cygnus.core.types.ChannelDelegateImpl
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
 @RequiresApi(api = Build.VERSION_CODES.O)
-open class CredentialDatabaseHandler(plugin: InAppWebViewFlutterPlugin) :
+open class CredentialDatabaseHandler(plugin: CygnusCorePlugin) :
   ChannelDelegateImpl(MethodChannel(plugin.messenger, METHOD_CHANNEL_NAME)) {
 
   @JvmField
-  var plugin: InAppWebViewFlutterPlugin? = plugin
+  var plugin: CygnusCorePlugin? = plugin
 
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
     val plugin = this.plugin
@@ -120,13 +120,13 @@ open class CredentialDatabaseHandler(plugin: InAppWebViewFlutterPlugin) :
 
   companion object {
     protected const val LOG_TAG = "CredentialDatabaseHandler"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_credential_database"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_credential_database"
 
     @JvmField
     var credentialDatabase: CredentialDatabase? = null
 
     @JvmStatic
-    fun init(plugin: InAppWebViewFlutterPlugin) {
+    fun init(plugin: CygnusCorePlugin) {
       if (credentialDatabase == null) {
         credentialDatabase = CredentialDatabase.getInstance(plugin.applicationContext)
       }

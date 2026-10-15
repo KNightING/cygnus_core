@@ -63,7 +63,7 @@ class MacOSWebAuthenticationSession extends CygnusPlatformWebAuthenticationSessi
   late final CygnusWebAuthenticationSessionCompletionHandler onComplete;
 
   static const MethodChannel _staticChannel = const MethodChannel(
-    'com.pichillilorenzo/flutter_webauthenticationsession',
+    'com.github.knighting.cygnus/webauthenticationsession',
   );
 
   @override
@@ -105,7 +105,7 @@ class MacOSWebAuthenticationSession extends CygnusPlatformWebAuthenticationSessi
     this.initialSettings =
         initialSettings ?? CygnusWebAuthenticationSessionSettings();
     channel = MethodChannel(
-      'com.pichillilorenzo/flutter_webauthenticationsession_$id',
+      'com.github.knighting.cygnus/webauthenticationsession_$id',
     );
     handler = _handleMethod;
     initMethodCallHandler();

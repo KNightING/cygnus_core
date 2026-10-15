@@ -38,7 +38,7 @@ class LinuxHttpAuthCredentialDatabaseCreationParams
 class LinuxHttpAuthCredentialDatabase
     extends CygnusPlatformHttpAuthCredentialDatabase {
   static const MethodChannel _channel = MethodChannel(
-    'com.pichillilorenzo/flutter_inappwebview_credential_database',
+    'com.github.knighting.cygnus/webview_credential_database',
   );
 
   /// Creates a new [LinuxHttpAuthCredentialDatabase].

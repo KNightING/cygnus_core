@@ -14,8 +14,8 @@ dependencies:
   source_gen: ^4.0.0
   analyzer: ^9.0.0
   collection: any
-  flutter_inappwebview_internal_annotations:
-    path: ../flutter_inappwebview_internal_annotations
+  cygnus_core_internal_annotations:
+    path: ../cygnus_core_internal_annotations
 
 dev_dependencies:
   build_runner: ^2.4.12

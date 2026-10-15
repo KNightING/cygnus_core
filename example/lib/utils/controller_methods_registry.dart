@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/widgets/common/parameter_dialog.dart';
+import 'package:cygnus_core_example/widgets/common/parameter_dialog.dart';
 
 List<T> _safeEnumValues<T>(Iterable<T> Function() getter) {
   try {

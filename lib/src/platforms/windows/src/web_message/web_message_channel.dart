@@ -51,7 +51,7 @@ class WindowsWebMessageChannel extends CygnusPlatformWebMessageChannel
               ),
       ) {
     channel = MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_web_message_channel_${params.id}',
+      'com.github.knighting.cygnus/webview_web_message_channel_${params.id}',
     );
     handler = _handleMethod;
     initMethodCallHandler();

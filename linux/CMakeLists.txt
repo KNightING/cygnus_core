@@ -169,7 +169,7 @@ message(STATUS "cygnus_core: nlohmann/json ${NLOHMANN_JSON_VERSION} configured")
 
 # Plugin source files
 list(APPEND PLUGIN_SOURCES
-  "flutter_inappwebview_linux_plugin.cc"
+  "cygnus_core_plugin.cc"
   "plugin_instance.cc"
   "cookie_manager.cc"
   "credential_database.cc"
@@ -180,21 +180,21 @@ list(APPEND PLUGIN_SOURCES
   "content_blocker/content_blocker_handler.cc"
   "find_interaction/find_interaction_controller.cc"
   "find_interaction/find_interaction_channel_delegate.cc"
-  "headless_in_app_webview/headless_in_app_webview.cc"
-  "headless_in_app_webview/headless_in_app_webview_manager.cc"
-  "headless_in_app_webview/headless_webview_channel_delegate.cc"
-  "in_app_browser/in_app_browser.cc"
-  "in_app_browser/in_app_browser_channel_delegate.cc"
-  "in_app_browser/in_app_browser_manager.cc"
-  "in_app_browser/in_app_browser_settings.cc"
-  "in_app_webview/in_app_webview_manager.cc"
-  "in_app_webview/custom_platform_view.cc"
-  "in_app_webview/inappwebview_texture.cc"
-  "in_app_webview/inappwebview_egl_texture.cc"
-  "in_app_webview/in_app_webview.cc"
-  "in_app_webview/in_app_webview_settings.cc"
-  "in_app_webview/user_content_controller.cc"
-  "in_app_webview/webview_channel_delegate.cc"
+  "headless_webview/headless_webview.cc"
+  "headless_webview/headless_webview_manager.cc"
+  "headless_webview/headless_webview_channel_delegate.cc"
+  "browser/browser.cc"
+  "browser/browser_channel_delegate.cc"
+  "browser/browser_manager.cc"
+  "browser/browser_settings.cc"
+  "webview/webview_manager.cc"
+  "webview/custom_platform_view.cc"
+  "webview/webview_texture.cc"
+  "webview/webview_egl_texture.cc"
+  "webview/webview.cc"
+  "webview/webview_settings.cc"
+  "webview/user_content_controller.cc"
+  "webview/webview_channel_delegate.cc"
   "types/channel_delegate.cc"
   "types/client_cert_challenge.cc"
   "types/client_cert_response.cc"
@@ -366,7 +366,7 @@ set(cygnus_core_bundled_libraries
 )
 
 # Export library info for downstream use
-set(FLUTTER_INAPPWEBVIEW_WPE_LIBS ${WPE_BUNDLED_LIBS} CACHE INTERNAL "WPE libraries to bundle")
+set(CYGNUS_WPE_LIBS ${WPE_BUNDLED_LIBS} CACHE INTERNAL "WPE libraries to bundle")
 
 # === Tests ===
 # These unit tests can be run from a terminal after building the example.
@@ -397,7 +397,7 @@ FetchContent_MakeAvailable(googletest)
 # The plugin's exported API is not very useful for unit testing, so build the
 # sources directly into the test binary rather than using the shared library.
 add_executable(${TEST_RUNNER}
-  test/flutter_inappwebview_linux_plugin_test.cc
+  test/cygnus_core_plugin_test.cc
   ${PLUGIN_SOURCES}
 )
 apply_standard_settings(${TEST_RUNNER})

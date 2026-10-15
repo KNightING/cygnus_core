@@ -2,11 +2,11 @@
 
 #include "print_job_controller.h"
 #include "print_job_settings.h"
-#include "../in_app_webview/in_app_webview.h"
+#include "../webview/webview.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
-  PrintJobManager::PrintJobManager(InAppWebView* webView, flutter::BinaryMessenger* messenger)
+  PrintJobManager::PrintJobManager(CygnusWebView* webView, flutter::BinaryMessenger* messenger)
     : webView_(webView), messenger_(messenger)
   {}
 

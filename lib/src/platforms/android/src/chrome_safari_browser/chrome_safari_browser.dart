@@ -56,12 +56,12 @@ class AndroidChromeSafariBrowser extends CygnusPlatformChromeSafariBrowser
   CygnusChromeSafariBrowserSecondaryToolbar? _secondaryToolbar;
   bool _isOpened = false;
   static const MethodChannel _staticChannel = const MethodChannel(
-    'com.pichillilorenzo/flutter_chromesafaribrowser',
+    'com.github.knighting.cygnus/chromesafaribrowser',
   );
 
   _init() {
     channel = MethodChannel(
-      'com.pichillilorenzo/flutter_chromesafaribrowser_$id',
+      'com.github.knighting.cygnus/chromesafaribrowser_$id',
     );
     handler = _handleMethod;
     initMethodCallHandler();

@@ -8,7 +8,7 @@ import android.webkit.WebResourceResponse
 import com.github.knighting.cygnus.core.Util
 import com.github.knighting.cygnus.core.plugin_scripts_js.JavaScriptBridgeJS
 import com.github.knighting.cygnus.core.types.WebResourceRequestExt
-import com.github.knighting.cygnus.core.webview.in_app_webview.InAppWebView
+import com.github.knighting.cygnus.core.webview.webview.CygnusWebView
 import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.net.HttpURLConnection
@@ -38,7 +38,7 @@ open class ContentBlockerHandler() {
 
   @Throws(URISyntaxException::class, InterruptedException::class, MalformedURLException::class)
   fun checkUrl(
-    webView: InAppWebView, request: WebResourceRequestExt,
+    webView: CygnusWebView, request: WebResourceRequestExt,
     responseResourceType: ContentBlockerTriggerResourceType
   ): WebResourceResponse? {
     if (webView.customSettings.contentBlockers == null)
@@ -262,13 +262,13 @@ open class ContentBlockerHandler() {
   }
 
   @Throws(URISyntaxException::class, InterruptedException::class, MalformedURLException::class)
-  fun checkUrl(webView: InAppWebView, request: WebResourceRequestExt): WebResourceResponse? {
+  fun checkUrl(webView: CygnusWebView, request: WebResourceRequestExt): WebResourceResponse? {
     val responseResourceType = getResourceTypeFromUrl(request)
     return checkUrl(webView, request, responseResourceType)
   }
 
   @Throws(URISyntaxException::class, InterruptedException::class, MalformedURLException::class)
-  fun checkUrl(webView: InAppWebView, request: WebResourceRequestExt, contentType: String): WebResourceResponse? {
+  fun checkUrl(webView: CygnusWebView, request: WebResourceRequestExt, contentType: String): WebResourceResponse? {
     val responseResourceType = getResourceTypeFromContentType(contentType)
     return checkUrl(webView, request, responseResourceType)
   }

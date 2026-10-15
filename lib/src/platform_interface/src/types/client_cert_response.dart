@@ -1,5 +1,5 @@
 import '../webview/platform_webview.dart';
-import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
+import 'package:cygnus_core_internal_annotations/cygnus_core_internal_annotations.dart';
 
 import '../util.dart';
 import 'client_cert_response_action.dart';

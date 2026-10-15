@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_SSL_CERTIFICATE_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_SSL_CERTIFICATE_H_
+#ifndef CYGNUS_CORE_PLUGIN_SSL_CERTIFICATE_H_
+#define CYGNUS_CORE_PLUGIN_SSL_CERTIFICATE_H_
 
 #include <flutter_linux/flutter_linux.h>
 
@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /// SSL Certificate information for HTTPS connections.
 /// Maps to Dart's SslCertificate class.
@@ -28,6 +28,6 @@ class SslCertificate {
   FlValue* toFlValue() const;
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_SSL_CERTIFICATE_H_
+#endif  // CYGNUS_CORE_PLUGIN_SSL_CERTIFICATE_H_

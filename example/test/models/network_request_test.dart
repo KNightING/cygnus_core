@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_inappwebview_example/models/network_request.dart';
+import 'package:cygnus_core_example/models/network_request.dart';
 
 void main() {
   group('NetworkRequest', () {

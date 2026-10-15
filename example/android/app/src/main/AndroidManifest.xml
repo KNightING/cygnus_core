@@ -21,7 +21,7 @@
     <uses-permission android:name="android.permission.AUDIO_CAPTURE" />
 
     <application
-        android:label="flutter_inappwebview_example"
+        android:label="cygnus_core_example"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <meta-data
@@ -56,7 +56,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.flutter_inappwebview_android.fileprovider"
+            android:authorities="${applicationId}.cygnus_core.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

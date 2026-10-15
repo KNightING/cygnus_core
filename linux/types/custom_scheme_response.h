@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_CUSTOM_SCHEME_RESPONSE_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_CUSTOM_SCHEME_RESPONSE_H_
+#ifndef CYGNUS_CORE_PLUGIN_CUSTOM_SCHEME_RESPONSE_H_
+#define CYGNUS_CORE_PLUGIN_CUSTOM_SCHEME_RESPONSE_H_
 
 #include <flutter_linux/flutter_linux.h>
 
@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * CustomSchemeResponse - Response for custom URI scheme requests.
@@ -33,6 +33,6 @@ class CustomSchemeResponse {
   FlValue* toFlValue() const;
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_CUSTOM_SCHEME_RESPONSE_H_
+#endif  // CYGNUS_CORE_PLUGIN_CUSTOM_SCHEME_RESPONSE_H_

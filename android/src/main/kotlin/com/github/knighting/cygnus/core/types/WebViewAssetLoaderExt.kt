@@ -5,7 +5,7 @@ import android.os.Build
 import android.util.Log
 import android.webkit.WebResourceResponse
 import androidx.webkit.WebViewAssetLoader
-import com.github.knighting.cygnus.core.InAppWebViewFlutterPlugin
+import com.github.knighting.cygnus.core.CygnusCorePlugin
 import com.github.knighting.cygnus.core.Util
 import java.io.ByteArrayInputStream
 import java.io.File
@@ -17,7 +17,7 @@ class WebViewAssetLoaderExt(
 ) : Disposable {
   companion object {
     @JvmStatic
-    fun fromMap(map: MutableMap<String, Any?>?, plugin: InAppWebViewFlutterPlugin, context: Context): WebViewAssetLoaderExt? {
+    fun fromMap(map: MutableMap<String, Any?>?, plugin: CygnusCorePlugin, context: Context): WebViewAssetLoaderExt? {
       if (map == null) {
         return null
       }
@@ -82,12 +82,12 @@ class WebViewAssetLoaderExt(
 
   class PathHandlerExt(
     @JvmField var id: String,
-    plugin: InAppWebViewFlutterPlugin
+    plugin: CygnusCorePlugin
   ) : WebViewAssetLoader.PathHandler, Disposable {
     companion object {
       // protected in Java
       const val LOG_TAG = "PathHandlerExt"
-      const val METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_inappwebview_custompathhandler_"
+      const val METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/webview_custompathhandler_"
     }
 
     @JvmField

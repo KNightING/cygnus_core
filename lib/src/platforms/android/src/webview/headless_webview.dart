@@ -260,7 +260,7 @@ class AndroidHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
   bool _running = false;
 
   static const MethodChannel _sharedChannel = const MethodChannel(
-    'com.pichillilorenzo/flutter_headless_inappwebview',
+    'com.github.knighting.cygnus/headless_webview',
   );
 
   AndroidInAppWebViewController? _webViewController;
@@ -305,7 +305,7 @@ class AndroidHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     _androidParams.pullToRefreshController?.init(id);
     _androidParams.findInteractionController?.init(id);
     channel = MethodChannel(
-      'com.pichillilorenzo/flutter_headless_inappwebview_$id',
+      'com.github.knighting.cygnus/headless_webview_$id',
     );
     handler = _handleMethod;
     initMethodCallHandler();

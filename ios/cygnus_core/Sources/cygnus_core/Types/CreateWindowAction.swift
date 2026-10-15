@@ -1,6 +1,6 @@
 //
 //  CreateWindowAction.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 07/05/22.
 //

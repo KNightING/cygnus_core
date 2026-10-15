@@ -16,10 +16,10 @@
     </body>
     <script>
         var image = document.querySelector("#image");
-        window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
+        window.addEventListener("cygnusPlatformReady", function(event) {
             image.src = "my-special-custom-scheme://images/flutter-logo.svg";
             image.addEventListener('load', function() {
-                window.flutter_inappwebview.callHandler('imageLoaded');
+                window.cygnus.callHandler('imageLoaded');
             });
         });
     </script>

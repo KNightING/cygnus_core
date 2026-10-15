@@ -316,7 +316,7 @@ class IOSInAppWebViewWidget extends CygnusPlatformWebViewWidget {
     }
 
     return UiKitView(
-      viewType: 'com.pichillilorenzo/flutter_inappwebview',
+      viewType: 'com.github.knighting.cygnus/webview',
       onPlatformViewCreated: _onPlatformViewCreated,
       gestureRecognizers: params.gestureRecognizers,
       creationParams: <String, dynamic>{

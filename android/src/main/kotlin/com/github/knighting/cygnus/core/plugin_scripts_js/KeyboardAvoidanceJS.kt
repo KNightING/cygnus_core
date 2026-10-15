@@ -12,11 +12,11 @@ import com.github.knighting.cygnus.core.types.UserScriptInjectionTime
  * to land within the keyboard animation, and it would need Dart plumbing for data that never
  * leaves the native side.
  *
- * <p>Only injected while {@code InAppWebViewSettings.keyboardAvoidance} is enabled.
+ * <p>Only injected while {@code CygnusWebViewSettings.keyboardAvoidance} is enabled.
  */
 class KeyboardAvoidanceJS {
   companion object {
-    const val KEYBOARD_AVOIDANCE_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_KEYBOARD_AVOIDANCE_JS_PLUGIN_SCRIPT"
+    const val KEYBOARD_AVOIDANCE_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_KEYBOARD_AVOIDANCE_JS_PLUGIN_SCRIPT"
 
     /**
      * Name the interface is bound to on {@code window}. Derived from the bridge name so it moves

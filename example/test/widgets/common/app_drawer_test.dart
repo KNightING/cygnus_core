@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_inappwebview_example/widgets/common/app_drawer.dart';
+import 'package:cygnus_core_example/widgets/common/app_drawer.dart';
 
 class TestNavigatorObserver extends NavigatorObserver {
   int didReplaceCount = 0;

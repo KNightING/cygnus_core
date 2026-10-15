@@ -1,6 +1,6 @@
 //
 //  LastTouchedAnchorOrImageJS.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 16/02/21.
 //
@@ -9,7 +9,7 @@ import Foundation
 
 public class LastTouchedAnchorOrImageJS {
     
-    public static let LAST_TOUCHED_ANCHOR_OR_IMAGE_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_LAST_TOUCHED_ANCHOR_OR_IMAGE_JS_PLUGIN_SCRIPT"
+    public static let LAST_TOUCHED_ANCHOR_OR_IMAGE_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_LAST_TOUCHED_ANCHOR_OR_IMAGE_JS_PLUGIN_SCRIPT"
     
     // This plugin is only for main frame
     public static func LAST_TOUCHED_ANCHOR_OR_IMAGE_JS_PLUGIN_SCRIPT(allowedOriginRules: [String]?) -> PluginScript {

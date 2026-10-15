@@ -12,7 +12,7 @@ class PlatformUtil extends ChannelController {
     this._messenger = messenger;
 
     channel = MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_platformutil',
+      'com.github.knighting.cygnus/webview_platformutil',
       const StandardMethodCodec(),
       _messenger,
     );
@@ -29,13 +29,13 @@ class PlatformUtil extends ChannelController {
         throw PlatformException(
           code: 'Unimplemented',
           details:
-              'flutter_inappwebview for web doesn\'t implement \'${call.method}\'',
+              'cygnus_core for web doesn\'t implement \'${call.method}\'',
         );
     }
   }
 
   String getWebCookieExpirationDate(int timestamp) {
-    return flutterInAppWebView!.getCookieExpirationDate(timestamp).toDart;
+    return cygnusWeb!.getCookieExpirationDate(timestamp).toDart;
   }
 
   @override

@@ -262,7 +262,7 @@ class LinuxHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
   bool _running = false;
 
   static const MethodChannel _sharedChannel = const MethodChannel(
-    'com.pichillilorenzo/flutter_headless_inappwebview',
+    'com.github.knighting.cygnus/headless_webview',
   );
 
   LinuxInAppWebViewController? _webViewController;
@@ -304,7 +304,7 @@ class LinuxHeadlessInAppWebView extends CygnusPlatformHeadlessWebView
     // Initialize the find interaction controller with the same ID
     _linuxParams.findInteractionController?.init(id);
     channel = MethodChannel(
-      'com.pichillilorenzo/flutter_headless_inappwebview_$id',
+      'com.github.knighting.cygnus/headless_webview_$id',
     );
     handler = _handleMethod;
     initMethodCallHandler();

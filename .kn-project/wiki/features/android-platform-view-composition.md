@@ -97,10 +97,10 @@ HCPP 在真實階層，與 HC 同側，因此 Dart 在 HCPP 模式下對 native 
 
 | 類別 | 位置 | 非 hybrid（TLHC）時 |
 | :--- | :--- | :--- |
-| containerView 代理 | `FlutterWebView.kt:63` / `:171` / `:177` / `:183` / `:190`、`InAppWebView.kt:1679` / `:1731` / `:2177` | 以 FlutterView 作為 containerView 並代理 |
+| containerView 代理 | `FlutterWebView.kt:63` / `:171` / `:177` / `:183` / `:190`、`CygnusWebView.kt:1679` / `:1731` / `:2177` | 以 FlutterView 作為 containerView 並代理 |
 | IME 代理 workaround | `InputAwareWebView.kt:206` / `:226` / `:267` / `:342`（**四處**） | 執行 workaround |
-| 自訂浮動選單 | `InAppWebView.kt:529` / `:635` / `:1711` / `:1719` | 用套件自建的浮動選單 |
-| layer type | `InAppWebView.kt:438` / `:1100` | 不設 `setLayerType` |
+| 自訂浮動選單 | `CygnusWebView.kt:529` / `:635` / `:1711` / `:1719` | 用套件自建的浮動選單 |
+| layer type | `CygnusWebView.kt:438` / `:1100` | 不設 `setLayerType` |
 
 結構性佐證：多數 `!useHybridComposition` 分支另有 `containerView != null` 守衛，而 containerView
 只在非 hybrid 時才非 null（`FlutterWebView` 建構式），兩道守衛由建構方式保證一致。
@@ -113,7 +113,7 @@ deprecated 的 `useHybridComposition` 有三個字面預設值，改動時必須
 - `lib/src/platform_interface/src/webview/webview_settings.dart`
   ——建構子預設值（另有同步的 `.g.dart`）
 - `lib/src/platforms/android/src/webview/webview.dart` ——widget 端的 `?? false`
-- `.../webview/in_app_webview/InAppWebViewSettings.kt` ——native 欄位預設
+- `.../webview/webview/CygnusWebViewSettings.kt` ——native 欄位預設
 
 ## 已知限制
 

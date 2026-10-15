@@ -1,15 +1,15 @@
-#ifndef FLUTTER_INAPPWEBVIEW_LINUX_PLUGIN_INSTANCE_H_
-#define FLUTTER_INAPPWEBVIEW_LINUX_PLUGIN_INSTANCE_H_
+#ifndef CYGNUS_CORE_PLUGIN_INSTANCE_H_
+#define CYGNUS_CORE_PLUGIN_INSTANCE_H_
 
 #include <flutter_linux/flutter_linux.h>
 #include <gtk/gtk.h>
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 // Forward declarations
-class InAppWebViewManager;
-class HeadlessInAppWebViewManager;
-class InAppBrowserManager;
+class CygnusWebViewManager;
+class CygnusHeadlessWebViewManager;
+class CygnusBrowserManager;
 class CookieManager;
 class CredentialDatabase;
 class ProxyManager;
@@ -17,7 +17,7 @@ class WebStorageManager;
 class WebViewEnvironment;
 
 /// Plugin instance - provides access to all managers
-/// This is the C++ equivalent of FlutterInappwebviewWindowsPlugin
+/// This is the C++ equivalent of CygnusCorePlugin
 /// 
 /// Following the Windows pattern, this class provides a way to pass
 /// the plugin instance to all managers and components without using
@@ -47,9 +47,9 @@ public:
   FlView* flView() const { return fl_view_; }
 
   // Manager accessors - set by the main plugin after creation
-  InAppWebViewManager* inAppWebViewManager = nullptr;
-  HeadlessInAppWebViewManager* headlessInAppWebViewManager = nullptr;
-  InAppBrowserManager* inAppBrowserManager = nullptr;
+  CygnusWebViewManager* cygnusWebViewManager = nullptr;
+  CygnusHeadlessWebViewManager* headlessCygnusWebViewManager = nullptr;
+  CygnusBrowserManager* cygnusBrowserManager = nullptr;
   CookieManager* cookieManager = nullptr;
   CredentialDatabase* credentialDatabase = nullptr;
   ProxyManager* proxyManager = nullptr;
@@ -62,6 +62,6 @@ private:
   FlView* fl_view_ = nullptr;        // Cached during plugin registration
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_LINUX_PLUGIN_INSTANCE_H_
+#endif  // CYGNUS_CORE_PLUGIN_INSTANCE_H_

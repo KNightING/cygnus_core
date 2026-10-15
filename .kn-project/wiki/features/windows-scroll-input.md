@@ -15,7 +15,7 @@ pointer down 另外負責把焦點交給 WebView2，見 [Windows WebView 焦點�
 | 平台 | WebView 在視圖樹中的身分 | 輸入來源 |
 | :--- | :--- | :--- |
 | Windows | composition 模式，繪製到 texture，**不是真實視窗** | Flutter 端 `Listener` 合成後經 method channel 送入 |
-| macOS | `AppKitView`，**真正的原生 view** | AppKit 直接派送 `NSEvent`，`InAppWebView.swift` 連 `scrollWheel` 都未覆寫 |
+| macOS | `AppKitView`，**真正的原生 view** | AppKit 直接派送 `NSEvent`，`CygnusWebView.swift` 連 `scrollWheel` 都未覆寫 |
 
 因此本頁的所有內容**僅適用於 Windows**，不得外推到其他平台。
 
@@ -38,7 +38,7 @@ flowchart TD
 ### 觸控板：合成觸控接觸點
 
 手勢被當成一根手指的觸控接觸點交給 WebView2，走的是套件原本服務於觸控螢幕的
-`InAppWebView::setPointerUpdate`。座標為手勢起點加上累積的 `pan`，**不做任何符號轉換**——
+`CygnusWebView::setPointerUpdate`。座標為手勢起點加上累積的 `pan`，**不做任何符號轉換**——
 觸控接觸點跟著手指走，`pan` 也是。pointer id 直接取自 Flutter 事件，不與真實觸控衝突。
 
 慣性由瀏覽器依 `up` 之前的座標序列自行計算，套件不合成任何衰減曲線。

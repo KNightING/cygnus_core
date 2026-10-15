@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_PLUGIN_SCRIPT_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_PLUGIN_SCRIPT_H_
+#ifndef CYGNUS_CORE_PLUGIN_PLUGIN_SCRIPT_H_
+#define CYGNUS_CORE_PLUGIN_PLUGIN_SCRIPT_H_
 
 #include <memory>
 #include <string>
@@ -7,7 +7,7 @@
 
 #include "user_script.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * Represents an internal plugin script that is required for WebView functionality.
@@ -30,6 +30,6 @@ class PluginScript : public UserScript {
   bool operator==(const PluginScript& other) const;
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_PLUGIN_SCRIPT_H_
+#endif  // CYGNUS_CORE_PLUGIN_PLUGIN_SCRIPT_H_

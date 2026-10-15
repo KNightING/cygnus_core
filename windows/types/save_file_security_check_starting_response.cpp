@@ -1,6 +1,6 @@
 #include "save_file_security_check_starting_response.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   SaveFileSecurityCheckStartingResponse::SaveFileSecurityCheckStartingResponse(const std::optional<bool>& cancelSave,
     const std::optional<bool>& suppressDefaultPolicy)

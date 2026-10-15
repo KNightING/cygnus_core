@@ -40,7 +40,7 @@ class IOSHttpAuthCredentialDatabase extends CygnusPlatformHttpAuthCredentialData
               ),
       ) {
     channel = const MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_credential_database',
+      'com.github.knighting.cygnus/webview_credential_database',
     );
     handler = handleMethod;
     initMethodCallHandler();

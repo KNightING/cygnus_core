@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_inappwebview_example/providers/settings_manager.dart';
+import 'package:cygnus_core_example/providers/settings_manager.dart';
 
 void main() {
   group('SettingsManager', () {

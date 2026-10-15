@@ -1,6 +1,6 @@
 //
 //  InterceptAjaxRequestsJS.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 16/02/21.
 //
@@ -9,7 +9,7 @@ import Foundation
 
 public class InterceptAjaxRequestJS {
     
-    public static let INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT"
+    public static let INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_INTERCEPT_AJAX_REQUEST_JS_PLUGIN_SCRIPT"
     
     public static func FLAG_VARIABLE_FOR_SHOULD_INTERCEPT_AJAX_REQUEST_JS_SOURCE() -> String {
         return "window.\(JavaScriptBridgeJS.get_JAVASCRIPT_BRIDGE_NAME())._useShouldInterceptAjaxRequest"
@@ -58,14 +58,14 @@ public class InterceptAjaxRequestJS {
           var send = ajax.prototype.send;
           var open = ajax.prototype.open;
           var setRequestHeader = ajax.prototype.setRequestHeader;
-          ajax.prototype._flutter_inappwebview_url = null;
-          ajax.prototype._flutter_inappwebview_method = null;
-          ajax.prototype._flutter_inappwebview_isAsync = null;
-          ajax.prototype._flutter_inappwebview_user = null;
-          ajax.prototype._flutter_inappwebview_password = null;
-          ajax.prototype._flutter_inappwebview_password = null;
-          ajax.prototype._flutter_inappwebview_already_onreadystatechange_wrapped = false;
-          ajax.prototype._flutter_inappwebview_request_headers = {};
+          ajax.prototype._cygnus_url = null;
+          ajax.prototype._cygnus_method = null;
+          ajax.prototype._cygnus_isAsync = null;
+          ajax.prototype._cygnus_user = null;
+          ajax.prototype._cygnus_password = null;
+          ajax.prototype._cygnus_password = null;
+          ajax.prototype._cygnus_already_onreadystatechange_wrapped = false;
+          ajax.prototype._cygnus_request_headers = {};
           function convertRequestResponse(request, callback) {
             if (request.response != null && request.responseType != null) {
               switch (request.responseType) {
@@ -91,16 +91,16 @@ public class InterceptAjaxRequestJS {
           };
           ajax.prototype.open = function(method, url, isAsync, user, password) {
             isAsync = (isAsync != null) ? isAsync : true;
-            this._flutter_inappwebview_url = url;
-            this._flutter_inappwebview_method = method;
-            this._flutter_inappwebview_isAsync = isAsync;
-            this._flutter_inappwebview_user = user;
-            this._flutter_inappwebview_password = password;
-            this._flutter_inappwebview_request_headers = {};
+            this._cygnus_url = url;
+            this._cygnus_method = method;
+            this._cygnus_isAsync = isAsync;
+            this._cygnus_user = user;
+            this._cygnus_password = password;
+            this._cygnus_request_headers = {};
             open.call(this, method, url, isAsync, user, password);
           };
           ajax.prototype.setRequestHeader = function(header, value) {
-            this._flutter_inappwebview_request_headers[header] = value;
+            this._cygnus_request_headers[header] = value;
             setRequestHeader.call(this, header, value);
           };
           function handleEvent(e) {
@@ -122,13 +122,13 @@ public class InterceptAjaxRequestJS {
               }
               convertRequestResponse(this, function(response) {
                 var ajaxRequest = {
-                  method: self._flutter_inappwebview_method,
-                  url: self._flutter_inappwebview_url,
-                  isAsync: self._flutter_inappwebview_isAsync,
-                  user: self._flutter_inappwebview_user,
-                  password: self._flutter_inappwebview_password,
+                  method: self._cygnus_method,
+                  url: self._cygnus_url,
+                  isAsync: self._cygnus_isAsync,
+                  user: self._cygnus_user,
+                  password: self._cygnus_password,
                   withCredentials: self.withCredentials,
-                  headers: self._flutter_inappwebview_request_headers,
+                  headers: self._cygnus_request_headers,
                   readyState: self.readyState,
                   status: self.status,
                   responseURL: self.responseURL,
@@ -159,10 +159,10 @@ public class InterceptAjaxRequestJS {
           };
           ajax.prototype.send = function(data) {
             var self = this;
-            var canBeIntercepted = self._flutter_inappwebview_isAsync || \(FLAG_VARIABLE_FOR_INTERCEPT_ONLY_ASYNC_AJAX_REQUESTS_JS_SOURCE()) === false;
+            var canBeIntercepted = self._cygnus_isAsync || \(FLAG_VARIABLE_FOR_INTERCEPT_ONLY_ASYNC_AJAX_REQUESTS_JS_SOURCE()) === false;
             if (canBeIntercepted && (\(FLAG_VARIABLE_FOR_SHOULD_INTERCEPT_AJAX_REQUEST_JS_SOURCE()) == null || \(FLAG_VARIABLE_FOR_SHOULD_INTERCEPT_AJAX_REQUEST_JS_SOURCE()) == true)) {
-              if (\(FLAG_VARIABLE_FOR_ON_AJAX_READY_STATE_CHANGE()) === true && !this._flutter_inappwebview_already_onreadystatechange_wrapped) {
-                this._flutter_inappwebview_already_onreadystatechange_wrapped = true;
+              if (\(FLAG_VARIABLE_FOR_ON_AJAX_READY_STATE_CHANGE()) === true && !this._cygnus_already_onreadystatechange_wrapped) {
+                this._cygnus_already_onreadystatechange_wrapped = true;
                 var realOnreadystatechange = this.onreadystatechange;
                 this.onreadystatechange = function() {
                   if (\(FLAG_VARIABLE_FOR_SHOULD_INTERCEPT_AJAX_REQUEST_JS_SOURCE()) == null || \(FLAG_VARIABLE_FOR_SHOULD_INTERCEPT_AJAX_REQUEST_JS_SOURCE()) == true) {
@@ -179,13 +179,13 @@ public class InterceptAjaxRequestJS {
                     }
                     convertRequestResponse(this, function(response) {
                       var ajaxRequest = {
-                        method: self._flutter_inappwebview_method,
-                        url: self._flutter_inappwebview_url,
-                        isAsync: self._flutter_inappwebview_isAsync,
-                        user: self._flutter_inappwebview_user,
-                        password: self._flutter_inappwebview_password,
+                        method: self._cygnus_method,
+                        url: self._cygnus_url,
+                        isAsync: self._cygnus_isAsync,
+                        user: self._cygnus_user,
+                        password: self._cygnus_password,
                         withCredentials: self.withCredentials,
-                        headers: self._flutter_inappwebview_request_headers,
+                        headers: self._cygnus_request_headers,
                         readyState: self.readyState,
                         status: self.status,
                         responseURL: self.responseURL,
@@ -224,13 +224,13 @@ public class InterceptAjaxRequestJS {
               \(JavaScriptBridgeJS.JAVASCRIPT_UTIL_VAR_NAME()).convertBodyRequest(data).then(function(data) {
                   var ajaxRequest = {
                     data: data,
-                    method: self._flutter_inappwebview_method,
-                    url: self._flutter_inappwebview_url,
-                    isAsync: self._flutter_inappwebview_isAsync,
-                    user: self._flutter_inappwebview_user,
-                    password: self._flutter_inappwebview_password,
+                    method: self._cygnus_method,
+                    url: self._cygnus_url,
+                    isAsync: self._cygnus_isAsync,
+                    user: self._cygnus_user,
+                    password: self._cygnus_password,
                     withCredentials: self.withCredentials,
-                    headers: self._flutter_inappwebview_request_headers,
+                    headers: self._cygnus_request_headers,
                     responseType: self.responseType
                   };
                   window.\(JavaScriptBridgeJS.get_JAVASCRIPT_BRIDGE_NAME()).callHandler('shouldInterceptAjaxRequest', ajaxRequest).then(function(result) {
@@ -257,26 +257,26 @@ public class InterceptAjaxRequestJS {
                         data = new Uint8Array(result.data);
                       }
                       self.withCredentials = result.withCredentials;
-                      if (result.responseType != null && self._flutter_inappwebview_isAsync) {
+                      if (result.responseType != null && self._cygnus_isAsync) {
                         self.responseType = result.responseType;
                       };
                       if (result.headers != null) {
                         for (var header in result.headers) {
                           var value = result.headers[header];
-                          var flutter_inappwebview_value = self._flutter_inappwebview_request_headers[header];
-                          if (flutter_inappwebview_value == null) {
-                            self._flutter_inappwebview_request_headers[header] = value;
+                          var cygnus_value = self._cygnus_request_headers[header];
+                          if (cygnus_value == null) {
+                            self._cygnus_request_headers[header] = value;
                           } else {
-                            self._flutter_inappwebview_request_headers[header] += ', ' + value;
+                            self._cygnus_request_headers[header] += ', ' + value;
                           }
                           setRequestHeader.call(self, header, value);
                         };
                       }
-                      if ((self._flutter_inappwebview_method != result.method && result.method != null) ||
-                          (self._flutter_inappwebview_url != result.url && result.url != null) ||
-                          (self._flutter_inappwebview_isAsync != result.isAsync && result.isAsync != null) ||
-                          (self._flutter_inappwebview_user != result.user && result.user != null) ||
-                          (self._flutter_inappwebview_password != result.password && result.password != null)) {
+                      if ((self._cygnus_method != result.method && result.method != null) ||
+                          (self._cygnus_url != result.url && result.url != null) ||
+                          (self._cygnus_isAsync != result.isAsync && result.isAsync != null) ||
+                          (self._cygnus_user != result.user && result.user != null) ||
+                          (self._cygnus_password != result.password && result.password != null)) {
                         self.abort();
                         self.open(result.method, result.url, result.isAsync, result.user, result.password);
                       }

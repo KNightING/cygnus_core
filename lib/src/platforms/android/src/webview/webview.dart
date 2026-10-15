@@ -19,7 +19,7 @@ import 'webview_controller.dart';
 ///
 /// Only a positive answer is cached. The check is answered by the engine, and asking before the
 /// engine has attached reports `false` even where HCPP is fully available -- observed on an
-/// API 36 emulator, where the call made from [AndroidInAppWebViewPlatform.registerWith] returned
+/// API 36 emulator, where the call made from [CygnusAndroidWebViewPlatform.registerWith] returned
 /// `false` while the same call a few hundred milliseconds later returned `true`. Caching that
 /// first answer would disable HCPP for the whole session.
 bool _hcppSupported = false;
@@ -453,7 +453,7 @@ class AndroidInAppWebViewWidget extends CygnusPlatformWebViewWidget {
 
     return PlatformViewLink(
       key: params.key,
-      viewType: 'com.pichillilorenzo/flutter_inappwebview',
+      viewType: 'com.github.knighting.cygnus/webview',
       surfaceFactory:
           (BuildContext context, PlatformViewController controller) {
             return AndroidViewSurface(
@@ -468,7 +468,7 @@ class AndroidInAppWebViewWidget extends CygnusPlatformWebViewWidget {
         return _createAndroidViewController(
             compositionMode: compositionMode,
             id: params.id,
-            viewType: 'com.pichillilorenzo/flutter_inappwebview',
+            viewType: 'com.github.knighting.cygnus/webview',
             layoutDirection:
                 this.params.layoutDirection ??
                 Directionality.maybeOf(context) ??

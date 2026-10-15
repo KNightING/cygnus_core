@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_NOTIFICATION_CHANNEL_DELEGATE_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_NOTIFICATION_CHANNEL_DELEGATE_H_
+#ifndef CYGNUS_CORE_PLUGIN_WEB_NOTIFICATION_CHANNEL_DELEGATE_H_
+#define CYGNUS_CORE_PLUGIN_WEB_NOTIFICATION_CHANNEL_DELEGATE_H_
 
 #include <flutter/method_channel.h>
 #include <flutter/standard_message_codec.h>
@@ -8,7 +8,7 @@
 
 #include "../types/channel_delegate.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   class WebNotificationController;
 
@@ -33,4 +33,4 @@ namespace flutter_inappwebview_plugin
   };
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_NOTIFICATION_CHANNEL_DELEGATE_H_
+#endif //CYGNUS_CORE_PLUGIN_WEB_NOTIFICATION_CHANNEL_DELEGATE_H_

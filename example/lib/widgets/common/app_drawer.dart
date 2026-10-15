@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/models/navigation_section.dart';
-import 'package:flutter_inappwebview_example/utils/responsive_utils.dart';
+import 'package:cygnus_core_example/models/navigation_section.dart';
+import 'package:cygnus_core_example/utils/responsive_utils.dart';
 import 'package:pointer_interceptor/pointer_interceptor.dart';
 
 class AppDrawer extends StatelessWidget {

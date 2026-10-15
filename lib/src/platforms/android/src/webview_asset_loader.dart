@@ -39,7 +39,7 @@ abstract mixin class AndroidPathHandler
   void _init(CygnusPlatformPathHandlerCreationParams params) {
     this.path = params.path;
     channel = MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_custompathhandler_${_id}',
+      'com.github.knighting.cygnus/webview_custompathhandler_${_id}',
     );
     handler = _handleMethod;
     initMethodCallHandler();

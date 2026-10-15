@@ -1,6 +1,6 @@
 //
 //  SafariViewController.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo on 25/09/18.
 //
@@ -11,15 +11,15 @@ import Flutter
 
 @available(iOS 9.0, *)
 public class SafariViewController: SFSafariViewController, SFSafariViewControllerDelegate, Disposable {
-    static let METHOD_CHANNEL_NAME_PREFIX = "com.pichillilorenzo/flutter_chromesafaribrowser_"
+    static let METHOD_CHANNEL_NAME_PREFIX = "com.github.knighting.cygnus/chromesafaribrowser_"
     var channelDelegate: SafariViewControllerChannelDelegate?
     var safariSettings: SafariBrowserSettings
     var id: String
-    var plugin: InAppWebViewFlutterPlugin?
+    var plugin: CygnusCorePlugin?
     var menuItemList: [[String: Any]] = []
     
     @available(iOS 11.0, *)
-    public init(plugin: InAppWebViewFlutterPlugin, id: String, url: URL, configuration: SFSafariViewController.Configuration, menuItemList: [[String: Any]] = [], safariSettings: SafariBrowserSettings) {
+    public init(plugin: CygnusCorePlugin, id: String, url: URL, configuration: SFSafariViewController.Configuration, menuItemList: [[String: Any]] = [], safariSettings: SafariBrowserSettings) {
         self.id = id
         self.plugin = plugin
         self.menuItemList = menuItemList
@@ -32,7 +32,7 @@ public class SafariViewController: SFSafariViewController, SFSafariViewControlle
         self.delegate = self
     }
     
-    public init(plugin: InAppWebViewFlutterPlugin, id: String, url: URL, entersReaderIfAvailable: Bool, menuItemList: [[String: Any]] = [], safariSettings: SafariBrowserSettings) {
+    public init(plugin: CygnusCorePlugin, id: String, url: URL, entersReaderIfAvailable: Bool, menuItemList: [[String: Any]] = [], safariSettings: SafariBrowserSettings) {
         self.id = id
         self.plugin = plugin
         self.menuItemList = menuItemList

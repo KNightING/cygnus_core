@@ -22,7 +22,7 @@ class LinuxCookieManagerCreationParams
 /// Implementation of [CygnusPlatformCookieManager] for Linux using WebKitGTK.
 class LinuxCookieManager extends CygnusPlatformCookieManager {
   static const MethodChannel _channel = MethodChannel(
-    'com.pichillilorenzo/flutter_inappwebview_cookiemanager',
+    'com.github.knighting.cygnus/webview_cookiemanager',
   );
 
   /// Constructs a [LinuxCookieManager].

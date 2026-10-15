@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
+import 'package:cygnus_core_internal_annotations/cygnus_core_internal_annotations.dart';
 
 import '../find_interaction/platform_find_interaction_controller.dart';
 import '../pull_to_refresh/platform_pull_to_refresh_controller.dart';
@@ -1058,7 +1058,7 @@ See `NSAppTransportSecurity` in the [Information Property List Key Reference](ht
 Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that
 can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code
 used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS.
-In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.""",
+In that case, after the `window.addEventListener("cygnusPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.""",
       ),
       IOSPlatform(),
       MacOSPlatform(),
@@ -1093,7 +1093,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
 Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that
 can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code
 used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS.
-In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.""",
+In that case, after the `window.addEventListener("cygnusPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.""",
       ),
       IOSPlatform(),
       MacOSPlatform(),
@@ -1126,7 +1126,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
 Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that
 can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code
 used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS.
-In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.""",
+In that case, after the `window.addEventListener("cygnusPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.""",
       ),
       IOSPlatform(),
       MacOSPlatform(),
@@ -1159,7 +1159,7 @@ In that case, after the `window.addEventListener("flutterInAppWebViewPlatformRea
 Also, on Android that doesn't support the [CygnusWebViewFeature.DOCUMENT_START_SCRIPT], unlike iOS that has [WKUserScript](https://developer.apple.com/documentation/webkit/wkuserscript) that
 can inject javascript code right after the document element is created but before any other content is loaded, in Android the javascript code
 used to intercept ajax requests is loaded as soon as possible so it won't be instantaneous as iOS.
-In that case, after the `window.addEventListener("flutterInAppWebViewPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.""",
+In that case, after the `window.addEventListener("cygnusPlatformReady")` event is dispatched, the ajax requests can be intercept for sure.""",
       ),
       IOSPlatform(),
       MacOSPlatform(),

@@ -2,13 +2,13 @@
 
 #include <string>
 
-#include "../in_app_webview/in_app_webview.h"
+#include "../webview/webview.h"
 #include "../utils/flutter.h"
 #include "../utils/log.h"
 #include "../utils/string.h"
 #include "web_message_listener.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 WebMessageListenerChannelDelegate::WebMessageListenerChannelDelegate(
     WebMessageListener* webMessageListener,
@@ -35,7 +35,7 @@ void WebMessageListenerChannelDelegate::HandleMethodCall(
   auto& args = std::get<flutter::EncodableMap>(*method_call.arguments());
 
   if (string_equals(methodName, "postMessage")) {
-    InAppWebView* webView = webMessageListener_->webView();
+    CygnusWebView* webView = webMessageListener_->webView();
     if (webView == nullptr) {
       result->Success(make_fl_value(false));
       return;
@@ -170,4 +170,4 @@ void WebMessageListenerChannelDelegate::dispose() {
   webMessageListener_ = nullptr;
 }
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin

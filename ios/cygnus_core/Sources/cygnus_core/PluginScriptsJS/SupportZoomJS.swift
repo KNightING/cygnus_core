@@ -1,6 +1,6 @@
 //
 //  SupportZoomJS.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 16/02/21.
 //
@@ -9,7 +9,7 @@ import Foundation
 
 public class SupportZoomJS {
     
-    public static let NOT_SUPPORT_ZOOM_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_NOT_SUPPORT_ZOOM_JS_PLUGIN_SCRIPT"
+    public static let NOT_SUPPORT_ZOOM_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_NOT_SUPPORT_ZOOM_JS_PLUGIN_SCRIPT"
     
     // This plugin is only for main frame
     public static func NOT_SUPPORT_ZOOM_JS_PLUGIN_SCRIPT(allowedOriginRules: [String]?) -> PluginScript {

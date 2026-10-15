@@ -1,10 +1,10 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_FAVICON_IMAGE_FORMAT_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_FAVICON_IMAGE_FORMAT_H_
+#ifndef CYGNUS_CORE_PLUGIN_FAVICON_IMAGE_FORMAT_H_
+#define CYGNUS_CORE_PLUGIN_FAVICON_IMAGE_FORMAT_H_
 
 #include <optional>
 #include <WebView2.h>
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   enum class FaviconImageFormat {
     png = 0,
@@ -37,4 +37,4 @@ namespace flutter_inappwebview_plugin
   }
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_FAVICON_IMAGE_FORMAT_H_
+#endif //CYGNUS_CORE_PLUGIN_FAVICON_IMAGE_FORMAT_H_

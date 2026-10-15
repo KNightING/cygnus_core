@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_FIND_INTERACTION_CONTROLLER_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_FIND_INTERACTION_CONTROLLER_H_
+#ifndef CYGNUS_CORE_PLUGIN_FIND_INTERACTION_CONTROLLER_H_
+#define CYGNUS_CORE_PLUGIN_FIND_INTERACTION_CONTROLLER_H_
 
 #include <flutter_linux/flutter_linux.h>
 #include <wpe/webkit.h>
@@ -10,17 +10,17 @@
 
 #include "../types/find_session.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
-class InAppWebView;
+class CygnusWebView;
 class FindInteractionChannelDelegate;
 
 class FindInteractionController {
  public:
   static constexpr const char* METHOD_CHANNEL_NAME_PREFIX =
-      "com.pichillilorenzo/flutter_inappwebview_find_interaction_";
+      "com.github.knighting.cygnus/webview_find_interaction_";
 
-  FindInteractionController(InAppWebView* webView);
+  FindInteractionController(CygnusWebView* webView);
   ~FindInteractionController();
 
   // Attach the method channel with the given ID (called after texture_id is known)
@@ -43,7 +43,7 @@ class FindInteractionController {
   static void OnFailedToFindText(WebKitFindController* find_controller,
                                  gpointer user_data);
 
-  InAppWebView* webView_;
+  CygnusWebView* webView_;
   std::unique_ptr<FindInteractionChannelDelegate> channelDelegate_;
   std::optional<std::string> searchText_;
   std::optional<FindSession> activeFindSession_;
@@ -54,6 +54,6 @@ class FindInteractionController {
   gulong failed_to_find_text_handler_id_ = 0;
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_FIND_INTERACTION_CONTROLLER_H_
+#endif  // CYGNUS_CORE_PLUGIN_FIND_INTERACTION_CONTROLLER_H_

@@ -6,11 +6,11 @@ import com.github.knighting.cygnus.core.types.ChannelDelegateImpl
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
-open class MyWebStorage(plugin: InAppWebViewFlutterPlugin) :
+open class MyWebStorage(plugin: CygnusCorePlugin) :
   ChannelDelegateImpl(MethodChannel(plugin.messenger, METHOD_CHANNEL_NAME)) {
 
   @JvmField
-  var plugin: InAppWebViewFlutterPlugin? = plugin
+  var plugin: CygnusCorePlugin? = plugin
 
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
     init()
@@ -100,7 +100,7 @@ open class MyWebStorage(plugin: InAppWebViewFlutterPlugin) :
 
   companion object {
     protected const val LOG_TAG = "MyWebStorage"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_webstoragemanager"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_webstoragemanager"
 
     @JvmField
     var webStorageManager: WebStorage? = null

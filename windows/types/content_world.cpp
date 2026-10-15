@@ -1,6 +1,6 @@
 #include "content_world.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   namespace {
     const std::shared_ptr<ContentWorld> ContentWorldPage = std::make_shared<ContentWorld>("page");

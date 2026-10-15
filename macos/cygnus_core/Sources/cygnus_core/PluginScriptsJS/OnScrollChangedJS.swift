@@ -1,6 +1,6 @@
 //
 //  OnScrollEvent.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 16/10/22.
 //
@@ -9,7 +9,7 @@ import Foundation
 
 public class OnScrollChangedJS {
     
-    public static let ON_SCROLL_CHANGED_EVENT_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_ON_SCROLL_CHANGED_EVENT_JS_PLUGIN_SCRIPT"
+    public static let ON_SCROLL_CHANGED_EVENT_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_ON_SCROLL_CHANGED_EVENT_JS_PLUGIN_SCRIPT"
     
     // This plugin is only for main frame
     public static func ON_SCROLL_CHANGED_EVENT_JS_PLUGIN_SCRIPT(allowedOriginRules: [String]?) -> PluginScript {

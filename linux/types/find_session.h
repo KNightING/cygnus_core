@@ -1,10 +1,10 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_FIND_SESSION_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_FIND_SESSION_H_
+#ifndef CYGNUS_CORE_PLUGIN_FIND_SESSION_H_
+#define CYGNUS_CORE_PLUGIN_FIND_SESSION_H_
 
 #include <flutter_linux/flutter_linux.h>
 #include <string>
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 class FindSession {
  public:
@@ -18,6 +18,6 @@ class FindSession {
   FlValue* toFlValue() const;
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_FIND_SESSION_H_
+#endif  // CYGNUS_CORE_PLUGIN_FIND_SESSION_H_

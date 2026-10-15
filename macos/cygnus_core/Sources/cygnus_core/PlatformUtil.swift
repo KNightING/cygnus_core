@@ -1,6 +1,6 @@
 //
 //  PlatformUtil.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 01/03/21.
 //
@@ -9,10 +9,10 @@ import Foundation
 import FlutterMacOS
 
 public class PlatformUtil: ChannelDelegate {
-    static let METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_platformutil"
-    var plugin: InAppWebViewFlutterPlugin?
+    static let METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_platformutil"
+    var plugin: CygnusCorePlugin?
     
-    init(plugin: InAppWebViewFlutterPlugin) {
+    init(plugin: CygnusCorePlugin) {
         super.init(channel: FlutterMethodChannel(name: PlatformUtil.METHOD_CHANNEL_NAME, binaryMessenger: plugin.registrar.messenger))
         self.plugin = plugin
     }

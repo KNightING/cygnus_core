@@ -25,7 +25,7 @@ class LinuxWebStorageManagerCreationParams
 /// to manage website data.
 class LinuxWebStorageManager extends CygnusPlatformWebStorageManager {
   static const MethodChannel _channel = MethodChannel(
-    'com.pichillilorenzo/flutter_inappwebview_webstoragemanager',
+    'com.github.knighting.cygnus/webview_webstoragemanager',
   );
 
   /// Constructs a [LinuxWebStorageManager].

@@ -1,12 +1,12 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_CONTENT_WORLD_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_CONTENT_WORLD_H_
+#ifndef CYGNUS_CORE_PLUGIN_CONTENT_WORLD_H_
+#define CYGNUS_CORE_PLUGIN_CONTENT_WORLD_H_
 
 #include <flutter/standard_method_codec.h>
 #include <string>
 
 #include "../utils/flutter.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   class ContentWorld
   {
@@ -30,4 +30,4 @@ namespace flutter_inappwebview_plugin
     static bool isDefaultClient(const std::shared_ptr<ContentWorld> contentWorld);
   };
 }
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_CONTENT_WORLD_H_
+#endif //CYGNUS_CORE_PLUGIN_CONTENT_WORLD_H_

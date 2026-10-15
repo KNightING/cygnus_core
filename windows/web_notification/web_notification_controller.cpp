@@ -1,7 +1,7 @@
 #include "web_notification_controller.h"
 
 #include "web_notification_channel_delegate.h"
-#include "../in_app_webview/in_app_webview.h"
+#include "../webview/webview.h"
 
 #include <wil/wrl.h>
 
@@ -9,7 +9,7 @@
 #include "../utils/log.h"
 #include "../utils/strconv.h"
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   using namespace Microsoft::WRL;
 
@@ -17,8 +17,8 @@ namespace flutter_inappwebview_plugin
     wil::com_ptr<ICoreWebView2Notification> webNotification,
     std::shared_ptr<WebNotification> notification,
     flutter::BinaryMessenger* messenger,
-    InAppWebView* inAppWebView)
-    : id(id), webNotification_(webNotification), notification(notification), inAppWebView_(inAppWebView)
+    CygnusWebView* cygnusWebView)
+    : id(id), webNotification_(webNotification), notification(notification), cygnusWebView_(cygnusWebView)
   {
     channelDelegate = std::make_unique<WebNotificationChannelDelegate>(
       this, messenger, METHOD_CHANNEL_NAME_PREFIX + id);
@@ -97,15 +97,15 @@ namespace flutter_inappwebview_plugin
 
   void WebNotificationController::invalidateParentWebView()
   {
-    inAppWebView_ = nullptr;
+    cygnusWebView_ = nullptr;
   }
 
   void WebNotificationController::eraseFromParentWebView()
   {
     // Only erase if parent webview is still valid (not being destroyed)
-    if (inAppWebView_) {
-      inAppWebView_->eraseWebNotificationController(id);
-      inAppWebView_ = nullptr;
+    if (cygnusWebView_) {
+      cygnusWebView_->eraseWebNotificationController(id);
+      cygnusWebView_ = nullptr;
     }
   }
 

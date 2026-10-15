@@ -1,5 +1,5 @@
-import 'package:flutter_inappwebview_example/utils/constants.dart';
-import 'package:flutter_inappwebview_example/models/test_result.dart';
+import 'package:cygnus_core_example/utils/constants.dart';
+import 'package:cygnus_core_example/models/test_result.dart';
 
 /// Represents a single test case with metadata and execution logic
 class TestCase {

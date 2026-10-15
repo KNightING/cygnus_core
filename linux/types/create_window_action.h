@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_CREATE_WINDOW_ACTION_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_CREATE_WINDOW_ACTION_H_
+#ifndef CYGNUS_CORE_PLUGIN_CREATE_WINDOW_ACTION_H_
+#define CYGNUS_CORE_PLUGIN_CREATE_WINDOW_ACTION_H_
 
 #include <flutter_linux/flutter_linux.h>
 #include <wpe/webkit.h>
@@ -11,7 +11,7 @@
 
 #include "url_request.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * Represents window features from WebKitWindowProperties.
@@ -76,6 +76,6 @@ class CreateWindowAction {
   FlValue* toFlValue() const;
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_CREATE_WINDOW_ACTION_H_
+#endif  // CYGNUS_CORE_PLUGIN_CREATE_WINDOW_ACTION_H_

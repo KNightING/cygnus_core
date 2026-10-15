@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:cygnus_core/cygnus_core.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_inappwebview_example/models/event_log_entry.dart';
-import 'package:flutter_inappwebview_example/models/network_request.dart';
-import 'package:flutter_inappwebview_example/providers/event_log_provider.dart';
-import 'package:flutter_inappwebview_example/providers/network_monitor.dart';
-import 'package:flutter_inappwebview_example/widgets/webview/event_console_widget.dart';
-import 'package:flutter_inappwebview_example/widgets/webview/network_monitor_widget.dart';
-import 'package:flutter_inappwebview_example/widgets/webview/method_tester_widget.dart';
-import 'package:flutter_inappwebview_example/widgets/webview/javascript_console_widget.dart';
-import 'package:flutter_inappwebview_example/widgets/webview/user_script_tester_widget.dart';
-import 'package:flutter_inappwebview_example/widgets/common/app_drawer.dart';
-import 'package:flutter_inappwebview_example/providers/settings_manager.dart';
-import 'package:flutter_inappwebview_example/widgets/common/profile_selector_card.dart';
-import 'package:flutter_inappwebview_example/utils/responsive_utils.dart';
+import 'package:cygnus_core_example/models/event_log_entry.dart';
+import 'package:cygnus_core_example/models/network_request.dart';
+import 'package:cygnus_core_example/providers/event_log_provider.dart';
+import 'package:cygnus_core_example/providers/network_monitor.dart';
+import 'package:cygnus_core_example/widgets/webview/event_console_widget.dart';
+import 'package:cygnus_core_example/widgets/webview/network_monitor_widget.dart';
+import 'package:cygnus_core_example/widgets/webview/method_tester_widget.dart';
+import 'package:cygnus_core_example/widgets/webview/javascript_console_widget.dart';
+import 'package:cygnus_core_example/widgets/webview/user_script_tester_widget.dart';
+import 'package:cygnus_core_example/widgets/common/app_drawer.dart';
+import 'package:cygnus_core_example/providers/settings_manager.dart';
+import 'package:cygnus_core_example/widgets/common/profile_selector_card.dart';
+import 'package:cygnus_core_example/utils/responsive_utils.dart';
 
 /// Main screen for testing CygnusWebView functionality
 class WebViewTesterScreen extends StatefulWidget {

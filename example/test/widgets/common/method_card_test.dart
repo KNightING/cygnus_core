@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_inappwebview_example/utils/support_checker.dart';
-import 'package:flutter_inappwebview_example/widgets/common/method_card.dart';
+import 'package:cygnus_core_example/utils/support_checker.dart';
+import 'package:cygnus_core_example/widgets/common/method_card.dart';
 
 void main() {
   testWidgets('test_method_card_compact_on_mobile', (tester) async {

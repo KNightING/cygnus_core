@@ -3,9 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:flutter_inappwebview_example/models/test_configuration.dart';
-import 'package:flutter_inappwebview_example/providers/test_runner.dart';
-import 'package:flutter_inappwebview_example/screens/test_automation/test_runner_screen.dart';
+import 'package:cygnus_core_example/models/test_configuration.dart';
+import 'package:cygnus_core_example/providers/test_runner.dart';
+import 'package:cygnus_core_example/screens/test_automation/test_runner_screen.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

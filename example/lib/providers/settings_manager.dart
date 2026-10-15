@@ -3,15 +3,15 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:cygnus_core/cygnus_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_inappwebview_example/models/settings_profile.dart';
-import 'package:flutter_inappwebview_example/models/webview_environment_profile.dart';
-import 'package:flutter_inappwebview_example/models/setting_definition.dart';
-import 'package:flutter_inappwebview_example/models/environment_setting_definition.dart';
-import 'package:flutter_inappwebview_example/utils/settings_defaults.dart'
+import 'package:cygnus_core_example/models/settings_profile.dart';
+import 'package:cygnus_core_example/models/webview_environment_profile.dart';
+import 'package:cygnus_core_example/models/setting_definition.dart';
+import 'package:cygnus_core_example/models/environment_setting_definition.dart';
+import 'package:cygnus_core_example/utils/settings_defaults.dart'
     as settings_defaults;
-import 'package:flutter_inappwebview_example/utils/settings_definitions.dart'
+import 'package:cygnus_core_example/utils/settings_definitions.dart'
     as settings_definitions;
-import 'package:flutter_inappwebview_example/utils/environment_settings_definitions.dart'
+import 'package:cygnus_core_example/utils/environment_settings_definitions.dart'
     as environment_settings_definitions;
 
 /// Settings manager for the testing interface

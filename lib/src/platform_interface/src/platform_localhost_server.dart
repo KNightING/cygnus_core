@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_inappwebview_internal_annotations/flutter_inappwebview_internal_annotations.dart';
+import 'package:cygnus_core_internal_annotations/cygnus_core_internal_annotations.dart';
 import 'package:cygnus_core/src/platform_interface/flutter_webview_platform_interface.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
@@ -83,7 +83,7 @@ abstract class CygnusPlatformLocalhostServer extends PlatformInterface {
   ) {
     assert(
       CygnusWebViewPlatform.instance != null,
-      'A platform implementation for `flutter_inappwebview` has not been set. Please '
+      'A platform implementation for `cygnus` has not been set. Please '
       'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`WebViewPlatform.instance` before use. For unit testing, '
       '`WebViewPlatform.instance` can be set with your own test implementation.',
@@ -100,7 +100,7 @@ abstract class CygnusPlatformLocalhostServer extends PlatformInterface {
   factory CygnusPlatformLocalhostServer.static() {
     assert(
       CygnusWebViewPlatform.instance != null,
-      'A platform implementation for `flutter_inappwebview` has not been set. Please '
+      'A platform implementation for `cygnus` has not been set. Please '
       'ensure that an implementation of `CygnusWebViewPlatform` has been set to '
       '`CygnusWebViewPlatform.instance` before use. For unit testing, '
       '`CygnusWebViewPlatform.instance` can be set with your own test implementation.',

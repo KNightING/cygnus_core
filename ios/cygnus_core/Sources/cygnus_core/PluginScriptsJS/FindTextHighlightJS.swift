@@ -1,6 +1,6 @@
 //
 //  FindTextHighlightJS.swift
-//  flutter_inappwebview
+//  cygnus_core
 //
 //  Created by Lorenzo Pichilli on 16/02/21.
 //
@@ -8,7 +8,7 @@
 import Foundation
 
 public class FindTextHighlightJS {
-    public static let FIND_TEXT_HIGHLIGHT_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_FIND_TEXT_HIGHLIGHT_JS_PLUGIN_SCRIPT"
+    public static let FIND_TEXT_HIGHLIGHT_JS_PLUGIN_SCRIPT_GROUP_NAME = "CYGNUS_WEBVIEW_FIND_TEXT_HIGHLIGHT_JS_PLUGIN_SCRIPT"
     public static func FIND_TEXT_HIGHLIGHT_SEARCH_RESULT_COUNT_JS_SOURCE() -> String {
         return "window.\(JavaScriptBridgeJS.get_JAVASCRIPT_BRIDGE_NAME())._searchResultCount"
     }

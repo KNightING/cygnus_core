@@ -7,13 +7,13 @@ class InAppWebViewManager extends ChannelController {
   static final Map<dynamic, dynamic> webViews = {};
   static final Map<int, CygnusCreateWindowAction?> windowActions = {};
   static int windowAutoincrementId = 0;
-  static String javaScriptBridgeName = "flutter_inappwebview";
+  static String javaScriptBridgeName = "cygnus";
   late BinaryMessenger _messenger;
 
   InAppWebViewManager({required BinaryMessenger messenger}) {
     this._messenger = messenger;
     channel = MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_manager',
+      'com.github.knighting.cygnus/webview_manager',
       const StandardMethodCodec(),
       _messenger,
     );

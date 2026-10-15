@@ -39,7 +39,7 @@ class AndroidWebViewFeature extends CygnusPlatformWebViewFeature
               ),
       ) {
     channel = const MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_webviewfeature',
+      'com.github.knighting.cygnus/webview_webviewfeature',
     );
     handler = handleMethod;
     initMethodCallHandler();

@@ -1,11 +1,11 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_WINDOW_ID_JS_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_WINDOW_ID_JS_H_
+#ifndef CYGNUS_CORE_PLUGIN_WINDOW_ID_JS_H_
+#define CYGNUS_CORE_PLUGIN_WINDOW_ID_JS_H_
 
 #include <string>
 
 #include "javascript_bridge_js.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 /**
  * JavaScript for managing window IDs in multi-window scenarios.
@@ -20,7 +20,7 @@ namespace flutter_inappwebview_plugin {
 class WindowIdJS {
  public:
   inline static const std::string WINDOW_ID_JS_PLUGIN_SCRIPT_GROUP_NAME =
-      "IN_APP_WEBVIEW_WINDOW_ID_JS_PLUGIN_SCRIPT";
+      "CYGNUS_WEBVIEW_WINDOW_ID_JS_PLUGIN_SCRIPT";
 
   /**
    * Placeholder value that will be replaced with the actual window ID.
@@ -44,6 +44,6 @@ class WindowIdJS {
   }
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_WINDOW_ID_JS_H_
+#endif  // CYGNUS_CORE_PLUGIN_WINDOW_ID_JS_H_

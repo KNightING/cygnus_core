@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_CHANNEL_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_CHANNEL_H_
+#ifndef CYGNUS_CORE_PLUGIN_WEB_MESSAGE_CHANNEL_H_
+#define CYGNUS_CORE_PLUGIN_WEB_MESSAGE_CHANNEL_H_
 
 #include <memory>
 #include <string>
@@ -8,9 +8,9 @@
 
 #include "../types/channel_delegate.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
-class InAppWebView;
+class CygnusWebView;
 
 /**
  * Native C++ representation of a WebMessageChannel.
@@ -22,11 +22,11 @@ class InAppWebView;
 class WebMessageChannel : public ChannelDelegate {
  public:
   static constexpr const char* METHOD_CHANNEL_NAME_PREFIX =
-      "com.pichillilorenzo/flutter_inappwebview_web_message_channel_";
+      "com.github.knighting.cygnus/webview_web_message_channel_";
 
   WebMessageChannel(flutter::BinaryMessenger* messenger,
                     const std::string& channelId,
-                    InAppWebView* webView);
+                    CygnusWebView* webView);
   ~WebMessageChannel() override;
 
   const std::string& id() const { return id_; }
@@ -53,9 +53,9 @@ class WebMessageChannel : public ChannelDelegate {
 
  private:
   std::string id_;
-  InAppWebView* webView_;  // Weak reference - InAppWebView owns WebMessageChannels
+  CygnusWebView* webView_;  // Weak reference - CygnusWebView owns WebMessageChannels
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_WEB_MESSAGE_CHANNEL_H_
+#endif  // CYGNUS_CORE_PLUGIN_WEB_MESSAGE_CHANNEL_H_

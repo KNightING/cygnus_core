@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:cygnus_core/cygnus_core.dart';
-import 'package:flutter_inappwebview_example/widgets/common/app_drawer.dart';
-import 'package:flutter_inappwebview_example/widgets/common/appbar_loading_indicator.dart';
-import 'package:flutter_inappwebview_example/widgets/common/empty_state.dart';
-import 'package:flutter_inappwebview_example/widgets/common/method_card.dart';
-import 'package:flutter_inappwebview_example/utils/support_checker.dart';
-import 'package:flutter_inappwebview_example/widgets/common/parameter_dialog.dart';
-import 'package:flutter_inappwebview_example/widgets/common/method_result_history.dart';
+import 'package:cygnus_core_example/widgets/common/app_drawer.dart';
+import 'package:cygnus_core_example/widgets/common/appbar_loading_indicator.dart';
+import 'package:cygnus_core_example/widgets/common/empty_state.dart';
+import 'package:cygnus_core_example/widgets/common/method_card.dart';
+import 'package:cygnus_core_example/utils/support_checker.dart';
+import 'package:cygnus_core_example/widgets/common/parameter_dialog.dart';
+import 'package:cygnus_core_example/widgets/common/method_result_history.dart';
 
 /// Screen for testing CygnusHttpAuthCredentialDatabase functionality
 class HttpAuthScreen extends StatefulWidget {

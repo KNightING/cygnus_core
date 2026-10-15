@@ -8,7 +8,7 @@ import androidx.annotation.RequiresApi
 import androidx.webkit.ServiceWorkerClientCompat
 import androidx.webkit.ServiceWorkerControllerCompat
 import androidx.webkit.WebViewFeature
-import com.github.knighting.cygnus.core.InAppWebViewFlutterPlugin
+import com.github.knighting.cygnus.core.CygnusCorePlugin
 import com.github.knighting.cygnus.core.types.Disposable
 import com.github.knighting.cygnus.core.types.WebResourceRequestExt
 import com.github.knighting.cygnus.core.types.WebResourceResponseExt
@@ -16,11 +16,11 @@ import io.flutter.plugin.common.MethodChannel
 import java.io.ByteArrayInputStream
 
 @RequiresApi(api = Build.VERSION_CODES.N)
-class ServiceWorkerManager(plugin: InAppWebViewFlutterPlugin) : Disposable {
+class ServiceWorkerManager(plugin: CygnusCorePlugin) : Disposable {
   companion object {
     // protected static in Java
     const val LOG_TAG = "ServiceWorkerManager"
-    const val METHOD_CHANNEL_NAME = "com.pichillilorenzo/flutter_inappwebview_serviceworkercontroller"
+    const val METHOD_CHANNEL_NAME = "com.github.knighting.cygnus/webview_serviceworkercontroller"
 
     @JvmField
     var serviceWorkerController: ServiceWorkerControllerCompat? = null
@@ -37,7 +37,7 @@ class ServiceWorkerManager(plugin: InAppWebViewFlutterPlugin) : Disposable {
   @JvmField
   var channelDelegate: ServiceWorkerChannelDelegate?
   @JvmField
-  var plugin: InAppWebViewFlutterPlugin? = plugin
+  var plugin: CygnusCorePlugin? = plugin
 
   init {
     val channel = MethodChannel(plugin.messenger, METHOD_CHANNEL_NAME)

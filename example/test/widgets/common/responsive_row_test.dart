@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_inappwebview_example/widgets/common/responsive_row.dart';
+import 'package:cygnus_core_example/widgets/common/responsive_row.dart';
 
 void main() {
   testWidgets('test_responsive_row_switches_to_column', (tester) async {

@@ -68,7 +68,7 @@ class WebPlatformInAppWebViewController extends CygnusPlatformWebViewController
                 params,
               ),
       ) {
-    channel = MethodChannel('com.pichillilorenzo/flutter_inappwebview_$id');
+    channel = MethodChannel('com.github.knighting.cygnus/webview_$id');
     handler = handleMethod;
     initMethodCallHandler();
 

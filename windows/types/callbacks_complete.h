@@ -1,11 +1,11 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_CALLBACKS_COMPLETE_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_CALLBACKS_COMPLETE_H_
+#ifndef CYGNUS_CORE_PLUGIN_CALLBACKS_COMPLETE_H_
+#define CYGNUS_CORE_PLUGIN_CALLBACKS_COMPLETE_H_
 
 #include <functional>
 #include <mutex>
 #include <vector>
 
-namespace flutter_inappwebview_plugin
+namespace cygnus_core_plugin
 {
   template<typename T>
   class CallbacksComplete
@@ -36,4 +36,4 @@ namespace flutter_inappwebview_plugin
   };
 }
 
-#endif //FLUTTER_INAPPWEBVIEW_PLUGIN_CALLBACKS_COMPLETE_H_
+#endif //CYGNUS_CORE_PLUGIN_CALLBACKS_COMPLETE_H_

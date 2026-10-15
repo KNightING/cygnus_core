@@ -2,16 +2,16 @@
 
 #include <string>
 
-#include "../in_app_webview/in_app_webview.h"
+#include "../webview/webview.h"
 #include "../utils/flutter.h"
 #include "../utils/log.h"
 #include "../utils/string.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 WebMessageChannel::WebMessageChannel(flutter::BinaryMessenger* messenger,
                                      const std::string& channelId,
-                                     InAppWebView* webView)
+                                     CygnusWebView* webView)
     : ChannelDelegate(messenger,
                       std::string(METHOD_CHANNEL_NAME_PREFIX) + channelId),
       id_(channelId),
@@ -130,4 +130,4 @@ void WebMessageChannel::onMessage(int portIndex, const std::string* message,
   channel->InvokeMethod("onMessage", std::make_unique<flutter::EncodableValue>(args));
 }
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin

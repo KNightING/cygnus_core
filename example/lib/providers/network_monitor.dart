@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_inappwebview_example/models/network_request.dart';
+import 'package:cygnus_core_example/models/network_request.dart';
 
 /// Network monitor for tracking network requests
 class NetworkMonitor extends ChangeNotifier {

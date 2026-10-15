@@ -5,7 +5,7 @@
         <activity
             android:theme="@style/AppTheme"
             android:exported="false"
-            android:name="com.github.knighting.cygnus.core.in_app_browser.InAppBrowserActivity"
+            android:name="com.github.knighting.cygnus.core.browser.CygnusBrowserActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density" />
         <activity
             android:theme="@style/ThemeTransparent"

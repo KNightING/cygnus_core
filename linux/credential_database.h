@@ -1,5 +1,5 @@
-#ifndef FLUTTER_INAPPWEBVIEW_PLUGIN_CREDENTIAL_DATABASE_H_
-#define FLUTTER_INAPPWEBVIEW_PLUGIN_CREDENTIAL_DATABASE_H_
+#ifndef CYGNUS_CORE_PLUGIN_CREDENTIAL_DATABASE_H_
+#define CYGNUS_CORE_PLUGIN_CREDENTIAL_DATABASE_H_
 
 #include <flutter_linux/flutter_linux.h>
 #include <libsecret/secret.h>
@@ -13,7 +13,7 @@
 
 #include "types/channel_delegate.h"
 
-namespace flutter_inappwebview_plugin {
+namespace cygnus_core_plugin {
 
 class PluginInstance;
 
@@ -55,13 +55,13 @@ struct Credential {
  * Credentials are stored in the system keyring (gnome-keyring, KDE Wallet, etc.)
  * using the Secret Service D-Bus API.
  *
- * Schema: com.pichillilorenzo.flutter_inappwebview.HttpAuth
+ * Schema: com.github.knighting.cygnus.HttpAuth
  * Attributes: appId, host, port, protocol, realm, username
  */
 class CredentialDatabase : public ChannelDelegate {
  public:
   static constexpr const char* METHOD_CHANNEL_NAME =
-      "com.pichillilorenzo/flutter_inappwebview_credential_database";
+      "com.github.knighting.cygnus/webview_credential_database";
 
   explicit CredentialDatabase(PluginInstance* plugin);
   ~CredentialDatabase() override;
@@ -124,6 +124,6 @@ class CredentialDatabase : public ChannelDelegate {
   std::string app_id_;
 };
 
-}  // namespace flutter_inappwebview_plugin
+}  // namespace cygnus_core_plugin
 
-#endif  // FLUTTER_INAPPWEBVIEW_PLUGIN_CREDENTIAL_DATABASE_H_
+#endif  // CYGNUS_CORE_PLUGIN_CREDENTIAL_DATABASE_H_
