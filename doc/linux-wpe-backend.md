@@ -1,6 +1,6 @@
 # WPE WebKit Backend for cygnus_core（Linux）
 
-This document describes how to install and configure WPE WebKit for the flutter_inappwebview Linux plugin.
+This document describes how to install and configure WPE WebKit for the cygnus_core Linux plugin.
 
 ## Overview
 
@@ -347,7 +347,7 @@ wget https://wpewebkit.org/releases/wpewebkit-2.50.4.tar.xz
 tar xf wpewebkit-2.50.4.tar.xz
 cd wpewebkit-2.50.4
 
-# Configure with recommended options for flutter_inappwebview
+# Configure with recommended options for cygnus_core
 # See "Optional Features and Dependencies" section above for all flags
 cmake -B build -G Ninja \
   -DCMAKE_BUILD_TYPE=Release \
@@ -492,13 +492,13 @@ The following files are automatically copied to your app's `lib/` directory:
 Flutter App
     │
     ▼
-flutter_inappwebview Dart layer
+cygnus_core Dart layer
     │
     ▼
 Method Channel
     │
     ▼
-InAppWebView (C++)
+CygnusWebView (C++)
     │
     ├──► WebKitWebView (WPE WebKit)
     │         │

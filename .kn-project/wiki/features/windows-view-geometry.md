@@ -27,7 +27,7 @@ HWND。本頁說明這兩條路徑目前的行為：texture 只在有新影格�
 > WebView 整片空白。
 >
 > 根因：`custom_platform_view.cc` 的 `setSize` handler 同時負責 `texture_bridge_->Start()`
-> 與 `put_Bounds`，而 `InAppWebView::setSurfaceSize` 在 `webViewController` 尚未建立時會
+> 與 `put_Bounds`，而 `CygnusWebView::setSurfaceSize` 在 `webViewController` 尚未建立時會
 > 直接 return。初期那幾次「重複」的上報，實際上是等 controller 就緒的重試。去掉它們，
 > texture 就永遠不會 Start。
 

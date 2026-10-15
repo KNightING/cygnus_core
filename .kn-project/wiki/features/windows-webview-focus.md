@@ -41,7 +41,7 @@ sequenceDiagram
   participant U as 使用者
   participant E as Flutter embedder
   participant D as Dart Listener
-  participant N as InAppWebView (native)
+  participant N as CygnusWebView (native)
   participant W as WebView2
 
   U->>E: 滑鼠按下

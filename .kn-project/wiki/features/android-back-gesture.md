@@ -6,7 +6,7 @@
 
 Android 手勢導航下，系統接管邊緣返回手勢時會注入一個座標大幅偏移的合成 `ACTION_MOVE`，
 Chromium 會把它當成真實捲動照做，導致「往回滑時網頁被甩走」。本套件在
-`InAppWebView.onTouchEvent` 前置守衛中丟棄該事件。**無設定項、無條件生效**，
+`CygnusWebView.onTouchEvent` 前置守衛中丟棄該事件。**無設定項、無條件生效**，
 且**僅** Android——這是與上游行為的一項刻意分歧。
 
 ## 系統為什麼要送那個事件
@@ -75,10 +75,10 @@ flowchart LR
 
 ## References
 
-- 實作：`android/.../in_app_webview/InAppWebView.kt:1571`（守衛呼叫點）、
+- 實作：`android/.../webview/webview/CygnusWebView.kt:1571`（守衛呼叫點）、
   `:1637`（`shouldDropSystemGestureArtefact`）、`:1667`（`isInsideSystemGestureArea`）、
   `:131`（門檻常數）
-- 相關節點：[軟鍵盤避讓](keyboard-avoidance.md)（兩者共用 `InAppWebView` 的觸控路徑）
+- 相關節點：[軟鍵盤避讓](keyboard-avoidance.md)（兩者共用 `CygnusWebView` 的觸控路徑）
 - 歸檔計畫：[2608121440-back-gesture-fling](../../archive/2608121440-back-gesture-fling.md)
 
 ---
